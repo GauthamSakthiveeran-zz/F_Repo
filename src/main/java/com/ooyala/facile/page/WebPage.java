@@ -2022,6 +2022,43 @@ public abstract class WebPage {
 	 *            the element key
 	 * @param visibleText
 	 *            the visible text
+	 */
+	protected void selectDropDownByIndex(String elementKey, int index) {
+		String action = "Selecting '" + index + "' from dropdown element..."
+				+ " for element: " + elementKey;
+
+		// Log the action
+		logger.info(action);
+
+		List<WebElement> items = getSelectDropDownOptions(elementKey);
+		boolean itemFound = false;
+		int i = 1;
+		for (WebElement item : items) {
+			if (i == index) {
+				item.click();
+				itemFound = true;
+				break;
+			}
+			i++;
+		}
+
+		// Default back to the normal way of searching for elements.
+		if (!itemFound) {
+			logger.info("Element with " + elementKey + " and index " + index
+					+ " not found");
+		}
+
+		// Check for JS alerts
+		checkForJavascriptAlerts(action + " " + elementKey);
+	}
+
+	/**
+	 * Select drop down by visible text.
+	 *
+	 * @param elementKey
+	 *            the element key
+	 * @param visibleText
+	 *            the visible text
 	 * @param indexes
 	 *            the indexes
 	 */
@@ -2468,7 +2505,8 @@ public abstract class WebPage {
 		// read the element xml file for the desired area and populate the page
 		// elements object.
 		try {
-			InputStream is = WebPage.class.getClassLoader().getResourceAsStream(elementfile);
+			InputStream is = WebPage.class.getClassLoader()
+					.getResourceAsStream(elementfile);
 			if (is == null)
 				is = new FileInputStream(elementfile);
 
