@@ -15,10 +15,10 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
 
-import com.ooyala.faclie.util.NoRetry;
-import com.ooyala.faclie.util.ReadPropertyFile;
-import com.ooyala.faclie.util.ReadTriggerFile;
-import com.ooyala.faclile.grid.saucelabs.SauceREST;
+import com.ooyala.facile.grid.saucelabs.SauceREST;
+import com.ooyala.facile.util.NoRetry;
+import com.ooyala.facile.util.ReadPropertyFile;
+import com.ooyala.facile.util.ReadTriggerFile;
 
 // TODO: Auto-generated Javadoc
 /**
