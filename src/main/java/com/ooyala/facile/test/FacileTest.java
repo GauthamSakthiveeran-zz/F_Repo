@@ -27,6 +27,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -953,6 +954,7 @@ public class FacileTest implements IHookable {
 	 *            the fulltestname
 	 */
 	private void initWatchdog(final String fulltestname) {
+		logger.info("***********Inside init********");
 		watchdog = new TestWatchdog(driver);
 		WebPage.attachListener(watchdog);
 
@@ -1271,27 +1273,25 @@ public class FacileTest implements IHookable {
 
 	}
 
-	/**
-	 * The main method.
-	 * 
-	 * @param args
-	 *            the arguments
-	 */
-	public static void main(String[] args) {
+	@SuppressWarnings("deprecation")
+	public void takeBrowserScreenshot(String fileName, String destinationDir) {
+		if (!(new File(destinationDir).isDirectory())) {
+			new File(destinationDir).mkdir();
+		}
+		// save captured image to JPEG file
+		String imageFileName = destinationDir + "/" + fileName;
+		String currentImageFilePath = null;
+		currentImageFilePath = imageFileName + ".jpeg";
+		File f = new File(currentImageFilePath);
+		if (driver instanceof FirefoxDriver) {
+			// ((FirefoxDriver) driver).saveScreenshot(new
+			// File(currentImageFilePath));
+			File ss = ((FirefoxDriver) driver).getScreenshotAs(OutputType.FILE);
+			ss.renameTo(new File(currentImageFilePath));
+		}
+		logger.info("Saved screenshot titled " + fileName + " to: "
+				+ imageFileName);
 
-		/*
-		 * driver = getDriver("phantomjs"); driver.get("http://www.google.com");
-		 * 
-		 * // Find the text input element by its name WebElement element =
-		 * driver.findElement(By.name("q"));
-		 * 
-		 * // Enter something to search for element.sendKeys("Cheese!");
-		 * 
-		 * // Now submit the form. WebDriver will find the form for us from the
-		 * // element element.submit();
-		 * 
-		 * // Check the title of the page logger.info(driver.getPageSource());
-		 * logger.info("Page title is: " + driver.getTitle()); driver.quit();
-		 */
 	}
+
 }
