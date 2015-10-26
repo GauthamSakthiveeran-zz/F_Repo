@@ -1183,8 +1183,9 @@ public abstract class WebPage {
 				// so we need to explicitly exclude these drivers from the
 				// following
 				// click call.
-				if (!(driver instanceof FirefoxDriver || driver instanceof InternetExplorerDriver))
-					elementOfInterest.click();
+				// if (!(driver instanceof FirefoxDriver || driver instanceof
+				// InternetExplorerDriver))
+				// elementOfInterest.click();
 				elementOfInterest.sendKeys(textToWrite);
 			}
 		} catch (Exception ex) {
