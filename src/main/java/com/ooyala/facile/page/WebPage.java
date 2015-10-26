@@ -11,8 +11,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.imageio.ImageIO;
 import javax.xml.parsers.DocumentBuilder;
@@ -31,6 +33,7 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Clock;
 import org.openqa.selenium.support.ui.Select;
@@ -1073,6 +1076,130 @@ public abstract class WebPage {
 		overrideAlert();
 	}
 
+	/**
+	 * Append text into text box.
+	 *
+	 * @param elementKey
+	 *            the element key
+	 * @param textToWrite
+	 *            the text to write
+	 * @return true, if successful
+	 */
+	protected boolean appendTextIntoTextBox(String elementKey,
+			String textToWrite) {
+		return appendTextIntoTextBox(elementKey, textToWrite, -1);
+	}
+
+	/*
+	 * This method does the following: 1. Retrieve the Element Information from
+	 * the hash map using the elementKey passed as parameter to the method. 2.
+	 * Finds the Element on the web page. If Element found it sends text to the
+	 * element and returns TRUE. If element is not found or there is some error
+	 * in sending text it returns False.
+	 */
+	/**
+	 * Write text into text box.
+	 *
+	 * @param elementKey
+	 *            the element key
+	 * @param textToWrite
+	 *            the text to write
+	 * @param lineNumbers
+	 *            the line numbers
+	 * @return true, if successful
+	 */
+	protected boolean appendTextIntoTextBox(String elementKey,
+			String textToWrite, int... lineNumbers) {
+		logger.info("Trying to write text: " + textToWrite
+				+ " in text element: " + elementKey);
+		String action = "";
+		if (textToWrite.length() > 0) {
+			action = "Writing '" + textToWrite + "' to...";
+		} else {
+			action = "Focusing on...";
+		}
+		FacileWebElement anElement;
+
+		try {
+			// We need to create a clone of the element retrieved from the
+			// hashmap as we can't make the hash map dirty.
+			anElement = new FacileWebElement(pageElements.get(elementKey));
+		} catch (NullPointerException ex) {
+			throw new NullPointerException(
+					"The element "
+							+ elementKey
+							+ " key-value pair is not present or is wrong in the xml file!");
+		}
+		// if the element extracted from the HashMap is a Line Item then we need
+		// to replace the "#" character with the LINE NUMBER.
+		if (lineNumbers.length > 0) {
+			addLineNumberToElement(anElement, "#", lineNumbers);
+		}
+
+		waitOnElement(elementKey, 7500);
+		if (!isElementVisible(elementKey, lineNumbers)) {
+			throw new WebDriverException(
+					"Unable to read from non-visible WebElement: "
+							+ anElement.toString());
+		}
+
+		if (anElement == null) {
+			logger.info("Failed to find element: " + elementKey
+					+ " in XML file");
+			return false; // check if element is not found in the hash map then
+			// return FALSE.
+		}
+
+		// Log the action
+		logger.info(action);
+
+		WebElement elementOfInterest = getWebElementFromFacileWebElement(anElement);
+
+		if (textToWrite == null)
+			textToWrite = "";
+
+		try {
+			// sending keys.
+			WebPage.wait(300);
+			elementOfInterest.sendKeys(textToWrite);
+		} catch (NullPointerException ex) {
+			logger.error("Caught exception " + ex);
+			return false;
+		}
+
+		// Now attempt to read the value from the field to make sure that it was
+		// written
+		// correctly. This should fix issues we were seeing where the first part
+		// of the
+		// text is cut off.
+		try {
+			logger.info("Trying to make sure that text is entered correctly in text field");
+			if (textToWrite.length() > 0
+					&& !elementOfInterest.getAttribute("value").equals(
+							textToWrite)) {
+				elementOfInterest.clear();
+				// The Firefox and InternetExplorer drivers are also
+				// RemoteWebDriver
+				// so we need to explicitly exclude these drivers from the
+				// following
+				// click call.
+				if (!(driver instanceof FirefoxDriver || driver instanceof InternetExplorerDriver))
+					elementOfInterest.click();
+				elementOfInterest.sendKeys(textToWrite);
+			}
+		} catch (Exception ex) {
+			// Do nothing if this fails since it's just a fallback anyway.
+		}
+
+		// Hack prevent failures while running test cases in remote machine
+		// type.tab(driver);
+
+		// Check for JS alerts
+		checkForJavascriptAlerts(action + " " + elementKey);
+
+		return true;
+	}
+
 	/*
 	 * This method Writes text in text elements like text box, text area.
 	 */
@@ -2000,8 +2127,12 @@ public abstract class WebPage {
 			}
 		}
 
-		// Default back to the normal way of searching for elements.
-		if (!itemFound) {
+		if (itemFound) {
+			Select dropDown = getSelectWebElement(elementKey);
+			String repString = null;
+			clickOnElement(elementKey, repString);
+			dropDown.selectByVisibleText(visibleText);
+		} else {
 			for (WebElement item : items) {
 				if (item.getText().toLowerCase()
 						.contains(visibleText.toLowerCase())) {
@@ -2013,6 +2144,97 @@ public abstract class WebPage {
 
 		// Check for JS alerts
 		checkForJavascriptAlerts(action + " " + elementKey);
+	}
+
+	/**
+	 * Select drop down by visible text.
+	 *
+	 * @param elementKey
+	 *            the element key
+	 * @param visibleText
+	 *            the visible text
+	 */
+	protected void selectDropDownWithWindowSwitching(String elementKey,
+			String visibleText, String currentWindow) {
+		String action = "Selecting '" + visibleText
+				+ "' from dropdown element..." + " for element: " + elementKey;
+
+		// Log the action
+		logger.info(action);
+
+		List<WebElement> items = getSelectDropDownOptions(elementKey);
+		boolean itemFound = false;
+		for (WebElement item : items) {
+			if (item.getText().trim().equalsIgnoreCase(visibleText.trim())) {
+				logger.info(item.getText().trim()
+						.equalsIgnoreCase(visibleText.trim()));
+				Actions actions = new Actions(driver);
+				actions.click(item);
+				item.click();
+				itemFound = true;
+				break;
+			}
+		}
+
+		if (itemFound) {
+			switchWindow(currentWindow);
+			Select dropDown = getSelectWebElement(elementKey);
+			String repString = null;
+			clickOnElement(elementKey, repString);
+			dropDown.selectByVisibleText(visibleText);
+		} else {
+			for (WebElement item : items) {
+				if (item.getText().toLowerCase()
+						.contains(visibleText.toLowerCase())) {
+					item.click();
+					break;
+				}
+			}
+		}
+
+		// Check for JS alerts
+		checkForJavascriptAlerts(action + " " + elementKey);
+	}
+
+	/*
+	 * Switch the windows
+	 */
+
+	public void switchWindow(String mainWindow) {
+
+		Set<String> s = driver.getWindowHandles();
+		Iterator<String> ite = s.iterator();
+		while (ite.hasNext()) {
+			String popup = ite.next();
+			if (!popup.equalsIgnoreCase(mainWindow)) {
+				driver.switchTo().window(popup);
+				break;
+			}
+		}
+	}
+
+	public String getCurrentWindow() {
+		Set<String> s = driver.getWindowHandles();
+		Iterator<String> ite = s.iterator();
+		while (ite.hasNext()) {
+			return ite.next();
+		}
+		return null;
+	}
+
+	/*
+	 * Getting selected dropDown
+	 */
+
+	private Select getSelectWebElement(String elementKey) {
+		logger.info("Trying to get list of options avalable in dropdown for: "
+				+ elementKey);
+		FacileWebElement selectDropDown = new FacileWebElement(
+				pageElements.get(elementKey));
+		WebElement wSelectDropDown = getWebElementFromFacileWebElement(selectDropDown);
+
+		Select sSelectDropDown = new Select(wSelectDropDown);
+		return sSelectDropDown;
 	}
 
 	/**
