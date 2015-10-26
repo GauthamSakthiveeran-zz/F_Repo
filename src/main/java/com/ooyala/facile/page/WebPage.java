@@ -1177,7 +1177,7 @@ public abstract class WebPage {
 			if (textToWrite.length() > 0
 					&& !elementOfInterest.getAttribute("value").equals(
 							textToWrite)) {
-				elementOfInterest.clear();
+				//elementOfInterest.clear();
 				// The Firefox and InternetExplorer drivers are also
 				// RemoteWebDriver
 				// so we need to explicitly exclude these drivers from the
