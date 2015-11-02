@@ -91,13 +91,13 @@ public class FacileTest implements IHookable {
 	public static Logger logger = Logger.getLogger(FacileTest.class);
 
 	/** The driver. */
-	protected RemoteWebDriver driver = null;
+	protected RemoteWebDriver driver;
 
 	/** The chrome server. */
-	private static ChromeDriverService chromeServer = null;
+	private static ChromeDriverService chromeServer;
 
 	/** The ie server. */
-	private static InternetExplorerDriverService ieServer = null;
+	private static InternetExplorerDriverService ieServer;
 
 	/** The Constant DRIVER_PHANTOMJS. */
 	private static final String DRIVER_PHANTOMJS = "phantomjs";
@@ -892,7 +892,8 @@ public class FacileTest implements IHookable {
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			// e.printStackTrace();
+			logger.error("Error:webDriverFacile is null:TBD need to fix it");
 		}
 
 		icb.runTestMethod(result);
