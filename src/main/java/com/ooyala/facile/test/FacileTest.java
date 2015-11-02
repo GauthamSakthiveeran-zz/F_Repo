@@ -57,6 +57,7 @@ import com.ooyala.facile.grid.saucelabs.SauceConnectManager;
 import com.ooyala.facile.grid.saucelabs.SauceREST;
 import com.ooyala.facile.grid.saucelabs.SaucelabsSessionManager;
 import com.ooyala.facile.listners.FacileTestListener;
+import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.page.ContextAwareFirefoxDriver;
 import com.ooyala.facile.page.WebPage;
 import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
@@ -358,10 +359,10 @@ public class FacileTest implements IHookable {
 	public static boolean isBrowserMobProxyEnabled() {
 		logger.info("... checking for browser mob proxy");
 		boolean isProxyEnabled = false;
-		File confFile = new File("src/test/resources/config/facile.properties");
+		File confFile = new File("src/test/resources/facile.properties");
 		if (confFile.exists()) {
 			ReadTriggerFile propertiesFile = new ReadTriggerFile(
-					"src/test/resources/config/facile.properties");
+					"src/test/resources/facile.properties");
 			String isSiteCatelystEnabled = propertiesFile.getParameter(
 					"browser_mob_proxy", "");
 			if (isSiteCatelystEnabled != null) {
@@ -850,7 +851,7 @@ public class FacileTest implements IHookable {
 	 * org.testng.ITestResult)
 	 */
 	public void run(final IHookCallBack icb, ITestResult result) {
-		System.out.println("FacileTest.run()");
+		//System.out.println("FacileTest.run()");
 		logger.info("Using 2.1.4-SNAPSHOT");
 
 		// Each of our tests will be retried by the same IRetryAnalyzer object.

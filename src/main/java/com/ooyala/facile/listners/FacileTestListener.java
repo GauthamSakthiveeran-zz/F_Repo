@@ -154,20 +154,22 @@ public class FacileTestListener extends TestListenerAdapter implements
 	public boolean retry(ITestResult result) {
 
 		/**
-		 * In src/test/resources/config/facile.properties file, if retry=true,
-		 * it will retry all the failed test if retry=false, it will not retry
-		 * any failed test if retry is not set or any other value, it will retry
-		 * all the tests except tests with @NoRetry annotation
+		 * In src/test/resources/facile.properties file, if retry=true, it will
+		 * retry all the failed test if retry=false, it will not retry any
+		 * failed test if retry is not set or any other value, it will retry all
+		 * the tests except tests with @NoRetry annotation
 		 */
 
-		File confFile = new File("src/test/resources/config/facile.properties");
+		File confFile = new File("src/test/resources/facile.properties");
 		if (confFile.exists()) {
 			ReadTriggerFile propertiesFile = new ReadTriggerFile(
-					"src/test/resources/config/facile.properties");
+					"src/test/resources/facile.properties");
 			String retry = propertiesFile.getParameter("retry", "");
+			int retryCount = Integer.parseInt(propertiesFile.getParameter(
+					"retryCount", ""));
 			if (retry != null) {
 				if (retry.equalsIgnoreCase("true")) {
-					return retryTracker();
+					return retryTracker(retryCount);
 				} else if (retry.equalsIgnoreCase("false")) {
 					return false;
 				}
@@ -184,7 +186,7 @@ public class FacileTestListener extends TestListenerAdapter implements
 			return false;
 		}
 
-		return retryTracker();
+		return retryTracker(DEFAULT_MAX_RETRY);
 	}
 
 	/**
@@ -204,8 +206,8 @@ public class FacileTestListener extends TestListenerAdapter implements
 	 * 
 	 * @return true, if successful
 	 */
-	private boolean retryTracker() {
-		if (retryCount < DEFAULT_MAX_RETRY) {
+	private boolean retryTracker(int maxRetryCount) {
+		if (retryCount < maxRetryCount) {
 			logger.info("Test failed, but Facile will try to rerun the test");
 			retryCount++;
 			return true;
