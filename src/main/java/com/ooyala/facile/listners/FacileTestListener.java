@@ -153,6 +153,16 @@ public class FacileTestListener extends TestListenerAdapter implements
 	 */
 	public boolean retry(ITestResult result) {
 
+		// Check to see if the "NoRetry" annotation is present in which case the
+		// test SHOULD NOT be retried.
+		if (result
+				.getMethod()
+				.getMethod()
+				.isAnnotationPresent(
+						(Class<? extends Annotation>) NoRetry.class)) {
+			return false;
+		}
+
 		/**
 		 * In src/test/resources/facile.properties file, if retry=true, it will
 		 * retry all the failed test if retry=false, it will not retry any
@@ -176,16 +186,6 @@ public class FacileTestListener extends TestListenerAdapter implements
 					return false;
 				}
 			}
-		}
-
-		// Check to see if the "NoRetry" annotation is present in which case the
-		// test SHOULD NOT be retried.
-		if (result
-				.getMethod()
-				.getMethod()
-				.isAnnotationPresent(
-						(Class<? extends Annotation>) NoRetry.class)) {
-			return false;
 		}
 
 		return retryTracker(DEFAULT_MAX_RETRY);
