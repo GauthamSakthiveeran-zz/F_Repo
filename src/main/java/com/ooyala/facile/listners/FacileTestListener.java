@@ -167,6 +167,8 @@ public class FacileTestListener extends TestListenerAdapter implements
 			String retry = propertiesFile.getParameter("retry", "");
 			int retryCount = Integer.parseInt(propertiesFile.getParameter(
 					"retryCount", ""));
+			logger.info("Retry count is " + retryCount);
+			logger.info("Is Retry is enabled? " + retry);
 			if (retry != null) {
 				if (retry.equalsIgnoreCase("true")) {
 					return retryTracker(retryCount);
@@ -207,8 +209,10 @@ public class FacileTestListener extends TestListenerAdapter implements
 	 * @return true, if successful
 	 */
 	private boolean retryTracker(int maxRetryCount) {
+		logger.info("retry count is " + retryCount);
+		logger.info("Max Retry Count is " + maxRetryCount);
 		if (retryCount < maxRetryCount) {
-			logger.info("Test failed, but Facile will try to rerun the test");
+			logger.error("Test failed, but Facile will try to rerun the test");
 			retryCount++;
 			return true;
 		} else {
