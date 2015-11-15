@@ -1167,31 +1167,6 @@ public abstract class WebPage {
 			return false;
 		}
 
-		// Now attempt to read the value from the field to make sure that it was
-		// written
-		// correctly. This should fix issues we were seeing where the first part
-		// of the
-		// text is cut off.
-		try {
-			logger.info("Trying to make sure that text is entered correctly in text field");
-			if (textToWrite.length() > 0
-					&& !elementOfInterest.getAttribute("value").equals(
-							textToWrite)) {
-				//elementOfInterest.clear();
-				// The Firefox and InternetExplorer drivers are also
-				// RemoteWebDriver
-				// so we need to explicitly exclude these drivers from the
-				// following
-				// click call.
-				// if (!(driver instanceof FirefoxDriver || driver instanceof
-				// InternetExplorerDriver))
-				// elementOfInterest.click();
-				elementOfInterest.sendKeys(textToWrite);
-			}
-		} catch (Exception ex) {
-			// Do nothing if this fails since it's just a fallback anyway.
-		}
-
 		// Hack prevent failures while running test cases in remote machine
 		// type.tab(driver);
 
