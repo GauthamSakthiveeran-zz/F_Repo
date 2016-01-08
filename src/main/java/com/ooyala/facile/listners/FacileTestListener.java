@@ -19,6 +19,7 @@ import com.ooyala.facile.grid.saucelabs.SauceREST;
 import com.ooyala.facile.util.NoRetry;
 import com.ooyala.facile.util.ReadPropertyFile;
 import com.ooyala.facile.util.ReadTriggerFile;
+import com.ooyala.facile.util.TestDescription;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -70,11 +71,27 @@ public class FacileTestListener extends TestListenerAdapter implements
 		logger.info(now("MMddyyyy:hhmmss") + "=== Running... <" + fullTestName
 				+ ">===");
 
+		// Logging the test description in the report
+
+		if (tr.getMethod()
+				.getConstructorOrMethod()
+				.getMethod()
+				.isAnnotationPresent(
+						(Class<? extends Annotation>) TestDescription.class)) {
+			TestDescription testDescription = tr.getMethod()
+					.getConstructorOrMethod().getMethod()
+					.getAnnotation(TestDescription.class);
+			logger.info("******************************************************************");
+			logger.info("Test description is " + testDescription.description());
+			logger.info("******************************************************************");
+			Reporter.log(testDescription.description() + "<br>");
+		}
+
 		// Output the retry number so that we can correlate the TestNG results
 		// with
 		// screenshots that are taken.
 		if (retryCount == 0) {
-			Reporter.log("Running Test for First Time<br>");
+			//Reporter.log("Running Test for First Time<br>");
 		} else {
 			Reporter.log("Running Retry #" + retryCount + "<br>");
 		}
