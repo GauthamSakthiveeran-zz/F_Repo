@@ -851,11 +851,12 @@ public class FacileTest implements IHookable {
 	 * org.testng.ITestResult)
 	 */
 	public void run(final IHookCallBack icb, ITestResult result) {
-		//System.out.println("FacileTest.run()");
+		// System.out.println("FacileTest.run()");
 		logger.info("Using 2.1.4-SNAPSHOT");
 
+		// IRetryAnalyzer RETRIER = new FacileTestListener();
 		// Each of our tests will be retried by the same IRetryAnalyzer object.
-		result.getMethod().setRetryAnalyzer(RETRIER);
+		// result.getMethod().setRetryAnalyzer(RETRIER);
 
 		String fullTestName = getSuiteTestName(result.getName().toString(),
 				result.getParameters());

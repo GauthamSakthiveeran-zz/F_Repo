@@ -3,6 +3,8 @@ package com.ooyala.facile.listners;
 import java.io.File;
 import java.io.InputStream;
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -10,10 +12,12 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
+import org.testng.IAnnotationTransformer;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
+import org.testng.annotations.ITestAnnotation;
 
 import com.ooyala.facile.grid.saucelabs.SauceREST;
 import com.ooyala.facile.util.NoRetry;
@@ -34,7 +38,7 @@ import com.ooyala.facile.util.TestDescription;
  */
 
 public class FacileTestListener extends TestListenerAdapter implements
-		IRetryAnalyzer {
+		IRetryAnalyzer, IAnnotationTransformer {
 
 	/** The logger. */
 	public static Logger logger = Logger.getLogger(FacileTestListener.class);
@@ -49,10 +53,10 @@ public class FacileTestListener extends TestListenerAdapter implements
 	private long testEndTime = 0;
 
 	/** The retry count. */
-	protected static int retryCount = 0;
+	protected int retryCount = 1;
 
 	/** The Constant DEFAULT_MAX_RETRY. */
-	protected static final int DEFAULT_MAX_RETRY = 1;
+	protected final int DEFAULT_MAX_RETRY = 3;
 
 	/*
 	 * (non-Javadoc)
@@ -91,7 +95,7 @@ public class FacileTestListener extends TestListenerAdapter implements
 		// with
 		// screenshots that are taken.
 		if (retryCount == 0) {
-			//Reporter.log("Running Test for First Time<br>");
+			// Reporter.log("Running Test for First Time<br>");
 		} else {
 			Reporter.log("Running Retry #" + retryCount + "<br>");
 		}
@@ -228,12 +232,11 @@ public class FacileTestListener extends TestListenerAdapter implements
 	private boolean retryTracker(int maxRetryCount) {
 		logger.info("retry count is " + retryCount);
 		logger.info("Max Retry Count is " + maxRetryCount);
-		if (retryCount < maxRetryCount) {
+		if (retryCount <= maxRetryCount) {
 			logger.error("Test failed, but Facile will try to rerun the test");
 			retryCount++;
 			return true;
 		} else {
-			retryCount = 0;
 			return false;
 		}
 	}
@@ -319,5 +322,15 @@ public class FacileTestListener extends TestListenerAdapter implements
 
 		}
 
+	}
+
+	@Override
+	public void transform(ITestAnnotation annotation, Class testClass,
+			Constructor testConstructor, Method testMethod) {
+		IRetryAnalyzer retry = annotation.getRetryAnalyzer();
+		logger.info("In retry of method " + testMethod.getName());
+		if (retry == null) {
+			annotation.setRetryAnalyzer(FacileTestListener.class);
+		}
 	}
 }
