@@ -1704,6 +1704,26 @@ public abstract class WebPage {
 	}
 
 	/**
+	 * Gets the default selected option in the dropdown.
+	 *
+	 * @param elementKey
+	 *            the element key
+	 * @return the select drop down options
+	 */
+	public String  getDefaultSelectedValueOfDropDown(String elementKey) {
+
+		FacileWebElement selectDropDown = new FacileWebElement(
+				pageElements.get(elementKey));
+		WebElement wSelectDropDown = getWebElementFromFacileWebElement(selectDropDown);
+
+		Select sSelectDropDown = new Select(wSelectDropDown);
+		WebElement webElement = sSelectDropDown.getFirstSelectedOption();
+		String currentValue = webElement.getText();
+		return currentValue;
+//		return "test";
+	}
+
+	/**
 	 * Gets the select drop down options.
 	 *
 	 * @param elementKey
@@ -1724,6 +1744,7 @@ public abstract class WebPage {
 
 		WebElement selectElement = getWebElementFromFacileWebElement(selectDropDown);
 		Select sSelectDropDown = new Select(selectElement);
+
 		return sSelectDropDown.getOptions();
 	}
 
