@@ -1536,10 +1536,33 @@ public abstract class WebPage {
 		try {
 			WebElement elementOfInterest = (getWebElementFromFacileWebElement(
 					elementKey, lineNumbers));
+
 			return isElementVisible(elementOfInterest);
 		} catch (NoSuchElementException ex) {
 			logger.error("Caught exception: " + ex);
 			return false;
+		}
+	}
+
+	/**
+	 * Checks if is element visible.
+	 *
+	 * @param elementKey
+	 *            the element key
+	 * @param lineNumbers
+	 *            the line numbers
+	 * @return true, if is element visible
+	 */
+	public String getElementTagvalues(String elementKey) {
+
+		try {
+			WebElement elementOfInterest = (getWebElementFromFacileWebElement(
+					elementKey, -1));
+
+			return elementOfInterest.getText();
+		} catch (NoSuchElementException ex) {
+			logger.error("Caught exception: " + ex);
+			return ex.toString();
 		}
 	}
 
