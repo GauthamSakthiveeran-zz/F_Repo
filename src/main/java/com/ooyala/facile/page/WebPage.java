@@ -1434,6 +1434,49 @@ public abstract class WebPage {
 		return returnText;
 	}
 
+	protected boolean clearTextFromElement(String elementKey) {
+		// We need to create a clone of the element retrieved from the hashmap
+		// as we cant make the hash map dirty.
+		boolean result = false;
+		logger.info("Trying to read text from text element: " + elementKey);
+		FacileWebElement anElement = new FacileWebElement(
+				pageElements.get(elementKey));
+
+		waitOnElement(elementKey, 7500);
+		if (!isElementVisible(elementKey)) {
+			throw new WebDriverException(
+					"Unable to read from non-visible WebElement: "
+							+ anElement.toString());
+		}
+
+		if (anElement == null) {
+			logger.info("Failed to find element: " + elementKey
+					+ " in XML file");
+			return result; // check if element is not found in the hash map then
+			// return FALSE.
+		}
+
+		logger.info("Clearing text from element...");
+		WebElement elementOfInterest = getWebElementFromFacileWebElement(anElement);
+		try {
+			// Due to an issue with the way that webdriver used to report
+			// multiple "&nbsp;" as a single space
+			// we have multiple tests that are designed around assuming there
+			// are only one space in certain
+			// messages. Therefore, we'll replace any instance of multiple
+			// spaces with a single space
+			// instead.
+			elementOfInterest.clear();
+			result = true;
+		} catch (NullPointerException ex) {
+			logger.error("Caught exception " + ex);
+			return result;
+		}
+		logger.info("Cleared text from text element: "
+				+ elementKey);
+		return result;
+	}
+
 	/*
 	 * This method corrects the elements meta data for the line item elements.
 	 */
