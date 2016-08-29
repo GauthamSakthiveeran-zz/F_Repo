@@ -1710,7 +1710,7 @@ public abstract class WebPage {
 	 *            the element key
 	 * @return the select drop down options
 	 */
-	public String  getDefaultSelectedValueOfDropDown(String elementKey) {
+	public String getDefaultSelectedValueOfDropDown(String elementKey) {
 
 		FacileWebElement selectDropDown = new FacileWebElement(
 				pageElements.get(elementKey));
@@ -1720,7 +1720,7 @@ public abstract class WebPage {
 		WebElement webElement = sSelectDropDown.getFirstSelectedOption();
 		String currentValue = webElement.getText();
 		return currentValue;
-//		return "test";
+		// return "test";
 	}
 
 	/**
@@ -2559,6 +2559,79 @@ public abstract class WebPage {
 		}
 		return true;
 
+	}
+
+	protected boolean mouseOverElementAndClick(String firstElementKey,
+			String secondElementKey) {
+		String action = "Clicking on..." + secondElementKey;
+
+		// We need to create a clone of the element retrieved from the hashmap
+		// as we cant make the hash map dirty.
+		FacileWebElement firstElement = new FacileWebElement(
+				pageElements.get(firstElementKey));
+		FacileWebElement secondElement = new FacileWebElement(
+				pageElements.get(secondElementKey));
+
+		if (firstElement == null || secondElement == null) {
+			logger.info("Failed to find element: " + firstElement + " and "
+					+ secondElement + " in XML file");
+			return false; // check if element is not found in the hash map then
+			// return FALSE.
+		}
+
+		// Log the action
+		logger.info(action);
+		try {
+			WebElement element1 = getWebElementFromFacileWebElement(firstElement);
+			WebElement element2 = getWebElementFromFacileWebElement(secondElement);
+			Actions actions = new Actions(driver);
+			actions.moveToElement(element1).perform();
+			actions.click(element2);
+
+		} catch (TimeoutException ex) {
+			// do nothing this behaviour is seen on IE. Exact reason is not
+			// known as on 7 jan 2009
+			logger.info("Exception while clicking an element : ");
+			logger.error("Caught exception " + ex);
+		} catch (NullPointerException ex) {
+			logger.error("Caught exception " + ex);
+			return false;
+		}
+		return true;
+	}
+
+	protected boolean mouseOverElement(String firstElementKey) {
+		String action = "Clicking on..." + firstElementKey;
+
+		// We need to create a clone of the element retrieved from the hashmap
+		// as we cant make the hash map dirty.
+		FacileWebElement firstElement = new FacileWebElement(
+				pageElements.get(firstElementKey));
+
+		if (firstElement == null) {
+			logger.info("Failed to find element: " + firstElement
+					+ " in XML file");
+			return false; // check if element is not found in the hash map then
+			// return FALSE.
+		}
+
+		// Log the action
+		logger.info(action);
+		try {
+			WebElement elementOfInterest = getWebElementFromFacileWebElement(firstElement);
+			Actions actions = new Actions(driver);
+			actions.moveToElement(elementOfInterest).perform();
+
+		} catch (TimeoutException ex) {
+			// do nothing this behaviour is seen on IE. Exact reason is not
+			// known as on 7 jan 2009
+			logger.info("Exception while clicking an element : ");
+			logger.error("Caught exception " + ex);
+		} catch (NullPointerException ex) {
+			logger.error("Caught exception " + ex);
+			return false;
+		}
+		return true;
 	}
 
 	/*
