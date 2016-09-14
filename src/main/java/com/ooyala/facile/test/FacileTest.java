@@ -448,6 +448,11 @@ public class FacileTest implements IHookable {
 					SAUCE_CONFIG_PATH, "SELENIUM_BROWSER");
 		}
 
+		if (isSauceEnabled()) {
+			browserName = System.getenv("SELENIUM_BROWSER");
+
+		}
+
 		logger.debug("Browser Name : " + browserName);
 		browserName = browserName.toLowerCase().trim();
 
