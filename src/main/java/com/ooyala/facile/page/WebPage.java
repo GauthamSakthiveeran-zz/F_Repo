@@ -1472,8 +1472,7 @@ public abstract class WebPage {
 			logger.error("Caught exception " + ex);
 			return result;
 		}
-		logger.info("Cleared text from text element: "
-				+ elementKey);
+		logger.info("Cleared text from text element: " + elementKey);
 		return result;
 	}
 
@@ -2207,6 +2206,28 @@ public abstract class WebPage {
 
 		// Check for JS alerts
 		checkForJavascriptAlerts(action + " " + elementKey);
+	}
+
+	/**
+	 * Select drop down by visible text.
+	 *
+	 * @param elementKey
+	 *            the element key
+	 * @param visibleText
+	 *            the visible text
+	 */
+	protected String getDropDownSelectedValue(String elementKey) {
+
+		logger.info("Trying to get list of options avalable in dropdown for: "
+				+ elementKey);
+		FacileWebElement selectDropDown = new FacileWebElement(
+				pageElements.get(elementKey));
+		WebElement wSelectDropDown = getWebElementFromFacileWebElement(selectDropDown);
+
+		Select sSelectDropDown = new Select(wSelectDropDown);
+		WebElement firstElement = sSelectDropDown.getFirstSelectedOption();
+		return firstElement.getText();
+
 	}
 
 	/**
@@ -3181,6 +3202,11 @@ public abstract class WebPage {
 		}
 
 		return getWebElementFromFacileWebElement(element);
+	}
+
+	protected void scrollPage() {
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("window.scrollBy(0,250)", "");
 	}
 
 	/**
