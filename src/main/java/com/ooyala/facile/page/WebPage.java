@@ -2197,7 +2197,7 @@ public abstract class WebPage {
 		} else {
 			for (WebElement item : items) {
 				if (item.getText().toLowerCase()
-						.contains(visibleText.toLowerCase())) {
+						.equalsIgnoreCase(visibleText.toLowerCase())) {
 					item.click();
 					break;
 				}
@@ -2389,7 +2389,7 @@ public abstract class WebPage {
 		// Default back to the normal way of searching for elements.
 		if (!itemFound) {
 			for (WebElement item : items) {
-				if (item.getText().contains(visibleText)) {
+				if (item.getText().equalsIgnoreCase(visibleText)) {
 					item.click();
 					break;
 				}
