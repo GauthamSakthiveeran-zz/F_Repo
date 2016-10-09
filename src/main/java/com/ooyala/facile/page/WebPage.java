@@ -2180,6 +2180,7 @@ public abstract class WebPage {
 		List<WebElement> items = getSelectDropDownOptions(elementKey);
 		boolean itemFound = false;
 		for (WebElement item : items) {
+			logger.info("Comparing "+item.getText()+"::"+visibleText.trim());
 			if (item.getText().trim().equalsIgnoreCase(visibleText.trim())) {
 				logger.info(item.getText().trim()
 						.equalsIgnoreCase(visibleText.trim()));
