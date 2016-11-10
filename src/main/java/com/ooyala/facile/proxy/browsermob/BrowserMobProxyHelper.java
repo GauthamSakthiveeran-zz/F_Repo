@@ -21,7 +21,7 @@ import org.apache.log4j.Logger;
 public class BrowserMobProxyHelper {
 
 	/** The browser mob proxy server. */
-	protected static ProxyServer browserMobProxyServer = null;
+	protected static ProxyServer browserMobProxyServer;
 
 	/** The logger. */
 	public static Logger logger = Logger.getLogger(BrowserMobProxyHelper.class);
