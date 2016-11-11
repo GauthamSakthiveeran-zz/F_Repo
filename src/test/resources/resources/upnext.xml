@@ -1,0 +1,10 @@
+<elements area="upnext">
+	<element key="ASSET_LIBRARY" findBy="xPath" tag="a"
+		xPath=".//a[@ui-sref='asset-library']" />
+	<element key="DEACTIVATED" findBy="xPath" tag="a"
+		xPath=".//a[@ui-sref='deactivated-assets']" />
+	<element key="REJECTED" findBy="xPath" tag="a"
+		xPath=".//a[@ui-sref='rejected-assets']" />
+	<element key="INGEST_DASHBOARD" findBy="xPath" tag="a"
+		xPath="/html/body/div[3]/div/dl/dd[4]/a" />
+</elements>

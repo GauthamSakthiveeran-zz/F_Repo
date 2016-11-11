@@ -1,0 +1,13 @@
+<elements area="play">
+	<element key="START_SCREEN" findBy="xPath" tag="div"
+		xPath="//*[@id='oo-responsive']/div" />
+	<element key="PLAYING_SCREEN" findBy="ID" tag="div"
+		id="oo-responsive" />
+	<element key="PLAY_BUTTON" findBy="xPath" tag="a"
+		xPath="//a[@class='oo-action-icon']" />
+	<element key="INNER_WRAPPER" findBy="xPath" tag="div"
+		xPath="//div[@class='innerWrapper']" />
+	<element key="PLAYING" findBy="ID" tag="p" id="playing_1" />
+	<element key="ERROR_SCREEN" findBy="xPath" tag="div"
+		xPath="//div[@class='oo-error-screen']" />
+</elements>

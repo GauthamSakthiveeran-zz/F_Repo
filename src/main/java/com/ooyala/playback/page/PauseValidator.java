@@ -1,0 +1,37 @@
+package com.ooyala.playback.page;
+
+import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
+/**
+ * Created by soundarya on 10/27/16.
+ */
+public class PauseValidator extends BaseValidator {
+
+	public static Logger logger = Logger.getLogger(PauseValidator.class);
+	
+	public PauseValidator(WebDriver webDriver) {
+		super(webDriver);
+		PageFactory.initElements(webDriver, this);
+		/**
+		 * Here we will tell Facile to add the page elements of our Login Page
+		 */
+		addElementToPageElements("pause");
+	}
+
+	public void validate(String element, int timeout) throws Exception {
+		waitOnElement("PAUSE_BUTTON", 60);
+		clickOnHiddenElement("PAUSE_BUTTON");
+		Thread.sleep(10000);
+		if (isElementVisible("PAUSE_SCREEN")) {
+			logger.info("verify pause screen");
+			waitOnElement("PAUSE_SCREEN", 60);
+		} else {
+			// verify discovery if there is on pauseDiscovery
+			logger.info("verify discovery if set on pausescreen");
+			waitOnElement("CONTENT_SCREEN", 60);
+		}
+		waitOnElement(element, timeout);
+	}
+}

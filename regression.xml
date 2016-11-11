@@ -1,0 +1,20 @@
+
+<suite name="Playback Web Regression Suite" verbose="1">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+
+	<test name="Playback Web Regression Group">
+		<groups>
+			<define name="regression">
+				<include name="alice" />
+			</define>
+			<run>
+				<include name="regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.ooyala.playback.alice.AliceBasicPlaybackTests" />
+		</classes>
+	</test>
+</suite>
