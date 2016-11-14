@@ -30,7 +30,7 @@ public class TestPage {
 	 * @return returns the url based on different input parameter mentioned
 	 *         above in @Param
 	 */
-	public String getURL(String embedCode, String pCode, String plugins,
+	public String getURL(String embedCode, String pCode, String pbid,String plugins,
 			String adPlugin, String additionalPlugin, String playerParameter) {
 		boolean result = false;
 		String url = "";
@@ -49,8 +49,7 @@ public class TestPage {
 						+ "?ec="
 						+ embedCode
 						+ "&pbid="
-						+ URLEncoder.encode(testpagedata.playerBrandingId,
-								"UTF8")
+						+ pbid
 						+ "&pcode="
 						+ pCode
 						+ "&core_player="
@@ -77,8 +76,7 @@ public class TestPage {
 						+ "?ec="
 						+ embedCode
 						+ "&pbid="
-						+ URLEncoder.encode(testpagedata.playerBrandingId,
-								"UTF8")
+						+ pbid
 						+ "&pcode="
 						+ pCode
 						+ "&core_player="

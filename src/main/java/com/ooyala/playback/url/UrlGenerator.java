@@ -25,13 +25,13 @@ public class UrlGenerator {
 	 *            playerConfigParameter
 	 * @return returns dynamically created link from above parameters
 	 */
-	public static String getURL(String embedcode, String pcode,
+	public static String getURL(String embedcode, String pcode,String pbid,
 			String videoPlugin, String adPlugin, String additionalPlugin,
 			String playerConfigParameter) {
 		playerProperties.put(PlayerPropertyKey.ENVIRONMENT,
 				PlayerPropertyValue.ENVIRONMENT_STAGING);
 		test = new TestPage(playerProperties);
-		url = test.getURL(embedcode, pcode, videoPlugin, adPlugin,
+		url = test.getURL(embedcode, pcode, pbid,videoPlugin, adPlugin,
 				additionalPlugin, playerConfigParameter);
 		logger.info("URL : " + url);
 		return url;
@@ -87,6 +87,10 @@ public class UrlGenerator {
 						map.put("playerParameter", eElement
 								.getElementsByTagName("playerParameter")
 								.item(0).getTextContent());
+						map.put("pbid",eElement
+								.getElementsByTagName("pbid")
+								.item(0).getAttributes()
+								.getNamedItem("name").getNodeValue());
 						break;
 					}
 				}
@@ -120,7 +124,8 @@ public class UrlGenerator {
 				String additionalPlugin = map.get("additionalPlugins");
 				String playerParameter = map.get("playerParameter");
 				output[0][0] = entry.getKey();
-				output[0][1] = UrlGenerator.getURL(embedCode, pCode,
+				String pbid = map.get("pbid");
+				output[0][1] = UrlGenerator.getURL(embedCode, pCode,pbid,
 						videoPlugin, adPlugin, additionalPlugin,
 						playerParameter);
 				break;
