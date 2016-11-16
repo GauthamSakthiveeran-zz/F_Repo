@@ -46,7 +46,7 @@ public class TestPageData {
 	public TestPageData() {
 		try {
 			map = PropertyReader
-					.getProperty("src/test/resources/requiredDataFields");
+					.getProperty("src/test/resources/urlData");
 			baseURL = map.get("baseUrl");
 			pluginURL = map.get("video_Plugin");
 			mainPlugin = map.get("main_Plugin");

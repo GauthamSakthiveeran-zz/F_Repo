@@ -15,9 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 import org.w3c.dom.NodeList;
 
 import com.ooyala.facile.listners.IMethodListener;
@@ -34,7 +32,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected ChromeDriverService service;
 	protected PropertyReader propertyReader;
 	protected PlayBackFactory pageFactory;
-	protected NodeList nodeList;
+	protected static NodeList nodeList;
 	private static String MAC_CHROME_DRIVER_PATH = "src/test/resources/lib-thirdparty/chromedriverformac/chromedriver";
 	private static String WIN_CHROME_DRIVER_PATH = "src/test/resources/lib-thirdparty/chromedriverforwin/chromedriver.exe";
 	private static String LINUX_CHROME_DRIVER_PATH = "src/test/resources/lib-thirdparty/chromedriverforlinux/chromedriver";
@@ -50,19 +48,28 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	// @BeforeMethod(alwaysRun = true)
+
+
+
 	@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
 		logger.info("************Inside setup*************");
 		logger.info("browser is " + browser);
 
+		String xmlFile = System.getProperty("xmlFile");
+		System.out.println("xml file : "+xmlFile);
+		if (xmlFile == null || xmlFile.equals(""))
+			xmlFile = "Alice";
 		browser = System.getProperty("browser");
 		if (browser == null || browser.equals(""))
 			browser = "firefox";
 		String mode = System.getProperty("mode");
 		if (mode != null && mode.equals(""))
 			mode = "local";
-		if (mode != null && mode.equals("remote"))
+		if (mode != null && mode.equals("remote")){
 			driver = getRemoteDriver(browser);
+		}
+
 		else
 			driver = getDriver(browser);
 
@@ -70,7 +77,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		// driver.manage().timeouts().implicitlyWait(240, TimeUnit.MINUTES);
 		pageFactory = PlayBackFactory.getInstance(driver);
-		parseXmlFileData("Alice");
+		parseXmlFileData(xmlFile);
 
 	}
 
