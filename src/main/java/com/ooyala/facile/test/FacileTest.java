@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -432,6 +433,61 @@ public class FacileTest implements IHookable {
 
 	}
 
+	public static DesiredCapabilities getDesiredCapabilities(String browser) {
+		DesiredCapabilities dr = null;
+		if (browser.equalsIgnoreCase("firefox")) {
+			dr = DesiredCapabilities.firefox();
+			dr.setBrowserName("firefox");
+		} else if (browser.equalsIgnoreCase("chrome")) {
+			dr = DesiredCapabilities.chrome();
+			dr.setBrowserName("chrome");
+		} else if (browser.equalsIgnoreCase("internet explorer")) {
+			dr = DesiredCapabilities.internetExplorer();
+			dr.setBrowserName("internet explorer");
+		} else if (browser.equalsIgnoreCase("safari")) {
+			dr = DesiredCapabilities.safari();
+			dr.setBrowserName("safari");
+		} else {
+			dr = DesiredCapabilities.chrome();
+			dr.setBrowserName("chrome");
+		}
+		return dr;
+	}
+
+	public RemoteWebDriver getRemoteDriver(String browser) {
+
+		DesiredCapabilities desiredCapabilities = getDesiredCapabilities(browser);
+		String version = System.getProperty("version");
+		if (version != null)
+			desiredCapabilities.setVersion(version);
+		String platform = System.getProperty("platform");
+		desiredCapabilities.setCapability(CapabilityType.PLATFORM, platform);
+		String ipAddress = System.getProperty("ipaddress");
+		if (ipAddress != null && ipAddress.equals(""))
+			ipAddress = "10.11.69.126:5555";
+
+		String serverUrl = "http://" + ipAddress + "/wd/hub";
+
+		try {
+			driver = new RemoteWebDriver(new URL(serverUrl),
+					desiredCapabilities);// Start
+		} catch (Exception e) {
+			logger.info("relauch browser");
+			try {
+				driver = new RemoteWebDriver(new URL(serverUrl),
+						desiredCapabilities); // retry
+			} catch (Exception e1) {
+				logger.info("\n\nGot Exception : " + e.getMessage() + "\n\n");
+				logger.info("\nNo Configuration Found platform:" + platform
+						+ " browser:" + browser + " version:" + version);
+				logger.info("\n\n");
+				
+			}
+		}
+		return driver;
+
+	}
+
 	/**
 	 * Gets the driver.
 	 * 
@@ -455,6 +511,11 @@ public class FacileTest implements IHookable {
 
 		logger.debug("Browser Name : " + browserName);
 		browserName = browserName.toLowerCase().trim();
+
+		// Selenium Grid
+		String mode = System.getProperty("mode");
+		if (mode != null && mode.equalsIgnoreCase("remote"))
+			driver = getRemoteDriver(browserName);
 
 		// Internet Explorer
 		if (browserName.contains("internet") || browserName.equals("ie")
