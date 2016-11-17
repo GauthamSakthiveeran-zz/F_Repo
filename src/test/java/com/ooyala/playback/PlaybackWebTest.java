@@ -59,74 +59,14 @@ public abstract class PlaybackWebTest extends FacileTest {
 		browser = System.getProperty("browser");
 		if (browser == null || browser.equals(""))
 			browser = "firefox";
-		String mode = System.getProperty("mode");
-		if (mode != null && mode.equals(""))
-			mode = "local";
-		if (mode != null && mode.equals("remote"))
-			driver = getRemoteDriver(browser);
-		else
-			driver = getDriver(browser);
+
+		driver = getDriver(browser);
 
 		logger.info("Driver initialized successfully");
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		// driver.manage().timeouts().implicitlyWait(240, TimeUnit.MINUTES);
 		pageFactory = PlayBackFactory.getInstance(driver);
 		parseXmlFileData("Alice");
-
-	}
-
-	public static DesiredCapabilities getDesiredCapabilities(String browser) {
-		DesiredCapabilities dr = null;
-		if (browser.equalsIgnoreCase("firefox")) {
-			dr = DesiredCapabilities.firefox();
-			dr.setBrowserName("firefox");
-		} else if (browser.equalsIgnoreCase("chrome")) {
-			dr = DesiredCapabilities.chrome();
-			dr.setBrowserName("chrome");
-		} else if (browser.equalsIgnoreCase("internet explorer")) {
-			dr = DesiredCapabilities.internetExplorer();
-			dr.setBrowserName("internet explorer");
-		} else if (browser.equalsIgnoreCase("safari")) {
-			dr = DesiredCapabilities.safari();
-			dr.setBrowserName("safari");
-		} else {
-			dr = DesiredCapabilities.chrome();
-			dr.setBrowserName("chrome");
-		}
-		return dr;
-	}
-
-	public RemoteWebDriver getRemoteDriver(String browserType) {
-
-		DesiredCapabilities desiredCapabilities = getDesiredCapabilities(browserType);
-		String version = System.getProperty("version");
-		if (version != null)
-			desiredCapabilities.setVersion(version);
-		String platform = System.getProperty("platform");
-		desiredCapabilities.setCapability(CapabilityType.PLATFORM, platform);
-		String ipAddress = System.getProperty("ipaddress");
-		if (ipAddress != null && ipAddress.equals(""))
-			ipAddress = "10.11.69.126:5555";
-
-		String serverUrl = "http://" + ipAddress + "/wd/hub";
-
-		try {
-			driver = new RemoteWebDriver(new URL(serverUrl),
-					desiredCapabilities);// Start
-		} catch (Exception e) {
-			logger.info("relauch browser");
-			try {
-				driver = new RemoteWebDriver(new URL(serverUrl),
-						desiredCapabilities); // retry
-			} catch (Exception e1) {
-				logger.info("\n\nGot Exception : " + e.getMessage() + "\n\n");
-				logger.info("\nNo Configuration Found platform:" + platform
-						+ " browser:" + browser + " version:" + version);
-				logger.info("\n\n");
-				System.exit(1);
-			}
-		}
-		return driver;
 
 	}
 
@@ -227,16 +167,17 @@ public abstract class PlaybackWebTest extends FacileTest {
 		return flag;
 
 	}
-    public String getPlatform() {
-        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
-        String platformName = cap.getPlatform().toString();
-        return platformName;
-    }
 
-    public String getBrowser() {
-        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
-        String browser = cap.getBrowserName().toString();
-        return browser;
-    }
+	public String getPlatform() {
+		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+		String platformName = cap.getPlatform().toString();
+		return platformName;
+	}
+
+	public String getBrowser() {
+		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+		String browser = cap.getBrowserName().toString();
+		return browser;
+	}
 
 }
