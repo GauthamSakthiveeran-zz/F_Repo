@@ -2554,6 +2554,75 @@ public abstract class WebPage {
 	}
 
 	/**
+	 * Wait for a particular Facile element to appear.
+	 *
+	 * @param elementyKey
+	 *            the elementy key
+	 * @param lineNumber
+	 *            the line number
+	 * @param timeout
+	 *            the timeout
+	 * @param ignoreRendering
+	 *            the ignore rendering
+	 * @return true, if successful
+	 */
+	public boolean waitOnElement(By by, int timeOut) {
+
+		return waitOnBy(by, timeOut, null, false);
+
+	}
+
+	public boolean waitOnBy(By by, int maxMilliseconds, String frame,
+			boolean ignoreRendering) {
+
+		WebElement identifier = null;
+		int secondsPassed = 0;
+
+		while (secondsPassed < maxMilliseconds) {
+			logger.info("Trying to find a web element with the specified by: "
+					+ by);
+			try {
+				if (frame == null)
+					identifier = driver.findElement(by);
+				else {
+					driver.switchTo().defaultContent();
+					identifier = driver.switchTo().frame(frame).findElement(by);
+				}
+			} catch (Exception e) {
+				logger.error("Caught exception" + e);
+				identifier = null;
+			}
+
+			if (identifier != null) { // && !(driver instanceof SafariDriver)) {
+				// // can't cast SafariWebElement to
+				// RenderedWebElement
+				if (identifier.isDisplayed())
+					System.out.print("   Object name Found: " + by);
+				else {
+					logger.info("   ...looking for object name (" + by + ")");
+					if (driver instanceof InternetExplorerDriver) {
+						wait(500); // prevent too much checking if IE (it seems
+						// to crash on these alot)
+					}
+				}
+			}
+			logger.info("identifier currently:" + identifier + " and driver: "
+					+ driver);
+			if (identifier != null
+					&& (/* driver instanceof SafariDriver || */ignoreRendering || (identifier
+							.isDisplayed()))) {
+				logger.info("Found name in: " + secondsPassed / 1000 + " sec");
+				return true;
+			}
+			secondsPassed += WAIT_INCR;
+			wait(WAIT_INCR);
+		}
+		logger.info("Waiting for object name: " + by + " timed out after "
+				+ maxMilliseconds / 1000 + " sec");
+		return false;
+	}
+
+	/**
 	 * This method uses the specified By object to click on an element that
 	 * produces a popup window like a Javascript alert.
 	 * 
