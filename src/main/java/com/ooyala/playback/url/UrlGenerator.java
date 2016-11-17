@@ -32,7 +32,7 @@ public class UrlGenerator {
 					PlayerPropertyValue.PRODUCTION);
 		}else{
 			playerProperties.put(PlayerPropertyKey.ENVIRONMENT,
-					PlayerPropertyValue.STAGING);git agit a
+					PlayerPropertyValue.STAGING);
 		}
 
 		test = new TestPage(playerProperties);
