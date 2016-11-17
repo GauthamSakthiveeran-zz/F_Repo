@@ -28,8 +28,14 @@ public class UrlGenerator {
 	public static String getURL(String embedcode, String pcode,String pbid,
 			String videoPlugin, String adPlugin, String additionalPlugin,
 			String playerConfigParameter) {
-		playerProperties.put(PlayerPropertyKey.ENVIRONMENT,
-				PlayerPropertyValue.ENVIRONMENT_STAGING);
+		if (System.getProperty("environment").equals("PRODUCTION")){
+			playerProperties.put(PlayerPropertyKey.ENVIRONMENT,
+					PlayerPropertyValue.PRODUCTION);
+		}else{
+			playerProperties.put(PlayerPropertyKey.ENVIRONMENT,
+					PlayerPropertyValue.STAGING);
+		}
+
 		test = new TestPage(playerProperties);
 		url = test.getURL(embedcode, pcode, pbid,videoPlugin, adPlugin,
 				additionalPlugin, playerConfigParameter);
