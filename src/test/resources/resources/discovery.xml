@@ -1,10 +1,12 @@
 <elements area="discovery">
-	<element key="ASSET_LIBRARY" findBy="xPath" tag="a"
-		xPath=".//a[@ui-sref='asset-library']" />
-	<element key="DEACTIVATED" findBy="xPath" tag="a"
-		xPath=".//a[@ui-sref='deactivated-assets']" />
-	<element key="REJECTED" findBy="xPath" tag="a"
-		xPath=".//a[@ui-sref='rejected-assets']" />
-	<element key="INGEST_DASHBOARD" findBy="xPath" tag="a"
-		xPath="/html/body/div[3]/div/dl/dd[4]/a" />
+	<element key="discoveryToaster" findBy="id"
+             ID="DiscoveryToasterContainer" />
+	<element key="discoveryImgWrapper" findBy="class"
+             class="oo-discovery-image-wrapper-style" />
+	<element key="rightBtn" findBy="class"
+             class="oo-right-button" />
+	<element key="leftBtn" findBy="class"
+             class="oo-left-button" />
+    <element key="imageStyle" findBy="class"
+             class="oo-image-style" />
 </elements>

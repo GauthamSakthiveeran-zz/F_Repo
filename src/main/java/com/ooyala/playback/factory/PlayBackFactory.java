@@ -1,16 +1,8 @@
 package com.ooyala.playback.factory;
 
+import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.*;
 import org.openqa.selenium.WebDriver;
-
-import com.ooyala.playback.page.CCValidator;
-import com.ooyala.playback.page.DiscoveryValidator;
-import com.ooyala.playback.page.FullScreenValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.UpNextValidator;
-import com.ooyala.playback.page.action.PauseAction;
-import com.ooyala.playback.page.action.PlayAction;
 
 public class PlayBackFactory {
 
@@ -26,6 +18,17 @@ public class PlayBackFactory {
 	private UpNextValidator upNextValidator;
 	private PauseAction pauseAction;
 	private PlayAction playAction;
+    private AutoplayAction autoplay;
+    private EventValidator eventValidator;
+    private AspectRatioValidator aspectRatioValidator;
+    private LiveAction liveAction;
+    private ShareTabValidator shareTabValidator;
+    private WaterMarkValidator waterMarkValidator;
+    private VolumeValidator volumeValidator;
+    private PlayPauseAction playPauseAction;
+    private ControlBarValidator controlBarValidator;
+   private StartScreenValidator startScreenValidator;
+    private EndScreenValidator endScreenValidator;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
@@ -84,6 +87,65 @@ public class PlayBackFactory {
 			discoveryValidator = new DiscoveryValidator(driver);
 		return discoveryValidator;
 	}
+
+    public EventValidator getEventValidator() {
+        if (eventValidator == null)
+            eventValidator = new EventValidator(driver);
+        return eventValidator;
+    }
+    public AspectRatioValidator getAspectRatioValidator() {
+        if (aspectRatioValidator == null)
+            aspectRatioValidator = new AspectRatioValidator(driver);
+        return aspectRatioValidator;
+    }
+
+    public ShareTabValidator getShareTabValidator() {
+        if (shareTabValidator == null)
+            shareTabValidator = new ShareTabValidator(driver);
+        return shareTabValidator;
+    }
+    public VolumeValidator getVolumeValidator() {
+        if (volumeValidator == null)
+            volumeValidator = new VolumeValidator(driver);
+        return volumeValidator;
+    }
+    public WaterMarkValidator getWaterMarkValidator() {
+        if (waterMarkValidator == null)
+            waterMarkValidator = new WaterMarkValidator(driver);
+        return waterMarkValidator;
+    }
+    public ControlBarValidator getControlBarValidator() {
+        if (controlBarValidator == null)
+            controlBarValidator = new ControlBarValidator(driver);
+        return controlBarValidator;
+    }
+    public StartScreenValidator getStartScreenValidator() {
+        if (startScreenValidator == null)
+            startScreenValidator = new StartScreenValidator(driver);
+        return startScreenValidator;
+    }
+    public EndScreenValidator getEndScreenValidator() {
+        if (endScreenValidator == null)
+            endScreenValidator = new EndScreenValidator(driver);
+        return endScreenValidator;
+    }
+    public PlayPauseAction getPlayPauseAction() {
+        if (playPauseAction == null)
+            playPauseAction = new PlayPauseAction(driver);
+        return playPauseAction;
+    }
+
+    public AutoplayAction getAutoplay() {
+        if (autoplay == null)
+            autoplay = new AutoplayAction(driver);
+        return autoplay;
+    }
+
+    public LiveAction getLiveAction() {
+        if (liveAction == null)
+            liveAction = new LiveAction(driver);
+        return liveAction;
+    }
 
 	public static PlayBackFactory getInstance(WebDriver driver) {
 		if (playbackFactory == null || playbackFactory.getDriver() == null) {

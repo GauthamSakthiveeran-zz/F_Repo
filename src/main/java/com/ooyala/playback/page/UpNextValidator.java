@@ -1,26 +1,36 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.playback.page.BaseValidator;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+
 
 /**
  * Created by soundarya on 11/1/16.
  */
-public class UpNextValidator extends BaseValidator {
+public class UpNextValidator  extends BaseValidator {
 
-	public UpNextValidator(WebDriver webDriver) {
-		super(webDriver);
-		PageFactory.initElements(webDriver, this);
-		/**
-		 * Here we will tell Facile to add the page elements of our Login Page
-		 */
-		addElementToPageElements("upnext");
-	}
+    public static Logger Log = Logger.getLogger(UpNextValidator.class);
 
-	public void validate(String element, int timeout) throws Exception {
 
-		waitOnElement(element, 60);
-		waitOnElement("contentMetadata", 60);
-		clickOnIndependentElement("upNextCloseBtn");
-	}
+    public UpNextValidator(WebDriver webDriver){
+        super(webDriver);
+        PageFactory.initElements(webDriver, this);
+        /**
+         * Here we will tell Facile to add the page elements of our Login Page
+         */
+        addElementToPageElements("upnext");
+    }
+
+    public void validate(String element,int timeout)throws Exception {
+
+        waitOnElement(element, 60);
+        waitOnElement("upnextContent", 60);
+        waitOnElement("contentMetadata", 60);
+        clickOnIndependentElement("upNextCloseBtn");
+        Log.info("Verified upNextPanel and up next content ");
+        Log.info("verified up next close button");
+
+    }
 }

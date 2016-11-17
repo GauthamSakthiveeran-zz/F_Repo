@@ -13,11 +13,10 @@ import org.w3c.dom.NodeList;
  */
 public class UrlGenerator {
 
-	private static Logger logger = Logger.getLogger(TestPageData.class);
-	
 	static TestPage test = null;
 	static String url;
 	static Map<PlayerPropertyKey, PlayerPropertyValue> playerProperties = new HashMap<PlayerPropertyKey, PlayerPropertyValue>();
+	private static Logger logger = Logger.getLogger(TestPageData.class);
 
 	/**
 	 * @param embedcode
@@ -33,7 +32,7 @@ public class UrlGenerator {
 					PlayerPropertyValue.PRODUCTION);
 		}else{
 			playerProperties.put(PlayerPropertyKey.ENVIRONMENT,
-					PlayerPropertyValue.STAGING);
+					PlayerPropertyValue.STAGING);git agit a
 		}
 
 		test = new TestPage(playerProperties);
@@ -41,6 +40,39 @@ public class UrlGenerator {
 				additionalPlugin, playerConfigParameter);
 		logger.info("URL : " + url);
 		return url;
+	}
+
+	/**
+	 *
+	 * @param testName
+	 * @param nodes
+	 *            Passing node list so that we can have access to the nodes data
+	 *            from xml file
+	 * @return output : output contains two dimentional Object in which test
+	 *         name and url is returned
+	 */
+	public static Object[][] parseXmlDataProvider(String testName,
+			NodeList nodes) {
+		logger.info("Getting test url and test name from property file");
+		Map<String, String> map = UrlGenerator.ReadDataFromXML(testName, nodes);
+		Object[][] output = new Object[1][2];
+		for (Map.Entry<String, String> entry : map.entrySet()) {
+			if (entry.getValue().equals(testName)) {
+				String embedCode = map.get("embedCode");
+				String pCode = map.get("pcode");
+				String videoPlugin = map.get("plugins");
+				String adPlugin = map.get("adPlugins");
+				String additionalPlugin = map.get("additionalPlugins");
+				String playerParameter = map.get("playerParameter");
+				output[0][0] = entry.getKey();
+				String pbid = map.get("pbid");
+				output[0][1] = UrlGenerator.getURL(embedCode, pCode,pbid,
+						videoPlugin, adPlugin, additionalPlugin,
+						playerParameter);
+				break;
+			}
+		}
+		return output;
 	}
 
 	/**
@@ -54,7 +86,7 @@ public class UrlGenerator {
 	 *         creating url
 	 */
 	public static Map<String, String> ReadDataFromXML(String testName,
-			NodeList nList) {
+													  NodeList nList) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
 			for (int i = 0; i < nList.getLength(); i++) {
@@ -106,37 +138,6 @@ public class UrlGenerator {
 		}
 		return map;
 	}
-
-	/**
-	 *
-	 * @param testName
-	 * @param nodes
-	 *            Passing node list so that we can have access to the nodes data
-	 *            from xml file
-	 * @return output : output contains two dimentional Object in which test
-	 *         name and url is returned
-	 */
-	public static Object[][] parseXmlDataProvider(String testName,
-			NodeList nodes) {
-		logger.info("Getting test url and test name from property file");
-		Map<String, String> map = UrlGenerator.ReadDataFromXML(testName, nodes);
-		Object[][] output = new Object[1][2];
-		for (Map.Entry<String, String> entry : map.entrySet()) {
-			if (entry.getValue().equals(testName)) {
-				String embedCode = map.get("embedCode");
-				String pCode = map.get("pcode");
-				String videoPlugin = map.get("plugins");
-				String adPlugin = map.get("adPlugins");
-				String additionalPlugin = map.get("additionalPlugins");
-				String playerParameter = map.get("playerParameter");
-				output[0][0] = entry.getKey();
-				String pbid = map.get("pbid");
-				output[0][1] = UrlGenerator.getURL(embedCode, pCode,pbid,
-						videoPlugin, adPlugin, additionalPlugin,
-						playerParameter);
-				break;
-			}
-		}
-		return output;
-	}
 }
+
+

@@ -1,10 +1,8 @@
 <elements area="upnext">
-	<element key="ASSET_LIBRARY" findBy="xPath" tag="a"
-		xPath=".//a[@ui-sref='asset-library']" />
-	<element key="DEACTIVATED" findBy="xPath" tag="a"
-		xPath=".//a[@ui-sref='deactivated-assets']" />
-	<element key="REJECTED" findBy="xPath" tag="a"
-		xPath=".//a[@ui-sref='rejected-assets']" />
-	<element key="INGEST_DASHBOARD" findBy="xPath" tag="a"
-		xPath="/html/body/div[3]/div/dl/dd[4]/a" />
+	<element key="upnextContent" findBy="class"
+             class="oo-up-next-content" />
+	<element key="contentMetadata" findBy="class"
+             class="oo-content-metadata" />
+	<element key="upNextCloseBtn" findBy="class"
+             class="oo-up-next-close-btn" />
 </elements>

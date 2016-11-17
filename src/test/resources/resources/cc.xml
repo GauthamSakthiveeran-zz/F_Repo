@@ -1,10 +1,16 @@
 <elements area="cc">
-	<element key="ASSET_LIBRARY" findBy="xPath" tag="a"
-		xPath=".//a[@ui-sref='asset-library']" />
-	<element key="DEACTIVATED" findBy="xPath" tag="a"
-		xPath=".//a[@ui-sref='deactivated-assets']" />
-	<element key="REJECTED" findBy="xPath" tag="a"
-		xPath=".//a[@ui-sref='rejected-assets']" />
-	<element key="INGEST_DASHBOARD" findBy="xPath" tag="a"
-		xPath="/html/body/div[3]/div/dl/dd[4]/a" />
+	<element key="ccBtn" findBy="class" class="oo-icon-cc" />
+	<element key="moreOptionIcon" findBy="class" class="oo-icon-system-menu" />
+	<element key="ccPanelClose" findBy="class" class="oo-close-button" />
+	<element key="ccPopoverHorizontal" findBy="class"  class="oo-popover-horizontal" />
+    <element key="ccSwitchContainerHorizontal" findBy="class" class="oo-switch-container" />
+    <element key="ccMoreCaptions" findBy="class" class="oo-more-captions" />
+    <element key="ccCloseButton" findBy="class"
+             class="oo-close-button" />
+    <element key="closedCaptionPanel" findBy="class"
+             class="oo-closed-captions-panel" />
+    <element key="ccsSwitch" findBy="class"
+             class="oo-switch-element" />
+    <element key="ccSwitchContainer" findBy="class"
+             class="oo-switch-container-selectable" />
 </elements>

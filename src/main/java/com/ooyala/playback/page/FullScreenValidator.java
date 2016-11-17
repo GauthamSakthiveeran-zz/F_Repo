@@ -2,7 +2,11 @@ package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+
+import static java.lang.Thread.sleep;
 
 public class FullScreenValidator extends BaseValidator {
 
@@ -15,30 +19,39 @@ public class FullScreenValidator extends BaseValidator {
 		 * Here we will tell Facile to add the page elements of our Login Page
 		 */
 		addElementToPageElements("fullscreen");
+        addElementToPageElements("pause");
+
 	}
 
 	public void validate(String element, int timeout) throws Exception {
 
-		waitOnElement("fullScreenBtn", 60);
-		if ((getBrowser().equalsIgnoreCase("firefox")
-				|| getBrowser().equalsIgnoreCase("safari") || getBrowser()
-				.equalsIgnoreCase("internet explorer"))) {
-			clickOnHiddenElement("pauseButton");
-			clickOnElement("fullScreenBtn");
-		} else {
-			if (getPlatform().equalsIgnoreCase("Android")) {
-				clickOnHiddenElement("fullScreenBtn");
-			} else {
-				try {
-					clickOnHiddenElement("pauseButton");
-					clickOnElement("fullScreenBtn");
-					logger.info("Clicked on FullScreen Button");
-				} catch (Exception e) {
-					clickOnHiddenElement("pauseButton");
-					clickOnElement("fullScreenBtn");
-					clickOnHiddenElement("playButton");
-				}
-			}
-		}
-	}
+
+      //  WebElement player = driver.findElement(locators.getobjectLocator("ooplayer"));
+        Actions action = new Actions(driver);
+        //action.moveToElement(player).perform();
+        waitOnElement("fullScreenBtn", 60);
+
+        if (getPlatform().equalsIgnoreCase("Android")) {
+            clickOnIndependentElement("fullScreenBtn");
+        } else {
+            clickOnIndependentElement("pauseButton");
+            clickOnIndependentElement("fullScreenBtn");
+        }
+
+        if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("firefox") || getBrowser().equalsIgnoreCase("internet explorer") || getPlatform().equalsIgnoreCase("Android"))) {
+            waitOnElement("fullscreenChangedtrue", 60);
+            logger.info("Changed into Fullscreen");
+        }
+        Thread.sleep(3000);
+        clickOnIndependentElement("pauseButton");
+        sleep(2000);
+
+        clickOnIndependentElement("normalScreen");
+
+        // PBW-5165 we are not verifying fullscreen change event for safari and firefox browser as fullscreen is not working in safari in automation
+        if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("firefox") || getBrowser().equalsIgnoreCase("internet explorer") || getPlatform().equalsIgnoreCase("Android"))) {
+            waitOnElement("fullscreenChangedfalse", 60);
+            logger.info("Video changed to normal size");
+        }
+    }
 }

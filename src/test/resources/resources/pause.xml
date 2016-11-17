@@ -1,10 +1,12 @@
 <elements area="pause">
-	<element key="PAUSE_BUTTON" findBy="xPath" tag="span"
-		xPath="//span[@class='oo-icon-pause-slick']" />
-	<element key="PAUSE_SCREEN" findBy="xPath" tag="span"
-		xPath="//span[@class='oo-pause-screen']" />
-	<element key="CONTENT_SCREEN" findBy="xPath" tag="span"
-		xPath="//span[@class='oo-content-screen-title']" />
-		<element key="HIDDEN_CONTROL_BAR" findBy="xPath" tag="div"
-		xPath="//div[@class='oo-control-bar-hidden']" />
+	<element key="pauseButton" findBy="class"
+             class="oo-icon-pause-slick" />
+	<element key="pauseScreen" findBy="class"
+             class="oo-pause-screen" />
+	<element key="contentScreen" findBy="class"
+             class="oo-content-screen" />
+		<element key="hiddenControlBar" findBy="class"
+                 class="oo-control-bar-hidden" />
+    <element key="paused_1" findBy="id"
+             class="paused_1" />
 </elements>

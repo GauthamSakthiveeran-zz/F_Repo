@@ -17,22 +17,23 @@ public class PauseAction extends PlayBackPage implements PlayerAction {
 		 * Here we will tell Facile to add the page elements of our Login Page
 		 */
 		addElementToPageElements("pause");
+        addElementToPageElements("play");
 	}
 
 	@Override
 	public void startAction() {
-	        boolean isElementPresent;
+	        boolean isElement;
 	        Actions action = new Actions(driver);
-	        loadingSpinner();
+	      //  loadingSpinner();
 	        try {
-	            //isElementPresent = isElementVisible("HIDDEN_CONTROL_BAR");
-	            //if(!isElementPresent) {
+                isElement = isElementPresent("hiddenControlBar");
+                if(!isElement) {
 	                System.out.println("hovering mouse over the player");
 	                action.moveToElement(driver.findElement(By.className("oo-state-screen"))).perform();
-	            //}
-	            clickOnIndependentElement("PAUSE_BUTTON");
+	            }
+	            clickOnIndependentElement("pauseButton");
 	        } catch (ElementNotVisibleException e) {
-	        	clickOnHiddenElement("PAUSE_BUTTON");
+                clickOnIndependentElement("pauseButton");
 	        }
 	}
 

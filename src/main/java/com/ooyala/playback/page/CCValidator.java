@@ -28,104 +28,91 @@ public class CCValidator extends BaseValidator {
 		 * Here we will tell Facile to add the page elements of our Login Page
 		 */
 		addElementToPageElements("cc");
+        addElementToPageElements("play");
 	}
 
-	public void validate(String element, int timeout) throws Exception {
-		try {
-			try {
-				waitOnElement("ccBtn", 60);
-			} catch (Exception e) {
-				if (getPlatform().equalsIgnoreCase("Android"))
-					clickOnIndependentElement("moreOptionIcon");
-				else {
-					clickOnElement("moreOptionIcon");
-				}
-				waitOnElement("ccBtn", 60);
-			}
-			boolean ccbutton = isElementVisible("ccBtn");
-			Assert.assertEquals(ccbutton, true,
-					"ClosedCaption button is not present on player");
-			boolean ccpanel = isElementVisible("ccPanelClose");
-			if (ccpanel) {
-				clickOnElement("ccPanelClose");
-				clickOnElement("playButton");
-			}
+    public void validate(String element,int timeout)throws Exception {
+        try { try {
+            waitOnElement("ccBtn", 60);
+        }catch (Exception e) {
+            clickOnIndependentElement("moreOptionIcon");
+            waitOnElement("ccBtn", 60);
+        }
+            boolean ccbutton = isElementVisible("ccBtn");
+            Assert.assertEquals(ccbutton, true, "ClosedCaption button is not present on player");
+            logger.info("Verified the presence of ClosedCaption button ");
+            if (isElementVisible("ccPanelClose")) {
+                clickOnIndependentElement("ccPanelClose");
+                clickOnIndependentElement("playButton");
+            }
 
-		} catch (Exception e) {
-			logger.info("closedCaption button is not  present\n");
-		}
-		Object ccobj = ((JavascriptExecutor) driver)
-				.executeScript("var attrb = pp.getCurrentItemClosedCaptionsLanguages().languages;"
-						+ "{return attrb;}");
-		@SuppressWarnings("unchecked")
-		ArrayList<String> langlist = ((ArrayList<String>) ccobj);
-		logger.info("Closed Caption Available Languages: " + langlist);
-		for (int i = 0; i < langlist.size(); i++) {
-			((JavascriptExecutor) driver)
-					.executeScript("pp.setClosedCaptionsLanguage(\""
-							+ langlist.get(i) + "\")");
-			WebElement ccElement1 = (new WebDriverWait(driver, 60))
-					.until(ExpectedConditions.presenceOfElementLocated(By
-							.id("cclanguage_" + langlist.get(i))));
-		}
-		Thread.sleep(1000);
-		try {
-			clickOnHiddenElement("ccBtn");
-		} catch (Exception e) {
-			if (getPlatform().equalsIgnoreCase("Android")) {
-				clickOnElement("moreOptionIcon");
-				waitOnElement("ccBtn", 60);
-				clickOnElement("ccBtn");
-			} else {
-				clickOnElement("moreOptionIcon");
-				waitOnElement("ccBtn", 60);
-				clickOnElement("ccBtn");
-			}
-		}
-		Thread.sleep(1000);
+        } catch (Exception e) {
+            System.out.println("closedCaption button is not  present\n");
+        }
+        checkClosedCaptionLanguages();
+        logger.info("Verified the ClosedCaption button languages");
+        Thread.sleep(1000);
+        try {
+            clickOnIndependentElement("ccBtn");
+        } catch (Exception e) {
+            clickOnIndependentElement("moreOptionIcon");
+            waitOnElement("ccBtn", 60);
+            clickOnIndependentElement("ccBtn");
+        }
+        Thread.sleep(1000);
 
-		try {
-			waitOnElement("ccPopoverHorizontal", 10);
-			boolean horizontal_CC_Option = isElementVisible("ccPopoverHorizontal");
-			logger.info(horizontal_CC_Option);
-			if (horizontal_CC_Option) {
-				waitOnElement("ccSwitchContainerHorizontal", 20);
-				waitOnElement("ccMoreCaptions", 10);
-				waitOnElement("ccCloseButton", 10);
-				clickOnElement("ccMoreCaptions");
-			}
-		} catch (Exception e) {
+        closedCaptionMicroPanel();
+        logger.info("Verified  ClosedCaption button Micropanel ");
 
-			logger.info("Horizontal cc option is not present");
-		}
+        if (!(isElementVisible("closedCaptionPanel"))) {
+            clickOnIndependentElement("ccBtn");
+        }
 
-		boolean ccpanelshown = isElementVisible("closedCaptionPanel");
-		if (!ccpanelshown) {
-			try {
-				clickOnElement("ccBtn");
-			} catch (Exception e) {
-				clickOnHiddenElement("ccBtn");
-			}
+        boolean ccpanel = isElementVisible("closedCaptionPanel");
+        Assert.assertEquals(ccpanel, true, "closedCaption languages panel is not present");
+        Thread.sleep(1000);
+        waitOnElement("ccsSwitch", 60);
 
-		}
+        clickOnIndependentElement("ccSwitchContainer");
+        clickOnIndependentElement("ccPanelClose");
 
-		boolean ccpanel = isElementVisible("closedCaptionPanel");
-		Assert.assertEquals(ccpanel, true,
-				"closedCaption languages panel is not present");
-		Thread.sleep(1000);
-		waitOnElement("ccsSwitch", 60);
+        logger.info("Verified ClosedCaption ");
 
-		clickOnElement("ccSwitchContainer");
+        if (isElementVisible("playButton"))
+            clickOnIndependentElement("playButton");
+        Thread.sleep(2000);
 
-		clickOnElement("ccPanelClose");
-		boolean ispause = isElementVisible("playButton");
-		if (ispause)
-			clickOnElement("playButton");
-		Thread.sleep(2000);
-		boolean isccshowing1 = isElementVisible("ccmode_disabled");
-		Assert.assertEquals(isccshowing1, true, "ClosedCaption is not disabled");
-		Thread.sleep(2000);
-		boolean isccshowing = isElementVisible("ccmode_showing");
-		Assert.assertEquals(isccshowing, true, "ClosedCaption is not showing");
-	}
+        Assert.assertEquals(isElementVisible("ccmode_disabled"), true, "ClosedCaption is not disabled");
+        Thread.sleep(2000);
+
+        Assert.assertEquals(isElementVisible("ccmode_showing"), true, "ClosedCaption is not showing");
+    }
+
+    protected void closedCaptionMicroPanel() throws Exception
+    {
+        try {
+            waitOnElement("ccPopoverHorizontal", 10);
+            boolean horizontal_CC_Option = isElementVisible("ccPopoverHorizontal");
+            System.out.println(horizontal_CC_Option);
+            if (horizontal_CC_Option) {
+                waitOnElement("ccSwitchContainerHorizontal", 20);
+                waitOnElement("ccMoreCaptions", 10);
+                waitOnElement("ccCloseButton", 10);
+                clickOnIndependentElement( "ccMoreCaptions");
+                logger.info("Verified presence of closedCaptionMicroPanel ");
+            }
+        } catch (Exception e) {
+            System.out.println("Horizontal cc option is not present");
+        }
+
+    }
+
+    protected  void checkClosedCaptionLanguages() throws  Exception{
+        ArrayList<String> langlist = ((ArrayList<String>)(((JavascriptExecutor) driver).executeScript("var attrb = pp.getCurrentItemClosedCaptionsLanguages().languages;" +"{return attrb;}")));
+        System.out.println("Closed Caption Available Languages: " + langlist);
+        for (int i = 0; i < langlist.size(); i++) {
+            ((JavascriptExecutor) driver).executeScript("pp.setClosedCaptionsLanguage(\"" + langlist.get(i) + "\")");
+            WebElement ccElement1 = (new WebDriverWait(driver, 60)).until(ExpectedConditions.presenceOfElementLocated(By.id("cclanguage_" + langlist.get(i))));
+        }
+    }
 }

@@ -1,0 +1,8 @@
+<elements area="volume">
+    <element key="controlBar" findBy="class"
+             class="oo-control-bar" />
+    <element key="volumeMax" findBy="class"
+             class="oo-icon-volume-on-ooyala-defualt" />
+    <element key="volumeMute" findBy="class"
+             class="oo-icon-volume-mute-ooyala-defualt" />
+</elements>

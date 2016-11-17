@@ -1,0 +1,4 @@
+<elements area="discovery">
+    <element key="live" findBy="class"
+             class="live" />
+</elements>
