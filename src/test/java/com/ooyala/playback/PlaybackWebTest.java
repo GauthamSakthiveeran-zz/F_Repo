@@ -10,6 +10,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.CapabilityType;
@@ -226,5 +227,16 @@ public abstract class PlaybackWebTest extends FacileTest {
 		return flag;
 
 	}
+    public String getPlatform() {
+        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+        String platformName = cap.getPlatform().toString();
+        return platformName;
+    }
+
+    public String getBrowser() {
+        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+        String browser = cap.getBrowserName().toString();
+        return browser;
+    }
 
 }

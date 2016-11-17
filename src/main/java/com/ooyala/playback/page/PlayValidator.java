@@ -1,11 +1,14 @@
 package com.ooyala.playback.page;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlayValidator extends BaseValidator {
+
+    public static Logger Log = Logger.getLogger(PlayValidator.class);
 
 	public PlayValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -18,43 +21,30 @@ public class PlayValidator extends BaseValidator {
 
 	@Override
 	public boolean waitForPage() {
-		loadingSpinner();
+		//loadingSpinner();
 		boolean errorScreen = false;
 		try {
-			waitOnElement("PLAY_BUTTON", 60);
-			errorScreen = true;
+			waitOnElement("playButton", 60);
 		} catch (Exception e) {
 			driver.navigate().refresh();
-			waitOnElement("INNER_WRAPPER", 60);
-			errorScreen = isElementVisible("ERROR_SCREEN");
-			if (!errorScreen)
-				waitOnElement("PLAY_BUTTON", 60);
+			waitOnElement("innerWrapper", 60);
+			errorScreen = isElementPresent("errorScreen");
+			if (errorScreen)
+                driver.navigate().refresh();
+				waitOnElement("playButton", 60);
 		}
-		// finally {
-		// errorScreen = isElementVisible("ERROR_SCREEN");
-		// if (errorScreen) {
-		// logger.info("Error screen occured hence refreshing page again");
-		// driver.navigate().refresh();
-		// } else {
-		// logger.info("Page is loaded completely");
-		// }
-		// }
+        logger.info("Page is loaded completely");
 
 		return errorScreen;
 
 	}
 
 	public void validate(String element, int timeout) throws Exception {
-		
-
-		loadingSpinner();
-		if (isElementVisible("START_SCREEN")) {
-			clickOnIndependentElement("PLAY_BUTTON");
-		} else {
-			clickOnElement("PLAY_BUTTON");
-		}
+		//loadingSpinner();
+        clickOnIndependentElement("playButton");
 		Thread.sleep(1000);
-		waitOnElement("PLAYING_SCREEN", 60);
-		waitOnElement("PLAYING", timeout);
+		waitOnElement("playingScreen", 60);
+		waitOnElement("playing", timeout);
+        Log.info("Video Playing");
 	}
 }

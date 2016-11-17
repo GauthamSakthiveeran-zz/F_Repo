@@ -21,17 +21,20 @@ public class PauseValidator extends BaseValidator {
 	}
 
 	public void validate(String element, int timeout) throws Exception {
-		waitOnElement("PAUSE_BUTTON", 60);
-		clickOnHiddenElement("PAUSE_BUTTON");
-		Thread.sleep(10000);
-		if (isElementVisible("PAUSE_SCREEN")) {
+		waitOnElement("pauseButton", 60);
+        clickOnIndependentElement("pauseButton");
+		Thread.sleep(1000);
+		if (isElementPresent("pauseScreen")) {
 			logger.info("verify pause screen");
-			waitOnElement("PAUSE_SCREEN", 60);
+			waitOnElement("pauseScreen", 60);
 		} else {
 			// verify discovery if there is on pauseDiscovery
 			logger.info("verify discovery if set on pausescreen");
-			waitOnElement("CONTENT_SCREEN", 60);
+			waitOnElement("contentScreen", 60);
 		}
+
+        //waitOnElement()
 		waitOnElement(element, timeout);
+        logger.info("Video paused");
 	}
 }

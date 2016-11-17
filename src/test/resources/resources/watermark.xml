@@ -1,0 +1,13 @@
+<elements area="watermark">
+    <element key="controlBarItem" findBy="class"
+             class="oo-control-bar-item" />
+    <element key="watermarklogo" findBy="xPath"
+             xPath="xpath:.//*[@id='oo-responsive']//img" />
+    <element key="fullScreenBtn" findBy="class"
+             class="oo-icon-system-fullscreen" />
+    <element key="normalScreen" findBy="class"
+             class="oo-icon-system-minimizescreen" />
+    <element key="ooyalaLogo" findBy="class"
+             class="oo-logo" />
+
+</elements>
