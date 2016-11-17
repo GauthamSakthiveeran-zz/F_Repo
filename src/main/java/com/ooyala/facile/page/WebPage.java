@@ -1619,6 +1619,39 @@ public abstract class WebPage {
 		return element.isDisplayed();
 	}
 
+	protected boolean isElementPresent(String element) {
+
+		return isElementPresent(element, -1);
+	}
+
+	public boolean isElementPresent(String elementKey, int... lineNumbers) {
+		// WebElement may need to be changed to RenderedWebElement.
+		logger.info("Verify visible...");
+		try {
+			WebElement elementOfInterest = (getWebElementFromFacileWebElement(
+					elementKey, lineNumbers));
+
+		} catch (NoSuchElementException ex) {
+			logger.error("Caught exception: " + ex);
+			return false;
+		}
+
+		return true;
+	}
+
+	protected boolean isElementPresent(By by) {
+
+		try {
+			WebElement elementOfInterest = driver.findElement(by);
+
+		} catch (NoSuchElementException ex) {
+			logger.error("Caught exception: " + ex);
+			return false;
+		}
+
+		return true;
+	}
+
 	/**
 	 * Checks if is element enabled.
 	 *
@@ -2603,6 +2636,12 @@ public abstract class WebPage {
 		return getWebElementFromFacileWebElements(anElement);
 	}
 
+	protected WebElement getWebElement(String elementKey) {
+		FacileWebElement anElement = new FacileWebElement(
+				pageElements.get(elementKey));
+		return getWebElementFromFacileWebElement(anElement);
+	}
+
 	/*
 	 * This method clicks on an element -Whose Generic KEY is passed containing
 	 * # along with the line number where the element is present- on the web
@@ -2726,6 +2765,50 @@ public abstract class WebPage {
 			logger.error("Caught exception " + ex);
 			return false;
 		}
+		return true;
+	}
+
+	protected boolean clickOnIndependentElement(By by) {
+		try {
+			WebElement elementOfInterest = driver.findElement(by);
+			if (driver instanceof InternetExplorerDriver) {
+				if (elementOfInterest.getAttribute("type") != null) {
+					if (elementOfInterest.getTagName().equalsIgnoreCase("div")
+					// || (elementOfInterest.getTagName().equalsIgnoreCase("a")
+					// && elementOfInterest.getText().contains("FacileCompany"))
+							|| elementOfInterest.getTagName().equalsIgnoreCase(
+									"a")
+							// ||
+							// (elementOfInterest.getTagName().equalsIgnoreCase("img")
+							// && elementOfInterest.getText().equals(""))
+							|| elementOfInterest.getAttribute("type")
+									.equalsIgnoreCase("radio")) {
+						logger.info("elementOfInterest for IE click ---> "
+								+ elementOfInterest.getText());
+						elementOfInterest.click();
+					} else {
+						logger.info("elementOfInterest for IE sendKeys ---> "
+								+ elementOfInterest.getText());
+						elementOfInterest.sendKeys("\n");
+					}
+				} else {
+					elementOfInterest.click();
+				}
+				WebPage.wait(10000); // TODO: to check whether we need this wait
+				// for both click & sendKeys
+			} else {
+				elementOfInterest.click();
+			}
+		} catch (TimeoutException ex) {
+			// do nothing this behaviour is seen on IE. Exact reason is not
+			// known as on 7 jan 2009
+			logger.info("Exception while clicking an element : ");
+			logger.error("Caught exception " + ex);
+		} catch (NullPointerException ex) {
+			logger.error("Caught exception " + ex);
+			return false;
+		}
+
 		return true;
 	}
 
