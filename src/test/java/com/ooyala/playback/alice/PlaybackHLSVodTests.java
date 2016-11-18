@@ -34,16 +34,16 @@ public class PlaybackHLSVodTests extends PlaybackWebTest {
     }
 
     @Test(groups = "alice", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+    public void testHLSVod(String testName, String url) throws OoyalaException {
 
-       /* boolean result = false;
+        boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
         EventValidator eventValidator = pageFactory.getEventValidator();
-        ControlBarValidator controlBarValidator = pageFactory.getControlBarValidator();
         FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
-        LiveAction liveAction = pageFactory.getLiveAction();
+        CCValidator ccValidator = pageFactory.getCCValidator();
+        ShareTabValidator shareTabValidator = pageFactory.getShareTabValidator();
 
         if (getBrowser().equalsIgnoreCase("safari")) {
             try {
@@ -58,57 +58,39 @@ public class PlaybackHLSVodTests extends PlaybackWebTest {
 
                 play.validate("playing_1", 60);
 
+                logger.info("video is playing");
+
                 pause.validate("paused_1", 60);
+
+                logger.info("video paused");
+
                 play.validate("playing_2", 60);
+
+                logger.info("video is playing again");
+
+                sleep(3000);
+               fullScreenValidator.validate("",60);
+
+                ccValidator.validate("cclanguage",60);
+
+                logger.info("verified cc languages");
+
+                shareTabValidator.validate("",60);
 
                 seek.seek("pp.getDuration()/2");
 
-                controlBarValidator.validate("",60);
-                //to-do add ooyala logo to the test page
+                eventValidator.validate("played_1",60);
 
-                fullScreenValidator.validate("fullScreenBtn1",60);
-
-                pause.validate("paused_2", 60);
-
-
-
-                liveAction.startAction();
-
-                //   assertEquals(seek.validate("seeked_1", 60), false, "We are able to seek live asset");
-
-                eventValidator.validate("played_1", 60);
-
-
-                // Verify Forward and Backward seek
-                ((JavascriptExecutor) webDriver).executeScript("pp.seek(pp.getDuration()-pp.getDuration()/2);");
-                sleep(3000);
-                assertEquals(true, (webDriver.findElement(id("seeked_1")).isDisplayed()), "Not able to seek the video forward");
-                Log.info("Seek the video forward");
-                sleep(1000);
-                ((JavascriptExecutor) webDriver).executeScript("pp.seek(5);");
-                sleep(3000);
-                assertEquals(true, (webDriver.findElement(id("seeked_2")).isDisplayed()), "Not able to seek the video backword");
-                Log.info("Seek the video backword");
-                test.log(PASS, "verified seek");
-
-                seleniumActions.clickOnElement("fullScreenBtn");
-
-                assertEquals(true, (webDriver.findElement(locator.getobjectLocator("normalScreen")).isDisplayed()), "Normal screen button is not shwoing after clicking on full screen It means video is not switched to fullscreen");
-
-                test.log(PASS, "Verified Fullscreen");
-
-                seleniumActions.waitForElement("played_1", 200);
-
-                test.log(PASS, "verified HLS vod test");
+                logger.info("video played");
+                
                 result = true;
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Assert.assertTrue(result, "Alice basic playback tests failed");
+            Assert.assertTrue(result, "Playback HLS Vod tests failed");
 
         } else {
-
-            throw new SkipException("Test PlaybackHLSLive Is Skipped");
-        }*/
+            throw new SkipException("Test PlaybackHLSVod Is Skipped");
+        }
     }
 }

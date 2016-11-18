@@ -41,15 +41,23 @@ public class DiscoveryUpNextTests  extends PlaybackWebTest {
 
             play.waitForPage();
 
+            logger.info("Verified that video is seeked");
+
             injectScript("http://10.11.66.55:8080/alice.js");
 
             play.validate("playing_1", 60);
 
-            pageFactory.getSeekValidator().seek(15,false);
+            logger.info("Verifed that video is getting playing");
 
-            discoveryUpNext.validate("upnextContent",60);
+            pageFactory.getSeekValidator().seek(25,true);
 
-            eventValidator.validate("videoPlayed_1", 60);
+            discoveryUpNext.validate("UPNEXT_CONTENT",60);
+
+            logger.info("Verified Unpnext content");
+
+            eventValidator.validate("played_1", 60);
+
+            logger.info("Verified that video is played");
 
             result = true;
         } catch (Exception e) {

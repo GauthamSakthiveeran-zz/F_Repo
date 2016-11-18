@@ -29,7 +29,7 @@ public class PlaybackHLSLiveTests extends PlaybackWebTest {
     }
 
     @Test(groups = "alice", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+    public void testHLSLive(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
@@ -53,22 +53,32 @@ public class PlaybackHLSLiveTests extends PlaybackWebTest {
 
                 play.validate("playing_1", 60);
 
+                logger.info("video is playing");
+
                 pause.validate("paused_1", 60);
+
+                logger.info("video paused");
 
                 controlBarValidator.validate("",60);
                 //to-do add ooyala logo to the test page
 
-                fullScreenValidator.validate("fullScreenBtn1",60);
+                fullScreenValidator.validate("FULLSCREEN_BTN_1",60);
+
+                logger.info("playing video in full screen");
 
                 pause.validate("paused_2", 60);
 
+                logger.info("video paused in fullscreen");
+
                 play.validate("playing_2", 60);
+
+                logger.info("video playing in fullscreen");
 
                 liveAction.startAction();
 
-             //   assertEquals(seek.validate("seeked_1", 60), false, "We are able to seek live asset");
-
                 eventValidator.validate("played_1", 60);
+
+                logger.info("video played");
                 result = true;
             } catch (Exception e) {
                 e.printStackTrace();

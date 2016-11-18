@@ -29,7 +29,7 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
     }
 
     @Test(groups = "alice", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+    public void testWatermarks(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
@@ -54,22 +54,29 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 
             Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver).executeScript("return pp.isAdPlaying()"));
             if (isAdplaying) {
-                volumeValidator.validate("VolumeMax", 60);
+                volumeValidator.validate("VOLUME_MAX", 60);
                 eventValidator.validate("adPodEnded_1", 200);
             }
 
             play.validate("playing_1", 60);
+            logger.info("video is playing");
             Thread.sleep(3000);
 
             pause.validate("paused_1",60);
+            logger.info("video paused");
 
-            waterMarkValidator.validate("watermarklogo",60);
+            waterMarkValidator.validate("WATERMARK_LOGO",60);
+            logger.info("checked watermark logo");
 
             playAction.startAction();
 
             seek.validate("seeked_1", 60);
 
+            logger.info("video seeked");
+
             eventValidator.validate("videoPlayed_1",60);
+
+            logger.info("video played");
 
             result = true;
         } catch (Exception e) {

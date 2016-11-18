@@ -29,7 +29,7 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
     }
 
     @Test(groups = "alice", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+    public void testClosedCaption(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
@@ -52,11 +52,17 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 
             play.validate("playing_1", 60);
 
+            logger.info("Verifed that video is getting playing");
+
             sleep(1000);
 
             pause.validate("paused_1", 60);
 
+            logger.info("Verified that video is getting pause");
+
             play.validate("playing_2", 60);
+
+            logger.info("Verifed that video is getting playing again after pause play");
 
             fullScreenValidator.validate("",60);
 
@@ -64,11 +70,17 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 
             ccValidator.validate("cclanguage",60);
 
+            logger.info("Verified cc languages");
+
             sleep(1000);
 
             seek.validate("seeked_1", 60);
 
+            logger.info("Verirfied seeked functionality");
+
             eventValidator.validate("played_1",60);
+
+            logger.info("verified Video played");
 
             result = true;
         } catch (Exception e) {

@@ -58,11 +58,17 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
                 }
                 play.validate("playing_1", 60);
 
+                logger.info("Verifed that video is getting playing");
+
                 sleep(500);
 
                 seek.validate("seeked_1", 60);
 
+                logger.info("Verified that video is seeked");
+
                 eventValidator.validate("played_1", 60);
+
+                logger.info("Verified that video is played");
 
                 result = true;
             } catch (Exception e) {

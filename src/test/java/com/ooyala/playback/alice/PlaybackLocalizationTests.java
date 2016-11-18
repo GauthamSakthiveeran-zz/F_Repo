@@ -51,23 +51,35 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 
             play.validate("playing_1", 60);
 
+            logger.info("video playing");
+
             pause.validate("paused_1", 60);
+
+            logger.info("video paused");
 
             play.validate("playing_2", 60);
 
-            shareTabValidator.validate("",60);
-
-           // clickOnElement("fullScreenBtn");
+            logger.info("video paying again");
 
             shareTabValidator.validate("",60);
 
-            //clickOnElement("normalScreen");
+            eventValidator.eventAction("FULLSCREEN_BTN");
+
+            logger.info("checked fullscreen");
+
+            shareTabValidator.validate("",60);
+
+            eventValidator.eventAction("NORMAL_SCREEN");
 
             playPauseAction.startAction();
 
             seek.validate("seeked_1", 60);
 
+            logger.info("video seeked");
+
             eventValidator.validate("played_1",60);
+
+            logger.info("video played");
 
             result = true;
         } catch (Exception e) {

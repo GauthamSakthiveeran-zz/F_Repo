@@ -27,17 +27,16 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
     }
 
         @Test(groups = "alice", dataProvider = "testUrls")
-        public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+        public void testPlayerMetadataStates(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
         PlayAction playAction = pageFactory.getPlayAction();
         EventValidator eventValidator = pageFactory.getEventValidator();
-        VolumeValidator volumeValidator = pageFactory.getVolumeValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
-       FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
             EndScreenValidator endScreenValidator = pageFactory.getEndScreenValidator();
+            StartScreenValidator startScreenValidator = pageFactory.getStartScreenValidator();
 
         try {
             driver.get(url);
@@ -47,31 +46,37 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
             play.waitForPage();
 
+            startScreenValidator.validate("",60);
+
             injectScript("http://10.11.66.55:8080/alice.js");
 
             playAction.startAction();
 
             play.validate("playing_1", 60);
+            logger.info("video is playing");
             Thread.sleep(2000);
 
             pause.validate("videoPause_1",60);
+            logger.info("video is paused");
 
             play.validate("playing_2", 60);
+            logger.info("video is playing again");
 
             seek.validate("seeked_1", 60);
+            logger.info("video seeked");
 
             eventValidator.validate("played_1",60);
+            logger.info("video played");
 
+            endScreenValidator.validate("",60);
 
-           /* TestUtilities.verifyEndScreen(webDriver);
+            eventValidator.eventAction("FULLSCREEN_BTN_1");
 
-            seleniumActions.clickOnElement("fullScreenBtn1");
+            endScreenValidator.validate("fullscreenChangedtrue",50);
+            logger.info("checked fullscreen");
 
-            seleniumActions.waitForElement("fullscreenChangedtrue",50);
-
-            TestUtilities.verifyEndScreen(webDriver);
-            seleniumActions.clickOnElement("fullScreenBtn1");
-            TestUtilities.verifyEndScreen(webDriver);*/
+            endScreenValidator.validate("", 60);
+            eventValidator.eventAction("FULLSCREEN_BTN_1");
 
             result = true;
         } catch (Exception e) {

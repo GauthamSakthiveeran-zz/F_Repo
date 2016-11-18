@@ -50,13 +50,19 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 
             play.validate("playing_1", 60);
 
+            logger.info("video is playing");
+
             fullScreenValidator.validate("",60);
 
             playAction.startAction();
 
             seek.validate("seeked_1", 60);
 
+            logger.info("video seeked");
+
             eventValidator.validate("played_1",60);
+
+            logger.info("video played");
 
             result = true;
         } catch (Exception e) {

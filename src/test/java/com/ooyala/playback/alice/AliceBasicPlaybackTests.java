@@ -37,22 +37,36 @@ public class AliceBasicPlaybackTests extends PlaybackWebTest {
 
 		try {
 			driver.get(url);
+            if (!getPlatform().equalsIgnoreCase("android")) {
+                driver.manage().window().maximize();
+            }
 
 			play.waitForPage();
+            Thread.sleep(10000);
 
 			injectScript("http://10.11.66.55:8080/alice.js");
 
 			play.validate("playing_1", 60);
 
+			logger.info("Verifed that video is getting playing");
+
+            Thread.sleep(2000);
+
             pause.validate("paused_1", 60);
+
+			logger.info("Verified that video is getting pause");
 
 			play.validate("playing_2", 60);
 
-            //fullScreenValidator.validate("",60);
+           // fullScreenValidator.validate("",60);
 
 			seek.validate("seeked_1", 60);
 
+			logger.info("Verified that video is seeked");
+
             eventValidator.validate("played_1",60);
+
+			logger.info("Verified that video is played");
 
 			result = true;
 		} catch (Exception e) {
