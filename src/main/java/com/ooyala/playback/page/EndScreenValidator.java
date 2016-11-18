@@ -20,14 +20,14 @@ public class EndScreenValidator extends BaseValidator {
         /**
          * Here we will tell Facile to add the page elements of our Login Page
          */
-        addElementToPageElements("pause");
+        addElementToPageElements("controlBar");
+        addElementToPageElements("replay");
     }
 
     public void validate(String element, int timeout) throws Exception {
-        waitOnElement( "endScreen", 60);
-
-       // String replaytxt1 = driver.findElement(locators.getobjectLocator("playPause")).findElement(By.tagName("span")).getAttribute("class");
-       // Assert.assertEquals(replaytxt1.trim(), "oo-icon oo-icon-system-replay", "Replay button is not present on end screen");
+        waitOnElement("END_SCREEN", 60);
+        String replaytxt = getWebElement("PLAY_PAUSE").findElement(By.tagName("span")).getAttribute("class");
+        Assert.assertEquals(replaytxt.trim(), "oo-icon oo-icon-system-replay", "Replay button is not present on end screen");
         double currenttime = Double.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
         double totaltime = Double.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getDuration();").toString());
         Assert.assertEquals(currenttime, totaltime, "Current Time and TotalTime duration is not showing correctly");

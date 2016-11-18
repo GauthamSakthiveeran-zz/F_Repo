@@ -3,6 +3,7 @@ package com.ooyala.playback.page;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -31,7 +32,7 @@ public class SeekValidator extends BaseValidator {
                 break;
             }
         }
-        waitOnElement(element, timeout);
+        waitOnElement(By.id(element),timeout);
         logger.info("Video seeked successfully");
     }
 

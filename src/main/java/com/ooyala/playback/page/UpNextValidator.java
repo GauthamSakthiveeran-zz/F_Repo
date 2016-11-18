@@ -2,6 +2,7 @@ package com.ooyala.playback.page;
 
 import com.ooyala.playback.page.BaseValidator;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -24,11 +25,9 @@ public class UpNextValidator  extends BaseValidator {
     }
 
     public void validate(String element,int timeout)throws Exception {
-
         waitOnElement(element, 60);
-        waitOnElement("upnextContent", 60);
-        waitOnElement("contentMetadata", 60);
-        clickOnIndependentElement("upNextCloseBtn");
+        waitOnElement("CONTENT_METADATA", 60);
+        clickOnIndependentElement("UPNEXT_CLOSE_BTN");
         Log.info("Verified upNextPanel and up next content ");
         Log.info("verified up next close button");
 

@@ -32,15 +32,15 @@ public class VolumeValidator  extends BaseValidator {
         Long currentVolume = (Long)(((JavascriptExecutor) driver).executeScript("return pp.getVolume()"));
         Log.info("Current volume: " + currentVolume);
         try {
-            if(!(isElementVisible("controlBar"))) {
+            if(!(isElementPresent("CONTROL_BAR"))) {
                 Actions action = new Actions(driver);
-              //  action .moveToElement(driver.findElement(locators.getobjectLocator("controlBar"))).build().perform();
+                action .moveToElement(getWebElement("controlBar")).build().perform();
             }
-            double  getmutevol = getVolume("volumeMax");
+            double  getmutevol = getVolume("VOLUME_MAX");
             Assert.assertEquals(getmutevol, expectedmutevol, "Mute volume is't matching");
             Thread.sleep(2000);
 
-            double getMaxVol = getVolume("volumeMute");
+            double getMaxVol = getVolume("VOLUME_MUTE");
             Assert.assertEquals(getMaxVol, expectedmaxvol,"Max volume is not matched");
         } catch (Exception e) {
             System.out.println("Volume control is not working properly" + e.getMessage());
@@ -50,7 +50,7 @@ public class VolumeValidator  extends BaseValidator {
 
     protected double getVolume(String element) throws  Exception{
         waitOnElement(element,10);
-        clickOnElement(element);
+        clickOnIndependentElement(element);
         Thread.sleep(3500);
         double volume = Double.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getVolume()").toString());
         Log.info("volume set to " + volume);

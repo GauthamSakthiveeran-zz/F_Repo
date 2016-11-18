@@ -1,6 +1,7 @@
 package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -21,20 +22,19 @@ public class PauseValidator extends BaseValidator {
 	}
 
 	public void validate(String element, int timeout) throws Exception {
-		waitOnElement("pauseButton", 60);
-        clickOnIndependentElement("pauseButton");
+		waitOnElement("PAUSE_BUTTON", 60);
+        clickOnIndependentElement("PAUSE_BUTTON");
 		Thread.sleep(1000);
-		if (isElementPresent("pauseScreen")) {
+		if (isElementPresent("PAUSE_SCREEN")) {
 			logger.info("verify pause screen");
-			waitOnElement("pauseScreen", 60);
+			waitOnElement("PAUSE_SCREEN", 60);
 		} else {
 			// verify discovery if there is on pauseDiscovery
 			logger.info("verify discovery if set on pausescreen");
-			waitOnElement("contentScreen", 60);
+			waitOnElement("CONTENT_SCREEN", 60);
 		}
 
-        //waitOnElement()
-		waitOnElement(element, timeout);
+        waitOnElement(By.id(element),timeout);
         logger.info("Video paused");
 	}
 }

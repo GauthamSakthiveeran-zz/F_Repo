@@ -6,9 +6,11 @@ import static java.lang.Thread.sleep;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class DiscoveryValidator extends BaseValidator {
 
@@ -29,51 +31,61 @@ public class DiscoveryValidator extends BaseValidator {
 
 	public void validate(String element, int timeout) throws Exception {
 
-        clickOnIndependentElement("pauseButton");
+        clickOnIndependentElement("PAUSE_BUTTON");
         try {
-            waitOnElement("disocoveryToaster", 60);
+            waitOnElement("DISCOVERY_TOASTER", 60);
         } catch (Exception e) {
-            if (isElementVisible("playingScreen")) {
-                clickOnIndependentElement("pauseButton");
+            if (isElementPresent("PLAYING_SCREEN")) {
+                clickOnIndependentElement("PAUSE_BUTTON");
             } else {
-                clickOnIndependentElement("playButton");
+                clickOnIndependentElement("PLAY_BUTTON");
                 sleep(5000);
-                clickOnIndependentElement("pauseButton");
+                clickOnIndependentElement("PAUSE_BUTTON");
             }
-            waitOnElement("disocoveryToaster", 60);
+            waitOnElement("DISCOVERY_TOASTER", 60);
             logger.info("Discovery Toaster present");
         }
 
-
-        /*List<WebElement> count = driver.findElements(locators.getobjectLocator("discveryImgWrapper"));
+        getWebElementsList("DISCOVERY_IMG_WRAPPER");
+        List<WebElement> count = getWebElementsList("DISCOVERY_IMG_WRAPPER");
         out.println("Count Value :" + count.size());
         logger.info("Number of Discovery Videos " +count.size());
 
         boolean flagTrue = false;
         try {
-            flagTrue =isElementVisible("rightBtn");
+            flagTrue =isElementVisible("RIGHT_BTN");
             logger.info("Is right button showing on Discovery Screen  " + flagTrue);
         } catch (Exception e) {
             out.println("Max videos are showing on Discovery screen");
         }
         if (count.size() > 3 && flagTrue) {
-            clickOnIndependentElement("rightBtn");
+            clickOnIndependentElement("RIGHT_BTN");
             sleep(2000);
-            clickOnIndependentElement("leftBtn");
+            clickOnIndependentElement("LEFT_BTN");
             logger.info("verified discovery left right button");
-        }*/
-        clickOnIndependentElement("imageStyle");
-        try {
-            waitOnElement("reportDiscoveryClick_1", 60);
-        } catch (Exception e) {
-            clickOnIndependentElement("imageStyle");
-            waitOnElement("reportDiscoveryClick_1", 60);
         }
-        waitOnElement("reportDiscoveryImpression_1", 60);
-        waitOnElement("setEmbedCode_1", 60);
-        waitOnElement("playbackReady_1", 60);
-        waitOnElement("videoPreload_1", 60);
+        clickOnIndependentElement("IMAGE_STYLE");
+        try {
+            waitOnElement(By.id("reportDiscoveryClick_1"), 60);
+        } catch (Exception e) {
+            clickOnIndependentElement("IMAGE_STYLE");
+            waitOnElement(By.id("reportDiscoveryClick_1"), 60);
+        }
+        waitOnElement(By.id("reportDiscoveryImpression_1"), 60);
+        waitOnElement(By.id("setEmbedCode_1"), 60);
+        waitOnElement(By.id("playbackReady_1"), 60);
+        waitOnElement(By.id("videoPreload_1"), 60);
         logger.info("Discovery Video clicked and new video loaded successfully");
+
+    }
+    public void verifyDiscoveryEnabled(String Onevent, boolean flag)
+    {
+        boolean discoverytray = isElementPresent("DISCOVERY_STYLE");
+        boolean discoveryscreen = isElementPresent("CONTENT_SCREEN");
+        logger.info("discvoery screen is enabled " + Onevent + ": " + discoveryscreen);
+        logger.info("discvoery Toaster is Shown " + Onevent + ": " + discoverytray);
+        Assert.assertEquals(discoveryscreen, flag);
+        Assert.assertEquals(discoverytray,flag);
 
     }
 }

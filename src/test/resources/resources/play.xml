@@ -1,16 +1,14 @@
 <elements area="play">
-	<element key="startScreen" findBy="class"
+	<element key="START_SCREEN" findBy="class"
              class="oo-start-screen" />
-	<element key="playButton" findBy="class"
+	<element key="PLAY_BUTTON" findBy="class"
              class="oo-icon-play-slick" />
-	<element key="playingScreen" findBy="class"
+	<element key="PLAYING_SCREEN" findBy="class"
              class="oo-playing-screen" />
-	<element key="innerWrapper" findBy="class"
+	<element key="INNER_WRAPPER" findBy="class"
              class="innerWrapper" />
-	<element key="errorScreen" findBy="class"
+	<element key="ERROR_SCREEN" findBy="class"
              class="oo-error-screen" />
-    <element key="playing" findBy="id"
-             id="playing_1" />
-    <element key="spinner" findBy="class"
+    <element key="SPINNER" findBy="class"
              class="oo-spinner" />
 </elements>

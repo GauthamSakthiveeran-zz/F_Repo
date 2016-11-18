@@ -20,32 +20,32 @@ public class ShareTabValidator extends BaseValidator {
     @Override
     public void validate(String element,int timeout)throws Exception {
         try {
-            waitOnElement("shareBtn", 60);
-            clickOnIndependentElement("shareBtn");
+            waitOnElement("SHARE_BTN", 60);
+            clickOnIndependentElement("SHARE_BTN");
             Thread.sleep(5000);
         } catch (Exception e) {
             System.out.println("exception \n" + e.getMessage());
-            clickOnIndependentElement("moreOptionItem");
-            waitOnElement("shareBtn", 60);
-            clickOnIndependentElement("shareBtn");
-            if(!(isElementVisible("shareTab")))
-                clickOnIndependentElement("shareBtn");
+            clickOnIndependentElement("MORE_OPTION_ITEM");
+            waitOnElement("SHARE_BTN", 60);
+            clickOnIndependentElement("SHARE_BTN");
+            if(!(isElementPresent("SHARE_TAB")))
+                clickOnIndependentElement("SHARE_BTN");
         }
-        waitOnElement("contentScreen", 60);
-        if(!(isElementVisible("shareTab")))
-            clickOnIndependentElement("shareBtn");
+        waitOnElement("CONTENT_SCREEN", 60);
+        if(!(isElementPresent("SHARE_TAB")))
+            clickOnIndependentElement("SHARE_BTN");
         Thread.sleep(2000);
 
-        String shareTab = readTextFromElement("shareTab");
+        String shareTab = readTextFromElement("SHARE_TAB");
         Log.info("Share Tab value "+ shareTab);
         Thread.sleep(1000);
 
-        String embedTab = readTextFromElement("embedTab");
+        String embedTab = readTextFromElement("EMBED_TAB");
         Log.info("Text in Embed Tab  "+ embedTab);
 
         Assert.assertTrue(shareTab.equalsIgnoreCase("Compartir"), "Localization Failing");
         Assert.assertTrue(embedTab.equalsIgnoreCase("Insertar"),"Localization Failing");
-        clickOnIndependentElement("shareClose");
+        clickOnIndependentElement("SHARE_CLOSE");
         Log.info("ShareTab and Embed Tab localization verified");
 
     }

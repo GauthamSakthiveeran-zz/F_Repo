@@ -1,6 +1,7 @@
 package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -21,9 +22,20 @@ public class EventValidator extends BaseValidator {
         addElementToPageElements("discovery");
         addElementToPageElements("play");
         addElementToPageElements("pause");
+        addElementToPageElements("replay");
+        addElementToPageElements("controlbar");
+        addElementToPageElements("fullscreen");
     }
 
     public void validate(String element, int timeout) throws Exception {
+        waitOnElement(By.id(element),timeout);
+    }
+
+    public void eventAction(String element) throws Exception {
+        clickOnIndependentElement(element);
+    }
+
+    public void validateElement(String element, int timeout) throws Exception {
         waitOnElement(element,timeout);
     }
 

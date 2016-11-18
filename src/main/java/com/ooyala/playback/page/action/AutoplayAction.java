@@ -28,8 +28,8 @@ public class AutoplayAction extends PlayBackPage implements PlayerAction {
             System.out.print("Autoplay not set for this video");
         }
         if (!autoplay) {
-            waitOnElement("playButton", 60);
-            clickOnIndependentElement("playButton");
+            waitOnElement("PLAY_BUTTON", 60);
+            clickOnIndependentElement("PLAY_BUTTON");
         }
     }
 }

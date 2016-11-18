@@ -1,0 +1,6 @@
+<elements area="replay">
+    <element key="END_SCREEN" findBy="class"
+             class="oo-end-screen" />
+    <element key="REPLAY" findBy="class"
+             class="oo-icon-system-replay" />
+</elements>
