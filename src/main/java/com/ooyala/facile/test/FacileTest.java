@@ -463,7 +463,7 @@ public class FacileTest implements IHookable {
 		String platform = System.getProperty("platform");
 		desiredCapabilities.setCapability(CapabilityType.PLATFORM, platform);
 		String ipAddress = System.getProperty("ipaddress");
-		if (ipAddress != null && ipAddress.equals(""))
+		if (ipAddress == null || ipAddress.equals(""))
 			ipAddress = "10.11.69.126:5555";
 
 		String serverUrl = "http://" + ipAddress + "/wd/hub";
@@ -481,7 +481,7 @@ public class FacileTest implements IHookable {
 				logger.info("\nNo Configuration Found platform:" + platform
 						+ " browser:" + browser + " version:" + version);
 				logger.info("\n\n");
-				
+
 			}
 		}
 		return driver;
@@ -517,209 +517,218 @@ public class FacileTest implements IHookable {
 		if (mode != null && mode.equalsIgnoreCase("remote"))
 			driver = getRemoteDriver(browserName);
 
-		// Internet Explorer
-		if (browserName.contains("internet") || browserName.equals("ie")
-				|| browserName.equalsIgnoreCase("8A")
-				|| browserName.equalsIgnoreCase("9A")
-				|| browserName.equalsIgnoreCase("10A")) {
-			logger.debug("Browser Type : " + browserName);
+		else {
 
-			if (isSauceEnabled()) {
-				// Spin and return an IE instance on Sauce cloud
-				logger.debug("Enable Sauce Grid is Set to : "
-						+ isSauceEnabled());
-				logger.debug("Creating " + browserName
-						+ "Instance on Saucelabs Grid");
-				SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
-				logger.debug("Successfully Created " + browserName
-						+ " Instance on Saucelabs Grid");
-				driver = saucelabsSessionManager.createIEInstanceOnSauce();
+			// Internet Explorer
+			if (browserName.contains("internet") || browserName.equals("ie")
+					|| browserName.equalsIgnoreCase("8A")
+					|| browserName.equalsIgnoreCase("9A")
+					|| browserName.equalsIgnoreCase("10A")) {
+				logger.debug("Browser Type : " + browserName);
 
-			} else {
-				// Spin and return an IE instance locally
-				logger.debug("Enable Sauce Grid is Set to : "
-						+ isSauceEnabled());
-				driver = createIEInstanceLocally();
-				logger.debug("Launched Chrome Instance Successfully in local environment Sauce Grid is Set to : "
-						+ isSauceEnabled());
-			}
-			webDriverFacile.set(driver);
-			return maximizeMe(driver);
-		}
+				if (isSauceEnabled()) {
+					// Spin and return an IE instance on Sauce cloud
+					logger.debug("Enable Sauce Grid is Set to : "
+							+ isSauceEnabled());
+					logger.debug("Creating " + browserName
+							+ "Instance on Saucelabs Grid");
+					SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
+					logger.debug("Successfully Created " + browserName
+							+ " Instance on Saucelabs Grid");
+					driver = saucelabsSessionManager.createIEInstanceOnSauce();
 
-		// iPad
-		if (browserName.contains("ipad")) {
-			logger.debug("Browser Type : " + browserName);
-			if (isSauceEnabled()) {
-				logger.debug("Enable Sauce Grid is Set to : "
-						+ isSauceEnabled());
-				// Spin and return an IE instance on Sauce cloud
-				logger.debug("Creating " + browserName
-						+ "Instance on Saucelabs Grid");
-				SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
-				logger.debug("Successfully Created " + browserName
-						+ " Instance on Saucelabs Grid");
-				driver = saucelabsSessionManager.createiPadInstanceonSauce();
-			} else {
-				logger.error("Unable to startup " + browserName + "Server");
-				throw new UnsupportedOperationException(
-						"Could not create an instance driver for the device: "
-								+ browserName);
-			}
-			return (driver);
-		}
-
-		// PhantomJS
-		if (browserName.contains("phantomjs")) {
-			// Prepare capabilities
-			sCaps = new DesiredCapabilities();
-			sCaps.setJavascriptEnabled(true);
-			sCaps.setCapability("takesScreenshot", true);
-
-			String phantomjsPath = getDriverPath("phantomjs");
-			sCaps.setCapability(
-					PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-					phantomjsPath);
-
-			/*
-			 * ArrayList<String> cliArgsCap = new ArrayList<String>();
-			 * cliArgsCap.add("--web-security=false");
-			 * cliArgsCap.add("--ssl-protocol=any");
-			 * cliArgsCap.add("--ignore-ssl-errors=true");
-			 * sCaps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS,
-			 * cliArgsCap);
-			 */
-
-			driver = new PhantomJSDriver(sCaps);
-			return (driver);
-		}
-
-		// iPhone
-		if (browserName.contains("iphone")) {
-			logger.debug("Browser Type : " + browserName);
-			if (isSauceEnabled()) {
-				logger.debug("Enable Sauce Grid is Set to : "
-						+ isSauceEnabled());
-
-				logger.debug("Creating " + browserName
-						+ "Instance on Saucelabs Grid");
-				SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
-				logger.debug("Successfully Created " + browserName
-						+ " Instance on Saucelabs Grid");
-				driver = saucelabsSessionManager.createiPhoneInstanceonSauce();
-
-			} else {
-				logger.error("Unable to startup " + browserName + "Server");
-				throw new UnsupportedOperationException(
-						"Could not create an instance driver for the device: "
-								+ browserName);
-			}
-			return (driver);
-		}
-
-		// Android
-		if (browserName.contains("android")) {
-			logger.debug("Browser Type : " + browserName);
-			if (isSauceEnabled()) {
-				logger.debug("Enable Sauce Grid is Set to : "
-						+ isSauceEnabled());
-
-				logger.debug("Creating " + browserName
-						+ "Instance on Saucelabs Grid");
-				SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
-				logger.debug("Successfully Created " + browserName
-						+ " Instance on Saucelabs Grid");
-				driver = saucelabsSessionManager.createandroidInstanceonSauce();
-			} else {
-				logger.error("Unable to startup " + browserName + "Server");
-				throw new UnsupportedOperationException(
-						"Could not create an instance driver for the device: "
-								+ browserName);
-			}
-			return (driver);
-		}
-
-		// Google Chrome
-		if (browserName.contains("chrome")) {
-			logger.debug("Browser Type : " + browserName);
-			if (isSauceEnabled()) {
-				logger.debug("Enable Sauce Grid is Set to : "
-						+ isSauceEnabled());
-
-				logger.debug("Creating " + browserName
-						+ "Instance on Saucelabs Grid");
-				SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
-				logger.debug("Successfully Created " + browserName
-						+ " Instance on Saucelabs Grid");
-				driver = saucelabsSessionManager.createChromeInstanceOnSauce();
-			} else {
-				logger.debug("Creating " + browserName
-						+ "Instance on local instance");
-				driver = createChromeInstanceLocally();
-				logger.debug("Successfully Created " + browserName
-						+ " Instance on local instance.");
-			}
-			webDriverFacile.set(driver);
-			return maximizeMe(webDriverFacile.get());
-		}
-
-		// Firefox
-		if (browserName.contains("firefox") || browserName.equals("ff")) {
-			logger.debug("...Browser Type : " + browserName);
-
-			FirefoxProfile profile = new FirefoxProfile();
-
-			if (isSauceEnabled()) {
-
-				logger.debug("...Enable Sauce Grid is Set to : "
-						+ isSauceEnabled());
-
-				logger.debug("...Creating " + browserName
-						+ "Instance on Saucelabs Grid");
-				SaucelabsSessionManager sauceLabsSessionManager = new SaucelabsSessionManager();
-
-				logger.debug("...Successfully Created " + browserName
-						+ " Instance on Saucelabs Grid");
-				driver = sauceLabsSessionManager.createFirefoxInstanceonSauce();
-
-			} else {
-				logger.debug("Creating " + browserName
-						+ "Instance on local instance");
-				driver = createFirefoxInstanceLocally();
-
-				logger.debug("Successfully Created " + browserName
-						+ " Instance on local instance.");
-
+				} else {
+					// Spin and return an IE instance locally
+					logger.debug("Enable Sauce Grid is Set to : "
+							+ isSauceEnabled());
+					driver = createIEInstanceLocally();
+					logger.debug("Launched Chrome Instance Successfully in local environment Sauce Grid is Set to : "
+							+ isSauceEnabled());
+				}
+				webDriverFacile.set(driver);
+				return maximizeMe(driver);
 			}
 
-			webDriverFacile.set(driver);
-			return maximizeMe(webDriverFacile.get());
-		}
-
-		// Safari
-		if (browserName.contains("safari")) {
-			logger.debug("Browser Type : " + browserName);
-			SafariDriver profile = new SafariDriver();
-
-			if (isSauceEnabled()) {
-				logger.debug("Enable Sauce Grid is Set to : "
-						+ isSauceEnabled());
-
-				logger.debug("Creating " + browserName
-						+ "Instance on Saucelabs Grid");
-				SaucelabsSessionManager sauceLabsSessionManager = new SaucelabsSessionManager();
-				driver = sauceLabsSessionManager.createFirefoxInstanceonSauce();
-				logger.debug("Successfully Created " + browserName
-						+ " Instance on Saucelabs Grid");
-			} else {
-				logger.debug("Creating " + browserName
-						+ "Instance on local instance");
-				driver = createFirefoxInstanceLocally();
-				logger.debug("Successfully Created " + browserName
-						+ " Instance on local instance.");
+			// iPad
+			if (browserName.contains("ipad")) {
+				logger.debug("Browser Type : " + browserName);
+				if (isSauceEnabled()) {
+					logger.debug("Enable Sauce Grid is Set to : "
+							+ isSauceEnabled());
+					// Spin and return an IE instance on Sauce cloud
+					logger.debug("Creating " + browserName
+							+ "Instance on Saucelabs Grid");
+					SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
+					logger.debug("Successfully Created " + browserName
+							+ " Instance on Saucelabs Grid");
+					driver = saucelabsSessionManager
+							.createiPadInstanceonSauce();
+				} else {
+					logger.error("Unable to startup " + browserName + "Server");
+					throw new UnsupportedOperationException(
+							"Could not create an instance driver for the device: "
+									+ browserName);
+				}
+				return (driver);
 			}
-			webDriverFacile.set(driver);
-			return maximizeMe(webDriverFacile.get());
+
+			// PhantomJS
+			if (browserName.contains("phantomjs")) {
+				// Prepare capabilities
+				sCaps = new DesiredCapabilities();
+				sCaps.setJavascriptEnabled(true);
+				sCaps.setCapability("takesScreenshot", true);
+
+				String phantomjsPath = getDriverPath("phantomjs");
+				sCaps.setCapability(
+						PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+						phantomjsPath);
+
+				/*
+				 * ArrayList<String> cliArgsCap = new ArrayList<String>();
+				 * cliArgsCap.add("--web-security=false");
+				 * cliArgsCap.add("--ssl-protocol=any");
+				 * cliArgsCap.add("--ignore-ssl-errors=true");
+				 * sCaps.setCapability
+				 * (PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
+				 */
+
+				driver = new PhantomJSDriver(sCaps);
+				return (driver);
+			}
+
+			// iPhone
+			if (browserName.contains("iphone")) {
+				logger.debug("Browser Type : " + browserName);
+				if (isSauceEnabled()) {
+					logger.debug("Enable Sauce Grid is Set to : "
+							+ isSauceEnabled());
+
+					logger.debug("Creating " + browserName
+							+ "Instance on Saucelabs Grid");
+					SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
+					logger.debug("Successfully Created " + browserName
+							+ " Instance on Saucelabs Grid");
+					driver = saucelabsSessionManager
+							.createiPhoneInstanceonSauce();
+
+				} else {
+					logger.error("Unable to startup " + browserName + "Server");
+					throw new UnsupportedOperationException(
+							"Could not create an instance driver for the device: "
+									+ browserName);
+				}
+				return (driver);
+			}
+
+			// Android
+			if (browserName.contains("android")) {
+				logger.debug("Browser Type : " + browserName);
+				if (isSauceEnabled()) {
+					logger.debug("Enable Sauce Grid is Set to : "
+							+ isSauceEnabled());
+
+					logger.debug("Creating " + browserName
+							+ "Instance on Saucelabs Grid");
+					SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
+					logger.debug("Successfully Created " + browserName
+							+ " Instance on Saucelabs Grid");
+					driver = saucelabsSessionManager
+							.createandroidInstanceonSauce();
+				} else {
+					logger.error("Unable to startup " + browserName + "Server");
+					throw new UnsupportedOperationException(
+							"Could not create an instance driver for the device: "
+									+ browserName);
+				}
+				return (driver);
+			}
+
+			// Google Chrome
+			if (browserName.contains("chrome")) {
+				logger.debug("Browser Type : " + browserName);
+				if (isSauceEnabled()) {
+					logger.debug("Enable Sauce Grid is Set to : "
+							+ isSauceEnabled());
+
+					logger.debug("Creating " + browserName
+							+ "Instance on Saucelabs Grid");
+					SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
+					logger.debug("Successfully Created " + browserName
+							+ " Instance on Saucelabs Grid");
+					driver = saucelabsSessionManager
+							.createChromeInstanceOnSauce();
+				} else {
+					logger.debug("Creating " + browserName
+							+ "Instance on local instance");
+					driver = createChromeInstanceLocally();
+					logger.debug("Successfully Created " + browserName
+							+ " Instance on local instance.");
+				}
+				webDriverFacile.set(driver);
+				return maximizeMe(webDriverFacile.get());
+			}
+
+			// Firefox
+			if (browserName.contains("firefox") || browserName.equals("ff")) {
+				logger.debug("...Browser Type : " + browserName);
+
+				FirefoxProfile profile = new FirefoxProfile();
+
+				if (isSauceEnabled()) {
+
+					logger.debug("...Enable Sauce Grid is Set to : "
+							+ isSauceEnabled());
+
+					logger.debug("...Creating " + browserName
+							+ "Instance on Saucelabs Grid");
+					SaucelabsSessionManager sauceLabsSessionManager = new SaucelabsSessionManager();
+
+					logger.debug("...Successfully Created " + browserName
+							+ " Instance on Saucelabs Grid");
+					driver = sauceLabsSessionManager
+							.createFirefoxInstanceonSauce();
+
+				} else {
+					logger.debug("Creating " + browserName
+							+ "Instance on local instance");
+					driver = createFirefoxInstanceLocally();
+
+					logger.debug("Successfully Created " + browserName
+							+ " Instance on local instance.");
+
+				}
+
+				webDriverFacile.set(driver);
+				return maximizeMe(webDriverFacile.get());
+			}
+
+			// Safari
+			if (browserName.contains("safari")) {
+				logger.debug("Browser Type : " + browserName);
+				SafariDriver profile = new SafariDriver();
+
+				if (isSauceEnabled()) {
+					logger.debug("Enable Sauce Grid is Set to : "
+							+ isSauceEnabled());
+
+					logger.debug("Creating " + browserName
+							+ "Instance on Saucelabs Grid");
+					SaucelabsSessionManager sauceLabsSessionManager = new SaucelabsSessionManager();
+					driver = sauceLabsSessionManager
+							.createFirefoxInstanceonSauce();
+					logger.debug("Successfully Created " + browserName
+							+ " Instance on Saucelabs Grid");
+				} else {
+					logger.debug("Creating " + browserName
+							+ "Instance on local instance");
+					driver = createFirefoxInstanceLocally();
+					logger.debug("Successfully Created " + browserName
+							+ " Instance on local instance.");
+				}
+				webDriverFacile.set(driver);
+				return maximizeMe(webDriverFacile.get());
+			}
 		}
 
 		logger.error("Could not create a driver for the browser: "
