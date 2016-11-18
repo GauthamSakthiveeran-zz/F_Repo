@@ -27,7 +27,7 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
     }
 
         @Test(groups = "alice", dataProvider = "testUrls")
-        public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+        public void testPlayerMetadataStates(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
@@ -53,24 +53,30 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
             playAction.startAction();
 
             play.validate("playing_1", 60);
+            logger.info("video is playing");
             Thread.sleep(2000);
 
             pause.validate("videoPause_1",60);
+            logger.info("video is paused");
 
             play.validate("playing_2", 60);
+            logger.info("video is playing again");
 
             seek.validate("seeked_1", 60);
+            logger.info("video seeked");
 
             eventValidator.validate("played_1",60);
+            logger.info("video played");
 
-        endScreenValidator.validate("",60);
+            endScreenValidator.validate("",60);
 
-            eventValidator.eventAction("fullScreenBtn1");
+            eventValidator.eventAction("FULLSCREEN_BTN_1");
 
-          endScreenValidator.validate("fullscreenChangedtrue",50);
+            endScreenValidator.validate("fullscreenChangedtrue",50);
+            logger.info("checked fullscreen");
 
             endScreenValidator.validate("", 60);
-            eventValidator.eventAction("fullScreenBtn1");
+            eventValidator.eventAction("FULLSCREEN_BTN_1");
 
             result = true;
         } catch (Exception e) {

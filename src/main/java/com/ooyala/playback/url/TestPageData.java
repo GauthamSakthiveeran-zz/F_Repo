@@ -1,13 +1,11 @@
 package com.ooyala.playback.url;
 
 import java.util.Map;
-
 import org.apache.log4j.Logger;
-
 /**
  * Created by jitendra
  */
-public class TestPageData {
+public class TestPageData{
 
 	public static Logger logger = Logger.getLogger(TestPageData.class);
 	
@@ -46,7 +44,7 @@ public class TestPageData {
 	public TestPageData() {
 		try {
 			map = PropertyReader
-					.getProperty("src/test/resources/requiredDataFields");
+					.getProperty("src/test/resources/urlData");
 			baseURL = map.get("baseUrl");
 			pluginURL = map.get("video_Plugin");
 			mainPlugin = map.get("main_Plugin");
@@ -88,7 +86,7 @@ public class TestPageData {
 	public void initializeData(PlayerPropertyValue envType) {
 		switch (envType) {
 
-		case ENVIRONMENT_STAGING:
+		case STAGING:
 			envURL = map.get("staging_env_url");
 			pluginURL = envURL + pluginURL;
 			corePlayer = envURL + corePlayer;
@@ -97,8 +95,8 @@ public class TestPageData {
 			skinConf = "" + skinConf;
 			skinDiscovery = envURL + otherPlugin + discoveryApiPlugin;
 			break;
-		case ENVIRONMENT_PRODUCTION:
-			envURL = map.get("production_env_url");
+		case PRODUCTION:
+			envURL = map.get("production_env_url")+System.getProperty("v4Version");
 			pluginURL = envURL + "/video-plugin/";
 			corePlayer = envURL + corePlayer;
 			html5Skin = envURL + html5Skin;

@@ -31,7 +31,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
     }
 
     @Test(groups = "alice", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+    public void testVolume(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
@@ -54,18 +54,28 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
             Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver).executeScript("return pp.isAdPlaying()"));
             if (isAdplaying) {
-                volumeValidator.validate("VolumeMax", 60);
+                volumeValidator.validate("VOLUME_MAX", 60);
+                logger.info("validated ad volume at full range");
                 eventValidator.validate("adPodEnded_1", 200);
+                logger.info("Ad played");
             }
 
             play.validate("playing_1", 60);
+
+            logger.info("video is playing");
             sleep(4000);
 
-            volumeValidator.validate("VolumeMax", 60);
+            volumeValidator.validate("VOLUME_MAX", 60);
+
+            logger.info("validated video volume at full range");
 
             seek.validate("seeked_1", 60);
 
+            logger.info("video seeked");
+
             eventValidator.validate("played_1",60);
+
+            logger.info("video played");
 
             result = true;
         } catch (Exception e) {

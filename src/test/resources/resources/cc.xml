@@ -1,16 +1,16 @@
 <elements area="cc">
-	<element key="ccBtn" findBy="class" class="oo-icon-cc" />
-	<element key="moreOptionIcon" findBy="class" class="oo-icon-system-menu" />
-	<element key="ccPanelClose" findBy="class" class="oo-close-button" />
-	<element key="ccPopoverHorizontal" findBy="class"  class="oo-popover-horizontal" />
-    <element key="ccSwitchContainerHorizontal" findBy="class" class="oo-switch-container" />
-    <element key="ccMoreCaptions" findBy="class" class="oo-more-captions" />
-    <element key="ccCloseButton" findBy="class"
+	<element key="CC_BTN" findBy="class" class="oo-icon-cc" />
+	<element key="MORE_OPTION_ICON" findBy="class" class="oo-icon-system-menu" />
+	<element key="CC_PANEL_CLOSE" findBy="class" class="oo-close-button" />
+	<element key="CC_POPHOVER_HORIZONTAL" findBy="class"  class="oo-popover-horizontal" />
+    <element key="CC_SWITCH_CONTAINER_HORIZONTAL" findBy="class" class="oo-switch-container" />
+    <element key="CC_MORE_CAPTIONS" findBy="class" class="oo-more-captions" />
+    <element key="CC_CLOSE_BUTTON" findBy="class"
              class="oo-close-button" />
-    <element key="closedCaptionPanel" findBy="class"
+    <element key="CLOSED_CAPTION_PANEL" findBy="class"
              class="oo-closed-captions-panel" />
-    <element key="ccsSwitch" findBy="class"
+    <element key="CC_SWITCH" findBy="class"
              class="oo-switch-element" />
-    <element key="ccSwitchContainer" findBy="class"
+    <element key="CC_SWITCH_CONTAINER" findBy="class"
              class="oo-switch-container-selectable" />
 </elements>

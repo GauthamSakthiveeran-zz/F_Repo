@@ -27,7 +27,7 @@ public class PlaybackControlsLiveDVRTests extends PlaybackWebTest {
     }
 
     @Test(groups = "alice", dataProvider = "testUrls")
-    public void test(String testName, String url) throws OoyalaException {
+    public void testControlLiveDVR(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
@@ -46,9 +46,15 @@ public class PlaybackControlsLiveDVRTests extends PlaybackWebTest {
 
             play.validate("playing_1", 60);
 
+            logger.info("Verified video playing");
+
             pause.validate("paused_1", 60);
 
+            logger.info("verified video paused");
+
             play.validate("playing_2", 60);
+
+            logger.info("verified video playing again");
 
             live.startAction();
 

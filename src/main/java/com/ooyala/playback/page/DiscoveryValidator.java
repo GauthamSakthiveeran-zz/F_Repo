@@ -31,44 +31,50 @@ public class DiscoveryValidator extends BaseValidator {
 
 	public void validate(String element, int timeout) throws Exception {
 
-        clickOnIndependentElement("pauseButton");
+        clickOnIndependentElement("PAUSE_BUTTON");
         try {
-            waitOnElement("discoveryToaster", 60);
+
+            waitOnElement("DISCOVERY_TOASTER", 60);
         } catch (Exception e) {
-            if (isElementPresent("playingScreen")) {
-                clickOnIndependentElement("pauseButton");
+            if (isElementPresent("PLAYING_SCREEN")) {
+                clickOnIndependentElement("PAUSE_BUTTON");
+
             } else {
-                clickOnIndependentElement("playButton");
+                clickOnIndependentElement("PLAY_BUTTON");
                 sleep(5000);
-                clickOnIndependentElement("pauseButton");
+                clickOnIndependentElement("PAUSE_BUTTON");
             }
-            waitOnElement("discoveryToaster", 60);
+
+            waitOnElement("DISCOVERY_TOASTER", 60);
             logger.info("Discovery Toaster present");
         }
 
-        getWebElementsList("discoveryImgWrapper");
-        List<WebElement> count = getWebElementsList("discoveryImgWrapper");
+        getWebElementsList("DISCOVERY_IMG_WRAPPER");
+        List<WebElement> count = getWebElementsList("DISCOVERY_IMG_WRAPPER");
+
         out.println("Count Value :" + count.size());
         logger.info("Number of Discovery Videos " +count.size());
 
         boolean flagTrue = false;
         try {
-            flagTrue =isElementVisible("rightBtn");
+            flagTrue =isElementVisible("RIGHT_BTN");
             logger.info("Is right button showing on Discovery Screen  " + flagTrue);
         } catch (Exception e) {
             out.println("Max videos are showing on Discovery screen");
         }
         if (count.size() > 3 && flagTrue) {
-            clickOnIndependentElement("rightBtn");
+            clickOnIndependentElement("RIGHT_BTN");
             sleep(2000);
-            clickOnIndependentElement("leftBtn");
+            clickOnIndependentElement("LEFT_BTN");
             logger.info("verified discovery left right button");
         }
-        clickOnIndependentElement("imageStyle");
+
+        clickOnIndependentElement("IMAGE_STYLE");
         try {
             waitOnElement(By.id("reportDiscoveryClick_1"), 60);
         } catch (Exception e) {
-            clickOnIndependentElement("imageStyle");
+            clickOnIndependentElement("IMAGE_STYLE");
+
             waitOnElement(By.id("reportDiscoveryClick_1"), 60);
         }
         waitOnElement(By.id("reportDiscoveryImpression_1"), 60);
@@ -80,8 +86,10 @@ public class DiscoveryValidator extends BaseValidator {
     }
     public void verifyDiscoveryEnabled(String Onevent, boolean flag)
     {
-        boolean discoverytray = isElementPresent("discoveryStyle");
-        boolean discoveryscreen = isElementPresent("contentScreen");
+
+        boolean discoverytray = isElementPresent("DISCOVERY_STYLE");
+        boolean discoveryscreen = isElementPresent("CONTENT_SCREEN");
+
         logger.info("discvoery screen is enabled " + Onevent + ": " + discoveryscreen);
         logger.info("discvoery Toaster is Shown " + Onevent + ": " + discoverytray);
         Assert.assertEquals(discoveryscreen, flag);

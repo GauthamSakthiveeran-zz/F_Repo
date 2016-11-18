@@ -57,6 +57,8 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
             play.validate("playing_1", 60);
 
+            logger.info("verified video playing");
+
             Thread.sleep(3000);
 
             result = true;
@@ -64,11 +66,11 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
                 clickDiscoveryButtonAction.startAction();
 
                 discoveryValidator.verifyDiscoveryEnabled("On_discovery_click", true);    //verify discovery is disabled on discovery click
-                eventValidator.eventAction("discoveryCloseBtn");
-
+                eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
+                logger.info("verified discovery close button is present or not");
                 sleep(2000);
                 play.validate("playing_2", 60);
-                sleep(1000);
+                logger.info("verified video playing again after discvery check");
 
                 pauseAction.startAction();
                 discoveryValidator.verifyDiscoveryEnabled("On_pauseScreen", false);   //verify discovery is disabled on pause screen
@@ -77,11 +79,12 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
                 playAction.startAction();
 
-                eventValidator.eventAction("fullScreenBtn");
+                eventValidator.eventAction("FULLSCREEN_BTN");
+                logger.info("verified fullscreen");
                 try {
-                    eventValidator.eventAction("playingScreen");
+                    eventValidator.eventAction("PLAYING_SCREEN");
                 } catch (Exception e) {
-                    eventValidator.eventAction("video");
+                    eventValidator.eventAction("VIDEO");
                 }
                 discoveryValidator.verifyDiscoveryEnabled("On_pause_FullScreen", false);
                 sleep(1000);
@@ -91,8 +94,9 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
                 sleep(2000);
                 discoveryValidator.verifyDiscoveryEnabled("On_discoveryclick_fullScreen", true);
-                eventValidator.eventAction("discoveryCloseBtn");
-                eventValidator.eventAction("normalScreen");
+                eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
+                logger.info("verified discovery in full screen");
+                eventValidator.eventAction("NORMAL_SCREEN");
 
                 sleep(2000);
 
@@ -102,16 +106,20 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
                 loadingSpinner();
                 try {
-                    discoveryUpNext.validate("upnextContent", 60);
+
+                    discoveryUpNext.validate("UPNEXT_CONTENT", 60);
+                    logger.info("Upnext is present");
+
                 } catch (Exception e) {
                     logger.info("No Upnext panel");
                 }
                 try {
-                    eventValidator.validateElement("endScreen", 60);
+
+                eventValidator.validateElement("END_SCREEN", 60);
                 } catch (Exception e) {
                     playAction.startAction();
                     seekValidator.seek(20,true);
-                    eventValidator.validateElement("endScreen", 60);
+                    eventValidator.validateElement("END_SCREEN", 60);
                 }
                 discoveryValidator.verifyDiscoveryEnabled("On_endScreen", false);   //verify discovery is disabled on end screen
             }catch (Exception e){

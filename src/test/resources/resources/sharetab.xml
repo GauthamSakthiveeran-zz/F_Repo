@@ -1,13 +1,13 @@
 <elements area="sharetab">
-    <element key="shareBtn" findBy="class"
+    <element key="SHARE_BTN" findBy="class"
              class="oo-icon-share" />
-    <element key="moreOptionItem" findBy="class"
+    <element key="MORE_OPTION_ITEM" findBy="class"
              class="oo-more-options-items" />
-    <element key="shareTab" findBy="class"
+    <element key="SHARE_TAB" findBy="class"
              class="oo-share-tab" />
-    <element key="contentScreen" findBy="class"
+    <element key="CONTENT_SCREEN" findBy="class"
              class="oo-content-screen" />
-    <element key="embedTab" findBy="class"  class="oo-embed-tab" />
-    <element key="shareClose" findBy="class"
+    <element key="EMBED_TAB" findBy="class"  class="oo-embed-tab" />
+    <element key="SHARE_CLOSE" findBy="class"
              class="oo-close-button" />
 </elements>

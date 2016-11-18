@@ -27,16 +27,18 @@ public class ClickDiscoveryButtonAction extends PlayBackPage implements PlayerAc
     @Override
     public void startAction() throws Exception{
         try{
-            clickOnIndependentElement("discoveryBtn");
+
+            clickOnIndependentElement("DISCOVERY_BTN");
             sleep(2000);
-            if (!isElementPresent("contentScreen")) {
-                clickOnIndependentElement("discoveryBtn");
+            if (!isElementPresent("CONTENT_SCREEN")) {
+                clickOnIndependentElement("DISCOVERY_BTN");
             }
         } catch (Exception e) {
             out.println("exception " + e.getMessage());
-            clickOnIndependentElement("moreOptionIcon");
+            clickOnIndependentElement("MORE_OPTION_ICON");
             Thread.sleep(2000);
-            clickOnIndependentElement("discoveryBtn");
+            clickOnIndependentElement("DISCOVERY_BTN");
+
         }
     }
 }

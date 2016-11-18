@@ -26,8 +26,10 @@ public class UpNextValidator  extends BaseValidator {
 
     public void validate(String element,int timeout)throws Exception {
         waitOnElement(element, 60);
-        waitOnElement("contentMetadata", 60);
-        clickOnIndependentElement("upNextCloseBtn");
+
+        waitOnElement("CONTENT_METADATA", 60);
+        clickOnIndependentElement("UPNEXT_CLOSE_BTN");
+
         Log.info("Verified upNextPanel and up next content ");
         Log.info("verified up next close button");
 

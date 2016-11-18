@@ -76,7 +76,7 @@ public abstract class PlayBackPage extends WebPage {
         while (true) {
             if (time <= 120) {
                 try {
-                    boolean result = isElementVisible("spinner");
+                    boolean result = isElementVisible("SPINNER");
                     Thread.sleep(1000);
                     time++;
                 } catch (Exception e) {

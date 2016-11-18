@@ -25,8 +25,9 @@ public class EndScreenValidator extends BaseValidator {
     }
 
     public void validate(String element, int timeout) throws Exception {
-        waitOnElement("endScreen", 60);
-        String replaytxt = getWebElement("playPause").findElement(By.tagName("span")).getAttribute("class");
+        waitOnElement("END_SCREEN", 60);
+        String replaytxt = getWebElement("PLAY_PAUSE").findElement(By.tagName("span")).getAttribute("class");
+
         Assert.assertEquals(replaytxt.trim(), "oo-icon oo-icon-system-replay", "Replay button is not present on end screen");
         double currenttime = Double.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
         double totaltime = Double.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getDuration();").toString());

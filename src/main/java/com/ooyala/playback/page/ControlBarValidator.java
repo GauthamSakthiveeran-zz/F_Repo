@@ -33,33 +33,38 @@ public class ControlBarValidator extends BaseValidator {
 
 
             ArrayList<String> controlBarElement = new ArrayList<String>();
-            controlBarElement.addAll(Arrays.asList("playhead", "playPause", "volumeBtn", "fullScreenBtn", "shareBtn", "discoveryBtn", "timeDuration"));
 
-            boolean iscontrolshown = isElementPresent("controlBar");
+            controlBarElement.addAll(Arrays.asList("PLAY_HEAD", "PLAY_PAUSE", "VOLUME_BUTTON", "FULLSCREEN_BTN", "SHARE_BTN", "DISCOVERY_BTN", "TIME_DURATION"));
+
+            boolean iscontrolshown = isElementPresent("CONTROL_BAR");
 
             if(!iscontrolshown) {
                 System.out.println("Control bar is hiden hence mouse hovering on it");
                 Actions act = new Actions(driver);
-                act.moveToElement(getWebElement("controlBar")).build().perform();
+
+                act.moveToElement(getWebElement("CONTROL_BAR")).build().perform();
+
             }
             try
             {
                 for(String icon: controlBarElement){
                     waitOnElement(icon, 60);
                 }
-                boolean ismoreoption = isElementVisible("moreOptionItem");
+                boolean ismoreoption = isElementVisible("MORE_OPTION_ITEM");
                 if(ismoreoption) {
-                    clickOnIndependentElement("moreOptionItem");
-                    waitOnElement("discoveryBtn", 60);
-                   waitOnElement("qualityBtn", 60);
-                 clickOnIndependentElement("ccPanelClose");
+                    clickOnIndependentElement("MORE_OPTION_ITEM");
+                    waitOnElement("DISCOVERY_BTN", 60);
+                   waitOnElement("QUALITY_BTN", 60);
+                 clickOnIndependentElement("CC_PANEL_CLOSE");
                 }
             } catch (Exception e)
             {
-                waitOnElement("playPause", 60);
-                waitOnElement("volumeBtn", 60);
-                waitOnElement("fullScreenBtn", 60);
-                // seleniumActions.waitForElement("ooyalaLogo", 60);
+
+                waitOnElement("PLAY_PAUSE", 60);
+                waitOnElement("VOLUME_BUTTON", 60);
+                waitOnElement("FULLSCREEN_BTN", 60);
+                // seleniumActions.waitForElement("OOYALA_LOGO", 60);
+
             }
 
         //Add feature for ooyalalogo

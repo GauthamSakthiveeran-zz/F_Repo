@@ -1,18 +1,18 @@
 <elements area="discovery">
-	<element key="discoveryToaster" findBy="id"
+	<element key="DISCOVERY_TOASTER" findBy="id"
              ID="DiscoveryToasterContainer" />
-	<element key="discoveryImgWrapper" findBy="class"
+	<element key="DISCOVERY_IMG_WRAPPER" findBy="class"
              class="oo-discovery-image-wrapper-style" />
-	<element key="rightBtn" findBy="class"
+	<element key="RIGHT_BTN" findBy="class"
              class="oo-right-button" />
-	<element key="leftBtn" findBy="class"
+	<element key="LEFT_BTN" findBy="class"
              class="oo-left-button" />
-    <element key="imageStyle" findBy="class"
+    <element key="IMAGE_STYLE" findBy="class"
              class="oo-image-style" />
-    <element key="discoveryStyle" findBy="class"
+    <element key="DISCOVERY_STYLE" findBy="class"
              class="oo-discovery-toaster-container-style" />
-    <element key="contentScreen" findBy="class"
+    <element key="CONTENT_SCREEN" findBy="class"
              class="oo-content-screen" />
-    <element key="discoveryCloseBtn" findBy="class"
+    <element key="DISCOVERY_CLOSE_BTN" findBy="class"
              class="oo-close-button" />
 </elements>

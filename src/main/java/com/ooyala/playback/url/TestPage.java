@@ -24,6 +24,7 @@ public class TestPage {
         environmentType = playerProperties.get(PlayerPropertyKey.ENVIRONMENT);
     }
 
+
     /**
      * @param embedCode
      *            ,pCode,plugins,adPlugin,additionalPlugin,playerParameter
@@ -45,61 +46,61 @@ public class TestPage {
 
                 }
 
-                url = testpagedata.baseURL
-                        + "?ec="
-                        + embedCode
-                        + "&pbid="
-                        + pbid
-                        + "&pcode="
-                        + pCode
-                        + "&core_player="
-                        + URLEncoder.encode(testpagedata.corePlayer, "UTF8")
-                        + "&video_plugins="
-                        + URLEncoder.encode(vplugin, "UTF8")
-                        + "&html5_skin="
-                        + URLEncoder.encode(testpagedata.html5Skin, "UTF8")
-                        + "&skin_asset="
-                        + URLEncoder.encode(testpagedata.skinAsset, "UTF8")
-                        + "&skin_config="
-                        + URLEncoder.encode(testpagedata.getSkinConfigPlugin(
-                        plugins, adPlugin, additionalPlugin), "UTF8")
-                        + "&ad_plugin="
-                        + URLEncoder.encode(
-                        testpagedata.getPluginForAd(adPlugin), "UTF8")
-                        + "&additional_plugins="
-                        + URLEncoder.encode(testpagedata
-                        .getAdditionalPlugin(additionalPlugin), "UTF8")
-                        + "&options="
-                        + URLEncoder.encode(playerParameter, "UTF8");
-            } else {
-                url = testpagedata.baseURL
-                        + "?ec="
-                        + embedCode
-                        + "&pbid="
-                        + pbid
-                        + "&pcode="
-                        + pCode
-                        + "&core_player="
-                        + URLEncoder.encode(testpagedata.corePlayer, "UTF8")
-                        + "&video_plugins="
-                        + URLEncoder.encode(
-                        testpagedata.getPluginForStream(plugins),
-                        "UTF8")
-                        + "&html5_skin="
-                        + URLEncoder.encode(testpagedata.html5Skin, "UTF8")
-                        + "&skin_asset="
-                        + URLEncoder.encode(testpagedata.skinAsset, "UTF8")
-                        + "&skin_config="
-                        + URLEncoder.encode(testpagedata.getSkinConfigPlugin(
-                        plugins, adPlugin, additionalPlugin), "UTF8")
-                        + "&ad_plugin="
-                        + URLEncoder.encode(
-                        testpagedata.getPluginForAd(adPlugin), "UTF8")
-                        + "&additional_plugins="
-                        + URLEncoder.encode(testpagedata
-                        .getAdditionalPlugin(additionalPlugin), "UTF8")
-                        + "&options="
-                        + URLEncoder.encode(playerParameter, "UTF8");
+				url = testpagedata.baseURL
+						+ "?ec="
+						+ embedCode
+						+ "&pbid="
+						+ pbid
+						+ "&pcode="
+						+ pCode
+						+ "&core_player="
+						+ URLEncoder.encode(testpagedata.corePlayer, "UTF8")
+						+ "&video_plugins="
+						+ URLEncoder.encode(vplugin, "UTF8")
+						+ "&html5_skin="
+						+ URLEncoder.encode(testpagedata.html5Skin, "UTF8")
+						+ "&skin_asset="
+						+ URLEncoder.encode(testpagedata.skinAsset, "UTF8")
+						+ "&skin_config="
+						+ URLEncoder.encode(testpagedata.getSkinConfigPlugin(
+								plugins, adPlugin, additionalPlugin), "UTF8")
+						+ "&ad_plugin="
+						+ URLEncoder.encode(
+								testpagedata.getPluginForAd(adPlugin), "UTF8")
+						+ "&additional_plugins="
+						+ URLEncoder.encode(testpagedata
+								.getAdditionalPlugin(additionalPlugin), "UTF8")
+						+ "&options="
+						+ URLEncoder.encode(playerParameter, "UTF8");
+			} else {
+				url = testpagedata.baseURL
+						+ "?ec="
+						+ embedCode
+						+ "&pbid="
+						+ pbid
+						+ "&pcode="
+						+ pCode
+						+ "&core_player="
+						+ URLEncoder.encode(testpagedata.corePlayer, "UTF8")
+						+ "&video_plugins="
+						+ URLEncoder.encode(
+								testpagedata.getPluginForStream(plugins),
+								"UTF8")
+						+ "&html5_skin="
+						+ URLEncoder.encode(testpagedata.html5Skin, "UTF8")
+						+ "&skin_asset="
+						+ URLEncoder.encode(testpagedata.skinAsset, "UTF8")
+						+ "&skin_config="
+						+ URLEncoder.encode(testpagedata.getSkinConfigPlugin(
+								plugins, adPlugin, additionalPlugin), "UTF8")
+						+ "&ad_plugin="
+						+ URLEncoder.encode(
+								testpagedata.getPluginForAd(adPlugin), "UTF8")
+						+ "&additional_plugins="
+						+ URLEncoder.encode(testpagedata
+								.getAdditionalPlugin(additionalPlugin), "UTF8")
+						+ "&options="
+						+ URLEncoder.encode(playerParameter, "UTF8");
 
             }
 

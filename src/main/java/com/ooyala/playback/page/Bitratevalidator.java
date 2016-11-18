@@ -33,12 +33,12 @@ public class Bitratevalidator extends BaseValidator {
         boolean result;
 
         try {
-            result = isElementPresent("bitrate");
+            result = isElementPresent("BITRATE");
         } catch (Exception e) {
-            clickOnIndependentElement("moreOptionItem");
+            clickOnIndependentElement("MORE_OPTION_ITEM");
             sleep(1000);
-            result = isElementPresent("bitrate");
-            clickOnIndependentElement("bitrate");
+            result = isElementPresent("BITRATE");
+            clickOnIndependentElement("BITRATE");
 
         }
         /* Todo change birtate selection and verify

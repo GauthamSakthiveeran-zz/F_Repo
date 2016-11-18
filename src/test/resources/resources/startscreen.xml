@@ -1,8 +1,8 @@
 <elements area="startscreen">
-    <element key="stateScreenPoster" findBy="class"
+    <element key="STATE_SCREEN_POSTER" findBy="class"
              class="oo-state-screen-poster" />
-    <element key="stateScreenTitle" findBy="class"
+    <element key="STATE_SCREEN_TITLE" findBy="class"
              class="oo-state-screen-title" />
-    <element key="stateScreenDec" findBy="class"
+    <element key="STATE_SCREEN_DEC" findBy="class"
              class="oo-state-screen-description" />
 </elements>

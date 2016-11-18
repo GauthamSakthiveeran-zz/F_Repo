@@ -24,9 +24,10 @@ public class ReplayValidator extends BaseValidator {
 
     public void validate(String element,int timeout)throws Exception {
 
-       waitOnElement("endScreen", 60);
-       waitOnElement("replay", 60);
-       clickOnIndependentElement("replay");
+       waitOnElement("END_SCREEN", 60);
+       waitOnElement("REPLAY", 60);
+       clickOnIndependentElement("REPLAY");
+
         waitOnElement(By.id(element), timeout);
     }
 }

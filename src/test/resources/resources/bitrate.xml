@@ -1,8 +1,8 @@
 <elements area="bitrate">
-    <element key="bitrate" findBy="class"
+    <element key="BITRATE" findBy="class"
              class="oo-icon-bitrate" />
-    <element key="moreOptionItem" findBy="class"
+    <element key="MORE_OPTION_ITEM" findBy="class"
              class="oo-more-options-items" />
-    <element key="bitrateSelection" findBy="class"
+    <element key="BITRATE_SELECTION" findBy="class"
              class="oo-quality-screen-content" />
 </elements>

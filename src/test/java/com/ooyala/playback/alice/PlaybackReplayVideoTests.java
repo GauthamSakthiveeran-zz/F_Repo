@@ -27,7 +27,7 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
     }
 
     @Test(groups = "alice", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+    public void testVideoReplay(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
@@ -40,17 +40,25 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
             play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice_full.js");
+            injectScript("http://10.11.66.55:8080/alice.js");
 
             play.validate("playing_1", 60);
+
+            logger.info("video is playing");
 
             Thread.sleep(2000);
 
             seek.validate("seeked_1", 60);
 
+            logger.info("video seeked");
+
             eventValidator.validate("played_1",200);
 
+            logger.info("video played");
+
             replayValidator.validate("replay_1",60);
+
+            logger.info("video replayed");
 
             result = true;
         } catch (Exception e) {

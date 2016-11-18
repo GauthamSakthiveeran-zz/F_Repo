@@ -25,14 +25,14 @@ public class PlayValidator extends BaseValidator {
 		//loadingSpinner();
 		boolean errorScreen = false;
 		try {
-			waitOnElement("playButton", 60);
+			waitOnElement("PLAY_BUTTON", 60);
 		} catch (Exception e) {
 			driver.navigate().refresh();
-			waitOnElement("innerWrapper", 60);
-			errorScreen = isElementPresent("errorScreen");
+			waitOnElement("INNER_WRAPPER", 60);
+			errorScreen = isElementPresent("ERROR_SCREEN");
 			if (errorScreen)
                 driver.navigate().refresh();
-				waitOnElement("playButton", 60);
+				waitOnElement("PLAY_BUTTON", 60);
 		}
         logger.info("Page is loaded completely");
 
@@ -42,9 +42,11 @@ public class PlayValidator extends BaseValidator {
 
 	public void validate(String element, int timeout) throws Exception {
 		//loadingSpinner();
-        clickOnIndependentElement("playButton");
+        clickOnIndependentElement("PLAY_BUTTON");
 		Thread.sleep(1000);
-		waitOnElement("playingScreen", 60);
+
+		waitOnElement("PLAYING_SCREEN", 60);
+
 		waitOnElement(By.id(element), timeout);
         Log.info("Video Playing");
 	}

@@ -34,17 +34,17 @@ public class CCValidator extends BaseValidator {
 
     public void validate(String element,int timeout)throws Exception {
         try { try {
-            waitOnElement("ccBtn", 60);
+            waitOnElement("CC_BTN", 60);
         }catch (Exception e) {
-            clickOnIndependentElement("moreOptionIcon");
-            waitOnElement("ccBtn", 60);
+            clickOnIndependentElement("MORE_OPTION_ICON");
+            waitOnElement("CC_BTN", 60);
         }
-            boolean ccbutton = isElementPresent("ccBtn");
+            boolean ccbutton = isElementPresent("CC_BTN");
             Assert.assertEquals(ccbutton, true, "ClosedCaption button is not present on player");
             logger.info("Verified the presence of ClosedCaption button ");
-            if (isElementPresent("ccPanelClose")) {
-                clickOnIndependentElement("ccPanelClose");
-                clickOnIndependentElement("playButton");
+            if (isElementPresent("CC_PANEL_CLOSE")) {
+                clickOnIndependentElement("CC_PANEL_CLOSE");
+                clickOnIndependentElement("PLAY_BUTTON");
             }
 
         } catch (Exception e) {
@@ -54,33 +54,33 @@ public class CCValidator extends BaseValidator {
         logger.info("Verified the ClosedCaption button languages");
         Thread.sleep(1000);
         try {
-            clickOnIndependentElement("ccBtn");
+            clickOnIndependentElement("CC_BTN");
         } catch (Exception e) {
-            clickOnIndependentElement("moreOptionIcon");
-            waitOnElement("ccBtn", 60);
-            clickOnIndependentElement("ccBtn");
+            clickOnIndependentElement("MORE_OPTION_ICON");
+            waitOnElement("CC_BTN", 60);
+            clickOnIndependentElement("CC_BTN");
         }
         Thread.sleep(1000);
 
         closedCaptionMicroPanel();
         logger.info("Verified  ClosedCaption button Micropanel ");
 
-        if (!(isElementPresent("closedCaptionPanel"))) {
-            clickOnIndependentElement("ccBtn");
+        if (!(isElementPresent("CLOSED_CAPTION_PANEL"))) {
+            clickOnIndependentElement("CC_BTN");
         }
 
-        boolean ccpanel = isElementVisible("closedCaptionPanel");
+        boolean ccpanel = isElementVisible("CLOSED_CAPTION_PANEL");
         Assert.assertEquals(ccpanel, true, "closedCaption languages panel is not present");
         Thread.sleep(1000);
-        waitOnElement("ccsSwitch", 60);
+        waitOnElement("CC_SWITCH", 60);
 
-        clickOnIndependentElement("ccSwitchContainer");
-        clickOnIndependentElement("ccPanelClose");
+        clickOnIndependentElement("CC_SWITCH_CONTAINER");
+        clickOnIndependentElement("CC_PANEL_CLOSE");
 
         logger.info("Verified ClosedCaption ");
 
-        if (isElementPresent("playButton"))
-            clickOnIndependentElement("playButton");
+        if (isElementPresent("PLAY_BUTTON"))
+            clickOnIndependentElement("PLAY_BUTTON");
         Thread.sleep(2000);
 
         Assert.assertEquals(isElementPresent("ccmode_disabled"), true, "ClosedCaption is not disabled");
@@ -92,14 +92,14 @@ public class CCValidator extends BaseValidator {
     protected void closedCaptionMicroPanel() throws Exception
     {
         try {
-            waitOnElement("ccPopoverHorizontal", 10);
-            boolean horizontal_CC_Option = isElementPresent("ccPopoverHorizontal");
+            waitOnElement("CC_POPHOVER_HORIZONTAL", 10);
+            boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
             System.out.println(horizontal_CC_Option);
             if (horizontal_CC_Option) {
-                waitOnElement("ccSwitchContainerHorizontal", 20);
-                waitOnElement("ccMoreCaptions", 10);
-                waitOnElement("ccCloseButton", 10);
-                clickOnIndependentElement( "ccMoreCaptions");
+                waitOnElement("CC_SWITCH_CONTAINER_HORIZONTAL", 20);
+                waitOnElement("CC_MORE_CAPTIONS", 10);
+                waitOnElement("CC_CLOSE_BUTTON", 10);
+                clickOnIndependentElement( "CC_MORE_CAPTIONS");
                 logger.info("Verified presence of closedCaptionMicroPanel ");
             }
         } catch (Exception e) {

@@ -1,27 +1,26 @@
 <elements area="controlbar">
-    <element key="playhead" findBy="class"
+    <element key="PLAY_HEAD" findBy="class"
              class="oo-playhead" />
-    <element key="playPause" findBy="class"
+    <element key="PLAY_PAUSE" findBy="class"
              class="oo-play-pause" />
-    <element key="volumeBtn" findBy="class"
+    <element key="VOLUME_BUTTON" findBy="class"
              class="oo-volume" />
-    <element key="fullScreenBtn" findBy="class"
+    <element key="FULLSCREEN_BTN" findBy="class"
              class="oo-icon-system-fullscreen" />
-    <element key="shareBtn" findBy="class"
+    <element key="SHARE_BTN" findBy="class"
              class="oo-icon-share" />
-    <element key="discoveryBtn" findBy="class"
+    <element key="DISCOVERY_BTN" findBy="class"
              class="oo-icon-discovery-binoculars" />
-    <element key="timeDuration" findBy="class"
+    <element key="TIME_DURATION" findBy="class"
              class="oo-time-duration" />
-    <element key="moreOptionItem" findBy="class"
+    <element key="MORE_OPTION_ITEM" findBy="class"
              class="oo-more-options-items" />
-    <element key="qualityBtn" findBy="class"
+    <element key="QUALITY_BTN" findBy="class"
              class="oo-icon-topmenu-quality" />
-    <element key="ccPanelClose" findBy="class"
+    <element key="CC_PANEL_CLOSE" findBy="class"
              class="oo-close-button" />
-   <element key="ooyalaLogo" findBy="class"
+   <element key="OOYALA_LOGO" findBy="class"
              class="oo-logo" />
-    <element key="video" findBy="class"
+    <element key="VIDEO" findBy="class"
              class="video" />
-
 </elements>

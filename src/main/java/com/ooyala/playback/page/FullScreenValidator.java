@@ -28,13 +28,13 @@ public class FullScreenValidator extends BaseValidator {
         WebElement player = getWebElement("ooplayer");
         Actions action = new Actions(driver);
         action.moveToElement(player).perform();
-        waitOnElement("fullScreenBtn", 60);
+        waitOnElement("FULLSCREEN_BTN", 60);
 
         if (getPlatform().equalsIgnoreCase("Android")) {
-            clickOnIndependentElement("fullScreenBtn");
+            clickOnIndependentElement("FULLSCREEN_BTN");
         } else {
-            clickOnIndependentElement("pauseButton");
-            clickOnIndependentElement("fullScreenBtn");
+            clickOnIndependentElement("PAUSE_BUTTON");
+            clickOnIndependentElement("FULLSCREEN_BTN");
         }
 
         if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("firefox") || getBrowser().equalsIgnoreCase("internet explorer") || getPlatform().equalsIgnoreCase("Android"))) {
@@ -42,10 +42,10 @@ public class FullScreenValidator extends BaseValidator {
             logger.info("Changed into Fullscreen");
         }
         Thread.sleep(3000);
-        clickOnIndependentElement("pauseButton");
+        clickOnIndependentElement("PAUSE_BUTTON");
         sleep(2000);
 
-        clickOnIndependentElement("normalScreen");
+        clickOnIndependentElement("NORMAL_SCREEN");
 
         // PBW-5165 we are not verifying fullscreen change event for safari and firefox browser as fullscreen is not working in safari in automation
         if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("firefox") || getBrowser().equalsIgnoreCase("internet explorer") || getPlatform().equalsIgnoreCase("Android"))) {
