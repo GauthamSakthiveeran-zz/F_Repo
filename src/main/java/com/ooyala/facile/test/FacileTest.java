@@ -514,8 +514,10 @@ public class FacileTest implements IHookable {
 
 		// Selenium Grid
 		String mode = System.getProperty("mode");
-		if (mode != null && mode.equalsIgnoreCase("remote"))
+		if (mode != null && mode.equalsIgnoreCase("remote")) {
 			driver = getRemoteDriver(browserName);
+			return driver;
+		}
 
 		else {
 
