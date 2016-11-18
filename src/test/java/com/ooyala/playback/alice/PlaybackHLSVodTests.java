@@ -69,6 +69,7 @@ public class PlaybackHLSVodTests extends PlaybackWebTest {
                 logger.info("video is playing again");
 
                 sleep(3000);
+
                fullScreenValidator.validate("",60);
 
                 ccValidator.validate("cclanguage",60);
@@ -82,7 +83,7 @@ public class PlaybackHLSVodTests extends PlaybackWebTest {
                 eventValidator.validate("played_1",60);
 
                 logger.info("video played");
-                
+
                 result = true;
             } catch (Exception e) {
                 e.printStackTrace();

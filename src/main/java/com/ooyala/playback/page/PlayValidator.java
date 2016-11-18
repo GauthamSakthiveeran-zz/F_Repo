@@ -44,7 +44,9 @@ public class PlayValidator extends BaseValidator {
 		//loadingSpinner();
         clickOnIndependentElement("PLAY_BUTTON");
 		Thread.sleep(1000);
+
 		waitOnElement("PLAYING_SCREEN", 60);
+
 		waitOnElement(By.id(element), timeout);
         Log.info("Video Playing");
 	}

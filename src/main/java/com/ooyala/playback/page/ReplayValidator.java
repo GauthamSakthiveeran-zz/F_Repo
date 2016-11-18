@@ -27,6 +27,7 @@ public class ReplayValidator extends BaseValidator {
        waitOnElement("END_SCREEN", 60);
        waitOnElement("REPLAY", 60);
        clickOnIndependentElement("REPLAY");
+
         waitOnElement(By.id(element), timeout);
     }
 }

@@ -23,5 +23,4 @@
              class="oo-logo" />
     <element key="VIDEO" findBy="class"
              class="video" />
-
 </elements>

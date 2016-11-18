@@ -25,6 +25,7 @@ public class PlayPauseAction extends PlayBackPage implements PlayerAction {
     @Override
     public void startAction() {
         boolean ispause = isElementPresent("PLAY_BUTTON");
+
         logger.info("Video Paused" + ispause);
         if(ispause)
             try {

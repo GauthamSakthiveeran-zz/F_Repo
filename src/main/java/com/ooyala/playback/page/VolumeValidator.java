@@ -32,7 +32,9 @@ public class VolumeValidator  extends BaseValidator {
         Long currentVolume = (Long)(((JavascriptExecutor) driver).executeScript("return pp.getVolume()"));
         Log.info("Current volume: " + currentVolume);
         try {
+
             if(!(isElementPresent("CONTROL_BAR"))) {
+
                 Actions action = new Actions(driver);
                 action .moveToElement(getWebElement("controlBar")).build().perform();
             }

@@ -33,6 +33,7 @@ public class ControlBarValidator extends BaseValidator {
 
 
             ArrayList<String> controlBarElement = new ArrayList<String>();
+
             controlBarElement.addAll(Arrays.asList("PLAY_HEAD", "PLAY_PAUSE", "VOLUME_BUTTON", "FULLSCREEN_BTN", "SHARE_BTN", "DISCOVERY_BTN", "TIME_DURATION"));
 
             boolean iscontrolshown = isElementPresent("CONTROL_BAR");
@@ -40,7 +41,9 @@ public class ControlBarValidator extends BaseValidator {
             if(!iscontrolshown) {
                 System.out.println("Control bar is hiden hence mouse hovering on it");
                 Actions act = new Actions(driver);
+
                 act.moveToElement(getWebElement("CONTROL_BAR")).build().perform();
+
             }
             try
             {
@@ -56,10 +59,12 @@ public class ControlBarValidator extends BaseValidator {
                 }
             } catch (Exception e)
             {
+
                 waitOnElement("PLAY_PAUSE", 60);
                 waitOnElement("VOLUME_BUTTON", 60);
                 waitOnElement("FULLSCREEN_BTN", 60);
                 // seleniumActions.waitForElement("OOYALA_LOGO", 60);
+
             }
 
         //Add feature for ooyalalogo

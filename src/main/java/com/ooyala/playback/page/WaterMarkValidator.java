@@ -35,6 +35,7 @@ public class WaterMarkValidator  extends BaseValidator {
 
         WebElement control_bar = getWebElement("CONTROL_BAR_ITEM");
 
+
         if(!(getBrowser().equalsIgnoreCase("safari")||getPlatform().equalsIgnoreCase("Android"))) {
             action.moveToElement(control_bar).build().perform();
         }
@@ -42,7 +43,9 @@ public class WaterMarkValidator  extends BaseValidator {
         waitOnElement("WATERMARK_LOGO", 60);
         Log.info("Watermark Image is displayed");
         Thread.sleep(10000);
+
         String ima_url = getWebElement("WATERMARK_LOGO").getAttribute("src");
+
         Assert.assertEquals(watermark_url, ima_url);
         Log.info("Watermark url is matched");
         Thread.sleep(10000);
@@ -50,11 +53,13 @@ public class WaterMarkValidator  extends BaseValidator {
 
         //Checking height and width in fullscreen
         if(!getBrowser().equalsIgnoreCase("safari")) {
+
             clickOnIndependentElement("FULLSCREEN_BTN");
             Assert.assertEquals(watermark_url, ima_url);
             getlogoDimension();
             waitOnElement("NORMAL_SCREEN", 10);
             clickOnIndependentElement("NORMAL_SCREEN");
+
         }
 
         getWindowHanldes();
@@ -62,8 +67,10 @@ public class WaterMarkValidator  extends BaseValidator {
     }
 
     protected void getlogoDimension() throws Exception{
+
         String width = getWebElement("WATERMARK_LOGO").getAttribute("width");
         String height = getWebElement("WATERMARK_LOGO").getAttribute("height");
+
         Log.info("Image width & height " + width+ " "+ height);
         Assert.assertEquals(width, "16", "Width matches ");
         Assert.assertEquals(height, "10", "Height matches ");
@@ -73,7 +80,9 @@ public class WaterMarkValidator  extends BaseValidator {
     protected void getWindowHanldes() throws Exception
     {
         String oldTab = driver.getWindowHandle();
+
         clickOnIndependentElement("OOYALA_LOGO");
+
         Set<String> allWindows= driver.getWindowHandles();
         for(String aWindow:allWindows)
         {

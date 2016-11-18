@@ -48,6 +48,7 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
             play.validate("playing_1", 60);
 
             logger.info("video playing");
+
             sleep(2000);
 
             aspectRatioValidator.verticalVideoValidate("assetDimension_1",60);
@@ -69,6 +70,7 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
             eventValidator.validate("videoPlayed_1", 60);
 
             logger.info("video played");
+
         } catch (Exception e) {
             e.printStackTrace();
         }

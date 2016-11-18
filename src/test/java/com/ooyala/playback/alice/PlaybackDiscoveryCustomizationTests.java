@@ -68,11 +68,9 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
                 discoveryValidator.verifyDiscoveryEnabled("On_discovery_click", true);    //verify discovery is disabled on discovery click
                 eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
                 logger.info("verified discovery close button is present or not");
-
                 sleep(2000);
                 play.validate("playing_2", 60);
                 logger.info("verified video playing again after discvery check");
-                sleep(1000);
 
                 pauseAction.startAction();
                 discoveryValidator.verifyDiscoveryEnabled("On_pauseScreen", false);   //verify discovery is disabled on pause screen
@@ -108,13 +106,16 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
                 loadingSpinner();
                 try {
+
                     discoveryUpNext.validate("UPNEXT_CONTENT", 60);
                     logger.info("Upnext is present");
+
                 } catch (Exception e) {
                     logger.info("No Upnext panel");
                 }
                 try {
-                    eventValidator.validateElement("END_SCREEN", 60);
+
+                eventValidator.validateElement("END_SCREEN", 60);
                 } catch (Exception e) {
                     playAction.startAction();
                     seekValidator.seek(20,true);

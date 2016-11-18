@@ -24,16 +24,19 @@ public class StartScreenValidator extends BaseValidator {
 
         //get the style attribute of class startScreenPoster which contailns preview image url so that we compare it.
         String value=getWebElement("STATE_SCREEN_POSTER").getAttribute("style");
+
         String url=value.replaceAll(".*\\(|\\).*", "");
         url =url.replaceAll("^\"|\"$", "");
         Assert.assertEquals(url, "http://ak.c.ooyala.com/piMXdiczqydplt6ojmhNzdfAERdgVvaj/3Gduepif0T1UGY8H4xMDoxOjBiO1q_Vi", "Preview Image is not matching");
 
         //get title of video
         try {
+
             String startScreenTitle = getWebElement("STATE_SCREEN_TITLE").getText();
 
             //get Discription of video
             String description = getWebElement("STATE_SCREEN_DEC").getText();
+
 
             String title = ((JavascriptExecutor) driver).executeScript("var title=pp.getTitle();" +
                             "{return title;}").toString();

@@ -59,6 +59,7 @@ public class DiscoveryUpNextTests  extends PlaybackWebTest {
 
             logger.info("Verified that video is played");
 
+
             result = true;
         } catch (Exception e) {
             e.printStackTrace();

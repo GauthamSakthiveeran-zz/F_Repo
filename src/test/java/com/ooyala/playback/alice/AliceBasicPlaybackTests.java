@@ -44,7 +44,7 @@ public class AliceBasicPlaybackTests extends PlaybackWebTest {
 			play.waitForPage();
             Thread.sleep(10000);
 
-			injectScript("http://10.11.66.55:8080/alice.js");
+			injectScript("http://10.11.66.55:8080/alice_full.js");
 
 			play.validate("playing_1", 60);
 

@@ -27,6 +27,7 @@ public class ClickDiscoveryButtonAction extends PlayBackPage implements PlayerAc
     @Override
     public void startAction() throws Exception{
         try{
+
             clickOnIndependentElement("DISCOVERY_BTN");
             sleep(2000);
             if (!isElementPresent("CONTENT_SCREEN")) {
@@ -37,6 +38,7 @@ public class ClickDiscoveryButtonAction extends PlayBackPage implements PlayerAc
             clickOnIndependentElement("MORE_OPTION_ICON");
             Thread.sleep(2000);
             clickOnIndependentElement("DISCOVERY_BTN");
+
         }
     }
 }

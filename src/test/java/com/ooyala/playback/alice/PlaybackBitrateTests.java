@@ -34,6 +34,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
     @Test(groups = "alice", dataProvider = "testUrls")
     public void testBitrate(String testName, String url) throws OoyalaException {
 
+
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
