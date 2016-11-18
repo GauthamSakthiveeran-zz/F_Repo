@@ -25,8 +25,7 @@ public class ControlBarValidator extends BaseValidator {
         /**
          * Here we will tell Facile to add the page elements of our Login Page
          */
-        addElementToPageElements("fullscreen");
-        addElementToPageElements("pause");
+        addElementToPageElements("controlBar");
 
     }
 
@@ -34,14 +33,14 @@ public class ControlBarValidator extends BaseValidator {
 
 
             ArrayList<String> controlBarElement = new ArrayList<String>();
-            controlBarElement.addAll(Arrays.asList("playhead", "playPause", "volumeBtn", "fullScreenBtn1", "shareBtn", "discoveryBtn", "timeDuration"));
+            controlBarElement.addAll(Arrays.asList("playhead", "playPause", "volumeBtn", "fullScreenBtn", "shareBtn", "discoveryBtn", "timeDuration"));
 
-            boolean iscontrolshown = isElementVisible("controlBar");
+            boolean iscontrolshown = isElementPresent("controlBar");
 
             if(!iscontrolshown) {
                 System.out.println("Control bar is hiden hence mouse hovering on it");
-               // Actions act = new Actions(driver);
-                //act.moveToElement(driver.findElement(locators.getobjectLocator("controlBar"))).build().perform();
+                Actions act = new Actions(driver);
+                act.moveToElement(getWebElement("controlBar")).build().perform();
             }
             try
             {
@@ -59,10 +58,11 @@ public class ControlBarValidator extends BaseValidator {
             {
                 waitOnElement("playPause", 60);
                 waitOnElement("volumeBtn", 60);
-                waitOnElement("fullScreenBtn1", 60);
+                waitOnElement("fullScreenBtn", 60);
                 // seleniumActions.waitForElement("ooyalaLogo", 60);
             }
 
+        //Add feature for ooyalalogo
            /* String ooyalalogo = webDriver.findElement(locators.getobjectLocator("ooyalaLogo")).findElement(By.tagName("img")).getAttribute("src");
             if(!(ooyalalogo.contains(".png") || ooyalalogo.contains(".svg") || ooyalalogo.contains(".jpg") || ooyalalogo.contains(".gif")))
                 Assert.assertTrue(ooyalalogo.contains(".png"), "Ooyala branding Logo is not present");*/

@@ -1,6 +1,7 @@
 package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -44,7 +45,7 @@ public class PlayValidator extends BaseValidator {
         clickOnIndependentElement("playButton");
 		Thread.sleep(1000);
 		waitOnElement("playingScreen", 60);
-		waitOnElement("playing", timeout);
+		waitOnElement(By.id(element), timeout);
         Log.info("Video Playing");
 	}
 }

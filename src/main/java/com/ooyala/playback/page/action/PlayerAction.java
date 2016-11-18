@@ -2,6 +2,6 @@ package com.ooyala.playback.page.action;
 
 public interface PlayerAction {
 	
-	public void startAction();
+	public void startAction() throws Exception;
 
 }

@@ -7,6 +7,4 @@
              class="oo-content-screen" />
 		<element key="hiddenControlBar" findBy="class"
                  class="oo-control-bar-hidden" />
-    <element key="paused_1" findBy="id"
-             class="paused_1" />
 </elements>

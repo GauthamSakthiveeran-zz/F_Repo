@@ -45,11 +45,11 @@ public class DiscoveryUpNextTests  extends PlaybackWebTest {
 
             play.validate("playing_1", 60);
 
-            pageFactory.getSeekValidator().seek(15,false);
+            pageFactory.getSeekValidator().seek(25,true);
 
             discoveryUpNext.validate("upnextContent",60);
 
-            eventValidator.validate("videoPlayed_1", 60);
+            eventValidator.validate("played_1", 60);
 
             result = true;
         } catch (Exception e) {

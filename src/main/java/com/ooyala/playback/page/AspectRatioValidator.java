@@ -20,9 +20,9 @@ public class AspectRatioValidator extends BaseValidator {
     }
 
     public void validate(String element,int timeout)throws Exception {
-        if (isElementVisible(element)) {
-            int width = Integer.parseInt(driver.findElement(By.id(element)).getAttribute("myw"));
-            int height = Integer.parseInt(driver.findElement(By.id(element)).getAttribute("myh"));
+        if (isElementPresent(element)) {
+            int width = Integer.parseInt(getWebElement(element).getAttribute("width"));
+            int height = Integer.parseInt(getWebElement(element).getAttribute("height"));
             int diff = width / 4;
             int expectedHeight = width - diff;
             Assert.assertEquals(expectedHeight, height, "Video is in 4:3 ratio");
@@ -31,5 +31,18 @@ public class AspectRatioValidator extends BaseValidator {
             logger.info("Aspect ratio element not present");
         }
     }
+
+    public void verticalVideoValidate(String element,int timeout)throws Exception {
+        if (isElementPresent(element)) {
+            int width = Integer.parseInt(getWebElement(element).getAttribute("width"));
+            int height = Integer.parseInt(getWebElement(element).getAttribute("height"));
+            Assert.assertEquals(width, 320,"Width Matches");
+            Assert.assertEquals(height, 568, "Heigth Matches");
+            logger.info(" verified VerticalVideo");
+        } else {
+            logger.info("Aspect ratio element not present");
+        }
+    }
+
 
 }

@@ -88,7 +88,7 @@
         <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
     </test>
 
-    <test name ="PlaybackFullscreenmodeTests">
+    <test name ="PlaybackFullScreenTests">
         <description name="Playback_Fullscreen"/>
         <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
         <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
@@ -198,15 +198,15 @@
         <playerParameter><![CDATA[{"skin":{"inline":{"adScreen":{"showAdMarquee":true,"showControlBar":true}}},"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
     </test>
 
-    <test name ="SkinCustomizationQualityTests">
-        <description name="SkinCustomizationQuality"/>
+    <test name ="PlaybackBitrateTests">
+        <description name="PlaybackBitrateTests"/>
         <embed_code name="E2aHd3MTE6Yr3iJRbXWUDe_0g2H0flmU"/>
-        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-        <plugins name="MAIN,OSMF"/>
+        <pcode name="5zb2wxOlZcNCe_HVT3a6cawW298X" />
+        <plugins name="OSMF"/>
         <adPlugins name=""/>
         <additionalPlugins name=""/>
-        <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
-        <playerParameter><![CDATA[{"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        <pbid name="NzMyN2E4MzA4Y2ZiMzYwNjhiYzgzYzQ4"/>
+        <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/FoeG863GnBL4IhhlFC1Q2jqbkH9m/N3b2lhZzq_5Er-I09uWrmpwNUZZ_mEeX?api_key=FoeG863GnBL4IhhlFC1Q2jqbkH9m.-E1Kw&expires=2890068691&account_id=dulari_qa&&&signature=sCtNsIeb7XYqrdOdp0avqAjuFKvXansR+BWhAnJp5+A"}]]></playerParameter>
     </test>
 
     <test name ="SkinCustomizationVolumeButtonTests">

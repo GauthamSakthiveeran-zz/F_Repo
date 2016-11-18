@@ -28,11 +28,11 @@ public class ShareTabValidator extends BaseValidator {
             clickOnIndependentElement("moreOptionItem");
             waitOnElement("shareBtn", 60);
             clickOnIndependentElement("shareBtn");
-            if(!(isElementVisible("shareTab")))
+            if(!(isElementPresent("shareTab")))
                 clickOnIndependentElement("shareBtn");
         }
         waitOnElement("contentScreen", 60);
-        if(!(isElementVisible("shareTab")))
+        if(!(isElementPresent("shareTab")))
             clickOnIndependentElement("shareBtn");
         Thread.sleep(2000);
 

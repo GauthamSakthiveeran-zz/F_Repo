@@ -32,9 +32,8 @@ public class WaterMarkValidator  extends BaseValidator {
     public void validate(String element,int timeout)throws Exception {
         String watermark_url = "https://dl.dropboxusercontent.com/u/344342926/Alice_Automation/fcb_wallpaper.jpg";
         Actions action = new Actions(driver);
-    }
 
-     /*   WebElement control_bar = (new WebDriverWait(driver,90)).until(ExpectedConditions.visibilityOfElementLocated(locators.getobjectLocator("controlBarItem")));
+        WebElement control_bar = getWebElement("controlBarItem");
 
         if(!(getBrowser().equalsIgnoreCase("safari")||getPlatform().equalsIgnoreCase("Android"))) {
             action.moveToElement(control_bar).build().perform();
@@ -43,7 +42,7 @@ public class WaterMarkValidator  extends BaseValidator {
         waitOnElement("watermarklogo", 60);
         Log.info("Watermark Image is displayed");
         Thread.sleep(10000);
-        String ima_url = driver.findElement(locators.getobjectLocator("watermarklogo")).getAttribute("src");
+        String ima_url = getWebElement("watermarklogo").getAttribute("src");
         Assert.assertEquals(watermark_url, ima_url);
         Log.info("Watermark url is matched");
         Thread.sleep(10000);
@@ -51,11 +50,11 @@ public class WaterMarkValidator  extends BaseValidator {
 
         //Checking height and width in fullscreen
         if(!getBrowser().equalsIgnoreCase("safari")) {
-            clickOnElement("fullScreenBtn");
+            clickOnIndependentElement("fullScreenBtn");
             Assert.assertEquals(watermark_url, ima_url);
             getlogoDimension();
             waitOnElement("normalScreen", 10);
-            clickOnElement("normalScreen");
+            clickOnIndependentElement("normalScreen");
         }
 
         getWindowHanldes();
@@ -63,18 +62,18 @@ public class WaterMarkValidator  extends BaseValidator {
     }
 
     protected void getlogoDimension() throws Exception{
-        String width = driver.findElement(locators.getobjectLocator("watermarklogo")).getAttribute("width");
-        String height = driver.findElement(locators.getobjectLocator("watermarklogo")).getAttribute("height");
+        String width = getWebElement("watermarklogo").getAttribute("width");
+        String height = getWebElement("watermarklogo").getAttribute("height");
         Log.info("Image width & height " + width+ " "+ height);
         Assert.assertEquals(width, "16", "Width matches ");
         Assert.assertEquals(height, "10", "Height matches ");
         Log.info("Height and width are matched ");
     }
-*/
+
     protected void getWindowHanldes() throws Exception
     {
         String oldTab = driver.getWindowHandle();
-        clickOnElement("ooyalaLogo");
+        clickOnIndependentElement("ooyalaLogo");
         Set<String> allWindows= driver.getWindowHandles();
         for(String aWindow:allWindows)
         {

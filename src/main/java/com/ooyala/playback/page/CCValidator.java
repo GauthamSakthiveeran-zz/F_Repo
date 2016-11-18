@@ -29,6 +29,7 @@ public class CCValidator extends BaseValidator {
 		 */
 		addElementToPageElements("cc");
         addElementToPageElements("play");
+        addElementToPageElements("controlBar");
 	}
 
     public void validate(String element,int timeout)throws Exception {
@@ -38,10 +39,10 @@ public class CCValidator extends BaseValidator {
             clickOnIndependentElement("moreOptionIcon");
             waitOnElement("ccBtn", 60);
         }
-            boolean ccbutton = isElementVisible("ccBtn");
+            boolean ccbutton = isElementPresent("ccBtn");
             Assert.assertEquals(ccbutton, true, "ClosedCaption button is not present on player");
             logger.info("Verified the presence of ClosedCaption button ");
-            if (isElementVisible("ccPanelClose")) {
+            if (isElementPresent("ccPanelClose")) {
                 clickOnIndependentElement("ccPanelClose");
                 clickOnIndependentElement("playButton");
             }
@@ -64,7 +65,7 @@ public class CCValidator extends BaseValidator {
         closedCaptionMicroPanel();
         logger.info("Verified  ClosedCaption button Micropanel ");
 
-        if (!(isElementVisible("closedCaptionPanel"))) {
+        if (!(isElementPresent("closedCaptionPanel"))) {
             clickOnIndependentElement("ccBtn");
         }
 
@@ -78,21 +79,21 @@ public class CCValidator extends BaseValidator {
 
         logger.info("Verified ClosedCaption ");
 
-        if (isElementVisible("playButton"))
+        if (isElementPresent("playButton"))
             clickOnIndependentElement("playButton");
         Thread.sleep(2000);
 
-        Assert.assertEquals(isElementVisible("ccmode_disabled"), true, "ClosedCaption is not disabled");
+        Assert.assertEquals(isElementPresent("ccmode_disabled"), true, "ClosedCaption is not disabled");
         Thread.sleep(2000);
 
-        Assert.assertEquals(isElementVisible("ccmode_showing"), true, "ClosedCaption is not showing");
+        Assert.assertEquals(isElementPresent("ccmode_showing"), true, "ClosedCaption is not showing");
     }
 
     protected void closedCaptionMicroPanel() throws Exception
     {
         try {
             waitOnElement("ccPopoverHorizontal", 10);
-            boolean horizontal_CC_Option = isElementVisible("ccPopoverHorizontal");
+            boolean horizontal_CC_Option = isElementPresent("ccPopoverHorizontal");
             System.out.println(horizontal_CC_Option);
             if (horizontal_CC_Option) {
                 waitOnElement("ccSwitchContainerHorizontal", 20);

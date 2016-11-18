@@ -34,10 +34,9 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
         SeekValidator seek = pageFactory.getSeekValidator();
         PlayAction playAction = pageFactory.getPlayAction();
         EventValidator eventValidator = pageFactory.getEventValidator();
-        VolumeValidator volumeValidator = pageFactory.getVolumeValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
-       FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
             EndScreenValidator endScreenValidator = pageFactory.getEndScreenValidator();
+            StartScreenValidator startScreenValidator = pageFactory.getStartScreenValidator();
 
         try {
             driver.get(url);
@@ -46,6 +45,8 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
             }
 
             play.waitForPage();
+
+            startScreenValidator.validate("",60);
 
             injectScript("http://10.11.66.55:8080/alice.js");
 
@@ -62,16 +63,14 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
             eventValidator.validate("played_1",60);
 
+        endScreenValidator.validate("",60);
 
-           /* TestUtilities.verifyEndScreen(webDriver);
+            eventValidator.eventAction("fullScreenBtn1");
 
-            seleniumActions.clickOnElement("fullScreenBtn1");
+          endScreenValidator.validate("fullscreenChangedtrue",50);
 
-            seleniumActions.waitForElement("fullscreenChangedtrue",50);
-
-            TestUtilities.verifyEndScreen(webDriver);
-            seleniumActions.clickOnElement("fullScreenBtn1");
-            TestUtilities.verifyEndScreen(webDriver);*/
+            endScreenValidator.validate("", 60);
+            eventValidator.eventAction("fullScreenBtn1");
 
             result = true;
         } catch (Exception e) {

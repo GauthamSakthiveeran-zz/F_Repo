@@ -237,7 +237,7 @@ function subscribeToEvents() {
 
 			if (event.match(/showAdSkipButton/) && showAdSkipButtonEventOrder < 2 ) {
                 OO.$("#ooplayer").append("<p id=showAdSkipButton_"+
-                showAdSkipButtonEventOrder+">showAdSkipButton "+showAdSkipButtonEventOrder+"</p>"); 
+                showAdSkipButtonEvevideoPlayed_1ntOrder+">showAdSkipButton "+showAdSkipButtonEventOrder+"</p>");
                 showAdSkipButtonEventOrder++;
             }
 
@@ -250,7 +250,12 @@ function subscribeToEvents() {
                 "> showNonlinearAd "+willShowNonlinearAdEventOrder+"</p>"); 
                 willShowNonlinearAdEventOrder++;
             }
-
+            if (event.match(/assetDimension/)) {
+                OO.$("#ooplayer").append("<p id=assetDimension_"+assetDimensionOrder+
+                "width="+arguments[1].width+
+                "height="+arguments[1].height+">assetDimension</p>");
+                assetDimensionOrder++;
+            }
 			if (event.match(/nonlinearAdPlayed/)) {
                 OO.$("#ooplayer").append("<p id=nonlinearAdPlayed_"+nonLinearAdPlayedEventOrder+
                 ">nonlinearAdPlayed "+nonLinearAdPlayedEventOrder+" </p>"); 

@@ -2,20 +2,23 @@ package com.ooyala.playback.alice;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayPauseAction;
+import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
-import org.apache.log4j.Logger;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-/**
- * Created by soundarya on 11/16/16.
- */
-public class PlaybackLocalizationTests extends PlaybackWebTest {
+import java.util.List;
 
-    public static Logger logger = Logger.getLogger(PlaybackLocalizationTests.class);
+import static java.lang.Thread.sleep;
+import static org.testng.Assert.assertEquals;
+
+/**
+ * Created by soundarya on 11/17/16.
+ */
+public class PlaybackBitrateTests extends PlaybackWebTest {
 
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
@@ -24,56 +27,50 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
                 nodeList);
     }
 
-    public PlaybackLocalizationTests() throws OoyalaException {
+    public PlaybackBitrateTests() throws OoyalaException {
         super();
     }
 
     @Test(groups = "alice", dataProvider = "testUrls")
-    public void testPlaybackLocalization(String testName, String url) throws OoyalaException {
+    public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
-        PlayPauseAction playPauseAction = pageFactory.getPlayPauseAction();
         EventValidator eventValidator = pageFactory.getEventValidator();
-        ShareTabValidator shareTabValidator = pageFactory.getShareTabValidator();
+        Bitratevalidator bitratevalidator = pageFactory.getBitratevalidator();
 
         try {
             driver.get(url);
-            if (!getPlatform().equalsIgnoreCase("android")) {
+            if (! driver.getCapabilities().getPlatform().toString().equalsIgnoreCase("android")) {
                 driver.manage().window().maximize();
             }
+
 
             play.waitForPage();
 
             injectScript("http://10.11.66.55:8080/alice.js");
 
             play.validate("playing_1", 60);
+            sleep(2000);
 
             pause.validate("paused_1", 60);
 
-            play.validate("playing_2", 60);
+            bitratevalidator.validate("",60);
 
-            shareTabValidator.validate("",60);
-
-            eventValidator.eventAction("fullScreenBtn");
-
-            shareTabValidator.validate("",60);
-
-            eventValidator.eventAction("normalScreen");
-
-            playPauseAction.startAction();
+            sleep(1000);
 
             seek.validate("seeked_1", 60);
 
-            eventValidator.validate("played_1",60);
+            eventValidator.validate("videoPlayed_1", 60);
 
-            result = true;
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        Assert.assertTrue(result, "Playback Localization tests failed");
-    }
-}
 
+        }
+        Assert.assertTrue(result, "Aspect ratio tests failed");
+
+    }
+
+}

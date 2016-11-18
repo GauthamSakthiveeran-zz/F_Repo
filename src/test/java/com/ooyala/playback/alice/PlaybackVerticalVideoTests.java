@@ -2,7 +2,6 @@ package com.ooyala.playback.alice;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -13,9 +12,9 @@ import org.testng.annotations.Test;
 import static java.lang.Thread.sleep;
 
 /**
- * Created by soundarya on 11/16/16.
+ * Created by soundarya on 11/17/16.
  */
-public class PlaybackAspectRatioTests extends PlaybackWebTest {
+public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
@@ -24,7 +23,7 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
                 nodeList);
     }
 
-    public PlaybackAspectRatioTests() throws OoyalaException {
+    public PlaybackVerticalVideoTests() throws OoyalaException {
         super();
     }
 
@@ -49,24 +48,22 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
             play.validate("playing_1", 60);
             sleep(2000);
 
-           aspectRatioValidator.validate("assetDimension_1",60);
+            aspectRatioValidator.verticalVideoValidate("assetDimension_1",60);
 
             pause.validate("paused_1", 60);
 
             playAction.startAction();
-            //add fullscreen functionality
 
             seek.validate("seeked_1", 60);
 
-            aspectRatioValidator.validate("assetDimension_1",60);
+            aspectRatioValidator.verticalVideoValidate("assetDimension_1",60);
 
             eventValidator.validate("videoPlayed_1", 60);
-    } catch (Exception e) {
-        e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Assert.assertTrue(result, "Vertical Video tests failed");
 
     }
-    Assert.assertTrue(result, "Aspect ratio tests failed");
-
-}
 
 }

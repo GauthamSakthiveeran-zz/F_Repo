@@ -9,8 +9,6 @@
              class="innerWrapper" />
 	<element key="errorScreen" findBy="class"
              class="oo-error-screen" />
-    <element key="playing" findBy="id"
-             id="playing_1" />
     <element key="spinner" findBy="class"
              class="oo-spinner" />
 </elements>

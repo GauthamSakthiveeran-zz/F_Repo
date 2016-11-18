@@ -24,7 +24,7 @@ public class LiveAction extends PlayBackPage implements PlayerAction {
 
     @Override
     public void startAction() {
-        boolean live = isElementVisible("live");
+        boolean live = isElementPresent("live");
         assertEquals(live, false, "Live text is not showing on the video or video is not live");
     }
 }

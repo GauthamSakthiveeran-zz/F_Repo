@@ -66,8 +66,6 @@ public class PlaybackHLSLiveTests extends PlaybackWebTest {
 
                 liveAction.startAction();
 
-             //   assertEquals(seek.validate("seeked_1", 60), false, "We are able to seek live asset");
-
                 eventValidator.validate("played_1", 60);
                 result = true;
             } catch (Exception e) {

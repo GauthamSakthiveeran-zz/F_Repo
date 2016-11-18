@@ -1,0 +1,27 @@
+<elements area="controlbar">
+    <element key="playhead" findBy="class"
+             class="oo-playhead" />
+    <element key="playPause" findBy="class"
+             class="oo-play-pause" />
+    <element key="volumeBtn" findBy="class"
+             class="oo-volume" />
+    <element key="fullScreenBtn" findBy="class"
+             class="oo-icon-system-fullscreen" />
+    <element key="shareBtn" findBy="class"
+             class="oo-icon-share" />
+    <element key="discoveryBtn" findBy="class"
+             class="oo-icon-discovery-binoculars" />
+    <element key="timeDuration" findBy="class"
+             class="oo-time-duration" />
+    <element key="moreOptionItem" findBy="class"
+             class="oo-more-options-items" />
+    <element key="qualityBtn" findBy="class"
+             class="oo-icon-topmenu-quality" />
+    <element key="ccPanelClose" findBy="class"
+             class="oo-close-button" />
+   <element key="ooyalaLogo" findBy="class"
+             class="oo-logo" />
+    <element key="video" findBy="class"
+             class="video" />
+
+</elements>

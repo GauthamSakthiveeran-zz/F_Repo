@@ -9,4 +9,10 @@
              class="oo-left-button" />
     <element key="imageStyle" findBy="class"
              class="oo-image-style" />
+    <element key="discoveryStyle" findBy="class"
+             class="oo-discovery-toaster-container-style" />
+    <element key="contentScreen" findBy="class"
+             class="oo-content-screen" />
+    <element key="discoveryCloseBtn" findBy="class"
+             class="oo-close-button" />
 </elements>

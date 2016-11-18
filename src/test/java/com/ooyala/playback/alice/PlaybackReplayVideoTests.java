@@ -10,12 +10,10 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static java.lang.Thread.sleep;
-
 /**
- * Created by soundarya on 11/16/16.
+ * Created by soundarya on 11/17/16.
  */
-public class PlaybackAspectRatioTests extends PlaybackWebTest {
+public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
@@ -24,7 +22,7 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
                 nodeList);
     }
 
-    public PlaybackAspectRatioTests() throws OoyalaException {
+    public PlaybackReplayVideoTests() throws OoyalaException {
         super();
     }
 
@@ -33,40 +31,31 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
-        PlayAction playAction = pageFactory.getPlayAction();
         EventValidator eventValidator = pageFactory.getEventValidator();
-        AspectRatioValidator aspectRatioValidator = pageFactory.getAspectRatioValidator();
+        ReplayValidator replayValidator = pageFactory.getReplayValidator();
 
         try {
             driver.get(url);
 
             play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript("http://10.11.66.55:8080/alice_full.js");
 
             play.validate("playing_1", 60);
-            sleep(2000);
 
-           aspectRatioValidator.validate("assetDimension_1",60);
-
-            pause.validate("paused_1", 60);
-
-            playAction.startAction();
-            //add fullscreen functionality
+            Thread.sleep(2000);
 
             seek.validate("seeked_1", 60);
 
-            aspectRatioValidator.validate("assetDimension_1",60);
+            eventValidator.validate("played_1",200);
 
-            eventValidator.validate("videoPlayed_1", 60);
-    } catch (Exception e) {
-        e.printStackTrace();
+            replayValidator.validate("replay_1",60);
 
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Assert.assertTrue(result, "Alice basic playback tests failed");
     }
-    Assert.assertTrue(result, "Aspect ratio tests failed");
-
-}
-
 }

@@ -19,7 +19,6 @@ public class PlayAction extends PlayBackPage implements PlayerAction {
 	@Override
 	public void startAction() {
         clickOnIndependentElement("playButton");
-
 	}
 
 }
