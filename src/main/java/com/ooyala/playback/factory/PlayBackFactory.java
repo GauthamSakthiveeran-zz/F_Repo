@@ -29,6 +29,10 @@ public class PlayBackFactory {
     private ControlBarValidator controlBarValidator;
    private StartScreenValidator startScreenValidator;
     private EndScreenValidator endScreenValidator;
+    private ReplayValidator replayValidator;
+    private ClickDiscoveryButtonAction clickDiscoveryButtonAction;
+    private Bitratevalidator bitratevalidator;
+
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
@@ -124,11 +128,30 @@ public class PlayBackFactory {
             startScreenValidator = new StartScreenValidator(driver);
         return startScreenValidator;
     }
+
+    public ClickDiscoveryButtonAction getClickDiscoveryButtonAction() {
+        if (clickDiscoveryButtonAction == null)
+            clickDiscoveryButtonAction = new ClickDiscoveryButtonAction(driver);
+        return clickDiscoveryButtonAction;
+    }
     public EndScreenValidator getEndScreenValidator() {
         if (endScreenValidator == null)
             endScreenValidator = new EndScreenValidator(driver);
         return endScreenValidator;
     }
+
+    public ReplayValidator getReplayValidator() {
+        if (replayValidator == null)
+            replayValidator = new ReplayValidator(driver);
+        return replayValidator;
+    }
+
+    public Bitratevalidator getBitratevalidator() {
+        if (bitratevalidator == null)
+            bitratevalidator = new Bitratevalidator(driver);
+        return bitratevalidator;
+    }
+
     public PlayPauseAction getPlayPauseAction() {
         if (playPauseAction == null)
             playPauseAction = new PlayPauseAction(driver);
