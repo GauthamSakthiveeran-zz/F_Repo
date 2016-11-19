@@ -28,7 +28,7 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "PlayerSkin", dataProvider = "testUrls")
     public void testWatermarks(String testName, String url) throws OoyalaException {
 
         boolean result = false;
@@ -48,7 +48,7 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 
             play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
             playAction.startAction();
 
@@ -82,6 +82,6 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Assert.assertTrue(result, "Alice basic playback tests failed");
+        Assert.assertTrue(result, "Playback Watermark tests failed");
     }
 }

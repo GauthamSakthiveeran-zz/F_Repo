@@ -28,7 +28,7 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "Player", dataProvider = "testUrls")
     public void testPlaybackFullscreen(String testName, String url) throws OoyalaException {
 
         boolean result = false;
@@ -46,15 +46,13 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 
             play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
             play.validate("playing_1", 60);
 
             logger.info("video is playing");
 
             fullScreenValidator.validate("",60);
-
-            playAction.startAction();
 
             seek.validate("seeked_1", 60);
 

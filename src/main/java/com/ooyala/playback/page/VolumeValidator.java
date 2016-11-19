@@ -34,9 +34,8 @@ public class VolumeValidator  extends BaseValidator {
         try {
 
             if(!(isElementPresent("CONTROL_BAR"))) {
-
                 Actions action = new Actions(driver);
-                action .moveToElement(getWebElement("controlBar")).build().perform();
+                action .moveToElement(getWebElement("CONTROL_BAR")).build().perform();
             }
             double  getmutevol = getVolume("VOLUME_MAX");
             Assert.assertEquals(getmutevol, expectedmutevol, "Mute volume is't matching");

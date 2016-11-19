@@ -29,7 +29,7 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "Discovery", dataProvider = "testUrls")
     public void testDiscovery(String testName, String url) throws OoyalaException {
 
         boolean result = false;
@@ -45,7 +45,7 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
 
                 play.waitForPage();
 
-                injectScript("http://10.11.66.55:8080/alice.js");
+                injectScript(jsURL());
 
                 play.validate("playing_1", 60);
 
@@ -67,6 +67,6 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Assert.assertTrue(result, "Alice basic playback tests failed");
+            Assert.assertTrue(result, "Playback Discovery tests failed");
         }
 }

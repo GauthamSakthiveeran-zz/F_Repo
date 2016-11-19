@@ -23,15 +23,13 @@ public class AliceBasicPlaybackTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "alice", dataProvider = "testUrls")
+	@Test(groups = "SyndicationRules", dataProvider = "testUrls")
 	public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
 
 		boolean result = false;
 		PlayValidator play = pageFactory.getPlayValidator();
 		PauseValidator pause = pageFactory.getPauseValidator();
 		SeekValidator seek = pageFactory.getSeekValidator();
-		PlayAction playAction = pageFactory.getPlayAction();
-		PauseAction pauseAction = pageFactory.getPauseAction();
         EventValidator eventValidator = pageFactory.getEventValidator();
         FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
 
@@ -44,7 +42,7 @@ public class AliceBasicPlaybackTests extends PlaybackWebTest {
 			play.waitForPage();
             Thread.sleep(10000);
 
-			injectScript("http://10.11.66.55:8080/alice_full.js");
+			injectScript(jsURL());
 
 			play.validate("playing_1", 60);
 
@@ -58,7 +56,7 @@ public class AliceBasicPlaybackTests extends PlaybackWebTest {
 
 			play.validate("playing_2", 60);
 
-           // fullScreenValidator.validate("",60);
+            fullScreenValidator.validate("",60);
 
 			seek.validate("seeked_1", 60);
 

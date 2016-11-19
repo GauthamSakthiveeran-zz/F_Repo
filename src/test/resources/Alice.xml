@@ -140,7 +140,7 @@
         <adPlugins name=""/>
         <additionalPlugins name=""/>
         <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        <playerParameter><![CDATA[{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}]]></playerParameter>
     </test>
 
     <test name ="PlayerMetadataStatesTests">
@@ -156,6 +156,7 @@
 
     <test name ="PlaybackVerticalVideoTests">
         <description name="Playback_AspectRatio_16:9"/>
+        <url>
         <embed_code name="9od3M3MDE6-WRg_DRbpCzRyjtK-NTLMp"/>
         <pcode name="p5bGExOjp6PZ-dEUw_GRJqh2Qdaq" />
         <plugins name="MAIN,BITMOVIN"/>
@@ -163,6 +164,10 @@
         <additionalPlugins name=""/>
         <pbid name="26e2e3c1049c4e70ae08a242638b5c40"/>
         <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+
+        </url>
     </test>
 
     <test name ="PlayerStatePauseScreenTests">

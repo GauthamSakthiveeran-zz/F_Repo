@@ -31,7 +31,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "Discovery", dataProvider = "testUrls")
     public void testDiscoveryUpNext(String testName, String url) throws OoyalaException
     {
         boolean result = false;
@@ -53,7 +53,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
             play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
             play.validate("playing_1", 60);
 
@@ -129,6 +129,6 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Assert.assertTrue(result, "Discovery up next tests failed");
+        Assert.assertTrue(result, "Discovery customization tests failed");
     }
 }

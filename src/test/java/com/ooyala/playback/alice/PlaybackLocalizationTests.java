@@ -28,7 +28,7 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "PlayerSkin", dataProvider = "testUrls")
     public void testPlaybackLocalization(String testName, String url) throws OoyalaException {
 
         boolean result = false;
@@ -47,7 +47,7 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 
             play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
             play.validate("playing_1", 60);
 

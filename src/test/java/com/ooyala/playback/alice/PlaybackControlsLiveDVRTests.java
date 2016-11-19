@@ -7,6 +7,7 @@ import com.ooyala.playback.page.action.LiveAction;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -26,14 +27,14 @@ public class PlaybackControlsLiveDVRTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "Player", dataProvider = "testUrls")
     public void testControlLiveDVR(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
         LiveAction live = pageFactory.getLiveAction();
-
+        if (getBrowser().equalsIgnoreCase("safari")) {
         try {
             driver.get(url);
             if (!getPlatform().equalsIgnoreCase("android")) {
@@ -42,7 +43,7 @@ public class PlaybackControlsLiveDVRTests extends PlaybackWebTest {
 
             play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
             play.validate("playing_1", 60);
 
@@ -62,6 +63,10 @@ public class PlaybackControlsLiveDVRTests extends PlaybackWebTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Assert.assertTrue(result, "Alice basic playback tests failed");
+        Assert.assertTrue(result, "PlabackControls Live DVR tests failed");
+    } else {
+
+        throw new SkipException("Test PlaybackLiveDVR Is Skipped");
+    }
     }
 }

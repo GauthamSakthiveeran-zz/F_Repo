@@ -3,7 +3,7 @@
              class="oo-icon-system-fullscreen" />
     <element key="NORMAL_SCREEN" findBy="class"
              class="oo-icon-system-minimizescreen" />
-    <element key="ooplayer" findBy="id"
+    <element key="OOPLAYER" findBy="id"
              id="ooplayer" />
     <element key="FULLSCREEN_BTN_1" findBy="class"
              class="oo-fullscreen" />

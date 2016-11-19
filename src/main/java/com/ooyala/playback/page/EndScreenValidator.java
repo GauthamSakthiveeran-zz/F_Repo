@@ -20,7 +20,7 @@ public class EndScreenValidator extends BaseValidator {
         /**
          * Here we will tell Facile to add the page elements of our Login Page
          */
-        addElementToPageElements("controlBar");
+        addElementToPageElements("controlbar");
         addElementToPageElements("replay");
     }
 

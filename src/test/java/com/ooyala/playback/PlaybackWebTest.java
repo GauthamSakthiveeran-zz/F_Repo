@@ -184,5 +184,19 @@ public abstract class PlaybackWebTest extends FacileTest {
 		String browser = cap.getBrowserName().toString();
 		return browser;
 	}
+    public static String readPropertyOrEnv(String key, String defaultValue) {
+        String v = System.getProperty(key);
+        if (v == null)
+            v = System.getenv(key);
+        if (v == null)
+            v = defaultValue;
+        return v;
+    }
+
+    public String jsURL(){
+        String jsHost = readPropertyOrEnv("jshostIpAddress","10.11.66.55");
+        String url = "http://"+jsHost+":8080/alice_full.js";
+        return url;
+    }
 
 }

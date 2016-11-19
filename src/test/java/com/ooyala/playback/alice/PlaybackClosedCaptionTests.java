@@ -28,7 +28,7 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "closedCaption", dataProvider = "testUrls")
     public void testClosedCaption(String testName, String url) throws OoyalaException {
 
         boolean result = false;
@@ -48,7 +48,7 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 
             play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
             play.validate("playing_1", 60);
 

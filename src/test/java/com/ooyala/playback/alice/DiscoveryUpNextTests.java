@@ -25,7 +25,7 @@ public class DiscoveryUpNextTests  extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "Discovery", dataProvider = "testUrls")
     public void testDiscoveryUpNext(String testName, String url) throws OoyalaException
     {
         boolean result = false;
@@ -43,7 +43,7 @@ public class DiscoveryUpNextTests  extends PlaybackWebTest {
 
             logger.info("Verified that video is seeked");
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
             play.validate("playing_1", 60);
 
@@ -53,12 +53,9 @@ public class DiscoveryUpNextTests  extends PlaybackWebTest {
 
             discoveryUpNext.validate("UPNEXT_CONTENT",60);
 
-            logger.info("Verified Unpnext content");
-
             eventValidator.validate("played_1", 60);
 
             logger.info("Verified that video is played");
-
 
             result = true;
         } catch (Exception e) {

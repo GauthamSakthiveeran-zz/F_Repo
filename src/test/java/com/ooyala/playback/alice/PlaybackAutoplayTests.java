@@ -48,7 +48,7 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 
                 play.waitForPage();
 
-                injectScript("http://10.11.66.55:8080/alice.js");
+                injectScript(jsURL());
 
                 autoplayAction.startAction();
                 try {
@@ -75,7 +75,7 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
                 e.printStackTrace();
 
             }
-            Assert.assertTrue(result, "Alice basic playback tests failed");
+            Assert.assertTrue(result, "Playback Autoplay tests failed");
         }
     }
 }

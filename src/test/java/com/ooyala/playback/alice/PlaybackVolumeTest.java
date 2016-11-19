@@ -30,7 +30,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "PlayerSkin", dataProvider = "testUrls")
     public void testVolume(String testName, String url) throws OoyalaException {
 
         boolean result = false;
@@ -48,7 +48,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
             play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
             playAction.startAction();
 
@@ -81,6 +81,6 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Assert.assertTrue(result, "Alice basic playback tests failed");
+        Assert.assertTrue(result, "Playback Volume tests failed");
     }
 }

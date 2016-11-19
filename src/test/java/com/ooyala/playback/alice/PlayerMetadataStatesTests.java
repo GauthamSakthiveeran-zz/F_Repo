@@ -26,7 +26,7 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
         super();
     }
 
-        @Test(groups = "alice", dataProvider = "testUrls")
+        @Test(groups = "Player", dataProvider = "testUrls")
         public void testPlayerMetadataStates(String testName, String url) throws OoyalaException {
 
         boolean result = false;
@@ -48,15 +48,15 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
             startScreenValidator.validate("",60);
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
-            playAction.startAction();
+           // playAction.startAction();
 
             play.validate("playing_1", 60);
             logger.info("video is playing");
             Thread.sleep(2000);
 
-            pause.validate("videoPause_1",60);
+            pause.validate("paused_1",60);
             logger.info("video is paused");
 
             play.validate("playing_2", 60);
@@ -82,7 +82,7 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Assert.assertTrue(result, "Alice basic playback tests failed");
+        Assert.assertTrue(result, "Playback MetadataStates tests failed");
     }
     }
 

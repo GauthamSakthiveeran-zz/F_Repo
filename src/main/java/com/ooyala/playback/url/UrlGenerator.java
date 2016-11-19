@@ -27,13 +27,13 @@ public class UrlGenerator {
 	public static String getURL(String embedcode, String pcode,String pbid,
 			String videoPlugin, String adPlugin, String additionalPlugin,
 			String playerConfigParameter) {
-		if (System.getProperty("environment").equals("PRODUCTION")){
+	/*	if (System.getProperty("environment").equals("PRODUCTION")){
 			playerProperties.put(PlayerPropertyKey.ENVIRONMENT,
 					PlayerPropertyValue.PRODUCTION);
-		}else{
+		}else{*/
 			playerProperties.put(PlayerPropertyKey.ENVIRONMENT,
 					PlayerPropertyValue.STAGING);
-		}
+		//}
 
 		test = new TestPage(playerProperties);
 		url = test.getURL(embedcode, pcode, pbid,videoPlugin, adPlugin,

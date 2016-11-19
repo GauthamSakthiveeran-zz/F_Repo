@@ -25,7 +25,7 @@ public class FullScreenValidator extends BaseValidator {
     }
 
     public void validate(String element, int timeout) throws Exception {
-        WebElement player = getWebElement("ooplayer");
+        WebElement player = getWebElement("OOPLAYER");
         Actions action = new Actions(driver);
         action.moveToElement(player).perform();
         waitOnElement("FULLSCREEN_BTN", 60);

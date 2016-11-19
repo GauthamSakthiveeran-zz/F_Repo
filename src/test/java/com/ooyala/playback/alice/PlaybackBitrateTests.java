@@ -31,7 +31,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "ABR", dataProvider = "testUrls")
     public void testBitrate(String testName, String url) throws OoyalaException {
 
 
@@ -51,7 +51,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
             play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
             play.validate("playing_1", 60);
             logger.info("Verifed that video is getting playing");
@@ -74,7 +74,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
             e.printStackTrace();
 
         }
-        Assert.assertTrue(result, "Aspect ratio tests failed");
+        Assert.assertTrue(result, "Playback bitrate/Quality tests failed");
 
     }
 

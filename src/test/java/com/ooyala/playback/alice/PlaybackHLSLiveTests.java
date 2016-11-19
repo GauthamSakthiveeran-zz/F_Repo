@@ -28,7 +28,7 @@ public class PlaybackHLSLiveTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "Playback", dataProvider = "testUrls")
     public void testHLSLive(String testName, String url) throws OoyalaException {
 
         boolean result = false;
@@ -49,7 +49,7 @@ public class PlaybackHLSLiveTests extends PlaybackWebTest {
 
                 play.waitForPage();
 
-                injectScript("http://10.11.66.55:8080/alice.js");
+                injectScript(jsURL());
 
                 play.validate("playing_1", 60);
 
@@ -83,10 +83,8 @@ public class PlaybackHLSLiveTests extends PlaybackWebTest {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Assert.assertTrue(result, "Alice basic playback tests failed");
-
+            Assert.assertTrue(result, "Playback HLSLive tests failed");
         } else {
-
             throw new SkipException("Test PlaybackHLSLive Is Skipped");
         }
     }

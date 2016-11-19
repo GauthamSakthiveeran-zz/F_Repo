@@ -27,7 +27,7 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "AspectRatio", dataProvider = "testUrls")
     public void testVerticalVideo(String testName, String url) throws OoyalaException {
 
         boolean result = false;
@@ -43,7 +43,7 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
             play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
             play.validate("playing_1", 60);
 
@@ -70,6 +70,8 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
             eventValidator.validate("videoPlayed_1", 60);
 
             logger.info("video played");
+
+            result = true;
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -49,7 +49,6 @@ public class DiscoveryValidator extends BaseValidator {
             logger.info("Discovery Toaster present");
         }
 
-        getWebElementsList("DISCOVERY_IMG_WRAPPER");
         List<WebElement> count = getWebElementsList("DISCOVERY_IMG_WRAPPER");
 
         out.println("Count Value :" + count.size());

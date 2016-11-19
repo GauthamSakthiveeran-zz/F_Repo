@@ -17,10 +17,12 @@ public class AspectRatioValidator extends BaseValidator {
     public AspectRatioValidator(WebDriver webDriver){
         super(webDriver);
         PageFactory.initElements(webDriver, this);
+        addElementToPageElements("aspectratio");
     }
 
     public void validate(String element,int timeout)throws Exception {
-        if (isElementPresent(element)) {
+        if (isElementPresent(By.id(element))) {
+            //dynamic element - long time for iselementPresent
             int width = Integer.parseInt(getWebElement(element).getAttribute("width"));
             int height = Integer.parseInt(getWebElement(element).getAttribute("height"));
             int diff = width / 4;
@@ -33,7 +35,7 @@ public class AspectRatioValidator extends BaseValidator {
     }
 
     public void verticalVideoValidate(String element,int timeout)throws Exception {
-        if (isElementPresent(element)) {
+        if (isElementPresent(By.id(element))) {
             int width = Integer.parseInt(getWebElement(element).getAttribute("width"));
             int height = Integer.parseInt(getWebElement(element).getAttribute("height"));
             Assert.assertEquals(width, 320,"Width Matches");
