@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.factory.PlayBackFactory;
 
-public class OverlayValidator extends BaseValidator {
+public class OverlayValidator extends PlayBackPage implements PlaybackValidator {
 
 	public OverlayValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -16,7 +16,6 @@ public class OverlayValidator extends BaseValidator {
 		addElementToPageElements("fullscreen");
 	}
 
-	@Override
 	public void validate(String element, int timeout) throws Exception {
 		try {
             waitOnElement("overlayCloseBtn", 40);

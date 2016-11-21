@@ -5,7 +5,7 @@ import static java.lang.System.out;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class AdSkipButtonValidator extends BaseValidator {
+public class AdSkipButtonValidator extends PlayBackPage implements PlaybackValidator {
 
 	public AdSkipButtonValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -13,7 +13,6 @@ public class AdSkipButtonValidator extends BaseValidator {
 		addElementToPageElements("adclicks");
 	}
 
-	@Override
 	public void validate(String element, int timeout) throws Exception {
 		waitOnElement("showAdSkipButton_1", 60);
 		try {

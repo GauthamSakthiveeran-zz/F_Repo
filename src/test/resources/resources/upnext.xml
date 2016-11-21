@@ -1,8 +1,8 @@
 <elements area="upnext">
-	<element key="upnextContent" findBy="class"
+	<element key="UPNEXT_CONTENT" findBy="class"
              class="oo-up-next-content" />
-	<element key="contentMetadata" findBy="class"
+	<element key="CONTENT_METADATA" findBy="class"
              class="oo-content-metadata" />
-	<element key="upNextCloseBtn" findBy="class"
+	<element key="UPNEXT_CLOSE_BTN" findBy="class"
              class="oo-up-next-close-btn" />
 </elements>

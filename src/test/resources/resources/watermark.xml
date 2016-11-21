@@ -1,13 +1,13 @@
 <elements area="watermark">
-    <element key="controlBarItem" findBy="class"
+    <element key="CONTROL_BAR_ITEM" findBy="class"
              class="oo-control-bar-item" />
-    <element key="watermarklogo" findBy="xPath"
+    <element key="WATERMARK_LOGO" findBy="xPath"
              xPath="xpath:.//*[@id='oo-responsive']//img" />
-    <element key="fullScreenBtn" findBy="class"
+    <element key="FULLSCREEN_BTN" findBy="class"
              class="oo-icon-system-fullscreen" />
-    <element key="normalScreen" findBy="class"
+    <element key="NORMAL_SCREEN" findBy="class"
              class="oo-icon-system-minimizescreen" />
-    <element key="ooyalaLogo" findBy="class"
+    <element key="OOYALA_LOGO" findBy="class"
              class="oo-logo" />
 
 </elements>

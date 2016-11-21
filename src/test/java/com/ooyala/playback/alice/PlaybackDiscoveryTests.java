@@ -30,7 +30,7 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
     }
 
     @Test(groups = "alice", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+    public void testDiscovery(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
@@ -49,7 +49,10 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
 
                 play.validate("playing_1", 60);
 
+                logger.info("verified video is playing");
+
                 discoveryValidator.validate("reportDiscoveryClick_1",60);
+                logger.info("verified discovery");
 
                 sleep(2000);
 
@@ -58,6 +61,7 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
                 sleep(2000);
 
                 eventValidator.validate("played_1", 60);
+                logger.info("video played");
 
                 result = true;
             } catch (Exception e) {

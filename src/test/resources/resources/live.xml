@@ -1,4 +1,4 @@
 <elements area="discovery">
-    <element key="live" findBy="class"
+    <element key="LIVE" findBy="class"
              class="live" />
 </elements>

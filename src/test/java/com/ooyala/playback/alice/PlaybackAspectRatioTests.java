@@ -29,7 +29,7 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
     }
 
     @Test(groups = "alice", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+    public void testAspectRation(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
@@ -47,20 +47,29 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
             injectScript("http://10.11.66.55:8080/alice.js");
 
             play.validate("playing_1", 60);
+
+            logger.info("Verified that video is playing");
             sleep(2000);
 
            aspectRatioValidator.validate("assetDimension_1",60);
 
             pause.validate("paused_1", 60);
 
+            logger.info("Verirfied that video is getting paused");
+
             playAction.startAction();
             //add fullscreen functionality
 
             seek.validate("seeked_1", 60);
 
+            logger.info("Verified that video is seeked");
+
             aspectRatioValidator.validate("assetDimension_1",60);
 
             eventValidator.validate("videoPlayed_1", 60);
+
+            logger.info("Verified that video is played");
+
     } catch (Exception e) {
         e.printStackTrace();
 

@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
-public class PlayPauseOnScreenValidator extends BaseValidator{
+public class PlayPauseOnScreenValidator extends PlayBackPage implements PlaybackValidator{
 
 	public PlayPauseOnScreenValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -17,7 +17,6 @@ public class PlayPauseOnScreenValidator extends BaseValidator{
 	    addElementToPageElements("play");
 	}
 
-	@Override
 	public void validate(String element, int timeout) throws Exception {
 		//Pause the video
         try {

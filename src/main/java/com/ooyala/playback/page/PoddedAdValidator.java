@@ -8,13 +8,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PoddedAdValidator extends BaseValidator{
+public class PoddedAdValidator extends PlayBackPage implements PlaybackValidator{
 
 	public PoddedAdValidator(WebDriver webDriver) {
 		super(webDriver);
 	}
 
-	@Override
 	public void validate(String element, int timeout) throws Exception {
 		try{
 			int result = parseInt((((JavascriptExecutor) driver).executeScript("return "+element+".textContent")).toString());

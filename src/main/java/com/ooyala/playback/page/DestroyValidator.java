@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class DestroyValidator extends BaseValidator{
+public class DestroyValidator extends PlayBackPage implements PlaybackValidator{
 
 	public DestroyValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -13,7 +13,6 @@ public class DestroyValidator extends BaseValidator{
 		addElementToPageElements("startscreen");
 	}
 
-	@Override
 	public void validate(String element, int timeout) throws Exception {
 		Thread.sleep(2000);
         ((JavascriptExecutor) driver).executeScript("pp.destroy()");

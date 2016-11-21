@@ -32,7 +32,8 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
     }
 
     @Test(groups = "alice", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+    public void testBitrate(String testName, String url) throws OoyalaException {
+
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
@@ -53,17 +54,21 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
             injectScript("http://10.11.66.55:8080/alice.js");
 
             play.validate("playing_1", 60);
+            logger.info("Verifed that video is getting playing");
             sleep(2000);
 
             pause.validate("paused_1", 60);
+            logger.info("Verified that video is getting pause");
 
             bitratevalidator.validate("",60);
 
             sleep(1000);
 
             seek.validate("seeked_1", 60);
+            logger.info("Verified that video is seeked");
 
             eventValidator.validate("videoPlayed_1", 60);
+            logger.info("Verified that video is played");
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -14,7 +14,7 @@ import org.openqa.selenium.support.PageFactory;
  * @author dmanohar
  *
  */
-public class EncodingValidator extends BaseValidator {
+public class EncodingValidator extends PlayBackPage implements PlaybackValidator {
 
 	public EncodingValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -27,7 +27,6 @@ public class EncodingValidator extends BaseValidator {
 		this.testUrl = testUrl;
 	}
 
-	@Override
 	public void validate(String element, int timeout) throws Exception {
 		String result = decode(testUrl, "UTF-8");
         String[] options = result.split("options=");

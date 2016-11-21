@@ -34,7 +34,7 @@ public class PlaybackHLSVodTests extends PlaybackWebTest {
     }
 
     @Test(groups = "alice", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+    public void testHLSVod(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         PlayValidator play = pageFactory.getPlayValidator();
@@ -58,20 +58,32 @@ public class PlaybackHLSVodTests extends PlaybackWebTest {
 
                 play.validate("playing_1", 60);
 
+                logger.info("video is playing");
+
                 pause.validate("paused_1", 60);
+
+                logger.info("video paused");
+
                 play.validate("playing_2", 60);
 
+                logger.info("video is playing again");
+
                 sleep(3000);
+
                fullScreenValidator.validate("",60);
 
                 ccValidator.validate("cclanguage",60);
+
+                logger.info("verified cc languages");
 
                 shareTabValidator.validate("",60);
 
                 seek.seek("pp.getDuration()/2");
 
                 eventValidator.validate("played_1",60);
-                
+
+                logger.info("video played");
+
                 result = true;
             } catch (Exception e) {
                 e.printStackTrace();

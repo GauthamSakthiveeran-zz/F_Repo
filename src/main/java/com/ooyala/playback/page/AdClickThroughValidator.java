@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.url.PlayerPropertyValue;
 
-public class AdClickThroughValidator extends BaseValidator {
+public class AdClickThroughValidator extends PlayBackPage implements PlaybackValidator {
 
 	public static Logger Log = Logger.getLogger(AdClickThroughValidator.class);
 	
@@ -21,7 +21,6 @@ public class AdClickThroughValidator extends BaseValidator {
 		addElementToPageElements("adclicks");
 	}
 
-	@Override
 	public void validate(String element, int timeout) throws Exception {
 		waitOnElement(element, timeout);
 	}

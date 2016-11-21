@@ -1,10 +1,10 @@
 <elements area="pause">
-	<element key="pauseButton" findBy="class"
+	<element key="PAUSE_BUTTON" findBy="class"
              class="oo-icon-pause-slick" />
-	<element key="pauseScreen" findBy="class"
+	<element key="PAUSE_SCREEN" findBy="class"
              class="oo-pause-screen" />
-	<element key="contentScreen" findBy="class"
+	<element key="CONTENT_SCREEN" findBy="class"
              class="oo-content-screen" />
-		<element key="hiddenControlBar" findBy="class"
+		<element key="HIDDEN_CONTROL_BAR" findBy="class"
                  class="oo-control-bar-hidden" />
 </elements>
