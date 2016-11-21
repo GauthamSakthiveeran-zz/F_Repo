@@ -1,88 +1,86 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.url.UrlGenerator;
-import com.ooyala.qe.common.exception.OoyalaException;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EndScreenValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.StartScreenValidator;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/16/16.
  */
 public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
-        @DataProvider(name = "testUrls")
-        public Object[][] getTestData() {
+	public PlayerMetadataStatesTests() throws OoyalaException {
+		super();
+	}
 
-        return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-                nodeList);
-    }
+	@Test(groups = "alice", dataProvider = "testUrls")
+	public void testPlayerMetadataStates(String testName, String url)
+			throws OoyalaException {
 
-        public PlayerMetadataStatesTests() throws OoyalaException {
-        super();
-    }
+		boolean result = false;
+		PlayValidator play = pageFactory.getPlayValidator();
+		SeekValidator seek = pageFactory.getSeekValidator();
+		PlayAction playAction = pageFactory.getPlayAction();
+		EventValidator eventValidator = pageFactory.getEventValidator();
+		PauseValidator pause = pageFactory.getPauseValidator();
+		EndScreenValidator endScreenValidator = pageFactory
+				.getEndScreenValidator();
+		StartScreenValidator startScreenValidator = pageFactory
+				.getStartScreenValidator();
 
-        @Test(groups = "alice", dataProvider = "testUrls")
-        public void testPlayerMetadataStates(String testName, String url) throws OoyalaException {
+		try {
+			driver.get(url);
+			if (!getPlatform().equalsIgnoreCase("android")) {
+				driver.manage().window().maximize();
+			}
 
-        boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        PlayAction playAction = pageFactory.getPlayAction();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-            EndScreenValidator endScreenValidator = pageFactory.getEndScreenValidator();
-            StartScreenValidator startScreenValidator = pageFactory.getStartScreenValidator();
+			play.waitForPage();
 
-        try {
-            driver.get(url);
-            if (!getPlatform().equalsIgnoreCase("android")) {
-                driver.manage().window().maximize();
-            }
+			startScreenValidator.validate("", 60);
 
-            play.waitForPage();
+			injectScript("http://10.11.66.55:8080/alice.js");
 
-            startScreenValidator.validate("",60);
+			playAction.startAction();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+			play.validate("playing_1", 60);
+			logger.info("video is playing");
+			Thread.sleep(2000);
 
-            playAction.startAction();
+			pause.validate("videoPause_1", 60);
+			logger.info("video is paused");
 
-            play.validate("playing_1", 60);
-            logger.info("video is playing");
-            Thread.sleep(2000);
+			play.validate("playing_2", 60);
+			logger.info("video is playing again");
 
-            pause.validate("videoPause_1",60);
-            logger.info("video is paused");
+			seek.validate("seeked_1", 60);
+			logger.info("video seeked");
 
-            play.validate("playing_2", 60);
-            logger.info("video is playing again");
+			eventValidator.validate("played_1", 60);
+			logger.info("video played");
 
-            seek.validate("seeked_1", 60);
-            logger.info("video seeked");
+			endScreenValidator.validate("", 60);
 
-            eventValidator.validate("played_1",60);
-            logger.info("video played");
+			eventValidator.eventAction("FULLSCREEN_BTN_1");
 
-            endScreenValidator.validate("",60);
+			endScreenValidator.validate("fullscreenChangedtrue", 50);
+			logger.info("checked fullscreen");
 
-            eventValidator.eventAction("FULLSCREEN_BTN_1");
+			endScreenValidator.validate("", 60);
+			eventValidator.eventAction("FULLSCREEN_BTN_1");
 
-            endScreenValidator.validate("fullscreenChangedtrue",50);
-            logger.info("checked fullscreen");
-
-            endScreenValidator.validate("", 60);
-            eventValidator.eventAction("FULLSCREEN_BTN_1");
-
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Assert.assertTrue(result, "Alice basic playback tests failed");
-    }
-    }
-
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Assert.assertTrue(result, "Alice basic playback tests failed");
+	}
+}

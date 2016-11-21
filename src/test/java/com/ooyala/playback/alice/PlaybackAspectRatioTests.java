@@ -1,81 +1,78 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PauseAction;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.url.UrlGenerator;
-import com.ooyala.qe.common.exception.OoyalaException;
+import static java.lang.Thread.sleep;
+
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static java.lang.Thread.sleep;
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.AspectRatioValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackAspectRatioTests extends PlaybackWebTest {
 
-    @DataProvider(name = "testUrls")
-    public Object[][] getTestData() {
+	public PlaybackAspectRatioTests() throws OoyalaException {
+		super();
+	}
 
-        return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-                nodeList);
-    }
+	@Test(groups = "alice", dataProvider = "testUrls")
+	public void testAspectRation(String testName, String url)
+			throws OoyalaException {
 
-    public PlaybackAspectRatioTests() throws OoyalaException {
-        super();
-    }
+		boolean result = false;
+		PlayValidator play = pageFactory.getPlayValidator();
+		PauseValidator pause = pageFactory.getPauseValidator();
+		SeekValidator seek = pageFactory.getSeekValidator();
+		PlayAction playAction = pageFactory.getPlayAction();
+		EventValidator eventValidator = pageFactory.getEventValidator();
+		AspectRatioValidator aspectRatioValidator = pageFactory
+				.getAspectRatioValidator();
 
-    @Test(groups = "alice", dataProvider = "testUrls")
-    public void testAspectRation(String testName, String url) throws OoyalaException {
+		try {
+			driver.get(url);
 
-        boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        PlayAction playAction = pageFactory.getPlayAction();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        AspectRatioValidator aspectRatioValidator = pageFactory.getAspectRatioValidator();
+			play.waitForPage();
 
-        try {
-            driver.get(url);
+			injectScript("http://10.11.66.55:8080/alice.js");
 
-            play.waitForPage();
+			play.validate("playing_1", 60);
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+			logger.info("Verified that video is playing");
+			sleep(2000);
 
-            play.validate("playing_1", 60);
+			aspectRatioValidator.validate("assetDimension_1", 60);
 
-            logger.info("Verified that video is playing");
-            sleep(2000);
+			pause.validate("paused_1", 60);
 
-           aspectRatioValidator.validate("assetDimension_1",60);
+			logger.info("Verirfied that video is getting paused");
 
-            pause.validate("paused_1", 60);
+			playAction.startAction();
+			// add fullscreen functionality
 
-            logger.info("Verirfied that video is getting paused");
+			seek.validate("seeked_1", 60);
 
-            playAction.startAction();
-            //add fullscreen functionality
+			logger.info("Verified that video is seeked");
 
-            seek.validate("seeked_1", 60);
+			aspectRatioValidator.validate("assetDimension_1", 60);
 
-            logger.info("Verified that video is seeked");
+			eventValidator.validate("videoPlayed_1", 60);
 
-            aspectRatioValidator.validate("assetDimension_1",60);
+			logger.info("Verified that video is played");
 
-            eventValidator.validate("videoPlayed_1", 60);
+		} catch (Exception e) {
+			e.printStackTrace();
 
-            logger.info("Verified that video is played");
+		}
+		Assert.assertTrue(result, "Aspect ratio tests failed");
 
-    } catch (Exception e) {
-        e.printStackTrace();
-
-    }
-    Assert.assertTrue(result, "Aspect ratio tests failed");
-
-}
+	}
 
 }

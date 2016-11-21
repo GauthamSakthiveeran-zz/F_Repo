@@ -1,93 +1,90 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.LiveAction;
-import com.ooyala.playback.url.UrlGenerator;
-import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.SkipException;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.ControlBarValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.FullScreenValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.action.LiveAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackHLSLiveTests extends PlaybackWebTest {
 
-    @DataProvider(name = "testUrls")
-    public Object[][] getTestData() {
+	public PlaybackHLSLiveTests() throws OoyalaException {
+		super();
+	}
 
-        return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-                nodeList);
-    }
+	@Test(groups = "alice", dataProvider = "testUrls")
+	public void testHLSLive(String testName, String url) throws OoyalaException {
 
-    public PlaybackHLSLiveTests() throws OoyalaException {
-        super();
-    }
+		boolean result = false;
+		PlayValidator play = pageFactory.getPlayValidator();
+		PauseValidator pause = pageFactory.getPauseValidator();
+		SeekValidator seek = pageFactory.getSeekValidator();
+		EventValidator eventValidator = pageFactory.getEventValidator();
+		ControlBarValidator controlBarValidator = pageFactory
+				.getControlBarValidator();
+		FullScreenValidator fullScreenValidator = pageFactory
+				.getFullScreenValidator();
+		LiveAction liveAction = pageFactory.getLiveAction();
 
-    @Test(groups = "alice", dataProvider = "testUrls")
-    public void testHLSLive(String testName, String url) throws OoyalaException {
+		if (getBrowser().equalsIgnoreCase("safari")) {
+			try {
+				driver.get(url);
+				if (!getPlatform().equalsIgnoreCase("android")) {
+					driver.manage().window().maximize();
+				}
 
-        boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        ControlBarValidator controlBarValidator = pageFactory.getControlBarValidator();
-        FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
-        LiveAction liveAction = pageFactory.getLiveAction();
+				play.waitForPage();
 
-        if (getBrowser().equalsIgnoreCase("safari")) {
-            try {
-                driver.get(url);
-                if (!getPlatform().equalsIgnoreCase("android")) {
-                    driver.manage().window().maximize();
-                }
+				injectScript("http://10.11.66.55:8080/alice.js");
 
-                play.waitForPage();
+				play.validate("playing_1", 60);
 
-                injectScript("http://10.11.66.55:8080/alice.js");
+				logger.info("video is playing");
 
-                play.validate("playing_1", 60);
+				pause.validate("paused_1", 60);
 
-                logger.info("video is playing");
+				logger.info("video paused");
 
-                pause.validate("paused_1", 60);
+				controlBarValidator.validate("", 60);
+				// to-do add ooyala logo to the test page
 
-                logger.info("video paused");
+				fullScreenValidator.validate("FULLSCREEN_BTN_1", 60);
 
-                controlBarValidator.validate("",60);
-                //to-do add ooyala logo to the test page
+				logger.info("playing video in full screen");
 
-                fullScreenValidator.validate("FULLSCREEN_BTN_1",60);
+				pause.validate("paused_2", 60);
 
-                logger.info("playing video in full screen");
+				logger.info("video paused in fullscreen");
 
-                pause.validate("paused_2", 60);
+				play.validate("playing_2", 60);
 
-                logger.info("video paused in fullscreen");
+				logger.info("video playing in fullscreen");
 
-                play.validate("playing_2", 60);
+				liveAction.startAction();
 
-                logger.info("video playing in fullscreen");
+				eventValidator.validate("played_1", 60);
 
-                liveAction.startAction();
+				logger.info("video played");
+				result = true;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			Assert.assertTrue(result, "Alice basic playback tests failed");
 
-                eventValidator.validate("played_1", 60);
+		} else {
 
-                logger.info("video played");
-                result = true;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            Assert.assertTrue(result, "Alice basic playback tests failed");
-
-        } else {
-
-            throw new SkipException("Test PlaybackHLSLive Is Skipped");
-        }
-    }
+			throw new SkipException("Test PlaybackHLSLive Is Skipped");
+		}
+	}
 }

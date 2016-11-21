@@ -1,6 +1,8 @@
 package com.ooyala.playback.url;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -51,28 +53,34 @@ public class UrlGenerator {
 	 * @return output : output contains two dimentional Object in which test
 	 *         name and url is returned
 	 */
-	public static Object[][] parseXmlDataProvider(String testName,
-			NodeList nodes) {
+	public static List<String> parseXmlDataProvider(String testName,
+			Testdata testData) {
 		logger.info("Getting test url and test name from property file");
-		Map<String, String> map = UrlGenerator.ReadDataFromXML(testName, nodes);
-		Object[][] output = new Object[1][2];
-		for (Map.Entry<String, String> entry : map.entrySet()) {
-			if (entry.getValue().equals(testName)) {
-				String embedCode = map.get("embedCode");
-				String pCode = map.get("pcode");
-				String videoPlugin = map.get("plugins");
-				String adPlugin = map.get("adPlugins");
-				String additionalPlugin = map.get("additionalPlugins");
-				String playerParameter = map.get("playerParameter");
-				output[0][0] = entry.getKey();
-				String pbid = map.get("pbid");
-				output[0][1] = UrlGenerator.getURL(embedCode, pCode, pbid,
-						videoPlugin, adPlugin, additionalPlugin,
-						playerParameter);
-				break;
+
+		List<String> urlsGenerated = new LinkedList<String>();
+		for (Test data : testData.getTest()) {
+			if (data.getName().equals(testName)) {
+				List<Url> urls = data.getUrl();
+				for (Url url : urls) {
+					String embedCode = url.getEmbedCode().getName();
+					// String embedCode = test.;
+					String pCode = url.getPcode().getName();
+					String videoPlugin = url.getPlugins().getName();
+					String adPlugin = url.getAdPlugins().getName();
+					String additionalPlugin = url.getAdditionalPlugins()
+							.getName();
+					String playerParameter = new String(url
+							.getPlayerParameter().getBytes());
+					String pbid = url.getPbid().getName();
+					String urlGenerated = UrlGenerator.getURL(embedCode, pCode,
+							pbid, videoPlugin, adPlugin, additionalPlugin,
+							playerParameter);
+					urlsGenerated.add(urlGenerated);
+
+				}
 			}
 		}
-		return output;
+		return urlsGenerated;
 	}
 
 	/**
@@ -128,7 +136,7 @@ public class UrlGenerator {
 						map.put("pbid", eElement.getElementsByTagName("pbid")
 								.item(0).getAttributes().getNamedItem("name")
 								.getNodeValue());
-						break;
+
 					}
 				}
 			}
