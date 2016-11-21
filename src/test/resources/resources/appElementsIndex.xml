@@ -20,4 +20,6 @@
     <entry key="startscreen">resources/startscreen.xml</entry>
     <entry key="volume">resources/volume.xml</entry>
     <entry key="watermark">resources/watermark.xml</entry>
+    <entry key="adclicks">resources/adclicks.xml</entry>
+    <entry key="adoverlay">resources/adoverlay.xml</entry>
 </properties>
