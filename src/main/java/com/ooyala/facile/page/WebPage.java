@@ -3210,6 +3210,10 @@ public abstract class WebPage {
 				logger.info("Trying to find web elements by text");
 				elementOfInterest = driver.findElements(By
 						.partialLinkText(aFacileWebElement.getElementText()));
+			} else if (aFacileWebElement.getFindBy().equalsIgnoreCase("class")) {
+				logger.info("Trying to find web elements by text");
+				elementOfInterest = driver.findElements(By
+						.className(aFacileWebElement.getElementClass()));
 			}
 
 		} catch (Exception ex) {
