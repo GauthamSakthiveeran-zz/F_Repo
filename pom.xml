@@ -20,6 +20,11 @@
 			<artifactId>facile</artifactId>
 			<version>2.3.3-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.relevantcodes</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>2.41.1</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

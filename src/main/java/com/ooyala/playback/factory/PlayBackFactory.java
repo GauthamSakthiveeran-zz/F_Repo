@@ -1,8 +1,34 @@
 package com.ooyala.playback.factory;
 
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
 import org.openqa.selenium.WebDriver;
+
+import com.ooyala.playback.page.AspectRatioValidator;
+import com.ooyala.playback.page.Bitratevalidator;
+import com.ooyala.playback.page.CCValidator;
+import com.ooyala.playback.page.ControlBarValidator;
+import com.ooyala.playback.page.DiscoveryValidator;
+import com.ooyala.playback.page.EndScreenValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.FullScreenValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayBackPage;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.ReplayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.ShareTabValidator;
+import com.ooyala.playback.page.StartScreenValidator;
+import com.ooyala.playback.page.UpNextValidator;
+import com.ooyala.playback.page.VolumeValidator;
+import com.ooyala.playback.page.WaterMarkValidator;
+import com.ooyala.playback.page.action.AutoplayAction;
+import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
+import com.ooyala.playback.page.action.LiveAction;
+import com.ooyala.playback.page.action.PauseAction;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.PlayPauseAction;
 
 public class PlayBackFactory {
 
@@ -18,21 +44,20 @@ public class PlayBackFactory {
 	private UpNextValidator upNextValidator;
 	private PauseAction pauseAction;
 	private PlayAction playAction;
-    private AutoplayAction autoplay;
-    private EventValidator eventValidator;
-    private AspectRatioValidator aspectRatioValidator;
-    private LiveAction liveAction;
-    private ShareTabValidator shareTabValidator;
-    private WaterMarkValidator waterMarkValidator;
-    private VolumeValidator volumeValidator;
-    private PlayPauseAction playPauseAction;
-    private ControlBarValidator controlBarValidator;
-   private StartScreenValidator startScreenValidator;
-    private EndScreenValidator endScreenValidator;
-    private ReplayValidator replayValidator;
-    private ClickDiscoveryButtonAction clickDiscoveryButtonAction;
-    private Bitratevalidator bitratevalidator;
-
+	private AutoplayAction autoplay;
+	private EventValidator eventValidator;
+	private AspectRatioValidator aspectRatioValidator;
+	private LiveAction liveAction;
+	private ShareTabValidator shareTabValidator;
+	private WaterMarkValidator waterMarkValidator;
+	private VolumeValidator volumeValidator;
+	private PlayPauseAction playPauseAction;
+	private ControlBarValidator controlBarValidator;
+	private StartScreenValidator startScreenValidator;
+	private EndScreenValidator endScreenValidator;
+	private ReplayValidator replayValidator;
+	private ClickDiscoveryButtonAction clickDiscoveryButtonAction;
+	private Bitratevalidator bitratevalidator;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
@@ -92,83 +117,89 @@ public class PlayBackFactory {
 		return discoveryValidator;
 	}
 
-    public EventValidator getEventValidator() {
-        if (eventValidator == null)
-            eventValidator = new EventValidator(driver);
-        return eventValidator;
-    }
-    public AspectRatioValidator getAspectRatioValidator() {
-        if (aspectRatioValidator == null)
-            aspectRatioValidator = new AspectRatioValidator(driver);
-        return aspectRatioValidator;
-    }
+	public EventValidator getEventValidator() {
+		if (eventValidator == null)
+			eventValidator = new EventValidator(driver);
+		return eventValidator;
+	}
 
-    public ShareTabValidator getShareTabValidator() {
-        if (shareTabValidator == null)
-            shareTabValidator = new ShareTabValidator(driver);
-        return shareTabValidator;
-    }
-    public VolumeValidator getVolumeValidator() {
-        if (volumeValidator == null)
-            volumeValidator = new VolumeValidator(driver);
-        return volumeValidator;
-    }
-    public WaterMarkValidator getWaterMarkValidator() {
-        if (waterMarkValidator == null)
-            waterMarkValidator = new WaterMarkValidator(driver);
-        return waterMarkValidator;
-    }
-    public ControlBarValidator getControlBarValidator() {
-        if (controlBarValidator == null)
-            controlBarValidator = new ControlBarValidator(driver);
-        return controlBarValidator;
-    }
-    public StartScreenValidator getStartScreenValidator() {
-        if (startScreenValidator == null)
-            startScreenValidator = new StartScreenValidator(driver);
-        return startScreenValidator;
-    }
+	public AspectRatioValidator getAspectRatioValidator() {
+		if (aspectRatioValidator == null)
+			aspectRatioValidator = new AspectRatioValidator(driver);
+		return aspectRatioValidator;
+	}
 
-    public ClickDiscoveryButtonAction getClickDiscoveryButtonAction() {
-        if (clickDiscoveryButtonAction == null)
-            clickDiscoveryButtonAction = new ClickDiscoveryButtonAction(driver);
-        return clickDiscoveryButtonAction;
-    }
-    public EndScreenValidator getEndScreenValidator() {
-        if (endScreenValidator == null)
-            endScreenValidator = new EndScreenValidator(driver);
-        return endScreenValidator;
-    }
+	public ShareTabValidator getShareTabValidator() {
+		if (shareTabValidator == null)
+			shareTabValidator = new ShareTabValidator(driver);
+		return shareTabValidator;
+	}
 
-    public ReplayValidator getReplayValidator() {
-        if (replayValidator == null)
-            replayValidator = new ReplayValidator(driver);
-        return replayValidator;
-    }
+	public VolumeValidator getVolumeValidator() {
+		if (volumeValidator == null)
+			volumeValidator = new VolumeValidator(driver);
+		return volumeValidator;
+	}
 
-    public Bitratevalidator getBitratevalidator() {
-        if (bitratevalidator == null)
-            bitratevalidator = new Bitratevalidator(driver);
-        return bitratevalidator;
-    }
+	public WaterMarkValidator getWaterMarkValidator() {
+		if (waterMarkValidator == null)
+			waterMarkValidator = new WaterMarkValidator(driver);
+		return waterMarkValidator;
+	}
 
-    public PlayPauseAction getPlayPauseAction() {
-        if (playPauseAction == null)
-            playPauseAction = new PlayPauseAction(driver);
-        return playPauseAction;
-    }
+	public ControlBarValidator getControlBarValidator() {
+		if (controlBarValidator == null)
+			controlBarValidator = new ControlBarValidator(driver);
+		return controlBarValidator;
+	}
 
-    public AutoplayAction getAutoplay() {
-        if (autoplay == null)
-            autoplay = new AutoplayAction(driver);
-        return autoplay;
-    }
+	public StartScreenValidator getStartScreenValidator() {
+		if (startScreenValidator == null)
+			startScreenValidator = new StartScreenValidator(driver);
+		return startScreenValidator;
+	}
 
-    public LiveAction getLiveAction() {
-        if (liveAction == null)
-            liveAction = new LiveAction(driver);
-        return liveAction;
-    }
+	public ClickDiscoveryButtonAction getClickDiscoveryButtonAction() {
+		if (clickDiscoveryButtonAction == null)
+			clickDiscoveryButtonAction = new ClickDiscoveryButtonAction(driver);
+		return clickDiscoveryButtonAction;
+	}
+
+	public EndScreenValidator getEndScreenValidator() {
+		if (endScreenValidator == null)
+			endScreenValidator = new EndScreenValidator(driver);
+		return endScreenValidator;
+	}
+
+	public ReplayValidator getReplayValidator() {
+		if (replayValidator == null)
+			replayValidator = new ReplayValidator(driver);
+		return replayValidator;
+	}
+
+	public Bitratevalidator getBitratevalidator() {
+		if (bitratevalidator == null)
+			bitratevalidator = new Bitratevalidator(driver);
+		return bitratevalidator;
+	}
+
+	public PlayPauseAction getPlayPauseAction() {
+		if (playPauseAction == null)
+			playPauseAction = new PlayPauseAction(driver);
+		return playPauseAction;
+	}
+
+	public AutoplayAction getAutoplay() {
+		if (autoplay == null)
+			autoplay = new AutoplayAction(driver);
+		return autoplay;
+	}
+
+	public LiveAction getLiveAction() {
+		if (liveAction == null)
+			liveAction = new LiveAction(driver);
+		return liveAction;
+	}
 
 	public static PlayBackFactory getInstance(WebDriver driver) {
 		if (playbackFactory == null || playbackFactory.getDriver() == null) {
@@ -183,5 +214,27 @@ public class PlayBackFactory {
 
 	public WebDriver getDriver() {
 		return driver;
+	}
+
+	public <T> T getObject(Class<T> validator) throws Exception {
+
+		Field[] fs = this.getClass().getDeclaredFields();
+		fs[0].setAccessible(true);
+		for (Field property : fs) {
+			System.out.println(property.getType());
+			System.out.println(validator);
+			if (property.getType().isAssignableFrom(validator)) {
+				System.out.println("Property name is:" + property.getName()
+						+ " and its value is "
+						+ property.get(this));
+				if (property.get(this) == null)
+					property.set(this, validator
+							.getConstructor(WebDriver.class)
+							.newInstance(driver));
+				return (T) property.get(this);
+			}
+
+		}
+		return null;
 	}
 }

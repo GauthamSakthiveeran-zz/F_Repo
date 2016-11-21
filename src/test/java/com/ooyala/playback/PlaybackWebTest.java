@@ -2,28 +2,40 @@ package com.ooyala.playback;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.*;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.w3c.dom.NodeList;
 
 import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.test.FacileTest;
 import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.PlayBackPage;
+import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.ooyala.qe.common.util.PropertyReader;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 @Listeners(IMethodListener.class)
 public abstract class PlaybackWebTest extends FacileTest {
@@ -34,6 +46,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected PropertyReader propertyReader;
 	protected PlayBackFactory pageFactory;
 	protected static NodeList nodeList;
+	protected ExtentReports extentReport;
+	protected ExtentTest extentTest;
+
 	private static String MAC_CHROME_DRIVER_PATH = "src/test/resources/lib-thirdparty/chromedriverformac/chromedriver";
 	private static String WIN_CHROME_DRIVER_PATH = "src/test/resources/lib-thirdparty/chromedriverforwin/chromedriver.exe";
 	private static String LINUX_CHROME_DRIVER_PATH = "src/test/resources/lib-thirdparty/chromedriverforlinux/chromedriver";
@@ -46,11 +61,57 @@ public abstract class PlaybackWebTest extends FacileTest {
 			throw new OoyalaException("could not read properties file");
 		}
 
+		extentReport = ExtentManager.getReporter();
 	}
 
-	// @BeforeMethod(alwaysRun = true)
+	@BeforeMethod(alwaysRun = true)
+	public void handleTestMethodName(Method method, Object[] testData) {
+		String testCaseName = getTestCaseName(method, testData);
+		extentTest = extentReport.startTest(testCaseName);
+		try {
+			Field[] fs = this.getClass().getDeclaredFields();
+			fs[0].setAccessible(true);
+			for (Field property : fs) {
+				System.out.println("Assiging the property for "
+						+ property.getType());
+				if (property.getType().getSuperclass()
+						.isAssignableFrom(PlayBackPage.class)) {
+					property.setAccessible(true);
+					property.set(this,
+							pageFactory.getObject(property.getType()));
+					Method[] allMethods = property.get(this).getClass()
+							.getMethods();
+					for (Method function : allMethods) {
+						System.out.println("Function name is "
+								+ function.getName());
+						if (function.getName()
+								.equalsIgnoreCase("setExtentTest"))
+							function.invoke(property.get(this), extentTest);
+					}
+				}
 
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
+	public String getTestCaseName(Method method, Object[] testData) {
+		String testCase = "";
+		if (testData != null && testData.length > 0) {
+			for (Object testParameter : testData) {
+				if (testParameter instanceof String) {
+					String testCaseParams = (String) testParameter;
+					testCase = testCaseParams;
+					break;
+				}
+			}
+			testCase = String.format("%s(%s)", method.getName(), testCase);
+		} else
+			testCase = method.getName();
+
+		return testCase;
+	}
 
 	@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
@@ -58,7 +119,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		logger.info("browser is " + browser);
 
 		String xmlFile = System.getProperty("xmlFile");
-		System.out.println("xml file : "+xmlFile);
+		System.out.println("xml file : " + xmlFile);
 		if (xmlFile == null || xmlFile.equals(""))
 			xmlFile = "Alice";
 		browser = System.getProperty("browser");
@@ -73,6 +134,27 @@ public abstract class PlaybackWebTest extends FacileTest {
 		pageFactory = PlayBackFactory.getInstance(driver);
 		parseXmlFileData(xmlFile);
 
+	}
+
+	@AfterMethod(alwaysRun = true)
+	protected void afterMethod(ITestResult result) {
+
+		takeScreenshot(result.getTestName());
+		if (result.getStatus() == ITestResult.FAILURE) {
+			extentTest.log(
+					LogStatus.INFO,
+					"Snapshot is "
+							+ extentTest.addScreenCapture("images/"
+									+ result.getTestName()));
+			extentTest.log(LogStatus.FAIL, result.getThrowable());
+		} else if (result.getStatus() == ITestResult.SKIP) {
+			extentTest.log(LogStatus.SKIP, result.getTestName()
+					+ " Test skipped " + result.getThrowable());
+		} else {
+			extentTest.log(LogStatus.PASS, result.getTestName()
+					+ " Test passed");
+		}
+		extentReport.endTest(extentTest);
 	}
 
 	public void startChromeService() throws IOException {
@@ -90,9 +172,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 		logger.info("Started chrome service");
 	}
 
-	// @AfterMethod(alwaysRun = true)
 	@AfterClass(alwaysRun = true)
 	public void tearDown() throws Exception {
+		extentReport.flush();
 		logger.info("************Inside tearDown*************");
 		if (driver != null) {
 			driver.quit();
@@ -139,6 +221,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 				+ "injectScript(scriptURL);", scriptURL);
 
 		object = js.executeScript("subscribeToEvents();");
+		extentTest.log(LogStatus.PASS, "Javascript injection is successful");
 	}
 
 	public long loadingSpinner() {
@@ -183,6 +266,22 @@ public abstract class PlaybackWebTest extends FacileTest {
 		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
 		String browser = cap.getBrowserName().toString();
 		return browser;
+	}
+
+	public String takeScreenshot(String fileName) {
+		File destDir = new File("images/");
+		if (!destDir.exists())
+			destDir.mkdir();
+
+		File scrFile = ((TakesScreenshot) driver)
+				.getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(scrFile, new File("images/" + fileName));
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.error("Not able to take the screenshot");
+		}
+		return "images/" + fileName;
 	}
 
 }
