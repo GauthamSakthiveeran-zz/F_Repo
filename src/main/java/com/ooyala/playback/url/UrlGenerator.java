@@ -24,13 +24,14 @@ public class UrlGenerator {
 	 *            playerConfigParameter
 	 * @return returns dynamically created link from above parameters
 	 */
-	public static String getURL(String embedcode, String pcode,String pbid,
+	public static String getURL(String embedcode, String pcode, String pbid,
 			String videoPlugin, String adPlugin, String additionalPlugin,
 			String playerConfigParameter) {
 
 		String environment = System.getProperty("environment");
 		logger.info("Environment is :: "+environment);
 		if ((environment==null || environment.equals(""))){
+
 			playerProperties.put(PlayerPropertyKey.ENVIRONMENT,
 					PlayerPropertyValue.STAGING);
 		}else
@@ -49,7 +50,7 @@ public class UrlGenerator {
 		}
 
 		test = new TestPage(playerProperties);
-		url = test.getURL(embedcode, pcode, pbid,videoPlugin, adPlugin,
+		url = test.getURL(embedcode, pcode, pbid, videoPlugin, adPlugin,
 				additionalPlugin, playerConfigParameter);
 		logger.info("URL : " + url);
 		return url;
@@ -79,7 +80,7 @@ public class UrlGenerator {
 				String playerParameter = map.get("playerParameter");
 				output[0][0] = entry.getKey();
 				String pbid = map.get("pbid");
-				output[0][1] = UrlGenerator.getURL(embedCode, pCode,pbid,
+				output[0][1] = UrlGenerator.getURL(embedCode, pCode, pbid,
 						videoPlugin, adPlugin, additionalPlugin,
 						playerParameter);
 				break;
@@ -99,7 +100,7 @@ public class UrlGenerator {
 	 *         creating url
 	 */
 	public static Map<String, String> ReadDataFromXML(String testName,
-													  NodeList nList) {
+			NodeList nList) {
 		Map<String, String> map = new HashMap<String, String>();
 		try {
 			for (int i = 0; i < nList.getLength(); i++) {
@@ -138,10 +139,9 @@ public class UrlGenerator {
 						map.put("playerParameter", eElement
 								.getElementsByTagName("playerParameter")
 								.item(0).getTextContent());
-						map.put("pbid",eElement
-								.getElementsByTagName("pbid")
-								.item(0).getAttributes()
-								.getNamedItem("name").getNodeValue());
+						map.put("pbid", eElement.getElementsByTagName("pbid")
+								.item(0).getAttributes().getNamedItem("name")
+								.getNodeValue());
 						break;
 					}
 				}
@@ -152,5 +152,3 @@ public class UrlGenerator {
 		return map;
 	}
 }
-
-

@@ -8,43 +8,43 @@ import java.util.Map;
  */
 public class TestPage {
 
-    TestPageData testpagedata = null;
-    String pluginType = null;
-    PlayerPropertyValue environmentType = null;
-    String vplugin = "";
+	TestPageData testpagedata = null;
+	String pluginType = null;
+	PlayerPropertyValue environmentType = null;
+	String vplugin = "";
 
-    /**
-     * Stream Type - MP4/HDS/HLS/DASH/WEBM Environment Type - Staging/Production
-     *
-     * @param playerProperties
-     */
+	/**
+	 * Stream Type - MP4/HDS/HLS/DASH/WEBM Environment Type - Staging/Production
+	 *
+	 * @param playerProperties
+	 */
 
-    public TestPage(Map<PlayerPropertyKey, PlayerPropertyValue> playerProperties) {
-        testpagedata = new TestPageData();
-        environmentType = playerProperties.get(PlayerPropertyKey.ENVIRONMENT);
-    }
+	public TestPage(Map<PlayerPropertyKey, PlayerPropertyValue> playerProperties) {
+		testpagedata = new TestPageData();
+		environmentType = playerProperties.get(PlayerPropertyKey.ENVIRONMENT);
+	}
 
+	/**
+	 * @param embedCode
+	 *            ,pCode,plugins,adPlugin,additionalPlugin,playerParameter
+	 * @return returns the url based on different input parameter mentioned
+	 *         above in @Param
+	 */
+	public String getURL(String embedCode, String pCode, String pbid,
+			String plugins, String adPlugin, String additionalPlugin,
+			String playerParameter) {
+		boolean result = false;
+		String url = "";
+		try {
+			testpagedata.initializeData(environmentType);
 
-    /**
-     * @param embedCode
-     *            ,pCode,plugins,adPlugin,additionalPlugin,playerParameter
-     * @return returns the url based on different input parameter mentioned
-     *         above in @Param
-     */
-    public String getURL(String embedCode, String pCode, String pbid,String plugins,
-                         String adPlugin, String additionalPlugin, String playerParameter) {
-        boolean result = false;
-        String url = "";
-        try {
-            testpagedata.initializeData(environmentType);
+			if (plugins.contains(",")) {
+				String str[] = plugins.split(",");
+				for (int i = 0; i < str.length; i++) {
+					vplugin = vplugin + testpagedata.getPluginForStream(str[i])
+							+ "\n";
 
-            if (plugins.contains(",")) {
-                String str[] = plugins.split(",");
-                for (int i = 0; i < str.length; i++) {
-                    vplugin = vplugin + testpagedata.getPluginForStream(str[i])
-                            + "\n";
-
-                }
+				}
 
 				url = testpagedata.baseURL
 						+ "?ec="
@@ -102,12 +102,12 @@ public class TestPage {
 						+ "&options="
 						+ URLEncoder.encode(playerParameter, "UTF8");
 
-            }
+			}
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return url;
-    }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return url;
+	}
 
 }

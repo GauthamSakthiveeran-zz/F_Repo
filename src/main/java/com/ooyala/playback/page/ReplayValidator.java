@@ -8,26 +8,25 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by soundarya on 11/17/16.
  */
-public class ReplayValidator extends BaseValidator {
+public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 
-    public static Logger Log = Logger.getLogger(ReplayValidator.class);
+	public static Logger Log = Logger.getLogger(ReplayValidator.class);
 
+	public ReplayValidator(WebDriver webDriver) {
+		super(webDriver);
+		PageFactory.initElements(webDriver, this);
+		/**
+		 * Here we will tell Facile to add the page elements of our Login Page
+		 */
+		addElementToPageElements("replay");
+	}
 
-    public ReplayValidator(WebDriver webDriver){
-        super(webDriver);
-        PageFactory.initElements(webDriver, this);
-        /**
-         * Here we will tell Facile to add the page elements of our Login Page
-         */
-        addElementToPageElements("replay");
-    }
+	public void validate(String element, int timeout) throws Exception {
 
-    public void validate(String element,int timeout)throws Exception {
+		waitOnElement("END_SCREEN", 60);
+		waitOnElement("REPLAY", 60);
+		clickOnIndependentElement("REPLAY");
 
-       waitOnElement("END_SCREEN", 60);
-       waitOnElement("REPLAY", 60);
-       clickOnIndependentElement("REPLAY");
-
-        waitOnElement(By.id(element), timeout);
-    }
+		waitOnElement(By.id(element), timeout);
+	}
 }

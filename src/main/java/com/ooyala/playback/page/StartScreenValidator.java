@@ -9,50 +9,59 @@ import org.testng.Assert;
 /**
  * Created by soundarya on 11/16/16.
  */
-public class StartScreenValidator extends BaseValidator {
-    public static Logger Log = Logger.getLogger(StartScreenValidator.class);
+public class StartScreenValidator extends PlayBackPage implements
+		PlaybackValidator {
+	public static Logger Log = Logger.getLogger(StartScreenValidator.class);
 
-    public StartScreenValidator(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-        addElementToPageElements("startscreen");
-    }
-    @Override
-    public void validate(String element,int timeout)throws Exception {
+	public StartScreenValidator(WebDriver driver) {
+		super(driver);
+		PageFactory.initElements(driver, this);
+		addElementToPageElements("startscreen");
+	}
 
-        waitOnElement("STATE_SCREEN_POSTER",60);
+	@Override
+	public void validate(String element, int timeout) throws Exception {
 
-        //get the style attribute of class startScreenPoster which contailns preview image url so that we compare it.
-        String value=getWebElement("STATE_SCREEN_POSTER").getAttribute("style");
+		waitOnElement("STATE_SCREEN_POSTER", 60);
 
-        String url=value.replaceAll(".*\\(|\\).*", "");
-        url =url.replaceAll("^\"|\"$", "");
-        Assert.assertEquals(url, "http://ak.c.ooyala.com/piMXdiczqydplt6ojmhNzdfAERdgVvaj/3Gduepif0T1UGY8H4xMDoxOjBiO1q_Vi", "Preview Image is not matching");
+		// get the style attribute of class startScreenPoster which contailns
+		// preview image url so that we compare it.
+		String value = getWebElement("STATE_SCREEN_POSTER").getAttribute(
+				"style");
 
-        //get title of video
-        try {
+		String url = value.replaceAll(".*\\(|\\).*", "");
+		url = url.replaceAll("^\"|\"$", "");
+		Assert.assertEquals(
+				url,
+				"http://ak.c.ooyala.com/piMXdiczqydplt6ojmhNzdfAERdgVvaj/3Gduepif0T1UGY8H4xMDoxOjBiO1q_Vi",
+				"Preview Image is not matching");
 
-            String startScreenTitle = getWebElement("STATE_SCREEN_TITLE").getText();
+		// get title of video
+		try {
 
-            //get Discription of video
-            String description = getWebElement("STATE_SCREEN_DEC").getText();
+			String startScreenTitle = getWebElement("STATE_SCREEN_TITLE")
+					.getText();
 
+			// get Discription of video
+			String description = getWebElement("STATE_SCREEN_DEC").getText();
 
-            String title = ((JavascriptExecutor) driver).executeScript("var title=pp.getTitle();" +
-                            "{return title;}").toString();
+			String title = ((JavascriptExecutor) driver).executeScript(
+					"var title=pp.getTitle();" + "{return title;}").toString();
 
-            System.out.println("title1:"+title);
-            String desc = ((JavascriptExecutor) driver).executeScript("var description=pp.getDescription();" +
-                    "{return description;}").toString();
+			System.out.println("title1:" + title);
+			String desc = ((JavascriptExecutor) driver).executeScript(
+					"var description=pp.getDescription();"
+							+ "{return description;}").toString();
 
-            System.out.println("Description:"+desc);
+			System.out.println("Description:" + desc);
 
-            Assert.assertTrue(startScreenTitle.equalsIgnoreCase(title),"Title is not matching on start screen");
-            Assert.assertTrue(description.equalsIgnoreCase(desc),"Description is not matching on Start Screen");
-        }catch(Exception e)
-        {
-            System.out.println("Title or description is failing");
-        }
+			Assert.assertTrue(startScreenTitle.equalsIgnoreCase(title),
+					"Title is not matching on start screen");
+			Assert.assertTrue(description.equalsIgnoreCase(desc),
+					"Description is not matching on Start Screen");
+		} catch (Exception e) {
+			System.out.println("Title or description is failing");
+		}
 
-    }
+	}
 }
