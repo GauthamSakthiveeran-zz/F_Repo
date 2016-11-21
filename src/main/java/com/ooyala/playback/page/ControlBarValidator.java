@@ -37,8 +37,7 @@ public class ControlBarValidator extends PlayBackPage implements
 		boolean iscontrolshown = isElementPresent("CONTROL_BAR");
 
 		if (!iscontrolshown) {
-			System.out
-					.println("Control bar is hiden hence mouse hovering on it");
+			logger.info("Control bar is hiden hence mouse hovering on it");
 			Actions act = new Actions(driver);
 
 			act.moveToElement(getWebElement("CONTROL_BAR")).build().perform();

@@ -48,7 +48,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			}
 
 		} catch (Exception e) {
-			System.out.println("closedCaption button is not  present\n");
+			logger.error("closedCaption button is not  present\n");
 		}
 		checkClosedCaptionLanguages();
 		logger.info("Verified the ClosedCaption button languages");
@@ -96,7 +96,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		try {
 			waitOnElement("CC_POPHOVER_HORIZONTAL", 10);
 			boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
-			System.out.println(horizontal_CC_Option);
+			logger.info(horizontal_CC_Option);
 			if (horizontal_CC_Option) {
 				waitOnElement("CC_SWITCH_CONTAINER_HORIZONTAL", 20);
 				waitOnElement("CC_MORE_CAPTIONS", 10);
@@ -105,7 +105,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 				logger.info("Verified presence of closedCaptionMicroPanel ");
 			}
 		} catch (Exception e) {
-			System.out.println("Horizontal cc option is not present");
+			logger.error("Horizontal cc option is not present");
 		}
 
 	}
@@ -114,7 +114,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		ArrayList<String> langlist = ((ArrayList<String>) (((JavascriptExecutor) driver)
 				.executeScript("var attrb = pp.getCurrentItemClosedCaptionsLanguages().languages;"
 						+ "{return attrb;}")));
-		System.out.println("Closed Caption Available Languages: " + langlist);
+		logger.info("Closed Caption Available Languages: " + langlist);
 		for (int i = 0; i < langlist.size(); i++) {
 			((JavascriptExecutor) driver)
 					.executeScript("pp.setClosedCaptionsLanguage(\""

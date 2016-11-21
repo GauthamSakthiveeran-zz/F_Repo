@@ -1,6 +1,6 @@
 package com.ooyala.playback.page;
 
-import static java.lang.System.out;
+
 import static java.lang.Thread.sleep;
 
 import java.util.List;
@@ -52,7 +52,7 @@ public class DiscoveryValidator extends PlayBackPage implements
 		getWebElementsList("DISCOVERY_IMG_WRAPPER");
 		List<WebElement> count = getWebElementsList("DISCOVERY_IMG_WRAPPER");
 
-		out.println("Count Value :" + count.size());
+		logger.info("Count Value :" + count.size());
 		logger.info("Number of Discovery Videos " + count.size());
 
 		boolean flagTrue = false;
@@ -61,7 +61,7 @@ public class DiscoveryValidator extends PlayBackPage implements
 			logger.info("Is right button showing on Discovery Screen  "
 					+ flagTrue);
 		} catch (Exception e) {
-			out.println("Max videos are showing on Discovery screen");
+			logger.error("Max videos are showing on Discovery screen");
 		}
 		if (count.size() > 3 && flagTrue) {
 			clickOnIndependentElement("RIGHT_BTN");

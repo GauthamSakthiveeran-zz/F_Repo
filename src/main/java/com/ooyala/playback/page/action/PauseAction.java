@@ -27,7 +27,7 @@ public class PauseAction extends PlayBackPage implements PlayerAction {
 		try {
 			isElement = isElementPresent("HIDDEN_CONTROL_BAR");
 			if (!isElement) {
-				System.out.println("hovering mouse over the player");
+				logger.info("hovering mouse over the player");
 				action.moveToElement(getWebElement("oo-state-screen"))
 						.perform();
 			}

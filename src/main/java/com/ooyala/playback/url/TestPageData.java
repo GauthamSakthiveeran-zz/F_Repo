@@ -72,9 +72,8 @@ public class TestPageData {
 			otherPlugin = map.get("other_plugin");
 
 		} catch (Exception e) {
-			System.out
-					.println("Error while reading data from properties file :"
-							+ e.getMessage());
+			logger.error("Error while reading data from properties file :"
+					+ e.getMessage());
 		}
 	}
 

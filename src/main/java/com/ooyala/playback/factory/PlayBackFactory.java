@@ -221,12 +221,7 @@ public class PlayBackFactory {
 		Field[] fs = this.getClass().getDeclaredFields();
 		fs[0].setAccessible(true);
 		for (Field property : fs) {
-			System.out.println(property.getType());
-			System.out.println(validator);
 			if (property.getType().isAssignableFrom(validator)) {
-				System.out.println("Property name is:" + property.getName()
-						+ " and its value is "
-						+ property.get(this));
 				if (property.get(this) == null)
 					property.set(this, validator
 							.getConstructor(WebDriver.class)

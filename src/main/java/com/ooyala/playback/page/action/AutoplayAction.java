@@ -27,7 +27,7 @@ public class AutoplayAction extends PlayBackPage implements PlayerAction {
 			autoplay = Boolean.parseBoolean(((JavascriptExecutor) driver)
 					.executeScript("return pp.parameters.autoplay").toString());
 		} catch (Exception e) {
-			System.out.print("Autoplay not set for this video");
+			logger.error("Autoplay not set for this video");
 		}
 		if (!autoplay) {
 			waitOnElement("PLAY_BUTTON", 60);

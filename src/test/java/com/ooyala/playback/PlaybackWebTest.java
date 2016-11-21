@@ -72,8 +72,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 			Field[] fs = this.getClass().getDeclaredFields();
 			fs[0].setAccessible(true);
 			for (Field property : fs) {
-				System.out.println("Assiging the property for "
-						+ property.getType());
 				if (property.getType().getSuperclass()
 						.isAssignableFrom(PlayBackPage.class)) {
 					property.setAccessible(true);
@@ -82,8 +80,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 					Method[] allMethods = property.get(this).getClass()
 							.getMethods();
 					for (Method function : allMethods) {
-						System.out.println("Function name is "
-								+ function.getName());
 						if (function.getName()
 								.equalsIgnoreCase("setExtentTest"))
 							function.invoke(property.get(this), extentTest);
@@ -119,7 +115,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		logger.info("browser is " + browser);
 
 		String xmlFile = System.getProperty("xmlFile");
-		System.out.println("xml file : " + xmlFile);
+		logger.info("xml file : " + xmlFile);
 		if (xmlFile == null || xmlFile.equals(""))
 			xmlFile = "Alice";
 		browser = System.getProperty("browser");

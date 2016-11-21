@@ -1,20 +1,23 @@
 package com.ooyala.playback.alice;
 
+import static java.lang.Thread.sleep;
+
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.DiscoveryValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.UpNextValidator;
 import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.PlayPauseAction;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
-import org.openqa.selenium.JavascriptExecutor;
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
-import static java.lang.System.out;
-import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/17/16.
@@ -127,7 +130,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
             }
             result = true;
         } catch (Exception e) {
-            e.printStackTrace();
+			e.printStackTrace();
         }
         Assert.assertTrue(result, "Discovery up next tests failed");
     }

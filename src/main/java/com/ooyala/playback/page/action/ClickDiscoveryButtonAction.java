@@ -35,7 +35,7 @@ public class ClickDiscoveryButtonAction extends PlayBackPage implements
 				clickOnIndependentElement("DISCOVERY_BTN");
 			}
 		} catch (Exception e) {
-			out.println("exception " + e.getMessage());
+			logger.error("exception " + e.getMessage());
 			clickOnIndependentElement("MORE_OPTION_ICON");
 			Thread.sleep(2000);
 			clickOnIndependentElement("DISCOVERY_BTN");
