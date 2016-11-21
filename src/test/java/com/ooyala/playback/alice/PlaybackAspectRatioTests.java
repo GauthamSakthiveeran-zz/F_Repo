@@ -17,6 +17,13 @@ import static java.lang.Thread.sleep;
  */
 public class PlaybackAspectRatioTests extends PlaybackWebTest {
 
+    private EventValidator eventValidator;
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private PlayAction playAction;
+    private AspectRatioValidator aspectRatioValidator;
+
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
 
@@ -32,12 +39,12 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
     public void testAspectRation(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
+        /*PlayValidator play = pageFactory.getPlayValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
         PlayAction playAction = pageFactory.getPlayAction();
         EventValidator eventValidator = pageFactory.getEventValidator();
-        AspectRatioValidator aspectRatioValidator = pageFactory.getAspectRatioValidator();
+        AspectRatioValidator aspectRatioValidator = pageFactory.getAspectRatioValidator();*/
 
         try {
             driver.get(url);

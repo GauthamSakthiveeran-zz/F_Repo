@@ -15,6 +15,14 @@ import org.testng.annotations.Test;
  */
 public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
+    private PlayValidator play;
+    private SeekValidator seek;
+    private PlayAction playAction;
+    private EventValidator eventValidator ;
+    private PauseValidator pause;
+    private EndScreenValidator endScreenValidator ;
+    private StartScreenValidator startScreenValidator ;
+
         @DataProvider(name = "testUrls")
         public Object[][] getTestData() {
 
@@ -30,13 +38,13 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
         public void testPlayerMetadataStates(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
+        /*PlayValidator play = pageFactory.getPlayValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
         PlayAction playAction = pageFactory.getPlayAction();
         EventValidator eventValidator = pageFactory.getEventValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
             EndScreenValidator endScreenValidator = pageFactory.getEndScreenValidator();
-            StartScreenValidator startScreenValidator = pageFactory.getStartScreenValidator();
+            StartScreenValidator startScreenValidator = pageFactory.getStartScreenValidator();*/
 
         try {
             driver.get(url);

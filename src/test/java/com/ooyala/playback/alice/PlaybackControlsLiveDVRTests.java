@@ -15,6 +15,10 @@ import org.testng.annotations.Test;
  */
 public class PlaybackControlsLiveDVRTests extends PlaybackWebTest {
 
+    private PlayValidator play;
+    private PauseValidator pause;
+    private LiveAction live;
+
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
 
@@ -30,9 +34,9 @@ public class PlaybackControlsLiveDVRTests extends PlaybackWebTest {
     public void testControlLiveDVR(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
+        /*PlayValidator play = pageFactory.getPlayValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
-        LiveAction live = pageFactory.getLiveAction();
+        LiveAction live = pageFactory.getLiveAction();*/
 
         try {
             driver.get(url);

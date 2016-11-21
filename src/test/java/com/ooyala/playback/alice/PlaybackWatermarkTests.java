@@ -17,6 +17,14 @@ import static java.lang.Thread.sleep;
  */
 public class PlaybackWatermarkTests extends PlaybackWebTest {
 
+    private PlayValidator play;
+    private SeekValidator seek;
+    private PlayAction playAction;
+    private EventValidator eventValidator;
+    private VolumeValidator volumeValidator;
+    private PauseValidator pause ;
+    private WaterMarkValidator waterMarkValidator;
+
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
 
@@ -32,13 +40,13 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
     public void testWatermarks(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
+        /*PlayValidator play = pageFactory.getPlayValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
         PlayAction playAction = pageFactory.getPlayAction();
         EventValidator eventValidator = pageFactory.getEventValidator();
         VolumeValidator volumeValidator = pageFactory.getVolumeValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
-        WaterMarkValidator waterMarkValidator = pageFactory.getWaterMarkValidator();
+        WaterMarkValidator waterMarkValidator = pageFactory.getWaterMarkValidator();*/
 
         try {
             driver.get(url);

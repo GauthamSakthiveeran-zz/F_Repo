@@ -18,6 +18,11 @@ import static java.lang.Thread.sleep;
  */
 public class PlaybackDiscoveryTests extends PlaybackWebTest {
 
+    private PlayValidator play;
+    private DiscoveryValidator discoveryValidator;
+    private PlayAction playAction ;
+    private EventValidator eventValidator ;
+
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
 
@@ -33,10 +38,10 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
     public void testDiscovery(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
+       /* PlayValidator play = pageFactory.getPlayValidator();
         DiscoveryValidator discoveryValidator = pageFactory.getDiscoveryValidator();
         PlayAction playAction = pageFactory.getPlayAction();
-        EventValidator eventValidator = pageFactory.getEventValidator();
+        EventValidator eventValidator = pageFactory.getEventValidator();*/
             try {
                 driver.get(url);
                 if (!getPlatform().equalsIgnoreCase("android")) {

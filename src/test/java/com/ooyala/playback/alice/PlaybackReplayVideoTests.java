@@ -15,6 +15,11 @@ import org.testng.annotations.Test;
  */
 public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
+    private PlayValidator play;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private ReplayValidator replayValidator;
+
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
 
@@ -30,10 +35,10 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
     public void testVideoReplay(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
+        /*PlayValidator play = pageFactory.getPlayValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
         EventValidator eventValidator = pageFactory.getEventValidator();
-        ReplayValidator replayValidator = pageFactory.getReplayValidator();
+        ReplayValidator replayValidator = pageFactory.getReplayValidator();*/
 
         try {
             driver.get(url);

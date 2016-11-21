@@ -20,6 +20,12 @@ import static org.testng.Assert.assertEquals;
  */
 public class PlaybackBitrateTests extends PlaybackWebTest {
 
+    private PlayValidator play ;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private Bitratevalidator bitratevalidator;
+
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
 
@@ -36,11 +42,11 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
+        /*PlayValidator play = pageFactory.getPlayValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
         EventValidator eventValidator = pageFactory.getEventValidator();
-        Bitratevalidator bitratevalidator = pageFactory.getBitratevalidator();
+        Bitratevalidator bitratevalidator = pageFactory.getBitratevalidator();*/
 
         try {
             driver.get(url);

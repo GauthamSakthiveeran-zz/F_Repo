@@ -17,6 +17,13 @@ import static java.lang.Thread.sleep;
 public class PlaybackClosedCaptionTests extends PlaybackWebTest {
     public static Logger logger = Logger.getLogger(PlaybackClosedCaptionTests.class);
 
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private FullScreenValidator fullScreenValidator;
+    private CCValidator ccValidator;
+
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
 
@@ -32,12 +39,12 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
     public void testClosedCaption(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
+       /* PlayValidator play = pageFactory.getPlayValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
         EventValidator eventValidator = pageFactory.getEventValidator();
         FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
-        CCValidator ccValidator = pageFactory.getCCValidator();
+        CCValidator ccValidator = pageFactory.getCCValidator();*/
 
         logger.info("Executing PlaybackClosedCaption test  " );
         try {

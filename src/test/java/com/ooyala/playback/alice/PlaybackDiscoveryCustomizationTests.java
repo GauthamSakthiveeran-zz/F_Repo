@@ -24,6 +24,16 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
+    private PlayValidator play;
+    private UpNextValidator discoveryUpNext;
+    private EventValidator eventValidator;
+    private DiscoveryValidator discoveryValidator;
+    private ClickDiscoveryButtonAction clickDiscoveryButtonAction;
+    private PauseAction pauseAction;
+    private PlayAction playAction;
+    private PlayPauseAction playPauseAction;
+    private SeekValidator seekValidator;
+
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
         return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
@@ -38,7 +48,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
     public void testDiscoveryUpNext(String testName, String url) throws OoyalaException
     {
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
+        /*PlayValidator play = pageFactory.getPlayValidator();
         UpNextValidator discoveryUpNext = pageFactory.getUpNextValidator();
         EventValidator eventValidator = pageFactory.getEventValidator();
         DiscoveryValidator discoveryValidator = pageFactory.getDiscoveryValidator();
@@ -46,7 +56,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
         PauseAction pauseAction = pageFactory.getPauseAction();
         PlayAction playAction = pageFactory.getPlayAction();
         PlayPauseAction playPauseAction  = pageFactory.getPlayPauseAction();
-        SeekValidator seekValidator = pageFactory.getSeekValidator();
+        SeekValidator seekValidator = pageFactory.getSeekValidator();*/
 
         try {
             driver.get(url);

@@ -1,9 +1,7 @@
 package com.ooyala.playback.alice;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.UpNextValidator;
+import com.ooyala.playback.page.*;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
@@ -13,6 +11,12 @@ import org.testng.annotations.Test;
  * Created by soundarya on 11/11/16.
  */
 public class DiscoveryUpNextTests  extends PlaybackWebTest {
+
+    private EventValidator eventValidator;
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private UpNextValidator discoveryUpNext;
 
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
@@ -29,9 +33,9 @@ public class DiscoveryUpNextTests  extends PlaybackWebTest {
     public void testDiscoveryUpNext(String testName, String url) throws OoyalaException
     {
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
+        /*PlayValidator play = pageFactory.getPlayValidator();
         UpNextValidator discoveryUpNext = pageFactory.getUpNextValidator();
-        EventValidator eventValidator = pageFactory.getEventValidator();
+        EventValidator eventValidator = pageFactory.getEventValidator();*/
 
         try {
             driver.get(url);

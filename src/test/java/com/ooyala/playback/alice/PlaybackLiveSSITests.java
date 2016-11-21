@@ -1,10 +1,8 @@
 package com.ooyala.playback.alice;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.FullScreenValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -13,13 +11,14 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
- * Created by soundarya on 11/16/16.
+ * Created by jitendra on 21/11/16.
  */
-public class PlaybackFullScreenTests extends PlaybackWebTest {
+public class PlaybackLiveSSITests extends PlaybackWebTest{
 
     private PlayValidator play;
-    private SeekValidator seek;
-    private PlayAction playAction;
+    private PauseValidator pause ;
+    private PlayAction playAction ;
+    private PauseAction pauseAction ;
     private EventValidator eventValidator;
     private FullScreenValidator fullScreenValidator;
 
@@ -30,17 +29,18 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
                 nodeList);
     }
 
-    public PlaybackFullScreenTests() throws OoyalaException {
+    public PlaybackLiveSSITests() throws OoyalaException {
         super();
     }
 
     @Test(groups = "alice", dataProvider = "testUrls")
-    public void testPlaybackFullscreen(String testName, String url) throws OoyalaException {
+    public void testLiveSSI(String testName, String url) throws OoyalaException {
 
         boolean result = false;
         /*PlayValidator play = pageFactory.getPlayValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
+        PauseValidator pause = pageFactory.getPauseValidator();
         PlayAction playAction = pageFactory.getPlayAction();
+        PauseAction pauseAction = pageFactory.getPauseAction();
         EventValidator eventValidator = pageFactory.getEventValidator();
         FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();*/
 
@@ -50,30 +50,32 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
                 driver.manage().window().maximize();
             }
 
-            play.waitForPage();
+            boolean isPageLoaded = play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            Thread.sleep(15000);
+
+            injectScript("http://10.10.9.96:8080/alice_full.js");
 
             play.validate("playing_1", 60);
 
-            logger.info("video is playing");
+            logger.info("Verifed that video is getting playing");
 
-            fullScreenValidator.validate("",60);
+            Thread.sleep(2000);
 
-            playAction.startAction();
+            pause.validate("paused_1", 60);
 
-            seek.validate("seeked_1", 60);
+            logger.info("Verified that video is getting pause");
 
-            logger.info("video seeked");
+            play.validate("playing_2", 60);
 
-            eventValidator.validate("played_1",60);
+            fullScreenValidator.validate("FULLSCREEN_BTN",60);
 
-            logger.info("video played");
 
             result = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Assert.assertTrue(result, "Playback FullScreen tests failed");
+        Assert.assertTrue(result, "Alice basic playback tests failed");
     }
+
 }

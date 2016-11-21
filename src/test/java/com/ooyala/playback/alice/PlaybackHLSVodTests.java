@@ -22,6 +22,14 @@ import static org.testng.Assert.assertEquals;
  */
 public class PlaybackHLSVodTests extends PlaybackWebTest {
 
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private FullScreenValidator fullScreenValidator;
+    private CCValidator ccValidator ;
+    private ShareTabValidator shareTabValidator;
+
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
 
@@ -37,13 +45,13 @@ public class PlaybackHLSVodTests extends PlaybackWebTest {
     public void testHLSVod(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
+        /*PlayValidator play = pageFactory.getPlayValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
         EventValidator eventValidator = pageFactory.getEventValidator();
         FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
         CCValidator ccValidator = pageFactory.getCCValidator();
-        ShareTabValidator shareTabValidator = pageFactory.getShareTabValidator();
+        ShareTabValidator shareTabValidator = pageFactory.getShareTabValidator();*/
 
         if (getBrowser().equalsIgnoreCase("safari")) {
             try {

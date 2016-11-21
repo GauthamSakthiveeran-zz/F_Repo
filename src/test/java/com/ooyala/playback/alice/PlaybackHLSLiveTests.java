@@ -17,6 +17,14 @@ import static org.testng.Assert.assertEquals;
  */
 public class PlaybackHLSLiveTests extends PlaybackWebTest {
 
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private ControlBarValidator controlBarValidator;
+    private FullScreenValidator fullScreenValidator;
+    private LiveAction liveAction;
+
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
 
@@ -32,13 +40,13 @@ public class PlaybackHLSLiveTests extends PlaybackWebTest {
     public void testHLSLive(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
+        /*PlayValidator play = pageFactory.getPlayValidator();
         PauseValidator pause = pageFactory.getPauseValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
         EventValidator eventValidator = pageFactory.getEventValidator();
         ControlBarValidator controlBarValidator = pageFactory.getControlBarValidator();
         FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
-        LiveAction liveAction = pageFactory.getLiveAction();
+        LiveAction liveAction = pageFactory.getLiveAction();*/
 
         if (getBrowser().equalsIgnoreCase("safari")) {
             try {

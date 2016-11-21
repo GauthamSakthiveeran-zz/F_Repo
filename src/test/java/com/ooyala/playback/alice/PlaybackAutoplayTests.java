@@ -2,6 +2,7 @@ package com.ooyala.playback.alice;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.AutoplayAction;
@@ -19,6 +20,11 @@ import static java.lang.Thread.sleep;
  */
 public class PlaybackAutoplayTests extends PlaybackWebTest {
 
+    private EventValidator eventValidator;
+    private PlayValidator play;
+    private SeekValidator seek;
+    private AutoplayAction autoplayAction;
+
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
 
@@ -34,10 +40,10 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
     public void testAutoPlay(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
+        /*PlayValidator play = pageFactory.getPlayValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
         AutoplayAction autoplayAction = pageFactory.getAutoplay();
-        EventValidator eventValidator = pageFactory.getEventValidator();
+        EventValidator eventValidator = pageFactory.getEventValidator();*/
 
         if (getPlatform().equalsIgnoreCase("Android")) {
             throw new SkipException("Test PlaybackAutoplayTests Is Skipped");
