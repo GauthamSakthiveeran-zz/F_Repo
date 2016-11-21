@@ -22,12 +22,6 @@ public class PlaybackLiveSSITests extends PlaybackWebTest{
     private EventValidator eventValidator;
     private FullScreenValidator fullScreenValidator;
 
-    @DataProvider(name = "testUrls")
-    public Object[][] getTestData() {
-
-        return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-                nodeList);
-    }
 
     public PlaybackLiveSSITests() throws OoyalaException {
         super();

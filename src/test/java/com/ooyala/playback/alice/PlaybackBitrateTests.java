@@ -1,19 +1,17 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.url.UrlGenerator;
-import com.ooyala.qe.common.exception.OoyalaException;
-import org.openqa.selenium.WebElement;
+import static java.lang.Thread.sleep;
+
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.List;
-
-import static java.lang.Thread.sleep;
-import static org.testng.Assert.assertEquals;
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.Bitratevalidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/17/16.
@@ -26,14 +24,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
     private EventValidator eventValidator;
     private Bitratevalidator bitratevalidator;
 
-    @DataProvider(name = "testUrls")
-    public Object[][] getTestData() {
-
-        return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-                nodeList);
-    }
-
-    public PlaybackBitrateTests() throws OoyalaException {
+	public PlaybackBitrateTests() throws OoyalaException {
         super();
     }
 
@@ -47,41 +38,40 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
         SeekValidator seek = pageFactory.getSeekValidator();
         EventValidator eventValidator = pageFactory.getEventValidator();
         Bitratevalidator bitratevalidator = pageFactory.getBitratevalidator();*/
+		try {
+			driver.get(url);
+			if (!driver.getCapabilities().getPlatform().toString()
+					.equalsIgnoreCase("android")) {
+				driver.manage().window().maximize();
+			}
 
-        try {
-            driver.get(url);
-            if (! driver.getCapabilities().getPlatform().toString().equalsIgnoreCase("android")) {
-                driver.manage().window().maximize();
-            }
+			play.waitForPage();
 
+			injectScript("http://10.11.66.55:8080/alice.js");
 
-            play.waitForPage();
+			play.validate("playing_1", 60);
+			logger.info("Verifed that video is getting playing");
+			sleep(2000);
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+			pause.validate("paused_1", 60);
+			logger.info("Verified that video is getting pause");
 
-            play.validate("playing_1", 60);
-            logger.info("Verifed that video is getting playing");
-            sleep(2000);
+			bitratevalidator.validate("", 60);
 
-            pause.validate("paused_1", 60);
-            logger.info("Verified that video is getting pause");
+			sleep(1000);
 
-            bitratevalidator.validate("",60);
+			seek.validate("seeked_1", 60);
+			logger.info("Verified that video is seeked");
 
-            sleep(1000);
+			eventValidator.validate("videoPlayed_1", 60);
+			logger.info("Verified that video is played");
 
-            seek.validate("seeked_1", 60);
-            logger.info("Verified that video is seeked");
+		} catch (Exception e) {
+			e.printStackTrace();
 
-            eventValidator.validate("videoPlayed_1", 60);
-            logger.info("Verified that video is played");
+		}
+		Assert.assertTrue(result, "Aspect ratio tests failed");
 
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-        Assert.assertTrue(result, "Aspect ratio tests failed");
-
-    }
+	}
 
 }

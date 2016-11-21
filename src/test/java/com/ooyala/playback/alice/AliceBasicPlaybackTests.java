@@ -1,7 +1,6 @@
 package com.ooyala.playback.alice;
 
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -9,7 +8,6 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -20,19 +18,8 @@ public class AliceBasicPlaybackTests extends PlaybackWebTest {
 	private PauseValidator pause;
 	private SeekValidator seek;
 
-	@DataProvider(name = "testUrls")
-	public Object[][] getTestData() {
-
-		return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-				nodeList);
-	}
-
 	public AliceBasicPlaybackTests() throws OoyalaException {
 		super();
-		// eventValidator = pageFactory.getEventValidator();
-		// play = pageFactory.getPlayValidator();
-		// pause = pageFactory.getPauseValidator();
-		// seek = pageFactory.getSeekValidator();
 
 	}
 
@@ -77,7 +64,7 @@ public class AliceBasicPlaybackTests extends PlaybackWebTest {
 
 			result = true;
 			extentTest.log(LogStatus.PASS, "Alice basic playback tests Passed");
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;

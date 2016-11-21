@@ -4,10 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -23,7 +24,9 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Parameters;
 import org.w3c.dom.NodeList;
 
 import com.ooyala.facile.listners.IMethodListener;
@@ -31,6 +34,8 @@ import com.ooyala.facile.test.FacileTest;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.page.PlayBackPage;
 import com.ooyala.playback.report.ExtentManager;
+import com.ooyala.playback.url.Testdata;
+import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.ooyala.qe.common.util.PropertyReader;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -45,9 +50,10 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected ChromeDriverService service;
 	protected PropertyReader propertyReader;
 	protected PlayBackFactory pageFactory;
-	protected static NodeList nodeList;
+	// protected static NodeList nodeList;
 	protected ExtentReports extentReport;
 	protected ExtentTest extentTest;
+	protected Testdata testData;
 
 	private static String MAC_CHROME_DRIVER_PATH = "src/test/resources/lib-thirdparty/chromedriverformac/chromedriver";
 	private static String WIN_CHROME_DRIVER_PATH = "src/test/resources/lib-thirdparty/chromedriverforwin/chromedriver.exe";
@@ -110,14 +116,11 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	@BeforeClass(alwaysRun = true)
-	public void setUp() throws Exception {
+	@Parameters("testData")
+	public void setUp(String xmlFile) throws Exception {
 		logger.info("************Inside setup*************");
 		logger.info("browser is " + browser);
 
-		String xmlFile = System.getProperty("xmlFile");
-		logger.info("xml file : " + xmlFile);
-		if (xmlFile == null || xmlFile.equals(""))
-			xmlFile = "Alice";
 		browser = System.getProperty("browser");
 		if (browser == null || browser.equals(""))
 			browser = "firefox";
@@ -190,21 +193,36 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 	}
 
-	public NodeList parseXmlFileData(String fileName) {
+	public void parseXmlFileData(String xmlFile) {
 
 		try {
-			File xmlFile = new File("src/test/resources/" + fileName + ".xml");
-			DocumentBuilderFactory dbuilderFactory = DocumentBuilderFactory
-					.newInstance();
-			DocumentBuilder dbuilder = dbuilderFactory.newDocumentBuilder();
-			org.w3c.dom.Document doc = dbuilder.parse(xmlFile);
-			nodeList = doc.getElementsByTagName("test");
+			File file = new File("src/test/resources/" + xmlFile);
+			JAXBContext jaxbContext = JAXBContext.newInstance(Testdata.class);
+
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			testData = (Testdata) jaxbUnmarshaller.unmarshal(file);
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.info(e.getMessage());
 		}
-		return nodeList;
 	}
+
+	// public NodeList parseXmlFileData(String fileName) {
+	//
+	// try {
+	// File xmlFile = new File("src/test/resources/" + fileName + ".xml");
+	// DocumentBuilderFactory dbuilderFactory = DocumentBuilderFactory
+	// .newInstance();
+	// DocumentBuilder dbuilder = dbuilderFactory.newDocumentBuilder();
+	// org.w3c.dom.Document doc = dbuilder.parse(xmlFile);
+	// nodeList = doc.getElementsByTagName("test");
+	//
+	// } catch (Exception e) {
+	// logger.info(e.getMessage());
+	// }
+	// return nodeList;
+	// }
 
 	public void injectScript(String scriptURL) throws Exception {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -280,4 +298,19 @@ public abstract class PlaybackWebTest extends FacileTest {
 		return "images/" + fileName;
 	}
 
+	@DataProvider(name = "testUrls")
+	public Object[][] getTestData() {
+
+		List<String> urls = UrlGenerator.parseXmlDataProvider(getClass()
+				.getSimpleName(), testData);
+		String testName = getClass().getSimpleName();
+		Object[][] output = new Object[urls.size()][2];
+		for (int i = 0; i < urls.size(); i++) {
+			output[i][0] = testName;
+			output[i][1] = urls.get(i);
+		}
+
+		return output;
+
+	}
 }

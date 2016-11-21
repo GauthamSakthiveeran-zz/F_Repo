@@ -2,6 +2,7 @@ package com.ooyala.playback.alice;
 
 import static java.lang.Thread.sleep;
 
+import com.ooyala.playback.url.UrlGenerator;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -16,7 +17,6 @@ import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.PlayPauseAction;
-import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
@@ -33,12 +33,6 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
     private PlayAction playAction;
     private PlayPauseAction playPauseAction;
     private SeekValidator seekValidator;
-
-    @DataProvider(name = "testUrls")
-    public Object[][] getTestData() {
-        return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-                nodeList);
-    }
 
     public PlaybackDiscoveryCustomizationTests() throws OoyalaException {
         super();
@@ -141,7 +135,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
             result = true;
         } catch (Exception e) {
 			e.printStackTrace();
-        }
-        Assert.assertTrue(result, "Discovery up next tests failed");
-    }
+		}
+		Assert.assertTrue(result, "Discovery up next tests failed");
+	}
 }

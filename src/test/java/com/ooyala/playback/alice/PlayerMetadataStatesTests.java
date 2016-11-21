@@ -1,14 +1,17 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.url.UrlGenerator;
-import com.ooyala.qe.common.exception.OoyalaException;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EndScreenValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.StartScreenValidator;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -23,14 +26,8 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
     private EndScreenValidator endScreenValidator ;
     private StartScreenValidator startScreenValidator ;
 
-        @DataProvider(name = "testUrls")
-        public Object[][] getTestData() {
 
-        return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-                nodeList);
-    }
-
-        public PlayerMetadataStatesTests() throws OoyalaException {
+	public PlayerMetadataStatesTests() throws OoyalaException {
         super();
     }
 
@@ -46,51 +43,50 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
             EndScreenValidator endScreenValidator = pageFactory.getEndScreenValidator();
             StartScreenValidator startScreenValidator = pageFactory.getStartScreenValidator();*/
 
-        try {
-            driver.get(url);
-            if (!getPlatform().equalsIgnoreCase("android")) {
-                driver.manage().window().maximize();
-            }
+		try {
+			driver.get(url);
+			if (!getPlatform().equalsIgnoreCase("android")) {
+				driver.manage().window().maximize();
+			}
 
-            play.waitForPage();
+			play.waitForPage();
 
-            startScreenValidator.validate("",60);
+			startScreenValidator.validate("", 60);
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+			injectScript("http://10.11.66.55:8080/alice.js");
 
-            playAction.startAction();
+			playAction.startAction();
 
-            play.validate("playing_1", 60);
-            logger.info("video is playing");
-            Thread.sleep(2000);
+			play.validate("playing_1", 60);
+			logger.info("video is playing");
+			Thread.sleep(2000);
 
-            pause.validate("videoPause_1",60);
-            logger.info("video is paused");
+			pause.validate("videoPause_1", 60);
+			logger.info("video is paused");
 
-            play.validate("playing_2", 60);
-            logger.info("video is playing again");
+			play.validate("playing_2", 60);
+			logger.info("video is playing again");
 
-            seek.validate("seeked_1", 60);
-            logger.info("video seeked");
+			seek.validate("seeked_1", 60);
+			logger.info("video seeked");
 
-            eventValidator.validate("played_1",60);
-            logger.info("video played");
+			eventValidator.validate("played_1", 60);
+			logger.info("video played");
 
-            endScreenValidator.validate("",60);
+			endScreenValidator.validate("", 60);
 
-            eventValidator.eventAction("FULLSCREEN_BTN_1");
+			eventValidator.eventAction("FULLSCREEN_BTN_1");
 
-            endScreenValidator.validate("fullscreenChangedtrue",50);
-            logger.info("checked fullscreen");
+			endScreenValidator.validate("fullscreenChangedtrue", 50);
+			logger.info("checked fullscreen");
 
-            endScreenValidator.validate("", 60);
-            eventValidator.eventAction("FULLSCREEN_BTN_1");
+			endScreenValidator.validate("", 60);
+			eventValidator.eventAction("FULLSCREEN_BTN_1");
 
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Assert.assertTrue(result, "Alice basic playback tests failed");
-    }
-    }
-
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Assert.assertTrue(result, "Alice basic playback tests failed");
+	}
+}

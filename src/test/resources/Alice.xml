@@ -1,212 +1,248 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tests>
-    <test name ="AliceBasicPlaybackTests" >
-        <description name="Device Restriction"/>
-        <embed_code name="A1bzhnMzE6f9bcHW6aT_KznQm5xyiTOi"/>
-        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-        <plugins name="BITMOVIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name=""/>
-        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    </test>
+<testdata>
+	<test name="AliceBasicPlaybackTests">
+		<url>
+			<description name="Device Restriction" />
+			<embed_code name="A1bzhnMzE6f9bcHW6aT_KznQm5xyiTOi" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+	</test>
+	<test name="PlaybackDiscoveryCustomizationTests">
+		<url>
+			<description name="Customization_Discovery" />
+			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="FREEWHEEL" />
+			<additionalPlugins name="DISCOVERY" />
+			<pbid name="421363178a5d493c9d4e74aadc1c2df9" />
+			<playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackDiscoveryCustomizationTests" >
-        <description name="Customization_Discovery"/>
-        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
-        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-        <plugins name="MAIN"/>
-        <adPlugins name="FREEWHEEL"/>
-        <additionalPlugins name="DISCOVERY"/>
-        <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
-        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
-    </test>
+	<test name="DiscoveryUpNextTests">
+		<url>
+			<description name="upNextDiscovery" />
+			<embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="DISCOVERY" />
+			<pbid name="421363178a5d493c9d4e74aadc1c2df9" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="DiscoveryUpNextTests">
-        <description name="upNextDiscovery"/>
-        <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
-        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-        <plugins name="MAIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name="DISCOVERY"/>
-        <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    </test>
+	<test name="PlaybackAspectRatioTests">
+		<url>
+			<description name="Playback_AspectRatio_4:3" />
+			<embed_code name="FwaXZjcjrkydIftLal2cq9ymQMuvjvD8" />
+			<pcode name="c0cTkxOqALQviQIGAHWY5hP0q9gU" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackAspectRatioTests">
-        <description name="Playback_AspectRatio_4:3"/>
-        <embed_code name="FwaXZjcjrkydIftLal2cq9ymQMuvjvD8"/>
-        <pcode name="c0cTkxOqALQviQIGAHWY5hP0q9gU" />
-        <plugins name="MAIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name=""/>
-        <pbid name="378512f55dd44fc287d0fa609353c268"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    </test>
+	<test name="PlaybackAutoplayTests">
+		<url>
+			<description name="Playback_autoplayPreroll" />
+			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="FREEWHEEL" />
+			<additionalPlugins name="" />
+			<pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
+			<playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackAutoplayTests">
-        <description name="Playback_autoplayPreroll"/>
-        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
-        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-        <plugins name="MAIN"/>
-        <adPlugins name="FREEWHEEL"/>
-        <additionalPlugins name=""/>
-        <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
-        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":true}]]></playerParameter>
-    </test>
+	<test name="PlaybackClosedCaptionTests">
+		<url>
+			<description name="Playback_ClosedCaption" />
+			<embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showLinearAdSkipButton":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackClosedCaptionTests">
-        <description name="Playback_ClosedCaption"/>
-        <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
-        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-        <plugins name="MAIN"/>
-        <adPlugins name="VAST"/>
-        <additionalPlugins name=""/>
-        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-        <playerParameter><![CDATA[{"showLinearAdSkipButton":true}]]></playerParameter>
-    </test>
+	<test name="PlaybackControlsLiveDVRTests">
+		<url>
+			<description name="PlaybackControls_LiveDVR" />
+			<embed_code name="BsZjdieDrJdl9YjLBm1LVyl3FF0KdWtd" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackControlsLiveDVRTests">
-        <description name="PlaybackControls_LiveDVR"/>
-        <embed_code name="BsZjdieDrJdl9YjLBm1LVyl3FF0KdWtd"/>
-        <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-        <plugins name="MAIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name=""/>
-        <pbid name="378512f55dd44fc287d0fa609353c268"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    </test>
+	<test name="PlaybackDiscoveryTests">
+		<url>
+			<description name="Playback_Discovery" />
+			<embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="DISCOVERY" />
+			<pbid name="421363178a5d493c9d4e74aadc1c2df9" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackDiscoveryTests">
-        <description name="Playback_Discovery"/>
-        <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
-        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-        <plugins name="MAIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name="DISCOVERY"/>
-        <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    </test>
+	<test name="PlaybackFullScreenTests">
+		<url>
+			<description name="Playback_Fullscreen" />
+			<embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackFullScreenTests">
-        <description name="Playback_Fullscreen"/>
-        <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
-        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-        <plugins name="MAIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name=""/>
-        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    </test>
+	<test name="PlaybackReplayVideoTests">
+		<url>
+			<description name="Playback_Replay" />
+			<embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackReplayVideoTests">
-        <description name="Playback_Replay"/>
-        <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
-        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-        <plugins name="MAIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name=""/>
-        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    </test>
+	<test name="PlaybackHLSLiveTests">
+		<url>
+			<description name="Playback_HLS_Live" />
+			<embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackHLSLiveTests">
-        <description name="Playback_HLS_Live"/>
-        <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv"/>
-        <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-        <plugins name="MAIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name=""/>
-        <pbid name="378512f55dd44fc287d0fa609353c268"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    </test>
+	<test name="PlaybackHLSVodTests">
+		<url>
+			<description name="Playback_HLS_Vod" />
+			<embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackHLSVodTests">
-        <description name="Playback_HLS_Vod"/>
-        <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6"/>
-        <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-        <plugins name="MAIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name=""/>
-        <pbid name="378512f55dd44fc287d0fa609353c268"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    </test>
+	<test name="PlaybackLocalizationTests">
+		<url>
+			<description name="Localization_Check" />
+			<embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackLocalizationTests">
-        <description name="Localization_Check"/>
-        <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
-        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-        <plugins name="MAIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name=""/>
-        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    </test>
+	<test name="PlayerMetadataStatesTests">
+		<url>
+			<description name="Player_States_metadata" />
+			<embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlayerMetadataStatesTests">
-        <description name="Player_States_metadata"/>
-        <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
-        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-        <plugins name="MAIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name=""/>
-        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    </test>
+	<test name="PlaybackVerticalVideoTests">
+		<url>
+			<description name="Playback_AspectRatio_16:9" />
+			<embed_code name="9od3M3MDE6-WRg_DRbpCzRyjtK-NTLMp" />
+			<pcode name="p5bGExOjp6PZ-dEUw_GRJqh2Qdaq" />
+			<plugins name="MAIN,BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="26e2e3c1049c4e70ae08a242638b5c40" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackVerticalVideoTests">
-        <description name="Playback_AspectRatio_16:9"/>
-        <embed_code name="9od3M3MDE6-WRg_DRbpCzRyjtK-NTLMp"/>
-        <pcode name="p5bGExOjp6PZ-dEUw_GRJqh2Qdaq" />
-        <plugins name="MAIN,BITMOVIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name=""/>
-        <pbid name="26e2e3c1049c4e70ae08a242638b5c40"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    </test>
+	<test name="PlayerStatePauseScreenTests">
+		<url>
+			<description name="PauseScreen" />
+			<embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlayerStatePauseScreenTests">
-        <description name="PauseScreen"/>
-        <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
-        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-        <plugins name="MAIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name=""/>
-        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    </test>
+	<test name="PlaybackVolumeTest">
+		<url>
+			<description name="volume_functionality" />
+			<embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="FREEWHEEL" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"skin":{"inline":{"adScreen":{"showAdMarquee":true,"showControlBar":true}}},"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackVolumeTest">
-        <description name="volume_functionality"/>
-        <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
-        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-        <plugins name="MAIN"/>
-        <adPlugins name="FREEWHEEL"/>
-        <additionalPlugins name=""/>
-        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-        <playerParameter><![CDATA[{"skin":{"inline":{"adScreen":{"showAdMarquee":true,"showControlBar":true}}},"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
-    </test>
+	<test name="PlaybackBitrateTests">
+		<url>
+			<description name="PlaybackBitrateTests" />
+			<embed_code name="E2aHd3MTE6Yr3iJRbXWUDe_0g2H0flmU" />
+			<pcode name="5zb2wxOlZcNCe_HVT3a6cawW298X" />
+			<plugins name="OSMF" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="NzMyN2E4MzA4Y2ZiMzYwNjhiYzgzYzQ4" />
+			<playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/FoeG863GnBL4IhhlFC1Q2jqbkH9m/N3b2lhZzq_5Er-I09uWrmpwNUZZ_mEeX?api_key=FoeG863GnBL4IhhlFC1Q2jqbkH9m.-E1Kw&expires=2890068691&account_id=dulari_qa&&&signature=sCtNsIeb7XYqrdOdp0avqAjuFKvXansR+BWhAnJp5+A"}]]></playerParameter>
+		</url>
+	</test>
 
-    <test name ="PlaybackBitrateTests">
-        <description name="PlaybackBitrateTests"/>
-        <embed_code name="E2aHd3MTE6Yr3iJRbXWUDe_0g2H0flmU"/>
-        <pcode name="5zb2wxOlZcNCe_HVT3a6cawW298X" />
-        <plugins name="OSMF"/>
-        <adPlugins name=""/>
-        <additionalPlugins name=""/>
-        <pbid name="NzMyN2E4MzA4Y2ZiMzYwNjhiYzgzYzQ4"/>
-        <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/FoeG863GnBL4IhhlFC1Q2jqbkH9m/N3b2lhZzq_5Er-I09uWrmpwNUZZ_mEeX?api_key=FoeG863GnBL4IhhlFC1Q2jqbkH9m.-E1Kw&expires=2890068691&account_id=dulari_qa&&&signature=sCtNsIeb7XYqrdOdp0avqAjuFKvXansR+BWhAnJp5+A"}]]></playerParameter>
-    </test>
-
-    <test name ="PlaybackWatermarkTests">
-        <description name="SkinCustomization_WatermarkImage"/>
-        <embed_code name="Vmd2VmeDq6-92C-kPkkZGoOkTCeSZq4e"/>
-        <pcode name="N1aWw6aHnsVDr5vDoQnY2gBMOnEV" />
-        <plugins name="MAIN"/>
-        <adPlugins name=""/>
-        <additionalPlugins name="DISCOVERY"/>
-        <pbid name="f65f1295b833410d98084e68bdadc056"/>
-        <playerParameter><![CDATA[{"skin":{"inline":{"controlBar":{"logo":{"imageResource":{"url":"https://dl.dropboxusercontent.com/u/344342926/Alice_Automation/fcb_wallpaper.jpg"},"width":16,"height":10}}}}}]]></playerParameter>
-    </test>
-
-</tests>
+	<test name="PlaybackWatermarkTests">
+		<url>
+			<description name="SkinCustomization_WatermarkImage" />
+			<embed_code name="Vmd2VmeDq6-92C-kPkkZGoOkTCeSZq4e" />
+			<pcode name="N1aWw6aHnsVDr5vDoQnY2gBMOnEV" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="DISCOVERY" />
+			<pbid name="f65f1295b833410d98084e68bdadc056" />
+			<playerParameter><![CDATA[{"skin":{"inline":{"controlBar":{"logo":{"imageResource":{"url":"https://dl.dropboxusercontent.com/u/344342926/Alice_Automation/fcb_wallpaper.jpg"},"width":16,"height":10}}}}}]]></playerParameter>
+		</url>
+	</test>
+</testdata>
