@@ -2,7 +2,9 @@ package com.ooyala.playback.alice;
 
 import static java.lang.Thread.sleep;
 
+import com.ooyala.playback.url.UrlGenerator;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -22,121 +24,116 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
-	public PlaybackDiscoveryCustomizationTests() throws OoyalaException {
-		super();
-	}
+    private PlayValidator play;
+    private UpNextValidator discoveryUpNext;
+    private EventValidator eventValidator;
+    private DiscoveryValidator discoveryValidator;
+    private ClickDiscoveryButtonAction clickDiscoveryButtonAction;
+    private PauseAction pauseAction;
+    private PlayAction playAction;
+    private PlayPauseAction playPauseAction;
+    private SeekValidator seekValidator;
 
-	@Test(groups = "alice", dataProvider = "testUrls")
-	public void testDiscoveryUpNext(String testName, String url)
-			throws OoyalaException {
-		boolean result = false;
-		PlayValidator play = pageFactory.getPlayValidator();
-		UpNextValidator discoveryUpNext = pageFactory.getUpNextValidator();
-		EventValidator eventValidator = pageFactory.getEventValidator();
-		DiscoveryValidator discoveryValidator = pageFactory
-				.getDiscoveryValidator();
-		ClickDiscoveryButtonAction clickDiscoveryButtonAction = pageFactory
-				.getClickDiscoveryButtonAction();
-		PauseAction pauseAction = pageFactory.getPauseAction();
-		PlayAction playAction = pageFactory.getPlayAction();
-		PlayPauseAction playPauseAction = pageFactory.getPlayPauseAction();
-		SeekValidator seekValidator = pageFactory.getSeekValidator();
+    public PlaybackDiscoveryCustomizationTests() throws OoyalaException {
+        super();
+    }
 
-		try {
-			driver.get(url);
-			if (!driver.getCapabilities().getPlatform().toString()
-					.equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
+    @Test(groups = "alice", dataProvider = "testUrls")
+    public void testDiscoveryUpNext(String testName, String url) throws OoyalaException
+    {
+        boolean result = false;
+        /*PlayValidator play = pageFactory.getPlayValidator();
+        UpNextValidator discoveryUpNext = pageFactory.getUpNextValidator();
+        EventValidator eventValidator = pageFactory.getEventValidator();
+        DiscoveryValidator discoveryValidator = pageFactory.getDiscoveryValidator();
+        ClickDiscoveryButtonAction clickDiscoveryButtonAction = pageFactory.getClickDiscoveryButtonAction();
+        PauseAction pauseAction = pageFactory.getPauseAction();
+        PlayAction playAction = pageFactory.getPlayAction();
+        PlayPauseAction playPauseAction  = pageFactory.getPlayPauseAction();
+        SeekValidator seekValidator = pageFactory.getSeekValidator();*/
 
-			play.waitForPage();
+        try {
+            driver.get(url);
+            if (! driver.getCapabilities().getPlatform().toString().equalsIgnoreCase("android")) {
+                driver.manage().window().maximize();
+            }
 
-			injectScript("http://10.11.66.55:8080/alice.js");
+            play.waitForPage();
 
-			play.validate("playing_1", 60);
+            injectScript("http://10.11.66.55:8080/alice.js");
 
-			logger.info("verified video playing");
+            play.validate("playing_1", 60);
 
-			Thread.sleep(3000);
+            logger.info("verified video playing");
 
-			result = true;
-			try {
-				clickDiscoveryButtonAction.startAction();
+            Thread.sleep(3000);
 
-				discoveryValidator.verifyDiscoveryEnabled("On_discovery_click",
-						true); // verify discovery is disabled on discovery
-								// click
-				eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
-				logger.info("verified discovery close button is present or not");
-				sleep(2000);
-				play.validate("playing_2", 60);
-				logger.info("verified video playing again after discvery check");
+            result = true;
+            try {
+                clickDiscoveryButtonAction.startAction();
 
-				pauseAction.startAction();
-				discoveryValidator.verifyDiscoveryEnabled("On_pauseScreen",
-						false); // verify discovery is disabled on pause screen
+                discoveryValidator.verifyDiscoveryEnabled("On_discovery_click", true);    //verify discovery is disabled on discovery click
+                eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
+                logger.info("verified discovery close button is present or not");
+                sleep(2000);
+                play.validate("playing_2", 60);
+                logger.info("verified video playing again after discvery check");
 
-				Thread.sleep(10000);
+                pauseAction.startAction();
+                discoveryValidator.verifyDiscoveryEnabled("On_pauseScreen", false);   //verify discovery is disabled on pause screen
 
-				playAction.startAction();
+                Thread.sleep(10000);
 
-				eventValidator.eventAction("FULLSCREEN_BTN");
-				logger.info("verified fullscreen");
-				try {
-					eventValidator.eventAction("PLAYING_SCREEN");
-				} catch (Exception e) {
-					eventValidator.eventAction("VIDEO");
-				}
-				discoveryValidator.verifyDiscoveryEnabled(
-						"On_pause_FullScreen", false);
-				sleep(1000);
-				playPauseAction.startAction();
+                playAction.startAction();
 
-				clickDiscoveryButtonAction.startAction();
+                eventValidator.eventAction("FULLSCREEN_BTN");
+                logger.info("verified fullscreen");
+                try {
+                    eventValidator.eventAction("PLAYING_SCREEN");
+                } catch (Exception e) {
+                    eventValidator.eventAction("VIDEO");
+                }
+                discoveryValidator.verifyDiscoveryEnabled("On_pause_FullScreen", false);
+                sleep(1000);
+                playPauseAction.startAction();
 
-				sleep(2000);
-				discoveryValidator.verifyDiscoveryEnabled(
-						"On_discoveryclick_fullScreen", true);
-				eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
-				logger.info("verified discovery in full screen");
-				eventValidator.eventAction("NORMAL_SCREEN");
+                clickDiscoveryButtonAction.startAction();
 
-				sleep(2000);
+                sleep(2000);
+                discoveryValidator.verifyDiscoveryEnabled("On_discoveryclick_fullScreen", true);
+                eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
+                logger.info("verified discovery in full screen");
+                eventValidator.eventAction("NORMAL_SCREEN");
 
-				playAction.startAction();
+                sleep(2000);
 
-				seekValidator.seek(20, true);
+                playAction.startAction();
 
-				loadingSpinner();
-				try {
+                seekValidator.seek(20,true);
 
-					discoveryUpNext.validate("UPNEXT_CONTENT", 60);
-					logger.info("Upnext is present");
+                loadingSpinner();
+                try {
 
-				} catch (Exception e) {
-					logger.info("No Upnext panel");
-				}
-				try {
+                    discoveryUpNext.validate("UPNEXT_CONTENT", 60);
+                    logger.info("Upnext is present");
 
-					eventValidator.validateElement("END_SCREEN", 60);
-				} catch (Exception e) {
-					playAction.startAction();
-					seekValidator.seek(20, true);
-					eventValidator.validateElement("END_SCREEN", 60);
-				}
-				discoveryValidator
-						.verifyDiscoveryEnabled("On_endScreen", false); // verify
-																		// discovery
-																		// is
-																		// disabled
-																		// on
-																		// end
-																		// screen
-			} catch (Exception e) {
-				logger.info("Exception " + e);
-			}
-			result = true;
-		} catch (Exception e) {
+                } catch (Exception e) {
+                    logger.info("No Upnext panel");
+                }
+                try {
+
+                eventValidator.validateElement("END_SCREEN", 60);
+                } catch (Exception e) {
+                    playAction.startAction();
+                    seekValidator.seek(20,true);
+                    eventValidator.validateElement("END_SCREEN", 60);
+                }
+                discoveryValidator.verifyDiscoveryEnabled("On_endScreen", false);   //verify discovery is disabled on end screen
+            }catch (Exception e){
+                logger.info("Exception "+ e);
+            }
+            result = true;
+        } catch (Exception e) {
 			e.printStackTrace();
 		}
 		Assert.assertTrue(result, "Discovery up next tests failed");

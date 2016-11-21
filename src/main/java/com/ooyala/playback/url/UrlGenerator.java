@@ -29,12 +29,26 @@ public class UrlGenerator {
 	public static String getURL(String embedcode, String pcode, String pbid,
 			String videoPlugin, String adPlugin, String additionalPlugin,
 			String playerConfigParameter) {
-		if (System.getProperty("environment").equals("PRODUCTION")) {
-			playerProperties.put(PlayerPropertyKey.ENVIRONMENT,
-					PlayerPropertyValue.PRODUCTION);
-		} else {
+
+		String environment = System.getProperty("environment");
+		logger.info("Environment is :: "+environment);
+		if ((environment==null || environment.equals(""))){
+
 			playerProperties.put(PlayerPropertyKey.ENVIRONMENT,
 					PlayerPropertyValue.STAGING);
+		}else
+		if (environment.equalsIgnoreCase("PRODUCTION")){
+			String v4Version = System.getProperty("v4Version");
+			if (v4Version==null || v4Version.equals("") || v4Version.equals("candidate/latest")){
+				logger.error("Please Provide V4 Version of Production Instance");
+				logger.info("Running test on STAGING Environment as v4Version pointing to staging");
+				playerProperties.put(PlayerPropertyKey.ENVIRONMENT,
+						PlayerPropertyValue.STAGING);
+			}else {
+				logger.info("V4 Version is :: "+v4Version);
+				playerProperties.put(PlayerPropertyKey.ENVIRONMENT,
+						PlayerPropertyValue.PRODUCTION);
+			}
 		}
 
 		test = new TestPage(playerProperties);
@@ -47,8 +61,7 @@ public class UrlGenerator {
 	/**
 	 *
 	 * @param testName
-	 * @param nodes
-	 *            Passing node list so that we can have access to the nodes data
+	 * @param testData Passing node list so that we can have access to the nodes data
 	 *            from xml file
 	 * @return output : output contains two dimentional Object in which test
 	 *         name and url is returned

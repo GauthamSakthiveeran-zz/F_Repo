@@ -18,20 +18,26 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackBitrateTests extends PlaybackWebTest {
 
+    private PlayValidator play ;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private Bitratevalidator bitratevalidator;
+
 	public PlaybackBitrateTests() throws OoyalaException {
-		super();
-	}
+        super();
+    }
 
-	@Test(groups = "alice", dataProvider = "testUrls")
-	public void testBitrate(String testName, String url) throws OoyalaException {
+    @Test(groups = "alice", dataProvider = "testUrls")
+    public void testBitrate(String testName, String url) throws OoyalaException {
 
-		boolean result = false;
-		PlayValidator play = pageFactory.getPlayValidator();
-		PauseValidator pause = pageFactory.getPauseValidator();
-		SeekValidator seek = pageFactory.getSeekValidator();
-		EventValidator eventValidator = pageFactory.getEventValidator();
-		Bitratevalidator bitratevalidator = pageFactory.getBitratevalidator();
 
+        boolean result = false;
+        /*PlayValidator play = pageFactory.getPlayValidator();
+        PauseValidator pause = pageFactory.getPauseValidator();
+        SeekValidator seek = pageFactory.getSeekValidator();
+        EventValidator eventValidator = pageFactory.getEventValidator();
+        Bitratevalidator bitratevalidator = pageFactory.getBitratevalidator();*/
 		try {
 			driver.get(url);
 			if (!driver.getCapabilities().getPlatform().toString()

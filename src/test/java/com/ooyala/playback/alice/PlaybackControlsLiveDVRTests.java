@@ -14,19 +14,23 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackControlsLiveDVRTests extends PlaybackWebTest {
 
-	public PlaybackControlsLiveDVRTests() throws OoyalaException {
-		super();
-	}
+    private PlayValidator play;
+    private PauseValidator pause;
+    private LiveAction live;
+
+
+    public PlaybackControlsLiveDVRTests() throws OoyalaException {
+        super();
+    }
 
 	@Test(groups = "alice", dataProvider = "testUrls")
 	public void testControlLiveDVR(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
-		PlayValidator play = pageFactory.getPlayValidator();
-		PauseValidator pause = pageFactory.getPauseValidator();
-		LiveAction live = pageFactory.getLiveAction();
-
+        boolean result = false;
+        /*PlayValidator play = pageFactory.getPlayValidator();
+        PauseValidator pause = pageFactory.getPauseValidator();
+        LiveAction live = pageFactory.getLiveAction();*/
 		try {
 			driver.get(url);
 			if (!getPlatform().equalsIgnoreCase("android")) {

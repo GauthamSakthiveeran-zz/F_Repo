@@ -15,19 +15,26 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
-	public PlaybackReplayVideoTests() throws OoyalaException {
-		super();
-	}
+    private PlayValidator play;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private ReplayValidator replayValidator;
+
+
+
+    public PlaybackReplayVideoTests() throws OoyalaException {
+        super();
+    }
 
 	@Test(groups = "alice", dataProvider = "testUrls")
 	public void testVideoReplay(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
-		PlayValidator play = pageFactory.getPlayValidator();
-		SeekValidator seek = pageFactory.getSeekValidator();
-		EventValidator eventValidator = pageFactory.getEventValidator();
-		ReplayValidator replayValidator = pageFactory.getReplayValidator();
+        boolean result = false;
+        /*PlayValidator play = pageFactory.getPlayValidator();
+        SeekValidator seek = pageFactory.getSeekValidator();
+        EventValidator eventValidator = pageFactory.getEventValidator();
+        ReplayValidator replayValidator = pageFactory.getReplayValidator();*/
 
 		try {
 			driver.get(url);

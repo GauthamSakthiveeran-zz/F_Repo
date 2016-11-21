@@ -16,21 +16,28 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackFullScreenTests extends PlaybackWebTest {
 
-	public PlaybackFullScreenTests() throws OoyalaException {
-		super();
-	}
+    private PlayValidator play;
+    private SeekValidator seek;
+    private PlayAction playAction;
+    private EventValidator eventValidator;
+    private FullScreenValidator fullScreenValidator;
+
+
+    public PlaybackFullScreenTests() throws OoyalaException {
+        super();
+    }
+
 
 	@Test(groups = "alice", dataProvider = "testUrls")
 	public void testPlaybackFullscreen(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
-		PlayValidator play = pageFactory.getPlayValidator();
-		SeekValidator seek = pageFactory.getSeekValidator();
-		PlayAction playAction = pageFactory.getPlayAction();
-		EventValidator eventValidator = pageFactory.getEventValidator();
-		FullScreenValidator fullScreenValidator = pageFactory
-				.getFullScreenValidator();
+        boolean result = false;
+        /*PlayValidator play = pageFactory.getPlayValidator();
+        SeekValidator seek = pageFactory.getSeekValidator();
+        PlayAction playAction = pageFactory.getPlayAction();
+        EventValidator eventValidator = pageFactory.getEventValidator();
+        FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();*/
 
 		try {
 			driver.get(url);

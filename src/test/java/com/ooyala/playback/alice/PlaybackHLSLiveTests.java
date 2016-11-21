@@ -19,23 +19,30 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackHLSLiveTests extends PlaybackWebTest {
 
-	public PlaybackHLSLiveTests() throws OoyalaException {
-		super();
-	}
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private ControlBarValidator controlBarValidator;
+    private FullScreenValidator fullScreenValidator;
+    private LiveAction liveAction;
+
+    public PlaybackHLSLiveTests() throws OoyalaException {
+        super();
+    }
 
 	@Test(groups = "alice", dataProvider = "testUrls")
 	public void testHLSLive(String testName, String url) throws OoyalaException {
 
-		boolean result = false;
-		PlayValidator play = pageFactory.getPlayValidator();
-		PauseValidator pause = pageFactory.getPauseValidator();
-		SeekValidator seek = pageFactory.getSeekValidator();
-		EventValidator eventValidator = pageFactory.getEventValidator();
-		ControlBarValidator controlBarValidator = pageFactory
-				.getControlBarValidator();
-		FullScreenValidator fullScreenValidator = pageFactory
-				.getFullScreenValidator();
-		LiveAction liveAction = pageFactory.getLiveAction();
+
+        boolean result = false;
+        /*PlayValidator play = pageFactory.getPlayValidator();
+        PauseValidator pause = pageFactory.getPauseValidator();
+        SeekValidator seek = pageFactory.getSeekValidator();
+        EventValidator eventValidator = pageFactory.getEventValidator();
+        ControlBarValidator controlBarValidator = pageFactory.getControlBarValidator();
+        FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
+        LiveAction liveAction = pageFactory.getLiveAction();*/
 
 		if (getBrowser().equalsIgnoreCase("safari")) {
 			try {

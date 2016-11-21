@@ -19,22 +19,28 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
-	public PlaybackVerticalVideoTests() throws OoyalaException {
-		super();
-	}
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private PlayAction playAction;
+    private EventValidator eventValidator;
+    private AspectRatioValidator aspectRatioValidator;
+
+    public PlaybackVerticalVideoTests() throws OoyalaException {
+        super();
+    }
 
 	@Test(groups = "alice", dataProvider = "testUrls")
 	public void testVerticalVideo(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
-		PlayValidator play = pageFactory.getPlayValidator();
-		PauseValidator pause = pageFactory.getPauseValidator();
-		SeekValidator seek = pageFactory.getSeekValidator();
-		PlayAction playAction = pageFactory.getPlayAction();
-		EventValidator eventValidator = pageFactory.getEventValidator();
-		AspectRatioValidator aspectRatioValidator = pageFactory
-				.getAspectRatioValidator();
+        boolean result = false;
+        /*PlayValidator play = pageFactory.getPlayValidator();
+        PauseValidator pause = pageFactory.getPauseValidator();
+        SeekValidator seek = pageFactory.getSeekValidator();
+        PlayAction playAction = pageFactory.getPlayAction();
+        EventValidator eventValidator = pageFactory.getEventValidator();
+        AspectRatioValidator aspectRatioValidator = pageFactory.getAspectRatioValidator();*/
 
 		try {
 			driver.get(url);

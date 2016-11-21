@@ -21,23 +21,31 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackHLSVodTests extends PlaybackWebTest {
 
-	public PlaybackHLSVodTests() throws OoyalaException {
-		super();
-	}
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private FullScreenValidator fullScreenValidator;
+    private CCValidator ccValidator ;
+    private ShareTabValidator shareTabValidator;
+
+
+    public PlaybackHLSVodTests() throws OoyalaException {
+        super();
+    }
+
 
 	@Test(groups = "alice", dataProvider = "testUrls")
 	public void testHLSVod(String testName, String url) throws OoyalaException {
 
-		boolean result = false;
-		PlayValidator play = pageFactory.getPlayValidator();
-		PauseValidator pause = pageFactory.getPauseValidator();
-		SeekValidator seek = pageFactory.getSeekValidator();
-		EventValidator eventValidator = pageFactory.getEventValidator();
-		FullScreenValidator fullScreenValidator = pageFactory
-				.getFullScreenValidator();
-		CCValidator ccValidator = pageFactory.getCCValidator();
-		ShareTabValidator shareTabValidator = pageFactory
-				.getShareTabValidator();
+        boolean result = false;
+        /*PlayValidator play = pageFactory.getPlayValidator();
+        PauseValidator pause = pageFactory.getPauseValidator();
+        SeekValidator seek = pageFactory.getSeekValidator();
+        EventValidator eventValidator = pageFactory.getEventValidator();
+        FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
+        CCValidator ccValidator = pageFactory.getCCValidator();
+        ShareTabValidator shareTabValidator = pageFactory.getShareTabValidator();*/
 
 		if (getBrowser().equalsIgnoreCase("safari")) {
 			try {

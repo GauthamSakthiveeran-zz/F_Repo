@@ -18,28 +18,34 @@ import com.ooyala.qe.common.exception.OoyalaException;
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackAspectRatioTests extends PlaybackWebTest {
+    private EventValidator eventValidator;
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private PlayAction playAction;
+    private AspectRatioValidator aspectRatioValidator;
+
 
 	public PlaybackAspectRatioTests() throws OoyalaException {
 		super();
 	}
 
+
 	@Test(groups = "alice", dataProvider = "testUrls")
 	public void testAspectRation(String testName, String url)
 			throws OoyalaException {
-
 		boolean result = false;
-		PlayValidator play = pageFactory.getPlayValidator();
-		PauseValidator pause = pageFactory.getPauseValidator();
-		SeekValidator seek = pageFactory.getSeekValidator();
-		PlayAction playAction = pageFactory.getPlayAction();
-		EventValidator eventValidator = pageFactory.getEventValidator();
-		AspectRatioValidator aspectRatioValidator = pageFactory
-				.getAspectRatioValidator();
 
 		try {
 			driver.get(url);
-
+			/*PlayValidator play = pageFactory.getPlayValidator();
+			PauseValidator pause = pageFactory.getPauseValidator();
+			SeekValidator seek = pageFactory.getSeekValidator();
+			PlayAction playAction = pageFactory.getPlayAction();
+			EventValidator eventValidator = pageFactory.getEventValidator();
+			AspectRatioValidator aspectRatioValidator = pageFactory.getAspectRatioValidator();*/
 			play.waitForPage();
+
 
 			injectScript("http://10.11.66.55:8080/alice.js");
 

@@ -19,19 +19,28 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackVolumeTest extends PlaybackWebTest {
 
-	public PlaybackVolumeTest() throws OoyalaException {
-		super();
-	}
+    private PlayValidator play;
+    private SeekValidator seek;
+    private PlayAction playAction;
+    private EventValidator eventValidator;
+    private VolumeValidator volumeValidator;
+
+
+
+    public PlaybackVolumeTest() throws OoyalaException {
+        super();
+    }
+
 
 	@Test(groups = "alice", dataProvider = "testUrls")
 	public void testVolume(String testName, String url) throws OoyalaException {
 
-		boolean result = false;
-		PlayValidator play = pageFactory.getPlayValidator();
-		SeekValidator seek = pageFactory.getSeekValidator();
-		PlayAction playAction = pageFactory.getPlayAction();
-		EventValidator eventValidator = pageFactory.getEventValidator();
-		VolumeValidator volumeValidator = pageFactory.getVolumeValidator();
+        boolean result = false;
+        /*PlayValidator play = pageFactory.getPlayValidator();
+        SeekValidator seek = pageFactory.getSeekValidator();
+        PlayAction playAction = pageFactory.getPlayAction();
+        EventValidator eventValidator = pageFactory.getEventValidator();
+        VolumeValidator volumeValidator = pageFactory.getVolumeValidator();*/
 
 		try {
 			driver.get(url);

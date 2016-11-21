@@ -19,8 +19,14 @@ import com.ooyala.qe.common.exception.OoyalaException;
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackClosedCaptionTests extends PlaybackWebTest {
-	public static Logger logger = Logger
-			.getLogger(PlaybackClosedCaptionTests.class);
+    public static Logger logger = Logger.getLogger(PlaybackClosedCaptionTests.class);
+
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private FullScreenValidator fullScreenValidator;
+    private CCValidator ccValidator;
 
 	public PlaybackClosedCaptionTests() throws OoyalaException {
 		super();
@@ -30,14 +36,13 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 	public void testClosedCaption(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
-		PlayValidator play = pageFactory.getPlayValidator();
-		PauseValidator pause = pageFactory.getPauseValidator();
-		SeekValidator seek = pageFactory.getSeekValidator();
-		EventValidator eventValidator = pageFactory.getEventValidator();
-		FullScreenValidator fullScreenValidator = pageFactory
-				.getFullScreenValidator();
-		CCValidator ccValidator = pageFactory.getCCValidator();
+        boolean result = false;
+       /* PlayValidator play = pageFactory.getPlayValidator();
+        PauseValidator pause = pageFactory.getPauseValidator();
+        SeekValidator seek = pageFactory.getSeekValidator();
+        EventValidator eventValidator = pageFactory.getEventValidator();
+        FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
+        CCValidator ccValidator = pageFactory.getCCValidator();*/
 
 		logger.info("Executing PlaybackClosedCaption test  ");
 		try {

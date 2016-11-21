@@ -18,8 +18,15 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackLocalizationTests extends PlaybackWebTest {
 
-	public static Logger logger = Logger
-			.getLogger(PlaybackLocalizationTests.class);
+    public static Logger logger = Logger.getLogger(PlaybackLocalizationTests.class);
+
+    private PlayValidator play ;
+    private PauseValidator pause ;
+    private SeekValidator seek ;
+    private PlayPauseAction playPauseAction ;
+    private EventValidator eventValidator ;
+    private ShareTabValidator shareTabValidator ;
+
 
 	public PlaybackLocalizationTests() throws OoyalaException {
 		super();
@@ -29,15 +36,13 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 	public void testPlaybackLocalization(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
-		PlayValidator play = pageFactory.getPlayValidator();
-		PauseValidator pause = pageFactory.getPauseValidator();
-		SeekValidator seek = pageFactory.getSeekValidator();
-		PlayPauseAction playPauseAction = pageFactory.getPlayPauseAction();
-		EventValidator eventValidator = pageFactory.getEventValidator();
-		ShareTabValidator shareTabValidator = pageFactory
-				.getShareTabValidator();
-
+        boolean result = false;
+        /*PlayValidator play = pageFactory.getPlayValidator();
+        PauseValidator pause = pageFactory.getPauseValidator();
+        SeekValidator seek = pageFactory.getSeekValidator();
+        PlayPauseAction playPauseAction = pageFactory.getPlayPauseAction();
+        EventValidator eventValidator = pageFactory.getEventValidator();
+        ShareTabValidator shareTabValidator = pageFactory.getShareTabValidator();*/
 		try {
 			driver.get(url);
 			if (!getPlatform().equalsIgnoreCase("android")) {
