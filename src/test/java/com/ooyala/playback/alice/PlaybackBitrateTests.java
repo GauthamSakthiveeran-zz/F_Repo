@@ -33,11 +33,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
 
         boolean result = false;
-        /*PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        Bitratevalidator bitratevalidator = pageFactory.getBitratevalidator();*/
+        
 		try {
 			driver.get(url);
 			if (!driver.getCapabilities().getPlatform().toString()

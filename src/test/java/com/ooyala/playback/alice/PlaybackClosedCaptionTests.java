@@ -37,12 +37,7 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 			throws OoyalaException {
 
         boolean result = false;
-       /* PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
-        CCValidator ccValidator = pageFactory.getCCValidator();*/
+       
 
 		logger.info("Executing PlaybackClosedCaption test  ");
 		try {
