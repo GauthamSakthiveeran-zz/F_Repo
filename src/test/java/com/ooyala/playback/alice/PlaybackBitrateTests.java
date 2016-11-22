@@ -28,11 +28,14 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
 
         boolean result = false;
+
         try {
             driver.get(url);
             if (! driver.getCapabilities().getPlatform().toString().equalsIgnoreCase("android")) {
                 driver.manage().window().maximize();
             }
+
+
 
             play.waitForPage();
 

@@ -29,7 +29,6 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
     @Test(groups = "closedCaption", dataProvider = "testUrls")
     public void testClosedCaption(String testName, String url) throws OoyalaException {
 
-
         boolean result = false;
 		logger.info("Executing PlaybackClosedCaption test  ");
 		try {
