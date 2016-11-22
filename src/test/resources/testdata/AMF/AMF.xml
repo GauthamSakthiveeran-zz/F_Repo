@@ -39,5 +39,45 @@
 	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
     	</url>
     </test>
+    
+    <test name="PlaybackClickthroughTests">
+    	<url>
+    		<description name="Clickthrough_Freewheel"/>
+	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="FREEWHEEL"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
+	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+    	</url>
+    </test>
+    
+    
+    <test name ="PlaybackAdIconTests" >
+        <url>
+        	<description name="AD_with_Icon_Vast3.0"/>
+	        <embed_code name="FncDg4MTE6cc_NYXGLllX-e7I9DYIhp5"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+    </test>
+    
+    <test name ="PlaybackAdWrapperTests" >
+        <url>
+        	<description name="AD_Wrapper_Vast3.0"/>
+	        <embed_code name="JyOWQ2MTE6YkrK2e9xpuZ4pfZQjiMijK"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+    </test>
 
 </testdata>   

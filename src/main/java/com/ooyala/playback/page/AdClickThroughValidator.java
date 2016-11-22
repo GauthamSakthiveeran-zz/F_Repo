@@ -1,6 +1,7 @@
 package com.ooyala.playback.page;
 
 
+import static com.relevantcodes.extentreports.LogStatus.PASS;
 import static java.lang.Thread.sleep;
 
 import org.apache.log4j.Logger;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.url.PlayerPropertyValue;
+import com.ooyala.playback.url.Testdata;
 
 public class AdClickThroughValidator extends PlayBackPage implements PlaybackValidator {
 
@@ -24,13 +26,16 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 		waitOnElement(element, timeout);
 	}
 
-	public void clickThroughAds(PlayerPropertyValue value) throws Exception{
+	public void clickThroughAds(Testdata testData, int index) throws Exception{
+		
+		String value = testData.getTest().get(0).getUrl().get(index).getAdPlugins().getValue();
+		
 		String baseWindowHdl = driver.getWindowHandle();
 		if(value!=null){
 			
 			if(!getPlatform().equalsIgnoreCase("Android")) {// we skipping this code for IMA and Vast (Android)
-				if(value!=PlayerPropertyValue.FREEWHEEL){
-					if(value==PlayerPropertyValue.VAST){
+				if(value!=PlayerPropertyValue.FREEWHEEL.toString()){
+					if(value==PlayerPropertyValue.VAST.toString()){
 		                clickOnIndependentElement("adScreenPanel");
 					} else{
 /*						WebElement adPanel = getWebElementsList("adScreenPanel1").get(0);
@@ -42,7 +47,7 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 					
 				}
 			}
-			if(value!=PlayerPropertyValue.IMA){
+			if(value!=PlayerPropertyValue.IMA.toString()){
 				try {
 	                clickOnHiddenElement("learnMore");
 	                waitOnElement("adsClicked_learnMoreButton", 5);
@@ -51,6 +56,7 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 	                waitOnElement("adsClicked_learnMoreButton", 20);
 	            }
 			}
+			extentTest.log(PASS, "AdsClicked by clicking on the learn more button");
 			sleep(2000);
 			java.util.Set<java.lang.String> windowHandles = driver.getWindowHandles();
 	        int count = windowHandles.size();
@@ -64,7 +70,7 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 	               }
 	        }
 	        
-	        boolean isAd = isAdPlaying(driver);
+	        boolean isAd = isAdPlaying();
 	        if(isAd) {
 
 	            if(getPlatform().equalsIgnoreCase("Android") ) //TODO : || Description.contains("HLS")
@@ -85,8 +91,8 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 		}
 	}
 	
-	public static boolean isAdPlaying(WebDriver webDriver){
-        Boolean isAdplaying = (Boolean)(((JavascriptExecutor) webDriver).executeScript("return pp.isAdPlaying()"));
+	public boolean isAdPlaying(){
+        Boolean isAdplaying = (Boolean)(((JavascriptExecutor) driver).executeScript("return pp.isAdPlaying()"));
         return isAdplaying;
     }
 }

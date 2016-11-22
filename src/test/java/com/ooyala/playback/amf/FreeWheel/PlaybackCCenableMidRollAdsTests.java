@@ -4,7 +4,6 @@ import static com.relevantcodes.extentreports.LogStatus.PASS;
 import static java.lang.Thread.sleep;
 
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -14,7 +13,6 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest{
@@ -79,7 +77,7 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest{
 		    ccValidator.validate("cclanguage",60);
 		    event.validate("videoPlaying_1", 190);
 		    
-		    seekAction.seek("145.6");
+		    seekAction.seekPlayback();
 		    
 		    event.validate("seeked_1", 190);
 		    playAction.startAction();
