@@ -20,6 +20,7 @@
             </run>
         </groups>
         <classes>
+            <parameter name="testData" value="Alice.xml"/>
             <class name="com.ooyala.playback.alice.BasicPlaybackTests" />
             <class name="com.ooyala.playback.alice.DiscoveryUpNextTests" />
             <class name="com.ooyala.playback.alice.PlaybackControlsLiveDVRTests" />
