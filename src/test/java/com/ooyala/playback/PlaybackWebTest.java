@@ -26,6 +26,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.w3c.dom.NodeList;
 
@@ -54,6 +55,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected ExtentReports extentReport;
 	protected ExtentTest extentTest;
 	protected Testdata testData;
+	protected String[] jsUrl;
 
 	private static String MAC_CHROME_DRIVER_PATH = "src/test/resources/lib-thirdparty/chromedriverformac/chromedriver";
 	private static String WIN_CHROME_DRIVER_PATH = "src/test/resources/lib-thirdparty/chromedriverforwin/chromedriver.exe";
@@ -96,6 +98,26 @@ public abstract class PlaybackWebTest extends FacileTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@BeforeMethod(alwaysRun = true)
+	@Parameters("jsFile")
+	public void getJSFile(String jsFile) throws Exception {
+		logger.info("************Getting the JS file*************");
+		String[] jsFiles;
+		if(jsFile.contains(",")){
+			jsFiles = jsFile.split(",");
+		}else{
+			jsFiles = new String[1];
+			jsFiles[0] = jsFile;
+		}
+		String jsHost = readPropertyOrEnv("jshostIpAddress","10.11.66.55");
+		if(jsFiles!=null && jsFiles.length>0){
+			jsUrl = new String[jsFiles.length];
+			for(int i=0;i<jsFiles.length;i++)
+			    jsUrl[i] = "http://"+jsHost+":8080/"+jsFiles[i];
+		}
+		
 	}
 
 	public String getTestCaseName(Method method, Object[] testData) {
@@ -207,6 +229,23 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.info(e.getMessage());
 		}
 	}
+	
+	public void injectScript() throws Exception{
+		if(jsUrl!=null && jsUrl.length>0){
+			for(String url : jsUrl){
+				try {
+					logger.info("JS - "+url);
+					injectScript(url);
+				} catch (Exception e) {
+//					e.printStackTrace();
+					logger.error(e.getMessage());
+					logger.info("Retrying...");
+					injectScript(url);
+				}
+			}
+		}
+	}
+	
 	public void injectScript(String scriptURL) throws Exception {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		Object object = js.executeScript("function injectScript(url) {\n"
@@ -217,7 +256,10 @@ public abstract class PlaybackWebTest extends FacileTest {
 				+ "var scriptURL = arguments[0];\n"
 				+ "injectScript(scriptURL);", scriptURL);
 
-		object = js.executeScript("subscribeToEvents();");
+		if(scriptURL.contains("common"))
+			object = js.executeScript("subscribeToCommonEvents();");
+		else	
+			object = js.executeScript("subscribeToEvents();");
 		extentTest.log(LogStatus.PASS, "Javascript injection is successful");
 	}
 

@@ -45,13 +45,11 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest{
 			playValidator.waitForPage();
 			Thread.sleep(10000);
 			
-			//TODO
-			injectScript("http://192.168.0.43:8080/common.js");
-			injectScript("http://192.168.0.43:8080/amf/amf.js");
+			injectScript();
 			
 			playAction.startAction();
 			
-			//TODO
+			//TODO - not sure if this is needed
 			
 			/*if (Description.equalsIgnoreCase("Preroll_Bitmovin_Pulse_CC")){
 	            waitForElement(webDriver, "singleAdPlayed_2", 190);
@@ -96,6 +94,8 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest{
 	        extentTest.log(PASS, "Video completed palying");
 
 	        extentTest.log(PASS, "Verified PreRoll Ads test");
+	        
+	        result = true;
 			
 		}catch (Exception e) {
 			e.printStackTrace();

@@ -46,12 +46,10 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest{
 			playValidator.waitForPage();
 			Thread.sleep(10000);
 			
-			//TODO
-			injectScript("http://192.168.0.43:8080/common.js");
-			injectScript("http://192.168.0.43:8080/amf/amf.js");
+			injectScript();
 			
 			playAction.startAction();
-			sleep(1000);
+			sleep(2000);
 			event.validate("playing_1", 60);
 			
 		    logger.info("Video started playing");
@@ -81,15 +79,17 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest{
 		    ccValidator.validate("cclanguage",60);
 		    event.validate("videoPlaying_1", 190);
 		    
-		    seekAction.seek(10, true);
+		    seekAction.seek("145.6");
 		    
 		    event.validate("seeked_1", 190);
+		    playAction.startAction();
 		    event.validate("played_1", 250);
 
 
 		    extentTest.log(PASS, "Video Played");
 
 		    extentTest.log(PASS, "Verified MidrollAdsTest");
+			result = true;
 			
 		}catch (Exception e) {
 			e.printStackTrace();

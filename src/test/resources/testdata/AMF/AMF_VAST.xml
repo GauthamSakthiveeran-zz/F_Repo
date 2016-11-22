@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tests>
+<testdata>
     <test name ="PlaybackAdIconTests" >
-        <description name="AD_with_Icon_Vast3.0"/>
-        <embed_code name="FncDg4MTE6cc_NYXGLllX-e7I9DYIhp5"/>
-        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-        <plugins name="MAIN"/>
-        <adPlugins name="VAST"/>
-        <additionalPlugins name=""/>
-        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        <url>
+        	<description name="AD_with_Icon_Vast3.0"/>
+	        <embed_code name="FncDg4MTE6cc_NYXGLllX-e7I9DYIhp5"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
     </test>
     
     <test name ="PlaybackAdWrapperTests" >
-        <description name="AD_Wrapper_Vast3.0"/>
-        <embed_code name="JyOWQ2MTE6YkrK2e9xpuZ4pfZQjiMijK"/>
-        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-        <plugins name="MAIN"/>
-        <adPlugins name="VAST"/>
-        <additionalPlugins name=""/>
-        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        <url>
+        	<description name="AD_Wrapper_Vast3.0"/>
+	        <embed_code name="JyOWQ2MTE6YkrK2e9xpuZ4pfZQjiMijK"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
     </test>
 
-</tests>   
+</testdata>   

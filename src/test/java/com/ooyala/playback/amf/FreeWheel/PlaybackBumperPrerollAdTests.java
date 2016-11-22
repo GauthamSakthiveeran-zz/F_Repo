@@ -44,9 +44,7 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest{
 			playValidator.waitForPage();
 			Thread.sleep(10000);
 			
-			//TODO
-			injectScript("http://192.168.0.43:8080/common.js");
-			injectScript("http://192.168.0.43:8080/amf/amf.js");
+			injectScript();
 			
 			playAction.startAction();
 			event.validate("BumperAd", 60);

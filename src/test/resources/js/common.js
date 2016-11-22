@@ -1,4 +1,4 @@
-function subscribeToEvents() {
+function subscribeToCommonEvents() {
 	window.pp.mb.subscribe("*", "test", function(event, params) {
 		var playedEventOrder = 1;
 		var fullscreenChangedEventOrder = 1;

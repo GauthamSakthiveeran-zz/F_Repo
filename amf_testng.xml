@@ -5,8 +5,11 @@
 	</listeners>
 
 	<test name="AMF Regression Group">
+	
 		
 		<classes>
+			<parameter name="testData" value="testdata/AMF/AMF_Freewheel.xml"/>
+			<parameter name="jsFile" value="common.js,amf/amf.js"/>
 			<class name="com.ooyala.playback.amf.FreeWheel.PlaybackCCenableMidRollAdsTests" />
            
 		</classes>

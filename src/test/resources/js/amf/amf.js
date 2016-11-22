@@ -21,7 +21,7 @@ function subscribeToEvents() {
 		var videoPlayedEventOrder = 1;
 		
 		return function(event) {
-		
+				
 			if (event.match(/videoPlaying/) && arguments[1] == 'main') {
 				OO.$('#ooplayer').append('<p id=videoPlaying_'+videoPlayingEventOrder+'>videoPlaying '+videoPlayingEventOrder+'</p>'); 
 				videoPlayingEventOrder++;
@@ -34,7 +34,7 @@ function subscribeToEvents() {
 				
 			if (event.match(/playing/)) {
 				if(replayEventOrder == 2){
-					OO.$('#ooplayer').append('<p id=playing_'+playing[1]+'>playing '+playing[1]+'</p>');
+					OO.$('#ooplayer').append('<p id=playing_'+playing[1]+'>playing '+playing[1]+'</p>');c
 				}else{
 					OO.$('#ooplayer').append('<p id=playing_'+playingEventOrder+'>playing '+playingEventOrder+'</p>'); 
 					playingEventOrder++;
@@ -47,12 +47,12 @@ function subscribeToEvents() {
 			
 			if (event.match(/willPlaySingleAd/)) {
 				if(videoPlayingEventOrder == 1){
-					OO.$('#ooplayer').append('<p id= willPlaySingleAd_'+willPlayAdsEventOrder+'>Preroll_willPlaySingleAd '+willPlayAdsEventOrder+'</p>'); 
-					willPlayAdsEventOrder++;
+					OO.$('#ooplayer').append('<p id= willPlaySingleAd_'+willPlaySingleAdsEventOrder+'>Preroll_willPlaySingleAd '+willPlaySingleAdsEventOrder+'</p>'); 
+					willPlaySingleAdsEventOrder++;
 				}
 				if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
-					OO.$('#ooplayer').append('<p id=MidRoll_willPlaySingleAd_'+willPlayAdsEventOrder+'>Midroll_willPlaySingleAd '+willPlayAdsEventOrder+'</p>'); 
-					willPlayAdsEventOrder++;
+					OO.$('#ooplayer').append('<p id=MidRoll_willPlaySingleAd_'+willPlaySingleAdsEventOrder+'>Midroll_willPlaySingleAd '+willPlaySingleAdsEventOrder+'</p>'); 
+					willPlaySingleAdsEventOrder++;
 				}
 				if(videoPlayedEventOrder == 2){
 					OO.$('#ooplayer').append('<p id=willPlaySingleAd_'+willPlaySingleAdsEventOrder+'>Postroll_willPlaySingleAd '+willPlaySingleAdsEventOrder+'</p>');
@@ -62,8 +62,8 @@ function subscribeToEvents() {
 				OO.$('#ooplayer').append('<p id=adIsPlaying'+'>adIsPlaying</p>');
 			}
 			if (event.match(/singleAdPlayed/)) {
-				OO.$('#ooplayer').append('<p id=singleAdPlayed_'+adsPlayedEventOrder+'>singleAdPlayed '+adsPlayedEventOrder+' </p>'); 
-				adsPlayedEventOrder++;
+				OO.$('#ooplayer').append('<p id=singleAdPlayed_'+singleadsPlayedEventOrder+'>singleAdPlayed '+singleadsPlayedEventOrder+' </p>'); 
+				singleadsPlayedEventOrder++;
 				showAdSkipButtonEventOrder = 1;
 			}
 			
@@ -128,7 +128,7 @@ function subscribeToEvents() {
 			
 			if (event.match(/willPlayAds/)) {
 				if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
-					OO.$('#ooplayer').append('<p id=MidRoll_willPlayAds'+'>MidRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
+					OO.$('#ooplayer').append('<p id=MidRoll_willPlayAds_'+willPlayAdsEventOrder+'>MidRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
 					willPlayAdsEventOrder++;
 				}
 				if(videoPlayedEventOrder == 2){

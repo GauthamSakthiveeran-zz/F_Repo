@@ -52,9 +52,7 @@ public class PlaybackAdWrapperTests extends PlaybackWebTest {
 			playValidator.waitForPage();
 			Thread.sleep(10000);
 			
-			//TODO
-			injectScript("http://192.168.0.43:8080/common.js");
-			injectScript("http://192.168.0.43:8080/amf/amf.js");
+			injectScript();
 			
 			playValidator.validate("playing_1", 190);
 			extentTest.log(LogStatus.PASS, "Main video started to play");
