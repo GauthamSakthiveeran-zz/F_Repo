@@ -3,28 +3,25 @@ package com.ooyala.playback.alice;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.LiveAction;
-import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.SkipException;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import static org.testng.Assert.assertEquals;
 
 /**
  * Created by soundarya on 11/16/16.
  */
-public class PlaybackHLSLiveTests extends PlaybackWebTest {
+public class PlaybackLiveTests extends PlaybackWebTest {
 
-    @DataProvider(name = "testUrls")
-    public Object[][] getTestData() {
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private ControlBarValidator controlBarValidator;
+    private FullScreenValidator fullScreenValidator;
+    private LiveAction liveAction;
 
-        return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-                nodeList);
-    }
-
-    public PlaybackHLSLiveTests() throws OoyalaException {
+    public PlaybackLiveTests() throws OoyalaException {
         super();
     }
 
@@ -32,13 +29,7 @@ public class PlaybackHLSLiveTests extends PlaybackWebTest {
     public void testHLSLive(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        ControlBarValidator controlBarValidator = pageFactory.getControlBarValidator();
-        FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
-        LiveAction liveAction = pageFactory.getLiveAction();
+
 
         if (getBrowser().equalsIgnoreCase("safari")) {
             try {
@@ -51,6 +42,7 @@ public class PlaybackHLSLiveTests extends PlaybackWebTest {
 
                 injectScript(jsURL());
 
+
                 play.validate("playing_1", 60);
 
                 logger.info("video is playing");
@@ -59,10 +51,10 @@ public class PlaybackHLSLiveTests extends PlaybackWebTest {
 
                 logger.info("video paused");
 
-                controlBarValidator.validate("",60);
-                //to-do add ooyala logo to the test page
+                controlBarValidator.validate("", 60);
+                // to-do add ooyala logo to the test page
 
-                fullScreenValidator.validate("FULLSCREEN_BTN_1",60);
+                fullScreenValidator.validate("FULLSCREEN_BTN_1", 60);
 
                 logger.info("playing video in full screen");
 

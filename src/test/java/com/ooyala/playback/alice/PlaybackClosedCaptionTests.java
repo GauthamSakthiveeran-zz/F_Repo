@@ -2,11 +2,9 @@ package com.ooyala.playback.alice;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
-import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static java.lang.Thread.sleep;
@@ -17,75 +15,70 @@ import static java.lang.Thread.sleep;
 public class PlaybackClosedCaptionTests extends PlaybackWebTest {
     public static Logger logger = Logger.getLogger(PlaybackClosedCaptionTests.class);
 
-    @DataProvider(name = "testUrls")
-    public Object[][] getTestData() {
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private FullScreenValidator fullScreenValidator;
+    private CCValidator ccValidator;
 
-        return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-                nodeList);
-    }
-
-    public PlaybackClosedCaptionTests() throws OoyalaException {
-        super();
-    }
+	public PlaybackClosedCaptionTests() throws OoyalaException {
+		super();
+	}
 
     @Test(groups = "closedCaption", dataProvider = "testUrls")
     public void testClosedCaption(String testName, String url) throws OoyalaException {
 
+
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
-        CCValidator ccValidator = pageFactory.getCCValidator();
+		logger.info("Executing PlaybackClosedCaption test  ");
+		try {
+			driver.get(url);
+			if (!getPlatform().equalsIgnoreCase("android")) {
+				driver.manage().window().maximize();
+			}
 
-        logger.info("Executing PlaybackClosedCaption test  " );
-        try {
-            driver.get(url);
-            if (!getPlatform().equalsIgnoreCase("android")) {
-                driver.manage().window().maximize();
-            }
-
-            play.waitForPage();
+			play.waitForPage();
 
             injectScript(jsURL());
 
-            play.validate("playing_1", 60);
 
-            logger.info("Verifed that video is getting playing");
+			play.validate("playing_1", 60);
 
-            sleep(1000);
+			logger.info("Verifed that video is getting playing");
 
-            pause.validate("paused_1", 60);
+			sleep(1000);
 
-            logger.info("Verified that video is getting pause");
+			pause.validate("paused_1", 60);
 
-            play.validate("playing_2", 60);
+			logger.info("Verified that video is getting pause");
 
-            logger.info("Verifed that video is getting playing again after pause play");
+			play.validate("playing_2", 60);
 
-            fullScreenValidator.validate("",60);
+			logger.info("Verifed that video is getting playing again after pause play");
 
-            sleep(1000);
+			fullScreenValidator.validate("", 60);
 
-            ccValidator.validate("cclanguage",60);
+			sleep(1000);
 
-            logger.info("Verified cc languages");
+			ccValidator.validate("cclanguage", 60);
 
-            sleep(1000);
+			logger.info("Verified cc languages");
 
-            seek.validate("seeked_1", 60);
+			sleep(1000);
 
-            logger.info("Verirfied seeked functionality");
+			seek.validate("seeked_1", 60);
 
-            eventValidator.validate("played_1",60);
+			logger.info("Verirfied seeked functionality");
 
-            logger.info("verified Video played");
+			eventValidator.validate("played_1", 60);
 
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Assert.assertTrue(result, "Closed Caption tests failed");
-    }
+			logger.info("verified Video played");
+
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Assert.assertTrue(result, "Closed Caption tests failed");
+	}
 }

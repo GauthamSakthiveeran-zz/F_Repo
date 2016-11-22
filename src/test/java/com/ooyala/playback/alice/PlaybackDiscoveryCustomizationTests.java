@@ -6,14 +6,10 @@ import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.PlayPauseAction;
-import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static java.lang.System.out;
 import static java.lang.Thread.sleep;
 
 /**
@@ -21,11 +17,15 @@ import static java.lang.Thread.sleep;
  */
 public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
-    @DataProvider(name = "testUrls")
-    public Object[][] getTestData() {
-        return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-                nodeList);
-    }
+    private PlayValidator play;
+    private UpNextValidator discoveryUpNext;
+    private EventValidator eventValidator;
+    private DiscoveryValidator discoveryValidator;
+    private ClickDiscoveryButtonAction clickDiscoveryButtonAction;
+    private PauseAction pauseAction;
+    private PlayAction playAction;
+    private PlayPauseAction playPauseAction;
+    private SeekValidator seekValidator;
 
     public PlaybackDiscoveryCustomizationTests() throws OoyalaException {
         super();
@@ -35,15 +35,6 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
     public void testDiscoveryUpNext(String testName, String url) throws OoyalaException
     {
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
-        UpNextValidator discoveryUpNext = pageFactory.getUpNextValidator();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        DiscoveryValidator discoveryValidator = pageFactory.getDiscoveryValidator();
-        ClickDiscoveryButtonAction clickDiscoveryButtonAction = pageFactory.getClickDiscoveryButtonAction();
-        PauseAction pauseAction = pageFactory.getPauseAction();
-        PlayAction playAction = pageFactory.getPlayAction();
-        PlayPauseAction playPauseAction  = pageFactory.getPlayPauseAction();
-        SeekValidator seekValidator = pageFactory.getSeekValidator();
 
         try {
             driver.get(url);
@@ -131,4 +122,5 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
         }
         Assert.assertTrue(result, "Discovery customization tests failed");
     }
+
 }

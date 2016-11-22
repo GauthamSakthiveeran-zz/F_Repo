@@ -1,6 +1,6 @@
 package com.ooyala.playback.page;
 
-import static java.lang.System.out;
+
 import static java.lang.Thread.sleep;
 
 import java.util.List;
@@ -12,11 +12,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class DiscoveryValidator extends BaseValidator {
+public class DiscoveryValidator extends PlayBackPage implements PlaybackValidator {
 
-	
 	public static Logger logger = Logger.getLogger(DiscoveryValidator.class);
-	
+
 	public DiscoveryValidator(WebDriver driver) {
 		super(driver);
 		PageFactory.initElements(driver, this);
@@ -24,8 +23,8 @@ public class DiscoveryValidator extends BaseValidator {
 		 * Here we will tell Facile to add the page elements of our Login Page
 		 */
 		addElementToPageElements("discovery");
-        addElementToPageElements("play");
-        addElementToPageElements("pause");
+		addElementToPageElements("play");
+		addElementToPageElements("pause");
 
 	}
 
@@ -51,7 +50,7 @@ public class DiscoveryValidator extends BaseValidator {
 
         List<WebElement> count = getWebElementsList("DISCOVERY_IMG_WRAPPER");
 
-        out.println("Count Value :" + count.size());
+        logger.info("Count Value :" + count.size());
         logger.info("Number of Discovery Videos " +count.size());
 
         boolean flagTrue = false;
@@ -59,7 +58,7 @@ public class DiscoveryValidator extends BaseValidator {
             flagTrue =isElementVisible("RIGHT_BTN");
             logger.info("Is right button showing on Discovery Screen  " + flagTrue);
         } catch (Exception e) {
-            out.println("Max videos are showing on Discovery screen");
+            logger.info("Max videos are showing on Discovery screen");
         }
         if (count.size() > 3 && flagTrue) {
             clickOnIndependentElement("RIGHT_BTN");
@@ -85,7 +84,6 @@ public class DiscoveryValidator extends BaseValidator {
     }
     public void verifyDiscoveryEnabled(String Onevent, boolean flag)
     {
-
         boolean discoverytray = isElementPresent("DISCOVERY_STYLE");
         boolean discoveryscreen = isElementPresent("CONTENT_SCREEN");
 

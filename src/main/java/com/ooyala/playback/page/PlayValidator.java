@@ -5,11 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
-public class PlayValidator extends BaseValidator {
+public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
-    public static Logger Log = Logger.getLogger(PlayValidator.class);
+	public static Logger Log = Logger.getLogger(PlayValidator.class);
 
 	public PlayValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -22,8 +22,9 @@ public class PlayValidator extends BaseValidator {
 
 	@Override
 	public boolean waitForPage() {
-		//loadingSpinner();
+		// loadingSpinner();
 		boolean errorScreen = false;
+
 		try {
 			waitOnElement("PLAY_BUTTON", 60);
 		} catch (Exception e) {
@@ -31,23 +32,28 @@ public class PlayValidator extends BaseValidator {
 			waitOnElement("INNER_WRAPPER", 60);
 			errorScreen = isElementPresent("ERROR_SCREEN");
 			if (errorScreen)
-                driver.navigate().refresh();
-				waitOnElement("PLAY_BUTTON", 60);
+				driver.navigate().refresh();
+			waitOnElement("PLAY_BUTTON", 60);
 		}
-        logger.info("Page is loaded completely");
+		logger.info("Page is loaded completely");
+		extentTest.log(LogStatus.INFO, "Successfully found play button");
 
 		return errorScreen;
 
 	}
 
 	public void validate(String element, int timeout) throws Exception {
-		//loadingSpinner();
-        clickOnIndependentElement("PLAY_BUTTON");
+		// loadingSpinner();
+
+		clickOnIndependentElement("PLAY_BUTTON");
+		extentTest.log(LogStatus.PASS, "Clicked on play button");
 		Thread.sleep(1000);
 
 		waitOnElement("PLAYING_SCREEN", 60);
 
 		waitOnElement(By.id(element), timeout);
-        Log.info("Video Playing");
+		extentTest.log(LogStatus.PASS,
+				"Video Playing and validation of element " + element
+						+ " is successful");
 	}
 }

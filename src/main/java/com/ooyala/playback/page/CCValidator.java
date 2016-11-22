@@ -12,26 +12,24 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import com.ooyala.facile.page.WebPage;
-
 /**
  * Created by soundarya on 11/3/16.
  */
-public class CCValidator extends BaseValidator {
+public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger logger = Logger.getLogger(CCValidator.class);
-	
-	public CCValidator(WebDriver driver) {
-		super(driver);
-		PageFactory.initElements(driver, this);
-		/**
-		 * Here we will tell Facile to add the page elements of our Login Page
-		 */
-		addElementToPageElements("cc");
+    public static Logger logger = Logger.getLogger(CCValidator.class);
+
+    public CCValidator(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+        /**
+         * Here we will tell Facile to add the page elements of our Login Page
+         */
+        addElementToPageElements("cc");
         addElementToPageElements("play");
         addElementToPageElements("controlbar");
         addElementToPageElements("pause");
-	}
+    }
 
     public void validate(String element,int timeout)throws Exception {
         try { try {

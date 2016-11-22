@@ -20,11 +20,11 @@
             </run>
         </groups>
         <classes>
-            <class name="com.ooyala.playback.alice.AliceBasicPlaybackTests" />
+            <class name="com.ooyala.playback.alice.BasicPlaybackTests" />
             <class name="com.ooyala.playback.alice.DiscoveryUpNextTests" />
             <class name="com.ooyala.playback.alice.PlaybackControlsLiveDVRTests" />
             <class name="com.ooyala.playback.alice.PlaybackHLSVodTests" />
-            <class name="com.ooyala.playback.alice.PlaybackHLSLiveTests" />
+            <class name="com.ooyala.playback.alice.PlaybackLiveTests" />
             <class name="com.ooyala.playback.alice.PlaybackReplayVideoTests" />
             <class name="com.ooyala.playback.alice.PlaybackFullScreenTests" />
             <class name="com.ooyala.playback.alice.PlaybackLocalizationTests" />

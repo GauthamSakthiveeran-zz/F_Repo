@@ -1,5 +1,7 @@
 package com.ooyala.playback.page;
 
+import static java.lang.Thread.sleep;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,23 +9,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
-import static java.lang.Thread.sleep;
+public class FullScreenValidator extends PlayBackPage implements
+		PlaybackValidator {
 
-public class FullScreenValidator extends BaseValidator {
+	public static Logger logger = Logger.getLogger(FullScreenValidator.class);
 
-    public static Logger logger = Logger.getLogger(FullScreenValidator.class);
+	public FullScreenValidator(WebDriver webDriver) {
+		super(webDriver);
+		PageFactory.initElements(webDriver, this);
+		/**
+		 * Here we will tell Facile to add the page elements of our Login Page
+		 */
+		addElementToPageElements("fullscreen");
+		addElementToPageElements("pause");
 
-    public FullScreenValidator(WebDriver webDriver) {
-        super(webDriver);
-        PageFactory.initElements(webDriver, this);
-        /**
-         * Here we will tell Facile to add the page elements of our Login Page
-         */
-        addElementToPageElements("fullscreen");
-        addElementToPageElements("pause");
-
-    }
-
+	}
     public void validate(String element, int timeout) throws Exception {
         WebElement player = getWebElement("OOPLAYER");
         Actions action = new Actions(driver);

@@ -1,6 +1,5 @@
 package com.ooyala.playback.page;
 
-import com.ooyala.playback.page.BaseValidator;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +10,7 @@ import org.testng.Assert;
 /**
  * Created by soundarya on 11/8/16.
  */
-public class VolumeValidator  extends BaseValidator {
+public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 
     public static Logger Log = Logger.getLogger(VolumeValidator.class);
 

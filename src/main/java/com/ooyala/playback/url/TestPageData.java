@@ -1,14 +1,16 @@
 package com.ooyala.playback.url;
 
 import java.util.Map;
+
 import org.apache.log4j.Logger;
+
 /**
  * Created by jitendra
  */
-public class TestPageData{
+public class TestPageData {
 
 	public static Logger logger = Logger.getLogger(TestPageData.class);
-	
+
 	public String baseURL = null;
 	public String envURL = null;
 	public String pluginURL = null;
@@ -43,8 +45,7 @@ public class TestPageData{
 
 	public TestPageData() {
 		try {
-			map = PropertyReader
-					.getProperty("src/test/resources/urlData");
+			map = PropertyReader.getProperty("src/test/resources/urlData");
 			baseURL = map.get("baseUrl");
 			pluginURL = map.get("video_Plugin");
 			mainPlugin = map.get("main_Plugin");
@@ -71,9 +72,8 @@ public class TestPageData{
 			otherPlugin = map.get("other_plugin");
 
 		} catch (Exception e) {
-			System.out
-					.println("Error while reading data from properties file :"
-							+ e.getMessage());
+			logger.error("Error while reading data from properties file :"
+					+ e.getMessage());
 		}
 	}
 
@@ -96,7 +96,8 @@ public class TestPageData{
 			skinDiscovery = envURL + otherPlugin + discoveryApiPlugin;
 			break;
 		case PRODUCTION:
-			envURL = map.get("production_env_url")+System.getProperty("v4Version");
+			envURL = map.get("production_env_url")
+					+ System.getProperty("v4Version");
 			pluginURL = envURL + "/video-plugin/";
 			corePlayer = envURL + corePlayer;
 			html5Skin = envURL + html5Skin;

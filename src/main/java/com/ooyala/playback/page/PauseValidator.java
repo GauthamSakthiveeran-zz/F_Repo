@@ -8,10 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by soundarya on 10/27/16.
  */
-public class PauseValidator extends BaseValidator {
+public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 
 	public static Logger logger = Logger.getLogger(PauseValidator.class);
-	
+
 	public PauseValidator(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(webDriver, this);
@@ -23,7 +23,7 @@ public class PauseValidator extends BaseValidator {
 
 	public void validate(String element, int timeout) throws Exception {
 		waitOnElement("PAUSE_BUTTON", 60);
-        clickOnIndependentElement("PAUSE_BUTTON");
+		clickOnIndependentElement("PAUSE_BUTTON");
 		Thread.sleep(1000);
 		if (isElementPresent("PAUSE_SCREEN")) {
 			logger.info("verify pause screen");
@@ -34,7 +34,7 @@ public class PauseValidator extends BaseValidator {
 			waitOnElement("CONTENT_SCREEN", 60);
 		}
 
-        waitOnElement(By.id(element),timeout);
-        logger.info("Video paused");
+		waitOnElement(By.id(element), timeout);
+		logger.info("Video paused");
 	}
 }

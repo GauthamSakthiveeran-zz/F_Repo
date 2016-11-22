@@ -9,7 +9,9 @@ import org.testng.Assert;
 /**
  * Created by soundarya on 11/16/16.
  */
-public class AspectRatioValidator extends BaseValidator {
+
+public class AspectRatioValidator extends PlayBackPage implements
+        PlaybackValidator {
 
     public static Logger Log = Logger.getLogger(AspectRatioValidator.class);
 
@@ -45,6 +47,5 @@ public class AspectRatioValidator extends BaseValidator {
             logger.info("Aspect ratio element not present");
         }
     }
-
 
 }
