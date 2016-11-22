@@ -20,13 +20,6 @@ public class AliceBasicPlaybackTests extends PlaybackWebTest {
 	private PauseValidator pause;
 	private SeekValidator seek;
 
-	@DataProvider(name = "testUrls")
-	public Object[][] getTestData() {
-
-		return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-				nodeList);
-	}
-
 	public AliceBasicPlaybackTests() throws OoyalaException {
 		super();
 		// eventValidator = pageFactory.getEventValidator();

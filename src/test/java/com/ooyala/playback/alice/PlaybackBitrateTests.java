@@ -2,45 +2,32 @@ package com.ooyala.playback.alice;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.List;
-
 import static java.lang.Thread.sleep;
-import static org.testng.Assert.assertEquals;
 
 /**
  * Created by soundarya on 11/17/16.
  */
 public class PlaybackBitrateTests extends PlaybackWebTest {
 
-    @DataProvider(name = "testUrls")
-    public Object[][] getTestData() {
+    private PlayValidator play ;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private Bitratevalidator bitratevalidator;
 
-        return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-                nodeList);
-    }
-
-    public PlaybackBitrateTests() throws OoyalaException {
+	public PlaybackBitrateTests() throws OoyalaException {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "ABR", dataProvider = "testUrls")
     public void testBitrate(String testName, String url) throws OoyalaException {
 
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        Bitratevalidator bitratevalidator = pageFactory.getBitratevalidator();
 
         try {
             driver.get(url);
@@ -49,9 +36,10 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
             }
 
 
+
             play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
             play.validate("playing_1", 60);
             logger.info("Verifed that video is getting playing");
@@ -74,7 +62,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
             e.printStackTrace();
 
         }
-        Assert.assertTrue(result, "Aspect ratio tests failed");
+        Assert.assertTrue(result, "Playback bitrate/Quality tests failed");
 
     }
 

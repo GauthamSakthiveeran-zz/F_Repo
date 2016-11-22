@@ -203,10 +203,6 @@ function subscribeToEvents() {
 				willPlayAdsEventOrder++; 
 			}
 
-			if (event.match(/singleAdPlayed/)) { 
-				OO.$("#ooplayer").append("<p id=singleAdPlayed_"+adsPlayedEventOrder+">singleAdPlayed "+adsPlayedEventOrder+" </p>"); 
-				adsPlayedEventOrder++; 
-			} 
 			if (event.match(/adPodStarted/)) { 
 				OO.$("#ooplayer").append("<p id=adPodStarted_"+adPodStartedEventOrder+">adPodStarted "+adPodStartedEventOrder+"</p>"); 
 				adPodStartedEventOrder++;
@@ -250,13 +246,15 @@ function subscribeToEvents() {
                 "> showNonlinearAd "+willShowNonlinearAdEventOrder+"</p>"); 
                 willShowNonlinearAdEventOrder++;
             }
+
             if (event.match(/assetDimension/)) {
                 OO.$("#ooplayer").append("<p id=assetDimension_"+assetDimensionOrder+
-                "width="+arguments[1].width+
-                "height="+arguments[1].height+">assetDimension</p>");
+                "  width="+arguments[1].width +
+                " height="+arguments[1].height+">assetDimension</p>");
                 assetDimensionOrder++;
             }
-			if (event.match(/nonlinearAdPlayed/)) {
+
+            if (event.match(/nonlinearAdPlayed/)) {
                 OO.$("#ooplayer").append("<p id=nonlinearAdPlayed_"+nonLinearAdPlayedEventOrder+
                 ">nonlinearAdPlayed "+nonLinearAdPlayedEventOrder+" </p>"); 
                 nonLinearAdPlayedEventOrder++;

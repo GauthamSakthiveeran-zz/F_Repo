@@ -35,24 +35,12 @@ public class PlaybackAdWrapperTests extends PlaybackWebTest {
 		super();
 	}
 
-	@DataProvider(name = "testUrls")
-	public Object[][] getTestData() {
-
-		return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-				nodeList);
-	}
+	
 	
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyPlaybackAdWrapper(String testName, String url) throws Exception {
 		
 		boolean result = false;
-		event = pageFactory.getEventValidator();
-		playAction = pageFactory.getPlayAction();
-		playValidator = pageFactory.getPlayValidator();
-		seekValidator = pageFactory.getSeekValidator();
-		pauseAction = pageFactory.getPauseAction();
-		fullScreenAction = pageFactory.getFullScreenAction();
-		volumeValidator = pageFactory.getVolumeValidator();
 		
 		try {
 			

@@ -1,6 +1,6 @@
 <elements area="discovery">
 	<element key="DISCOVERY_TOASTER" findBy="id"
-             ID="DiscoveryToasterContainer" />
+             id="DiscoveryToasterContainer" />
 	<element key="DISCOVERY_IMG_WRAPPER" findBy="class"
              class="oo-discovery-image-wrapper-style" />
 	<element key="RIGHT_BTN" findBy="class"

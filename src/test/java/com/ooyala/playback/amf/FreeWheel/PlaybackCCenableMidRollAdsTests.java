@@ -30,22 +30,11 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest{
 	private PauseAction pauseAction;
 	private CCValidator ccValidator;
 	
-	@DataProvider(name = "testUrls")
-	public Object[][] getTestData() {
-
-		return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-				nodeList);
-	}
+	
 	
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyCCenableMidRoll(String testName, String url) throws Exception {
 		boolean result = false;
-		event = pageFactory.getEventValidator();
-		playAction = pageFactory.getPlayAction();
-		playValidator = pageFactory.getPlayValidator();
-		seekAction = pageFactory.getSeekAction();
-		pauseAction = pageFactory.getPauseAction();
-		ccValidator = pageFactory.getCCValidator();
 		
 		try {
 			

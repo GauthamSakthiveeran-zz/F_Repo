@@ -29,21 +29,10 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest{
 		super();
 	}
 
-	@DataProvider(name = "testUrls")
-	public Object[][] getTestData() {
-
-		return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-				nodeList);
-	}
 	
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyBumperPrerollPlayback(String testName, String url) throws Exception {
 		boolean result = false;
-		event = pageFactory.getEventValidator();
-		playAction = pageFactory.getPlayAction();
-		playValidator = pageFactory.getPlayValidator();
-		seekAction = pageFactory.getSeekAction();
-		replayValidator = pageFactory.getReplayValidator();
 		
 		try {
 			

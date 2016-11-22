@@ -9,8 +9,7 @@ import org.testng.Assert;
 /**
  * Created by soundarya on 11/16/16.
  */
-public class StartScreenValidator extends PlayBackPage implements
-		PlaybackValidator {
+public class StartScreenValidator extends PlayBackPage implements PlaybackValidator {
 	public static Logger Log = Logger.getLogger(StartScreenValidator.class);
 
 	public StartScreenValidator(WebDriver driver) {
@@ -48,19 +47,20 @@ public class StartScreenValidator extends PlayBackPage implements
 			String title = ((JavascriptExecutor) driver).executeScript(
 					"var title=pp.getTitle();" + "{return title;}").toString();
 
-			System.out.println("title1:" + title);
+			logger.info("title1:" + title);
 			String desc = ((JavascriptExecutor) driver).executeScript(
 					"var description=pp.getDescription();"
 							+ "{return description;}").toString();
 
-			System.out.println("Description:" + desc);
+			logger.info("Description:" + desc);
+
 
 			Assert.assertTrue(startScreenTitle.equalsIgnoreCase(title),
 					"Title is not matching on start screen");
 			Assert.assertTrue(description.equalsIgnoreCase(desc),
 					"Description is not matching on Start Screen");
 		} catch (Exception e) {
-			System.out.println("Title or description is failing");
+			logger.error("Title or description is failing");
 		}
 
 	}

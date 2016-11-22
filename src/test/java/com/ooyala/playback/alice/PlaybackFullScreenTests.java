@@ -1,7 +1,6 @@
 package com.ooyala.playback.alice;
 
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -9,9 +8,6 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.FullScreenValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.action.FullScreenAction;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
@@ -19,60 +15,51 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackFullScreenTests extends PlaybackWebTest {
 
-    @DataProvider(name = "testUrls")
-    public Object[][] getTestData() {
+    private PlayValidator play;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private FullScreenValidator fullScreenValidator;
 
-        return UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(),
-                nodeList);
-    }
 
     public PlaybackFullScreenTests() throws OoyalaException {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "Player", dataProvider = "testUrls")
     public void testPlaybackFullscreen(String testName, String url) throws OoyalaException {
 
+
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        PlayAction playAction = pageFactory.getPlayAction();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
-        FullScreenAction fullScreenAction = pageFactory.getFullScreenAction();
 
-        try {
-            driver.get(url);
-            if (!getPlatform().equalsIgnoreCase("android")) {
-                driver.manage().window().maximize();
-            }
 
-            play.waitForPage();
+		try {
+			driver.get(url);
+			if (!getPlatform().equalsIgnoreCase("android")) {
+				driver.manage().window().maximize();
+			}
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+			play.waitForPage();
 
-            play.validate("playing_1", 60);
+            injectScript(jsURL());
 
-            logger.info("video is playing");
-            
-            fullScreenAction.startAction();
+			play.validate("playing_1", 60);
+
+			logger.info("video is playing");
 
             fullScreenValidator.validate("",60);
-
-            playAction.startAction();
 
             seek.validate("seeked_1", 60);
 
             logger.info("video seeked");
 
-            eventValidator.validate("played_1",60);
+			eventValidator.validate("played_1", 60);
 
-            logger.info("video played");
+			logger.info("video played");
 
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Assert.assertTrue(result, "Playback FullScreen tests failed");
-    }
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Assert.assertTrue(result, "Playback FullScreen tests failed");
+	}
 }

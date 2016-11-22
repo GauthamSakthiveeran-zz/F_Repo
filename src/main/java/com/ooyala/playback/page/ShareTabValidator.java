@@ -25,7 +25,7 @@ public class ShareTabValidator extends PlayBackPage implements
 			clickOnIndependentElement("SHARE_BTN");
 			Thread.sleep(5000);
 		} catch (Exception e) {
-			System.out.println("exception \n" + e.getMessage());
+			logger.info("exception \n" + e.getMessage());
 			clickOnIndependentElement("MORE_OPTION_ITEM");
 			waitOnElement("SHARE_BTN", 60);
 			clickOnIndependentElement("SHARE_BTN");

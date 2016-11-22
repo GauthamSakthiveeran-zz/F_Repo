@@ -22,4 +22,5 @@
     <entry key="watermark">resources/watermark.xml</entry>
     <entry key="adclicks">resources/adclicks.xml</entry>
     <entry key="adoverlay">resources/adoverlay.xml</entry>
+    <entry key="aspectratio">resources/aspectratio.xml</entry>
 </properties>
