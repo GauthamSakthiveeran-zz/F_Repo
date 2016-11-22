@@ -1,11 +1,12 @@
 package com.ooyala.playback.page;
 
-import static java.lang.System.out;
-
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class AdSkipButtonValidator extends PlayBackPage implements PlaybackValidator {
+	
+	public static Logger logger = Logger.getLogger(AdSkipButtonValidator.class);
 
 	public AdSkipButtonValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -18,12 +19,12 @@ public class AdSkipButtonValidator extends PlayBackPage implements PlaybackValid
 		try {
 			waitOnElement("adSkipBtn", 10);
 			clickOnIndependentElement("adSkipBtn");
-			// verify that second ad skiped
+			// verify that second ad skipped
 			waitOnElement("skipAd_1", 60);
-			out.println("Ad skiped");
+			logger.info("Ad skiped");
 
 		} catch (Exception e) {
-			System.out.println("adSkip Button is not present!!");
+			logger.error("adSkip Button is not present!!");
 		}
 	}
 

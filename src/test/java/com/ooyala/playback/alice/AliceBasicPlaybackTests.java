@@ -52,7 +52,7 @@ public class AliceBasicPlaybackTests extends PlaybackWebTest {
 			Thread.sleep(10000);
 
 			injectScript("http://192.168.1.102:8080/alice_full.js");
-
+			
 			play.validate("playing_1", 60);
 
 			logger.info("Verifed that video is getting playing");

@@ -10,12 +10,12 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.UpNextValidator;
 import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.PlayPauseAction;
+import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -46,7 +46,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
         PauseAction pauseAction = pageFactory.getPauseAction();
         PlayAction playAction = pageFactory.getPlayAction();
         PlayPauseAction playPauseAction  = pageFactory.getPlayPauseAction();
-        SeekValidator seekValidator = pageFactory.getSeekValidator();
+        SeekAction seekAction = pageFactory.getSeekAction();
 
         try {
             driver.get(url);
@@ -105,7 +105,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
                 playAction.startAction();
 
-                seekValidator.seek(20,true);
+                seekAction.seek(20,true);
 
                 loadingSpinner();
                 try {
@@ -121,7 +121,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
                 eventValidator.validateElement("END_SCREEN", 60);
                 } catch (Exception e) {
                     playAction.startAction();
-                    seekValidator.seek(20,true);
+                    seekAction.seek(20,true);
                     eventValidator.validateElement("END_SCREEN", 60);
                 }
                 discoveryValidator.verifyDiscoveryEnabled("On_endScreen", false);   //verify discovery is disabled on end screen

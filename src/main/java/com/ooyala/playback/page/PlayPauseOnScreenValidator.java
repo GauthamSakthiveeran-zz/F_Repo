@@ -1,14 +1,16 @@
 package com.ooyala.playback.page;
 
-import static java.lang.System.out;
 import static java.lang.Thread.sleep;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
 public class PlayPauseOnScreenValidator extends PlayBackPage implements PlaybackValidator{
 
+	public static Logger logger = Logger.getLogger(PlayPauseOnScreenValidator.class);
+	
 	public PlayPauseOnScreenValidator(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(driver, this);
@@ -22,17 +24,17 @@ public class PlayPauseOnScreenValidator extends PlayBackPage implements Playback
         try {
             waitOnElement("stateScreens", 50);
             clickOnIndependentElement("stateScreens");
-            out.println("Clicked on screen to pause the video");
+            logger.info("Clicked on screen to pause the video");
         } catch (Exception e) {
             Actions action = new Actions(driver);
             action.moveToElement(getWebElement("pauseButton")).build().perform();
             sleep(5000);
             try {
             	clickOnIndependentElement("pauseButton");
-                out.println("Clicked on Pause button to pause the video");
+                logger.info("Clicked on Pause button to pause the video");
             } catch (Exception e1) {
             	clickOnIndependentElement("stateScreenSelectable");
-                out.println("Clicked on screen which is selectable to pause the video");
+            	logger.info("Clicked on screen which is selectable to pause the video");
             }
         }
 
@@ -44,7 +46,6 @@ public class PlayPauseOnScreenValidator extends PlayBackPage implements Playback
         	 clickOnIndependentElement("stateScreenSelectable");
         } catch (Exception e) {
             Actions action = new Actions(driver);
-            action.moveToElement(getWebElement("playButton")).build().perform();
             action.moveToElement(getWebElement("playButton")).build().perform();
             sleep(5000);
             clickOnIndependentElement("playButton");

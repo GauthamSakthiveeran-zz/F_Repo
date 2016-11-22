@@ -2,6 +2,7 @@ package com.ooyala.playback.alice;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.FullScreenAction;
 import com.ooyala.playback.page.action.LiveAction;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -39,6 +40,7 @@ public class PlaybackHLSLiveTests extends PlaybackWebTest {
         ControlBarValidator controlBarValidator = pageFactory.getControlBarValidator();
         FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
         LiveAction liveAction = pageFactory.getLiveAction();
+        FullScreenAction fullScreenAction = pageFactory.getFullScreenAction();
 
         if (getBrowser().equalsIgnoreCase("safari")) {
             try {
@@ -61,6 +63,8 @@ public class PlaybackHLSLiveTests extends PlaybackWebTest {
 
                 controlBarValidator.validate("",60);
                 //to-do add ooyala logo to the test page
+                
+                fullScreenAction.startAction();
 
                 fullScreenValidator.validate("FULLSCREEN_BTN_1",60);
 

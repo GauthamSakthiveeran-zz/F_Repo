@@ -49,7 +49,7 @@ public class DiscoveryUpNextTests  extends PlaybackWebTest {
 
             logger.info("Verifed that video is getting playing");
 
-            pageFactory.getSeekValidator().seek(25,true);
+            pageFactory.getSeekAction().seek(25,true);
 
             discoveryUpNext.validate("UPNEXT_CONTENT",60);
 

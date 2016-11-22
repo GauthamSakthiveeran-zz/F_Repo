@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
+
 /**
  * Created by soundarya on 10/27/16.
  */
@@ -23,7 +25,8 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 
 	public void validate(String element, int timeout) throws Exception {
 		waitOnElement("PAUSE_BUTTON", 60);
-		clickOnIndependentElement("PAUSE_BUTTON");
+//		clickOnIndependentElement("PAUSE_BUTTON");
+		PlayBackFactory.getInstance(driver).getPauseAction().startAction();
 		Thread.sleep(1000);
 		if (isElementPresent("PAUSE_SCREEN")) {
 			logger.info("verify pause screen");

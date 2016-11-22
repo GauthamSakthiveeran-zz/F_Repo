@@ -1,16 +1,18 @@
 package com.ooyala.playback.alice;
 
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.FullScreenValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.action.FullScreenAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -37,6 +39,7 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
         PlayAction playAction = pageFactory.getPlayAction();
         EventValidator eventValidator = pageFactory.getEventValidator();
         FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
+        FullScreenAction fullScreenAction = pageFactory.getFullScreenAction();
 
         try {
             driver.get(url);
@@ -51,6 +54,8 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
             play.validate("playing_1", 60);
 
             logger.info("video is playing");
+            
+            fullScreenAction.startAction();
 
             fullScreenValidator.validate("",60);
 

@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class PlayValidator extends PlayBackPage implements PlaybackValidator {
@@ -45,7 +46,8 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 	public void validate(String element, int timeout) throws Exception {
 		// loadingSpinner();
 
-		clickOnIndependentElement("PLAY_BUTTON");
+//		clickOnIndependentElement("PLAY_BUTTON");
+		PlayBackFactory.getInstance(driver).getPlayAction().startAction();
 		extentTest.log(LogStatus.PASS, "Clicked on play button");
 		Thread.sleep(1000);
 

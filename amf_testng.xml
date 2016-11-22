@@ -1,0 +1,14 @@
+
+<suite name="Playback Web Regression Suite" verbose="1">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+
+	<test name="AMF Regression Group">
+		
+		<classes>
+			<class name="com.ooyala.playback.amf.FreeWheel.PlaybackCCenableMidRollAdsTests" />
+           
+		</classes>
+	</test>
+</suite>

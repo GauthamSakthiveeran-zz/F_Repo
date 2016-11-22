@@ -6,14 +6,13 @@ import static java.lang.Thread.sleep;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.url.PlayerPropertyValue;
 
 public class AdClickThroughValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger Log = Logger.getLogger(AdClickThroughValidator.class);
+	public static Logger log = Logger.getLogger(AdClickThroughValidator.class);
 	
 	public AdClickThroughValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -28,13 +27,15 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 	public void clickThroughAds(PlayerPropertyValue value) throws Exception{
 		String baseWindowHdl = driver.getWindowHandle();
 		if(value!=null){
+			
 			if(!getPlatform().equalsIgnoreCase("Android")) {// we skipping this code for IMA and Vast (Android)
 				if(value!=PlayerPropertyValue.FREEWHEEL){
 					if(value==PlayerPropertyValue.VAST){
 		                clickOnIndependentElement("adScreenPanel");
 					} else{
-						WebElement adPanel = getWebElementsList("adScreenPanel1").get(0);
-		                ((JavascriptExecutor) driver).executeScript("arguments[0].click()", adPanel);
+/*						WebElement adPanel = getWebElementsList("adScreenPanel1").get(0);
+		                ((JavascriptExecutor) driver).executeScript("arguments[0].click()", adPanel);*/
+						clickOnIndependentElement("adScreenPanel1");
 					}
 					waitOnElement("adsClicked_1", 10);
 					waitOnElement("adsClicked_videoWindow", 10);
@@ -51,8 +52,9 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 	            }
 			}
 			sleep(2000);
-			//java.util.Set<java.lang.String> windowHandles = driver.getWindowHandles();
-	        //int count = windowHandles.size();
+			java.util.Set<java.lang.String> windowHandles = driver.getWindowHandles();
+	        int count = windowHandles.size();
+	        log.info("Window handles : "+count);
 	        
 	        for (String winHandle : driver.getWindowHandles()) {
 	              if(!winHandle.equals(baseWindowHdl)) {
@@ -71,14 +73,15 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 	            }
 	            else
 	            {
-	            	WebElement adPanel = getWebElementsList("adPanel").get(0);
-	                ((JavascriptExecutor) driver).executeScript("arguments[0].click()", adPanel);
+	            	/*WebElement adPanel = getWebElementsList("adPanel").get(0);
+	                ((JavascriptExecutor) driver).executeScript("arguments[0].click()", adPanel);*/
+	            	clickOnIndependentElement("adPanel");
 	            }
 
 	        }
 	        
 		}else{
-			throw new Exception("Ad manager should not be null.");
+			throw new Exception("PlayerPropertyValue should not be null.");
 		}
 	}
 	

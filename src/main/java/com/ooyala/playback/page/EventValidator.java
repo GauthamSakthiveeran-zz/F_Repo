@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 /**
  * Created by soundarya on 11/14/16.
@@ -36,6 +37,10 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 
 	public void validateElement(String element, int timeout) throws Exception {
 		waitOnElement(element, timeout);
+	}
+	
+	public boolean validateElementPresence(String element) throws Exception {
+		return isElementPresent(By.id(element));
 	}
 
 }

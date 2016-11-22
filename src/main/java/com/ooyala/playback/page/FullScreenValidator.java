@@ -26,7 +26,7 @@ public class FullScreenValidator extends PlayBackPage implements
 	}
 
 	public void validate(String element, int timeout) throws Exception {
-		WebElement player = getWebElement("ooplayer");
+		/*WebElement player = getWebElement("ooplayer");
 		Actions action = new Actions(driver);
 		action.moveToElement(player).perform();
 		waitOnElement("FULLSCREEN_BTN", 60);
@@ -44,7 +44,7 @@ public class FullScreenValidator extends PlayBackPage implements
 				.equalsIgnoreCase("Android"))) {
 			waitOnElement(By.id("fullscreenChangedtrue"), 60);
 			logger.info("Changed into Fullscreen");
-		}
+		}*/
 		Thread.sleep(3000);
 		clickOnIndependentElement("PAUSE_BUTTON");
 		sleep(2000);

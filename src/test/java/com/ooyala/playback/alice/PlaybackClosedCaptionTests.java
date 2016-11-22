@@ -2,6 +2,7 @@ package com.ooyala.playback.alice;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.FullScreenAction;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
@@ -36,6 +37,7 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
         PauseValidator pause = pageFactory.getPauseValidator();
         SeekValidator seek = pageFactory.getSeekValidator();
         EventValidator eventValidator = pageFactory.getEventValidator();
+        FullScreenAction fullScreenAction = pageFactory.getFullScreenAction();
         FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
         CCValidator ccValidator = pageFactory.getCCValidator();
 
@@ -63,6 +65,8 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
             play.validate("playing_2", 60);
 
             logger.info("Verifed that video is getting playing again after pause play");
+            
+            fullScreenAction.startAction();
 
             fullScreenValidator.validate("",60);
 

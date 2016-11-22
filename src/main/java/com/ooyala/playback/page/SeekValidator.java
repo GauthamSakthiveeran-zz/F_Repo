@@ -6,6 +6,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
+
 /**
  * Created by soundarya on 10/27/16.
  */
@@ -20,35 +22,23 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public void validate(String element, int timeout) throws Exception {
-		while (true) {
+		/*while (true) {
 			if (Double.parseDouble(((JavascriptExecutor) driver).executeScript(
 					"return pp.getPlayheadTime();").toString()) > 5) {
-				seek(7, true);
+				PlayBackFactory.getInstance(driver).getSeekAction().seek(7, true);
 				// loadingSpinner();
 				((JavascriptExecutor) driver).executeScript("pp.pause();");
 				Thread.sleep(2000);
 				((JavascriptExecutor) driver).executeScript("pp.play();");
 				break;
 			}
-		}
+		}*/
+		
+		PlayBackFactory.getInstance(driver).getSeekAction().seekPlayback();
+		
 		waitOnElement(By.id(element), timeout);
 		logger.info("Video seeked successfully");
 	}
 
-	public void seek(int time, boolean fromLast) throws Exception {
-		String seekduration;
-		if (fromLast) {
-			seekduration = "pp.getDuration()";
-		} else {
-			seekduration = "";
-		}
-		((JavascriptExecutor) driver).executeScript("return pp.seek("
-				+ seekduration + "-" + time + ")" + "");
-	}
-
-	public void seek(String time) throws Exception {
-		((JavascriptExecutor) driver).executeScript("return pp.seek(" + time
-				+ ")" + "");
-	}
-
+	
 }

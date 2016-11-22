@@ -27,7 +27,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		 */
 		addElementToPageElements("cc");
 		addElementToPageElements("play");
-		addElementToPageElements("controlBar");
+		addElementToPageElements("controlbar");
 	}
 
 	public void validate(String element, int timeout) throws Exception {
@@ -78,7 +78,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		clickOnIndependentElement("CC_SWITCH_CONTAINER");
 		clickOnIndependentElement("CC_PANEL_CLOSE");
 
-		logger.info("Verified ClosedCaption ");
+		logger.info("Verified ClosedCaption");
 
 		if (isElementPresent("PLAY_BUTTON"))
 			clickOnIndependentElement("PLAY_BUTTON");
@@ -124,4 +124,5 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 							.id("cclanguage_" + langlist.get(i))));
 		}
 	}
+	
 }

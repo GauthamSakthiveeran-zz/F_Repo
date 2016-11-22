@@ -1,7 +1,6 @@
 package com.ooyala.playback.factory;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 import org.openqa.selenium.WebDriver;
 
@@ -14,7 +13,6 @@ import com.ooyala.playback.page.EndScreenValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.FullScreenValidator;
 import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayBackPage;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.ReplayValidator;
 import com.ooyala.playback.page.SeekValidator;
@@ -25,10 +23,12 @@ import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.WaterMarkValidator;
 import com.ooyala.playback.page.action.AutoplayAction;
 import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
+import com.ooyala.playback.page.action.FullScreenAction;
 import com.ooyala.playback.page.action.LiveAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.PlayPauseAction;
+import com.ooyala.playback.page.action.SeekAction;
 
 public class PlayBackFactory {
 
@@ -58,11 +58,26 @@ public class PlayBackFactory {
 	private ReplayValidator replayValidator;
 	private ClickDiscoveryButtonAction clickDiscoveryButtonAction;
 	private Bitratevalidator bitratevalidator;
+	private FullScreenAction fullScreenAction;
+	private SeekAction seekAction;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
 	}
 
+	public SeekAction getSeekAction(){
+		if(seekAction==null)
+			seekAction = new SeekAction(driver);
+		return seekAction;
+			
+	}
+	
+	public FullScreenAction getFullScreenAction(){
+		if(fullScreenAction==null)
+			fullScreenAction = new FullScreenAction(driver);
+		return fullScreenAction;
+	}
+	
 	public PauseAction getPauseAction() {
 		if (pauseAction == null)
 			pauseAction = new PauseAction(driver);
