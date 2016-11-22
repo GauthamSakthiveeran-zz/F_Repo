@@ -1,19 +1,13 @@
 package com.ooyala.playback.alice;
 
-import static java.lang.Thread.sleep;
-
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.*;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.CCValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.FullScreenValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.qe.common.exception.OoyalaException;
+import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -32,13 +26,10 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "alice", dataProvider = "testUrls")
-	public void testClosedCaption(String testName, String url)
-			throws OoyalaException {
+    @Test(groups = "closedCaption", dataProvider = "testUrls")
+    public void testClosedCaption(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-       
-
 		logger.info("Executing PlaybackClosedCaption test  ");
 		try {
 			driver.get(url);
@@ -48,7 +39,8 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 
 			play.waitForPage();
 
-			injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
+
 
 			play.validate("playing_1", 60);
 

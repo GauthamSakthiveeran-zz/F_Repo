@@ -1,23 +1,16 @@
 package com.ooyala.playback.alice;
 
-import static java.lang.Thread.sleep;
-
-import com.ooyala.playback.url.UrlGenerator;
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.DiscoveryValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.UpNextValidator;
+import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.PlayPauseAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/17/16.
@@ -38,19 +31,10 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "Discovery", dataProvider = "testUrls")
     public void testDiscoveryUpNext(String testName, String url) throws OoyalaException
     {
         boolean result = false;
-        /*PlayValidator play = pageFactory.getPlayValidator();
-        UpNextValidator discoveryUpNext = pageFactory.getUpNextValidator();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        DiscoveryValidator discoveryValidator = pageFactory.getDiscoveryValidator();
-        ClickDiscoveryButtonAction clickDiscoveryButtonAction = pageFactory.getClickDiscoveryButtonAction();
-        PauseAction pauseAction = pageFactory.getPauseAction();
-        PlayAction playAction = pageFactory.getPlayAction();
-        PlayPauseAction playPauseAction  = pageFactory.getPlayPauseAction();
-        SeekValidator seekValidator = pageFactory.getSeekValidator();*/
 
         try {
             driver.get(url);
@@ -60,7 +44,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
             play.waitForPage();
 
-            injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
             play.validate("playing_1", 60);
 
@@ -134,8 +118,9 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
             }
             result = true;
         } catch (Exception e) {
-			e.printStackTrace();
-		}
-		Assert.assertTrue(result, "Discovery up next tests failed");
-	}
+            e.printStackTrace();
+        }
+        Assert.assertTrue(result, "Discovery customization tests failed");
+    }
+
 }

@@ -207,23 +207,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.info(e.getMessage());
 		}
 	}
-
-	// public NodeList parseXmlFileData(String fileName) {
-	//
-	// try {
-	// File xmlFile = new File("src/test/resources/" + fileName + ".xml");
-	// DocumentBuilderFactory dbuilderFactory = DocumentBuilderFactory
-	// .newInstance();
-	// DocumentBuilder dbuilder = dbuilderFactory.newDocumentBuilder();
-	// org.w3c.dom.Document doc = dbuilder.parse(xmlFile);
-	// nodeList = doc.getElementsByTagName("test");
-	//
-	// } catch (Exception e) {
-	// logger.info(e.getMessage());
-	// }
-	// return nodeList;
-	// }
-
 	public void injectScript(String scriptURL) throws Exception {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		Object object = js.executeScript("function injectScript(url) {\n"
@@ -281,6 +264,20 @@ public abstract class PlaybackWebTest extends FacileTest {
 		String browser = cap.getBrowserName().toString();
 		return browser;
 	}
+    public static String readPropertyOrEnv(String key, String defaultValue) {
+        String v = System.getProperty(key);
+        if (v == null)
+            v = System.getenv(key);
+        if (v == null)
+            v = defaultValue;
+        return v;
+    }
+
+    public String jsURL(){
+        String jsHost = readPropertyOrEnv("jshostIpAddress","10.11.66.55");
+        String url = "http://"+jsHost+":8080/alice_full.js";
+        return url;
+    }
 
 	public String takeScreenshot(String fileName) {
 		File destDir = new File("images/");

@@ -1,17 +1,12 @@
 package com.ooyala.playback.alice;
 
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayPauseAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.ShareTabValidator;
-import com.ooyala.playback.page.action.PlayPauseAction;
-import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -32,17 +27,12 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "alice", dataProvider = "testUrls")
-	public void testPlaybackLocalization(String testName, String url)
-			throws OoyalaException {
+
+    @Test(groups = "PlayerSkin", dataProvider = "testUrls")
+    public void testPlaybackLocalization(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        /*PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        PlayPauseAction playPauseAction = pageFactory.getPlayPauseAction();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        ShareTabValidator shareTabValidator = pageFactory.getShareTabValidator();*/
+
 		try {
 			driver.get(url);
 			if (!getPlatform().equalsIgnoreCase("android")) {
@@ -51,7 +41,7 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 
 			play.waitForPage();
 
-			injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
 			play.validate("playing_1", 60);
 

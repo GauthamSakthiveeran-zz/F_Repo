@@ -1,18 +1,13 @@
 package com.ooyala.playback.alice;
 
-import static java.lang.Thread.sleep;
-
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AspectRatioValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.qe.common.exception.OoyalaException;
+import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/17/16.
@@ -30,24 +25,18 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
         super();
     }
 
-	@Test(groups = "alice", dataProvider = "testUrls")
-	public void testVerticalVideo(String testName, String url)
-			throws OoyalaException {
+
+    @Test(groups = "AspectRatio", dataProvider = "testUrls")
+    public void testVerticalVideo(String testName, String url) throws OoyalaException {
+
 
         boolean result = false;
-        /*PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        PlayAction playAction = pageFactory.getPlayAction();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        AspectRatioValidator aspectRatioValidator = pageFactory.getAspectRatioValidator();*/
-
 		try {
 			driver.get(url);
 
 			play.waitForPage();
 
-			injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
 			play.validate("playing_1", 60);
 
@@ -75,11 +64,12 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
 			logger.info("video played");
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		Assert.assertTrue(result, "Vertical Video tests failed");
+            result = true;
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Assert.assertTrue(result, "Vertical Video tests failed");
 	}
 
 }

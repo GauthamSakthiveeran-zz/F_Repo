@@ -1,18 +1,13 @@
 package com.ooyala.playback.alice;
 
-import static java.lang.Thread.sleep;
-
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AspectRatioValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.qe.common.exception.OoyalaException;
+import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -30,55 +25,49 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 		super();
 	}
 
-
-	@Test(groups = "alice", dataProvider = "testUrls")
-	public void testAspectRation(String testName, String url)
-			throws OoyalaException {
+    @Test(groups = "AspectRatio", dataProvider = "testUrls")
+    public void testAspectRation(String testName, String url) throws OoyalaException {
 		boolean result = false;
 
-		try {
-			driver.get(url);
-			/*PlayValidator play = pageFactory.getPlayValidator();
-			PauseValidator pause = pageFactory.getPauseValidator();
-			SeekValidator seek = pageFactory.getSeekValidator();
-			PlayAction playAction = pageFactory.getPlayAction();
-			EventValidator eventValidator = pageFactory.getEventValidator();
-			AspectRatioValidator aspectRatioValidator = pageFactory.getAspectRatioValidator();*/
-			play.waitForPage();
 
+            try {
+                driver.get(url);
 
-			injectScript("http://10.11.66.55:8080/alice.js");
+                play.waitForPage();
 
-			play.validate("playing_1", 60);
+                injectScript(jsURL());
 
-			logger.info("Verified that video is playing");
-			sleep(2000);
+                play.validate("playing_1", 60);
 
-			aspectRatioValidator.validate("assetDimension_1", 60);
+                logger.info("Verified that video is playing");
+                sleep(2000);
 
-			pause.validate("paused_1", 60);
+                aspectRatioValidator.validate("assetDimension_1",60);
 
-			logger.info("Verirfied that video is getting paused");
+                pause.validate("paused_1", 60);
 
-			playAction.startAction();
-			// add fullscreen functionality
+                logger.info("Verirfied that video is getting paused");
 
-			seek.validate("seeked_1", 60);
+                playAction.startAction();
+                //add fullscreen functionality
 
-			logger.info("Verified that video is seeked");
+                seek.validate("seeked_1", 60);
 
-			aspectRatioValidator.validate("assetDimension_1", 60);
+                logger.info("Verified that video is seeked");
 
-			eventValidator.validate("videoPlayed_1", 60);
+                aspectRatioValidator.validate("assetDimension_1",60);
 
-			logger.info("Verified that video is played");
+                eventValidator.validate("videoPlayed_1", 60);
 
-		} catch (Exception e) {
-			e.printStackTrace();
+                logger.info("Verified that video is played");
+                result = true;
 
-		}
-		Assert.assertTrue(result, "Aspect ratio tests failed");
+            } catch (Exception e) {
+                e.printStackTrace();
 
-	}
+            }
+            Assert.assertTrue(result, "Aspect ratio tests failed");
 
-}
+        }
+
+    }

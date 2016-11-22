@@ -1,11 +1,5 @@
 package com.ooyala.playback.alice;
 
-import static java.lang.Thread.sleep;
-
-import org.openqa.selenium.JavascriptExecutor;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
@@ -13,6 +7,11 @@ import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -31,16 +30,12 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
         super();
     }
 
+    @Test(groups = "PlayerSkin", dataProvider = "testUrls")
+    public void testVolume(String testName, String url) throws OoyalaException {
 
-	@Test(groups = "alice", dataProvider = "testUrls")
-	public void testVolume(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        /*PlayValidator play = pageFactory.getPlayValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        PlayAction playAction = pageFactory.getPlayAction();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        VolumeValidator volumeValidator = pageFactory.getVolumeValidator();*/
+
 
 		try {
 			driver.get(url);
@@ -50,7 +45,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 			play.waitForPage();
 
-			injectScript("http://10.11.66.55:8080/alice.js");
+            injectScript(jsURL());
 
 			playAction.startAction();
 
@@ -80,10 +75,11 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 			logger.info("video played");
 
-			result = true;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		Assert.assertTrue(result, "Alice basic playback tests failed");
-	}
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Assert.assertTrue(result, "Playback Volume tests failed");
+    }
+
 }

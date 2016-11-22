@@ -24,41 +24,33 @@ public class FullScreenValidator extends PlayBackPage implements
 		addElementToPageElements("pause");
 
 	}
+    public void validate(String element, int timeout) throws Exception {
+        WebElement player = getWebElement("OOPLAYER");
+        Actions action = new Actions(driver);
+        action.moveToElement(player).perform();
+        waitOnElement("FULLSCREEN_BTN", 60);
 
-	public void validate(String element, int timeout) throws Exception {
-		WebElement player = getWebElement("ooplayer");
-		Actions action = new Actions(driver);
-		action.moveToElement(player).perform();
-		waitOnElement("FULLSCREEN_BTN", 60);
+        if (getPlatform().equalsIgnoreCase("Android")) {
+            clickOnIndependentElement("FULLSCREEN_BTN");
+        } else {
+            clickOnIndependentElement("PAUSE_BUTTON");
+            clickOnIndependentElement("FULLSCREEN_BTN");
+        }
 
-		if (getPlatform().equalsIgnoreCase("Android")) {
-			clickOnIndependentElement("FULLSCREEN_BTN");
-		} else {
-			clickOnIndependentElement("PAUSE_BUTTON");
-			clickOnIndependentElement("FULLSCREEN_BTN");
-		}
+        if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("firefox") || getBrowser().equalsIgnoreCase("internet explorer") || getPlatform().equalsIgnoreCase("Android"))) {
+            waitOnElement(By.id("fullscreenChangedtrue"), 60);
+            logger.info("Changed into Fullscreen");
+        }
+        Thread.sleep(3000);
+        clickOnIndependentElement("PAUSE_BUTTON");
+        sleep(2000);
 
-		if (!(getBrowser().equalsIgnoreCase("safari")
-				|| getBrowser().equalsIgnoreCase("firefox")
-				|| getBrowser().equalsIgnoreCase("internet explorer") || getPlatform()
-				.equalsIgnoreCase("Android"))) {
-			waitOnElement(By.id("fullscreenChangedtrue"), 60);
-			logger.info("Changed into Fullscreen");
-		}
-		Thread.sleep(3000);
-		clickOnIndependentElement("PAUSE_BUTTON");
-		sleep(2000);
+        clickOnIndependentElement("NORMAL_SCREEN");
 
-		clickOnIndependentElement("NORMAL_SCREEN");
-
-		// PBW-5165 we are not verifying fullscreen change event for safari and
-		// firefox browser as fullscreen is not working in safari in automation
-		if (!(getBrowser().equalsIgnoreCase("safari")
-				|| getBrowser().equalsIgnoreCase("firefox")
-				|| getBrowser().equalsIgnoreCase("internet explorer") || getPlatform()
-				.equalsIgnoreCase("Android"))) {
-			waitOnElement(By.id("fullscreenChangedfalse"), 60);
-			logger.info("Video changed to normal size");
-		}
-	}
+        // PBW-5165 we are not verifying fullscreen change event for safari and firefox browser as fullscreen is not working in safari in automation
+        if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("firefox") || getBrowser().equalsIgnoreCase("internet explorer") || getPlatform().equalsIgnoreCase("Android"))) {
+            waitOnElement(By.id("fullscreenChangedfalse"), 60);
+            logger.info("Video changed to normal size");
+        }
+    }
 }

@@ -1,13 +1,14 @@
 package com.ooyala.playback.alice;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.FullScreenValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
@@ -31,12 +32,6 @@ public class PlaybackLiveSSITests extends PlaybackWebTest{
     public void testLiveSSI(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        /*PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-        PlayAction playAction = pageFactory.getPlayAction();
-        PauseAction pauseAction = pageFactory.getPauseAction();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();*/
 
         try {
             driver.get(url);

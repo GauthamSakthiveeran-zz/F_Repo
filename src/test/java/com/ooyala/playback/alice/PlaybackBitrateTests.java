@@ -1,17 +1,12 @@
 package com.ooyala.playback.alice;
 
-import static java.lang.Thread.sleep;
-
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.*;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.Bitratevalidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.qe.common.exception.OoyalaException;
+import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/17/16.
@@ -28,46 +23,47 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "alice", dataProvider = "testUrls")
+    @Test(groups = "ABR", dataProvider = "testUrls")
     public void testBitrate(String testName, String url) throws OoyalaException {
 
 
         boolean result = false;
-        
-		try {
-			driver.get(url);
-			if (!driver.getCapabilities().getPlatform().toString()
-					.equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			play.waitForPage();
+        try {
+            driver.get(url);
+            if (! driver.getCapabilities().getPlatform().toString().equalsIgnoreCase("android")) {
+                driver.manage().window().maximize();
+            }
 
-			injectScript("http://10.11.66.55:8080/alice.js");
 
-			play.validate("playing_1", 60);
-			logger.info("Verifed that video is getting playing");
-			sleep(2000);
 
-			pause.validate("paused_1", 60);
-			logger.info("Verified that video is getting pause");
+            play.waitForPage();
 
-			bitratevalidator.validate("", 60);
+            injectScript(jsURL());
 
-			sleep(1000);
+            play.validate("playing_1", 60);
+            logger.info("Verifed that video is getting playing");
+            sleep(2000);
 
-			seek.validate("seeked_1", 60);
-			logger.info("Verified that video is seeked");
+            pause.validate("paused_1", 60);
+            logger.info("Verified that video is getting pause");
 
-			eventValidator.validate("videoPlayed_1", 60);
-			logger.info("Verified that video is played");
+            bitratevalidator.validate("",60);
 
-		} catch (Exception e) {
-			e.printStackTrace();
+            sleep(1000);
 
-		}
-		Assert.assertTrue(result, "Aspect ratio tests failed");
+            seek.validate("seeked_1", 60);
+            logger.info("Verified that video is seeked");
 
-	}
+            eventValidator.validate("videoPlayed_1", 60);
+            logger.info("Verified that video is played");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        Assert.assertTrue(result, "Playback bitrate/Quality tests failed");
+
+    }
 
 }

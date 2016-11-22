@@ -11,68 +11,61 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by soundarya on 11/16/16.
  */
-public class ControlBarValidator extends PlayBackPage implements
-		PlaybackValidator {
+public class ControlBarValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger logger = Logger.getLogger(ControlBarValidator.class);
+    public static Logger logger = Logger.getLogger(ControlBarValidator.class);
 
-	public ControlBarValidator(WebDriver webDriver) {
-		super(webDriver);
-		PageFactory.initElements(webDriver, this);
-		/**
-		 * Here we will tell Facile to add the page elements of our Login Page
-		 */
-		addElementToPageElements("controlBar");
+    public ControlBarValidator(WebDriver webDriver) {
+        super(webDriver);
+        PageFactory.initElements(webDriver, this);
+        /**
+         * Here we will tell Facile to add the page elements of our Login Page
+         */
+        addElementToPageElements("controlbar");
 
-	}
+    }
 
-	public void validate(String element, int timeout) throws Exception {
+    public void validate(String element, int timeout) throws Exception {
 
-		ArrayList<String> controlBarElement = new ArrayList<String>();
 
-		controlBarElement.addAll(Arrays.asList("PLAY_HEAD", "PLAY_PAUSE",
-				"VOLUME_BUTTON", "FULLSCREEN_BTN", "SHARE_BTN",
-				"DISCOVERY_BTN", "TIME_DURATION"));
+        ArrayList<String> controlBarElement = new ArrayList<String>();
 
-		boolean iscontrolshown = isElementPresent("CONTROL_BAR");
+        controlBarElement.addAll(Arrays.asList("PLAY_HEAD", "PLAY_PAUSE", "VOLUME_BUTTON", "FULLSCREEN_BTN", "SHARE_BTN", "DISCOVERY_BTN", "TIME_DURATION"));
 
-		if (!iscontrolshown) {
-			logger.info("Control bar is hiden hence mouse hovering on it");
-			Actions act = new Actions(driver);
+        boolean iscontrolshown = isElementPresent("CONTROL_BAR");
 
-			act.moveToElement(getWebElement("CONTROL_BAR")).build().perform();
+        if (!iscontrolshown) {
+            System.out.println("Control bar is hiden hence mouse hovering on it");
+            Actions act = new Actions(driver);
 
-		}
-		try {
-			for (String icon : controlBarElement) {
-				waitOnElement(icon, 60);
-			}
-			boolean ismoreoption = isElementVisible("MORE_OPTION_ITEM");
-			if (ismoreoption) {
-				clickOnIndependentElement("MORE_OPTION_ITEM");
-				waitOnElement("DISCOVERY_BTN", 60);
-				waitOnElement("QUALITY_BTN", 60);
-				clickOnIndependentElement("CC_PANEL_CLOSE");
-			}
-		} catch (Exception e) {
+            act.moveToElement(getWebElement("CONTROL_BAR")).build().perform();
 
-			waitOnElement("PLAY_PAUSE", 60);
-			waitOnElement("VOLUME_BUTTON", 60);
-			waitOnElement("FULLSCREEN_BTN", 60);
-			// seleniumActions.waitForElement("OOYALA_LOGO", 60);
+        }
+        try {
+            for (String icon : controlBarElement) {
+                waitOnElement(icon, 60);
+            }
+            boolean ismoreoption = isElementVisible("MORE_OPTION_ITEM");
+            if (ismoreoption) {
+                clickOnIndependentElement("MORE_OPTION_ITEM");
+                waitOnElement("DISCOVERY_BTN", 60);
+                waitOnElement("QUALITY_BTN", 60);
+                clickOnIndependentElement("CC_PANEL_CLOSE");
+            }
+        } catch (Exception e) {
 
-		}
+            waitOnElement("PLAY_PAUSE", 60);
+            waitOnElement("VOLUME_BUTTON", 60);
+            waitOnElement("FULLSCREEN_BTN", 60);
+            // seleniumActions.waitForElement("OOYALA_LOGO", 60);
 
-		// Add feature for ooyalalogo
-		/*
-		 * String ooyalalogo =
-		 * webDriver.findElement(locators.getobjectLocator("ooyalaLogo"
-		 * )).findElement(By.tagName("img")).getAttribute("src");
-		 * if(!(ooyalalogo.contains(".png") || ooyalalogo.contains(".svg") ||
-		 * ooyalalogo.contains(".jpg") || ooyalalogo.contains(".gif")))
-		 * Assert.assertTrue(ooyalalogo.contains(".png"),
-		 * "Ooyala branding Logo is not present");
-		 */
+        }
 
-	}
+        //Add feature for ooyalalogo
+           /* String ooyalalogo = webDriver.findElement(locators.getobjectLocator("ooyalaLogo")).findElement(By.tagName("img")).getAttribute("src");
+            if(!(ooyalalogo.contains(".png") || ooyalalogo.contains(".svg") || ooyalalogo.contains(".jpg") || ooyalalogo.contains(".gif")))
+                Assert.assertTrue(ooyalalogo.contains(".png"), "Ooyala branding Logo is not present");*/
+
+    }
 }
+

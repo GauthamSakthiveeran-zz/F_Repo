@@ -20,4 +20,5 @@
     <entry key="startscreen">resources/startscreen.xml</entry>
     <entry key="volume">resources/volume.xml</entry>
     <entry key="watermark">resources/watermark.xml</entry>
+    <entry key="aspectratio">resources/aspectratio.xml</entry>
 </properties>

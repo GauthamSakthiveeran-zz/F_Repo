@@ -1,20 +1,13 @@
 package com.ooyala.playback.alice;
 
-import static java.lang.Thread.sleep;
-
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.*;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.CCValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.FullScreenValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.ShareTabValidator;
-import com.ooyala.qe.common.exception.OoyalaException;
+import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -34,18 +27,11 @@ public class PlaybackHLSVodTests extends PlaybackWebTest {
         super();
     }
 
+    @Test(groups = "Playback", dataProvider = "testUrls")
+    public void testHLSVod(String testName, String url) throws OoyalaException {
 
-	@Test(groups = "alice", dataProvider = "testUrls")
-	public void testHLSVod(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        /*PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
-        CCValidator ccValidator = pageFactory.getCCValidator();
-        ShareTabValidator shareTabValidator = pageFactory.getShareTabValidator();*/
 
 		if (getBrowser().equalsIgnoreCase("safari")) {
 			try {
@@ -56,8 +42,7 @@ public class PlaybackHLSVodTests extends PlaybackWebTest {
 
 				play.waitForPage();
 
-				injectScript("http://10.11.66.55:8080/alice.js");
-
+                injectScript(jsURL());
 				play.validate("playing_1", 60);
 
 				logger.info("video is playing");

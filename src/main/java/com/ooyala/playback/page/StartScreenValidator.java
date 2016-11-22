@@ -9,8 +9,7 @@ import org.testng.Assert;
 /**
  * Created by soundarya on 11/16/16.
  */
-public class StartScreenValidator extends PlayBackPage implements
-		PlaybackValidator {
+public class StartScreenValidator extends PlayBackPage implements PlaybackValidator {
 	public static Logger Log = Logger.getLogger(StartScreenValidator.class);
 
 	public StartScreenValidator(WebDriver driver) {
@@ -54,6 +53,7 @@ public class StartScreenValidator extends PlayBackPage implements
 							+ "{return description;}").toString();
 
 			logger.info("Description:" + desc);
+
 
 			Assert.assertTrue(startScreenTitle.equalsIgnoreCase(title),
 					"Title is not matching on start screen");
