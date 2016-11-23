@@ -9,6 +9,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 public class PoddedAdValidator extends PlayBackPage implements PlaybackValidator{
 
 	public static Logger logger = Logger.getLogger(PoddedAdValidator.class);
@@ -22,9 +24,9 @@ public class PoddedAdValidator extends PlayBackPage implements PlaybackValidator
 			int result = parseInt((((JavascriptExecutor) driver).executeScript("return "+element+".textContent")).toString());
 			for (int i = 1; i <= result; i++) {
 	            (new WebDriverWait(driver, 100)).until(presenceOfElementLocated(id("willPlaySingleAd_" + i)));
-	            logger.info("Midroll Podded Ad started");
+	            extentTest.log(LogStatus.PASS,"Podded Ad started");
 	           (new WebDriverWait(driver, 160)).until(presenceOfElementLocated(id("singleAdPlayed_" + i)));
-	           logger.info("Midroll Podded Ad Completed");
+	           extentTest.log(LogStatus.PASS,"Podded Ad Completed");
 	        }
 			
 		}catch(Exception ex){

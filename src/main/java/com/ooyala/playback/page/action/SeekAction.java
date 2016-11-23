@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.page.PlayBackPage;
+import com.ooyala.playback.url.Url;
 /**
  * 
  * @author dmanohar
@@ -53,5 +54,16 @@ public class SeekAction extends PlayBackPage implements PlayerAction{
                 break;
             }
         }
+    }
+    // As there is problem for pulse asset that if we seek the video then ads get skip therefore adding below condition
+
+    public void seekSpecific(Url urlData, int time) throws Exception{
+    	if(urlData.getAdPlugins().getName().equals("PULSE")){
+    		if(urlData.getPlugins().getName().contains("BITMOVIN") || urlData.getPlugins().getName().contains("MAIN")){
+    			seek(time, true);
+    		}
+    	}else if(urlData.getPlugins().getName().equals("BITMOVIN") &&  urlData.getAdPlugins().getName().equals("IMA")){
+    		seek(time, true);
+    	}
     }
 }

@@ -8,8 +8,8 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.Url;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMidRollAdsTests extends PlaybackWebTest{
@@ -19,12 +19,11 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest{
 	}
 
 	private EventValidator event;
-	private PlayAction playAction;
 	private PlayValidator playValidator;
-	private SeekValidator seekValidator;
+	private SeekAction seekAction;
 	
-	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyMidRoll(String testName, String url)
+	@Test(groups = "amf", dataProvider = "testUrlData")
+	public void verifyMidRoll(String testName, Url urlData, String url)
 			throws OoyalaException {
 		
 		boolean result = false;
@@ -45,31 +44,22 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest{
 	        extentTest.log(PASS, "Video started playing");
 	        Thread.sleep(5000);
 
-	        // TODO - working on implementing the commented code.
 	        
-	        // As there is problem for pulse asset that if we seek the video then ads get skip therefore adding below condition
-//	        if(!(Description.equalsIgnoreCase("Midroll_Bitmovin_Pulse")||Description.equalsIgnoreCase("Midroll_HTML5_Pulse")||Description.equalsIgnoreCase("BitmovinMidroll_IMA")))
-//	            ((JavascriptExecutor) webDriver).executeScript("pp.seek(pp.getDuration()-15);");
-
+	        seekAction.seekSpecific(urlData, 15);
+	        
 	        loadingSpinner();
 	        event.validate("videoPlaying_1", 90);
 	        event.validate("MidRoll_willPlaySingleAd_1", 120);
 	        extentTest.log(PASS, "Midroll Ad started to play");
 	        event.validate("singleAdPlayed_1", 160);
 	        extentTest.log(PASS, "Midroll Ad ended");
-
-	        // Seek the video for Bitmovin Pulse
-//	        if(Description.equalsIgnoreCase("Midroll_Bitmovin_Pulse")||Description.equalsIgnoreCase("Midroll_HTML5_Pulse"))
-//	        {
-//	            event.validate("singleAdPlayed_2", 160);
-//	            Thread.sleep(2000);
-//	            ((JavascriptExecutor) webDriver).executeScript("pp.seek(pp.getDuration()-10);");
-//	        }
-
-	        // Seek the video for Bitmovin IMA
-//	        if (Description.equalsIgnoreCase("BitmovinMidroll_IMA")){
-//	            ((JavascriptExecutor) webDriver).executeScript("pp.seek(pp.getDuration()-10);");
-//	        }
+	        
+	        if(urlData.getAdPlugins().getName().equals("PULSE")){
+	        	event.validate("singleAdPlayed_2", 160);
+	            Thread.sleep(2000);
+	        }
+	        
+	        seekAction.seekSpecific(urlData, 10);
 
 	        event.validate("videoPlayed_1", 160);
 	        event.validate("played_1", 160);
