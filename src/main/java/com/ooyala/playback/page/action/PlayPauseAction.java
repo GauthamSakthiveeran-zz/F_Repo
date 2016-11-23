@@ -31,8 +31,8 @@ public class PlayPauseAction extends PlayBackPage implements PlayerAction {
 				waitOnElement("PLAY_BUTTON", 10);
 				clickOnIndependentElement("PLAY_BUTTON");
 			} catch (Exception e) {
-				waitOnElement("pasueScreen", 10);
-				clickOnIndependentElement("pasueScreen");
+				waitOnElement("PAUSE_SCREEN", 10);
+				clickOnIndependentElement("PAUSE_SCREEN");
 			}
 
 	}

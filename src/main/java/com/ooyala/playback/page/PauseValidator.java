@@ -25,8 +25,8 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 
 	public void validate(String element, int timeout) throws Exception {
 		waitOnElement("PAUSE_BUTTON", 60);
-		// clickOnIndependentElement("PAUSE_BUTTON");
-		PlayBackFactory.getInstance(driver).getPauseAction().startAction();
+		clickOnIndependentElement("PAUSE_BUTTON");
+		//PlayBackFactory.getInstance(driver).getPauseAction().startAction();
 		Thread.sleep(1000);
 		if (isElementPresent("PAUSE_SCREEN")) {
 			logger.info("verify pause screen");
