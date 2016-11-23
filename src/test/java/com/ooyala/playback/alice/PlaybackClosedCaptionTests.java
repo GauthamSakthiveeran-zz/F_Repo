@@ -19,24 +19,25 @@ import com.ooyala.qe.common.exception.OoyalaException;
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackClosedCaptionTests extends PlaybackWebTest {
-    public static Logger logger = Logger.getLogger(PlaybackClosedCaptionTests.class);
+	public static Logger logger = Logger
+			.getLogger(PlaybackClosedCaptionTests.class);
 
-    private PlayValidator play;
-    private PauseValidator pause;
-    private SeekValidator seek;
-    private EventValidator eventValidator;
-    private FullScreenValidator fullScreenValidator;
-    private CCValidator ccValidator;
-    
-    
+	private PlayValidator play;
+	private PauseValidator pause;
+	private SeekValidator seek;
+	private EventValidator eventValidator;
+	private FullScreenValidator fullScreenValidator;
+	private CCValidator ccValidator;
+
 	public PlaybackClosedCaptionTests() throws OoyalaException {
 		super();
 	}
 
-    @Test(groups = "closedCaption", dataProvider = "testUrls")
-    public void testClosedCaption(String testName, String url) throws OoyalaException {
+	@Test(groups = "closedCaption", dataProvider = "testUrls")
+	public void testClosedCaption(String testName, String url)
+			throws OoyalaException {
 
-        boolean result = false;
+		boolean result = false;
 
 		logger.info("Executing PlaybackClosedCaption test  ");
 		try {
@@ -47,8 +48,7 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 
 			play.waitForPage();
 
-            injectScript();
-
+			injectScript();
 
 			play.validate("playing_1", 60);
 
@@ -62,8 +62,8 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 
 			play.validate("playing_2", 60);
 
-            logger.info("Verifed that video is getting playing again after pause play");
-            
+			logger.info("Verifed that video is getting playing again after pause play");
+
 			fullScreenValidator.validate("", 60);
 
 			sleep(1000);

@@ -4,8 +4,9 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class AdSkipButtonValidator extends PlayBackPage implements PlaybackValidator {
-	
+public class AdSkipButtonValidator extends PlayBackPage implements
+		PlaybackValidator {
+
 	public static Logger logger = Logger.getLogger(AdSkipButtonValidator.class);
 
 	public AdSkipButtonValidator(WebDriver webDriver) {

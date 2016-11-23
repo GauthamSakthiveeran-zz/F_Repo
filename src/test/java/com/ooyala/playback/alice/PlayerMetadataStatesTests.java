@@ -17,67 +17,67 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
-    private PlayValidator play;
-    private SeekValidator seek;
-    private EventValidator eventValidator ;
-    private PauseValidator pause;
-    private EndScreenValidator endScreenValidator ;
-    private StartScreenValidator startScreenValidator ;
-
+	private PlayValidator play;
+	private SeekValidator seek;
+	private EventValidator eventValidator;
+	private PauseValidator pause;
+	private EndScreenValidator endScreenValidator;
+	private StartScreenValidator startScreenValidator;
 
 	public PlayerMetadataStatesTests() throws OoyalaException {
-        super();
-    }
-        @Test(groups = "Player", dataProvider = "testUrls")
-        public void testPlayerMetadataStates(String testName, String url) throws OoyalaException {
+		super();
+	}
 
-        boolean result = false;
+	@Test(groups = "Player", dataProvider = "testUrls")
+	public void testPlayerMetadataStates(String testName, String url)
+			throws OoyalaException {
 
-            try {
-                driver.get(url);
-                if (!getPlatform().equalsIgnoreCase("android")) {
-                    driver.manage().window().maximize();
-                }
+		boolean result = false;
 
-                play.waitForPage();
+		try {
+			driver.get(url);
+			if (!getPlatform().equalsIgnoreCase("android")) {
+				driver.manage().window().maximize();
+			}
 
-                startScreenValidator.validate("",60);
+			play.waitForPage();
 
-                injectScript();
+			startScreenValidator.validate("", 60);
 
-                // playAction.startAction();
+			injectScript();
 
-                play.validate("playing_1", 60);
-                logger.info("video is playing");
-                Thread.sleep(2000);
+			// playAction.startAction();
 
-                pause.validate("paused_1",60);
-                logger.info("video is paused");
+			play.validate("playing_1", 60);
+			logger.info("video is playing");
+			Thread.sleep(2000);
 
-                play.validate("playing_2", 60);
-                logger.info("video is playing again");
+			pause.validate("paused_1", 60);
+			logger.info("video is paused");
 
-                seek.validate("seeked_1", 60);
-                logger.info("video seeked");
+			play.validate("playing_2", 60);
+			logger.info("video is playing again");
 
-                eventValidator.validate("played_1",60);
-                logger.info("video played");
+			seek.validate("seeked_1", 60);
+			logger.info("video seeked");
 
-                endScreenValidator.validate("",60);
+			eventValidator.validate("played_1", 60);
+			logger.info("video played");
 
-                eventValidator.eventAction("FULLSCREEN_BTN_1");
+			endScreenValidator.validate("", 60);
 
-                endScreenValidator.validate("fullscreenChangedtrue",50);
-                logger.info("checked fullscreen");
+			eventValidator.eventAction("FULLSCREEN_BTN_1");
 
-                endScreenValidator.validate("", 60);
-                eventValidator.eventAction("FULLSCREEN_BTN_1");
+			endScreenValidator.validate("fullscreenChangedtrue", 50);
+			logger.info("checked fullscreen");
 
-                result = true;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            Assert.assertTrue(result, "Playback MetadataStates tests failed");
-        }
+			endScreenValidator.validate("", 60);
+			eventValidator.eventAction("FULLSCREEN_BTN_1");
+
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Assert.assertTrue(result, "Playback MetadataStates tests failed");
+	}
 }
-

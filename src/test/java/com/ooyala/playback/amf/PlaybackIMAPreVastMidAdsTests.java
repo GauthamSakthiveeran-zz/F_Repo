@@ -22,15 +22,15 @@ public class PlaybackIMAPreVastMidAdsTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
-	
+
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyIMAPreVastMidAds(String testName, String url)
 			throws OoyalaException {
-		
+
 		boolean result = false;
-		
+
 		try {
-			
+
 			driver.get(url);
 			if (!getPlatform().equalsIgnoreCase("android")) {
 				driver.manage().window().maximize();
@@ -38,39 +38,39 @@ public class PlaybackIMAPreVastMidAdsTests extends PlaybackWebTest {
 
 			playValidator.waitForPage();
 			Thread.sleep(2000);
-			
+
 			injectScript();
-			
+
 			playAction.startAction();
-			
-	        loadingSpinner();
-	        event.validate("PreRoll_willPlayAds", 120);
-	        event.validate("adsPlayed_1", 200);
-	        event.validate("adPodEnd_google-ima-ads-manager_0_1", 200);
-	        extentTest.log(PASS, "Played IMA Preroll Ads");
-	        event.validate("playing_1", 90);
-	        seekValidator.validate("seeked_1", 190);
-	        
-	        event.validate("MidRoll_willPlayAds", 100);
-	        event.validate("adsPlayed_2", 200);
-	        try {
-	        	event.validate("adPodEnd_vast_2_2", 60);
-	        } catch (Exception e) {
-	        	event.validate("adPodEnd_vast_2_3", 180);
-	        }
-	        extentTest.log(PASS, "Played Vast Midroll Ads");
-	        event.validate("played_1", 200);
-	        extentTest.log(PASS, "Verified VastPreIMAMidlAdsTests Ads Test");
-			
+
+			loadingSpinner();
+			event.validate("PreRoll_willPlayAds", 120);
+			event.validate("adsPlayed_1", 200);
+			event.validate("adPodEnd_google-ima-ads-manager_0_1", 200);
+			extentTest.log(PASS, "Played IMA Preroll Ads");
+			event.validate("playing_1", 90);
+			seekValidator.validate("seeked_1", 190);
+
+			event.validate("MidRoll_willPlayAds", 100);
+			event.validate("adsPlayed_2", 200);
+			try {
+				event.validate("adPodEnd_vast_2_2", 60);
+			} catch (Exception e) {
+				event.validate("adPodEnd_vast_2_3", 180);
+			}
+			extentTest.log(PASS, "Played Vast Midroll Ads");
+			event.validate("played_1", 200);
+			extentTest.log(PASS, "Verified VastPreIMAMidlAdsTests Ads Test");
+
 			result = true;
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
 		Assert.assertTrue(result, "Verified PreRoll Ads test");
-		
+
 	}
-	
+
 }

@@ -26,17 +26,18 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
 	private AdClickThroughValidator adClickThroughValidator;
-    private DiscoveryValidator discoveryValidator;
+	private DiscoveryValidator discoveryValidator;
 
-	static int index =0;
-	
+	static int index = 0;
+
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyDiscoveryUpNext(String testName, String url) throws Exception {
-		
+	public void verifyDiscoveryUpNext(String testName, String url)
+			throws Exception {
+
 		boolean result = false;
-		
+
 		try {
-			
+
 			driver.get(url);
 			if (!getPlatform().equalsIgnoreCase("android")) {
 				driver.manage().window().maximize();
@@ -44,35 +45,36 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 
 			playValidator.waitForPage();
 			Thread.sleep(10000);
-			
-			injectScript();
-			
-			playAction.startAction();
-			
-	        if(adClickThroughValidator.isAdPlaying())
-	            event.validate("singleAdPlayed_1", 90);
-	        
-	        event.validate( "playing_1", 90);
-	        extentTest.log(PASS, "Video starting");
-	        sleep(2000);
-	        
-	        seekAction.seek(10, true);
 
-	        event.validate( "seeked_1", 180);
+			injectScript();
+
+			playAction.startAction();
+
+			if (adClickThroughValidator.isAdPlaying())
+				event.validate("singleAdPlayed_1", 90);
+
+			event.validate("playing_1", 90);
+			extentTest.log(PASS, "Video starting");
+			sleep(2000);
+
+			seekAction.seek(10, true);
+
+			event.validate("seeked_1", 180);
 
 			discoveryValidator.validate("reportDiscoveryClick_1", 60);
-	        extentTest.log(PASS, "Clicked video loaded");
-	        extentTest.log(PASS, "Verified DiscoveryUpNext tests");
-			
+			extentTest.log(PASS, "Clicked video loaded");
+			extentTest.log(PASS, "Verified DiscoveryUpNext tests");
+
 			result = true;
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Playback CC Enabled MidRoll Ads tests failed");
-		
+		Assert.assertTrue(result,
+				"Playback CC Enabled MidRoll Ads tests failed");
+
 	}
-	
+
 }

@@ -1,39 +1,41 @@
 package com.ooyala.playback.alice;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.ReplayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 /**
  * Created by soundarya on 11/17/16.
  */
 public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
-    private PlayValidator play;
-    private SeekValidator seek;
-    private EventValidator eventValidator;
-    private ReplayValidator replayValidator;
+	private PlayValidator play;
+	private SeekValidator seek;
+	private EventValidator eventValidator;
+	private ReplayValidator replayValidator;
 
-    public PlaybackReplayVideoTests() throws OoyalaException {
-        super();
-    }
+	public PlaybackReplayVideoTests() throws OoyalaException {
+		super();
+	}
 
-    @Test(groups = "Player", dataProvider = "testUrls")
-    public void testVideoReplay(String testName, String url) throws OoyalaException {
+	@Test(groups = "Player", dataProvider = "testUrls")
+	public void testVideoReplay(String testName, String url)
+			throws OoyalaException {
 
-        boolean result = false;
+		boolean result = false;
 
 		try {
 			driver.get(url);
 
 			play.waitForPage();
 
-            injectScript();
+			injectScript();
 
 			play.validate("playing_1", 60);
 
@@ -53,10 +55,10 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
 			logger.info("video replayed");
 
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Assert.assertTrue(result, "Playback Replay tests failed");
-    }
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Assert.assertTrue(result, "Playback Replay tests failed");
+	}
 }

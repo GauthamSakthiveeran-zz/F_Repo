@@ -14,61 +14,62 @@ import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
-    private EventValidator eventValidator;
-    private PlayValidator play;
-    private PauseValidator pause;
-    private SeekValidator seek;
-    private FullScreenValidator fullScreenValidator;
-    private ControlBarValidator controlBarValidator;
+	private EventValidator eventValidator;
+	private PlayValidator play;
+	private PauseValidator pause;
+	private SeekValidator seek;
+	private FullScreenValidator fullScreenValidator;
+	private ControlBarValidator controlBarValidator;
 
-    public PlaybackPlayerControlsTests() throws OoyalaException {
-        super();
-    }
+	public PlaybackPlayerControlsTests() throws OoyalaException {
+		super();
+	}
 
-    @Test(groups = "Playback", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+	@Test(groups = "Playback", dataProvider = "testUrls")
+	public void testBasicPlaybackAlice(String testName, String url)
+			throws OoyalaException {
 
-        boolean result = false;
+		boolean result = false;
 
-        try {
-            driver.get(url);
-            if (!getPlatform().equalsIgnoreCase("android")) {
-                driver.manage().window().maximize();
-            }
+		try {
+			driver.get(url);
+			if (!getPlatform().equalsIgnoreCase("android")) {
+				driver.manage().window().maximize();
+			}
 
-            play.waitForPage();
-            Thread.sleep(10000);
+			play.waitForPage();
+			Thread.sleep(10000);
 
-            injectScript();
+			injectScript();
 
-            play.validate("playing_1", 60);
+			play.validate("playing_1", 60);
 
-            logger.info("Verifed that video is getting playing");
+			logger.info("Verifed that video is getting playing");
 
-            Thread.sleep(2000);
+			Thread.sleep(2000);
 
-            pause.validate("paused_1", 60);
+			pause.validate("paused_1", 60);
 
-            logger.info("Verified that video is getting pause");
+			logger.info("Verified that video is getting pause");
 
-            play.validate("playing_2", 60);
+			play.validate("playing_2", 60);
 
-            fullScreenValidator.validate("",60);
+			fullScreenValidator.validate("", 60);
 
-            controlBarValidator.validate("",60);
+			controlBarValidator.validate("", 60);
 
-            seek.validate("seeked_1", 60);
+			seek.validate("seeked_1", 60);
 
-            logger.info("Verified that video is seeked");
+			logger.info("Verified that video is seeked");
 
-            eventValidator.validate("played_1",60);
+			eventValidator.validate("played_1", 60);
 
-            logger.info("Verified that video is played");
+			logger.info("Verified that video is played");
 
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Assert.assertTrue(result, "Alice basic playback tests failed");
-    }
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Assert.assertTrue(result, "Alice basic playback tests failed");
+	}
 }

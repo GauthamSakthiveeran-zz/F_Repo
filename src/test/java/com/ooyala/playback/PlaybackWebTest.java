@@ -336,11 +336,12 @@ public abstract class PlaybackWebTest extends FacileTest {
 		return output;
 
 	}
-	
+
 	@DataProvider(name = "testUrlData")
 	public Object[][] getTestUrlData() {
 
-		List<Url> urlData = UrlGenerator.filterTestDataBasedOnTestName(getClass().getSimpleName(), testData);
+		List<Url> urlData = UrlGenerator.filterTestDataBasedOnTestName(
+				getClass().getSimpleName(), testData);
 		List<String> urls = UrlGenerator.parseXmlDataProvider(getClass()
 				.getSimpleName(), testData);
 		String testName = getClass().getSimpleName();
@@ -354,22 +355,23 @@ public abstract class PlaybackWebTest extends FacileTest {
 		return output;
 
 	}
-	
+
 	/**
 	 * checking to see if the protocol is hds
+	 * 
 	 * @param urlData
 	 * @return
 	 */
-	protected boolean isFlash(Url urlData){
+	protected boolean isFlash(Url urlData) {
 		String playerParameter = urlData.getPlayerParameter();
-		if(playerParameter!=null){
+		if (playerParameter != null) {
 			JSONObject json = new JSONObject(playerParameter);
-			if(json!=null && json.has("encodingPriority")){
+			if (json != null && json.has("encodingPriority")) {
 				JSONArray array = json.getJSONArray("encodingPriority");
 				return array.get(0).equals("hds"); // TODO need to add to config
 			}
 		}
-		
+
 		return false;
 	}
 }

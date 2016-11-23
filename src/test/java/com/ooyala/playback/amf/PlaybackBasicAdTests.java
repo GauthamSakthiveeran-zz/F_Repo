@@ -23,14 +23,14 @@ public class PlaybackBasicAdTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
-	
+
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyBasicAd(String testName, String url) throws Exception {
-		
+
 		boolean result = false;
-		
+
 		try {
-			
+
 			driver.get(url);
 			if (!getPlatform().equalsIgnoreCase("android")) {
 				driver.manage().window().maximize();
@@ -38,44 +38,45 @@ public class PlaybackBasicAdTests extends PlaybackWebTest {
 
 			playValidator.waitForPage();
 			Thread.sleep(10000);
-			
+
 			injectScript();
-			
+
 			playAction.startAction();
-			
+
 			loadingSpinner();
-			
+
 			event.validate("willPlaySingleAd_1", 150);
-			
+
 			extentTest.log(PASS, "Preroll Ad started");
-			
-//			String adurl = (((JavascriptExecutor) driver).executeScript("return adplayingurl_1.textContent")).toString();
 
-	        event.validate( "singleAdPlayed_1", 150);
+			// String adurl = (((JavascriptExecutor)
+			// driver).executeScript("return adplayingurl_1.textContent")).toString();
 
-	        extentTest.log(PASS, "Preroll Ad Completed");
+			event.validate("singleAdPlayed_1", 150);
 
-	        event.validate( "playing_1", 120);
+			extentTest.log(PASS, "Preroll Ad Completed");
 
-	        extentTest.log(PASS, "Main video started to play");
+			event.validate("playing_1", 120);
 
-	        sleep(500);
+			extentTest.log(PASS, "Main video started to play");
 
-	        seekValidator.validate("seeked_1", 190);
+			sleep(500);
 
-	        event.validate( "played_1", 190);
+			seekValidator.validate("seeked_1", 190);
 
-	        extentTest.log(PASS, "Video completed palying");
-			
+			event.validate("played_1", 190);
+
+			extentTest.log(PASS, "Video completed palying");
+
 			result = true;
-			
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
 		Assert.assertTrue(result, "Playback Ad Wrapper tests failed");
-		
+
 	}
 
 }

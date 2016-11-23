@@ -1,37 +1,42 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayPauseAction;
-import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.ShareTabValidator;
+import com.ooyala.playback.page.action.PlayPauseAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackLocalizationTests extends PlaybackWebTest {
 
-    public static Logger logger = Logger.getLogger(PlaybackLocalizationTests.class);
+	public static Logger logger = Logger
+			.getLogger(PlaybackLocalizationTests.class);
 
-    private PlayValidator play ;
-    private PauseValidator pause ;
-    private SeekValidator seek ;
-    private PlayPauseAction playPauseAction ;
-    private EventValidator eventValidator ;
-    private ShareTabValidator shareTabValidator ;
-
+	private PlayValidator play;
+	private PauseValidator pause;
+	private SeekValidator seek;
+	private PlayPauseAction playPauseAction;
+	private EventValidator eventValidator;
+	private ShareTabValidator shareTabValidator;
 
 	public PlaybackLocalizationTests() throws OoyalaException {
 		super();
 	}
 
+	@Test(groups = "PlayerSkin", dataProvider = "testUrls")
+	public void testPlaybackLocalization(String testName, String url)
+			throws OoyalaException {
 
-    @Test(groups = "PlayerSkin", dataProvider = "testUrls")
-    public void testPlaybackLocalization(String testName, String url) throws OoyalaException {
-
-        boolean result = false;
+		boolean result = false;
 
 		try {
 			driver.get(url);
@@ -41,7 +46,7 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 
 			play.waitForPage();
 
-            injectScript();
+			injectScript();
 
 			play.validate("playing_1", 60);
 

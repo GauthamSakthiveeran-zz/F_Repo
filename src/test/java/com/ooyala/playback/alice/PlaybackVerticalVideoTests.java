@@ -1,42 +1,46 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.qe.common.exception.OoyalaException;
+import static java.lang.Thread.sleep;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static java.lang.Thread.sleep;
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.AspectRatioValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/17/16.
  */
 public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
-    private PlayValidator play;
-    private PauseValidator pause;
-    private SeekValidator seek;
-    private PlayAction playAction;
-    private EventValidator eventValidator;
-    private AspectRatioValidator aspectRatioValidator;
+	private PlayValidator play;
+	private PauseValidator pause;
+	private SeekValidator seek;
+	private PlayAction playAction;
+	private EventValidator eventValidator;
+	private AspectRatioValidator aspectRatioValidator;
 
-    public PlaybackVerticalVideoTests() throws OoyalaException {
-        super();
-    }
+	public PlaybackVerticalVideoTests() throws OoyalaException {
+		super();
+	}
 
+	@Test(groups = "AspectRatio", dataProvider = "testUrls")
+	public void testVerticalVideo(String testName, String url)
+			throws OoyalaException {
 
-    @Test(groups = "AspectRatio", dataProvider = "testUrls")
-    public void testVerticalVideo(String testName, String url) throws OoyalaException {
-
-
-        boolean result = false;
+		boolean result = false;
 		try {
 			driver.get(url);
 
 			play.waitForPage();
 
-            injectScript();
+			injectScript();
 
 			play.validate("playing_1", 60);
 
@@ -64,12 +68,12 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
 			logger.info("video played");
 
-            result = true;
+			result = true;
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        Assert.assertTrue(result, "Vertical Video tests failed");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Assert.assertTrue(result, "Vertical Video tests failed");
 	}
 
 }

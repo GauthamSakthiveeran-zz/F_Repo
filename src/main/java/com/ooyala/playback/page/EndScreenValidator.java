@@ -15,16 +15,16 @@ public class EndScreenValidator extends PlayBackPage implements
 
 	public static Logger logger = Logger.getLogger(EndScreenValidator.class);
 
+	public EndScreenValidator(WebDriver webDriver) {
+		super(webDriver);
+		PageFactory.initElements(webDriver, this);
+		/**
+		 * Here we will tell Facile to add the page elements of our Login Page
+		 */
+		addElementToPageElements("controlbar");
+		addElementToPageElements("replay");
+	}
 
-    public EndScreenValidator(WebDriver webDriver) {
-        super(webDriver);
-        PageFactory.initElements(webDriver, this);
-        /**
-         * Here we will tell Facile to add the page elements of our Login Page
-         */
-        addElementToPageElements("controlbar");
-        addElementToPageElements("replay");
-    }
 	public void validate(String element, int timeout) throws Exception {
 		waitOnElement("END_SCREEN", 60);
 		String replaytxt = getWebElement("PLAY_PAUSE").findElement(
