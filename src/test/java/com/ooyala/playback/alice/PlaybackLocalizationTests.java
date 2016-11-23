@@ -41,7 +41,7 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 
 			play.waitForPage();
 
-            injectScript(jsURL());
+            injectScript();
 
 			play.validate("playing_1", 60);
 

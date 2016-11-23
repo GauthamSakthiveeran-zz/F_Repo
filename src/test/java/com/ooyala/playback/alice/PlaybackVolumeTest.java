@@ -45,7 +45,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 			play.waitForPage();
 
-            injectScript(jsURL());
+            injectScript();
 
 			playAction.startAction();
 

@@ -1,11 +1,13 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-
-import com.ooyala.playback.page.*;
-import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.UpNextValidator;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/11/16.
@@ -15,8 +17,6 @@ public class DiscoveryUpNextTests  extends PlaybackWebTest {
 
     private EventValidator eventValidator;
     private PlayValidator play;
-    private PauseValidator pause;
-    private SeekValidator seek;
     private UpNextValidator discoveryUpNext;
 
 
@@ -38,7 +38,7 @@ public class DiscoveryUpNextTests  extends PlaybackWebTest {
 
             logger.info("Verified that video is seeked");
 
-            injectScript(jsURL());
+            injectScript();
 
             play.validate("playing_1", 60);
 

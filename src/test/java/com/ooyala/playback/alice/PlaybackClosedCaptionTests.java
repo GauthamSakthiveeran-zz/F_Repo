@@ -1,14 +1,19 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.FullScreenAction;
-import com.ooyala.qe.common.exception.OoyalaException;
+import static java.lang.Thread.sleep;
+
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static java.lang.Thread.sleep;
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.CCValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.FullScreenValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -42,7 +47,7 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 
 			play.waitForPage();
 
-            injectScript(jsURL());
+            injectScript();
 
 
 			play.validate("playing_1", 60);

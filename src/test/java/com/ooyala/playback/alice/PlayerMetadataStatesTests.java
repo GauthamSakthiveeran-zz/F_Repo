@@ -1,11 +1,16 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EndScreenValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.StartScreenValidator;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -14,7 +19,6 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
     private PlayValidator play;
     private SeekValidator seek;
-    private PlayAction playAction;
     private EventValidator eventValidator ;
     private PauseValidator pause;
     private EndScreenValidator endScreenValidator ;
@@ -39,7 +43,7 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
                 startScreenValidator.validate("",60);
 
-                injectScript(jsURL());
+                injectScript();
 
                 // playAction.startAction();
 

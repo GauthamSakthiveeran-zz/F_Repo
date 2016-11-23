@@ -41,7 +41,7 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
 
             play.waitForPage();
 
-            injectScript(jsURL());
+            injectScript();
             play.validate("playing_1", 60);
 
             logger.info("verified video is playing");

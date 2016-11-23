@@ -1,8 +1,7 @@
-package com.ooyala.playback.amf.VAST;
+package com.ooyala.playback.amf;
 
 
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -10,7 +9,6 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -50,8 +48,11 @@ public class PlaybackAdIconTests extends PlaybackWebTest {
 			playAction.startAction();
 			
 			loadingSpinner();
-			
+			// Wait for ad start
 			event.validate("willPlaySingleAd_1", 60);
+			
+			// verify ad icon TODO
+			
 			event.validate("singleAdPlayed_1", 160);
 			
 			playValidator.validate("playing_1", 190);
