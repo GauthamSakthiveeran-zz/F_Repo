@@ -58,11 +58,10 @@ public class SimpleHttpServer {
 				logger.info("File being served by httpserver is "
 						+ queryParams.get("fileName"));
 				String fileName = queryParams.get("fileName");
-				// add the required response header for a PDF file
+				// add the required response header for a js file
 				Headers h = t.getResponseHeaders();
 				h.add("Content-Type", "text/javascript");
 
-				// a PDF (you provide your own!)
 				File file = new File("./src/test/resources/js/" + fileName);
 				byte[] bytearray = new byte[(int) file.length()];
 				FileInputStream fis = new FileInputStream(file);
