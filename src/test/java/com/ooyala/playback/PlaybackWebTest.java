@@ -12,6 +12,8 @@ import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
@@ -34,6 +36,7 @@ import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.page.PlayBackPage;
 import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.url.Testdata;
+import com.ooyala.playback.url.Url;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.ooyala.qe.common.util.PropertyReader;
@@ -349,5 +352,41 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 		return output;
 
+	}
+	
+	@DataProvider(name = "testUrlData")
+	public Object[][] getTestUrlData() {
+
+		List<Url> urlData = UrlGenerator.filterTestDataBasedOnTestName(getClass().getSimpleName(), testData);
+		List<String> urls = UrlGenerator.parseXmlDataProvider(getClass()
+				.getSimpleName(), testData);
+		String testName = getClass().getSimpleName();
+		Object[][] output = new Object[urls.size()][3];
+		for (int i = 0; i < urls.size(); i++) {
+			output[i][0] = testName;
+			output[i][1] = urlData.get(i);
+			output[i][2] = urls.get(i);
+		}
+
+		return output;
+
+	}
+	
+	/**
+	 * checking to see if the protocol is hds
+	 * @param urlData
+	 * @return
+	 */
+	protected boolean isFlash(Url urlData){
+		String playerParameter = urlData.getPlayerParameter();
+		if(playerParameter!=null){
+			JSONObject json = new JSONObject(playerParameter);
+			if(json!=null && json.has("encodingPriority")){
+				JSONArray array = json.getJSONArray("encodingPriority");
+				return array.get(0).equals("hds"); // TODO need to add to config
+			}
+		}
+		
+		return false;
 	}
 }
