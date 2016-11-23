@@ -12,11 +12,10 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 
-public class BasicPlaybackTests extends PlaybackWebTest{
+public class PlaybackBasicAdTests extends PlaybackWebTest {
 
-	public BasicPlaybackTests() throws OoyalaException {
+	public PlaybackBasicAdTests() throws OoyalaException {
 		super();
 	}
 
@@ -26,8 +25,7 @@ public class BasicPlaybackTests extends PlaybackWebTest{
 	private SeekValidator seekValidator;
 	
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyBasicPlayback(String testName, String url)
-			throws OoyalaException {
+	public void verifyBasicAd(String testName, String url) throws Exception {
 		
 		boolean result = false;
 		
@@ -39,29 +37,35 @@ public class BasicPlaybackTests extends PlaybackWebTest{
 			}
 
 			playValidator.waitForPage();
-			Thread.sleep(2000);
+			Thread.sleep(10000);
 			
 			injectScript();
 			
 			playAction.startAction();
 			
-			Thread.sleep(3000);
-	
-			playValidator.validate("playing_1", 190);
+			loadingSpinner();
 			
-			extentTest.log(PASS, "Main video started to play");
+			event.validate("willPlaySingleAd_1", 150);
 			
-			sleep(2000);
+			extentTest.log(PASS, "Preroll Ad started");
 			
-			seekValidator.validate("seeked_1", 190);
-			
-			extentTest.log(PASS, "Seek successfull");
-			
-			sleep(3000);
-			
-			event.validate("played_1", 190);
-			
-			extentTest.log(LogStatus.PASS, "Main Video played successfully");
+//			String adurl = (((JavascriptExecutor) driver).executeScript("return adplayingurl_1.textContent")).toString();
+
+	        event.validate( "singleAdPlayed_1", 150);
+
+	        extentTest.log(PASS, "Preroll Ad Completed");
+
+	        event.validate( "playing_1", 120);
+
+	        extentTest.log(PASS, "Main video started to play");
+
+	        sleep(500);
+
+	        seekValidator.validate("seeked_1", 190);
+
+	        event.validate( "played_1", 190);
+
+	        extentTest.log(PASS, "Video completed palying");
 			
 			result = true;
 			
@@ -70,7 +74,8 @@ public class BasicPlaybackTests extends PlaybackWebTest{
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified");
+		Assert.assertTrue(result, "Playback Ad Wrapper tests failed");
 		
 	}
+
 }

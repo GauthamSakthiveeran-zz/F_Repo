@@ -1,7 +1,6 @@
 package com.ooyala.playback.amf;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -12,11 +11,10 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 
-public class BasicPlaybackTests extends PlaybackWebTest{
+public class PlaybackIMAPreVastMidAdsTests extends PlaybackWebTest {
 
-	public BasicPlaybackTests() throws OoyalaException {
+	public PlaybackIMAPreVastMidAdsTests() throws OoyalaException {
 		super();
 	}
 
@@ -26,7 +24,7 @@ public class BasicPlaybackTests extends PlaybackWebTest{
 	private SeekValidator seekValidator;
 	
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyBasicPlayback(String testName, String url)
+	public void verifyIMAPreVastMidAds(String testName, String url)
 			throws OoyalaException {
 		
 		boolean result = false;
@@ -45,23 +43,24 @@ public class BasicPlaybackTests extends PlaybackWebTest{
 			
 			playAction.startAction();
 			
-			Thread.sleep(3000);
-	
-			playValidator.validate("playing_1", 190);
-			
-			extentTest.log(PASS, "Main video started to play");
-			
-			sleep(2000);
-			
-			seekValidator.validate("seeked_1", 190);
-			
-			extentTest.log(PASS, "Seek successfull");
-			
-			sleep(3000);
-			
-			event.validate("played_1", 190);
-			
-			extentTest.log(LogStatus.PASS, "Main Video played successfully");
+	        loadingSpinner();
+	        event.validate("PreRoll_willPlayAds", 120);
+	        event.validate("adsPlayed_1", 200);
+	        event.validate("adPodEnd_google-ima-ads-manager_0_1", 200);
+	        extentTest.log(PASS, "Played IMA Preroll Ads");
+	        event.validate("playing_1", 90);
+	        seekValidator.validate("seeked_1", 190);
+	        
+	        event.validate("MidRoll_willPlayAds", 100);
+	        event.validate("adsPlayed_2", 200);
+	        try {
+	        	event.validate("adPodEnd_vast_2_2", 60);
+	        } catch (Exception e) {
+	        	event.validate("adPodEnd_vast_2_3", 180);
+	        }
+	        extentTest.log(PASS, "Played Vast Midroll Ads");
+	        event.validate("played_1", 200);
+	        extentTest.log(PASS, "Verified VastPreIMAMidlAdsTests Ads Test");
 			
 			result = true;
 			
@@ -70,7 +69,8 @@ public class BasicPlaybackTests extends PlaybackWebTest{
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified");
+		Assert.assertTrue(result, "Verified PreRoll Ads test");
 		
 	}
+	
 }
