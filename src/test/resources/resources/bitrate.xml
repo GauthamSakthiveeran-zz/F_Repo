@@ -4,5 +4,5 @@
     <element key="MORE_OPTION_ITEM" findBy="class"
              class="oo-more-options-items" />
     <element key="BITRATE_SELECTION" findBy="class"
-             class="oo-quality-screen-content" />
+             class="oo-quality-btn" />
 </elements>

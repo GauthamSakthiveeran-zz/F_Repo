@@ -1,31 +1,27 @@
 package com.ooyala.playback.alice;
 
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.*;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.ControlBarValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.FullScreenValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.qe.common.exception.OoyalaException;
-
-public class PlaybackPlayerControlsTests extends PlaybackWebTest {
+/**
+ * Created by soundarya on 11/22/16.
+ */
+public class PlaybackThumbnailTests extends PlaybackWebTest {
 
     private EventValidator eventValidator;
     private PlayValidator play;
     private PauseValidator pause;
     private SeekValidator seek;
-    private FullScreenValidator fullScreenValidator;
-    private ControlBarValidator controlBarValidator;
+    private ThumbnailValidator thumbnailValidator;
 
-    public PlaybackPlayerControlsTests() throws OoyalaException {
+    public PlaybackThumbnailTests() throws OoyalaException {
         super();
     }
 
-    @Test(groups = "Playback", dataProvider = "testUrls")
+    @Test(groups = "playback", dataProvider = "testUrls")
     public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
 
         boolean result = false;
@@ -37,6 +33,7 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
             }
 
             play.waitForPage();
+
             Thread.sleep(10000);
 
             injectScript();
@@ -45,21 +42,17 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
             logger.info("Verifed that video is getting playing");
 
-            Thread.sleep(2000);
+            Thread.sleep(5000);
 
             pause.validate("paused_1", 60);
 
-            logger.info("Verified that video is getting pause");
+            thumbnailValidator.validate("",60);
+
+            Thread.sleep(5000);
 
             play.validate("playing_2", 60);
 
-            fullScreenValidator.validate("",60);
-
-            controlBarValidator.validate("",60);
-
             seek.validate("seeked_1", 60);
-
-            logger.info("Verified that video is seeked");
 
             eventValidator.validate("played_1",60);
 
@@ -69,6 +62,6 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Assert.assertTrue(result, "Alice basic playback tests failed");
+        Assert.assertTrue(result, "Thumbnail test failed");
     }
 }

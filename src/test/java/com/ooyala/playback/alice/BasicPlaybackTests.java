@@ -8,6 +8,8 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.*;
+import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
@@ -15,6 +17,10 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class BasicPlaybackTests extends PlaybackWebTest {
 
+    private EventValidator eventValidator;
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
 
     public BasicPlaybackTests() throws OoyalaException {
         super();
@@ -24,10 +30,6 @@ public class BasicPlaybackTests extends PlaybackWebTest {
     public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        EventValidator eventValidator = pageFactory.getEventValidator();
 
         try {
             driver.get(url);

@@ -6,21 +6,23 @@
 	the associated entry would be: <entry key="invoices">/com/intuit/qbo/qboareas/invoices/invoiceElements.xml</entry> -->
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+    <entry key="aspectratio">resources/aspectratio.xml</entry>
+    <entry key="bitrate">resources/bitrate.xml</entry>
 	<entry key="cc">resources/cc.xml</entry>
+    <entry key="controlbar">resources/controlbar.xml</entry>
 	<entry key="discovery">resources/discovery.xml</entry>
 	<entry key="fullscreen">resources/fullscreen.xml</entry>
+    <entry key="live">resources/live.xml</entry>
 	<entry key="pause">resources/pause.xml</entry>
 	<entry key="play">resources/play.xml</entry>
 	<entry key="replay">resources/replay.xml</entry>
-	<entry key="upnext">resources/upnext.xml</entry>
-    <entry key="bitrate">resources/bitrate.xml</entry>
-    <entry key="controlbar">resources/controlbar.xml</entry>
-    <entry key="live">resources/live.xml</entry>
     <entry key="sharetab">resources/sharetab.xml</entry>
+    <entry key="sharetab">resources/socialscreen.xml</entry>
     <entry key="startscreen">resources/startscreen.xml</entry>
+    <entry key="upnext">resources/upnext.xml</entry>
     <entry key="volume">resources/volume.xml</entry>
     <entry key="watermark">resources/watermark.xml</entry>
     <entry key="adclicks">resources/adclicks.xml</entry>
     <entry key="adoverlay">resources/adoverlay.xml</entry>
-    <entry key="aspectratio">resources/aspectratio.xml</entry>
+
 </properties>
