@@ -1,10 +1,9 @@
 <elements area="pause">
-	<element key="PAUSE_BUTTON" findBy="class"
-             class="oo-icon-pause-slick" />
-	<element key="PAUSE_SCREEN" findBy="class"
-             class="oo-pause-screen" />
-	<element key="CONTENT_SCREEN" findBy="class"
-             class="oo-content-screen" />
-		<element key="HIDDEN_CONTROL_BAR" findBy="class"
-                 class="oo-control-bar-hidden" />
+	<element key="PAUSE_BUTTON" findBy="class" class="oo-icon-pause-slick" />
+	<element key="PAUSE_SCREEN" findBy="class" class="oo-pause-screen" />
+	<element key="CONTENT_SCREEN" findBy="class" class="oo-content-screen" />
+	<element key="HIDDEN_CONTROL_BAR" findBy="class"
+		class="oo-control-bar-hidden" />
+	<element key="STATE_SCREEN" findBy="class" class="oo-state-screen" />
+
 </elements>
