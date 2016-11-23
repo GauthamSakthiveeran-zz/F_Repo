@@ -19,6 +19,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
     public static Logger logger = Logger.getLogger(CCValidator.class);
 
+
     public CCValidator(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -76,7 +77,8 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
         clickOnIndependentElement("CC_SWITCH_CONTAINER");
         clickOnIndependentElement("CC_PANEL_CLOSE");
 
-        logger.info("Verified ClosedCaption ");
+		logger.info("Verified ClosedCaption");
+
 
         /*Todo fix this
         if (isElementPresent("PAUSE_BUTTON"))
@@ -107,6 +109,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
         }
 
     }
+
 
     protected  void checkClosedCaptionLanguages() throws  Exception{
         ArrayList<String> langlist = ((ArrayList<String>)(((JavascriptExecutor) driver).executeScript("var attrb = pp.getCurrentItemClosedCaptionsLanguages().languages;" +"{return attrb;}")));

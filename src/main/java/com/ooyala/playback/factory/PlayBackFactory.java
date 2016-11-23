@@ -1,17 +1,17 @@
 package com.ooyala.playback.factory;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 import com.ooyala.playback.page.*;
 import org.openqa.selenium.WebDriver;
-
 import com.ooyala.playback.page.action.AutoplayAction;
 import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
+import com.ooyala.playback.page.action.FullScreenAction;
 import com.ooyala.playback.page.action.LiveAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.PlayPauseAction;
+import com.ooyala.playback.page.action.SeekAction;
 
 public class PlayBackFactory {
 
@@ -43,11 +43,26 @@ public class PlayBackFactory {
 	private Bitratevalidator bitratevalidator;
     private SocailScreenValidator socailScreenValidator;
     private ThumbnailValidator thumbnailValidator;
+	private FullScreenAction fullScreenAction;
+	private SeekAction seekAction;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
 	}
 
+	public SeekAction getSeekAction(){
+		if(seekAction==null)
+			seekAction = new SeekAction(driver);
+		return seekAction;
+			
+	}
+	
+	public FullScreenAction getFullScreenAction(){
+		if(fullScreenAction==null)
+			fullScreenAction = new FullScreenAction(driver);
+		return fullScreenAction;
+	}
+	
 	public PauseAction getPauseAction() {
 		if (pauseAction == null)
 			pauseAction = new PauseAction(driver);

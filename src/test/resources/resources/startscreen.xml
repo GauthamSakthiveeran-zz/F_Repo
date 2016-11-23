@@ -5,4 +5,9 @@
              class="oo-state-screen-title" />
     <element key="STATE_SCREEN_DEC" findBy="class"
              class="oo-state-screen-description" />
+    <element key="stateScreens" findBy="class"
+    		 class="oo-state-screen" />
+    <element key="stateScreenSelectable" findBy="class"
+    		 class="oo-state-screen-selectable" />		 
+    		          
 </elements>

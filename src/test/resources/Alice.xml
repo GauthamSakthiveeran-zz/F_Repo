@@ -35,7 +35,7 @@
             <description name="eHLSVod_Main" />
             <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN" />
+            <plugins name="MAIN,BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
@@ -45,7 +45,7 @@
             <description name="HLSVod_Main" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN" />
+            <plugins name="MAIN,BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
@@ -326,7 +326,7 @@
     </test>
 
     <test name="PlaybackBitrateTests">
-       <url>
+        <url>
             <description name="BitrateWithOnlyAuto" />
             <embed_code name="E2aHd3MTE6Yr3iJRbXWUDe_0g2H0flmU" />
             <pcode name="5zb2wxOlZcNCe_HVT3a6cawW298X" />
@@ -394,6 +394,19 @@
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+    </test>
+
+    <test name="PlaybackDRMTests">
+        <url>
+            <description name="DRM" />
+            <embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
+            <pcode name="FoeG863GnBL4IhhlFC1Q2jqbkH9m" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[]]></playerParameter>
         </url>
     </test>
 </testdata>
