@@ -92,6 +92,7 @@
             <playerParameter><![CDATA[{"encodingPriority":["hls","dash"]}]]></playerParameter>
         </url>
     </test>
+
     <test name="PlaybackDiscoveryCustomizationTests">
         <url>
             <description name="Customization_Discovery" />
@@ -157,19 +158,6 @@
         </url>
     </test>
 
-    <test name="PlaybackControlsLiveDVRTests">
-        <url>
-            <description name="PlaybackControls_LiveDVR" />
-            <embed_code name="BsZjdieDrJdl9YjLBm1LVyl3FF0KdWtd" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-    </test>
-
     <test name="PlaybackDiscoveryTests">
         <url>
             <description name="Playback_Discovery" />
@@ -231,14 +219,24 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
+            <description name="Akamai HDS Live" />
+            <embed_code name="ZzYjl0MTE6q67pMzfDHLjHsh5ZPR7rMO" />
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
             <description name="Akamai_HLS_Live_Bitmovin" />
             <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
+            <plugins name="AKAMAI" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
         <url>
             <description name="Live_SSAI" />
@@ -250,12 +248,9 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/hkN2YyOnWYuzHmiwc6gaXi9wPfwy/t4ODRzNTE6C3BGu13bE6y_fxxzEM9Fod?api_key=hkN2YyOnWYuzHmiwc6gaXi9wPfwy.7-2Sh&expires=1476304999752&signature=pt3uY/V1HX0IibQZBVFCwT3vxjgZ8hhBGgKVh1+ogJE"}]]></playerParameter>
         </url>
-    </test>
-
-    <test name="PlaybackHLSVodTests">
         <url>
-            <description name="Playback_HLS_Vod" />
-            <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
+            <description name="PlaybackControls_LiveDVR" />
+            <embed_code name="BsZjdieDrJdl9YjLBm1LVyl3FF0KdWtd" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN" />
             <adPlugins name="" />
@@ -331,8 +326,8 @@
     </test>
 
     <test name="PlaybackBitrateTests">
-        <url>
-            <description name="PlaybackBitrateTests" />
+       <url>
+            <description name="BitrateWithOnlyAuto" />
             <embed_code name="E2aHd3MTE6Yr3iJRbXWUDe_0g2H0flmU" />
             <pcode name="5zb2wxOlZcNCe_HVT3a6cawW298X" />
             <plugins name="OSMF" />
@@ -340,6 +335,30 @@
             <additionalPlugins name="" />
             <pbid name="NzMyN2E4MzA4Y2ZiMzYwNjhiYzgzYzQ4" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/FoeG863GnBL4IhhlFC1Q2jqbkH9m/N3b2lhZzq_5Er-I09uWrmpwNUZZ_mEeX?api_key=FoeG863GnBL4IhhlFC1Q2jqbkH9m.-E1Kw&expires=2890068691&account_id=dulari_qa&&&signature=sCtNsIeb7XYqrdOdp0avqAjuFKvXansR+BWhAnJp5+A"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="MultipleBitrateOptions" />
+            <embed_code name="QyajZsMjE6wT6XAfV0UAIs8WR4MjQ4Vn" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+    </test>
+
+    <test name="PlaybackThumbnailTests">
+        <url>
+            <description name="Thumbnail" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="BITMOVIN,AKAMAI,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
     </test>
 
@@ -357,10 +376,20 @@
     </test>
     <test name="PlaybackPlayerControlsTests">
         <url>
-            <description name="PauseScreen" />
+            <description name="DASH Remote Asset" />
+            <embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Playback_HLS_Vod" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN" />
+            <plugins name="MAIN,BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />

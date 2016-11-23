@@ -61,7 +61,6 @@ public class WaterMarkValidator extends PlayBackPage implements
 		}
 
 		getWindowHanldes();
-
 	}
 
 	protected void getlogoDimension() throws Exception {

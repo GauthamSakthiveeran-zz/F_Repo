@@ -1,0 +1,8 @@
+<elements area="socialscreen">
+    <element key="TWITTER" findBy="class"
+             class="oo-twitter" />
+    <element key="FACEBOOK" findBy="class"
+             class="oo-facebook" />
+    <element key="GOOGLE_PLUS" findBy="class"
+             class="oo-google-plus" />
+</elements>

@@ -19,8 +19,6 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
     private EventValidator eventValidator;
     private ReplayValidator replayValidator;
 
-
-
     public PlaybackReplayVideoTests() throws OoyalaException {
         super();
     }

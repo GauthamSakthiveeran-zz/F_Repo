@@ -23,4 +23,9 @@
              class="oo-logo" />
     <element key="VIDEO" findBy="class"
              class="video" />
+    <element key="SCRUBBER_BAR" findBy="class"
+             class="oo-scrubber-bar" />
+    <element key="THUMBNAIL_CONTAINER" findBy="class"
+             class="oo-scrubber-thumbnail-container" />
+
 </elements>
