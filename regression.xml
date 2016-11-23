@@ -21,6 +21,7 @@
         </groups>
         <classes>
             <parameter name="testData" value="Alice.xml"/>
+            <parameter name="jsFile" value="alice_full.js"/>
             <class name="com.ooyala.playback.alice.BasicPlaybackTests" />
             <class name="com.ooyala.playback.alice.DiscoveryUpNextTests" />
             <class name="com.ooyala.playback.alice.PlaybackBitrateTests" />
@@ -35,6 +36,7 @@
             <class name="com.ooyala.playback.alice.PlaybackAspectRatioTests" />
             <class name="com.ooyala.playback.alice.PlaybackVerticalVideoTests" />
             <class name="com.ooyala.playback.alice.PlaybackThumbnailTests" />
+            <class name="com.ooyala.playback.alice.PlaybackSocialMediaTests" />
             <!--<class name="com.ooyala.playback.alice.PlaybackDiscoveryTests" />
                 <class name="com.ooyala.playback.alice.PlaybackVolumeTest" />
                  <class name="com.ooyala.playback.alice.PlaybackWatermarkTests" />-->
