@@ -75,6 +75,8 @@ public class SimpleHttpServer {
 				OutputStream os = t.getResponseBody();
 				os.write(bytearray, 0, bytearray.length);
 				os.close();
+				fis.close();
+				bis.close();
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}

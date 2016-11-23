@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.InetAddress;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -31,6 +32,7 @@ import org.testng.annotations.Parameters;
 import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.test.FacileTest;
 import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.httpserver.SimpleHttpServer;
 import com.ooyala.playback.page.PlayBackPage;
 import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.url.Testdata;
@@ -55,10 +57,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected Testdata testData;
 	protected String[] jsUrl;
 
-	private static String MAC_CHROME_DRIVER_PATH = "src/test/resources/lib-thirdparty/chromedriverformac/chromedriver";
-	private static String WIN_CHROME_DRIVER_PATH = "src/test/resources/lib-thirdparty/chromedriverforwin/chromedriver.exe";
-	private static String LINUX_CHROME_DRIVER_PATH = "src/test/resources/lib-thirdparty/chromedriverforlinux/chromedriver";
-
 	public PlaybackWebTest() throws OoyalaException {
 
 		try {
@@ -74,7 +72,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public void handleTestMethodName(Method method, Object[] testData) {
 		String testCaseName = getTestCaseName(method, testData);
 		extentTest = extentReport.startTest(testCaseName);
-		
+
 		try {
 			Field[] fs = this.getClass().getDeclaredFields();
 			fs[0].setAccessible(true);
@@ -98,23 +96,26 @@ public abstract class PlaybackWebTest extends FacileTest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void getJSFile(String jsFile) throws Exception {
 		logger.info("************Getting the JS file*************");
 		String[] jsFiles;
-		if(jsFile.contains(",")){
+		if (jsFile.contains(",")) {
 			jsFiles = jsFile.split(",");
-		}else{
+		} else {
 			jsFiles = new String[1];
 			jsFiles[0] = jsFile;
 		}
-		String jsHost = readPropertyOrEnv("jshostIpAddress","10.11.66.55");
-		if(jsFiles!=null && jsFiles.length>0){
+		// String jsHost = readPropertyOrEnv("jshostIpAddress","10.11.66.55");
+		if (jsFiles != null && jsFiles.length > 0) {
 			jsUrl = new String[jsFiles.length];
-			for(int i=0;i<jsFiles.length;i++)
-			    jsUrl[i] = "http://"+jsHost+":8080/"+jsFiles[i];
+			for (int i = 0; i < jsFiles.length; i++) {
+				InetAddress inetAdd = InetAddress.getLocalHost();
+				jsUrl[i] = "http://" + inetAdd.getHostAddress()
+						+ ":8000/js?fileName=" + jsFiles[i];
+			}
 		}
-		
+
 	}
 
 	public String getTestCaseName(Method method, Object[] testData) {
@@ -135,7 +136,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	@BeforeClass(alwaysRun = true)
-	@Parameters({"testData","jsFile"})
+	@Parameters({ "testData", "jsFile" })
 	public void setUp(String xmlFile, String jsFile) throws Exception {
 		logger.info("************Inside setup*************");
 		logger.info("browser is " + browser);
@@ -152,6 +153,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		pageFactory = PlayBackFactory.getInstance(driver);
 		parseXmlFileData(xmlFile);
 		getJSFile(jsFile);
+		SimpleHttpServer.startServer();
 
 	}
 
@@ -176,21 +178,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 		extentReport.endTest(extentTest);
 	}
 
-	public void startChromeService() throws IOException {
-		String chromeDriverPath = null;
-		if (System.getProperty("os.name").toLowerCase().contains("mac"))
-			chromeDriverPath = MAC_CHROME_DRIVER_PATH;
-		if (System.getProperty("os.name").toLowerCase().contains("win"))
-			chromeDriverPath = WIN_CHROME_DRIVER_PATH;
-		if (System.getProperty("os.name").toLowerCase().contains("linux"))
-			chromeDriverPath = LINUX_CHROME_DRIVER_PATH;
-		service = new ChromeDriverService.Builder()
-				.usingDriverExecutable(new File(chromeDriverPath))
-				.usingAnyFreePort().build();
-		service.start();
-		logger.info("Started chrome service");
-	}
-
 	@AfterClass(alwaysRun = true)
 	public void tearDown() throws Exception {
 		extentReport.flush();
@@ -203,6 +190,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 		logger.info("Assigning the neopagefactory instance to null");
 		PlayBackFactory.destroyInstance();
+		SimpleHttpServer.stopServer();
 	}
 
 	public void waitForSecond(int sec) {
@@ -227,15 +215,15 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.info(e.getMessage());
 		}
 	}
-	
-	public void injectScript() throws Exception{
-		if(jsUrl!=null && jsUrl.length>0){
-			for(String url : jsUrl){
+
+	public void injectScript() throws Exception {
+		if (jsUrl != null && jsUrl.length > 0) {
+			for (String url : jsUrl) {
 				try {
-					logger.info("JS - "+url);
+					logger.info("JS - " + url);
 					injectScript(url);
 				} catch (Exception e) {
-//					e.printStackTrace();
+					// e.printStackTrace();
 					logger.error(e.getMessage());
 					logger.info("Retrying...");
 					injectScript(url);
@@ -243,7 +231,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			}
 		}
 	}
-	
+
 	private void injectScript(String scriptURL) throws Exception {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		Object object = js.executeScript("function injectScript(url) {\n"
@@ -254,15 +242,15 @@ public abstract class PlaybackWebTest extends FacileTest {
 				+ "var scriptURL = arguments[0];\n"
 				+ "injectScript(scriptURL);", scriptURL);
 
-		if(scriptURL.contains("common"))
+		if (scriptURL.contains("common"))
 			object = js.executeScript("subscribeToCommonEvents();");
-		else	
+		else
 			object = js.executeScript("subscribeToEvents();");
 		extentTest.log(LogStatus.PASS, "Javascript injection is successful");
 	}
 
 	public long loadingSpinner() {
-		long startTime;
+		long startTime = 0L;
 		long endTime = 0L;
 		int time = 0;
 		long flag = 0L;
@@ -304,20 +292,15 @@ public abstract class PlaybackWebTest extends FacileTest {
 		String browser = cap.getBrowserName().toString();
 		return browser;
 	}
-    public static String readPropertyOrEnv(String key, String defaultValue) {
-        String v = System.getProperty(key);
-        if (v == null)
-            v = System.getenv(key);
-        if (v == null)
-            v = defaultValue;
-        return v;
-    }
 
-//    public String jsURL(){
-//        String jsHost = readPropertyOrEnv("jshostIpAddress","10.11.66.55");
-//        String url = "http://"+jsHost+":8080/alice_full.js";
-//        return url;
-//    }
+	public static String readPropertyOrEnv(String key, String defaultValue) {
+		String v = System.getProperty(key);
+		if (v == null)
+			v = System.getenv(key);
+		if (v == null)
+			v = defaultValue;
+		return v;
+	}
 
 	public String takeScreenshot(String fileName) {
 		File destDir = new File("images/");
