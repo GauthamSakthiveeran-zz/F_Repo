@@ -1,0 +1,4 @@
+<elements area="adoverlay">
+	<element key="overlayCloseBtn" findBy="class"
+             class="oo-ad-overlay-close-button-icon" />
+</elements>

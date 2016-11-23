@@ -1,11 +1,15 @@
 package com.ooyala.playback.alice;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.DiscoveryValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.UpNextValidator;
 import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.PlayPauseAction;
+import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -25,7 +29,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
     private PauseAction pauseAction;
     private PlayAction playAction;
     private PlayPauseAction playPauseAction;
-    private SeekValidator seekValidator;
+    private SeekAction seekAction;
 
     public PlaybackDiscoveryCustomizationTests() throws OoyalaException {
         super();
@@ -93,7 +97,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
                 playAction.startAction();
 
-                seekValidator.seek(20,true);
+                seekAction.seek(20,true);
 
                 loadingSpinner();
                 try {
@@ -109,7 +113,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
                 eventValidator.validateElement("END_SCREEN", 60);
                 } catch (Exception e) {
                     playAction.startAction();
-                    seekValidator.seek(20,true);
+                    seekAction.seek(20,true);
                     eventValidator.validateElement("END_SCREEN", 60);
                 }
                 discoveryValidator.verifyDiscoveryEnabled("On_endScreen", false);   //verify discovery is disabled on end screen
