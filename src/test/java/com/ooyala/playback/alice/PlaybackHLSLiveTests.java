@@ -1,17 +1,17 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.FullScreenAction;
-import com.ooyala.playback.page.action.LiveAction;
-import com.ooyala.playback.url.UrlGenerator;
-import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.SkipException;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.ControlBarValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.FullScreenValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.action.LiveAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -42,7 +42,7 @@ public class PlaybackHLSLiveTests extends PlaybackWebTest {
 
                 play.waitForPage();
 
-                injectScript("http://10.11.66.55:8080/alice.js");
+                injectScript();
 
                 play.validate("playing_1", 60);
 

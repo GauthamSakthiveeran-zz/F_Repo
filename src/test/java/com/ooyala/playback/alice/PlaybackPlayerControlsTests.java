@@ -1,14 +1,16 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PauseAction;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.url.UrlGenerator;
-import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.ControlBarValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.FullScreenValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
@@ -37,7 +39,7 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
             play.waitForPage();
             Thread.sleep(10000);
 
-            injectScript(jsURL());
+            injectScript();
 
             play.validate("playing_1", 60);
 

@@ -26,9 +26,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
-import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import org.w3c.dom.NodeList;
 
 import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.test.FacileTest;
@@ -76,6 +74,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public void handleTestMethodName(Method method, Object[] testData) {
 		String testCaseName = getTestCaseName(method, testData);
 		extentTest = extentReport.startTest(testCaseName);
+		
 		try {
 			Field[] fs = this.getClass().getDeclaredFields();
 			fs[0].setAccessible(true);
@@ -100,8 +99,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 	}
 	
-	@BeforeMethod(alwaysRun = true)
-	@Parameters("jsFile")
 	public void getJSFile(String jsFile) throws Exception {
 		logger.info("************Getting the JS file*************");
 		String[] jsFiles;
@@ -138,8 +135,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	@BeforeClass(alwaysRun = true)
-	@Parameters("testData")
-	public void setUp(String xmlFile) throws Exception {
+	@Parameters({"testData","jsFile"})
+	public void setUp(String xmlFile, String jsFile) throws Exception {
 		logger.info("************Inside setup*************");
 		logger.info("browser is " + browser);
 
@@ -154,6 +151,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		// driver.manage().timeouts().implicitlyWait(240, TimeUnit.MINUTES);
 		pageFactory = PlayBackFactory.getInstance(driver);
 		parseXmlFileData(xmlFile);
+		getJSFile(jsFile);
 
 	}
 
@@ -246,7 +244,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 	}
 	
-	public void injectScript(String scriptURL) throws Exception {
+	private void injectScript(String scriptURL) throws Exception {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		Object object = js.executeScript("function injectScript(url) {\n"
 				+ "   var script = document.createElement ('script');\n"
@@ -315,11 +313,11 @@ public abstract class PlaybackWebTest extends FacileTest {
         return v;
     }
 
-    public String jsURL(){
-        String jsHost = readPropertyOrEnv("jshostIpAddress","10.11.66.55");
-        String url = "http://"+jsHost+":8080/alice_full.js";
-        return url;
-    }
+//    public String jsURL(){
+//        String jsHost = readPropertyOrEnv("jshostIpAddress","10.11.66.55");
+//        String url = "http://"+jsHost+":8080/alice_full.js";
+//        return url;
+//    }
 
 	public String takeScreenshot(String fileName) {
 		File destDir = new File("images/");

@@ -1,5 +1,7 @@
-package com.ooyala.playback.amf.VAST;
+package com.ooyala.playback.amf;
 
+import static com.relevantcodes.extentreports.LogStatus.PASS;
+import static java.lang.Thread.sleep;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -12,26 +14,22 @@ import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class PlaybackAdIconTests extends PlaybackWebTest {
+public class PlaybackPreRollAdsTests extends PlaybackWebTest{
+
+	public PlaybackPreRollAdsTests() throws OoyalaException {
+		super();
+	}
 	
 	private EventValidator event;
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
-
-	public PlaybackAdIconTests() throws OoyalaException {
-		super();
-	}
-	
-	
 	
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyADIcon(String testName, String url)
+	public void verifyPreroll(String testName, String url)
 			throws OoyalaException {
 		
 		boolean result = false;
-		
-		
 		
 		try {
 			
@@ -41,36 +39,46 @@ public class PlaybackAdIconTests extends PlaybackWebTest {
 			}
 
 			playValidator.waitForPage();
-			Thread.sleep(10000);
+			Thread.sleep(2000);
 			
 			injectScript();
 			
 			playAction.startAction();
 			
-			loadingSpinner();
+			Thread.sleep(2000);
+			
+//			loadingSpinner();
 			// Wait for ad start
 			event.validate("willPlaySingleAd_1", 60);
 			
-			// verify ad icon TODO
+			extentTest.log(PASS, "Preroll Ad started");
 			
 			event.validate("singleAdPlayed_1", 160);
 			
+			extentTest.log(PASS, "Preroll Ad Completed");
+			
 			playValidator.validate("playing_1", 190);
+			
+			extentTest.log(PASS, "Main video started to play");
+			
+			sleep(2000);
 			
 			seekValidator.validate("seeked_1", 190);
 			
+			sleep(3000);
+			
 			event.validate("played_1", 190);
 			
-			result = true;
-			
 			extentTest.log(LogStatus.PASS, "Main Video played successfully");
+			
+			result = true;
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Playback Ad Icon tests failed");
+		Assert.assertTrue(result, "Verified PreRoll Ads test");
 		
 	}
 

@@ -41,7 +41,7 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 
 				play.waitForPage();
 
-                injectScript(jsURL());
+                injectScript();
 
 				autoplayAction.startAction();
 				try {

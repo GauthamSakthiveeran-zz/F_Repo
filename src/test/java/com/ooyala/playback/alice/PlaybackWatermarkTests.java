@@ -37,7 +37,7 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 
                 play.waitForPage();
 
-                injectScript(jsURL());
+                injectScript();
 
                 playAction.startAction();
 

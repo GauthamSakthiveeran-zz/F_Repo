@@ -12,9 +12,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.FullScreenValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.ShareTabValidator;
-import com.ooyala.playback.page.action.FullScreenAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -52,7 +50,7 @@ public class PlaybackHLSVodTests extends PlaybackWebTest {
 
 				play.waitForPage();
 
-                injectScript(jsURL());
+                injectScript();
 				play.validate("playing_1", 60);
 
 				logger.info("video is playing");

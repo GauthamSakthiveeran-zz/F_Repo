@@ -1,7 +1,6 @@
 package com.ooyala.playback.alice;
 
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -9,7 +8,6 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -44,7 +42,7 @@ public class AliceBasicPlaybackTests extends PlaybackWebTest {
 			play.waitForPage();
 			Thread.sleep(10000);
 
-			injectScript("http://192.168.1.102:8080/alice_full.js");
+			injectScript();
 			
 			play.validate("playing_1", 60);
 

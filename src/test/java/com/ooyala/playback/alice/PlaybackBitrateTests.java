@@ -39,7 +39,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
             play.waitForPage();
 
-            injectScript(jsURL());
+            injectScript();
 
             play.validate("playing_1", 60);
             logger.info("Verifed that video is getting playing");
