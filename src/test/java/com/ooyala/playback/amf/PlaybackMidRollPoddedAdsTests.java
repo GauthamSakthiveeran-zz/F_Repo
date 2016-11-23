@@ -1,7 +1,6 @@
 package com.ooyala.playback.amf;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,24 +8,24 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.Url;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 
-public class BasicPlaybackTests extends PlaybackWebTest{
+public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest{
 
-	public BasicPlaybackTests() throws OoyalaException {
+	public PlaybackMidRollPoddedAdsTests() throws OoyalaException {
 		super();
 	}
-
+	
 	private EventValidator event;
-	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
+	private PoddedAdValidator poddedAdValidator;
 	
-	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyBasicPlayback(String testName, String url)
+	@Test(groups = "amf", dataProvider = "testUrlData")
+	public void verifyMidrollPodded(String testName, Url urlData, String url)
 			throws OoyalaException {
 		
 		boolean result = false;
@@ -43,25 +42,17 @@ public class BasicPlaybackTests extends PlaybackWebTest{
 			
 			injectScript();
 			
-			playAction.startAction();
+			playValidator.validate("playing_1", 60);
 			
-			Thread.sleep(3000);
-	
-			playValidator.validate("playing_1", 190);
+			seekValidator.validate("seeked_1", 60);
 			
-			extentTest.log(PASS, "Main video started to play");
+			event.validate("videoPlayed_1", 200);
 			
-			sleep(2000);
+			poddedAdValidator.validate("countPoddedAds", 120);
 			
-			seekValidator.validate("seeked_1", 190);
-			
-			extentTest.log(PASS, "Seek successfull");
-			
-			sleep(3000);
-			
-			event.validate("played_1", 190);
-			
-			extentTest.log(LogStatus.PASS, "Main Video played successfully");
+			event.validate("seeked_1", 60);
+			event.validate("played_1", 200);
+	        extentTest.log(PASS, "Verified MidrollPodded Ads Tests");
 			
 			result = true;
 			
@@ -71,6 +62,6 @@ public class BasicPlaybackTests extends PlaybackWebTest{
 		}
 
 		Assert.assertTrue(result, "Verified");
-		
 	}
+
 }
