@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.page.PlayBackPage;
 
-public class FullScreenAction extends PlayBackPage implements PlayerAction{
+public class FullScreenAction extends PlayBackPage implements PlayerAction {
 
 	public FullScreenAction(WebDriver webDriver) {
 		super(webDriver);
@@ -38,8 +38,7 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction{
 			waitOnElement(By.id("fullscreenChangedtrue"), 60);
 			logger.info("Changed into Fullscreen");
 		}
-		
+
 	}
 
-	
 }

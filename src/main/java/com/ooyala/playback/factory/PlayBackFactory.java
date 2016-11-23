@@ -2,8 +2,27 @@ package com.ooyala.playback.factory;
 
 import java.lang.reflect.Field;
 
-import com.ooyala.playback.page.*;
 import org.openqa.selenium.WebDriver;
+
+import com.ooyala.playback.page.AspectRatioValidator;
+import com.ooyala.playback.page.Bitratevalidator;
+import com.ooyala.playback.page.CCValidator;
+import com.ooyala.playback.page.ControlBarValidator;
+import com.ooyala.playback.page.DiscoveryValidator;
+import com.ooyala.playback.page.EndScreenValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.FullScreenValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.ReplayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.ShareTabValidator;
+import com.ooyala.playback.page.SocailScreenValidator;
+import com.ooyala.playback.page.StartScreenValidator;
+import com.ooyala.playback.page.ThumbnailValidator;
+import com.ooyala.playback.page.UpNextValidator;
+import com.ooyala.playback.page.VolumeValidator;
+import com.ooyala.playback.page.WaterMarkValidator;
 import com.ooyala.playback.page.action.AutoplayAction;
 import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
 import com.ooyala.playback.page.action.FullScreenAction;
@@ -41,8 +60,8 @@ public class PlayBackFactory {
 	private ReplayValidator replayValidator;
 	private ClickDiscoveryButtonAction clickDiscoveryButtonAction;
 	private Bitratevalidator bitratevalidator;
-    private SocailScreenValidator socailScreenValidator;
-    private ThumbnailValidator thumbnailValidator;
+	private SocailScreenValidator socailScreenValidator;
+	private ThumbnailValidator thumbnailValidator;
 	private FullScreenAction fullScreenAction;
 	private SeekAction seekAction;
 
@@ -50,19 +69,19 @@ public class PlayBackFactory {
 		this.driver = driver;
 	}
 
-	public SeekAction getSeekAction(){
-		if(seekAction==null)
+	public SeekAction getSeekAction() {
+		if (seekAction == null)
 			seekAction = new SeekAction(driver);
 		return seekAction;
-			
+
 	}
-	
-	public FullScreenAction getFullScreenAction(){
-		if(fullScreenAction==null)
+
+	public FullScreenAction getFullScreenAction() {
+		if (fullScreenAction == null)
 			fullScreenAction = new FullScreenAction(driver);
 		return fullScreenAction;
 	}
-	
+
 	public PauseAction getPauseAction() {
 		if (pauseAction == null)
 			pauseAction = new PauseAction(driver);
@@ -182,20 +201,20 @@ public class PlayBackFactory {
 			bitratevalidator = new Bitratevalidator(driver);
 		return bitratevalidator;
 	}
-    public ThumbnailValidator getThumbnailValidator() {
-        if (thumbnailValidator == null)
-            thumbnailValidator = new ThumbnailValidator(driver);
-        return thumbnailValidator;
-    }
 
-    public SocailScreenValidator getSocailScreenValidator() {
-        if (socailScreenValidator == null)
-            socailScreenValidator = new SocailScreenValidator(driver);
-        return socailScreenValidator;
-    }
+	public ThumbnailValidator getThumbnailValidator() {
+		if (thumbnailValidator == null)
+			thumbnailValidator = new ThumbnailValidator(driver);
+		return thumbnailValidator;
+	}
 
+	public SocailScreenValidator getSocailScreenValidator() {
+		if (socailScreenValidator == null)
+			socailScreenValidator = new SocailScreenValidator(driver);
+		return socailScreenValidator;
+	}
 
-    public PlayPauseAction getPlayPauseAction() {
+	public PlayPauseAction getPlayPauseAction() {
 		if (playPauseAction == null)
 			playPauseAction = new PlayPauseAction(driver);
 		return playPauseAction;
@@ -244,4 +263,5 @@ public class PlayBackFactory {
 		}
 		return null;
 	}
+
 }

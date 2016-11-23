@@ -1,37 +1,43 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.FullScreenAction;
-import com.ooyala.qe.common.exception.OoyalaException;
+import static java.lang.Thread.sleep;
+
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static java.lang.Thread.sleep;
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.CCValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.FullScreenValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackClosedCaptionTests extends PlaybackWebTest {
-    public static Logger logger = Logger.getLogger(PlaybackClosedCaptionTests.class);
+	public static Logger logger = Logger
+			.getLogger(PlaybackClosedCaptionTests.class);
 
-    private PlayValidator play;
-    private PauseValidator pause;
-    private SeekValidator seek;
-    private EventValidator eventValidator;
-    private FullScreenValidator fullScreenValidator;
-    private CCValidator ccValidator;
-    
-    
+	private PlayValidator play;
+	private PauseValidator pause;
+	private SeekValidator seek;
+	private EventValidator eventValidator;
+	private FullScreenValidator fullScreenValidator;
+	private CCValidator ccValidator;
+
 	public PlaybackClosedCaptionTests() throws OoyalaException {
 		super();
 	}
 
-    @Test(groups = "closedCaption", dataProvider = "testUrls")
-    public void testClosedCaption(String testName, String url) throws OoyalaException {
+	@Test(groups = "closedCaption", dataProvider = "testUrls")
+	public void testClosedCaption(String testName, String url)
+			throws OoyalaException {
 
-        boolean result = false;
+		boolean result = false;
 
 		logger.info("Executing PlaybackClosedCaption test  ");
 		try {
@@ -42,8 +48,7 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 
 			play.waitForPage();
 
-            injectScript(jsURL());
-
+			injectScript();
 
 			play.validate("playing_1", 60);
 
@@ -57,8 +62,8 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 
 			play.validate("playing_2", 60);
 
-            logger.info("Verifed that video is getting playing again after pause play");
-            
+			logger.info("Verifed that video is getting playing again after pause play");
+
 			fullScreenValidator.validate("", 60);
 
 			sleep(1000);

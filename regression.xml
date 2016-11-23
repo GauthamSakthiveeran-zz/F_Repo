@@ -1,8 +1,8 @@
 
 <suite name="Playback Web Regression Suite" verbose="1">
-    <listeners>
-        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
-    </listeners>
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
 
     <test name="Playback Web Regression Group">
         <groups>

@@ -15,22 +15,20 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackFullScreenTests extends PlaybackWebTest {
 
-    private PlayValidator play;
-    private SeekValidator seek;
-    private EventValidator eventValidator;
-    private FullScreenValidator fullScreenValidator;
+	private PlayValidator play;
+	private SeekValidator seek;
+	private EventValidator eventValidator;
+	private FullScreenValidator fullScreenValidator;
 
+	public PlaybackFullScreenTests() throws OoyalaException {
+		super();
+	}
 
-    public PlaybackFullScreenTests() throws OoyalaException {
-        super();
-    }
+	@Test(groups = "Player", dataProvider = "testUrls")
+	public void testPlaybackFullscreen(String testName, String url)
+			throws OoyalaException {
 
-    @Test(groups = "Player", dataProvider = "testUrls")
-    public void testPlaybackFullscreen(String testName, String url) throws OoyalaException {
-
-
-        boolean result = false;
-
+		boolean result = false;
 
 		try {
 			driver.get(url);
@@ -40,17 +38,17 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 
 			play.waitForPage();
 
-            injectScript(jsURL());
+			injectScript();
 
 			play.validate("playing_1", 60);
 
 			logger.info("video is playing");
 
-            fullScreenValidator.validate("",60);
+			fullScreenValidator.validate("", 60);
 
-            seek.validate("seeked_1", 60);
+			seek.validate("seeked_1", 60);
 
-            logger.info("video seeked");
+			logger.info("video seeked");
 
 			eventValidator.validate("played_1", 60);
 

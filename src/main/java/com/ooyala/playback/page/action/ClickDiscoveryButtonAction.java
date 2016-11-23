@@ -1,6 +1,5 @@
 package com.ooyala.playback.page.action;
 
-import static java.lang.System.out;
 import static java.lang.Thread.sleep;
 
 import org.openqa.selenium.WebDriver;

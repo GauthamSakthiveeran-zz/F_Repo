@@ -50,7 +50,12 @@ public abstract class PlayBackPage extends WebPage {
 	protected boolean clickOnIndependentElement(String elementKey) {
 		try {
 			return super.clickOnIndependentElement(elementKey);
-		} catch (Exception e) {
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			logger.error("Exception occured while clicking on element with key "
+					+ elementKey);
+			logger.error("Calling clickOnHiddenElement function on the element "
+					+ elementKey);
 			return clickOnHiddenElement(elementKey);
 		}
 
@@ -62,8 +67,10 @@ public abstract class PlayBackPage extends WebPage {
 			WebElement element = getWebElementsList(elementKey).get(0);
 			js.executeScript("arguments[0].click()", element);
 			return true;
-		} catch (Exception e) {
-			logger.info("Exception " + e);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			logger.info("Exception while clicking on hidden element "
+					+ ex.getLocalizedMessage());
 			return false;
 		}
 	}
