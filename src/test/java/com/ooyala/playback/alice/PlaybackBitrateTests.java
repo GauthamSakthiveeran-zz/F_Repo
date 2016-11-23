@@ -2,6 +2,7 @@ package com.ooyala.playback.alice;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -26,7 +27,6 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
     @Test(groups = "ABR", dataProvider = "testUrls")
     public void testBitrate(String testName, String url) throws OoyalaException {
 
-
         boolean result = false;
 
         try {
@@ -35,15 +35,13 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
                 driver.manage().window().maximize();
             }
 
-
-
             play.waitForPage();
 
             injectScript(jsURL());
 
             play.validate("playing_1", 60);
             logger.info("Verifed that video is getting playing");
-            sleep(2000);
+            sleep(4000);
 
             pause.validate("paused_1", 60);
             logger.info("Verified that video is getting pause");
@@ -57,6 +55,8 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
             eventValidator.validate("videoPlayed_1", 60);
             logger.info("Verified that video is played");
+
+            result = true;
 
         } catch (Exception e) {
             e.printStackTrace();

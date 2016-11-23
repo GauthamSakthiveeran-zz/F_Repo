@@ -35,6 +35,7 @@ function subscribeToEvents() {
         var videoPlayingEventOrder = 1;
         var willPlayAdsEventOrder = 1;
 		var playingEventOrder = 1;
+        var bitrateChangedEventOrder = 1;
 
 
 
@@ -252,6 +253,10 @@ function subscribeToEvents() {
                 "  width="+arguments[1].width +
                 " height="+arguments[1].height+">assetDimension</p>");
                 assetDimensionOrder++;
+            }
+            if (event.match(/bitrateChanged/)) {
+                OO.$("#ooplayer").append("<p id=bitrateChanged_"+arguments[1]['bitrate']+">bitrateChanged "+bitrateChangedEventOrder+"</p>");
+                bitrateChangedEventOrder++;
             }
 
             if (event.match(/nonlinearAdPlayed/)) {

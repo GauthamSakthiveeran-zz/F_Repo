@@ -10,4 +10,6 @@
     <element key="EMBED_TAB" findBy="class"  class="oo-embed-tab" />
     <element key="SHARE_CLOSE" findBy="class"
              class="oo-close-button" />
+    <element key="SHARE_PANEL" findBy="class"
+                class="oo-share-tab-panel" />
 </elements>

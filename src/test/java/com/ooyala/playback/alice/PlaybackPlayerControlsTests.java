@@ -12,6 +12,12 @@ import org.testng.annotations.Test;
 
 public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
+    private EventValidator eventValidator;
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private FullScreenValidator fullScreenValidator;
+    private ControlBarValidator controlBarValidator;
 
     public PlaybackPlayerControlsTests() throws OoyalaException {
         super();
@@ -21,12 +27,6 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
     public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
 
         boolean result = false;
-        PlayValidator play = pageFactory.getPlayValidator();
-        PauseValidator pause = pageFactory.getPauseValidator();
-        SeekValidator seek = pageFactory.getSeekValidator();
-        EventValidator eventValidator = pageFactory.getEventValidator();
-        FullScreenValidator fullScreenValidator = pageFactory.getFullScreenValidator();
-        ControlBarValidator controlBarValidator = pageFactory.getControlBarValidator();
 
         try {
             driver.get(url);
