@@ -2,6 +2,8 @@ package com.ooyala.playback.amf;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 
+import java.util.Map;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -26,8 +28,8 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private PoddedAdValidator poddedAdValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrlData")
-	public void verifyMultipleMidroll(String testName, Url urlData, String url)
+	@Test(groups = "amf", dataProvider = "testUrls")
+	public void verifyMultipleMidroll(String testName, String url)
 			throws OoyalaException {
 
 		boolean result = false;
@@ -45,16 +47,18 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 			injectScript();
 			
 			playValidator.validate("playing_1", 90);
-
-			if(!urlData.getAdPlugins().getName().equals("PULSE"))
-				seekAction.seekPlayback();
+			
+			Map<String,String> map = parseURL(url);
+			
+			if(map!=null && map.get("ad_plugin")!=null && !map.get("ad_plugin").contains("pulse"))
+				seekAction.seekPlayback(); 
 
 	        event.validate("videoPlayed_1", 200);
 	        
 	        poddedAdValidator.validate("countPoddedAds", 60); // TODO : need to check diff between willPlayAds_ and willPlaySingleAds_
 
-	        if(!urlData.getAdPlugins().getName().equals("PULSE"))
-	            event.validate("seeked_1", 200);
+	        if(map!=null && map.get("ad_plugin")!=null && !map.get("ad_plugin").contains("pulse"))
+	            event.validate("seeked_1", 200); 
 
 	        event.validate("played_1", 200);
 	        extentTest.log(PASS, "Verified Multiple MidRoll Ads");

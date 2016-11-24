@@ -24,8 +24,8 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest{
 	private SeekValidator seekValidator;
 	private PoddedAdValidator poddedAdValidator;
 	
-	@Test(groups = "amf", dataProvider = "testUrlData")
-	public void verifyMidrollPodded(String testName, Url urlData, String url)
+	@Test(groups = "amf", dataProvider = "testUrls")
+	public void verifyMidrollPodded(String testName, String url)
 			throws OoyalaException {
 		
 		boolean result = false;

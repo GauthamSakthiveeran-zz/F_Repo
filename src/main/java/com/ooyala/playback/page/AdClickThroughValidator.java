@@ -3,14 +3,12 @@ package com.ooyala.playback.page;
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 import static java.lang.Thread.sleep;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
-import com.ooyala.playback.url.PlayerPropertyValue;
-import com.ooyala.playback.url.Testdata;
-import com.ooyala.playback.url.Url;
 
 public class AdClickThroughValidator extends PlayBackPage implements
 		PlaybackValidator {
@@ -27,9 +25,13 @@ public class AdClickThroughValidator extends PlayBackPage implements
 		waitOnElement(element, timeout);
 	}
 
-	public void clickThroughAds(Url urlData) throws Exception {
+	public void clickThroughAds(Map<String,String> data) throws Exception {
+		
+		if(data==null){
+			throw new Exception("Map is null");
+		}
 
-		String value = urlData.getAdPlugins().getName();
+		String value = data.get("ad_plugin");
 
 		String baseWindowHdl = driver.getWindowHandle();
 		if (value != null) {
@@ -38,8 +40,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
 																// code for IMA
 																// and Vast
 																// (Android)
-				if (value != PlayerPropertyValue.FREEWHEEL.toString()) {
-					if (value == PlayerPropertyValue.VAST.toString()) {
+				if (!value.contains("freewheel")) {
+					if (value.contains("vast")) {
 						clickOnIndependentElement("adScreenPanel");
 					} else {
 						clickOnIndependentElement("adScreenPanel1");
@@ -49,7 +51,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
 				}
 			}
-			if (value != PlayerPropertyValue.IMA.toString()) {
+			if (!value.contains("ima")) {
 				try {
 					clickOnHiddenElement("learnMore");
 					waitOnElement("adsClicked_learnMoreButton", 5);
@@ -77,7 +79,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
 			boolean isAd = isAdPlaying();
 			if (isAd) {
 
-				if (getPlatform().equalsIgnoreCase("Android") || isStreamingProtocolPrioritized(urlData, "hls")) {
+				if (getPlatform().equalsIgnoreCase("Android") || isStreamingProtocolPrioritized(data, "hls")) {
 					((JavascriptExecutor) driver).executeScript("pp.play()");
 				} else {
 					clickOnIndependentElement("adPanel");

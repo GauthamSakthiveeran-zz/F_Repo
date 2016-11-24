@@ -55,17 +55,6 @@ public class UrlGenerator {
 		return url;
 	}
 
-	// TODO - need to figure out where to place this appro
-
-	public static List<Url> filterTestDataBasedOnTestName(String testName,
-			Testdata testData) {
-		for (Test data : testData.getTest()) {
-			if (data.getName().equals(testName)) {
-				return data.getUrl();
-			}
-		}
-		return null;
-	}
 
 	/**
 	 *

@@ -1,5 +1,7 @@
 package com.ooyala.playback.page;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -109,12 +111,17 @@ public abstract class PlayBackPage extends WebPage {
 	/**
 	 * checking to see if the protocol is hds or hls or any protocol
 	 * 
-	 * @param urlData
+	 * @param data
 	 * @param protocol
 	 * @return
 	 */
-	public boolean isStreamingProtocolPrioritized(Url urlData, String protocol) {
-		String playerParameter = urlData.getPlayerParameter();
+	public boolean isStreamingProtocolPrioritized(Map<String, String> data, String protocol) {
+		if(data==null){
+			logger.error("url object is null");
+			return false;
+		}
+			
+		String playerParameter = data.get("options");
 		if (playerParameter != null) {
 			JSONObject json = new JSONObject(playerParameter);
 			if (json != null && json.has("encodingPriority")) {

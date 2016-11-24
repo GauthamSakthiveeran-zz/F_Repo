@@ -1,5 +1,7 @@
 package com.ooyala.playback.page.action;
 
+import java.util.Map;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -65,19 +67,28 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	// As there is problem for pulse asset that if we seek the video then ads
 	// get skip therefore adding below condition
 
-	public void seekSpecific(Url urlData, int time) throws Exception {
+	public void seekSpecific(Map<String,String> data, int time) throws Exception {
 		boolean flag = false;
-		if (urlData.getAdPlugins().getName().equals("PULSE")) {
-			if (urlData.getPlugins().getName().contains("BITMOVIN")
-					|| urlData.getPlugins().getName().contains("MAIN")) {
-				flag = true;
+		
+		if(data!=null){
+			String videoPlugin = data.get("video_plugins");
+			String adPlugin = data.get("ad_plugin");
+			if(videoPlugin!=null && adPlugin!=null){
+				if (adPlugin.contains("pulse")) {
+					if (videoPlugin.contains("bit_wrapper")
+							|| videoPlugin.contains("main")) {
+						flag = true;
+					}
+				} else if (videoPlugin.contains("bit_wrapper")
+						&& adPlugin.contains("ima")) {
+					flag = true;
+				}
+				if(flag){
+					seek(time, true);
+				}
 			}
-		} else if (urlData.getPlugins().getName().equals("BITMOVIN")
-				&& urlData.getAdPlugins().getName().equals("IMA")) {
-			flag = true;
 		}
-		if(flag){
-			seek(time, true);
-		}
+		
+		
 	}
 }

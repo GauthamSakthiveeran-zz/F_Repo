@@ -3,6 +3,8 @@ package com.ooyala.playback.amf;
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 import static java.lang.Thread.sleep;
 
+import java.util.Map;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -25,8 +27,8 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
 
-	@Test(groups = "amf", dataProvider = "testUrlData")
-	public void verifyPreMidPostroll(String testName, Url urlData, String url)
+	@Test(groups = "amf", dataProvider = "testUrls")
+	public void verifyPreMidPostroll(String testName, String url)
 			throws OoyalaException {
 
 		boolean result = false;
@@ -57,7 +59,8 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 	        sleep(5000);
 	        loadingSpinner();
 
-	        seekAction.seekSpecific(urlData,15);
+	        Map<String, String> map = parseURL(url);
+	        seekAction.seekSpecific(map,15);
 
 	        loadingSpinner();
 	        event.validate( "MidRoll_willPlayAds", 150);
@@ -65,12 +68,12 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 	        loadingSpinner();
 
 	        extentTest.log(PASS, "Played Midroll Ads");
-	        seekAction.seekSpecific(urlData,15);
+	        seekAction.seekSpecific(map,15);
 
 	        loadingSpinner();
-
+	        
 	        event.validate( "PostRoll_willPlayAds", 150);
-	        if(urlData.getAdPlugins().getName().equals("PULSE")) {
+	        if(map!=null && map.get("ad_plugin")!=null && map.get("ad_plugin").contains("pulse")) {
 	        	event.validate("singleAdPlayed_6", 200);
 	        }else {
 	        	event.validate("adsPlayed_3", 150);
@@ -78,7 +81,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 
 	        extentTest.log(PASS, "Played Postroll Ads");
 
-	        if (!urlData.getAdPlugins().getName().equals("PULSE")){
+	        if (map!=null && map.get("ad_plugin")!=null && !map.get("ad_plugin").contains("pulse")){
 	        	event.validate("seeked_1", 150);
 	        }
 

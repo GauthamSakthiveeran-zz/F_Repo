@@ -2,6 +2,8 @@ package com.ooyala.playback.amf;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 
+import java.util.Map;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -26,8 +28,8 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	private ReplayValidator replayValidator;
 	private AdClickThroughValidator adClickThrough;
 
-	@Test(groups = "amf", dataProvider = "testUrlData")
-	public void verifyPreMidPostcontrols(String testName, Url urlData, String url)
+	@Test(groups = "amf", dataProvider = "testUrls")
+	public void verifyPreMidPostcontrols(String testName, String url)
 			throws OoyalaException {
 
 		boolean result = false;
@@ -61,8 +63,10 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 
 	        event.validate("PreRoll_willPlayAds_OnReplay", 120);
 	        
+	        Map<String, String> map = parseURL(url);
+	        
 	        if(!getPlatform().equalsIgnoreCase("Android")) {
-	        	adClickThrough.clickThroughAds(urlData);
+	        	adClickThrough.clickThroughAds(map);
 	        }
 
 	        event.validate("singleAdPlayed_4", 120);
@@ -72,7 +76,7 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	        event.validate("MidRoll_willPlayAds_OnReplay", 120);
 
 	        if(!getPlatform().equalsIgnoreCase("Android")) {
-	        	adClickThrough.clickThroughAds(urlData);
+	        	adClickThrough.clickThroughAds(map);
 	        }
 
 	        event.validate("singleAdPlayed_5", 120);
@@ -82,7 +86,7 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	        event.validate("PostRoll_willPlayAds_OnReplay", 120);
 
 	        if(!getPlatform().equalsIgnoreCase("Android")) {
-	        	adClickThrough.clickThroughAds(urlData);
+	        	adClickThrough.clickThroughAds(map);
 	        }
 
 	        event.validate("singleAdPlayed_6", 120);

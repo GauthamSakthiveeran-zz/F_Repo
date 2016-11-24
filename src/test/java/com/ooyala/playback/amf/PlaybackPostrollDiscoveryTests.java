@@ -2,6 +2,8 @@ package com.ooyala.playback.amf;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 
+import java.util.Map;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -30,8 +32,8 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest{
 	private SeekAction seekAction;
 	private UpNextValidator upNextValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrlData")
-	public void verifyPostrollDiscovery(String testName, Url urlData, String url)
+	@Test(groups = "amf", dataProvider = "testUrls")
+	public void verifyPostrollDiscovery(String testName, String url)
 			throws OoyalaException {
 
 		boolean result = false;
@@ -70,9 +72,9 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest{
 	        event.validate("willPlaySingleAd_1", 90);
 	        extentTest.log(PASS, "Postroll Ad started");
 	        
-	        
+	        Map<String, String> map = parseURL(url) ;
 
-	        if(urlData.getAdPlugins().getName().equals("PULSE")) {
+	        if(map!=null && map.get("ad_plugin")!=null && map.get("ad_plugin").contains("pulse")) {
 	        	event.validate("singleAdPlayed_2", 90);
 	        }
 	        else{

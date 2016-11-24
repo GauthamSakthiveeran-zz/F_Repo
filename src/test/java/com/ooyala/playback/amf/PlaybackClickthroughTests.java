@@ -27,8 +27,8 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private AdClickThroughValidator clickThrough;
 
-	@Test(groups = "amf", dataProvider = "testUrlData")
-	public void verifyClickthrough(String testName, Url urlData, String url)
+	@Test(groups = "amf", dataProvider = "testUrls")
+	public void verifyClickthrough(String testName, String url)
 			throws Exception {
 
 		boolean result = false;
@@ -51,7 +51,7 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 
 			extentTest.log(PASS, "Ad started to play");
 
-			clickThrough.clickThroughAds(urlData);
+			clickThrough.clickThroughAds(parseURL(url));
 
 			event.validate("singleAdPlayed_1", 190);
 
