@@ -32,26 +32,6 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
-            <description name="eHLSVod_Main" />
-            <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN,BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="HLSVod_Main" />
-            <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN,BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
             <description name="DVR_HLS_Bitmovin" />
             <embed_code name="Bob2V0MjE6S3P5Zs-5GbDs7J9lzBFxVc" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -198,16 +178,7 @@
     </test>
 
     <test name="PlaybackLiveTests">
-        <url>
-            <description name="Playback_HLS_Live_Main" />
-            <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
+
         <url>
             <description name="Playback_HLS_Live_Bitmovin" />
             <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
@@ -218,21 +189,12 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
-        <url>
-            <description name="Akamai HDS Live" />
-            <embed_code name="ZzYjl0MTE6q67pMzfDHLjHsh5ZPR7rMO" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
+
         <url>
             <description name="Akamai_HLS_Live_Bitmovin" />
             <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="AKAMAI" />
+            <plugins name="AKAMAI,BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
@@ -419,6 +381,18 @@
             <additionalPlugins name="" />
             <pbid name="ZWU3OGUxMDJjMmQ5ZTViNGE1YjdlYTdj" />
             <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+    </test>
+    <test name="PlaybackOptEntitlementTests">
+        <url>
+            <description name="OPT_Entitlement" />
+            <embed_code name="x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2889048225&account_id=dulari_qa&&&signature=0AsQMaoDq58w9q/L6P7cJzOI85gocxWPyw69dlLoQm0"}]]></playerParameter>
         </url>
     </test>
 </testdata>

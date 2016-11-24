@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.ooyala.qe:qecommon:2.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ooyala/qe/qecommon/2.0-SNAPSHOT/qecommon-2.0-20161115.014105-2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ooyala/qe/qecommon/2.0-SNAPSHOT/qecommon-2.0-20161115.014105-2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ooyala/qe/qecommon/2.0-SNAPSHOT/qecommon-2.0-20161115.014105-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
