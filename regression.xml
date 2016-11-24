@@ -36,6 +36,7 @@
             <class name="com.ooyala.playback.alice.PlaybackVerticalVideoTests" />
             <class name="com.ooyala.playback.alice.PlaybackThumbnailTests" />
             <class name="com.ooyala.playback.alice.PlaybackSocialMediaTests" />
+            <class name="com.ooyala.playback.alice.PlaybackOptEntitlementTests" />
             <!--<class name="com.ooyala.playback.alice.PlaybackDiscoveryTests" />
                 <class name="com.ooyala.playback.alice.PlaybackVolumeTest" />
                  <class name="com.ooyala.playback.alice.PlaybackWatermarkTests" />-->

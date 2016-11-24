@@ -383,4 +383,16 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
     </test>
+    <test name="PlaybackOptEntitlementTests">
+        <url>
+            <description name="OPT_Entitlement" />
+            <embed_code name="x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2889048225&account_id=dulari_qa&&&signature=0AsQMaoDq58w9q/L6P7cJzOI85gocxWPyw69dlLoQm0"}]]></playerParameter>
+        </url>
+    </test>
 </testdata>
