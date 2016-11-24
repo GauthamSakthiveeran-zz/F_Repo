@@ -30,13 +30,7 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
 			throws OoyalaException {
 
 		boolean result = false;
-		/*
-		 * PlayValidator play = pageFactory.getPlayValidator();
-		 * DiscoveryValidator discoveryValidator =
-		 * pageFactory.getDiscoveryValidator(); PlayAction playAction =
-		 * pageFactory.getPlayAction(); EventValidator eventValidator =
-		 * pageFactory.getEventValidator();
-		 */
+
 		try {
 			driver.get(url);
 			if (!getPlatform().equalsIgnoreCase("android")) {

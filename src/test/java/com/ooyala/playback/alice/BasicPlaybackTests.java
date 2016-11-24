@@ -43,8 +43,6 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
 			play.validate("playing_1", 60);
 
-			logger.info("Verifed that video is getting playing");
-
 			Thread.sleep(2000);
 
 			pause.validate("paused_1", 60);

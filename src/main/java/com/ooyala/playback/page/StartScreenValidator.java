@@ -57,8 +57,7 @@ public class StartScreenValidator extends PlayBackPage implements
 
 			Assert.assertTrue(startScreenTitle.equalsIgnoreCase(title),
 					"Title is not matching on start screen");
-			Assert.assertTrue(description.equalsIgnoreCase(desc),
-					"Description is not matching on Start Screen");
+			Assert.assertTrue(description.trim().equalsIgnoreCase(desc.trim()),"Description is not matching on Start Screen");
 		} catch (Exception e) {
 			logger.error("Title or description is failing");
 		}

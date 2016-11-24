@@ -55,14 +55,16 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 				logger.info("Ad played");
 			}
 
-			play.validate("playing_1", 60);
-
-			logger.info("video is playing");
-			sleep(4000);
+            Thread.sleep(2000);
 
 			volumeValidator.validate("VOLUME_MAX", 60);
 
 			logger.info("validated video volume at full range");
+
+            eventValidator.validate("playing_1", 60);
+
+            logger.info("video is playing");
+            sleep(4000);
 
 			seek.validate("seeked_1", 60);
 

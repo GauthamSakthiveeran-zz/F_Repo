@@ -47,7 +47,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			Assert.assertEquals(getMaxVol, expectedmaxvol,
 					"Max volume is not matched");
 		} catch (Exception e) {
-			System.out.println("Volume control is not working properly"
+            Log.info("Volume control is not working properly"
 					+ e.getMessage());
 		}
 
