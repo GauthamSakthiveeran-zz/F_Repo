@@ -47,4 +47,7 @@
              xPath="//div[@guidedhelpid='sharebutton']"/>
     <element key="GPLUS_POST_LIST" findBy="class"
              class="wftCae" />
+    <element key="FB_PROFILE" findBy="xPath"
+             xPath=".//a[@title='Profile']" />
+
 </elements>

@@ -35,7 +35,7 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest{
 
             Thread.sleep(10000);
 
-            injectScript(jsURL());
+            injectScript();
 
             play.validate("playing_1", 60);
 
