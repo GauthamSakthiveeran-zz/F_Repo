@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 public class AdSkipButtonValidator extends PlayBackPage implements
 		PlaybackValidator {
 
@@ -22,10 +24,13 @@ public class AdSkipButtonValidator extends PlayBackPage implements
 			clickOnIndependentElement("adSkipBtn");
 			// verify that second ad skipped
 			waitOnElement("skipAd_1", 60);
-			logger.info("Ad skiped");
+			extentTest.log(LogStatus.PASS,"Ad skiped");
 
 		} catch (Exception e) {
-			logger.error("adSkip Button is not present!!");
+			clickOnIndependentElement("videoAdUiPreSkipButton");
+			waitOnElement("skipAd_1", 60);
+//			extentTest.log(LogStatus.FAIL,"adSkip Button is not present!!");
+			extentTest.log(LogStatus.INFO,"Validating videoAdUiPreSkipButton");
 		}
 	}
 

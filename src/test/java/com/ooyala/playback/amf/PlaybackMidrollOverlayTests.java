@@ -46,7 +46,7 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest{
 			
 			playValidator.validate("playing_1", 60);
 			
-			if (isFlash(urlData)) { // TODO why are we doing this?
+			if (playValidator.isStreamingProtocolPrioritized(urlData, "hds")) { 
 				extentTest.log(LogStatus.INFO,"For Flash Specific cases");
                 event.validate("MidRoll_willPlaySingleAd_1", 180);
                 event.validate("singleAdPlayed_1", 160);

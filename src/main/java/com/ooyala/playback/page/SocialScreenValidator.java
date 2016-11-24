@@ -10,12 +10,12 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by soundarya on 11/21/16.
  */
-public class SocailScreenValidator extends PlayBackPage implements
+public class SocialScreenValidator extends PlayBackPage implements
 		PlaybackValidator {
 
 	public static Logger logger = Logger.getLogger(ControlBarValidator.class);
 
-	public SocailScreenValidator(WebDriver webDriver) {
+	public SocialScreenValidator(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(webDriver, this);
 		/**

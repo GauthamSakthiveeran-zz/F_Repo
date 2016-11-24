@@ -12,6 +12,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.Url;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackClickthroughTests extends PlaybackWebTest {
@@ -25,10 +26,9 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
 	private AdClickThroughValidator clickThrough;
-	static int index = 0;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyClickthrough(String testName, String url)
+	@Test(groups = "amf", dataProvider = "testUrlData")
+	public void verifyClickthrough(String testName, Url urlData, String url)
 			throws Exception {
 
 		boolean result = false;
@@ -51,7 +51,7 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 
 			extentTest.log(PASS, "Ad started to play");
 
-			clickThrough.clickThroughAds(testData, index++);
+			clickThrough.clickThroughAds(urlData);
 
 			event.validate("singleAdPlayed_1", 190);
 

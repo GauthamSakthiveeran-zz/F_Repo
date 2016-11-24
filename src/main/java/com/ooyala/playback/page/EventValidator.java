@@ -24,6 +24,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		addElementToPageElements("replay");
 		addElementToPageElements("controlbar");
 		addElementToPageElements("fullscreen");
+		addElementToPageElements("adPodEnd");
 	}
 
 	public void validate(String element, int timeout) throws Exception {

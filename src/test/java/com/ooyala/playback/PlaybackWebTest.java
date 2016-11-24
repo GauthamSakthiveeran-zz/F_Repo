@@ -356,22 +356,5 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	}
 
-	/**
-	 * checking to see if the protocol is hds
-	 * 
-	 * @param urlData
-	 * @return
-	 */
-	protected boolean isFlash(Url urlData) {
-		String playerParameter = urlData.getPlayerParameter();
-		if (playerParameter != null) {
-			JSONObject json = new JSONObject(playerParameter);
-			if (json != null && json.has("encodingPriority")) {
-				JSONArray array = json.getJSONArray("encodingPriority");
-				return array.get(0).equals("hds"); // TODO need to add to config
-			}
-		}
-
-		return false;
-	}
+	
 }

@@ -25,11 +25,15 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public String getDuration(int factor){
+		return "pp.getDuration()/"+factor;
+	}
 
 	public void seek(int time, boolean fromLast) throws Exception {
 		String seekduration;
 		if (fromLast) {
-			seekduration = "pp.getDuration()";
+			seekduration = getDuration(1);
 		} else {
 			seekduration = "";
 		}
@@ -62,13 +66,17 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	// get skip therefore adding below condition
 
 	public void seekSpecific(Url urlData, int time) throws Exception {
+		boolean flag = false;
 		if (urlData.getAdPlugins().getName().equals("PULSE")) {
 			if (urlData.getPlugins().getName().contains("BITMOVIN")
 					|| urlData.getPlugins().getName().contains("MAIN")) {
-				seek(time, true);
+				flag = true;
 			}
 		} else if (urlData.getPlugins().getName().equals("BITMOVIN")
 				&& urlData.getAdPlugins().getName().equals("IMA")) {
+			flag = true;
+		}
+		if(flag){
 			seek(time, true);
 		}
 	}
