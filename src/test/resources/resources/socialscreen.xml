@@ -5,4 +5,46 @@
              class="oo-facebook" />
     <element key="GOOGLE_PLUS" findBy="class"
              class="oo-google-plus" />
+    <element key="TWEETER_USERNAME" findBy="id"
+             id="username_or_email"/>
+    <element key="TWEETER_PASSWORD" findBy="id"
+             id="password"/>
+    <element key="TWITTER_STATUS" findBy="id"
+             id="status"/>
+    <element key="SHARE_CLOSE_BTN" findBy="class"
+             class="oo-close-button"/>
+    <element key="SHARE_BTN" findBy="class"
+             class="oo-icon-share" />
+    <element key="TWITTER_LOGIN_BUTTON" findBy="xPath"
+             xPath=".//input[@type='submit']" />
+    <element key="TWEET_TEXT" findBy="xPath"
+             xPath=".//*[@id='stream-items-id']/li[1]/div/div[2]/div[2]/p"/>
+    <element key="TWEET_BUTTON" findBy="xPath"
+             xPath="//input[@value='Tweet']"/>
+    <element key="TWEET_POST_ERROR" findBy="id"
+             id="post-error"/>
+    <element key="FB_EMAIL" findBy="id"
+             id="email" />
+    <element key="FB_PASSWORD" findBy="id"
+             id="pass" />
+    <element key="FB_LOGIN_BTN" findBy="name"
+             name="login" />
+    <element key="FB_POST_AREA" findBy="xPath"
+             xPath="//textarea[@title='Say something about this...']" />
+    <element key="FB_POST_BTN" findBy="xPath"
+             xPath="//button[@name='__CONFIRM__']"/>
+    <element key="GPLUS_EMAIL" findBy="id"
+             id="Email" />
+    <element key="GPLUS_PASSWORD" findBy="id"
+             id="Passwd" />
+    <element key="GPLUS_NXT_BTN" findBy="id"
+             id="next" />
+    <element key="GPLUS_SIGNIN_BTN" findBy="id"
+             id="signIn" />
+    <element key="GPLUS_TEXTAREA" findBy="xPath"
+             xPath="//div[@role='textbox']"/>
+    <element key="GPLUS_SHARE_BTN" findBy="xPath"
+             xPath="//div[@guidedhelpid='sharebutton']"/>
+    <element key="GPLUS_POST_LIST" findBy="class"
+             class="wftCae" />
 </elements>

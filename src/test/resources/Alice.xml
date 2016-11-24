@@ -371,4 +371,16 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
     </test>
+    <test name="PlaybackSocialMediaTests">
+        <url>
+            <description name="SocialMedia" />
+            <embed_code name="FkdmRmeDrJcchSTpHR1SVkkHO2PN7XsX" />
+            <pcode name="N1aWw6aHnsVDr5vDoQnY2gBMOnEV" />
+            <plugins name="BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="ZWU3OGUxMDJjMmQ5ZTViNGE1YjdlYTdj" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+    </test>
 </testdata>
