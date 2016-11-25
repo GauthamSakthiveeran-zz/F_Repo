@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.xml.bind.JAXBContext;
@@ -13,8 +17,6 @@ import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
@@ -38,7 +40,6 @@ import com.ooyala.playback.httpserver.SimpleHttpServer;
 import com.ooyala.playback.page.PlayBackPage;
 import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.url.Testdata;
-import com.ooyala.playback.url.Url;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.ooyala.qe.common.util.PropertyReader;
@@ -337,41 +338,19 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	}
 
-	@DataProvider(name = "testUrlData")
-	public Object[][] getTestUrlData() {
-
-		List<Url> urlData = UrlGenerator.filterTestDataBasedOnTestName(
-				getClass().getSimpleName(), testData);
-		List<String> urls = UrlGenerator.parseXmlDataProvider(getClass()
-				.getSimpleName(), testData);
-		String testName = getClass().getSimpleName();
-		Object[][] output = new Object[urls.size()][3];
-		for (int i = 0; i < urls.size(); i++) {
-			output[i][0] = testName;
-			output[i][1] = urlData.get(i);
-			output[i][2] = urls.get(i);
+	public Map<String,String> parseURL(String urlString) throws Exception{
+		if(urlString!=null && !urlString.isEmpty()){
+			URL url = new URL(urlString);
+			Map<String, String> query_pairs = new HashMap<String, String>();
+		    String query = url.getQuery();
+		    String[] pairs = query.split("&");
+		    for (String pair : pairs) {
+		        int index = pair.indexOf("=");
+		        query_pairs.put(URLDecoder.decode(pair.substring(0, index), "UTF-8"), URLDecoder.decode(pair.substring(index + 1), "UTF-8"));
+		    }
+		    return query_pairs;
 		}
-
-		return output;
-
-	}
-
-	/**
-	 * checking to see if the protocol is hds
-	 * 
-	 * @param urlData
-	 * @return
-	 */
-	protected boolean isFlash(Url urlData) {
-		String playerParameter = urlData.getPlayerParameter();
-		if (playerParameter != null) {
-			JSONObject json = new JSONObject(playerParameter);
-			if (json != null && json.has("encodingPriority")) {
-				JSONArray array = json.getJSONArray("encodingPriority");
-				return array.get(0).equals("hds"); // TODO need to add to config
-			}
-		}
-
-		return false;
+		
+		return null;
 	}
 }

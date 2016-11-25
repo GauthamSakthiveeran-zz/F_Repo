@@ -1,6 +1,10 @@
 package com.ooyala.playback.page;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +13,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.ooyala.facile.page.WebPage;
 import com.ooyala.playback.url.PropertyReader;
+import com.ooyala.playback.url.Url;
 import com.relevantcodes.extentreports.ExtentTest;
 
 public abstract class PlayBackPage extends WebPage {
@@ -101,5 +106,30 @@ public abstract class PlayBackPage extends WebPage {
 
 	public void setExtentTest(ExtentTest test) {
 		this.extentTest = test;
+	}
+	
+	/**
+	 * checking to see if the protocol is hds or hls or any protocol
+	 * 
+	 * @param data
+	 * @param protocol
+	 * @return
+	 */
+	public boolean isStreamingProtocolPrioritized(Map<String, String> data, String protocol) {
+		if(data==null){
+			logger.error("url object is null");
+			return false;
+		}
+			
+		String playerParameter = data.get("options");
+		if (playerParameter != null) {
+			JSONObject json = new JSONObject(playerParameter);
+			if (json != null && json.has("encodingPriority")) {
+				JSONArray array = json.getJSONArray("encodingPriority");
+				return array.get(0).equals(protocol); 
+			}
+		}
+
+		return false;
 	}
 }

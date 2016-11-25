@@ -11,7 +11,6 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.OverlayValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.url.Url;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -27,7 +26,7 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest{
 	private OverlayValidator overLayValidator;
 	
 	@Test(groups = "amf", dataProvider = "testUrlData")
-	public void verifyMidrollOverlay(String testName, Url urlData, String url)
+	public void verifyMidrollOverlay(String testName, String url)
 			throws OoyalaException {
 		
 		boolean result = false;
@@ -46,7 +45,7 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest{
 			
 			playValidator.validate("playing_1", 60);
 			
-			if (isFlash(urlData)) { // TODO why are we doing this?
+			if (playValidator.isStreamingProtocolPrioritized(parseURL(url), "hds")) { 
 				extentTest.log(LogStatus.INFO,"For Flash Specific cases");
                 event.validate("MidRoll_willPlaySingleAd_1", 180);
                 event.validate("singleAdPlayed_1", 160);

@@ -17,7 +17,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.ReplayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.ShareTabValidator;
-import com.ooyala.playback.page.SocailScreenValidator;
+import com.ooyala.playback.page.SocialScreenValidator;
 import com.ooyala.playback.page.StartScreenValidator;
 import com.ooyala.playback.page.ThumbnailValidator;
 import com.ooyala.playback.page.UpNextValidator;
@@ -31,6 +31,7 @@ import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.PlayPauseAction;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.page.action.StateScreenAction;
 
 public class PlayBackFactory {
 
@@ -60,10 +61,11 @@ public class PlayBackFactory {
 	private ReplayValidator replayValidator;
 	private ClickDiscoveryButtonAction clickDiscoveryButtonAction;
 	private Bitratevalidator bitratevalidator;
-	private SocailScreenValidator socailScreenValidator;
+	private SocialScreenValidator socailScreenValidator;
 	private ThumbnailValidator thumbnailValidator;
 	private FullScreenAction fullScreenAction;
 	private SeekAction seekAction;
+	private StateScreenAction stateScreenAction;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
@@ -74,6 +76,12 @@ public class PlayBackFactory {
 			seekAction = new SeekAction(driver);
 		return seekAction;
 
+	}
+	
+	public StateScreenAction getStateScreenAction(){
+		if(stateScreenAction==null)
+			stateScreenAction = new StateScreenAction(driver);
+		return stateScreenAction;
 	}
 
 	public FullScreenAction getFullScreenAction() {
@@ -208,9 +216,9 @@ public class PlayBackFactory {
 		return thumbnailValidator;
 	}
 
-	public SocailScreenValidator getSocailScreenValidator() {
+	public SocialScreenValidator getSocailScreenValidator() {
 		if (socailScreenValidator == null)
-			socailScreenValidator = new SocailScreenValidator(driver);
+			socailScreenValidator = new SocialScreenValidator(driver);
 		return socailScreenValidator;
 	}
 
