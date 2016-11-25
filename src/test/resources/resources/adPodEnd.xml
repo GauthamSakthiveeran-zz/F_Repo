@@ -1,4 +1,4 @@
-<elements area="play">
+<elements area="adPodEnd">
 	<element key="AD_POD_END_IMA" findBy="id"
              id="adPodEnd_google-ima-ads-manager_0_3" />
 	
