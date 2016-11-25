@@ -46,8 +46,13 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	// for whole video to play
 	public void seekPlayback() throws Exception {
 		while (true) {
-			if (Double.parseDouble(((JavascriptExecutor) driver).executeScript(
-					"return pp.getPlayheadTime();").toString()) > 5) {
+			double seekTime = Double.parseDouble(((JavascriptExecutor) driver)
+					.executeScript("return pp.getPlayheadTime();").toString());
+			if (seekTime == -1) {
+				logger.error("Video is in error mode");
+				break;
+			}
+			if (seekTime > 5) {
 				seek(7, true);
 				// loadingSpinner(webDriver);
 				((JavascriptExecutor) driver).executeScript("pp.pause();");
