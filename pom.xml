@@ -33,9 +33,8 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.14.1</version>
 				<configuration>
-					<!-- Suite testng xml file to consider for test execution -->
 					<suiteXmlFiles>
-						<suiteXmlFile>regression.xml</suiteXmlFile>
+						<suiteXmlFile>${tests}</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
