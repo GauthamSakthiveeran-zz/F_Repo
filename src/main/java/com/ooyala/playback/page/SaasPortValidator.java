@@ -62,7 +62,6 @@ public class SaasPortValidator extends PlayBackPage implements PlaybackValidator
 
     public void searchEntitlement() throws Exception {
         driver.get(sasportUrl);
-        driver.manage().window().maximize();
         waitOnElement("SEARCH_BTN",10);
         clickOnIndependentElement("SEARCH_BTN");
     }
@@ -71,9 +70,9 @@ public class SaasPortValidator extends PlayBackPage implements PlaybackValidator
         waitOnElement("CREATE_ENTITLEMENT_BTN",10);
         clickOnIndependentElement("CREATE_ENTITLEMENT_BTN");
         waitOnElement("CREATE_ENTITLEMENT_ID", 10);
-        getWebElement("CREATE_ENTITLEMENT_ID").sendKeys(embedCode);
-        getWebElement("EXTERNAL_PRODUCT_ID").sendKeys("abc");
-        getWebElement("MAX_DEVICES").sendKeys("2");
+        writeTextIntoTextBox("CREATE_ENTITLEMENT_ID", "embedCode");
+        writeTextIntoTextBox("EXTERNAL_PRODUCT_ID", "abc");
+        writeTextIntoTextBox("MAX_DEVICES", "2");
         clickOnIndependentElement("CREATE_BTN");
     }
 }
