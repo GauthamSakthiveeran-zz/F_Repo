@@ -27,5 +27,9 @@
              class="oo-scrubber-bar" />
     <element key="THUMBNAIL_CONTAINER" findBy="class"
              class="oo-scrubber-thumbnail-container" />
-
+	<element key="PLAYED_INDICATOR" findBy="class"
+			 class="oo-played-indicator"></element>
+			 
+	<element key="THUMBNAIL_IMAGE" findBy="class"
+			 class="oo-thumbnail"></element>		 
 </elements>

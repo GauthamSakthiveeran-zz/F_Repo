@@ -21,7 +21,7 @@ public class UpNextValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public void validate(String element, int timeout) throws Exception {
-		waitOnElement(element, 60);
+		waitOnElement("UPNEXT_CONTENT", 60);
 
 		waitOnElement("CONTENT_METADATA", 60);
 		clickOnIndependentElement("UPNEXT_CLOSE_BTN");

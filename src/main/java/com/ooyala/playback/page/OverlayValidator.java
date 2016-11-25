@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.page.action.FullScreenAction;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class OverlayValidator extends PlayBackPage implements PlaybackValidator {
 
@@ -21,8 +22,9 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 
 	public void validate(String element, int timeout) throws Exception {
 		try {
-			waitOnElement("overlayCloseBtn", 40);
-			clickOnIndependentElement("overlayCloseBtn");
+			waitOnElement("OVERLAY_CLOSE_BTN", 40);
+			extentTest.log(LogStatus.PASS, "Overlay Shown");
+			clickOnIndependentElement("OVERLAY_CLOSE_BTN");
 			waitOnElement(By.id(element), timeout);
 
 		} catch (Exception e) {
@@ -34,22 +36,22 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 
 			if (!getBrowser().equalsIgnoreCase("safari")
 					&& !getPlatform().equalsIgnoreCase("Android")) {
-				waitOnElement("overlayCloseBtn", 40);
-				clickOnIndependentElement("overlayCloseBtn");
+				waitOnElement("OVERLAY_CLOSE_BTN", 40);
+				clickOnIndependentElement("OVERLAY_CLOSE_BTN");
 				logger.info("Clicked on overlay close button in fullscreen screen \n");
 				logger.info("Overlay gets closed");
 			}
 			Thread.sleep(1000);
-			waitOnElement("nonlinearAdPlayed_1", 160);
+			waitOnElement(By.id(element), timeout);
 
 			if (getBrowser().equalsIgnoreCase("safari")) {
-				clickOnIndependentElement("normalScreen");
+				clickOnIndependentElement("NORMAL_SCREEN");
 			} else {
 				try {
 					PlayBackFactory.getInstance(driver).getSeekAction()
 							.seek("15");
 				} catch (Exception e1) {
-					clickOnHiddenElement("normalScreen");
+					clickOnHiddenElement("NORMAL_SCREEN");
 				}
 			}
 

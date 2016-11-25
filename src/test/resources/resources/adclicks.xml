@@ -4,5 +4,8 @@
 	<element key="learnMore" findBy="class"
              class="oo-learn-more" />
     <element key="adSkipBtn" findBy="class"
-             class="oo-icon-skip-slick" />         
+             class="oo-icon-skip-slick" />
+             
+    <element key="videoAdUiPreSkipButton" findBy="class"
+             class="videoAdUiPreSkipButton" />                  
 </elements>

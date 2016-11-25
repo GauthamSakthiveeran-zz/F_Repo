@@ -3,13 +3,12 @@ package com.ooyala.playback.page;
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 import static java.lang.Thread.sleep;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
-import com.ooyala.playback.url.PlayerPropertyValue;
-import com.ooyala.playback.url.Testdata;
 
 public class AdClickThroughValidator extends PlayBackPage implements
 		PlaybackValidator {
@@ -26,29 +25,25 @@ public class AdClickThroughValidator extends PlayBackPage implements
 		waitOnElement(element, timeout);
 	}
 
-	public void clickThroughAds(Testdata testData, int index) throws Exception {
+	public void clickThroughAds(Map<String,String> data) throws Exception {
+		
+		if(data==null){
+			throw new Exception("Map is null");
+		}
 
-		String value = testData.getTest().get(0).getUrl().get(index)
-				.getAdPlugins().getValue();
+		String value = data.get("ad_plugin");
 
 		String baseWindowHdl = driver.getWindowHandle();
 		if (value != null) {
 
-			if (!getPlatform().equalsIgnoreCase("Android")) {// we skipping this
+			if (!getPlatform().equalsIgnoreCase("Android")) {// skipping this
 																// code for IMA
 																// and Vast
 																// (Android)
-				if (value != PlayerPropertyValue.FREEWHEEL.toString()) {
-					if (value == PlayerPropertyValue.VAST.toString()) {
+				if (!value.contains("freewheel")) {
+					if (value.contains("vast")) {
 						clickOnIndependentElement("adScreenPanel");
 					} else {
-						/*
-						 * WebElement adPanel =
-						 * getWebElementsList("adScreenPanel1").get(0);
-						 * ((JavascriptExecutor)
-						 * driver).executeScript("arguments[0].click()",
-						 * adPanel);
-						 */
 						clickOnIndependentElement("adScreenPanel1");
 					}
 					waitOnElement("adsClicked_1", 10);
@@ -56,7 +51,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
 				}
 			}
-			if (value != PlayerPropertyValue.IMA.toString()) {
+			if (!value.contains("ima")) {
 				try {
 					clickOnHiddenElement("learnMore");
 					waitOnElement("adsClicked_learnMoreButton", 5);
@@ -84,17 +79,9 @@ public class AdClickThroughValidator extends PlayBackPage implements
 			boolean isAd = isAdPlaying();
 			if (isAd) {
 
-				if (getPlatform().equalsIgnoreCase("Android")) // TODO : ||
-																// Description.contains("HLS")
-				{
+				if (getPlatform().equalsIgnoreCase("Android") || isStreamingProtocolPrioritized(data, "hls")) {
 					((JavascriptExecutor) driver).executeScript("pp.play()");
 				} else {
-					/*
-					 * WebElement adPanel =
-					 * getWebElementsList("adPanel").get(0);
-					 * ((JavascriptExecutor)
-					 * driver).executeScript("arguments[0].click()", adPanel);
-					 */
 					clickOnIndependentElement("adPanel");
 				}
 

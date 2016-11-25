@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 /**
  * Created by soundarya on 11/22/16.
@@ -25,7 +26,6 @@ public class ThumbnailValidator extends PlayBackPage implements
 	}
 
 	public void validate(String element, int timeout) throws Exception {
-		boolean result;
 
 		Actions action = new Actions(driver);
 
@@ -33,5 +33,12 @@ public class ThumbnailValidator extends PlayBackPage implements
 		action.moveToElement(element1).build().perform();
 		waitOnElement("THUMBNAIL_CONTAINER", 60);
 
+	}
+	
+	public void validateThumbNailImage(String embedCode) throws Exception{
+		
+        String Thumbnail_url = getWebElement("THUMBNAIL_IMAGE").getCssValue("background-image");
+       
+        Assert.assertTrue(Thumbnail_url.contains(embedCode));
 	}
 }
