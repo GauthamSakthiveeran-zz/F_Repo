@@ -7,6 +7,8 @@ function subscribeToEvents() {
         var reportDiscoveryClickOrder = 1;
         var pausedEventOrder = 1;
         var adPodEndedEventOrder = 1;
+        var setEmbedCodeEventOrder = 1;
+        var replayEventOrder = 1;
 
         return function(event) {
             if (event.match(/playing/)) {
@@ -54,6 +56,18 @@ function subscribeToEvents() {
                     + seekingEventOrder + '</p>');
                 seekingEventOrder++;
             }
+
+            if (event.match(/setEmbedCode/)) {
+                 OO.$('#ooplayer').append(
+                    '<p id=setEmbedCode_' + setEmbedCodeEventOrder + '>setEmbedCode '+ setEmbedCodeEventOrder + '</p>');
+                 setEmbedCodeEventOrder++;
+            }
+
+            if (event.match(/replay/)) {
+                 OO.$("#ooplayer").append("<p id=replay_"+replayEventOrder+">replay "+replayEventOrder+"</p>");
+                 replayEventOrder++;
+            }
+
         };
     }());
 }
