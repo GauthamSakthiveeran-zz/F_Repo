@@ -23,9 +23,9 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	}
 
 	@Override
-	public void startAction() throws Exception {
+	public boolean startAction() throws Exception {
 		// TODO Auto-generated method stub
-
+		return false;
 	}
 	
 	public String getDuration(int factor){

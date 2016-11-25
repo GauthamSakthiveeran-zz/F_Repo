@@ -25,20 +25,25 @@ public class ClickDiscoveryButtonAction extends PlayBackPage implements
 	}
 
 	@Override
-	public void startAction() throws Exception {
+	public boolean startAction() throws Exception {
 		try {
 
-			clickOnIndependentElement("DISCOVERY_BTN");
+			if(!clickDiscoveryButton()) return false;
+			
 			sleep(2000);
 			if (!isElementPresent("CONTENT_SCREEN")) {
-				clickOnIndependentElement("DISCOVERY_BTN");
+				if(!clickDiscoveryButton()) return false;
 			}
 		} catch (Exception e) {
 			logger.error("exception " + e.getMessage());
-			clickOnIndependentElement("MORE_OPTION_ICON");
+			if(!clickOnIndependentElement("MORE_OPTION_ICON")) return false;
 			Thread.sleep(2000);
-			clickOnIndependentElement("DISCOVERY_BTN");
-
+			if(!clickDiscoveryButton()) return false;
 		}
+		return true;
+	}
+	
+	private boolean clickDiscoveryButton(){
+		return clickOnIndependentElement("DISCOVERY_BTN");
 	}
 }

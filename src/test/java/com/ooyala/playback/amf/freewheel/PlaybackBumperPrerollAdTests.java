@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.freewheel;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 

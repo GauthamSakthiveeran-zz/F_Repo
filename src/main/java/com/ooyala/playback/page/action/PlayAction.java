@@ -1,7 +1,5 @@
 package com.ooyala.playback.page.action;
 
-import static java.lang.Thread.sleep;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
@@ -22,8 +20,8 @@ public class PlayAction extends PlayBackPage implements PlayerAction {
 	}
 
 	@Override
-	public void startAction() {
-		clickOnIndependentElement("PLAY_BUTTON");
+	public boolean startAction() {
+		return clickOnIndependentElement("PLAY_BUTTON");
 
 	}
 	

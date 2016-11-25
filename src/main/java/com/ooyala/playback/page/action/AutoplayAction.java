@@ -21,7 +21,7 @@ public class AutoplayAction extends PlayBackPage implements PlayerAction {
 	}
 
 	@Override
-	public void startAction() {
+	public boolean startAction() {
 		Boolean autoplay = false;
 		try {
 			autoplay = Boolean.parseBoolean(((JavascriptExecutor) driver)
@@ -30,8 +30,14 @@ public class AutoplayAction extends PlayBackPage implements PlayerAction {
 			logger.error("Autoplay not set for this video");
 		}
 		if (!autoplay) {
-			waitOnElement("PLAY_BUTTON", 60);
-			clickOnIndependentElement("PLAY_BUTTON");
+			if(waitOnElement("PLAY_BUTTON", 60)){
+				if(clickOnIndependentElement("PLAY_BUTTON")){
+					return true;
+				}
+			}
+			return false;
+			
 		}
+		return autoplay;
 	}
 }
