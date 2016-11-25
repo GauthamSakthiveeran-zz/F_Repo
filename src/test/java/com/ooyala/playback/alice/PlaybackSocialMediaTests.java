@@ -1,10 +1,14 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SocialScreenValidator;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by jitendra on 23/11/16.
@@ -14,7 +18,7 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest{
     private EventValidator eventValidator;
     private PlayValidator play;
     private PauseValidator pause;
-    private SocailScreenValidator social;
+    private SocialScreenValidator social;
 
     public PlaybackSocialMediaTests() throws OoyalaException {
         super();
