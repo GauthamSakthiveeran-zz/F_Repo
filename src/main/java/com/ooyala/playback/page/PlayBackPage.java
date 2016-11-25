@@ -69,8 +69,11 @@ public abstract class PlayBackPage extends WebPage {
 	public boolean clickOnHiddenElement(String elementKey) {
 		try {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
-			WebElement element = getWebElementsList(elementKey).get(0);
-			js.executeScript("arguments[0].click()", element);
+			WebElement element = getWebElement(elementKey);
+			if (element != null)
+				js.executeScript("arguments[0].click()", element);
+			else
+				return false;
 			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -107,7 +110,7 @@ public abstract class PlayBackPage extends WebPage {
 	public void setExtentTest(ExtentTest test) {
 		this.extentTest = test;
 	}
-	
+
 	/**
 	 * checking to see if the protocol is hds or hls or any protocol
 	 * 
@@ -115,18 +118,19 @@ public abstract class PlayBackPage extends WebPage {
 	 * @param protocol
 	 * @return
 	 */
-	public boolean isStreamingProtocolPrioritized(Map<String, String> data, String protocol) {
-		if(data==null){
+	public boolean isStreamingProtocolPrioritized(Map<String, String> data,
+			String protocol) {
+		if (data == null) {
 			logger.error("url object is null");
 			return false;
 		}
-			
+
 		String playerParameter = data.get("options");
 		if (playerParameter != null) {
 			JSONObject json = new JSONObject(playerParameter);
 			if (json != null && json.has("encodingPriority")) {
 				JSONArray array = json.getJSONArray("encodingPriority");
-				return array.get(0).equals(protocol); 
+				return array.get(0).equals(protocol);
 			}
 		}
 
