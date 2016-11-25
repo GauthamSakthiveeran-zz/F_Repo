@@ -1,0 +1,23 @@
+<suite name="Playback Web Regression Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+
+    <test name="VTC Web Regression Group">
+        <groups>
+            <define name="VTC_Regression">
+                <include name="Playback" />
+            </define>
+            <run>
+                <include name="VTC_Regression" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="VTC.xml"/>
+            <parameter name="jsFile" value="js/alice_full.js"/>
+            <class name="com.ooyala.playback.VTC.PlaybackDiscoverTests" />
+            <class name="com.ooyala.playback.VTC.PlaybackVolumeTests" />
+        </classes>
+    </test>
+
+</suite>

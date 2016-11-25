@@ -3,7 +3,6 @@
 	<listeners>
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
-
 	<test name="Playback Web Regression Group">
 		<groups>
 			<define name="regression">
@@ -31,14 +30,15 @@
 			<class name="com.ooyala.playback.alice.PlaybackFullScreenTests" />
 			<class name="com.ooyala.playback.alice.PlaybackLocalizationTests" />
 			<class name="com.ooyala.playback.alice.PlayerMetadataStatesTests" />
-			<class
-				name="com.ooyala.playback.alice.PlaybackDiscoveryCustomizationTests" />
+			<class name="com.ooyala.playback.alice.PlaybackDiscoveryCustomizationTests" />
 			<class name="com.ooyala.playback.alice.PlaybackClosedCaptionTests" />
 			<class name="com.ooyala.playback.alice.PlaybackAspectRatioTests" />
 			<class name="com.ooyala.playback.alice.PlaybackVerticalVideoTests" />
 			<class name="com.ooyala.playback.alice.PlaybackThumbnailTests" />
 			<class name="com.ooyala.playback.alice.PlaybackVolumeTest" />
 			<class name="com.ooyala.playback.alice.PlaybackDiscoveryTests" />
+			<class name="com.ooyala.playback.alice.PlaybackSocialMediaTests" />
+			<class name="com.ooyala.playback.alice.PlaybackOptEntitlementTests" />
 			<!--<class name="com.ooyala.playback.alice.PlaybackWatermarkTests"/> -->
 		</classes>
 	</test>

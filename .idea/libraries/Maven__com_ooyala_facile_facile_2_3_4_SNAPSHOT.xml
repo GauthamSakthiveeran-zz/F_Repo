@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.ooyala.facile:facile:2.3.4-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ooyala/facile/facile/2.3.4-SNAPSHOT/facile-2.3.4-20161121.234632-1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ooyala/facile/facile/2.3.4-SNAPSHOT/facile-2.3.4-20161121.234632-1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/ooyala/facile/facile/2.3.4-SNAPSHOT/facile-2.3.4-20161121.234632-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

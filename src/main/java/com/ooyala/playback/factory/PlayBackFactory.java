@@ -1,9 +1,9 @@
 package com.ooyala.playback.factory;
 
-import java.lang.reflect.Field;
-
+import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.*;
 import org.openqa.selenium.WebDriver;
-
+import java.lang.reflect.Field;
 import com.ooyala.playback.page.AspectRatioValidator;
 import com.ooyala.playback.page.Bitratevalidator;
 import com.ooyala.playback.page.CCValidator;
@@ -65,6 +65,7 @@ public class PlayBackFactory {
 	private ThumbnailValidator thumbnailValidator;
 	private FullScreenAction fullScreenAction;
 	private SeekAction seekAction;
+	private SaasPortValidator saasPortValidator;
 	private StateScreenAction stateScreenAction;
 
 	private PlayBackFactory(WebDriver driver) {
@@ -245,6 +246,12 @@ public class PlayBackFactory {
 			playbackFactory = new PlayBackFactory(driver);
 		}
 		return playbackFactory;
+	}
+
+	public SaasPortValidator getSaasPortValidator() {
+		if (saasPortValidator == null)
+			saasPortValidator = new SaasPortValidator(driver);
+		return saasPortValidator;
 	}
 
 	public static void destroyInstance() {

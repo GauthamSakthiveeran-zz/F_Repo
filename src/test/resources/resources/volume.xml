@@ -2,7 +2,7 @@
     <element key="CONTROL_BAR" findBy="class"
              class="oo-control-bar" />
     <element key="VOLUME_MAX" findBy="class"
-             class="oo-icon-volume-on-ooyala-default" />
+             class="oo-icon-volume-on-ooyala-default " />
     <element key="VOLUME_MUTE" findBy="class"
-             class="oo-icon-volume-mute-ooyala-default" />
+             class="oo-icon-volume-mute-ooyala-default " />
 </elements>
