@@ -152,7 +152,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		driver = getDriver(browser);
 
 		logger.info("Driver initialized successfully");
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		// driver.manage().timeouts().implicitlyWait(240, TimeUnit.MINUTES);
 		pageFactory = PlayBackFactory.getInstance(driver);
 		parseXmlFileData(xmlFile);
