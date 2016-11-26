@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.page.PlayBackPage;
-import com.ooyala.playback.url.Url;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * 
@@ -15,42 +15,104 @@ import com.ooyala.playback.url.Url;
  *
  */
 public class SeekAction extends PlayBackPage implements PlayerAction {
+	
+	private int time;
+	private boolean fromLast;
+	private String adPlugin;
+	private int factor;
+	private boolean seekTillEnd;
+	
 
 	public SeekAction(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(webDriver, this);
 		addElementToPageElements("play");
+		time = 0;
+		fromLast = false;
+		adPlugin = "";
+		factor =1;
+		seekTillEnd = false;
+	}
+	
+	public SeekAction seekTillEnd(){
+		seekTillEnd=true;
+		return this;
+	}
+	
+	public SeekAction setTime(int time){
+		this.time = time;
+		return this;
+	}
+	
+	public SeekAction fromLast(){
+		fromLast = true;
+		return this;
+	}
+	
+	public SeekAction setAdPlugin(String adPlugin){
+		this.adPlugin = adPlugin;
+		return this;
+	}
+	
+	public SeekAction setFactor(int factor){
+		this.factor = factor;
+		return this;
 	}
 
 	@Override
 	public boolean startAction() throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		
+		if(time==0 && !seekTillEnd){
+			throw new Exception("Time to seek needs to be set! or seekTillEnd should be set to true");
+		}
+		
+		if(!adPlugin.isEmpty()){
+			Map<String, String> data = parseURL();
+			if(data.get("ad_plugin")!=null && !data.get("ad_plugin").equals(adPlugin)){
+				extentTest.log(LogStatus.SKIP, "This particular step is skipped as it is valid only for "+adPlugin);
+				return true;
+			}
+				
+		}
+		
+		if(seekTillEnd && factor==1){
+			seekPlayback(); 
+			seekTillEnd=false;;
+		}
+		else{
+			if(fromLast){
+				seek(time,fromLast);
+			} else{
+				seek(time+"");
+			}
+		}
+		
+		return true;//need to check for unable to seek and return true or false accordingly;
 	}
 	
-	public String getDuration(int factor){
+	public String getDuration(){
 		return "pp.getDuration()/"+factor;
 	}
 
-	public void seek(int time, boolean fromLast) throws Exception {
+	private void seek(int time, boolean fromLast) throws Exception {
 		String seekduration;
 		if (fromLast) {
-			seekduration = getDuration(1);
+			seekduration = getDuration();
 		} else {
 			seekduration = "";
 		}
 		seek(seekduration + "-" + time + "");
-
+		factor =1;
 	}
 
-	public void seek(String time) throws Exception {
+	private void seek(String time) throws Exception {
 		((JavascriptExecutor) driver).executeScript("return pp.seek(" + time
 				+ ")" + "");
 	}
 
 	// forwarding the video to end to complete the testing instead of waiting
 	// for whole video to play
-	public void seekPlayback() throws Exception {
+	private void seekPlayback() throws Exception {
 		while (true) {
 			double seekTime = Double.parseDouble(((JavascriptExecutor) driver)
 					.executeScript("return pp.getPlayheadTime();").toString());
@@ -72,7 +134,9 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	// As there is problem for pulse asset that if we seek the video then ads
 	// get skip therefore adding below condition
 
-	public void seekSpecific(Map<String,String> data, int time) throws Exception {
+	public void seekSpecific(int time) throws Exception {
+		
+		Map<String,String> data = parseURL();
 		boolean flag = false;
 		
 		if(data!=null){
@@ -89,7 +153,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 					flag = true;
 				}
 				if(flag){
-					seek(time, true);
+					setTime(time).fromLast().startAction();
 				}
 			}
 		}

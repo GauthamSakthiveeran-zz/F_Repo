@@ -48,8 +48,8 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 				clickOnIndependentElement("NORMAL_SCREEN");
 			} else {
 				try {
-					PlayBackFactory.getInstance(driver).getSeekAction()
-							.seek("15");
+					PlayBackFactory.getInstance(driver).getSeekAction().setTime(15).startAction();
+							//.seek("15");
 				} catch (Exception e1) {
 					clickOnHiddenElement("NORMAL_SCREEN");
 				}

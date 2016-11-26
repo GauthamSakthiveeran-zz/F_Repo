@@ -51,7 +51,7 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
 			event.validate("playing_FirstTime", 30);
 			extentTest.log(PASS, "verified Players controls");
 
-			seekAction.seekPlayback();
+			seekAction.seekTillEnd().startAction();
 
 			extentTest.log(PASS, "verified Seek functionality");
 

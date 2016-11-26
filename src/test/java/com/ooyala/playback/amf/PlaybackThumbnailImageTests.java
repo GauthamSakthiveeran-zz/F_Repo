@@ -51,7 +51,7 @@ public class PlaybackThumbnailImageTests extends PlaybackWebTest{
             Thread.sleep(2000);
 
             //Seek the Video
-            seekAction.seek("35");
+            seekAction.setTime(35).startAction();
             event.validate("seeked_1", 50);
 
             //Hovering on scrubber bar
@@ -62,7 +62,7 @@ public class PlaybackThumbnailImageTests extends PlaybackWebTest{
             
             thumbNail.validateThumbNailImage("9qaHdodTqmllcEnthP1AgrCTjf19HD4i"); // TODO, hardcoding for now
 
-            seekAction.seekPlayback();
+            seekAction.seekTillEnd().startAction();
             event.validate("videoPlayed_1", 200);
             extentTest.log(LogStatus.PASS,"video played completly");
 			

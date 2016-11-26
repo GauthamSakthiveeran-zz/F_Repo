@@ -1,5 +1,8 @@
 package com.ooyala.playback.page;
 
+import java.net.URL;
+import java.net.URLDecoder;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -13,7 +16,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.ooyala.facile.page.WebPage;
 import com.ooyala.playback.url.PropertyReader;
-import com.ooyala.playback.url.Url;
 import com.relevantcodes.extentreports.ExtentTest;
 
 public abstract class PlayBackPage extends WebPage {
@@ -117,9 +119,11 @@ public abstract class PlayBackPage extends WebPage {
 	 * @param data
 	 * @param protocol
 	 * @return
+	 * @throws Exception 
 	 */
-	public boolean isStreamingProtocolPrioritized(Map<String, String> data,
-			String protocol) {
+	public boolean isStreamingProtocolPrioritized(
+			String protocol) throws Exception {
+		Map<String, String> data = parseURL();
 		if (data == null) {
 			logger.error("url object is null");
 			return false;
@@ -135,5 +139,22 @@ public abstract class PlayBackPage extends WebPage {
 		}
 
 		return false;
+	}
+	
+	public Map<String,String> parseURL() throws Exception{
+		String urlString = driver.getCurrentUrl();
+		if(urlString!=null && !urlString.isEmpty()){
+			URL url = new URL(urlString);
+			Map<String, String> query_pairs = new HashMap<String, String>();
+		    String query = url.getQuery();
+		    String[] pairs = query.split("&");
+		    for (String pair : pairs) {
+		        int index = pair.indexOf("=");
+		        query_pairs.put(URLDecoder.decode(pair.substring(0, index), "UTF-8"), URLDecoder.decode(pair.substring(index + 1), "UTF-8"));
+		    }
+		    return query_pairs;
+		}
+		
+		return null;
 	}
 }

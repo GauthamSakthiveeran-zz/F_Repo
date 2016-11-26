@@ -57,7 +57,7 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 			extentTest.log(PASS, "Video starting");
 			sleep(2000);
 
-			seekAction.seek(10, true);
+			seekAction.setTime(10).fromLast().startAction();//seek(10, true);
 
 			event.validate("seeked_1", 180);
 

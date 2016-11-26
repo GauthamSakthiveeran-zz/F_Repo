@@ -30,7 +30,7 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 		 * ((JavascriptExecutor) driver).executeScript("pp.play();"); break; } }
 		 */
 
-		PlayBackFactory.getInstance(driver).getSeekAction().seekPlayback();
+		PlayBackFactory.getInstance(driver).getSeekAction().seekTillEnd().startAction();
 
 		waitOnElement(By.id(element), timeout);
 		logger.info("Video seeked successfully");

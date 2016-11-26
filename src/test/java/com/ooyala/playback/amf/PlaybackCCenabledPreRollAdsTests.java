@@ -71,7 +71,7 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 			ccValidator.validate("cclanguage", 60);
 
 			sleep(2000);
-			seekAction.seek(10, true);
+			seekAction.setTime(10).fromLast().startAction();
 
 			/*
 			 * if(Description.equalsIgnoreCase("BitmovinCCenabledpreroll_IMA")){
