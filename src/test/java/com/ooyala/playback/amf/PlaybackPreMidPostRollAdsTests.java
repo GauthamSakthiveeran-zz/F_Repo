@@ -3,8 +3,6 @@ package com.ooyala.playback.amf;
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 import static java.lang.Thread.sleep;
 
-import java.util.Map;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,7 +11,6 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.url.Url;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
@@ -59,8 +56,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 	        sleep(5000);
 	        loadingSpinner();
 
-	        Map<String, String> map = parseURL(url);
-	        seekAction.seekSpecific(map,15);
+	        seekAction.seekSpecific(15);
 
 	        loadingSpinner();
 	        event.validate( "MidRoll_willPlayAds", 150);
@@ -68,22 +64,24 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 	        loadingSpinner();
 
 	        extentTest.log(PASS, "Played Midroll Ads");
-	        seekAction.seekSpecific(map,15);
+	        seekAction.seekSpecific(15);
 
 	        loadingSpinner();
 	        
 	        event.validate( "PostRoll_willPlayAds", 150);
-	        if(map!=null && map.get("ad_plugin")!=null && map.get("ad_plugin").contains("pulse")) {
+	        event.validateForSpecificPlugins("singleAdPlayed_6", 200, "pulse");
+	        
+	        event.validate("adsPlayed_3", 150); // TODO needs to be ignored for specific plugins
+	        
+	        /*if(map!=null && map.get("ad_plugin")!=null && map.get("ad_plugin").contains("pulse")) {
 	        	event.validate("singleAdPlayed_6", 200);
 	        }else {
 	        	event.validate("adsPlayed_3", 150);
-	        }
+	        }*/
 
 	        extentTest.log(PASS, "Played Postroll Ads");
-
-	        if (map!=null && map.get("ad_plugin")!=null && !map.get("ad_plugin").contains("pulse")){
-	        	event.validate("seeked_1", 150);
-	        }
+	        
+	        event.validateForSpecificPlugins("seeked_1", 150, "pulse");
 
 	        event.validate("played_1", 200);
 	        extentTest.log(PASS, "Verified PreMidPostRoll Ads Test");

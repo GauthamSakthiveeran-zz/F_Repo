@@ -1,5 +1,7 @@
 package com.ooyala.playback.page;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -41,6 +43,16 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validateElementPresence(String element) throws Exception {
 		return isElementPresent(By.id(element));
+	}
+	
+	public void validateForSpecificPlugins(String element, int timeOut, String adPlugin) throws Exception{
+		Map<String,String> map = parseURL();
+		
+		if (map!=null && map.get("ad_plugin")!=null && map.get("ad_plugin").contains(adPlugin)) {
+			validate(element, timeOut);
+			Thread.sleep(2000);
+		}
+		
 	}
 
 }

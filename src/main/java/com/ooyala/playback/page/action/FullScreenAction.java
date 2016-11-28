@@ -18,26 +18,33 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
 	}
 
 	@Override
-	public void startAction() throws Exception {
+	public boolean startAction() throws Exception {
 		WebElement player = getWebElement("ooplayer");
+		
+		if(player==null) return false;
+		
 		Actions action = new Actions(driver);
 		action.moveToElement(player).perform();
-		waitOnElement("FULLSCREEN_BTN", 60);
+		if(!waitOnElement("FULLSCREEN_BTN", 60)) return false;
 
 		if (getPlatform().equalsIgnoreCase("Android")) {
-			clickOnIndependentElement("FULLSCREEN_BTN");
+			if(!clickOnIndependentElement("FULLSCREEN_BTN")) return false;
 		} else {
-			clickOnIndependentElement("PAUSE_BUTTON");
-			clickOnIndependentElement("FULLSCREEN_BTN");
+			if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
+			if(!clickOnIndependentElement("FULLSCREEN_BTN")) return false;
 		}
 
 		if (!(getBrowser().equalsIgnoreCase("safari")
 				|| getBrowser().equalsIgnoreCase("firefox")
 				|| getBrowser().equalsIgnoreCase("internet explorer") || getPlatform()
 				.equalsIgnoreCase("Android"))) {
-			waitOnElement(By.id("fullscreenChangedtrue"), 60);
+			
+			if(!waitOnElement(By.id("fullscreenChangedtrue"), 60)) return false;
 			logger.info("Changed into Fullscreen");
+			
 		}
+		
+		return true;
 
 	}
 

@@ -51,7 +51,7 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 
 			extentTest.log(PASS, "Ad started to play");
 
-			clickThrough.clickThroughAds(parseURL(url));
+			clickThrough.validate("", 120);
 
 			event.validate("singleAdPlayed_1", 190);
 
@@ -64,7 +64,7 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 			extentTest.log(PASS, "Video started");
 			sleep(5000);
 
-			seekAction.seekPlayback();
+			seekAction.seekTillEnd().startAction();
 
 			event.validate("played_1", 160);
 

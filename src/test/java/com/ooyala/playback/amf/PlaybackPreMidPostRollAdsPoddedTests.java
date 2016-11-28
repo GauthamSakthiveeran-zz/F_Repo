@@ -62,7 +62,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest{
 
 	        loadingSpinner();
 	        
-	        seekAction.seek(seekAction.getDuration(2));
+	        seekAction.setFactor(2).fromLast().startAction();//seekAction.seek(seekAction.getDuration(2));
 
 	        loadingSpinner();
 	        
@@ -74,7 +74,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest{
 	        poddedAdValidator.validate("countPoddedAds_2", 60);
 
 	        loadingSpinner();
-	        seekAction.seek(10, true);
+	        seekAction.setTime(10).fromLast().startAction();
 	        loadingSpinner();
 
 	        event.validate( "PostRoll_willPlayAds", 180);

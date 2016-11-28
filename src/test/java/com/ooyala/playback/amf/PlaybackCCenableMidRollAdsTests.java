@@ -75,7 +75,7 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 			ccValidator.validate("cclanguage", 60);
 			event.validate("videoPlaying_1", 190);
 
-			seekAction.seekPlayback();
+			seekAction.seekTillEnd().startAction();
 
 			event.validate("seeked_1", 190);
 			playAction.startAction();

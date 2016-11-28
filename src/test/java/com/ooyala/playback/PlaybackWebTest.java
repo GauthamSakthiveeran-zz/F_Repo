@@ -338,19 +338,5 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	}
 
-	public Map<String,String> parseURL(String urlString) throws Exception{
-		if(urlString!=null && !urlString.isEmpty()){
-			URL url = new URL(urlString);
-			Map<String, String> query_pairs = new HashMap<String, String>();
-		    String query = url.getQuery();
-		    String[] pairs = query.split("&");
-		    for (String pair : pairs) {
-		        int index = pair.indexOf("=");
-		        query_pairs.put(URLDecoder.decode(pair.substring(0, index), "UTF-8"), URLDecoder.decode(pair.substring(index + 1), "UTF-8"));
-		    }
-		    return query_pairs;
-		}
-		
-		return null;
-	}
+	
 }

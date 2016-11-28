@@ -24,7 +24,7 @@ public class PauseAction extends PlayBackPage implements PlayerAction {
 	}
 
 	@Override
-	public void startAction() {
+	public boolean startAction() {
 		boolean isElement;
 		Actions action = new Actions(driver);
 		// loadingSpinner();
@@ -35,9 +35,10 @@ public class PauseAction extends PlayBackPage implements PlayerAction {
 				action.moveToElement(getWebElement("PAUSE_SCREEN"))
 						.perform();
 			}
-			clickOnIndependentElement("PAUSE_BUTTON");
+			return clickOnIndependentElement("PAUSE_BUTTON");
 		} catch (ElementNotVisibleException e) {
-			clickOnIndependentElement("PAUSE_BUTTON");
+			logger.error(e.getMessage());
+			return clickOnIndependentElement("PAUSE_BUTTON");
 		}
 	}
 	
