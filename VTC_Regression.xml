@@ -17,7 +17,8 @@
             <parameter name="jsFile" value="vtc/vtc.js"/>
             <class name="com.ooyala.playback.VTC.PlaybackDiscoverTests" />
             <class name="com.ooyala.playback.VTC.PlaybackVolumeTests" />
-            <class name="com.ooyala.playback.VTC.PlaybackNewStreamTests" />
+            <class name="com.ooyala.playback.VTC.PlaybackVideoControllerEventTests" />
+            <class name="com.ooyala.playback.VTC.PlaybackVerifyEventsTests" />
             <class name="com.ooyala.playback.VTC.PlaybackAutoplayAutoloopTests" />
 
         </classes>

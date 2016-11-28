@@ -29,6 +29,8 @@ public class PlaybackVolumeTests extends PlaybackWebTest{
     public void testVolumeVTC(String testName, String url)
             throws OoyalaException {
 
+        logger.info("Url is : "+url);
+
         boolean result = false;
         try {
             driver.get(url);
@@ -38,9 +40,13 @@ public class PlaybackVolumeTests extends PlaybackWebTest{
 
             play.waitForPage();
 
+            Thread.sleep(10000);
+
             injectScript();
 
-            playAction.startAction();
+            logger.info("video is playing");
+
+            play.validate("playing_1", 60);
 
             Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
                     .executeScript("return pp.isAdPlaying()"));
@@ -51,9 +57,6 @@ public class PlaybackVolumeTests extends PlaybackWebTest{
                 logger.info("Ad played");
             }
 
-            play.validate("playing_1", 60);
-
-            logger.info("video is playing");
             sleep(4000);
 
             volumeValidator.validate("VOLUME_MAX", 60);
