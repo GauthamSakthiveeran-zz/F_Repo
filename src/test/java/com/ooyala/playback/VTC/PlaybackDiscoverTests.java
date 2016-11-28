@@ -38,7 +38,7 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
 
             play.waitForPage();
 
-            logger.info("Verified that video is seeked");
+            Thread.sleep(10000);
 
             injectScript();
 
