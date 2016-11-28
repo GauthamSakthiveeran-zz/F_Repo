@@ -44,7 +44,7 @@ public class PlaybackAdVideoSamePluginDiffElementTests  extends PlaybackWebTest 
             eventValidator.validate("adPodEnded_1",60);
             logger.info("Ad played");
 
-            elementValidator.validate("videoPath",60);
+            elementValidator.validate("VIDEO_PATH",60);
             logger.info( "Two different elements created for ad and main video");
 
             eventValidator.validate("Playing_1",60);

@@ -1,4 +1,4 @@
 <elements area="element">
-    <element key="videoPath" findBy="xPath"
+    <element key="VIDEO_PATH" findBy="xPath"
              xPath=".//*[@class='video']" />
 </elements>
