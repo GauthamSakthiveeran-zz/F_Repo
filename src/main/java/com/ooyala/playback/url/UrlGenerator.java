@@ -65,11 +65,11 @@ public class UrlGenerator {
 	 * @return output : output contains two dimentional Object in which test
 	 *         name and url is returned
 	 */
-	public static List<String> parseXmlDataProvider(String testName,
+	public static Map<String, String> parseXmlDataProvider(String testName,
 			Testdata testData) {
 		logger.info("Getting test url and test name from property file");
 
-		List<String> urlsGenerated = new LinkedList<String>();
+		Map<String, String> urlsGenerated = new HashMap<String,String>();
 		for (Test data : testData.getTest()) {
 			if (data.getName().equals(testName)) {
 				List<Url> urls = data.getUrl();
@@ -87,7 +87,8 @@ public class UrlGenerator {
 					String urlGenerated = UrlGenerator.getURL(embedCode, pCode,
 							pbid, videoPlugin, adPlugin, additionalPlugin,
 							playerParameter);
-					urlsGenerated.add(urlGenerated);
+					String desc = url.getDescription().getName();
+					urlsGenerated.put(desc,urlGenerated);
 
 				}
 			}

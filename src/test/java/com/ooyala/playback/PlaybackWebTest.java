@@ -8,6 +8,7 @@ import java.net.InetAddress;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -340,14 +341,24 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@DataProvider(name = "testUrls")
 	public Object[][] getTestData() {
 
-		List<String> urls = UrlGenerator.parseXmlDataProvider(getClass()
+		Map<String, String> urls = UrlGenerator.parseXmlDataProvider(getClass()
 				.getSimpleName(), testData);
 		String testName = getClass().getSimpleName();
 		Object[][] output = new Object[urls.size()][2];
-		for (int i = 0; i < urls.size(); i++) {
+		
+		Iterator<Map.Entry<String, String>> entries = urls.entrySet().iterator();
+		int i=0;
+		while (entries.hasNext()) {
+		    Map.Entry<String, String> entry = entries.next();
+		    output[i][0] = testName + " : " + entry.getKey();
+			output[i][1] = entry.getValue();
+			i++;
+		}
+		
+		/*for (int i = 0; i < urls.size(); i++) {
 			output[i][0] = testName;
 			output[i][1] = urls.get(i);
-		}
+		}*/
 
 		return output;
 

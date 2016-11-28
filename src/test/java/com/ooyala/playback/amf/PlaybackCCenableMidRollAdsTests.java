@@ -58,6 +58,7 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 
 			logger.info("Midroll Ad started to play");
 
+			event.validateForSpecificPlugins("singleAdPlayed_2", 190, "pulse");
 			event.validate("singleAdPlayed_1", 190);
 
 			// TODO

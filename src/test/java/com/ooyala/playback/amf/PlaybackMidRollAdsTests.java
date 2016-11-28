@@ -41,9 +41,11 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 
 			injectScript();
 
+			Thread.sleep(2000);
+			
 			playValidator.validate("playing_1", 60);
 			extentTest.log(PASS, "Video started playing");
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 
 			seekAction.seekSpecific(15);
 
