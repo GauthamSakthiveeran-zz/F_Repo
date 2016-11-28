@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.freewheel;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 
@@ -51,7 +51,7 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
 			event.validate("playing_FirstTime", 30);
 			extentTest.log(PASS, "verified Players controls");
 
-			seekAction.seekPlayback();
+			seekAction.seekTillEnd().startAction();
 
 			extentTest.log(PASS, "verified Seek functionality");
 

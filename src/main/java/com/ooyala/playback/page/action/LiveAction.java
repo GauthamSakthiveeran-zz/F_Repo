@@ -1,7 +1,5 @@
 package com.ooyala.playback.page.action;
 
-import static org.testng.Assert.assertEquals;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -23,11 +21,11 @@ public class LiveAction extends PlayBackPage implements PlayerAction {
 	}
 
 	@Override
-	public void startAction() {
+	public boolean startAction() {
 
-		boolean live = isElementPresent("LIVE");
+		return isElementPresent("LIVE");
 
-		assertEquals(live, false,
-				"Live text is not showing on the video or video is not live");
+		/*assertEquals(live, false,
+				"Live text is not showing on the video or video is not live");*/
 	}
 }

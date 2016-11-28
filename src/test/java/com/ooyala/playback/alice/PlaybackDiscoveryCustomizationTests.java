@@ -104,7 +104,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
 				playAction.startAction();
 
-				seekAction.seek(20, true);
+				seekAction.setTime(20).fromLast().startAction();//seek(20, true);
 
 				loadingSpinner();
 				try {
@@ -120,7 +120,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 					eventValidator.validateElement("END_SCREEN", 60);
 				} catch (Exception e) {
 					playAction.startAction();
-					seekAction.seek(20, true);
+					seekAction.setTime(20).fromLast().startAction();//seek(20, true);
 					eventValidator.validateElement("END_SCREEN", 60);
 				}
 				discoveryValidator

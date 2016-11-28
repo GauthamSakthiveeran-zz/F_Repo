@@ -74,7 +74,7 @@ public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 			extentTest.log(PASS, "Main video started to play");
 			sleep(500);
 
-			seekAction.seekPlayback();
+			seekAction.seekTillEnd().startAction();
 
 			event.validate("seeked_1", 180);
 

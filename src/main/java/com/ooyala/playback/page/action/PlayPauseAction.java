@@ -22,18 +22,23 @@ public class PlayPauseAction extends PlayBackPage implements PlayerAction {
 	}
 
 	@Override
-	public void startAction() {
+	public boolean startAction() {
 		boolean ispause = isElementPresent("PLAY_BUTTON");
 
 		logger.info("Video Paused" + ispause);
-		if (ispause)
+		if (ispause){
 			try {
-				waitOnElement("PLAY_BUTTON", 10);
-				clickOnIndependentElement("PLAY_BUTTON");
+				if(waitOnElement("PLAY_BUTTON", 10)){
+					return clickOnIndependentElement("PLAY_BUTTON");
+				}else{
+					if(!waitOnElement("PAUSE_SCREEN", 10)) return false;
+					return clickOnIndependentElement("PAUSE_SCREEN");
+				}
+				
 			} catch (Exception e) {
-				waitOnElement("PAUSE_SCREEN", 10);
-				clickOnIndependentElement("PAUSE_SCREEN");
+				logger.error(e.getMessage());
 			}
-
+		}
+		return false;
 	}
 }

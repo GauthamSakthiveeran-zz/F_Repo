@@ -53,7 +53,7 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest{
 
 	        event.validate("playing_1", 90);
 
-	        seekAction.seekPlayback();
+	        seekAction.seekTillEnd().startAction();
 
 	        event.validate("MidRoll_willPlayAds", 100);
 
