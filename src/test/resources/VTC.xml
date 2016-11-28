@@ -132,4 +132,17 @@
             <playerParameter><![CDATA[{"skin":{"inline":{"adScreen":{"showAdMarquee":true}}}}]]></playerParameter>
         </url>
     </test>
+
+    <test name="PlaybackMultipleV4PlayerTests">
+        <url>
+            <description name="" />
+            <embed_code name="" />
+            <pcode name="" />
+            <plugins name="" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+    </test>
 </testdata>

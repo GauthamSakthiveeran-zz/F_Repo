@@ -14,13 +14,14 @@
         </groups>
         <classes>
             <parameter name="testData" value="VTC.xml"/>
-            <parameter name="jsFile" value="vtc/vtc.js"/>
+            <parameter name="jsFile" value="vtc/multiplePlayer.js,vtc/vtc.js"/>
             <class name="com.ooyala.playback.VTC.PlaybackDiscoverTests" />
             <class name="com.ooyala.playback.VTC.PlaybackVolumeTests" />
             <class name="com.ooyala.playback.VTC.PlaybackVideoControllerEventTests" />
             <class name="com.ooyala.playback.VTC.PlaybackVerifyEventsTests" />
             <class name="com.ooyala.playback.VTC.PlaybackAutoplayAutoloopTests" />
             <class name="com.ooyala.playback.VTC.PlaybackOverrideEncodingPriorityTests" />
+            <class name="com.ooyala.playback.VTC.PlaybackMultipleV4PlayerTests" />
         </classes>
     </test>
 
