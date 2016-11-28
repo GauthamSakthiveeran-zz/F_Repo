@@ -230,7 +230,6 @@ public class PlayBackFactory {
 		if (differentElement == null)
 			differentElement = new DifferentElementValidator(driver);
 		return differentElement;
-
 	}
 
 	public static void destroyInstance() {
