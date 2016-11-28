@@ -20,7 +20,7 @@
             <class name="com.ooyala.playback.VTC.PlaybackVideoControllerEventTests" />
             <class name="com.ooyala.playback.VTC.PlaybackVerifyEventsTests" />
             <class name="com.ooyala.playback.VTC.PlaybackAutoplayAutoloopTests" />
-
+            <class name="com.ooyala.playback.VTC.PlaybackOverrideEncodingPriorityTests" />
         </classes>
     </test>
 
