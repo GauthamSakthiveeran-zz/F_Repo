@@ -36,7 +36,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
     </test>
-    <test name="PlaybackEncodingPriorityTests">
+    <test name="PlaybackOverrideEncodingPriorityTests">
         <url>
             <description name="Override_encoding_priority" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
