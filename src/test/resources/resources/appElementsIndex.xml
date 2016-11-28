@@ -27,4 +27,5 @@
     <entry key="sasport">resources/sasport.xml</entry>
     <entry key="adPodEnd">resources/adPodEnd.xml</entry>
     <entry key="page">resources/page.xml</entry>
+    <entry key="multipleplayer">resources/multiplePlayer.xml</entry>
 </properties>
