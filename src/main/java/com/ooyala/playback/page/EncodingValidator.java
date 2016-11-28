@@ -28,7 +28,7 @@ public class EncodingValidator extends PlayBackPage implements
 		this.testUrl = testUrl;
 	}
 
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 		String result = decode(testUrl, "UTF-8");
 		String[] options = result.split("options=");
 		JSONParser parser = new JSONParser();
@@ -36,18 +36,12 @@ public class EncodingValidator extends PlayBackPage implements
 		Object expectedEncodings = "";
 		if (obj.containsKey("encodingPriority")) {
 			Object actualEncodings = obj.get("encodingPriority");
-			// out.println("\nActual encodingPriority :\n" + actualEncodings);
-
 			expectedEncodings = ((JavascriptExecutor) driver)
 					.executeScript("return pp.parameters.encodingPriority");
-			// out.println("\nexpected Encodings Priority :\n" +
-			// expectedEncodings);
-			assertEquals(actualEncodings, expectedEncodings,
-					"Encoding Priorities are as expected");
+			if(actualEncodings==expectedEncodings)
+				return true;
 		}
-		// else
-		// test.log(FAIL, "Encoding Priorities are not passed in test URL");
-
+		return false;
 	}
 
 }

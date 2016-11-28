@@ -20,9 +20,11 @@ public class StartScreenValidator extends PlayBackPage implements
 	}
 
 	@Override
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 
-		waitOnElement("STATE_SCREEN_POSTER", 60);
+		if(!waitOnElement("STATE_SCREEN_POSTER", 60)){
+			return false;
+		}
 
 		// get the style attribute of class startScreenPoster which contailns
 		// preview image url so that we compare it.
@@ -61,6 +63,6 @@ public class StartScreenValidator extends PlayBackPage implements
 		} catch (Exception e) {
 			logger.error("Title or description is failing");
 		}
-
+		return true;
 	}
 }

@@ -20,42 +20,44 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 		addElementToPageElements("fullscreen");
 	}
 
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 		try {
-			waitOnElement("OVERLAY_CLOSE_BTN", 40);
+			if(!waitOnElement("OVERLAY_CLOSE_BTN", 40)) return false;
 			extentTest.log(LogStatus.PASS, "Overlay Shown");
-			clickOnIndependentElement("OVERLAY_CLOSE_BTN");
-			waitOnElement(By.id(element), timeout);
+			if(!clickOnIndependentElement("OVERLAY_CLOSE_BTN")) return false;
+			if(!waitOnElement(By.id(element), timeout)) return false;
 
 		} catch (Exception e) {
 			logger.info("No close button for Overlay");
 			logger.info("No close button seen in normal screen on Overlay....trying in Fullscreen \n");
 			FullScreenAction fullScreenAction = PlayBackFactory.getInstance(
 					driver).getFullScreenAction();
-			fullScreenAction.startAction();
+			if(!fullScreenAction.startAction()) return false;
 
 			if (!getBrowser().equalsIgnoreCase("safari")
 					&& !getPlatform().equalsIgnoreCase("Android")) {
-				waitOnElement("OVERLAY_CLOSE_BTN", 40);
-				clickOnIndependentElement("OVERLAY_CLOSE_BTN");
+				if(!waitOnElement("OVERLAY_CLOSE_BTN", 40)) return false;
+				if(!clickOnIndependentElement("OVERLAY_CLOSE_BTN")) return false;
 				logger.info("Clicked on overlay close button in fullscreen screen \n");
 				logger.info("Overlay gets closed");
 			}
 			Thread.sleep(1000);
-			waitOnElement(By.id(element), timeout);
+			if(!waitOnElement(By.id(element), timeout)) return false;
 
 			if (getBrowser().equalsIgnoreCase("safari")) {
-				clickOnIndependentElement("NORMAL_SCREEN");
+				if(!clickOnIndependentElement("NORMAL_SCREEN")) return false;
 			} else {
 				try {
-					PlayBackFactory.getInstance(driver).getSeekAction().setTime(15).startAction();
-							//.seek("15");
+					
+					if(!PlayBackFactory.getInstance(driver).getSeekAction().setTime(15).startAction()) return false;
+					
 				} catch (Exception e1) {
-					clickOnHiddenElement("NORMAL_SCREEN");
+					if(!clickOnHiddenElement("NORMAL_SCREEN")) return false;
 				}
 			}
 
 		}
+		return true;
 
 	}
 

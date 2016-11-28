@@ -48,7 +48,8 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
 			sleep(2000);
 
-			aspectRatioValidator.verticalVideoValidate("assetDimension_1", 60);
+			//aspectRatioValidator.verticalVideoValidate("assetDimension_1", 60);
+			aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60);
 
 			pause.validate("paused_1", 60);
 
@@ -60,7 +61,7 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
 			logger.info("video seeked");
 
-			aspectRatioValidator.verticalVideoValidate("assetDimension_1", 60);
+			aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60);
 
 			logger.info("validated vertical video dimention");
 

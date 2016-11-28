@@ -16,15 +16,11 @@ public class DestroyValidator extends PlayBackPage implements PlaybackValidator 
 		addElementToPageElements("startscreen");
 	}
 
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 		Thread.sleep(2000);
 		((JavascriptExecutor) driver).executeScript("pp.destroy()");
 
-		waitOnElement("destroy_1", 50);
-
-		boolean isPlayerPresent = isElementPresent("stateScreenSelectable");
-
-		Assert.assertFalse(isPlayerPresent, "Player is not present");
+		return waitOnElement("destroy_1", 50) && isElementPresent("stateScreenSelectable");
 
 	}
 

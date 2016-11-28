@@ -21,12 +21,12 @@ public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 		addElementToPageElements("replay");
 	}
 
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 
-		waitOnElement("END_SCREEN", 60);
-		waitOnElement("REPLAY", 60);
-		clickOnIndependentElement("REPLAY");
-
-		waitOnElement(By.id(element), timeout);
+		return
+				waitOnElement("END_SCREEN", 60)
+				&& waitOnElement("REPLAY", 60)
+				&& clickOnIndependentElement("REPLAY")
+				&& waitOnElement(By.id(element), timeout);
 	}
 }

@@ -29,8 +29,8 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		addElementToPageElements("adPodEnd");
 	}
 
-	public void validate(String element, int timeout) throws Exception {
-		waitOnElement(By.id(element), timeout);
+	public boolean validate(String element, int timeout) throws Exception {
+		return waitOnElement(By.id(element), timeout);
 	}
 
 	public void eventAction(String element) throws Exception {
