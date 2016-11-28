@@ -59,15 +59,16 @@ public abstract class PlayBackPage extends WebPage {
 		
 		try{
 			if(super.waitOnElement(elementKey, timeout)){
-				extentTest.log(LogStatus.PASS, "Element found - "+elementKey + ", wait successful.");
+//				extentTest.log(LogStatus.PASS, "Element found - "+elementKey + ", wait successful."); TODO - extentTest is null
 				return true;
 			}else{
-				extentTest.log(LogStatus.FAIL, "Element not found - "+elementKey + ", wait unsuccessful.");
+//				extentTest.log(LogStatus.FAIL, "Element not found - "+elementKey + ", wait unsuccessful.");
 				return false;
 			}
 			
 		}catch(Exception ex){
-			extentTest.log(LogStatus.FAIL, "wait on element "+elementKey+"  failed after -"+timeout+" : "+ex.getLocalizedMessage());
+//			extentTest.log(LogStatus.FAIL, "wait on element "+elementKey+"  failed after -"+timeout+" : "+ex.getLocalizedMessage());
+			ex.printStackTrace();
 		}
 		return false;
 		
@@ -77,21 +78,21 @@ public abstract class PlayBackPage extends WebPage {
 	protected boolean clickOnIndependentElement(String elementKey) {
 		try {
 			boolean flag = super.clickOnIndependentElement(elementKey);
-			if(flag)
+			/*if(flag)
 				extentTest.log(LogStatus.PASS, elementKey +" found and clicked on successfully.");
 			else
-				extentTest.log(LogStatus.FAIL, "Exception occured while clicking on element with key "+ elementKey);
+				extentTest.log(LogStatus.FAIL, "Exception occured while clicking on element with key "+ elementKey);*/
 			return flag;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			logger.error("Exception occured while clicking on element with key "
 					+ elementKey);
-			extentTest.log(LogStatus.WARNING,"Exception occured while clicking on element with key "
-					+ elementKey);
+			/*extentTest.log(LogStatus.WARNING,"Exception occured while clicking on element with key "
+					+ elementKey);*/
 			logger.error("Calling clickOnHiddenElement function on the element "
 					+ elementKey);
-			extentTest.log(LogStatus.INFO,"Calling clickOnHiddenElement function on the element "
-					+ elementKey);
+			/*extentTest.log(LogStatus.INFO,"Calling clickOnHiddenElement function on the element "
+					+ elementKey);*/
 			return clickOnHiddenElement(elementKey);
 		}
 
@@ -104,16 +105,16 @@ public abstract class PlayBackPage extends WebPage {
 			if (element != null)
 				js.executeScript("arguments[0].click()", element);
 			else{
-				extentTest.log(LogStatus.FAIL, "Element not found - " +  elementKey);
+//				extentTest.log(LogStatus.FAIL, "Element not found - " +  elementKey);
 				return false;
 			}
-			extentTest.log(LogStatus.PASS, "Clicked on hidden element - " +  elementKey);	
+//			extentTest.log(LogStatus.PASS, "Clicked on hidden element - " +  elementKey);	
 			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			logger.info("Exception while clicking on hidden element "
 					+ ex.getLocalizedMessage());
-			extentTest.log(LogStatus.FAIL, "Exception while clicking on hidden element " + ex.getLocalizedMessage());
+//			extentTest.log(LogStatus.FAIL, "Exception while clicking on hidden element " + ex.getLocalizedMessage());
 			return false;
 		}
 	}
@@ -141,7 +142,7 @@ public abstract class PlayBackPage extends WebPage {
 			}
 		}
 	}
-
+	
 	public void setExtentTest(ExtentTest test) {
 		this.extentTest = test;
 	}

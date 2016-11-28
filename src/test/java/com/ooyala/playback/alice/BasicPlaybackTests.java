@@ -49,7 +49,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
 			logger.info("Verified that video is getting pause");
 
-			play.validate("playing_2", 60);
+			pause.validate("playing_2", 60);
 
 			seek.validate("seeked_1", 60);
 

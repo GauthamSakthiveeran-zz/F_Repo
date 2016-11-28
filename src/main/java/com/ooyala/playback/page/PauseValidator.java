@@ -36,7 +36,6 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 		}
 
 		if(!waitOnElement(By.id(element), timeout)) return false;
-		logger.info("Video paused");
 		return true;
 	}
 }

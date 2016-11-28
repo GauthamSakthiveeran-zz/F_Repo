@@ -5,13 +5,8 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
@@ -76,8 +71,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
-		String testCaseName = getTestCaseName(method, testData);
-		extentTest = extentReport.startTest(testCaseName);
+//		String testCaseName = getTestCaseName(method, testData);
+		extentTest = extentReport.startTest(testData[0].toString());
 
 		try {
 			Field[] fs = this.getClass().getDeclaredFields();
