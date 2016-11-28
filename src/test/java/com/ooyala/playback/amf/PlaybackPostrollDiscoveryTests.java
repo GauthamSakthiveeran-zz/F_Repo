@@ -63,7 +63,7 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest{
 	        playAction.startActionOnScreen();
 	        
 	        Thread.sleep(3000);
-	        seekAction.seek(10, true);
+	        seekAction.setTime(10).fromLast().startAction();//seek(10, true);
 
 	        loadingSpinner();
 	        
@@ -72,14 +72,17 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest{
 	        event.validate("willPlaySingleAd_1", 90);
 	        extentTest.log(PASS, "Postroll Ad started");
 	        
-	        Map<String, String> map = parseURL(url) ;
+	        event.validate("singleAdPlayed_1", 90);
+	        
+	        //TODO replace the above
+	        /*Map<String, String> map = parseURL(url) ;
 
 	        if(map!=null && map.get("ad_plugin")!=null && map.get("ad_plugin").contains("pulse")) {
 	        	event.validate("singleAdPlayed_2", 90);
 	        }
 	        else{
 	        	event.validate("singleAdPlayed_1", 90);
-	        }
+	        }*/
 	        extentTest.log(PASS, "Postroll Ad completed");
 	        extentTest.log(PASS, "Verified PostRoll Ads test");
 

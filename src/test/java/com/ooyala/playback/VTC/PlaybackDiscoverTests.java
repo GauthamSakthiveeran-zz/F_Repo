@@ -49,7 +49,7 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
             discoveryValidator.validate("reportDiscoveryClick_1", 60);
             logger.info("verified discovery");
 
-            pageFactory.getSeekAction().seek(25, true);
+            pageFactory.getSeekAction().setTime(25).fromLast().startAction();//seek(25, true);
 
             discoveryUpNext.validate("UPNEXT_CONTENT", 60);
             logger.info("Verified UpNext content");

@@ -22,10 +22,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
 	}
 
 	public void validate(String element, int timeout) throws Exception {
-		waitOnElement(element, timeout);
-	}
-
-	public void clickThroughAds(Map<String,String> data) throws Exception {
+		
+		Map<String,String> data = parseURL();
 		
 		if(data==null){
 			throw new Exception("Map is null");
@@ -79,7 +77,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
 			boolean isAd = isAdPlaying();
 			if (isAd) {
 
-				if (getPlatform().equalsIgnoreCase("Android") || isStreamingProtocolPrioritized(data, "hls")) {
+				if (getPlatform().equalsIgnoreCase("Android") || isStreamingProtocolPrioritized("hls")) {
 					((JavascriptExecutor) driver).executeScript("pp.play()");
 				} else {
 					clickOnIndependentElement("adPanel");

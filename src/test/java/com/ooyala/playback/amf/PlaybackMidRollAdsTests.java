@@ -2,8 +2,6 @@ package com.ooyala.playback.amf;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 
-import java.util.Map;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +9,6 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.url.Url;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMidRollAdsTests extends PlaybackWebTest {
@@ -37,7 +34,7 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 			
-			Map<String,String> map = parseURL(url);
+			
 
 			playValidator.waitForPage();
 			Thread.sleep(2000);
@@ -48,7 +45,7 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 			extentTest.log(PASS, "Video started playing");
 			Thread.sleep(5000);
 
-			seekAction.seekSpecific(map, 15);
+			seekAction.seekSpecific(15);
 
 			loadingSpinner();
 			event.validate("videoPlaying_1", 90);
@@ -56,13 +53,10 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 			extentTest.log(PASS, "Midroll Ad started to play");
 			event.validate("singleAdPlayed_1", 160);
 			extentTest.log(PASS, "Midroll Ad ended");
+			
+			event.validateForSpecificPlugins("singleAdPlayed_2", 160, "pulse");
 
-			if (map!=null && map.get("ad_plugin")!=null && map.get("ad_plugin").contains("pulse")) {
-				event.validate("singleAdPlayed_2", 160);
-				Thread.sleep(2000);
-			}
-
-			seekAction.seekSpecific(map, 10);
+			seekAction.seekSpecific(10);
 
 			event.validate("videoPlayed_1", 160);
 			event.validate("played_1", 160);

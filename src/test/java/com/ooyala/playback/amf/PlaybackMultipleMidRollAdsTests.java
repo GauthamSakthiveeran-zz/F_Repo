@@ -48,17 +48,13 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 			
 			playValidator.validate("playing_1", 90);
 			
-			Map<String,String> map = parseURL(url);
+			seekAction.setAdPlugin("pulse").startAction();
 			
-			if(map!=null && map.get("ad_plugin")!=null && !map.get("ad_plugin").contains("pulse"))
-				seekAction.seekPlayback(); 
-
 	        event.validate("videoPlayed_1", 200);
 	        
 	        poddedAdValidator.validate("countPoddedAds", 60); // TODO : need to check diff between willPlayAds_ and willPlaySingleAds_
 
-	        if(map!=null && map.get("ad_plugin")!=null && !map.get("ad_plugin").contains("pulse"))
-	            event.validate("seeked_1", 200); 
+	        event.validateForSpecificPlugins("seeked_1", 200, "pulse"); 
 
 	        event.validate("played_1", 200);
 	        extentTest.log(PASS, "Verified Multiple MidRoll Ads");

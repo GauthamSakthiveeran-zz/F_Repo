@@ -28,6 +28,7 @@ public class SimpleHttpServer {
 			server.createContext("/js", new GetHandler());
 			server.setExecutor(null); // creates a default executor
 			server.start();
+			logger.info("***** Server Started****");
 		} catch (Exception ex) {
 			logger.info("Not able to start the http server: "
 					+ ex.getLocalizedMessage());
