@@ -1,12 +1,17 @@
 package com.ooyala.playback.page;
 
+import static java.lang.Character.CONTROL;
 import static java.net.URLDecoder.decode;
+import static org.openqa.selenium.Keys.DELETE;
 import static org.testng.Assert.assertEquals;
 
+import com.ooyala.playback.page.action.PlayAction;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 /**
@@ -20,6 +25,7 @@ public class EncodingValidator extends PlayBackPage implements
 	public EncodingValidator(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(webDriver, this);
+		addElementToPageElements("page");
 	}
 
 	String testUrl = new String();
@@ -29,25 +35,44 @@ public class EncodingValidator extends PlayBackPage implements
 	}
 
 	public void validate(String element, int timeout) throws Exception {
-		String result = decode(testUrl, "UTF-8");
+
+		verifyEncodingPriority(testUrl);
+
+		}
+
+	public String getNewUrl(String parameter, String browser){
+		clickOnIndependentElement("OPTIONAL");
+		waitOnElement("PLAYER_PARAMETER_INPUT",20);
+
+		if (browser.equalsIgnoreCase("internet explorer")){
+			WebElement playerParameter = getWebElement("PLAYER_PARAMETER_INPUT");
+			playerParameter.sendKeys(CONTROL + "a");
+			playerParameter.sendKeys(DELETE);
+		} else
+			clearTextFromElement("PLAYER_PARAMETER_INPUT");
+
+		writeTextIntoTextBox("PLAYER_PARAMETER_INPUT",parameter);
+		clickOnIndependentElement("TEST_VIDEO");
+		waitForPage();
+
+		return driver.getCurrentUrl();
+	}
+
+	public void verifyEncodingPriority(String url) throws Exception{
+		String result = decode(url, "UTF-8");
 		String[] options = result.split("options=");
 		JSONParser parser = new JSONParser();
 		JSONObject obj = (JSONObject) parser.parse(options[1]);
 		Object expectedEncodings = "";
 		if (obj.containsKey("encodingPriority")) {
 			Object actualEncodings = obj.get("encodingPriority");
-			// out.println("\nActual encodingPriority :\n" + actualEncodings);
-
+			logger.info("\nActual encodingPriority :\n" + actualEncodings);
 			expectedEncodings = ((JavascriptExecutor) driver)
 					.executeScript("return pp.parameters.encodingPriority");
-			// out.println("\nexpected Encodings Priority :\n" +
-			// expectedEncodings);
+			logger.info("\nExpected encodingPriority :\n" + expectedEncodings);
 			assertEquals(actualEncodings, expectedEncodings,
 					"Encoding Priorities are as expected");
 		}
-		// else
-		// test.log(FAIL, "Encoding Priorities are not passed in test URL");
-
 	}
 
 }
