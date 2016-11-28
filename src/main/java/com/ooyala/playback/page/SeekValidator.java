@@ -20,20 +20,11 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 		addElementToPageElements("play");
 	}
 
-	public void validate(String element, int timeout) throws Exception {
-		/*
-		 * while (true) { if (Double.parseDouble(((JavascriptExecutor)
-		 * driver).executeScript( "return pp.getPlayheadTime();").toString()) >
-		 * 5) { PlayBackFactory.getInstance(driver).getSeekAction().seek(7,
-		 * true); // loadingSpinner(); ((JavascriptExecutor)
-		 * driver).executeScript("pp.pause();"); Thread.sleep(2000);
-		 * ((JavascriptExecutor) driver).executeScript("pp.play();"); break; } }
-		 */
-
-		PlayBackFactory.getInstance(driver).getSeekAction().seekTillEnd().startAction();
-
-		waitOnElement(By.id(element), timeout);
-		logger.info("Video seeked successfully");
+	public boolean validate(String element, int timeout) throws Exception {
+		
+		return
+				PlayBackFactory.getInstance(driver).getSeekAction().seekTillEnd().startAction()
+				&& waitOnElement(By.id(element), timeout);
 	}
 
 }

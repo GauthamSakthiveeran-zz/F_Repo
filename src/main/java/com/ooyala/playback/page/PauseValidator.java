@@ -5,8 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.ooyala.playback.factory.PlayBackFactory;
-
 /**
  * Created by soundarya on 10/27/16.
  */
@@ -23,21 +21,22 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 		addElementToPageElements("pause");
 	}
 
-	public void validate(String element, int timeout) throws Exception {
-		waitOnElement("PAUSE_BUTTON", 60);
-		clickOnIndependentElement("PAUSE_BUTTON");
-		//PlayBackFactory.getInstance(driver).getPauseAction().startAction();
+	public boolean  validate(String element, int timeout) throws Exception {
+		if(!waitOnElement("PAUSE_BUTTON", 60)) return false;
+		if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
+
 		Thread.sleep(1000);
 		if (isElementPresent("PAUSE_SCREEN")) {
 			logger.info("verify pause screen");
-			waitOnElement("PAUSE_SCREEN", 60);
+			if(!waitOnElement("PAUSE_SCREEN", 60)) return false;
 		} else {
-			// verify discovery if there is on pauseDiscovery
+
 			logger.info("verify discovery if set on pausescreen");
-			waitOnElement("CONTENT_SCREEN", 60);
+			if(!waitOnElement("CONTENT_SCREEN", 60)) return false;
 		}
 
-		waitOnElement(By.id(element), timeout);
+		if(!waitOnElement(By.id(element), timeout)) return false;
 		logger.info("Video paused");
+		return true;
 	}
 }

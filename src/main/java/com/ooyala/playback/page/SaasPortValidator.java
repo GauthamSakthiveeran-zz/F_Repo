@@ -25,11 +25,11 @@ public class SaasPortValidator extends PlayBackPage implements PlaybackValidator
     }
 
     @Override
-    public void validate(String element, int timeout) throws Exception {
+    public boolean validate(String element, int timeout) throws Exception {
             if(element.contains("CREATE_ENTITLEMENT")){
             try{
                 boolean entitlementPresent;
-                searchEntitlement();
+                if(!searchEntitlement()) return false;
                 try {
                     isElementVisible("ENTITLEMENT");
                     entitlementPresent = true;
@@ -37,42 +37,44 @@ public class SaasPortValidator extends PlayBackPage implements PlaybackValidator
                     entitlementPresent = false;
                 }
                 if(entitlementPresent){
-                    clickOnIndependentElement("DELETE_BTN");
+                    if(!clickOnIndependentElement("DELETE_BTN")) return false;
                     logger.info("Deleted asset from entitlement");
-                    createEntitlement();
+                    if(!createEntitlement()) return false;
                     logger.info("Created the entitlement");
                 }else {
-                    createEntitlement();
+                    if(!createEntitlement()) return false;
                     logger.info("Created the entitlement");
                 }
             }catch (Exception e){
                 e.getMessage();
+                return false;
             }
         }else{
-                searchEntitlement();
-                waitOnElement("DISPLAY_BTN",5);
+                if(!searchEntitlement()) return false;
+                if(!waitOnElement("DISPLAY_BTN",5)) return false;
                 if (!isElementPresent("DISPLAY_BTN")){
                     throw new Exception("Device is not registered for entitlement on sasport.");
                 }
-                clickOnIndependentElement("DISPLAY_BTN");
-                waitOnElement("PLAYREADY", 5);
+                if(!clickOnIndependentElement("DISPLAY_BTN")) return false;
+                if(!waitOnElement("PLAYREADY", 5)) return false;
                 logger.info("Device gets registered for entitlement on sasport.");
         }
+        return true;    
     }
 
-    public void searchEntitlement() throws Exception {
+    private boolean searchEntitlement() throws Exception {
         driver.get(sasportUrl);
-        waitOnElement("SEARCH_BTN",10);
-        clickOnIndependentElement("SEARCH_BTN");
+        return waitOnElement("SEARCH_BTN",10) && clickOnIndependentElement("SEARCH_BTN");
     }
 
-    public void createEntitlement() throws Exception {
-        waitOnElement("CREATE_ENTITLEMENT_BTN",10);
-        clickOnIndependentElement("CREATE_ENTITLEMENT_BTN");
-        waitOnElement("CREATE_ENTITLEMENT_ID", 10);
-        writeTextIntoTextBox("CREATE_ENTITLEMENT_ID", "embedCode");
-        writeTextIntoTextBox("EXTERNAL_PRODUCT_ID", "abc");
-        writeTextIntoTextBox("MAX_DEVICES", "2");
-        clickOnIndependentElement("CREATE_BTN");
+    private boolean createEntitlement() throws Exception {
+    	return
+        waitOnElement("CREATE_ENTITLEMENT_BTN",10)
+        && clickOnIndependentElement("CREATE_ENTITLEMENT_BTN")
+        && waitOnElement("CREATE_ENTITLEMENT_ID", 10)
+        && writeTextIntoTextBox("CREATE_ENTITLEMENT_ID", "embedCode")
+        && writeTextIntoTextBox("EXTERNAL_PRODUCT_ID", "abc")
+        && writeTextIntoTextBox("MAX_DEVICES", "2")
+        && clickOnIndependentElement("CREATE_BTN");
     }
 }

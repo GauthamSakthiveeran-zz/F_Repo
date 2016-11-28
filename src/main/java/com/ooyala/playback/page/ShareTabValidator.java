@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 /**
  * Created by soundarya on 11/8/16.
  */
@@ -19,22 +21,22 @@ public class ShareTabValidator extends PlayBackPage implements
 	}
 
 	@Override
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 		try {
-			waitOnElement("SHARE_BTN", 60);
-			clickOnIndependentElement("SHARE_BTN");
+			if(!waitOnElement("SHARE_BTN", 60)) return false;
+			if(!clickOnIndependentElement("SHARE_BTN")) return false;
 			Thread.sleep(5000);
 		} catch (Exception e) {
 			logger.info("exception \n" + e.getMessage());
-			clickOnIndependentElement("MORE_OPTION_ITEM");
-			waitOnElement("SHARE_BTN", 60);
-			clickOnIndependentElement("SHARE_BTN");
+			if(!clickOnIndependentElement("MORE_OPTION_ITEM")) return false;
+			if(!waitOnElement("SHARE_BTN", 60)) return false;
+			if(!clickOnIndependentElement("SHARE_BTN")) return false;
 			if (!(isElementPresent("SHARE_TAB")))
-				clickOnIndependentElement("SHARE_BTN");
+				if(!clickOnIndependentElement("SHARE_BTN")) return false;
 		}
-		waitOnElement("CONTENT_SCREEN", 60);
+		if(!waitOnElement("CONTENT_SCREEN", 60)) return false;
 		if (!(isElementPresent("SHARE_TAB")))
-			clickOnIndependentElement("SHARE_BTN");
+			if(!clickOnIndependentElement("SHARE_BTN")) return false;
 		Thread.sleep(2000);
 
 		String shareTab = readTextFromElement("SHARE_TAB");
@@ -43,13 +45,17 @@ public class ShareTabValidator extends PlayBackPage implements
 
 		String embedTab = readTextFromElement("EMBED_TAB");
 		Log.info("Text in Embed Tab  " + embedTab);
-
-		Assert.assertTrue(shareTab.equalsIgnoreCase("Compartir"),
-				"Localization Failing");
-		Assert.assertTrue(embedTab.equalsIgnoreCase("Insertar"),
-				"Localization Failing");
-		clickOnIndependentElement("SHARE_CLOSE");
-		Log.info("ShareTab and Embed Tab localization verified");
+		
+		if(!shareTab.equalsIgnoreCase("Compartir")){
+			extentTest.log(LogStatus.FAIL, "Localization Failing");
+			return false;
+		}
+		
+		if(!embedTab.equalsIgnoreCase("Insertar")){
+			extentTest.log(LogStatus.FAIL, "Localization Failing");
+			return false;
+		}
+		return clickOnIndependentElement("SHARE_CLOSE");
 
 	}
 

@@ -214,7 +214,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			if(xmlFile==null || xmlFile.isEmpty()){
 				xmlFile = getClass().getSimpleName();
 				String packagename = getClass().getPackage().getName();
-				if(packagename.contains("amf")){
+				if(packagename.contains("amf")){ // TODO
 					xmlFile = "amf/" + xmlFile + ".xml";
 				}
 				

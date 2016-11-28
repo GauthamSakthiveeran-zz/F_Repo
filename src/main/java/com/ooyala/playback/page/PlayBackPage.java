@@ -17,6 +17,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import com.ooyala.facile.page.WebPage;
 import com.ooyala.playback.url.PropertyReader;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 public abstract class PlayBackPage extends WebPage {
 
@@ -52,16 +53,44 @@ public abstract class PlayBackPage extends WebPage {
 		String platformName = cap.getPlatform().toString();
 		return platformName;
 	}
+	
+	@Override
+	public boolean waitOnElement(String elementKey, int timeout) {
+		
+		try{
+			if(super.waitOnElement(elementKey, timeout)){
+				extentTest.log(LogStatus.PASS, "Element found - "+elementKey + ", wait successful.");
+				return true;
+			}else{
+				extentTest.log(LogStatus.FAIL, "Element not found - "+elementKey + ", wait unsuccessful.");
+				return false;
+			}
+			
+		}catch(Exception ex){
+			extentTest.log(LogStatus.FAIL, "wait on element "+elementKey+"  failed after -"+timeout+" : "+ex.getLocalizedMessage());
+		}
+		return false;
+		
+	}
 
 	@Override
 	protected boolean clickOnIndependentElement(String elementKey) {
 		try {
-			return super.clickOnIndependentElement(elementKey);
+			boolean flag = super.clickOnIndependentElement(elementKey);
+			if(flag)
+				extentTest.log(LogStatus.PASS, elementKey +" found and clicked on successfully.");
+			else
+				extentTest.log(LogStatus.FAIL, "Exception occured while clicking on element with key "+ elementKey);
+			return flag;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			logger.error("Exception occured while clicking on element with key "
 					+ elementKey);
+			extentTest.log(LogStatus.WARNING,"Exception occured while clicking on element with key "
+					+ elementKey);
 			logger.error("Calling clickOnHiddenElement function on the element "
+					+ elementKey);
+			extentTest.log(LogStatus.INFO,"Calling clickOnHiddenElement function on the element "
 					+ elementKey);
 			return clickOnHiddenElement(elementKey);
 		}
@@ -74,13 +103,17 @@ public abstract class PlayBackPage extends WebPage {
 			WebElement element = getWebElement(elementKey);
 			if (element != null)
 				js.executeScript("arguments[0].click()", element);
-			else
+			else{
+				extentTest.log(LogStatus.FAIL, "Element not found - " +  elementKey);
 				return false;
+			}
+			extentTest.log(LogStatus.PASS, "Clicked on hidden element - " +  elementKey);	
 			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			logger.info("Exception while clicking on hidden element "
 					+ ex.getLocalizedMessage());
+			extentTest.log(LogStatus.FAIL, "Exception while clicking on hidden element " + ex.getLocalizedMessage());
 			return false;
 		}
 	}

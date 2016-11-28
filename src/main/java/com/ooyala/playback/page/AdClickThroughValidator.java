@@ -21,7 +21,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
 		addElementToPageElements("adclicks");
 	}
 
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 		
 		Map<String,String> data = parseURL();
 		
@@ -40,29 +40,28 @@ public class AdClickThroughValidator extends PlayBackPage implements
 																// (Android)
 				if (!value.contains("freewheel")) {
 					if (value.contains("vast")) {
-						clickOnIndependentElement("adScreenPanel");
+						if(!clickOnIndependentElement("adScreenPanel")) return false;
 					} else {
-						clickOnIndependentElement("adScreenPanel1");
+						if(!clickOnIndependentElement("adScreenPanel1")) return false;
 					}
-					waitOnElement("adsClicked_1", 10);
-					waitOnElement("adsClicked_videoWindow", 10);
+					if(!waitOnElement("adsClicked_1", 10)) return false;
+					if(!waitOnElement("adsClicked_videoWindow", 10)) return false;
 
 				}
 			}
 			if (!value.contains("ima")) {
 				try {
-					clickOnHiddenElement("learnMore");
-					waitOnElement("adsClicked_learnMoreButton", 5);
+					if(!clickOnHiddenElement("learnMore")) return false;
+					if(!waitOnElement("adsClicked_learnMoreButton", 5)) return false;
 				} catch (Exception e) {
-					clickOnIndependentElement("learnMore");
-					waitOnElement("adsClicked_learnMoreButton", 20);
+					if(!clickOnIndependentElement("learnMore")) return false;
+					if(!waitOnElement("adsClicked_learnMoreButton", 20)) return false;
 				}
 			}
-			extentTest.log(PASS,
-					"AdsClicked by clicking on the learn more button");
+			extentTest.log(PASS,"AdsClicked by clicking on the learn more button");
+			
 			sleep(2000);
-			java.util.Set<java.lang.String> windowHandles = driver
-					.getWindowHandles();
+			java.util.Set<java.lang.String> windowHandles = driver.getWindowHandles();
 			int count = windowHandles.size();
 			log.info("Window handles : " + count);
 
@@ -78,16 +77,18 @@ public class AdClickThroughValidator extends PlayBackPage implements
 			if (isAd) {
 
 				if (getPlatform().equalsIgnoreCase("Android") || isStreamingProtocolPrioritized("hls")) {
-					((JavascriptExecutor) driver).executeScript("pp.play()");
+					((JavascriptExecutor) driver).executeScript("pp.play()"); // TODO
 				} else {
-					clickOnIndependentElement("adPanel");
+					if(!clickOnIndependentElement("adPanel")) return false;
 				}
 
 			}
-
+			return true;
+			
 		} else {
-			throw new Exception("PlayerPropertyValue should not be null.");
+			throw new Exception("Ad plugin not present in test url");
 		}
+		
 	}
 
 	public boolean isAdPlaying() {

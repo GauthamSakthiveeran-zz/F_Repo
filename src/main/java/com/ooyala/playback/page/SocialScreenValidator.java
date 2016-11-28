@@ -31,8 +31,8 @@ public class SocialScreenValidator extends PlayBackPage implements
 		addElementToPageElements("socialscreen");
 
 	}
-
-	public void validate(String element, int timeout) throws Exception {
+	
+	public boolean validate(String element, int timeout) throws Exception {
 
 		try {
 			waitOnElement("SHARE_BTN", 10);
@@ -77,7 +77,7 @@ public class SocialScreenValidator extends PlayBackPage implements
         sleep(10000);
         assertEquals(switchToWindowByTitle("Google+", getBrowser()), true, "GooglePlus link is not working on share tab.");
         // Verify Social screen is closed
-        clickOnIndependentElement("SHARE_CLOSE_BTN");
+        return clickOnIndependentElement("SHARE_CLOSE_BTN");
     }
 
     public boolean switchToWindowByTitle(String title,String browserName) throws InterruptedException {

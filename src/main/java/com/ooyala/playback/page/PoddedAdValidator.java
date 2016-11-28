@@ -7,6 +7,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElemen
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.relevantcodes.extentreports.LogStatus;
@@ -20,26 +21,33 @@ public class PoddedAdValidator extends PlayBackPage implements
 		super(webDriver);
 	}
 
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 		try {
 			int result = parseInt((((JavascriptExecutor) driver)
 					.executeScript("return " + element + ".textContent"))
 					.toString());
 			for (int i = 1; i <= result; i++) {
-				(new WebDriverWait(driver, 100))
+				WebElement willPlaySingleAd = (new WebDriverWait(driver, 100))
 						.until(presenceOfElementLocated(id("willPlaySingleAd_"
 								+ i)));
 				extentTest.log(LogStatus.PASS, "Podded Ad started");
-				(new WebDriverWait(driver, 160))
+				WebElement singleAdPlayed = (new WebDriverWait(driver, 160))
 						.until(presenceOfElementLocated(id("singleAdPlayed_"
 								+ i)));
+				
+				if(willPlaySingleAd==null || singleAdPlayed==null){
+					extentTest.log(LogStatus.FAIL, "Ad started elements from injected scripts are not found");
+					return false;
+				}
+					
 				extentTest.log(LogStatus.PASS, "Podded Ad Completed");
 			}
-
+			return true;
 		} catch (Exception ex) {
+			extentTest.log(LogStatus.FAIL, ex.getLocalizedMessage());
 			ex.printStackTrace();
 		}
-
+		return false;
 	}
 
 }

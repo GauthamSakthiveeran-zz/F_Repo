@@ -43,21 +43,21 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 	}
 
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 
-		// clickOnIndependentElement("PLAY_BUTTON");
-		PlayBackFactory.getInstance(driver).getPlayAction().startAction();
+		if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction()) return false;
 		
 		extentTest.log(LogStatus.PASS, "Clicked on play button");
 		Thread.sleep(1000);
 		
 		loadingSpinner();
 
-		waitOnElement("PLAYING_SCREEN", 60);
+		if(!waitOnElement("PLAYING_SCREEN", 60)) return false;
 
-		waitOnElement(By.id(element), timeout);
+		if(!waitOnElement(By.id(element), timeout)) return false;
 		extentTest.log(LogStatus.PASS,
 				"Video Playing and validation of element " + element
 						+ " is successful");
+		return true;
 	}
 }

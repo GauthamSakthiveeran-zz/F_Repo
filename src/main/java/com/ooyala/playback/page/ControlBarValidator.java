@@ -8,6 +8,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 /**
  * Created by soundarya on 11/16/16.
  */
@@ -26,7 +28,7 @@ public class ControlBarValidator extends PlayBackPage implements
 
 	}
 
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 
 		ArrayList<String> controlBarElement = new ArrayList<String>();
 
@@ -35,31 +37,33 @@ public class ControlBarValidator extends PlayBackPage implements
 				"DISCOVERY_BTN", "TIME_DURATION"));
 
 		boolean iscontrolshown = isElementPresent("CONTROL_BAR");
-
+		
 		if (!iscontrolshown) {
-			System.out
-					.println("Control bar is hiden hence mouse hovering on it");
+			extentTest.log(LogStatus.INFO, "Control bar is hiden hence mouse hovering on it");
 			Actions act = new Actions(driver);
-
 			act.moveToElement(getWebElement("CONTROL_BAR")).build().perform();
 
 		}
 		try {
 			for (String icon : controlBarElement) {
-				waitOnElement(icon, 60);
+				if(!waitOnElement(icon, 60)) return false;
 			}
 			boolean ismoreoption = isElementVisible("MORE_OPTION_ITEM");
 			if (ismoreoption) {
-				clickOnIndependentElement("MORE_OPTION_ITEM");
-				waitOnElement("DISCOVERY_BTN", 60);
-				waitOnElement("QUALITY_BTN", 60);
-				clickOnIndependentElement("CC_PANEL_CLOSE");
-			}
+				return
+						clickOnIndependentElement("MORE_OPTION_ITEM")
+						&& waitOnElement("DISCOVERY_BTN", 60)
+						&& waitOnElement("QUALITY_BTN", 60)
+						&& clickOnIndependentElement("CC_PANEL_CLOSE");
+			}else
+				return false;
 		} catch (Exception e) {
 
-			waitOnElement("PLAY_PAUSE", 60);
-			waitOnElement("VOLUME_BUTTON", 60);
-			waitOnElement("FULLSCREEN_BTN", 60);
+			return
+					waitOnElement("PLAY_PAUSE", 60)
+					&& waitOnElement("VOLUME_BUTTON", 60)
+					&& waitOnElement("FULLSCREEN_BTN", 60);
+			
 			// seleniumActions.waitForElement("OOYALA_LOGO", 60);
 
 		}

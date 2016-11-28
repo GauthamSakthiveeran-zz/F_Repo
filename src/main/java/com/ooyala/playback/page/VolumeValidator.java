@@ -7,6 +7,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 /**
  * Created by soundarya on 11/8/16.
  */
@@ -24,7 +26,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	@Override
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 		double expectedmutevol = 0.0;
 		double expectedmaxvol = 1.0;
 
@@ -39,18 +41,25 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 						.perform();
 			}
 			double getmutevol = getVolume("VOLUME_MAX");
-			Assert.assertEquals(getmutevol, expectedmutevol,
-					"Mute volume is't matching");
+			if(getmutevol!=expectedmutevol){
+				extentTest.log(LogStatus.FAIL, "Mute volume is't matching");
+				return false;
+			}
 			Thread.sleep(2000);
 
 			double getMaxVol = getVolume("VOLUME_MUTE");
-			Assert.assertEquals(getMaxVol, expectedmaxvol,
-					"Max volume is not matched");
+			
+			if(getMaxVol!=expectedmaxvol){
+				extentTest.log(LogStatus.FAIL, "Max volume is not the same");
+				return false;
+			}
+			
 		} catch (Exception e) {
             Log.info("Volume control is not working properly"
 					+ e.getMessage());
+            return false;
 		}
-
+		return true;
 	}
 
 	protected double getVolume(String element) throws Exception {
