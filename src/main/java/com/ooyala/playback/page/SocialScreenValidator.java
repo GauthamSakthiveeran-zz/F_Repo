@@ -82,7 +82,6 @@ public class SocialScreenValidator extends PlayBackPage implements
 
     public boolean switchToWindowByTitle(String title,String browserName) throws InterruptedException {
         String currentWindow = getCurrentWindow();
-        logger.info("currentWindow is :" +currentWindow);
         Set<String> availableWindows = driver.getWindowHandles();
         if (!availableWindows.isEmpty()) {
             for (String windowId : availableWindows) {
@@ -119,8 +118,8 @@ public class SocialScreenValidator extends PlayBackPage implements
                 WebElement updateStatus=getWebElement("TWITTER_STATUS");
                 updateStatus.clear();
                 updateStatus.sendKeys(tweetItOnTwitter);
-                getWebElement("TWEETER_USERNAME").sendKeys("ooyalatester@vertisinfotech.com");
-                getWebElement("TWEETER_PASSWORD").sendKeys("!password*");
+                writeTextIntoTextBox("TWEETER_USERNAME","ooyalatester@vertisinfotech.com");
+                writeTextIntoTextBox("TWEETER_PASSWORD","!password*");
                 waitOnElement("TWITTER_LOGIN_BUTTON",30);
                 clickOnHiddenElement("TWITTER_LOGIN_BUTTON");
                 Thread.sleep(5000);
@@ -133,27 +132,9 @@ public class SocialScreenValidator extends PlayBackPage implements
                 driver.switchTo().window(currentWindow);
                 logger.info("Current page Title : "+driver.getTitle());
                 Thread.sleep(5000);
-                if(getPlatform().equalsIgnoreCase("MAC")) {
-                    clickOnIndependentElement("SHARE_CLOSE_BTN");
-                    ((JavascriptExecutor) driver).executeScript("window.open('http://www.twitter.com')");
-                    ArrayList<String> multipleTabs = new ArrayList<String>(driver.getWindowHandles());
-                    logger.info("total tabs opened : "+ multipleTabs.size());
-                    clickOnIndependentElement("SHARE_BTN");
 
-                }
-                else {
-                    ((JavascriptExecutor) driver).executeScript("window.open('http://www.twitter.com')");
-                    ArrayList<String> multipleTabs = new ArrayList<String>(driver.getWindowHandles());
-                    logger.info("total tabs opened : "+ multipleTabs.size());
-                }
+                openOnNewTab(getPlatform(),"window.open('http://www.twitter.com')",browserName);
 
-                ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-                if(browserName.equalsIgnoreCase("firefox"))
-                {
-                    driver.switchTo().window(tabs.get(0));
-                }
-                else
-                    driver.switchTo().window(tabs.get(1));
                 driver.navigate().to("https://twitter.com");
                 driver.navigate().refresh();
 
@@ -172,7 +153,7 @@ public class SocialScreenValidator extends PlayBackPage implements
                 logger.info("tweet :"+tweet);
 
                 Assert.assertTrue(tweet.matches(".*\\b" + nameForTweet + "\\b.*"), "Tweet is not posted on twitter");
-                driver.switchTo().window(tabs.get(1));
+                //driver.switchTo().window(tabs.get(1));
 
             }
 
@@ -191,8 +172,8 @@ public class SocialScreenValidator extends PlayBackPage implements
         {
             if(getWebElement("FB_EMAIL").isDisplayed()&&getWebElement("FB_PASSWORD").isDisplayed())
             {
-                getWebElement("FB_EMAIL").sendKeys("ooyalatester@vertisinfotech.com");
-                getWebElement("FB_PASSWORD").sendKeys("!password*");
+                writeTextIntoTextBox("FB_EMAIL","ooyalatester@vertisinfotech.com");
+                writeTextIntoTextBox("FB_PASSWORD","!password*");
                 getWebElement("FB_LOGIN_BTN").submit();
                 Thread.sleep(2000);
                 String facebookShare="Testing Social Media"+Math.random()+"";
@@ -203,25 +184,8 @@ public class SocialScreenValidator extends PlayBackPage implements
                 Thread.sleep(5000);
                 driver.switchTo().window(currentWindow);
                 Thread.sleep(5000);
-                if(getPlatform().equalsIgnoreCase("Mac")) {
-                    clickOnIndependentElement("SHARE_CLOSE_BTN");
-                    ((JavascriptExecutor) driver).executeScript("window.open('http://www.facebook.com')");
-                    ArrayList<String> multipleTabs = new ArrayList<String>(driver.getWindowHandles());
-                    logger.info("total tabs opened : "+ multipleTabs.size());
-                    clickOnIndependentElement("SHARE_BTN");
-                }
-                else {
-                    ((JavascriptExecutor) driver).executeScript("window.open('http://www.facebook.com')");
-                    ArrayList<String> multipleTabs = new ArrayList<String>(driver.getWindowHandles());
-                    logger.info("total tabs opened : "+ multipleTabs.size());
-                }
-                ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-                if(browserName.equalsIgnoreCase("firefox"))
-                {
-                    driver.switchTo().window(tabs.get(0));
-                }
-                else
-                    driver.switchTo().window(tabs.get(1));
+
+                openOnNewTab(getPlatform(),"window.open('http://www.facebook.com')",browserName);
 
                 driver.navigate().to("https://facebook.com");
                 Thread.sleep(5000);
@@ -232,9 +196,9 @@ public class SocialScreenValidator extends PlayBackPage implements
                 waitOnElement("FB_PROFILE",10);
                 clickOnIndependentElement("FB_PROFILE");
                 String fbPost = "//p[text()="+"'"+facebookShare+"'"+"]";
-                logger.info("Facebook Post : "+fbPost);
                 boolean fbPostPresnet = driver.findElement(By.xpath(fbPost)).isDisplayed();
                 if (fbPostPresnet){
+                    logger.info("Facebook Post : "+driver.findElement(By.xpath(fbPost)).getText());
                     logger.info("Facebook post is posted successfully");
                 }else{
                 logger.error("Facebook post is NOT posted successfully");
@@ -253,10 +217,11 @@ public class SocialScreenValidator extends PlayBackPage implements
         {
             if(getWebElement("GPLUS_EMAIL").isDisplayed())
             {
-                getWebElement("GPLUS_EMAIL").sendKeys("ooyalatester@forgeahead.io");
+                writeTextIntoTextBox("GPLUS_EMAIL","ooyalatester@forgeahead.io");
                 getWebElement("GPLUS_NXT_BTN").submit();
                 waitOnElement("GPLUS_PASSWORD",10);
-                getWebElement("GPLUS_PASSWORD").sendKeys("!password*");
+                writeTextIntoTextBox("GPLUS_PASSWORD","!password*");
+
                 getWebElement("GPLUS_SIGNIN_BTN").submit();
                 waitOnElement("GPLUS_TEXTAREA",20);
                 double random_number=Math.random();
@@ -267,26 +232,9 @@ public class SocialScreenValidator extends PlayBackPage implements
                 Thread.sleep(5000);
                 driver.switchTo().window(currentWindow);
                 Thread.sleep(5000);
-                if(getPlatform().equalsIgnoreCase("Mac")) {
-                    clickOnIndependentElement("SHARE_CLOSE_BTN");
-                    ((JavascriptExecutor) driver).executeScript("window.open('https://plus.google.com')");
-                    ArrayList<String> multipleTabs = new ArrayList<String>(driver.getWindowHandles());
-                    logger.info("total tabs opened : "+ multipleTabs.size());
-                    clickOnIndependentElement("SHARE_BTN");
 
-                }
-                else {
-                    ((JavascriptExecutor) driver).executeScript("window.open('https://plus.google.com')");
-                    ArrayList<String> multipleTabs = new ArrayList<String>(driver.getWindowHandles());
-                    logger.info("total tabs opened : "+ multipleTabs.size());
-                }
-                ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-                if(browserName.equalsIgnoreCase("firefox"))
-                {
-                    driver.switchTo().window(tabs.get(0));
-                }
-                else
-                    driver.switchTo().window(tabs.get(1));
+                openOnNewTab(getPlatform(),"window.open('https://plus.google.com')",browserName);
+
                 driver.navigate().to("https://plus.google.com");
                 Thread.sleep(5000);
                 driver.navigate().refresh();
@@ -310,4 +258,28 @@ public class SocialScreenValidator extends PlayBackPage implements
         }
     }
 
+    public void openOnNewTab(String platform,String webSite,String browserName){
+
+        if(platform.equalsIgnoreCase("Mac")) {
+            clickOnIndependentElement("SHARE_CLOSE_BTN");
+            ((JavascriptExecutor) driver).executeScript(webSite);
+            ArrayList<String> multipleTabs = new ArrayList<String>(driver.getWindowHandles());
+            logger.info("total tabs opened : "+ multipleTabs.size());
+            clickOnIndependentElement("SHARE_BTN");
+
+        }
+        else {
+            ((JavascriptExecutor) driver).executeScript(webSite);
+            ArrayList<String> multipleTabs = new ArrayList<String>(driver.getWindowHandles());
+            logger.info("total tabs opened : "+ multipleTabs.size());
+        }
+
+        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+        if(browserName.equalsIgnoreCase("firefox")) {
+            driver.switchTo().window(tabs.get(0));
+        }
+        else
+            driver.switchTo().window(tabs.get(1));
+
+    }
 }
