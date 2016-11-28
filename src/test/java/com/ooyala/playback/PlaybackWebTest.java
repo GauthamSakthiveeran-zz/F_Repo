@@ -31,6 +31,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import com.ooyala.facile.listners.IMethodListener;
@@ -141,7 +142,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	@BeforeClass(alwaysRun = true)
 	@Parameters({ "testData", "jsFile" })
-	public void setUp(String xmlFile, String jsFile) throws Exception {
+	public void setUp(@Optional String xmlFile, String jsFile) throws Exception {
 		logger.info("************Inside setup*************");
 		logger.info("browser is " + browser);
 
@@ -208,7 +209,17 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public void parseXmlFileData(String xmlFile) {
 
 		try {
-			File file = new File("src/test/resources/" + xmlFile);
+			
+			if(xmlFile==null || xmlFile.isEmpty()){
+				xmlFile = getClass().getSimpleName();
+				String packagename = getClass().getPackage().getName();
+				if(packagename.contains("amf")){
+					xmlFile = "amf/" + xmlFile + ".xml";
+				}
+				
+			}
+			
+			File file = new File("src/test/resources/testdata/" + xmlFile);
 			JAXBContext jaxbContext = JAXBContext.newInstance(Testdata.class);
 
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -217,6 +228,10 @@ public abstract class PlaybackWebTest extends FacileTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.info(e.getMessage());
+			if(e instanceof NullPointerException){
+				extentTest.log(LogStatus.FAIL, "The test data file should be mentioned as part of the testng parameter "
+						+ "or should be renamed to the name of the class using the test data!");
+			}
 		}
 	}
 
