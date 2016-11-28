@@ -14,9 +14,12 @@
         </groups>
         <classes>
             <parameter name="testData" value="VTC.xml"/>
-            <parameter name="jsFile" value="js/alice_full.js"/>
+            <parameter name="jsFile" value="vtc/vtc.js"/>
             <class name="com.ooyala.playback.VTC.PlaybackDiscoverTests" />
             <class name="com.ooyala.playback.VTC.PlaybackVolumeTests" />
+            <class name="com.ooyala.playback.VTC.PlaybackNewStreamTests" />
+            <class name="com.ooyala.playback.VTC.PlaybackAutoplayAutoloopTests" />
+
         </classes>
     </test>
 
