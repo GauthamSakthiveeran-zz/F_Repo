@@ -24,6 +24,8 @@ function subscribeToEvents() {
         var videoSeekOrder = 1;
         var adPlayedOrder = 1;
         var willPlaySingleAdOrder = 1;
+        var setEmbedCodeEventOrder = 1;
+        var replayEventOrder = 1;
 
         return function(event) {
             if (event.match(/playing/)) {
@@ -138,6 +140,18 @@ function subscribeToEvents() {
                     + seekingEventOrder + '</p>');
                 seekingEventOrder++;
             }
+
+            if (event.match(/setEmbedCode/)) {
+                 OO.$('#ooplayer').append(
+                    '<p id=setEmbedCode_' + setEmbedCodeEventOrder + '>setEmbedCode '+ setEmbedCodeEventOrder + '</p>');
+                 setEmbedCodeEventOrder++;
+            }
+
+            if (event.match(/replay/)) {
+                 OO.$("#ooplayer").append("<p id=replay_"+replayEventOrder+">replay "+replayEventOrder+"</p>");
+                 replayEventOrder++;
+            }
+
         };
     }());
 }
