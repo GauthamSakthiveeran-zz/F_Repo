@@ -26,4 +26,5 @@
     <entry key="adoverlay">resources/adoverlay.xml</entry>
     <entry key="sasport">resources/sasport.xml</entry>
     <entry key="adPodEnd">resources/adPodEnd.xml</entry>
+    <entry key="element">resources/differentElement.xml</entry>
 </properties>
