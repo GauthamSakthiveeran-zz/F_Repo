@@ -68,6 +68,7 @@ public class PlayBackFactory {
 	private SaasPortValidator saasPortValidator;
 	private StateScreenAction stateScreenAction;
 	private EncodingValidator encodingValidator;
+	private MultiplePlayerValidator multiplePlayerValidator;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
