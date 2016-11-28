@@ -67,6 +67,7 @@ public class PlayBackFactory {
 	private SeekAction seekAction;
 	private SaasPortValidator saasPortValidator;
 	private StateScreenAction stateScreenAction;
+	private EncodingValidator encodingValidator;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
@@ -76,6 +77,13 @@ public class PlayBackFactory {
 		if (seekAction == null)
 			seekAction = new SeekAction(driver);
 		return seekAction;
+
+	}
+
+	public EncodingValidator getEncodingValidator(){
+		if (encodingValidator == null)
+			encodingValidator = new EncodingValidator(driver);
+		return encodingValidator;
 
 	}
 	
