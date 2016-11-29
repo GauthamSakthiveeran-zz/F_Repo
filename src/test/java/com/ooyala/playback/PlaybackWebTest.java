@@ -5,12 +5,8 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.util.HashMap;
-import java.util.List;
+import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
@@ -31,6 +27,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import com.ooyala.facile.listners.IMethodListener;
@@ -74,8 +71,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
-		String testCaseName = getTestCaseName(method, testData);
-		extentTest = extentReport.startTest(testCaseName);
+//		String testCaseName = getTestCaseName(method, testData);
+		extentTest = extentReport.startTest(testData[0].toString());
 
 		try {
 			Field[] fs = this.getClass().getDeclaredFields();
@@ -141,7 +138,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	@BeforeClass(alwaysRun = true)
 	@Parameters({ "testData", "jsFile" })
-	public void setUp(String xmlFile, String jsFile) throws Exception {
+	public void setUp(@Optional String xmlFile, String jsFile) throws Exception {
 		logger.info("************Inside setup*************");
 		logger.info("browser is " + browser);
 
@@ -208,7 +205,17 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public void parseXmlFileData(String xmlFile) {
 
 		try {
-			File file = new File("src/test/resources/" + xmlFile);
+			
+			if(xmlFile==null || xmlFile.isEmpty()){
+				xmlFile = getClass().getSimpleName();
+				String packagename = getClass().getPackage().getName();
+				if(packagename.contains("amf")){ // TODO
+					xmlFile = "amf/" + xmlFile + ".xml";
+				}
+				
+			}
+			
+			File file = new File("src/test/resources/testdata/" + xmlFile);
 			JAXBContext jaxbContext = JAXBContext.newInstance(Testdata.class);
 
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -217,6 +224,10 @@ public abstract class PlaybackWebTest extends FacileTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.info(e.getMessage());
+			if(e instanceof NullPointerException){
+				extentTest.log(LogStatus.FAIL, "The test data file should be mentioned as part of the testng parameter "
+						+ "or should be renamed to the name of the class using the test data!");
+			}
 		}
 	}
 
@@ -325,14 +336,24 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@DataProvider(name = "testUrls")
 	public Object[][] getTestData() {
 
-		List<String> urls = UrlGenerator.parseXmlDataProvider(getClass()
+		Map<String, String> urls = UrlGenerator.parseXmlDataProvider(getClass()
 				.getSimpleName(), testData);
 		String testName = getClass().getSimpleName();
 		Object[][] output = new Object[urls.size()][2];
-		for (int i = 0; i < urls.size(); i++) {
+		
+		Iterator<Map.Entry<String, String>> entries = urls.entrySet().iterator();
+		int i=0;
+		while (entries.hasNext()) {
+		    Map.Entry<String, String> entry = entries.next();
+		    output[i][0] = testName + " : " + entry.getKey();
+			output[i][1] = entry.getValue();
+			i++;
+		}
+		
+		/*for (int i = 0; i < urls.size(); i++) {
 			output[i][0] = testName;
 			output[i][1] = urls.get(i);
-		}
+		}*/
 
 		return output;
 

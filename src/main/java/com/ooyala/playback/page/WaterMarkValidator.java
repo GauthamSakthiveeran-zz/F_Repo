@@ -27,18 +27,20 @@ public class WaterMarkValidator extends PlayBackPage implements
 	}
 
 	@Override
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 		String watermark_url = "https://dl.dropboxusercontent.com/u/344342926/Alice_Automation/fcb_wallpaper.jpg";
 		Actions action = new Actions(driver);
 
 		WebElement control_bar = getWebElement("CONTROL_BAR_ITEM");
+		
+		if(control_bar==null) return false;
 
 		if (!(getBrowser().equalsIgnoreCase("safari") || getPlatform()
 				.equalsIgnoreCase("Android"))) {
 			action.moveToElement(control_bar).build().perform();
 		}
 
-		waitOnElement("WATERMARK_LOGO", 60);
+		if(!waitOnElement("WATERMARK_LOGO", 60)) return false;
 		Log.info("Watermark Image is displayed");
 		Thread.sleep(10000);
 
@@ -52,15 +54,15 @@ public class WaterMarkValidator extends PlayBackPage implements
 		// Checking height and width in fullscreen
 		if (!getBrowser().equalsIgnoreCase("safari")) {
 
-			clickOnIndependentElement("FULLSCREEN_BTN");
+			if(!clickOnIndependentElement("FULLSCREEN_BTN")) return false;
 			Assert.assertEquals(watermark_url, ima_url);
 			getlogoDimension();
-			waitOnElement("NORMAL_SCREEN", 10);
-			clickOnIndependentElement("NORMAL_SCREEN");
+			if(!waitOnElement("NORMAL_SCREEN", 10)) return false;
+			if(!clickOnIndependentElement("NORMAL_SCREEN")) return false;
 
 		}
 
-		getWindowHanldes();
+		return getWindowHanldes();
 	}
 
 	protected void getlogoDimension() throws Exception {
@@ -74,10 +76,10 @@ public class WaterMarkValidator extends PlayBackPage implements
 		Log.info("Height and width are matched ");
 	}
 
-	protected void getWindowHanldes() throws Exception {
+	protected boolean getWindowHanldes() throws Exception {
 		String oldTab = driver.getWindowHandle();
 
-		clickOnIndependentElement("OOYALA_LOGO");
+		if(!clickOnIndependentElement("OOYALA_LOGO")) return false;
 
 		Set<String> allWindows = driver.getWindowHandles();
 		for (String aWindow : allWindows) {
@@ -104,5 +106,6 @@ public class WaterMarkValidator extends PlayBackPage implements
 			driver.close();
 			driver.switchTo().window(oldTab);
 		}
+		return true;
 	}
 }

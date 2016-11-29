@@ -19,7 +19,7 @@
 			</run>
 		</groups>
 		<classes>
-			<parameter name="testData" value="Alice.xml" />
+			<parameter name="testData" value="alice/Alice.xml" />
 			<parameter name="jsFile" value="alice_full.js" />
 			<class name="com.ooyala.playback.alice.BasicPlaybackTests" />
 			<class name="com.ooyala.playback.alice.DiscoveryUpNextTests" />

@@ -25,13 +25,14 @@ public class ThumbnailValidator extends PlayBackPage implements
 
 	}
 
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 
 		Actions action = new Actions(driver);
 
 		WebElement element1 = getWebElement("SCRUBBER_BAR");
+		if(element1==null) return false;
 		action.moveToElement(element1).build().perform();
-		waitOnElement("THUMBNAIL_CONTAINER", 60);
+		return waitOnElement("THUMBNAIL_CONTAINER", 60);
 
 	}
 	

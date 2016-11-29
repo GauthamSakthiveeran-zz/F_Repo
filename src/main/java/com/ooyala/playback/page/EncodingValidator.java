@@ -34,9 +34,9 @@ public class EncodingValidator extends PlayBackPage implements
 		this.testUrl = testUrl;
 	}
 
-	public void validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) throws Exception {
 
-		verifyEncodingPriority(testUrl);
+		return verifyEncodingPriority(testUrl);
 
 		}
 
@@ -58,7 +58,7 @@ public class EncodingValidator extends PlayBackPage implements
 		return driver.getCurrentUrl();
 	}
 
-	public void verifyEncodingPriority(String url) throws Exception{
+	public boolean verifyEncodingPriority(String url) throws Exception{
 		String result = decode(url, "UTF-8");
 		String[] options = result.split("options=");
 		JSONParser parser = new JSONParser();
@@ -72,7 +72,12 @@ public class EncodingValidator extends PlayBackPage implements
 			logger.info("\nExpected encodingPriority :\n" + expectedEncodings);
 			assertEquals(actualEncodings, expectedEncodings,
 					"Encoding Priorities are as expected");
+			if(actualEncodings==expectedEncodings)
+				return true;
 		}
+
+		return false;
 	}
+
 
 }

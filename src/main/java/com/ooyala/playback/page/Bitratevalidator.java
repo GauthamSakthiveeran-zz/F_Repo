@@ -28,22 +28,23 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 
 	}
 
-	public void validate(String element, int timeout) throws Exception {
-		boolean result;
+	public boolean validate(String element, int timeout) throws Exception {
 
 		try {
-			result = isElementPresent("BITRATE");
+			if(!isElementPresent("BITRATE")) return false;
 		} catch (Exception e) {
-			clickOnIndependentElement("MORE_OPTION_ITEM");
+			if(!clickOnIndependentElement("MORE_OPTION_ITEM")) return false;
 			sleep(1000);
-			result = isElementPresent("BITRATE");
+			if(!isElementPresent("BITRATE")) return false;
 		}
 
-		clickOnIndependentElement("BITRATE");
+		if(!clickOnIndependentElement("BITRATE")) return false;
+		
 		int length = Integer.parseInt(((JavascriptExecutor) driver)
 				.executeScript("return pp.getBitratesAvailable().length")
 				.toString());
 		if (length > 1) {
+			boolean flag = true;
 			for (int i = 0; i < length - 1; i++) {
 				String bitrate = ((JavascriptExecutor) driver).executeScript(
 						"return pp.getBitratesAvailable()[" + i
@@ -55,15 +56,17 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 						.executeScript(" return pp.seek(3)");
 				((JavascriptExecutor) driver)
 						.executeScript(" return pp.play()");
-				waitOnElement(By.id("bitrateChanged_" + (bitrate)), 60);
+				flag = flag && waitOnElement(By.id("bitrateChanged_" + (bitrate)), 60);
 			}
+			return flag;
 		} else {
 			String currentBitrate = ((JavascriptExecutor) driver)
 					.executeScript("return pp.getCurrentBitrate()[\"bitrate\"]")
 					.toString();
 			((JavascriptExecutor) driver).executeScript(" return pp.play()");
 			Assert.assertNotNull(currentBitrate);
+			return true;
 		}
-
+		
 	}
 }
