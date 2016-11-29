@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.VAST;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 import static java.lang.Thread.sleep;
@@ -7,16 +7,16 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AdSkipButtonValidator;
 import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.OverlayValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
+public class PlaybackPoddedwithOverlayStandaloneTests  extends PlaybackWebTest{
 
-	public PlaybackPoddedSkippbableInsideTests() throws OoyalaException {
+	public PlaybackPoddedwithOverlayStandaloneTests() throws OoyalaException {
 		super();
 	}
 	
@@ -24,10 +24,10 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
-	private AdSkipButtonValidator skipValidator;
-
+	private OverlayValidator overlayValidator;
+	
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPoddedInsideSkipButton(String testName, String url)
+	public void verifyPoddedStandaloneOverlay(String testName, String url)
 			throws OoyalaException {
 
 		boolean result = false;
@@ -45,39 +45,39 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 			injectScript();
 
 			//play video
-	        playAction.startAction();
+			playAction.startAction();
 
 	        loadingSpinner();
 
-	        // verify first podded preroll played
-	        event.validate("willPlaySingleAd_1", 150);
+	        // verify podded preroll
+	        event.validate("willPlaySingleAd_1", 60);
+
 	        event.validate("singleAdPlayed_1", 150);
+
 	        loadingSpinner();
 
-	        //second preroll podded starts
-	        event.validate("willPlaySingleAd_2", 150);
+	        event.validate("willPlaySingleAd_2", 160);
 
-	        //skip buttons shows for second preroll podded
-
-	        skipValidator.validate("", 120);
-	        
-	        loadingSpinner();
-
-	        // verify third ad played
-	        event.validate("willPlaySingleAd_3", 150);
-
-	        event.validate("singleAdPlayed_3", 150);
+	        event.validate("singleAdPlayed_2", 160);
 
 	        extentTest.log(PASS, "Played Preroll podded Ads");
 	        sleep(3000);
-	        event.validate("playing_1", 190);
+
+	        event.validate("playing_1", 160);
+
 	        sleep(500);
 
+	        // Verify overlay
+	        
+	        overlayValidator.validate("nonlinearAdPlayed_1", 90);
 
-	        seekValidator.validate("seeked_1", 190);
-	        event.validate("played_1", 190);
+	        extentTest.log(PASS, "Overlay Played");
+
+	        seekValidator.validate("seeked_1", 140);
+
+	        event.validate("played_1", 200);
+
 	        extentTest.log(PASS, "Main Video played successfully");
-	        extentTest.log(PASS, "Verified PlaybackPoddedSkippbableInsideTests");
 
 			result = true;
 

@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.VAST;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 import static java.lang.Thread.sleep;
