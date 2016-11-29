@@ -36,7 +36,7 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 	public void testPlaybackLocalization(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 			driver.get(url);
@@ -44,45 +44,45 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			play.waitForPage();
+            result = result && play.waitForPage();
 
 			injectScript();
 
-			play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60);
 
 			logger.info("video playing");
 
-			pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60);
 
 			logger.info("video paused");
 
-			play.validate("playing_2", 60);
+            result = result && play.validate("playing_2", 60);
 
 			logger.info("video paying again");
 
-			shareTabValidator.validate("", 60);
+            result = result && shareTabValidator.validate("", 60);
 
-			eventValidator.eventAction("FULLSCREEN_BTN");
+            result = result && eventValidator.eventAction("FULLSCREEN_BTN");
 
 			logger.info("checked fullscreen");
 
-			shareTabValidator.validate("", 60);
+            result = result && shareTabValidator.validate("", 60);
 
-			eventValidator.eventAction("NORMAL_SCREEN");
+            result = result && eventValidator.eventAction("NORMAL_SCREEN");
 
-			playPauseAction.startAction();
+            result = result && playPauseAction.startAction();
 
-			seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60);
 
 			logger.info("video seeked");
 
-			eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60);
 
 			logger.info("video played");
 
-			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 		}
 		Assert.assertTrue(result, "Playback Localization tests failed");
 	}

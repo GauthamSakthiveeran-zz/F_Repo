@@ -34,7 +34,7 @@ public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 	public void verifyCustomeInteractionAd(String testName, String url)
 			throws Exception {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
@@ -43,46 +43,44 @@ public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(10000);
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
-			event.validate("willPlaySingleAd_1", 190);
+            result = result && event.validate("willPlaySingleAd_1", 190);
 
 			extentTest.log(PASS, "Preroll Ad started");
 
-			event.validate("showAdSkipButton_1", 60);
+            result = result && event.validate("showAdSkipButton_1", 60);
 
 			extentTest.log(PASS, "Skip button for Ads shown");
 			sleep(5000);
 
-			volumeValidator.validate("", 60);
+            result = result && volumeValidator.validate("", 60);
 
 			extentTest.log(PASS, "Clicked on Skip button");
 
-			adSkipButtonValidator.validate("", 60);
+            result = result && adSkipButtonValidator.validate("", 60);
 
-			event.validate("singleAdPlayed_1", 190);
+            result = result && event.validate("singleAdPlayed_1", 190);
 
 			extentTest.log(PASS, "Preroll Ad Completed");
 
-			event.validate("playing_1", 60);
+            result = result && event.validate("playing_1", 60);
 
 			extentTest.log(PASS, "Main video started to play");
 			sleep(500);
 
-			seekAction.seekTillEnd().startAction();
+            result = result && seekAction.seekTillEnd().startAction();
 
-			event.validate("seeked_1", 180);
+            result = result && event.validate("seeked_1", 180);
 
-			event.validate("played_1", 200);
+            result = result && event.validate("played_1", 200);
 
 			extentTest.log(PASS, "Video completed playing");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

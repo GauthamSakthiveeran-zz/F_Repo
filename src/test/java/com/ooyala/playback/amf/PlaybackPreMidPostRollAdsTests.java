@@ -28,7 +28,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 	public void verifyPreMidPostroll(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
@@ -37,17 +37,17 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
 	        loadingSpinner();
-	        event.validate("PreRoll_willPlayAds", 150);
+            result = result &&  event.validate("PreRoll_willPlayAds", 150);
 
-	        event.validate("adsPlayed_1", 200);
+            result = result &&  event.validate("adsPlayed_1", 200);
 
 	        extentTest.log(PASS, "Played Preroll Ads");
 	        event.validate("playing_1", 150);
@@ -59,7 +59,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 	        seekAction.seekSpecific(15);
 
 	        loadingSpinner();
-	        event.validate( "MidRoll_willPlayAds", 150);
+            result = result &&  event.validate( "MidRoll_willPlayAds", 150);
 	        event.validate( "adsPlayed_2", 150);
 	        loadingSpinner();
 
@@ -67,8 +67,8 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 	        seekAction.seekSpecific(15);
 
 	        loadingSpinner();
-	        
-	        event.validate( "PostRoll_willPlayAds", 150);
+
+            result = result &&  event.validate( "PostRoll_willPlayAds", 150);
 	        event.validateForSpecificPlugins("singleAdPlayed_6", 200, "pulse");
 	        
 	        event.validate("adsPlayed_3", 150); // TODO needs to be ignored for specific plugins
@@ -83,10 +83,8 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 	        
 	        event.validateForSpecificPlugins("seeked_1", 150, "pulse");
 
-	        event.validate("played_1", 200);
+            result = result &&   event.validate("played_1", 200);
 	        extentTest.log(PASS, "Verified PreMidPostRoll Ads Test");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

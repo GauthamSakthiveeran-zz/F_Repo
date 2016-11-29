@@ -25,10 +25,9 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "playback", dataProvider = "testUrls")
-	public void testBasicPlaybackAlice(String testName, String url)
-			throws OoyalaException {
+	public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 			driver.get(url);
@@ -36,32 +35,32 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			play.waitForPage();
-			Thread.sleep(10000);
+            result = result &&  play.waitForPage();
+			Thread.sleep(5000);
 
 			injectScript();
 
-			play.validate("playing_1", 60);
+            result = play.validate("playing_100", 60);
 
 			Thread.sleep(2000);
 
-			pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60);
 
 			logger.info("Verified that video is getting pause");
 
-			pause.validate("playing_2", 60);
+            result = result && pause.validate("playing_2", 60);
 
-			seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60);
 
 			logger.info("Verified that video is seeked");
 
-			eventValidator.validate("played_1", 60);
+            result = result &&  eventValidator.validate("played_1", 60);
 
 			logger.info("Verified that video is played");
 
-			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 		}
 		Assert.assertTrue(result, "Basic playback tests failed");
 	}

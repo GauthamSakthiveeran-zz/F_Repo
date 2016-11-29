@@ -27,7 +27,7 @@ public class PlaybackIMAPreVastMidAdsTests extends PlaybackWebTest {
 	public void verifyIMAPreVastMidAds(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
@@ -36,22 +36,22 @@ public class PlaybackIMAPreVastMidAdsTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
 			loadingSpinner();
 			event.validate("PreRoll_willPlayAds", 120);
-			event.validate("adsPlayed_1", 200);
+            result = result && event.validate("adsPlayed_1", 200);
 			event.validate("adPodEnd_google-ima-ads-manager_0_1", 200);
 			extentTest.log(PASS, "Played IMA Preroll Ads");
-			event.validate("playing_1", 90);
-			seekValidator.validate("seeked_1", 190);
+            result = result && event.validate("playing_1", 90);
+            result = result && seekValidator.validate("seeked_1", 190);
 
-			event.validate("MidRoll_willPlayAds", 100);
+            result = result && event.validate("MidRoll_willPlayAds", 100);
 			event.validate("adsPlayed_2", 200);
 			try {
 				event.validate("adPodEnd_vast_2_2", 60);
@@ -61,8 +61,6 @@ public class PlaybackIMAPreVastMidAdsTests extends PlaybackWebTest {
 			extentTest.log(PASS, "Played Vast Midroll Ads");
 			event.validate("played_1", 200);
 			extentTest.log(PASS, "Verified VastPreIMAMidlAdsTests Ads Test");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

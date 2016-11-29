@@ -1,5 +1,6 @@
 package com.ooyala.playback.alice;
 
+import com.ooyala.playback.page.action.PauseAction;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -26,6 +27,7 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 	private VolumeValidator volumeValidator;
 	private PauseValidator pause;
 	private WaterMarkValidator waterMarkValidator;
+    private PauseAction pauseAction;
 
 	public PlaybackWatermarkTests() throws OoyalaException {
 		super();
@@ -35,18 +37,18 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 	public void testWatermarks(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 		try {
 			driver.get(url);
 			if (!getPlatform().equalsIgnoreCase("android")) {
 				driver.manage().window().maximize();
 			}
 
-			play.waitForPage();
+            result = result && play.waitForPage();
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
 			Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
 					.executeScript("return pp.isAdPlaying()"));
@@ -55,29 +57,28 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 				eventValidator.validate("adPodEnded_1", 200);
 			}
 
-			//play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60);
 			logger.info("video is playing");
 			Thread.sleep(3000);
 
-			pause.validate("paused_1", 60);
-			logger.info("video paused");
+            result = result && pauseAction.startAction();
 
-			waterMarkValidator.validate("WATERMARK_LOGO", 60);
+            result = result && waterMarkValidator.validate("WATERMARK_LOGO", 60);
 			logger.info("checked watermark logo");
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
-			seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60);
 
 			logger.info("video seeked");
 
-			eventValidator.validate("videoPlayed_1", 60);
+            result = result && eventValidator.validate("videoPlayed_1", 60);
 
 			logger.info("video played");
 
-			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 		}
 		Assert.assertTrue(result, "Playback Watermark tests failed");
 	}

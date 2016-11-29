@@ -30,7 +30,7 @@ public class PlaybackThumbnailTests extends PlaybackWebTest {
 	public void testBasicPlaybackAlice(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 			driver.get(url);
@@ -38,35 +38,35 @@ public class PlaybackThumbnailTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			play.waitForPage();
+            result = result && play.waitForPage();
 
 			Thread.sleep(10000);
 
 			injectScript();
 
-			play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60);
 
 			logger.info("Verifed that video is getting playing");
 
 			Thread.sleep(5000);
 
-			pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60);
 
-			thumbnailValidator.validate("", 60);
+            result = result && thumbnailValidator.validate("", 60);
 
 			Thread.sleep(5000);
 
-			play.validate("playing_2", 60);
+            result = result && play.validate("playing_2", 60);
 
-			seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60);
 
-			eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60);
 
 			logger.info("Verified that video is played");
 
-			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+            result  = false;
 		}
 		Assert.assertTrue(result, "Thumbnail test failed");
 	}

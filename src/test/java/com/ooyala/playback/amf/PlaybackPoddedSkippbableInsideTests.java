@@ -30,7 +30,7 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 	public void verifyPoddedInsideSkipButton(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
@@ -39,27 +39,27 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
 			//play video
-	        playAction.startAction();
+            result = result &&  playAction.startAction();
 
 	        loadingSpinner();
 
 	        // verify first podded preroll played
-	        event.validate("willPlaySingleAd_1", 150);
-	        event.validate("singleAdPlayed_1", 150);
+            result = result && event.validate("willPlaySingleAd_1", 150);
+            result = result &&  event.validate("singleAdPlayed_1", 150);
 	        loadingSpinner();
 
 	        //second preroll podded starts
-	        event.validate("willPlaySingleAd_2", 150);
+            result = result &&  event.validate("willPlaySingleAd_2", 150);
 
 	        //skip buttons shows for second preroll podded
 
-	        skipValidator.validate("", 120);
+            result = result && skipValidator.validate("", 120);
 	        
 	        loadingSpinner();
 
@@ -70,16 +70,14 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 
 	        extentTest.log(PASS, "Played Preroll podded Ads");
 	        sleep(3000);
-	        event.validate("playing_1", 190);
+            result = result && event.validate("playing_1", 190);
 	        sleep(500);
 
 
-	        seekValidator.validate("seeked_1", 190);
-	        event.validate("played_1", 190);
+            result = result && seekValidator.validate("seeked_1", 190);
+            result = result && event.validate("played_1", 190);
 	        extentTest.log(PASS, "Main Video played successfully");
 	        extentTest.log(PASS, "Verified PlaybackPoddedSkippbableInsideTests");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

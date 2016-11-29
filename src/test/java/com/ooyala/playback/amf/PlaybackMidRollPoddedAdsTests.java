@@ -28,33 +28,30 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest{
 	public void verifyMidrollPodded(String testName, String url)
 			throws OoyalaException {
 		
-		boolean result = false;
+		boolean result = true;
 		
 		try {
-			
 			driver.get(url);
 			if (!getPlatform().equalsIgnoreCase("android")) {
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 			
 			injectScript();
-			
-			playValidator.validate("playing_1", 60);
-			
-			seekValidator.validate("seeked_1", 60);
+
+            result = result && playValidator.validate("playing_1", 60);
+
+            result = result && seekValidator.validate("seeked_1", 60);
 			
 			event.validate("videoPlayed_1", 200);
-			
-			poddedAdValidator.validate("countPoddedAds", 120);
+
+            result = result && poddedAdValidator.validate("countPoddedAds", 120);
 			
 			event.validate("seeked_1", 60);
-			event.validate("played_1", 200);
+            result = result && event.validate("played_1", 200);
 	        extentTest.log(PASS, "Verified MidrollPodded Ads Tests");
-			
-			result = true;
 			
 		}catch (Exception e) {
 			e.printStackTrace();

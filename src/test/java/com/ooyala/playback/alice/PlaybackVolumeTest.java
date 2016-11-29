@@ -32,7 +32,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 	@Test(groups = "PlayerSkin", dataProvider = "testUrls")
 	public void testVolume(String testName, String url) throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 			driver.get(url);
@@ -40,11 +40,11 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			play.waitForPage();
+            result = result && play.waitForPage();
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
 			Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
 					.executeScript("return pp.isAdPlaying()"));
@@ -57,26 +57,26 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
             Thread.sleep(2000);
 
-			volumeValidator.validate("VOLUME_MAX", 60);
+            result = result && volumeValidator.validate("VOLUME_MAX", 60);
 
 			logger.info("validated video volume at full range");
 
-            eventValidator.validate("playing_1", 60);
+            result = result && eventValidator.validate("playing_10 ", 60);
 
             logger.info("video is playing");
             sleep(4000);
 
-			seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60);
 
 			logger.info("video seeked");
 
-			eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60);
 
 			logger.info("video played");
 
-			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 		}
 		Assert.assertTrue(result, "Playback Volume tests failed");
 	}

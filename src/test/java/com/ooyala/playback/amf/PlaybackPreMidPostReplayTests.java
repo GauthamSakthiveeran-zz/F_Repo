@@ -38,27 +38,27 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playValidator.validate("playing_1", 120);
-	        event.validate("PreRoll_willPlayAds", 120);
+            result = result && playValidator.validate("playing_1", 120);
+            result = result && event.validate("PreRoll_willPlayAds", 120);
 
-	        event.validate("MidRoll_willPlayAds", 120);
+            result = result && event.validate("MidRoll_willPlayAds", 120);
 
-	        event.validate("PostRoll_willPlayAds", 120);
+            result = result && event.validate("PostRoll_willPlayAds", 120);
 
-	        seekValidator.validate("seeked_1",120);
-	        event.validate("played_1", 190);
+            result = result && seekValidator.validate("seeked_1",120);
+            result = result && event.validate("played_1", 190);
 
-	        event.validate("endScreen", 120);
-	        replayValidator.validate("replay_1", 120);
+            result = result &&  event.validate("endScreen", 120);
+            result = result && replayValidator.validate("replay_1", 120);
 	        
 	        extentTest.log(PASS, "Verified Pre_Mid_Post Basic control Replay");
 
-	        event.validate("PreRoll_willPlayAds_OnReplay", 120);
+            result = result && event.validate("PreRoll_willPlayAds_OnReplay", 120);
 	        
 	        
 	        if(!getPlatform().equalsIgnoreCase("Android")) {
@@ -90,8 +90,6 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	        extentTest.log(PASS, "Verified Postroll ad is playing on replay");
 
 	        extentTest.log(PASS, "Verified Pre_Mid_Post Basic control test");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

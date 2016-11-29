@@ -27,7 +27,7 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest{
     @Test(groups = "Playback", dataProvider = "testUrls")
     public void testScialMediaSharing(String testName, String url) throws OoyalaException {
 
-        boolean result = false;
+        boolean result = true;
 
         try {
             driver.get(url);
@@ -35,29 +35,29 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest{
                 driver.manage().window().maximize();
             }
 
-            play.waitForPage();
+            result = result && play.waitForPage();
 
             Thread.sleep(10000);
 
             injectScript();
 
-            play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60);
 
             logger.info("Verifed that video is getting playing");
 
             Thread.sleep(2000);
 
-            social.validate("SHARE_BTN",60);
+            result = result && social.validate("SHARE_BTN",60);
 
             logger.info("Verified Social Media Sharing functionality for Facebook,Twitter and ");
 
-            pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60);
 
             logger.info("Verified that video is getting pause");
 
-            result = true;
         } catch (Exception e) {
             e.printStackTrace();
+            result = false;
         }
         Assert.assertTrue(result, "Basic playback tests failed");
     }

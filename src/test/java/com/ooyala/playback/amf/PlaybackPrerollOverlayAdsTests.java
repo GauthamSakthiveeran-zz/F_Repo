@@ -29,7 +29,7 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest{
 	public void verifyPrerollOverlay(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
@@ -38,21 +38,21 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest{
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 	        loadingSpinner();
 
 	        // added condition for IMA OVerlay as overlay is showing intermittently PBI-1825
 //	        if(!Description.contains("IMA")) {
-	        
-	        overLayValidator.validate("nonlinearAdPlayed_1", 160);
+
+            result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160);
 	        
 //	        }
-	        event.validate("videoPlaying_1", 90);
+            result = result &&  event.validate("videoPlaying_1", 90);
 	        
 	        seekValidator.validate("seeked_1", 120);
 
@@ -62,12 +62,9 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest{
 //	            seekPlayback(webDriver);
 //	            waitForElement(webDriver, "seeked_1", 190);
 //	        }
-	        event.validate("played_1", 190);
+            result = result &&  event.validate("played_1", 190);
 	        extentTest.log(PASS, "Main video played");
 	        extentTest.log(PASS, "Verified PrerollOverlayAds test");
-
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

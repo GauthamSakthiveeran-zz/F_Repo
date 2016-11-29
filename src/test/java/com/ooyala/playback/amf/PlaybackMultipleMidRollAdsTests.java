@@ -32,35 +32,33 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 	public void verifyMultipleMidroll(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
-
 			driver.get(url);
 			if (!getPlatform().equalsIgnoreCase("android")) {
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
-			
-			playValidator.validate("playing_1", 90);
-			
-			seekAction.setAdPlugin("pulse").startAction();
-			
-	        event.validate("videoPlayed_1", 200);
-	        
-	        poddedAdValidator.validate("countPoddedAds", 60); // TODO : need to check diff between willPlayAds_ and willPlaySingleAds_
 
-	        event.validateForSpecificPlugins("seeked_1", 200, "pulse"); 
+            result = result && playValidator.validate("playing_1", 90);
 
-	        event.validate("played_1", 200);
+            result = result && seekAction.setAdPlugin("pulse").startAction();
+
+            result = result && event.validate("videoPlayed_1", 200);
+
+            result = result && poddedAdValidator.validate("countPoddedAds", 60); // TODO : need to check diff between willPlayAds_ and willPlaySingleAds_
+
+	        event.validateForSpecificPlugins("seeked_1", 200, "pulse");
+
+            result = result && event.validate("played_1", 200);
 	        extentTest.log(PASS, "Verified Multiple MidRoll Ads");
 			
-
-		} catch (Exception e) {
+        } catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}

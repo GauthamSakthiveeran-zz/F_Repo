@@ -31,7 +31,7 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyCCenableMidRoll(String testName, String url)
 			throws Exception {
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
@@ -40,26 +40,26 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(10000);
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 			sleep(2000);
-			event.validate("playing_1", 60);
+            result = result && event.validate("playing_1", 60);
 
 			logger.info("Video started playing");
 
 			sleep(22000);
 
-			event.validate("videoPlaying_1", 190);
-			event.validate("MidRoll_willPlaySingleAd_1", 190);
+            result = result && event.validate("videoPlaying_1", 190);
+            result = result && 	event.validate("MidRoll_willPlaySingleAd_1", 190);
 
 			logger.info("Midroll Ad started to play");
 
 			event.validateForSpecificPlugins("singleAdPlayed_2", 190, "pulse");
-			event.validate("singleAdPlayed_1", 190);
+            result = result &&event.validate("singleAdPlayed_1", 190);
 
 			// TODO
 			/*
@@ -70,30 +70,28 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 
 			logger.info("Midroll Ad ended");
 
+            result = result && event.validate("videoPlaying_1", 190);
+            result = result && pauseAction.startAction();
+
+            result = result && ccValidator.validate("cclanguage", 60);
 			event.validate("videoPlaying_1", 190);
-			pauseAction.startAction();
 
-			ccValidator.validate("cclanguage", 60);
-			event.validate("videoPlaying_1", 190);
+            result = result && seekAction.seekTillEnd().startAction();
 
-			seekAction.seekTillEnd().startAction();
-
-			event.validate("seeked_1", 190);
+            result = result && event.validate("seeked_1", 190);
 			playAction.startAction();
-			event.validate("played_1", 250);
+            result = result && event.validate("played_1", 250);
 
 			extentTest.log(PASS, "Video Played");
 
 			extentTest.log(PASS, "Verified MidrollAdsTest");
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result,
-				"Playback CC Enabled MidRoll Ads tests failed");
+		Assert.assertTrue(result, "Playback CC Enabled MidRoll Ads tests failed");
 
 	}
 }

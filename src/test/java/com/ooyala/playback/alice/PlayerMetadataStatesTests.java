@@ -32,7 +32,7 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 	public void testPlayerMetadataStates(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 			driver.get(url);
@@ -40,43 +40,43 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			play.waitForPage();
+            result = result && play.waitForPage();
 
-			startScreenValidator.validate("", 60);
+            result = result && startScreenValidator.validate("", 60);
 
 			injectScript();
 
 			// playAction.startAction();
 
-			play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60);
 			logger.info("video is playing");
 			Thread.sleep(2000);
 
-			pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60);
 			logger.info("video is paused");
 
-			play.validate("playing_2", 60);
+            result = result && play.validate("playing_2", 60);
 			logger.info("video is playing again");
 
-			seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60);
 			logger.info("video seeked");
 
-			eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60);
 			logger.info("video played");
 
-			endScreenValidator.validate("", 60);
+            result = result && endScreenValidator.validate("", 60);
 
-			eventValidator.eventAction("FULLSCREEN_BTN_1");
+            result = result && eventValidator.eventAction("FULLSCREEN_BTN_1");
 
-			endScreenValidator.validate("fullscreenChangedtrue", 50);
+            result = result && endScreenValidator.validate("fullscreenChangedtrue", 50);
 			logger.info("checked fullscreen");
 
-			endScreenValidator.validate("", 60);
-			eventValidator.eventAction("FULLSCREEN_BTN_1");
+            result = result && endScreenValidator.validate("", 60);
+            result = result && eventValidator.eventAction("FULLSCREEN_BTN_1");
 
-			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 		}
 		Assert.assertTrue(result, "Playback MetadataStates tests failed");
 	}

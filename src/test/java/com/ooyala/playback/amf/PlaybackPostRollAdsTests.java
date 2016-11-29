@@ -26,7 +26,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest{
 	public void verifyPostroll(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
@@ -35,22 +35,20 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest{
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
 			playValidator.validate("playing_1", 90);
-	        seekValidator.validate("seeked_1", 90);
-	        event.validate("videoPlayed_1", 120);
-	        event.validate("willPlaySingleAd_1", 90);
+            result = result && seekValidator.validate("seeked_1", 90);
+            result = result && event.validate("videoPlayed_1", 120);
+            result = result && event.validate("willPlaySingleAd_1", 90);
 	        extentTest.log(PASS, "Postroll Ad started");
-	        event.validate("singleAdPlayed_1", 90);
+            result = result && event.validate("singleAdPlayed_1", 90);
 	        extentTest.log(PASS, "Postroll Ad completed");
-	        event.validate("played_1", 200);
+            result = result && event.validate("played_1", 200);
 	        extentTest.log(PASS, "Verified PostRoll Ads test");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

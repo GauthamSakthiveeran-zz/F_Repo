@@ -29,7 +29,7 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyBumperPrerollPlayback(String testName, String url)
 			throws Exception {
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
@@ -38,33 +38,31 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(10000);
 
 			injectScript();
 
-			playAction.startAction();
-			event.validate("BumperAd", 60);
+            result = result && playAction.startAction();
+            result = result && event.validate("BumperAd", 60);
 
 			extentTest.log(PASS, "verified Bumper ad is playing");
 
-			event.validate("playing_FirstTime", 30);
+            result = result && event.validate("playing_FirstTime", 30);
 			extentTest.log(PASS, "verified Players controls");
 
-			seekAction.seekTillEnd().startAction();
+            result = result && seekAction.seekTillEnd().startAction();
 
 			extentTest.log(PASS, "verified Seek functionality");
 
-			event.validate("replay", 30);
-			replayValidator.validate("replay_1", 30);
+            result = result && event.validate("replay", 30);
+            result = result && replayValidator.validate("replay_1", 30);
 
 			extentTest.log(PASS, "verified replay of video");
 
-			event.validate("BumperAdOnReplay", 30);
+            result = result && event.validate("BumperAdOnReplay", 30);
 
 			extentTest.log(PASS, "verified Bumper ad is playing on replay");
-
-			result = true;
 
 			extentTest.log(LogStatus.PASS, "Main Video played successfully");
 

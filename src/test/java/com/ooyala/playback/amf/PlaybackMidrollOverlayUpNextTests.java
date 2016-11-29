@@ -30,42 +30,38 @@ public class PlaybackMidrollOverlayUpNextTests extends PlaybackWebTest {
 	public void verifyMidrollOverlayUpNext(String testName, String url)
 			throws OoyalaException {
 		
-		boolean result = false;
+		boolean result = true;
 		
 		try {
-			
 			driver.get(url);
 			if (!getPlatform().equalsIgnoreCase("android")) {
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 			
 			injectScript();
-			
-			playValidator.validate("playing_1", 60);
-			
-			event.validate("MidRoll_willPlaySingleAd_1", 180);
+
+            result = result && playValidator.validate("playing_1", 60);
+
+            result = result && event.validate("MidRoll_willPlaySingleAd_1", 180);
             extentTest.log(LogStatus.PASS, "Midroll Ads started");
             event.validate("singleAdPlayed_1", 160);
             extentTest.log(LogStatus.PASS, "Midroll Ads played");
-            event.validate("showNonlinearAd_1", 90);
+            result = result && event.validate("showNonlinearAd_1", 90);
             sleep(2000);
-            overLayValidator.validate("nonlinearAdPlayed_1", 160);
+            result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160);
             
             extentTest.log(PASS, "Overlay Ads Played");
-            
-            discoverValidator.validate("reportDiscoveryClick_1", 60);
+
+            result = result && discoverValidator.validate("reportDiscoveryClick_1", 60);
             extentTest.log(LogStatus.PASS, "Verified MidrollOverlayUpNext Tests");
-			
-			result = true;
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
-
 		Assert.assertTrue(result, "Verified");
 	}
 

@@ -25,34 +25,34 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
     @Test(groups = "Playback", dataProvider = "testUrls")
     public void testOptEntitlementAlice(String testName, String url) throws OoyalaException {
-        boolean result = false;
+        boolean result = true;
         try {
             sasport.validate("CREATE_ENTITLEMENT",300);
             if (!getPlatform().equalsIgnoreCase("android")) {
                 driver.manage().window().maximize();
             }
             driver.get(url);
-            play.waitForPage();
+            result = result && play.waitForPage();
             Thread.sleep(10000);
 
             injectScript();
-            play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60);
 
             logger.info("Verified that video is getting played");
 
-            seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60);
 
             logger.info("Verified that video is seeked");
 
-            eventValidator.validate("played_1",60);
+            result = result && eventValidator.validate("played_1",60);
 
             logger.info("Verified that video is played");
 
-            sasport.validate("DISPLAY_BTN",10);
+            result = result && sasport.validate("DISPLAY_BTN",10);
 
-            result = true;
         } catch (Exception e) {
             e.printStackTrace();
+            result = false;
         }
         Assert.assertTrue(result, "OPT ENtitlement tests failed");
     }

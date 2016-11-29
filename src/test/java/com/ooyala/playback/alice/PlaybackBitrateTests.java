@@ -40,31 +40,30 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			play.waitForPage();
+            result = result && play.waitForPage();
 
 			injectScript();
 
-			play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60);
 			logger.info("Verifed that video is getting playing");
 			sleep(4000);
 
-			pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60);
 			logger.info("Verified that video is getting pause");
 
-			bitratevalidator.validate("", 60);
+            result = result && bitratevalidator.validate("", 60);
 
 			sleep(1000);
 
-			seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60);
 			logger.info("Verified that video is seeked");
 
-			eventValidator.validate("videoPlayed_1", 60);
+            result = result && eventValidator.validate("videoPlayed_1", 60);
 			logger.info("Verified that video is played");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 
 		}
 		Assert.assertTrue(result, "Playback bitrate/Quality tests failed");

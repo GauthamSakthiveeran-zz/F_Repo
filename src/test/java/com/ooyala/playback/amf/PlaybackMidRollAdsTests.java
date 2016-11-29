@@ -25,23 +25,20 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 	public void verifyMidRoll(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
-
 			driver.get(url);
 			if (!getPlatform().equalsIgnoreCase("android")) {
 				driver.manage().window().maximize();
 			}
-			
-			
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playValidator.validate("playing_1", 60);
+            result = result && playValidator.validate("playing_1", 60);
 			extentTest.log(PASS, "Video started playing");
 			Thread.sleep(2000);
 
@@ -49,9 +46,9 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 
 			loadingSpinner();
 			event.validate("videoPlaying_1", 90);
-			event.validate("MidRoll_willPlaySingleAd_1", 120);
+            result = result && event.validate("MidRoll_willPlaySingleAd_1", 120);
 			extentTest.log(PASS, "Midroll Ad started to play");
-			event.validate("singleAdPlayed_1", 160);
+            result = result && event.validate("singleAdPlayed_1", 160);
 			extentTest.log(PASS, "Midroll Ad ended");
 			
 			event.validateForSpecificPlugins("singleAdPlayed_2", 160, "pulse");
@@ -59,11 +56,9 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 			seekAction.seekSpecific(10);
 
 			event.validate("videoPlayed_1", 160);
-			event.validate("played_1", 160);
+            result = result &&event.validate("played_1", 160);
 			extentTest.log(PASS, "Video Played");
 			extentTest.log(PASS, "Verified MidrollAdsTest");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

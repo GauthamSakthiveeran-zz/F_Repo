@@ -28,36 +28,36 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 	public void testVideoReplay(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 			driver.get(url);
 
-			play.waitForPage();
+            result = result && play.waitForPage();
 
 			injectScript();
 
-			play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60);
 
 			logger.info("video is playing");
 
 			Thread.sleep(2000);
 
-			seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60);
 
 			logger.info("video seeked");
 
-			eventValidator.validate("played_1", 200);
+            result = result && eventValidator.validate("played_1", 200);
 
 			logger.info("video played");
 
-			replayValidator.validate("replay_1", 60);
+            result = result && replayValidator.validate("replay_1", 60);
 
 			logger.info("video replayed");
 
-			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 		}
 		Assert.assertTrue(result, "Playback Replay tests failed");
 	}

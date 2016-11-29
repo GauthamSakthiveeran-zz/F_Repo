@@ -27,7 +27,7 @@ public class PlaybackBasicAdTests extends PlaybackWebTest {
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyBasicAd(String testName, String url) throws Exception {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
@@ -36,39 +36,37 @@ public class PlaybackBasicAdTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
+            result = result &&	playValidator.waitForPage();
 			Thread.sleep(10000);
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
 			loadingSpinner();
 
-			event.validate("willPlaySingleAd_1", 150);
+            result = result && event.validate("willPlaySingleAd_1", 150);
 
 			extentTest.log(PASS, "Preroll Ad started");
 
 			// String adurl = (((JavascriptExecutor)
 			// driver).executeScript("return adplayingurl_1.textContent")).toString();
 
-			event.validate("singleAdPlayed_1", 150);
+            result = result && event.validate("singleAdPlayed_1", 150);
 
 			extentTest.log(PASS, "Preroll Ad Completed");
 
-			event.validate("playing_1", 120);
+            result = result && event.validate("playing_1", 120);
 
 			extentTest.log(PASS, "Main video started to play");
 
 			sleep(500);
 
-			seekValidator.validate("seeked_1", 190);
+            result = result && 	seekValidator.validate("seeked_1", 190);
 
-			event.validate("played_1", 190);
+            result = result &&	event.validate("played_1", 190);
 
 			extentTest.log(PASS, "Video completed palying");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
