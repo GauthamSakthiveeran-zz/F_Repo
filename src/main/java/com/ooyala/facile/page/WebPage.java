@@ -2548,8 +2548,89 @@ public abstract class WebPage {
 		} else if (element.getFindBy().equalsIgnoreCase("XPATH")) {
 			return waitOnXPath(element.getElementXPath(), timeout, null,
 					ignoreRendering);
+		}else if (element.getFindBy().equalsIgnoreCase("CLASS")) {
+			return waitOnClass(element.getElementXPath(), timeout, null,
+					ignoreRendering);
 		}
 
+		return false;
+	}
+
+	/**
+	 * Waits until webdriver can find the element specified by xpath.
+	 *
+	 * @param path
+	 *            the path
+	 * @param maxMilliseconds
+	 *            the max milliseconds
+	 * @param frame
+	 *            the frame
+	 * @param ignoreRendering
+	 *            the ignore rendering
+	 * @return true if WebDriver is able to find an element with the given id
+	 */
+	public boolean waitOnClass(String path, int maxMilliseconds, String frame,
+			boolean ignoreRendering) {
+
+		WebElement identifier = null;
+		int secondsPassed = 0;
+
+		while (secondsPassed < maxMilliseconds) {
+			logger.info("Trying to find web element with specified xpath: "
+					+ path);
+			try {
+				if (frame == null)
+					identifier = driver.findElement(By.className(path));
+				else {
+					driver.switchTo().defaultContent();
+					identifier = driver.switchTo().frame(frame)
+							.findElement(By.className(path));
+				}
+			} catch (Exception e) {
+				if (isSafariDummyPlug()) {
+					frame = null;
+					logger.error("Caught exception" + e);
+				}
+				identifier = null;
+			}
+
+			try {
+				if (identifier != null && !isSafariDummyPlug()) {
+					if (identifier.isDisplayed())
+						logger.info("   XPath Found: " + path);
+					else {
+						logger.info("   ...looking for xpath (" + path + ")");
+						if (driver instanceof InternetExplorerDriver) {
+							wait(500); // prevent too much checking if IE (it
+							// seems to crash on these alot)
+							// 6.23.2009 snguyen1 - this may be obsolete now
+							// since the driver is more mature.
+							// This isn't detrimental, will leave for awhile.
+						}
+					}
+				}
+			} catch (RuntimeException e) {
+				wait(WAIT_INCR);
+				identifier = null;
+
+				if (isSafariDummyPlug()) {
+					logger.error("Caught exception" + e);
+					frame = null;
+				}
+			}
+
+			if (identifier != null
+					&& (isSafariDummyPlug() || ignoreRendering || identifier
+							.isDisplayed())) {
+				logger.info("   Found id in: " + secondsPassed / 1000 + " sec");
+				return true;
+			}
+			secondsPassed += WAIT_INCR;
+			wait(WAIT_INCR);
+			// logger.info("Waiting on identifier(" + id + ")...");
+		}
+		logger.info("Waiting for xpath: " + path + " timed out after "
+				+ maxMilliseconds / 1000 + " sec");
 		return false;
 	}
 
