@@ -44,9 +44,9 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 		
-		Thread.sleep(2000);
-
 		if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction()) return false;
+		Thread.sleep(1000);
+		if(!waitOnElement("PLAYING_SCREEN", 160)) return false;
 		
 		if(!waitOnElement(By.id(element), timeout)) return false;
 		extentTest.log(LogStatus.PASS,

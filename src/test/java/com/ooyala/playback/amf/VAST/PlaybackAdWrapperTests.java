@@ -7,25 +7,21 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.FullScreenAction;
 import com.ooyala.playback.page.action.PauseAction;
-import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackAdWrapperTests extends PlaybackWebTest {
 
 	private EventValidator event;
-	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
-	private PauseValidator pauseValidator;
 	private FullScreenAction fullScreenAction;
 	private VolumeValidator volumeValidator;
+	private PauseAction pauseAction;
 
 	public PlaybackAdWrapperTests() throws OoyalaException {
 		super();
@@ -49,10 +45,9 @@ public class PlaybackAdWrapperTests extends PlaybackWebTest {
 			injectScript();
 
 			playValidator.validate("playing_1", 190);
-			extentTest.log(LogStatus.PASS, "Main video started to play");
 			sleep(2000);
 
-			pauseValidator.validate("paused_1", 60);
+			pauseAction.startAction();
 			fullScreenAction.startAction();
 
 			volumeValidator.validate("", 60);
@@ -60,8 +55,6 @@ public class PlaybackAdWrapperTests extends PlaybackWebTest {
 			event.validate("played_1", 190);
 
 			result = true;
-
-			extentTest.log(LogStatus.PASS, "Main Video played successfully");
 
 		} catch (Exception e) {
 			e.printStackTrace();

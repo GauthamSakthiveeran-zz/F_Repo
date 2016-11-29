@@ -171,19 +171,19 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@AfterMethod(alwaysRun = true)
 	protected void afterMethod(ITestResult result) {
 
-		takeScreenshot(result.getTestName());
+		takeScreenshot(result.getName());
 		if (result.getStatus() == ITestResult.FAILURE) {
 			extentTest.log(
 					LogStatus.INFO,
 					"Snapshot is "
 							+ extentTest.addScreenCapture("images/"
-									+ result.getTestName()));
+									+ result.getName()));
 			extentTest.log(LogStatus.FAIL, result.getThrowable());
 		} else if (result.getStatus() == ITestResult.SKIP) {
-			extentTest.log(LogStatus.SKIP, result.getTestName()
+			extentTest.log(LogStatus.SKIP, result.getName()
 					+ " Test skipped " + result.getThrowable());
 		} else {
-			extentTest.log(LogStatus.PASS, result.getTestName()
+			extentTest.log(LogStatus.PASS, result.getName()
 					+ " Test passed");
 		}
 		extentReport.endTest(extentTest);
