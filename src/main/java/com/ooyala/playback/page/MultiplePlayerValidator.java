@@ -20,7 +20,7 @@ public class MultiplePlayerValidator extends PlayBackPage implements PlaybackVal
     }
 
     @Override
-    public void validate(String element, int timeout) throws Exception {
+    public boolean validate(String element, int timeout) throws Exception {
 
         if (element.equalsIgnoreCase("player1_play")){
             waitOnElement("PLAYER1_START_SCREEN",timeout);
@@ -68,5 +68,7 @@ public class MultiplePlayerValidator extends PlayBackPage implements PlaybackVal
             }
         }
 
+
+        return true;
     }
 }
