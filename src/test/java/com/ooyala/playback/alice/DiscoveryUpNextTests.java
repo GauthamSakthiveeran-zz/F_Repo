@@ -41,7 +41,7 @@ public class DiscoveryUpNextTests extends PlaybackWebTest {
 
 			injectScript();
 
-            result = result && play.validate("playing_100", 60);
+            result = result && play.validate("playing_1", 60);
 
 			logger.info("Verifed that video is getting playing");
 

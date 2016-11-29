@@ -93,35 +93,6 @@ public class UrlGenerator {
 		return urlsGenerated;
 	}
 
-    public static Hashtable<String,String> parseXmlDataProvider(String testName,
-                                                    Testdata testData) {
-        logger.info("Getting test url and test name from property file");
-
-        List<String> urlsGenerated = new LinkedList<String>();
-        for (Test data : testData.getTest()) {
-            if (data.getName().equals(testName)) {
-                List<Url> urls = data.getUrl();
-                for (Url url : urls) {
-                    String embedCode = url.getEmbedCode().getName();
-                    // String embedCode = test.;
-                    String pCode = url.getPcode().getName();
-                    String videoPlugin = url.getPlugins().getName();
-                    String adPlugin = url.getAdPlugins().getName();
-                    String additionalPlugin = url.getAdditionalPlugins()
-                            .getName();
-                    String playerParameter = new String(url
-                            .getPlayerParameter().getBytes());
-                    String pbid = url.getPbid().getName();
-                    String urlGenerated = UrlGenerator.getURL(embedCode, pCode,
-                            pbid, videoPlugin, adPlugin, additionalPlugin,
-                            playerParameter);
-                    urlsGenerated.add(urlGenerated,);
-
-                }
-            }
-        }
-        return urlsGenerated;
-    }
 
 	/**
 	 * @param testName

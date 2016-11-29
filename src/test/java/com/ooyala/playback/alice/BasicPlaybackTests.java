@@ -40,7 +40,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
 			injectScript();
 
-            result = play.validate("playing_100", 60);
+            result = play.validate("playing_1", 60);
 
 			Thread.sleep(2000);
 
