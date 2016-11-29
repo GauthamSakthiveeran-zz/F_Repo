@@ -60,7 +60,6 @@ public class DiscoveryValidator extends PlayBackPage implements
 			flagTrue = isElementVisible("RIGHT_BTN");
 			logger.info("Is right button showing on Discovery Screen  "
 					+ flagTrue);
-			if(!flagTrue) return false;
 		} catch (Exception e) {
 			logger.info("Max videos are showing on Discovery screen");
 			return false;
@@ -80,11 +79,13 @@ public class DiscoveryValidator extends PlayBackPage implements
 
 			if(!waitOnElement(By.id("reportDiscoveryClick_1"), 60)) return false;
 		}
+
+		loadingSpinner();
 		
-		return waitOnElement(By.id("reportDiscoveryImpression_1"), 60)
+		return (waitOnElement(By.id("reportDiscoveryImpression_1"), 60)
 				&& waitOnElement(By.id("setEmbedCode_1"), 60)
-				&& waitOnElement(By.id("playbackReady_1"), 60) 
-				&& waitOnElement(By.id("videoPreload_1"), 60);
+				&& waitOnElement(By.id("playbackReady_1"), 60)
+				&& waitOnElement(By.id("videoPreload_1"), 60));
 
 	}
 	
