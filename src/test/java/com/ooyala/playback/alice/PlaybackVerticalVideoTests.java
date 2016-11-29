@@ -42,30 +42,27 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
 			injectScript();
 
-            result = result && play.validate("playing_1", 60);
-
-			logger.info("video playing");
+            result = result && play.validate("playing_1", 60000);
 
 			sleep(2000);
 
-			//aspectRatioValidator.verticalVideoValidate("assetDimension_1", 60);
-            result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60);
+            result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60000);
 
-            result = result && pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60000);
 
 			logger.info("video paused");
 
             result = result && playAction.startAction();
 
-            result = result && seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60000);
 
 			logger.info("video seeked");
 
-            result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60);
+            result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60000);
 
 			logger.info("validated vertical video dimention");
 
-            result = result && eventValidator.validate("videoPlayed_1", 60);
+            result = result && eventValidator.validate("videoPlayed_1", 60000);
 
 			logger.info("video played");
 

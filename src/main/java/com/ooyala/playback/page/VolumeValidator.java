@@ -5,7 +5,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -63,7 +62,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	protected double getVolume(String element) throws Exception {
-		waitOnElement(element, 10);
+		waitOnElement(element, 10000);
 		clickOnIndependentElement(element);
 		Thread.sleep(3500);
 		double volume = Double.parseDouble(((JavascriptExecutor) driver)

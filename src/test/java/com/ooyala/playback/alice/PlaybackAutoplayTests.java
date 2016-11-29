@@ -37,8 +37,6 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 		} else {
 			try {
 				driver.get(url);
-				driver.manage().window().maximize();
-
                 result = result &&	play.waitForPage();
 
 				injectScript();
@@ -49,17 +47,13 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 				} catch (Exception e) {
 					logger.info("No Preroll ad present in this autoplay video");
 				}
-                result = result && play.validate("playing_1", 60);
-
-				logger.info("Verifed that video is getting playing");
+                result = result && play.validate("playing_1", 60000);
 
 				sleep(500);
 
-                result = result && seek.validate("seeked_1", 60);
+                result = result && seek.validate("seeked_1", 60000);
 
-				logger.info("Verified that video is seeked");
-
-                result = result && eventValidator.validate("played_1", 60);
+                result = result && eventValidator.validate("played_1", 60000);
 
 				logger.info("Verified that video is played");
 

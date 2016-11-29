@@ -31,30 +31,27 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result &&  play.waitForPage();
 			Thread.sleep(5000);
 
 			injectScript();
 
-            result = play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60000);
 
 			Thread.sleep(2000);
 
-            result = result && pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60000);
 
 			logger.info("Verified that video is getting pause");
 
-            result = result && pause.validate("playing_2", 60);
+            result = result && play.validate("playing_2", 60000);
 
-            result = result && seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60000);
 
 			logger.info("Verified that video is seeked");
 
-            result = result &&  eventValidator.validate("played_1", 60);
+            result = result &&  eventValidator.validate("played_1", 60000);
 
 			logger.info("Verified that video is played");
 

@@ -41,27 +41,22 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 
 			injectScript();
 
-            result = result && play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60000);
 
-			logger.info("Verified that video is playing");
 			sleep(2000);
 
-            result = result && aspectRatioValidator.validate("assetDimension_1", 60);
+            result = result && aspectRatioValidator.validate("assetDimension_1", 60000);
 
-            result = result && pause.validate("paused_1", 60);
-
-			logger.info("Verirfied that video is getting paused");
+            result = result && pause.validate("paused_1", 60000);
 
             result = result && playAction.startAction();
 			// add fullscreen functionality
 
-            result = result &&	seek.validate("seeked_1", 60);
+            result = result &&	seek.validate("seeked_1", 60000);
 
-			logger.info("Verified that video is seeked");
+            result = result &&	aspectRatioValidator.validate("assetDimension_1", 60000);
 
-            result = result &&	aspectRatioValidator.validate("assetDimension_1", 60);
-
-            result = result && eventValidator.validate("videoPlayed_1", 60);
+            result = result && eventValidator.validate("videoPlayed_1", 60000);
 
 			logger.info("Verified that video is played");
 

@@ -32,25 +32,18 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && play.waitForPage();
 
 			injectScript();
 
-            result = result && play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60000);
 
-			logger.info("video is playing");
+            result = result && fullScreenValidator.validate("", 60000);
 
-            result = result && fullScreenValidator.validate("", 60);
+            result = result && seek.validate("seeked_1", 60000);
 
-            result = result && seek.validate("seeked_1", 60);
-
-			logger.info("video seeked");
-
-            result = result && eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60000);
 
 			logger.info("video played");
 		} catch (Exception e) {

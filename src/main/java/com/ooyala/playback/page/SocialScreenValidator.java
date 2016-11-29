@@ -35,11 +35,11 @@ public class SocialScreenValidator extends PlayBackPage implements
 	public boolean validate(String element, int timeout) throws Exception {
 
 		try {
-			waitOnElement("SHARE_BTN", 10);
+			waitOnElement("SHARE_BTN", 10000);
 			clickOnIndependentElement("SHARE_BTN");
 		} catch (Exception e) {
 			clickOnIndependentElement("MORE_OPTION_ITEM");
-			waitOnElement("SHARE_BTN", 10);
+			waitOnElement("SHARE_BTN", 10000);
 			clickOnIndependentElement("SHARE_BTN");
 		}
 
@@ -121,7 +121,7 @@ public class SocialScreenValidator extends PlayBackPage implements
                 updateStatus.sendKeys(tweetItOnTwitter);
                 getWebElement("TWEETER_USERNAME").sendKeys("ooyalatester@vertisinfotech.com");
                 getWebElement("TWEETER_PASSWORD").sendKeys("!password*");
-                waitOnElement("TWITTER_LOGIN_BUTTON",30);
+                waitOnElement("TWITTER_LOGIN_BUTTON",30000);
                 clickOnHiddenElement("TWITTER_LOGIN_BUTTON");
                 Thread.sleep(5000);
                 logger.info("browser name is :"+browserName);
@@ -157,7 +157,7 @@ public class SocialScreenValidator extends PlayBackPage implements
                 driver.navigate().to("https://twitter.com");
                 driver.navigate().refresh();
 
-                waitOnElement("TWEET_TEXT",60);
+                waitOnElement("TWEET_TEXT",60000);
                 Thread.sleep(5000);
                 String tweet=getWebElement("TWEET_TEXT").getText();
                 for(int i=1;i<=10;i++){
@@ -229,7 +229,7 @@ public class SocialScreenValidator extends PlayBackPage implements
                 // close Browser level notifications by pressing TAB and ESCAPE
                 el.sendKeys(Keys.TAB);
                 el.sendKeys(Keys.ESCAPE);
-                waitOnElement("FB_PROFILE",10);
+                waitOnElement("FB_PROFILE",10000);
                 clickOnIndependentElement("FB_PROFILE");
                 String fbPost = "//p[text()="+"'"+facebookShare+"'"+"]";
                 logger.info("Facebook Post : "+fbPost);
@@ -255,10 +255,10 @@ public class SocialScreenValidator extends PlayBackPage implements
             {
                 getWebElement("GPLUS_EMAIL").sendKeys("ooyalatester@forgeahead.io");
                 getWebElement("GPLUS_NXT_BTN").submit();
-                waitOnElement("GPLUS_PASSWORD",10);
+                waitOnElement("GPLUS_PASSWORD",10000);
                 getWebElement("GPLUS_PASSWORD").sendKeys("!password*");
                 getWebElement("GPLUS_SIGNIN_BTN").submit();
-                waitOnElement("GPLUS_TEXTAREA",20);
+                waitOnElement("GPLUS_TEXTAREA",20000);
                 double random_number=Math.random();
                 String title_for_sharing_asset="Sharing this post on Google+"+random_number+"";
                 getWebElement("GPLUS_TEXTAREA").sendKeys(title_for_sharing_asset);

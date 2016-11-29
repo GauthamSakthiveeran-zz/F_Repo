@@ -31,9 +31,6 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest{
 
         try {
             driver.get(url);
-            if (!getPlatform().equalsIgnoreCase("android")) {
-                driver.manage().window().maximize();
-            }
 
             result = result && play.waitForPage();
 
@@ -41,17 +38,15 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest{
 
             injectScript();
 
-            result = result && play.validate("playing_1", 60);
-
-            logger.info("Verifed that video is getting playing");
+            result = result && play.validate("playing_1", 60000);
 
             Thread.sleep(2000);
 
-            result = result && social.validate("SHARE_BTN",60);
+            result = result && social.validate("SHARE_BTN",60000);
 
             logger.info("Verified Social Media Sharing functionality for Facebook,Twitter and ");
 
-            result = result && pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60000);
 
             logger.info("Verified that video is getting pause");
 

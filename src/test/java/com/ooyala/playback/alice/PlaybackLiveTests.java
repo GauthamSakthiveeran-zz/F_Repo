@@ -37,40 +37,27 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 		if (getBrowser().equalsIgnoreCase("safari")) {
 			try {
 				driver.get(url);
-				if (!getPlatform().equalsIgnoreCase("android")) {
-					driver.manage().window().maximize();
-				}
 
                 result = result && play.waitForPage();
 
 				injectScript();
 
-                result = result && play.validate("playing_1", 60);
+                result = result && play.validate("playing_1", 60000);
 
-				logger.info("video is playing");
+                result = result && pause.validate("paused_1", 60000);
 
-                result = result && pause.validate("paused_1", 60);
-
-				logger.info("video paused");
-
-                result = result && controlBarValidator.validate("", 60);
+                result = result && controlBarValidator.validate("", 60000);
 				// to-do add ooyala logo to the test page
 
-                result = result && fullScreenValidator.validate("FULLSCREEN_BTN_1", 60);
+                result = result && fullScreenValidator.validate("FULLSCREEN_BTN_1", 60000);
 
-				logger.info("playing video in full screen");
+                result = result && pause.validate("paused_2", 60000);
 
-                result = result && pause.validate("paused_2", 60);
-
-				logger.info("video paused in fullscreen");
-
-                result = result && play.validate("playing_2", 60);
-
-				logger.info("video playing in fullscreen");
+                result = result && play.validate("playing_2", 60000);
 
                 result = result && liveAction.startAction();
 
-                result = result && eventValidator.validate("played_1", 60);
+                result = result && eventValidator.validate("played_1", 60000);
 
 				logger.info("video played");
 			} catch (Exception e) {

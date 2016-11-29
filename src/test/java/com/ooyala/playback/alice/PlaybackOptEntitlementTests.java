@@ -36,17 +36,11 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
             Thread.sleep(10000);
 
             injectScript();
-            result = result && play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60000);
 
-            logger.info("Verified that video is getting played");
+            result = result && seek.validate("seeked_1", 60000);
 
-            result = result && seek.validate("seeked_1", 60);
-
-            logger.info("Verified that video is seeked");
-
-            result = result && eventValidator.validate("played_1",60);
-
-            logger.info("Verified that video is played");
+            result = result && eventValidator.validate("played_1",60000);
 
             result = result && sasport.validate("DISPLAY_BTN",10);
 

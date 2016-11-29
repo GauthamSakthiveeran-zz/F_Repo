@@ -36,42 +36,39 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && play.waitForPage();
 
-            result = result && startScreenValidator.validate("", 60);
+            result = result && startScreenValidator.validate("", 60000);
 
 			injectScript();
 
 			// playAction.startAction();
 
-            result = result && play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60000);
 			logger.info("video is playing");
 			Thread.sleep(2000);
 
-            result = result && pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60000);
 			logger.info("video is paused");
 
-            result = result && play.validate("playing_2", 60);
+            result = result && play.validate("playing_2", 60000);
 			logger.info("video is playing again");
 
-            result = result && seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60000);
 			logger.info("video seeked");
 
-            result = result && eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60000);
 			logger.info("video played");
 
-            result = result && endScreenValidator.validate("", 60);
+            result = result && endScreenValidator.validate("", 60000);
 
             result = result && eventValidator.eventAction("FULLSCREEN_BTN_1");
 
             result = result && endScreenValidator.validate("fullscreenChangedtrue", 50);
 			logger.info("checked fullscreen");
 
-            result = result && endScreenValidator.validate("", 60);
+            result = result && endScreenValidator.validate("", 60000);
             result = result && eventValidator.eventAction("FULLSCREEN_BTN_1");
 
 		} catch (Exception e) {

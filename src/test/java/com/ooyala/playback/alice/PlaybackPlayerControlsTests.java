@@ -42,27 +42,23 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
 			injectScript();
 
-            result = result && play.validate("playing_1", 60);
-
-			logger.info("Verifed that video is getting playing");
+            result = result && play.validate("playing_1", 60000);
 
 			Thread.sleep(2000);
 
-            result = result && pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60000);
 
-			logger.info("Verified that video is getting pause");
+            result = result && play.validate("playing_2", 60000);
 
-            result = result && play.validate("playing_2", 60);
+            result = result && fullScreenValidator.validate("", 60000);
 
-            result = result && fullScreenValidator.validate("", 60);
+            result = result && controlBarValidator.validate("", 60000);
 
-            result = result && controlBarValidator.validate("", 60);
-
-            result = result && seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60000);
 
 			logger.info("Verified that video is seeked");
 
-            result = result && eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60000);
 
 			logger.info("Verified that video is played");
 

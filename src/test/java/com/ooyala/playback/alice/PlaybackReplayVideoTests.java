@@ -37,21 +37,15 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
 			injectScript();
 
-            result = result && play.validate("playing_1", 60);
-
-			logger.info("video is playing");
+            result = result && play.validate("playing_1", 60000);
 
 			Thread.sleep(2000);
 
-            result = result && seek.validate("seeked_1", 60);
-
-			logger.info("video seeked");
+            result = result && seek.validate("seeked_1", 60000);
 
             result = result && eventValidator.validate("played_1", 200);
 
-			logger.info("video played");
-
-            result = result && replayValidator.validate("replay_1", 60);
+            result = result && replayValidator.validate("replay_1", 60000);
 
 			logger.info("video replayed");
 

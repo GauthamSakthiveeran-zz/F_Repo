@@ -43,16 +43,12 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
 		try {
 			driver.get(url);
-			if (!driver.getCapabilities().getPlatform().toString()
-					.equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && play.waitForPage();
 
 			injectScript();
 
-            result = result &&	play.validate("playing_1", 60);
+            result = result &&	play.validate("playing_1", 60000);
 
 			logger.info("verified video playing");
 
@@ -67,7 +63,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
                 result = result && eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
 				logger.info("verified discovery close button is present or not");
 				sleep(2000);
-                result = result && play.validate("playing_2", 60);
+                result = result && play.validate("playing_2", 60000);
 				logger.info("verified video playing again after discvery check");
 
                 result = result &&	pauseAction.startAction();
@@ -105,21 +101,14 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
                 result = result && seekAction.setTime(20).fromLast().startAction();//seek(20, true);
 
 				loadingSpinner();
+				discoveryUpNext.validate("", 60000);
 				try {
 
-					discoveryUpNext.validate("UPNEXT_CONTENT", 60);
-					logger.info("Upnext is present");
-
-				} catch (Exception e) {
-					logger.info("No Upnext panel");
-				}
-				try {
-
-					eventValidator.validateElement("END_SCREEN", 60);
+					eventValidator.validateElement("END_SCREEN", 60000);
 				} catch (Exception e) {
 					playAction.startAction();
 					seekAction.setTime(20).fromLast().startAction();//seek(20, true);
-					eventValidator.validateElement("END_SCREEN", 60);
+					eventValidator.validateElement("END_SCREEN", 60000);
 				}
 				discoveryValidator
 						.verifyDiscoveryEnabled("On_endScreen", false);

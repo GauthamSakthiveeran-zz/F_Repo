@@ -36,9 +36,6 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && play.waitForPage();
 
@@ -49,7 +46,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 			Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
 					.executeScript("return pp.isAdPlaying()"));
 			if (isAdplaying) {
-				volumeValidator.validate("VOLUME_MAX", 60);
+				volumeValidator.validate("VOLUME_MAX", 60000);
 				logger.info("validated ad volume at full range");
 				eventValidator.validate("adPodEnded_1", 200);
 				logger.info("Ad played");
@@ -57,20 +54,20 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
             Thread.sleep(2000);
 
-            result = result && volumeValidator.validate("VOLUME_MAX", 60);
+            result = result && volumeValidator.validate("VOLUME_MAX", 60000);
 
 			logger.info("validated video volume at full range");
 
-            result = result && eventValidator.validate("playing_10 ", 60);
+            result = result && eventValidator.validate("playing_10 ", 60000);
 
             logger.info("video is playing");
             sleep(4000);
 
-            result = result && seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60000);
 
 			logger.info("video seeked");
 
-            result = result && eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60000);
 
 			logger.info("video played");
 

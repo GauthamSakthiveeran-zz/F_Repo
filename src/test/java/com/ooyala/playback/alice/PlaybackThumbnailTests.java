@@ -34,9 +34,6 @@ public class PlaybackThumbnailTests extends PlaybackWebTest {
 
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && play.waitForPage();
 
@@ -44,23 +41,21 @@ public class PlaybackThumbnailTests extends PlaybackWebTest {
 
 			injectScript();
 
-            result = result && play.validate("playing_1", 60);
-
-			logger.info("Verifed that video is getting playing");
+            result = result && play.validate("playing_1", 60000);
 
 			Thread.sleep(5000);
 
-            result = result && pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60000);
 
-            result = result && thumbnailValidator.validate("", 60);
+            result = result && thumbnailValidator.validate("", 60000);
 
 			Thread.sleep(5000);
 
-            result = result && play.validate("playing_2", 60);
+            result = result && play.validate("playing_2", 60000);
 
-            result = result && seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60000);
 
-            result = result && eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60000);
 
 			logger.info("Verified that video is played");
 

@@ -22,16 +22,16 @@ public class PlayAction extends PlayBackPage implements PlayerAction {
 
 	@Override
 	public boolean startAction() throws Exception{
-		if(!clickOnIndependentElement("PLAY_BUTTON")){
-			return waitOnElement("PLAYING_SCREEN", 60);
+		if(clickOnIndependentElement("PLAY_BUTTON")){
+			return waitOnElement("PLAYING_SCREEN", 60000);
 		}
 //		extentTest.log(LogStatus.PASS, "Clicked on play button"); TODO throws NPE for extentTest
-		return true;
+		return false;
 	}
 	
 	public void startActionOnScreen() throws Exception{
 		try {
-			waitOnElement("STATE_SCREEN_SELECTABLE", 50);
+			waitOnElement("STATE_SCREEN_SELECTABLE", 50000);
 			clickOnIndependentElement("STATE_SCREEN_SELECTABLE");
 		} catch (Exception e) {
 			Actions action = new Actions(driver);

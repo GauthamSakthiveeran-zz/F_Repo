@@ -2,8 +2,6 @@ package com.ooyala.playback.amf;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 
-import java.util.Map;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,10 +9,7 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.PoddedAdValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.url.Url;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {

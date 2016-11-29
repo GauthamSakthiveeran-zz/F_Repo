@@ -23,19 +23,19 @@ public class ShareTabValidator extends PlayBackPage implements
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
 		try {
-			if(!waitOnElement("SHARE_BTN", 60)) return false;
+			if(!waitOnElement("SHARE_BTN", 60000)) return false;
 			if(!clickOnIndependentElement("SHARE_BTN")) return false;
 			Thread.sleep(5000);
 		} catch (Exception e) {
 			logger.info("exception \n" + e.getMessage());
 			if(!clickOnIndependentElement("MORE_OPTION_ITEM")) return false;
-			if(!waitOnElement("SHARE_BTN", 60)) return false;
+			if(!waitOnElement("SHARE_BTN", 60000)) return false;
 			if(!clickOnIndependentElement("SHARE_BTN")) return false;
-			if (!(isElementPresent("SHARE_TAB")))
+			if (!isElementPresent("SHARE_TAB"))
 				if(!clickOnIndependentElement("SHARE_BTN")) return false;
 		}
-		if(!waitOnElement("CONTENT_SCREEN", 60)) return false;
-		if (!(isElementPresent("SHARE_TAB")))
+		if(!waitOnElement("CONTENT_SCREEN", 60000)) return false;
+		if (!isElementPresent("SHARE_TAB"))
 			if(!clickOnIndependentElement("SHARE_BTN")) return false;
 		Thread.sleep(2000);
 
@@ -46,15 +46,11 @@ public class ShareTabValidator extends PlayBackPage implements
 		String embedTab = readTextFromElement("EMBED_TAB");
 		Log.info("Text in Embed Tab  " + embedTab);
 		
-		if(!shareTab.equalsIgnoreCase("Compartir")){
-			extentTest.log(LogStatus.FAIL, "Localization Failing");
+		if(!shareTab.equalsIgnoreCase("Compartir") || !embedTab.equalsIgnoreCase("Insertar")){
+			extentTest.log(LogStatus.FAIL, "Localization Failed.");
 			return false;
 		}
 		
-		if(!embedTab.equalsIgnoreCase("Insertar")){
-			extentTest.log(LogStatus.FAIL, "Localization Failing");
-			return false;
-		}
 		return clickOnIndependentElement("SHARE_CLOSE");
 
 	}

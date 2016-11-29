@@ -7,7 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
+
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by soundarya on 11/8/16.
@@ -29,6 +30,9 @@ public class WaterMarkValidator extends PlayBackPage implements
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
         String watermark_url = "https://dl.dropbox.com/s/kdo5hlgg2i3ptv0/ooyala-logo.png";
+
+		boolean flag = true;
+
 		Actions action = new Actions(driver);
 
 		WebElement control_bar = getWebElement("CONTROL_BAR_ITEM");
@@ -40,40 +44,57 @@ public class WaterMarkValidator extends PlayBackPage implements
 			action.moveToElement(control_bar).build().perform();
 		}
 
-		if(!waitOnElement("WATERMARK_LOGO", 60)) return false;
+		if(!waitOnElement("WATERMARK_LOGO", 60000)) return false;
 		Log.info("Watermark Image is displayed");
 		Thread.sleep(10000);
 
-		String ima_url = getWebElement("WATERMARK_LOGO").getAttribute("src");
+		String img_url = getWebElement("WATERMARK_LOGO").getAttribute("src");
+		
+		if(!watermark_url.equals(img_url)){
+			extentTest.log(LogStatus.FAIL, "Watermark url is matched");
+			flag = false;
+		}
 
-		Assert.assertEquals(watermark_url, ima_url);
-		Log.info("Watermark url is matched");
 		Thread.sleep(10000);
-		getlogoDimension();
+		flag  = validatelogoDimension();
 
 		// Checking height and width in fullscreen
 		if (!getBrowser().equalsIgnoreCase("safari")) {
 
 			if(!clickOnIndependentElement("FULLSCREEN_BTN")) return false;
-			Assert.assertEquals(watermark_url, ima_url);
-			getlogoDimension();
-			if(!waitOnElement("NORMAL_SCREEN", 10)) return false;
+			
+			if(!watermark_url.equals(img_url)){
+				extentTest.log(LogStatus.FAIL, "Watermark url is matched in full screen");
+				flag = false;
+			}
+			
+			flag = validatelogoDimension();
+			if(!waitOnElement("NORMAL_SCREEN", 10000)) return false;
 			if(!clickOnIndependentElement("NORMAL_SCREEN")) return false;
 
 		}
 
-		return getWindowHanldes();
+		return flag || getWindowHanldes(); // as flag = true or false does not affect the excution of getWindowHandles.
 	}
 
-	protected void getlogoDimension() throws Exception {
-
+	protected boolean validatelogoDimension() throws Exception {
+		boolean flag = true;
 		String width = getWebElement("WATERMARK_LOGO").getAttribute("width");
 		String height = getWebElement("WATERMARK_LOGO").getAttribute("height");
 
 		Log.info("Image width & height " + width + " " + height);
-		Assert.assertEquals(width, "16", "Width matches ");
-		Assert.assertEquals(height, "10", "Height matches ");
-		Log.info("Height and width are matched ");
+		
+		if(!width.equals("16")){
+			flag = false;
+			extentTest.log(LogStatus.FAIL, "Logo dimension - width mismatched.");
+		}
+		
+		if(!height.equals("10")){
+			flag = false;
+			extentTest.log(LogStatus.FAIL, "Logo dimension - height mismatched.");
+		}
+		
+		return flag;
 	}
 
 	protected boolean getWindowHanldes() throws Exception {

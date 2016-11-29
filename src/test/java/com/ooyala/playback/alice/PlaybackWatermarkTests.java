@@ -40,9 +40,6 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 		boolean result = true;
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && play.waitForPage();
 
@@ -53,26 +50,26 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 			Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
 					.executeScript("return pp.isAdPlaying()"));
 			if (isAdplaying) {
-				volumeValidator.validate("VOLUME_MAX", 60);
+				volumeValidator.validate("VOLUME_MAX", 60000);
 				eventValidator.validate("adPodEnded_1", 200);
 			}
 
-            result = result && play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60000);
 			logger.info("video is playing");
 			Thread.sleep(3000);
 
             result = result && pauseAction.startAction();
 
-            result = result && waterMarkValidator.validate("WATERMARK_LOGO", 60);
+            result = result && waterMarkValidator.validate("WATERMARK_LOGO", 60000);
 			logger.info("checked watermark logo");
 
             result = result && playAction.startAction();
 
-            result = result && seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60000);
 
 			logger.info("video seeked");
 
-            result = result && eventValidator.validate("videoPlayed_1", 60);
+            result = result && eventValidator.validate("videoPlayed_1", 60000);
 
 			logger.info("video played");
 
