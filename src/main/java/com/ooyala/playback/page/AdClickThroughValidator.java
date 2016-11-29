@@ -34,27 +34,25 @@ public class AdClickThroughValidator extends PlayBackPage implements
 		String baseWindowHdl = driver.getWindowHandle();
 		if (value != null) {
 
-			if (!getPlatform().equalsIgnoreCase("Android")) {// skipping this
-																// code for IMA
-																// and Vast
-																// (Android)
+			if (!getPlatform().equalsIgnoreCase("Android")) {
+				
 				if (!value.contains("freewheel")) {
 					if (value.contains("vast")) {
-						if(!clickOnIndependentElement("adScreenPanel")) return false;
+						if(!clickOnIndependentElement("AD_SCREEN_PANEL")) return false;
 					} else {
-						if(!clickOnIndependentElement("adScreenPanel1")) return false;
+						if(!clickOnIndependentElement("AD_PANEL")) return false;
 					}
 					if(!waitOnElement("adsClicked_1", 10)) return false;
 					if(!waitOnElement("adsClicked_videoWindow", 10)) return false;
-
+					extentTest.log(PASS,"AdsClicked by clicking on the ad screen");
 				}
 			}
 			if (!value.contains("ima")) {
 				try {
-					if(!clickOnHiddenElement("learnMore")) return false;
+					if(!clickOnHiddenElement("LEARN_MORE")) return false;
 					if(!waitOnElement("adsClicked_learnMoreButton", 5)) return false;
 				} catch (Exception e) {
-					if(!clickOnIndependentElement("learnMore")) return false;
+					if(!clickOnIndependentElement("LEARN_MORE")) return false;
 					if(!waitOnElement("adsClicked_learnMoreButton", 20)) return false;
 				}
 			}
@@ -79,7 +77,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
 				if (getPlatform().equalsIgnoreCase("Android") || isStreamingProtocolPrioritized("hls")) {
 					((JavascriptExecutor) driver).executeScript("pp.play()"); // TODO
 				} else {
-					if(!clickOnIndependentElement("adPanel")) return false;
+					if(!clickOnIndependentElement("AD_PANEL")) return false;
 				}
 
 			}

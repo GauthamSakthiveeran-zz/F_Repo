@@ -29,8 +29,12 @@ public class EncodingValidator extends PlayBackPage implements
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		String result = decode(testUrl, "UTF-8");
+		String result = decode(driver.getCurrentUrl(), "UTF-8");
+		if(result==null) 
+			return false;
 		String[] options = result.split("options=");
+		if(options==null || options.length<2)
+			return false;
 		JSONParser parser = new JSONParser();
 		JSONObject obj = (JSONObject) parser.parse(options[1]);
 		Object expectedEncodings = "";

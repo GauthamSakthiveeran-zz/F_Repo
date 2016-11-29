@@ -26,7 +26,7 @@ public class SaasPortValidator extends PlayBackPage implements PlaybackValidator
 
     @Override
     public boolean validate(String element, int timeout) throws Exception {
-            if(element.contains("CREATE_ENTITLEMENT")){
+        if(element.contains("CREATE_ENTITLEMENT")){
             try{
                 boolean entitlementPresent;
                 if(!searchEntitlement()) return false;

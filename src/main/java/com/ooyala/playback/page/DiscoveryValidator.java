@@ -29,10 +29,8 @@ public class DiscoveryValidator extends PlayBackPage implements
 		addElementToPageElements("pause");
 
 	}
-
-	public boolean validate(String element, int timeout) throws Exception {
-
-		
+	
+	private boolean validateDiscoveryToaster() throws Exception{
 		try {
 			if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
 			if(!waitOnElement("DISCOVERY_TOASTER", 60)) return false;
@@ -49,7 +47,10 @@ public class DiscoveryValidator extends PlayBackPage implements
 			if(!waitOnElement("DISCOVERY_TOASTER", 60)) return false;;
 			extentTest.log(LogStatus.PASS,"Discovery Toaster present");
 		}
-
+		return true;
+	}
+	
+	private boolean validateLeftRightButton() throws Exception{
 		List<WebElement> count = getWebElementsList("DISCOVERY_IMG_WRAPPER");
 
 		logger.info("Count Value :" + count.size());
@@ -71,7 +72,10 @@ public class DiscoveryValidator extends PlayBackPage implements
 			if(!clickOnIndependentElement("LEFT_BTN")) return false;
 			extentTest.log(LogStatus.PASS,"verified discovery left right button");
 		}
-
+		return true;
+	}
+	
+	private boolean validateImageStyle(){
 		if(!clickOnIndependentElement("IMAGE_STYLE")) return false;
 		try {
 			if(!waitOnElement(By.id("reportDiscoveryClick_1"), 60)) return false;
@@ -80,17 +84,24 @@ public class DiscoveryValidator extends PlayBackPage implements
 
 			if(!waitOnElement(By.id("reportDiscoveryClick_1"), 60)) return false;
 		}
-		
-		return waitOnElement(By.id("reportDiscoveryImpression_1"), 60)
-				&& waitOnElement(By.id("setEmbedCode_1"), 60)
-				&& waitOnElement(By.id("playbackReady_1"), 60) 
-				&& waitOnElement(By.id("videoPreload_1"), 60);
-
+		return true;
 	}
 	
-	//TODO - need to remove this.
+	@Override
+	public boolean validate(String element, int timeout) throws Exception {
 
-	public void verifyDiscoveryEnabled(String Onevent, boolean flag) {
+		if(validateDiscoveryToaster() && validateLeftRightButton() && validateImageStyle()){
+			return waitOnElement(By.id("reportDiscoveryImpression_1"), 60)
+					&& waitOnElement(By.id("setEmbedCode_1"), 60)
+					&& waitOnElement(By.id("playbackReady_1"), 60) 
+					&& waitOnElement(By.id("videoPreload_1"), 60);
+		}
+		
+		return false;
+	}
+	
+
+	public void verifyDiscoveryEnabled(String Onevent, boolean flag) { // TODO
 		boolean discoverytray = isElementPresent("DISCOVERY_STYLE");
 		boolean discoveryscreen = isElementPresent("CONTENT_SCREEN");
 

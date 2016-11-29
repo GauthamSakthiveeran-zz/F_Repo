@@ -12,7 +12,6 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.url.Url;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackClickthroughTests extends PlaybackWebTest {

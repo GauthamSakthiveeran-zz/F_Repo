@@ -10,7 +10,6 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.url.Url;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest{
