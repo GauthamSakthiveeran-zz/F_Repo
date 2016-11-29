@@ -55,9 +55,6 @@ public class PlaybackOverrideEncodingPriorityTests extends PlaybackWebTest {
 
             loadingSpinner();
 
-
-            event.validate("singleAdPlayed_1", 160);
-
             boolean isAdPlaying = false;
 
             isAdPlaying = (Boolean) ((JavascriptExecutor) driver).executeScript("return pp.isAdPlaying();");
@@ -69,9 +66,17 @@ public class PlaybackOverrideEncodingPriorityTests extends PlaybackWebTest {
 
             loadingSpinner();
 
+            Assert.assertTrue(event.validate("adsPlayed_1", 160),"Ad is not played");
+
             seek.validate("seeked_1",20);
 
-            event.validate("videoPlayed_1",20);
+            Assert.assertTrue(event.validate("seeked_1",20),"Video is not Seeked completely");
+
+            loadingSpinner();
+
+            Thread.sleep(15000);
+
+            Assert.assertTrue(event.validate("videoPlayed_1",20),"Video not Played Completely");
 
             String param = "{\"freewheel-ads-manager\":{\"fw_video_asset_id\":\"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v\",\"html5_ad_server\":\"http://g1.v.fwmrm.net\",\"html5_player_profile\":\"90750:ooyala_html5\",\"fw_mrm_network_id\":\"380912\",\"showInAdControlBar\":true},\"initialTime\":0,\"autoplay\":false,\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"]}";
 
@@ -97,10 +102,17 @@ public class PlaybackOverrideEncodingPriorityTests extends PlaybackWebTest {
 
             seek.validate("seeked_1",40);
 
-            event.validate("videoPlayed_1",40);
+            Assert.assertTrue(event.validate("seeked_1",20),"Video is not seeked after Overriding");
 
+            Thread.sleep(15000);
+
+            Assert.assertTrue(event.validate("videoPlayed_1",40),"Video not Played after overriding");
+
+            result = true;
         } catch (Exception e){
             e.printStackTrace();
         }
+
+        Assert.assertTrue(result,"OverrideEncoding Priority test failed");
     }
 }

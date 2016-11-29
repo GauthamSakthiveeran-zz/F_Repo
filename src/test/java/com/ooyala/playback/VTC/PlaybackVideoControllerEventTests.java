@@ -3,6 +3,7 @@ package com.ooyala.playback.VTC;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
@@ -21,6 +22,7 @@ public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
     private VolumeValidator volumeValidator;
     private PlayAction playAction;
     private SeekAction seekAction;
+    private SeekValidator seekValidator;
 
     public PlaybackVideoControllerEventTests() throws OoyalaException {
         super();
@@ -56,7 +58,9 @@ public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
 
             Assert.assertEquals(eventValidator.validateElementPresence("videoInFocus_1"),true,"Not able to focus on new embedded video");
 
-            seekAction.startAction();
+            seekValidator.validate("seeked_1",60);
+
+            Assert.assertTrue(eventValidator.validate("seeked_1",20));
 
             eventValidator.validate("videoLostFocus_1",60);
 

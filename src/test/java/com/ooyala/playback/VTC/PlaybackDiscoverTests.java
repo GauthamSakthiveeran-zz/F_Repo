@@ -3,6 +3,7 @@ package com.ooyala.playback.VTC;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,6 +20,8 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
     private UpNextValidator discoveryUpNext;
     private DiscoveryValidator discoveryValidator;
     private PlayAction playAction;
+    private SeekAction seekAction;
+    private SeekValidator seek;
 
     PlaybackDiscoverTests() throws OoyalaException {
         super();
@@ -29,14 +32,14 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
     public void testDiscoveryVTC(String testName, String url)
             throws OoyalaException {
 
-        boolean result = false;
+        boolean result = true;
         try {
             driver.get(url);
             if (!getPlatform().equalsIgnoreCase("android")) {
                 driver.manage().window().maximize();
             }
 
-            play.waitForPage();
+            result = result && play.waitForPage();
 
             Thread.sleep(10000);
 
@@ -46,23 +49,41 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
 
             logger.info("Verifed that video is getting playing");
 
-            discoveryValidator.validate("reportDiscoveryClick_1", 60);
+            Assert.assertTrue(discoveryValidator.validate("reportDiscoveryClick_1", 60),"Discovery is not enabled");
+
             logger.info("verified discovery");
 
-            pageFactory.getSeekAction().setTime(25).fromLast().startAction();//seek(25, true);
+            result = result && play.waitForPage();
 
-            discoveryUpNext.validate("UPNEXT_CONTENT", 60);
+            playAction.startAction();
+
+            loadingSpinner();
+
+            Assert.assertTrue(eventValidator.validate("playing_2",20));
+
+            logger.info("Verified that 2nd video is playing");
+
+            Thread.sleep(5000);
+
+            seek.validate("seeked_1",20);
+
+            Thread.sleep(5000);
+
+            Assert.assertTrue(discoveryUpNext.validate("UPNEXT_CONTENT", 60),"UpNext is not present");
+
             logger.info("Verified UpNext content");
 
-            eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60);
 
             logger.info("Verified that video is played");
 
             result = true;
+
         } catch (Exception e) {
             e.printStackTrace();
+            result = false;
         }
-        Assert.assertTrue(result, "Playback Volume tests failed");
+        Assert.assertTrue(result, "Playback Discovery tests failed");
     }
 
 }

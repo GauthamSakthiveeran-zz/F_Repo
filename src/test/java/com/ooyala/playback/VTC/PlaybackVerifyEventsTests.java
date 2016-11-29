@@ -7,6 +7,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,7 +21,7 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest{
     private EventValidator eventValidator;
     private PauseValidator pauseValidator;
     private PlayValidator playValidator;
-    private SeekValidator seelValidator;
+    private SeekValidator seekValidator;
 
     public PlaybackVerifyEventsTests() throws OoyalaException {
         super();
@@ -46,27 +47,42 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest{
 
             loadingSpinner();
 
-            eventValidator.validate("willPlaySingleAd_1",60);
+            Assert.assertTrue(eventValidator.validate("willPlaySingleAd_1",60));
 
-            eventValidator.validate("playing_1",60);
+            boolean isAdPlaying = false;
 
-            eventValidator.validate("videoSetInitialTime_1",60);
+            isAdPlaying = (Boolean) ((JavascriptExecutor) driver).executeScript("return pp.isAdPlaying();");
 
-            eventValidator.validate("videoPlay_1",60);
+            if (isAdPlaying) {
+                ((JavascriptExecutor) driver).executeScript("return pp.skipAd();");
+                isAdPlaying = false;
+            }
 
-            eventValidator.validate("videoWillPlay_1",60);
+            loadingSpinner();
 
-            eventValidator.validate("videoPlaying_1",60);
+            Assert.assertTrue(eventValidator.validate("playing_1",60));
+
+            Assert.assertTrue(eventValidator.validate("videoSetInitialTime_1",60));
+
+            Assert.assertTrue(eventValidator.validate("videoPlay_1",60));
+
+            Assert.assertTrue(eventValidator.validate("videoWillPlay_1",60));
+
+            Assert.assertTrue(eventValidator.validate("videoPlaying_1",60));
 
             pauseValidator.validate("videoPause_1",60);
 
-            eventValidator.validate("videoPaused_1",60);
+            Assert.assertTrue(eventValidator.validate("videoPause_1",60));
 
-            play.validate("playing_2",10);
+            Assert.assertTrue(play.validate("playing_2",10));
 
-            seelValidator.validate("seeked_1",60);
+            seekValidator.validate("seeked_1",60);
 
-            eventValidator.validate("videoPlayed_1",60);
+            Assert.assertTrue(eventValidator.validate("seeked_1",20));
+
+            Thread.sleep(12000);
+
+            Assert.assertTrue(eventValidator.validate("videoPlayed_1",60));
             result = true;
 
         } catch (Exception e) {
