@@ -37,7 +37,6 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 			if(!waitOnElement("PLAY_BUTTON", 60)) return false;
 		}
 		logger.info("Page is loaded completely");
-		extentTest.log(LogStatus.PASS, "Successfully found play button");
 
 		return true;
 

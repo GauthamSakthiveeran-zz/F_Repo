@@ -73,6 +73,16 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public void handleTestMethodName(Method method, Object[] testData) {
 //		String testCaseName = getTestCaseName(method, testData);
 		extentTest = extentReport.startTest(testData[0].toString());
+		
+		PlayBackPage page = new PlayBackPage(driver) {
+			
+			@Override
+			public void setExtentTest(ExtentTest test) {
+				
+				this.extentTest = PlaybackWebTest.this.extentTest;
+				
+			}
+		};
 
 		try {
 			Field[] fs = this.getClass().getDeclaredFields();
@@ -244,6 +254,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 					injectScript(url);
 				}
 			}
+			extentTest.log(LogStatus.PASS, "Javascript injection is successful");
 		}
 	}
 
@@ -256,12 +267,11 @@ public abstract class PlaybackWebTest extends FacileTest {
 				+ "   head.appendChild(script);\n" + "}\n" + "\n"
 				+ "var scriptURL = arguments[0];\n"
 				+ "injectScript(scriptURL);", scriptURL);
-
+		Thread.sleep(1000); // to avoid js failures
 		if (scriptURL.contains("common"))
 			object = js.executeScript("subscribeToCommonEvents();");
 		else
 			object = js.executeScript("subscribeToEvents();");
-		extentTest.log(LogStatus.PASS, "Javascript injection is successful");
 	}
 
 	public long loadingSpinner() {

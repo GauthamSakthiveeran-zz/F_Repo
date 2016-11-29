@@ -62,12 +62,12 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	protected double getVolume(String element) throws Exception {
-		waitOnElement(element, 10);
+//		waitOnElement(element, 10);
 		clickOnIndependentElement(element);
 		Thread.sleep(3500);
 		double volume = Double.parseDouble(((JavascriptExecutor) driver)
 				.executeScript("return pp.getVolume()").toString());
-		Log.info("volume set to " + volume);
+		extentTest.log(LogStatus.INFO,"volume set to " + volume);
 		return volume;
 
 	}
