@@ -26,6 +26,9 @@ function subscribeToEvents() {
         var willPlaySingleAdOrder = 1;
         var setEmbedCodeEventOrder = 1;
         var replayEventOrder = 1;
+        var reportDiscoveryImpressionOrder = 1;
+        var playbackReadyOrder = 1;
+        var videoPreloadOrder = 1;
 
         return function(event) {
             if (event.match(/playing/)) {
@@ -33,6 +36,13 @@ function subscribeToEvents() {
                     '<p id=playing_' + playingEventOrder + '>playing '
                     + playingEventOrder + '</p>');
                 playingEventOrder++;
+            }
+
+            if (event.match(/videoPreload/)) {
+                OO.$('#ooplayer').append(
+                    '<p id=videoPreload_' + videoPreloadOrder + '>videoPreload '
+                    + videoPreloadOrder + '</p>');
+                videoPreloadOrder++;
             }
 
             if (event.match(/willPlaySingleAd/)) {
@@ -71,12 +81,29 @@ function subscribeToEvents() {
                 fullscreenChangedEventOrder++;
             }
 
+
             if (event.match(/reportDiscoveryClick/)) {
 
                 OO.$("#ooplayer").append(
                     "<p id=reportDiscoveryClick_"+reportDiscoveryClickOrder+
                     ">reportDiscoveryClick "+reportDiscoveryClickOrder+"</p>");
                 reportDiscoveryClickOrder++;
+            }
+
+            if (event.match(/playbackReady/)) {
+
+                OO.$("#ooplayer").append(
+                    "<p id=playbackReady_"+playbackReadyOrder+
+                    ">playbackReady "+playbackReadyOrder+"</p>");
+                playbackReadyOrder++;
+            }
+
+            if (event.match(/reportDiscoveryImpression/)) {
+
+                OO.$("#ooplayer").append(
+                    "<p id=reportDiscoveryImpression_"+reportDiscoveryImpressionOrder+
+                    ">reportDiscoveryClick "+reportDiscoveryImpressionOrder+"</p>");
+                reportDiscoveryImpressionOrder++;
             }
 
             if(event.match(/videoControllerFocusVideoElement/)) {
