@@ -1,10 +1,7 @@
 package com.ooyala.playback.VTC;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.DifferentElementValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
@@ -19,6 +16,7 @@ public class PlaybackAdVideoSamePluginDiffElementTests  extends PlaybackWebTest 
     private PlayAction playAction;
     private SeekValidator seekValidator;
     private DifferentElementValidator elementValidator;
+    private IsAdPlayingValidator isAdPlayingValidator;
 
     PlaybackAdVideoSamePluginDiffElementTests() throws OoyalaException {
         super();
@@ -40,6 +38,10 @@ public class PlaybackAdVideoSamePluginDiffElementTests  extends PlaybackWebTest 
             injectScript();
 
             playAction.startAction();
+
+            if(isAdPlayingValidator.validate("CheckAdPlaying",60)){
+                isAdPlayingValidator.skipAd();
+            }
 
             eventValidator.validate("adsPlayed_1",60);
             logger.info("Ad played");

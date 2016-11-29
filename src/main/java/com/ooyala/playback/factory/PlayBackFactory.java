@@ -39,6 +39,7 @@ public class PlayBackFactory {
 	private SaasPortValidator saasPortValidator;
 	private StateScreenAction stateScreenAction;
 	private DifferentElementValidator differentElement;
+	private IsAdPlayingValidator isAdPlaying;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
@@ -230,6 +231,12 @@ public class PlayBackFactory {
 		if (differentElement == null)
 			differentElement = new DifferentElementValidator(driver);
 		return differentElement;
+	}
+
+	public IsAdPlayingValidator isAdPlaying(){
+		if (isAdPlaying == null)
+			isAdPlaying = new IsAdPlayingValidator(driver);
+		return isAdPlaying;
 	}
 
 	public static void destroyInstance() {

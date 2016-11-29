@@ -4,7 +4,6 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,6 +18,8 @@ public class PlaybackVolumeTests extends PlaybackWebTest{
     private PlayValidator play;
     private VolumeValidator volumeValidator;
     private PlayAction playAction;
+    private SeekValidator seekValidator;
+    private IsAdPlayingValidator isAdPlayingValidator;
 
     PlaybackVolumeTests() throws OoyalaException {
         super();
@@ -48,8 +49,7 @@ public class PlaybackVolumeTests extends PlaybackWebTest{
 
             play.validate("playing_1", 60);
 
-            Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
-                    .executeScript("return pp.isAdPlaying()"));
+            Boolean isAdplaying = isAdPlayingValidator.validate("CheckAdPlaying",60);
             if (isAdplaying) {
                 volumeValidator.validate("VOLUME_MAX", 60);
                 logger.info("validated ad volume at full range");
@@ -62,6 +62,8 @@ public class PlaybackVolumeTests extends PlaybackWebTest{
             volumeValidator.validate("VOLUME_MAX", 60);
 
             logger.info("validated video volume at full range");
+
+            seekValidator.validate("seeked_1",60);
 
             eventValidator.validate("played_1", 60);
 

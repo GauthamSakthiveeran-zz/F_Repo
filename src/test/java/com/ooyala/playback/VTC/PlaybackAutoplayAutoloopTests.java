@@ -1,10 +1,7 @@
 package com.ooyala.playback.VTC;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.ReplayValidator;
-import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.*;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
@@ -19,6 +16,7 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
     private EventValidator eventValidator;
     private SeekValidator seekValidator;
     private ReplayValidator replayValidator;
+    private IsAdPlayingValidator isAdPlayingValidator;
 
     public PlaybackAutoplayAutoloopTests() throws OoyalaException {
         super();
@@ -47,12 +45,9 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 
             Thread.sleep(10000);
 
-            replayValidator.validate("REPLAY",60);
+            eventValidator.validate("replay_1",60);
 
-            Thread.sleep(2000);
-
-            boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
-                    .executeScript("return pp.isAdPlaying()"));
+            boolean isAdplaying = isAdPlayingValidator.validate("CheckAdPlaying",60);
 
             Assert.assertEquals(isAdplaying, true, "Verified that ad is played after auto replay");
 
