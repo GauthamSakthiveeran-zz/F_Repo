@@ -32,16 +32,13 @@ public class PlaybackSkipAdsTests extends  PlaybackWebTest{
 	public void verifyPrerollOverlay(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
@@ -50,23 +47,21 @@ public class PlaybackSkipAdsTests extends  PlaybackWebTest{
 
 	        loadingSpinner();
 
-	        event.validate("willPlaySingleAd_1", 150);
-	        
-	        skipButtonValidator.validate("", 120);
+	        event.validate("willPlaySingleAd_1", 150000);
+
+            result = result && skipButtonValidator.validate("", 120000);
 	        
 	        extentTest.log(PASS, "Clicked on Skip button");
-	        
-	        event.validate("singleAdPlayed_1", 150);
-	        event.validate("playing_1", 150);
+
+            result = result && event.validate("singleAdPlayed_1", 150000);
+	        event.validate("playing_1", 150000);
 	        sleep(500);
-	        
-	        seekValidator.validate("seeked_1", 150);
-	        
-	        event.validate( "played_1", 150);
+
+            result = result &&  seekValidator.validate("seeked_1", 150000);
+
+            result = result &&  event.validate( "played_1", 150000);
 	        extentTest.log(PASS, "Main Video played successfully");
 	        extentTest.log(PASS, "Verified SkipAds Test");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

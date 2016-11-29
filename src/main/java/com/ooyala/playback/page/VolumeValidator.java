@@ -62,7 +62,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	protected double getVolume(String element) throws Exception {
-		waitOnElement(element, 10);
+		waitOnElement(element, 10000);
 		clickOnIndependentElement(element);
 		Thread.sleep(3500);
 		double volume = Double.parseDouble(((JavascriptExecutor) driver)

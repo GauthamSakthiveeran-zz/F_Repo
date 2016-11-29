@@ -29,69 +29,64 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	public void verifyPreMidPostcontrols(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playValidator.validate("playing_1", 120);
-	        event.validate("PreRoll_willPlayAds", 120);
+            result = result && playValidator.validate("playing_1", 120000);
+            result = result && event.validate("PreRoll_willPlayAds", 120000);
 
-	        event.validate("MidRoll_willPlayAds", 120);
+            result = result && event.validate("MidRoll_willPlayAds", 120000);
 
-	        event.validate("PostRoll_willPlayAds", 120);
+            result = result && event.validate("PostRoll_willPlayAds", 120000);
 
-	        seekValidator.validate("seeked_1",120);
-	        event.validate("played_1", 190);
+            result = result && seekValidator.validate("seeked_1",120000);
+            result = result && event.validate("played_1", 190000);
 
-	        event.validate("endScreen", 120);
-	        replayValidator.validate("replay_1", 120);
+            result = result &&  event.validate("endScreen", 120000);
+            result = result && replayValidator.validate("replay_1", 120000);
 	        
 	        extentTest.log(PASS, "Verified Pre_Mid_Post Basic control Replay");
 
-	        event.validate("PreRoll_willPlayAds_OnReplay", 120);
+            result = result && event.validate("PreRoll_willPlayAds_OnReplay", 120000);
 	        
 	        
 	        if(!getPlatform().equalsIgnoreCase("Android")) {
-	        	adClickThrough.validate("", 120);
+	        	adClickThrough.validate("", 120000);
 	        }
 
-	        event.validate("singleAdPlayed_4", 120);
+	        event.validate("singleAdPlayed_4", 120000);
 
 	        extentTest.log(PASS, "Verified Preroll ad is playing on replay");
 
-	        event.validate("MidRoll_willPlayAds_OnReplay", 120);
+	        event.validate("MidRoll_willPlayAds_OnReplay", 120000);
 
 	        if(!getPlatform().equalsIgnoreCase("Android")) {
-	        	adClickThrough.validate("", 120);
+	        	adClickThrough.validate("", 120000);
 	        }
 
-	        event.validate("singleAdPlayed_5", 120);
+	        event.validate("singleAdPlayed_5", 120000);
 
 	        extentTest.log(PASS, "Verified Midroll ad is playing on replay");
 
-	        event.validate("PostRoll_willPlayAds_OnReplay", 120);
+	        event.validate("PostRoll_willPlayAds_OnReplay", 120000);
 
 	        if(!getPlatform().equalsIgnoreCase("Android")) {
-	        	adClickThrough.validate("", 120);
+	        	adClickThrough.validate("", 120000);
 	        }
 
-	        event.validate("singleAdPlayed_6", 120);
+	        event.validate("singleAdPlayed_6", 120000);
 
 	        extentTest.log(PASS, "Verified Postroll ad is playing on replay");
 
 	        extentTest.log(PASS, "Verified Pre_Mid_Post Basic control test");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -22,20 +22,12 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean  validate(String element, int timeout) throws Exception {
-		if(!waitOnElement("PAUSE_BUTTON", 60)) return false;
+		if(!waitOnElement("PAUSE_BUTTON", 60000)) return false;
 		if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
 
 		Thread.sleep(1000);
-		/*if (isElementPresent("PAUSE_SCREEN")) {
-			logger.info("verify pause screen");
-			if(!waitOnElement("PAUSE_SCREEN", 60)) return false;
-		} else {
-
-			logger.info("verify discovery if set on pausescreen");
-			if(!waitOnElement("CONTENT_SCREEN", 60)) return false;
-		}*/
 		
-		if(!waitOnElement("PAUSE_SCREEN", 60)) return false;
+		if(!waitOnElement("PAUSE_SCREEN", 60000)) return false;
 
 		if(!waitOnElement(By.id(element), timeout)) return false;
 		return true;

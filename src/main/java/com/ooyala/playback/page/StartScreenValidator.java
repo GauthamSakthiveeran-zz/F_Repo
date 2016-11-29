@@ -24,7 +24,7 @@ public class StartScreenValidator extends PlayBackPage implements
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
 
-		if(!waitOnElement("STATE_SCREEN_POSTER", 60)){
+		if(!waitOnElement("STATE_SCREEN_POSTER", 60000)){
 			return false;
 		}
 		

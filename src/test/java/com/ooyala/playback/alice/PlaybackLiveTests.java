@@ -32,50 +32,37 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 	@Test(groups = "Playback", dataProvider = "testUrls")
 	public void testHLSLive(String testName, String url) throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		if (getBrowser().equalsIgnoreCase("safari")) {
 			try {
 				driver.get(url);
-				if (!getPlatform().equalsIgnoreCase("android")) {
-					driver.manage().window().maximize();
-				}
 
-				play.waitForPage();
+                result = result && play.waitForPage();
 
 				injectScript();
 
-				play.validate("playing_1", 60);
+                result = result && play.validate("playing_1", 60000);
 
-				logger.info("video is playing");
+                result = result && pause.validate("paused_1", 60000);
 
-				pause.validate("paused_1", 60);
-
-				logger.info("video paused");
-
-				controlBarValidator.validate("", 60);
+                result = result && controlBarValidator.validate("", 60000);
 				// to-do add ooyala logo to the test page
 
-				fullScreenValidator.validate("FULLSCREEN_BTN_1", 60);
+                result = result && fullScreenValidator.validate("FULLSCREEN_BTN_1", 60000);
 
-				logger.info("playing video in full screen");
+                result = result && pause.validate("paused_2", 60000);
 
-				pause.validate("paused_2", 60);
+                result = result && play.validate("playing_2", 60000);
 
-				logger.info("video paused in fullscreen");
+                result = result && liveAction.startAction();
 
-				play.validate("playing_2", 60);
-
-				logger.info("video playing in fullscreen");
-
-				liveAction.startAction();
-
-				eventValidator.validate("played_1", 60);
+                result = result && eventValidator.validate("played_1", 60000);
 
 				logger.info("video played");
-				result = true;
 			} catch (Exception e) {
 				e.printStackTrace();
+                result = false;
 			}
 			Assert.assertTrue(result, "Playback HLSLive tests failed");
 		} else {

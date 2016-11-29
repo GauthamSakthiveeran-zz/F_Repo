@@ -25,7 +25,7 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
 		
 		Actions action = new Actions(driver);
 		action.moveToElement(player).perform();
-		if(!waitOnElement("FULLSCREEN_BTN", 60)) return false;
+		if(!waitOnElement("FULLSCREEN_BTN", 60000)) return false;
 
 		if (getPlatform().equalsIgnoreCase("Android")) {
 			if(!clickOnIndependentElement("FULLSCREEN_BTN")) return false;
@@ -39,7 +39,7 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
 				|| getBrowser().equalsIgnoreCase("internet explorer") || getPlatform()
 				.equalsIgnoreCase("Android"))) {
 			
-			if(!waitOnElement(By.id("fullscreenChangedtrue"), 60)) return false;
+			if(!waitOnElement(By.id("fullscreenChangedtrue"),60000)) return false;
 			logger.info("Changed into Fullscreen");
 			
 		}

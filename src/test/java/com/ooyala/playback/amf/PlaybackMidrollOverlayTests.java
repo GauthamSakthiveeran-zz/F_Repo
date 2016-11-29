@@ -29,42 +29,37 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest{
 	public void verifyMidrollOverlay(String testName, String url)
 			throws OoyalaException {
 		
-		boolean result = false;
+		boolean result = true;
 		
 		try {
 			
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 			
 			injectScript();
-			
-			playValidator.validate("playing_1", 60);
+
+            result = result && playValidator.validate("playing_1", 60000);
 			
 			if (playValidator.isStreamingProtocolPrioritized("hds")) { 
 				extentTest.log(LogStatus.INFO,"For Flash Specific cases");
-                event.validate("MidRoll_willPlaySingleAd_1", 180);
-                event.validate("singleAdPlayed_1", 160);
+                event.validate("MidRoll_willPlaySingleAd_1", 160000);
+                event.validate("singleAdPlayed_1", 160000);
                 extentTest.log(PASS, "Midroll Ad Played");
             }
-            event.validate("showNonlinearAd_1", 160);
+            result = result && event.validate("showNonlinearAd_1", 160000);
             sleep(2000);
 
-            overLayValidator.validate("nonlinearAdPlayed_1", 160);
+            result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
             
             extentTest.log(PASS, "Overlay Ads Played");
-            
-            seekValidator.validate("seeked_1",120);
 
-            event.validate("videoPlayed_1", 160);
-            event.validate("played_1", 160);
+            result = result && seekValidator.validate("seeked_1",160000);
+
+            event.validate("videoPlayed_1", 160000);
+            result = result &&  event.validate("played_1", 160000);
             extentTest.log(PASS, "Verified MidrollOverlay ads");
-			
-			result = true;
 			
 		}catch (Exception e) {
 			e.printStackTrace();

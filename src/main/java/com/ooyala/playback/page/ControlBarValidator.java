@@ -46,23 +46,23 @@ public class ControlBarValidator extends PlayBackPage implements
 		}
 		try {
 			for (String icon : controlBarElement) {
-				if(!waitOnElement(icon, 60)) return false;
+				if(!waitOnElement(icon, 60000)) return false;
 			}
 			boolean ismoreoption = isElementVisible("MORE_OPTION_ITEM");
 			if (ismoreoption) {
 				return
 						clickOnIndependentElement("MORE_OPTION_ITEM")
-						&& waitOnElement("DISCOVERY_BTN", 60)
-						&& waitOnElement("QUALITY_BTN", 60)
+						&& waitOnElement("DISCOVERY_BTN", 60000)
+						&& waitOnElement("QUALITY_BTN", 60000)
 						&& clickOnIndependentElement("CC_PANEL_CLOSE");
 			}else
 				return false;
 		} catch (Exception e) {
 
 			return
-					waitOnElement("PLAY_PAUSE", 60)
-					&& waitOnElement("VOLUME_BUTTON", 60)
-					&& waitOnElement("FULLSCREEN_BTN", 60);
+					waitOnElement("PLAY_PAUSE", 60000)
+					&& waitOnElement("VOLUME_BUTTON", 60000)
+					&& waitOnElement("FULLSCREEN_BTN", 60000);
 			
 			// seleniumActions.waitForElement("OOYALA_LOGO", 60);
 

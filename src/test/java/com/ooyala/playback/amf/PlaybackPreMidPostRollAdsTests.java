@@ -28,29 +28,27 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 	public void verifyPreMidPostroll(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
+
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
 	        loadingSpinner();
-	        event.validate("PreRoll_willPlayAds", 150);
+            result = result &&  event.validate("PreRoll_willPlayAds", 150000);
 
-	        event.validate("adsPlayed_1", 200);
+            result = result &&  event.validate("adsPlayed_1", 2000000);
 
 	        extentTest.log(PASS, "Played Preroll Ads");
-	        event.validate("playing_1", 150);
+	        event.validate("playing_1", 150000);
 
 	        //TestUtilities.seekPlayback(webDriver);
 	        sleep(5000);
@@ -59,19 +57,19 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 	        seekAction.seekSpecific(15);
 
 	        loadingSpinner();
-	        event.validate( "MidRoll_willPlayAds", 150);
-	        event.validate( "adsPlayed_2", 150);
+            result = result &&  event.validate( "MidRoll_willPlayAds", 150000);
+	        event.validate( "adsPlayed_2", 150000);
 	        loadingSpinner();
 
 	        extentTest.log(PASS, "Played Midroll Ads");
 	        seekAction.seekSpecific(15);
 
 	        loadingSpinner();
+
+            result = result &&  event.validate( "PostRoll_willPlayAds", 150000);
+	        event.validateForSpecificPlugins("singleAdPlayed_6", 200000, "pulse");
 	        
-	        event.validate( "PostRoll_willPlayAds", 150);
-	        event.validateForSpecificPlugins("singleAdPlayed_6", 200, "pulse");
-	        
-	        event.validate("adsPlayed_3", 150); // TODO needs to be ignored for specific plugins
+	        event.validate("adsPlayed_3", 150000); // TODO needs to be ignored for specific plugins
 	        
 	        /*if(map!=null && map.get("ad_plugin")!=null && map.get("ad_plugin").contains("pulse")) {
 	        	event.validate("singleAdPlayed_6", 200);
@@ -81,12 +79,10 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 
 	        extentTest.log(PASS, "Played Postroll Ads");
 	        
-	        event.validateForSpecificPlugins("seeked_1", 150, "pulse");
+	        event.validateForSpecificPlugins("seeked_1", 150000, "pulse");
 
-	        event.validate("played_1", 200);
+            result = result &&   event.validate("played_1", 200000);
 	        extentTest.log(PASS, "Verified PreMidPostRoll Ads Test");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

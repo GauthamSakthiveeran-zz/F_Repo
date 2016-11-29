@@ -58,7 +58,7 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 						.executeScript(" return pp.seek(3)");
 				((JavascriptExecutor) driver)
 						.executeScript(" return pp.play()");
-				flag = flag && waitOnElement(By.id("bitrateChanged_" + (bitrate)), 60);
+				flag = flag && waitOnElement(By.id("bitrateChanged_" + (bitrate)), 60000);
 			}
 			return flag;
 		} else {

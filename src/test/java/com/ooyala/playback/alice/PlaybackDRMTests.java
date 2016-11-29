@@ -11,6 +11,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
 import net.lightbody.bmp.core.har.HarEntry;
 import org.openqa.selenium.Proxy;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -27,42 +28,44 @@ public class PlaybackDRMTests  extends PlaybackWebTest {
     }
 
     @Test(groups = "playback", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
+    public void testPlaybackDRM(String testName, String url) throws OoyalaException {
 
-        boolean result = false;
-
-        try {
-            driver.get(url);
-            if (!getPlatform().equalsIgnoreCase("android")) {
-                driver.manage().window().maximize();
-            }
-
-            play.waitForPage();
-            Thread.sleep(10000);
-
-            injectScript();
-
-            play.validate("playing_1", 60);
-            BrowserMobProxyHelper.startBrowserMobProxyServer();
-
-            BrowserMobProxyHelper.startHar("DRM.har");
-            Thread.sleep(2000);
-            pause.validate("paused_1", 60);
-
-            List<HarEntry> entryList = BrowserMobProxyHelper.getHarEntries();
-            for(HarEntry h:entryList) {
-                BrowserMobProxyHelper.getUrlFromHarEntry(h);
-            }
-            BrowserMobProxyHelper.endHar();
-            play.validate("playing_2", 60);
-            seek.validate("seeked_1", 60);
-            logger.info("Verified that video is seeked");
-            eventValidator.validate("played_1",60);
-            logger.info("Verified that video is played");
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
+        boolean result = true;
+        if(testName.split(":")[1].contains("Fairplay")&& !(getBrowser().equalsIgnoreCase("safari")) ){
+            throw new SkipException("Fairplay DRM runs in Safari browser only - Test Skipped");
         }
-        Assert.assertTrue(result, "DRM tests failed");
+
+            try {
+                driver.get(url);
+
+                //need to add logic for verifying description
+                result = result && play.waitForPage();
+                Thread.sleep(10000);
+
+                injectScript();
+
+                result = result && play.validate("playing_1", 60000);
+
+                Thread.sleep(2000);
+
+                result = result && pause.validate("paused_1", 60000);
+
+                logger.info("Verified that video is getting pause");
+
+                result = result && play.validate("playing_2", 60000);
+
+                result = result && seek.validate("seeked_1", 60000);
+
+                logger.info("Verified that video is seeked");
+
+                result = result && eventValidator.validate("played_1", 60000);
+
+                logger.info("Verified that video is played");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                result = false;
+            }
+            Assert.assertTrue(result, "DRM tests failed");
     }
 }

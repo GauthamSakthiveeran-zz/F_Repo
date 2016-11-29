@@ -32,7 +32,7 @@ public class ThumbnailValidator extends PlayBackPage implements
 		WebElement element1 = getWebElement("SCRUBBER_BAR");
 		if(element1==null) return false;
 		action.moveToElement(element1).build().perform();
-		return waitOnElement("THUMBNAIL_CONTAINER", 60);
+		return waitOnElement("THUMBNAIL_CONTAINER", 60000);
 
 	}
 	
