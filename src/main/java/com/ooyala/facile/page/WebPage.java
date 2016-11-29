@@ -2576,7 +2576,7 @@ public abstract class WebPage {
 		int secondsPassed = 0;
 
 		while (secondsPassed < maxMilliseconds) {
-			logger.info("Trying to find web element with specified xpath: "
+			logger.info("Trying to find web element with specified class: "
 					+ path);
 			try {
 				if (frame == null)
@@ -2597,7 +2597,7 @@ public abstract class WebPage {
 			try {
 				if (identifier != null && !isSafariDummyPlug()) {
 					if (identifier.isDisplayed())
-						logger.info("   XPath Found: " + path);
+						logger.info("   Class Found: " + path);
 					else {
 						logger.info("   ...looking for xpath (" + path + ")");
 						if (driver instanceof InternetExplorerDriver) {
@@ -2629,7 +2629,7 @@ public abstract class WebPage {
 			wait(WAIT_INCR);
 			// logger.info("Waiting on identifier(" + id + ")...");
 		}
-		logger.info("Waiting for xpath: " + path + " timed out after "
+		logger.info("Waiting for class: " + path + " timed out after "
 				+ maxMilliseconds / 1000 + " sec");
 		return false;
 	}
