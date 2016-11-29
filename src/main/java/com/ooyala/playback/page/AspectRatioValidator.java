@@ -31,8 +31,9 @@ public class AspectRatioValidator extends PlayBackPage implements
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
+		
 		if (isElementPresent(By.id(element))) {
-			// dynamic element - long time for iselementPresent
+
 			int width = Integer.parseInt(getWebElement(element).getAttribute(
 					"width"));
 			int height = Integer.parseInt(getWebElement(element).getAttribute(

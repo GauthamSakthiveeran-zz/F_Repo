@@ -47,7 +47,7 @@ public class DiscoveryUpNextTests extends PlaybackWebTest {
 
 			pageFactory.getSeekAction().setTime(25).fromLast().startAction();//seek(25, true);
 
-			discoveryUpNext.validate("UPNEXT_CONTENT", 60);
+			discoveryUpNext.validate("", 60);
 
 			eventValidator.validate("played_1", 60);
 
