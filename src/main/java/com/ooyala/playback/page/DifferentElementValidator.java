@@ -21,10 +21,11 @@ public class DifferentElementValidator extends PlayBackPage implements PlaybackV
     }
 
     @Override
-    public void validate(String element, int timeout) throws Exception {
-        List<WebElement> ele=getWebElementsList("videoPath");
+    public boolean validate(String element, int timeout) throws Exception {
+        List<WebElement> ele=getWebElementsList(element);
         String element1_id = ele.get(0).getAttribute("id");
         String element2_id = ele.get(1).getAttribute("id");
         Assert.assertNotEquals(element1_id, element2_id, "Both should not have same id");
+        return true;
     }
 }

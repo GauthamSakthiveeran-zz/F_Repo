@@ -35,19 +35,19 @@ public class PlaybackAdVideoSamePluginDiffElementTests  extends PlaybackWebTest 
             if (!getPlatform().equalsIgnoreCase("android")) {
                 driver.manage().window().maximize();
             }
-
-            play.waitForPage();
+            Thread.sleep(3000);
 
             injectScript();
+
             playAction.startAction();
 
-            eventValidator.validate("adPodEnded_1",60);
+            eventValidator.validate("adsPlayed_1",60);
             logger.info("Ad played");
 
             elementValidator.validate("VIDEO_PATH",60);
-            logger.info( "Two different elements created for ad and main video");
+            logger.info("Two different elements created for ad and main video");
 
-            eventValidator.validate("Playing_1",60);
+            eventValidator.validate("playing_1",60);
             logger.info("Video starts playing");
 
             seekValidator.validate("seeked_1",60);
