@@ -38,32 +38,29 @@ public class PlaybackThumbnailImageTests extends PlaybackWebTest{
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-            result = result && playValidator.validate("playing_1", 50);
+            result = result && playValidator.validate("playing_1", 50000);
             Thread.sleep(2000);
 
             //Seek the Video
             seekAction.setTime(35).startAction();
-            result = result &&   event.validate("seeked_1", 50);
+            result = result &&   event.validate("seeked_1", 50000);
 
             //Hovering on scrubber bar
             Thread.sleep(5000);
             stateScreenAction.startAction();
 
-            result = result && thumbNail.validate("", 120);
+            result = result && thumbNail.validate("", 120000);
 
             thumbNail.validateThumbNailImage("9qaHdodTqmllcEnthP1AgrCTjf19HD4i"); // TODO, hardcoding for now
 
             seekAction.seekTillEnd().startAction();
-            result = result && event.validate("videoPlayed_1", 200);
+            result = result && event.validate("videoPlayed_1", 200000);
             extentTest.log(LogStatus.PASS,"video played completely");
 
 		} catch (Exception e) {

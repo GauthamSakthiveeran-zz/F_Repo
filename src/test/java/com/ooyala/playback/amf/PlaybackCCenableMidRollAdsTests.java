@@ -36,9 +36,6 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(10000);
@@ -47,19 +44,19 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 
             result = result && playAction.startAction();
 			sleep(2000);
-            result = result && event.validate("playing_1", 60);
+            result = result && event.validate("playing_1", 60000);
 
 			logger.info("Video started playing");
 
 			sleep(22000);
 
-            result = result && event.validate("videoPlaying_1", 190);
-            result = result && 	event.validate("MidRoll_willPlaySingleAd_1", 190);
+            result = result && event.validate("videoPlaying_1", 190000);
+            result = result && 	event.validate("MidRoll_willPlaySingleAd_1", 190000);
 
 			logger.info("Midroll Ad started to play");
 
-			event.validateForSpecificPlugins("singleAdPlayed_2", 190, "pulse");
-            result = result &&event.validate("singleAdPlayed_1", 190);
+			event.validateForSpecificPlugins("singleAdPlayed_2", 190000, "pulse");
+            result = result &&event.validate("singleAdPlayed_1", 190000);
 
 			// TODO
 			/*
@@ -70,17 +67,17 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 
 			logger.info("Midroll Ad ended");
 
-            result = result && event.validate("videoPlaying_1", 190);
+            result = result && event.validate("videoPlaying_1", 190000);
             result = result && pauseAction.startAction();
 
-            result = result && ccValidator.validate("cclanguage", 60);
+            result = result && ccValidator.validate("cclanguage", 60000);
 			event.validate("videoPlaying_1", 190);
 
             result = result && seekAction.seekTillEnd().startAction();
 
-            result = result && event.validate("seeked_1", 190);
+            result = result && event.validate("seeked_1", 190000);
 			playAction.startAction();
-            result = result && event.validate("played_1", 250);
+            result = result && event.validate("played_1", 250000);
 
 			extentTest.log(PASS, "Video Played");
 

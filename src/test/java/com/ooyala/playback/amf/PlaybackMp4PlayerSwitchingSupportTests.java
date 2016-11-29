@@ -35,10 +35,6 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
-
             result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
@@ -47,11 +43,11 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
             result = result && playAction.startAction();
 			loadingSpinner();
 			
-	        event.validate("willPlaySingleAd_1", 50);
+	        event.validate("willPlaySingleAd_1", 50000);
 	        extentTest.log(PASS, "Ad starts to play");
-	        event.validate("singleAdPlayed_1", 190);
+	        event.validate("singleAdPlayed_1", 190000);
 	        extentTest.log(PASS, "Ad Played completely");
-	        event.validate("playing_1", 120);
+	        event.validate("playing_1", 120000);
 	        sleep(10000);
 
 	        pauseAction.startActionOnScreen();
@@ -62,10 +58,10 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 
 	        sleep(5000);
 
-            result = result && seekValidator.validate("seeked_1", 190);
+            result = result && seekValidator.validate("seeked_1", 190000);
 	        extentTest.log(PASS, "Seek successful");
 
-            result = result &&  event.validate("played_1", 190);
+            result = result &&  event.validate("played_1", 190000);
 	        extentTest.log(PASS, "Video played");
 
 	        extentTest.log(PASS, "verified Playback of OSMF MP4 Asset");

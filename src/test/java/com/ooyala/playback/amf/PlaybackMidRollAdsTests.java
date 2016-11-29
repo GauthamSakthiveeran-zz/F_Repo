@@ -29,34 +29,31 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-            result = result && playValidator.validate("playing_1", 60);
+            result = result && playValidator.validate("playing_1", 60000);
 			extentTest.log(PASS, "Video started playing");
 			Thread.sleep(2000);
 
 			seekAction.seekSpecific(15);
 
 			loadingSpinner();
-			event.validate("videoPlaying_1", 90);
-            result = result && event.validate("MidRoll_willPlaySingleAd_1", 120);
+			event.validate("videoPlaying_1", 90000);
+            result = result && event.validate("MidRoll_willPlaySingleAd_1", 120000);
 			extentTest.log(PASS, "Midroll Ad started to play");
-            result = result && event.validate("singleAdPlayed_1", 160);
+            result = result && event.validate("singleAdPlayed_1", 160000);
 			extentTest.log(PASS, "Midroll Ad ended");
 			
-			event.validateForSpecificPlugins("singleAdPlayed_2", 160, "pulse");
+			event.validateForSpecificPlugins("singleAdPlayed_2", 160000, "pulse");
 
 			seekAction.seekSpecific(10);
 
-			event.validate("videoPlayed_1", 160);
-            result = result &&event.validate("played_1", 160);
+			event.validate("videoPlayed_1", 160000);
+            result = result &&event.validate("played_1", 160000);
 			extentTest.log(PASS, "Video Played");
 			extentTest.log(PASS, "Verified MidrollAdsTest");
 

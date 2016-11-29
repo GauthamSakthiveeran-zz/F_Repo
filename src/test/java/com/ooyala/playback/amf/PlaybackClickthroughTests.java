@@ -35,9 +35,6 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(10000);
@@ -46,26 +43,26 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 
             result = result && playAction.startAction();
 
-            result = result && event.validate("willPlaySingleAd_1", 60);
+            result = result && event.validate("willPlaySingleAd_1", 60000);
 
 			extentTest.log(PASS, "Ad started to play");
 
-            result = result && clickThrough.validate("", 120);
+            result = result && clickThrough.validate("", 120000);
 
-            result = result && event.validate("singleAdPlayed_1", 190);
+            result = result && event.validate("singleAdPlayed_1", 190000);
 
 			extentTest.log(PASS, "Ad completed");
 
 			loadingSpinner();
 
-            result = result && event.validate("playing_1", 160);
+            result = result && event.validate("playing_1", 160000);
 
 			extentTest.log(PASS, "Video started");
 			sleep(5000);
 
             result = result && seekAction.seekTillEnd().startAction();
 
-            result = result &&event.validate("played_1", 160);
+            result = result &&event.validate("played_1", 160000);
 
 			extentTest.log(PASS, "Video ended");
 

@@ -34,9 +34,6 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest{
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
@@ -49,12 +46,12 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest{
 	        // added condition for IMA OVerlay as overlay is showing intermittently PBI-1825
 //	        if(!Description.contains("IMA")) {
 
-            result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160);
+            result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
 	        
 //	        }
-            result = result &&  event.validate("videoPlaying_1", 90);
+            result = result &&  event.validate("videoPlaying_1", 90000);
 	        
-	        seekValidator.validate("seeked_1", 120);
+	        seekValidator.validate("seeked_1", 120000);
 
 	        // add a condition when the ad plays till end of the video
 //	        if (parseDouble(((JavascriptExecutor) webDriver).executeScript("return pp.getPlayheadTime();").toString()) <
@@ -62,7 +59,7 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest{
 //	            seekPlayback(webDriver);
 //	            waitForElement(webDriver, "seeked_1", 190);
 //	        }
-            result = result &&  event.validate("played_1", 190);
+            result = result &&  event.validate("played_1", 190000);
 	        extentTest.log(PASS, "Main video played");
 	        extentTest.log(PASS, "Verified PrerollOverlayAds test");
 

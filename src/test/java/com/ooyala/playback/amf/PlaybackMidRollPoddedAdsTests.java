@@ -31,25 +31,22 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest{
 		
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 			
 			injectScript();
 
-            result = result && playValidator.validate("playing_1", 60);
+            result = result && playValidator.validate("playing_1", 60000);
 
-            result = result && seekValidator.validate("seeked_1", 60);
+            result = result && seekValidator.validate("seeked_1", 60000);
 			
-			event.validate("videoPlayed_1", 200);
+			event.validate("videoPlayed_1", 200000);
 
-            result = result && poddedAdValidator.validate("countPoddedAds", 120);
+            result = result && poddedAdValidator.validate("countPoddedAds", 120000);
 			
-			event.validate("seeked_1", 60);
-            result = result && event.validate("played_1", 200);
+			event.validate("seeked_1", 60000);
+            result = result && event.validate("played_1", 200000);
 	        extentTest.log(PASS, "Verified MidrollPodded Ads Tests");
 			
 		}catch (Exception e) {

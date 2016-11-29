@@ -34,9 +34,6 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
@@ -49,25 +46,25 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 
 			// loadingSpinner();
 			// Wait for ad start
-            result = result && event.validate("willPlaySingleAd_1", 60);
+            result = result && event.validate("willPlaySingleAd_1", 60000);
 
 			extentTest.log(PASS, "Preroll Ad started");
 
-            result = result && event.validate("singleAdPlayed_1", 160);
+            result = result && event.validate("singleAdPlayed_1", 160000);
 
 			extentTest.log(PASS, "Preroll Ad Completed");
 
-            result = result && playValidator.validate("playing_1", 190);
+            result = result && playValidator.validate("playing_1", 190000);
 
 			extentTest.log(PASS, "Main video started to play");
 
 			sleep(2000);
 
-            result = result && seekValidator.validate("seeked_1", 190);
+            result = result && seekValidator.validate("seeked_1", 190000);
 
 			sleep(3000);
 
-            result = result && event.validate("played_1", 190);
+            result = result && event.validate("played_1", 190000);
 
 			extentTest.log(LogStatus.PASS, "Main Video played successfully");
 

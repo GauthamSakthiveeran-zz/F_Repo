@@ -39,9 +39,6 @@ public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(10000);
@@ -50,35 +47,35 @@ public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 
             result = result && playAction.startAction();
 
-            result = result && event.validate("willPlaySingleAd_1", 190);
+            result = result && event.validate("willPlaySingleAd_1", 190000);
 
 			extentTest.log(PASS, "Preroll Ad started");
 
-            result = result && event.validate("showAdSkipButton_1", 60);
+            result = result && event.validate("showAdSkipButton_1", 60000);
 
 			extentTest.log(PASS, "Skip button for Ads shown");
 			sleep(5000);
 
-            result = result && volumeValidator.validate("", 60);
+            result = result && volumeValidator.validate("", 60000);
 
 			extentTest.log(PASS, "Clicked on Skip button");
 
-            result = result && adSkipButtonValidator.validate("", 60);
+            result = result && adSkipButtonValidator.validate("", 60000);
 
-            result = result && event.validate("singleAdPlayed_1", 190);
+            result = result && event.validate("singleAdPlayed_1", 190000);
 
 			extentTest.log(PASS, "Preroll Ad Completed");
 
-            result = result && event.validate("playing_1", 60);
+            result = result && event.validate("playing_1", 60000);
 
 			extentTest.log(PASS, "Main video started to play");
 			sleep(500);
 
             result = result && seekAction.seekTillEnd().startAction();
 
-            result = result && event.validate("seeked_1", 180);
+            result = result && event.validate("seeked_1", 180000);
 
-            result = result && event.validate("played_1", 200);
+            result = result && event.validate("played_1", 200000);
 
 			extentTest.log(PASS, "Video completed playing");
 

@@ -33,9 +33,6 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest{
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
@@ -44,12 +41,12 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest{
 
             result = result && playAction.startAction();
 	        loadingSpinner();
-            result = result &&  event.validate("singleAdPlayed_1",150);
+            result = result &&  event.validate("singleAdPlayed_1",150000);
 	        extentTest.log(LogStatus.PASS, "Played Preroll ads");
 
 	        loadingSpinner();
-	        event.validate("playing_1",150);
-            result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60);
+	        event.validate("playing_1",150000);
+            result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 	            
 	        extentTest.log(PASS, "Verified Preroll Ads with Discovery");
 

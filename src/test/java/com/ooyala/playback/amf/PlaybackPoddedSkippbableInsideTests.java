@@ -35,9 +35,6 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
@@ -50,32 +47,32 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 	        loadingSpinner();
 
 	        // verify first podded preroll played
-            result = result && event.validate("willPlaySingleAd_1", 150);
-            result = result &&  event.validate("singleAdPlayed_1", 150);
+            result = result && event.validate("willPlaySingleAd_1", 150000);
+            result = result &&  event.validate("singleAdPlayed_1", 150000);
 	        loadingSpinner();
 
 	        //second preroll podded starts
-            result = result &&  event.validate("willPlaySingleAd_2", 150);
+            result = result &&  event.validate("willPlaySingleAd_2", 150000);
 
 	        //skip buttons shows for second preroll podded
 
-            result = result && skipValidator.validate("", 120);
+            result = result && skipValidator.validate("", 120000);
 	        
 	        loadingSpinner();
 
 	        // verify third ad played
-	        event.validate("willPlaySingleAd_3", 150);
+	        event.validate("willPlaySingleAd_3", 150000);
 
-	        event.validate("singleAdPlayed_3", 150);
+	        event.validate("singleAdPlayed_3", 150000);
 
 	        extentTest.log(PASS, "Played Preroll podded Ads");
 	        sleep(3000);
-            result = result && event.validate("playing_1", 190);
+            result = result && event.validate("playing_1", 190000);
 	        sleep(500);
 
 
-            result = result && seekValidator.validate("seeked_1", 190);
-            result = result && event.validate("played_1", 190);
+            result = result && seekValidator.validate("seeked_1", 190000);
+            result = result && event.validate("played_1", 190000);
 	        extentTest.log(PASS, "Main Video played successfully");
 	        extentTest.log(PASS, "Verified PlaybackPoddedSkippbableInsideTests");
 

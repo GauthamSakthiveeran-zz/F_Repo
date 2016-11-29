@@ -39,9 +39,6 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(10000);
@@ -51,17 +48,17 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
             result = result && playAction.startAction();
 
 			if (adClickThroughValidator.isAdPlaying())
-				event.validate("singleAdPlayed_1", 90);
+				event.validate("singleAdPlayed_1", 90000);
 
-            result = result &&	event.validate("playing_1", 90);
+            result = result &&	event.validate("playing_1", 90000);
 			extentTest.log(PASS, "Video starting");
 			sleep(2000);
 
             result = result && seekAction.setTime(10).fromLast().startAction();//seek(10, true);
 
-            result = result && event.validate("seeked_1", 180);
+            result = result && event.validate("seeked_1", 180000);
 
-            result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60);
+            result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 			extentTest.log(PASS, "Clicked video loaded");
 			extentTest.log(PASS, "Verified DiscoveryUpNext tests");
 

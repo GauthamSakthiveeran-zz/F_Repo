@@ -38,21 +38,18 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest{
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-            result = result && playValidator.validate("playing_1", 150);
+            result = result && playValidator.validate("playing_1", 150000);
 
-            result = result && pauseValidator.validate("paused_1", 60);
+            result = result && pauseValidator.validate("paused_1", 60000);
 	        Thread.sleep(5000);
 
-            result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60);
+            result = result && discoveryValidator.validate("reportDiscoveryClick_1",60000);
 
 	        loadingSpinner();
 
@@ -63,12 +60,12 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest{
 
 	        loadingSpinner();
 
-            result = result && upNextValidator.validate("", 60);
+            result = result && upNextValidator.validate("", 60000);
 
-	        event.validate("willPlaySingleAd_1", 90);
+	        event.validate("willPlaySingleAd_1", 90000);
 	        extentTest.log(PASS, "Postroll Ad started");
 	        
-	        event.validate("singleAdPlayed_1", 90);
+	        event.validate("singleAdPlayed_1", 90000);
 	        
 	        //TODO replace the above
 	        /*Map<String, String> map = parseURL(url) ;

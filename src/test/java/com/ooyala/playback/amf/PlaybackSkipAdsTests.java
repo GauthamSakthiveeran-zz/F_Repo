@@ -37,9 +37,6 @@ public class PlaybackSkipAdsTests extends  PlaybackWebTest{
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
@@ -50,19 +47,19 @@ public class PlaybackSkipAdsTests extends  PlaybackWebTest{
 
 	        loadingSpinner();
 
-	        event.validate("willPlaySingleAd_1", 150);
+	        event.validate("willPlaySingleAd_1", 150000);
 
-            result = result && skipButtonValidator.validate("", 120);
+            result = result && skipButtonValidator.validate("", 120000);
 	        
 	        extentTest.log(PASS, "Clicked on Skip button");
 
-            result = result && event.validate("singleAdPlayed_1", 150);
-	        event.validate("playing_1", 150);
+            result = result && event.validate("singleAdPlayed_1", 150000);
+	        event.validate("playing_1", 150000);
 	        sleep(500);
 
-            result = result &&  seekValidator.validate("seeked_1", 150);
+            result = result &&  seekValidator.validate("seeked_1", 150000);
 
-            result = result &&  event.validate( "played_1", 150);
+            result = result &&  event.validate( "played_1", 150000);
 	        extentTest.log(PASS, "Main Video played successfully");
 	        extentTest.log(PASS, "Verified SkipAds Test");
 

@@ -32,22 +32,19 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest{
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-            result = result && playValidator.validate("playing_1", 150);
-            result = result && seekValidator.validate("seeked_1", 180);
-            result = result && event.validate("videoPlayed_1", 180);
-	        event.validate("played_1", 180);
+            result = result && playValidator.validate("playing_1", 150000);
+            result = result && seekValidator.validate("seeked_1", 180000);
+            result = result && event.validate("videoPlayed_1", 180000);
+	        event.validate("played_1", 180000);
 	        extentTest.log(PASS, "Main video finished playing");
 
-            result = result && poddedAdValidator.validate("countPoddedAds", 160);
+            result = result && poddedAdValidator.validate("countPoddedAds", 160000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

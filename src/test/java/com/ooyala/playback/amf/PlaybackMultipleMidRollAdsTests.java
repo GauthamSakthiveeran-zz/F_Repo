@@ -31,26 +31,23 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-            result = result && playValidator.validate("playing_1", 90);
+            result = result && playValidator.validate("playing_1", 90000);
 
             result = result && seekAction.setAdPlugin("pulse").startAction();
 
-            result = result && event.validate("videoPlayed_1", 200);
+            result = result && event.validate("videoPlayed_1", 200000);
 
-            result = result && poddedAdValidator.validate("countPoddedAds", 60); // TODO : need to check diff between willPlayAds_ and willPlaySingleAds_
+            result = result && poddedAdValidator.validate("countPoddedAds", 60000); // TODO : need to check diff between willPlayAds_ and willPlaySingleAds_
 
-	        event.validateForSpecificPlugins("seeked_1", 200, "pulse");
+	        event.validateForSpecificPlugins("seeked_1", 200000, "pulse");
 
-            result = result && event.validate("played_1", 200);
+            result = result && event.validate("played_1", 200000);
 	        extentTest.log(PASS, "Verified Multiple MidRoll Ads");
 			
         } catch (Exception e) {

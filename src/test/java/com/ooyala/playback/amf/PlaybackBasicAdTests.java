@@ -32,9 +32,6 @@ public class PlaybackBasicAdTests extends PlaybackWebTest {
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result &&	playValidator.waitForPage();
 			Thread.sleep(10000);
@@ -45,26 +42,26 @@ public class PlaybackBasicAdTests extends PlaybackWebTest {
 
 			loadingSpinner();
 
-            result = result && event.validate("willPlaySingleAd_1", 150);
+            result = result && event.validate("willPlaySingleAd_1", 150000);
 
 			extentTest.log(PASS, "Preroll Ad started");
 
 			// String adurl = (((JavascriptExecutor)
 			// driver).executeScript("return adplayingurl_1.textContent")).toString();
 
-            result = result && event.validate("singleAdPlayed_1", 150);
+            result = result && event.validate("singleAdPlayed_1", 150000);
 
 			extentTest.log(PASS, "Preroll Ad Completed");
 
-            result = result && event.validate("playing_1", 120);
+            result = result && event.validate("playing_1", 120000);
 
 			extentTest.log(PASS, "Main video started to play");
 
 			sleep(500);
 
-            result = result && 	seekValidator.validate("seeked_1", 190);
+            result = result && 	seekValidator.validate("seeked_1", 190000);
 
-            result = result &&	event.validate("played_1", 190);
+            result = result &&	event.validate("played_1", 190000);
 
 			extentTest.log(PASS, "Video completed palying");
 

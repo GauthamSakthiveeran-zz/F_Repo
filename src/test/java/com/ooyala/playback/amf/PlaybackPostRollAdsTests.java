@@ -30,23 +30,20 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest{
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
             result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playValidator.validate("playing_1", 90);
-            result = result && seekValidator.validate("seeked_1", 90);
-            result = result && event.validate("videoPlayed_1", 120);
-            result = result && event.validate("willPlaySingleAd_1", 90);
+			playValidator.validate("playing_1", 90000);
+            result = result && seekValidator.validate("seeked_1", 90000);
+            result = result && event.validate("videoPlayed_1", 120000);
+            result = result && event.validate("willPlaySingleAd_1", 90000);
 	        extentTest.log(PASS, "Postroll Ad started");
-            result = result && event.validate("singleAdPlayed_1", 90);
+            result = result && event.validate("singleAdPlayed_1", 90000);
 	        extentTest.log(PASS, "Postroll Ad completed");
-            result = result && event.validate("played_1", 200);
+            result = result && event.validate("played_1", 200000);
 	        extentTest.log(PASS, "Verified PostRoll Ads test");
 
 		} catch (Exception e) {
