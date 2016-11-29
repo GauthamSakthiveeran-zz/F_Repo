@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 /**
  * Created by soundarya on 11/17/16.
  */
@@ -63,8 +65,11 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 			String currentBitrate = ((JavascriptExecutor) driver)
 					.executeScript("return pp.getCurrentBitrate()[\"bitrate\"]")
 					.toString();
-			((JavascriptExecutor) driver).executeScript(" return pp.play()");
-			Assert.assertNotNull(currentBitrate);
+			((JavascriptExecutor) driver).executeScript("return pp.play()");
+//			Assert.assertNotNull(currentBitrate);
+			if(currentBitrate==null){
+				return false;
+			}
 			return true;
 		}
 		

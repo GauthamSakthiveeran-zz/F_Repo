@@ -27,7 +27,6 @@ public class PauseAction extends PlayBackPage implements PlayerAction {
 	public boolean startAction() {
 		boolean isElement;
 		Actions action = new Actions(driver);
-		// loadingSpinner();
 		try {
 			isElement = isElementPresent("HIDDEN_CONTROL_BAR");
 			if (isElement) {

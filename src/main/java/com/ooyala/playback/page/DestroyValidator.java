@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 public class DestroyValidator extends PlayBackPage implements PlaybackValidator {
 
@@ -20,7 +19,7 @@ public class DestroyValidator extends PlayBackPage implements PlaybackValidator 
 		Thread.sleep(2000);
 		((JavascriptExecutor) driver).executeScript("pp.destroy()");
 
-		return waitOnElement("destroy_1", 50) && isElementPresent("stateScreenSelectable");
+		return waitOnElement(element, timeout) && isElementPresent("STATE_SCREEN_SELECTABLE"); // destroy_1
 
 	}
 

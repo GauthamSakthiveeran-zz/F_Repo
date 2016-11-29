@@ -107,14 +107,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 				seekAction.setTime(20).fromLast().startAction();//seek(20, true);
 
 				loadingSpinner();
-				try {
-
-					discoveryUpNext.validate("UPNEXT_CONTENT", 60);
-					logger.info("Upnext is present");
-
-				} catch (Exception e) {
-					logger.info("No Upnext panel");
-				}
+				discoveryUpNext.validate("", 60);
 				try {
 
 					eventValidator.validateElement("END_SCREEN", 60);
