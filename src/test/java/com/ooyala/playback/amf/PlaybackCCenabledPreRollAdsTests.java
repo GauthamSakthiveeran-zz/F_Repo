@@ -55,6 +55,8 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 			 * loadingSpinner(webDriver); } else { waitForElement(webDriver,
 			 * "singleAdPlayed_1", 190); loadingSpinner(webDriver); }
 			 */
+			
+			event.validateForSpecificPlugins("singleAdPlayed_2", 190, "pulse");
 
 			event.validate("singleAdPlayed_1", 190);
 

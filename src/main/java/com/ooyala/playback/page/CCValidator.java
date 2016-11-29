@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 /**
  * Created by soundarya on 11/3/16.
  */
@@ -30,56 +32,70 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		addElementToPageElements("controlbar");
 		addElementToPageElements("pause");
 	}
-
-	public void validate(String element, int timeout) throws Exception {
+	
+	private boolean verifyCloseClosedCaptionPanel(){
+		if(!isElementPresent("CC_PANEL_CLOSE")) return false;
+		if(!clickOnIndependentElement("CC_PANEL_CLOSE")) return false;
+		extentTest.log(LogStatus.PASS,"Verified closed caption panel close");
+		return true;
+	}
+	
+	private boolean checkClosedCaptionButton(){
+		
 		try {
+			Thread.sleep(1000);
 			try {
-				waitOnElement("CC_BTN", 60);
+				if(!waitOnElement("CC_BTN", 60)) return false;
 			} catch (Exception e) {
-				clickOnIndependentElement("MORE_OPTION_ICON");
-				waitOnElement("CC_BTN", 60);
+				if(!clickOnIndependentElement("MORE_OPTION_ICON")) return false;
+				if(!waitOnElement("CC_BTN", 60)) return false;
 			}
-			boolean ccbutton = isElementPresent("CC_BTN");
-			Assert.assertEquals(ccbutton, true,
-					"ClosedCaption button is not present on player");
-			logger.info("Verified the presence of ClosedCaption button ");
-			clickOnIndependentElement("CC_BTN");
-			if (isElementPresent("CC_PANEL_CLOSE")) {
-				clickOnIndependentElement("CC_PANEL_CLOSE");
-			}
+			
+			if(!isElementPresent("CC_BTN")) return false;
+			if(!clickOnIndependentElement("CC_BTN")) return false;
+			Thread.sleep(1000);
 
+			extentTest.log(LogStatus.PASS,"Verified closed caption button");
+			return true;
+			
 		} catch (Exception e) {
-			System.out.println("closedCaption button is not  present\n");
+			extentTest.log(LogStatus.FAIL, "closedCaption button is not  present." + e.getLocalizedMessage());
+			return false;
 		}
-		checkClosedCaptionLanguages();
-		logger.info("Verified the ClosedCaption button languages");
-		Thread.sleep(1000);
-		try {
-			clickOnIndependentElement("CC_BTN");
-		} catch (Exception e) {
-			clickOnIndependentElement("MORE_OPTION_ICON");
-			waitOnElement("CC_BTN", 60);
-			clickOnIndependentElement("CC_BTN");
-		}
-		Thread.sleep(1000);
-
-		closedCaptionMicroPanel();
-		logger.info("Verified  ClosedCaption button Micropanel ");
-
+		
+	}
+	
+	private boolean validateClosedCaptionPanel(){
 		if (!(isElementPresent("CLOSED_CAPTION_PANEL"))) {
-			clickOnIndependentElement("CC_BTN");
+			if(!clickOnIndependentElement("CC_BTN")) return false;
 		}
 
-		boolean ccpanel = isElementPresent("CLOSED_CAPTION_PANEL");
-		Assert.assertEquals(ccpanel, true,
-				"closedCaption languages panel is not present");
-		Thread.sleep(1000);
-		waitOnElement("CC_SWITCH", 60);
+		if(isElementPresent("CLOSED_CAPTION_PANEL")){
+			extentTest.log(LogStatus.PASS,"Verified closed caption panel panel");
+			return true;
+		}
+		return false;
+		
+	}
+	
+	private boolean validateSwitchContainer(){
+		if(waitOnElement("CC_SWITCH", 60) && clickOnIndependentElement("CC_SWITCH_CONTAINER")){
+			extentTest.log(LogStatus.PASS,"Verified closed caption panel switch container");
+			return true;
+		}
+		return false;
+	}
 
-		clickOnIndependentElement("CC_SWITCH_CONTAINER");
-		clickOnIndependentElement("CC_PANEL_CLOSE");
-
-		logger.info("Verified ClosedCaption");
+	public boolean validate(String element, int timeout) throws Exception {
+		return 
+		checkClosedCaptionButton()
+		&& verifyCloseClosedCaptionPanel()
+		&& checkClosedCaptionLanguages()
+		&& checkClosedCaptionButton()
+		&& closedCaptionMicroPanel()
+		&& validateClosedCaptionPanel()
+		&& validateSwitchContainer()
+		&& verifyCloseClosedCaptionPanel();
 
 		/*
 		 * Todo fix this if (isElementPresent("PAUSE_BUTTON"))
@@ -93,29 +109,37 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		 */
 	}
 
-	protected void closedCaptionMicroPanel() throws Exception {
+	protected boolean closedCaptionMicroPanel() throws Exception {
 		try {
-			waitOnElement("CC_POPHOVER_HORIZONTAL", 10);
+			if(!waitOnElement("CC_POPHOVER_HORIZONTAL", 10)) return false;
 			boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
-			System.out.println(horizontal_CC_Option);
+
 			if (horizontal_CC_Option) {
-				waitOnElement("CC_SWITCH_CONTAINER_HORIZONTAL", 20);
-				waitOnElement("CC_MORE_CAPTIONS", 10);
-				waitOnElement("CC_CLOSE_BUTTON", 10);
-				clickOnIndependentElement("CC_MORE_CAPTIONS");
-				logger.info("Verified presence of closedCaptionMicroPanel ");
+				return
+				waitOnElement("CC_SWITCH_CONTAINER_HORIZONTAL", 20)
+				&& waitOnElement("CC_MORE_CAPTIONS", 10) 
+				&& waitOnElement("CC_CLOSE_BUTTON", 10)
+				&& clickOnIndependentElement("CC_MORE_CAPTIONS");
 			}
+			return false;
 		} catch (Exception e) {
-			System.out.println("Horizontal cc option is not present");
+			extentTest.log(LogStatus.FAIL, "Horizontal cc option is not present");;
 		}
+		return false;
 
 	}
 
-	protected void checkClosedCaptionLanguages() throws Exception {
+	@SuppressWarnings("unchecked")
+	protected boolean checkClosedCaptionLanguages() throws Exception {
 		ArrayList<String> langlist = ((ArrayList<String>) (((JavascriptExecutor) driver)
 				.executeScript("var attrb = pp.getCurrentItemClosedCaptionsLanguages().languages;"
 						+ "{return attrb;}")));
-		System.out.println("Closed Caption Available Languages: " + langlist);
+		boolean flag = true;
+		if(langlist == null || langlist.size()==0) {
+			extentTest.log(LogStatus.FAIL, "langList is null");
+			return false;
+		}
+		logger.info("Closed Caption Available Languages: " + langlist);
 		for (int i = 0; i < langlist.size(); i++) {
 			((JavascriptExecutor) driver)
 					.executeScript("pp.setClosedCaptionsLanguage(\""
@@ -123,6 +147,15 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			WebElement ccElement1 = (new WebDriverWait(driver, 60))
 					.until(ExpectedConditions.presenceOfElementLocated(By
 							.id("cclanguage_" + langlist.get(i))));
+			if(ccElement1==null){
+				flag = flag && false;
+			}
+			
 		}
+		if(flag)
+			extentTest.log(LogStatus.PASS,"Verified closed caption panel languages");
+		else
+			extentTest.log(LogStatus.FAIL,"Closed caption panel languages Failed.");
+		return flag;
 	}
 }

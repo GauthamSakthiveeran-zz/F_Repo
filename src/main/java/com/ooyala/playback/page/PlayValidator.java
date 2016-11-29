@@ -27,35 +27,32 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		boolean errorScreen = false;
 
 		try {
-			waitOnElement("PLAY_BUTTON", 60);
+			if(!waitOnElement("PLAY_BUTTON", 60)) return false;
 		} catch (Exception e) {
 			driver.navigate().refresh();
-			waitOnElement("INNER_WRAPPER", 60);
+			if(!waitOnElement("INNER_WRAPPER", 60)) return false;
 			errorScreen = isElementPresent("ERROR_SCREEN");
 			if (errorScreen)
 				driver.navigate().refresh();
-			waitOnElement("PLAY_BUTTON", 60);
+			if(!waitOnElement("PLAY_BUTTON", 60)) return false;
 		}
 		logger.info("Page is loaded completely");
-		extentTest.log(LogStatus.INFO, "Successfully found play button");
+		extentTest.log(LogStatus.PASS, "Successfully found play button");
 
-		return errorScreen;
+		return true;
 
 	}
 
-	public void validate(String element, int timeout) throws Exception {
-		// loadingSpinner();
+	public boolean validate(String element, int timeout) throws Exception {
+		
+		Thread.sleep(2000);
 
-		// clickOnIndependentElement("PLAY_BUTTON");
-		PlayBackFactory.getInstance(driver).getPlayAction().startAction();
-		extentTest.log(LogStatus.PASS, "Clicked on play button");
-		Thread.sleep(1000);
-
-		waitOnElement("PLAYING_SCREEN", 60);
-
-		waitOnElement(By.id(element), timeout);
+		if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction()) return false;
+		
+		if(!waitOnElement(By.id(element), timeout)) return false;
 		extentTest.log(LogStatus.PASS,
 				"Video Playing and validation of element " + element
 						+ " is successful");
+		return true;
 	}
 }
