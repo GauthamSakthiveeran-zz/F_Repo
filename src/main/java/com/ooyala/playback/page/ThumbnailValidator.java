@@ -1,5 +1,7 @@
 package com.ooyala.playback.page;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,14 +34,17 @@ public class ThumbnailValidator extends PlayBackPage implements
 		WebElement element1 = getWebElement("SCRUBBER_BAR");
 		if(element1==null) return false;
 		action.moveToElement(element1).build().perform();
-		return waitOnElement("THUMBNAIL_CONTAINER", 60000);
+		return waitOnElement("THUMBNAIL_CONTAINER", 60000) && validateThumbNailImage();
 
 	}
 	
-	public void validateThumbNailImage(String embedCode) throws Exception{
+	private boolean validateThumbNailImage() throws Exception{
 		
-        String Thumbnail_url = getWebElement("THUMBNAIL_IMAGE").getCssValue("background-image");
+		Map<String, String> data = parseURL();
+		String embed_code = data.get("ec");
+		
+        String thumbnail_url = getWebElement("THUMBNAIL_IMAGE").getCssValue("background-image");
        
-        Assert.assertTrue(Thumbnail_url.contains(embedCode));
+        return thumbnail_url.contains(embed_code);
 	}
 }

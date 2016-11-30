@@ -78,7 +78,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 			public void setExtentTest(ExtentTest test) {
 				
 				this.extentTest = PlaybackWebTest.this.extentTest;
-				
 			}
 		};
 
