@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+
+	<test name ="PlaybackAdIconTests" >
+    	<url>
+	    	<description name="AD_with_Icon_Vast3.0"/>
+	        <embed_code name="FncDg4MTE6cc_NYXGLllX-e7I9DYIhp5"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+	        <playerParameter></playerParameter>
+    	</url>
+    </test>
+    
+</testdata>

@@ -34,45 +34,41 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 	public void testVerticalVideo(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 		try {
 			driver.get(url);
 
-			play.waitForPage();
+            result = result && play.waitForPage();
 
 			injectScript();
 
-			play.validate("playing_1", 60);
-
-			logger.info("video playing");
+            result = result && play.validate("playing_1", 60000);
 
 			sleep(2000);
 
-			//aspectRatioValidator.verticalVideoValidate("assetDimension_1", 60);
-			aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60);
+            result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60000);
 
-			pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60000);
 
 			logger.info("video paused");
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
-			seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60000);
 
 			logger.info("video seeked");
 
-			aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60);
+            result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60000);
 
 			logger.info("validated vertical video dimention");
 
-			eventValidator.validate("videoPlayed_1", 60);
+            result = result && eventValidator.validate("videoPlayed_1", 60000);
 
 			logger.info("video played");
 
-			result = true;
-
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 		}
 		Assert.assertTrue(result, "Vertical Video tests failed");
 	}

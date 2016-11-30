@@ -35,9 +35,7 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
         boolean result = true;
         try {
             driver.get(url);
-            if (!getPlatform().equalsIgnoreCase("android")) {
-                driver.manage().window().maximize();
-            }
+
 
             result = result && play.waitForPage();
 
@@ -45,11 +43,11 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
 
             injectScript();
 
-            play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60000);
 
             logger.info("Verifed that video is getting playing");
 
-            Assert.assertTrue(discoveryValidator.validate("reportDiscoveryClick_1", 60),"Discovery is not enabled");
+            result = result &&  discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 
             logger.info("verified discovery");
 
@@ -59,25 +57,22 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
 
             loadingSpinner();
 
-            Assert.assertTrue(eventValidator.validate("playing_2",20));
+            result = result && eventValidator.validate("playing_2",60000);
 
             logger.info("Verified that 2nd video is playing");
 
+
+            result = result && seek.validate("seeked_1",60000);
+
             Thread.sleep(5000);
 
-            seek.validate("seeked_1",20);
-
-            Thread.sleep(5000);
-
-            Assert.assertTrue(discoveryUpNext.validate("UPNEXT_CONTENT", 60),"UpNext is not present");
+            result = result && discoveryUpNext.validate("UPNEXT_CONTENT", 60000);
 
             logger.info("Verified UpNext content");
 
-            result = result && eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60000);
 
             logger.info("Verified that video is played");
-
-            result = true;
 
         } catch (Exception e) {
             e.printStackTrace();

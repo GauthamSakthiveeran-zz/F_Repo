@@ -52,7 +52,7 @@ public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
 
             Assert.assertEquals(eventValidator.validateElementPresence("videoElementDisposed_1"),true,"Not getting Video element dispose");
 
-            play.validate("playing_1",60);
+            play.validate("playing_1",60000);
 
             Assert.assertEquals(eventValidator.validateElementPresence("focusVideo_1"),true,"Focus video event is not triggering");
 
@@ -62,7 +62,7 @@ public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
 
             Assert.assertTrue(eventValidator.validate("seeked_1",20));
 
-            eventValidator.validate("videoLostFocus_1",60);
+            eventValidator.validate("videoLostFocus_1",60000);
 
             result = true;
 

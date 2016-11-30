@@ -31,21 +31,17 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyCCenabledPreroll(String testName, String url)
 			throws Exception {
-		boolean result = false;
+		boolean result = true;
 
 		try {
+            driver.get(url);
 
-			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
-
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(10000);
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
 			// TODO - not sure if this is needed
 
@@ -55,14 +51,14 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 			 * loadingSpinner(webDriver); } else { waitForElement(webDriver,
 			 * "singleAdPlayed_1", 190); loadingSpinner(webDriver); }
 			 */
-			
-			event.validateForSpecificPlugins("singleAdPlayed_2", 190, "pulse");
 
-			event.validate("singleAdPlayed_1", 190);
+			event.validateForSpecificPlugins("singleAdPlayed_2", 190000, "pulse");
+
+            result = result && event.validate("singleAdPlayed_1", 190000);
 
 			extentTest.log(PASS, "Preroll Ad Completed");
 
-			event.validate("playing_1", 120);
+            result = result && event.validate("playing_1", 120000);
 
 			extentTest.log(PASS, "Main video started to play");
 
@@ -70,10 +66,10 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 
 			pauseAction.startAction();
 
-			ccValidator.validate("cclanguage", 60);
+            result = result && ccValidator.validate("cclanguage", 60000);
 
 			sleep(2000);
-			seekAction.setTime(10).fromLast().startAction();
+            result = result && seekAction.setTime(10).fromLast().startAction();
 
 			/*
 			 * if(Description.equalsIgnoreCase("BitmovinCCenabledpreroll_IMA")){
@@ -85,8 +81,8 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 
 			Thread.sleep(5000);
 
-			event.validate("seeked_1", 190);
-			event.validate("played_1", 190);
+			event.validate("seeked_1", 190000);
+            result = result && event.validate("played_1", 190000);
 
 			boolean isccCueshowing = event
 					.validateElementPresence("ccshowing_1");
@@ -96,8 +92,6 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 			extentTest.log(PASS, "Video completed palying");
 
 			extentTest.log(PASS, "Verified PreRoll Ads test");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

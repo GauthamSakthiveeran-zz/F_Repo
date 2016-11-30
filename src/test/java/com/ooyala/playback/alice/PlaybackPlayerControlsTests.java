@@ -29,7 +29,7 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 	public void testBasicPlaybackAlice(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 			driver.get(url);
@@ -37,38 +37,34 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-			play.waitForPage();
+            result = result && play.waitForPage();
 			Thread.sleep(10000);
 
 			injectScript();
 
-			play.validate("playing_1", 60);
-
-			logger.info("Verifed that video is getting playing");
+            result = result && play.validate("playing_1", 60000);
 
 			Thread.sleep(2000);
 
-			pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60000);
 
-			logger.info("Verified that video is getting pause");
+            result = result && play.validate("playing_2", 60000);
 
-			play.validate("playing_2", 60);
+            result = result && fullScreenValidator.validate("", 60000);
 
-			fullScreenValidator.validate("", 60);
+            result = result && controlBarValidator.validate("", 60000);
 
-			controlBarValidator.validate("", 60);
-
-			seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60000);
 
 			logger.info("Verified that video is seeked");
 
-			eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60000);
 
 			logger.info("Verified that video is played");
 
-			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 		}
 		Assert.assertTrue(result, "Alice basic playback tests failed");
 	}

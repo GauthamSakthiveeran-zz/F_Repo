@@ -9,7 +9,6 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPostRollAdsTests extends PlaybackWebTest{
@@ -26,31 +25,26 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest{
 	public void verifyPostroll(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playValidator.validate("playing_1", 90);
-	        seekValidator.validate("seeked_1", 90);
-	        event.validate("videoPlayed_1", 120);
-	        event.validate("willPlaySingleAd_1", 90);
+			playValidator.validate("playing_1", 90000);
+            result = result && seekValidator.validate("seeked_1", 90000);
+            result = result && event.validate("videoPlayed_1", 120000);
+            result = result && event.validate("willPlaySingleAd_1", 90000);
 	        extentTest.log(PASS, "Postroll Ad started");
-	        event.validate("singleAdPlayed_1", 90);
+            result = result && event.validate("singleAdPlayed_1", 90000);
 	        extentTest.log(PASS, "Postroll Ad completed");
-	        event.validate("played_1", 200);
+            result = result && event.validate("played_1", 200000);
 	        extentTest.log(PASS, "Verified PostRoll Ads test");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

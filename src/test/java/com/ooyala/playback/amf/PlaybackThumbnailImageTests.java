@@ -28,7 +28,7 @@ public class PlaybackThumbnailImageTests extends PlaybackWebTest{
 	public void verifyPrerollOverlay(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 		
 		if(getBrowser().equals("safari")){
 			extentTest.log(LogStatus.SKIP, "Test Thumbnail Image Is Skipped as hovering is not supportted in Safari");
@@ -38,35 +38,30 @@ public class PlaybackThumbnailImageTests extends PlaybackWebTest{
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
-			
-			playValidator.validate("playing_1", 50);
+
+            result = result && playValidator.validate("playing_1", 50000);
             Thread.sleep(2000);
 
             //Seek the Video
             seekAction.setTime(35).startAction();
-            event.validate("seeked_1", 50);
+            result = result &&   event.validate("seeked_1", 50000);
 
             //Hovering on scrubber bar
             Thread.sleep(5000);
             stateScreenAction.startAction();
-            
-            thumbNail.validate("", 120);
-            
+
+            result = result && thumbNail.validate("", 120000);
+
             thumbNail.validateThumbNailImage("9qaHdodTqmllcEnthP1AgrCTjf19HD4i"); // TODO, hardcoding for now
 
             seekAction.seekTillEnd().startAction();
-            event.validate("videoPlayed_1", 200);
-            extentTest.log(LogStatus.PASS,"video played completly");
-			
-			result = true;
+            result = result && event.validate("videoPlayed_1", 200000);
+            extentTest.log(LogStatus.PASS,"video played completely");
 
 		} catch (Exception e) {
 			e.printStackTrace();

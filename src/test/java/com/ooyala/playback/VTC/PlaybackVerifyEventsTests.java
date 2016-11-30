@@ -32,61 +32,48 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest{
 
         logger.info("Test url for "+testName+" is : "+url);
 
-        boolean result = false;
+        boolean result = true;
 
         try {
             driver.get(url);
 
-            play.waitForPage();
+            result = result && play.waitForPage();
 
             Thread.sleep(10000);
 
             injectScript();
 
-            playAction.startAction();
+            result = result && playAction.startAction();
 
             loadingSpinner();
 
-            Assert.assertTrue(eventValidator.validate("willPlaySingleAd_1",60));
+            result = result && eventValidator.validate("willPlaySingleAd_1", 10000);
 
-            boolean isAdPlaying = false;
-
-            isAdPlaying = (Boolean) ((JavascriptExecutor) driver).executeScript("return pp.isAdPlaying();");
-
-            if (isAdPlaying) {
-                ((JavascriptExecutor) driver).executeScript("return pp.skipAd();");
-                isAdPlaying = false;
-            }
+            result = result && eventValidator.validate("adsPlayed_1",20000);
 
             loadingSpinner();
 
-            Assert.assertTrue(eventValidator.validate("playing_1",60));
+            result = result && eventValidator.validate("playing_1",60000);
 
-            Assert.assertTrue(eventValidator.validate("videoSetInitialTime_1",60));
+            result = result && eventValidator.validate("videoSetInitialTime_1",60000);
 
-            Assert.assertTrue(eventValidator.validate("videoPlay_1",60));
+            result = result && eventValidator.validate("videoPlay_1",60000);
 
-            Assert.assertTrue(eventValidator.validate("videoWillPlay_1",60));
+            result = result && eventValidator.validate("videoWillPlay_1",60000);
 
-            Assert.assertTrue(eventValidator.validate("videoPlaying_1",60));
+            result = result && eventValidator.validate("videoPlaying_1",60000);
 
-            pauseValidator.validate("videoPause_1",60);
+            result = result && pauseValidator.validate("videoPause_1", 60000);
 
-            Assert.assertTrue(eventValidator.validate("videoPause_1",60));
+            result = result && play.validate("playing_2",10000);
 
-            Assert.assertTrue(play.validate("playing_2",10));
+            result = result && seekValidator.validate("seeked_1",60);
 
-            seekValidator.validate("seeked_1",60);
-
-            Assert.assertTrue(eventValidator.validate("seeked_1",20));
-
-            Thread.sleep(12000);
-
-            Assert.assertTrue(eventValidator.validate("videoPlayed_1",60));
-            result = true;
+            result = result && eventValidator.validate("videoPaused_1", 60000);
 
         } catch (Exception e) {
             e.printStackTrace();
+            result = false;
         }
 
         Assert.assertTrue(result, "Playback Video Controller Event test failed");

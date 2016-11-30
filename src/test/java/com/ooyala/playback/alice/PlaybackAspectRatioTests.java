@@ -32,42 +32,37 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 	@Test(groups = "AspectRatio", dataProvider = "testUrls")
 	public void testAspectRation(String testName, String url)
 			throws OoyalaException {
-		boolean result = false;
+		boolean result = true;
 
 		try {
 			driver.get(url);
 
-			play.waitForPage();
+            result = result && play.waitForPage();
 
 			injectScript();
 
-			play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60000);
 
-			logger.info("Verified that video is playing");
 			sleep(2000);
 
-			aspectRatioValidator.validate("assetDimension_1", 60);
+            result = result && aspectRatioValidator.validate("assetDimension_1", 60000);
 
-			pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60000);
 
-			logger.info("Verirfied that video is getting paused");
-
-			playAction.startAction();
+            result = result && playAction.startAction();
 			// add fullscreen functionality
 
-			seek.validate("seeked_1", 60);
+            result = result &&	seek.validate("seeked_1", 60000);
 
-			logger.info("Verified that video is seeked");
+            result = result &&	aspectRatioValidator.validate("assetDimension_1", 60000);
 
-			aspectRatioValidator.validate("assetDimension_1", 60);
-
-			eventValidator.validate("videoPlayed_1", 60);
+            result = result && eventValidator.validate("videoPlayed_1", 60000);
 
 			logger.info("Verified that video is played");
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 
 		}
 		Assert.assertTrue(result, "Aspect ratio tests failed");

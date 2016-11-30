@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 /**
  * Created by soundarya on 11/1/16.
  */
@@ -21,10 +23,19 @@ public class UpNextValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		return 
-		waitOnElement("UPNEXT_CONTENT", 60)
-		&& waitOnElement("CONTENT_METADATA", 60)
-		&& clickOnIndependentElement("UPNEXT_CLOSE_BTN");
+		
+		try{
+			return 
+					waitOnElement("UPNEXT_CONTENT", 60000)
+					&& waitOnElement("CONTENT_METADATA", 60000)
+					&& clickOnIndependentElement("UPNEXT_CLOSE_BTN");
+		}catch(Exception ex){
+			ex.printStackTrace();
+			extentTest.log(LogStatus.FAIL, "No Upnext panel");
+			return false;
+		}
+		
+		
 
 	}
 }

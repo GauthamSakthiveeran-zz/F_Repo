@@ -45,10 +45,10 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		try {
 			Thread.sleep(1000);
 			try {
-				if(!waitOnElement("CC_BTN", 60)) return false;
+				if(!waitOnElement("CC_BTN", 60000)) return false;
 			} catch (Exception e) {
 				if(!clickOnIndependentElement("MORE_OPTION_ICON")) return false;
-				if(!waitOnElement("CC_BTN", 60)) return false;
+				if(!waitOnElement("CC_BTN", 60000)) return false;
 			}
 			
 			if(!isElementPresent("CC_BTN")) return false;
@@ -79,7 +79,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	}
 	
 	private boolean validateSwitchContainer(){
-		if(waitOnElement("CC_SWITCH", 60) && clickOnIndependentElement("CC_SWITCH_CONTAINER")){
+		if(waitOnElement("CC_SWITCH", 60000) && clickOnIndependentElement("CC_SWITCH_CONTAINER")){
 			extentTest.log(LogStatus.PASS,"Verified closed caption panel switch container");
 			return true;
 		}
@@ -111,14 +111,14 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	protected boolean closedCaptionMicroPanel() throws Exception {
 		try {
-			if(!waitOnElement("CC_POPHOVER_HORIZONTAL", 10)) return false;
+			if(!waitOnElement("CC_POPHOVER_HORIZONTAL", 10000)) return false;
 			boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
 
 			if (horizontal_CC_Option) {
 				return
-				waitOnElement("CC_SWITCH_CONTAINER_HORIZONTAL", 20)
-				&& waitOnElement("CC_MORE_CAPTIONS", 10) 
-				&& waitOnElement("CC_CLOSE_BUTTON", 10)
+				waitOnElement("CC_SWITCH_CONTAINER_HORIZONTAL", 20000)
+				&& waitOnElement("CC_MORE_CAPTIONS", 10000)
+				&& waitOnElement("CC_CLOSE_BUTTON", 10000)
 				&& clickOnIndependentElement("CC_MORE_CAPTIONS");
 			}
 			return false;
@@ -144,7 +144,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			((JavascriptExecutor) driver)
 					.executeScript("pp.setClosedCaptionsLanguage(\""
 							+ langlist.get(i) + "\")");
-			WebElement ccElement1 = (new WebDriverWait(driver, 60))
+			WebElement ccElement1 = (new WebDriverWait(driver, 60000))
 					.until(ExpectedConditions.presenceOfElementLocated(By
 							.id("cclanguage_" + langlist.get(i))));
 			if(ccElement1==null){

@@ -28,10 +28,10 @@ public class PlayPauseAction extends PlayBackPage implements PlayerAction {
 		logger.info("Video Paused" + ispause);
 		if (ispause){
 			try {
-				if(waitOnElement("PLAY_BUTTON", 10)){
+				if(waitOnElement("PLAY_BUTTON", 10000)){
 					return clickOnIndependentElement("PLAY_BUTTON");
 				}else{
-					if(!waitOnElement("PAUSE_SCREEN", 10)) return false;
+					if(!waitOnElement("PAUSE_SCREEN", 10000)) return false;
 					return clickOnIndependentElement("PAUSE_SCREEN");
 				}
 				

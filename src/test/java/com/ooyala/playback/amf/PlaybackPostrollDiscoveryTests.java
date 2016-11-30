@@ -2,8 +2,6 @@ package com.ooyala.playback.amf;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 
-import java.util.Map;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,7 +13,6 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.UpNextValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.url.Url;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest{
@@ -36,43 +33,39 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest{
 	public void verifyPostrollDiscovery(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playValidator.validate("playing_1", 150);
-			
-			pauseValidator.validate("paused_1", 60);
+            result = result && playValidator.validate("playing_1", 150000);
+
+            result = result && pauseValidator.validate("paused_1", 60000);
 	        Thread.sleep(5000);
-	        
-	        discoveryValidator.validate("reportDiscoveryClick_1", 60);
-	        
+
+            result = result && discoveryValidator.validate("reportDiscoveryClick_1",60000);
 
 	        loadingSpinner();
-	        
+
 	        playAction.startActionOnScreen();
 	        
 	        Thread.sleep(3000);
 	        seekAction.setTime(10).fromLast().startAction();//seek(10, true);
 
 	        loadingSpinner();
-	        
-	        upNextValidator.validate("", 60);
 
-	        event.validate("willPlaySingleAd_1", 90);
+            result = result && upNextValidator.validate("", 60000);
+
+	        event.validate("willPlaySingleAd_1", 90000);
 	        extentTest.log(PASS, "Postroll Ad started");
 	        
-	        event.validate("singleAdPlayed_1", 90);
+	        event.validate("singleAdPlayed_1", 90000);
 	        
 	        //TODO replace the above
 	        /*Map<String, String> map = parseURL(url) ;
@@ -85,8 +78,6 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest{
 	        }*/
 	        extentTest.log(PASS, "Postroll Ad completed");
 	        extentTest.log(PASS, "Verified PostRoll Ads test");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

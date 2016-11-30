@@ -8,10 +8,23 @@
 	
 		
 		<classes>
-			<parameter name="testData" value="testdata/AMF/AMF_Freewheel.xml"/>
 			<parameter name="jsFile" value="common.js,amf/amf.js"/>
-			<class name="com.ooyala.playback.amf.FreeWheel.PlaybackClickthroughTests" />
+			<class name="com.ooyala.playback.amf.VAST.PlaybackAdWrapperTests" />
+			<class name="com.ooyala.playback.amf.freewheel.PlaybackBumperPrerollAdTests" />
+			<class name="com.ooyala.playback.amf.PlaybackCCenabledPreRollAdsTests" />
+			<class name="com.ooyala.playback.amf.PlaybackCCenableMidRollAdsTests" />
+			<class name="com.ooyala.playback.amf.PlaybackClickthroughTests" />
+			<class name="com.ooyala.playback.amf.PlaybackCustomeInteractionTests" />
+			<class name="com.ooyala.playback.amf.PlaybackDiscoveryUpnextTests" />
+			<class name="com.ooyala.playback.amf.VAST.PlaybackLiveRailVastManagerTests" />
+			<class name="com.ooyala.playback.amf.PlaybackMidRollAdsTests" />
+			<class name="com.ooyala.playback.amf.PlaybackPostRollAdsTests" />
+           	<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests" />
+           	<class name="com.ooyala.playback.amf.PlaybackPreRollAdsTests" />
+           	<class name="com.ooyala.playback.amf.VAST.PlaybackVastPreIMAMidlAdsTests" />
            
 		</classes>
+		
 	</test>
+	
 </suite>

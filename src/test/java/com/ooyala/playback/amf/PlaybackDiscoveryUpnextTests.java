@@ -34,38 +34,33 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 	public void verifyDiscoveryUpNext(String testName, String url)
 			throws Exception {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(10000);
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
 			if (adClickThroughValidator.isAdPlaying())
-				event.validate("singleAdPlayed_1", 90);
+				event.validate("singleAdPlayed_1", 90000);
 
-			event.validate("playing_1", 90);
+            result = result &&	event.validate("playing_1", 90000);
 			extentTest.log(PASS, "Video starting");
 			sleep(2000);
 
-			seekAction.setTime(10).fromLast().startAction();//seek(10, true);
+            result = result && seekAction.setTime(10).fromLast().startAction();//seek(10, true);
 
-			event.validate("seeked_1", 180);
+            result = result && event.validate("seeked_1", 180000);
 
-			discoveryValidator.validate("reportDiscoveryClick_1", 60);
+            result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 			extentTest.log(PASS, "Clicked video loaded");
 			extentTest.log(PASS, "Verified DiscoveryUpNext tests");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

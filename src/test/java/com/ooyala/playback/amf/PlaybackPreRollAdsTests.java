@@ -29,49 +29,44 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 	public void verifyPreroll(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
 			Thread.sleep(2000);
 
 			// loadingSpinner();
 			// Wait for ad start
-			event.validate("willPlaySingleAd_1", 60);
+            result = result && event.validate("willPlaySingleAd_1", 60000);
 
 			extentTest.log(PASS, "Preroll Ad started");
 
-			event.validate("singleAdPlayed_1", 160);
+            result = result && event.validate("singleAdPlayed_1", 160000);
 
 			extentTest.log(PASS, "Preroll Ad Completed");
 
-			playValidator.validate("playing_1", 190);
+            result = result && playValidator.validate("playing_1", 190000);
 
 			extentTest.log(PASS, "Main video started to play");
 
 			sleep(2000);
 
-			seekValidator.validate("seeked_1", 190);
+            result = result && seekValidator.validate("seeked_1", 190000);
 
 			sleep(3000);
 
-			event.validate("played_1", 190);
+            result = result && event.validate("played_1", 190000);
 
 			extentTest.log(LogStatus.PASS, "Main Video played successfully");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

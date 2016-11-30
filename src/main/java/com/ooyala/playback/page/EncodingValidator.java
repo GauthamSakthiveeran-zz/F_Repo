@@ -42,7 +42,7 @@ public class EncodingValidator extends PlayBackPage implements
 
 	public String getNewUrl(String parameter, String browser){
 		clickOnIndependentElement("OPTIONAL");
-		waitOnElement("PLAYER_PARAMETER_INPUT",20);
+		waitOnElement("PLAYER_PARAMETER_INPUT",20000);
 
 		if (browser.equalsIgnoreCase("internet explorer")){
 			WebElement playerParameter = getWebElement("PLAYER_PARAMETER_INPUT");
@@ -59,8 +59,14 @@ public class EncodingValidator extends PlayBackPage implements
 	}
 
 	public boolean verifyEncodingPriority(String url) throws Exception{
-		String result = decode(url, "UTF-8");
+		String result = decode(driver.getCurrentUrl(), "UTF-8");
+		if(result==null) 
+			return false;
+
 		String[] options = result.split("options=");
+		if(options==null || options.length<2)
+			return false;
+
 		JSONParser parser = new JSONParser();
 		JSONObject obj = (JSONObject) parser.parse(options[1]);
 		Object expectedEncodings = "";
@@ -72,7 +78,7 @@ public class EncodingValidator extends PlayBackPage implements
 			logger.info("\nExpected encodingPriority :\n" + expectedEncodings);
 			assertEquals(actualEncodings, expectedEncodings,
 					"Encoding Priorities are as expected");
-			if(actualEncodings==expectedEncodings)
+			if(actualEncodings.equals(expectedEncodings))
 				return true;
 		}
 

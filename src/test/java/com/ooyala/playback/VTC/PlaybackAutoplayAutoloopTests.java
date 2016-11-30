@@ -30,9 +30,7 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
         boolean result = false;
         try {
             driver.get(url);
-            if (!getPlatform().equalsIgnoreCase("android")) {
-                driver.manage().window().maximize();
-            }
+
 
             Thread.sleep(5000);
             injectScript();
@@ -43,11 +41,11 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
             eventValidator.validate("videoPlaying_1",20);
             logger.info("Autoplayed the asset.");
 
-            seekValidator.validate("seeked_1",60);
+            seekValidator.validate("seeked_1",60000);
 
             Thread.sleep(10000);
 
-            replayValidator.validate("REPLAY",60);
+            replayValidator.validate("REPLAY",60000);
 
             Thread.sleep(2000);
 

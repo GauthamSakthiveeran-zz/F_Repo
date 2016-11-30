@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.VAST;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -26,37 +26,32 @@ public class PlaybackAdIconTests extends PlaybackWebTest {
 	public void verifyADIcon(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(10000);
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
 			loadingSpinner();
 			// Wait for ad start
-			event.validate("willPlaySingleAd_1", 60);
+            result = result && event.validate("willPlaySingleAd_1", 60000);
 
 			// verify ad icon TODO
 
-			event.validate("singleAdPlayed_1", 160);
+            result = result && event.validate("singleAdPlayed_1", 160000);
 
-			playValidator.validate("playing_1", 190);
+            result = result && playValidator.validate("playing_1", 190000);
 
-			seekValidator.validate("seeked_1", 190);
+            result = result &&	seekValidator.validate("seeked_1", 190000);
 
-			event.validate("played_1", 190);
-
-			result = true;
+            result = result && event.validate("played_1", 190000);
 
 			extentTest.log(LogStatus.PASS, "Main Video played successfully");
 
