@@ -67,6 +67,8 @@ public class PlayBackFactory {
 	private SeekAction seekAction;
 	private SaasPortValidator saasPortValidator;
 	private StateScreenAction stateScreenAction;
+	private OverlayValidator overlayValidator;
+	private AdSkipButtonValidator adSkipButtonValidator;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
@@ -76,6 +78,20 @@ public class PlayBackFactory {
 		if (seekAction == null)
 			seekAction = new SeekAction(driver);
 		return seekAction;
+
+	}
+	
+	public AdSkipButtonValidator getAdSkipButtonValidator() {
+		if (adSkipButtonValidator == null)
+			adSkipButtonValidator = new AdSkipButtonValidator(driver);
+		return adSkipButtonValidator;
+
+	}
+	
+	public OverlayValidator getOverlayValidator() {
+		if (overlayValidator == null)
+			overlayValidator = new OverlayValidator(driver);
+		return overlayValidator;
 
 	}
 	

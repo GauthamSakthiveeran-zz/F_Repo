@@ -68,7 +68,7 @@ public abstract class PlayBackPage extends WebPage {
 			}
 			
 		}catch(Exception ex){
-			extentTest.log(LogStatus.FAIL, "wait on element "+elementKey+"  failed with exception "+ex.getLocalizedMessage());
+			extentTest.log(LogStatus.FAIL, "wait on element "+elementKey+"  failed with exception "+ex.getMessage());
 			ex.printStackTrace();
 		}
 		return false;
@@ -88,7 +88,7 @@ public abstract class PlayBackPage extends WebPage {
 			}
 			
 		}catch(Exception ex){
-			extentTest.log(LogStatus.FAIL, "wait on element "+elementKey+"  failed with exception "+ex.getLocalizedMessage());
+			extentTest.log(LogStatus.FAIL, "wait on element "+elementKey+"  failed with exception "+ex.getMessage());
 			ex.printStackTrace();
 		}
 		return false;
