@@ -30,16 +30,14 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 	@Test(groups = "alice", dataProvider = "testUrls")
 	public void testAutoPlay(String testName, String url)
 			throws OoyalaException {
-		boolean result = false;
+		boolean result = true;
 
 		if (getPlatform().equalsIgnoreCase("Android")) {
 			throw new SkipException("Test PlaybackAutoplayTests Is Skipped");
 		} else {
 			try {
 				driver.get(url);
-				driver.manage().window().maximize();
-
-				play.waitForPage();
+                result = result &&	play.waitForPage();
 
 				injectScript();
 
@@ -49,23 +47,19 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 				} catch (Exception e) {
 					logger.info("No Preroll ad present in this autoplay video");
 				}
-				play.validate("playing_1", 60);
-
-				logger.info("Verifed that video is getting playing");
+                result = result && play.validate("playing_1", 60000);
 
 				sleep(500);
 
-				seek.validate("seeked_1", 60);
+                result = result && seek.validate("seeked_1", 60000);
 
-				logger.info("Verified that video is seeked");
-
-				eventValidator.validate("played_1", 60);
+                result = result && eventValidator.validate("played_1", 60000);
 
 				logger.info("Verified that video is played");
 
-				result = true;
 			} catch (Exception e) {
 				e.printStackTrace();
+                result = false;
 
 			}
 			Assert.assertTrue(result, "Playback Autoplay tests failed");

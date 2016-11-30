@@ -51,12 +51,12 @@ public class SaasPortValidator extends PlayBackPage implements PlaybackValidator
             }
         }else{
                 if(!searchEntitlement()) return false;
-                if(!waitOnElement("DISPLAY_BTN",5)) return false;
+                if(!waitOnElement("DISPLAY_BTN",5000)) return false;
                 if (!isElementPresent("DISPLAY_BTN")){
                     throw new Exception("Device is not registered for entitlement on sasport.");
                 }
                 if(!clickOnIndependentElement("DISPLAY_BTN")) return false;
-                if(!waitOnElement("PLAYREADY", 5)) return false;
+                if(!waitOnElement("PLAYREADY", 5000)) return false;
                 logger.info("Device gets registered for entitlement on sasport.");
         }
         return true;    
@@ -64,14 +64,14 @@ public class SaasPortValidator extends PlayBackPage implements PlaybackValidator
 
     private boolean searchEntitlement() throws Exception {
         driver.get(sasportUrl);
-        return waitOnElement("SEARCH_BTN",10) && clickOnIndependentElement("SEARCH_BTN");
+        return waitOnElement("SEARCH_BTN",10000) && clickOnIndependentElement("SEARCH_BTN");
     }
 
     private boolean createEntitlement() throws Exception {
     	return
-        waitOnElement("CREATE_ENTITLEMENT_BTN",10)
+        waitOnElement("CREATE_ENTITLEMENT_BTN",10000)
         && clickOnIndependentElement("CREATE_ENTITLEMENT_BTN")
-        && waitOnElement("CREATE_ENTITLEMENT_ID", 10)
+        && waitOnElement("CREATE_ENTITLEMENT_ID", 10000)
         && writeTextIntoTextBox("CREATE_ENTITLEMENT_ID", "embedCode")
         && writeTextIntoTextBox("EXTERNAL_PRODUCT_ID", "abc")
         && writeTextIntoTextBox("MAX_DEVICES", "2")

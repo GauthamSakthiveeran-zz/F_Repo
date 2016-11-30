@@ -34,36 +34,30 @@ public class PlaybackAdWrapperTests extends PlaybackWebTest {
 	public void verifyPlaybackAdWrapper(String testName, String url)
 			throws Exception {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
-
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(10000);
 
 			injectScript();
 
-			playValidator.validate("playing_1", 190);
+            result = result && playValidator.validate("playing_1", 190000);
 			extentTest.log(LogStatus.PASS, "Main video started to play");
 			sleep(500);
 
-			pauseAction.startAction();
+            result = result && pauseAction.startAction();
 			fullScreenAction.startAction();
 
 			sleep(2000);
 
 			playAction.startAction();
 
-			volumeValidator.validate("", 60);
-			seekValidator.validate("seeked_1", 190);
-			event.validate("played_1", 190);
-
-			result = true;
+            result = result && volumeValidator.validate("", 60000);
+            result = result && seekValidator.validate("seeked_1", 190000);
+            result = result && event.validate("played_1", 190000);
 
 			extentTest.log(LogStatus.PASS, "Main Video played successfully");
 

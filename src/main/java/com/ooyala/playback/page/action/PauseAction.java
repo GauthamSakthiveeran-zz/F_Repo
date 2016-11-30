@@ -43,7 +43,7 @@ public class PauseAction extends PlayBackPage implements PlayerAction {
 	
 	public void startActionOnScreen() throws Exception{
 		try {
-			waitOnElement("STATE_SCREENS", 50);
+			waitOnElement("STATE_SCREENS", 50000);
 			clickOnIndependentElement("STATE_SCREENS");
 			logger.info("Clicked on screen to pause the video");
 		} catch (Exception e) {

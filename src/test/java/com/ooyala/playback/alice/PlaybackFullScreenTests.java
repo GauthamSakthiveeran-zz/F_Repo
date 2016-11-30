@@ -28,35 +28,27 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 	public void testPlaybackFullscreen(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			play.waitForPage();
+            result = result && play.waitForPage();
 
 			injectScript();
 
-			play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60000);
 
-			logger.info("video is playing");
+            result = result && fullScreenValidator.validate("", 60000);
 
-			fullScreenValidator.validate("", 60);
+            result = result && seek.validate("seeked_1", 60000);
 
-			seek.validate("seeked_1", 60);
-
-			logger.info("video seeked");
-
-			eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60000);
 
 			logger.info("video played");
-
-			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 		}
 		Assert.assertTrue(result, "Playback FullScreen tests failed");
 	}

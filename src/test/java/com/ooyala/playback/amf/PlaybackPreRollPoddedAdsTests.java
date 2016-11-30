@@ -28,33 +28,28 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest{
 	public void verifyPrerollOverlay(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playValidator.validate("playing_1", 120);
-			
-			event.validate("adsPlayed_1", 180);
+            result = result && playValidator.validate("playing_1", 120000);
+
+            result = result && event.validate("adsPlayed_1", 180000);
 	        extentTest.log(PASS, "Played Preroll Ads");
 	        sleep(3000);
-	        
-	        poddedAdValidator.validate("countPoddedAds", 120);
-	        
-	        seekValidator.validate("seeked_1", 180);
-	        event.validate("played_1", 180);
+
+            result = result &&  poddedAdValidator.validate("countPoddedAds", 120000);
+
+            result = result && seekValidator.validate("seeked_1", 180000);
+            result = result && event.validate("played_1", 180000);
 	        extentTest.log(PASS, "Verified PrerollPodded Ads test");
-	        
-	        
 	        
 		} catch (Exception e) {
 			e.printStackTrace();
