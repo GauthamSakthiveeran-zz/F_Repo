@@ -78,10 +78,9 @@ public abstract class PlayBackPage extends WebPage {
 	protected boolean clickOnIndependentElement(String elementKey) {
 		try {
 			boolean flag = super.clickOnIndependentElement(elementKey);
-			if(flag)
-				extentTest.log(LogStatus.PASS, "Clicked on : "+elementKey);
-			else
-				extentTest.log(LogStatus.FAIL, "Exception occured while clicking on "+ elementKey);
+			if(!flag){
+				 flag = clickOnHiddenElement(elementKey);
+            }
 			return flag;
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -93,7 +92,7 @@ public abstract class PlayBackPage extends WebPage {
 					+ elementKey);
 			extentTest.log(LogStatus.INFO,"Calling clickOnHiddenElement function on the element "
 					+ elementKey);
-			return clickOnHiddenElement(elementKey);
+            return false;
 		}
 
 	}
