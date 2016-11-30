@@ -105,9 +105,9 @@ public class DiscoveryValidator extends PlayBackPage implements
 		boolean discoverytray = isElementPresent("DISCOVERY_STYLE");
 		boolean discoveryscreen = isElementPresent("CONTENT_SCREEN");
 
-		logger.info("discvoery screen is enabled " + Onevent + ": "
+		logger.info("discovery screen is enabled " + Onevent + ": "
 				+ discoveryscreen);
-		logger.info("discvoery Toaster is Shown " + Onevent + ": "
+		logger.info("discovery Toaster is Shown " + Onevent + ": "
 				+ discoverytray);
 		Assert.assertEquals(discoveryscreen, flag);
 		Assert.assertEquals(discoverytray, flag);

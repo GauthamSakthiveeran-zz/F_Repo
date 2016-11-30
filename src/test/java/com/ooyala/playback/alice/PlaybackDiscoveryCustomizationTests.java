@@ -57,18 +57,16 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 			try {
                 result = result && clickDiscoveryButtonAction.startAction();
 
-				discoveryValidator.verifyDiscoveryEnabled("On_discovery_click",
-						true); // verify discovery is disabled on discovery
-								// click
+				discoveryValidator.verifyDiscoveryEnabled("On_discovery_click", true); // verify discovery is disabled on discovery
+
                 result = result && eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
 				logger.info("verified discovery close button is present or not");
 				sleep(2000);
                 result = result && play.validate("playing_2", 60000);
-				logger.info("verified video playing again after discvery check");
+				logger.info("verified video playing again after discovery check");
 
                 result = result &&	pauseAction.startAction();
-				discoveryValidator.verifyDiscoveryEnabled("On_pauseScreen",
-						false); // verify discovery is disabled on pause screen
+				discoveryValidator.verifyDiscoveryEnabled("On_pauseScreen", false); // verify discovery is disabled on pause screen
 
 				Thread.sleep(10000);
 

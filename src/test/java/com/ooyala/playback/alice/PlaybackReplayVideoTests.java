@@ -43,7 +43,7 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
             result = result && seek.validate("seeked_1", 60000);
 
-            result = result && eventValidator.validate("played_1", 200);
+            result = result && eventValidator.validate("played_1", 20000);
 
             result = result && replayValidator.validate("replay_1", 60000);
 
