@@ -30,11 +30,14 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "Playback", dataProvider = "testUrls")
-	public void testHLSLive(String testName, String url) throws OoyalaException {
+	public void testLive(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
-		if (getBrowser().equalsIgnoreCase("safari")) {
+        if((testName.split(":")[1].toLowerCase()).contains("HLS".toLowerCase())&& !(getBrowser().equalsIgnoreCase("safari")) ){
+            throw new SkipException("HLS tests run only on Safari browser - Test Skipped");
+        }
+
 			try {
 				driver.get(url);
 
@@ -64,9 +67,7 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 				e.printStackTrace();
                 result = false;
 			}
-			Assert.assertTrue(result, "Playback HLSLive tests failed");
-		} else {
-			throw new SkipException("Test PlaybackHLSLive Is Skipped");
-		}
+			Assert.assertTrue(result, "Playback Live tests failed");
+
 	}
 }
