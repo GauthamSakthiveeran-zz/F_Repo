@@ -2539,6 +2539,7 @@ public abstract class WebPage {
 				pageElements.get(elementyKey));
 		if (lineNumber > -1)
 			addLineNumberToElement(element, "#", "" + lineNumber);
+		logger.info("element get by " + element.getFindBy());
 
 		if (element.getFindBy().equalsIgnoreCase("ID")) {
 			return waitOnId(element.getElementID(), timeout, ignoreRendering);
@@ -2548,8 +2549,8 @@ public abstract class WebPage {
 		} else if (element.getFindBy().equalsIgnoreCase("XPATH")) {
 			return waitOnXPath(element.getElementXPath(), timeout, null,
 					ignoreRendering);
-		}else if (element.getFindBy().equalsIgnoreCase("CLASS")) {
-			return waitOnClass(element.getElementXPath(), timeout, null,
+		} else if (element.getFindBy().equalsIgnoreCase("CLASS")) {
+			return waitOnClass(element.getElementClass(), timeout, null,
 					ignoreRendering);
 		}
 
