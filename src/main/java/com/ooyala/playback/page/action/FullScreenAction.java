@@ -19,7 +19,7 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
 
 	@Override
 	public boolean startAction() throws Exception {
-		WebElement player = getWebElement("ooplayer");
+		WebElement player = getWebElement("OOPLAYER");
 		
 		if(player==null) return false;
 		
