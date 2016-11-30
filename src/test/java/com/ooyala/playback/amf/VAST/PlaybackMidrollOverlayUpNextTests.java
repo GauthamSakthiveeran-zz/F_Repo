@@ -29,7 +29,7 @@ public class PlaybackMidrollOverlayUpNextTests extends PlaybackWebTest {
 	public void verifyMidrollOverlayUpNext(String testName, String url)
 			throws OoyalaException {
 		
-		boolean result = false;
+		boolean result = true;
 		
 		try {
 			

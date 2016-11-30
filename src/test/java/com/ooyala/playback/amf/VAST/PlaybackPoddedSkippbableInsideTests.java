@@ -1,7 +1,6 @@
 package com.ooyala.playback.amf.VAST;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -30,7 +29,7 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 	public void verifyPoddedInsideSkipButton(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
