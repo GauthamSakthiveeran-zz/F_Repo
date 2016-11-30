@@ -47,14 +47,14 @@ public class PlaybackSkipAdsTests extends  PlaybackWebTest{
 
 	        loadingSpinner();
 
-	        event.validate("willPlaySingleAd_1", 150000);
+	        result = result && event.validate("willPlaySingleAd_1", 150000);
 
             result = result && skipButtonValidator.validate("", 120000);
 	        
 	        extentTest.log(PASS, "Clicked on Skip button");
 
             result = result && event.validate("singleAdPlayed_1", 150000);
-	        event.validate("playing_1", 150000);
+            result = result && event.validate("playing_1", 150000);
 	        sleep(500);
 
             result = result &&  seekValidator.validate("seeked_1", 150000);

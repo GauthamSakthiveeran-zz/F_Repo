@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+
+	<test name ="PlaybackPostrollDiscoveryTests" >
+    	<url>
+	    	<description name="Discovery_Postroll_Bitmovin_Pulse"/>
+	        <embed_code name="A3Y2Y5MzE6vyMaoirADDRV6bpmtIDHH2"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN"/>
+	        <adPlugins name="PULSE"/>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
+	        <playerParameter><![CDATA[{"autoPlay":false,"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+    	</url>
+    	
+    </test>
+</testdata>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+
+	<test name ="PlaybackPreMidPostReplayTests" >
+    	<url>
+	    	<description name="Pre_Mid_Post_Replay"/>
+	        <embed_code name="lzMGdpdDq6Dsvi-c32p6u7k46mbT_cxm"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":3}]]></playerParameter>
+    	</url>
+    </test>
+</testdata>

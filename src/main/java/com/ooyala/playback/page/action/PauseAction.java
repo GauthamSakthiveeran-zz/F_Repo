@@ -31,7 +31,7 @@ public class PauseAction extends PlayBackPage implements PlayerAction {
 			isElement = isElementPresent("HIDDEN_CONTROL_BAR");
 			if (isElement) {
 				logger.info("hovering mouse over the player");
-				action.moveToElement(getWebElement("PAUSE_SCREEN"))
+				action.moveToElement(getWebElement("HIDDEN_CONTROL_BAR"))
 						.perform();
 			}
 			return clickOnIndependentElement("PAUSE_BUTTON");

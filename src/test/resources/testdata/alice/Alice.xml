@@ -363,6 +363,17 @@
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
+        
+        <url>
+            <description name="Thumbnail_Image_Akamai_HD" />
+            <embed_code name="9qaHdodTqmllcEnthP1AgrCTjf19HD4i" />
+            <pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk" />
+            <plugins name="AKAMAI" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
     </test>
 
     <test name="PlaybackWatermarkTests">

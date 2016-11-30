@@ -15,7 +15,7 @@ public class PlayBackAsserts {
 	 * @param failures
 	 * @param extentTest
 	 */
-	public PlayBackAsserts(List<String> failures, ExtentTest extentTest){ //can pass the screenshot object to take screen shots whener there is a failure?
+	public PlayBackAsserts(List<String> failures, ExtentTest extentTest){ 
 		this.failures = failures;
 		this.extentTest = extentTest;
 	}
