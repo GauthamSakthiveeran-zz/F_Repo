@@ -87,7 +87,7 @@ public abstract class PlayBackPage extends WebPage {
 			ex.printStackTrace();
 			logger.error("Exception occured while clicking on element "
 					+ elementKey);
-			extentTest.log(LogStatus.WARNING,"Exception occured while clicking on element "
+			extentTest.log(LogStatus.INFO,"Exception occured while clicking on element "
 					+ elementKey);
 			logger.error("Calling clickOnHiddenElement function on the element "
 					+ elementKey);
@@ -185,7 +185,9 @@ public abstract class PlayBackPage extends WebPage {
 		    String[] pairs = query.split("&");
 		    for (String pair : pairs) {
 		        int index = pair.indexOf("=");
-		        query_pairs.put(URLDecoder.decode(pair.substring(0, index), "UTF:8"), URLDecoder.decode(pair.substring(index + 1), "UTF:8"));
+		        System.out.println("******************"+pair);
+		        query_pairs.put(URLDecoder.decode(pair.substring(0, index), "UTF-8"), URLDecoder.decode(pair.substring(index + 1), "UTF-8"));
+		        
 		    }
 		    return query_pairs;
 		}

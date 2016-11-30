@@ -9,6 +9,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 /**
  * Created by soundarya on 11/22/16.
  */
@@ -43,8 +45,19 @@ public class ThumbnailValidator extends PlayBackPage implements
 		Map<String, String> data = parseURL();
 		String embed_code = data.get("ec");
 		
-        String thumbnail_url = getWebElement("THUMBNAIL_IMAGE").getCssValue("background-image");
-       
-        return thumbnail_url.contains(embed_code);
+		if(getWebElement("THUMBNAIL_IMAGE") != null){
+			String thumbnail_url = getWebElement("THUMBNAIL_IMAGE").getCssValue("background-image");
+		       
+	        if(thumbnail_url.contains(embed_code)){
+	        	extentTest.log(LogStatus.PASS, "Thumbnail image verified.");
+	        	return true;
+	        }else{
+	        	extentTest.log(LogStatus.FAIL, "Embed code not found in thumbnail image url.");
+	        }
+		}
+		extentTest.log(LogStatus.FAIL, "THUMBNAIL_IMAGE not found.");
+		return false;
+        
+        	
 	}
 }
