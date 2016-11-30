@@ -28,7 +28,7 @@ public class PlaybackNewStreamTests extends PlaybackWebTest {
 
     @Test(groups = "Playback", dataProvider = "testUrls")
     public void testLoadingNewStream(String testName, String url) throws OoyalaException {
-        boolean result = false;
+        boolean result = true;
         try {
             driver.get(url);
             if (!getPlatform().equalsIgnoreCase("android")) {
@@ -39,32 +39,26 @@ public class PlaybackNewStreamTests extends PlaybackWebTest {
 
             injectScript();
 
-            playAction.startAction();
+            result = result && playAction.startAction();
 
-            eventValidator.validate("playing_1",60);
+            result = result && eventValidator.validate("playing_1",60000);
             logger.info("Video starts playing");
 
-            pause.validate("paused_1",60);
+            ((JavascriptExecutor)  driver).executeScript("pp.setEmbedCode('Vmd2VmeDq6-92C-kPkkZGoOkTCeSZq4e')");
 
-            ((JavascriptExecutor) driver).executeScript("pp.setEmbedCode('Vmd2VmeDq6-92C-kPkkZGoOkTCeSZq4e')");
-
-            eventValidator.validate("setEmbedCode_1",10);
+            result = result && eventValidator.validate("setEmbedCode_1",15000);
             logger.info("Loaded New Asset");
 
             ((JavascriptExecutor) driver).executeScript("pp.play()");
 
-            eventValidator.validate("playing_2",60);
+            result = result && eventValidator.validate("playing_2",60000);
             logger.info("Played new asset");
 
-            pause.validate("paused_1", 60);
-            logger.info("verified new asset is paused");
-
-            discoveryValidator.validate("reportDiscoveryClick_1", 60);
-
-            result = true;
+            result = result && discoveryValidator.validate("reportDiscoveryClick_1", 6000);
 
         }catch(Exception e){
             e.printStackTrace();
+            result = false;
         }
         Assert.assertTrue(result, "Playback new stream tests failed");
     }

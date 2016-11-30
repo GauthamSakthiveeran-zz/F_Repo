@@ -26,38 +26,33 @@ public class PlaybackAdVideoSamePluginDiffElementTests  extends PlaybackWebTest 
     public void testSamePluginsDiffElementTests(String testName, String url)
             throws OoyalaException {
 
-        boolean result = false;
+        boolean result = true;
 
         try{
             driver.get(url);
             if (!getPlatform().equalsIgnoreCase("android")) {
                 driver.manage().window().maximize();
             }
-            Thread.sleep(3000);
+            Thread.sleep(2000);
 
             injectScript();
 
-            playAction.startAction();
+            result = result && playAction.startAction();
 
-            if(isAdPlayingValidator.validate("CheckAdPlaying",60)){
-                isAdPlayingValidator.skipAd();
-            }
-
-            eventValidator.validate("adsPlayed_1",60);
+            result = result && eventValidator.validate("adsPlayed_1",30000);
             logger.info("Ad played");
 
-            elementValidator.validate("VIDEO_PATH",60);
+            result = result && elementValidator.validate("VIDEO_PATH",30000);
             logger.info("Two different elements created for ad and main video");
 
-            eventValidator.validate("playing_1",60);
+            Thread.sleep(2000);
+
+            result = result && eventValidator.validate("playing_1",60000);
             logger.info("Video starts playing");
 
-            seekValidator.validate("seeked_1",60);
+            result = result && seekValidator.validate("seeked_1",60000);
 
-            eventValidator.validate("played_1",60);
-
-            Thread.sleep(15000);
-            result = true;
+            result = result && eventValidator.validate("played_1",60000);
 
         }catch (Exception e){
             e.printStackTrace();
