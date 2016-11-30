@@ -71,6 +71,27 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"encodingPriority":["hls","dash"]}]]></playerParameter>
         </url>
+        <url>
+            <description name="eHLSVod_Main" />
+            <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="HLSVod_Main" />
+            <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
     </test>
 
     <test name="PlaybackDiscoveryCustomizationTests">
@@ -218,6 +239,26 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Playback_HLS_Live_Main" />
+            <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Akamai HDS Live" />
+            <embed_code name="ZzYjl0MTE6q67pMzfDHLjHsh5ZPR7rMO" />
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
     </test>

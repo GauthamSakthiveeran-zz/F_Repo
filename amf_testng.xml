@@ -9,7 +9,7 @@
 		
 		<classes>
 			<parameter name="jsFile" value="common.js,amf/amf.js"/>
-			<class name="com.ooyala.playback.amf.PlaybackAdWrapperTests" />
+			<class name="com.ooyala.playback.amf.VAST.PlaybackAdWrapperTests" />
 			<class name="com.ooyala.playback.amf.freewheel.PlaybackBumperPrerollAdTests" />
 			<class name="com.ooyala.playback.amf.PlaybackCCenabledPreRollAdsTests" />
 			<class name="com.ooyala.playback.amf.PlaybackCCenableMidRollAdsTests" />

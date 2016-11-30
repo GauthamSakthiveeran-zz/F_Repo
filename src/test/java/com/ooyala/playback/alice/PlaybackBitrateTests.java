@@ -31,7 +31,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 	@Test(groups = "ABR", dataProvider = "testUrls")
 	public void testBitrate(String testName, String url) throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 			driver.get(url);

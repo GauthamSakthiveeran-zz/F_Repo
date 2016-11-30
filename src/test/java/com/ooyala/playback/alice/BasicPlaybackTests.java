@@ -1,6 +1,7 @@
 package com.ooyala.playback.alice;
 
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -28,6 +29,10 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 	public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
+
+        if((testName.split(":")[1].toLowerCase()).contains("HLS".toLowerCase())&& !(getBrowser().equalsIgnoreCase("safari")) ){
+            throw new SkipException("HLS tests run only on Safari browser - Test Skipped");
+        }
 
 		try {
 			driver.get(url);
