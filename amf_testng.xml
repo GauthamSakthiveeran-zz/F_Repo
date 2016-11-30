@@ -5,26 +5,17 @@
 	</listeners>
 
 	<test name="AMF Regression Group">
-	
+
+		<parameter name="jsFile" value="common.js,amf/amf.js" />
+
+		<!-- <packages>
+			<package name="com.ooyala.playback.amf.VAST" />
+		</packages> -->
 		
 		<classes>
-			<parameter name="jsFile" value="common.js,amf/amf.js"/>
-			<class name="com.ooyala.playback.amf.VAST.PlaybackAdWrapperTests" />
-			<!-- <class name="com.ooyala.playback.amf.freewheel.PlaybackBumperPrerollAdTests" />
-			<class name="com.ooyala.playback.amf.PlaybackCCenabledPreRollAdsTests" />
-			<class name="com.ooyala.playback.amf.PlaybackCCenableMidRollAdsTests" />
-			<class name="com.ooyala.playback.amf.PlaybackClickthroughTests" />
-			<class name="com.ooyala.playback.amf.PlaybackCustomeInteractionTests" />
-			<class name="com.ooyala.playback.amf.PlaybackDiscoveryUpnextTests" />
-			<class name="com.ooyala.playback.amf.VAST.PlaybackLiveRailVastManagerTests" />
-			<class name="com.ooyala.playback.amf.PlaybackMidRollAdsTests" />
-			<class name="com.ooyala.playback.amf.PlaybackPostRollAdsTests" />
-           	<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests" />
-           	<class name="com.ooyala.playback.amf.PlaybackPreRollAdsTests" />
-           	<class name="com.ooyala.playback.amf.VAST.PlaybackVastPreIMAMidlAdsTests" />  -->
-           
+			<class name="com.ooyala.playback.amf.VAST.PlaybackMidrollOverlayUpNextTests"></class>
 		</classes>
-		
+
 	</test>
-	
+
 </suite>
