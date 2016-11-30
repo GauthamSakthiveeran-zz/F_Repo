@@ -369,9 +369,12 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	}
 	
-	protected String removeSkin(String url){
+	protected String removeSkin(String url){ // TODO
 		return url.replace("http%3A%2F%2Fplayer.ooyala.com%2Fstatic%2Fv4%2Fcandidate%2Flatest%2Fskin-plugin%2Fhtml5-skin.min.js", "");
 	}
-
+	
+	protected Object executeScript(String script){
+		return ((JavascriptExecutor) driver).executeScript(script);
+	}
 	
 }
