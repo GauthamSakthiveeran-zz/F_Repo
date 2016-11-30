@@ -42,18 +42,18 @@ public class AdClickThroughValidator extends PlayBackPage implements
 					} else {
 						if(!clickOnIndependentElement("AD_PANEL")) return false;
 					}
-					if(!waitOnElement("adsClicked_1", 10)) return false;
-					if(!waitOnElement("adsClicked_videoWindow", 10)) return false;
+					if(!waitOnElement("adsClicked_1", 10000)) return false;
+					if(!waitOnElement("adsClicked_videoWindow", 10000)) return false;
 					extentTest.log(PASS,"AdsClicked by clicking on the ad screen");
 				}
 			}
 			if (!value.contains("ima")) {
 				try {
 					if(!clickOnHiddenElement("LEARN_MORE")) return false;
-					if(!waitOnElement("adsClicked_learnMoreButton", 5)) return false;
+					if(!waitOnElement("adsClicked_learnMoreButton", 5000)) return false;
 				} catch (Exception e) {
 					if(!clickOnIndependentElement("LEARN_MORE")) return false;
-					if(!waitOnElement("adsClicked_learnMoreButton", 20)) return false;
+					if(!waitOnElement("adsClicked_learnMoreButton", 20000)) return false;
 				}
 			}
 			extentTest.log(PASS,"AdsClicked by clicking on the learn more button");

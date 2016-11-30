@@ -27,7 +27,7 @@ public class EndScreenValidator extends PlayBackPage implements
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		if(!waitOnElement("END_SCREEN", 60)) return false;
+		if(!waitOnElement("END_SCREEN", 60000)) return false;
 		String replaytxt = getWebElement("PLAY_PAUSE").findElement(
 				By.tagName("span")).getAttribute("class");
 		

@@ -39,47 +39,38 @@ public class PlaybackPoddedwithOverlayStandaloneTests  extends PlaybackWebTest{
 				driver.manage().window().maximize();
 			}
 
-			playValidator.waitForPage();
-			Thread.sleep(2000);
+			result = result && playValidator.waitForPage();
 
 			injectScript();
 
 			//play video
-			playAction.startAction();
+			result = result && playAction.startAction();
 
-	        loadingSpinner();
 
 	        // verify podded preroll
-	        event.validate("willPlaySingleAd_1", 60);
+	        result = result && event.validate("willPlaySingleAd_1", 60000);
 
-	        event.validate("singleAdPlayed_1", 150);
+	        result = result && event.validate("singleAdPlayed_1", 150000);
 
-	        loadingSpinner();
 
-	        event.validate("willPlaySingleAd_2", 160);
+	        result = result && event.validate("willPlaySingleAd_2", 160000);
 
-	        event.validate("singleAdPlayed_2", 160);
+	        result = result && event.validate("singleAdPlayed_2", 160000);
 
 	        extentTest.log(PASS, "Played Preroll podded Ads");
-	        sleep(3000);
 
-	        event.validate("playing_1", 160);
+	        result = result && event.validate("playing_1", 160000);
 
-	        sleep(500);
-
-	        // Verify overlay
-	        
-	        overlayValidator.validate("nonlinearAdPlayed_1", 90);
+	        result = result && overlayValidator.validate("nonlinearAdPlayed_1", 90000);
 
 	        extentTest.log(PASS, "Overlay Played");
 
-	        seekValidator.validate("seeked_1", 140);
+	        result = result && seekValidator.validate("seeked_1", 14000);
 
-	        event.validate("played_1", 200);
+	        result = result && event.validate("played_1", 20000);
 
 	        extentTest.log(PASS, "Main Video played successfully");
 
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

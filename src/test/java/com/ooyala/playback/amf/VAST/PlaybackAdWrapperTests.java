@@ -13,6 +13,7 @@ import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.FullScreenAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackAdWrapperTests extends PlaybackWebTest {
 
@@ -31,30 +32,26 @@ public class PlaybackAdWrapperTests extends PlaybackWebTest {
 	public void verifyPlaybackAdWrapper(String testName, String url)
 			throws Exception {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
-
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
-			Thread.sleep(10000);
-			playValidator.waitForPage();
 
+            result = result && playValidator.waitForPage();
 			injectScript();
 
-			playValidator.validate("playing_1", 190);
-			sleep(2000);
+            result = result && playValidator.validate("playing_1", 190000);
+			extentTest.log(LogStatus.PASS, "Main video started to play");
+			sleep(500);
 
-			pauseAction.startAction();
+            result = result && pauseAction.startAction();
 			fullScreenAction.startAction();
 
-			volumeValidator.validate("", 60);
-			seekValidator.validate("seeked_1", 190);
-			event.validate("played_1", 190);
+            result = result && volumeValidator.validate("", 60000);
+            result = result && seekValidator.validate("seeked_1", 190000);
+            result = result && event.validate("played_1", 190000);
 
-			result = true;
+			extentTest.log(LogStatus.PASS, "Main Video played successfully");
 
 		} catch (Exception e) {
 			e.printStackTrace();

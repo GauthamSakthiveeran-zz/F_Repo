@@ -33,8 +33,8 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		return waitOnElement(By.id(element), timeout);
 	}
 
-	public void eventAction(String element) throws Exception {
-		clickOnIndependentElement(element);
+	public boolean eventAction(String element) throws Exception {
+		 return clickOnIndependentElement(element);
 	}
 
 	public void validateElement(String element, int timeout) throws Exception {

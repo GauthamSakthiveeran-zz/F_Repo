@@ -1,9 +1,6 @@
 package com.ooyala.playback.url;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
@@ -95,6 +92,7 @@ public class UrlGenerator {
 		}
 		return urlsGenerated;
 	}
+
 
 	/**
 	 * @param testName

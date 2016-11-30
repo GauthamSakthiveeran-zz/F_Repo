@@ -52,7 +52,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected ChromeDriverService service;
 	protected PropertyReader propertyReader;
 	protected PlayBackFactory pageFactory;
-	// protected static NodeList nodeList;
 	protected ExtentReports extentReport;
 	protected ExtentTest extentTest;
 	protected Testdata testData;
@@ -71,7 +70,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
-//		String testCaseName = getTestCaseName(method, testData);
 		extentTest = extentReport.startTest(testData[0].toString());
 		
 		PlayBackPage page = new PlayBackPage(driver) {
@@ -162,6 +160,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		// driver.manage().timeouts().implicitlyWait(240, TimeUnit.MINUTES);
 		pageFactory = PlayBackFactory.getInstance(driver);
+        if (!getPlatform().equalsIgnoreCase("android")) {
+            maximizeMe(driver);
+        }
 		parseXmlFileData(xmlFile);
 		getJSFile(jsFile);
 		SimpleHttpServer.startServer();

@@ -32,19 +32,19 @@ public class DiscoveryValidator extends PlayBackPage implements
 	
 	private boolean validateDiscoveryToaster() throws Exception{
 		try {
-			if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
-			if(!waitOnElement("DISCOVERY_TOASTER", 60)) return false;
+			clickOnIndependentElement("PAUSE_BUTTON");
+			waitOnElement("DISCOVERY_TOASTER", 60000);
 		} catch (Exception e) {
 			if (isElementPresent("PLAYING_SCREEN")) {
-				if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
+				clickOnIndependentElement("PAUSE_BUTTON");
 
 			} else {
-				if(!clickOnIndependentElement("PLAY_BUTTON")) return false;
+				clickOnIndependentElement("PLAY_BUTTON");
 				sleep(5000);
-				if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
+				clickOnIndependentElement("PAUSE_BUTTON");
 			}
 
-			if(!waitOnElement("DISCOVERY_TOASTER", 60)) return false;;
+			if(!waitOnElement("DISCOVERY_TOASTER", 60000)) return false;;
 			extentTest.log(LogStatus.PASS,"Discovery Toaster present");
 		}
 		return true;
@@ -59,9 +59,7 @@ public class DiscoveryValidator extends PlayBackPage implements
 		boolean flagTrue = false;
 		try {
 			flagTrue = isElementVisible("RIGHT_BTN");
-			logger.info("Is right button showing on Discovery Screen  "
-					+ flagTrue);
-			if(!flagTrue) return false;
+			logger.info("Is right button showing on Discovery Screen  " + flagTrue);
 		} catch (Exception e) {
 			logger.info("Max videos are showing on Discovery screen");
 			return false;
@@ -77,13 +75,8 @@ public class DiscoveryValidator extends PlayBackPage implements
 	
 	private boolean validateImageStyle(){
 		if(!clickOnIndependentElement("IMAGE_STYLE")) return false;
-		try {
-			if(!waitOnElement(By.id("reportDiscoveryClick_1"), 60)) return false;
-		} catch (Exception e) {
-			if(!clickOnIndependentElement("IMAGE_STYLE")) return false;
+        if(!waitOnElement(By.id("reportDiscoveryClick_1"), 60000)) return false;
 
-			if(!waitOnElement(By.id("reportDiscoveryClick_1"), 60)) return false;
-		}
 		return true;
 	}
 	
@@ -91,10 +84,10 @@ public class DiscoveryValidator extends PlayBackPage implements
 	public boolean validate(String element, int timeout) throws Exception {
 
 		if(validateDiscoveryToaster() && validateLeftRightButton() && validateImageStyle()){
-			return waitOnElement(By.id("reportDiscoveryImpression_1"), 60)
-					&& waitOnElement(By.id("setEmbedCode_1"), 60)
-					&& waitOnElement(By.id("playbackReady_1"), 60) 
-					&& waitOnElement(By.id("videoPreload_1"), 60);
+			return waitOnElement(By.id("reportDiscoveryImpression_1"), 60000)
+					&& waitOnElement(By.id("setEmbedCode_1"), 60000)
+					&& waitOnElement(By.id("playbackReady_1"), 60000)
+					&& waitOnElement(By.id("videoPreload_1"), 60000);
 		}
 		
 		return false;
@@ -105,9 +98,9 @@ public class DiscoveryValidator extends PlayBackPage implements
 		boolean discoverytray = isElementPresent("DISCOVERY_STYLE");
 		boolean discoveryscreen = isElementPresent("CONTENT_SCREEN");
 
-		logger.info("discvoery screen is enabled " + Onevent + ": "
+		logger.info("discovery screen is enabled " + Onevent + ": "
 				+ discoveryscreen);
-		logger.info("discvoery Toaster is Shown " + Onevent + ": "
+		logger.info("discovery Toaster is Shown " + Onevent + ": "
 				+ discoverytray);
 		Assert.assertEquals(discoveryscreen, flag);
 		Assert.assertEquals(discoverytray, flag);

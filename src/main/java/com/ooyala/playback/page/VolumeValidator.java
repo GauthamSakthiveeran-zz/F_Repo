@@ -38,7 +38,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 				Actions action = new Actions(driver);
 				action.moveToElement(getWebElement("CONTROL_BAR")).build().perform();
 			}
-			if(waitOnElement("VOLUME_MAX", 10) && clickOnIndependentElement("VOLUME_MAX")){
+			if(waitOnElement("VOLUME_MAX", 10000) && clickOnIndependentElement("VOLUME_MAX")){
 				double getmutevol = getVolume();
 				if(getmutevol!=expectedmutevol){
 					extentTest.log(LogStatus.FAIL, "Mute volume is't matching");

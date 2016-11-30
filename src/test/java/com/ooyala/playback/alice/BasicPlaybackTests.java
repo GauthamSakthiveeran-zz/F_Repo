@@ -1,6 +1,7 @@
 package com.ooyala.playback.alice;
 
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -25,43 +26,43 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "playback", dataProvider = "testUrls")
-	public void testBasicPlaybackAlice(String testName, String url)
-			throws OoyalaException {
+	public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
+
+        if((testName.split(":")[1].toLowerCase()).contains("HLS".toLowerCase())&& !(getBrowser().equalsIgnoreCase("safari")) ){
+            throw new SkipException("HLS tests run only on Safari browser - Test Skipped");
+        }
 
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			play.waitForPage();
-			Thread.sleep(10000);
+            result = result &&  play.waitForPage();
+			Thread.sleep(5000);
 
 			injectScript();
 
-			play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60000);
 
 			Thread.sleep(2000);
 
-			pause.validate("paused_1", 60);
+            result = result && pause.validate("paused_1", 60000);
 
 			logger.info("Verified that video is getting pause");
 
-			pause.validate("playing_2", 60);
+            result = result && play.validate("playing_2", 60000);
 
-			seek.validate("seeked_1", 60);
+            result = result && seek.validate("seeked_1", 60000);
 
 			logger.info("Verified that video is seeked");
 
-			eventValidator.validate("played_1", 60);
+            result = result &&  eventValidator.validate("played_1", 60000);
 
 			logger.info("Verified that video is played");
 
-			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 		}
 		Assert.assertTrue(result, "Basic playback tests failed");
 	}

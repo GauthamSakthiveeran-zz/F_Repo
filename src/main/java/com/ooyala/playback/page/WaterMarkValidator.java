@@ -29,8 +29,10 @@ public class WaterMarkValidator extends PlayBackPage implements
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
+        String watermark_url = "https://dl.dropbox.com/s/kdo5hlgg2i3ptv0/ooyala-logo.png";
+
 		boolean flag = true;
-		String watermark_url = "https://dl.dropboxusercontent.com/u/344342926/Alice_Automation/fcb_wallpaper.jpg"; // TODO config this.
+
 		Actions action = new Actions(driver);
 
 		WebElement control_bar = getWebElement("CONTROL_BAR_ITEM");
@@ -42,7 +44,7 @@ public class WaterMarkValidator extends PlayBackPage implements
 			action.moveToElement(control_bar).build().perform();
 		}
 
-		if(!waitOnElement("WATERMARK_LOGO", 60)) return false;
+		if(!waitOnElement("WATERMARK_LOGO", 60000)) return false;
 		Log.info("Watermark Image is displayed");
 		Thread.sleep(10000);
 
@@ -67,7 +69,7 @@ public class WaterMarkValidator extends PlayBackPage implements
 			}
 			
 			flag = validatelogoDimension();
-			if(!waitOnElement("NORMAL_SCREEN", 10)) return false;
+			if(!waitOnElement("NORMAL_SCREEN", 10000)) return false;
 			if(!clickOnIndependentElement("NORMAL_SCREEN")) return false;
 
 		}

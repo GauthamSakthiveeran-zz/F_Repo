@@ -32,45 +32,39 @@ public class PlaybackLiveRailVastManagerTests extends PlaybackWebTest {
 	public void verifyPlaybackLiveRailVastTests(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playValidator.validate("playing_1", 60);
+            result = result && playValidator.validate("playing_1", 60000);
 
 			extentTest.log(PASS, "Main video started to play");
 			sleep(500);
 
 			// verify play pause
-			pauseValidator.validate("paused_1", 60);
+            result = result && pauseValidator.validate("paused_1", 60000);
 			sleep(2000);
-			playValidator.validate("playing_1", 60);
+            result = result && playValidator.validate("playing_1", 60000);
 
 			// Verify fullscreen
-			fullScreenValidator.validate("", 60);
+            result = result && fullScreenValidator.validate("", 60000);
 
 			// verify volume
-			volumeValidator.validate("", 60);
+            result = result && volumeValidator.validate("", 60000);
 
 			// verify seek
-			seekValidator.validate("seeked_1", 60);
+            result = result && seekValidator.validate("seeked_1", 60000);
 
-			event.validate("seeked_1", 190);
-			event.validate("played_1", 190);
+            result = result && event.validate("played_1", 190000);
 			extentTest.log(PASS, "Video completed palying");
 			extentTest.log(PASS, "verified LiveRail with Vast Manager");
-
-			result = true;
 
 		} catch (Exception e) {
 			e.printStackTrace();

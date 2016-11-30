@@ -22,7 +22,7 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 
 	public boolean validate(String element, int timeout) throws Exception {
 		try {
-			if(!waitOnElement("OVERLAY_CLOSE_BTN", 40)) return false;
+			if(!waitOnElement("OVERLAY_CLOSE_BTN", 40000)) return false;
 			extentTest.log(LogStatus.PASS, "Overlay Shown");
 			if(!clickOnIndependentElement("OVERLAY_CLOSE_BTN")) return false;
 			if(!waitOnElement(By.id(element), timeout)) return false;
@@ -36,7 +36,7 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 
 			if (!getBrowser().equalsIgnoreCase("safari")
 					&& !getPlatform().equalsIgnoreCase("Android")) {
-				if(!waitOnElement("OVERLAY_CLOSE_BTN", 40)) return false;
+				if(!waitOnElement("OVERLAY_CLOSE_BTN", 40000)) return false;
 				if(!clickOnIndependentElement("OVERLAY_CLOSE_BTN")) return false;
 				logger.info("Clicked on overlay close button in fullscreen screen \n");
 				logger.info("Overlay gets closed");

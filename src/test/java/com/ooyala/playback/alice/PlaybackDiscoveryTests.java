@@ -29,36 +29,32 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
 	public void testDiscovery(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			play.waitForPage();
+            result = result && play.waitForPage();
 
 			injectScript();
-			play.validate("playing_1", 60);
+            result = result && play.validate("playing_1", 60000);
 
 			logger.info("verified video is playing");
 
-			discoveryValidator.validate("reportDiscoveryClick_1", 60);
+            result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 			logger.info("verified discovery");
 
 			sleep(2000);
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 
 			sleep(2000);
 
-			eventValidator.validate("played_1", 60);
+            result = result && eventValidator.validate("played_1", 60000);
 			logger.info("video played");
-
-			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 		}
 		Assert.assertTrue(result, "Playback Discovery tests failed");
 	}

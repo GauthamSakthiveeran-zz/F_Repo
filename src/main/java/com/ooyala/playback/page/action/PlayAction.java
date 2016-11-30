@@ -23,11 +23,12 @@ public class PlayAction extends PlayBackPage implements PlayerAction {
 	@Override
 	public boolean startAction() throws Exception{
 		return clickOnIndependentElement("PLAY_BUTTON");
+
 	}
 	
 	public void startActionOnScreen() throws Exception{
 		try {
-			waitOnElement("STATE_SCREEN_SELECTABLE", 50);
+			waitOnElement("STATE_SCREEN_SELECTABLE", 50000);
 			clickOnIndependentElement("STATE_SCREEN_SELECTABLE");
 		} catch (Exception e) {
 			Actions action = new Actions(driver);

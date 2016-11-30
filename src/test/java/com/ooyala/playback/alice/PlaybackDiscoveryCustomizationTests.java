@@ -39,47 +39,40 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 	@Test(groups = "Discovery", dataProvider = "testUrls")
 	public void testDiscoveryUpNext(String testName, String url)
 			throws OoyalaException {
-		boolean result = false;
+		boolean result = true;
 
 		try {
 			driver.get(url);
-			if (!driver.getCapabilities().getPlatform().toString()
-					.equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			play.waitForPage();
+            result = result && play.waitForPage();
 
 			injectScript();
 
-			play.validate("playing_1", 60);
+            result = result &&	play.validate("playing_1", 60000);
 
 			logger.info("verified video playing");
 
 			Thread.sleep(3000);
 
-			result = true;
 			try {
-				clickDiscoveryButtonAction.startAction();
+                result = result && clickDiscoveryButtonAction.startAction();
 
-				discoveryValidator.verifyDiscoveryEnabled("On_discovery_click",
-						true); // verify discovery is disabled on discovery
-								// click
-				eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
+				discoveryValidator.verifyDiscoveryEnabled("On_discovery_click", true); // verify discovery is disabled on discovery
+
+                result = result && eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
 				logger.info("verified discovery close button is present or not");
 				sleep(2000);
-				play.validate("playing_2", 60);
-				logger.info("verified video playing again after discvery check");
+                result = result && play.validate("playing_2", 60000);
+				logger.info("verified video playing again after discovery check");
 
-				pauseAction.startAction();
-				discoveryValidator.verifyDiscoveryEnabled("On_pauseScreen",
-						false); // verify discovery is disabled on pause screen
+                /*result = result &&	pauseAction.startAction();
+				discoveryValidator.verifyDiscoveryEnabled("On_pauseScreen", true); // verify discovery is disabled on pause screen
 
 				Thread.sleep(10000);
 
-				playAction.startAction();
+                result = result &&	playAction.startAction();*/
 
-				eventValidator.eventAction("FULLSCREEN_BTN");
+                result = result &&	eventValidator.eventAction("FULLSCREEN_BTN");
 				logger.info("verified fullscreen");
 				try {
 					eventValidator.eventAction("PLAYING_SCREEN");
@@ -87,49 +80,42 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 					eventValidator.eventAction("VIDEO");
 				}
 				discoveryValidator.verifyDiscoveryEnabled(
-						"On_pause_FullScreen", false);
+						"On_pause_FullScreen", true);
 				sleep(1000);
-				playPauseAction.startAction();
+                result = result && eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
 
-				clickDiscoveryButtonAction.startAction();
+                result = result && playPauseAction.startAction();
+
+                result = result &&	clickDiscoveryButtonAction.startAction();
 
 				sleep(2000);
-				discoveryValidator.verifyDiscoveryEnabled(
-						"On_discoveryclick_fullScreen", true);
-				eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
+				discoveryValidator.verifyDiscoveryEnabled("On_discoveryclick_fullScreen", true);
+                result = result && eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
 				logger.info("verified discovery in full screen");
-				eventValidator.eventAction("NORMAL_SCREEN");
+                eventValidator.eventAction("NORMAL_SCREEN");
 
 				sleep(2000);
 
-				playAction.startAction();
+                result = result && playAction.startAction();
 
-				seekAction.setTime(20).fromLast().startAction();//seek(20, true);
+                result = result && seekAction.setTime(20).fromLast().startAction();//seek(20, true);
 
 				loadingSpinner();
-				discoveryUpNext.validate("", 60);
+				discoveryUpNext.validate("", 60000);
 				try {
-
-					eventValidator.validateElement("END_SCREEN", 60);
+                    eventValidator.validateElement("END_SCREEN", 60000);
 				} catch (Exception e) {
 					playAction.startAction();
 					seekAction.setTime(20).fromLast().startAction();//seek(20, true);
-					eventValidator.validateElement("END_SCREEN", 60);
-				}
-				discoveryValidator
-						.verifyDiscoveryEnabled("On_endScreen", false); // verify
-																		// discovery
-																		// is
-																		// disabled
-																		// on
-																		// end
-																		// screen
+					eventValidator.validateElement("END_SCREEN", 60000);
+                }
+				discoveryValidator.verifyDiscoveryEnabled("On_endScreen", false);
 			} catch (Exception e) {
 				logger.info("Exception " + e);
 			}
-			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+            result = false;
 		}
 		Assert.assertTrue(result, "Discovery customization tests failed");
 	}

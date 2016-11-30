@@ -46,27 +46,27 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest{
 
             loadingSpinner();
 
-            eventValidator.validate("willPlaySingleAd_1",60);
+            eventValidator.validate("willPlaySingleAd_1", 60000);
 
-            eventValidator.validate("playing_1",60);
+            eventValidator.validate("playing_1",60000);
 
-            eventValidator.validate("videoSetInitialTime_1",60);
+            eventValidator.validate("videoSetInitialTime_1",60000);
 
-            eventValidator.validate("videoPlay_1",60);
+            eventValidator.validate("videoPlay_1",60000);
 
-            eventValidator.validate("videoWillPlay_1",60);
+            eventValidator.validate("videoWillPlay_1",60000);
 
-            eventValidator.validate("videoPlaying_1",60);
+            eventValidator.validate("videoPlaying_1",60000);
 
-            pauseValidator.validate("videoPause_1",60);
+            pauseValidator.validate("videoPause_1", 60000);
 
-            eventValidator.validate("videoPaused_1",60);
+            eventValidator.validate("videoPaused_1", 60000);
 
-            play.validate("playing_2",10);
+            play.validate("playing_2",10000);
 
-            seelValidator.validate("seeked_1",60);
+            seelValidator.validate("seeked_1",60000);
 
-            eventValidator.validate("videoPlayed_1",60);
+            eventValidator.validate("videoPlayed_1",60000);
             result = true;
 
         } catch (Exception e) {

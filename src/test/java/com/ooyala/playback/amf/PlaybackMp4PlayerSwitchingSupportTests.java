@@ -30,28 +30,24 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 	public void verifyPlaybackOfOSMFMp4(String testName, String url)
 			throws OoyalaException {
 
-		boolean result = false;
+		boolean result = true;
 
 		try {
 
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
-
-			playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playAction.startAction();
+            result = result && playAction.startAction();
 			loadingSpinner();
 			
-	        event.validate("willPlaySingleAd_1", 50);
+	        event.validate("willPlaySingleAd_1", 50000);
 	        extentTest.log(PASS, "Ad starts to play");
-	        event.validate("singleAdPlayed_1", 190);
+	        event.validate("singleAdPlayed_1", 190000);
 	        extentTest.log(PASS, "Ad Played completely");
-	        event.validate("playing_1", 120);
+	        event.validate("playing_1", 120000);
 	        sleep(10000);
 
 	        pauseAction.startActionOnScreen();
@@ -62,12 +58,11 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 
 	        sleep(5000);
 
-	        seekValidator.validate("seeked_1", 190);
+            result = result && seekValidator.validate("seeked_1", 190000);
 	        extentTest.log(PASS, "Seek successful");
 
-	        event.validate("played_1", 190);
+            result = result &&  event.validate("played_1", 190000);
 	        extentTest.log(PASS, "Video played");
-
 
 	        extentTest.log(PASS, "verified Playback of OSMF MP4 Asset");
 

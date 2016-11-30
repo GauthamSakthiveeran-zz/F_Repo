@@ -27,14 +27,14 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		boolean errorScreen = false;
 
 		try {
-			if(!waitOnElement("PLAY_BUTTON", 60)) return false;
+			if(!waitOnElement("PLAY_BUTTON", 60000)) return false;
 		} catch (Exception e) {
 			driver.navigate().refresh();
-			if(!waitOnElement("INNER_WRAPPER", 60)) return false;
+			if(!waitOnElement("INNER_WRAPPER", 60000)) return false;
 			errorScreen = isElementPresent("ERROR_SCREEN");
 			if (errorScreen)
 				driver.navigate().refresh();
-			if(!waitOnElement("PLAY_BUTTON", 60)) return false;
+			if(!waitOnElement("PLAY_BUTTON", 60000)) return false;
 		}
 		logger.info("Page is loaded completely");
 
@@ -46,7 +46,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		
 		if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction()) return false;
 		Thread.sleep(1000);
-		if(!waitOnElement("PLAYING_SCREEN", 160)) return false;
+		if(!waitOnElement("PLAYING_SCREEN", 60000)) return false;
 		
 		if(!waitOnElement(By.id(element), timeout)) return false;
 		extentTest.log(LogStatus.PASS,

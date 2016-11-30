@@ -34,31 +34,25 @@ public class PlaybackMidrollOverlayUpNextTests extends PlaybackWebTest {
 		try {
 			
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
-			playValidator.waitForPage();
-			Thread.sleep(2000);
+			result = result && playValidator.waitForPage();
 			
 			injectScript();
 			
-			playValidator.validate("playing_1", 60);
+			result = result && playValidator.validate("playing_1", 60000);
 			
-			event.validate("MidRoll_willPlaySingleAd_1", 180);
+			result = result && event.validate("MidRoll_willPlaySingleAd_1", 180000);
             extentTest.log(LogStatus.PASS, "Midroll Ads started");
-            event.validate("singleAdPlayed_1", 160);
+            result = result && event.validate("singleAdPlayed_1", 160000);
             extentTest.log(LogStatus.PASS, "Midroll Ads played");
-            event.validate("showNonlinearAd_1", 90);
+            result = result && event.validate("showNonlinearAd_1", 90000);
             sleep(2000);
-            overLayValidator.validate("nonlinearAdPlayed_1", 160);
+            result = result && overLayValidator.validate("nonlinearAdPlayed_1", 16000);
             
             extentTest.log(PASS, "Overlay Ads Played");
             
-            discoverValidator.validate("reportDiscoveryClick_1", 60);
+            result = result && discoverValidator.validate("reportDiscoveryClick_1", 60000);
             extentTest.log(LogStatus.PASS, "Verified MidrollOverlayUpNext Tests");
-			
-			result = true;
 			
 		}catch (Exception e) {
 			e.printStackTrace();

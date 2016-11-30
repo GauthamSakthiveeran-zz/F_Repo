@@ -18,17 +18,17 @@ public class AdSkipButtonValidator extends PlayBackPage implements
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		if(!waitOnElement("showAdSkipButton_1", 60)) return false;
+		if(!waitOnElement("showAdSkipButton_1", 60000)) return false;
 		try {
 			return waitOnElement("AD_PANEL", 10) 
 					&& clickOnIndependentElement("AD_PANEL") 
-					&& waitOnElement("skipAd_1", 60);
+					&& waitOnElement("skipAd_1", 60000);
 
 		} catch (Exception e) {
 			extentTest.log(LogStatus.WARNING,"adSkip Button is not present!!");
 			extentTest.log(LogStatus.INFO,"Validating videoAdUiPreSkipButton");
 			
-			return clickOnIndependentElement("VIDEO_AD_UI_PRE_SKIP_BUTTON") && waitOnElement("skipAd_1", 60);
+			return clickOnIndependentElement("VIDEO_AD_UI_PRE_SKIP_BUTTON") && waitOnElement("skipAd_1", 60000);
 		}
 	}
 

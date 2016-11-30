@@ -32,9 +32,7 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
         boolean result = false;
         try {
             driver.get(url);
-            if (!getPlatform().equalsIgnoreCase("android")) {
-                driver.manage().window().maximize();
-            }
+
 
             play.waitForPage();
 
@@ -42,19 +40,19 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
 
             injectScript();
 
-            play.validate("playing_1", 60);
+            play.validate("playing_1", 60000);
 
             logger.info("Verifed that video is getting playing");
 
-            discoveryValidator.validate("reportDiscoveryClick_1", 60);
+            discoveryValidator.validate("reportDiscoveryClick_1", 60000);
             logger.info("verified discovery");
 
             pageFactory.getSeekAction().setTime(25).fromLast().startAction();//seek(25, true);
 
-            discoveryUpNext.validate("", 60);
+            discoveryUpNext.validate("UPNEXT_CONTENT", 60000);
             logger.info("Verified UpNext content");
 
-            eventValidator.validate("played_1", 60);
+            eventValidator.validate("pl60000ed_1", 60);
 
             logger.info("Verified that video is played");
 
