@@ -28,43 +28,41 @@ public class PlaybackMultipleV4PlayerTests extends PlaybackWebTest{
 
         String urlLink = "http://shared.ooyala.com/RCTTestAssets/tushar/Multiple_Player.html";
 
-        boolean result = false;
+        boolean result = true;
 
         driver.get(urlLink);
 
         try {
 
-            play.waitForPage();
+            result = result && play.waitForPage();
 
             Thread.sleep(10000);
 
             injectScript();
 
-            multiplePlayerValidator.validate("player1_play", 20);
+            result = result &&  multiplePlayerValidator.validate("player1_play", 5000);
 
-            multiplePlayerValidator.validate("player1_pause", 20);
+            result = result && multiplePlayerValidator.validate("player1_pause", 20000);
 
-            multiplePlayerValidator.validate("player2_play", 20);
+            result = result && multiplePlayerValidator.validate("player2_play", 20000);
 
-            multiplePlayerValidator.validate("player2_pause", 20);
+            result = result && multiplePlayerValidator.validate("player2_pause", 20000);
 
-            multiplePlayerValidator.validate("seek1", 20);
+            result = result &&  multiplePlayerValidator.validate("seek1", 20000);
 
-            multiplePlayerValidator.validate("seek2", 20);
+            result = result && multiplePlayerValidator.validate("seek2", 20000);
 
-            Assert.assertTrue(eventValidator.validate("player1_playing_1", 20));
+            result = result && eventValidator.validate("player1_playing_1", 20000);
 
-            Assert.assertTrue(eventValidator.validate("player1_pause_1", 20));
+            result = result && eventValidator.validate("player1_pause_1", 20000);
 
-            Assert.assertTrue(eventValidator.validate("player2_playing_1", 20));
+            result = result && eventValidator.validate("player2_playing_1", 20000);
 
-            Assert.assertTrue(eventValidator.validate("player2_pause_1", 20));
+            result = result && eventValidator.validate("player2_pause_1", 20000);
 
-            Assert.assertTrue(eventValidator.validate("player1_seeked_1", 20));
+            result = result && eventValidator.validate("player1_seeked_1", 20000);
 
-            Assert.assertTrue(eventValidator.validate("player2_seeked_1", 20));
-
-            result = true;
+            result = result && eventValidator.validate("player2_seeked_1", 20000);
 
         } catch (Exception e){
             e.printStackTrace();
