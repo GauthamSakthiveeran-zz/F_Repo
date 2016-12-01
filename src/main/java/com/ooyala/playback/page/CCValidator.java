@@ -88,11 +88,11 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 		
-		if (isElementPresent("HIDDEN_CONTROL_BAR")) {
+		/*if (isElementPresent("HIDDEN_CONTROL_BAR")) {
 			logger.info("hovering mouse over the player");
 			Actions action = new Actions(driver);
 			action.moveToElement(getWebElement("HIDDEN_CONTROL_BAR")).perform();
-		}
+		}*/
 		
 		boolean flag = checkClosedCaptionButton()
 		&& verifyCloseClosedCaptionPanel()
