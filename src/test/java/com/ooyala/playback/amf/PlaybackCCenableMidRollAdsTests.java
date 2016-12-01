@@ -38,17 +38,14 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 			driver.get(url);
 
             result = result && playValidator.waitForPage();
-			Thread.sleep(10000);
 
 			injectScript();
 
             result = result && playAction.startAction();
-			sleep(2000);
+
             result = result && event.validate("playing_1", 60000);
 
 			logger.info("Video started playing");
-
-			sleep(22000);
 
             result = result && event.validate("videoPlaying_1", 190000);
             result = result && 	event.validate("MidRoll_willPlaySingleAd_1", 190000);
