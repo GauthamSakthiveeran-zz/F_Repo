@@ -81,6 +81,11 @@ function subscribeToEvents() {
                 fullscreenChangedEventOrder++;
             }
 
+            if (event.match(/setClosedCaptionsLanguage/)) {
+                OO.$('#ooplayer').append('<p id=cclanguage_'+ arguments[1]+'>cclanguage_'+ arguments[1]+'</p>');
+                OO.$('#ooplayer').append('<p id=ccmode_'+ arguments[2].mode+'>ccmode_'+ arguments[2].mode+'</p>');
+            }
+
 
             if (event.match(/reportDiscoveryClick/)) {
 

@@ -145,17 +145,4 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
     </test>
-
-    <test name="PlaybackClosedCaptionTests">
-        <url>
-            <description name="Close_caption_VTC" />
-            <embed_code name="FkdmRmeDrJcchSTpHR1SVkkHO2PN7XsX" />
-            <pcode name="N1aWw6aHnsVDr5vDoQnY2gBMOnEV" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="ZWU3OGUxMDJjMmQ5ZTViNGE1YjdlYTdj" />
-            <playerParameter><![CDATA[{"skin":{"inline":{"closedCaptionOptions":{"defaultEnabled":false,"defaultLanguage":"en","availableLanguages":[]}}}}]]></playerParameter>
-        </url>
-    </test>
 </testdata>

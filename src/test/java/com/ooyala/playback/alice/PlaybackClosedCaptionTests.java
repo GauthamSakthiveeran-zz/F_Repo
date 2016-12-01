@@ -55,9 +55,8 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 
             result = result && play.validate("playing_2", 60000);
 
-            result = result && fullScreenValidator.validate("", 60000);
-
 			sleep(1000);
+
 
             result = result && ccValidator.validate("cclanguage", 60000);
 
