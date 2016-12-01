@@ -42,7 +42,7 @@ public class AspectRatioValidator extends PlayBackPage implements
 			if(verticalVideo){
 				Assert.assertEquals(width, 320, "Width Matches");
 				Assert.assertEquals(height, 568, "Heigth Matches");
-				extentTest.log(LogStatus.PASS," Verified Vertical Video");
+				logger.info("Verified Vertical Video");
 			}else{
 				int diff = width / 4;
 				int expectedHeight = width - diff;

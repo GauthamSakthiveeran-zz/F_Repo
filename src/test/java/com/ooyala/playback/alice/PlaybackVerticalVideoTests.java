@@ -1,18 +1,13 @@
 package com.ooyala.playback.alice;
 
-import static java.lang.Thread.sleep;
-
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AspectRatioValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.qe.common.exception.OoyalaException;
+import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/17/16.
@@ -48,11 +43,10 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
             result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60000);
 
-            result = result && pause.validate("paused_1", 60000);
-
-			logger.info("video paused");
-
-            result = result && playAction.startAction();
+			if(!(getBrowser().equalsIgnoreCase("safari"))){
+				result = result && pause.validate("paused_1", 60000);
+				result = result && playAction.startAction();
+			}
 
             result = result && seek.validate("seeked_1", 60000);
 

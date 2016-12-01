@@ -1,11 +1,5 @@
 package com.ooyala.playback.alice;
 
-import static java.lang.Thread.sleep;
-
-import org.openqa.selenium.JavascriptExecutor;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
@@ -13,6 +7,11 @@ import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -58,7 +57,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 			logger.info("validated video volume at full range");
 
-            result = result && eventValidator.validate("playing_10 ", 60000);
+            result = result && eventValidator.validate("playing_1", 60000);
 
             logger.info("video is playing");
             sleep(4000);
