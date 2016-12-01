@@ -7,6 +7,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,7 +21,7 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest{
     private EventValidator eventValidator;
     private PauseValidator pauseValidator;
     private PlayValidator playValidator;
-    private SeekValidator seelValidator;
+    private SeekValidator seekValidator;
 
     public PlaybackVerifyEventsTests() throws OoyalaException {
         super();
@@ -31,46 +32,48 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest{
 
         logger.info("Test url for "+testName+" is : "+url);
 
-        boolean result = false;
+        boolean result = true;
 
         try {
             driver.get(url);
 
-            play.waitForPage();
+            result = result && play.waitForPage();
 
             Thread.sleep(10000);
 
             injectScript();
 
-            playAction.startAction();
+            result = result && playAction.startAction();
 
             loadingSpinner();
 
-            eventValidator.validate("willPlaySingleAd_1", 60000);
+            result = result && eventValidator.validate("willPlaySingleAd_1", 10000);
 
-            eventValidator.validate("playing_1",60000);
+            result = result && eventValidator.validate("adsPlayed_1",20000);
 
-            eventValidator.validate("videoSetInitialTime_1",60000);
+            loadingSpinner();
 
-            eventValidator.validate("videoPlay_1",60000);
+            result = result && eventValidator.validate("playing_1",60000);
 
-            eventValidator.validate("videoWillPlay_1",60000);
+            result = result && eventValidator.validate("videoSetInitialTime_1",60000);
 
-            eventValidator.validate("videoPlaying_1",60000);
+            result = result && eventValidator.validate("videoPlay_1",60000);
 
-            pauseValidator.validate("videoPause_1", 60000);
+            result = result && eventValidator.validate("videoWillPlay_1",60000);
 
-            eventValidator.validate("videoPaused_1", 60000);
+            result = result && eventValidator.validate("videoPlaying_1",60000);
 
-            play.validate("playing_2",10000);
+            result = result && pauseValidator.validate("videoPause_1", 60000);
 
-            seelValidator.validate("seeked_1",60000);
+            result = result && play.validate("playing_2",10000);
 
-            eventValidator.validate("videoPlayed_1",60000);
-            result = true;
+            result = result && seekValidator.validate("seeked_1",60);
+
+            result = result && eventValidator.validate("videoPaused_1", 60000);
 
         } catch (Exception e) {
             e.printStackTrace();
+            result = false;
         }
 
         Assert.assertTrue(result, "Playback Video Controller Event test failed");

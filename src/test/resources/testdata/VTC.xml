@@ -36,7 +36,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
     </test>
-    <test name="PlaybackEncodingPriorityTests">
+    <test name="PlaybackOverrideEncodingPriorityTests">
         <url>
             <description name="Override_encoding_priority" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
@@ -130,6 +130,32 @@
             <additionalPlugins name="" />
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"skin":{"inline":{"adScreen":{"showAdMarquee":true}}}}]]></playerParameter>
+        </url>
+    </test>
+
+    <test name="PlaybackMultipleV4PlayerTests">
+        <url>
+            <description name="" />
+            <embed_code name="" />
+            <pcode name="" />
+            <plugins name="" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+    </test>
+
+    <test name="PlaybackClosedCaptionTests">
+        <url>
+            <description name="Close_caption_VTC" />
+            <embed_code name="FkdmRmeDrJcchSTpHR1SVkkHO2PN7XsX" />
+            <pcode name="N1aWw6aHnsVDr5vDoQnY2gBMOnEV" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="ZWU3OGUxMDJjMmQ5ZTViNGE1YjdlYTdj" />
+            <playerParameter><![CDATA[{"skin":{"inline":{"closedCaptionOptions":{"defaultEnabled":false,"defaultLanguage":"en","availableLanguages":[]}}}}]]></playerParameter>
         </url>
     </test>
 </testdata>
