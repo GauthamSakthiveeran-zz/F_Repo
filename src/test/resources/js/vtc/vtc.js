@@ -26,9 +26,9 @@ function subscribeToEvents() {
         var willPlaySingleAdOrder = 1;
         var setEmbedCodeEventOrder = 1;
         var replayEventOrder = 1;
-        var reportDiscoveryImpressionOrder = 1;
-        var playbackReadyOrder = 1;
-        var videoPreloadOrder = 1;
+        var reportDiscoveryImpressionEventOrder = 1;
+        var playbackReadyEventOrder = 1;
+        var videoPreloadEventOrder = 1;
 
         return function(event) {
             if (event.match(/playing/)) {
@@ -222,6 +222,20 @@ function subscribeToEvents() {
                  replayEventOrder++;
             }
 
+            if (event.match(/reportDiscoveryImpression/)) {
+                 OO.$("#ooplayer").append("<p id=reportDiscoveryImpression_"+reportDiscoveryImpressionEventOrder+">reportDiscoveryImpression "+reportDiscoveryImpressionEventOrder+"</p>");
+                 reportDiscoveryImpressionEventOrder++;
+            }
+
+            if (event.match(/playbackReady/)) {
+                 OO.$("#ooplayer").append("<p id=playbackReady_"+playbackReadyEventOrder+">playbackReady "+playbackReadyEventOrder+"</p>");
+                 playbackReadyEventOrder++;
+            }
+
+             if (event.match(/videoPreload/)) {
+                 OO.$("#ooplayer").append("<p id=videoPreload_"+videoPreloadEventOrder+">videoPreload "+videoPreloadEventOrder+"</p>");
+                 videoPreloadEventOrder++;
+             }
         };
     }());
 }
