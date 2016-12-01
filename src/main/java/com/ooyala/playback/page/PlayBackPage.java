@@ -154,6 +154,10 @@ public abstract class PlayBackPage extends WebPage {
 					boolean result = isElementVisible("SPINNER");
 					Thread.sleep(1000);
 					time++;
+					logger.info("In loading spinner");
+					if (!result){
+						break;
+					}
 				} catch (Exception e) {
 					break;
 				}

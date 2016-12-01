@@ -26,6 +26,9 @@ function subscribeToEvents() {
         var willPlaySingleAdOrder = 1;
         var setEmbedCodeEventOrder = 1;
         var replayEventOrder = 1;
+        var reportDiscoveryImpressionOrder = 1;
+        var playbackReadyOrder = 1;
+        var videoPreloadOrder = 1;
 
         return function(event) {
             if (event.match(/playing/)) {
@@ -33,6 +36,13 @@ function subscribeToEvents() {
                     '<p id=playing_' + playingEventOrder + '>playing '
                     + playingEventOrder + '</p>');
                 playingEventOrder++;
+            }
+
+            if (event.match(/videoPreload/)) {
+                OO.$('#ooplayer').append(
+                    '<p id=videoPreload_' + videoPreloadOrder + '>videoPreload '
+                    + videoPreloadOrder + '</p>');
+                videoPreloadOrder++;
             }
 
             if (event.match(/willPlaySingleAd/)) {
@@ -71,6 +81,7 @@ function subscribeToEvents() {
                 fullscreenChangedEventOrder++;
             }
 
+
             if (event.match(/reportDiscoveryClick/)) {
 
                 OO.$("#ooplayer").append(
@@ -79,58 +90,117 @@ function subscribeToEvents() {
                 reportDiscoveryClickOrder++;
             }
 
+            if (event.match(/playbackReady/)) {
+
+                OO.$("#ooplayer").append(
+                    "<p id=playbackReady_"+playbackReadyOrder+
+                    ">playbackReady "+playbackReadyOrder+"</p>");
+                playbackReadyOrder++;
+            }
+
+            if (event.match(/reportDiscoveryImpression/)) {
+
+                OO.$("#ooplayer").append(
+                    "<p id=reportDiscoveryImpression_"+reportDiscoveryImpressionOrder+
+                    ">reportDiscoveryClick "+reportDiscoveryImpressionOrder+"</p>");
+                reportDiscoveryImpressionOrder++;
+            }
+
             if(event.match(/videoControllerFocusVideoElement/)) {
                 OO.$('#ooplayer').append(
-                    '<p id=focusVideo_'+focusVideoOrder+'>focusVideo '+focusVideoOrder+'</p>'); focusVideoOrder++;
+                    '<p id=focusVideo_'+focusVideoOrder
+                    +'>focusVideo '+focusVideoOrder+'</p>');
+                focusVideoOrder++;
             }
+
             if (event.match(/videoControllerCreateVideoElement/)) {
-                OO.$('#ooplayer').append('<p id=CreateVideo_'+createVideoOrder+'>CreateVideo '+createVideoOrder+'</p>'); createVideoOrder++;
+                OO.$('#ooplayer').append('<p id=CreateVideo_'+createVideoOrder
+                    +'>CreateVideo '+createVideoOrder+'</p>');
+                createVideoOrder++;
             }
+
             if (event.match(/videoControllerVideoElementCreated/)) {
-                OO.$('#ooplayer').append('<p id=videoCreated_'+videoCreatedOrder+'>videoCreated '+videoCreatedOrder+'</p>'); videoCreatedOrder++;
+                OO.$('#ooplayer').append('<p id=videoCreated_'+videoCreatedOrder
+                    +'>videoCreated '+videoCreatedOrder+'</p>');
+                videoCreatedOrder++;
             }
+
             if (event.match(/videoControllerVideoElementInFocus/)) {
-                OO.$('#ooplayer').append('<p id=videoInFocus_'+videoInFocusOrder+'>videoInFocus '+videoInFocusOrder+'</p>'); videoInFocusOrder++;
+                OO.$('#ooplayer').append('<p id=videoInFocus_'+videoInFocusOrder
+                    +'>videoInFocus '+videoInFocusOrder+'</p>');
+                videoInFocusOrder++;
             }
+
             if (event.match(/videoControllerVideoElementLostFocus/)) {
-                OO.$('#ooplayer').append('<p id=videoLostFocus_'+videoLostFocusOrder+'>videoLostFocus '+videoLostFocusOrder+'</p>'); videoLostFocusOrder++;
+                OO.$('#ooplayer').append('<p id=videoLostFocus_'+videoLostFocusOrder
+                    +'>videoLostFocus '+videoLostFocusOrder+'</p>');
+                videoLostFocusOrder++;
             }
+
             if (event.match(/videoControllerDisposeVideoElement/)) {
-                OO.$('#ooplayer').append('<p id=disposeVideo_'+disposeVideoOrder+'>disposeVideo '+disposeVideoOrder+'</p>'); disposeVideoOrder++;
+                OO.$('#ooplayer').append('<p id=disposeVideo_'+disposeVideoOrder
+                    +'>disposeVideo '+disposeVideoOrder+'</p>');
+                disposeVideoOrder++;
             }
 
             if (event.match(/videoPlay/)) {
-                OO.$('#ooplayer').append('<p id=videoPlay_'+videoPlayOrder+'>videoPlay '+videoPlayOrder+'</p>'); videoPlayOrder++;
+                OO.$('#ooplayer').append('<p id=videoPlay_'+videoPlayOrder
+                    +'>videoPlay '+videoPlayOrder+'</p>');
+                videoPlayOrder++;
             }
+
             if (event.match(/videoWillPlay/)) {
-                OO.$('#ooplayer').append('<p id=videoWillPlay_'+videoWillPlayOrder+'>videoWillPlay '+videoWillPlayOrder+'</p>'); videoWillPlayOrder++;
+                OO.$('#ooplayer').append('<p id=videoWillPlay_'+videoWillPlayOrder
+                    +'>videoWillPlay '+videoWillPlayOrder+'</p>');
+                videoWillPlayOrder++;
             }
+
             if (event.match(/videoPlaying/)) {
-                OO.$('#ooplayer').append('<p id=videoPlaying_'+videoPlayingOrder+'>videoPlaying '+videoPlayingOrder+'</p>'); videoPlayingOrder++;
+                OO.$('#ooplayer').append('<p id=videoPlaying_'+videoPlayingOrder
+                    +'>videoPlaying '+videoPlayingOrder+'</p>');
+                videoPlayingOrder++;
             }
+
             if (event.match(/videoPlayed/)) {
-                OO.$('#ooplayer').append('<p id=videoPlayed_'+videoPlayedOrder+'>videoPlayed '+videoPlayedOrder+'</p>'); videoPlayedOrder++;
+                OO.$('#ooplayer').append('<p id=videoPlayed_'+videoPlayedOrder
+                    +'>videoPlayed '+videoPlayedOrder+'</p>');
+                videoPlayedOrder++;
             }
+
             if (event.match(/videoPause/)) {
-                OO.$('#ooplayer').append('<p id=videoPause_'+videoPauseOrder+'>videoPause '+videoPauseOrder+'</p>'); videoPauseOrder++;
+                OO.$('#ooplayer').append('<p id=videoPause_'+videoPauseOrder
+                    +'>videoPause '+videoPauseOrder+'</p>');
+                videoPauseOrder++;
             }
+
             if (event.match(/videoPaused/)) {
-                OO.$('#ooplayer').append('<p id=videoPaused_'+videoPausedOrder+'>videoPaused '+videoPausedOrder+'</p>'); videoPausedOrder++;
+                OO.$('#ooplayer').append('<p id=videoPaused_'+videoPausedOrder
+                    +'>videoPaused '+videoPausedOrder+'</p>');
+                videoPausedOrder++;
             }
+
             if (event.match(/videoSeek/)) {
-                OO.$('#ooplayer').append('<p id=seeked_'+videoSeekOrder+'>videoSeek '+videoSeekOrder+'</p>'); videoSeekOrder++;
+                OO.$('#ooplayer').append('<p id=seeked_'+videoSeekOrder
+                    +'>videoSeek '+videoSeekOrder+'</p>');
+                videoSeekOrder++;
             }
 
             if(event.match(/videoSetInitialTime/)) {
-                OO.$('#ooplayer').append('<p id=videoSetInitialTime_'+videoSetInitialTimeOrder+'>videoSetInitialTime '+videoSetInitialTimeOrder+'</p>'); videoSetInitialTimeOrder++;
+                OO.$('#ooplayer').append('<p id=videoSetInitialTime_'+videoSetInitialTimeOrder
+                    +'>videoSetInitialTime '+videoSetInitialTimeOrder+'</p>');
+                videoSetInitialTimeOrder++;
             }
+
             if (event.match(/videoControllerVideoElementDisposed/)) {
-                OO.$('#ooplayer').append('<p id=videoElementDisposed_'+videoElementDisposedOrder+'>videoElementDisposed '+videoElementDisposedOrder+'</p>'); videoElementDisposedOrder++;
+                OO.$('#ooplayer').append('<p id=videoElementDisposed_'+videoElementDisposedOrder
+                    +'>videoElementDisposed '+videoElementDisposedOrder+'</p>');
+                videoElementDisposedOrder++;
             }
 
 
             if (event.match(/adPodEnded/)) {
-                OO.$("#ooplayer").append("<p id=adPodEnded_"+adPodEndedEventOrder+">adPodEnded "+adPodEndedEventOrder+"</p>");
+                OO.$("#ooplayer").append("<p id=adPodEnded_"+adPodEndedEventOrder
+                    +">adPodEnded "+adPodEndedEventOrder+"</p>");
                 adPodEndedEventOrder++;
             }
 
