@@ -1,0 +1,8 @@
+<elements area = "page">
+    <element key="OPTIONAL" findBy="xPath"
+    xPath="//a[text()='Optional']"/>
+    <element key="PLAYER_PARAMETER_INPUT" findBy="id"
+    id = "player_params_input"/>
+    <element key="TEST_VIDEO" findBy="id"
+    id="test_movie_button"/>
+</elements>

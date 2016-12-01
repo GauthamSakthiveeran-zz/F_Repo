@@ -40,6 +40,8 @@ public class PlayBackFactory {
 	private StateScreenAction stateScreenAction;
 	private DifferentElementValidator differentElement;
 	private IsAdPlayingValidator isAdPlaying;
+	private EncodingValidator encodingValidator;
+	private MultiplePlayerValidator multiplePlayerValidator;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
@@ -49,6 +51,13 @@ public class PlayBackFactory {
 		if (seekAction == null)
 			seekAction = new SeekAction(driver);
 		return seekAction;
+
+	}
+
+	public EncodingValidator getEncodingValidator(){
+		if (encodingValidator == null)
+			encodingValidator = new EncodingValidator(driver);
+		return encodingValidator;
 
 	}
 	

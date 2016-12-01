@@ -59,7 +59,8 @@ public class DiscoveryValidator extends PlayBackPage implements
 		boolean flagTrue = false;
 		try {
 			flagTrue = isElementVisible("RIGHT_BTN");
-			logger.info("Is right button showing on Discovery Screen  " + flagTrue);
+			logger.info("Is right button showing on Discovery Screen  "
+					+ flagTrue);
 		} catch (Exception e) {
 			logger.info("Max videos are showing on Discovery screen");
 			return false;
@@ -89,7 +90,8 @@ public class DiscoveryValidator extends PlayBackPage implements
 					&& waitOnElement(By.id("playbackReady_1"), 60000)
 					&& waitOnElement(By.id("videoPreload_1"), 60000);
 		}
-		
+
+		loadingSpinner();
 		return false;
 	}
 	
