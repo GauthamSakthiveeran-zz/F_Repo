@@ -49,7 +49,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			}else{
 				return false;
 			}
-			if(clickOnHiddenElement("VOLUME_MUTE")){
+			if(clickOnIndependentElement("VOLUME_MUTE")){
 				double getMaxVol = getVolume();
 				
 				if(getMaxVol!=expectedmaxvol){
