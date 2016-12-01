@@ -1,19 +1,12 @@
 package com.ooyala.playback.alice;
 
-import com.ooyala.playback.page.action.PauseAction;
-import org.openqa.selenium.JavascriptExecutor;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.VolumeValidator;
-import com.ooyala.playback.page.WaterMarkValidator;
+import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -43,18 +36,13 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 
             result = result && play.waitForPage();
 
+			Thread.sleep(5000);
+
 			injectScript();
 
             result = result && playAction.startAction();
 
-			Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
-					.executeScript("return pp.isAdPlaying()"));
-			if (isAdplaying) {
-				volumeValidator.validate("VOLUME_MAX", 60000);
-				eventValidator.validate("adPodEnded_1", 200);
-			}
-
-            result = result && play.validate("playing_1", 60000);
+            result = result && eventValidator.validate("playing_1", 60000);
 			logger.info("video is playing");
 			Thread.sleep(3000);
 
@@ -63,7 +51,7 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
             result = result && waterMarkValidator.validate("WATERMARK_LOGO", 60000);
 			logger.info("checked watermark logo");
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
             result = result && seek.validate("seeked_1", 60000);
 
@@ -77,6 +65,7 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 			e.printStackTrace();
             result = false;
 		}
+
 		Assert.assertTrue(result, "Playback Watermark tests failed");
 	}
 }
