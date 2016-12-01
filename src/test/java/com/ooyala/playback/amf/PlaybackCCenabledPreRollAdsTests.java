@@ -41,24 +41,11 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 
             result = result && playAction.startAction();
 
-			// TODO - not sure if this is needed
+			result = result && event.validateForSpecificPlugins("singleAdPlayed_2", 60000, "pulse");
 
-			/*
-			 * if (Description.equalsIgnoreCase("Preroll_Bitmovin_Pulse_CC")){
-			 * waitForElement(webDriver, "singleAdPlayed_2", 190);
-			 * loadingSpinner(webDriver); } else { waitForElement(webDriver,
-			 * "singleAdPlayed_1", 190); loadingSpinner(webDriver); }
-			 */
+            result = result && event.validate("singleAdPlayed_1", 60000);
 
-			event.validateForSpecificPlugins("singleAdPlayed_2", 10000, "pulse");
-
-            result = result && event.validate("singleAdPlayed_1", 10000);
-
-			extentTest.log(PASS, "Preroll Ad Completed");
-
-            result = result && event.validate("playing_1", 3000);
-
-			extentTest.log(PASS, "Main video started to play");
+            result = result && event.validate("playing_1", 10000);
 
             result = result && ccValidator.validate("cclanguage", 60000);
 

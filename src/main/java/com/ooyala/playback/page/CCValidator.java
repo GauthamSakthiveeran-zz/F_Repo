@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -44,10 +45,10 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		try {
 			Thread.sleep(1000);
 			try {
-				if(!waitOnElement("CC_BTN", 60000)) return false;
+				if(!waitOnElement("CC_BTN", 6000)) return false;
 			} catch (Exception e) {
 				if(!clickOnIndependentElement("MORE_OPTION_ICON")) return false;
-				if(!waitOnElement("CC_BTN", 60000)) return false;
+				if(!waitOnElement("CC_BTN", 6000)) return false;
 			}
 			
 			if(!isElementPresent("CC_BTN")) return false;
@@ -86,6 +87,13 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
+		
+		if (isElementPresent("HIDDEN_CONTROL_BAR")) {
+			logger.info("hovering mouse over the player");
+			Actions action = new Actions(driver);
+			action.moveToElement(getWebElement("HIDDEN_CONTROL_BAR")).perform();
+		}
+		
 		boolean flag = checkClosedCaptionButton()
 		&& verifyCloseClosedCaptionPanel()
 		&& checkClosedCaptionLanguages()

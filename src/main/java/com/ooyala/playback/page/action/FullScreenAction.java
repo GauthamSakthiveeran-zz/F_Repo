@@ -1,6 +1,5 @@
 package com.ooyala.playback.page.action;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -58,8 +57,10 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
 			logger.info("Changed into Fullscreen");
 			
 		}
+		
 		extentTest.log(LogStatus.PASS, "Full Screen Validated!");
-		return true;
+		Thread.sleep(1000);
+		return clickOnIndependentElement("NORMAL_SCREEN");
 
 	}
 
