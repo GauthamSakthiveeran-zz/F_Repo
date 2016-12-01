@@ -1,6 +1,8 @@
 package com.ooyala.playback.alice;
 
 import com.ooyala.playback.page.action.PauseAction;
+
+import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -20,6 +22,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackWatermarkTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackWatermarkTests.class);
 	private PlayValidator play;
 	private SeekValidator seek;
 	private PlayAction playAction;

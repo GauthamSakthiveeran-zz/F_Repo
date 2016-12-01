@@ -19,7 +19,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackClosedCaptionTests extends PlaybackWebTest {
-	public static Logger logger = Logger
+	private static Logger logger = Logger
 			.getLogger(PlaybackClosedCaptionTests.class);
 
 	private PlayValidator play;

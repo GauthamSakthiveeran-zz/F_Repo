@@ -1,5 +1,6 @@
 package com.ooyala.playback.alice;
 
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,6 +16,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackFullScreenTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackFullScreenTests.class);
 	private PlayValidator play;
 	private SeekValidator seek;
 	private EventValidator eventValidator;

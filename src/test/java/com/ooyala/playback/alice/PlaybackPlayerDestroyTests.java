@@ -1,5 +1,6 @@
 package com.ooyala.playback.alice;
 
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,12 +11,16 @@ import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPlayerDestroyTests extends PlaybackWebTest{
 
+	private static Logger logger = Logger.getLogger(PlaybackPlayerDestroyTests.class);
+	
+	private PlayValidator play;
+	private EventValidator eventValidator;
+	
 	public PlaybackPlayerDestroyTests() throws OoyalaException {
 		super();
 	}
 	
-	private PlayValidator play;
-	private EventValidator eventValidator;
+	
 
 	
 	@Test(groups = "Player", dataProvider = "testUrls")
