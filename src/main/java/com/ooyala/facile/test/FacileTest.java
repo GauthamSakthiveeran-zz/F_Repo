@@ -708,7 +708,6 @@ public class FacileTest implements IHookable {
 			// Safari
 			if (browserName.contains("safari")) {
 				logger.debug("Browser Type : " + browserName);
-				SafariDriver profile = new SafariDriver();
 
 				if (isSauceEnabled()) {
 					logger.debug("Enable Sauce Grid is Set to : "
@@ -724,7 +723,7 @@ public class FacileTest implements IHookable {
 				} else {
 					logger.debug("Creating " + browserName
 							+ "Instance on local instance");
-					driver = createFirefoxInstanceLocally();
+					driver = new SafariDriver();
 					logger.debug("Successfully Created " + browserName
 							+ " Instance on local instance.");
 				}
