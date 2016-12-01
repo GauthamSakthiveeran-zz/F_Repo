@@ -8,7 +8,10 @@ import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
+
 import net.lightbody.bmp.core.har.HarEntry;
+
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Proxy;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -18,6 +21,7 @@ import java.util.List;
 
 public class PlaybackDRMTests  extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackDRMTests.class);
     private EventValidator eventValidator;
     private PlayValidator play;
     private PauseValidator pause;

@@ -2,6 +2,7 @@ package com.ooyala.playback.alice;
 
 import static java.lang.Thread.sleep;
 
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,6 +19,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackBitrateTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackBitrateTests.class);
 	private PlayValidator play;
 	private PauseValidator pause;
 	private SeekValidator seek;

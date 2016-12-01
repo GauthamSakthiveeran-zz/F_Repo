@@ -40,7 +40,7 @@ public class FullScreenValidator extends PlayBackPage implements
 				|| getBrowser().equalsIgnoreCase("firefox")
 				|| getBrowser().equalsIgnoreCase("internet explorer") || getPlatform()
 				.equalsIgnoreCase("Android"))) {
-			return waitOnElement(By.id("fullscreenChangedfalse"), 60000);
+			return waitOnElement(By.id("fullscreenChanged_false"), 60000);
 		}else{
 			return true;
 		}

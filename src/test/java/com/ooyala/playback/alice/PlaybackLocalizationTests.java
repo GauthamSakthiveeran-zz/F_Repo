@@ -18,7 +18,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackLocalizationTests extends PlaybackWebTest {
 
-	public static Logger logger = Logger
+	private static Logger logger = Logger
 			.getLogger(PlaybackLocalizationTests.class);
 
 	private PlayValidator play;

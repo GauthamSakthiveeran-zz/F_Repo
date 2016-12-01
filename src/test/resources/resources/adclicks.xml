@@ -1,4 +1,4 @@
-<elements area="adclickthrough">
+<elements area="adclicks">
 	<element key="AD_SCREEN_PANEL" findBy="class"
              class="oo-ad-screen-panel" />
     <element key="AD_PANEL" findBy="class"
@@ -6,7 +6,7 @@
                       
 	<element key="LEARN_MORE" findBy="class"
              class="oo-learn-more" />
-    <element key="ç" findBy="class"
+    <element key="AD_SKIP_BTN" findBy="class"
              class="oo-icon-skip-slick" />
              
     <element key="VIDEO_AD_UI_PRE_SKIP_BUTTON" findBy="class"

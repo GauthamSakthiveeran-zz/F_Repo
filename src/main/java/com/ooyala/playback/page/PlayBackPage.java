@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -67,7 +68,27 @@ public abstract class PlayBackPage extends WebPage {
 			}
 			
 		}catch(Exception ex){
-			extentTest.log(LogStatus.FAIL, "wait on element "+elementKey+"  failed with exception "+ex.getLocalizedMessage());
+			extentTest.log(LogStatus.FAIL, "wait on element "+elementKey+"  failed with exception "+ex.getMessage());
+			ex.printStackTrace();
+		}
+		return false;
+		
+	}
+	
+	@Override
+	public boolean waitOnElement(By elementKey, int timeout) {
+		
+		try{
+			if(super.waitOnElement(elementKey, timeout)){
+				extentTest.log(LogStatus.PASS, "Wait on element : "+elementKey + ""); 
+				return true;
+			}else{
+				extentTest.log(LogStatus.FAIL, "Wait on element : "+elementKey + ", failed after "+timeout+" ms");
+				return false;
+			}
+			
+		}catch(Exception ex){
+			extentTest.log(LogStatus.FAIL, "wait on element "+elementKey+"  failed with exception "+ex.getMessage());
 			ex.printStackTrace();
 		}
 		return false;
@@ -189,7 +210,6 @@ public abstract class PlayBackPage extends WebPage {
 		    String[] pairs = query.split("&");
 		    for (String pair : pairs) {
 		        int index = pair.indexOf("=");
-		        System.out.println("******************"+pair);
 		        query_pairs.put(URLDecoder.decode(pair.substring(0, index), "UTF-8"), URLDecoder.decode(pair.substring(index + 1), "UTF-8"));
 		        
 		    }

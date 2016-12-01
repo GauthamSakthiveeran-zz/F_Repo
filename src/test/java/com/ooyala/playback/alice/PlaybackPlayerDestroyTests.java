@@ -7,26 +7,22 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.ReplayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-/**
- * Created by soundarya on 11/17/16.
- */
-public class PlaybackReplayVideoTests extends PlaybackWebTest {
+public class PlaybackPlayerDestroyTests extends PlaybackWebTest{
 
-	private static Logger logger = Logger.getLogger(PlaybackReplayVideoTests.class);
+	private static Logger logger = Logger.getLogger(PlaybackPlayerDestroyTests.class);
 	
 	private PlayValidator play;
-	private SeekValidator seek;
 	private EventValidator eventValidator;
-	private ReplayValidator replayValidator;
-
-	public PlaybackReplayVideoTests() throws OoyalaException {
+	
+	public PlaybackPlayerDestroyTests() throws OoyalaException {
 		super();
 	}
+	
+	
 
+	
 	@Test(groups = "Player", dataProvider = "testUrls")
 	public void testVideoReplay(String testName, String url)
 			throws OoyalaException {
@@ -37,25 +33,21 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 			driver.get(url);
 
             result = result && play.waitForPage();
-
-			injectScript();
+            
+            injectScript();
 
             result = result && play.validate("playing_1", 60000);
+            
+            executeScript("pp.destroy()");
 
-			Thread.sleep(2000);
-
-            result = result && seek.validate("seeked_1", 60000);
-
-            result = result && eventValidator.validate("played_1", 20000);
-
-            result = result && replayValidator.validate("replay_1", 60000);
-
-			logger.info("video replayed");
-
+            result = result && play.validate("destroy_1", 50);
+            
+            result = result && eventValidator.validateElementPresence("STATE_SCREEN_SELECTABLE");
+           
 		} catch (Exception e) {
 			e.printStackTrace();
             result = false;
 		}
-		Assert.assertTrue(result, "Playback Replay tests failed");
+		Assert.assertTrue(result, "Player Destroy tests failed");
 	}
 }
