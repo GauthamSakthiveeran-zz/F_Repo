@@ -44,14 +44,16 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 
             result = result && event.validate("singleAdPlayed_1", 60000);
 
-            result = result && event.validate("playing_1", 10000);
+            result = result && event.validate("playing_1", 1000);
 
-            result = result && ccValidator.validate("cclanguage", 60000);
+            result = result && ccValidator.validate("cclanguage", 6000);
 
             result = result && seekAction.seekTillEnd().startAction();
+            
+            Thread.sleep(5000);
 
-			result = result && event.validate("seeked_1", 10000);
-            result = result && event.validate("played_1", 10000);
+			result = result && event.validate("seeked_1", 1000);
+            result = result && event.validate("played_1", 1000);
 
             result = result && event.validateElementPresence("ccshowing_1");
 
