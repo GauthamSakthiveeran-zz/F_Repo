@@ -1,7 +1,6 @@
 package com.ooyala.playback.amf;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -37,9 +36,8 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
             driver.get(url);
 
             result = result && playValidator.waitForPage();
-			Thread.sleep(10000);
 
-			injectScript();
+            injectScript();
 
             result = result && playAction.startAction();
 
@@ -52,21 +50,19 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 			 * "singleAdPlayed_1", 190); loadingSpinner(webDriver); }
 			 */
 
-			event.validateForSpecificPlugins("singleAdPlayed_2", 190000, "pulse");
+			event.validateForSpecificPlugins("singleAdPlayed_2", 10000, "pulse");
 
-            result = result && event.validate("singleAdPlayed_1", 190000);
+            result = result && event.validate("singleAdPlayed_1", 10000);
 
 			extentTest.log(PASS, "Preroll Ad Completed");
 
-            result = result && event.validate("playing_1", 120000);
+            result = result && event.validate("playing_1", 3000);
 
 			extentTest.log(PASS, "Main video started to play");
 
-			pauseAction.startAction();
-
             result = result && ccValidator.validate("cclanguage", 60000);
 
-            result = result && seekAction.setTime(10).fromLast().startAction();
+            result = result && seekAction.seekTillEnd().startAction();
 
 			/*
 			 * if(Description.equalsIgnoreCase("BitmovinCCenabledpreroll_IMA")){

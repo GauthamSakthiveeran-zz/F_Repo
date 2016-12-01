@@ -10,7 +10,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -87,8 +86,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		return 
-		checkClosedCaptionButton()
+		boolean flag = checkClosedCaptionButton()
 		&& verifyCloseClosedCaptionPanel()
 		&& checkClosedCaptionLanguages()
 		&& checkClosedCaptionButton()
@@ -96,17 +94,16 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		&& validateClosedCaptionPanel()
 		&& validateSwitchContainer()
 		&& verifyCloseClosedCaptionPanel();
+		
+		if(flag){
+			if(clickOnIndependentElement("PAUSE_BUTTON")){
+				flag = flag && waitOnElement(By.id("ccmode_disabled"), 20000);
+			}else{
+				flag = false;
+			}
+		}
+		return flag;
 
-		/*
-		 * Todo fix this if (isElementPresent("PAUSE_BUTTON"))
-		 * clickOnIndependentElement("PAUSE_BUTTON"); Thread.sleep(2000);
-		 * 
-		 * Assert.assertEquals(isElementPresent(By.id("ccmode_disabled")), true,
-		 * "ClosedCaption is not disabled"); Thread.sleep(2000);
-		 * 
-		 * Assert.assertEquals(isElementPresent(By.id("ccmode_showing")), true,
-		 * "ClosedCaption is not showing");
-		 */
 	}
 
 	protected boolean closedCaptionMicroPanel() throws Exception {
