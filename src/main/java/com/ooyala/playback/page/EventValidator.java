@@ -32,6 +32,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 	boolean flag = false;
 
 	public boolean validate(String element, int timeout) throws Exception {
+		if(flag) return true;
 		return waitOnElement(By.id(element), timeout);
 	}
 
