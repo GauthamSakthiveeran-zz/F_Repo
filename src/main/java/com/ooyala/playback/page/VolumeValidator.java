@@ -36,22 +36,30 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 
 			if (!(isElementPresent("CONTROL_BAR"))) {
 				Actions action = new Actions(driver);
-				action.moveToElement(getWebElement("CONTROL_BAR")).build()
-						.perform();
+				action.moveToElement(getWebElement("CONTROL_BAR")).build().perform();
 			}
-			double getmutevol = getVolume("VOLUME_MAX");
-			if(getmutevol!=expectedmutevol){
-				extentTest.log(LogStatus.FAIL, "Mute volume is't matching");
+			if(waitOnElement("VOLUME_MAX", 10000) && clickOnIndependentElement("VOLUME_MAX")){
+				double getmutevol = getVolume();
+				if(getmutevol!=expectedmutevol){
+					extentTest.log(LogStatus.FAIL, "Mute volume is't matching");
+					return false;
+				}
+				Thread.sleep(2000);
+				
+			}else{
 				return false;
 			}
-			Thread.sleep(2000);
-
-			double getMaxVol = getVolume("VOLUME_MUTE");
+			if(clickOnHiddenElement("VOLUME_MUTE")){
+				double getMaxVol = getVolume();
+				
+				if(getMaxVol!=expectedmaxvol){
+					extentTest.log(LogStatus.FAIL, "Max volume is not the same");
+					return false;
+				}
+			}else{
+				return false;
+			}
 			
-			if(getMaxVol!=expectedmaxvol){
-				extentTest.log(LogStatus.FAIL, "Max volume is not the same");
-				return false;
-			}
 			
 		} catch (Exception e) {
             Log.info("Volume control is not working properly"
@@ -61,13 +69,11 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		return true;
 	}
 
-	protected double getVolume(String element) throws Exception {
-		waitOnElement(element, 10000);
-		clickOnIndependentElement(element);
+	protected double getVolume() throws Exception {
 		Thread.sleep(3500);
 		double volume = Double.parseDouble(((JavascriptExecutor) driver)
 				.executeScript("return pp.getVolume()").toString());
-		Log.info("volume set to " + volume);
+		extentTest.log(LogStatus.INFO,"volume set to " + volume);
 		return volume;
 
 	}

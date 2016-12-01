@@ -1,6 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
 import static java.lang.Thread.sleep;
 
 import org.testng.Assert;
@@ -44,19 +43,17 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 
 			Thread.sleep(2000);
 
-			// loadingSpinner();
-			// Wait for ad start
             result = result && event.validate("willPlaySingleAd_1", 60000);
 
-			extentTest.log(PASS, "Preroll Ad started");
+			extentTest.log(LogStatus.INFO, "Preroll Ad started");
 
             result = result && event.validate("singleAdPlayed_1", 160000);
 
-			extentTest.log(PASS, "Preroll Ad Completed");
+			extentTest.log(LogStatus.INFO, "Preroll Ad Completed");
 
             result = result && playValidator.validate("playing_1", 190000);
 
-			extentTest.log(PASS, "Main video started to play");
+			extentTest.log(LogStatus.INFO, "Main video started to play");
 
 			sleep(2000);
 
@@ -65,8 +62,6 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 			sleep(3000);
 
             result = result && event.validate("played_1", 190000);
-
-			extentTest.log(LogStatus.PASS, "Main Video played successfully");
 
 		} catch (Exception e) {
 			e.printStackTrace();
