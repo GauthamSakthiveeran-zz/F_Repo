@@ -23,8 +23,7 @@
 			<parameter name="jsFile" value="alice/alice.js" />
 			
 			<class name="com.ooyala.playback.alice.PlaybackThumbnailTests" />
-			
-			<!-- <class name="com.ooyala.playback.alice.BasicPlaybackTests" />
+			<class name="com.ooyala.playback.alice.BasicPlaybackTests" />
 			<class name="com.ooyala.playback.alice.DiscoveryUpNextTests" />
 			<class name="com.ooyala.playback.alice.PlaybackBitrateTests" />
 			<class name="com.ooyala.playback.alice.PlaybackPlayerControlsTests" />
@@ -41,8 +40,8 @@
 			<class name="com.ooyala.playback.alice.PlaybackVolumeTest" />
 			<class name="com.ooyala.playback.alice.PlaybackDiscoveryTests" />
 			<class name="com.ooyala.playback.alice.PlaybackSocialMediaTests" />
-			<class name="com.ooyala.playback.alice.PlaybackOptEntitlementTests" /> -->
-			<!--<class name="com.ooyala.playback.alice.PlaybackWatermarkTests"/> -->
+			<class name="com.ooyala.playback.alice.PlaybackOptEntitlementTests" />
+			<class name="com.ooyala.playback.alice.PlaybackWatermarkTests"/>
 		</classes>
 	</test>
 </suite>
