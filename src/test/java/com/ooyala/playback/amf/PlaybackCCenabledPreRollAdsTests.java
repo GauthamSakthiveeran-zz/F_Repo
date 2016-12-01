@@ -62,13 +62,10 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 
 			extentTest.log(PASS, "Main video started to play");
 
-			sleep(2000);
-
 			pauseAction.startAction();
 
             result = result && ccValidator.validate("cclanguage", 60000);
 
-			sleep(2000);
             result = result && seekAction.setTime(10).fromLast().startAction();
 
 			/*
@@ -81,7 +78,7 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 
 			Thread.sleep(5000);
 
-			event.validate("seeked_1", 190000);
+			result = result && event.validate("seeked_1", 190000);
             result = result && event.validate("played_1", 190000);
 
 			boolean isccCueshowing = event

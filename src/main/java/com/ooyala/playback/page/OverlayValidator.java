@@ -13,8 +13,8 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 
 	public static Logger logger = Logger.getLogger(OverlayValidator.class);
 
-	public OverlayValidator(WebDriver webDriver) {
-		super(webDriver);
+	public OverlayValidator(WebDriver driver) {
+		super(driver);
 		PageFactory.initElements(driver, this);
 		addElementToPageElements("adoverlay");
 		addElementToPageElements("fullscreen");
@@ -41,7 +41,7 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 				logger.info("Clicked on overlay close button in fullscreen screen \n");
 				logger.info("Overlay gets closed");
 			}
-			Thread.sleep(1000);
+
 			if(!waitOnElement(By.id(element), timeout)) return false;
 
 			if (getBrowser().equalsIgnoreCase("safari")) {

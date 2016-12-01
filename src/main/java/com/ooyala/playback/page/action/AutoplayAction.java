@@ -40,4 +40,5 @@ public class AutoplayAction extends PlayBackPage implements PlayerAction {
 		}
 		return autoplay;
 	}
+	
 }

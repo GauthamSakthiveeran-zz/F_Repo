@@ -27,6 +27,7 @@ function subscribeToEvents() {
         var willPlayAdsEventOrder = 1;
         var playingEventOrder = 1;
         var bitrateChangedEventOrder = 1;
+        var destroyEventOrder = 1;
 
 
 
@@ -69,7 +70,7 @@ function subscribeToEvents() {
                 playbackReadyEventOrder++;
             }
 
-            if (event.match(/played/)) { 
+            if (event.match(/played/)) {
   				OO.$("#ooplayer").append("<p id=played_"+playedEventOrder+">played"+playedEventOrder+"</p>");
                 playedEventOrder++;
             }
@@ -87,74 +88,74 @@ function subscribeToEvents() {
                 OO.$("#ooplayer").append("<p id=willPlaySingleAd_"
                 +willPlayAdsEventOrder+">Preroll willPlaySingleAd "+willPlayAdsEventOrder+"</p>");
                 willPlayAdsEventOrder++;
-			 }
+			}
 
             if (event.match(/controlsShown/)) {
 
                 OO.$("#ooplayer").append("<p id=controlsShown_"+controlsShownEventOrder+">controlsShown "+controlsShownEventOrder+"</p>");
-                controlsShownEventOrder++; 
+                controlsShownEventOrder++;
             }
 
             if (event.match(/singleAdPlayed/)) {
 
                 OO.$("#ooplayer").append("<p id=singleAdPlayed_"+adsPlayedEventOrder+">singleAdPlayed "+adsPlayedEventOrder+" </p>");
-                adsPlayedEventOrder++; 
+                adsPlayedEventOrder++;
             }
 
             if (event.match(/closedCaptionCueChanged/)) {
                 OO.$("#ooplayer").append("<p id=ccshowing_"+closedCaptionOrder+">ccshown "+closedCaptionOrder+"</p>");
-                closedCaptionOrder++; 
+                closedCaptionOrder++;
             }
 
             if (event.match(/setClosedCaptionsLanguage/)) {
-                OO.$("#ooplayer").append("<p id=cclanguage_"+ arguments[1]+">cclanguage_"+ arguments[1]+"</p>"); 
+                OO.$("#ooplayer").append("<p id=cclanguage_"+ arguments[1]+">cclanguage_"+ arguments[1]+"</p>");
 				OO.$("#ooplayer").append("<p id=ccmode_"+ arguments[2].mode+">ccmode_"+ arguments[2].mode+"</p>");
-			 }
+			}
 
             if (event.match(/reportDiscoveryImpression/)) {
 
                 OO.$("#ooplayer").append("<p id=reportDiscoveryImpression_"+reportDiscoveryImpressionOrder+
                 ">reportDiscoveryImpression "+reportDiscoveryImpressionOrder+"</p>");
-                reportDiscoveryImpressionOrder++; 
+                reportDiscoveryImpressionOrder++;
             }
 
             if (event.match(/reportDiscoveryClick/)) {
 
                 OO.$("#ooplayer").append("<p id=reportDiscoveryClick_"+reportDiscoveryClickOrder+
                 ">reportDiscoveryClick "+reportDiscoveryClickOrder+"</p>");
-                reportDiscoveryClickOrder++; 
+                reportDiscoveryClickOrder++;
             }
 
             if(event.match(/setEmbedCode/)) {
                 OO.$("#ooplayer").append("<p id=setEmbedCode_"+setEmbedCodeOrder+">setEmbedCode "+setEmbedCodeOrder+"</p>");
-                setEmbedCodeOrder++; 
+                setEmbedCodeOrder++;
             }
 
 
             if(event.match(/videoPreload/)) {
                 OO.$("#ooplayer").append("<p id=videoPreload_"+videoPreloadEventOrder+">videoPreload "+videoPreloadEventOrder+"</p>");
-                videoPreloadEventOrder++; 
+                videoPreloadEventOrder++;
             }
 
             if (event.match(/replay/)) {
                 OO.$("#ooplayer").append("<p id=replay_"+replayEventOrder+">replay "+replayEventOrder+" </p>");
                 replayEventOrder++;
-			 }
+			}
 
             if (event.match(/willPlayAds/)) {
                 OO.$("#ooplayer").append("<p id=willPlayAds_"+willPlayAdsEventOrder+">willPlayAds "+willPlayAdsEventOrder+"</p>");
-                willPlayAdsEventOrder++; 
+                willPlayAdsEventOrder++;
             }
 
 
             if (event.match(/sendClickEvent/)) {
                 OO.$("#ooplayer").append("<p id=sendClickEvent_"+sendClickEventOrder+">sendClickEvent "+sendClickEventOrder+"</p>");
                 sendClickEventOrder++;
-			 }
+			}
 
             if (event.match(/videoWillPlay/) && arguments[1] == "ads") {
                 OO.$("#ooplayer").append("<p id=adplayingurl_"+videowillplayEventOrder+">Ad URL "+arguments[2]+"</p>");
-                videowillplayEventOrder++; 
+                videowillplayEventOrder++;
             }
 
             if (event.match(/adsPlayed/)) {
@@ -172,6 +173,11 @@ function subscribeToEvents() {
                 OO.$("#ooplayer").append("<p id=bitrateChanged_"+arguments[1]['bitrate']+">bitrateChanged "+bitrateChangedEventOrder+"</p>");
                 bitrateChangedEventOrder++;
             }
+			
+			if (event.match(/destroy/)) {
+				OO.$('#ooplayer').append('<p id=destroy_'+destroyEventOrder+'>destroy '+destroyEventOrder+'</p>'); 
+				destroyEventOrder++;
+			}
 
         };
     }());
