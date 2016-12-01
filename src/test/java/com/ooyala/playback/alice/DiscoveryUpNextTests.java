@@ -1,5 +1,6 @@
 package com.ooyala.playback.alice;
 
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,6 +16,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
 
 public class DiscoveryUpNextTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(DiscoveryUpNextTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private UpNextValidator discoveryUpNext;
@@ -39,7 +41,7 @@ public class DiscoveryUpNextTests extends PlaybackWebTest {
 
             result = result && play.validate("playing_1", 60000);
 
-            result = result && pageFactory.getSeekAction().setTime(25).fromLast().startAction();//seek(25, true);
+            result = result && pageFactory.getSeekAction().setTime(31).fromLast().startAction();//seek(25, true);
 
             result = result && discoveryUpNext.validate("UPNEXT_CONTENT", 60000);
 

@@ -1,0 +1,10 @@
+<elements area="multipleplayer">
+    <element key="PLAYER1_START_SCREEN" findBy="xPath"
+             xPath=".//*[@id='player1']//div[@id='oo-responsive']//span[normalize-space(@class)='oo-icon oo-icon-play-slick']"/>
+    <element key="PLAYER1_PAUSE" findBy="xPath"
+             xPath=".//*[@id='player1']//div[@id='oo-responsive']//span[normalize-space(@class)='oo-icon oo-icon-pause-slick']"/>
+    <element key="PLAYER2_START_SCREEN" findBy="xPath"
+             xPath=".//*[@id='player2']//div[@id='oo-responsive']//span[normalize-space(@class)='oo-icon oo-icon-play-slick']"/>
+    <element key="PLAYER2_PAUSE" findBy="xPath"
+             xPath=".//*[@id='player2']//div[@id='oo-responsive']//span[normalize-space(@class)='oo-icon oo-icon-pause-slick']"/>
+</elements>

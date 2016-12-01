@@ -1,8 +1,8 @@
 <elements area="play">
 	<element key="START_SCREEN" findBy="class"
              class="oo-start-screen" />
-	<element key="PLAY_BUTTON" findBy="class"
-             class="oo-icon-play-slick" />
+	<element key="PLAY_BUTTON" findBy="xPath"
+             xPath=".//*[normalize-space(@class)='oo-icon oo-icon-play-slick']" />
 	<element key="PLAYING_SCREEN" findBy="class"
              class="oo-playing-screen" />
 	<element key="INNER_WRAPPER" findBy="class"

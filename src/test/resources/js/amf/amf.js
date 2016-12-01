@@ -21,6 +21,11 @@ function subscribeToEvents() {
 		var videoPlayedEventOrder = 1;
 		
 		return function(event) {
+			
+			if (event.match(/showNonlinearAd/)) {
+				OO.$('#ooplayer').append('<p id=showNonlinearAd_'+willShowNonlinearAdEventOrder+'> showNonlinearAd '+willShowNonlinearAdEventOrder+'</p>'); 
+				willShowNonlinearAdEventOrder++;
+			}
 				
 			if (event.match(/videoPlaying/) && arguments[1] == 'main') {
 				OO.$('#ooplayer').append('<p id=videoPlaying_'+videoPlayingEventOrder+'>videoPlaying '+videoPlayingEventOrder+'</p>'); 

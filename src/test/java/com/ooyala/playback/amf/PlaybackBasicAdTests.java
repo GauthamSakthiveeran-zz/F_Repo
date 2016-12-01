@@ -3,6 +3,7 @@ package com.ooyala.playback.amf;
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 import static java.lang.Thread.sleep;
 
+import org.junit.Ignore;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -24,7 +25,7 @@ public class PlaybackBasicAdTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = "amf", dataProvider = "testUrls", enabled= false)
 	public void verifyBasicAd(String testName, String url) throws Exception {
 
 		boolean result = true;

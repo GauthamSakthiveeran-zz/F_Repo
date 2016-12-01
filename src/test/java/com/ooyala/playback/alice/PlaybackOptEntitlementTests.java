@@ -6,6 +6,8 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.SaasPortValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
+
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,6 +16,7 @@ import org.testng.annotations.Test;
  */
 public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackOptEntitlementTests.class);
     private EventValidator eventValidator;
     private PlayValidator play;
     private SeekValidator seek;

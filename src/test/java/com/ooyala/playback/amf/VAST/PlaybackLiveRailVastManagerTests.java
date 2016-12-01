@@ -46,11 +46,10 @@ public class PlaybackLiveRailVastManagerTests extends PlaybackWebTest {
             result = result && playValidator.validate("playing_1", 60000);
 
 			extentTest.log(PASS, "Main video started to play");
-			sleep(500);
 
 			// verify play pause
             result = result && pauseValidator.validate("paused_1", 60000);
-			sleep(2000);
+
             result = result && playValidator.validate("playing_1", 60000);
 
 			// Verify fullscreen
@@ -63,15 +62,13 @@ public class PlaybackLiveRailVastManagerTests extends PlaybackWebTest {
             result = result && seekValidator.validate("seeked_1", 60000);
 
             result = result && event.validate("played_1", 190000);
-			extentTest.log(PASS, "Video completed palying");
-			extentTest.log(PASS, "verified LiveRail with Vast Manager");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified PreRoll Ads test");
+		Assert.assertTrue(result, "Live Rail Vast Tests failed");
 
 	}
 

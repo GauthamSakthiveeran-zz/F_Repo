@@ -3,6 +3,7 @@ package com.ooyala.playback.VTC;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
@@ -21,6 +22,7 @@ public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
     private VolumeValidator volumeValidator;
     private PlayAction playAction;
     private SeekAction seekAction;
+    private SeekValidator seekValidator;
 
     public PlaybackVideoControllerEventTests() throws OoyalaException {
         super();
@@ -29,12 +31,12 @@ public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
     @Test(groups = "Playback", dataProvider = "testUrls")
     public void testVideoControllerEvents(String testName,String url){
 
-        boolean result = false;
+        boolean result = true;
 
         try {
             driver.get(url);
 
-            play.waitForPage();
+            result = result && play.waitForPage();
 
             Thread.sleep(10000);
 
@@ -42,25 +44,23 @@ public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
 
             ((JavascriptExecutor) driver).executeScript("pp.setEmbedCode('htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R')");
 
-            Assert.assertEquals(eventValidator.validateElementPresence("CreateVideo_1"),true,"Create Video event is not triggered after setting Embed new code");
+            result = result && eventValidator.validate("CreateVideo_1",20000);
 
-            Assert.assertEquals(eventValidator.validateElementPresence("videoCreated_1"),true,"Video is not Created for new embed code");
+            result = result && eventValidator.validate("videoCreated_1",20000);
 
-            Assert.assertEquals(eventValidator.validateElementPresence("disposeVideo_1"),true,"Video Dispose event is not triggered");
+            result = result && eventValidator.validate("disposeVideo_1",20000);
 
-            Assert.assertEquals(eventValidator.validateElementPresence("videoElementDisposed_1"),true,"Not getting Video element dispose");
+            result = result && eventValidator.validate("videoElementDisposed_1",20000);
+            
+            result = result && play.validate("playing_1",60000);
 
-            play.validate("playing_1",60000);
+            result = result && eventValidator.validate("focusVideo_1",20000);
 
-            Assert.assertEquals(eventValidator.validateElementPresence("focusVideo_1"),true,"Focus video event is not triggering");
+            result = result && eventValidator.validate("videoInFocus_1",20000);
 
-            Assert.assertEquals(eventValidator.validateElementPresence("videoInFocus_1"),true,"Not able to focus on new embedded video");
+            result = result && seekValidator.validate("seeked_1",60);
 
-            seekAction.startAction();
-
-            eventValidator.validate("videoLostFocus_1",60000);
-
-            result = true;
+            result = result && eventValidator.validate("videoLostFocus_1",60000);
 
         } catch (Exception e) {
             e.printStackTrace();

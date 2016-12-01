@@ -2,6 +2,7 @@ package com.ooyala.playback.alice;
 
 import static java.lang.Thread.sleep;
 
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,6 +17,8 @@ import com.ooyala.qe.common.exception.OoyalaException;
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackDiscoveryTests extends PlaybackWebTest {
+	
+	private static Logger logger = Logger.getLogger(PlaybackDiscoveryTests.class);
 	private PlayValidator play;
 	private DiscoveryValidator discoveryValidator;
 	private PlayAction playAction;
