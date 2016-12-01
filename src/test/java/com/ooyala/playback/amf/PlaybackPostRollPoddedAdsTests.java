@@ -41,8 +41,7 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest{
             result = result && playValidator.validate("playing_1", 150000);
             result = result && seekValidator.validate("seeked_1", 180000);
             result = result && event.validate("videoPlayed_1", 180000);
-	        event.validate("played_1", 180000);
-	        extentTest.log(PASS, "Main video finished playing");
+            result = result && event.validate("played_1", 180000);
 
             result = result && poddedAdValidator.validate("countPoddedAds", 160000);
 
@@ -51,7 +50,7 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest{
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified PreRoll Ads test");
+		Assert.assertTrue(result, "Tests failed");
 
 	}
 

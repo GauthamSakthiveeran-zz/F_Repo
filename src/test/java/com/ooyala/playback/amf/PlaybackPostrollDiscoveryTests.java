@@ -47,44 +47,28 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest{
             result = result && playValidator.validate("playing_1", 150000);
 
             result = result && pauseValidator.validate("paused_1", 60000);
-	        Thread.sleep(5000);
 
             result = result && discoveryValidator.validate("reportDiscoveryClick_1",60000);
 
-	        loadingSpinner();
-
-	        playAction.startActionOnScreen();
+            result = result && playAction.startActionOnScreen();
 	        
-	        Thread.sleep(3000);
-	        seekAction.setTime(10).fromLast().startAction();//seek(10, true);
-
-	        loadingSpinner();
+	        seekAction.setTime(10).fromLast().startAction();
 
             result = result && upNextValidator.validate("", 60000);
 
-	        event.validate("willPlaySingleAd_1", 90000);
-	        extentTest.log(PASS, "Postroll Ad started");
+            result = result && event.validate("willPlaySingleAd_1", 90000);
 	        
-	        event.validate("singleAdPlayed_1", 90000);
+            if(event.isAdPlugin("pulse"))
+            	result = result && event.validate("singleAdPlayed_2", 60000);
+            else
+            	result = result && event.validate("singleAdPlayed_1", 60000);
 	        
-	        //TODO replace the above
-	        /*Map<String, String> map = parseURL(url) ;
-
-	        if(map!=null && map.get("ad_plugin")!=null && map.get("ad_plugin").contains("pulse")) {
-	        	event.validate("singleAdPlayed_2", 90);
-	        }
-	        else{
-	        	event.validate("singleAdPlayed_1", 90);
-	        }*/
-	        extentTest.log(PASS, "Postroll Ad completed");
-	        extentTest.log(PASS, "Verified PostRoll Ads test");
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified");
+		Assert.assertTrue(result, "Tests failed");
 
 	}
 

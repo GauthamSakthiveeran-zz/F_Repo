@@ -36,32 +36,20 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
 			driver.get(url);
 
             result = result && playValidator.waitForPage();
-			Thread.sleep(10000);
 
 			injectScript();
 
             result = result && playAction.startAction();
             result = result && event.validate("BumperAd", 60000);
 
-			extentTest.log(PASS, "verified Bumper ad is playing");
-
             result = result && event.validate("playing_FirstTime", 30000);
-			extentTest.log(PASS, "verified Players controls");
 
             result = result && seekAction.seekTillEnd().startAction();
-
-			extentTest.log(PASS, "verified Seek functionality");
 
             result = result && event.validate("replay", 30000);
             result = result && replayValidator.validate("replay_1", 30000);
 
-			extentTest.log(PASS, "verified replay of video");
-
             result = result && event.validate("BumperAdOnReplay", 30000);
-
-			extentTest.log(PASS, "verified Bumper ad is playing on replay");
-
-			extentTest.log(LogStatus.PASS, "Main Video played successfully");
 
 		} catch (Exception e) {
 			e.printStackTrace();

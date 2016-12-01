@@ -29,10 +29,8 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		addElementToPageElements("adPodEnd");
 		addElementToPageElements("startscreen");
 	}
-	boolean flag = false;
 
 	public boolean validate(String element, int timeout) throws Exception {
-		if(flag) return true;
 		return waitOnElement(By.id(element), timeout);
 	}
 
@@ -48,15 +46,12 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		return isElementPresent(By.id(element));
 	}
 	
-	public boolean validateForSpecificPlugins(String element, int timeOut, String adPlugin) throws Exception{
+	public boolean isAdPlugin(String adPlugin) throws Exception{
 		Map<String,String> map = parseURL();
-		
 		if (map!=null && map.get("ad_plugin")!=null && map.get("ad_plugin").contains(adPlugin)) {
-			flag = true;
-			return validate(element, timeOut);
+			return true;
 		}
-		return true;
-		
+		return false;
 	}
 
 }

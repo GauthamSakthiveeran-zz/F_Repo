@@ -1,8 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,7 +7,6 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.CCValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -25,7 +21,6 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
-	private PauseAction pauseAction;
 	private CCValidator ccValidator;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
@@ -43,42 +38,25 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 
             result = result && playAction.startAction();
 
-            result = result && event.validate("playing_1", 60000);
+            result = result && event.validate("playing_1", 3000);
 
-			logger.info("Video started playing");
-
-            result = result && event.validate("videoPlaying_1", 190000);
+            result = result && event.validate("videoPlaying_1", 2000);
+            
             result = result && 	event.validate("MidRoll_willPlaySingleAd_1", 190000);
+            
+            Thread.sleep(14000);
+            
+            if(event.isAdPlugin("pulse"))
+            	result = result && event.validate("singleAdPlayed_2", 60000);
+            else
+            	result = result && event.validate("singleAdPlayed_1", 60000);
 
-			logger.info("Midroll Ad started to play");
-
-			event.validateForSpecificPlugins("singleAdPlayed_2", 190000, "pulse");
-            result = result &&event.validate("singleAdPlayed_1", 190000);
-
-			// TODO
-			/*
-			 * if (Description.equalsIgnoreCase("Midroll_Bitmovin_Pulse_CC")) {
-			 * waitForElement(webDriver, "singleAdPlayed_2", 190); }else {
-			 * waitForElement(webDriver, "singleAdPlayed_1", 190); }
-			 */
-
-			logger.info("Midroll Ad ended");
-
-            result = result && event.validate("videoPlaying_1", 190000);
-            result = result && pauseAction.startAction();
-
-            result = result && ccValidator.validate("cclanguage", 60000);
-			event.validate("videoPlaying_1", 190);
+            result = result && ccValidator.validate("cclanguage", 6000);
 
             result = result && seekAction.seekTillEnd().startAction();
-
-            result = result && event.validate("seeked_1", 190000);
-			playAction.startAction();
-            result = result && event.validate("played_1", 250000);
-
-			extentTest.log(PASS, "Video Played");
-
-			extentTest.log(PASS, "Verified MidrollAdsTest");
+            
+			result = result && event.validate("seeked_1", 1000);
+            result = result && event.validate("played_1", 3000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

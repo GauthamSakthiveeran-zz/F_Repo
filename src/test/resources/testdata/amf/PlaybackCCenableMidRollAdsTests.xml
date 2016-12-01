@@ -11,7 +11,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
+    	</url> 
     	
     	<url>
 	    	<description name="CC_enabled_Midroll_OSMF_FREEWHEEL"/>
@@ -35,7 +35,7 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
     	</url>
     	
-    	<url>
+    	<!-- <url>
 	    	<description name="CC_enabled_Midroll_OSMF_VAST"/>
 	        <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -44,7 +44,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-    	</url>
+    	</url> -->
     	
     </test>
     

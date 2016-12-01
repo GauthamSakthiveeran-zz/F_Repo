@@ -43,12 +43,10 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest{
 			injectScript();
 
             result = result && playAction.startAction();
-	        loadingSpinner();
+
             result = result && event.validate("PreRoll_willPlayAds", 60000);
 
             result = result &&  event.validate("adsPlayed_1", 200000);
-
-	        extentTest.log(PASS, "Played Preroll Ads ");
 
 	        sleep(1000);
 
@@ -57,39 +55,28 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest{
 
             result = result &&  event.validate("playing_1", 90000);
 
-	        loadingSpinner();
-	        
-	        seekAction.setFactor(2).fromLast().startAction();//seekAction.seek(seekAction.getDuration(2));
-
-	        loadingSpinner();
+            result = result && seekAction.setFactor(2).fromLast().startAction();
 
             result = result &&   event.validate("MidRoll_willPlayAds", 200000);
-	        event.validate("adsPlayed_2", 200000);
-
-	        extentTest.log(PASS, "Played Midroll Ads ");
+            result = result && event.validate("adsPlayed_2", 200000);
 
             result = result &&  poddedAdValidator.validate("countPoddedAds_2", 600000);
 
-	        loadingSpinner();
-	        seekAction.setTime(10).fromLast().startAction();
-	        loadingSpinner();
+            result = result && seekAction.setTime(10).fromLast().startAction();
 
             result = result &&  event.validate( "PostRoll_willPlayAds", 180000);
-	        event.validate("adsPlayed_3", 200000);
-	        extentTest.log(PASS, "Played Postroll Ads ");
+            result = result && event.validate("adsPlayed_3", 200000);
 
             result = result &&  poddedAdValidator.validate("countPoddedAds_3", 600000);
 
             result = result &&  event.validate("played_1", 180000);
-
-	        extentTest.log(PASS, "Verified PreMidPostRoll Podded Ads Test ");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified PreRoll Ads test");
+		Assert.assertTrue(result, "Test failed");
 
 	}
 }

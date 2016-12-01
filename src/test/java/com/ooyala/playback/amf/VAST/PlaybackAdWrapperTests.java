@@ -39,10 +39,9 @@ public class PlaybackAdWrapperTests extends PlaybackWebTest {
 			injectScript();
 
             result = result && playValidator.validate("playing_1", 10000);
-			extentTest.log(LogStatus.PASS, "Main video started to play");
 
             result = result && pauseAction.startAction();
-			fullScreenAction.startAction();
+            result = result &&  fullScreenAction.startAction();
 
             result = result && volumeValidator.validate("", 10000);
             result = result && seekValidator.validate("seeked_1", 10000);

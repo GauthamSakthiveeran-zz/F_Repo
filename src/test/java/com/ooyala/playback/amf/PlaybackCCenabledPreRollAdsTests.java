@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,7 +7,6 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.CCValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -40,9 +37,10 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 
             result = result && playAction.startAction();
 
-			result = result && event.validateForSpecificPlugins("singleAdPlayed_2", 60000, "pulse");
-
-            result = result && event.validate("singleAdPlayed_1", 60000);
+            if(event.isAdPlugin("pulse"))
+            	result = result && event.validate("singleAdPlayed_2", 60000);
+            else
+            	result = result && event.validate("singleAdPlayed_1", 60000);
 
             result = result && event.validate("playing_1", 1000);
 
@@ -50,8 +48,6 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 
             result = result && seekAction.seekTillEnd().startAction();
             
-            Thread.sleep(5000);
-
 			result = result && event.validate("seeked_1", 1000);
             result = result && event.validate("played_1", 1000);
 

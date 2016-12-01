@@ -41,34 +41,23 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest{
 			injectScript();
 
             result = result && playAction.startAction();
-	        loadingSpinner();
-
+            
 	        // added condition for IMA OVerlay as overlay is showing intermittently PBI-1825
-//	        if(!Description.contains("IMA")) {
-
-            result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
-	        
-//	        }
+            if(!event.isAdPlugin("ima"))
+            	result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
+            
             result = result &&  event.validate("videoPlaying_1", 90000);
 	        
-	        seekValidator.validate("seeked_1", 120000);
+            result = result &&  seekValidator.validate("seeked_1", 120000);
 
-	        // add a condition when the ad plays till end of the video
-//	        if (parseDouble(((JavascriptExecutor) webDriver).executeScript("return pp.getPlayheadTime();").toString()) <
-//	                (parseDouble(((JavascriptExecutor) webDriver).executeScript("return pp.getDuration();").toString()) - 5)) {
-//	            seekPlayback(webDriver);
-//	            waitForElement(webDriver, "seeked_1", 190);
-//	        }
             result = result &&  event.validate("played_1", 190000);
-	        extentTest.log(PASS, "Main video played");
-	        extentTest.log(PASS, "Verified PrerollOverlayAds test");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified PreRoll Ads test");
+		Assert.assertTrue(result, "Test failed");
 
 	}
 

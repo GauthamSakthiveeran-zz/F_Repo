@@ -44,29 +44,25 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest{
 			
 			if (playValidator.isStreamingProtocolPrioritized("hds")) { 
 				extentTest.log(LogStatus.INFO,"For Flash Specific cases");
-                event.validate("MidRoll_willPlaySingleAd_1", 160000);
-                event.validate("singleAdPlayed_1", 160000);
-                extentTest.log(PASS, "Midroll Ad Played");
+				result = result && event.validate("MidRoll_willPlaySingleAd_1", 160000);
+				result = result && event.validate("singleAdPlayed_1", 160000);
             }
             result = result && event.validate("showNonlinearAd_1", 160000);
             sleep(2000);
 
             result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
             
-            extentTest.log(PASS, "Overlay Ads Played");
-
             result = result && seekValidator.validate("seeked_1",160000);
 
-            event.validate("videoPlayed_1", 160000);
+            result = result && event.validate("videoPlayed_1", 160000);
             result = result &&  event.validate("played_1", 160000);
-            extentTest.log(PASS, "Verified MidrollOverlay ads");
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified");
+		Assert.assertTrue(result, "Tests failed");
 	}
 
 }

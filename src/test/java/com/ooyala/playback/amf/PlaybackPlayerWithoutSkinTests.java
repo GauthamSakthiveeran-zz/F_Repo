@@ -78,7 +78,7 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest{
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified");
+		Assert.assertTrue(result, "Tests failed");
 	}
 
 }

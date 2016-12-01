@@ -122,10 +122,10 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 			}
 			if (seekTime > 5) {
 				seek(7, true);
-				// loadingSpinner(webDriver);
 				((JavascriptExecutor) driver).executeScript("pp.pause();");
 				Thread.sleep(2000);
 				((JavascriptExecutor) driver).executeScript("pp.play();");
+				Thread.sleep(5000);
 				break;
 			}
 		}
