@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+
+	<test name ="PlaybackMidrollOverlayUpNextTests" > 
+    	<url>
+	    	<description name="MidrollOverlayDiscoveryUpNext_Vast"/>
+	        <embed_code name="hkOGt4dDr71-6f0_aceyHIlanbjgeSZc"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
+	        <playerParameter><![CDATA[{"showNonLinearCloseButton":true}]]></playerParameter>
+    	</url>
+    	
+    	
+    	
+    </test>
+</testdata>

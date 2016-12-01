@@ -37,7 +37,6 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 			if(!waitOnElement("PLAY_BUTTON", 60000)) return false;
 		}
 		logger.info("Page is loaded completely");
-		extentTest.log(LogStatus.PASS, "Successfully found play button");
 
 		return true;
 
@@ -45,9 +44,11 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 		
-		Thread.sleep(2000);
-
-		if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction()) return false;
+//		if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction()) return false;
+		
+		if(!clickOnIndependentElement("PLAY_BUTTON")) return false;
+		
+		if(!waitOnElement("PLAYING_SCREEN", 60000)) return false;
 		
 		if(!waitOnElement(By.id(element), timeout)) return false;
 		extentTest.log(LogStatus.PASS,

@@ -71,6 +71,15 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
 		extentTest = extentReport.startTest(testData[0].toString());
+		
+		PlayBackPage page = new PlayBackPage(driver) {
+			
+			@Override
+			public void setExtentTest(ExtentTest test) {
+				
+				this.extentTest = PlaybackWebTest.this.extentTest;
+			}
+		};
 
 		try {
 			Field[] fs = this.getClass().getDeclaredFields();
@@ -162,19 +171,19 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@AfterMethod(alwaysRun = true)
 	protected void afterMethod(ITestResult result) {
 
-		takeScreenshot(result.getTestName());
+		takeScreenshot(result.getName());
 		if (result.getStatus() == ITestResult.FAILURE) {
 			extentTest.log(
 					LogStatus.INFO,
 					"Snapshot is "
 							+ extentTest.addScreenCapture("images/"
-									+ result.getTestName()));
+									+ result.getName()));
 			extentTest.log(LogStatus.FAIL, result.getThrowable());
 		} else if (result.getStatus() == ITestResult.SKIP) {
-			extentTest.log(LogStatus.SKIP, result.getTestName()
+			extentTest.log(LogStatus.SKIP, result.getName()
 					+ " Test skipped " + result.getThrowable());
 		} else {
-			extentTest.log(LogStatus.PASS, result.getTestName()
+			extentTest.log(LogStatus.PASS, result.getName()
 					+ " Test passed");
 		}
 		extentReport.endTest(extentTest);
@@ -245,6 +254,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 					injectScript(url);
 				}
 			}
+			extentTest.log(LogStatus.PASS, "Javascript injection is successful");
 		}
 	}
 
@@ -257,12 +267,11 @@ public abstract class PlaybackWebTest extends FacileTest {
 				+ "   head.appendChild(script);\n" + "}\n" + "\n"
 				+ "var scriptURL = arguments[0];\n"
 				+ "injectScript(scriptURL);", scriptURL);
-
+		Thread.sleep(1000); // to avoid js failures
 		if (scriptURL.contains("common"))
 			object = js.executeScript("subscribeToCommonEvents();");
 		else
 			object = js.executeScript("subscribeToEvents();");
-		extentTest.log(LogStatus.PASS, "Javascript injection is successful");
 	}
 
 	public long loadingSpinner() {
@@ -358,6 +367,10 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 		return output;
 
+	}
+	
+	protected String removeSkin(String url){
+		return url.replace("http%3A%2F%2Fplayer.ooyala.com%2Fstatic%2Fv4%2Fcandidate%2Flatest%2Fskin-plugin%2Fhtml5-skin.min.js", "");
 	}
 
 	
