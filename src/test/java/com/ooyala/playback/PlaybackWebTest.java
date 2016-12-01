@@ -120,7 +120,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			for (int i = 0; i < jsFiles.length; i++) {
 				InetAddress inetAdd = InetAddress.getLocalHost();
 				jsUrl[i] = "http://" + inetAdd.getHostAddress()
-						+ ":8000/js?fileName=" + jsFiles[i];
+						+ ":9000/js?fileName=" + jsFiles[i];
 			}
 		}
 

@@ -24,7 +24,7 @@ public class SimpleHttpServer {
 
 	public static void startServer() throws OoyalaException {
 		try {
-			server = HttpServer.create(new InetSocketAddress(8000), 0);
+			server = HttpServer.create(new InetSocketAddress(9000), 0);
 			server.createContext("/js", new GetHandler());
 			server.setExecutor(null); // creates a default executor
 			server.start();
