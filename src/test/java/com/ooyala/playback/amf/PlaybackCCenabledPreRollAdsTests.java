@@ -24,7 +24,6 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
-	private PauseAction pauseAction;
 	private CCValidator ccValidator;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
@@ -51,27 +50,10 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 
             result = result && seekAction.seekTillEnd().startAction();
 
-			/*
-			 * if(Description.equalsIgnoreCase("BitmovinCCenabledpreroll_IMA")){
-			 * ((JavascriptExecutor)
-			 * webDriver).executeScript("pp.seek(pp.getDuration()-28);"); }else
-			 * { ((JavascriptExecutor)
-			 * webDriver).executeScript("pp.seek(pp.getDuration()-10);"); }
-			 */
+			result = result && event.validate("seeked_1", 10000);
+            result = result && event.validate("played_1", 10000);
 
-			Thread.sleep(5000);
-
-			result = result && event.validate("seeked_1", 190000);
-            result = result && event.validate("played_1", 190000);
-
-			boolean isccCueshowing = event
-					.validateElementPresence("ccshowing_1");
-			Assert.assertEquals(isccCueshowing, true,
-					"ClosedCaption Cue is not changing");
-
-			extentTest.log(PASS, "Video completed palying");
-
-			extentTest.log(PASS, "Verified PreRoll Ads test");
+            result = result && event.validateElementPresence("ccshowing_1");
 
 		} catch (Exception e) {
 			e.printStackTrace();
