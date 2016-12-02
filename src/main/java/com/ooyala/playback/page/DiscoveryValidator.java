@@ -108,4 +108,9 @@ public class DiscoveryValidator extends PlayBackPage implements
 		Assert.assertEquals(discoverytray, flag);
 
 	}
+
+	public boolean clickOnDiscoveryCloseButton(String element, int timeout){
+		return waitOnElement(element,timeout)&&
+		clickOnIndependentElement(element);
+	}
 }
