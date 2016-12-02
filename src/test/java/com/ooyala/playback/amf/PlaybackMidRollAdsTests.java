@@ -18,7 +18,7 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
-
+	
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyMidRoll(String testName, String url)
 			throws OoyalaException {
@@ -34,18 +34,20 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 
             result = result && playValidator.validate("playing_1", 60000);
 
-            seekAction.seekSpecific(15);
+//            seekAction.seekSpecific(15);
 
             result = result && event.validate("videoPlaying_1", 90000);
             
             result = result && event.validate("MidRoll_willPlaySingleAd_1", 120000);
             
-			if(event.isAdPlugin("pulse"))
+			if(event.isAdPlugin("pulse")){
 				result = result && event.validate("singleAdPlayed_2", 60000);
+			}
 	        else
 	        	result = result && event.validate("singleAdPlayed_1", 60000);
 			
-			seekAction.seekSpecific(10);
+//			seekAction.seekSpecific(15);
+			seekAction.seekTillEnd().startAction();
 
 			result = result && event.validate("videoPlayed_1", 160000);
             result = result && event.validate("played_1", 160000);

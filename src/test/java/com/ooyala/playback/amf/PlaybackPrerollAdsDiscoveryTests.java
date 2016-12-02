@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +9,6 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest{
 
@@ -35,7 +32,6 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest{
 			driver.get(url);
 
             result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 
 			injectScript();
 

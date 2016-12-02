@@ -74,12 +74,14 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
 			boolean isAd = isAdPlaying();
 			if (isAd) {
+				
+				((JavascriptExecutor) driver).executeScript("pp.play()");
 
-				if (getPlatform().equalsIgnoreCase("Android") || isStreamingProtocolPrioritized("hls") || value.contains("freewheel")) {
+				/*if (getPlatform().equalsIgnoreCase("Android") || isStreamingProtocolPrioritized("hls") || value.contains("freewheel")) {
 					((JavascriptExecutor) driver).executeScript("pp.play()"); // TODO
 				} else {
 					if(!clickOnIndependentElement("AD_PANEL")) return false;
-				}
+				}*/
 
 			}
 			return true;

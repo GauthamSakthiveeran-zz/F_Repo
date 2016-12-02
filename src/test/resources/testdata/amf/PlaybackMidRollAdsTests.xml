@@ -2,7 +2,9 @@
 <testdata>
 
 	<test name ="PlaybackMidRollAdsTests" >
-    	<url>
+	
+<!-- 		VIDEO NOT PLAYING -->
+    	<!-- <url>
 	    	<description name="BitmovinMidroll_Vast3"/>
 	        <embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -12,9 +14,9 @@
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 	        
-    	</url>
+    	</url> -->
     	
-    	<url>
+    	 <url>
 	    	<description name="BitmovinMidroll_VPAID2.0"/>
 	        <embed_code name="0zdnZnMTE6_eSVEEE_C1X1tCmJE5GmDe"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>

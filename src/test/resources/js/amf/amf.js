@@ -133,6 +133,12 @@ function subscribeToEvents() {
 			
 			
 			if (event.match(/willPlayAds/)) {
+				
+				if(videoPlayingEventOrder == 1 ){
+					OO.$('#ooplayer').append('<p id=PreRoll_willPlayAds'+'>PreRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
+					willPlayAdsEventOrder++;
+				}
+				
 				if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
 					OO.$('#ooplayer').append('<p id=MidRoll_willPlayAds_'+willPlayAdsEventOrder+'>MidRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
 					willPlayAdsEventOrder++;

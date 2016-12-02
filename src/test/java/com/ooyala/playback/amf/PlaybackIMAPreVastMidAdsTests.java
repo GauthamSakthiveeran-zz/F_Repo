@@ -39,18 +39,21 @@ public class PlaybackIMAPreVastMidAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("PreRoll_willPlayAds", 120000);
             result = result && event.validate("adsPlayed_1", 200000);
-            result = result && event.validate("adPodEnd_google-ima-ads-manager_0_1", 200000);
+//            result = result && event.validate("adPodEnd_google-ima-ads-manager_0_1", 2000);
 
-            result = result && event.validate("playing_1", 90);
-            result = result && seekValidator.validate("seeked_1", 190000);
+            result = result && event.validate("playing_1", 20000);
+//            result = result && seekValidator.validate("seeked_1", 190000);
 
-            result = result && event.validate("MidRoll_willPlayAds", 100000);
+            result = result && event.validate("MidRoll_willPlayAds_2", 100000);
             result = result && event.validate("adsPlayed_2", 200000);
-			try {
+            
+            result = result && seekValidator.validate("seeked_1", 190000);
+            
+			/*try {
 				event.validate("adPodEnd_vast_2_2", 60000);
 			} catch (Exception e) {
 				event.validate("adPodEnd_vast_2_3", 180000);
-			}
+			}*/
 			event.validate("played_1", 200000);
 
 		} catch (Exception e) {

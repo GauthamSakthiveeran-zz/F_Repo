@@ -22,8 +22,11 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 
 	public boolean validate(String element, int timeout) throws Exception {
 		try {
-			if(!waitOnElement("OVERLAY_CLOSE_BTN", 40000)) return false;
-			extentTest.log(LogStatus.PASS, "Overlay Shown");
+//			if(!waitOnElement("OVERLAY_CLOSE_BTN", 40000)) return false;
+//			extentTest.log(LogStatus.PASS, "Overlay Shown");
+			if(!waitOnElement("OVERLAY_CLOSE_BTN", 2000)){
+				extentTest.log(LogStatus.FAIL, "Overlay Close button not Shown");
+			}
 			if(!clickOnIndependentElement("OVERLAY_CLOSE_BTN")) return false;
 			if(!waitOnElement(By.id(element), timeout)) return false;
 

@@ -25,8 +25,6 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 	private AdClickThroughValidator adClickThroughValidator;
 	private DiscoveryValidator discoveryValidator;
 
-	static int index = 0;
-
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyDiscoveryUpNext(String testName, String url)
 			throws Exception {

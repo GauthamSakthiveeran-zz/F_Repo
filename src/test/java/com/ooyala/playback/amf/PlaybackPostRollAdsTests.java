@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -32,7 +30,6 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest{
 			driver.get(url);
 
             result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 
 			injectScript();
 

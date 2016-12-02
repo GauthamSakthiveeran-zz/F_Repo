@@ -62,7 +62,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	@Override
 	public boolean startAction() throws Exception {
 		
-		if(time==0 && !seekTillEnd){
+		if(time==0 && seekTillEnd==false){
 			throw new Exception("Time to seek needs to be set! or seekTillEnd should be set to true");
 		}
 		
