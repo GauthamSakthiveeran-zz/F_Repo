@@ -21,7 +21,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
-import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -32,6 +31,7 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import com.ooyala.facile.listners.IMethodListener;
+import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
 import com.ooyala.facile.test.FacileTest;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.httpserver.SimpleHttpServer;
@@ -128,10 +128,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	}
 
-    public void checkPluginCompatability(){
+	public void checkPluginCompatability() {
 
-    }
-
+	}
 
 	public String getTestCaseName(Method method, Object[] testData) {
 		String testCase = "";
@@ -167,7 +166,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.error("Driver is not initialized successfully");
 			throw new OoyalaException("Driver is not initialized successfully");
 		}
-		
+
 		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		// driver.manage().timeouts().implicitlyWait(240, TimeUnit.MINUTES);
 		pageFactory = PlayBackFactory.getInstance(driver);
@@ -202,6 +201,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	@AfterClass(alwaysRun = true)
 	public void tearDown() throws Exception {
+		if (isBrowserMobProxyEnabled())
+			BrowserMobProxyHelper.stopBrowserMobProxyServer();
 		extentReport.flush();
 		logger.info("************Inside tearDown*************");
 		if (driver != null) {
