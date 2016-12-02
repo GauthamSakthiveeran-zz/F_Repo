@@ -154,7 +154,7 @@ public abstract class PlayBackPage extends WebPage {
         boolean result = false;
         try{
             Actions action = new Actions(driver);
-            action.moveToElement(element).build().perform();
+            action.moveToElement(element).perform();
             result = true;
         }
         catch (Exception e)
