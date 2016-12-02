@@ -21,6 +21,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
+import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -100,6 +101,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 				}
 
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -125,6 +127,11 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 
 	}
+
+    public void checkPluginCompatability(){
+
+    }
+
 
 	public String getTestCaseName(Method method, Object[] testData) {
 		String testCase = "";
@@ -226,7 +233,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 				if (packagename.contains("amf")) { // TODO
 					xmlFile = "amf/" + xmlFile + ".xml";
 				}
-
 			}
 
 			File file = new File("src/test/resources/testdata/" + xmlFile);

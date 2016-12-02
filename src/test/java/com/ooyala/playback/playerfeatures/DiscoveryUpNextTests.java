@@ -1,7 +1,9 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerfeatures;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -25,7 +27,7 @@ public class DiscoveryUpNextTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "Player", dataProvider = "testUrls")
+	@Test(groups = "playerFeatures", dataProvider = "testUrls")
 	public void testDiscoveryUpNext(String testName, String url)
 			throws OoyalaException {
 		boolean result = true;
@@ -34,6 +36,10 @@ public class DiscoveryUpNextTests extends PlaybackWebTest {
 			driver.get(url);
 
             result = result && play.waitForPage();
+
+            if(!result){
+                throw new SkipException("Test page not loaded");
+            }
 
 			logger.info("Verified that video is seeked");
 
@@ -51,7 +57,6 @@ public class DiscoveryUpNextTests extends PlaybackWebTest {
 		} catch (Exception e) {
 			e.printStackTrace();
             result = false;
-
 		}
 		Assert.assertTrue(result, "Discovery up next tests failed");
 

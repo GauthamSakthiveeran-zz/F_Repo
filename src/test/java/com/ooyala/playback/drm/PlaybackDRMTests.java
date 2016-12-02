@@ -1,7 +1,6 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.drm;
 
 
-import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
@@ -10,15 +9,10 @@ import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-import net.lightbody.bmp.core.har.HarEntry;
-
 import org.apache.log4j.Logger;
-import org.openqa.selenium.Proxy;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 public class PlaybackDRMTests  extends PlaybackWebTest {
 
@@ -33,7 +27,7 @@ public class PlaybackDRMTests  extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "playback", dataProvider = "testUrls")
+    @Test(groups = "drm", dataProvider = "testUrls")
     public void testPlaybackDRM(String testName, String url) throws OoyalaException {
 
         boolean result = true;

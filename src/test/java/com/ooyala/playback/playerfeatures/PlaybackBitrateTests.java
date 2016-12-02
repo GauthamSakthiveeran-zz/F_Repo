@@ -1,7 +1,8 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerfeatures;
 
 import static java.lang.Thread.sleep;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -30,7 +31,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "ABR", dataProvider = "testUrls")
+	@Test(groups = "playerFeatures", dataProvider = "testUrls")
 	public void testBitrate(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
@@ -40,7 +41,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
             result = result && play.waitForPage();
 
-			injectScript();
+            injectScript();
 
             result = result && play.validate("playing_1", 60000);
 			sleep(4000);
