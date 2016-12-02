@@ -712,7 +712,7 @@ public class FacileTest implements IHookable {
 				if (isSauceEnabled()) {
 					logger.debug("Enable Sauce Grid is Set to : "
 							+ isSauceEnabled());
-
+					
 					logger.debug("Creating " + browserName
 							+ "Instance on Saucelabs Grid");
 					SaucelabsSessionManager sauceLabsSessionManager = new SaucelabsSessionManager();
