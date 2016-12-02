@@ -125,10 +125,10 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 				((JavascriptExecutor) driver).executeScript("pp.pause();");
 				Thread.sleep(2000);
 				((JavascriptExecutor) driver).executeScript("pp.play();");
-				Thread.sleep(5000);
 				break;
 			}
 		}
+		Thread.sleep(10000);
 	}
 
 	// As there is problem for pulse asset that if we seek the video then ads
