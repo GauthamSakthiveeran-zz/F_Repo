@@ -1,6 +1,8 @@
 package com.ooyala.playback.alice;
 
 import com.ooyala.playback.page.action.PauseAction;
+
+import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -20,6 +22,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackWatermarkTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackWatermarkTests.class);
 	private PlayValidator play;
 	private SeekValidator seek;
 	private PlayAction playAction;
@@ -45,20 +48,11 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 
 			injectScript();
 
-            result = result && playAction.startAction();
-
-			Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
-					.executeScript("return pp.isAdPlaying()"));
-			if (isAdplaying) {
-				volumeValidator.validate("VOLUME_MAX", 60000);
-				eventValidator.validate("adPodEnded_1", 200);
-			}
-
             result = result && play.validate("playing_1", 60000);
 			logger.info("video is playing");
 			Thread.sleep(3000);
 
-            result = result && pauseAction.startAction();
+            result = result && pause.validate("paused_1",60000);
 
             result = result && waterMarkValidator.validate("WATERMARK_LOGO", 60000);
 			logger.info("checked watermark logo");

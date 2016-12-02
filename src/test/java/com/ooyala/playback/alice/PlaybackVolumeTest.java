@@ -2,6 +2,7 @@ package com.ooyala.playback.alice;
 
 import static java.lang.Thread.sleep;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,6 +20,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackVolumeTest extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackVolumeTest.class);
 	private PlayValidator play;
 	private SeekValidator seek;
 	private PlayAction playAction;

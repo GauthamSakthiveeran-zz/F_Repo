@@ -2,6 +2,7 @@ package com.ooyala.playback.alice;
 
 import static java.lang.Thread.sleep;
 
+import com.ooyala.playback.page.action.PlayAction;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,7 +20,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackClosedCaptionTests extends PlaybackWebTest {
-	public static Logger logger = Logger
+	private static Logger logger = Logger
 			.getLogger(PlaybackClosedCaptionTests.class);
 
 	private PlayValidator play;
@@ -28,6 +29,7 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 	private EventValidator eventValidator;
 	private FullScreenValidator fullScreenValidator;
 	private CCValidator ccValidator;
+    private PlayAction playAction;
 
 	public PlaybackClosedCaptionTests() throws OoyalaException {
 		super();
@@ -64,6 +66,8 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 			logger.info("Verified cc languages");
 
 			sleep(1000);
+
+            result = result && playAction.startAction();
 
             result = result && seek.validate("seeked_1", 60000);
 

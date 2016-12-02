@@ -29,8 +29,7 @@ public class PlayAction extends PlayBackPage implements PlayerAction {
 			if(!waitOnElement("STATE_SCREEN_SELECTABLE", 50000)) return false;
 			if(!clickOnIndependentElement("STATE_SCREEN_SELECTABLE")) return false;
 		} catch (Exception e) {
-			Actions action = new Actions(driver);
-			action.moveToElement(getWebElement("PLAY_BUTTON")).build().perform();
+            moveElement(getWebElement("PLAY_BUTTON"));
 			Thread.sleep(5000);
 			return startAction();
 		}

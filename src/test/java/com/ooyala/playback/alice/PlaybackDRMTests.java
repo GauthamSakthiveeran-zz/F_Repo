@@ -7,8 +7,12 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+
 import net.lightbody.bmp.core.har.HarEntry;
+
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Proxy;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -18,10 +22,12 @@ import java.util.List;
 
 public class PlaybackDRMTests  extends PlaybackWebTest {
 
+    private static Logger logger = Logger.getLogger(PlaybackDRMTests.class);
     private EventValidator eventValidator;
     private PlayValidator play;
     private PauseValidator pause;
     private SeekValidator seek;
+    private PlayAction playAction;
 
     public PlaybackDRMTests() throws OoyalaException {
         super();
@@ -31,41 +37,54 @@ public class PlaybackDRMTests  extends PlaybackWebTest {
     public void testPlaybackDRM(String testName, String url) throws OoyalaException {
 
         boolean result = true;
-        if((testName.split(":")[1].toLowerCase()).contains("Fairplay".toLowerCase())&& !(getBrowser().equalsIgnoreCase("safari")) ){
-            throw new SkipException("Fairplay DRM runs in Safari browser only - Test Skipped");
+        //Including the DRM condition - Fairplay works in Safari - rest of DRM's in other browser
+        if ((testName.split(":")[1].toLowerCase()).contains("Fairplay".toLowerCase())) {
+            if (!(getBrowser().equalsIgnoreCase("safari"))) {
+                throw new SkipException("Fairplay DRM runs in Safari browser only - Test Skipped");
+            }
+        } else if ((getBrowser().equalsIgnoreCase("safari"))) {
+            throw new SkipException("Safari can play only Fairplay DRM - Test Skipped");
         }
 
-            try {
-                driver.get(url);
+        try {
+            driver.get(url);
 
-                //need to add logic for verifying description
-                result = result && play.waitForPage();
-                Thread.sleep(10000);
+            //need to add logic for verifying description
+            result = result && play.waitForPage();
+            Thread.sleep(5000);
 
-                injectScript();
+            injectScript();
 
-                result = result && play.validate("playing_1", 60000);
+            result = result && play.validate("playing_1", 60000);
 
+            Thread.sleep(2000);
+
+            if(getBrowser().equalsIgnoreCase("firefox")){
+                driver.navigate().refresh();
                 Thread.sleep(2000);
-
-                result = result && pause.validate("paused_1", 60000);
-
-                logger.info("Verified that video is getting pause");
-
-                result = result && play.validate("playing_2", 60000);
-
-                result = result && seek.validate("seeked_1", 60000);
-
-                logger.info("Verified that video is seeked");
-
-                result = result && eventValidator.validate("played_1", 60000);
-
-                logger.info("Verified that video is played");
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                result = false;
+                result = result && playAction.startAction();
             }
-            Assert.assertTrue(result, "DRM tests failed");
-    }
+            Thread.sleep(2000);
+            result = result && pause.validate("paused_1", 60000);
+
+            logger.info("Verified that video is getting pause");
+
+            result = result && play.validate("playing_2", 60000);
+
+            result = result && seek.validate("seeked_1", 60000);
+
+            logger.info("Verified that video is seeked");
+
+            result = result && eventValidator.validate("played_1", 60000);
+
+            logger.info("Verified that video is played");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = false;
+        }
+
+
+    Assert.assertTrue(result,"DRM tests failed");
+}
 }
