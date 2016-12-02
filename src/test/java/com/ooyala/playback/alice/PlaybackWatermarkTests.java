@@ -48,20 +48,11 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 
 			injectScript();
 
-            result = result && playAction.startAction();
-
-			Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
-					.executeScript("return pp.isAdPlaying()"));
-			if (isAdplaying) {
-				volumeValidator.validate("VOLUME_MAX", 60000);
-				eventValidator.validate("adPodEnded_1", 200);
-			}
-
             result = result && play.validate("playing_1", 60000);
 			logger.info("video is playing");
 			Thread.sleep(3000);
 
-            result = result && pauseAction.startAction();
+            result = result && pause.validate("paused_1",60000);
 
             result = result && waterMarkValidator.validate("WATERMARK_LOGO", 60000);
 			logger.info("checked watermark logo");

@@ -41,7 +41,7 @@ public class DiscoveryUpNextTests extends PlaybackWebTest {
 
             result = result && play.validate("playing_1", 60000);
 
-            result = result && pageFactory.getSeekAction().setTime(25).fromLast().startAction();//seek(25, true);
+            result = result && pageFactory.getSeekAction().setTime(31).fromLast().startAction();//seek(25, true);
 
             result = result && discoveryUpNext.validate("UPNEXT_CONTENT", 60000);
 
