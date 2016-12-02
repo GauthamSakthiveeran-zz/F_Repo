@@ -8,6 +8,7 @@ import com.ooyala.playback.page.AdSkipButtonValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.VolumeValidator;
+import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -24,8 +25,6 @@ public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private VolumeValidator volumeValidator;
 	private AdSkipButtonValidator adSkipButtonValidator;
-
-	static int index = 0;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyCustomeInteractionAd(String testName, String url)
@@ -45,15 +44,13 @@ public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 
             result = result && event.validate("willPlaySingleAd_1", 190000);
 
-            result = result && event.validate("showAdSkipButton_1", 60000);
-
-            result = result && volumeValidator.validate("", 60000);
-
-            result = result && adSkipButtonValidator.validate("", 60000);
-
+            result = result && adSkipButtonValidator.custom().validate("", 60000);
+            
             result = result && event.validate("singleAdPlayed_1", 190000);
 
             result = result && event.validate("playing_1", 60000);
+            
+            result = result && volumeValidator.validate("", 60000);
 
             result = result && seekAction.seekTillEnd().startAction();
 

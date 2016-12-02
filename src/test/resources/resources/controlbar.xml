@@ -34,5 +34,8 @@
 			 class="oo-thumbnail"></element>	
 			 
 	<element key="CONTROL_BAR" findBy="class"
-			 class="oo-control-bar"></element>			 	 
+			 class="oo-control-bar"></element>	
+			 
+	<element key="HIDDEN_CONTROL_BAR" findBy="class"
+		class="oo-control-bar-hidden" />		 		 	 
 </elements>

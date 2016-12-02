@@ -9,6 +9,10 @@
     <element key="AD_SKIP_BTN" findBy="class"
              class="oo-icon-skip-slick" />
              
+    <element key="AD_SKIP_BTN_CUSTOM" findBy="ID"
+             class="skipBtn" />         
+             
+             
     <element key="VIDEO_AD_UI_PRE_SKIP_BUTTON" findBy="class"
              class="videoAdUiPreSkipButton" />                  
 </elements>
