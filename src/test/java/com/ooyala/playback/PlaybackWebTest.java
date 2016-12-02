@@ -147,12 +147,12 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@Parameters({ "testData", "jsFile" })
 	public void setUp(@Optional String xmlFile, String jsFile) throws Exception {
 		logger.info("************Inside setup*************");
-		logger.info("browser is " + browser);
 
 		browser = System.getProperty("browser");
 		if (browser == null || browser.equals(""))
 			browser = "firefox";
-
+		logger.info("browser is " + browser);
+		
 		driver = getDriver(browser);
 		if (driver != null)
 			logger.info("Driver initialized successfully");

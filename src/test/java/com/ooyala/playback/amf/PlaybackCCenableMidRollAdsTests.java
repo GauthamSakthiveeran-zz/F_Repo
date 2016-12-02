@@ -55,8 +55,8 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 
             result = result && seekAction.seekTillEnd().startAction();
             
-			result = result && event.validate("seeked_1", 1000);
-            result = result && event.validate("played_1", 3000);
+			result = result && event.validate("seeked_1", 10000);
+            result = result && event.validate("played_1", 10000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

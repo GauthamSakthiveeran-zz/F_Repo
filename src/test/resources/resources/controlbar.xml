@@ -31,5 +31,8 @@
 			 class="oo-played-indicator"></element>
 			 
 	<element key="THUMBNAIL_IMAGE" findBy="class"
-			 class="oo-thumbnail"></element>		 
+			 class="oo-thumbnail"></element>	
+			 
+	<element key="CONTROL_BAR" findBy="class"
+			 class="oo-control-bar"></element>			 	 
 </elements>

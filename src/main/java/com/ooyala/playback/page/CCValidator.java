@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,7 +32,8 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		addElementToPageElements("pause");
 	}
 	
-	private boolean verifyCloseClosedCaptionPanel(){
+	private boolean verifyCloseClosedCaptionPanel() throws Exception{
+		swicthToControlBar();
 		if(!isElementPresent("CC_PANEL_CLOSE")) return false;
 		if(!clickOnIndependentElement("CC_PANEL_CLOSE")) return false;
 		extentTest.log(LogStatus.PASS,"Verified closed caption panel close");
@@ -44,6 +44,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		
 		try {
 			Thread.sleep(1000);
+			swicthToControlBar();
 			try {
 				if(!waitOnElement("CC_BTN", 6000)) return false;
 			} catch (Exception e) {
@@ -65,7 +66,8 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		
 	}
 	
-	private boolean validateClosedCaptionPanel(){
+	private boolean validateClosedCaptionPanel() throws Exception{
+		swicthToControlBar();
 		if (!(isElementPresent("CLOSED_CAPTION_PANEL"))) {
 			if(!clickOnIndependentElement("CC_BTN")) return false;
 		}
@@ -86,18 +88,22 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		return false;
 	}
 
-	public boolean validate(String element, int timeout) throws Exception {
-		
-		/*if (isElementPresent("HIDDEN_CONTROL_BAR")) {
+	private void swicthToControlBar() throws Exception{
+		if (isElementPresent("HIDDEN_CONTROL_BAR")) {
 			logger.info("hovering mouse over the player");
-			Actions action = new Actions(driver);
-			action.moveToElement(getWebElement("HIDDEN_CONTROL_BAR")).perform();
-		}*/
+			Thread.sleep(2000);
+			moveElement(getWebElement("HIDDEN_CONTROL_BAR"));
+		}else{
+			if(isElementPresent("CONTROL_BAR"))
+				moveElement(getWebElement("CONTROL_BAR"));
+		}
+	}
+	
+	public boolean validate(String element, int timeout) throws Exception {
 		
 		boolean flag = checkClosedCaptionButton()
 		&& verifyCloseClosedCaptionPanel()
 		&& checkClosedCaptionLanguages()
-		&& checkClosedCaptionButton()
 		&& closedCaptionMicroPanel()
 		&& validateClosedCaptionPanel()
 		&& validateSwitchContainer()
@@ -116,7 +122,12 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	protected boolean closedCaptionMicroPanel() throws Exception {
 		try {
-			if(!waitOnElement("CC_POPHOVER_HORIZONTAL", 10000)) return false;
+			swicthToControlBar();
+			
+			if(!clickOnIndependentElement("CC_BTN")) return false;
+			Thread.sleep(1000);
+			
+			if(!waitOnElement("CC_POPHOVER_HORIZONTAL", 6000)) return false;
 			boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
 
 			if (horizontal_CC_Option) {

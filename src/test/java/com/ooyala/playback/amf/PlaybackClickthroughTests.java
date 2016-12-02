@@ -49,6 +49,7 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 
             result = result && seekAction.seekTillEnd().startAction();
 
+            result = result && event.validate("seeked_1", 160000);
             result = result && event.validate("played_1", 160000);
 
 		} catch (Exception e) {
