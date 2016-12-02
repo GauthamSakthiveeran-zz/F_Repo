@@ -1,5 +1,6 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.streams;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -31,7 +32,7 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "Playback", dataProvider = "testUrls")
+	@Test(groups = "streams", dataProvider = "testUrls")
 	public void testLive(String testName, String url) throws OoyalaException {
 
 		boolean result = true;

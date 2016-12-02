@@ -1,5 +1,7 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerfeatures;
 
+import com.ooyala.playback.page.action.PlayAction;
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -21,12 +23,13 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 	private SeekValidator seek;
 	private EventValidator eventValidator;
 	private FullScreenValidator fullScreenValidator;
+    private PlayAction playAction;
 
 	public PlaybackFullScreenTests() throws OoyalaException {
 		super();
 	}
 
-	@Test(groups = "Player", dataProvider = "testUrls")
+	@Test(groups = "playerFeatures", dataProvider = "testUrls")
 	public void testPlaybackFullscreen(String testName, String url)
 			throws OoyalaException {
 
@@ -42,6 +45,8 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
             result = result && play.validate("playing_1", 60000);
 
             result = result && fullScreenValidator.validate("", 60000);
+
+            result = result && playAction.startAction();
 
             result = result && seek.validate("seeked_1", 60000);
 

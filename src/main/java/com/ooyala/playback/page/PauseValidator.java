@@ -24,13 +24,12 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean  validate(String element, int timeout) throws Exception {
 		
-		Actions action = new Actions(driver);
-		
 		if (isElementPresent("HIDDEN_CONTROL_BAR")) {
 			logger.info("hovering mouse over the player");
-			action.moveToElement(getWebElement("HIDDEN_CONTROL_BAR")).perform();
+            moveElement(getWebElement("HIDDEN_CONTROL_BAR"));
 		}
-		
+        Thread.sleep(1000);
+
 		if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
 
 		Thread.sleep(1000);

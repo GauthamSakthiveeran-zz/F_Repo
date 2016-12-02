@@ -11,56 +11,46 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class FullScreenAction extends PlayBackPage implements PlayerAction {
 
-	public FullScreenAction(WebDriver webDriver) {
-		super(webDriver);
-		PageFactory.initElements(webDriver, this);
-		addElementToPageElements("fullscreen");
-		addElementToPageElements("pause");
-	}
+    public FullScreenAction(WebDriver webDriver) {
+        super(webDriver);
+        PageFactory.initElements(webDriver, this);
+        addElementToPageElements("fullscreen");
+        addElementToPageElements("pause");
+        addElementToPageElements("play");
+    }
 
-	@Override
-	public boolean startAction() throws Exception {
-		WebElement player = getWebElement("OOPLAYER");
-		
-		if(player==null) {
-			extentTest.log(LogStatus.FAIL, "OOPLAYER is null");
-			return false;
-		}
-		Actions action = new Actions(driver);
-		action.moveToElement(player).perform();
-		if(!waitOnElement("FULLSCREEN_BTN", 60000)) {
-			extentTest.log(LogStatus.FAIL, "FULLSCREEN_BTN not found");
-			return false;
-		}
+    @Override
+    public boolean startAction() throws Exception {
+        WebElement player = getWebElement("OOPLAYER");
 
-		if (getPlatform().equalsIgnoreCase("Android")) {
-			if(!clickOnIndependentElement("FULLSCREEN_BTN")) return false;
-		} else {
-			if(!clickOnIndependentElement("PAUSE_BUTTON")) {
-				extentTest.log(LogStatus.FAIL, "PAUSE_BUTTON not found");
-				return false;
-			}
-			if(!clickOnIndependentElement("FULLSCREEN_BTN")) {
-				extentTest.log(LogStatus.FAIL, "FULLSCREEN_BTN not found");
-				return false;
-			}
-		}
+        if(player==null) {
+        //    extentTest.log(LogStatus.FAIL, "OOPLAYER is null");
+            return false;
+        }
+        moveElement(player);
 
-		if (!(getBrowser().equalsIgnoreCase("safari")
-				|| getBrowser().equalsIgnoreCase("firefox")
-				|| getBrowser().equalsIgnoreCase("internet explorer") || getPlatform()
-				.equalsIgnoreCase("Android"))) {
-			
-			if(!waitOnElement(By.id("fullscreenChanged_true"), 6000)) {
-				return false;
-			}
+        clickOnIndependentElement("STATE_SCREEN_SELECTABLE");
+        if(!clickOnIndependentElement("FULLSCREEN_BTN")) {
+          //  extentTest.log(LogStatus.FAIL, "FULLSCREEN_BTN not found");
+            return false;
+        }
 
-			logger.info("Changed into Fullscreen");
-			
-		}
-		extentTest.log(LogStatus.PASS, "Full Screen Validated!");
-		return true;
 
-	}
+        if (!(getBrowser().equalsIgnoreCase("safari")
+                || getBrowser().equalsIgnoreCase("firefox")
+                || getBrowser().equalsIgnoreCase("internet explorer") || getPlatform()
+                .equalsIgnoreCase("Android"))) {
 
+            if(!waitOnElement(By.id("fullscreenChanged_true"), 60000)) {
+             //   extentTest.log(LogStatus.FAIL, "fullscreenChangedtrue not found");
+                return false;
+            }
+
+            logger.info("Changed into Fullscreen");
+
+        }
+        //extentTest.log(LogStatus.PASS, "Full Screen Validated!");
+        return true;
+
+    }
 }

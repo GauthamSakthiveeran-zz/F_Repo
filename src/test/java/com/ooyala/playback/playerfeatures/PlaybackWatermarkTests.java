@@ -1,9 +1,9 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerfeatures;
 
 import com.ooyala.playback.page.action.PauseAction;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -36,7 +36,7 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "PlayerSkin", dataProvider = "testUrls")
+	@Test(groups = "playerFeatures", dataProvider = "testUrls")
 	public void testWatermarks(String testName, String url)
 			throws OoyalaException {
 
@@ -48,20 +48,11 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 
 			injectScript();
 
-            result = result && playAction.startAction();
-
-			Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
-					.executeScript("return pp.isAdPlaying()"));
-			if (isAdplaying) {
-				volumeValidator.validate("VOLUME_MAX", 60000);
-				eventValidator.validate("adPodEnded_1", 200);
-			}
-
             result = result && play.validate("playing_1", 60000);
 			logger.info("video is playing");
 			Thread.sleep(3000);
 
-            result = result && pauseAction.startAction();
+            result = result && pause.validate("paused_1",60000);
 
             result = result && waterMarkValidator.validate("WATERMARK_LOGO", 60000);
 			logger.info("checked watermark logo");
