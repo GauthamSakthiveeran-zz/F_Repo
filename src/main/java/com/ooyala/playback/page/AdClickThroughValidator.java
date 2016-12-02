@@ -31,20 +31,34 @@ public class AdClickThroughValidator extends PlayBackPage implements
 		}
 
 		String value = data.get("ad_plugin");
+		String video_plugin = data.get("video_plugins");
+		
 
 		String baseWindowHdl = driver.getWindowHandle();
 		if (value != null) {
 
 			if (!getPlatform().equalsIgnoreCase("Android")) {
 				
+				boolean flag = true;
+				
 				if (!value.contains("freewheel")) {
 					if (value.contains("vast")) {
 						if(!clickOnIndependentElement("AD_SCREEN_PANEL")) return false;
-					} else {
+					} 
+					
+					else if(value.contains("ima") && video_plugin.contains("bit") &&isStreamingProtocolPrioritized("hls")){
+						if(!clickOnIndependentElement("AD_PANEL_1")) return false;
+						if(!waitOnElement(By.id("adsClickThroughOpened"), 10000)) return false;
+						flag = false;
+					}
+					
+					else {
 						if(!clickOnIndependentElement("AD_PANEL")) return false;
 					}
-					if(!waitOnElement(By.id("adsClicked_1"), 10000)) return false;
-					if(!waitOnElement(By.id("adsClicked_videoWindow"), 10000)) return false;
+					if(flag){
+						if(!waitOnElement(By.id("adsClicked_1"), 10000)) return false;
+						if(!waitOnElement(By.id("adsClicked_videoWindow"), 10000)) return false;
+					}
 					extentTest.log(PASS,"AdsClicked by clicking on the ad screen");
 				}
 			}

@@ -11,7 +11,9 @@
              
     <element key="AD_SKIP_BTN_CUSTOM" findBy="ID"
              class="skipBtn" />         
-             
+    
+     <element key="AD_PANEL_1" findBy="class"
+             class="oo-player-skin-plugins" />         
              
     <element key="VIDEO_AD_UI_PRE_SKIP_BUTTON" findBy="class"
              class="videoAdUiPreSkipButton" />                  
