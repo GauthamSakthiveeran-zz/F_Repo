@@ -2,6 +2,7 @@ package com.ooyala.playback.alice;
 
 import static java.lang.Thread.sleep;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -62,7 +63,6 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 			} catch (Exception e) {
 				e.printStackTrace();
                 result = false;
-
 			}
 			Assert.assertTrue(result, "Playback Autoplay tests failed");
 		}

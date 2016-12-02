@@ -1,6 +1,7 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerfeatures;
 
 import com.ooyala.playback.page.action.PlayAction;
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -28,7 +29,7 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "Player", dataProvider = "testUrls")
+	@Test(groups = "playerFeatures", dataProvider = "testUrls")
 	public void testPlaybackFullscreen(String testName, String url)
 			throws OoyalaException {
 

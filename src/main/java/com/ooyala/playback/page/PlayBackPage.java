@@ -5,6 +5,7 @@ import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -45,7 +46,7 @@ public abstract class PlayBackPage extends WebPage {
     }
 
     @Override
-    public boolean waitForPage() {
+    public boolean waitForPage()  {
         // TODO Auto:generated method stub
         return false;
     }
