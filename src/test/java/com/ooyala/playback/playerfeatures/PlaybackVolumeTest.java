@@ -1,7 +1,8 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerfeatures;
 
 import static java.lang.Thread.sleep;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
@@ -31,7 +32,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "PlayerSkin", dataProvider = "testUrls")
+	@Test(groups = "playerFeatures", dataProvider = "testUrls")
 	public void testVolume(String testName, String url) throws OoyalaException {
 
 		boolean result = true;

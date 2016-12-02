@@ -7,6 +7,7 @@ import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.SaasPortValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -26,7 +27,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "Playback", dataProvider = "testUrls")
+    @Test(groups = "syndicationRules", dataProvider = "testUrls")
     public void testOptEntitlementAlice(String testName, String url) throws OoyalaException {
         boolean result = true;
         try {
