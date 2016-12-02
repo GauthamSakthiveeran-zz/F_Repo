@@ -1,8 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -48,7 +45,7 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 
 	        result = result && pauseAction.startActionOnScreen();
 
-	        result = result && playAction.startActionOnScreen();
+	        result = result && pauseAction.startActionOnScreen();
 
             result = result && seekValidator.validate("seeked_1", 190000);
 

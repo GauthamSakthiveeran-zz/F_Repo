@@ -45,6 +45,7 @@ public class PlayBackFactory {
 	private EncodingValidator encodingValidator;
 	private MultiplePlayerValidator multiplePlayerValidator;
 	private AdClickThroughValidator adClickThroughValidator;
+	private PoddedAdValidator poddedAdValidator;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
@@ -55,6 +56,12 @@ public class PlayBackFactory {
 			seekAction = new SeekAction(driver);
 		return seekAction;
 
+	}
+	
+	public PoddedAdValidator getPoddedAdValidator(){
+		if(poddedAdValidator==null)
+			poddedAdValidator = new PoddedAdValidator(driver);
+		return poddedAdValidator;
 	}
 	
 	public AdClickThroughValidator getAdClickThroughValidator() {
