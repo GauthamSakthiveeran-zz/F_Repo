@@ -1,8 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

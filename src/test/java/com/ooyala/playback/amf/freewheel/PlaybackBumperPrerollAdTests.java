@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf.freewheel;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,7 +10,6 @@ import com.ooyala.playback.page.ReplayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
 

@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +9,6 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 
