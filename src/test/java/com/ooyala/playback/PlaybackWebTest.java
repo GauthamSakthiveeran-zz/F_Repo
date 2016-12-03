@@ -70,7 +70,30 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	@BeforeMethod(alwaysRun = true)
-	public void handleTestMethodName(Method method, Object[] testData) {
+	public void handleTestMethodName(Method method, Object[] testData) throws OoyalaException {
+		
+		logger.info("************Inside setup*************");
+
+		browser = System.getProperty("browser");
+		if (browser == null || browser.equals(""))
+			browser = "firefox";
+		logger.info("browser is " + browser);
+		
+		driver = getDriver(browser);
+		if (driver != null)
+			logger.info("Driver initialized successfully");
+		else {
+			logger.error("Driver is not initialized successfully");
+			throw new OoyalaException("Driver is not initialized successfully");
+		}
+
+		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		// driver.manage().timeouts().implicitlyWait(240, TimeUnit.MINUTES);
+		pageFactory = PlayBackFactory.getInstance(driver);
+		if (!getPlatform().equalsIgnoreCase("android")) {
+			maximizeMe(driver);
+		}
+		
 		extentTest = extentReport.startTest(testData[0].toString());
 
 		PlayBackPage page = new PlayBackPage(driver) {
@@ -152,7 +175,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@BeforeClass(alwaysRun = true)
 	@Parameters({ "testData", "jsFile" })
 	public void setUp(@Optional String xmlFile, String jsFile) throws Exception {
-		logger.info("************Inside setup*************");
+		/*logger.info("************Inside setup*************");
 
 		browser = System.getProperty("browser");
 		if (browser == null || browser.equals(""))
@@ -172,7 +195,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		pageFactory = PlayBackFactory.getInstance(driver);
 		if (!getPlatform().equalsIgnoreCase("android")) {
 			maximizeMe(driver);
-		}
+		}*/
 		parseXmlFileData(xmlFile);
 		getJSFile(jsFile);
 		SimpleHttpServer.startServer();
@@ -197,10 +220,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			extentTest.log(LogStatus.PASS, result.getName() + " Test passed");
 		}
 		extentReport.endTest(extentTest);
-	}
-
-	@AfterClass(alwaysRun = true)
-	public void tearDown() throws Exception {
+		
 		if (isBrowserMobProxyEnabled())
 			BrowserMobProxyHelper.stopBrowserMobProxyServer();
 		extentReport.flush();
@@ -213,6 +233,22 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 		logger.info("Assigning the neopagefactory instance to null");
 		PlayBackFactory.destroyInstance();
+	}
+
+	@AfterClass(alwaysRun = true)
+	public void tearDown() throws Exception {
+		/*if (isBrowserMobProxyEnabled())
+			BrowserMobProxyHelper.stopBrowserMobProxyServer();
+		extentReport.flush();
+		logger.info("************Inside tearDown*************");
+		if (driver != null) {
+			driver.quit();
+			driver = null;
+		} else {
+			logger.info("Driver is already null");
+		}
+		logger.info("Assigning the neopagefactory instance to null");
+		PlayBackFactory.destroyInstance();*/
 		SimpleHttpServer.stopServer();
 	}
 
