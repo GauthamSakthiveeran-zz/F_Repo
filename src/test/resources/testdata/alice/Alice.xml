@@ -385,7 +385,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-            <playerParameter><![CDATA[{"skin":{"inline":{"general":{"watermark":{"imageResource":{"url":"https://dl.dropbox.com/s/kdo5hlgg2i3ptv0/ooyala-logo.png","androidResource":"logo","iosResource":"logo"}}}},"showControlBar":true}}]]></playerParameter>
+        <playerParameter><![CDATA[{"skin":{"inline":{"general":{"watermark":{"imageResource":{"url":"https://dl.dropbox.com/s/kdo5hlgg2i3ptv0/ooyala-logo.png","androidResource":"logo","iosResource":"logo"},"clickUrl":"http://www.ooyala.com"}}},"showControlBar":true}}]]></playerParameter>
         </url>
     </test>
     <test name="PlaybackPlayerControlsTests">
