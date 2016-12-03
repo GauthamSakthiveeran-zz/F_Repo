@@ -89,7 +89,7 @@ public class WaterMarkValidator extends PlayBackPage implements
 	protected boolean getWindowHanldes() throws Exception {
 		String oldTab = driver.getWindowHandle();
 
-		if(!clickOnIndependentElement("OOYALA_LOGO")) return false;
+		if(!clickOnIndependentElement("WATERMARK_LOGO")) return false;
 
 		Set<String> allWindows = driver.getWindowHandles();
 		for (String aWindow : allWindows) {
