@@ -30,13 +30,13 @@ public class TestPage {
 	 * @return returns the url based on different input parameter mentioned
 	 *         above in @Param
 	 */
-	public String getURL(String embedCode, String pCode, String pbid,
+	public String getURL(String sslEnabled,String embedCode, String pCode, String pbid,
 			String plugins, String adPlugin, String additionalPlugin,
 			String playerParameter) {
 		boolean result = false;
 		String url = "";
 		try {
-			testpagedata.initializeData(environmentType);
+			testpagedata.initializeData(sslEnabled,environmentType);
 
 			if (plugins.contains(",")) {
 				String str[] = plugins.split(",");

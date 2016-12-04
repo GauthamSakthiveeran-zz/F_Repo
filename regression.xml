@@ -39,7 +39,7 @@
             <class name="com.ooyala.playback.playerfeatures.PlaybackSocialMediaTests" />
             <class name="com.ooyala.playback.alice.PlaybackOptEntitlementTests" />
             <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
-            <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/> 
+            <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
         </classes>
     </test>
 </suite>

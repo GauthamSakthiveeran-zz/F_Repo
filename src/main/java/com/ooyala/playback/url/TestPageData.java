@@ -83,11 +83,18 @@ public class TestPageData {
 	 * 
 	 * @param envType
 	 */
-	public void initializeData(PlayerPropertyValue envType) {
+	public void initializeData(String sslEnabled,PlayerPropertyValue envType) {
+
+		if (sslEnabled == "" || sslEnabled == null){
+			sslEnabled = "http";
+		}else
+			sslEnabled = "https";
+
+
 		switch (envType) {
 
 		case STAGING:
-			envURL = map.get("staging_env_url");
+			envURL = sslEnabled+map.get("staging_env_url");
 			pluginURL = envURL + pluginURL;
 			corePlayer = envURL + corePlayer;
 			html5Skin = envURL + html5Skin;
@@ -96,7 +103,7 @@ public class TestPageData {
 			skinDiscovery = envURL + otherPlugin + discoveryApiPlugin;
 			break;
 		case PRODUCTION:
-			envURL = map.get("production_env_url")
+			envURL = sslEnabled+map.get("production_env_url")
 					+ System.getProperty("v4Version");
 			pluginURL = envURL + "/video-plugin/";
 			corePlayer = envURL + corePlayer;

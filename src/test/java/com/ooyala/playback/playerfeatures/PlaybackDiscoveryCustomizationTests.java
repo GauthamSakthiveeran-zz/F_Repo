@@ -78,7 +78,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
                 result = result &&	eventValidator.eventAction("FULLSCREEN_BTN");
 				logger.info("verified fullscreen");
 				try {
-					eventValidator.eventAction("PLAYING_SCREEN");
+					eventValidator.eventAction("PAUSE_BUTTON");
 				} catch (Exception e) {
 					eventValidator.eventAction("VIDEO");
 				}
@@ -106,7 +106,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 				loadingSpinner();
 				discoveryUpNext.validate("", 60000);
 				try {
-                    eventValidator.validateElement("END_SCREEN", 60000);
+                    discoveryValidator.clickOnDiscoveryCloseButton("DISCOVERY_CLOSE_BTN",20000);
 				} catch (Exception e) {
 					playAction.startAction();
 					seekAction.setTime(20).fromLast().startAction();//seek(20, true);

@@ -30,7 +30,8 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
         moveElement(player);
 
         clickOnIndependentElement("STATE_SCREEN_SELECTABLE");
-        if(!clickOnIndependentElement("FULLSCREEN_BTN")) {
+        Thread.sleep(1000);
+        if(!clickOnIndependentElement("FULLSCREEN_BTN_1")) {
           //  extentTest.log(LogStatus.FAIL, "FULLSCREEN_BTN not found");
             return false;
         }

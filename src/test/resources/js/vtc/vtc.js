@@ -26,7 +26,7 @@ function subscribeToEvents() {
         var willPlaySingleAdOrder = 1;
         var setEmbedCodeEventOrder = 1;
         var replayEventOrder = 1;
-        var reportDiscoveryImpressionEventOrder = 1;
+        var reportDiscoveryImpressionOrder = 1;
         var playbackReadyEventOrder = 1;
         var videoPreloadEventOrder = 1;
 
@@ -36,13 +36,6 @@ function subscribeToEvents() {
                     '<p id=playing_' + playingEventOrder + '>playing '
                     + playingEventOrder + '</p>');
                 playingEventOrder++;
-            }
-
-            if (event.match(/videoPreload/)) {
-                OO.$('#ooplayer').append(
-                    '<p id=videoPreload_' + videoPreloadOrder + '>videoPreload '
-                    + videoPreloadOrder + '</p>');
-                videoPreloadOrder++;
             }
 
             if (event.match(/willPlaySingleAd/)) {
@@ -81,6 +74,11 @@ function subscribeToEvents() {
                 fullscreenChangedEventOrder++;
             }
 
+            if (event.match(/setClosedCaptionsLanguage/)) {
+                OO.$('#ooplayer').append('<p id=cclanguage_'+ arguments[1]+'>cclanguage_'+ arguments[1]+'</p>');
+                OO.$('#ooplayer').append('<p id=ccmode_'+ arguments[2].mode+'>ccmode_'+ arguments[2].mode+'</p>');
+            }
+
 
             if (event.match(/reportDiscoveryClick/)) {
 
@@ -88,14 +86,6 @@ function subscribeToEvents() {
                     "<p id=reportDiscoveryClick_"+reportDiscoveryClickOrder+
                     ">reportDiscoveryClick "+reportDiscoveryClickOrder+"</p>");
                 reportDiscoveryClickOrder++;
-            }
-
-            if (event.match(/playbackReady/)) {
-
-                OO.$("#ooplayer").append(
-                    "<p id=playbackReady_"+playbackReadyOrder+
-                    ">playbackReady "+playbackReadyOrder+"</p>");
-                playbackReadyOrder++;
             }
 
             if (event.match(/reportDiscoveryImpression/)) {
@@ -220,11 +210,6 @@ function subscribeToEvents() {
             if (event.match(/replay/)) {
                  OO.$("#ooplayer").append("<p id=replay_"+replayEventOrder+">replay "+replayEventOrder+"</p>");
                  replayEventOrder++;
-            }
-
-            if (event.match(/reportDiscoveryImpression/)) {
-                 OO.$("#ooplayer").append("<p id=reportDiscoveryImpression_"+reportDiscoveryImpressionEventOrder+">reportDiscoveryImpression "+reportDiscoveryImpressionEventOrder+"</p>");
-                 reportDiscoveryImpressionEventOrder++;
             }
 
             if (event.match(/playbackReady/)) {

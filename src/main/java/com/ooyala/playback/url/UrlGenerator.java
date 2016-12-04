@@ -23,7 +23,7 @@ public class UrlGenerator {
 	 *            playerConfigParameter
 	 * @return returns dynamically created link from above parameters
 	 */
-	public static String getURL(String embedcode, String pcode, String pbid,
+	public static String getURL(String sslEnabled,String embedcode, String pcode, String pbid,
 			String videoPlugin, String adPlugin, String additionalPlugin,
 			String playerConfigParameter) {
 
@@ -47,7 +47,7 @@ public class UrlGenerator {
 		}
 
 		test = new TestPage(playerProperties);
-		url = test.getURL(embedcode, pcode, pbid, videoPlugin, adPlugin,
+		url = test.getURL(sslEnabled,embedcode, pcode, pbid, videoPlugin, adPlugin,
 				additionalPlugin, playerConfigParameter);
 		return url;
 	}
@@ -67,6 +67,7 @@ public class UrlGenerator {
 		logger.info("Getting test url and test name from property file");
 
 		Map<String, String> urlsGenerated = new HashMap<String,String>();
+		String sslEnabled = null;
 		for (Test data : testData.getTest()) {
 			if (data.getName().equals(testName)) {
 				List<Url> urls = data.getUrl();
@@ -81,7 +82,14 @@ public class UrlGenerator {
 					String playerParameter = new String(url
 							.getPlayerParameter().getBytes());
 					String pbid = url.getPbid().getName();
-					String urlGenerated = UrlGenerator.getURL(embedCode, pCode,
+
+					try {
+						sslEnabled = url.getSslEnabled().getName();
+					} catch (Exception e){
+						sslEnabled="";
+					}
+
+					String urlGenerated = UrlGenerator.getURL(sslEnabled,embedCode, pCode,
 							pbid, videoPlugin, adPlugin, additionalPlugin,
 							playerParameter);
 					String desc = url.getDescription().getName();

@@ -10,6 +10,7 @@ import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
@@ -29,7 +30,6 @@ public class PlaybackDRMTests  extends PlaybackWebTest {
 
     @Test(groups = "drm", dataProvider = "testUrls")
     public void testPlaybackDRM(String testName, String url) throws OoyalaException {
-
         boolean result = true;
         //Including the DRM condition - Fairplay works in Safari - rest of DRM's in other browser
         if ((testName.split(":")[1].toLowerCase()).contains("Fairplay".toLowerCase())) {
@@ -39,6 +39,8 @@ public class PlaybackDRMTests  extends PlaybackWebTest {
         } else if ((getBrowser().equalsIgnoreCase("safari"))) {
             throw new SkipException("Safari can play only Fairplay DRM - Test Skipped");
         }
+
+        logger.info("Test Description :\n"+testName.split(":")[1].toLowerCase());
 
         try {
             driver.get(url);
@@ -65,7 +67,11 @@ public class PlaybackDRMTests  extends PlaybackWebTest {
 
             result = result && play.validate("playing_2", 60000);
 
-            result = result && seek.validate("seeked_1", 60000);
+
+            if (!(testName.split(":")[1].equalsIgnoreCase(" elemental fairplay fairplay hls + opt")))
+                    result = result && seek.validate("seeked_1", 60000);
+            else
+                ((JavascriptExecutor) driver).executeScript("pp.seek(pp.getDuration()-2);");
 
             logger.info("Verified that video is seeked");
 
@@ -79,6 +85,6 @@ public class PlaybackDRMTests  extends PlaybackWebTest {
         }
 
 
-    Assert.assertTrue(result,"DRM tests failed");
+    Assert.assertTrue(result,"DRM tests failed : "+testName);
 }
 }

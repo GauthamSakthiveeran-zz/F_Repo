@@ -33,15 +33,14 @@ public class ControlBarValidator extends PlayBackPage implements
 		ArrayList<String> controlBarElement = new ArrayList<String>();
 
 		controlBarElement.addAll(Arrays.asList("PLAY_HEAD", "PLAY_PAUSE",
-				"VOLUME_BUTTON", "FULLSCREEN_BTN", "SHARE_BTN",
-				"DISCOVERY_BTN", "TIME_DURATION"));
+				"VOLUME_BUTTON","SHARE_BTN","FULLSCREEN_BTN"));
+        //"DISCOVERY_BTN", "TIME_DURATION" - no time duration for live
 
 		boolean iscontrolshown = isElementPresent("CONTROL_BAR");
 		
 		if (!iscontrolshown) {
 			extentTest.log(LogStatus.INFO, "Control bar is hiden hence mouse hovering on it");
-			Actions act = new Actions(driver);
-			act.moveToElement(getWebElement("CONTROL_BAR")).build().perform();
+            moveElement(getWebElement("CONTROL_BAR"));
 
 		}
 		try {
@@ -56,15 +55,13 @@ public class ControlBarValidator extends PlayBackPage implements
 						&& waitOnElement("QUALITY_BTN", 60000)
 						&& clickOnIndependentElement("CC_PANEL_CLOSE");
 			}else
-				return false;
+            return true;
 		} catch (Exception e) {
 
 			return
 					waitOnElement("PLAY_PAUSE", 60000)
 					&& waitOnElement("VOLUME_BUTTON", 60000)
 					&& waitOnElement("FULLSCREEN_BTN", 60000);
-			
-			// seleniumActions.waitForElement("OOYALA_LOGO", 60);
 
 		}
 

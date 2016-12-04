@@ -64,7 +64,7 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
             result = result && eventValidator.validate("played_1", 60000);
 			logger.info("video played");
 
-            result = result && endScreenValidator.validate("", 60000);
+            result = result && endScreenValidator.validate("END_SCREEN", 60000);
 
             result = result && eventValidator.eventAction("FULLSCREEN_BTN_1");
 
