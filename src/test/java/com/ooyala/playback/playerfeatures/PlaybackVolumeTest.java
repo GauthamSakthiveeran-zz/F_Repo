@@ -2,6 +2,7 @@ package com.ooyala.playback.playerfeatures;
 
 import static java.lang.Thread.sleep;
 
+import com.ooyala.playback.page.*;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
@@ -9,10 +10,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -27,6 +24,8 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 	private PlayAction playAction;
 	private EventValidator eventValidator;
 	private VolumeValidator volumeValidator;
+	private IsAdPlayingValidator isAdPlayingValidator;
+	private SeekValidator seekValidator;
 
 	public PlaybackVolumeTest() throws OoyalaException {
 		super();
@@ -40,40 +39,39 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 		try {
 			driver.get(url);
 
-            result = result && play.waitForPage();
+			play.waitForPage();
+
+			Thread.sleep(10000);
 
 			injectScript();
 
-            result = result && playAction.startAction();
+			loadingSpinner();
 
-			Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
-					.executeScript("return pp.isAdPlaying()"));
+			playAction.startAction();
+
+			loadingSpinner();
+
+			Boolean isAdplaying = isAdPlayingValidator.validate("CheckAdPlaying",60);
 			if (isAdplaying) {
 				volumeValidator.validate("VOLUME_MAX", 60000);
 				logger.info("validated ad volume at full range");
-				eventValidator.validate("adPodEnded_1", 200);
+				eventValidator.validate("adPodEnded_1", 20000);
 				logger.info("Ad played");
 			}
 
-            Thread.sleep(2000);
+			sleep(4000);
 
-            result = result && volumeValidator.validate("VOLUME_MAX", 60000);
+			eventValidator.validate("playing_1", 60000);
+
+			volumeValidator.validate("VOLUME_MAX", 60000);
 
 			logger.info("validated video volume at full range");
 
-            result = result && eventValidator.validate("playing_10 ", 60000);
+			seekValidator.validate("seeked_1",60);
 
-            logger.info("video is playing");
-            sleep(4000);
-
-            result = result && seek.validate("seeked_1", 60000);
-
-			logger.info("video seeked");
-
-            result = result && eventValidator.validate("played_1", 60000);
+			eventValidator.validate("played_1", 60000);
 
 			logger.info("video played");
-
 		} catch (Exception e) {
 			e.printStackTrace();
             result = false;
