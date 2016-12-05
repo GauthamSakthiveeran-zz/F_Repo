@@ -1,8 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -41,37 +38,25 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 			injectScript();
 
             result = result && playAction.startAction();
-			loadingSpinner();
 			
-	        event.validate("willPlaySingleAd_1", 50000);
-	        extentTest.log(PASS, "Ad starts to play");
-	        event.validate("singleAdPlayed_1", 190000);
-	        extentTest.log(PASS, "Ad Played completely");
-	        event.validate("playing_1", 120000);
-	        sleep(10000);
+			result = result && event.validate("willPlaySingleAd_1", 50000);
+	        result = result && event.validate("singleAdPlayed_1", 190000);
+	        result = result && event.validate("playing_1", 120000);
 
-	        pauseAction.startActionOnScreen();
-	        sleep(5000);
-	        playAction.startActionOnScreen();
+	        result = result && pauseAction.startActionOnScreen();
 
-	        extentTest.log(PASS, "Verified Play Pause Functionality");
-
-	        sleep(5000);
+	        result = result && pauseAction.startActionOnScreen();
 
             result = result && seekValidator.validate("seeked_1", 190000);
-	        extentTest.log(PASS, "Seek successful");
 
             result = result &&  event.validate("played_1", 190000);
-	        extentTest.log(PASS, "Video played");
-
-	        extentTest.log(PASS, "verified Playback of OSMF MP4 Asset");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified");
+		Assert.assertTrue(result, "Tests failed");
 
 	}
 

@@ -37,11 +37,11 @@ public class PlaybackMidrollOverlayUpNextTests extends PlaybackWebTest {
 			
 			result = result && playValidator.validate("playing_1", 1000);
 			
-			result = result && event.validate("MidRoll_willPlaySingleAd_1", 10000);
+			result = result && event.validate("MidRoll_willPlaySingleAd_1", 20000);
 			
-			result = result && event.validate("singleAdPlayed_1", 5000);
+			result = result && event.validate("singleAdPlayed_1", 10000);
 			
-			result = result && event.validate("showNonlinearAd_1", 10000);
+			result = result && event.validate("showNonlinearAd_1", 60000);
 
             result = result && overLayValidator.validate("nonlinearAdPlayed_1", 2000);
             

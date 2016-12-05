@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf.VAST;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -42,12 +40,9 @@ public class PlaybackPoddedwithOverlayStandaloneTests  extends PlaybackWebTest{
 
 			injectScript();
 
-			//play video
 			result = result && playAction.startAction();
 
-
-	        // verify podded preroll
-	        result = result && event.validate("willPlaySingleAd_1", 60000);
+			result = result && event.validate("willPlaySingleAd_1", 60000);
 
 	        result = result && event.validate("singleAdPlayed_1", 150000);
 
@@ -56,27 +51,21 @@ public class PlaybackPoddedwithOverlayStandaloneTests  extends PlaybackWebTest{
 
 	        result = result && event.validate("singleAdPlayed_2", 160000);
 
-	        extentTest.log(PASS, "Played Preroll podded Ads");
 
 	        result = result && event.validate("playing_1", 160000);
 
 	        result = result && overlayValidator.validate("nonlinearAdPlayed_1", 90000);
 
-	        extentTest.log(PASS, "Overlay Played");
-
 	        result = result && seekValidator.validate("seeked_1", 14000);
 
 	        result = result && event.validate("played_1", 20000);
-
-	        extentTest.log(PASS, "Main Video played successfully");
-
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified PreRoll Ads test");
+		Assert.assertTrue(result, "Test failed");
 
 	}
 

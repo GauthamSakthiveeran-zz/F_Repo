@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +9,6 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest{
 
@@ -35,27 +32,22 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest{
 			driver.get(url);
 
             result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 
 			injectScript();
 
             result = result && playAction.startAction();
-	        loadingSpinner();
-            result = result &&  event.validate("singleAdPlayed_1",150000);
-	        extentTest.log(LogStatus.PASS, "Played Preroll ads");
 
-	        loadingSpinner();
-	        event.validate("playing_1",150000);
+            result = result &&  event.validate("singleAdPlayed_1",150000);
+
+            result = result && event.validate("playing_1",150000);
             result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 	            
-	        extentTest.log(PASS, "Verified Preroll Ads with Discovery");
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified PreRoll Ads test");
+		Assert.assertTrue(result, "Test failed");
 
 	}
 

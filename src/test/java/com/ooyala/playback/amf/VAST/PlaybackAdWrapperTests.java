@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf.VAST;
 
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -40,15 +38,14 @@ public class PlaybackAdWrapperTests extends PlaybackWebTest {
             result = result && playValidator.waitForPage();
 			injectScript();
 
-            result = result && playValidator.validate("playing_1", 6000);
-			extentTest.log(LogStatus.PASS, "Main video started to play");
+            result = result && playValidator.validate("playing_1", 10000);
 
             result = result && pauseAction.startAction();
-			fullScreenAction.startAction();
+            result = result &&  fullScreenAction.startAction();
 
-            result = result && volumeValidator.validate("", 6000);
-            result = result && seekValidator.validate("seeked_1", 6000);
-            result = result && event.validate("played_1", 6000);
+            result = result && volumeValidator.validate("", 10000);
+            result = result && seekValidator.validate("seeked_1", 10000);
+            result = result && event.validate("played_1", 10000);
 
 
 		} catch (Exception e) {

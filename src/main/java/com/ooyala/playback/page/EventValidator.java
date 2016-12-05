@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 /**
  * Created by soundarya on 11/14/16.
  */
@@ -43,17 +45,20 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validateElementPresence(String element) throws Exception {
-		return isElementPresent(By.id(element));
+		if(isElementPresent(By.id(element))){
+			extentTest.log(LogStatus.PASS, element + " presence verified.");
+			return true;
+		}
+		extentTest.log(LogStatus.FAIL, element + " not present.");
+		return false;
 	}
 	
-	public void validateForSpecificPlugins(String element, int timeOut, String adPlugin) throws Exception{
+	public boolean isAdPlugin(String adPlugin) throws Exception{
 		Map<String,String> map = parseURL();
-		
 		if (map!=null && map.get("ad_plugin")!=null && map.get("ad_plugin").contains(adPlugin)) {
-			validate(element, timeOut);
-			Thread.sleep(2000);
+			return true;
 		}
-		
+		return false;
 	}
 
 }

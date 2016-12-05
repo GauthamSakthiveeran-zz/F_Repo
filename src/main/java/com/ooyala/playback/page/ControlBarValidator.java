@@ -40,7 +40,7 @@ public class ControlBarValidator extends PlayBackPage implements
 		
 		if (!iscontrolshown) {
 			extentTest.log(LogStatus.INFO, "Control bar is hiden hence mouse hovering on it");
-            moveElement(getWebElement("CONTROL_BAR"));
+			moveElement(getWebElement("CONTROL_BAR"));
 
 		}
 		try {

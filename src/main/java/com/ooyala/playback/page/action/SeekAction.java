@@ -62,7 +62,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	@Override
 	public boolean startAction() throws Exception {
 		
-		if(time==0 && !seekTillEnd){
+		if(time==0 && seekTillEnd==false){
 			throw new Exception("Time to seek needs to be set! or seekTillEnd should be set to true");
 		}
 		
@@ -123,17 +123,17 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 			if (seekTime > 5) {
                 //Update after ticket is fixed pp.seek() api is not working if we try to seek less than 31 seconds form end of video
                 if(!getBrowser().equalsIgnoreCase("safari")){
-				seek(7, true);}
-                else{
+				seek(7, true);
+				} else{
                     seek(31,true);
                 }
-				// loadingSpinner(webDriver);
 				((JavascriptExecutor) driver).executeScript("pp.pause();");
 				Thread.sleep(2000);
 				((JavascriptExecutor) driver).executeScript("pp.play();");
 				break;
 			}
 		}
+		Thread.sleep(10000);
 	}
 
 	// As there is problem for pulse asset that if we seek the video then ads

@@ -155,6 +155,7 @@ public abstract class PlayBackPage extends WebPage {
         boolean result = false;
         try{
             Actions action = new Actions(driver);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             action.moveToElement(element).perform();
             result = true;
         }

@@ -24,15 +24,14 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
         WebElement player = getWebElement("OOPLAYER");
 
         if(player==null) {
-        //    extentTest.log(LogStatus.FAIL, "OOPLAYER is null");
             return false;
         }
         moveElement(player);
 
         clickOnIndependentElement("STATE_SCREEN_SELECTABLE");
-        Thread.sleep(1000);
+//        if(!clickOnIndependentElement("FULLSCREEN_BTN")) {
+
         if(!clickOnIndependentElement("FULLSCREEN_BTN_1")) {
-          //  extentTest.log(LogStatus.FAIL, "FULLSCREEN_BTN not found");
             return false;
         }
 
@@ -43,14 +42,12 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
                 .equalsIgnoreCase("Android"))) {
 
             if(!waitOnElement(By.id("fullscreenChanged_true"), 60000)) {
-             //   extentTest.log(LogStatus.FAIL, "fullscreenChangedtrue not found");
                 return false;
             }
 
             logger.info("Changed into Fullscreen");
 
         }
-        //extentTest.log(LogStatus.PASS, "Full Screen Validated!");
         return true;
 
     }
