@@ -37,6 +37,8 @@ public class BasicPlaybackTests extends PlaybackWebTest {
             throw new SkipException("HLS tests run only on Safari browser - Test Skipped");
         }
 
+		logger.info("Test Description : "+ testName.split(":")[1].toLowerCase() + "\n"+url);
+
 		try {
 			driver.get(url);
 
@@ -46,6 +48,8 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 			injectScript();
 
             result = result && play.validate("playing_1", 60000);
+
+			loadingSpinner();
 
 			Thread.sleep(2000);
 
