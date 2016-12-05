@@ -51,8 +51,6 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
             result = result && replayValidator.validate("replay_1", 60000);
 
-            logger.info("video replayed");
-
         } catch (Exception e) {
             e.printStackTrace();
             result =false;
