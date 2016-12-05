@@ -60,5 +60,13 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		}
 		return false;
 	}
+	
+	public boolean isVideoPlugin(String videoPlugin) throws Exception{
+		Map<String,String> map = parseURL();
+		if (map!=null && map.get("video_plugins")!=null && map.get("video_plugins").contains(videoPlugin)) {
+			return true;
+		}
+		return false;
+	}
 
 }

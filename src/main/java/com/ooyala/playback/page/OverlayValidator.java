@@ -2,6 +2,7 @@ package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -27,7 +28,12 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 			if(!waitOnElement("OVERLAY_CLOSE_BTN", 2000)){
 				extentTest.log(LogStatus.FAIL, "Overlay Close button not Shown");
 			}
-			if(!clickOnIndependentElement("OVERLAY_CLOSE_BTN")) return false;
+			try{
+				if(!clickOnIndependentElement("OVERLAY_CLOSE_BTN")) return false;
+			} catch(NoSuchElementException e){
+				if(!clickOnIndependentElement("OVERLAY_CLOSE_BTN_1")) return false;
+			}
+			
 			if(!waitOnElement(By.id(element), timeout)) return false;
 
 		} catch (Exception e) {

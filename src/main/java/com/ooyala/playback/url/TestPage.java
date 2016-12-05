@@ -11,6 +11,7 @@ public class TestPage {
 	TestPageData testpagedata = null;
 	String pluginType = null;
 	PlayerPropertyValue environmentType = null;
+	String additionalPlugins = "";
 	String vplugin = "";
 
 	/**
@@ -33,8 +34,9 @@ public class TestPage {
 	public String getURL(String sslEnabled,String embedCode, String pCode, String pbid,
 			String plugins, String adPlugin, String additionalPlugin,
 			String playerParameter) {
-		boolean result = false;
+
 		String url = "";
+		
 		try {
 			testpagedata.initializeData(sslEnabled,environmentType);
 
@@ -45,8 +47,24 @@ public class TestPage {
 							+ "\n";
 
 				}
+			}else{
+				vplugin = testpagedata.getPluginForStream(plugins);
+			}
+			
+			if(additionalPlugin.contains(",")){
+				String str[] = additionalPlugin.split(",");
+				for (int i = 0; i < str.length; i++) {
+					if(!testpagedata.getAdditionalPlugin(str[i]).isEmpty())
+						additionalPlugins = additionalPlugins + testpagedata.getAdditionalPlugin(str[i]) + "\n";
+					else
+						additionalPlugins = additionalPlugins + testpagedata.getPluginForAd(str[i]) + "\n";
 
-				url = testpagedata.baseURL
+				}
+			}else{
+				additionalPlugins = testpagedata.getAdditionalPlugin(additionalPlugin);
+			}
+
+			url = testpagedata.baseURL
 						+ "?ec="
 						+ embedCode
 						+ "&pbid="
@@ -68,42 +86,10 @@ public class TestPage {
 						+ URLEncoder.encode(
 								testpagedata.getPluginForAd(adPlugin), "UTF8")
 						+ "&additional_plugins="
-						+ URLEncoder.encode(testpagedata
-								.getAdditionalPlugin(additionalPlugin), "UTF8")
+						+ URLEncoder.encode(additionalPlugins, "UTF8")
 						+ "&options="
 						+ URLEncoder.encode(playerParameter, "UTF8");
-			} else {
-				url = testpagedata.baseURL
-						+ "?ec="
-						+ embedCode
-						+ "&pbid="
-						+ pbid
-						+ "&pcode="
-						+ pCode
-						+ "&core_player="
-						+ URLEncoder.encode(testpagedata.corePlayer, "UTF8")
-						+ "&video_plugins="
-						+ URLEncoder.encode(
-								testpagedata.getPluginForStream(plugins),
-								"UTF8")
-						+ "&html5_skin="
-						+ URLEncoder.encode(testpagedata.html5Skin, "UTF8")
-						+ "&skin_asset="
-						+ URLEncoder.encode(testpagedata.skinAsset, "UTF8")
-						+ "&skin_config="
-						+ URLEncoder.encode(testpagedata.getSkinConfigPlugin(
-								plugins, adPlugin, additionalPlugin), "UTF8")
-						+ "&ad_plugin="
-						+ URLEncoder.encode(
-								testpagedata.getPluginForAd(adPlugin), "UTF8")
-						+ "&additional_plugins="
-						+ URLEncoder.encode(testpagedata
-								.getAdditionalPlugin(additionalPlugin), "UTF8")
-						+ "&options="
-						+ URLEncoder.encode(playerParameter, "UTF8");
-
-			}
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
