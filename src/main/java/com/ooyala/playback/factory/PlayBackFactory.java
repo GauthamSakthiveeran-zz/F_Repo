@@ -57,13 +57,13 @@ public class PlayBackFactory {
 		return seekAction;
 
 	}
-	
-	public PoddedAdValidator getPoddedAdValidator(){
-		if(poddedAdValidator==null)
+
+	public PoddedAdValidator getPoddedAdValidator() {
+		if (poddedAdValidator == null)
 			poddedAdValidator = new PoddedAdValidator(driver);
 		return poddedAdValidator;
 	}
-	
+
 	public AdClickThroughValidator getAdClickThroughValidator() {
 		if (adClickThroughValidator == null)
 			adClickThroughValidator = new AdClickThroughValidator(driver);
@@ -71,29 +71,29 @@ public class PlayBackFactory {
 
 	}
 
-	public EncodingValidator getEncodingValidator(){
+	public EncodingValidator getEncodingValidator() {
 		if (encodingValidator == null)
 			encodingValidator = new EncodingValidator(driver);
 		return encodingValidator;
 
 	}
-	
+
 	public AdSkipButtonValidator getAdSkipButtonValidator() {
 		if (adSkipButtonValidator == null)
 			adSkipButtonValidator = new AdSkipButtonValidator(driver);
 		return adSkipButtonValidator;
 
 	}
-	
+
 	public OverlayValidator getOverlayValidator() {
 		if (overlayValidator == null)
 			overlayValidator = new OverlayValidator(driver);
 		return overlayValidator;
 
 	}
-	
-	public StateScreenAction getStateScreenAction(){
-		if(stateScreenAction==null)
+
+	public StateScreenAction getStateScreenAction() {
+		if (stateScreenAction == null)
 			stateScreenAction = new StateScreenAction(driver);
 		return stateScreenAction;
 	}
@@ -267,19 +267,19 @@ public class PlayBackFactory {
 		return saasPortValidator;
 	}
 
-	public DifferentElementValidator getDifferentElements(){
+	public DifferentElementValidator getDifferentElements() {
 		if (differentElement == null)
 			differentElement = new DifferentElementValidator(driver);
 		return differentElement;
 	}
 
-	public IsAdPlayingValidator isAdPlaying(){
+	public IsAdPlayingValidator isAdPlaying() {
 		if (isAdPlaying == null)
 			isAdPlaying = new IsAdPlayingValidator(driver);
 		return isAdPlaying;
 	}
 
-	public static void destroyInstance() {
+	public void destroyInstance() {
 		playbackFactory = null;
 	}
 
