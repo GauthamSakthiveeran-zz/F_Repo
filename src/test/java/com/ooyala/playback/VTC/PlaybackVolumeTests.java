@@ -32,11 +32,11 @@ public class PlaybackVolumeTests extends PlaybackWebTest{
 
         logger.info("Url is : "+url);
 
-        boolean result = false;
+        boolean result = true;
         try {
             driver.get(url);
 
-            play.waitForPage();
+            result=result && play.waitForPage();
 
             Thread.sleep(10000);
 
@@ -44,7 +44,7 @@ public class PlaybackVolumeTests extends PlaybackWebTest{
 
             logger.info("video is playing");
 
-            play.validate("playing_1", 60000);
+            result=result && play.validate("playing_1", 60000);
 
             Boolean isAdplaying = isAdPlayingValidator.validate("CheckAdPlaying",60);
             if (isAdplaying) {
@@ -56,19 +56,22 @@ public class PlaybackVolumeTests extends PlaybackWebTest{
 
             sleep(4000);
 
-            volumeValidator.validate("VOLUME_MAX", 60000);
+            result=result && volumeValidator.validate("VOLUME_MAX", 60000);
 
             logger.info("validated video volume at full range");
 
-            seekValidator.validate("seeked_1",60);
+            sleep(3000);
+
+            result=result && seekValidator.validate("seeked_1",60);
 
             eventValidator.validate("played_1", 60000);
 
             logger.info("video played");
 
-            result = true;
+
         } catch (Exception e) {
             e.printStackTrace();
+            result = false;
         }
         Assert.assertTrue(result, "Playback Volume tests failed");
     }
