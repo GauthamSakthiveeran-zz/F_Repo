@@ -14,7 +14,7 @@
 		
 		<classes>
 		
-			<!-- 
+			
 			<class name="com.ooyala.playback.amf.VAST.PlaybackMidrollOverlayUpNextTests"/>
 			<class name="com.ooyala.playback.amf.VAST.PlaybackPoddedwithOverlayStandaloneTests"/>
 			<class name="com.ooyala.playback.amf.VAST.PlaybackVastPreIMAMidlAdsTests"/>		
@@ -25,7 +25,7 @@
 			<class name="com.ooyala.playback.amf.PlaybackCustomeInteractionTests"/>
 			<class name="com.ooyala.playback.amf.PlaybackMp4PlayerSwitchingSupportTests"/>
 			<class name="com.ooyala.playback.amf.PlaybackMidRollPoddedAdsTests"/>
-			 -->
+			
 			
 			<class name="com.ooyala.playback.amf.PlaybackMidRollAdsTests"/>
 			<class name="com.ooyala.playback.amf.PlaybackSkipAdsTests"/>
