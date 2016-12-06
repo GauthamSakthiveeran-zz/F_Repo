@@ -1,8 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -25,7 +22,7 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest{
 	private SeekValidator seekValidator;
 	private OverlayValidator overLayValidator;
 	
-	@Test(groups = "amf", dataProvider = "testUrlData")
+	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyMidrollOverlay(String testName, String url)
 			throws OoyalaException {
 		
@@ -36,7 +33,6 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest{
 			driver.get(url);
 
             result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 			
 			injectScript();
 
@@ -44,29 +40,24 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest{
 			
 			if (playValidator.isStreamingProtocolPrioritized("hds")) { 
 				extentTest.log(LogStatus.INFO,"For Flash Specific cases");
-                event.validate("MidRoll_willPlaySingleAd_1", 160000);
-                event.validate("singleAdPlayed_1", 160000);
-                extentTest.log(PASS, "Midroll Ad Played");
+				result = result && event.validate("MidRoll_willPlaySingleAd_1", 160000);
+				result = result && event.validate("singleAdPlayed_1", 160000);
             }
             result = result && event.validate("showNonlinearAd_1", 160000);
-            sleep(2000);
 
             result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
             
-            extentTest.log(PASS, "Overlay Ads Played");
-
             result = result && seekValidator.validate("seeked_1",160000);
 
-            event.validate("videoPlayed_1", 160000);
-            result = result &&  event.validate("played_1", 160000);
-            extentTest.log(PASS, "Verified MidrollOverlay ads");
+            result = result && event.validate("videoPlayed_1", 160000);
+            result = result && event.validate("played_1", 160000);
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified");
+		Assert.assertTrue(result, "Tests failed");
 	}
 
 }

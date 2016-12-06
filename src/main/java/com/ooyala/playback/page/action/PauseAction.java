@@ -35,22 +35,21 @@ public class PauseAction extends PlayBackPage implements PlayerAction {
 
 	}
 	
-	public void startActionOnScreen() throws Exception{
+	public boolean startActionOnScreen() throws Exception{
 		try {
-			waitOnElement("STATE_SCREENS", 50000);
-			clickOnIndependentElement("STATE_SCREENS");
+			if(!waitOnElement("STATE_SCREENS", 50000)) return false;
+			if(!clickOnIndependentElement("STATE_SCREENS")) return false;
 			logger.info("Clicked on screen to pause the video");
 		} catch (Exception e) {
             moveElement(getWebElement("PAUSE_BUTTON"));
 			sleep(5000);
 			try {
-				PlayBackFactory.getInstance(driver).getPauseAction().startAction();
-				logger.info("Clicked on Pause button to pause the video");
+				return PlayBackFactory.getInstance(driver).getPauseAction().startAction();
 			} catch (Exception e1) {
-				clickOnIndependentElement("STATE_SCREEN_SELECTABLE");
-				logger.info("Clicked on screen which is selectable to pause the video");
+				return clickOnIndependentElement("STATE_SCREEN_SELECTABLE");
 			}
 		}
+		return true;
 	}
 
 }

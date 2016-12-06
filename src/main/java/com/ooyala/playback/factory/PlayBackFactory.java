@@ -44,6 +44,8 @@ public class PlayBackFactory {
 	private IsAdPlayingValidator isAdPlaying;
 	private EncodingValidator encodingValidator;
 	private MultiplePlayerValidator multiplePlayerValidator;
+	private AdClickThroughValidator adClickThroughValidator;
+	private PoddedAdValidator poddedAdValidator;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
@@ -53,6 +55,19 @@ public class PlayBackFactory {
 		if (seekAction == null)
 			seekAction = new SeekAction(driver);
 		return seekAction;
+
+	}
+	
+	public PoddedAdValidator getPoddedAdValidator(){
+		if(poddedAdValidator==null)
+			poddedAdValidator = new PoddedAdValidator(driver);
+		return poddedAdValidator;
+	}
+	
+	public AdClickThroughValidator getAdClickThroughValidator() {
+		if (adClickThroughValidator == null)
+			adClickThroughValidator = new AdClickThroughValidator(driver);
+		return adClickThroughValidator;
 
 	}
 

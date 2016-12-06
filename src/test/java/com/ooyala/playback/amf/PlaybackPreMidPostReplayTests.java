@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -53,47 +51,37 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
             result = result &&  event.validate("endScreen", 120000);
             result = result && replayValidator.validate("replay_1", 120000);
 	        
-	        extentTest.log(PASS, "Verified Pre_Mid_Post Basic control Replay");
-
             result = result && event.validate("PreRoll_willPlayAds_OnReplay", 120000);
 	        
 	        
 	        if(!getPlatform().equalsIgnoreCase("Android")) {
-	        	adClickThrough.validate("", 120000);
+	        	result = result && adClickThrough.validate("", 120000);
 	        }
 
-	        event.validate("singleAdPlayed_4", 120000);
+	        result = result && event.validate("singleAdPlayed_4", 120000);
 
-	        extentTest.log(PASS, "Verified Preroll ad is playing on replay");
-
-	        event.validate("MidRoll_willPlayAds_OnReplay", 120000);
+	        result = result && event.validate("MidRoll_willPlayAds_OnReplay", 120000);
 
 	        if(!getPlatform().equalsIgnoreCase("Android")) {
-	        	adClickThrough.validate("", 120000);
+	        	result = result && adClickThrough.validate("", 120000);
 	        }
 
-	        event.validate("singleAdPlayed_5", 120000);
+	        result = result && event.validate("singleAdPlayed_5", 120000);
 
-	        extentTest.log(PASS, "Verified Midroll ad is playing on replay");
-
-	        event.validate("PostRoll_willPlayAds_OnReplay", 120000);
+	        result = result && event.validate("PostRoll_willPlayAds_OnReplay", 120000);
 
 	        if(!getPlatform().equalsIgnoreCase("Android")) {
-	        	adClickThrough.validate("", 120000);
+	        	result = result && adClickThrough.validate("", 120000);
 	        }
 
-	        event.validate("singleAdPlayed_6", 120000);
-
-	        extentTest.log(PASS, "Verified Postroll ad is playing on replay");
-
-	        extentTest.log(PASS, "Verified Pre_Mid_Post Basic control test");
+	        result = result && event.validate("singleAdPlayed_6", 120000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified PreRoll Ads test");
+		Assert.assertTrue(result, "Test failed");
 
 	}
 

@@ -34,15 +34,12 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 
 			driver.get(url);
 
-
             result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 
-			injectScript();
+            injectScript();
 
             result = result && playAction.startAction();
 
-	        loadingSpinner();
             result = result &&  event.validate("PreRoll_willPlayAds", 150000);
 
             result = result &&  event.validate("adsPlayed_1", 2000000);
@@ -50,46 +47,31 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 	        extentTest.log(PASS, "Played Preroll Ads");
 	        event.validate("playing_1", 150000);
 
-	        //TestUtilities.seekPlayback(webDriver);
 	        sleep(5000);
-	        loadingSpinner();
 
 	        seekAction.seekSpecific(15);
 
-	        loadingSpinner();
             result = result &&  event.validate( "MidRoll_willPlayAds", 150000);
-	        event.validate( "adsPlayed_2", 150000);
-	        loadingSpinner();
+            result = result &&  event.validate( "adsPlayed_2", 150000);
 
-	        extentTest.log(PASS, "Played Midroll Ads");
 	        seekAction.seekSpecific(15);
-
-	        loadingSpinner();
 
             result = result &&  event.validate( "PostRoll_willPlayAds", 150000);
-	        event.validateForSpecificPlugins("singleAdPlayed_6", 200000, "pulse");
-	        
-	        event.validate("adsPlayed_3", 150000); // TODO needs to be ignored for specific plugins
-	        
-	        /*if(map!=null && map.get("ad_plugin")!=null && map.get("ad_plugin").contains("pulse")) {
-	        	event.validate("singleAdPlayed_6", 200);
-	        }else {
-	        	event.validate("adsPlayed_3", 150);
-	        }*/
-
-	        extentTest.log(PASS, "Played Postroll Ads");
-	        
-	        event.validateForSpecificPlugins("seeked_1", 150000, "pulse");
-
-            result = result &&   event.validate("played_1", 200000);
-	        extentTest.log(PASS, "Verified PreMidPostRoll Ads Test");
+            
+            if(event.isAdPlugin("pulse")){
+				result = result && event.validate("singleAdPlayed_6", 60000);
+				result = result && event.validate("seeked_1", 60000);
+            } else
+	        	result = result && event.validate("adsPlayed_3", 60000);
+            
+            result = result && event.validate("played_1", 200000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified PreRoll Ads test");
+		Assert.assertTrue(result, "Verified Pre Mid Post Roll Ads test");
 
 	}
 

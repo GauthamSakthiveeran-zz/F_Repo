@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -33,7 +31,6 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest{
 			driver.get(url);
 
             result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 			
 			injectScript();
 
@@ -41,20 +38,19 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest{
 
             result = result && seekValidator.validate("seeked_1", 60000);
 			
-			event.validate("videoPlayed_1", 200000);
+            result = result && event.validate("videoPlayed_1", 200000);
 
             result = result && poddedAdValidator.validate("countPoddedAds", 120000);
 			
-			event.validate("seeked_1", 60000);
+            result = result && event.validate("seeked_1", 60000);
             result = result && event.validate("played_1", 200000);
-	        extentTest.log(PASS, "Verified MidrollPodded Ads Tests");
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified");
+		Assert.assertTrue(result, "Tests failed");
 	}
 
 }

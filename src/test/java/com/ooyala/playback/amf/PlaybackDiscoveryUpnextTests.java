@@ -1,8 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -28,8 +25,6 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 	private AdClickThroughValidator adClickThroughValidator;
 	private DiscoveryValidator discoveryValidator;
 
-	static int index = 0;
-
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyDiscoveryUpNext(String testName, String url)
 			throws Exception {
@@ -41,7 +36,6 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 			driver.get(url);
 
             result = result && playValidator.waitForPage();
-			Thread.sleep(10000);
 
 			injectScript();
 
@@ -51,16 +45,12 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 				event.validate("singleAdPlayed_1", 90000);
 
             result = result &&	event.validate("playing_1", 90000);
-			extentTest.log(PASS, "Video starting");
-			sleep(2000);
 
-            result = result && seekAction.setTime(10).fromLast().startAction();//seek(10, true);
+            result = result && seekAction.setTime(10).fromLast().startAction();
 
             result = result && event.validate("seeked_1", 180000);
 
             result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
-			extentTest.log(PASS, "Clicked video loaded");
-			extentTest.log(PASS, "Verified DiscoveryUpNext tests");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,7 +58,7 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 		}
 
 		Assert.assertTrue(result,
-				"Playback CC Enabled MidRoll Ads tests failed");
+				"DiscoveryUpNext tests failed");
 
 	}
 

@@ -38,19 +38,17 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest{
 
 			injectScript();
 			
-			playAction.startAction();
-	        loadingSpinner();
-            result = result && event.validate("PreRoll_willPlayAds", 120000);
+			result = result && playAction.startAction();
+
+			result = result && event.validate("PreRoll_willPlayAds", 120000);
 
             result = result && event.validate("adsPlayed_1", 200000);
 
             result = result && event.validate("adPodEnd_vast_2_1", 180000);
 
-	        extentTest.log(PASS, "Played Vast Preroll Ads");
-
             result = result && event.validate("playing_1", 90000);
 
-	        seekAction.seekTillEnd().startAction();
+            result = result && seekAction.seekTillEnd().startAction();
 
             result = result && event.validate("MidRoll_willPlayAds", 100000);
 
@@ -58,18 +56,14 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest{
 
             result = result &&  event.validate("AD_POD_END_IMA", 20000);
 
-	        extentTest.log(PASS, "Played IMA Midroll Ads");
-
             result = result &&  event.validate("played_1", 200000);
-
-	        extentTest.log(PASS, "Verified VastPreIMAMidlAdsTests Ads Test");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified PreRoll Ads test");
+		Assert.assertTrue(result, "Test failed");
 
 	}
 

@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -32,26 +30,25 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest{
 			driver.get(url);
 
             result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 
 			injectScript();
 
-			playValidator.validate("playing_1", 90000);
+			result = result && playValidator.validate("playing_1", 90000);
             result = result && seekValidator.validate("seeked_1", 90000);
             result = result && event.validate("videoPlayed_1", 120000);
             result = result && event.validate("willPlaySingleAd_1", 90000);
-	        extentTest.log(PASS, "Postroll Ad started");
-            result = result && event.validate("singleAdPlayed_1", 90000);
-	        extentTest.log(PASS, "Postroll Ad completed");
-            result = result && event.validate("played_1", 200000);
-	        extentTest.log(PASS, "Verified PostRoll Ads test");
 
+            result = result && event.validate("singleAdPlayed_1", 90000);
+
+            result = result && event.validate("played_1", 200000);
+
+            
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified PreRoll Ads test");
+		Assert.assertTrue(result, "Tests failed");
 
 	}
 

@@ -1,8 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -43,32 +40,25 @@ public class PlaybackSkipAdsTests extends  PlaybackWebTest{
 
 			injectScript();
 
-			playAction.startAction();
-
-	        loadingSpinner();
+			result = result &&  playAction.startAction();
 
 	        result = result && event.validate("willPlaySingleAd_1", 150000);
 
             result = result && skipButtonValidator.validate("", 120000);
 	        
-	        extentTest.log(PASS, "Clicked on Skip button");
-
             result = result && event.validate("singleAdPlayed_1", 150000);
             result = result && event.validate("playing_1", 150000);
-	        sleep(500);
 
             result = result &&  seekValidator.validate("seeked_1", 150000);
 
             result = result &&  event.validate( "played_1", 150000);
-	        extentTest.log(PASS, "Main Video played successfully");
-	        extentTest.log(PASS, "Verified SkipAds Test");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified PreRoll Ads test");
+		Assert.assertTrue(result, "Test failed");
 
 	}
 

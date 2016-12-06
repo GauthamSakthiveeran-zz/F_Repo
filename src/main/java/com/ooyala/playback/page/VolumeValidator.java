@@ -24,6 +24,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		 * Here we will tell Facile to add the page elements of our Login Page
 		 */
 		addElementToPageElements("volume");
+		addElementToPageElements("controlbar");
 	}
 
 	@Override
@@ -64,7 +65,8 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			
 			
 		} catch (Exception e) {
-            Log.info("Volume control is not working properly"
+			e.printStackTrace();
+			extentTest.log(LogStatus.FAIL,"Volume control is not working properly"
 					+ e.getMessage());
             return false;
 		}
