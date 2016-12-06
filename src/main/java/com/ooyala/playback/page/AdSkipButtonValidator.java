@@ -34,7 +34,7 @@ public class AdSkipButtonValidator extends PlayBackPage implements
 //						&& clickOnIndependentElement("AD_SKIP_BTN_CUSTOM") 
 //						&& waitOnElement(By.id("skipAd_1"), 60000);
 			else
-				return waitOnElement("AD_SKIP_BTN", 2000) 
+				return waitOnElement("AD_SKIP_BTN", 20000) 
 					&& clickOnIndependentElement("AD_SKIP_BTN") 
 					&& waitOnElement(By.id("skipAd_1"), 60000);
 

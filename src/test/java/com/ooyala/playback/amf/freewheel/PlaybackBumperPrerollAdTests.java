@@ -43,7 +43,6 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
 
             result = result && seekAction.seekTillEnd().startAction();
 
-            result = result && event.validate("replay", 30000);
             result = result && replayValidator.validate("replay_1", 30000);
 
             result = result && event.validate("BumperAdOnReplay", 30000);
