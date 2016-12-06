@@ -33,7 +33,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && playValidator.validate("playing_1", 90000);
-			if (!event.isVideoPlugin("bit_wrapper"))
+			if (!event.isVideoPluginPresent("bit_wrapper"))
 				result = result && seekValidator.validate("seeked_1", 90000);
 
 			result = result && event.validate("videoPlayed_1", 200000);

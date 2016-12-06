@@ -20,14 +20,12 @@
 			<class name="com.ooyala.playback.amf.VAST.PlaybackPoddedwithOverlayStandaloneTests"/>
 			<class name="com.ooyala.playback.amf.VAST.PlaybackVastPreIMAMidlAdsTests"/>		
 		
-			<class name="com.ooyala.playback.amf.freewheel.PlaybackBumperPrerollAdTests"/>
 		
 			<class name="com.ooyala.playback.amf.PlaybackPlayerWithoutSkinTests"/> 
-			<class name="com.ooyala.playback.amf.PlaybackPreRollAdsTests"/>
+			<class name="com.ooyala.playback.amf.PlaybackPreRollAdsTests"/> 
 			<class name="com.ooyala.playback.amf.PlaybackPrerollOverlayAdsTests"/> 
 			<class name="com.ooyala.playback.amf.PlaybackPreRollPoddedAdsTests"/>
 			<class name="com.ooyala.playback.amf.PlaybackSkipAdsTests"/>
-<!-- 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"/> -->
 			<class name="com.ooyala.playback.amf.PlaybackCustomeInteractionTests"/>
 			<class name="com.ooyala.playback.amf.PlaybackMp4PlayerSwitchingSupportTests"/>
 			<class name="com.ooyala.playback.amf.PlaybackMidRollPoddedAdsTests"/>
@@ -48,6 +46,11 @@
 			<class name="com.ooyala.playback.amf.PlaybackPrerollAdsDiscoveryTests"/>
 			
 			<class name="com.ooyala.playback.amf.VAST.PlaybackAdWrapperTests"/>
+			
+			<!-- 			<class name="com.ooyala.playback.amf.freewheel.PlaybackBumperPrerollAdTests"/> -->
+			<!-- 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"/> -->
+			
+			
 			
 		</classes>
 		

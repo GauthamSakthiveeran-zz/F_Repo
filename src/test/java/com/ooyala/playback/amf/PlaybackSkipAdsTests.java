@@ -34,7 +34,6 @@ public class PlaybackSkipAdsTests extends PlaybackWebTest {
 			driver.get(url);
 
 			result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 
 			injectScript();
 

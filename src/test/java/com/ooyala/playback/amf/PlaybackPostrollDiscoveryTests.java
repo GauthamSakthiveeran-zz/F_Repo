@@ -58,7 +58,7 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 
 			result = result && event.validate("willPlaySingleAd_1", 90000);
 
-			if (event.isAdPlugin("pulse"))
+			if (event.isAdPluginPresent("pulse"))
 				result = result && event.validate("singleAdPlayed_2", 60000);
 			else
 				result = result && event.validate("singleAdPlayed_1", 60000);

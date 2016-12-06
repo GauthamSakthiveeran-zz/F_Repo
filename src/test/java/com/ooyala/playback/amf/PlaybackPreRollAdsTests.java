@@ -37,8 +37,8 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			if ((event.isVideoPlugin("main") && event.isAdPlugin("freewheel"))
-					|| event.isVideoPlugin("osmf") && event.isAdPlugin("ima")) {
+			if ((event.isVideoPluginPresent("main") && event.isAdPluginPresent("freewheel"))
+					|| event.isVideoPluginPresent("osmf") && event.isAdPluginPresent("ima")) {
 				result = result && event.validate("PreRoll_willPlayAds", 60000);
 				result = result && event.validate("adsPlayed_1", 160000);
 			} else {

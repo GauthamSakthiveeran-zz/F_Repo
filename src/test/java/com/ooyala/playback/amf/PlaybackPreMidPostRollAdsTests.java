@@ -58,7 +58,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("PostRoll_willPlayAds", 150000);
 
-			if (event.isAdPlugin("pulse")) {
+			if (event.isAdPluginPresent("pulse")) {
 				result = result && event.validate("singleAdPlayed_6", 60000);
 				result = result && event.validate("seeked_1", 60000);
 			} else

@@ -37,7 +37,7 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 
 			result = result && playValidator.validate("playing_1", 90000);
 
-            if(!event.isAdPlugin("pulse"))
+            if(!event.isAdPluginPresent("pulse"))
             	result = result && seekAction.seekTillEnd().startAction();
 
 			result = result && event.validate("videoPlayed_1", 200000);
@@ -45,7 +45,7 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 			result = result
 					&& poddedAdValidator.validate("countPoddedAds", 60000);
 
-            if(!event.isAdPlugin("pulse"))
+            if(!event.isAdPluginPresent("pulse"))
 				result = result && event.validate("seeked_1", 60000);
 
 			result = result && event.validate("played_1", 200000);
