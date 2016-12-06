@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AdClickThroughValidator;
 import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
@@ -22,7 +21,6 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
-	private AdClickThroughValidator adClickThroughValidator;
 	private DiscoveryValidator discoveryValidator;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
@@ -39,10 +37,8 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 
 			injectScript();
 
-			result = result && playAction.startAction();
+            result = result && playAction.startAction();
 
-			if (adClickThroughValidator.isAdPlaying())
-				event.validate("singleAdPlayed_1", 90000);
 
 			result = result && event.validate("playing_1", 90000);
 

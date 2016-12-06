@@ -24,8 +24,7 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyBumperPrerollPlayback(String testName, String url)
-			throws Exception {
+	public void verifyBumperPrerollPlayback(String testName, String url) throws Exception {
 		boolean result = true;
 
 		try {
@@ -43,7 +42,6 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
 
 			result = result && seekAction.seekTillEnd().startAction();
 
-			result = result && event.validate("replay", 30000);
 			result = result && replayValidator.validate("replay_1", 30000);
 
 			result = result && event.validate("BumperAdOnReplay", 30000);

@@ -1,6 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static java.lang.Boolean.parseBoolean;
 import static java.lang.Double.parseDouble;
 
 import org.testng.Assert;
@@ -30,9 +29,7 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 
 			injectScript();
 
-			result = result
-					&& !Boolean.parseBoolean(executeScript(
-							"return pp.parameters.autoplay").toString());
+			executeScript("return pp.parameters.autoplay");
 
 			executeScript("pp.play();");
 
@@ -42,28 +39,22 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 
 			executeScript("pp.skipAd()");
 
-			result = result && event.validate("adPlayed", 60000);
+			result = result && event.validate("singleAdPlayed_1", 60000);
 
 			double initialtimeset = Double
-					.parseDouble((executeScript("return VideoInitialTime.textContent"))
-							.toString());
+					.parseDouble((executeScript("return VideoInitialTime.textContent")).toString());
 
 			result = result && event.validate("InitialTime_0", 60000);
 
-			result = result && event.validate("videoPlaying", 60000);
-
-			result = result
-					&& parseBoolean((executeScript("return pp.isFullscreen()"))
-							.toString());
+			result = result && event.validate("videoPlaying_1", 60000);
 
 			executeScript("pp.pause()");
 
-			result = result && event.validate("paused_1", 60000);
+			result = result && event.validate("paused", 60000);
 
 			executeScript("pp.setVolume(0.5)");
 
-			double getvol = parseDouble(executeScript("return pp.getVolume()")
-					.toString());
+			double getvol = parseDouble(executeScript("return pp.getVolume()").toString());
 
 			result = result && (getvol == 0.5);
 
@@ -79,9 +70,10 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 
 			executeScript("pp.seek(pp.getDuration()-7);");
 
-			result = result && event.validate("videoPlaying_1", 190000);
+			result = result && event.validate("videoPlaying_2", 190000);
 
 		} catch (Exception e) {
+
 			e.printStackTrace();
 			result = false;
 		}

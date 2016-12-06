@@ -24,8 +24,7 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPrerollOverlay(String testName, String url)
-			throws OoyalaException {
+	public void verifyPrerollOverlay(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -41,10 +40,17 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 
 			// added condition for IMA OVerlay as overlay is showing
 			// intermittently PBI-1825
+			if (!event.isAdPlugin("ima") || !event.isAdPlugin("freewheel"))
+				result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
+
+			result = result && event.validate("videoPlaying_1", 90000);
+
+			result = result && seekValidator.validate("seeked_1", 120000);
+
+			// added condition for IMA OVerlay as overlay is showing
+			// intermittently PBI-1825
 			if (!event.isAdPlugin("ima"))
-				result = result
-						&& overLayValidator.validate("nonlinearAdPlayed_1",
-								160000);
+				result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
 
 			result = result && event.validate("videoPlaying_1", 90000);
 
