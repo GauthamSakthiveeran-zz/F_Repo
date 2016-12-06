@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf.VAST;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

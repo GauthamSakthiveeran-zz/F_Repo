@@ -26,7 +26,7 @@ public class UpNextValidator extends PlayBackPage implements PlaybackValidator {
 		
 		try{
 			return 
-					waitOnElement("UPNEXT_CONTENT", 60000)
+					waitOnElement("UPNEXT_CONTENT", 120000)
 					&& waitOnElement("CONTENT_METADATA", 60000)
 					&& clickOnIndependentElement("UPNEXT_CLOSE_BTN");
 		}catch(Exception ex){

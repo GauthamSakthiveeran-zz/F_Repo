@@ -30,7 +30,7 @@ public class DiscoveryValidator extends PlayBackPage implements
 
 	}
 	
-	private boolean validateDiscoveryToaster() throws Exception{
+	public boolean validateDiscoveryToaster() throws Exception{
 		try {
 			clickOnIndependentElement("PAUSE_BUTTON");
 			waitOnElement("DISCOVERY_TOASTER", 60000);
@@ -50,7 +50,7 @@ public class DiscoveryValidator extends PlayBackPage implements
 		return true;
 	}
 	
-	private boolean validateLeftRightButton() throws Exception{
+	public boolean validateLeftRightButton() throws Exception{
 		List<WebElement> count = getWebElementsList("DISCOVERY_IMG_WRAPPER");
 
 		logger.info("Count Value :" + count.size());
@@ -74,7 +74,7 @@ public class DiscoveryValidator extends PlayBackPage implements
 		return true;
 	}
 	
-	private boolean validateImageStyle(){
+	public boolean validateImageStyle(){
 		if(!clickOnIndependentElement("IMAGE_STYLE")) return false;
         if(!waitOnElement(By.id("reportDiscoveryClick_1"), 60000)) return false;
 
@@ -91,7 +91,7 @@ public class DiscoveryValidator extends PlayBackPage implements
 					&& waitOnElement(By.id("videoPreload_1"), 60000);
 		}
 
-		loadingSpinner();
+//		loadingSpinner();
 		return false;
 	}
 	

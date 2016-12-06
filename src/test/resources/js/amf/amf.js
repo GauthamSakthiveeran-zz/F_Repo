@@ -141,10 +141,12 @@ function subscribeToEvents() {
 				
 				if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
 					OO.$('#ooplayer').append('<p id=MidRoll_willPlayAds_'+willPlayAdsEventOrder+'>MidRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
+					OO.$('#ooplayer').append('<p id=MidRoll_willPlayAds>MidRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
 					willPlayAdsEventOrder++;
 				}
 				if(videoPlayedEventOrder == 2){
 					OO.$('#ooplayer').append('<p id=PostRoll_willPlayAds'+'>PostRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
+					
 					adReplayEventOrder++;
 					willPlayAdsEventOrder++;
 				}

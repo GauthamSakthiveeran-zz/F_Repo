@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.UpNextValidator;
 import com.ooyala.playback.page.action.PlayAction;
@@ -22,7 +21,6 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest{
 	private EventValidator event;
 	private PlayAction playAction;
 	private PlayValidator playValidator;
-	private PauseValidator pauseValidator;
 	private DiscoveryValidator discoveryValidator;
 	private SeekAction seekAction;
 	private UpNextValidator upNextValidator;
@@ -38,20 +36,23 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest{
 			driver.get(url);
 
             result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 
 			injectScript();
 
             result = result && playValidator.validate("playing_1", 150000);
+            
+            Thread.sleep(3000);
 
-            result = result && pauseValidator.validate("paused_1", 60000);
-
-            result = result && discoveryValidator.validate("reportDiscoveryClick_1",60000);
-
-            result = result && playAction.startActionOnScreen();
-	        
-	        seekAction.setTime(10).fromLast().startAction();
-
+            result = result && discoveryValidator.validateDiscoveryToaster();
+            
+            result = result && discoveryValidator.validateLeftRightButton();
+            
+            result = result && discoveryValidator.clickOnDiscoveryCloseButton("DISCOVERY_CLOSE_BTN",20000);
+            
+            result = result && playAction.startAction();
+            
+            result = result && seekAction.fromLast().setTime(10).startAction();
+            
             result = result && upNextValidator.validate("", 60000);
 
             result = result && event.validate("willPlaySingleAd_1", 90000);

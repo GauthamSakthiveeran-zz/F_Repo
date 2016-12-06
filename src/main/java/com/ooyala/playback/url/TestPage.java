@@ -60,8 +60,10 @@ public class TestPage {
 						additionalPlugins = additionalPlugins + testpagedata.getPluginForAd(str[i]) + "\n";
 
 				}
-			}else{
+			}else if(!additionalPlugin.isEmpty()){
 				additionalPlugins = testpagedata.getAdditionalPlugin(additionalPlugin);
+				if(additionalPlugins.isEmpty())
+					additionalPlugins = testpagedata.getPluginForStream(additionalPlugin);
 			}
 
 			url = testpagedata.baseURL
