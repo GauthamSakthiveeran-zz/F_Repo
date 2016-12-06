@@ -40,7 +40,6 @@ import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.url.Testdata;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.ooyala.qe.common.util.PropertyReader;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -51,7 +50,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public static Logger logger = Logger.getLogger(PlaybackWebTest.class);
 	protected String browser;
 	protected ChromeDriverService service;
-	protected PropertyReader propertyReader;
+	// protected PropertyReader propertyReader;
 	protected PlayBackFactory pageFactory;
 	protected ExtentReports extentReport;
 	protected ExtentTest extentTest;
@@ -61,7 +60,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public PlaybackWebTest() throws OoyalaException {
 
 		try {
-			propertyReader = PropertyReader.getInstance("config.properties");
+			// propertyReader = PropertyReader.getInstance("config.properties");
 		} catch (Exception e) {
 			throw new OoyalaException("could not read properties file");
 		}
