@@ -11,18 +11,18 @@ import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest{
+public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 
 	public PlaybackPrerollOverlayAdsTests() throws OoyalaException {
 		super();
 	}
-	
+
 	private EventValidator event;
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private OverlayValidator overLayValidator;
 	private SeekValidator seekValidator;
-	
+
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyPrerollOverlay(String testName, String url)
 			throws OoyalaException {
@@ -33,21 +33,24 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest{
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 
 			injectScript();
 
-            result = result && playAction.startAction();
-            
-	        // added condition for IMA OVerlay as overlay is showing intermittently PBI-1825
-            if(!event.isAdPlugin("ima"))
-            	result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
-            
-            result = result &&  event.validate("videoPlaying_1", 90000);
-	        
-            result = result &&  seekValidator.validate("seeked_1", 120000);
+			result = result && playAction.startAction();
 
-            result = result &&  event.validate("played_1", 190000);
+			// added condition for IMA OVerlay as overlay is showing
+			// intermittently PBI-1825
+			if (!event.isAdPlugin("ima"))
+				result = result
+						&& overLayValidator.validate("nonlinearAdPlayed_1",
+								160000);
+
+			result = result && event.validate("videoPlaying_1", 90000);
+
+			result = result && seekValidator.validate("seeked_1", 120000);
+
+			result = result && event.validate("played_1", 190000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

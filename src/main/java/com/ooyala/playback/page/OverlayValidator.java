@@ -22,40 +22,51 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 
 	public boolean validate(String element, int timeout) throws Exception {
 		try {
-//			if(!waitOnElement("OVERLAY_CLOSE_BTN", 40000)) return false;
-//			extentTest.log(LogStatus.PASS, "Overlay Shown");
-			if(!waitOnElement("OVERLAY_CLOSE_BTN", 2000)){
-				extentTest.log(LogStatus.FAIL, "Overlay Close button not Shown");
+			// if(!waitOnElement("OVERLAY_CLOSE_BTN", 40000)) return false;
+			// extentTest.log(LogStatus.PASS, "Overlay Shown");
+			if (!waitOnElement("OVERLAY_CLOSE_BTN", 2000)) {
+				extentTest
+						.log(LogStatus.FAIL, "Overlay Close button not Shown");
 			}
-			if(!clickOnIndependentElement("OVERLAY_CLOSE_BTN")) return false;
-			if(!waitOnElement(By.id(element), timeout)) return false;
+			if (!clickOnIndependentElement("OVERLAY_CLOSE_BTN"))
+				return false;
+			if (!waitOnElement(By.id(element), timeout))
+				return false;
 
 		} catch (Exception e) {
 			logger.info("No close button for Overlay");
 			logger.info("No close button seen in normal screen on Overlay....trying in Fullscreen \n");
 			FullScreenAction fullScreenAction = PlayBackFactory.getInstance(
 					driver).getFullScreenAction();
-			if(!fullScreenAction.startAction()) return false;
+			if (!fullScreenAction.startAction())
+				return false;
 
 			if (!getBrowser().equalsIgnoreCase("safari")
 					&& !getPlatform().equalsIgnoreCase("Android")) {
-				if(!waitOnElement("OVERLAY_CLOSE_BTN", 40000)) return false;
-				if(!clickOnIndependentElement("OVERLAY_CLOSE_BTN")) return false;
+				if (!waitOnElement("OVERLAY_CLOSE_BTN", 40000))
+					return false;
+				if (!clickOnIndependentElement("OVERLAY_CLOSE_BTN"))
+					return false;
 				logger.info("Clicked on overlay close button in fullscreen screen \n");
 				logger.info("Overlay gets closed");
 			}
 
-			if(!waitOnElement(By.id(element), timeout)) return false;
+			if (!waitOnElement(By.id(element), timeout))
+				return false;
 
 			if (getBrowser().equalsIgnoreCase("safari")) {
-				if(!clickOnIndependentElement("NORMAL_SCREEN")) return false;
+				if (!clickOnIndependentElement("NORMAL_SCREEN"))
+					return false;
 			} else {
 				try {
-					
-					if(!PlayBackFactory.getInstance(driver).getSeekAction().setTime(15).startAction()) return false;
-					
+
+					if (!PlayBackFactory.getInstance(driver).getSeekAction()
+							.setTime(15).startAction())
+						return false;
+
 				} catch (Exception e1) {
-					if(!clickOnHiddenElement("NORMAL_SCREEN")) return false;
+					if (!clickOnHiddenElement("NORMAL_SCREEN"))
+						return false;
 				}
 			}
 

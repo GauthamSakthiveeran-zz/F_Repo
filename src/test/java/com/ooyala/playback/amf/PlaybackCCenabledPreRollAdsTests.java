@@ -29,27 +29,27 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 		boolean result = true;
 
 		try {
-            driver.get(url);
+			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 
-            injectScript();
+			injectScript();
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
-            if(event.isAdPlugin("pulse"))
-            	result = result && event.validate("singleAdPlayed_2", 60000);
-            else
-            	result = result && event.validate("singleAdPlayed_1", 60000);
+			if (event.isAdPlugin("pulse"))
+				result = result && event.validate("singleAdPlayed_2", 60000);
+			else
+				result = result && event.validate("singleAdPlayed_1", 60000);
 
-            result = result && event.validate("playing_1", 10000);
+			result = result && event.validate("playing_1", 10000);
 
-            result = result && ccValidator.validate("cclanguage", 60000);
+			result = result && ccValidator.validate("cclanguage", 60000);
 
-            result = result && seekAction.seekTillEnd().startAction();
-            
+			result = result && seekAction.seekTillEnd().startAction();
+
 			result = result && event.validate("seeked_1", 10000);
-            result = result && event.validate("played_1", 10000);
+			result = result && event.validate("played_1", 10000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

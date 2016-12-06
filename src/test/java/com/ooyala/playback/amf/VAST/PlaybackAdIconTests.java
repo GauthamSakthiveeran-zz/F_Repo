@@ -32,26 +32,26 @@ public class PlaybackAdIconTests extends PlaybackWebTest {
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 			Thread.sleep(10000);
 
 			injectScript();
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
 			loadingSpinner();
 			// Wait for ad start
-            result = result && event.validate("willPlaySingleAd_1", 60000);
+			result = result && event.validate("willPlaySingleAd_1", 60000);
 
 			// verify ad icon TODO
 
-            result = result && event.validate("singleAdPlayed_1", 160000);
+			result = result && event.validate("singleAdPlayed_1", 160000);
 
-            result = result && playValidator.validate("playing_1", 190000);
+			result = result && playValidator.validate("playing_1", 190000);
 
-            result = result &&	seekValidator.validate("seeked_1", 190000);
+			result = result && seekValidator.validate("seeked_1", 190000);
 
-            result = result && event.validate("played_1", 190000);
+			result = result && event.validate("played_1", 190000);
 
 			extentTest.log(LogStatus.PASS, "Main Video played successfully");
 

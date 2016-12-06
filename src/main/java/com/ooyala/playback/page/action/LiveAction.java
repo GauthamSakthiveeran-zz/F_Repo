@@ -25,7 +25,9 @@ public class LiveAction extends PlayBackPage implements PlayerAction {
 
 		return isElementPresent("LIVE");
 
-		/*assertEquals(live, false,
-				"Live text is not showing on the video or video is not live");*/
+		/*
+		 * assertEquals(live, false,
+		 * "Live text is not showing on the video or video is not live");
+		 */
 	}
 }

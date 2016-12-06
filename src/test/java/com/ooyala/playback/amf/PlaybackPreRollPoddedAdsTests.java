@@ -10,7 +10,7 @@ import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest{
+public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 
 	public PlaybackPreRollPoddedAdsTests() throws OoyalaException {
 		super();
@@ -20,7 +20,7 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest{
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 	private PoddedAdValidator poddedAdValidator;
-	
+
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyPrerollOverlay(String testName, String url)
 			throws OoyalaException {
@@ -31,20 +31,21 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest{
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-            result = result && playValidator.validate("playing_1", 120000);
+			result = result && playValidator.validate("playing_1", 120000);
 
-            result = result && event.validate("adsPlayed_1", 180000);
+			result = result && event.validate("adsPlayed_1", 180000);
 
-            result = result &&  poddedAdValidator.validate("countPoddedAds", 120000);
+			result = result
+					&& poddedAdValidator.validate("countPoddedAds", 120000);
 
-            result = result && seekValidator.validate("seeked_1", 180000);
-            result = result && event.validate("played_1", 180000);
-	        
+			result = result && seekValidator.validate("seeked_1", 180000);
+			result = result && event.validate("played_1", 180000);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
@@ -53,5 +54,5 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest{
 		Assert.assertTrue(result, "Test failed");
 
 	}
-	
+
 }

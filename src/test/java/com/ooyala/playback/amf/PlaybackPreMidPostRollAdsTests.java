@@ -13,12 +13,12 @@ import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
+public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
 	public PlaybackPreMidPostRollAdsTests() throws OoyalaException {
 		super();
 	}
-	
+
 	private EventValidator event;
 	private PlayAction playAction;
 	private PlayValidator playValidator;
@@ -34,37 +34,37 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest{
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 
-            injectScript();
+			injectScript();
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
-            result = result &&  event.validate("PreRoll_willPlayAds", 150000);
+			result = result && event.validate("PreRoll_willPlayAds", 150000);
 
-            result = result &&  event.validate("adsPlayed_1", 2000000);
+			result = result && event.validate("adsPlayed_1", 2000000);
 
-	        extentTest.log(PASS, "Played Preroll Ads");
-	        event.validate("playing_1", 150000);
+			extentTest.log(PASS, "Played Preroll Ads");
+			event.validate("playing_1", 150000);
 
-	        sleep(5000);
+			sleep(5000);
 
-	        seekAction.seekSpecific(15);
+			seekAction.seekSpecific(15);
 
-            result = result &&  event.validate( "MidRoll_willPlayAds", 150000);
-            result = result &&  event.validate( "adsPlayed_2", 150000);
+			result = result && event.validate("MidRoll_willPlayAds", 150000);
+			result = result && event.validate("adsPlayed_2", 150000);
 
-	        seekAction.seekSpecific(15);
+			seekAction.seekSpecific(15);
 
-            result = result &&  event.validate( "PostRoll_willPlayAds", 150000);
-            
-            if(event.isAdPlugin("pulse")){
+			result = result && event.validate("PostRoll_willPlayAds", 150000);
+
+			if (event.isAdPlugin("pulse")) {
 				result = result && event.validate("singleAdPlayed_6", 60000);
 				result = result && event.validate("seeked_1", 60000);
-            } else
-	        	result = result && event.validate("adsPlayed_3", 60000);
-            
-            result = result && event.validate("played_1", 200000);
+			} else
+				result = result && event.validate("adsPlayed_3", 60000);
+
+			result = result && event.validate("played_1", 200000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

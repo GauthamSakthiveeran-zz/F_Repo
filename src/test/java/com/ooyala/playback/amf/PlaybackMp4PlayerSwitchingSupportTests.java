@@ -16,13 +16,13 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 	public PlaybackMp4PlayerSwitchingSupportTests() throws OoyalaException {
 		super();
 	}
-	
+
 	private EventValidator event;
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 	private PauseAction pauseAction;
-	
+
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyPlaybackOfOSMFMp4(String testName, String url)
 			throws OoyalaException {
@@ -32,24 +32,24 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 		try {
 
 			driver.get(url);
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-            result = result && playAction.startAction();
-			
+			result = result && playAction.startAction();
+
 			result = result && event.validate("willPlaySingleAd_1", 50000);
-	        result = result && event.validate("singleAdPlayed_1", 190000);
-	        result = result && event.validate("playing_1", 120000);
+			result = result && event.validate("singleAdPlayed_1", 190000);
+			result = result && event.validate("playing_1", 120000);
 
-	        result = result && pauseAction.startActionOnScreen();
+			result = result && pauseAction.startActionOnScreen();
 
-	        result = result && pauseAction.startActionOnScreen();
+			result = result && pauseAction.startActionOnScreen();
 
-            result = result && seekValidator.validate("seeked_1", 190000);
+			result = result && seekValidator.validate("seeked_1", 190000);
 
-            result = result &&  event.validate("played_1", 190000);
+			result = result && event.validate("played_1", 190000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,6 +59,5 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 		Assert.assertTrue(result, "Tests failed");
 
 	}
-
 
 }

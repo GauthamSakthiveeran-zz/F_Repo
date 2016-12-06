@@ -31,22 +31,22 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
-            result = result && event.validate("willPlaySingleAd_1", 60000);
+			result = result && event.validate("willPlaySingleAd_1", 60000);
 
-            result = result && event.validate("singleAdPlayed_1", 160000);
+			result = result && event.validate("singleAdPlayed_1", 160000);
 
-            result = result && playValidator.validate("playing_1", 190000);
+			result = result && playValidator.validate("playing_1", 190000);
 
-            result = result && seekValidator.validate("seeked_1", 190000);
+			result = result && seekValidator.validate("seeked_1", 190000);
 
-            result = result && event.validate("played_1", 190000);
+			result = result && event.validate("played_1", 190000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

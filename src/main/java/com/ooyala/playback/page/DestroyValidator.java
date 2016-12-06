@@ -19,7 +19,8 @@ public class DestroyValidator extends PlayBackPage implements PlaybackValidator 
 		Thread.sleep(2000);
 		((JavascriptExecutor) driver).executeScript("pp.destroy()");
 
-		return waitOnElement(element, timeout) && isElementPresent("STATE_SCREEN_SELECTABLE"); // destroy_1
+		return waitOnElement(element, timeout)
+				&& isElementPresent("STATE_SCREEN_SELECTABLE"); // destroy_1
 
 	}
 

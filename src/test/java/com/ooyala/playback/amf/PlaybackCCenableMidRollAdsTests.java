@@ -32,38 +32,40 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 
 			injectScript();
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
-            result = result && event.validate("playing_1", 60000);
+			result = result && event.validate("playing_1", 60000);
 
-            result = result && event.validate("videoPlaying_1", 20000);
-            
-            result = result && 	event.validate("MidRoll_willPlaySingleAd_1", 190000);
-            
-            Thread.sleep(14000);
-            
-            if(event.isAdPlugin("pulse"))
-            	result = result && event.validate("singleAdPlayed_2", 60000);
-            else
-            	result = result && event.validate("singleAdPlayed_1", 60000);
+			result = result && event.validate("videoPlaying_1", 20000);
 
-            result = result && ccValidator.validate("cclanguage", 6000);
+			result = result
+					&& event.validate("MidRoll_willPlaySingleAd_1", 190000);
 
-            result = result && seekAction.seekTillEnd().startAction();
-            
+			Thread.sleep(14000);
+
+			if (event.isAdPlugin("pulse"))
+				result = result && event.validate("singleAdPlayed_2", 60000);
+			else
+				result = result && event.validate("singleAdPlayed_1", 60000);
+
+			result = result && ccValidator.validate("cclanguage", 6000);
+
+			result = result && seekAction.seekTillEnd().startAction();
+
 			result = result && event.validate("seeked_1", 10000);
-            result = result && event.validate("played_1", 10000);
+			result = result && event.validate("played_1", 10000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Playback CC Enabled MidRoll Ads tests failed");
+		Assert.assertTrue(result,
+				"Playback CC Enabled MidRoll Ads tests failed");
 
 	}
 }

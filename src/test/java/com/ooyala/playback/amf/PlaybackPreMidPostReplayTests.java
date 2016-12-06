@@ -16,7 +16,7 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	public PlaybackPreMidPostReplayTests() throws OoyalaException {
 		super();
 	}
-	
+
 	private EventValidator event;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
@@ -33,48 +33,50 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-            result = result && playValidator.validate("playing_1", 120000);
-            result = result && event.validate("PreRoll_willPlayAds", 120000);
+			result = result && playValidator.validate("playing_1", 120000);
+			result = result && event.validate("PreRoll_willPlayAds", 120000);
 
-            result = result && event.validate("MidRoll_willPlayAds", 120000);
+			result = result && event.validate("MidRoll_willPlayAds", 120000);
 
-            result = result && event.validate("PostRoll_willPlayAds", 120000);
+			result = result && event.validate("PostRoll_willPlayAds", 120000);
 
-            result = result && seekValidator.validate("seeked_1",120000);
-            result = result && event.validate("played_1", 190000);
+			result = result && seekValidator.validate("seeked_1", 120000);
+			result = result && event.validate("played_1", 190000);
 
-            result = result &&  event.validate("endScreen", 120000);
-            result = result && replayValidator.validate("replay_1", 120000);
-	        
-            result = result && event.validate("PreRoll_willPlayAds_OnReplay", 120000);
-	        
-	        
-	        if(!getPlatform().equalsIgnoreCase("Android")) {
-	        	result = result && adClickThrough.validate("", 120000);
-	        }
+			result = result && event.validate("endScreen", 120000);
+			result = result && replayValidator.validate("replay_1", 120000);
 
-	        result = result && event.validate("singleAdPlayed_4", 120000);
+			result = result
+					&& event.validate("PreRoll_willPlayAds_OnReplay", 120000);
 
-	        result = result && event.validate("MidRoll_willPlayAds_OnReplay", 120000);
+			if (!getPlatform().equalsIgnoreCase("Android")) {
+				result = result && adClickThrough.validate("", 120000);
+			}
 
-	        if(!getPlatform().equalsIgnoreCase("Android")) {
-	        	result = result && adClickThrough.validate("", 120000);
-	        }
+			result = result && event.validate("singleAdPlayed_4", 120000);
 
-	        result = result && event.validate("singleAdPlayed_5", 120000);
+			result = result
+					&& event.validate("MidRoll_willPlayAds_OnReplay", 120000);
 
-	        result = result && event.validate("PostRoll_willPlayAds_OnReplay", 120000);
+			if (!getPlatform().equalsIgnoreCase("Android")) {
+				result = result && adClickThrough.validate("", 120000);
+			}
 
-	        if(!getPlatform().equalsIgnoreCase("Android")) {
-	        	result = result && adClickThrough.validate("", 120000);
-	        }
+			result = result && event.validate("singleAdPlayed_5", 120000);
 
-	        result = result && event.validate("singleAdPlayed_6", 120000);
+			result = result
+					&& event.validate("PostRoll_willPlayAds_OnReplay", 120000);
+
+			if (!getPlatform().equalsIgnoreCase("Android")) {
+				result = result && adClickThrough.validate("", 120000);
+			}
+
+			result = result && event.validate("singleAdPlayed_6", 120000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

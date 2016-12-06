@@ -15,13 +15,12 @@ import com.relevantcodes.extentreports.LogStatus;
  *
  */
 public class SeekAction extends PlayBackPage implements PlayerAction {
-	
+
 	private int time;
 	private boolean fromLast;
 	private String adPlugin;
 	private int factor;
 	private boolean seekTillEnd;
-	
 
 	public SeekAction(WebDriver webDriver) {
 		super(webDriver);
@@ -30,68 +29,73 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		time = 0;
 		fromLast = false;
 		adPlugin = "";
-		factor =1;
+		factor = 1;
 		seekTillEnd = false;
 	}
-	
-	public SeekAction seekTillEnd(){
-		seekTillEnd=true;
+
+	public SeekAction seekTillEnd() {
+		seekTillEnd = true;
 		return this;
 	}
-	
-	public SeekAction setTime(int time){
+
+	public SeekAction setTime(int time) {
 		this.time = time;
 		return this;
 	}
-	
-	public SeekAction fromLast(){
+
+	public SeekAction fromLast() {
 		fromLast = true;
 		return this;
 	}
-	
-	public SeekAction setAdPlugin(String adPlugin){
+
+	public SeekAction setAdPlugin(String adPlugin) {
 		this.adPlugin = adPlugin;
 		return this;
 	}
-	
-	public SeekAction setFactor(int factor){
+
+	public SeekAction setFactor(int factor) {
 		this.factor = factor;
 		return this;
 	}
 
 	@Override
 	public boolean startAction() throws Exception {
-		
-		if(time==0 && seekTillEnd==false){
-			throw new Exception("Time to seek needs to be set! or seekTillEnd should be set to true");
+
+		if (time == 0 && seekTillEnd == false) {
+			throw new Exception(
+					"Time to seek needs to be set! or seekTillEnd should be set to true");
 		}
-		
-		if(!adPlugin.isEmpty()){
+
+		if (!adPlugin.isEmpty()) {
 			Map<String, String> data = parseURL();
-			if(data.get("ad_plugin")!=null && !data.get("ad_plugin").equals(adPlugin)){
-				extentTest.log(LogStatus.SKIP, "This particular step is skipped as it is valid only for "+adPlugin);
+			if (data.get("ad_plugin") != null
+					&& !data.get("ad_plugin").equals(adPlugin)) {
+				extentTest.log(LogStatus.SKIP,
+						"This particular step is skipped as it is valid only for "
+								+ adPlugin);
 				return true;
 			}
-				
+
 		}
-		
-		if(seekTillEnd && factor==1){
-			seekPlayback(); 
-			seekTillEnd=false;;
-		}
-		else{
-			if(fromLast){
-				seek(time,fromLast);
-			} else{
-				seek(time+"");
+
+		if (seekTillEnd && factor == 1) {
+			seekPlayback();
+			seekTillEnd = false;
+			;
+		} else {
+			if (fromLast) {
+				seek(time, fromLast);
+			} else {
+				seek(time + "");
 			}
 		}
-		
-		return true;//need to check for unable to seek and return true or false accordingly;
+
+		return true;// need to check for unable to seek and return true or false
+					// accordingly;
 	}
-	
-	public String getDuration(){
-		return "pp.getDuration()/"+factor;
+
+	public String getDuration() {
+		return "pp.getDuration()/" + factor;
 	}
 
 	private void seek(int time, boolean fromLast) throws Exception {
@@ -102,7 +106,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 			seekduration = "";
 		}
 		seek(seekduration + "-" + time + "");
-		factor =1;
+		factor = 1;
 	}
 
 	private void seek(String time) throws Exception {
@@ -121,12 +125,13 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 				break;
 			}
 			if (seekTime > 5) {
-                //Update after ticket is fixed pp.seek() api is not working if we try to seek less than 31 seconds form end of video
-                if(!getBrowser().equalsIgnoreCase("safari")){
-				seek(7, true);
-				} else{
-                    seek(31,true);
-                }
+				// Update after ticket is fixed pp.seek() api is not working if
+				// we try to seek less than 31 seconds form end of video
+				if (!getBrowser().equalsIgnoreCase("safari")) {
+					seek(7, true);
+				} else {
+					seek(31, true);
+				}
 				((JavascriptExecutor) driver).executeScript("pp.pause();");
 				Thread.sleep(2000);
 				((JavascriptExecutor) driver).executeScript("pp.play();");
@@ -140,14 +145,14 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	// get skip therefore adding below condition
 
 	public void seekSpecific(int time) throws Exception {
-		
-		Map<String,String> data = parseURL();
+
+		Map<String, String> data = parseURL();
 		boolean flag = false;
-		
-		if(data!=null){
+
+		if (data != null) {
 			String videoPlugin = data.get("video_plugins");
 			String adPlugin = data.get("ad_plugin");
-			if(videoPlugin!=null && adPlugin!=null){
+			if (videoPlugin != null && adPlugin != null) {
 				if (adPlugin.contains("pulse")) {
 					if (videoPlugin.contains("bit_wrapper")
 							|| videoPlugin.contains("main")) {
@@ -157,12 +162,11 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 						&& adPlugin.contains("ima")) {
 					flag = true;
 				}
-				if(flag){
+				if (flag) {
 					setTime(time).fromLast().startAction();
 				}
 			}
 		}
-		
-		
+
 	}
 }

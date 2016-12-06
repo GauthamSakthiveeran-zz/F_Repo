@@ -28,22 +28,26 @@ public class ClickDiscoveryButtonAction extends PlayBackPage implements
 	public boolean startAction() throws Exception {
 		try {
 
-			if(!clickDiscoveryButton()) return false;
-			
+			if (!clickDiscoveryButton())
+				return false;
+
 			sleep(2000);
 			if (!isElementPresent("CONTENT_SCREEN")) {
-				if(!clickDiscoveryButton()) return false;
+				if (!clickDiscoveryButton())
+					return false;
 			}
 		} catch (Exception e) {
 			logger.error("exception " + e.getMessage());
-			if(!clickOnIndependentElement("MORE_OPTION_ICON")) return false;
+			if (!clickOnIndependentElement("MORE_OPTION_ICON"))
+				return false;
 			Thread.sleep(2000);
-			if(!clickDiscoveryButton()) return false;
+			if (!clickDiscoveryButton())
+				return false;
 		}
 		return true;
 	}
-	
-	private boolean clickDiscoveryButton(){
+
+	private boolean clickDiscoveryButton() {
 		return clickOnIndependentElement("DISCOVERY_BTN");
 	}
 }

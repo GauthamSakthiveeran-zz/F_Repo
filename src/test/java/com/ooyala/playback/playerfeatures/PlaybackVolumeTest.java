@@ -2,7 +2,6 @@ package com.ooyala.playback.playerfeatures;
 
 import static java.lang.Thread.sleep;
 
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
@@ -40,11 +39,11 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 		try {
 			driver.get(url);
 
-            result = result && play.waitForPage();
+			result = result && play.waitForPage();
 
 			injectScript();
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
 			Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
 					.executeScript("return pp.isAdPlaying()"));
@@ -55,28 +54,28 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 				logger.info("Ad played");
 			}
 
-            Thread.sleep(2000);
+			Thread.sleep(2000);
 
-            result = result && volumeValidator.validate("VOLUME_MAX", 60000);
+			result = result && volumeValidator.validate("VOLUME_MAX", 60000);
 
 			logger.info("validated video volume at full range");
 
-            result = result && eventValidator.validate("playing_10 ", 60000);
+			result = result && eventValidator.validate("playing_10 ", 60000);
 
-            logger.info("video is playing");
-            sleep(4000);
+			logger.info("video is playing");
+			sleep(4000);
 
-            result = result && seek.validate("seeked_1", 60000);
+			result = result && seek.validate("seeked_1", 60000);
 
 			logger.info("video seeked");
 
-            result = result && eventValidator.validate("played_1", 60000);
+			result = result && eventValidator.validate("played_1", 60000);
 
 			logger.info("video played");
 
 		} catch (Exception e) {
 			e.printStackTrace();
-            result = false;
+			result = false;
 		}
 		Assert.assertTrue(result, "Playback Volume tests failed");
 	}

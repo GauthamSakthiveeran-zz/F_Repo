@@ -3,7 +3,6 @@ package com.ooyala.playback.page;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
 /**
@@ -22,21 +21,24 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 		addElementToPageElements("pause");
 	}
 
-	public boolean  validate(String element, int timeout) throws Exception {
-		
+	public boolean validate(String element, int timeout) throws Exception {
+
 		if (isElementPresent("HIDDEN_CONTROL_BAR")) {
 			logger.info("hovering mouse over the player");
-            moveElement(getWebElement("HIDDEN_CONTROL_BAR"));
+			moveElement(getWebElement("HIDDEN_CONTROL_BAR"));
 		}
-        Thread.sleep(1000);
+		Thread.sleep(1000);
 
-		if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
+		if (!clickOnIndependentElement("PAUSE_BUTTON"))
+			return false;
 
 		Thread.sleep(1000);
-		
-		if(!waitOnElement("PAUSE_SCREEN", 60000)) return false;
 
-		if(!waitOnElement(By.id(element), timeout)) return false;
+		if (!waitOnElement("PAUSE_SCREEN", 60000))
+			return false;
+
+		if (!waitOnElement(By.id(element), timeout))
+			return false;
 		return true;
 	}
 }
