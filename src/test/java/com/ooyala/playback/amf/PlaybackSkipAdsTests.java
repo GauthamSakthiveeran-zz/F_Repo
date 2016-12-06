@@ -11,10 +11,8 @@ import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackSkipAdsTests extends  PlaybackWebTest{
-	
-	
-	
+public class PlaybackSkipAdsTests extends PlaybackWebTest {
+
 	public PlaybackSkipAdsTests() throws OoyalaException {
 		super();
 	}
@@ -24,7 +22,7 @@ public class PlaybackSkipAdsTests extends  PlaybackWebTest{
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 	private AdSkipButtonValidator skipButtonValidator;
-	
+
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyPrerollOverlay(String testName, String url)
 			throws OoyalaException {
@@ -35,23 +33,23 @@ public class PlaybackSkipAdsTests extends  PlaybackWebTest{
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			result = result &&  playAction.startAction();
+			result = result && playAction.startAction();
 
-	        result = result && event.validate("willPlaySingleAd_1", 150000);
+			result = result && event.validate("willPlaySingleAd_1", 150000);
 
-            result = result && skipButtonValidator.validate("", 120000);
-	        
-            result = result && event.validate("singleAdPlayed_1", 150000);
-            result = result && event.validate("playing_1", 150000);
+			result = result && skipButtonValidator.validate("", 120000);
 
-            result = result &&  seekValidator.validate("seeked_1", 150000);
+			result = result && event.validate("singleAdPlayed_1", 150000);
+			result = result && event.validate("playing_1", 150000);
 
-            result = result &&  event.validate( "played_1", 150000);
+			result = result && seekValidator.validate("seeked_1", 150000);
+
+			result = result && event.validate("played_1", 150000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

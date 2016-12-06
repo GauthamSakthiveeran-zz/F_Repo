@@ -185,7 +185,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		if (driver != null)
 			takeScreenshot(result.getName());
 		else {
-			logger.error("Browser closed during the test run .Renitializing the driver and pagefactory as the test failed during its run");
+			logger.error("Browser closed during the test run .Renitializing the driver as the test failed during the test");
 			driver = getDriver(browser);
 			pageFactory.destroyInstance();
 			pageFactory = PlayBackFactory.getInstance(driver);

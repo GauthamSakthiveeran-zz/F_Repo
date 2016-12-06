@@ -10,12 +10,12 @@ import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest{
+public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 
 	public PlaybackPostRollPoddedAdsTests() throws OoyalaException {
 		super();
 	}
-	
+
 	private EventValidator event;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
@@ -31,17 +31,18 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest{
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-            result = result && playValidator.validate("playing_1", 150000);
-            result = result && seekValidator.validate("seeked_1", 180000);
-            result = result && event.validate("videoPlayed_1", 180000);
-            result = result && event.validate("played_1", 180000);
+			result = result && playValidator.validate("playing_1", 150000);
+			result = result && seekValidator.validate("seeked_1", 180000);
+			result = result && event.validate("videoPlayed_1", 180000);
+			result = result && event.validate("played_1", 180000);
 
-            result = result && poddedAdValidator.validate("countPoddedAds", 160000);
+			result = result
+					&& poddedAdValidator.validate("countPoddedAds", 160000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

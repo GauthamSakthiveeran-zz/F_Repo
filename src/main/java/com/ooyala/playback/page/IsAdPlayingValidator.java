@@ -8,25 +8,25 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by snehal on 29/11/16.
  */
-public class IsAdPlayingValidator extends PlayBackPage implements PlaybackValidator {
+public class IsAdPlayingValidator extends PlayBackPage implements
+		PlaybackValidator {
 
-    public static Logger Log = Logger.getLogger(PlayValidator.class);
+	public static Logger Log = Logger.getLogger(PlayValidator.class);
 
-    public IsAdPlayingValidator(WebDriver webDriver) {
-        super(webDriver);
-        PageFactory.initElements(driver, this);
-    }
+	public IsAdPlayingValidator(WebDriver webDriver) {
+		super(webDriver);
+		PageFactory.initElements(driver, this);
+	}
 
-    @Override
-    public boolean validate(String element, int timeout) throws Exception {
-        boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
-                .executeScript("return pp.isAdPlaying()"));
-        return isAdplaying;
-    }
+	@Override
+	public boolean validate(String element, int timeout) throws Exception {
+		boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
+				.executeScript("return pp.isAdPlaying()"));
+		return isAdplaying;
+	}
 
-    public void skipAd() throws Exception {
-       ((JavascriptExecutor) driver)
-                    .executeScript("pp.skipAd()");
-    }
+	public void skipAd() throws Exception {
+		((JavascriptExecutor) driver).executeScript("pp.skipAd()");
+	}
 
 }

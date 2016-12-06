@@ -1,84 +1,87 @@
 package com.ooyala.playback.VTC;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static java.lang.Thread.sleep;
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.DiscoveryValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.UpNextValidator;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by jitendra on 24/11/16.
  */
 public class PlaybackDiscoverTests extends PlaybackWebTest {
 
-    private EventValidator eventValidator;
-    private PlayValidator play;
-    private UpNextValidator discoveryUpNext;
-    private DiscoveryValidator discoveryValidator;
-    private PlayAction playAction;
-    private SeekAction seekAction;
-    private SeekValidator seek;
+	private EventValidator eventValidator;
+	private PlayValidator play;
+	private UpNextValidator discoveryUpNext;
+	private DiscoveryValidator discoveryValidator;
+	private PlayAction playAction;
+	private SeekAction seekAction;
+	private SeekValidator seek;
 
-    PlaybackDiscoverTests() throws OoyalaException {
-        super();
-    }
+	PlaybackDiscoverTests() throws OoyalaException {
+		super();
+	}
 
+	@Test(groups = "Playback", dataProvider = "testUrls")
+	public void testDiscoveryVTC(String testName, String url)
+			throws OoyalaException {
 
-    @Test(groups = "Playback", dataProvider = "testUrls")
-    public void testDiscoveryVTC(String testName, String url)
-            throws OoyalaException {
+		boolean result = true;
+		try {
+			driver.get(url);
 
-        boolean result = true;
-        try {
-            driver.get(url);
+			result = result && play.waitForPage();
 
+			Thread.sleep(10000);
 
-            result = result && play.waitForPage();
+			injectScript();
 
-            Thread.sleep(10000);
+			result = result && play.validate("playing_1", 60000);
 
-            injectScript();
+			logger.info("Verifed that video is getting playing");
 
-            result = result && play.validate("playing_1", 60000);
+			result = result
+					&& discoveryValidator.validate("reportDiscoveryClick_1",
+							60000);
 
-            logger.info("Verifed that video is getting playing");
+			logger.info("verified discovery");
 
-            result = result &&  discoveryValidator.validate("reportDiscoveryClick_1", 60000);
+			result = result && play.waitForPage();
 
-            logger.info("verified discovery");
+			playAction.startAction();
 
-            result = result && play.waitForPage();
+			loadingSpinner();
 
-            playAction.startAction();
+			result = result && eventValidator.validate("playing_2", 60000);
 
-            loadingSpinner();
+			logger.info("Verified that 2nd video is playing");
 
-            result = result && eventValidator.validate("playing_2",60000);
+			result = result && seek.validate("seeked_1", 60000);
 
-            logger.info("Verified that 2nd video is playing");
+			Thread.sleep(5000);
 
+			result = result
+					&& discoveryUpNext.validate("UPNEXT_CONTENT", 60000);
 
-            result = result && seek.validate("seeked_1",60000);
+			logger.info("Verified UpNext content");
 
-            Thread.sleep(5000);
+			result = result && eventValidator.validate("played_1", 60000);
 
-            result = result && discoveryUpNext.validate("UPNEXT_CONTENT", 60000);
+			logger.info("Verified that video is played");
 
-            logger.info("Verified UpNext content");
-
-            result = result && eventValidator.validate("played_1", 60000);
-
-            logger.info("Verified that video is played");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            result = false;
-        }
-        Assert.assertTrue(result, "Playback Discovery tests failed");
-    }
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = false;
+		}
+		Assert.assertTrue(result, "Playback Discovery tests failed");
+	}
 
 }

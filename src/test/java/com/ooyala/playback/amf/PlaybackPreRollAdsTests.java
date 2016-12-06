@@ -22,8 +22,7 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPreroll(String testName, String url)
-			throws OoyalaException {
+	public void verifyPreroll(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -31,28 +30,27 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
-            if((event.isVideoPlugin("main") && event.isAdPlugin("freewheel"))
-            		|| event.isVideoPlugin("osmf") && event.isAdPlugin("ima")){
-            	result = result && event.validate("PreRoll_willPlayAds", 60000);
-            	result = result && event.validate("adsPlayed_1", 160000);
-            }
-            else{
-            	result = result && event.validate("willPlaySingleAd_1", 60000);
-            	result = result && event.validate("singleAdPlayed_1", 160000);
-            }
+			if ((event.isVideoPlugin("main") && event.isAdPlugin("freewheel"))
+					|| event.isVideoPlugin("osmf") && event.isAdPlugin("ima")) {
+				result = result && event.validate("PreRoll_willPlayAds", 60000);
+				result = result && event.validate("adsPlayed_1", 160000);
+			} else {
+				result = result && event.validate("willPlaySingleAd_1", 60000);
+				result = result && event.validate("singleAdPlayed_1", 160000);
+			}
 
-            result = result && event.validate("playing_1", 190000);
+			result = result && event.validate("playing_1", 190000);
 
-            result = result && seekValidator.validate("seeked_1", 190000);
+			result = result && seekValidator.validate("seeked_1", 190000);
 
-            result = result && event.validate("played_1", 190000);
+			result = result && event.validate("played_1", 190000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

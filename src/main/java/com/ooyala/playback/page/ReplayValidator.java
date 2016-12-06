@@ -23,8 +23,7 @@ public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 
-		return
-				waitOnElement("END_SCREEN", 60000)
+		return waitOnElement("END_SCREEN", 60000)
 				&& waitOnElement("REPLAY", 60000)
 				&& clickOnIndependentElement("REPLAY")
 				&& waitOnElement(By.id(element), timeout);

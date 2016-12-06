@@ -16,7 +16,7 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 	public PlaybackPoddedSkippbableInsideTests() throws OoyalaException {
 		super();
 	}
-	
+
 	private EventValidator event;
 	private PlayAction playAction;
 	private PlayValidator playValidator;
@@ -39,21 +39,21 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-	        result = result && event.validate("willPlaySingleAd_1", 150000);
-	        result = result && event.validate("singleAdPlayed_1", 150000);
+			result = result && event.validate("willPlaySingleAd_1", 150000);
+			result = result && event.validate("singleAdPlayed_1", 150000);
 
-	        result = result && event.validate("willPlaySingleAd_2", 150000);
+			result = result && event.validate("willPlaySingleAd_2", 150000);
 
-	        result = result && skipValidator.validate("", 120000);
-	        
-	        result = result && event.validate("willPlaySingleAd_3", 150000);
+			result = result && skipValidator.validate("", 120000);
 
-	        result = result && event.validate("singleAdPlayed_3", 150000);
+			result = result && event.validate("willPlaySingleAd_3", 150000);
 
-	        result = result && event.validate("playing_1", 190000);
+			result = result && event.validate("singleAdPlayed_3", 150000);
 
-	        result = result && seekValidator.validate("seeked_1", 190000);
-	        result = result && event.validate("played_1", 190000);
+			result = result && event.validate("playing_1", 190000);
+
+			result = result && seekValidator.validate("seeked_1", 190000);
+			result = result && event.validate("played_1", 190000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,6 +63,5 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 		Assert.assertTrue(result, "Verified PreRoll Ads test");
 
 	}
-
 
 }

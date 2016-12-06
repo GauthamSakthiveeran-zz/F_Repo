@@ -23,58 +23,76 @@ public class AdClickThroughValidator extends PlayBackPage implements
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		
-		Map<String,String> data = parseURL();
-		
-		if(data==null){
+
+		Map<String, String> data = parseURL();
+
+		if (data == null) {
 			throw new Exception("Map is null");
 		}
 
 		String value = data.get("ad_plugin");
 		String video_plugin = data.get("video_plugins");
-		
 
 		String baseWindowHdl = driver.getWindowHandle();
 		if (value != null) {
 
 			if (!getPlatform().equalsIgnoreCase("Android")) {
-				
+
 				boolean flag = true;
-				
+
 				if (!value.contains("freewheel")) {
 					if (value.contains("vast")) {
-						if(!clickOnIndependentElement("AD_SCREEN_PANEL")) return false;
-					} 
-					
-					else if(value.contains("ima") && video_plugin.contains("bit") &&isStreamingProtocolPrioritized("hls")){
-						if(!clickOnIndependentElement("AD_PANEL_1")) return false;
-						if(!waitOnElement(By.id("adsClickThroughOpened"), 10000)) return false;
+						if (!clickOnIndependentElement("AD_SCREEN_PANEL"))
+							return false;
+					}
+
+					else if (value.contains("ima")
+							&& video_plugin.contains("bit")
+							&& isStreamingProtocolPrioritized("hls")) {
+						if (!clickOnIndependentElement("AD_PANEL_1"))
+							return false;
+						if (!waitOnElement(By.id("adsClickThroughOpened"),
+								10000))
+							return false;
 						flag = false;
 					}
-					
+
 					else {
-						if(!clickOnIndependentElement("AD_PANEL")) return false;
+						if (!clickOnIndependentElement("AD_PANEL"))
+							return false;
 					}
-					if(flag){
-						if(!waitOnElement(By.id("adsClicked_1"), 10000)) return false;
-						if(!waitOnElement(By.id("adsClicked_videoWindow"), 10000)) return false;
+					if (flag) {
+						if (!waitOnElement(By.id("adsClicked_1"), 10000))
+							return false;
+						if (!waitOnElement(By.id("adsClicked_videoWindow"),
+								10000))
+							return false;
 					}
-					extentTest.log(PASS,"AdsClicked by clicking on the ad screen");
+					extentTest.log(PASS,
+							"AdsClicked by clicking on the ad screen");
 				}
 			}
 			if (!value.contains("ima")) {
 				try {
-					if(!clickOnHiddenElement("LEARN_MORE")) return false;
-					if(!waitOnElement(By.id("adsClicked_learnMoreButton"), 5000)) return false;
+					if (!clickOnHiddenElement("LEARN_MORE"))
+						return false;
+					if (!waitOnElement(By.id("adsClicked_learnMoreButton"),
+							5000))
+						return false;
 				} catch (Exception e) {
-					if(!clickOnIndependentElement("LEARN_MORE")) return false;
-					if(!waitOnElement(By.id("adsClicked_learnMoreButton"), 20000)) return false;
+					if (!clickOnIndependentElement("LEARN_MORE"))
+						return false;
+					if (!waitOnElement(By.id("adsClicked_learnMoreButton"),
+							20000))
+						return false;
 				}
 			}
-			extentTest.log(PASS,"AdsClicked by clicking on the learn more button");
-			
+			extentTest.log(PASS,
+					"AdsClicked by clicking on the learn more button");
+
 			sleep(2000);
-			java.util.Set<java.lang.String> windowHandles = driver.getWindowHandles();
+			java.util.Set<java.lang.String> windowHandles = driver
+					.getWindowHandles();
 			int count = windowHandles.size();
 			log.info("Window handles : " + count);
 
@@ -88,22 +106,24 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
 			boolean isAd = isAdPlaying();
 			if (isAd) {
-				
+
 				((JavascriptExecutor) driver).executeScript("pp.play()");
 
-				/*if (getPlatform().equalsIgnoreCase("Android") || isStreamingProtocolPrioritized("hls") || value.contains("freewheel")) {
-					((JavascriptExecutor) driver).executeScript("pp.play()"); // TODO
-				} else {
-					if(!clickOnIndependentElement("AD_PANEL")) return false;
-				}*/
+				/*
+				 * if (getPlatform().equalsIgnoreCase("Android") ||
+				 * isStreamingProtocolPrioritized("hls") ||
+				 * value.contains("freewheel")) { ((JavascriptExecutor)
+				 * driver).executeScript("pp.play()"); // TODO } else {
+				 * if(!clickOnIndependentElement("AD_PANEL")) return false; }
+				 */
 
 			}
 			return true;
-			
+
 		} else {
 			throw new Exception("Ad plugin not present in test url");
 		}
-		
+
 	}
 
 	public boolean isAdPlaying() {

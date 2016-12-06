@@ -1,6 +1,5 @@
 package com.ooyala.playback.playerfeatures;
 
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -18,7 +17,8 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackThumbnailTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackThumbnailTests.class);
+	private static Logger logger = Logger
+			.getLogger(PlaybackThumbnailTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private PauseValidator pause;
@@ -38,33 +38,33 @@ public class PlaybackThumbnailTests extends PlaybackWebTest {
 		try {
 			driver.get(url);
 
-            result = result && play.waitForPage();
+			result = result && play.waitForPage();
 
 			Thread.sleep(10000);
 
 			injectScript();
 
-            result = result && play.validate("playing_1", 60000);
+			result = result && play.validate("playing_1", 60000);
 
 			Thread.sleep(5000);
 
-            result = result && pause.validate("paused_1", 60000);
+			result = result && pause.validate("paused_1", 60000);
 
-            result = result && thumbnailValidator.validate("", 60000);
+			result = result && thumbnailValidator.validate("", 60000);
 
 			Thread.sleep(5000);
 
-            result = result && play.validate("playing_2", 60000);
+			result = result && play.validate("playing_2", 60000);
 
-            result = result && seek.validate("seeked_1", 60000);
+			result = result && seek.validate("seeked_1", 60000);
 
-            result = result && eventValidator.validate("played_1", 60000);
+			result = result && eventValidator.validate("played_1", 60000);
 
 			logger.info("Verified that video is played");
 
 		} catch (Exception e) {
 			e.printStackTrace();
-            result  = false;
+			result = false;
 		}
 		Assert.assertTrue(result, "Thumbnail test failed");
 	}

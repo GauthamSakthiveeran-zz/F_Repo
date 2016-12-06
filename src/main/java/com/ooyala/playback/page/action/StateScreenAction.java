@@ -2,7 +2,6 @@ package com.ooyala.playback.page.action;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.page.PlayBackPage;
@@ -17,15 +16,16 @@ public class StateScreenAction extends PlayBackPage implements PlayerAction {
 
 	@Override
 	public boolean startAction() throws Exception {
-		try{
+		try {
 			WebElement element = getWebElement("STATE_SCREEN_SELECTABLE");
-			if(element==null) return false;
-            moveElement(element);
-	        return true;
-		}catch(Exception ex){
+			if (element == null)
+				return false;
+			moveElement(element);
+			return true;
+		} catch (Exception ex) {
 			logger.error(ex.getMessage());
 			return false;
 		}
 	}
-	
+
 }

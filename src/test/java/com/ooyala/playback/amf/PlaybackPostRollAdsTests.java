@@ -9,19 +9,18 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackPostRollAdsTests extends PlaybackWebTest{
+public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 
 	public PlaybackPostRollAdsTests() throws OoyalaException {
 		super();
 	}
-	
+
 	private EventValidator event;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPostroll(String testName, String url)
-			throws OoyalaException {
+	public void verifyPostroll(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -29,22 +28,21 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest{
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 
 			injectScript();
 
 			result = result && playValidator.validate("playing_1", 90000);
-			if(!event.isVideoPlugin("bit_wrapper"))
+			if (!event.isVideoPlugin("bit_wrapper"))
 				result = result && seekValidator.validate("seeked_1", 90000);
-            
-            result = result && event.validate("videoPlayed_1", 200000);
-            result = result && event.validate("willPlaySingleAd_1", 90000);
 
-            result = result && event.validate("singleAdPlayed_1", 90000);
+			result = result && event.validate("videoPlayed_1", 200000);
+			result = result && event.validate("willPlaySingleAd_1", 90000);
 
-            result = result && event.validate("played_1", 200000);
+			result = result && event.validate("singleAdPlayed_1", 90000);
 
-            
+			result = result && event.validate("played_1", 200000);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;

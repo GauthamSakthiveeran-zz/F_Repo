@@ -2,7 +2,6 @@ package com.ooyala.playback.playerfeatures;
 
 import static java.lang.Thread.sleep;
 
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -18,8 +17,9 @@ import com.ooyala.qe.common.exception.OoyalaException;
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackDiscoveryTests extends PlaybackWebTest {
-	
-	private static Logger logger = Logger.getLogger(PlaybackDiscoveryTests.class);
+
+	private static Logger logger = Logger
+			.getLogger(PlaybackDiscoveryTests.class);
 	private PlayValidator play;
 	private DiscoveryValidator discoveryValidator;
 	private PlayAction playAction;
@@ -38,27 +38,29 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
 		try {
 			driver.get(url);
 
-            result = result && play.waitForPage();
+			result = result && play.waitForPage();
 
 			injectScript();
-            result = result && play.validate("playing_1", 60000);
+			result = result && play.validate("playing_1", 60000);
 
 			logger.info("verified video is playing");
 
-            result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
+			result = result
+					&& discoveryValidator.validate("reportDiscoveryClick_1",
+							60000);
 			logger.info("verified discovery");
 
 			sleep(2000);
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
 			sleep(2000);
 
-            result = result && eventValidator.validate("played_1", 60000);
+			result = result && eventValidator.validate("played_1", 60000);
 			logger.info("video played");
 		} catch (Exception e) {
 			e.printStackTrace();
-            result = false;
+			result = false;
 		}
 		Assert.assertTrue(result, "Playback Discovery tests failed");
 	}

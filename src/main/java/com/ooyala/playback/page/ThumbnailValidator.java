@@ -5,9 +5,7 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -31,32 +29,34 @@ public class ThumbnailValidator extends PlayBackPage implements
 
 	public boolean validate(String element, int timeout) throws Exception {
 
-
 		WebElement element1 = getWebElement("SCRUBBER_BAR");
-		if(element1==null) return false;
-        moveElement(element1);
-		return waitOnElement("THUMBNAIL_CONTAINER", 60000) && validateThumbNailImage();
+		if (element1 == null)
+			return false;
+		moveElement(element1);
+		return waitOnElement("THUMBNAIL_CONTAINER", 60000)
+				&& validateThumbNailImage();
 
 	}
-	
-	private boolean validateThumbNailImage() throws Exception{
-		
+
+	private boolean validateThumbNailImage() throws Exception {
+
 		Map<String, String> data = parseURL();
 		String embed_code = data.get("ec");
-		
-		if(getWebElement("THUMBNAIL_IMAGE") != null){
-			String thumbnail_url = getWebElement("THUMBNAIL_IMAGE").getCssValue("background-image");
-		       
-	        if(thumbnail_url.contains(embed_code)){
-	        	extentTest.log(LogStatus.PASS, "Thumbnail image verified.");
-	        	return true;
-	        }else{
-	        	extentTest.log(LogStatus.FAIL, "Embed code not found in thumbnail image url.");
-	        }
+
+		if (getWebElement("THUMBNAIL_IMAGE") != null) {
+			String thumbnail_url = getWebElement("THUMBNAIL_IMAGE")
+					.getCssValue("background-image");
+
+			if (thumbnail_url.contains(embed_code)) {
+				extentTest.log(LogStatus.PASS, "Thumbnail image verified.");
+				return true;
+			} else {
+				extentTest.log(LogStatus.FAIL,
+						"Embed code not found in thumbnail image url.");
+			}
 		}
 		extentTest.log(LogStatus.FAIL, "THUMBNAIL_IMAGE not found.");
 		return false;
-        
-        	
+
 	}
 }
