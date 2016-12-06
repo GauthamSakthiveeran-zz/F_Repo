@@ -1,8 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -44,10 +41,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("adsPlayed_1", 2000000);
 
-			extentTest.log(PASS, "Played Preroll Ads");
 			event.validate("playing_1", 150000);
-
-			sleep(5000);
 
 			seekAction.seekSpecific(15);
 

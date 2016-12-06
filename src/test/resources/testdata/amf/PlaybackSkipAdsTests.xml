@@ -179,7 +179,7 @@
 	        <playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":10}]]></playerParameter>
     	</url> -->
     	
-    	<url>
+    	<!-- <url>
 	    	<description name="Skippable_AD_Vast3.0"/>
 	        <embed_code name="w5ZTg4MTE6jKe3bS0Oi8uOuCA7w3kMS7"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -188,7 +188,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter></playerParameter>
-    	</url>
+    	</url> -->
     	
     </test>
 </testdata>

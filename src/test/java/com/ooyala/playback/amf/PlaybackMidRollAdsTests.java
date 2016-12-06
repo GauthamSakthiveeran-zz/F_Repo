@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -17,7 +18,7 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 
 	private EventValidator event;
 	private PlayValidator playValidator;
-	private SeekAction seekAction;
+	private SeekValidator seekValidator;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyMidRoll(String testName, String url) throws OoyalaException {
@@ -36,8 +37,16 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 			result = result && event.validate("videoPlaying_1", 90000);
 
 			if (event.isVideoPluginPresent("akamai")) {
-				result = result && event.validate("MidRoll_willPlayAds_1", 120000);
-				result = result && event.validate("adsPlayed_1", 60000);
+				
+				if (event.isAdPluginPresent("freewheel")){
+					result = result && event.validate("MidRoll_willPlayAds_2", 120000);
+					result = result && event.validate("adsPlayed_2", 60000);
+				} else{
+					result = result && event.validate("MidRoll_willPlayAds_1", 120000);
+					result = result && event.validate("adsPlayed_1", 60000);
+				}
+				
+				
 			} else {
 				result = result && event.validate("MidRoll_willPlaySingleAd_1", 120000);
 				if (event.isAdPluginPresent("pulse"))
@@ -46,9 +55,7 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 					result = result && event.validate("singleAdPlayed_1", 60000);
 			}
 
-			result = result && seekAction.seekTillEnd().startAction();
-
-			result = result && event.validate("played_1", 160000);
+//			result = result && seekValidator.validate("seeked_1", 90000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

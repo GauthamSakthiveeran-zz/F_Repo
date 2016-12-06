@@ -40,8 +40,9 @@ public class PlaybackSkipAdsTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 
 			result = result && event.validate("willPlaySingleAd_1", 150000);
-
-			result = result && skipButtonValidator.validate("", 120000);
+			
+			if(!event.isAdPluginPresent("ima"))
+				result = result && skipButtonValidator.validate("", 120000);
 
 			result = result && event.validate("singleAdPlayed_1", 150000);
 			result = result && event.validate("playing_1", 150000);
