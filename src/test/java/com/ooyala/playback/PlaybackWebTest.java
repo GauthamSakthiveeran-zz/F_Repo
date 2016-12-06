@@ -158,7 +158,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		if (browser == null || browser.equals(""))
 			browser = "firefox";
 		logger.info("browser is " + browser);
-		
+
 		driver = getDriver(browser);
 		if (driver != null)
 			logger.info("Driver initialized successfully");
@@ -182,7 +182,14 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@AfterMethod(alwaysRun = true)
 	protected void afterMethod(ITestResult result) {
 
-		takeScreenshot(result.getName());
+		if (driver != null)
+			takeScreenshot(result.getName());
+		else {
+			logger.error("Browser closed during the test run .Renitializing the driver and pagefactory as the test failed during its run");
+			driver = getDriver(browser);
+			pageFactory.destroyInstance();
+			pageFactory = PlayBackFactory.getInstance(driver);
+		}
 		if (result.getStatus() == ITestResult.FAILURE) {
 			extentTest.log(
 					LogStatus.INFO,
