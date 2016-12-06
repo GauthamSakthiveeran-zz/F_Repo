@@ -20,8 +20,7 @@ public class StateScreenAction extends PlayBackPage implements PlayerAction {
 		try{
 			WebElement element = getWebElement("STATE_SCREEN_SELECTABLE");
 			if(element==null) return false;
-	        Actions builder = new Actions(driver);
-	        builder.moveToElement(element).perform();
+            moveElement(element);
 	        return true;
 		}catch(Exception ex){
 			logger.error(ex.getMessage());

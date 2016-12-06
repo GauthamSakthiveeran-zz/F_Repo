@@ -1,5 +1,7 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerfeatures;
 
+import com.relevantcodes.extentreports.LogStatus;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,6 +17,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackSocialMediaTests extends PlaybackWebTest{
 
+	private static Logger logger = Logger.getLogger(PlaybackSocialMediaTests.class);
     private EventValidator eventValidator;
     private PlayValidator play;
     private PauseValidator pause;
@@ -24,7 +27,7 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest{
         super();
     }
 
-    @Test(groups = "Playback", dataProvider = "testUrls")
+    @Test(groups = "playerFeatures", dataProvider = "testUrls")
     public void testScialMediaSharing(String testName, String url) throws OoyalaException {
 
         boolean result = true;

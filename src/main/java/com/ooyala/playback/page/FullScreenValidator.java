@@ -30,7 +30,7 @@ public class FullScreenValidator extends PlayBackPage implements
 		if(!PlayBackFactory.getInstance(driver).getFullScreenAction().startAction()) return false;
 
 		Thread.sleep(3000);
-		if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
+		//if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
 		sleep(2000);
 		if(!clickOnIndependentElement("NORMAL_SCREEN")) return false;
 
@@ -40,7 +40,7 @@ public class FullScreenValidator extends PlayBackPage implements
 				|| getBrowser().equalsIgnoreCase("firefox")
 				|| getBrowser().equalsIgnoreCase("internet explorer") || getPlatform()
 				.equalsIgnoreCase("Android"))) {
-			return waitOnElement(By.id("fullscreenChangedfalse"), 60000);
+			return waitOnElement(By.id("fullscreenChanged_false"), 60000);
 		}else{
 			return true;
 		}

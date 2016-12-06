@@ -1,18 +1,22 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerfeatures;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
+
 import com.ooyala.playback.page.action.PauseAction;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.qe.common.exception.OoyalaException;
+
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackWatermarkTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackWatermarkTests.class);
 	private PlayValidator play;
 	private SeekValidator seek;
 	private PlayAction playAction;
@@ -26,7 +30,7 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "PlayerSkin", dataProvider = "testUrls")
+	@Test(groups = "playerFeatures", dataProvider = "testUrls")
 	public void testWatermarks(String testName, String url)
 			throws OoyalaException {
 
@@ -40,13 +44,11 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 
 			injectScript();
 
-            result = result && playAction.startAction();
-
-            result = result && eventValidator.validate("playing_1", 60000);
+            result = result && play.validate("playing_1", 60000);
 			logger.info("video is playing");
 			Thread.sleep(3000);
 
-            result = result && pauseAction.startAction();
+            result = result && pause.validate("paused_1",60000);
 
             result = result && waterMarkValidator.validate("WATERMARK_LOGO", 60000);
 			logger.info("checked watermark logo");

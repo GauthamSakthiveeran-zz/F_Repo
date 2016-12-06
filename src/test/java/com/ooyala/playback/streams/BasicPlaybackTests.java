@@ -1,5 +1,7 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.streams;
 
+import com.relevantcodes.extentreports.LogStatus;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
@@ -16,6 +18,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class BasicPlaybackTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(BasicPlaybackTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private PauseValidator pause;
@@ -25,7 +28,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "playback", dataProvider = "testUrls")
+	@Test(groups = "streams", dataProvider = "testUrls")
 	public void testBasicPlaybackAlice(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
@@ -33,6 +36,8 @@ public class BasicPlaybackTests extends PlaybackWebTest {
         if((testName.split(":")[1].toLowerCase()).contains("HLS".toLowerCase())&& !(getBrowser().equalsIgnoreCase("safari")) ){
             throw new SkipException("HLS tests run only on Safari browser - Test Skipped");
         }
+
+		logger.info("Test Description : "+ testName.split(":")[1].toLowerCase() + "\n"+url);
 
 		try {
 			driver.get(url);
@@ -43,6 +48,8 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 			injectScript();
 
             result = result && play.validate("playing_1", 60000);
+
+			loadingSpinner();
 
 			Thread.sleep(2000);
 

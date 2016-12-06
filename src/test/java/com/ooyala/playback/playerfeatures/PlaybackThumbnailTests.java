@@ -1,5 +1,7 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerfeatures;
 
+import com.relevantcodes.extentreports.LogStatus;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,6 +18,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackThumbnailTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackThumbnailTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private PauseValidator pause;
@@ -26,7 +29,7 @@ public class PlaybackThumbnailTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "playback", dataProvider = "testUrls")
+	@Test(groups = "playerFeatures", dataProvider = "testUrls")
 	public void testBasicPlaybackAlice(String testName, String url)
 			throws OoyalaException {
 

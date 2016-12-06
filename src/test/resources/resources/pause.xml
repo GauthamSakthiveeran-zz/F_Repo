@@ -5,5 +5,7 @@
 	<element key="HIDDEN_CONTROL_BAR" findBy="class"
 		class="oo-control-bar-hidden" />
 	<element key="STATE_SCREEN" findBy="class" class="oo-state-screen" />
+    <element key="STATE_SCREEN_SELECTABLE" findBy="class" class="oo-state-screen-selectable" />
+
 
 </elements>

@@ -38,6 +38,8 @@ public class PlayBackFactory {
 	private SeekAction seekAction;
 	private SaasPortValidator saasPortValidator;
 	private StateScreenAction stateScreenAction;
+	private OverlayValidator overlayValidator;
+	private AdSkipButtonValidator adSkipButtonValidator;
 	private DifferentElementValidator differentElement;
 	private IsAdPlayingValidator isAdPlaying;
 	private EncodingValidator encodingValidator;
@@ -58,6 +60,20 @@ public class PlayBackFactory {
 		if (encodingValidator == null)
 			encodingValidator = new EncodingValidator(driver);
 		return encodingValidator;
+
+	}
+	
+	public AdSkipButtonValidator getAdSkipButtonValidator() {
+		if (adSkipButtonValidator == null)
+			adSkipButtonValidator = new AdSkipButtonValidator(driver);
+		return adSkipButtonValidator;
+
+	}
+	
+	public OverlayValidator getOverlayValidator() {
+		if (overlayValidator == null)
+			overlayValidator = new OverlayValidator(driver);
+		return overlayValidator;
 
 	}
 	

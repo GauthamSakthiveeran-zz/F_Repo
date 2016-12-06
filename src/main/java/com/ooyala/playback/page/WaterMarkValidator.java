@@ -32,17 +32,6 @@ public class WaterMarkValidator extends PlayBackPage implements
 
 		boolean flag = true;
 
-		Actions action = new Actions(driver);
-
-		WebElement control_bar = getWebElement("CONTROL_BAR_ITEM");
-		
-		if(control_bar==null) return false;
-
-		if (!(getBrowser().equalsIgnoreCase("safari") || getPlatform()
-				.equalsIgnoreCase("Android"))) {
-			action.moveToElement(control_bar).build().perform();
-		}
-
 		if(!waitOnElement("WATERMARK_LOGO", 60000)) return false;
 		Log.info("Watermark Image is displayed");
 		Thread.sleep(5000);
@@ -99,7 +88,7 @@ public class WaterMarkValidator extends PlayBackPage implements
 	protected boolean getWindowHanldes() throws Exception {
 		String oldTab = driver.getWindowHandle();
 
-		if(!clickOnIndependentElement("OOYALA_LOGO")) return false;
+		if(!clickOnIndependentElement("WATERMARK_LOGO")) return false;
 
 		Set<String> allWindows = driver.getWindowHandles();
 		for (String aWindow : allWindows) {

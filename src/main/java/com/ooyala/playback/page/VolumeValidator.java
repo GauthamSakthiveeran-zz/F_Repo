@@ -1,5 +1,7 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PauseAction;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -29,18 +31,19 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		double expectedmutevol = 0.0;
 		double expectedmaxvol = 1.0;
 
+		((JavascriptExecutor) driver)
+				.executeScript("pp.pause()");
+
 		Long currentVolume = (Long) (((JavascriptExecutor) driver)
 				.executeScript("return pp.getVolume()"));
 		Log.info("Current volume: " + currentVolume);
 		try {
 
 			if (!(isElementPresent("CONTROL_BAR"))) {
-				Actions action = new Actions(driver);
-				action.moveToElement(getWebElement("CONTROL_BAR")).build().perform();
+                moveElement(getWebElement("CONTROL_BAR"));
 			}
-			if(waitOnElement("VOLUME_MAX", 10000) && clickOnIndependentElement("VOLUME_MAX")){
-				double getmutevol = getVolume();
-				if(getmutevol!=expectedmutevol){
+			if(clickOnIndependentElement("VOLUME_MAX")){
+				double getmutevol = getVolume();if(getmutevol!=expectedmutevol){
 					extentTest.log(LogStatus.FAIL, "Mute volume is't matching");
 					return false;
 				}
@@ -49,8 +52,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			}else{
 				return false;
 			}
-			if(clickOnHiddenElement("VOLUME_MUTE")){
-				double getMaxVol = getVolume();
+			if(clickOnIndependentElement("VOLUME_MUTE")){double getMaxVol = getVolume();
 				
 				if(getMaxVol!=expectedmaxvol){
 					extentTest.log(LogStatus.FAIL, "Max volume is not the same");
@@ -66,6 +68,8 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 					+ e.getMessage());
             return false;
 		}
+		((JavascriptExecutor) driver)
+				.executeScript("pp.play()");
 		return true;
 	}
 

@@ -1,5 +1,9 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.streams;
 
+import com.ooyala.playback.page.action.PauseAction;
+import com.ooyala.playback.page.action.PlayAction;
+import com.relevantcodes.extentreports.LogStatus;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
@@ -18,18 +22,21 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackLiveTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackLiveTests.class);
 	private PlayValidator play;
 	private PauseValidator pause;
 	private EventValidator eventValidator;
 	private ControlBarValidator controlBarValidator;
 	private FullScreenValidator fullScreenValidator;
 	private LiveAction liveAction;
+    private PauseAction pauseAction;
+    private PlayAction playAction;
 
 	public PlaybackLiveTests() throws OoyalaException {
 		super();
 	}
 
-	@Test(groups = "Playback", dataProvider = "testUrls")
+	@Test(groups = "streams", dataProvider = "testUrls")
 	public void testLive(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
@@ -46,23 +53,21 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 				injectScript();
 
                 result = result && play.validate("playing_1", 60000);
+                Thread.sleep(3000);
 
                 result = result && pause.validate("paused_1", 60000);
 
-                result = result && controlBarValidator.validate("", 60000);
+                  result = result && controlBarValidator.validate("", 60000);
 				// to-do add ooyala logo to the test page
 
                 result = result && fullScreenValidator.validate("FULLSCREEN_BTN_1", 60000);
 
-                result = result && pause.validate("paused_2", 60000);
-
-                result = result && play.validate("playing_2", 60000);
+                result = result && pauseAction.startAction();
 
                 result = result && liveAction.startAction();
 
-                result = result && eventValidator.validate("played_1", 60000);
+                result = result && playAction.startAction();
 
-				logger.info("video played");
 			} catch (Exception e) {
 				e.printStackTrace();
                 result = false;

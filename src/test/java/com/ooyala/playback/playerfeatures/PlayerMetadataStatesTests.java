@@ -1,5 +1,7 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerfeatures;
 
+import com.relevantcodes.extentreports.LogStatus;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,6 +19,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlayerMetadataStatesTests.class);
 	private PlayValidator play;
 	private SeekValidator seek;
 	private EventValidator eventValidator;
@@ -28,7 +31,7 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "Player", dataProvider = "testUrls")
+	@Test(groups = "playerFeatures", dataProvider = "testUrls")
 	public void testPlayerMetadataStates(String testName, String url)
 			throws OoyalaException {
 
@@ -61,7 +64,7 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
             result = result && eventValidator.validate("played_1", 60000);
 			logger.info("video played");
 
-            result = result && endScreenValidator.validate("", 60000);
+            result = result && endScreenValidator.validate("END_SCREEN", 60000);
 
             result = result && eventValidator.eventAction("FULLSCREEN_BTN_1");
 

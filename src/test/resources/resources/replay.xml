@@ -1,6 +1,6 @@
 <elements area="replay">
-    <element key="END_SCREEN" findBy="class"
-             class="oo-end-screen" />
-    <element key="REPLAY" findBy="class"
-             class="oo-icon-system-replay" />
+    <element key="END_SCREEN" findBy="xPath"
+             xPath=".//*[normalize-space(@class)='oo-state-screen oo-end-screen']" />
+    <element key="REPLAY" findBy="xPath"
+             xPath=".//*[normalize-space(@class)='oo-icon oo-icon-system-replay']" />
 </elements>

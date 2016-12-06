@@ -1,7 +1,9 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerfeatures;
 
 import static java.lang.Thread.sleep;
 
+import com.relevantcodes.extentreports.LogStatus;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -22,6 +24,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackDiscoveryCustomizationTests.class);
 	private PlayValidator play;
 	private UpNextValidator discoveryUpNext;
 	private EventValidator eventValidator;
@@ -36,7 +39,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "Discovery", dataProvider = "testUrls")
+	@Test(groups = "playerFeatures", dataProvider = "testUrls")
 	public void testDiscoveryUpNext(String testName, String url)
 			throws OoyalaException {
 		boolean result = true;
@@ -75,7 +78,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
                 result = result &&	eventValidator.eventAction("FULLSCREEN_BTN");
 				logger.info("verified fullscreen");
 				try {
-					eventValidator.eventAction("PLAYING_SCREEN");
+					eventValidator.eventAction("PAUSE_BUTTON");
 				} catch (Exception e) {
 					eventValidator.eventAction("VIDEO");
 				}
@@ -103,7 +106,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 				loadingSpinner();
 				discoveryUpNext.validate("", 60000);
 				try {
-                    eventValidator.validateElement("END_SCREEN", 60000);
+                    discoveryValidator.clickOnDiscoveryCloseButton("DISCOVERY_CLOSE_BTN",20000);
 				} catch (Exception e) {
 					playAction.startAction();
 					seekAction.setTime(20).fromLast().startAction();//seek(20, true);

@@ -31,6 +31,7 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
 import com.ooyala.facile.listners.IMethodListener;
+import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
 import com.ooyala.facile.test.FacileTest;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.httpserver.SimpleHttpServer;
@@ -71,12 +72,12 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
 		extentTest = extentReport.startTest(testData[0].toString());
-		
+
 		PlayBackPage page = new PlayBackPage(driver) {
-			
+
 			@Override
 			public void setExtentTest(ExtentTest test) {
-				
+
 				this.extentTest = PlaybackWebTest.this.extentTest;
 			}
 		};
@@ -100,6 +101,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 				}
 
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -120,9 +122,13 @@ public abstract class PlaybackWebTest extends FacileTest {
 			for (int i = 0; i < jsFiles.length; i++) {
 				InetAddress inetAdd = InetAddress.getLocalHost();
 				jsUrl[i] = "http://" + inetAdd.getHostAddress()
-						+ ":8000/js?fileName=" + jsFiles[i];
+						+ ":9000/js?fileName=" + jsFiles[i];
 			}
 		}
+
+	}
+
+	public void checkPluginCompatability() {
 
 	}
 
@@ -154,14 +160,19 @@ public abstract class PlaybackWebTest extends FacileTest {
 			browser = "firefox";
 
 		driver = getDriver(browser);
+		if (driver != null)
+			logger.info("Driver initialized successfully");
+		else {
+			logger.error("Driver is not initialized successfully");
+			throw new OoyalaException("Driver is not initialized successfully");
+		}
 
-		logger.info("Driver initialized successfully");
-		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		// driver.manage().timeouts().implicitlyWait(240, TimeUnit.MINUTES);
 		pageFactory = PlayBackFactory.getInstance(driver);
-        if (!getPlatform().equalsIgnoreCase("android")) {
-            maximizeMe(driver);
-        }
+		if (!getPlatform().equalsIgnoreCase("android")) {
+			maximizeMe(driver);
+		}
 		parseXmlFileData(xmlFile);
 		getJSFile(jsFile);
 		SimpleHttpServer.startServer();
@@ -180,17 +191,18 @@ public abstract class PlaybackWebTest extends FacileTest {
 									+ result.getName()));
 			extentTest.log(LogStatus.FAIL, result.getThrowable());
 		} else if (result.getStatus() == ITestResult.SKIP) {
-			extentTest.log(LogStatus.SKIP, result.getName()
-					+ " Test skipped " + result.getThrowable());
+			extentTest.log(LogStatus.SKIP, result.getName() + " Test skipped "
+					+ result.getThrowable());
 		} else {
-			extentTest.log(LogStatus.PASS, result.getName()
-					+ " Test passed");
+			extentTest.log(LogStatus.PASS, result.getName() + " Test passed");
 		}
 		extentReport.endTest(extentTest);
 	}
 
 	@AfterClass(alwaysRun = true)
 	public void tearDown() throws Exception {
+		if (isBrowserMobProxyEnabled())
+			BrowserMobProxyHelper.stopBrowserMobProxyServer();
 		extentReport.flush();
 		logger.info("************Inside tearDown*************");
 		if (driver != null) {
@@ -215,16 +227,15 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public void parseXmlFileData(String xmlFile) {
 
 		try {
-			
-			if(xmlFile==null || xmlFile.isEmpty()){
+
+			if (xmlFile == null || xmlFile.isEmpty()) {
 				xmlFile = getClass().getSimpleName();
 				String packagename = getClass().getPackage().getName();
-				if(packagename.contains("amf")){ // TODO
+				if (packagename.contains("amf")) { // TODO
 					xmlFile = "amf/" + xmlFile + ".xml";
 				}
-				
 			}
-			
+
 			File file = new File("src/test/resources/testdata/" + xmlFile);
 			JAXBContext jaxbContext = JAXBContext.newInstance(Testdata.class);
 
@@ -234,9 +245,11 @@ public abstract class PlaybackWebTest extends FacileTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.info(e.getMessage());
-			if(e instanceof NullPointerException){
-				extentTest.log(LogStatus.FAIL, "The test data file should be mentioned as part of the testng parameter "
-						+ "or should be renamed to the name of the class using the test data!");
+			if (e instanceof NullPointerException) {
+				extentTest
+						.log(LogStatus.FAIL,
+								"The test data file should be mentioned as part of the testng parameter "
+										+ "or should be renamed to the name of the class using the test data!");
 			}
 		}
 	}
@@ -254,7 +267,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 					injectScript(url);
 				}
 			}
-			extentTest.log(LogStatus.PASS, "Javascript injection is successful");
+			extentTest
+					.log(LogStatus.PASS, "Javascript injection is successful");
 		}
 	}
 
@@ -350,28 +364,35 @@ public abstract class PlaybackWebTest extends FacileTest {
 				.getSimpleName(), testData);
 		String testName = getClass().getSimpleName();
 		Object[][] output = new Object[urls.size()][2];
-		
-		Iterator<Map.Entry<String, String>> entries = urls.entrySet().iterator();
-		int i=0;
+
+		Iterator<Map.Entry<String, String>> entries = urls.entrySet()
+				.iterator();
+		int i = 0;
 		while (entries.hasNext()) {
-		    Map.Entry<String, String> entry = entries.next();
-		    output[i][0] = testName + " : " + entry.getKey();
+			Map.Entry<String, String> entry = entries.next();
+			output[i][0] = testName + " : " + entry.getKey();
 			output[i][1] = entry.getValue();
 			i++;
 		}
-		
-		/*for (int i = 0; i < urls.size(); i++) {
-			output[i][0] = testName;
-			output[i][1] = urls.get(i);
-		}*/
+
+		/*
+		 * for (int i = 0; i < urls.size(); i++) { output[i][0] = testName;
+		 * output[i][1] = urls.get(i); }
+		 */
 
 		return output;
 
 	}
-	
-	protected String removeSkin(String url){
-		return url.replace("http%3A%2F%2Fplayer.ooyala.com%2Fstatic%2Fv4%2Fcandidate%2Flatest%2Fskin-plugin%2Fhtml5-skin.min.js", "");
+
+	protected String removeSkin(String url) { // TODO
+		return url
+				.replace(
+						"http%3A%2F%2Fplayer.ooyala.com%2Fstatic%2Fv4%2Fcandidate%2Flatest%2Fskin-plugin%2Fhtml5-skin.min.js",
+						"");
 	}
 
-	
+	protected Object executeScript(String script) {
+		return ((JavascriptExecutor) driver).executeScript(script);
+	}
+
 }

@@ -1,7 +1,9 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerfeatures;
 
 import static java.lang.Thread.sleep;
 
+import com.relevantcodes.extentreports.LogStatus;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,6 +18,8 @@ import com.ooyala.qe.common.exception.OoyalaException;
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackDiscoveryTests extends PlaybackWebTest {
+	
+	private static Logger logger = Logger.getLogger(PlaybackDiscoveryTests.class);
 	private PlayValidator play;
 	private DiscoveryValidator discoveryValidator;
 	private PlayAction playAction;
@@ -25,7 +29,7 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "Discovery", dataProvider = "testUrls")
+	@Test(groups = "playerFeatures", dataProvider = "testUrls")
 	public void testDiscovery(String testName, String url)
 			throws OoyalaException {
 

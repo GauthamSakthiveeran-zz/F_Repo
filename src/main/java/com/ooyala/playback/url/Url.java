@@ -98,10 +98,12 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = { "description", "embedCode", "pcode",
+@XmlType(name = "", propOrder = { "sslEnabled","description", "embedCode", "pcode",
 		"plugins", "adPlugins", "additionalPlugins", "pbid", "playerParameter" })
 public class Url {
 
+	@XmlElement(required = true)
+	protected EnableSSL sslEnabled;
 	@XmlElement(required = true)
 	protected Description description;
 	@XmlElement(name = "embed_code", required = true)
@@ -118,6 +120,11 @@ public class Url {
 	protected Pbid pbid;
 	@XmlElement(required = true)
 	protected String playerParameter;
+
+
+	public EnableSSL getSslEnabled() {return sslEnabled;}
+
+	public void setSslEnabled(EnableSSL sslEnabled) {this.sslEnabled = sslEnabled;}
 
 	/**
 	 * Gets the value of the description property.
