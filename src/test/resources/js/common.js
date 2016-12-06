@@ -101,6 +101,7 @@ function subscribeToCommonEvents() {
 			
 			if (event.match(/adPodEnded/)) { 
 				OO.$("#ooplayer").append("<p id=adPodEnded_"+adPodEndedEventOrder+">adPodEnded "+adPodEndedEventOrder+"</p>"); 
+				OO.$('#ooplayer').append('<p id=adPodEnd_'+arguments[1]+'_'+adPodEndedEventOrder+'>adPodPlayed '+arguments[1]+' '+adPodEndedEventOrder+'  </p>');
 				adPodEndedEventOrder++;
 			}
 		};

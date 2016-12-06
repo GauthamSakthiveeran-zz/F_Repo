@@ -32,7 +32,6 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest{
 			driver.get(url);
 
             result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 
 			injectScript();
 			
@@ -42,7 +41,10 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest{
 
             result = result && event.validate("adsPlayed_1", 200000);
 
-            result = result && event.validate("adPodEnd_vast_2_1", 180000);
+            if(!event.isVideoPlugin("osmf"))
+            	result = result && event.validate("adPodEnd_vast_2_2", 6000);
+            else
+            	result = result && event.validate("adPodEnd_vast_0_1", 6000);
 
             result = result && event.validate("playing_1", 90000);
 
@@ -52,9 +54,10 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest{
 
             result = result && event.validate("adsPlayed_2", 200000);
 
-            result = result &&  event.validate("AD_POD_END_IMA", 20000);
-
-            result = result &&  event.validate("played_1", 200000);
+            if(!event.isVideoPlugin("osmf"))
+            	result = result && event.validate("adPodEnd_google-ima-ads-manager_0_1", 6000);
+            else
+            	result = result && event.validate("adPodEnd_google-ima-ads-manager_1_2", 6000); 
 
 		} catch (Exception e) {
 			e.printStackTrace();

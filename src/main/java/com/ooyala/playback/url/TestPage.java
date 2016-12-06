@@ -63,6 +63,8 @@ public class TestPage {
 				additionalPlugins = testpagedata.getAdditionalPlugin(additionalPlugin);
 				if(additionalPlugins.isEmpty())
 					additionalPlugins = testpagedata.getPluginForStream(additionalPlugin);
+				if(additionalPlugins.isEmpty())
+					additionalPlugins = testpagedata.getPluginForAd(additionalPlugin);
 			}
 
 			url = testpagedata.getBaseURL()
