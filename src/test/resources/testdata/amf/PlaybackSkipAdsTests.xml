@@ -77,7 +77,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
+    	</url> 
     	
     	<url>
 	    	<description name="BitmovinSkipAds_Vast_HLS"/>
@@ -90,7 +90,7 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
-    	<url>
+    	 <url>
 	    	<description name="BitmovinSkipAds_Vast"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -179,7 +179,7 @@
 	        <playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":10}]]></playerParameter>
     	</url> -->
     	
-    	<!-- <url>
+    	<url>
 	    	<description name="Skippable_AD_Vast3.0"/>
 	        <embed_code name="w5ZTg4MTE6jKe3bS0Oi8uOuCA7w3kMS7"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -188,7 +188,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter></playerParameter>
-    	</url> -->
+    	</url>
     	
     </test>
 </testdata>

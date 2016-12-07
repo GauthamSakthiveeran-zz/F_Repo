@@ -16,5 +16,5 @@
              class="oo-player-skin-plugins" />         
              
     <element key="VIDEO_AD_UI_PRE_SKIP_BUTTON" findBy="class"
-             class="videoAdUiPreSkipButton" />                  
+             class="videoAdUiSkipButton" />                  
 </elements>

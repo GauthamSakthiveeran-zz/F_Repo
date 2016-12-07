@@ -24,8 +24,7 @@ public class PlaybackSkipAdsTests extends PlaybackWebTest {
 	private AdSkipButtonValidator skipButtonValidator;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPrerollOverlay(String testName, String url)
-			throws OoyalaException {
+	public void verifySkipButton(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -37,12 +36,16 @@ public class PlaybackSkipAdsTests extends PlaybackWebTest {
 
 			injectScript();
 
-			result = result && playAction.startAction();
+			if (!(event.isVideoPluginPresent("akamai") && event.isAdPluginPresent("vast"))) {
+				result = result && playAction.startAction();
+				result = result && event.validate("willPlaySingleAd_1", 150000);
+			}
 
-			result = result && event.validate("willPlaySingleAd_1", 150000);
-			
-			if(!event.isAdPluginPresent("ima"))
+			if (!event.isAdPluginPresent("ima")) // Unable to click skip ad
+													// button for IMA
 				result = result && skipButtonValidator.validate("", 120000);
+			else
+				result = result && event.validate("showAdSkipButton_1", 150000);
 
 			result = result && event.validate("singleAdPlayed_1", 150000);
 			result = result && event.validate("playing_1", 150000);
