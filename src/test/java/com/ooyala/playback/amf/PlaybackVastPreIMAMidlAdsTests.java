@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf.VAST;
+package com.ooyala.playback.amf;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -21,8 +21,8 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPrerollOverlay(String testName, String url) throws OoyalaException {
+	@Test(groups = {"amf","preroll","midroll"}, dataProvider = "testUrls")
+	public void verifyVastPreIMAMidlAds(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 

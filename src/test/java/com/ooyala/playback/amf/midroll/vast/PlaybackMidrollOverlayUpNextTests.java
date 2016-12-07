@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf.VAST;
+package com.ooyala.playback.amf.midroll.vast;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -21,7 +21,7 @@ public class PlaybackMidrollOverlayUpNextTests extends PlaybackWebTest {
 	private OverlayValidator overLayValidator;
 	private DiscoveryValidator discoverValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","overlay","midroll","upnext"}, dataProvider = "testUrls")
 	public void verifyMidrollOverlayUpNext(String testName, String url)
 			throws OoyalaException {
 

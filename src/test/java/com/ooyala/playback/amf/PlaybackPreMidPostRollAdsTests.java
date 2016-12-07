@@ -21,7 +21,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","preroll","midroll","postroll"}, dataProvider = "testUrls")
 	public void verifyPreMidPostroll(String testName, String url) throws OoyalaException {
 
 		boolean result = true;

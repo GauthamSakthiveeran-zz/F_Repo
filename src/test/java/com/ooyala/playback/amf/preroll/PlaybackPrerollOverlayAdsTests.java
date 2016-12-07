@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.preroll;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -23,7 +23,7 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 	private OverlayValidator overLayValidator;
 	private SeekValidator seekValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","preroll","overlay"}, dataProvider = "testUrls")
 	public void verifyPrerollOverlay(String testName, String url) throws OoyalaException {
 
 		boolean result = true;

@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.midroll;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -6,8 +6,6 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMidRollAdsTests extends PlaybackWebTest {
@@ -18,9 +16,8 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 
 	private EventValidator event;
 	private PlayValidator playValidator;
-	private SeekValidator seekValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","midroll"}, dataProvider = "testUrls")
 	public void verifyMidRoll(String testName, String url) throws OoyalaException {
 
 		boolean result = true;

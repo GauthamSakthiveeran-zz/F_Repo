@@ -8,45 +8,9 @@
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 
-		<classes>
-		
-			
-			<class name="com.ooyala.playback.amf.freewheel.PlaybackBumperPrerollAdTests"/>
-			<class name="com.ooyala.playback.amf.VAST.PlaybackMidrollOverlayUpNextTests"/>
-			<class name="com.ooyala.playback.amf.VAST.PlaybackPoddedwithOverlayStandaloneTests"/>
-			<class name="com.ooyala.playback.amf.VAST.PlaybackVastPreIMAMidlAdsTests"/>		
-			<class name="com.ooyala.playback.amf.PlaybackPlayerWithoutSkinTests"/> 
-			<class name="com.ooyala.playback.amf.PlaybackPreRollAdsTests"/> 
-			<class name="com.ooyala.playback.amf.PlaybackPrerollOverlayAdsTests"/> 
-			<class name="com.ooyala.playback.amf.PlaybackPreRollPoddedAdsTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackCustomeInteractionTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackMp4PlayerSwitchingSupportTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackMidRollPoddedAdsTests"/>
-			
-			<class name="com.ooyala.playback.amf.VAST.PlaybackPoddedSkippbableInsideTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"/>
-			
-			<class name="com.ooyala.playback.amf.PlaybackMidRollAdsTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackSkipAdsTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackPostRollAdsTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackIMAPreVastMidAdsTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackMidrollOverlayTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackPostRollPoddedAdsTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackMultipleMidRollAdsTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsPoddedTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackPreMidPostReplayTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackClickthroughTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackCCenableMidRollAdsTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsPoddedTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackCCenabledPreRollAdsTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackDiscoveryUpnextTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackPostrollDiscoveryTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackPrerollAdsDiscoveryTests"/>
-			<class name="com.ooyala.playback.amf.VAST.PlaybackAdWrapperTests"/>
-			
-
-			
-		</classes>
+		<packages>
+			<package name="com.ooyala.playback.amf" />
+		</packages>
 		
 
 	</test>

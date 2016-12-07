@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.postroll;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -23,7 +23,7 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private UpNextValidator upNextValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","postroll","discovery","upnext"}, dataProvider = "testUrls")
 	public void verifyPostrollDiscovery(String testName, String url) throws OoyalaException {
 
 		boolean result = true;

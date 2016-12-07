@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.postroll;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,9 +10,9 @@ import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
+public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 
-	public PlaybackPreRollPoddedAdsTests() throws OoyalaException {
+	public PlaybackPostRollPoddedAdsTests() throws OoyalaException {
 		super();
 	}
 
@@ -21,8 +21,9 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private PoddedAdValidator poddedAdValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPrerollOverlay(String testName, String url) throws OoyalaException {
+	@Test(groups = {"amf","postroll","podded"}, dataProvider = "testUrls")
+	public void verifyPostrollPodded(String testName, String url)
+			throws OoyalaException {
 
 		boolean result = true;
 
@@ -35,21 +36,19 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 
 			injectScript();
 
-			result = result && playValidator.validate("playing_1", 120000);
-
-			result = result && event.validate("adsPlayed_1", 180000);
-
-			result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 120000);
-
+			result = result && playValidator.validate("playing_1", 150000);
 			result = result && seekValidator.validate("seeked_1", 180000);
+			result = result && event.validate("videoPlayed_1", 180000);
 			result = result && event.validate("played_1", 180000);
+
+			result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 160000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Test failed");
+		Assert.assertTrue(result, "Tests failed");
 
 	}
 

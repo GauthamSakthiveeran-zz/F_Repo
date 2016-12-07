@@ -23,7 +23,7 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private AdClickThroughValidator clickThrough;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","clickThrough"}, dataProvider = "testUrls")
 	public void verifyClickthrough(String testName, String url)
 			throws Exception {
 

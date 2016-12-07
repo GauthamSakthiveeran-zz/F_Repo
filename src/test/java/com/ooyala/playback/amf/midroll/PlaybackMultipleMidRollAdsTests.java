@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.midroll;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -21,7 +21,7 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private PoddedAdValidator poddedAdValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","midroll"}, dataProvider = "testUrls")
 	public void verifyMultipleMidroll(String testName, String url)
 			throws OoyalaException {
 

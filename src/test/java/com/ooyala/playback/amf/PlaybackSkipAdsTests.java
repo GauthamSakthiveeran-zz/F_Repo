@@ -23,7 +23,7 @@ public class PlaybackSkipAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private AdSkipButtonValidator skipButtonValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","skipads"}, dataProvider = "testUrls")
 	public void verifySkipButton(String testName, String url) throws OoyalaException {
 
 		boolean result = true;

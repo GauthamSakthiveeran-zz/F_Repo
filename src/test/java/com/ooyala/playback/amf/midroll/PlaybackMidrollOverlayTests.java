@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.midroll;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -22,7 +22,7 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private OverlayValidator overLayValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","overlay","midroll"}, dataProvider = "testUrls")
 	public void verifyMidrollOverlay(String testName, String url)
 			throws OoyalaException {
 

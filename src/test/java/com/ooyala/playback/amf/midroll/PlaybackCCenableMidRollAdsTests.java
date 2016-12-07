@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.midroll;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -23,7 +23,7 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private CCValidator ccValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","cc","midroll"}, dataProvider = "testUrls")
 	public void verifyCCenableMidRoll(String testName, String url)
 			throws Exception {
 		boolean result = true;
