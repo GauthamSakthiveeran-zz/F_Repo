@@ -7,8 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.relevantcodes.extentreports.LogStatus;
 
-public class AdSkipButtonValidator extends PlayBackPage implements
-		PlaybackValidator {
+public class AdSkipButtonValidator extends PlayBackPage implements PlaybackValidator {
 
 	public static Logger logger = Logger.getLogger(AdSkipButtonValidator.class);
 
@@ -31,21 +30,18 @@ public class AdSkipButtonValidator extends PlayBackPage implements
 		try {
 			if (custom)
 				return true;
-			// return waitOnElement("AD_SKIP_BTN_CUSTOM", 2000)
-			// && clickOnIndependentElement("AD_SKIP_BTN_CUSTOM")
-			// && waitOnElement(By.id("skipAd_1"), 60000);
-			else
 
-				return waitOnElement("AD_SKIP_BTN", 20000)
-						&& clickOnIndependentElement("AD_SKIP_BTN")
+			if (isElementPresent("AD_SKIP_BTN"))
+				return waitOnElement("AD_SKIP_BTN", 2000) && clickOnIndependentElement("AD_SKIP_BTN")
 						&& waitOnElement(By.id("skipAd_1"), 60000);
+
+			extentTest.log(LogStatus.INFO, "AD_SKIP_BTN is not present!!");
+			return true;
 
 		} catch (Exception e) {
 			extentTest.log(LogStatus.INFO, "adSkip Button is not present!!");
 			extentTest.log(LogStatus.INFO, "Validating videoAdUiPreSkipButton");
-
-			return clickOnIndependentElement("VIDEO_AD_UI_PRE_SKIP_BUTTON")
-					&& waitOnElement("skipAd_1", 60000);
+			return clickOnIndependentElement("VIDEO_AD_UI_PRE_SKIP_BUTTON") && waitOnElement("skipAd_1", 60000);
 		}
 	}
 

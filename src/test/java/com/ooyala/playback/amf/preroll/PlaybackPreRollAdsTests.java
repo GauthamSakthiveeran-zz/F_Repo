@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.preroll;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -21,7 +21,7 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","preroll"}, dataProvider = "testUrls")
 	public void verifyPreroll(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
@@ -31,14 +31,13 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 			driver.get(url);
 
 			result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 
 			injectScript();
 
 			result = result && playAction.startAction();
 
-			if ((event.isVideoPlugin("main") && event.isAdPlugin("freewheel"))
-					|| event.isVideoPlugin("osmf") && event.isAdPlugin("ima")) {
+			if ((event.isVideoPluginPresent("main") && event.isAdPluginPresent("freewheel"))
+					|| event.isVideoPluginPresent("osmf") && event.isAdPluginPresent("ima")) {
 				result = result && event.validate("PreRoll_willPlayAds", 60000);
 				result = result && event.validate("adsPlayed_1", 160000);
 			} else {

@@ -23,7 +23,7 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private AdSkipButtonValidator skipValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","podded","skipads"}, dataProvider = "testUrls")
 	public void verifyPoddedInsideSkipButton(String testName, String url)
 			throws OoyalaException {
 
@@ -40,13 +40,20 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 
 			result = result && event.validate("willPlaySingleAd_1", 150000);
+			
+			result = result && skipValidator.validate("", 120000);
+			
 			result = result && event.validate("singleAdPlayed_1", 150000);
 
 			result = result && event.validate("willPlaySingleAd_2", 150000);
+			
+			result = result && event.validate("singleAdPlayed_2", 150000);
 
 			result = result && skipValidator.validate("", 120000);
 
 			result = result && event.validate("willPlaySingleAd_3", 150000);
+			
+			result = result && skipValidator.validate("", 120000);
 
 			result = result && event.validate("singleAdPlayed_3", 150000);
 

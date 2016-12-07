@@ -20,66 +20,47 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 		addElementToPageElements("adoverlay");
 		addElementToPageElements("fullscreen");
 	}
+	
+	private boolean checkInFullScreen(String element, int timeout) throws Exception{
+		
+		logger.info("No close button for Overlay");
+		extentTest.log(LogStatus.INFO, "No close button seen in normal screen on Overlay....trying in Fullscreen.");
+		
+		FullScreenAction fullScreenAction = PlayBackFactory.getInstance(driver).getFullScreenAction();
+		
+		if (!fullScreenAction.startAction())
+			return false;
+
+		if (!getBrowser().equalsIgnoreCase("safari") && !getPlatform().equalsIgnoreCase("Android")) {
+			if (!waitOnElement("OVERLAY_CLOSE_BTN", 40000))
+				return false;
+			if (!clickOnIndependentElement("OVERLAY_CLOSE_BTN"))
+				return false;
+			logger.info("Clicked on overlay close button in fullscreen screen \n");
+			logger.info("Overlay gets closed");
+		}
+
+		if (!waitOnElement(By.id(element), timeout))
+			return false;
+
+		return true;
+	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		try {
-
-			// if(!waitOnElement("OVERLAY_CLOSE_BTN", 40000)) return false;
-			// extentTest.log(LogStatus.PASS, "Overlay Shown");
-			if (!waitOnElement("OVERLAY_CLOSE_BTN", 2000)) {
-				extentTest
-						.log(LogStatus.INFO, "Overlay Close button not Shown");
-			}
-			try {
-				if (!clickOnIndependentElement("OVERLAY_CLOSE_BTN"))
-					return false;
-			} catch (NoSuchElementException e) {
-				if (!clickOnIndependentElement("OVERLAY_CLOSE_BTN_1"))
-					return false;
-			}
-
-			if (!waitOnElement(By.id(element), timeout))
-				return false;
-
-
-		} catch (Exception e) {
-			logger.info("No close button for Overlay");
-			logger.info("No close button seen in normal screen on Overlay....trying in Fullscreen \n");
-			FullScreenAction fullScreenAction = PlayBackFactory.getInstance(
-					driver).getFullScreenAction();
-			if (!fullScreenAction.startAction())
-				return false;
-
-			if (!getBrowser().equalsIgnoreCase("safari")
-					&& !getPlatform().equalsIgnoreCase("Android")) {
-				if (!waitOnElement("OVERLAY_CLOSE_BTN", 40000))
-					return false;
-				if (!clickOnIndependentElement("OVERLAY_CLOSE_BTN"))
-					return false;
-				logger.info("Clicked on overlay close button in fullscreen screen \n");
-				logger.info("Overlay gets closed");
-			}
-
-			if (!waitOnElement(By.id(element), timeout))
-				return false;
-
-			if (getBrowser().equalsIgnoreCase("safari")) {
-				if (!clickOnIndependentElement("NORMAL_SCREEN"))
-					return false;
-			} else {
-				try {
-
-					if (!PlayBackFactory.getInstance(driver).getSeekAction()
-							.setTime(15).startAction())
-						return false;
-
-				} catch (Exception e1) {
-					if (!clickOnHiddenElement("NORMAL_SCREEN"))
-						return false;
-				}
-			}
-
+		
+		if (!isElementPresent("OVERLAY_CLOSE_BTN")) {
+			return checkInFullScreen(element, timeout);
 		}
+
+		if (!waitOnElement("OVERLAY_CLOSE_BTN", 20000))
+			return false;
+		
+		if (!clickOnIndependentElement("OVERLAY_CLOSE_BTN"))
+			return false;
+		
+		if (!waitOnElement(By.id(element), timeout))
+			return false;
+		
 		return true;
 
 	}

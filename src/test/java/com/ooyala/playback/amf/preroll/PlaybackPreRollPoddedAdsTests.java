@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.preroll;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,9 +10,9 @@ import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
+public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 
-	public PlaybackPostRollPoddedAdsTests() throws OoyalaException {
+	public PlaybackPreRollPoddedAdsTests() throws OoyalaException {
 		super();
 	}
 
@@ -21,9 +21,8 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private PoddedAdValidator poddedAdValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPostrollPodded(String testName, String url)
-			throws OoyalaException {
+	@Test(groups = {"amf","preroll","podded"}, dataProvider = "testUrls")
+	public void verifyPrerollOverlay(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -36,20 +35,21 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 
 			injectScript();
 
-			result = result && playValidator.validate("playing_1", 150000);
-			result = result && seekValidator.validate("seeked_1", 180000);
-			result = result && event.validate("videoPlayed_1", 180000);
-			result = result && event.validate("played_1", 180000);
+			result = result && playValidator.validate("playing_1", 120000);
 
-			result = result
-					&& poddedAdValidator.validate("countPoddedAds", 160000);
+			result = result && event.validate("adsPlayed_1", 180000);
+
+			result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 120000);
+
+			result = result && seekValidator.validate("seeked_1", 180000);
+			result = result && event.validate("played_1", 180000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Tests failed");
+		Assert.assertTrue(result, "Test failed");
 
 	}
 

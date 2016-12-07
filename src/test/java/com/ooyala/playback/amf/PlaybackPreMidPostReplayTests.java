@@ -23,7 +23,7 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	private ReplayValidator replayValidator;
 	private AdClickThroughValidator adClickThrough;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","preroll","midroll","postroll","replay"}, dataProvider = "testUrls")
 	public void verifyPreMidPostcontrols(String testName, String url)
 			throws OoyalaException {
 

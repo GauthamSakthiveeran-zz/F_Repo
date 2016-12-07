@@ -33,7 +33,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	private boolean verifyCloseClosedCaptionPanel() throws Exception {
-		swicthToControlBar();
+		switchToControlBar();
 		if (!isElementPresent("CC_PANEL_CLOSE"))
 			return false;
 		if (!clickOnIndependentElement("CC_PANEL_CLOSE"))
@@ -46,17 +46,15 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 		try {
 			Thread.sleep(1000);
-			swicthToControlBar();
-			try {
-				if (!waitOnElement("CC_BTN", 6000))
-					return false;
-			} catch (Exception e) {
+			switchToControlBar();
+			
+			if (!waitOnElement("CC_BTN", 6000)){
 				if (!clickOnIndependentElement("MORE_OPTION_ICON"))
 					return false;
 				if (!waitOnElement("CC_BTN", 6000))
 					return false;
 			}
-
+			
 			if (!isElementPresent("CC_BTN"))
 				return false;
 			if (!clickOnIndependentElement("CC_BTN"))
@@ -77,7 +75,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	private boolean validateClosedCaptionPanel() throws Exception {
-		swicthToControlBar();
+		switchToControlBar();
 		if (!(isElementPresent("CLOSED_CAPTION_PANEL"))) {
 			if (!clickOnIndependentElement("CC_BTN"))
 				return false;
@@ -102,7 +100,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		return false;
 	}
 
-	private void swicthToControlBar() throws Exception {
+	private void switchToControlBar() throws Exception {
 		if (isElementPresent("HIDDEN_CONTROL_BAR")) {
 			logger.info("hovering mouse over the player");
 			Thread.sleep(2000);
@@ -134,7 +132,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	protected boolean closedCaptionMicroPanel() throws Exception {
 		try {
-			swicthToControlBar();
+			switchToControlBar();
 
 			if (!clickOnIndependentElement("CC_BTN"))
 				return false;

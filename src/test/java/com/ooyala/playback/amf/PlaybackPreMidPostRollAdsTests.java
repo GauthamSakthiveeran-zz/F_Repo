@@ -1,8 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -24,9 +21,8 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPreMidPostroll(String testName, String url)
-			throws OoyalaException {
+	@Test(groups = {"amf","preroll","midroll","postroll"}, dataProvider = "testUrls")
+	public void verifyPreMidPostroll(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -42,23 +38,20 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("PreRoll_willPlayAds", 150000);
 
-			result = result && event.validate("adsPlayed_1", 2000000);
+			result = result && event.validate("adsPlayed_1", 200000);
 
-			extentTest.log(PASS, "Played Preroll Ads");
-			event.validate("playing_1", 150000);
+			result = result && event.validate("playing_1", 150000);
 
-			sleep(5000);
-
-			seekAction.seekSpecific(15);
+			result = result && seekAction.setTime(15).fromLast().startAction();
 
 			result = result && event.validate("MidRoll_willPlayAds", 150000);
 			result = result && event.validate("adsPlayed_2", 150000);
 
-			seekAction.seekSpecific(15);
+			result = result && seekAction.setTime(30).fromLast().startAction();
 
 			result = result && event.validate("PostRoll_willPlayAds", 150000);
 
-			if (event.isAdPlugin("pulse")) {
+			if (event.isAdPluginPresent("pulse")) {
 				result = result && event.validate("singleAdPlayed_6", 60000);
 				result = result && event.validate("seeked_1", 60000);
 			} else
@@ -71,7 +64,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified Pre Mid Post Roll Ads test");
+		Assert.assertTrue(result, "Verified Pre Mid Post Roll Ads failed.");
 
 	}
 

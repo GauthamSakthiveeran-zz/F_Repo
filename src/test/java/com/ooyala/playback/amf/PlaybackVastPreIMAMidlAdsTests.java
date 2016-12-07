@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf.VAST;
+package com.ooyala.playback.amf;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -21,8 +21,8 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPrerollOverlay(String testName, String url) throws OoyalaException {
+	@Test(groups = {"amf","preroll","midroll"}, dataProvider = "testUrls")
+	public void verifyVastPreIMAMidlAds(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -40,7 +40,7 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("adsPlayed_1", 200000);
 
-			if (!event.isVideoPlugin("osmf"))
+			if (!event.isVideoPluginPresent("osmf"))
 				result = result && event.validate("adPodEnd_vast_2_2", 6000);
 			else
 				result = result && event.validate("adPodEnd_vast_0_1", 6000);
@@ -53,7 +53,7 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("adsPlayed_2", 200000);
 
-			if (!event.isVideoPlugin("osmf"))
+			if (!event.isVideoPluginPresent("osmf"))
 				result = result && event.validate("adPodEnd_google-ima-ads-manager_0_1", 6000);
 			else
 				result = result && event.validate("adPodEnd_google-ima-ads-manager_1_2", 6000);
