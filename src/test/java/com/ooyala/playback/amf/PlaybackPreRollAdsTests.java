@@ -22,8 +22,7 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPreroll(String testName, String url)
-			throws OoyalaException {
+	public void verifyPreroll(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -38,11 +37,16 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && event.validate("willPlaySingleAd_1", 60000);
+			if ((event.isVideoPlugin("main") && event.isAdPlugin("freewheel"))
+					|| event.isVideoPlugin("osmf") && event.isAdPlugin("ima")) {
+				result = result && event.validate("PreRoll_willPlayAds", 60000);
+				result = result && event.validate("adsPlayed_1", 160000);
+			} else {
+				result = result && event.validate("willPlaySingleAd_1", 60000);
+				result = result && event.validate("singleAdPlayed_1", 160000);
+			}
 
-			result = result && event.validate("singleAdPlayed_1", 160000);
-
-			result = result && playValidator.validate("playing_1", 190000);
+			result = result && event.validate("playing_1", 190000);
 
 			result = result && seekValidator.validate("seeked_1", 190000);
 

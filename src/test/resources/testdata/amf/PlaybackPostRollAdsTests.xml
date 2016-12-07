@@ -174,7 +174,7 @@
 	    	<description name="BitmovinPostrol_Vast"/>
 	        <embed_code name="5pZjdoMTE6ABVRm7f8R4poI7AK2PRd1I"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="MAIN"/>
+	        <plugins name="BITMOVIN"/>
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>

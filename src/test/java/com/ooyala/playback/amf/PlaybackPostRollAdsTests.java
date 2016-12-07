@@ -20,8 +20,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPostroll(String testName, String url)
-			throws OoyalaException {
+	public void verifyPostroll(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -34,8 +33,10 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && playValidator.validate("playing_1", 90000);
-			result = result && seekValidator.validate("seeked_1", 90000);
-			result = result && event.validate("videoPlayed_1", 120000);
+			if (!event.isVideoPlugin("bit_wrapper"))
+				result = result && seekValidator.validate("seeked_1", 90000);
+
+			result = result && event.validate("videoPlayed_1", 200000);
 			result = result && event.validate("willPlaySingleAd_1", 90000);
 
 			result = result && event.validate("singleAdPlayed_1", 90000);

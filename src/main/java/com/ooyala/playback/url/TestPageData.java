@@ -383,7 +383,19 @@ public class TestPageData {
 	public String getSkinConfigPlugin(String plugins, String adPlugin,
 			String additionalPlugin) {
 
-		if (plugins.contains(",")) {
+		
+		if (additionalPlugin.contains("DISCOVERY")) {
+			return skinConf + skinConfigForDiscovery;
+		}else if(adPlugin.equals("IMA")){
+			if(plugins.equals("MAIN")){
+				return skinConf + skinConfigForOSMF_IMA;
+			}
+			if(plugins.contains(",") && plugins.contains("OSMF")){
+				return skinConf + skinConfigForOSMF_IMA;
+			}
+		}
+		
+		/*if (plugins.contains(",")) {
 			String str[] = plugins.split(",");
 			for (int i = 0; i < str.length; i++) {
 				if (additionalPlugin != "") {
@@ -400,7 +412,7 @@ public class TestPageData {
 			if (additionalPlugin != "") {
 				return skinConf + skinConfigForDiscovery;
 			}
-		}
+		}*/
 
 		return skinConf + defaultSkinConfig;
 

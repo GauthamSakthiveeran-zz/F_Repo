@@ -39,7 +39,7 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && event.validate("willPlaySingleAd_1", 60000);
+            result = result && event.validate("willPlaySingleAd_1", 120000);
 
 			result = result && clickThrough.validate("", 120000);
 
