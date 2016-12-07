@@ -1,15 +1,14 @@
 package com.ooyala.playback.playerfeatures;
 
-
-import static java.lang.Thread.sleep;
-
+import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.qe.common.exception.OoyalaException;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -37,15 +36,11 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 		try {
 			driver.get(url);
 
-			play.waitForPage();
-
-			Thread.sleep(10000);
+			result = result && play.waitForPage();
 
 			injectScript();
 
-			loadingSpinner();
-
-			playAction.startAction();
+			result = result && playAction.startAction();
 
 			loadingSpinner();
 
@@ -59,22 +54,22 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 			sleep(4000);
 
-			logger.info("validated video volume at full range");
-
             result = result && eventValidator.validate("playing_1", 60000);
 
-			volumeValidator.validate("VOLUME_MAX", 60000);
+			result = result && volumeValidator.validate("VOLUME_MAX", 60000);
 
 			logger.info("validated video volume at full range");
 
-			seekValidator.validate("seeked_1",60);
+			Thread.sleep(2000);
 
-			eventValidator.validate("played_1", 60000);
+			result = result && seek.validate("seeked_1", 60000);
+
+			result = result && eventValidator.validate("played_1", 60000);
 
 			logger.info("video played");
 		} catch (Exception e) {
 			e.printStackTrace();
-            result = false;
+			result = false;
 		}
 		Assert.assertTrue(result, "Playback Volume tests failed");
 	}

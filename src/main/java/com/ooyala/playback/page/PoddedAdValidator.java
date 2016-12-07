@@ -25,16 +25,19 @@ public class PoddedAdValidator extends PlayBackPage implements
 					.toString());
 			for (int i = 1; i <= result; i++) {
 
-                boolean willPlaySingleAd = waitOnElement(By.id("willPlaySingleAd_"+i), 10000);
+				boolean willPlaySingleAd = waitOnElement(
+						By.id("willPlaySingleAd_" + i), 10000);
 
-                boolean singleAdPlayed = waitOnElement(By.id("singleAdPlayed_"+i), 16000);
-				
-				if(!(willPlaySingleAd && singleAdPlayed)){
-					extentTest.log(LogStatus.FAIL, "Ad started elements from injected scripts are not found");
+				boolean singleAdPlayed = waitOnElement(
+						By.id("singleAdPlayed_" + i), 16000);
+
+				if (!(willPlaySingleAd && singleAdPlayed)) {
+					extentTest
+							.log(LogStatus.FAIL,
+									"Ad started elements from injected scripts are not found");
 					return false;
 				}
-					
-				
+
 			}
 			extentTest.log(LogStatus.PASS, "Podded Ad Completed");
 			return true;

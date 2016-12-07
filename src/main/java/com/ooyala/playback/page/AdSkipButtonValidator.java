@@ -17,32 +17,35 @@ public class AdSkipButtonValidator extends PlayBackPage implements
 		PageFactory.initElements(webDriver, this);
 		addElementToPageElements("adclicks");
 	}
-	
+
 	boolean custom = false;
-	
-	public AdSkipButtonValidator custom(){
+
+	public AdSkipButtonValidator custom() {
 		custom = true;
 		return this;
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		if(!waitOnElement(By.id("showAdSkipButton_1"), 60000)) return false;
+		if (!waitOnElement(By.id("showAdSkipButton_1"), 60000))
+			return false;
 		try {
-			if(custom)
+			if (custom)
 				return true;
-//				return waitOnElement("AD_SKIP_BTN_CUSTOM", 2000)  
-//						&& clickOnIndependentElement("AD_SKIP_BTN_CUSTOM") 
-//						&& waitOnElement(By.id("skipAd_1"), 60000);
+			// return waitOnElement("AD_SKIP_BTN_CUSTOM", 2000)
+			// && clickOnIndependentElement("AD_SKIP_BTN_CUSTOM")
+			// && waitOnElement(By.id("skipAd_1"), 60000);
 			else
-				return waitOnElement("AD_SKIP_BTN", 2000) 
-					&& clickOnIndependentElement("AD_SKIP_BTN") 
-					&& waitOnElement(By.id("skipAd_1"), 60000);
+
+				return waitOnElement("AD_SKIP_BTN", 20000)
+						&& clickOnIndependentElement("AD_SKIP_BTN")
+						&& waitOnElement(By.id("skipAd_1"), 60000);
 
 		} catch (Exception e) {
-			extentTest.log(LogStatus.INFO,"adSkip Button is not present!!");
-			extentTest.log(LogStatus.INFO,"Validating videoAdUiPreSkipButton");
-			
-			return clickOnIndependentElement("VIDEO_AD_UI_PRE_SKIP_BUTTON") && waitOnElement("skipAd_1", 60000);
+			extentTest.log(LogStatus.INFO, "adSkip Button is not present!!");
+			extentTest.log(LogStatus.INFO, "Validating videoAdUiPreSkipButton");
+
+			return clickOnIndependentElement("VIDEO_AD_UI_PRE_SKIP_BUTTON")
+					&& waitOnElement("skipAd_1", 60000);
 		}
 	}
 

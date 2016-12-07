@@ -1,55 +1,65 @@
 package com.ooyala.playback.VTC;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.qe.common.exception.OoyalaException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.IsAdPlayingValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.ReplayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by snehal on 25/11/16.
  */
 public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 
-    private PlayValidator play;
-    private EventValidator eventValidator;
-    private SeekValidator seekValidator;
-    private ReplayValidator replayValidator;
-    private IsAdPlayingValidator isAdPlayingValidator;
+	private PlayValidator play;
+	private EventValidator eventValidator;
+	private SeekValidator seekValidator;
+	private ReplayValidator replayValidator;
+	private IsAdPlayingValidator isAdPlayingValidator;
 
-    public PlaybackAutoplayAutoloopTests() throws OoyalaException {
-        super();
-    }
-    @Test(groups = "Playback", dataProvider = "testUrls")
-    public void testAutoplayAutoloop(String testName, String url) throws OoyalaException {
+	public PlaybackAutoplayAutoloopTests() throws OoyalaException {
+		super();
+	}
 
-        boolean result = true;
-        try {
-            driver.get(url);
+	@Test(groups = "Playback", dataProvider = "testUrls")
+	public void testAutoplayAutoloop(String testName, String url)
+			throws OoyalaException {
 
-            injectScript();
+		boolean result = true;
+		try {
+			driver.get(url);
 
-            String autoplay = ((JavascriptExecutor) driver).executeScript("return pp.parameters.autoPlay").toString();
-            Assert.assertEquals(autoplay, "true", "verified autoplay");
+			injectScript();
 
-            result = result && eventValidator.validate("videoPlaying_1",20000);
-            logger.info("Autoplayed the asset.");
+			String autoplay = ((JavascriptExecutor) driver).executeScript(
+					"return pp.parameters.autoPlay").toString();
+			Assert.assertEquals(autoplay, "true", "verified autoplay");
 
-            result = result && seekValidator.validate("seeked_1",60000);
+			result = result && eventValidator.validate("videoPlaying_1", 20000);
+			logger.info("Autoplayed the asset.");
 
-            result = result && eventValidator.validate("replay_1",60000);
+			result = result && seekValidator.validate("seeked_1", 60000);
 
-            boolean isAdplaying = isAdPlayingValidator.validate("CheckAdPlaying",60000);
+			result = result && eventValidator.validate("replay_1", 60000);
 
-            Assert.assertEquals(isAdplaying, true, "Verified that ad is played after auto replay");
+			boolean isAdplaying = isAdPlayingValidator.validate(
+					"CheckAdPlaying", 60000);
 
-            logger.info("Video Played");
+			Assert.assertEquals(isAdplaying, true,
+					"Verified that ad is played after auto replay");
 
-        }catch(Exception e){
-            e.printStackTrace();
-            result = false;
-        }
-        Assert.assertTrue(result, "Playback Autoplay Autoloop test failed");
-    }
+			logger.info("Video Played");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = false;
+		}
+		Assert.assertTrue(result, "Playback Autoplay Autoloop test failed");
+	}
 }

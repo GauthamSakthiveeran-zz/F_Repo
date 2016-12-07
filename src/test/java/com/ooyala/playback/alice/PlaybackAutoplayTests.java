@@ -2,7 +2,6 @@ package com.ooyala.playback.alice;
 
 import static java.lang.Thread.sleep;
 
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -20,7 +19,8 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackAutoplayTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackAutoplayTests.class);
+	private static Logger logger = Logger
+			.getLogger(PlaybackAutoplayTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private SeekValidator seek;
@@ -40,7 +40,7 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 		} else {
 			try {
 				driver.get(url);
-                result = result &&	play.waitForPage();
+				result = result && play.waitForPage();
 
 				injectScript();
 
@@ -50,19 +50,19 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 				} catch (Exception e) {
 					logger.info("No Preroll ad present in this autoplay video");
 				}
-                result = result && play.validate("playing_1", 60000);
+				result = result && play.validate("playing_1", 60000);
 
 				sleep(500);
 
-                result = result && seek.validate("seeked_1", 60000);
+				result = result && seek.validate("seeked_1", 60000);
 
-                result = result && eventValidator.validate("played_1", 60000);
+				result = result && eventValidator.validate("played_1", 60000);
 
 				logger.info("Verified that video is played");
 
 			} catch (Exception e) {
 				e.printStackTrace();
-                result = false;
+				result = false;
 			}
 			Assert.assertTrue(result, "Playback Autoplay tests failed");
 		}

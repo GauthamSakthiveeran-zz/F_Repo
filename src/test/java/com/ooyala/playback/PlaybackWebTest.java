@@ -40,7 +40,6 @@ import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.url.Testdata;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.ooyala.qe.common.util.PropertyReader;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -51,7 +50,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public static Logger logger = Logger.getLogger(PlaybackWebTest.class);
 	protected String browser;
 	protected ChromeDriverService service;
-	protected PropertyReader propertyReader;
+	// protected PropertyReader propertyReader;
 	protected PlayBackFactory pageFactory;
 	protected ExtentReports extentReport;
 	protected ExtentTest extentTest;
@@ -61,7 +60,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public PlaybackWebTest() throws OoyalaException {
 
 		try {
-			propertyReader = PropertyReader.getInstance("config.properties");
+			// propertyReader = PropertyReader.getInstance("config.properties");
 		} catch (Exception e) {
 			throw new OoyalaException("could not read properties file");
 		}
@@ -158,7 +157,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		if (browser == null || browser.equals(""))
 			browser = "firefox";
 		logger.info("browser is " + browser);
-		
+
 		driver = getDriver(browser);
 		if (driver != null)
 			logger.info("Driver initialized successfully");
@@ -182,7 +181,14 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@AfterMethod(alwaysRun = true)
 	protected void afterMethod(ITestResult result) {
 
-		takeScreenshot(result.getName());
+		if (driver != null)
+			takeScreenshot(result.getName());
+		else {
+			logger.error("Browser closed during the test run .Renitializing the driver as the test failed during the test");
+			driver = getDriver(browser);
+			pageFactory.destroyInstance();
+			pageFactory = PlayBackFactory.getInstance(driver);
+		}
 		if (result.getStatus() == ITestResult.FAILURE) {
 			extentTest.log(
 					LogStatus.INFO,
@@ -212,7 +218,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.info("Driver is already null");
 		}
 		logger.info("Assigning the neopagefactory instance to null");
-		PlayBackFactory.destroyInstance();
+		pageFactory.destroyInstance();
 		SimpleHttpServer.stopServer();
 	}
 
@@ -361,7 +367,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public Object[][] getTestData() {
 
 		Map<String, String> urls = UrlGenerator.parseXmlDataProvider(getClass()
-				.getSimpleName(), testData);
+				.getSimpleName(), testData,browser);
 		String testName = getClass().getSimpleName();
 		Object[][] output = new Object[urls.size()][2];
 

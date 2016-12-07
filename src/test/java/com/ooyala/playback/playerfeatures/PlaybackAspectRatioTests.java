@@ -14,9 +14,10 @@ import static java.lang.Thread.sleep;
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackAspectRatioTests extends PlaybackWebTest {
-	
-	private static Logger logger = Logger.getLogger(PlaybackAspectRatioTests.class);
-	
+
+	private static Logger logger = Logger
+			.getLogger(PlaybackAspectRatioTests.class);
+
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private PauseValidator pause;
@@ -36,15 +37,16 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 		try {
 			driver.get(url);
 
-            result = result && play.waitForPage();
+			result = result && play.waitForPage();
 
 			injectScript();
 
-            result = result && play.validate("playing_1", 60000);
+			result = result && play.validate("playing_1", 60000);
 
 			sleep(2000);
 
-            result = result && aspectRatioValidator.validate("assetDimension_1", 60000);
+			result = result
+					&& aspectRatioValidator.validate("assetDimension_1", 60000);
 
             if(!(getBrowser().equalsIgnoreCase("safari"))){
 				result = result && pause.validate("paused_1", 60000);
@@ -53,17 +55,17 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 
 			// add fullscreen functionality
 
-            result = result &&	seek.validate("seeked_1", 60000);
+			result = result && seek.validate("seeked_1", 60000);
 
-            result = result &&	aspectRatioValidator.validate("assetDimension_1", 60000);
+			result = result && aspectRatioValidator.validate("assetDimension_1", 60000);
 
-            result = result && eventValidator.validate("videoPlayed_1", 60000);
+			result = result && eventValidator.validate("videoPlayed_1", 60000);
 
 			logger.info("Verified that video is played");
 
 		} catch (Exception e) {
 			e.printStackTrace();
-            result = false;
+			result = false;
 		}
 		Assert.assertTrue(result, "Aspect ratio tests failed");
 

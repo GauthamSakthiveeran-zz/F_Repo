@@ -1,6 +1,5 @@
 package com.ooyala.playback.playerfeatures;
 
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -18,7 +17,8 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackThumbnailTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackThumbnailTests.class);
+	private static Logger logger = Logger
+			.getLogger(PlaybackThumbnailTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private PauseValidator pause;
@@ -39,7 +39,9 @@ public class PlaybackThumbnailTests extends PlaybackWebTest {
 
 		boolean result = true;
 
-		if(!desc.contains("Thumbnail_Image_Akamai_HD")){
+		result = result && play.waitForPage();
+
+		if (!desc.contains("Thumbnail_Image_Akamai_HD")) {
 			try {
 				driver.get(url);
 
@@ -65,9 +67,10 @@ public class PlaybackThumbnailTests extends PlaybackWebTest {
 
 			} catch (Exception e) {
 				e.printStackTrace();
-				result  = false;
+				result = false;
 			}
+
+			Assert.assertTrue(result, "Thumbnail test failed");
 		}
-		Assert.assertTrue(result, "Thumbnail test failed");
 	}
 }

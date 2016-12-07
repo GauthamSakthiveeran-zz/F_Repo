@@ -1,14 +1,10 @@
 package com.ooyala.playback.page;
 
-import com.ooyala.playback.factory.PlayBackFactory;
-import com.ooyala.playback.page.action.PauseAction;
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-
-import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by soundarya on 11/8/16.
@@ -41,34 +37,38 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		try {
 
 			if (!(isElementPresent("CONTROL_BAR"))) {
-                moveElement(getWebElement("CONTROL_BAR"));
+				moveElement(getWebElement("CONTROL_BAR"));
 			}
-			if(clickOnIndependentElement("VOLUME_MAX")){
-				double getmutevol = getVolume();if(getmutevol!=expectedmutevol){
+
+			if (clickOnIndependentElement("VOLUME_MAX")) {
+				double getmutevol = getVolume();
+				if (getmutevol != expectedmutevol) {
 					extentTest.log(LogStatus.FAIL, "Mute volume is't matching");
 					return false;
 				}
 				Thread.sleep(2000);
-				
-			}else{
+
+			} else {
 				return false;
 			}
-			if(clickOnIndependentElement("VOLUME_MUTE")){double getMaxVol = getVolume();
-				
-				if(getMaxVol!=expectedmaxvol){
-					extentTest.log(LogStatus.FAIL, "Max volume is not the same");
+
+			if (clickOnIndependentElement("VOLUME_MUTE")) {
+				double getMaxVol = getVolume();
+
+				if (getMaxVol != expectedmaxvol) {
+					extentTest
+							.log(LogStatus.FAIL, "Max volume is not the same");
 					return false;
 				}
-			}else{
+			} else {
 				return false;
 			}
-			
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			extentTest.log(LogStatus.FAIL,"Volume control is not working properly"
-					+ e.getMessage());
-            return false;
+			extentTest.log(LogStatus.FAIL,
+					"Volume control is not working properly" + e.getMessage());
+			return false;
 		}
 		((JavascriptExecutor) driver)
 				.executeScript("pp.play()");
@@ -79,7 +79,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		Thread.sleep(3500);
 		double volume = Double.parseDouble(((JavascriptExecutor) driver)
 				.executeScript("return pp.getVolume()").toString());
-		extentTest.log(LogStatus.INFO,"volume set to " + volume);
+		extentTest.log(LogStatus.INFO, "volume set to " + volume);
 		return volume;
 
 	}

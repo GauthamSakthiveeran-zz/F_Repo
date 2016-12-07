@@ -16,7 +16,7 @@ public class AspectRatioValidator extends PlayBackPage implements
 		PlaybackValidator {
 
 	public static Logger Log = Logger.getLogger(AspectRatioValidator.class);
-	
+
 	private boolean verticalVideo = false;
 
 	public AspectRatioValidator(WebDriver webDriver) {
@@ -24,30 +24,31 @@ public class AspectRatioValidator extends PlayBackPage implements
 		PageFactory.initElements(webDriver, this);
 		addElementToPageElements("aspectratio");
 	}
-	
-	public AspectRatioValidator setVerticalVideo(){
+
+	public AspectRatioValidator setVerticalVideo() {
 		this.verticalVideo = true;
 		return this;
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		
+
 		if (isElementPresent(By.id(element))) {
 
 			int width = Integer.parseInt(getWebElement(element).getAttribute(
 					"width"));
 			int height = Integer.parseInt(getWebElement(element).getAttribute(
 					"height"));
-			
-			if(verticalVideo){
+
+			if (verticalVideo) {
 				Assert.assertEquals(width, 320, "Width Matches");
 				Assert.assertEquals(height, 568, "Heigth Matches");
-				logger.info("Verified Vertical Video");
-			}else{
+				extentTest.log(LogStatus.PASS, " Verified Vertical Video");
+			} else {
 				int diff = width / 4;
 				int expectedHeight = width - diff;
-				Assert.assertEquals(expectedHeight, height, "Video is in 4:3 ratio");
-				extentTest.log(LogStatus.PASS," Verified Aspect Ratio 4:3");
+				Assert.assertEquals(expectedHeight, height,
+						"Video is in 4:3 ratio");
+				extentTest.log(LogStatus.PASS, " Verified Aspect Ratio 4:3");
 
 			}
 			return true;

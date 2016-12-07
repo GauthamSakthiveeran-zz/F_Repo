@@ -24,29 +24,27 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyBumperPrerollPlayback(String testName, String url)
-			throws Exception {
+	public void verifyBumperPrerollPlayback(String testName, String url) throws Exception {
 		boolean result = true;
 
 		try {
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 
 			injectScript();
 
-            result = result && playAction.startAction();
-            result = result && event.validate("BumperAd", 60000);
+			result = result && playAction.startAction();
+			result = result && event.validate("BumperAd", 60000);
 
-            result = result && event.validate("playing_FirstTime", 30000);
+			result = result && event.validate("playing_FirstTime", 30000);
 
-            result = result && seekAction.seekTillEnd().startAction();
+			result = result && seekAction.seekTillEnd().startAction();
 
-            result = result && event.validate("replay", 30000);
-            result = result && replayValidator.validate("replay_1", 30000);
+			result = result && replayValidator.validate("replay_1", 30000);
 
-            result = result && event.validate("BumperAdOnReplay", 30000);
+			result = result && event.validate("BumperAdOnReplay", 30000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

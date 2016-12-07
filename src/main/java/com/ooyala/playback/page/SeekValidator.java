@@ -21,9 +21,9 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		
-		return
-				PlayBackFactory.getInstance(driver).getSeekAction().seekTillEnd().startAction()
+
+		return PlayBackFactory.getInstance(driver).getSeekAction()
+				.seekTillEnd().startAction()
 				&& waitOnElement(By.id(element), timeout);
 	}
 

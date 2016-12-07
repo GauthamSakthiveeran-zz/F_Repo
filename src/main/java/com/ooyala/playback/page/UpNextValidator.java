@@ -23,19 +23,15 @@ public class UpNextValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		
-		try{
-			return 
-					waitOnElement("UPNEXT_CONTENT", 60000)
-					&& waitOnElement("CONTENT_METADATA", 60000)
+
+		try {
+			return waitOnElement("UPNEXT_CONTENT", 60000) && waitOnElement("CONTENT_METADATA", 60000)
 					&& clickOnIndependentElement("UPNEXT_CLOSE_BTN");
-		}catch(Exception ex){
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			extentTest.log(LogStatus.FAIL, "No Upnext panel");
 			return false;
 		}
-		
-		
 
 	}
 }

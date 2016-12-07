@@ -14,7 +14,8 @@ import static java.lang.Thread.sleep;
  */
 public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackVerticalVideoTests.class);
+	private static Logger logger = Logger
+			.getLogger(PlaybackVerticalVideoTests.class);
 	private PlayValidator play;
 	private PauseValidator pause;
 	private SeekValidator seek;
@@ -34,36 +35,44 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 		try {
 			driver.get(url);
 
-            result = result && play.waitForPage();
+			result = result && play.waitForPage();
 
 			injectScript();
 
-            result = result && play.validate("playing_1", 60000);
+			result = result && play.validate("playing_1", 60000);
 
 			sleep(2000);
 
-            result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60000);
+			result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60000);
 
 			if(!(getBrowser().equalsIgnoreCase("safari"))){
 				result = result && pause.validate("paused_1", 60000);
 				result = result && playAction.startAction();
 			}
 
-            result = result && seek.validate("seeked_1", 60000);
+			result = result && pause.validate("paused_1", 60000);
+
+			logger.info("video paused");
+
+			result = result && playAction.startAction();
+
+			result = result && seek.validate("seeked_1", 60000);
 
 			logger.info("video seeked");
 
-            result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60000);
+			result = result
+					&& aspectRatioValidator.setVerticalVideo().validate(
+							"assetDimension_1", 60000);
 
 			logger.info("validated vertical video dimention");
 
-            result = result && eventValidator.validate("videoPlayed_1", 60000);
+			result = result && eventValidator.validate("videoPlayed_1", 60000);
 
 			logger.info("video played");
 
 		} catch (Exception e) {
 			e.printStackTrace();
-            result = false;
+			result = false;
 		}
 		Assert.assertTrue(result, "Vertical Video tests failed");
 	}

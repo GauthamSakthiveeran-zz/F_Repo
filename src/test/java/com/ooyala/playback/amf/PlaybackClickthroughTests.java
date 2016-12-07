@@ -33,24 +33,24 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 
 			injectScript();
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
-            result = result && event.validate("willPlaySingleAd_1", 60000);
+            result = result && event.validate("willPlaySingleAd_1", 120000);
 
-            result = result && clickThrough.validate("", 120000);
+			result = result && clickThrough.validate("", 120000);
 
-            result = result && event.validate("singleAdPlayed_1", 190000);
+			result = result && event.validate("singleAdPlayed_1", 190000);
 
-            result = result && event.validate("playing_1", 160000);
+			result = result && event.validate("playing_1", 160000);
 
-            result = result && seekAction.seekTillEnd().startAction();
+			result = result && seekAction.seekTillEnd().startAction();
 
-            result = result && event.validate("seeked_1", 10000);
-            result = result && event.validate("played_1", 200000);
+			result = result && event.validate("seeked_1", 10000);
+			result = result && event.validate("played_1", 200000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

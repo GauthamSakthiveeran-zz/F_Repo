@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AdClickThroughValidator;
 import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
@@ -22,7 +21,6 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
-	private AdClickThroughValidator adClickThroughValidator;
 	private DiscoveryValidator discoveryValidator;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
@@ -35,30 +33,29 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 
 			injectScript();
 
             result = result && playAction.startAction();
 
-			if (adClickThroughValidator.isAdPlaying())
-				event.validate("singleAdPlayed_1", 90000);
 
-            result = result &&	event.validate("playing_1", 90000);
+			result = result && event.validate("playing_1", 90000);
 
-            result = result && seekAction.setTime(10).fromLast().startAction();
+			result = result && seekAction.setTime(10).fromLast().startAction();
 
-            result = result && event.validate("seeked_1", 180000);
+			result = result && event.validate("seeked_1", 180000);
 
-            result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
+			result = result
+					&& discoveryValidator.validate("reportDiscoveryClick_1",
+							60000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result,
-				"DiscoveryUpNext tests failed");
+		Assert.assertTrue(result, "DiscoveryUpNext tests failed");
 
 	}
 

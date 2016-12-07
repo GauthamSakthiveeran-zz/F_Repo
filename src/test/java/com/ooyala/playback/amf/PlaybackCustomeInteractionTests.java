@@ -35,27 +35,28 @@ public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 
 			injectScript();
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
-            result = result && event.validate("willPlaySingleAd_1", 190000);
+			result = result && event.validate("willPlaySingleAd_1", 190000);
 
-            result = result && adSkipButtonValidator.custom().validate("", 60000);
-            
-            result = result && event.validate("singleAdPlayed_1", 190000);
+			result = result
+					&& adSkipButtonValidator.custom().validate("", 60000);
 
-            result = result && event.validate("playing_1", 60000);
-            
-            result = result && volumeValidator.validate("", 60000);
+			result = result && event.validate("singleAdPlayed_1", 190000);
 
-            result = result && seekAction.seekTillEnd().startAction();
+			result = result && event.validate("playing_1", 60000);
 
-            result = result && event.validate("seeked_1", 180000);
+			result = result && volumeValidator.validate("", 60000);
 
-            result = result && event.validate("played_1", 200000);
+			result = result && seekAction.seekTillEnd().startAction();
+
+			result = result && event.validate("seeked_1", 180000);
+
+			result = result && event.validate("played_1", 200000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
