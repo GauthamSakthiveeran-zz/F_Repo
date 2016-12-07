@@ -22,7 +22,7 @@ public class PlaybackAdIconTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "amf", dataProvider = "testUrls", enabled = false)
+	@Test(groups = {"amf","adicon"}, dataProvider = "testUrls", enabled = false)
 	public void verifyADIcon(String testName, String url)
 			throws OoyalaException {
 

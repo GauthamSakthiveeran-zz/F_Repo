@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.preroll;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,24 +8,22 @@ import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
+public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 
-	public PlaybackDiscoveryUpnextTests() throws OoyalaException {
+	public PlaybackPrerollAdsDiscoveryTests() throws OoyalaException {
 		super();
 	}
 
 	private EventValidator event;
 	private PlayAction playAction;
 	private PlayValidator playValidator;
-	private SeekAction seekAction;
 	private DiscoveryValidator discoveryValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyDiscoveryUpNext(String testName, String url)
-			throws Exception {
+	@Test(groups = {"amf","preroll","discovery"}, dataProvider = "testUrls")
+	public void verifyPrerollDiscovery(String testName, String url)
+			throws OoyalaException {
 
 		boolean result = true;
 
@@ -37,15 +35,11 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 
 			injectScript();
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
+			result = result && event.validate("singleAdPlayed_1", 150000);
 
-			result = result && event.validate("playing_1", 90000);
-
-			result = result && seekAction.setTime(10).fromLast().startAction();
-
-			result = result && event.validate("seeked_1", 180000);
-
+			result = result && event.validate("playing_1", 150000);
 			result = result
 					&& discoveryValidator.validate("reportDiscoveryClick_1",
 							60000);
@@ -55,7 +49,7 @@ public class PlaybackDiscoveryUpnextTests extends PlaybackWebTest {
 			result = false;
 		}
 
-		Assert.assertTrue(result, "DiscoveryUpNext tests failed");
+		Assert.assertTrue(result, "Test failed");
 
 	}
 

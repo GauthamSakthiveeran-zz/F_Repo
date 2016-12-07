@@ -52,9 +52,9 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 				logger.info("Ad played");
 			}
 
-			sleep(4000);
-
             result = result && eventValidator.validate("playing_1", 60000);
+
+			Thread.sleep(2000);
 
 			result = result && volumeValidator.validate("VOLUME_MAX", 60000);
 
@@ -63,6 +63,16 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 			Thread.sleep(2000);
 
 			result = result && seek.validate("seeked_1", 60000);
+
+			result = result && eventValidator.validate("played_1", 60000);
+
+			logger.info("video is playing");
+
+			sleep(4000);
+
+			result = result && seek.validate("seeked_1", 60000);
+
+			logger.info("video seeked");
 
 			result = result && eventValidator.validate("played_1", 60000);
 

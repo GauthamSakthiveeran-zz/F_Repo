@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.midroll;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -21,7 +21,7 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private PoddedAdValidator poddedAdValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","midroll"}, dataProvider = "testUrls")
 	public void verifyMultipleMidroll(String testName, String url)
 			throws OoyalaException {
 
@@ -37,15 +37,12 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 
 			result = result && playValidator.validate("playing_1", 90000);
 
-            if(!event.isAdPlugin("pulse"))
+            if(!event.isAdPluginPresent("pulse"))
             	result = result && seekAction.seekTillEnd().startAction();
 
-			result = result && event.validate("videoPlayed_1", 200000);
+			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds", 60000);
 
-			result = result
-					&& poddedAdValidator.validate("countPoddedAds", 60000);
-
-            if(!event.isAdPlugin("pulse"))
+            if(!event.isAdPluginPresent("pulse"))
 				result = result && event.validate("seeked_1", 60000);
 
 			result = result && event.validate("played_1", 200000);

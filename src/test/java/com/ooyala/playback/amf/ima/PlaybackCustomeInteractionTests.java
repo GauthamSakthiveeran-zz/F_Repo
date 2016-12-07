@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.ima;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -25,7 +25,7 @@ public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 	private VolumeValidator volumeValidator;
 	private AdSkipButtonValidator adSkipButtonValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","customInteraction"}, dataProvider = "testUrls")
 	public void verifyCustomeInteractionAd(String testName, String url)
 			throws Exception {
 

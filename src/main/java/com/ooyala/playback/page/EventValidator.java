@@ -53,7 +53,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		return false;
 	}
 
-	public boolean isAdPlugin(String adPlugin) throws Exception {
+	public boolean isAdPluginPresent(String adPlugin) throws Exception {
 		Map<String, String> map = parseURL();
 		if (map != null && map.get("ad_plugin") != null
 				&& map.get("ad_plugin").contains(adPlugin)) {
@@ -62,7 +62,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		return false;
 	}
 	
-	public boolean isVideoPlugin(String videoPlugin) throws Exception{
+	public boolean isVideoPluginPresent(String videoPlugin) throws Exception{
 		Map<String,String> map = parseURL();
 		if (map!=null && map.get("video_plugins")!=null && map.get("video_plugins").contains(videoPlugin)) {
 			return true;

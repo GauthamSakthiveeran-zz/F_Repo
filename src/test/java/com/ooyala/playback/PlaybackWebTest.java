@@ -181,7 +181,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@AfterMethod(alwaysRun = true)
 	protected void afterMethod(ITestResult result) {
 
-		if (driver != null)
+		if (driver != null && driver.getTitle()!=null)
 			takeScreenshot(result.getName());
 		else {
 			logger.error("Browser closed during the test run .Renitializing the driver as the test failed during the test");

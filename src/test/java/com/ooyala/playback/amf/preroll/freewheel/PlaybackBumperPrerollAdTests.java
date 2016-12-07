@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf.freewheel;
+package com.ooyala.playback.amf.preroll.freewheel;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -23,7 +23,7 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","preroll"}, dataProvider = "testUrls")
 	public void verifyBumperPrerollPlayback(String testName, String url) throws Exception {
 		boolean result = true;
 

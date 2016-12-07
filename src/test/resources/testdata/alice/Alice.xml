@@ -323,20 +323,6 @@
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
 		</url>
-
-    <test name="PlaybackLocalizationTests">
-        <url>
-            <description name="Localization_Check" />
-            <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-            <playerParameter><![CDATA[{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}]]></playerParameter>
-        </url>
-    </test>
-
 		<url>
 			<description name="Akamai_HLS_Live_Bitmovin" />
 			<embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT" />
@@ -388,7 +374,18 @@
 			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
 		</url>
 	</test>
-
+	<test name="PlaybackLocalizationTests">
+		<url>
+			<description name="Localization_Check" />
+			<embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}]]></playerParameter>
+		</url>
+	</test>
 	<test name="PlayerMetadataStatesTests">
 		<url>
 			<description name="Player_States_metadata" />

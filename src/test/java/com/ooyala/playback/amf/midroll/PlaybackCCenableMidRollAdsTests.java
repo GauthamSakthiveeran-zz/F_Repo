@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.midroll;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -23,7 +23,7 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private CCValidator ccValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls")
+	@Test(groups = {"amf","cc","midroll"}, dataProvider = "testUrls")
 	public void verifyCCenableMidRoll(String testName, String url)
 			throws Exception {
 		boolean result = true;
@@ -47,7 +47,7 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 
 			Thread.sleep(14000);
 
-			if (event.isAdPlugin("pulse"))
+			if (event.isAdPluginPresent("pulse"))
 				result = result && event.validate("singleAdPlayed_2", 60000);
 			else
 				result = result && event.validate("singleAdPlayed_1", 60000);

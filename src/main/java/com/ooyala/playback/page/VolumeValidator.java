@@ -39,7 +39,6 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			if (!(isElementPresent("CONTROL_BAR"))) {
 				moveElement(getWebElement("CONTROL_BAR"));
 			}
-
 			if (clickOnIndependentElement("VOLUME_MAX")) {
 				double getmutevol = getVolume();
 				if (getmutevol != expectedmutevol) {
@@ -51,7 +50,6 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			} else {
 				return false;
 			}
-
 			if (clickOnIndependentElement("VOLUME_MUTE")) {
 				double getMaxVol = getVolume();
 
@@ -70,6 +68,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 					"Volume control is not working properly" + e.getMessage());
 			return false;
 		}
+
 		((JavascriptExecutor) driver)
 				.executeScript("pp.play()");
 		return true;
