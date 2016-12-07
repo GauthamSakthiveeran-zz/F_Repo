@@ -615,8 +615,7 @@
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="ZWU3OGUxMDJjMmQ5ZTViNGE1YjdlYTdj" />
-			<playerParameter><![CDATA[]]>
-			</playerParameter>
+			<playerParameter><![CDATA[]]></playerParameter>
 		</url>
 	</test>
 	<test name="PlaybackOptEntitlementTests">
