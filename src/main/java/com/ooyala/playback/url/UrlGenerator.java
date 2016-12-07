@@ -64,7 +64,7 @@ public class UrlGenerator {
 	 *         name and url is returned
 	 */
 	public static Map<String, String> parseXmlDataProvider(String testName,
-			Testdata testData) {
+			Testdata testData, String browserName) {
 		logger.info("Getting test url and test name from property file");
 
 		Map<String, String> urlsGenerated = new HashMap<String, String>();
@@ -73,6 +73,14 @@ public class UrlGenerator {
 			if (data.getName().equals(testName)) {
 				List<Url> urls = data.getUrl();
 				for (Url url : urls) {
+					// Adding browser support here.The data provider will not
+					// even give that data if we do not support for that
+					// browser.
+					if (url.getBrowsersSupported() != null
+							&& url.getBrowsersSupported().getName() != null
+							&& !browserName.contains(url.getBrowsersSupported()
+									.getName()))
+						continue;
 					String embedCode = url.getEmbedCode().getName();
 					// String embedCode = test.;
 					String pCode = url.getPcode().getName();
