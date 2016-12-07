@@ -367,7 +367,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public Object[][] getTestData() {
 
 		Map<String, String> urls = UrlGenerator.parseXmlDataProvider(getClass()
-				.getSimpleName(), testData);
+				.getSimpleName(), testData,browser);
 		String testName = getClass().getSimpleName();
 		Object[][] output = new Object[urls.size()][2];
 
