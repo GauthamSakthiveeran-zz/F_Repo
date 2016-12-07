@@ -32,25 +32,11 @@ public class DiscoveryValidator extends PlayBackPage implements
 	
 	public boolean validateDiscoveryToaster() throws Exception{
 
-		try {
+		if (isElementPresent("PAUSE_BUTTON")) {
 			clickOnIndependentElement("PAUSE_BUTTON");
-			waitOnElement("DISCOVERY_TOASTER", 60000);
-		} catch (Exception e) {
-			if (isElementPresent("PLAYING_SCREEN")) {
-				clickOnIndependentElement("PAUSE_BUTTON");
-
-			} else {
-				clickOnIndependentElement("PLAY_BUTTON");
-				sleep(5000);
-				clickOnIndependentElement("PAUSE_BUTTON");
-			}
-
-			if (!waitOnElement("DISCOVERY_TOASTER", 60000))
-				return false;
-			;
-			extentTest.log(LogStatus.PASS, "Discovery Toaster present");
 		}
-		return true;
+		return waitOnElement("DISCOVERY_TOASTER", 60000);
+		
 	}
 	
 	public boolean validateLeftRightButton() throws Exception{
@@ -72,7 +58,6 @@ public class DiscoveryValidator extends PlayBackPage implements
 		if (count.size() > 3 && flagTrue) {
 			if (!clickOnIndependentElement("RIGHT_BTN"))
 				return false;
-			;
 			sleep(2000);
 			if (!clickOnIndependentElement("LEFT_BTN"))
 				return false;

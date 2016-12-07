@@ -22,8 +22,7 @@ public class PlaybackIMAPreVastMidAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyIMAPreVastMidAds(String testName, String url)
-			throws OoyalaException {
+	public void verifyIMAPreVastMidAds(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -39,21 +38,24 @@ public class PlaybackIMAPreVastMidAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("PreRoll_willPlayAds", 120000);
 			result = result && event.validate("adsPlayed_1", 200000);
-			// result = result &&
-			// event.validate("adPodEnd_google-ima-ads-manager_0_1", 2000);
+
+			if (!event.isVideoPluginPresent("osmf"))
+				result = result && event.validate("adPodEnd_google-ima-ads-manager_0_1", 6000);
+			else
+				result = result && event.validate("adPodEnd_google-ima-ads-manager_1_2", 6000);
 
 			result = result && event.validate("playing_1", 20000);
-			// result = result && seekValidator.validate("seeked_1", 190000);
 
 			result = result && event.validate("MidRoll_willPlayAds_2", 100000);
 			result = result && event.validate("adsPlayed_2", 200000);
 
 			result = result && seekValidator.validate("seeked_1", 190000);
 
-			/*
-			 * try { event.validate("adPodEnd_vast_2_2", 60000); } catch
-			 * (Exception e) { event.validate("adPodEnd_vast_2_3", 180000); }
-			 */
+			if (!event.isVideoPluginPresent("osmf"))
+				result = result && event.validate("adPodEnd_vast_2_2", 6000);
+			else
+				result = result && event.validate("adPodEnd_vast_0_1", 6000);
+
 			event.validate("played_1", 200000);
 
 		} catch (Exception e) {

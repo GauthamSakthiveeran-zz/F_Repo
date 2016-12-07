@@ -40,10 +40,7 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
             if(!event.isAdPluginPresent("pulse"))
             	result = result && seekAction.seekTillEnd().startAction();
 
-			result = result && event.validate("videoPlayed_1", 200000);
-
-			result = result
-					&& poddedAdValidator.validate("countPoddedAds", 60000);
+			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds", 60000);
 
             if(!event.isAdPluginPresent("pulse"))
 				result = result && event.validate("seeked_1", 60000);

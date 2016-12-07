@@ -41,8 +41,7 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 			result = result && event.validate("videoPlayed_1", 180000);
 			result = result && event.validate("played_1", 180000);
 
-			result = result
-					&& poddedAdValidator.validate("countPoddedAds", 160000);
+			result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 160000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

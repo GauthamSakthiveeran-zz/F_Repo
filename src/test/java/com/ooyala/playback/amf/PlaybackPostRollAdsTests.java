@@ -37,7 +37,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 				result = result && seekValidator.validate("seeked_1", 90000);
 
 			result = result && event.validate("videoPlayed_1", 200000);
-			result = result && event.validate("willPlaySingleAd_1", 90000);
+			result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
 
 			result = result && event.validate("singleAdPlayed_1", 90000);
 

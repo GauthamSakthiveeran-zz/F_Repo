@@ -8,7 +8,6 @@ import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.UpNextValidator;
-import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -19,7 +18,6 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 	}
 
 	private EventValidator event;
-	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private DiscoveryValidator discoveryValidator;
 	private SeekAction seekAction;
@@ -40,26 +38,22 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 
 			result = result && playValidator.validate("playing_1", 150000);
 
-			Thread.sleep(3000);
-
-			result = result && discoveryValidator.validateDiscoveryToaster();
-
-			result = result && discoveryValidator.validateLeftRightButton();
-
-			result = result && discoveryValidator.clickOnDiscoveryCloseButton("DISCOVERY_CLOSE_BTN", 20000);
-
-			result = result && playAction.startAction();
-
-			result = result && seekAction.fromLast().setTime(10).startAction();
-
+			result = result && seekAction.fromLast().setTime(30).startAction();
+			
 			result = result && upNextValidator.validate("", 60000);
-
-			result = result && event.validate("willPlaySingleAd_1", 90000);
+			
+			result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
 
 			if (event.isAdPluginPresent("pulse"))
 				result = result && event.validate("singleAdPlayed_2", 60000);
 			else
 				result = result && event.validate("singleAdPlayed_1", 60000);
+			
+			result = result && discoveryValidator.validateDiscoveryToaster();
+
+			result = result && discoveryValidator.validateLeftRightButton();
+
+			result = result && discoveryValidator.clickOnDiscoveryCloseButton("DISCOVERY_CLOSE_BTN", 20000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -38,7 +38,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("PreRoll_willPlayAds", 150000);
 
-			result = result && event.validate("adsPlayed_1", 2000);
+			result = result && event.validate("adsPlayed_1", 200000);
 
 			result = result && event.validate("playing_1", 150000);
 

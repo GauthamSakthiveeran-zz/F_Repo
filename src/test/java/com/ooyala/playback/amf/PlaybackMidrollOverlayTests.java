@@ -38,10 +38,10 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 
             result = result && playValidator.validate("playing_1", 60000);
 			
-			/*if (event.isStreamingProtocolPrioritized("hds")) { 
+			if (event.isStreamingProtocolPrioritized("hds")) { 
 				extentTest.log(LogStatus.INFO,"For Flash Specific cases");
 				
-				if(event.isVideoPlugin("akamai")){
+				if(event.isVideoPluginPresent("akamai")){
 					result = result && event.validate("MidRoll_willPlayAds_1", 160000);
 					result = result && event.validate("adsPlayed_1", 160000);
 					
@@ -50,7 +50,7 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 					result = result && event.validate("singleAdPlayed_1", 160000);
 				}
 				
-            }*/
+            }
             result = result && event.validate("showNonlinearAd_1", 160000);
 
 			result = result
