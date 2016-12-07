@@ -2,16 +2,13 @@ package com.ooyala.playback.playerfeatures;
 
 import static java.lang.Thread.sleep;
 
+import com.ooyala.playback.page.*;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -26,6 +23,8 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 	private PlayAction playAction;
 	private EventValidator eventValidator;
 	private VolumeValidator volumeValidator;
+	private IsAdPlayingValidator isAdPlayingValidator;
+	private SeekValidator seekValidator;
 
 	public PlaybackVolumeTest() throws OoyalaException {
 		super();
@@ -45,12 +44,13 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
-					.executeScript("return pp.isAdPlaying()"));
+			loadingSpinner();
+
+			Boolean isAdplaying = isAdPlayingValidator.validate("CheckAdPlaying",60);
 			if (isAdplaying) {
 				volumeValidator.validate("VOLUME_MAX", 60000);
 				logger.info("validated ad volume at full range");
-				eventValidator.validate("adPodEnded_1", 200);
+				eventValidator.validate("adPodEnded_1", 20000);
 				logger.info("Ad played");
 			}
 
@@ -63,6 +63,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 			result = result && eventValidator.validate("playing_10 ", 60000);
 
 			logger.info("video is playing");
+
 			sleep(4000);
 
 			result = result && seek.validate("seeked_1", 60000);
@@ -73,6 +74,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 			logger.info("video played");
 
+			logger.info("video played");
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;

@@ -385,7 +385,7 @@
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<playerParameter><![CDATA[{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}]]></playerParameter>
 		</url>
 	</test>
 

@@ -1,5 +1,7 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PauseAction;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +30,9 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 	public boolean validate(String element, int timeout) throws Exception {
 		double expectedmutevol = 0.0;
 		double expectedmaxvol = 1.0;
+
+		((JavascriptExecutor) driver)
+				.executeScript("pp.pause()");
 
 		Long currentVolume = (Long) (((JavascriptExecutor) driver)
 				.executeScript("return pp.getVolume()"));
@@ -66,6 +71,9 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 					"Volume control is not working properly" + e.getMessage());
 			return false;
 		}
+
+		((JavascriptExecutor) driver)
+				.executeScript("pp.play()");
 		return true;
 	}
 
