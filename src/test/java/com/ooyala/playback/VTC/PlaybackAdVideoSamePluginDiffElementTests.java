@@ -42,6 +42,8 @@ public class PlaybackAdVideoSamePluginDiffElementTests extends PlaybackWebTest {
 
 			injectScript();
 
+			result = result && play.waitForPage();
+
 			result = result && playAction.startAction();
 
 			result = result && eventValidator.validate("adsPlayed_1", 30000);
