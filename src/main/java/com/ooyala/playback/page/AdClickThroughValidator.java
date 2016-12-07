@@ -73,22 +73,14 @@ public class AdClickThroughValidator extends PlayBackPage implements
 				}
 			}
 			if (!value.contains("ima")) {
-				try {
-					if (!clickOnHiddenElement("LEARN_MORE"))
-						return false;
-					if (!waitOnElement(By.id("adsClicked_learnMoreButton"),
-							5000))
-						return false;
-				} catch (Exception e) {
-					if (!clickOnIndependentElement("LEARN_MORE"))
-						return false;
-					if (!waitOnElement(By.id("adsClicked_learnMoreButton"),
-							20000))
-						return false;
-				}
+
+				if (!clickOnIndependentElement("LEARN_MORE"))
+					return false;
+				if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 5000))
+					return false;
+
 			}
-			extentTest.log(PASS,
-					"AdsClicked by clicking on the learn more button");
+			extentTest.log(PASS, "AdsClicked by clicking on the learn more button");
 
 			sleep(2000);
 			java.util.Set<java.lang.String> windowHandles = driver
@@ -106,17 +98,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
 			boolean isAd = isAdPlaying();
 			if (isAd) {
-
 				((JavascriptExecutor) driver).executeScript("pp.play()");
-
-				/*
-				 * if (getPlatform().equalsIgnoreCase("Android") ||
-				 * isStreamingProtocolPrioritized("hls") ||
-				 * value.contains("freewheel")) { ((JavascriptExecutor)
-				 * driver).executeScript("pp.play()"); // TODO } else {
-				 * if(!clickOnIndependentElement("AD_PANEL")) return false; }
-				 */
-
 			}
 			return true;
 
