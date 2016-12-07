@@ -1,5 +1,6 @@
 package com.ooyala.playback.VTC;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -64,12 +65,13 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
 
 			logger.info("Verified that 2nd video is playing");
 
-			result = result && seek.validate("seeked_1", 60000);
+			((JavascriptExecutor) driver)
+					.executeScript("pp.seek(pp.getDuration()-15)");
 
-			Thread.sleep(5000);
+			result = result && eventValidator.validate("seeked_1",20000);
 
-			result = result
-					&& discoveryUpNext.validate("UPNEXT_CONTENT", 60000);
+
+    		result = result && discoveryUpNext.validate("UPNEXT_CONTENT", 60000);
 
 			logger.info("Verified UpNext content");
 
