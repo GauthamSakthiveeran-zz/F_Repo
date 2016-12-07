@@ -22,8 +22,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPreMidPostroll(String testName, String url)
-			throws OoyalaException {
+	public void verifyPreMidPostroll(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -39,16 +38,16 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("PreRoll_willPlayAds", 150000);
 
-			result = result && event.validate("adsPlayed_1", 2000000);
+			result = result && event.validate("adsPlayed_1", 2000);
 
-			event.validate("playing_1", 150000);
+			result = result && event.validate("playing_1", 150000);
 
-			seekAction.seekSpecific(15);
+			result = result && seekAction.setTime(15).fromLast().startAction();
 
 			result = result && event.validate("MidRoll_willPlayAds", 150000);
 			result = result && event.validate("adsPlayed_2", 150000);
 
-			seekAction.seekSpecific(15);
+			result = result && seekAction.setTime(30).fromLast().startAction();
 
 			result = result && event.validate("PostRoll_willPlayAds", 150000);
 
@@ -65,7 +64,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified Pre Mid Post Roll Ads test");
+		Assert.assertTrue(result, "Verified Pre Mid Post Roll Ads failed.");
 
 	}
 

@@ -8,13 +8,10 @@
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 
-		<!-- <packages>
-			<package name="com.ooyala.playback.amf" />
-		</packages> -->
-		
 		<classes>
 		
 			
+			<class name="com.ooyala.playback.amf.freewheel.PlaybackBumperPrerollAdTests"/>
 			<class name="com.ooyala.playback.amf.VAST.PlaybackMidrollOverlayUpNextTests"/>
 			<class name="com.ooyala.playback.amf.VAST.PlaybackPoddedwithOverlayStandaloneTests"/>
 			<class name="com.ooyala.playback.amf.VAST.PlaybackVastPreIMAMidlAdsTests"/>		
@@ -26,6 +23,8 @@
 			<class name="com.ooyala.playback.amf.PlaybackMp4PlayerSwitchingSupportTests"/>
 			<class name="com.ooyala.playback.amf.PlaybackMidRollPoddedAdsTests"/>
 			
+			<class name="com.ooyala.playback.amf.VAST.PlaybackPoddedSkippbableInsideTests"/>
+			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"/>
 			
 			<class name="com.ooyala.playback.amf.PlaybackMidRollAdsTests"/>
 			<class name="com.ooyala.playback.amf.PlaybackSkipAdsTests"/>
@@ -45,13 +44,7 @@
 			<class name="com.ooyala.playback.amf.PlaybackPrerollAdsDiscoveryTests"/>
 			<class name="com.ooyala.playback.amf.VAST.PlaybackAdWrapperTests"/>
 			
-<!-- 			skip these -->
-			<!-- 
-			<class name="com.ooyala.playback.amf.freewheel.PlaybackBumperPrerollAdTests"/>
-			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"/>
-			<class name="com.ooyala.playback.amf.VAST.PlaybackPoddedSkippbableInsideTests"/> -->
-			
-			
+
 			
 		</classes>
 		

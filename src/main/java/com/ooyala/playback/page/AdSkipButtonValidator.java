@@ -30,13 +30,13 @@ public class AdSkipButtonValidator extends PlayBackPage implements PlaybackValid
 		try {
 			if (custom)
 				return true;
-			
-//			if(waitOnElement("VIDEO_AD_UI_PRE_SKIP_BUTTON",2000)){
-//				return clickOnIndependentElement("VIDEO_AD_UI_PRE_SKIP_BUTTON") && waitOnElement("skipAd_1", 60000);
-//			}
 
-			return waitOnElement("AD_SKIP_BTN", 2000) && clickOnIndependentElement("AD_SKIP_BTN")
-					&& waitOnElement(By.id("skipAd_1"), 60000);
+			if (isElementPresent("AD_SKIP_BTN"))
+				return waitOnElement("AD_SKIP_BTN", 2000) && clickOnIndependentElement("AD_SKIP_BTN")
+						&& waitOnElement(By.id("skipAd_1"), 60000);
+
+			extentTest.log(LogStatus.INFO, "AD_SKIP_BTN is not present!!");
+			return true;
 
 		} catch (Exception e) {
 			extentTest.log(LogStatus.INFO, "adSkip Button is not present!!");

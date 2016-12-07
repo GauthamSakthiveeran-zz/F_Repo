@@ -89,7 +89,7 @@ function subscribeToEvents() {
 				
 			}
 			if (event.match(/replay/)) {
-				
+				replayEventOrder++;
 				adReplayEventOrder++;
 			}
 			

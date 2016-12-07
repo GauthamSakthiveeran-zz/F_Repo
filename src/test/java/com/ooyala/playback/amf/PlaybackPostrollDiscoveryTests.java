@@ -54,8 +54,6 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 
 			result = result && upNextValidator.validate("", 60000);
 
-			result = result && upNextValidator.validate("", 60000);
-
 			result = result && event.validate("willPlaySingleAd_1", 90000);
 
 			if (event.isAdPluginPresent("pulse"))
