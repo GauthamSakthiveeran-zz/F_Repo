@@ -23,6 +23,7 @@ public class DifferentElementValidator extends PlayBackPage implements
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
+		if (!waitOnElement(element,timeout)){return false;}
 		List<WebElement> ele = getWebElementsList(element);
 		String element1_id = ele.get(0).getAttribute("id");
 		String element2_id = ele.get(1).getAttribute("id");
