@@ -1,6 +1,5 @@
 package com.ooyala.playback.playerfeatures;
 
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -35,28 +34,31 @@ public class DiscoveryUpNextTests extends PlaybackWebTest {
 		try {
 			driver.get(url);
 
-            result = result && play.waitForPage();
+			result = result && play.waitForPage();
 
-            if(!result){
-                throw new SkipException("Test page not loaded");
-            }
+			if (!result) {
+				throw new SkipException("Test page not loaded");
+			}
 
 			logger.info("Verified that video is seeked");
 
 			injectScript();
 
-            result = result && play.validate("playing_1", 60000);
+			result = result && play.validate("playing_1", 60000);
 
-            result = result && pageFactory.getSeekAction().setTime(31).fromLast().startAction();//seek(25, true);
+			result = result
+					&& pageFactory.getSeekAction().setTime(31).fromLast()
+							.startAction();// seek(25, true);
 
-            result = result && discoveryUpNext.validate("UPNEXT_CONTENT", 60000);
+			result = result
+					&& discoveryUpNext.validate("UPNEXT_CONTENT", 60000);
 
-            result = result && eventValidator.validate("played_1", 60000);
+			result = result && eventValidator.validate("played_1", 60000);
 
 			logger.info("Verified that video is played");
 		} catch (Exception e) {
 			e.printStackTrace();
-            result = false;
+			result = false;
 		}
 		Assert.assertTrue(result, "Discovery up next tests failed");
 

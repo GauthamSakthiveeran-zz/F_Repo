@@ -2,7 +2,9 @@
 <testdata>
 
 	<test name ="PlaybackPreMidPostRollAdsPoddedTests" >
-    	<url>
+	
+		<!-- This only for podded tests, the below is not a podded ad -->
+    	<!-- <url>
 	    	<description name="Playback_PreMidPost_VPAID2.0"/>
 	        <embed_code name="BnaG1iMjE6bQ3DQmsPTYyH_QiQ05Ggrj"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -11,7 +13,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
+    	</url> -->
     	
     	<url>
 	    	<description name="Playback_PreMidPost__Podded_VPAID2.0"/>

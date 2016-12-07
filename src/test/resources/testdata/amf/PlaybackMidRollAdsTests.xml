@@ -2,6 +2,7 @@
 <testdata>
 
 	<test name ="PlaybackMidRollAdsTests" >
+	
     	<url>
 	    	<description name="BitmovinMidroll_Vast3"/>
 	        <embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82"/>
@@ -14,7 +15,7 @@
 	        
     	</url>
     	
-    	<url>
+    	 <url>
 	    	<description name="BitmovinMidroll_VPAID2.0"/>
 	        <embed_code name="0zdnZnMTE6_eSVEEE_C1X1tCmJE5GmDe"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -267,7 +268,8 @@
 	        
     	</url>
     	
-    	<url>
+<!--     	this is not playing the ad -->
+    	<!-- <url>
 	    	<description name="FlashMidroll_Vast"/>
 	        <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -277,7 +279,7 @@
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 	        
-    	</url>
+    	</url> -->
     	
     </test>
     

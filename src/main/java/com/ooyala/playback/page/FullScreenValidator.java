@@ -27,12 +27,15 @@ public class FullScreenValidator extends PlayBackPage implements
 
 	public boolean validate(String element, int timeout) throws Exception {
 
-		if(!PlayBackFactory.getInstance(driver).getFullScreenAction().startAction()) return false;
+		if (!PlayBackFactory.getInstance(driver).getFullScreenAction()
+				.startAction())
+			return false;
 
 		Thread.sleep(3000);
-		//if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
+		// if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
 		sleep(2000);
-		if(!clickOnIndependentElement("NORMAL_SCREEN")) return false;
+		if (!clickOnIndependentElement("NORMAL_SCREEN"))
+			return false;
 
 		// PBW-5165 we are not verifying fullscreen change event for safari and
 		// firefox browser as fullscreen is not working in safari in automation
@@ -41,7 +44,7 @@ public class FullScreenValidator extends PlayBackPage implements
 				|| getBrowser().equalsIgnoreCase("internet explorer") || getPlatform()
 				.equalsIgnoreCase("Android"))) {
 			return waitOnElement(By.id("fullscreenChanged_false"), 60000);
-		}else{
+		} else {
 			return true;
 		}
 	}

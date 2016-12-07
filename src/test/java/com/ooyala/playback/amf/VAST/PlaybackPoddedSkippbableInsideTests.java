@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf.VAST;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,7 +16,7 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 	public PlaybackPoddedSkippbableInsideTests() throws OoyalaException {
 		super();
 	}
-	
+
 	private EventValidator event;
 	private PlayAction playAction;
 	private PlayValidator playValidator;
@@ -39,38 +37,23 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 
 			injectScript();
 
-			//play video
 			result = result && playAction.startAction();
 
-//	        loadingSpinner();
+			result = result && event.validate("willPlaySingleAd_1", 150000);
+			result = result && event.validate("singleAdPlayed_1", 150000);
 
-	        // verify first podded preroll played
-	        result = result && event.validate("willPlaySingleAd_1", 150000);
-	        result = result && event.validate("singleAdPlayed_1", 150000);
-//	        loadingSpinner();
+			result = result && event.validate("willPlaySingleAd_2", 150000);
 
-	        //second preroll podded starts
-	        result = result && event.validate("willPlaySingleAd_2", 150000);
+			result = result && skipValidator.validate("", 120000);
 
-	        //skip buttons shows for second preroll podded
+			result = result && event.validate("willPlaySingleAd_3", 150000);
 
-	        result = result && skipValidator.validate("", 120000);
-	        
-//	        loadingSpinner();
+			result = result && event.validate("singleAdPlayed_3", 150000);
 
-	        // verify third ad played
-	        result = result && event.validate("willPlaySingleAd_3", 150000);
+			result = result && event.validate("playing_1", 190000);
 
-	        result = result && event.validate("singleAdPlayed_3", 150000);
-
-	        extentTest.log(PASS, "Played Preroll podded Ads");
-
-	        result = result && event.validate("playing_1", 190000);
-
-	        result = result && seekValidator.validate("seeked_1", 190000);
-	        result = result && event.validate("played_1", 190000);
-	        extentTest.log(PASS, "Main Video played successfully");
-	        extentTest.log(PASS, "Verified PlaybackPoddedSkippbableInsideTests");
+			result = result && seekValidator.validate("seeked_1", 190000);
+			result = result && event.validate("played_1", 190000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -80,6 +63,5 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 		Assert.assertTrue(result, "Verified PreRoll Ads test");
 
 	}
-
 
 }

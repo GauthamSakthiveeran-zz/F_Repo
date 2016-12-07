@@ -1,14 +1,11 @@
 package com.ooyala.playback.page;
 
-import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
-import org.testng.SkipException;
 
 public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
@@ -23,40 +20,45 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		addElementToPageElements("play");
 	}
 
-
 	@Override
 	public boolean waitForPage() {
 		boolean errorScreen = false;
 
 		try {
-            if(!waitOnElement("PLAY_BUTTON", 60000)) {
-                errorScreen = isElementPresent("ERROR_SCREEN");
-                if(errorScreen)
-                    extentTest.log(LogStatus.ERROR, "Video format is not supported in this browser");
-              return false;
-            }
+			if (!waitOnElement("PLAY_BUTTON", 60000)) {
+				errorScreen = isElementPresent("ERROR_SCREEN");
+				if (errorScreen)
+					extentTest.log(LogStatus.ERROR,
+							"Video format is not supported in this browser");
+				return false;
+			}
 		} catch (Exception e) {
 			driver.navigate().refresh();
-			if(!waitOnElement("INNER_WRAPPER", 60000)) return false;
+			if (!waitOnElement("INNER_WRAPPER", 60000))
+				return false;
 			errorScreen = isElementPresent("ERROR_SCREEN");
 			if (errorScreen)
 				driver.navigate().refresh();
-			if(!waitOnElement("PLAY_BUTTON", 60000)) return false;
+			if (!waitOnElement("PLAY_BUTTON", 60000))
+				return false;
 		}
 		logger.info("Page is loaded completely");
 		return true;
 	}
 
-
 	public boolean validate(String element, int timeout) throws Exception {
-		
-//		if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction()) return false;
-		
-		if(!clickOnIndependentElement("PLAY_BUTTON")) return false;
-		
-		if(!waitOnElement("PLAYING_SCREEN", 60000)) return false;
-		
-		if(!waitOnElement(By.id(element), timeout)) return false;
+
+		// if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction())
+		// return false;
+
+		if (!clickOnIndependentElement("PLAY_BUTTON"))
+			return false;
+
+		if (!waitOnElement("PLAYING_SCREEN", 60000))
+			return false;
+
+		if (!waitOnElement(By.id(element), timeout))
+			return false;
 		extentTest.log(LogStatus.PASS,
 				"Video Playing and validation of element " + element
 						+ " is successful");

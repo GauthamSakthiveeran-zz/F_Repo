@@ -1,6 +1,5 @@
 package com.ooyala.playback.playerfeatures;
 
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,7 +18,8 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(PlayerMetadataStatesTests.class);
+	private static Logger logger = Logger
+			.getLogger(PlayerMetadataStatesTests.class);
 	private PlayValidator play;
 	private SeekValidator seek;
 	private EventValidator eventValidator;
@@ -40,43 +40,44 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 		try {
 			driver.get(url);
 
-            result = result && play.waitForPage();
+			result = result && play.waitForPage();
 
-            result = result && startScreenValidator.validate("", 60000);
+			result = result && startScreenValidator.validate("", 60000);
 
 			injectScript();
 
 			// playAction.startAction();
 
-            result = result && play.validate("playing_1", 60000);
+			result = result && play.validate("playing_1", 60000);
 			logger.info("video is playing");
 			Thread.sleep(2000);
 
-            result = result && pause.validate("paused_1", 60000);
+			result = result && pause.validate("paused_1", 60000);
 			logger.info("video is paused");
 
-            result = result && play.validate("playing_2", 60000);
+			result = result && play.validate("playing_2", 60000);
 			logger.info("video is playing again");
 
-            result = result && seek.validate("seeked_1", 60000);
+			result = result && seek.validate("seeked_1", 60000);
 			logger.info("video seeked");
 
-            result = result && eventValidator.validate("played_1", 60000);
+			result = result && eventValidator.validate("played_1", 60000);
 			logger.info("video played");
 
-            result = result && endScreenValidator.validate("END_SCREEN", 60000);
+			result = result && endScreenValidator.validate("END_SCREEN", 60000);
 
-            result = result && eventValidator.eventAction("FULLSCREEN_BTN_1");
+			result = result && eventValidator.eventAction("FULLSCREEN_BTN_1");
 
-            result = result && endScreenValidator.validate("fullscreenChangedtrue", 50);
+			result = result
+					&& endScreenValidator.validate("fullscreenChangedtrue", 50);
 			logger.info("checked fullscreen");
 
-            result = result && endScreenValidator.validate("", 60000);
-            result = result && eventValidator.eventAction("FULLSCREEN_BTN_1");
+			result = result && endScreenValidator.validate("", 60000);
+			result = result && eventValidator.eventAction("FULLSCREEN_BTN_1");
 
 		} catch (Exception e) {
 			e.printStackTrace();
-            result = false;
+			result = false;
 		}
 		Assert.assertTrue(result, "Playback MetadataStates tests failed");
 	}

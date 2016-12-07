@@ -1,8 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -36,43 +33,30 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
-			Thread.sleep(10000);
+			result = result && playValidator.waitForPage();
 
 			injectScript();
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
-            result = result && event.validate("willPlaySingleAd_1", 60000);
+            result = result && event.validate("willPlaySingleAd_1", 120000);
 
-			extentTest.log(PASS, "Ad started to play");
+			result = result && clickThrough.validate("", 120000);
 
-            result = result && clickThrough.validate("", 120000);
+			result = result && event.validate("singleAdPlayed_1", 190000);
 
-            result = result && event.validate("singleAdPlayed_1", 190000);
+			result = result && event.validate("playing_1", 160000);
 
-			extentTest.log(PASS, "Ad completed");
+			result = result && seekAction.seekTillEnd().startAction();
 
-			loadingSpinner();
-
-            result = result && event.validate("playing_1", 160000);
-
-			extentTest.log(PASS, "Video started");
-			sleep(5000);
-
-            result = result && seekAction.seekTillEnd().startAction();
-
-            result = result &&event.validate("played_1", 160000);
-
-			extentTest.log(PASS, "Video ended");
-
-			extentTest.log(PASS, "Verified Clickthrough functionality");
+			result = result && event.validate("seeked_1", 10000);
+			result = result && event.validate("played_1", 200000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
-		Assert.assertTrue(result, "Playback CC Enabled MidRoll Ads tests failed");
+		Assert.assertTrue(result, "Clickthrough functionality tests failed");
 
 	}
 

@@ -1,8 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,13 +16,13 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 	public PlaybackMp4PlayerSwitchingSupportTests() throws OoyalaException {
 		super();
 	}
-	
+
 	private EventValidator event;
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 	private PauseAction pauseAction;
-	
+
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyPlaybackOfOSMFMp4(String testName, String url)
 			throws OoyalaException {
@@ -35,45 +32,32 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 		try {
 
 			driver.get(url);
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-            result = result && playAction.startAction();
-			loadingSpinner();
-			
-	        event.validate("willPlaySingleAd_1", 50000);
-	        extentTest.log(PASS, "Ad starts to play");
-	        event.validate("singleAdPlayed_1", 190000);
-	        extentTest.log(PASS, "Ad Played completely");
-	        event.validate("playing_1", 120000);
-	        sleep(10000);
+			result = result && playAction.startAction();
 
-	        pauseAction.startActionOnScreen();
-	        sleep(5000);
-	        playAction.startActionOnScreen();
+			result = result && event.validate("willPlaySingleAd_1", 50000);
+			result = result && event.validate("singleAdPlayed_1", 190000);
+			result = result && event.validate("playing_1", 120000);
 
-	        extentTest.log(PASS, "Verified Play Pause Functionality");
+			result = result && pauseAction.startActionOnScreen();
 
-	        sleep(5000);
+			result = result && pauseAction.startActionOnScreen();
 
-            result = result && seekValidator.validate("seeked_1", 190000);
-	        extentTest.log(PASS, "Seek successful");
+			result = result && seekValidator.validate("seeked_1", 190000);
 
-            result = result &&  event.validate("played_1", 190000);
-	        extentTest.log(PASS, "Video played");
-
-	        extentTest.log(PASS, "verified Playback of OSMF MP4 Asset");
+			result = result && event.validate("played_1", 190000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified");
+		Assert.assertTrue(result, "Tests failed");
 
 	}
-
 
 }

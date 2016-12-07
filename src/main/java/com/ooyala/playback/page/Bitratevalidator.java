@@ -7,9 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-
-import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by soundarya on 11/17/16.
@@ -33,15 +30,19 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 	public boolean validate(String element, int timeout) throws Exception {
 
 		try {
-			if(!isElementPresent("BITRATE")) return false;
+			if (!isElementPresent("BITRATE"))
+				return false;
 		} catch (Exception e) {
-			if(!clickOnIndependentElement("MORE_OPTION_ITEM")) return false;
+			if (!clickOnIndependentElement("MORE_OPTION_ITEM"))
+				return false;
 			sleep(1000);
-			if(!isElementPresent("BITRATE")) return false;
+			if (!isElementPresent("BITRATE"))
+				return false;
 		}
 
-		if(!clickOnIndependentElement("BITRATE")) return false;
-		
+		if (!clickOnIndependentElement("BITRATE"))
+			return false;
+
 		int length = Integer.parseInt(((JavascriptExecutor) driver)
 				.executeScript("return pp.getBitratesAvailable().length")
 				.toString());
@@ -58,7 +59,9 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 						.executeScript(" return pp.seek(3)");
 				((JavascriptExecutor) driver)
 						.executeScript(" return pp.play()");
-				flag = flag && waitOnElement(By.id("bitrateChanged_" + (bitrate)), 60000);
+				flag = flag
+						&& waitOnElement(By.id("bitrateChanged_" + (bitrate)),
+								60000);
 			}
 			return flag;
 		} else {
@@ -66,12 +69,12 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 					.executeScript("return pp.getCurrentBitrate()[\"bitrate\"]")
 					.toString();
 			((JavascriptExecutor) driver).executeScript("return pp.play()");
-//			Assert.assertNotNull(currentBitrate);
-			if(currentBitrate==null){
+			// Assert.assertNotNull(currentBitrate);
+			if (currentBitrate == null) {
 				return false;
 			}
 			return true;
 		}
-		
+
 	}
 }

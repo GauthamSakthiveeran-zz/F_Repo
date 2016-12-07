@@ -1,9 +1,46 @@
 package com.ooyala.playback.factory;
 
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.*;
-import org.openqa.selenium.WebDriver;
 import java.lang.reflect.Field;
+
+import org.openqa.selenium.WebDriver;
+
+import com.ooyala.playback.page.AdClickThroughValidator;
+import com.ooyala.playback.page.AdSkipButtonValidator;
+import com.ooyala.playback.page.AspectRatioValidator;
+import com.ooyala.playback.page.Bitratevalidator;
+import com.ooyala.playback.page.CCValidator;
+import com.ooyala.playback.page.ControlBarValidator;
+import com.ooyala.playback.page.DifferentElementValidator;
+import com.ooyala.playback.page.DiscoveryValidator;
+import com.ooyala.playback.page.EncodingValidator;
+import com.ooyala.playback.page.EndScreenValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.FullScreenValidator;
+import com.ooyala.playback.page.IsAdPlayingValidator;
+import com.ooyala.playback.page.MultiplePlayerValidator;
+import com.ooyala.playback.page.OverlayValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.PoddedAdValidator;
+import com.ooyala.playback.page.ReplayValidator;
+import com.ooyala.playback.page.SaasPortValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.ShareTabValidator;
+import com.ooyala.playback.page.SocialScreenValidator;
+import com.ooyala.playback.page.StartScreenValidator;
+import com.ooyala.playback.page.ThumbnailValidator;
+import com.ooyala.playback.page.UpNextValidator;
+import com.ooyala.playback.page.VolumeValidator;
+import com.ooyala.playback.page.WaterMarkValidator;
+import com.ooyala.playback.page.action.AutoplayAction;
+import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
+import com.ooyala.playback.page.action.FullScreenAction;
+import com.ooyala.playback.page.action.LiveAction;
+import com.ooyala.playback.page.action.PauseAction;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.PlayPauseAction;
+import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.page.action.StateScreenAction;
 
 public class PlayBackFactory {
 
@@ -44,6 +81,8 @@ public class PlayBackFactory {
 	private IsAdPlayingValidator isAdPlaying;
 	private EncodingValidator encodingValidator;
 	private MultiplePlayerValidator multiplePlayerValidator;
+	private AdClickThroughValidator adClickThroughValidator;
+	private PoddedAdValidator poddedAdValidator;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
@@ -56,29 +95,42 @@ public class PlayBackFactory {
 
 	}
 
-	public EncodingValidator getEncodingValidator(){
+	public PoddedAdValidator getPoddedAdValidator() {
+		if (poddedAdValidator == null)
+			poddedAdValidator = new PoddedAdValidator(driver);
+		return poddedAdValidator;
+	}
+
+	public AdClickThroughValidator getAdClickThroughValidator() {
+		if (adClickThroughValidator == null)
+			adClickThroughValidator = new AdClickThroughValidator(driver);
+		return adClickThroughValidator;
+
+	}
+
+	public EncodingValidator getEncodingValidator() {
 		if (encodingValidator == null)
 			encodingValidator = new EncodingValidator(driver);
 		return encodingValidator;
 
 	}
-	
+
 	public AdSkipButtonValidator getAdSkipButtonValidator() {
 		if (adSkipButtonValidator == null)
 			adSkipButtonValidator = new AdSkipButtonValidator(driver);
 		return adSkipButtonValidator;
 
 	}
-	
+
 	public OverlayValidator getOverlayValidator() {
 		if (overlayValidator == null)
 			overlayValidator = new OverlayValidator(driver);
 		return overlayValidator;
 
 	}
-	
-	public StateScreenAction getStateScreenAction(){
-		if(stateScreenAction==null)
+
+	public StateScreenAction getStateScreenAction() {
+		if (stateScreenAction == null)
 			stateScreenAction = new StateScreenAction(driver);
 		return stateScreenAction;
 	}
@@ -252,19 +304,19 @@ public class PlayBackFactory {
 		return saasPortValidator;
 	}
 
-	public DifferentElementValidator getDifferentElements(){
+	public DifferentElementValidator getDifferentElements() {
 		if (differentElement == null)
 			differentElement = new DifferentElementValidator(driver);
 		return differentElement;
 	}
 
-	public IsAdPlayingValidator isAdPlaying(){
+	public IsAdPlayingValidator isAdPlaying() {
 		if (isAdPlaying == null)
 			isAdPlaying = new IsAdPlayingValidator(driver);
 		return isAdPlaying;
 	}
 
-	public static void destroyInstance() {
+	public void destroyInstance() {
 		playbackFactory = null;
 	}
 

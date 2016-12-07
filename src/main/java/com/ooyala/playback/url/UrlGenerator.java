@@ -1,6 +1,8 @@
 package com.ooyala.playback.url;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
@@ -23,9 +25,9 @@ public class UrlGenerator {
 	 *            playerConfigParameter
 	 * @return returns dynamically created link from above parameters
 	 */
-	public static String getURL(String sslEnabled,String embedcode, String pcode, String pbid,
-			String videoPlugin, String adPlugin, String additionalPlugin,
-			String playerConfigParameter) {
+	public static String getURL(String sslEnabled, String embedcode,
+			String pcode, String pbid, String videoPlugin, String adPlugin,
+			String additionalPlugin, String playerConfigParameter) {
 
 		String environment = System.getProperty("environment");
 		if ((environment == null || environment.equals(""))) {
@@ -47,11 +49,10 @@ public class UrlGenerator {
 		}
 
 		test = new TestPage(playerProperties);
-		url = test.getURL(sslEnabled,embedcode, pcode, pbid, videoPlugin, adPlugin,
-				additionalPlugin, playerConfigParameter);
+		url = test.getURL(sslEnabled, embedcode, pcode, pbid, videoPlugin,
+				adPlugin, additionalPlugin, playerConfigParameter);
 		return url;
 	}
-
 
 	/**
 	 *
@@ -63,15 +64,23 @@ public class UrlGenerator {
 	 *         name and url is returned
 	 */
 	public static Map<String, String> parseXmlDataProvider(String testName,
-			Testdata testData) {
+			Testdata testData, String browserName) {
 		logger.info("Getting test url and test name from property file");
 
-		Map<String, String> urlsGenerated = new HashMap<String,String>();
+		Map<String, String> urlsGenerated = new HashMap<String, String>();
 		String sslEnabled = null;
 		for (Test data : testData.getTest()) {
 			if (data.getName().equals(testName)) {
 				List<Url> urls = data.getUrl();
 				for (Url url : urls) {
+					// Adding browser support here.The data provider will not
+					// even give that data if we do not support for that
+					// browser.
+					if (url.getBrowsersSupported() != null
+							&& url.getBrowsersSupported().getName() != null
+							&& !browserName.contains(url.getBrowsersSupported()
+									.getName()))
+						continue;
 					String embedCode = url.getEmbedCode().getName();
 					// String embedCode = test.;
 					String pCode = url.getPcode().getName();
@@ -85,22 +94,21 @@ public class UrlGenerator {
 
 					try {
 						sslEnabled = url.getSslEnabled().getName();
-					} catch (Exception e){
-						sslEnabled="";
+					} catch (Exception e) {
+						sslEnabled = "";
 					}
 
-					String urlGenerated = UrlGenerator.getURL(sslEnabled,embedCode, pCode,
-							pbid, videoPlugin, adPlugin, additionalPlugin,
-							playerParameter);
+					String urlGenerated = UrlGenerator.getURL(sslEnabled,
+							embedCode, pCode, pbid, videoPlugin, adPlugin,
+							additionalPlugin, playerParameter);
 					String desc = url.getDescription().getName();
-					urlsGenerated.put(desc,urlGenerated);
+					urlsGenerated.put(desc, urlGenerated);
 
 				}
 			}
 		}
 		return urlsGenerated;
 	}
-
 
 	/**
 	 * @param testName

@@ -1,80 +1,282 @@
 package com.ooyala.playback.url;
 
-import java.util.Map;
-
 import org.apache.log4j.Logger;
+
+import com.ooyala.qe.common.util.PropertyReader;
 
 /**
  * Created by jitendra
  */
 public class TestPageData {
 
-	public static Logger logger = Logger.getLogger(TestPageData.class);
+	private static Logger logger = Logger.getLogger(TestPageData.class);
 
-	public String baseURL = null;
-	public String envURL = null;
-	public String pluginURL = null;
-	public String corePlayer = null;
-	public String html5Skin = null;
-	public String skinAsset = null;
-	public String skinConf = null;
-	public String skinDiscovery = null;
-	public String playerBrandingId = null;
-	public String providerCode = null;
-	public String player_Config_Param = null;
-	public String mainPlugin = null;
-	public String bitmovinPlugin = null;
-	public String osmfPlugin = null;
-	public String akamaiPlugin = null;
-	public String additionalPlugin = null;
-	public String adPluginIMA = null;
-	public String adPluginVast = null;
-	public String adPluginFreewheel = null;
-	public String adPluginPulse = null;
-	public String defaultSkinConfig = null;
-	public String skinConfigForOSMF_IMA = null;
-	public String skinConfigForDiscovery = null;
-	public String otherPlugin = null;
-	public String discoveryApiPlugin = null;
-	public Map<String, String> map = null;
+	private String baseURL;
+	private String envURL;
+	private String pluginURL;
+	private String corePlayer;
+	private String html5Skin;
+	private String skinAsset;
+	private String skinConf;
+	private String skinDiscovery;
+	private String playerBrandingId;
+	private String providerCode;
+	private String player_Config_Param;
+	private String mainPlugin;
+	private String bitmovinPlugin;
+	private String osmfPlugin;
+	private String akamaiPlugin;
+	private String additionalPlugin;
+	private String adPluginIMA;
+	private String adPluginVast;
+	private String adPluginFreewheel;
+	private String adPluginPulse;
+	private String defaultSkinConfig;
+	private String skinConfigForOSMF_IMA;
+	private String skinConfigForDiscovery;
+	private String otherPlugin;
+	private String discoveryApiPlugin;
+	private PropertyReader properties;
 
 	/**
 	 * Initialize all the variable with respective value. Read the data from
-	 * requiredDataFields and put it into Map
+	 * requiredDataFields and put it into properties
 	 */
 
 	public TestPageData() {
 		try {
-			map = PropertyReader.getProperty("src/test/resources/urlData");
-			baseURL = map.get("baseUrl");
-			pluginURL = map.get("video_Plugin");
-			mainPlugin = map.get("main_Plugin");
-			bitmovinPlugin = map.get("bitmovin_Plugin");
-			osmfPlugin = map.get("osmf_Plugin");
-			akamaiPlugin = map.get("akamai_Plugin");
-			corePlayer = map.get("corePlayer");
-			html5Skin = map.get("HTML5Skin");
-			skinAsset = map.get("skinAsset");
-			skinConf = map.get("skinConf");
-			additionalPlugin = map.get("additional_plugin");
-			skinDiscovery = map.get("skinDiscovery");
-			playerBrandingId = map.get("playerBrandingId");
-			providerCode = map.get("providerCode");
-			adPluginFreewheel = map.get("freewheel_ad_plugin");
-			adPluginIMA = map.get("ima_ad_plugin");
-			adPluginVast = map.get("vast_ad_plugin");
-			adPluginPulse = map.get("pulse_ad_plugin");
-			defaultSkinConfig = map.get("defaultSkinConfig");
-			skinConfigForOSMF_IMA = map.get("skinConfigForOSMF_IMA");
-			player_Config_Param = map.get("player_Config_Param");
-			skinConfigForDiscovery = map.get("skinConfigForDiscovery");
-			discoveryApiPlugin = map.get("discovery_api_plugin");
-			otherPlugin = map.get("other_plugin");
+			properties = PropertyReader.getInstance("urlData.properties");
+			baseURL = properties.getProperty("baseUrl");
+			pluginURL = properties.getProperty("video_Plugin");
+			mainPlugin = properties.getProperty("main_Plugin");
+			bitmovinPlugin = properties.getProperty("bitmovin_Plugin");
+			osmfPlugin = properties.getProperty("osmf_Plugin");
+			akamaiPlugin = properties.getProperty("akamai_Plugin");
+			corePlayer = properties.getProperty("corePlayer");
+			html5Skin = properties.getProperty("HTML5Skin");
+			skinAsset = properties.getProperty("skinAsset");
+			skinConf = properties.getProperty("skinConf");
+			additionalPlugin = properties.getProperty("additional_plugin");
+			skinDiscovery = properties.getProperty("skinDiscovery");
+			playerBrandingId = properties.getProperty("playerBrandingId");
+			providerCode = properties.getProperty("providerCode");
+			adPluginFreewheel = properties.getProperty("freewheel_ad_plugin");
+			adPluginIMA = properties.getProperty("ima_ad_plugin");
+			adPluginVast = properties.getProperty("vast_ad_plugin");
+			adPluginPulse = properties.getProperty("pulse_ad_plugin");
+			defaultSkinConfig = properties.getProperty("defaultSkinConfig");
+			skinConfigForOSMF_IMA = properties
+					.getProperty("skinConfigForOSMF_IMA");
+			player_Config_Param = properties.getProperty("player_Config_Param");
+			skinConfigForDiscovery = properties
+					.getProperty("skinConfigForDiscovery");
+			discoveryApiPlugin = properties.getProperty("discovery_api_plugin");
+			otherPlugin = properties.getProperty("other_plugin");
 
 		} catch (Exception e) {
 			logger.error("Error while reading data from properties file :"
 					+ e.getMessage());
 		}
+	}
+
+	public String getBaseURL() {
+		return baseURL;
+	}
+
+	public void setBaseURL(String baseURL) {
+		this.baseURL = baseURL;
+	}
+
+	public String getEnvURL() {
+		return envURL;
+	}
+
+	public void setEnvURL(String envURL) {
+		this.envURL = envURL;
+	}
+
+	public String getPluginURL() {
+		return pluginURL;
+	}
+
+	public void setPluginURL(String pluginURL) {
+		this.pluginURL = pluginURL;
+	}
+
+	public String getCorePlayer() {
+		return corePlayer;
+	}
+
+	public void setCorePlayer(String corePlayer) {
+		this.corePlayer = corePlayer;
+	}
+
+	public String getHtml5Skin() {
+		return html5Skin;
+	}
+
+	public void setHtml5Skin(String html5Skin) {
+		this.html5Skin = html5Skin;
+	}
+
+	public String getSkinAsset() {
+		return skinAsset;
+	}
+
+	public void setSkinAsset(String skinAsset) {
+		this.skinAsset = skinAsset;
+	}
+
+	public String getSkinConf() {
+		return skinConf;
+	}
+
+	public void setSkinConf(String skinConf) {
+		this.skinConf = skinConf;
+	}
+
+	public String getSkinDiscovery() {
+		return skinDiscovery;
+	}
+
+	public void setSkinDiscovery(String skinDiscovery) {
+		this.skinDiscovery = skinDiscovery;
+	}
+
+	public String getPlayerBrandingId() {
+		return playerBrandingId;
+	}
+
+	public void setPlayerBrandingId(String playerBrandingId) {
+		this.playerBrandingId = playerBrandingId;
+	}
+
+	public String getProviderCode() {
+		return providerCode;
+	}
+
+	public void setProviderCode(String providerCode) {
+		this.providerCode = providerCode;
+	}
+
+	public String getPlayer_Config_Param() {
+		return player_Config_Param;
+	}
+
+	public void setPlayer_Config_Param(String player_Config_Param) {
+		this.player_Config_Param = player_Config_Param;
+	}
+
+	public String getMainPlugin() {
+		return mainPlugin;
+	}
+
+	public void setMainPlugin(String mainPlugin) {
+		this.mainPlugin = mainPlugin;
+	}
+
+	public String getBitmovinPlugin() {
+		return bitmovinPlugin;
+	}
+
+	public void setBitmovinPlugin(String bitmovinPlugin) {
+		this.bitmovinPlugin = bitmovinPlugin;
+	}
+
+	public String getOsmfPlugin() {
+		return osmfPlugin;
+	}
+
+	public void setOsmfPlugin(String osmfPlugin) {
+		this.osmfPlugin = osmfPlugin;
+	}
+
+	public String getAkamaiPlugin() {
+		return akamaiPlugin;
+	}
+
+	public void setAkamaiPlugin(String akamaiPlugin) {
+		this.akamaiPlugin = akamaiPlugin;
+	}
+
+	public String getAdditionalPlugin() {
+		return additionalPlugin;
+	}
+
+	public void setAdditionalPlugin(String additionalPlugin) {
+		this.additionalPlugin = additionalPlugin;
+	}
+
+	public String getAdPluginIMA() {
+		return adPluginIMA;
+	}
+
+	public void setAdPluginIMA(String adPluginIMA) {
+		this.adPluginIMA = adPluginIMA;
+	}
+
+	public String getAdPluginVast() {
+		return adPluginVast;
+	}
+
+	public void setAdPluginVast(String adPluginVast) {
+		this.adPluginVast = adPluginVast;
+	}
+
+	public String getAdPluginFreewheel() {
+		return adPluginFreewheel;
+	}
+
+	public void setAdPluginFreewheel(String adPluginFreewheel) {
+		this.adPluginFreewheel = adPluginFreewheel;
+	}
+
+	public String getAdPluginPulse() {
+		return adPluginPulse;
+	}
+
+	public void setAdPluginPulse(String adPluginPulse) {
+		this.adPluginPulse = adPluginPulse;
+	}
+
+	public String getDefaultSkinConfig() {
+		return defaultSkinConfig;
+	}
+
+	public void setDefaultSkinConfig(String defaultSkinConfig) {
+		this.defaultSkinConfig = defaultSkinConfig;
+	}
+
+	public String getSkinConfigForOSMF_IMA() {
+		return skinConfigForOSMF_IMA;
+	}
+
+	public void setSkinConfigForOSMF_IMA(String skinConfigForOSMF_IMA) {
+		this.skinConfigForOSMF_IMA = skinConfigForOSMF_IMA;
+	}
+
+	public String getSkinConfigForDiscovery() {
+		return skinConfigForDiscovery;
+	}
+
+	public void setSkinConfigForDiscovery(String skinConfigForDiscovery) {
+		this.skinConfigForDiscovery = skinConfigForDiscovery;
+	}
+
+	public String getOtherPlugin() {
+		return otherPlugin;
+	}
+
+	public void setOtherPlugin(String otherPlugin) {
+		this.otherPlugin = otherPlugin;
+	}
+
+	public String getDiscoveryApiPlugin() {
+		return discoveryApiPlugin;
+	}
+
+	public void setDiscoveryApiPlugin(String discoveryApiPlugin) {
+		this.discoveryApiPlugin = discoveryApiPlugin;
 	}
 
 	/**
@@ -83,18 +285,17 @@ public class TestPageData {
 	 * 
 	 * @param envType
 	 */
-	public void initializeData(String sslEnabled,PlayerPropertyValue envType) {
+	public void initializeData(String sslEnabled, PlayerPropertyValue envType) {
 
-		if (sslEnabled == "" || sslEnabled == null){
+		if (sslEnabled == "" || sslEnabled == null) {
 			sslEnabled = "http";
-		}else
+		} else
 			sslEnabled = "https";
-
 
 		switch (envType) {
 
 		case STAGING:
-			envURL = sslEnabled+map.get("staging_env_url");
+			envURL = sslEnabled + properties.getProperty("staging_env_url");
 			pluginURL = envURL + pluginURL;
 			corePlayer = envURL + corePlayer;
 			html5Skin = envURL + html5Skin;
@@ -103,7 +304,7 @@ public class TestPageData {
 			skinDiscovery = envURL + otherPlugin + discoveryApiPlugin;
 			break;
 		case PRODUCTION:
-			envURL = sslEnabled+map.get("production_env_url")
+			envURL = sslEnabled + properties.getProperty("production_env_url")
 					+ System.getProperty("v4Version");
 			pluginURL = envURL + "/video-plugin/";
 			corePlayer = envURL + corePlayer;
@@ -182,7 +383,19 @@ public class TestPageData {
 	public String getSkinConfigPlugin(String plugins, String adPlugin,
 			String additionalPlugin) {
 
-		if (plugins.contains(",")) {
+		
+		if (additionalPlugin.contains("DISCOVERY")) {
+			return skinConf + skinConfigForDiscovery;
+		}else if(adPlugin.equals("IMA")){
+			if(plugins.equals("MAIN")){
+				return skinConf + skinConfigForOSMF_IMA;
+			}
+			if(plugins.contains(",") && plugins.contains("OSMF")){
+				return skinConf + skinConfigForOSMF_IMA;
+			}
+		}
+		
+		/*if (plugins.contains(",")) {
 			String str[] = plugins.split(",");
 			for (int i = 0; i < str.length; i++) {
 				if (additionalPlugin != "") {
@@ -199,7 +412,7 @@ public class TestPageData {
 			if (additionalPlugin != "") {
 				return skinConf + skinConfigForDiscovery;
 			}
-		}
+		}*/
 
 		return skinConf + defaultSkinConfig;
 

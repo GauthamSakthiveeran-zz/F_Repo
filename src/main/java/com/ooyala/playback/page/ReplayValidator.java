@@ -29,6 +29,5 @@ public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 		Thread.sleep(5000);
 		boolean isReplay = waitOnElement(By.id(element), timeout);
 		return isReplay;
-
 	}
 }

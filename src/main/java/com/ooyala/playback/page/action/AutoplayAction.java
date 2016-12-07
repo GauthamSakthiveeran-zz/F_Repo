@@ -30,15 +30,15 @@ public class AutoplayAction extends PlayBackPage implements PlayerAction {
 			logger.error("Autoplay not set for this video");
 		}
 		if (!autoplay) {
-			if(waitOnElement("PLAY_BUTTON", 60000)){
-				if(clickOnIndependentElement("PLAY_BUTTON")){
+			if (waitOnElement("PLAY_BUTTON", 60000)) {
+				if (clickOnIndependentElement("PLAY_BUTTON")) {
 					return true;
 				}
 			}
 			return false;
-			
+
 		}
 		return autoplay;
 	}
-	
+
 }

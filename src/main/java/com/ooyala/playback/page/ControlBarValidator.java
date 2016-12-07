@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
 import com.relevantcodes.extentreports.LogStatus;
@@ -33,33 +32,33 @@ public class ControlBarValidator extends PlayBackPage implements
 		ArrayList<String> controlBarElement = new ArrayList<String>();
 
 		controlBarElement.addAll(Arrays.asList("PLAY_HEAD", "PLAY_PAUSE",
-				"VOLUME_BUTTON","SHARE_BTN","FULLSCREEN_BTN"));
-        //"DISCOVERY_BTN", "TIME_DURATION" - no time duration for live
+				"VOLUME_BUTTON", "SHARE_BTN", "FULLSCREEN_BTN"));
+		// "DISCOVERY_BTN", "TIME_DURATION" - no time duration for live
 
 		boolean iscontrolshown = isElementPresent("CONTROL_BAR");
-		
+
 		if (!iscontrolshown) {
-			extentTest.log(LogStatus.INFO, "Control bar is hiden hence mouse hovering on it");
-            moveElement(getWebElement("CONTROL_BAR"));
+			extentTest.log(LogStatus.INFO,
+					"Control bar is hiden hence mouse hovering on it");
+			moveElement(getWebElement("CONTROL_BAR"));
 
 		}
 		try {
 			for (String icon : controlBarElement) {
-				if(!waitOnElement(icon, 60000)) return false;
+				if (!waitOnElement(icon, 60000))
+					return false;
 			}
 			boolean ismoreoption = isElementVisible("MORE_OPTION_ITEM");
 			if (ismoreoption) {
-				return
-						clickOnIndependentElement("MORE_OPTION_ITEM")
+				return clickOnIndependentElement("MORE_OPTION_ITEM")
 						&& waitOnElement("DISCOVERY_BTN", 60000)
 						&& waitOnElement("QUALITY_BTN", 60000)
 						&& clickOnIndependentElement("CC_PANEL_CLOSE");
-			}else
-            return true;
+			} else
+				return true;
 		} catch (Exception e) {
 
-			return
-					waitOnElement("PLAY_PAUSE", 60000)
+			return waitOnElement("PLAY_PAUSE", 60000)
 					&& waitOnElement("VOLUME_BUTTON", 60000)
 					&& waitOnElement("FULLSCREEN_BTN", 60000);
 

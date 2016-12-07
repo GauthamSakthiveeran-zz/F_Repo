@@ -1,6 +1,5 @@
 package com.ooyala.playback.playerfeatures;
 
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -45,45 +44,45 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 				driver.manage().window().maximize();
 			}
 
-            result = result && play.waitForPage();
+			result = result && play.waitForPage();
 
 			injectScript();
 
-            result = result && play.validate("playing_1", 60000);
+			result = result && play.validate("playing_1", 60000);
 
 			logger.info("video playing");
 
-            result = result && pause.validate("paused_1", 60000);
+			result = result && pause.validate("paused_1", 60000);
 
 			logger.info("video paused");
 
-            result = result && play.validate("playing_2", 60000);
+			result = result && play.validate("playing_2", 60000);
 
 			logger.info("video paying again");
 
-            result = result && shareTabValidator.validate("", 60000);
+			result = result && shareTabValidator.validate("", 60000);
 
-            result = result && eventValidator.eventAction("FULLSCREEN_BTN");
+			result = result && eventValidator.eventAction("FULLSCREEN_BTN");
 
 			logger.info("checked fullscreen");
 
-            result = result && shareTabValidator.validate("", 60000);
+			result = result && shareTabValidator.validate("", 60000);
 
-            result = result && eventValidator.eventAction("NORMAL_SCREEN");
+			result = result && eventValidator.eventAction("NORMAL_SCREEN");
 
-            result = result && playPauseAction.startAction();
+			result = result && playPauseAction.startAction();
 
-            result = result && seek.validate("seeked_1", 60000);
+			result = result && seek.validate("seeked_1", 60000);
 
 			logger.info("video seeked");
 
-            result = result && eventValidator.validate("played_1", 60000);
+			result = result && eventValidator.validate("played_1", 60000);
 
 			logger.info("video played");
 
 		} catch (Exception e) {
 			e.printStackTrace();
-            result = false;
+			result = false;
 		}
 		Assert.assertTrue(result, "Playback Localization tests failed");
 	}

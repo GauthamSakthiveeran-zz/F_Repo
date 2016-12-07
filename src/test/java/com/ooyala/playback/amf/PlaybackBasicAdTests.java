@@ -3,7 +3,6 @@ package com.ooyala.playback.amf;
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 import static java.lang.Thread.sleep;
 
-import org.junit.Ignore;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -25,7 +24,7 @@ public class PlaybackBasicAdTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 
-	@Test(groups = "amf", dataProvider = "testUrls", enabled= false)
+	@Test(groups = "amf", dataProvider = "testUrls", enabled = false)
 	public void verifyBasicAd(String testName, String url) throws Exception {
 
 		boolean result = true;
@@ -34,35 +33,35 @@ public class PlaybackBasicAdTests extends PlaybackWebTest {
 
 			driver.get(url);
 
-            result = result &&	playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 			Thread.sleep(10000);
 
 			injectScript();
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
 			loadingSpinner();
 
-            result = result && event.validate("willPlaySingleAd_1", 150000);
+			result = result && event.validate("willPlaySingleAd_1", 150000);
 
 			extentTest.log(PASS, "Preroll Ad started");
 
 			// String adurl = (((JavascriptExecutor)
 			// driver).executeScript("return adplayingurl_1.textContent")).toString();
 
-            result = result && event.validate("singleAdPlayed_1", 150000);
+			result = result && event.validate("singleAdPlayed_1", 150000);
 
 			extentTest.log(PASS, "Preroll Ad Completed");
 
-            result = result && event.validate("playing_1", 120000);
+			result = result && event.validate("playing_1", 120000);
 
 			extentTest.log(PASS, "Main video started to play");
 
 			sleep(500);
 
-            result = result && 	seekValidator.validate("seeked_1", 190000);
+			result = result && seekValidator.validate("seeked_1", 190000);
 
-            result = result &&	event.validate("played_1", 190000);
+			result = result && event.validate("played_1", 190000);
 
 			extentTest.log(PASS, "Video completed palying");
 

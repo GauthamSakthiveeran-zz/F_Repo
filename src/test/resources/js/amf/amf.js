@@ -57,6 +57,7 @@ function subscribeToEvents() {
 				}
 				if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
 					OO.$('#ooplayer').append('<p id=MidRoll_willPlaySingleAd_'+willPlaySingleAdsEventOrder+'>Midroll_willPlaySingleAd '+willPlaySingleAdsEventOrder+'</p>'); 
+					OO.$('#ooplayer').append('<p id=willPlaySingleAd_'+willPlaySingleAdsEventOrder+'>Midroll_willPlaySingleAd '+willPlaySingleAdsEventOrder+'</p>'); 
 					willPlaySingleAdsEventOrder++;
 				}
 				if(videoPlayedEventOrder == 2){
@@ -132,12 +133,20 @@ function subscribeToEvents() {
 			
 			
 			if (event.match(/willPlayAds/)) {
+				
+				if(videoPlayingEventOrder == 1 ){
+					OO.$('#ooplayer').append('<p id=PreRoll_willPlayAds'+'>PreRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
+					willPlayAdsEventOrder++;
+				}
+				
 				if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
 					OO.$('#ooplayer').append('<p id=MidRoll_willPlayAds_'+willPlayAdsEventOrder+'>MidRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
+					OO.$('#ooplayer').append('<p id=MidRoll_willPlayAds>MidRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
 					willPlayAdsEventOrder++;
 				}
 				if(videoPlayedEventOrder == 2){
 					OO.$('#ooplayer').append('<p id=PostRoll_willPlayAds'+'>PostRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
+					
 					adReplayEventOrder++;
 					willPlayAdsEventOrder++;
 				}

@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -30,32 +28,29 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 		try {
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
+			result = result && playValidator.waitForPage();
 
 			injectScript();
 
-            result = result && playValidator.validate("playing_1", 60000);
-			extentTest.log(PASS, "Video started playing");
-			Thread.sleep(2000);
+			result = result && playValidator.validate("playing_1", 60000);
 
-			seekAction.seekSpecific(15);
+            result = result && event.validate("videoPlaying_1", 90000);
+            
+            if(event.isVideoPlugin("akamai")){
+                result = result && event.validate("MidRoll_willPlayAds_2", 120000);
+                result = result && event.validate("adsPlayed_2", 60000);
+            }else{
+                result = result && event.validate("MidRoll_willPlaySingleAd_1", 120000);
+                if(event.isAdPlugin("pulse"))
+    				result = result && event.validate("singleAdPlayed_2", 60000);
+    	        else
+    	        	result = result && event.validate("singleAdPlayed_1", 60000);
+            }
 
-			loadingSpinner();
-			event.validate("videoPlaying_1", 90000);
-            result = result && event.validate("MidRoll_willPlaySingleAd_1", 120000);
-			extentTest.log(PASS, "Midroll Ad started to play");
-            result = result && event.validate("singleAdPlayed_1", 160000);
-			extentTest.log(PASS, "Midroll Ad ended");
-			
-			event.validateForSpecificPlugins("singleAdPlayed_2", 160000, "pulse");
+            result = result && seekAction.seekTillEnd().startAction();
 
-			seekAction.seekSpecific(10);
+            result = result && event.validate("played_1", 160000);
 
-			event.validate("videoPlayed_1", 160000);
-            result = result &&event.validate("played_1", 160000);
-			extentTest.log(PASS, "Video Played");
-			extentTest.log(PASS, "Verified MidrollAdsTest");
 
 		} catch (Exception e) {
 			e.printStackTrace();

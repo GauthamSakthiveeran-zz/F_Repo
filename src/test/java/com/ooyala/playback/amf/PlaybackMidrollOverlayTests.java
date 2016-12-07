@@ -1,8 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,59 +11,62 @@ import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class PlaybackMidrollOverlayTests extends PlaybackWebTest{
+public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 
 	public PlaybackMidrollOverlayTests() throws OoyalaException {
 		super();
 	}
-	
+
 	private EventValidator event;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 	private OverlayValidator overLayValidator;
-	
-	@Test(groups = "amf", dataProvider = "testUrlData")
+
+	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyMidrollOverlay(String testName, String url)
 			throws OoyalaException {
-		
+
 		boolean result = true;
-		
+
 		try {
-			
+
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
-			
+			result = result && playValidator.waitForPage();
+
 			injectScript();
 
             result = result && playValidator.validate("playing_1", 60000);
 			
-			if (playValidator.isStreamingProtocolPrioritized("hds")) { 
+			/*if (event.isStreamingProtocolPrioritized("hds")) { 
 				extentTest.log(LogStatus.INFO,"For Flash Specific cases");
-                event.validate("MidRoll_willPlaySingleAd_1", 160000);
-                event.validate("singleAdPlayed_1", 160000);
-                extentTest.log(PASS, "Midroll Ad Played");
-            }
+				
+				if(event.isVideoPlugin("akamai")){
+					result = result && event.validate("MidRoll_willPlayAds_1", 160000);
+					result = result && event.validate("adsPlayed_1", 160000);
+					
+				}else{
+					result = result && event.validate("MidRoll_willPlaySingleAd_1", 160000);
+					result = result && event.validate("singleAdPlayed_1", 160000);
+				}
+				
+            }*/
             result = result && event.validate("showNonlinearAd_1", 160000);
-            sleep(2000);
 
-            result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
-            
-            extentTest.log(PASS, "Overlay Ads Played");
+			result = result
+					&& overLayValidator.validate("nonlinearAdPlayed_1", 160000);
 
-            result = result && seekValidator.validate("seeked_1",160000);
+			result = result && seekValidator.validate("seeked_1", 160000);
 
-            event.validate("videoPlayed_1", 160000);
-            result = result &&  event.validate("played_1", 160000);
-            extentTest.log(PASS, "Verified MidrollOverlay ads");
-			
-		}catch (Exception e) {
+			result = result && event.validate("videoPlayed_1", 160000);
+			result = result && event.validate("played_1", 160000);
+
+		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified");
+		Assert.assertTrue(result, "Tests failed");
 	}
 
 }

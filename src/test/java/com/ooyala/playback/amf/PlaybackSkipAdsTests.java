@@ -1,8 +1,5 @@
 package com.ooyala.playback.amf;
 
-import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,10 +11,8 @@ import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackSkipAdsTests extends  PlaybackWebTest{
-	
-	
-	
+public class PlaybackSkipAdsTests extends PlaybackWebTest {
+
 	public PlaybackSkipAdsTests() throws OoyalaException {
 		super();
 	}
@@ -27,7 +22,7 @@ public class PlaybackSkipAdsTests extends  PlaybackWebTest{
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 	private AdSkipButtonValidator skipButtonValidator;
-	
+
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyPrerollOverlay(String testName, String url)
 			throws OoyalaException {
@@ -38,37 +33,30 @@ public class PlaybackSkipAdsTests extends  PlaybackWebTest{
 
 			driver.get(url);
 
-            result = result && playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 
 			injectScript();
 
-			playAction.startAction();
+			result = result && playAction.startAction();
 
-	        loadingSpinner();
+			result = result && event.validate("willPlaySingleAd_1", 150000);
 
-	        result = result && event.validate("willPlaySingleAd_1", 150000);
+			result = result && skipButtonValidator.validate("", 120000);
 
-            result = result && skipButtonValidator.validate("", 120000);
-	        
-	        extentTest.log(PASS, "Clicked on Skip button");
+			result = result && event.validate("singleAdPlayed_1", 150000);
+			result = result && event.validate("playing_1", 150000);
 
-            result = result && event.validate("singleAdPlayed_1", 150000);
-            result = result && event.validate("playing_1", 150000);
-	        sleep(500);
+			result = result && seekValidator.validate("seeked_1", 150000);
 
-            result = result &&  seekValidator.validate("seeked_1", 150000);
-
-            result = result &&  event.validate( "played_1", 150000);
-	        extentTest.log(PASS, "Main Video played successfully");
-	        extentTest.log(PASS, "Verified SkipAds Test");
+			result = result && event.validate("played_1", 150000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified PreRoll Ads test");
+		Assert.assertTrue(result, "Test failed");
 
 	}
 
