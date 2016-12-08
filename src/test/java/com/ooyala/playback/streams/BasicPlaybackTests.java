@@ -33,23 +33,17 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
         boolean result = true;
 
-        if ((testName.split(":")[1].toLowerCase())
-                .contains("HLS".toLowerCase())
-                && !(getBrowser().equalsIgnoreCase("safari"))) {
-            throw new SkipException(
-                    "HLS tests run only on Safari browser - Test Skipped");
-        }
-
-        logger.info("Test Description : "
-                + testName.split(":")[1].toLowerCase() + "\n" + url);
+        logger.info("Test Description : " + testName.split(":")[1].toLowerCase() + "\n" + url);
 
         try {
             driver.get(url);
 
             result = result && play.waitForPage();
+
             if(!result){
-                throw new SkipException("Failed to load TestPage");
+                throw new SkipException("Failed to load the test page");
             }
+
             Thread.sleep(5000);
 
             injectScript();
