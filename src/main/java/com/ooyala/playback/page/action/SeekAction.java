@@ -79,66 +79,73 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		}
 
 		if (seekTillEnd && factor == 1) {
-			seekPlayback();
 			seekTillEnd = false;
-			;
+			return seekPlayback();
+			
 		} else {
 			if (fromLast) {
-				seek(time, fromLast);
+				return seek(time, fromLast);
 			} else {
-				seek(time + "");
+				return seek(time + "");
 			}
 		}
-
-		return true;// need to check for unable to seek and return true or false
-					// accordingly;
 	}
 
 	public String getDuration() {
 		return "pp.getDuration()/" + factor;
 	}
 
-	private void seek(int time, boolean fromLast) throws Exception {
+	private boolean seek(int time, boolean fromLast) throws Exception {
 		String seekduration;
 		if (fromLast) {
 			seekduration = getDuration();
 		} else {
 			seekduration = "";
 		}
-		seek(seekduration + "-" + time + "");
 		factor = 1;
+		return seek(seekduration + "-" + time + "");
 	}
 
-	private void seek(String time) throws Exception {
-		((JavascriptExecutor) driver).executeScript("return pp.seek(" + time
-				+ ")" + "");
-	}
-
-	// forwarding the video to end to complete the testing instead of waiting
-	// for whole video to play
-	private void seekPlayback() throws Exception {
-		while (true) {
-			double seekTime = Double.parseDouble(((JavascriptExecutor) driver)
-					.executeScript("return pp.getPlayheadTime();").toString());
-			if (seekTime == -1) {
-				logger.error("Video is in error mode");
-				break;
-			}
-			if (seekTime > 5) {
-				// Update after ticket is fixed pp.seek() api is not working if
-				// we try to seek less than 31 seconds form end of video
-				if (!getBrowser().equalsIgnoreCase("safari")) {
-					seek(7, true);
-				} else {
-					seek(31, true);
-				}
-				((JavascriptExecutor) driver).executeScript("pp.pause();");
-				Thread.sleep(2000);
-				((JavascriptExecutor) driver).executeScript("pp.play();");
-				break;
-			}
+	private boolean seek(String time) {
+		try{
+			((JavascriptExecutor) driver).executeScript("return pp.seek(" + time
+					+ ")" + "");
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return false;
 		}
-		Thread.sleep(10000);
+		return true;
+	}
+
+	private boolean seekPlayback() {
+		try{
+			while (true) {
+				double seekTime = Double.parseDouble(((JavascriptExecutor) driver)
+						.executeScript("return pp.getPlayheadTime();").toString());
+				if (seekTime == -1) {
+					logger.error("Video is in error mode");
+					break;
+				}
+				if (seekTime > 5) {
+					// Update after ticket is fixed pp.seek() api is not working if
+					// we try to seek less than 31 seconds form end of video
+					if (!getBrowser().equalsIgnoreCase("safari")) {
+						seek(7, true);
+					} else {
+						seek(31, true);
+					}
+					((JavascriptExecutor) driver).executeScript("pp.pause();");
+					Thread.sleep(2000);
+					((JavascriptExecutor) driver).executeScript("pp.play();");
+					break;
+				}
+			}
+			Thread.sleep(10000);
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 
 	// As there is problem for pulse asset that if we seek the video then ads
