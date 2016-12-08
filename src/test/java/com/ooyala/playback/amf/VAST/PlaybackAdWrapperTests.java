@@ -25,7 +25,7 @@ public class PlaybackAdWrapperTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = {"amf"}, dataProvider = "testUrls")
+	@Test(groups = {"amf"}, dataProvider = "testUrls", enabled=false)
 	public void verifyPlaybackAdWrapper(String testName, String url)
 			throws Exception {
 
