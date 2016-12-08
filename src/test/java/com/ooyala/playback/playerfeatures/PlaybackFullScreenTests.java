@@ -44,6 +44,8 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
+			Thread.sleep(4000);
+
 			result = result && fullScreenValidator.validate("", 60000);
 
 			result = result && playAction.startAction();

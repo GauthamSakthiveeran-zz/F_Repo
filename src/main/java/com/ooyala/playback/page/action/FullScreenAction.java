@@ -38,7 +38,7 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
 				|| getBrowser().equalsIgnoreCase("internet explorer") || getPlatform()
 				.equalsIgnoreCase("Android"))) {
 
-			if (!waitOnElement(By.id("fullscreenChanged_true"), 60000)) {
+			if (!isElementPresent(By.id("fullscreenChanged_true"))) {
 				return false;
 			}
 
