@@ -153,6 +153,11 @@ function subscribeToEvents() {
 					willPlayAdsEventOrder++;
 				}
 				
+				if(adReplayEventOrder == 2){
+					OO.$('#ooplayer').append('<p id=PreRoll_willPlayAds_OnReplay'+'>PreRoll_willPlayAds_OnReplay '+willPlaySingleAdsEventOrder+'</p>');
+					adReplayEventOrder++;
+				}
+				
 				if(adReplayEventOrder == 3 && willPlaySingleAdsEventOrder == 5){
 					OO.$('#ooplayer').append('<p id=MidRoll_willPlayAds_OnReplay'+'>MidRoll_willPlayAds_OnReplay</p>');
 					adReplayEventOrder++;

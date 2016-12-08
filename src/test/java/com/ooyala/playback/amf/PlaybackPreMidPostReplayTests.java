@@ -48,11 +48,12 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 			result = result && seekValidator.validate("seeked_1", 120000);
 			result = result && event.validate("played_1", 190000);
 
-			result = result && event.validate("endScreen", 120000);
 			result = result && replayValidator.validate("replay_1", 120000);
 
 			result = result
 					&& event.validate("PreRoll_willPlayAds_OnReplay", 120000);
+			
+			result = result && playValidator.waitForPage();
 
 			if (!getPlatform().equalsIgnoreCase("Android")) {
 				result = result && adClickThrough.validate("", 120000);
