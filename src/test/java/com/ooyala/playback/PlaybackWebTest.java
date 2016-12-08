@@ -183,19 +183,15 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 		logger.info("****** Inside @AfterMethod*****");
 		logger.info(driver);
-		logger.info(driver.getSessionId());
-		logger.info(driver.getTitle());
-		
-		
-		if (driver != null && driver.getTitle()!=null){
-			
-			takeScreenshot(result.getName());
-		}
-		else {
+
+		if (driver != null && (driver.getSessionId()==null || driver.getSessionId().toString().isEmpty())){
 			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
 			driver = getDriver(browser);
 			pageFactory.destroyInstance();
 			pageFactory = PlayBackFactory.getInstance(driver);
+		}
+		else {
+			takeScreenshot(result.getName());
 		}
 		if (result.getStatus() == ITestResult.FAILURE) {
 			extentTest.log(
