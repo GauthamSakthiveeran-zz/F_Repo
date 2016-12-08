@@ -42,14 +42,11 @@ public class EncodingValidator extends PlayBackPage implements
 		clickOnIndependentElement("OPTIONAL");
 		waitOnElement("PLAYER_PARAMETER_INPUT", 20000);
 
-		if (browser.equalsIgnoreCase("internet explorer")) {
-			WebElement playerParameter = getWebElement("PLAYER_PARAMETER_INPUT");
-			playerParameter.sendKeys(CONTROL + "a");
-			playerParameter.sendKeys(DELETE);
-		} else
 			clearTextFromElement("PLAYER_PARAMETER_INPUT");
 
-		writeTextIntoTextBox("PLAYER_PARAMETER_INPUT", parameter);
+        getWebElement("PLAYER_PARAMETER_INPUT").sendKeys(parameter);
+
+	//	writeTextIntoTextBox("PLAYER_PARAMETER_INPUT", parameter);
 		clickOnIndependentElement("TEST_VIDEO");
 		waitForPage();
 

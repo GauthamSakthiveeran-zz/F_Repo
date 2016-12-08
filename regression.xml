@@ -24,7 +24,7 @@
             <class name="com.ooyala.playback.playerfeatures.DiscoveryUpNextTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackBitrateTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackPlayerControlsTests" />
-            <class name="com.ooyala.playback.streams.PlaybackLiveTests" />
+           <!-- <class name="com.ooyala.playback.streams.PlaybackLiveTests" />-->
             <class name="com.ooyala.playback.playerfeatures.PlaybackReplayVideoTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackFullScreenTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackLocalizationTests" />

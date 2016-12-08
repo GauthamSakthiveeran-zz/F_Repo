@@ -176,7 +176,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
 
-        <url>
+      <!--  <url>
             <description name="VOD_HDS_OSMF_AZURE" />
             <embed_code name="Z1eWUyODE6bP3hj-8X4vKR93EpsoUPa-" />
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
@@ -205,7 +205,7 @@
             <additionalPlugins name="" />
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
+        </url>-->
         <url>
             <description name="VOD_DASH_BITMOVIN_AZURE" />
             <embed_code name="UzMmYyODE6S_q5jTzyb1mzBdsLABAcmA" />
@@ -555,7 +555,7 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 		</url>
-		<url>
+	<!--	<url>
 			<description name="Playback_HLS_Vod" />
 			<embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -564,7 +564,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-		</url>
+		</url>-->
 	</test>
 
 	<test name="PlaybackDRMTests">
