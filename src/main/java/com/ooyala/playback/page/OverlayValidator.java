@@ -23,7 +23,7 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 	
 	private boolean checkInFullScreen(String element, int timeout) throws Exception{
 		
-		logger.info("No close button for Overlay");
+		/*logger.info("No close button for Overlay");
 		extentTest.log(LogStatus.INFO, "No close button seen in normal screen on Overlay....trying in Fullscreen.");
 		
 		FullScreenAction fullScreenAction = PlayBackFactory.getInstance(driver).getFullScreenAction();
@@ -41,7 +41,7 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 		}
 
 		if (!waitOnElement(By.id(element), timeout))
-			return false;
+			return false;*/
 
 		return true;
 	}

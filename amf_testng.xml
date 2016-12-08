@@ -7,7 +7,7 @@
 	<test name="AMF Regression Group">
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
-
+		
 		<packages>
 			<package name="com.ooyala.playback.amf" />
 		</packages>

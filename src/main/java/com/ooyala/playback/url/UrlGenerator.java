@@ -18,6 +18,7 @@ public class UrlGenerator {
 	static String url;
 	static Map<PlayerPropertyKey, PlayerPropertyValue> playerProperties = new HashMap<PlayerPropertyKey, PlayerPropertyValue>();
 	private static Logger logger = Logger.getLogger(UrlGenerator.class);
+	private static String adPluginFilter = new String();
 
 	/**
 	 * @param embedcode
@@ -78,9 +79,17 @@ public class UrlGenerator {
 					// browser.
 					if (url.getBrowsersSupported() != null
 							&& url.getBrowsersSupported().getName() != null
-							&& !browserName.contains(url.getBrowsersSupported()
-									.getName()))
+							&& !browserName.contains(url.getBrowsersSupported().getName()))
 						continue;
+					
+					// to run tests for specific ad plugins
+					if (applyFilter() 
+							&& url.getAdPlugins().getName() != null 
+							&& !url.getAdPlugins().getName().isEmpty()
+							&& !url.getAdPlugins().getName().equalsIgnoreCase(adPluginFilter)) {
+						continue;
+					}
+					
 					String embedCode = url.getEmbedCode().getName();
 					// String embedCode = test.;
 					String pCode = url.getPcode().getName();
@@ -91,7 +100,7 @@ public class UrlGenerator {
 					String playerParameter = new String(url
 							.getPlayerParameter().getBytes());
 					String pbid = url.getPbid().getName();
-
+					
 					try {
 						sslEnabled = url.getSslEnabled().getName();
 					} catch (Exception e) {
@@ -171,5 +180,13 @@ public class UrlGenerator {
 			logger.info(e.getMessage());
 		}
 		return map;
+	}
+	
+	private static boolean applyFilter(){
+		adPluginFilter = System.getProperty("adPlugin");
+		if(adPluginFilter!=null && !adPluginFilter.isEmpty()){
+			return true;
+		}
+		return false;
 	}
 }

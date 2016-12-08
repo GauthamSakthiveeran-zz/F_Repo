@@ -181,13 +181,17 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@AfterMethod(alwaysRun = true)
 	protected void afterMethod(ITestResult result) {
 
-		if (driver != null && driver.getTitle()!=null)
-			takeScreenshot(result.getName());
-		else {
-			logger.error("Browser closed during the test run .Renitializing the driver as the test failed during the test");
+		logger.info("****** Inside @AfterMethod*****");
+		logger.info(driver);
+
+		if (driver != null && (driver.getSessionId()==null || driver.getSessionId().toString().isEmpty())){
+			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
 			driver = getDriver(browser);
 			pageFactory.destroyInstance();
 			pageFactory = PlayBackFactory.getInstance(driver);
+		}
+		else {
+			takeScreenshot(result.getName());
 		}
 		if (result.getStatus() == ITestResult.FAILURE) {
 			extentTest.log(
@@ -348,6 +352,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	public String takeScreenshot(String fileName) {
+		logger.info("Screenshot!");
 		File destDir = new File("images/");
 		if (!destDir.exists())
 			destDir.mkdir();
@@ -380,11 +385,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 			output[i][1] = entry.getValue();
 			i++;
 		}
-
-		/*
-		 * for (int i = 0; i < urls.size(); i++) { output[i][0] = testName;
-		 * output[i][1] = urls.get(i); }
-		 */
 
 		return output;
 
