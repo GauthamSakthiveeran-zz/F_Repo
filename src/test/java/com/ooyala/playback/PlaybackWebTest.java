@@ -182,6 +182,10 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected void afterMethod(ITestResult result) {
 
 		logger.info("****** Inside @AfterMethod*****");
+		logger.info(driver);
+		logger.info(driver.getSessionId());
+		logger.info(driver.getTitle());
+		
 		
 		if (driver != null && driver.getTitle()!=null){
 			
