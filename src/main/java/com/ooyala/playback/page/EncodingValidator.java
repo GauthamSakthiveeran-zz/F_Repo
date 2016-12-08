@@ -13,71 +13,69 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * 
+ *
  * @author dmanohar
  *
  */
 public class EncodingValidator extends PlayBackPage implements
-		PlaybackValidator {
+        PlaybackValidator {
 
-	public EncodingValidator(WebDriver webDriver) {
-		super(webDriver);
-		PageFactory.initElements(webDriver, this);
-		addElementToPageElements("page");
-	}
+    public EncodingValidator(WebDriver webDriver) {
+        super(webDriver);
+        PageFactory.initElements(webDriver, this);
+        addElementToPageElements("page");
+    }
 
-	String testUrl = new String();
+    String testUrl = new String();
 
-	public void setTestUrl(String testUrl) {
-		this.testUrl = testUrl;
-	}
+    public void setTestUrl(String testUrl) {
+        this.testUrl = testUrl;
+    }
 
-	public boolean validate(String element, int timeout) throws Exception {
+    public boolean validate(String element, int timeout) throws Exception {
 
-		return verifyEncodingPriority(testUrl);
+        return verifyEncodingPriority(testUrl);
 
-	}
+    }
 
-	public String getNewUrl(String parameter, String browser) {
-		clickOnIndependentElement("OPTIONAL");
-		waitOnElement("PLAYER_PARAMETER_INPUT", 20000);
+    public String getNewUrl(String parameter, String browser) {
+        clickOnIndependentElement("OPTIONAL");
+        waitOnElement("PLAYER_PARAMETER_INPUT", 20000);
 
-			clearTextFromElement("PLAYER_PARAMETER_INPUT");
+        clearTextFromElement("PLAYER_PARAMETER_INPUT");
+        writeTextIntoTextBox("PLAYER_PARAMETER_INPUT", parameter);
 
-        getWebElement("PLAYER_PARAMETER_INPUT").sendKeys(parameter);
+        clickOnIndependentElement("TEST_VIDEO");
+        waitForPage();
 
-	//	writeTextIntoTextBox("PLAYER_PARAMETER_INPUT", parameter);
-		clickOnIndependentElement("TEST_VIDEO");
-		waitForPage();
+        return driver.getCurrentUrl();
+    }
 
-		return driver.getCurrentUrl();
-	}
+    public boolean verifyEncodingPriority(String url) throws Exception {
+        String result = decode(driver.getCurrentUrl(), "UTF-8");
+        if (result == null)
+            return false;
 
-	public boolean verifyEncodingPriority(String url) throws Exception {
-		String result = decode(driver.getCurrentUrl(), "UTF-8");
-		if (result == null)
-			return false;
+        String[] options = result.split("options=");
+        if (options == null || options.length < 2)
+            return false;
 
-		String[] options = result.split("options=");
-		if (options == null || options.length < 2)
-			return false;
+        JSONParser parser = new JSONParser();
+        JSONObject obj = (JSONObject) parser.parse(options[1]);
+        Object expectedEncodings = "";
+        if (obj.containsKey("encodingPriority")) {
+            Object actualEncodings = obj.get("encodingPriority");
+            logger.info("\nActual encodingPriority :\n" + actualEncodings);
+            expectedEncodings = ((JavascriptExecutor) driver)
+                    .executeScript("return pp.parameters.encodingPriority");
+            logger.info("\nExpected encodingPriority :\n" + expectedEncodings);
+            assertEquals(actualEncodings, expectedEncodings,
+                    "Encoding Priorities are as expected");
+            if (actualEncodings.equals(expectedEncodings))
+                return true;
+        }
 
-		JSONParser parser = new JSONParser();
-		JSONObject obj = (JSONObject) parser.parse(options[1]);
-		Object expectedEncodings = "";
-		if (obj.containsKey("encodingPriority")) {
-			Object actualEncodings = obj.get("encodingPriority");
-			logger.info("\nActual encodingPriority :\n" + actualEncodings);
-			expectedEncodings = ((JavascriptExecutor) driver)
-					.executeScript("return pp.parameters.encodingPriority");
-			logger.info("\nExpected encodingPriority :\n" + expectedEncodings);
-			assertEquals(actualEncodings, expectedEncodings,
-					"Encoding Priorities are as expected");
-			if (actualEncodings.equals(expectedEncodings))
-				return true;
-		}
-
-		return false;
-	}
+        return false;
+    }
 
 }
