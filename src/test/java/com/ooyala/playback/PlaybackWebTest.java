@@ -364,7 +364,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 					return true;
 				}
 			} else {
-				logger.info("Loading spinner is not vanishing i.e it occured more that 1 minutes");
+				logger.info("Loading spinner is not vanishing i.e it occured more that 2 minutes");
 				flag = false;
 				break;
 			}
