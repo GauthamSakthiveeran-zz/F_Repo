@@ -336,7 +336,7 @@
 
     <test name="PlaybackLiveTests">
 
-        <url>
+       <!-- <url>
             <description name="Playback_HLS_Live_Bitmovin" />
             <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -366,7 +366,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/hkN2YyOnWYuzHmiwc6gaXi9wPfwy/t4ODRzNTE6C3BGu13bE6y_fxxzEM9Fod?api_key=hkN2YyOnWYuzHmiwc6gaXi9wPfwy.7-2Sh&expires=1476304999752&signature=pt3uY/V1HX0IibQZBVFCwT3vxjgZ8hhBGgKVh1+ogJE"}]]></playerParameter>
-        </url>
+        </url>-->
         <url>
             <description name="PlaybackControls_LiveDVR" />
             <embed_code name="BsZjdieDrJdl9YjLBm1LVyl3FF0KdWtd" />
@@ -524,22 +524,43 @@
             <playerParameter><![CDATA[{"skin":{"inline":{"general":{"watermark":{"imageResource":{"url":"https://dl.dropbox.com/s/kdo5hlgg2i3ptv0/ooyala-logo.png","androidResource":"logo","iosResource":"logo"},"clickUrl":"http://www.ooyala.com"}}},"showControlBar":true}}]]></playerParameter>
         </url>
     </test>
+    <!-- Added playercontrolTests for each stream format -->
     <test name="PlaybackPlayerControlsTests">
         <url>
-            <description name="DASH Remote Asset" />
-            <embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="IMA" />
+            <description name="VOD_eHLS_MAIN" />
+            <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
             <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_HLS_Vod" />
+            <description name="VOD_MP4_MAIN" />
+            <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="615dc8e909e941c280e12155df838355" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="VOD_CLEAR_DASH_BITMOVIN" />
+            <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="VOD_HLS_BITMOVIN" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN,BITMOVIN" />
+            <plugins name="BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
