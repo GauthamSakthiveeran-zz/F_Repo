@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf.VAST;
+package com.ooyala.playback.amf.vast;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
