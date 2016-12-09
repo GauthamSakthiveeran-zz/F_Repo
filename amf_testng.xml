@@ -8,9 +8,13 @@
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		
-		<packages>
+		<!-- <packages>
 			<package name="com.ooyala.playback.amf" />
-		</packages>
+		</packages> -->
+		
+		<classes>
+			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests" />
+		</classes>
 		
 
 	</test>
