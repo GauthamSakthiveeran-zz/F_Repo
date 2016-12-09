@@ -40,8 +40,6 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("PreRoll_willPlayAds", 120000);
 			
-			result = result && skipButtonValidator.validate("", 120000);
-
 			result = result && event.validate("adsPlayed_1", 200000);
 
 			if (!event.isVideoPluginPresent("osmf"))
