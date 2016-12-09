@@ -2,6 +2,7 @@ package com.ooyala.playback.VTC;
 
 import static java.lang.Thread.sleep;
 
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,6 +20,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackVolumeTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackVolumeTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private VolumeValidator volumeValidator;

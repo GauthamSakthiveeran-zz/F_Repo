@@ -11,7 +11,7 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class ShareTabValidator extends PlayBackPage implements
 		PlaybackValidator {
-	public static Logger Log = Logger.getLogger(ShareTabValidator.class);
+	private static Logger logger = Logger.getLogger(ShareTabValidator.class);
 
 	public ShareTabValidator(WebDriver driver) {
 		super(driver);
@@ -47,11 +47,11 @@ public class ShareTabValidator extends PlayBackPage implements
 		Thread.sleep(2000);
 
 		String shareTab = readTextFromElement("SHARE_TAB");
-		Log.info("Share Tab value " + shareTab);
+		logger.info("Share Tab value " + shareTab);
 		Thread.sleep(1000);
 
 		String embedTab = readTextFromElement("EMBED_TAB");
-		Log.info("Text in Embed Tab  " + embedTab);
+		logger.info("Text in Embed Tab  " + embedTab);
 
 		if (!shareTab.equalsIgnoreCase("Compartir")
 				|| !embedTab.equalsIgnoreCase("Insertar")) {

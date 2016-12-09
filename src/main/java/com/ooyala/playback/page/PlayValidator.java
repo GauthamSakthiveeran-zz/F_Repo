@@ -9,7 +9,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger Log = Logger.getLogger(PlayValidator.class);
+	private static Logger logger = Logger.getLogger(PlayValidator.class);
 
 	public PlayValidator(WebDriver webDriver) {
 		super(webDriver);

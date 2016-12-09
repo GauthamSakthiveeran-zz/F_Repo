@@ -11,6 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 public class SaasPortValidator extends PlayBackPage implements
 		PlaybackValidator {
 
+	private static Logger logger = Logger.getLogger(SaasPortValidator.class);
+	
 	String embedCode = "x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln";
 	String sasportUrl = "http://sasport.us-east-1.atlantis.services.ooyala.com/static/?tab=rights_locker&pcode=BjcWYyOu1KK2DiKOkF41Z2k0X57l&accountId=dulari_qa&rlEnv=Production";
 

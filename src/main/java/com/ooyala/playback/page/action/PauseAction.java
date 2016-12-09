@@ -2,6 +2,7 @@ package com.ooyala.playback.page.action;
 
 import static java.lang.Thread.sleep;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -10,6 +11,8 @@ import com.ooyala.playback.page.PlayBackPage;
 
 public class PauseAction extends PlayBackPage implements PlayerAction {
 
+	private  Logger logger = Logger.getLogger(PauseAction.class);
+	
 	public PauseAction(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(webDriver, this);

@@ -12,7 +12,7 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class StartScreenValidator extends PlayBackPage implements
 		PlaybackValidator {
-	public static Logger Log = Logger.getLogger(StartScreenValidator.class);
+	private static Logger logger = Logger.getLogger(StartScreenValidator.class);
 
 	public StartScreenValidator(WebDriver driver) {
 		super(driver);

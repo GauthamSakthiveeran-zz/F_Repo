@@ -1,5 +1,6 @@
 package com.ooyala.playback.VTC;
 
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,6 +17,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  * Created by snehal on 28/11/16.
  */
 public class PlaybackAdVideoSamePluginDiffElementTests extends PlaybackWebTest {
+	private static Logger logger = Logger.getLogger(PlaybackAdVideoSamePluginDiffElementTests.class);
 	private PlayValidator play;
 	private EventValidator eventValidator;
 	private PlayAction playAction;

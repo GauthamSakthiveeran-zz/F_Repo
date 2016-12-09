@@ -5,6 +5,7 @@ import static java.net.URLDecoder.decode;
 import static org.openqa.selenium.Keys.DELETE;
 import static org.testng.Assert.assertEquals;
 
+import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.openqa.selenium.JavascriptExecutor;
@@ -20,6 +21,8 @@ import org.openqa.selenium.support.PageFactory;
 public class EncodingValidator extends PlayBackPage implements
 		PlaybackValidator {
 
+	private static Logger logger = Logger.getLogger(EncodingValidator.class);
+	
 	public EncodingValidator(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(webDriver, this);

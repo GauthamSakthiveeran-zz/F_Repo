@@ -14,11 +14,13 @@ import org.w3c.dom.NodeList;
  */
 public class UrlGenerator {
 
-	static TestPage test = null;
-	static String url;
-	static Map<PlayerPropertyKey, PlayerPropertyValue> playerProperties = new HashMap<PlayerPropertyKey, PlayerPropertyValue>();
+	private static TestPage test = null;
+	private static String url;
+	private static Map<PlayerPropertyKey, PlayerPropertyValue> playerProperties = new HashMap<PlayerPropertyKey, PlayerPropertyValue>();
 	private static Logger logger = Logger.getLogger(UrlGenerator.class);
 	private static String adPluginFilter = new String();
+	private static Map<String, String> liveChannelDetails = new HashMap<String, String>();
+	private static Map<String, String> liveChannelProviders = new HashMap<String, String>();
 
 	/**
 	 * @param embedcode
@@ -68,6 +70,7 @@ public class UrlGenerator {
 			Testdata testData, String browserName) {
 		logger.info("Getting test url and test name from property file");
 
+		liveChannelDetails = new HashMap<String, String>();
 		Map<String, String> urlsGenerated = new HashMap<String, String>();
 		String sslEnabled = null;
 		for (Test data : testData.getTest()) {
@@ -79,17 +82,28 @@ public class UrlGenerator {
 					// browser.
 					if (url.getBrowsersSupported() != null
 							&& url.getBrowsersSupported().getName() != null
-							&& !browserName.contains(url.getBrowsersSupported().getName()))
+							&& !browserName.contains(url.getBrowsersSupported()
+									.getName()))
 						continue;
-					
+
 					// to run tests for specific ad plugins
-					if (applyFilter() 
-							&& url.getAdPlugins().getName() != null 
+					if (applyFilter()
+							&& url.getAdPlugins().getName() != null
 							&& !url.getAdPlugins().getName().isEmpty()
-							&& !url.getAdPlugins().getName().equalsIgnoreCase(adPluginFilter)) {
+							&& !url.getAdPlugins().getName()
+									.equalsIgnoreCase(adPluginFilter)) {
 						continue;
 					}
-					
+
+					if (url.getLive() != null
+							&& url.getLive().getChannelId() != null) {
+						liveChannelDetails.put(url.getDescription().getName(),
+								url.getLive().getChannelId());
+						liveChannelProviders.put(
+								url.getDescription().getName(), url.getLive()
+										.getProvider());
+					}
+
 					String embedCode = url.getEmbedCode().getName();
 					// String embedCode = test.;
 					String pCode = url.getPcode().getName();
@@ -100,7 +114,7 @@ public class UrlGenerator {
 					String playerParameter = new String(url
 							.getPlayerParameter().getBytes());
 					String pbid = url.getPbid().getName();
-					
+
 					try {
 						sslEnabled = url.getSslEnabled().getName();
 					} catch (Exception e) {
@@ -119,74 +133,20 @@ public class UrlGenerator {
 		return urlsGenerated;
 	}
 
-	/**
-	 * @param testName
-	 *            name of the test which is currently running
-	 * @param nList
-	 *            nList has all the NodeList which are present in .xml file
-	 *            where we put all the required data needs to create a dynamic
-	 *            url
-	 * @return returns the map which contains all the required parameter for
-	 *         creating url
-	 */
-	public static Map<String, String> ReadDataFromXML(String testName,
-			NodeList nList) {
-		Map<String, String> map = new HashMap<String, String>();
-		try {
-			for (int i = 0; i < nList.getLength(); i++) {
-				Node nNode = nList.item(i);
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-					if (testName.contains(nNode.getAttributes()
-							.getNamedItem("name").getNodeValue())) {
-						Element eElement = (Element) nNode;
-
-						map.put("testName",
-								nNode.getAttributes().getNamedItem("name")
-										.getNodeValue());
-						map.put("description",
-								eElement.getElementsByTagName("description")
-										.item(0).getAttributes()
-										.getNamedItem("name").getNodeValue());
-						map.put("embedCode",
-								eElement.getElementsByTagName("embed_code")
-										.item(0).getAttributes()
-										.getNamedItem("name").getNodeValue());
-						map.put("pcode", eElement.getElementsByTagName("pcode")
-								.item(0).getAttributes().getNamedItem("name")
-								.getNodeValue());
-						map.put("plugins",
-								eElement.getElementsByTagName("plugins")
-										.item(0).getAttributes()
-										.getNamedItem("name").getNodeValue());
-						map.put("adPlugins",
-								eElement.getElementsByTagName("adPlugins")
-										.item(0).getAttributes()
-										.getNamedItem("name").getNodeValue());
-						map.put("additionalPlugins", eElement
-								.getElementsByTagName("additionalPlugins")
-								.item(0).getAttributes().getNamedItem("name")
-								.getNodeValue());
-						map.put("playerParameter", eElement
-								.getElementsByTagName("playerParameter")
-								.item(0).getTextContent());
-						map.put("pbid", eElement.getElementsByTagName("pbid")
-								.item(0).getAttributes().getNamedItem("name")
-								.getNodeValue());
-
-					}
-				}
-			}
-		} catch (Exception e) {
-			logger.info(e.getMessage());
-		}
-		return map;
+	public static Map<String, String> getLiveChannelDetails() {
+		return liveChannelDetails;
 	}
-	
-	private static boolean applyFilter(){
+
+	private static boolean applyFilter() {
 		adPluginFilter = System.getProperty("adPlugin");
-		if(adPluginFilter!=null && !adPluginFilter.isEmpty()){
+		if (adPluginFilter != null && !adPluginFilter.isEmpty()) {
 			return true;
 		}
 		return false;
 	}
+
+	public static Map<String, String> getLiveChannelProviders() {
+		return liveChannelProviders;
+	}
+
 }
