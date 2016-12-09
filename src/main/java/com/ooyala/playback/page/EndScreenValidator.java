@@ -42,11 +42,13 @@ public class EndScreenValidator extends PlayBackPage implements
 				.executeScript("return pp.getPlayheadTime();").toString());
 		double totaltime = Double.parseDouble(((JavascriptExecutor) driver)
 				.executeScript("return pp.getDuration();").toString());
-		if (currenttime != totaltime) {
-			extentTest
-					.log(LogStatus.FAIL,
-							"Current Time and TotalTime duration is not showing correctly");
-			return false;
+		if(!(getBrowser().equalsIgnoreCase("internet explorer") || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("windows")))){
+			if (currenttime != totaltime) {
+				extentTest
+						.log(LogStatus.FAIL,
+								"Current Time and TotalTime duration is not showing correctly");
+				return false;
+			}
 		}
 		return true;
 	}
