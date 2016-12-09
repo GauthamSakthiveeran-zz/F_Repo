@@ -42,6 +42,7 @@ public class EndScreenValidator extends PlayBackPage implements
 				.executeScript("return pp.getPlayheadTime();").toString());
 		double totaltime = Double.parseDouble(((JavascriptExecutor) driver)
 				.executeScript("return pp.getDuration();").toString());
+		
 		if(!(getBrowser().equalsIgnoreCase("internet explorer") || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("windows")))){
 			if (currenttime != totaltime) {
 				extentTest
