@@ -46,7 +46,8 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 				else
 					result = result && event.validate("adPodEnd_vast_0_1", 6000);
 			}else{
-				result = result && event.validate("adPodEnd_vast_2_1", 6000);
+				if (!event.isVideoPluginPresent("osmf"))
+					result = result && event.validate("adPodEnd_vast_2_1", 6000);
 			}
 
 			result = result && event.validate("playing_1", 5000);
