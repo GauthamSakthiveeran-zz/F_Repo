@@ -50,10 +50,6 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest {
 
 			logger.info("Verified Social Media Sharing functionality for Facebook,Twitter and ");
 
-			result = result && pause.validate("paused_1", 60000);
-
-			logger.info("Verified that video is getting pause");
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;

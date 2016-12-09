@@ -1,12 +1,11 @@
 package com.ooyala.playback.page;
 
-import java.util.Set;
-
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.relevantcodes.extentreports.LogStatus;
+import java.util.Set;
 
 /**
  * Created by soundarya on 11/8/16.
@@ -34,7 +33,7 @@ public class WaterMarkValidator extends PlayBackPage implements
 		if (!waitOnElement("WATERMARK_LOGO", 60000))
 			return false;
 		Log.info("Watermark Image is displayed");
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 
 		String img_url = getWebElement("WATERMARK_LOGO").getAttribute("src");
 
@@ -77,14 +76,16 @@ public class WaterMarkValidator extends PlayBackPage implements
 		String height = getWebElement("WATERMARK_LOGO").getAttribute("height");
 
 		Log.info("Image width & height " + width + " " + height);
+		
+		if(!width.equals("65")){
 
-		if (!width.equals("16")) {
 			flag = false;
 			extentTest
 					.log(LogStatus.FAIL, "Logo dimension - width mismatched.");
 		}
+		
+		if(!height.equals("65")){
 
-		if (!height.equals("10")) {
 			flag = false;
 			extentTest.log(LogStatus.FAIL,
 					"Logo dimension - height mismatched.");
