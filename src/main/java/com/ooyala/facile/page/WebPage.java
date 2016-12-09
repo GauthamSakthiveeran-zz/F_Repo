@@ -224,10 +224,10 @@ public abstract class WebPage {
 					System.out.print("   Object name Found: " + name);
 				else {
 					logger.info("   ...looking for object name (" + name + ")");
-					if (driver instanceof InternetExplorerDriver) {
-						wait(500); // prevent too much checking if IE (it seems
-						// to crash on these alot)
-					}
+//					if (driver instanceof InternetExplorerDriver) {
+//						wait(500); // prevent too much checking if IE (it seems
+//						// to crash on these alot)
+//					}
 				}
 			}
 			logger.info("identifier currently:" + identifier + " and driver: "
@@ -369,7 +369,7 @@ public abstract class WebPage {
 					else {
 						logger.info("   ...looking for id (" + id + ")");
 						if (driver instanceof InternetExplorerDriver) {
-							wait(500); // prevent too much checking if IE (it
+							//wait(500); // prevent too much checking if IE (it
 							// seems to crash on these alot)
 							// 6.23.2009 snguyen1 - this may be obsolete now
 							// since the driver is more mature.
@@ -527,7 +527,7 @@ public abstract class WebPage {
 					else {
 						logger.info("   ...looking for xpath (" + path + ")");
 						if (driver instanceof InternetExplorerDriver) {
-							wait(500); // prevent too much checking if IE (it
+							//wait(500); // prevent too much checking if IE (it
 							// seems to crash on these alot)
 							// 6.23.2009 snguyen1 - this may be obsolete now
 							// since the driver is more mature.
@@ -2602,7 +2602,7 @@ public abstract class WebPage {
 					else {
 						logger.info("   ...looking for xpath (" + path + ")");
 						if (driver instanceof InternetExplorerDriver) {
-							wait(500); // prevent too much checking if IE (it
+							//wait(500); // prevent too much checking if IE (it
 							// seems to crash on these alot)
 							// 6.23.2009 snguyen1 - this may be obsolete now
 							// since the driver is more mature.
@@ -2683,7 +2683,7 @@ public abstract class WebPage {
 				else {
 					logger.info("   ...looking for object name (" + by + ")");
 					if (driver instanceof InternetExplorerDriver) {
-						wait(500); // prevent too much checking if IE (it seems
+						//wait(500); // prevent too much checking if IE (it seems
 						// to crash on these alot)
 					}
 				}
