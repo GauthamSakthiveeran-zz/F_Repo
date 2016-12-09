@@ -176,10 +176,10 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
 
-     <!--   <url>
+        <url>
             <description name="VOD_HDS_OSMF_AZURE" />
-            <embed_code name="Z1eWUyODE6bP3hj-8X4vKR93EpsoUPa-" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+            <embed_code name="QxcjUzODE6pNQG53uWzZbez69XwvL5BP" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="OSMF" />
             <adPlugins name="" />
             <additionalPlugins name="" />
@@ -188,8 +188,8 @@
         </url>
         <url>
             <description name="VOD_MP4_MAIN_AZURE" />
-            <embed_code name="JueGUyODE6SwJIC7PdwmoBJVUsWcDSVk" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+            <embed_code name="RzbTMzODE6Sp5PGrC3bk5FYDouv4-8Vv" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="MAIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
@@ -198,8 +198,8 @@
         </url>
         <url>
             <description name="VOD_MP4_BITMOVIN_AZURE" />
-            <embed_code name="JueGUyODE6SwJIC7PdwmoBJVUsWcDSVk" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+            <embed_code name="RzbTMzODE6Sp5PGrC3bk5FYDouv4-8Vv" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
@@ -208,15 +208,14 @@
         </url>
         <url>
             <description name="VOD_DASH_BITMOVIN_AZURE" />
-            <embed_code name="UzMmYyODE6S_q5jTzyb1mzBdsLABAcmA" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+            <embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>-->
-
+        </url>
         <url>
             <description name="Priority as DASH - H.264_4K_Dash/HLS_Movie" />
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
