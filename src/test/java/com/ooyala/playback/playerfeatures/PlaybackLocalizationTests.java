@@ -52,6 +52,8 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 
 			logger.info("video playing");
 
+			Thread.sleep(3000);
+
 			result = result && pause.validate("paused_1", 60000);
 
 			logger.info("video paused");

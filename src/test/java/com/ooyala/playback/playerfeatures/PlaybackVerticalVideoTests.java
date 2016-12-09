@@ -45,10 +45,9 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
 			result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60000);
 
-			if(!(getBrowser().equalsIgnoreCase("safari"))){
-				result = result && pause.validate("paused_1", 60000);
-				result = result && playAction.startAction();
-			}
+			result = result && pause.validate("paused_1", 60000);
+
+			result = result && playAction.startAction();
 
 			result = result && pause.validate("paused_1", 60000);
 

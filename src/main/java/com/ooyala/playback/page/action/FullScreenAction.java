@@ -42,7 +42,7 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
 				.equalsIgnoreCase("Android"))) {
 
 			Thread.sleep(5000);
-
+			
 			if (!isElementPresent(By.id("fullscreenChanged_true"))) {
 				return false;
 			}
