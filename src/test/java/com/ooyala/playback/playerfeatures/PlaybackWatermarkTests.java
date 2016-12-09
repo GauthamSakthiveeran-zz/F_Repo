@@ -1,9 +1,9 @@
 package com.ooyala.playback.playerfeatures;
 
+
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
@@ -20,8 +20,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackWatermarkTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger
-			.getLogger(PlaybackWatermarkTests.class);
+	private static Logger logger = Logger.getLogger(PlaybackWatermarkTests.class);
 	private PlayValidator play;
 	private SeekValidator seek;
 	private PlayAction playAction;
@@ -45,6 +44,8 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
+			Thread.sleep(5000);
+
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
@@ -56,6 +57,8 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 			result = result
 					&& waterMarkValidator.validate("WATERMARK_LOGO", 60000);
 			logger.info("checked watermark logo");
+
+			Thread.sleep(10000);
 
 			result = result && playAction.startAction();
 
@@ -71,6 +74,7 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 			e.printStackTrace();
 			result = false;
 		}
+
 		Assert.assertTrue(result, "Playback Watermark tests failed");
 	}
 }

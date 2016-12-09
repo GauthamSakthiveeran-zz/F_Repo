@@ -1,4 +1,3 @@
-
 <suite name="Playback Web Regression Suite" verbose="1">
     <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
@@ -19,12 +18,9 @@
         <classes>
             <parameter name="testData" value="alice/Alice.xml" />
             <parameter name="jsFile" value="alice/alice.js" />
-
-            <class name="com.ooyala.playback.streams.BasicPlaybackTests" />
             <class name="com.ooyala.playback.playerfeatures.DiscoveryUpNextTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackBitrateTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackPlayerControlsTests" />
-            <class name="com.ooyala.playback.streams.PlaybackLiveTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackReplayVideoTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackFullScreenTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackLocalizationTests" />
@@ -40,6 +36,9 @@
             <class name="com.ooyala.playback.alice.PlaybackOptEntitlementTests" />
             <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
+            <class name="com.ooyala.playback.streams.BasicPlaybackTests" />
+            <class name="com.ooyala.playback.streams.PlaybackLiveTests" />
         </classes>
     </test>
 </suite>
+

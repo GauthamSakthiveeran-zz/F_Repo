@@ -342,11 +342,11 @@ public abstract class PlaybackWebTest extends FacileTest {
 			object = js.executeScript("subscribeToEvents();");
 	}
 
-	public long loadingSpinner() {
+	public boolean loadingSpinner() {
 		long startTime = 0L;
 		long endTime = 0L;
 		int time = 0;
-		long flag = 0L;
+		boolean flag;
 
 		while (true) {
 
@@ -361,11 +361,11 @@ public abstract class PlaybackWebTest extends FacileTest {
 					time++;
 				} catch (Exception e) {
 					endTime = System.currentTimeMillis();
-					break;
+					return true;
 				}
 			} else {
 				logger.info("Loading spinner is not vanishing i.e it occured more that 2 minutes");
-				flag = 1;
+				flag = false;
 				break;
 			}
 

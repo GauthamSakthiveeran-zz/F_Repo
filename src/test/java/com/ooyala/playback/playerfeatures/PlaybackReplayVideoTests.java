@@ -57,4 +57,5 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
         }
         Assert.assertTrue(result, "Playback Replay tests failed");
     }
+
 }

@@ -30,42 +30,40 @@ public class PlaybackThumbnailTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testBasicPlaybackAlice(String testName, String url)
+	public void testThumbnail(String testName, String url)
 			throws OoyalaException {
 
 		boolean result = true;
 
-		try {
-			driver.get(url);
+			try {
 
-			result = result && play.waitForPage();
+				driver.get(url);
 
-			Thread.sleep(10000);
+				result = result && play.waitForPage();
 
-			injectScript();
+				injectScript();
 
-			result = result && play.validate("playing_1", 60000);
+				result = result && play.validate("playing_1", 60000);
 
-			Thread.sleep(5000);
+				result = result && pause.validate("paused_1", 60000);
 
-			result = result && pause.validate("paused_1", 60000);
+				result = result && thumbnailValidator.validate("", 60000);
 
-			result = result && thumbnailValidator.validate("", 60000);
+				Thread.sleep(5000);
 
-			Thread.sleep(5000);
+				result = result && play.validate("playing_2", 60000);
 
-			result = result && play.validate("playing_2", 60000);
+				result = result && seek.validate("seeked_1", 60000);
 
-			result = result && seek.validate("seeked_1", 60000);
+				result = result && eventValidator.validate("played_1", 60000);
 
-			result = result && eventValidator.validate("played_1", 60000);
+				logger.info("Verified that video is played");
 
-			logger.info("Verified that video is played");
+			} catch (Exception e) {
+				e.printStackTrace();
+				result = false;
+			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			result = false;
-		}
-		Assert.assertTrue(result, "Thumbnail test failed");
-	}
+			Assert.assertTrue(result, "Thumbnail test failed");
+	   }
 }
