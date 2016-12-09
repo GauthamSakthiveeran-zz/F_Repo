@@ -41,18 +41,9 @@
             <pbid name="615dc8e909e941c280e12155df838355" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
+
         <url>
-            <description name="VOD_MP4_BITMOVIN" />
-            <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="615dc8e909e941c280e12155df838355" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_Main" />
+            <description name="VOD_HLS_MAIN" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN" />
