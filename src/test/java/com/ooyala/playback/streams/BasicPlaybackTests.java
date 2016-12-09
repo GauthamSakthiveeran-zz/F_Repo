@@ -17,64 +17,64 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class BasicPlaybackTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(BasicPlaybackTests.class);
-	private EventValidator eventValidator;
-	private PlayValidator play;
-	private PauseValidator pause;
-	private SeekValidator seek;
+    private static Logger logger = Logger.getLogger(BasicPlaybackTests.class);
+    private EventValidator eventValidator;
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
 
-	public BasicPlaybackTests() throws OoyalaException {
-		super();
-	}
+    public BasicPlaybackTests() throws OoyalaException {
+        super();
+    }
 
-	@Test(groups = "streams", dataProvider = "testUrls")
-	public void testBasicPlaybackAlice(String testName, String url)
-			throws OoyalaException {
+    @Test(groups = "streams", dataProvider = "testUrls")
+    public void testBasicPlaybackAlice(String testName, String url)
+            throws OoyalaException {
 
-		boolean result = true;
+        boolean result = true;
 
-		if ((testName.split(":")[1].toLowerCase())
-				.contains("HLS".toLowerCase())
-				&& !(getBrowser().equalsIgnoreCase("safari"))) {
-			throw new SkipException(
-					"HLS tests run only on Safari browser - Test Skipped");
-		}
+        logger.info("Test Description : " + testName.split(":")[1].toLowerCase() + "\n" + url);
 
-		logger.info("Test Description : "
-				+ testName.split(":")[1].toLowerCase() + "\n" + url);
+        try {
+            driver.get(url);
 
-		try {
-			driver.get(url);
+            result = result && play.waitForPage();
 
-			result = result && play.waitForPage();
-			Thread.sleep(5000);
+            if(!result){
+                throw new SkipException("Failed to load the test page");
+            }
 
-			injectScript();
+            Thread.sleep(5000);
 
-			result = result && play.validate("playing_1", 60000);
+            injectScript();
 
-			loadingSpinner();
+            result = result && play.validate("playing_1", 60000);
 
-			Thread.sleep(2000);
+            loadingSpinner();
 
-			result = result && pause.validate("paused_1", 60000);
+            Thread.sleep(2000);
 
-			logger.info("Verified that video is getting pause");
+            result = result && pause.validate("paused_1", 60000);
 
-			result = result && play.validate("playing_2", 60000);
+            logger.info("Verified that video is getting pause");
 
-			result = result && seek.validate("seeked_1", 60000);
+            result = result && play.validate("playing_2", 60000);
 
-			logger.info("Verified that video is seeked");
+            result = result && seek.validate("seeked_1", 60000);
 
-			result = result && eventValidator.validate("played_1", 60000);
+            logger.info("Verified that video is seeked");
 
-			logger.info("Verified that video is played");
+            result = result && eventValidator.validate("played_1", 60000);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			result = false;
-		}
-		Assert.assertTrue(result, "Basic playback tests failed");
-	}
+            logger.info("Verified that video is played");
+
+        }catch (Exception e) {
+            e.printStackTrace();
+            if(e instanceof SkipException){
+                throw new SkipException("Test Skipped");
+            }else
+                result = false;
+        }
+        Assert.assertTrue(result, "Basic playback tests failed");
+    }
 }

@@ -50,11 +50,10 @@ public class PlaybackAdVideoSamePluginDiffElementTests extends PlaybackWebTest {
 			logger.info("Ad played");
 
 			result = result && eventValidator.validate("playing_1", 60000);
-
-			Thread.sleep(5000);
-
 			result = result && elementValidator.validate("VIDEO_PATH", 30000);
 			logger.info("Two different elements created for ad and main video");
+
+			Thread.sleep(5000);
 
 			result = result && seekValidator.validate("seeked_1", 60000);
 

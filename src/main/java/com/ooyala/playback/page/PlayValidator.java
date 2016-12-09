@@ -27,20 +27,21 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		try {
 			if (!waitOnElement("PLAY_BUTTON", 60000)) {
 				errorScreen = isElementPresent("ERROR_SCREEN");
-				if (errorScreen)
-					extentTest.log(LogStatus.ERROR,
-							"Video format is not supported in this browser");
-				driver.navigate().refresh();
-				if (!waitOnElement("INNER_WRAPPER", 30000))
-					return false;
-				errorScreen = isElementPresent("ERROR_SCREEN");
-				if (errorScreen)
-					driver.navigate().refresh();
-				if (!waitOnElement("PLAY_BUTTON", 30000))
-					return false;
+				if (errorScreen && getWebElement("ERROR_DESCRIPTION").getText().equalsIgnoreCase("This video isn't encoded for your device"))
+				{
+					extentTest.log(LogStatus.ERROR, "Video format is not supported in this browser");
+				}
+				return false;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			driver.navigate().refresh();
+			if (!waitOnElement("INNER_WRAPPER", 60000))
+				return false;
+			errorScreen = isElementPresent("ERROR_SCREEN");
+			if (errorScreen)
+				driver.navigate().refresh();
+			if (!waitOnElement("PLAY_BUTTON", 60000))
+				return false;
 		}
 		logger.info("Page is loaded completely");
 		return true;
