@@ -336,7 +336,7 @@
 
     <test name="PlaybackLiveTests">
 
-       <!-- <url>
+       <url>
             <description name="Playback_HLS_Live_Bitmovin" />
             <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -366,7 +366,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/hkN2YyOnWYuzHmiwc6gaXi9wPfwy/t4ODRzNTE6C3BGu13bE6y_fxxzEM9Fod?api_key=hkN2YyOnWYuzHmiwc6gaXi9wPfwy.7-2Sh&expires=1476304999752&signature=pt3uY/V1HX0IibQZBVFCwT3vxjgZ8hhBGgKVh1+ogJE"}]]></playerParameter>
-        </url>-->
+        </url>
         <url>
             <description name="PlaybackControls_LiveDVR" />
             <embed_code name="BsZjdieDrJdl9YjLBm1LVyl3FF0KdWtd" />
