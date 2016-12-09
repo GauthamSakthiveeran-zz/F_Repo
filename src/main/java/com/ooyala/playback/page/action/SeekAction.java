@@ -2,6 +2,7 @@ package com.ooyala.playback.page.action;
 
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -16,6 +17,7 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class SeekAction extends PlayBackPage implements PlayerAction {
 
+	private static Logger logger = Logger.getLogger(SeekAction.class);
 	private int time;
 	private boolean fromLast;
 	private String adPlugin;

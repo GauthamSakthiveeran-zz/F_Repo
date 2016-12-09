@@ -17,7 +17,7 @@ import com.ooyala.qe.common.util.PropertyReader;
  * This class is responsible to make http request to any of neo api endpoint
  * Usage : Just use NeoRequest.makeRequest(params ....)
  *
- * Created by akash on 05/11/15.
+ * Created by Pavan on 05/11/15.
  */
 public class NeoRequest {
 	private Logger logger = Logger.getLogger(NeoRequest.class);
@@ -27,19 +27,24 @@ public class NeoRequest {
 	private long timeOut;
 	private static NeoRequest neoRequest;
 
-	private NeoRequest() throws IOException {
-		String environment = System.getProperty("environment");
-		if (environment == null || environment.equals(""))
-			environment = "STAGING";
-		properties = PropertyReader.getInstance("urlData.properties");
-		API_KEY = properties.getProperty("api_key");
-		logger.info("API Key set to : " + API_KEY);
-		HOST_ADDRESS = "https://live.ooyala.com";
-		logger.info("Live URL set to : " + HOST_ADDRESS);
-		timeOut = System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(5);
+	private NeoRequest() throws OoyalaException {
+
+		try {
+			properties = PropertyReader.getInstance("urlData.properties");
+			API_KEY = properties.getProperty("api_key");
+			logger.info("API Key set to : " + API_KEY);
+			HOST_ADDRESS = "https://live.ooyala.com";
+			logger.info("Live URL set to : " + HOST_ADDRESS);
+			timeOut = System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(5);
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.error("Not able to create NeoRequest instance");
+			throw new OoyalaException("Not able to create NeoRequest instance");
+		}
+
 	}
 
-	public static NeoRequest getInstance() throws IOException {
+	public static NeoRequest getInstance() throws OoyalaException {
 		if (neoRequest == null)
 			neoRequest = new NeoRequest();
 		return neoRequest;

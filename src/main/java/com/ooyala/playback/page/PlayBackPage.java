@@ -22,7 +22,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public abstract class PlayBackPage extends WebPage {
 
-	public static Logger logger = Logger.getLogger(PlayBackPage.class);
+	private static Logger logger = Logger.getLogger(PlayBackPage.class);
 
 	protected ExtentTest extentTest;
 

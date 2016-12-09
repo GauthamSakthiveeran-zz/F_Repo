@@ -1,254 +1,254 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-    <test name="BasicPlaybackTests">
-        <url>
-            <description name="VOD_HLS_BITMOVIN" />
-            <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_CLEAR_DASH_BITMOVIN" />
-            <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_eHLS_BITMOVIN" />
-            <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_BITMOVIN" />
-            <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="615dc8e909e941c280e12155df838355" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_BITMOVIN" />
-            <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="615dc8e909e941c280e12155df838355" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_Main" />
-            <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_eHLS_MAIN" />
-            <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
+	<test name="BasicPlaybackTests">
+		<url>
+			<description name="VOD_HLS_BITMOVIN" />
+			<embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_CLEAR_DASH_BITMOVIN" />
+			<embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_eHLS_BITMOVIN" />
+			<embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_MP4_BITMOVIN" />
+			<embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="615dc8e909e941c280e12155df838355" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_MP4_BITMOVIN" />
+			<embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="615dc8e909e941c280e12155df838355" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_MP4_Main" />
+			<embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_eHLS_MAIN" />
+			<embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
 
-        <url>
-            <description name="VOD_MP4_MAIN" />
-            <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="615dc8e909e941c280e12155df838355" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
+		<url>
+			<description name="VOD_MP4_MAIN" />
+			<embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="615dc8e909e941c280e12155df838355" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
 
-        <url>
-            <description name="VOD_HDS_OSMF" />
-            <embed_code name="0zbm5kMDE6hbM_xDZmnsKUYqXs3N9JrL" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_AKAMAI_HD2_AKAMAI" />
-            <embed_code name="82eWJ2NDE6UWX__B6oTjtU1COh-gF3pP" />
-            <pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk" />
-            <plugins name="AKAMAI" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
-            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-        </url>
-        <!-- Adding mp4 hds and dash format embed codes for FFMPEG,AZURE and ELEMENTAL
-            transcodings -->
-        <url>
-            <description name="VOD_MP4_MAIN_FFMPEG" />
-            <embed_code name="F3eGQyODE6cWV2DIsAPMq-XmpCuyWXSc" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_BITMOVIN_FFMPEG" />
-            <embed_code name="F3eGQyODE6cWV2DIsAPMq-XmpCuyWXSc" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HDS_OSMF_FFMPEG" />
-            <embed_code name="syMGUyODE60uVae2GkFJovDNcN_W5TGE" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HDS_OSMF_ELEMENTAL" />
-            <embed_code name="F1a2UyODE60tUzqQkUYWd9iYuFFQy1iW" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_MAIN_ELEMENTAL" />
-            <embed_code name="g2a2UyODE6rh9tr1AULjclMW-NByWWCx" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_BITMOVIN_ELEMENTAL" />
-            <embed_code name="g2a2UyODE6rh9tr1AULjclMW-NByWWCx" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_DASH_BITMOVIN_ELEMENTAL" />
-            <embed_code name="xkbmUyODE6_0hxuUPp17kpvp_grSD3-2" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
+		<url>
+			<description name="VOD_HDS_OSMF" />
+			<embed_code name="0zbm5kMDE6hbM_xDZmnsKUYqXs3N9JrL" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_AKAMAI_HD2_AKAMAI" />
+			<embed_code name="82eWJ2NDE6UWX__B6oTjtU1COh-gF3pP" />
+			<pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk" />
+			<plugins name="AKAMAI" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+		</url>
+		<!-- Adding mp4 hds and dash format embed codes for FFMPEG,AZURE and ELEMENTAL 
+			transcodings -->
+		<url>
+			<description name="VOD_MP4_MAIN_FFMPEG" />
+			<embed_code name="F3eGQyODE6cWV2DIsAPMq-XmpCuyWXSc" />
+			<pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_MP4_BITMOVIN_FFMPEG" />
+			<embed_code name="F3eGQyODE6cWV2DIsAPMq-XmpCuyWXSc" />
+			<pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_HDS_OSMF_FFMPEG" />
+			<embed_code name="syMGUyODE60uVae2GkFJovDNcN_W5TGE" />
+			<pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_HDS_OSMF_ELEMENTAL" />
+			<embed_code name="F1a2UyODE60tUzqQkUYWd9iYuFFQy1iW" />
+			<pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+			<plugins name="OSMF" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_MP4_MAIN_ELEMENTAL" />
+			<embed_code name="g2a2UyODE6rh9tr1AULjclMW-NByWWCx" />
+			<pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_MP4_BITMOVIN_ELEMENTAL" />
+			<embed_code name="g2a2UyODE6rh9tr1AULjclMW-NByWWCx" />
+			<pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_DASH_BITMOVIN_ELEMENTAL" />
+			<embed_code name="xkbmUyODE6_0hxuUPp17kpvp_grSD3-2" />
+			<pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
 
-        <url>
-            <description name="VOD_HDS_OSMF_AZURE" />
-            <embed_code name="Z1eWUyODE6bP3hj-8X4vKR93EpsoUPa-" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_MAIN_AZURE" />
-            <embed_code name="JueGUyODE6SwJIC7PdwmoBJVUsWcDSVk" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_BITMOVIN_AZURE" />
-            <embed_code name="JueGUyODE6SwJIC7PdwmoBJVUsWcDSVk" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_DASH_BITMOVIN_AZURE" />
-            <embed_code name="UzMmYyODE6S_q5jTzyb1mzBdsLABAcmA" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="DVR_HLS_BITMOVIN" />
-            <embed_code name="Bob2V0MjE6S3P5Zs-5GbDs7J9lzBFxVc" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-        </url>
+		<url>
+			<description name="VOD_HDS_OSMF_AZURE" />
+			<embed_code name="Z1eWUyODE6bP3hj-8X4vKR93EpsoUPa-" />
+			<pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+			<plugins name="OSMF" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_MP4_MAIN_AZURE" />
+			<embed_code name="JueGUyODE6SwJIC7PdwmoBJVUsWcDSVk" />
+			<pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_MP4_BITMOVIN_AZURE" />
+			<embed_code name="JueGUyODE6SwJIC7PdwmoBJVUsWcDSVk" />
+			<pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="VOD_DASH_BITMOVIN_AZURE" />
+			<embed_code name="UzMmYyODE6S_q5jTzyb1mzBdsLABAcmA" />
+			<pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="DVR_HLS_BITMOVIN" />
+			<embed_code name="Bob2V0MjE6S3P5Zs-5GbDs7J9lzBFxVc" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
 
-        <url>
-            <description name="Priority as DASH - H.264_4K_Dash/HLS_Movie" />
-            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN,MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Priority as HLS - H.264_4K_Dash/HLS_Movie" />
-            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN,MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls","dash"]}]]></playerParameter>
-        </url>
+		<url>
+			<description name="Priority as DASH - H.264_4K_Dash/HLS_Movie" />
+			<embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN,MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
+		</url>
+		<url>
+			<description name="Priority as HLS - H.264_4K_Dash/HLS_Movie" />
+			<embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN,MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter><![CDATA[{"encodingPriority":["hls","dash"]}]]></playerParameter>
+		</url>
 
-    </test>
+	</test>
 
 	<test name="PlaybackDiscoveryCustomizationTests">
 		<url>
@@ -416,6 +416,63 @@
 			<additionalPlugins name="" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="Live_HLS_MAIN_Elemental" />
+			<embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
+			<pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="c8954f0005a4d2a8da705994859e72b" />
+			<browsersSupported name="safari" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<live>
+				<channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
+				<provider>elemental</provider>
+			</live>
+		</url>
+		<url>
+			<description name="Live_HLS_BITMOVIN_Elemental" />
+			<embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
+			<pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="c8954f0005a4d2a8da705994859e72b" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<live>
+				<channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
+				<provider>elemental</provider>
+			</live>
+		</url>
+		<url>
+			<description name="Live_HDS_MAIN_Elemental" />
+			<embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
+			<pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
+			<plugins name="OSMF" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="c8954f0005a4d2a8da705994859e72b" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<live>
+				<channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
+				<provider>elemental</provider>
+			</live>
+		</url>
+		<url>
+			<description name="Live_DASH_BITMOVIN_Elemental" />
+			<embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
+			<pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="c8954f0005a4d2a8da705994859e72b" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<live>
+				<channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
+				<provider>elemental</provider>
+			</live>
 		</url>
 	</test>
 

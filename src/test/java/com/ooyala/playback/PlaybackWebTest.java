@@ -39,6 +39,8 @@ import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
 import com.ooyala.facile.test.FacileTest;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.httpserver.SimpleHttpServer;
+import com.ooyala.playback.live.LiveChannel;
+import com.ooyala.playback.live.NeoRequest;
 import com.ooyala.playback.page.PlayBackPage;
 import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.url.Testdata;
@@ -51,7 +53,7 @@ import com.relevantcodes.extentreports.LogStatus;
 @Listeners(IMethodListener.class)
 public abstract class PlaybackWebTest extends FacileTest {
 
-	public static Logger logger = Logger.getLogger(PlaybackWebTest.class);
+	private static Logger logger = Logger.getLogger(PlaybackWebTest.class);
 	protected String browser;
 	protected ChromeDriverService service;
 	// protected PropertyReader propertyReader;
@@ -60,6 +62,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected ExtentTest extentTest;
 	protected Testdata testData;
 	protected String[] jsUrl;
+	protected NeoRequest neoRequest;
+	protected LiveChannel liveChannel;
 
 	public PlaybackWebTest() throws OoyalaException {
 
@@ -70,20 +74,13 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 
 		extentReport = ExtentManager.getReporter();
+		neoRequest = NeoRequest.getInstance();
+		liveChannel = new LiveChannel();
 	}
 
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
 		extentTest = extentReport.startTest(testData[0].toString());
-
-		// PlayBackPage page = new PlayBackPage(driver) {
-		//
-		// @Override
-		// public void setExtentTest(ExtentTest test) {
-		//
-		// this.extentTest = PlaybackWebTest.this.extentTest;
-		// }
-		// };
 
 		try {
 			Field[] fs = this.getClass().getDeclaredFields();
@@ -102,7 +99,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 							function.invoke(property.get(this), extentTest);
 					}
 				}
-
+				liveChannel.startChannel(testData[0].toString());
 			}
 
 		} catch (Exception e) {
@@ -188,6 +185,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@AfterSuite()
 	public void afterSuiteInPlaybackWeb() throws OoyalaException {
 		SimpleHttpServer.stopServer();
+		
 
 	}
 
@@ -251,6 +249,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			extentTest.log(LogStatus.PASS, result.getName() + " Test passed");
 		}
 		extentReport.endTest(extentTest);
+
 	}
 
 	@AfterClass(alwaysRun = true)
@@ -267,7 +266,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 		logger.info("Assigning the neopagefactory instance to null");
 		pageFactory.destroyInstance();
-		// SimpleHttpServer.stopServer();
+		// Stopping the live channels if exists after this class
+		liveChannel.stopChannels();
 	}
 
 	public void waitForSecond(int sec) {
