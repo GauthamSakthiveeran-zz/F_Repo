@@ -33,6 +33,7 @@ public class ThumbnailValidator extends PlayBackPage implements
 		if (element1 == null)
 			return false;
 		moveElement(element1);
+
 		return waitOnElement("THUMBNAIL_CONTAINER", 60000)
 				&& validateThumbNailImage();
 
@@ -44,10 +45,9 @@ public class ThumbnailValidator extends PlayBackPage implements
 		String embed_code = data.get("ec");
 
 		if (getWebElement("THUMBNAIL_IMAGE") != null) {
-			String thumbnail_url = getWebElement("THUMBNAIL_IMAGE")
-					.getCssValue("background-image");
+			String thumbnail_url = getWebElement("THUMBNAIL_IMAGE").getCssValue("background-image");
 
-			if (thumbnail_url.contains(embed_code)) {
+			if ((thumbnail_url.toLowerCase()).contains(embed_code.toLowerCase())) {
 				extentTest.log(LogStatus.PASS, "Thumbnail image verified.");
 				return true;
 			} else {

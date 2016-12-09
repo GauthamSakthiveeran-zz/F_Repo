@@ -58,6 +58,8 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 					&& waterMarkValidator.validate("WATERMARK_LOGO", 60000);
 			logger.info("checked watermark logo");
 
+			Thread.sleep(10000);
+
 			result = result && playAction.startAction();
 
 			result = result && seek.validate("seeked_1", 60000);

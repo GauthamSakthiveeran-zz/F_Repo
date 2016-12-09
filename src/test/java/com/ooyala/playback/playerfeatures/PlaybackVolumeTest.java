@@ -66,16 +66,6 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("played_1", 60000);
 
-			logger.info("video is playing");
-
-			sleep(4000);
-
-			result = result && seek.validate("seeked_1", 60000);
-
-			logger.info("video seeked");
-
-			result = result && eventValidator.validate("played_1", 60000);
-
 			logger.info("video played");
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
+import java.net.Socket;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Random;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
@@ -23,8 +25,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
@@ -72,14 +76,14 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public void handleTestMethodName(Method method, Object[] testData) {
 		extentTest = extentReport.startTest(testData[0].toString());
 
-		PlayBackPage page = new PlayBackPage(driver) {
-
-			@Override
-			public void setExtentTest(ExtentTest test) {
-
-				this.extentTest = PlaybackWebTest.this.extentTest;
-			}
-		};
+		// PlayBackPage page = new PlayBackPage(driver) {
+		//
+		// @Override
+		// public void setExtentTest(ExtentTest test) {
+		//
+		// this.extentTest = PlaybackWebTest.this.extentTest;
+		// }
+		// };
 
 		try {
 			Field[] fs = this.getClass().getDeclaredFields();
@@ -120,14 +124,11 @@ public abstract class PlaybackWebTest extends FacileTest {
 			jsUrl = new String[jsFiles.length];
 			for (int i = 0; i < jsFiles.length; i++) {
 				InetAddress inetAdd = InetAddress.getLocalHost();
-				jsUrl[i] = "http://" + inetAdd.getHostAddress()
-						+ ":9000/js?fileName=" + jsFiles[i];
+				jsUrl[i] = "http://" + inetAdd.getHostAddress() + ":"
+						+ SimpleHttpServer.portNumber + "/js?fileName="
+						+ jsFiles[i];
 			}
 		}
-
-	}
-
-	public void checkPluginCompatability() {
 
 	}
 
@@ -146,6 +147,48 @@ public abstract class PlaybackWebTest extends FacileTest {
 			testCase = method.getName();
 
 		return testCase;
+	}
+
+	@BeforeSuite(alwaysRun = true)
+	public void beforeSuiteInPlaybackWeb() throws OoyalaException {
+		int portNumber = getRandomOpenPort();
+		SimpleHttpServer.startServer(portNumber);
+	}
+
+	public int getRandomOpenPort() {
+		int retry = 4;
+		int index = 1;
+		while (index < retry) {
+			int min = 10000;
+			int max = 50000;
+			Random rand = new Random();
+			int randomPort = min + rand.nextInt((max - min) + 1);
+			boolean isPortOpen = checkPort(randomPort);
+			if (isPortOpen)
+				return randomPort;
+			index++;
+		}
+		return -1;
+	}
+
+	public boolean checkPort(int portNumber) {
+		try {
+			logger.info("Checking if port open by trying to connect as a client");
+			Socket sock = new Socket("localhost", portNumber);
+			sock.close();
+			logger.info("Port looks like is not open " + portNumber);
+		} catch (Exception e) {
+			if (e.getMessage().contains("refused")) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@AfterSuite()
+	public void afterSuiteInPlaybackWeb() throws OoyalaException {
+		SimpleHttpServer.stopServer();
+
 	}
 
 	@BeforeClass(alwaysRun = true)
@@ -174,7 +217,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 		parseXmlFileData(xmlFile);
 		getJSFile(jsFile);
-		SimpleHttpServer.startServer();
 
 	}
 
@@ -184,13 +226,15 @@ public abstract class PlaybackWebTest extends FacileTest {
 		logger.info("****** Inside @AfterMethod*****");
 		logger.info(driver);
 
-		if (driver != null && (driver.getSessionId()==null || driver.getSessionId().toString().isEmpty())){
+		if (driver != null
+				&& (driver.getSessionId() == null || driver.getSessionId()
+						.toString().isEmpty())) {
 			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
+
 			driver = getDriver(browser);
 			pageFactory.destroyInstance();
 			pageFactory = PlayBackFactory.getInstance(driver);
-		}
-		else {
+		} else {
 			takeScreenshot(result.getName());
 		}
 		if (result.getStatus() == ITestResult.FAILURE) {
@@ -223,7 +267,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 		logger.info("Assigning the neopagefactory instance to null");
 		pageFactory.destroyInstance();
-		SimpleHttpServer.stopServer();
+		// SimpleHttpServer.stopServer();
 	}
 
 	public void waitForSecond(int sec) {
@@ -352,7 +396,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	public String takeScreenshot(String fileName) {
-		logger.info("Screenshot!");
+
+		logger.info("Taking Screenshot");
+
 		File destDir = new File("images/");
 		if (!destDir.exists())
 			destDir.mkdir();
@@ -372,7 +418,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public Object[][] getTestData() {
 
 		Map<String, String> urls = UrlGenerator.parseXmlDataProvider(getClass()
-				.getSimpleName(), testData,browser);
+				.getSimpleName(), testData, browser);
 		String testName = getClass().getSimpleName();
 		Object[][] output = new Object[urls.size()][2];
 

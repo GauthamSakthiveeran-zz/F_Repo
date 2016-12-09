@@ -21,14 +21,18 @@ public class SimpleHttpServer {
 	public static Logger logger = Logger.getLogger(SimpleHttpServer.class);
 
 	private static HttpServer server;
+	public static int portNumber;
 
-	public static void startServer() throws OoyalaException {
+	public static void startServer(int portNum) throws OoyalaException {
 		try {
-			server = HttpServer.create(new InetSocketAddress(9000), 0);
+
+			logger.info("Server is getting started on port " + portNum);
+			server = HttpServer.create(new InetSocketAddress(portNum), 0);
 			server.createContext("/js", new GetHandler());
 			server.setExecutor(null); // creates a default executor
 			server.start();
-			logger.info("***** Server Started****");
+			portNumber = portNum;
+			logger.info("***** Server Started on port:" + portNumber + "****");
 		} catch (Exception ex) {
 			logger.info("Not able to start the http server: "
 					+ ex.getLocalizedMessage());
@@ -103,10 +107,4 @@ public class SimpleHttpServer {
 		return result;
 	}
 
-	// public static void main(String[] args) throws IOException {
-	// HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
-	// server.createContext("/js", new GetHandler());
-	// server.setExecutor(null); // creates a default executor
-	// server.start();
-	// }
 }

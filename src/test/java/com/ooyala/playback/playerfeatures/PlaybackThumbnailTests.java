@@ -30,19 +30,13 @@ public class PlaybackThumbnailTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testBasicPlaybackAlice(String testName, String url)
+	public void testThumbnail(String testName, String url)
 			throws OoyalaException {
-
-		String[] parts = testName.split(":");
-		String testsname = parts[0];
-		String desc = parts[1];
 
 		boolean result = true;
 
-		result = result && play.waitForPage();
-
-		if (!desc.contains("Thumbnail_Image_Akamai_HD")) {
 			try {
+
 				driver.get(url);
 
 				result = result && play.waitForPage();
@@ -71,6 +65,5 @@ public class PlaybackThumbnailTests extends PlaybackWebTest {
 			}
 
 			Assert.assertTrue(result, "Thumbnail test failed");
-		}
-	}
+	   }
 }
