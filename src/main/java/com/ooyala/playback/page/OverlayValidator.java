@@ -52,8 +52,8 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 			return checkInFullScreen(element, timeout);
 		}
 
-		if (!waitOnElement("OVERLAY_CLOSE_BTN", 20000))
-			return false;
+//		if (!waitOnElement("OVERLAY_CLOSE_BTN", 20000))
+//			return false;
 		
 		if (!clickOnIndependentElement("OVERLAY_CLOSE_BTN"))
 			return false;

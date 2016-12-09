@@ -41,8 +41,6 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 
 			result = result && event.validate("willPlaySingleAd_1", 150000);
 			
-			result = result && skipValidator.validate("", 120000);
-			
 			result = result && event.validate("singleAdPlayed_1", 150000);
 
 			result = result && event.validate("willPlaySingleAd_2", 150000);

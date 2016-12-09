@@ -37,20 +37,12 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 			injectScript();
 
             result = result && playValidator.validate("playing_1", 60000);
-			
-			if (event.isStreamingProtocolPrioritized("hds")) { 
-				extentTest.log(LogStatus.INFO,"For Flash Specific cases");
-				
-				if(event.isVideoPluginPresent("akamai")){
-					result = result && event.validate("MidRoll_willPlayAds_1", 160000);
-					result = result && event.validate("adsPlayed_1", 160000);
-					
-				}else{
-					result = result && event.validate("MidRoll_willPlaySingleAd_1", 160000);
-					result = result && event.validate("singleAdPlayed_1", 160000);
-				}
-				
+            
+            if(!event.isVideoPluginPresent("osmf")){
+            	result = result && event.validate("MidRoll_willPlaySingleAd_1", 160000);
+				result = result && event.validate("singleAdPlayed_1", 160000);
             }
+			
             result = result && event.validate("showNonlinearAd_1", 160000);
 
 			result = result
