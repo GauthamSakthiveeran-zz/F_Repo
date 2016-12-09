@@ -8,6 +8,7 @@
             <define name="VTC_Regression">
                 <include name="Playback" />
                 <include name="closedCaption"/>
+                <include name="playerFeatures"/>
             </define>
             <run>
                 <include name="VTC_Regression" />

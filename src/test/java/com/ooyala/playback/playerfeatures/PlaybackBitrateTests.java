@@ -2,8 +2,10 @@ package com.ooyala.playback.playerfeatures;
 
 import static java.lang.Thread.sleep;
 
+import com.ooyala.playback.page.action.PlayAction;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -25,6 +27,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 	private SeekValidator seek;
 	private EventValidator eventValidator;
 	private Bitratevalidator bitratevalidator;
+	private PlayAction playAction;
 
 	public PlaybackBitrateTests() throws OoyalaException {
 		super();
@@ -42,7 +45,18 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
 			injectScript();
 
-			result = result && play.validate("playing_1", 60000);
+
+			result = result && playAction.startAction();
+
+			result = result && loadingSpinner();
+
+			if (!result){
+				logger.info("skipping test for "+getBrowser()+" browser as it takes too much tim to load the video at the beginning");
+				throw new SkipException("Failed to load TestPage");
+			}
+
+			result = result && eventValidator.validate("playing_1", 60000);
+
 			sleep(4000);
 
 			result = result && pause.validate("paused_1", 60000);
@@ -58,7 +72,10 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			result = false;
+			if(e instanceof SkipException){
+				throw new SkipException("Test Skipped");
+			}else
+				result = false;
 
 		}
 		Assert.assertTrue(result, "Playback bitrate/Quality tests failed");

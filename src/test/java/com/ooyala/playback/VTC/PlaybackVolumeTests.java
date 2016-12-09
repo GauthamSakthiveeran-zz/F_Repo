@@ -5,15 +5,14 @@ import static java.lang.Thread.sleep;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.IsAdPlayingValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.VolumeValidator;
+import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by jitendra on 24/11/16.
@@ -38,11 +37,11 @@ public class PlaybackVolumeTests extends PlaybackWebTest {
 
 		logger.info("Url is : " + url);
 
-		boolean result = false;
-		try {
-			driver.get(url);
+        boolean result = true;
+        try {
+            driver.get(url);
 
-			play.waitForPage();
+            result=result && play.waitForPage();
 
 			Thread.sleep(10000);
 
@@ -50,7 +49,8 @@ public class PlaybackVolumeTests extends PlaybackWebTest {
 
 			logger.info("video is playing");
 
-			play.validate("playing_1", 60000);
+            result=result && play.validate("playing_1", 60000);
+
 
 			Boolean isAdplaying = isAdPlayingValidator.validate(
 					"CheckAdPlaying", 60);
@@ -63,21 +63,22 @@ public class PlaybackVolumeTests extends PlaybackWebTest {
 
 			sleep(4000);
 
-			volumeValidator.validate("VOLUME_MAX", 60000);
+            result=result && volumeValidator.validate("VOLUME_MAX", 60000);
 
 			logger.info("validated video volume at full range");
 
-			seekValidator.validate("seeked_1", 60);
+            sleep(3000);
+
+            result=result && seekValidator.validate("seeked_1",60);
 
 			eventValidator.validate("played_1", 60000);
 
 			logger.info("video played");
 
-			result = true;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		Assert.assertTrue(result, "Playback Volume tests failed");
-	}
-
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = false;
+        }
+        Assert.assertTrue(result, "Playback Volume tests failed");
+    }
 }

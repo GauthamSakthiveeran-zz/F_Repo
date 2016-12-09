@@ -14,15 +14,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * 
+ *
  * @author dmanohar
  *
  */
-public class EncodingValidator extends PlayBackPage implements
-		PlaybackValidator {
+public class EncodingValidator extends PlayBackPage implements PlaybackValidator {
 
 	private static Logger logger = Logger.getLogger(EncodingValidator.class);
-	
+
 	public EncodingValidator(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(webDriver, this);
