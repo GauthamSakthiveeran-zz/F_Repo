@@ -1,5 +1,6 @@
 package com.ooyala.playback.page.action;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +10,8 @@ import com.ooyala.playback.page.PlayBackPage;
 
 public class FullScreenAction extends PlayBackPage implements PlayerAction {
 
+	private static Logger logger = Logger.getLogger(FullScreenAction.class);
+	
 	public FullScreenAction(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(webDriver, this);

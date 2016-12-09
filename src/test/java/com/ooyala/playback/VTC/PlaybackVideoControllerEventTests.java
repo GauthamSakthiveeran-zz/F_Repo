@@ -1,5 +1,6 @@
 package com.ooyala.playback.VTC;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,9 +9,6 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.VolumeValidator;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
@@ -18,11 +16,10 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
 
+	private Logger logger = Logger
+			.getLogger(PlaybackVideoControllerEventTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
-	private VolumeValidator volumeValidator;
-	private PlayAction playAction;
-	private SeekAction seekAction;
 	private SeekValidator seekValidator;
 
 	public PlaybackVideoControllerEventTests() throws OoyalaException {

@@ -1,16 +1,21 @@
 package com.ooyala.playback.page.action;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.page.PlayBackPage;
+import com.ooyala.playback.page.VolumeValidator;
 
 /**
  * Created by soundarya on 11/16/16.
  */
 public class AutoplayAction extends PlayBackPage implements PlayerAction {
 
+	
+	private static Logger logger = Logger.getLogger(AutoplayAction.class);
+	
 	public AutoplayAction(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(webDriver, this);
