@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.AdSkipButtonValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
@@ -20,6 +21,7 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
+	private AdSkipButtonValidator skipButtonValidator;
 
 	@Test(groups = {"amf","preroll","midroll"}, dataProvider = "testUrls")
 	public void verifyVastPreIMAMidlAds(String testName, String url) throws OoyalaException {
@@ -37,6 +39,8 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 
 			result = result && event.validate("PreRoll_willPlayAds", 120000);
+			
+			result = result && skipButtonValidator.validate("", 120000);
 
 			result = result && event.validate("adsPlayed_1", 200000);
 
