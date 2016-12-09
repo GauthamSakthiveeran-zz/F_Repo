@@ -1,5 +1,6 @@
 package com.ooyala.playback.playerfeatures;
 
+import com.ooyala.playback.page.action.PlayAction;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.ITestResult;
@@ -26,6 +27,7 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
     private SeekValidator seek;
     private FullScreenValidator fullScreenValidator;
     private ControlBarValidator controlBarValidator;
+    private PlayAction playAction;
 
     public PlaybackPlayerControlsTests() throws OoyalaException {
         super();
@@ -44,17 +46,21 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
             }
 
             result = result && play.waitForPage();
-            if(!result){
-                throw new SkipException("Failed to load TestPage");
-            }
 
             Thread.sleep(10000);
 
             injectScript();
 
-            result = result && play.validate("playing_1", 60000);
+            result = result && playAction.startAction();
 
-            Thread.sleep(2000);
+            result = result && loadingSpinner();
+
+            if(!result){
+                logger.info("skipping test");
+                throw new SkipException("Failed to load TestPage");
+            }
+
+            result = result && eventValidator.validate("playing_1",10000);
 
             result = result && pause.validate("paused_1", 60000);
 
@@ -63,6 +69,8 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
             result = result && fullScreenValidator.validate("", 60000);
 
             result = result && controlBarValidator.validate("", 60000);
+
+            result = result && playAction.startAction();
 
             result = result && seek.validate("seeked_1", 60000);
 

@@ -44,6 +44,7 @@ public class SimpleHttpServer {
 	public static void stopServer() throws OoyalaException {
 		try {
 			server.stop(2);
+			logger.info("Stopped the http server");
 		} catch (Exception ex) {
 			logger.info("Not able to stop the http server:"
 					+ ex.getLocalizedMessage());

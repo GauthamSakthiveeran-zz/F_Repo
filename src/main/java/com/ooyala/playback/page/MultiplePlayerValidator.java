@@ -1,5 +1,6 @@
 package com.ooyala.playback.page;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -10,6 +11,8 @@ import org.openqa.selenium.support.PageFactory;
 public class MultiplePlayerValidator extends PlayBackPage implements
 		PlaybackValidator {
 
+	private static Logger logger = Logger.getLogger(MultiplePlayerValidator.class);
+	
 	public MultiplePlayerValidator(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(webDriver, this);

@@ -1,6 +1,7 @@
 package com.ooyala.playback.VTC;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,6 +20,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackDiscoverTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackDiscoverTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private UpNextValidator discoveryUpNext;
