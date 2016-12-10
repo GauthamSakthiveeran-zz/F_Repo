@@ -11,6 +11,7 @@ import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 
@@ -30,6 +31,11 @@ public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 			throws Exception {
 
 		boolean result = true;
+		
+		if(getBrowser().equals("safari")){
+			extentTest.log(LogStatus.SKIP, "Test skipped for safari!");
+			return;
+		}
 
 		try {
 
