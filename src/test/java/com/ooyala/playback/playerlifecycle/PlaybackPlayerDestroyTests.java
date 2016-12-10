@@ -1,4 +1,4 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerlifecycle;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -21,7 +21,7 @@ public class PlaybackPlayerDestroyTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "alice", dataProvider = "testUrls")
+	@Test(groups = "playerLifecycle", dataProvider = "testUrls")
 	public void testVideoReplay(String testName, String url)
 			throws OoyalaException {
 

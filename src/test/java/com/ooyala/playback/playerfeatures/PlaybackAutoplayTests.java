@@ -1,4 +1,4 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.playerfeatures;
 
 import static java.lang.Thread.sleep;
 
@@ -30,7 +30,7 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "alice", dataProvider = "testUrls")
+	@Test(groups = "playerFeatures", dataProvider = "testUrls")
 	public void testAutoPlay(String testName, String url)
 			throws OoyalaException {
 		boolean result = true;

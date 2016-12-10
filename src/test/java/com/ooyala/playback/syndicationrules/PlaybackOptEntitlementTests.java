@@ -1,4 +1,4 @@
-package com.ooyala.playback.alice;
+package com.ooyala.playback.syndicationrules;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
