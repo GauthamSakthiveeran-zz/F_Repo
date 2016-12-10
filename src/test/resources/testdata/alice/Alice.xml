@@ -50,6 +50,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
@@ -60,6 +61,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
 
@@ -336,7 +338,7 @@
 
     <test name="PlaybackLiveTests">
 
-       <url>
+        <url>
             <description name="Playback_HLS_Live_Bitmovin" />
             <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -396,6 +398,63 @@
             <additionalPlugins name="" />
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Live_HLS_MAIN_Elemental" />
+            <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
+            <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c8954f0005a4d2a8da705994859e72b" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <live>
+                <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+        <url>
+            <description name="Live_HLS_BITMOVIN_Elemental" />
+            <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
+            <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c8954f0005a4d2a8da705994859e72b" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <live>
+                <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+        <url>
+            <description name="Live_HDS_MAIN_Elemental" />
+            <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
+            <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c8954f0005a4d2a8da705994859e72b" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <live>
+                <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+        <url>
+            <description name="Live_DASH_BITMOVIN_Elemental" />
+            <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
+            <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c8954f0005a4d2a8da705994859e72b" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <live>
+                <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
+                <provider>elemental</provider>
+            </live>
         </url>
     </test>
 
@@ -534,6 +593,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
@@ -662,7 +722,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="ZWU3OGUxMDJjMmQ5ZTViNGE1YjdlYTdj" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter><![CDATA[]]>
+            </playerParameter>
         </url>
     </test>
     <test name="PlaybackOptEntitlementTests">
