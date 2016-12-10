@@ -34,7 +34,7 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 			
 			// IMA Overlay is not showing
 			// https://jira.corp.ooyala.com/browse/PBI-1825
-			if (!event.isAdPluginPresent("ima")) {
+			if (event.isAdPluginPresent("ima")) {
 				extentTest.log(LogStatus.SKIP, "IMA Overlay is not showing as PBI-1825");
 				return;
 			}
