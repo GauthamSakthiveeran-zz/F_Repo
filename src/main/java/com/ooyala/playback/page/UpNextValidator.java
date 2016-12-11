@@ -25,7 +25,8 @@ public class UpNextValidator extends PlayBackPage implements PlaybackValidator {
 	public boolean validate(String element, int timeout) throws Exception {
 
 		try {
-			return waitOnElement("UPNEXT_CONTENT", 60000) && waitOnElement("CONTENT_METADATA", 60000)
+			// inc the timeout because of pulse ads.
+			return waitOnElement("UPNEXT_CONTENT", 200000) && waitOnElement("CONTENT_METADATA", 60000)
 					&& clickOnIndependentElement("UPNEXT_CLOSE_BTN");
 		} catch (Exception ex) {
 			ex.printStackTrace();

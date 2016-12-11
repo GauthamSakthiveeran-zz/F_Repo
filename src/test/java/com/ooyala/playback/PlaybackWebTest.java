@@ -53,7 +53,7 @@ import com.relevantcodes.extentreports.LogStatus;
 @Listeners(IMethodListener.class)
 public abstract class PlaybackWebTest extends FacileTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackWebTest.class);
+	private Logger logger = Logger.getLogger(PlaybackWebTest.class);
 	protected String browser;
 	protected ChromeDriverService service;
 	// protected PropertyReader propertyReader;
@@ -80,6 +80,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
+		logger.info("*** Test " + testData[0].toString() + " started *********");
 		extentTest = extentReport.startTest(testData[0].toString());
 
 		try {
@@ -99,8 +100,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 							function.invoke(property.get(this), extentTest);
 					}
 				}
-				liveChannel.startChannel(testData[0].toString());
 			}
+			liveChannel.startChannel(testData[0].toString());
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -185,7 +186,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@AfterSuite()
 	public void afterSuiteInPlaybackWeb() throws OoyalaException {
 		SimpleHttpServer.stopServer();
-		
 
 	}
 
@@ -233,20 +233,32 @@ public abstract class PlaybackWebTest extends FacileTest {
 			pageFactory.destroyInstance();
 			pageFactory = PlayBackFactory.getInstance(driver);
 		} else {
-			takeScreenshot(result.getName());
+			takeScreenshot(extentTest.getTest().getName());
 		}
 		if (result.getStatus() == ITestResult.FAILURE) {
 			extentTest.log(
 					LogStatus.INFO,
 					"Snapshot is "
 							+ extentTest.addScreenCapture("images/"
-									+ result.getName()));
+									+ extentTest.getTest().getName()));
 			extentTest.log(LogStatus.FAIL, result.getThrowable());
+			logger.error("**** Test " + extentTest.getTest().getName()
+					+ " failed ******");
 		} else if (result.getStatus() == ITestResult.SKIP) {
-			extentTest.log(LogStatus.SKIP, result.getName() + " Test skipped "
-					+ result.getThrowable());
+			extentTest.log(LogStatus.SKIP, extentTest.getTest().getName()
+					+ " Test skipped " + result.getThrowable());
+			logger.error("**** Test" + extentTest.getTest().getName()
+					+ " Skipped ******");
+		} else if (result.getStatus() == ITestResult.SUCCESS) {
+			extentTest.log(LogStatus.PASS, extentTest.getTest().getName()
+					+ " Test passed");
+			logger.error("**** Test" + extentTest.getTest().getName()
+					+ " passed ******");
 		} else {
-			extentTest.log(LogStatus.PASS, result.getName() + " Test passed");
+			extentTest.log(LogStatus.UNKNOWN, extentTest.getTest().getName()
+					+ " Test result is unknown");
+			logger.error("**** Test" + extentTest.getTest().getName()
+					+ " passed ******");
 		}
 		extentReport.endTest(extentTest);
 
