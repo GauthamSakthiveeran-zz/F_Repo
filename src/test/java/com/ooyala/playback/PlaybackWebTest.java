@@ -80,7 +80,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
-		logger.info("***Running test "+testData+" *********");
+		logger.info("***Running test "+testData[0].toString()+" *********");
 		extentTest = extentReport.startTest(testData[0].toString());
 
 		try {
