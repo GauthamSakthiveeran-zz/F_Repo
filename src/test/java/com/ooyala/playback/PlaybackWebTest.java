@@ -100,8 +100,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 							function.invoke(property.get(this), extentTest);
 					}
 				}
-				liveChannel.startChannel(testData[0].toString());
 			}
+			liveChannel.startChannel(testData[0].toString());
 
 		} catch (Exception e) {
 			e.printStackTrace();
