@@ -80,7 +80,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
-		logger.info("***Running test "+testData[0].toString()+" *********");
+		logger.info("*** Test " + testData[0].toString() + " started *********");
 		extentTest = extentReport.startTest(testData[0].toString());
 
 		try {
@@ -233,20 +233,32 @@ public abstract class PlaybackWebTest extends FacileTest {
 			pageFactory.destroyInstance();
 			pageFactory = PlayBackFactory.getInstance(driver);
 		} else {
-			takeScreenshot(result.getName());
+			takeScreenshot(extentTest.getTest().getName());
 		}
 		if (result.getStatus() == ITestResult.FAILURE) {
 			extentTest.log(
 					LogStatus.INFO,
 					"Snapshot is "
 							+ extentTest.addScreenCapture("images/"
-									+ result.getName()));
+									+ extentTest.getTest().getName()));
 			extentTest.log(LogStatus.FAIL, result.getThrowable());
+			logger.error("**** Test " + extentTest.getTest().getName()
+					+ " failed ******");
 		} else if (result.getStatus() == ITestResult.SKIP) {
-			extentTest.log(LogStatus.SKIP, result.getName() + " Test skipped "
-					+ result.getThrowable());
+			extentTest.log(LogStatus.SKIP, extentTest.getTest().getName()
+					+ " Test skipped " + result.getThrowable());
+			logger.error("**** Test" + extentTest.getTest().getName()
+					+ " Skipped ******");
+		} else if (result.getStatus() == ITestResult.SUCCESS) {
+			extentTest.log(LogStatus.PASS, extentTest.getTest().getName()
+					+ " Test passed");
+			logger.error("**** Test" + extentTest.getTest().getName()
+					+ " passed ******");
 		} else {
-			extentTest.log(LogStatus.PASS, result.getName() + " Test passed");
+			extentTest.log(LogStatus.UNKNOWN, extentTest.getTest().getName()
+					+ " Test result is unknown");
+			logger.error("**** Test" + extentTest.getTest().getName()
+					+ " passed ******");
 		}
 		extentReport.endTest(extentTest);
 
