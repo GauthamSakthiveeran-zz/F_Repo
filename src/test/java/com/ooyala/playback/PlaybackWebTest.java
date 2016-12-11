@@ -53,7 +53,7 @@ import com.relevantcodes.extentreports.LogStatus;
 @Listeners(IMethodListener.class)
 public abstract class PlaybackWebTest extends FacileTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackWebTest.class);
+	private Logger logger = Logger.getLogger(PlaybackWebTest.class);
 	protected String browser;
 	protected ChromeDriverService service;
 	// protected PropertyReader propertyReader;
@@ -80,6 +80,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
+		logger.info("***Running test "+testData+" *********");
 		extentTest = extentReport.startTest(testData[0].toString());
 
 		try {
@@ -185,7 +186,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@AfterSuite()
 	public void afterSuiteInPlaybackWeb() throws OoyalaException {
 		SimpleHttpServer.stopServer();
-		
 
 	}
 
