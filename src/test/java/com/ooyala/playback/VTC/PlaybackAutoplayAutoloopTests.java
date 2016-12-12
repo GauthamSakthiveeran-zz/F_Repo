@@ -1,17 +1,12 @@
 package com.ooyala.playback.VTC;
 
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.AutoplayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.IsAdPlayingValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.ReplayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by snehal on 25/11/16.
@@ -24,6 +19,7 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private ReplayValidator replayValidator;
 	private IsAdPlayingValidator isAdPlayingValidator;
+	private AutoplayAction autoplayAction;
 
 	public PlaybackAutoplayAutoloopTests() throws OoyalaException {
 		super();
@@ -39,11 +35,15 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 
 			injectScript();
 
-			String autoplay = ((JavascriptExecutor) driver).executeScript(
-					"return pp.parameters.autoPlay").toString();
-			Assert.assertEquals(autoplay, "true", "verified autoplay");
+			Thread.sleep(3000);
 
-			result = result && eventValidator.validate("videoPlaying_1", 20000);
+			result = result && autoplayAction.startAction();
+
+			result = result && eventValidator.validate("adsPlayed_1", 30000);
+
+			result = result && eventValidator.loadingSpinner();
+
+			result = result && eventValidator.validate("playing_1", 60000);
 			logger.info("Autoplayed the asset.");
 
 			result = result && seekValidator.validate("seeked_1", 60000);
@@ -52,6 +52,8 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 
 			boolean isAdplaying = isAdPlayingValidator.validate(
 					"CheckAdPlaying", 60000);
+
+			Thread.sleep(2000);
 
 			Assert.assertEquals(isAdplaying, true,
 					"Verified that ad is played after auto replay");
