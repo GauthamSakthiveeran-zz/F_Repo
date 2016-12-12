@@ -196,7 +196,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 		browser = System.getProperty("browser");
 		if (browser == null || browser.equals(""))
-			browser = "firefox";
+			browser = "chrome";
 		logger.info("browser is " + browser);
 
 		driver = getDriver(browser);
@@ -354,37 +354,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			object = js.executeScript("subscribeToEvents();");
 	}
 
-	public boolean loadingSpinner() {
-		long startTime = 0L;
-		long endTime = 0L;
-		int time = 0;
-		boolean flag;
-
-		while (true) {
-
-			startTime = System.currentTimeMillis();
-			// Giving hardcoded end time as 2 minutes i.e it will check loading
-			// spinner upto 2 min otherwise will break
-			if (time <= 120) {
-				try {
-					driver.findElement(By.className("oo-spinner"))
-							.isDisplayed();
-					Thread.sleep(1000);
-					time++;
-				} catch (Exception e) {
-					endTime = System.currentTimeMillis();
-					return true;
-				}
-			} else {
-				logger.info("Loading spinner is not vanishing i.e it occured more that 2 minutes");
-				flag = false;
-				break;
-			}
-
-		}
-		return flag;
-
-	}
+	
 
 	public String getPlatform() {
 		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();

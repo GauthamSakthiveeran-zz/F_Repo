@@ -113,7 +113,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 						&& seekAction.setTime(20).fromLast().startAction();// seek(20,
 																			// true);
 
-				loadingSpinner();
+				result = result && eventValidator.loadingSpinner();
 				discoveryUpNext.validate("", 60000);
 				try {
 					discoveryValidator.clickOnDiscoveryCloseButton(

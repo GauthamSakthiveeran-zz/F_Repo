@@ -39,7 +39,7 @@ public class PlaybackAdIconTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			loadingSpinner();
+			result = result && event.loadingSpinner();
 			// Wait for ad start
 			result = result && event.validate("willPlaySingleAd_1", 60000);
 

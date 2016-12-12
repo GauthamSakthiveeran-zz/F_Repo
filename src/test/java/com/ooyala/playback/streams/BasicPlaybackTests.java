@@ -50,7 +50,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
             result = result && play.validate("playing_1", 60000);
 
-            loadingSpinner();
+            result = result && eventValidator.loadingSpinner();
 
             Thread.sleep(2000);
 
