@@ -72,24 +72,24 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean loadingSpinner() {
-		long startTime = 0L;
-		long endTime = 0L;
 		int time = 0;
 		boolean flag;
 
 		while (true) {
 
-			startTime = System.currentTimeMillis();
 			// Giving hardcoded end time as 2 minutes i.e it will check loading
 			// spinner upto 2 min otherwise will break
 			if (time <= 120) {
 				try {
 					flag = isElementVisible("SPINNER");
+                    if(!flag){
+                        flag = true;
+                        break;
+                    }
 					Thread.sleep(1000);
 					time++;
 					logger.info("In loading spinner");
 				} catch (Exception e) {
-					endTime = System.currentTimeMillis();
 					return true;
 				}
 			} else {
