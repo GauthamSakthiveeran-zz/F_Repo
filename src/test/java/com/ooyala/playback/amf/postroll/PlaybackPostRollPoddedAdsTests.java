@@ -32,16 +32,14 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 			driver.get(url);
 
 			result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 
 			injectScript();
 
-			result = result && playValidator.validate("playing_1", 150000);
-			result = result && seekValidator.validate("seeked_1", 180000);
-			result = result && event.validate("videoPlayed_1", 180000);
-			result = result && event.validate("played_1", 180000);
+			result = result && playValidator.validate("playing_1", 6000);
+			result = result && seekValidator.validate("seeked_1", 6000);
+			result = result && event.validate("played_1", 6000);
 
-			result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 160000);
+			result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 10000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

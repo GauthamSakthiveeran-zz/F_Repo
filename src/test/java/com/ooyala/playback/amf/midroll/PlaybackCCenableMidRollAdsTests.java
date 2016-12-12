@@ -45,8 +45,6 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 			result = result
 					&& event.validate("MidRoll_willPlaySingleAd_1", 190000);
 
-			Thread.sleep(14000);
-
 			if (event.isAdPluginPresent("pulse"))
 				result = result && event.validate("singleAdPlayed_2", 60000);
 			else

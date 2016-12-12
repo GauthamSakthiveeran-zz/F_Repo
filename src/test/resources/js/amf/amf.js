@@ -70,7 +70,7 @@ function subscribeToEvents() {
 				OO.$('#ooplayer').append('<p id=adIsPlaying'+'>adIsPlaying</p>');
 			}
 			if (event.match(/singleAdPlayed/)) {
-				OO.$('#ooplayer').append('<p id=singleAdPlayed_'+singleadsPlayedEventOrder+'>singleAdPlayed '+singleadsPlayedEventOrder+' </p>'); 
+				OO.$('#ooplayer').append('<p id=singleAdPlayed_'+singleadsPlayedEventOrder+'>singleAdPlayed '+singleadsPlayedEventOrder+'</p>'); 
 				singleadsPlayedEventOrder++;
 				showAdSkipButtonEventOrder = 1;
 			}
@@ -111,7 +111,7 @@ function subscribeToEvents() {
 			
 			
 			if (event.match(/adsPlayed/)) {
-				OO.$('#ooplayer').append('<p id=adsPlayed_'+adsPlayedEventOrder+'>adsPlayed '+adsPlayedEventOrder+' </p>'); 
+				OO.$('#ooplayer').append('<p id=adsPlayed_'+adsPlayedEventOrder+'>adsPlayed '+adsPlayedEventOrder+'</p>'); 
 				OO.$('#ooplayer').append('<p id=countPoddedAds_'+adsPlayedEventOrder+'>'+(willPlaySingleAdsEventOrder-1)+'</p>');
 				adsPlayedEventOrder++;
 			}

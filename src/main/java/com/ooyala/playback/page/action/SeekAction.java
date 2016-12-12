@@ -126,6 +126,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 						.executeScript("return pp.getPlayheadTime();").toString());
 				if (seekTime == -1) {
 					logger.error("Video is in error mode");
+					seek(15, true);
 					break;
 				}
 				if (seekTime > 5) {
