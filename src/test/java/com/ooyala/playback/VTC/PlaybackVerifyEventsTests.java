@@ -17,7 +17,8 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackVerifyEventsTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackVerifyEventsTests.class);
+	private static Logger logger = Logger
+			.getLogger(PlaybackVerifyEventsTests.class);
 	private PlayValidator play;
 	private PlayAction playAction;
 	private EventValidator eventValidator;
@@ -47,14 +48,14 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			loadingSpinner();
+			result = result && eventValidator.loadingSpinner();
 
 			result = result
 					&& eventValidator.validate("willPlaySingleAd_1", 10000);
 
 			result = result && eventValidator.validate("adsPlayed_1", 20000);
 
-			loadingSpinner();
+			result = result && eventValidator.loadingSpinner();
 
 			result = result && eventValidator.validate("playing_1", 60000);
 
