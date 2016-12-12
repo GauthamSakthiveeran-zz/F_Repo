@@ -21,9 +21,8 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private PoddedAdValidator poddedAdValidator;
 
-	@Test(groups = {"amf","postroll","podded"}, dataProvider = "testUrls")
-	public void verifyPostrollPodded(String testName, String url)
-			throws OoyalaException {
+	@Test(groups = { "amf", "postroll", "podded" }, dataProvider = "testUrls")
+	public void verifyPostrollPodded(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -37,7 +36,7 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 
 			result = result && playValidator.validate("playing_1", 6000);
 			result = result && seekValidator.validate("seeked_1", 6000);
-			result = result && event.validate("played_1", 6000);
+			result = result && event.validate("played_1", 180000);
 
 			result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 10000);
 

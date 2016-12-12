@@ -1,7 +1,5 @@
 package com.ooyala.playback.amf.postroll;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -44,7 +42,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 				result = result && event.validate("seeked_1", 5000);
 			}
 			
-			result = result && event.validate("videoPlayed_1", 6000);
+			result = result && event.validate("videoPlayed_1", 90000);
 			result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
 			
 			// this is not working for IE11 BitmovinPostrol_VPAID2.0_HLS - need to check in actual browser
@@ -53,7 +51,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 					&& event.isAdPluginPresent("vast") && event.isStreamingProtocolPrioritized("hls")))
 				result = result && event.validate("singleAdPlayed_1", 190000); 
 			
-			result = result && event.validate("played_1", 5000);
+			result = result && event.validate("played_1", 200000);
 			
 
 		} catch (Exception e) {

@@ -50,8 +50,8 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 
 			result = result && seekAction.seekTillEnd().startAction();
 
-			result = result && event.validate("seeked_1", 1000);
-			result = result && event.validate("played_1", 1000);
+			result = result && event.validate("seeked_1", 5000);
+			result = result && event.validate("played_1", 60000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

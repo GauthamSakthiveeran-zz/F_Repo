@@ -247,12 +247,12 @@ public abstract class PlaybackWebTest extends FacileTest {
 		} else if (result.getStatus() == ITestResult.SKIP) {
 			extentTest.log(LogStatus.SKIP, extentTest.getTest().getName()
 					+ " Test skipped " + result.getThrowable());
-			logger.error("**** Test" + extentTest.getTest().getName()
+			logger.info("**** Test" + extentTest.getTest().getName()
 					+ " Skipped ******");
 		} else if (result.getStatus() == ITestResult.SUCCESS) {
 			extentTest.log(LogStatus.PASS, extentTest.getTest().getName()
 					+ " Test passed");
-			logger.error("**** Test" + extentTest.getTest().getName()
+			logger.info("**** Test" + extentTest.getTest().getName()
 					+ " passed ******");
 		} else {
 			extentTest.log(LogStatus.UNKNOWN, extentTest.getTest().getName()
