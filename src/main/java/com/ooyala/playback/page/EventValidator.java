@@ -1,13 +1,12 @@
 package com.ooyala.playback.page;
 
-import java.util.Map;
-
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.relevantcodes.extentreports.LogStatus;
+import java.util.Map;
 
 /**
  * Created by soundarya on 11/14/16.
@@ -80,6 +79,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		while (true) {
 
 			startTime = System.currentTimeMillis();
+
 			// Giving hardcoded end time as 2 minutes i.e it will check loading
 			// spinner upto 2 min otherwise will break
 			if (time <= 120) {
@@ -88,6 +88,9 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 					Thread.sleep(1000);
 					time++;
 					logger.info("In loading spinner");
+					if (!flag){
+						return true;
+					}
 				} catch (Exception e) {
 					endTime = System.currentTimeMillis();
 					return true;
