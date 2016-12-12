@@ -2,6 +2,7 @@ package com.ooyala.playback.playerfeatures;
 
 import static java.lang.Thread.sleep;
 
+import com.ooyala.playback.page.action.SeekAction;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -25,6 +26,7 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 	private PlayValidator play;
 	private SeekValidator seek;
 	private AutoplayAction autoplayAction;
+	private SeekAction seekAction;
 
 	public PlaybackAutoplayTests() throws OoyalaException {
 		super();
@@ -40,21 +42,25 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 		} else {
 			try {
 				driver.get(url);
-				result = result && play.waitForPage();
 
 				injectScript();
 
+				Thread.sleep(5000);
+
 				autoplayAction.startAction();
+
 				try {
-					eventValidator.validate("singleAdPlayed_1", 50);
+					eventValidator.validate("singleAdPlayed_1", 5000);
 				} catch (Exception e) {
 					logger.info("No Preroll ad present in this autoplay video");
 				}
-				result = result && play.validate("playing_1", 60000);
+				result = result && eventValidator.validate("playing_1", 60000);
 
 				sleep(500);
 
-				result = result && seek.validate("seeked_1", 60000);
+				seekAction.seekVideo();
+
+				result = result && eventValidator.validate("seeked_1",20000);
 
 				result = result && eventValidator.validate("played_1", 60000);
 
