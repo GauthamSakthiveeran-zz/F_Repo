@@ -59,12 +59,6 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && pause.validate("paused_1", 60000);
-
-			logger.info("video paused");
-
-			result = result && playAction.startAction();
-
 			result = result && seek.validate("seeked_1", 60000);
 
 			logger.info("video seeked");

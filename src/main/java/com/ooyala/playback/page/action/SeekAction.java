@@ -3,6 +3,7 @@ package com.ooyala.playback.page.action;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -177,5 +178,10 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 			}
 		}
 
+	}
+
+	public void seekVideo(){
+			((JavascriptExecutor) driver)
+					.executeScript("pp.seek(pp.getDuration()-10);");
 	}
 }
