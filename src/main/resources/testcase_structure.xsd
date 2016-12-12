@@ -86,6 +86,16 @@
 									</xs:simpleContent>
 								</xs:complexType>
 							</xs:element>
+							<xs:element name="browserSupportedVersions"
+								minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute type="xs:string" name="name" use="optional" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
 							<xs:element name="sslEnabled" minOccurs="0" maxOccurs="1">
 								<xs:complexType>
 									<xs:simpleContent>
@@ -100,7 +110,8 @@
 									<xs:sequence>
 										<xs:element name="channelId" type="xs:string" />
 										<xs:element name="provider" type="xs:string" />
-										<xs:element name="ingestUrl" type="xs:string" minOccurs="0" maxOccurs="1" />
+										<xs:element name="ingestUrl" type="xs:string"
+											minOccurs="0" maxOccurs="1" />
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>

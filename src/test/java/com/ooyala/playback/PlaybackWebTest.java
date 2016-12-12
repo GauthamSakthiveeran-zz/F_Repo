@@ -354,8 +354,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 			object = js.executeScript("subscribeToEvents();");
 	}
 
-	
-
 	public String getPlatform() {
 		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
 		String platformName = cap.getPlatform().toString();
@@ -366,6 +364,12 @@ public abstract class PlaybackWebTest extends FacileTest {
 		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
 		String browser = cap.getBrowserName().toString();
 		return browser;
+	}
+
+	public String getBrowserVersion() {
+		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+		String version = cap.getVersion().toString();
+		return version;
 	}
 
 	public static String readPropertyOrEnv(String key, String defaultValue) {
@@ -399,8 +403,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@DataProvider(name = "testUrls")
 	public Object[][] getTestData() {
 
+		String version = getBrowserVersion();
 		Map<String, String> urls = UrlGenerator.parseXmlDataProvider(getClass()
-				.getSimpleName(), testData, browser);
+				.getSimpleName(), testData, browser, version);
 		String testName = getClass().getSimpleName();
 		Object[][] output = new Object[urls.size()][2];
 
