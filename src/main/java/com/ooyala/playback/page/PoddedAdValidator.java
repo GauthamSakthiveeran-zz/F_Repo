@@ -16,6 +16,7 @@ public class PoddedAdValidator extends PlayBackPage implements
 
 	public PoddedAdValidator(WebDriver webDriver) {
 		super(webDriver);
+		counter =0;
 	}
 	
 	private String position = "";
@@ -25,13 +26,16 @@ public class PoddedAdValidator extends PlayBackPage implements
 		return this;
 	}
 	
+	private int counter=0;
+	
 	public boolean validate(String element, int timeout) throws Exception {
 		try {
 			int result = parseInt((((JavascriptExecutor) driver)
 					.executeScript("return " + element + ".textContent"))
 					.toString());
-			for (int i = 1; i <= result; i++) {
-
+			logger.info("No of ads " + result);
+			
+			for (int i = 1 + counter; i <= result; i++) {
 				boolean willPlaySingleAd = waitOnElement(
 						By.id(position+"_willPlaySingleAd_" + i), 10000);
 
@@ -47,6 +51,7 @@ public class PoddedAdValidator extends PlayBackPage implements
 
 			}
 			extentTest.log(LogStatus.PASS, "Podded Ad Completed");
+			counter += result;
 			return true;
 		} catch (Exception ex) {
 			extentTest.log(LogStatus.FAIL, ex.getLocalizedMessage());

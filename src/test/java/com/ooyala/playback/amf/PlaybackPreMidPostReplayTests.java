@@ -23,7 +23,7 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	private ReplayValidator replayValidator;
 	private AdClickThroughValidator adClickThrough;
 
-	@Test(groups = {"amf","preroll","midroll","postroll","replay"}, dataProvider = "testUrls")
+	@Test(groups = {"amf","preroll","midroll","postroll","replay"}, dataProvider = "testUrls", enabled =false)
 	public void verifyPreMidPostcontrols(String testName, String url)
 			throws OoyalaException {
 
@@ -34,8 +34,6 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 			driver.get(url);
 
 			result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
-
 			injectScript();
 
 			result = result && playValidator.validate("playing_1", 120000);
@@ -48,12 +46,11 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 			result = result && seekValidator.validate("seeked_1", 120000);
 			result = result && event.validate("played_1", 190000);
 
-			result = result && event.validate("endScreen", 120000);
 			result = result && replayValidator.validate("replay_1", 120000);
 
 			result = result
 					&& event.validate("PreRoll_willPlayAds_OnReplay", 120000);
-
+			
 			if (!getPlatform().equalsIgnoreCase("Android")) {
 				result = result && adClickThrough.validate("", 120000);
 			}

@@ -37,8 +37,9 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && playValidator.validate("playing_1", 150000);
-
-			result = result && seekAction.fromLast().setTime(30).startAction();
+			
+			if (!event.isAdPluginPresent("pulse"))
+				result = result && seekAction.fromLast().setTime(30).startAction();
 			
 			result = result && upNextValidator.validate("", 60000);
 			

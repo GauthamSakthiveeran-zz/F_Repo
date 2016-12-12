@@ -36,8 +36,12 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
 			result = result && playValidator.validate("playing_1", 60000);
 
 			result = result && seekValidator.validate("seeked_1", 60000);
+			
+			result = result && event.validate("MidRoll_willPlayAds", 60000);
 
-			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds", 120000);
+			result = result && event.validate("adsPlayed_1", 200000);
+
+			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_1", 120000);
 
 			result = result && event.validate("seeked_1", 60000);
 			result = result && event.validate("played_1", 200000);

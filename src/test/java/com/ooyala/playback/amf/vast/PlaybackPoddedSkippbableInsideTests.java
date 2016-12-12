@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf.VAST;
+package com.ooyala.playback.amf.vast;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -40,8 +40,6 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 
 			result = result && event.validate("willPlaySingleAd_1", 150000);
-			
-			result = result && skipValidator.validate("", 120000);
 			
 			result = result && event.validate("singleAdPlayed_1", 150000);
 

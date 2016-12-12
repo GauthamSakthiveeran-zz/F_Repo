@@ -1,5 +1,5 @@
 function subscribeToCommonEvents() {
-	window.pp.mb.subscribe("*", "test", function(event, params) {
+	window.pp.mb.subscribe('*', 'test', function(event, params) {
 		var playedEventOrder = 1;
 		var fullscreenChangedEventOrder = 1;
 		var seekingEventOrder = 1;
@@ -30,8 +30,8 @@ function subscribeToCommonEvents() {
 			}
 			
 			if (event.match(/seeked/)) {
-				OO.$("#ooplayer").append("<p id=seeked_" + seekingEventOrder + ">seeked " +
-								 seekingEventOrder + "</p>");
+				OO.$('#ooplayer').append('<p id=seeked_' + seekingEventOrder + '>seeked ' +
+								 seekingEventOrder + '</p>');
 				seekingEventOrder++;
 			}
 			
@@ -74,7 +74,7 @@ function subscribeToCommonEvents() {
 			
 
 			if (event.match(/replay/)) { 
-				OO.$("#ooplayer").append("<p id=replay_"+replayEventOrder+">replay "+replayEventOrder+" </p>"); 
+				OO.$('#ooplayer').append('<p id=replay_'+replayEventOrder+'>replay '+replayEventOrder+' </p>'); 
 				replayEventOrder++;
 			}
 			
@@ -100,7 +100,7 @@ function subscribeToCommonEvents() {
 			}
 			
 			if (event.match(/adPodEnded/)) { 
-				OO.$("#ooplayer").append("<p id=adPodEnded_"+adPodEndedEventOrder+">adPodEnded "+adPodEndedEventOrder+"</p>"); 
+				OO.$('#ooplayer').append('<p id=adPodEnded_'+adPodEndedEventOrder+'>adPodEnded '+adPodEndedEventOrder+'</p>'); 
 				OO.$('#ooplayer').append('<p id=adPodEnd_'+arguments[1]+'_'+adPodEndedEventOrder+'>adPodPlayed '+arguments[1]+' '+adPodEndedEventOrder+'  </p>');
 				adPodEndedEventOrder++;
 			}

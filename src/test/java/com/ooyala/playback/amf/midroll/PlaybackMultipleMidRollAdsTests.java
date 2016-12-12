@@ -31,7 +31,6 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 			driver.get(url);
 
 			result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 
 			injectScript();
 
@@ -39,6 +38,9 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 
             if(!event.isAdPluginPresent("pulse"))
             	result = result && seekAction.seekTillEnd().startAction();
+            
+            result = result && event.validate("MidRoll_willPlayAds", 60000);
+			result = result && event.validate("countPoddedAds", 200000);
 
 			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds", 60000);
 

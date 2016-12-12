@@ -8,7 +8,7 @@
                 <include name="streams" />
                 <include name="playerFeatures" />
                 <include name="syndicationRules" />
-                <include name="alice" />
+                <include name="playerLifecycle" />
                 <include name="drm" />
             </define>
             <run>
@@ -33,7 +33,9 @@
             <class name="com.ooyala.playback.playerfeatures.PlaybackVolumeTest" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackSocialMediaTests" />
-            <class name="com.ooyala.playback.alice.PlaybackOptEntitlementTests" />
+            <class name="com.ooyala.playback.syndicationrules.PlaybackOptEntitlementTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackAutoplayTests" />
+            <class name="com.ooyala.playback.playerlifecycle.PlaybackPlayerDestroyTests" />
             <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
             <class name="com.ooyala.playback.streams.BasicPlaybackTests" />

@@ -36,16 +36,21 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && event.validate("PreRoll_willPlayAds", 120000);
-
+			result = result && event.validate("PreRoll_willPlayAds", 5000);
+			
 			result = result && event.validate("adsPlayed_1", 200000);
+			
+			if(!getBrowser().contains("internet explorer") && !getBrowser().contains("safari")){
+				if (!event.isVideoPluginPresent("osmf"))
+					result = result && event.validate("adPodEnd_vast_2_2", 6000);
+				else
+					result = result && event.validate("adPodEnd_vast_0_1", 6000);
+			}else{
+				if (!event.isVideoPluginPresent("osmf"))
+					result = result && event.validate("adPodEnd_vast_2_1", 6000);
+			}
 
-			if (!event.isVideoPluginPresent("osmf"))
-				result = result && event.validate("adPodEnd_vast_2_2", 6000);
-			else
-				result = result && event.validate("adPodEnd_vast_0_1", 6000);
-
-			result = result && event.validate("playing_1", 90000);
+			result = result && event.validate("playing_1", 5000);
 
 			result = result && seekAction.seekTillEnd().startAction();
 
@@ -53,10 +58,16 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("adsPlayed_2", 200000);
 
-			if (!event.isVideoPluginPresent("osmf"))
-				result = result && event.validate("adPodEnd_google-ima-ads-manager_0_1", 6000);
-			else
-				result = result && event.validate("adPodEnd_google-ima-ads-manager_1_2", 6000);
+			if(!getBrowser().contains("internet explorer") && !getBrowser().contains("safari")){
+				if (!event.isVideoPluginPresent("osmf"))
+					result = result && event.validate("adPodEnd_google-ima-ads-manager_0_1", 6000);
+				else
+					result = result && event.validate("adPodEnd_google-ima-ads-manager_1_2", 6000);
+			}else{
+				if (!event.isVideoPluginPresent("osmf"))
+					result = result && event.validate("adPodEnd_google-ima-ads-manager_0_2", 6000);
+			}
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -48,15 +48,18 @@ public class PlaybackIMAPreVastMidAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("MidRoll_willPlayAds_2", 100000);
 			result = result && event.validate("adsPlayed_2", 200000);
-
+			
 			result = result && seekValidator.validate("seeked_1", 190000);
 
-			if (!event.isVideoPluginPresent("osmf"))
+			if(!getBrowser().contains("internet explorer") && !getBrowser().contains("safari")){
+				if (!event.isVideoPluginPresent("osmf"))
+					result = result && event.validate("adPodEnd_vast_2_3", 6000);
+				else
+					result = result && event.validate("adPodEnd_vast_0_1", 6000);
+			}else{
 				result = result && event.validate("adPodEnd_vast_2_2", 6000);
-			else
-				result = result && event.validate("adPodEnd_vast_0_1", 6000);
+			}
 
-			event.validate("played_1", 200000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
