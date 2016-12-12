@@ -5,6 +5,7 @@ import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 import org.apache.log4j.Logger;
 import static java.lang.Thread.sleep;
@@ -39,7 +40,16 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
 			injectScript();
 
-			result = result && play.validate("playing_1", 60000);
+			result = result && playAction.startAction();
+
+			result = result && loadingSpinner();
+
+			if(!result){
+				logger.info("skipping test");
+				throw new SkipException("Failed to load TestPage");
+			}
+
+			result = result && eventValidator.validate("playing_1", 60000);
 
 			sleep(2000);
 
@@ -71,7 +81,10 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			result = false;
+			if(e instanceof SkipException){
+				throw new SkipException("Test Skipped");
+			}else
+				result = false;
 		}
 		Assert.assertTrue(result, "Vertical Video tests failed");
 	}

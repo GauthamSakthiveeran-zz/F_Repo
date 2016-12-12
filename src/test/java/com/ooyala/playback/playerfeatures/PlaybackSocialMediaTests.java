@@ -2,6 +2,7 @@ package com.ooyala.playback.playerfeatures;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -33,6 +34,10 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest {
 
 		boolean result = true;
 
+		if (getBrowser().equalsIgnoreCase("safari")){
+			throw new SkipException("Skipping test on safari...");
+		}
+
 		try {
 			driver.get(url);
 
@@ -52,7 +57,10 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			result = false;
+			if(e instanceof SkipException){
+				throw new SkipException("Test Skipped");
+			}else
+				result = false;
 		}
 		Assert.assertTrue(result, "Basic playback tests failed");
 	}
