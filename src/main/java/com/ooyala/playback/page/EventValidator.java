@@ -88,6 +88,9 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 					Thread.sleep(1000);
 					time++;
 					logger.info("In loading spinner");
+					if (!flag){
+						return true;
+					}
 				} catch (Exception e) {
 					endTime = System.currentTimeMillis();
 					return true;
