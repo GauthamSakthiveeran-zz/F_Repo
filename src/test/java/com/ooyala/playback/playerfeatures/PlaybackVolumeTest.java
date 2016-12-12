@@ -42,7 +42,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			loadingSpinner();
+			result = result && eventValidator.loadingSpinner();
 
 			Boolean isAdplaying = isAdPlayingValidator.validate("CheckAdPlaying",60);
 			if (isAdplaying) {

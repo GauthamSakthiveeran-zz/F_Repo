@@ -53,7 +53,7 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
             result = result && playAction.startAction();
 
-            result = result && loadingSpinner();
+            result = result && eventValidator.loadingSpinner();
 
             if(!result){
                 logger.info("skipping test");

@@ -48,7 +48,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && loadingSpinner();
+			result = result && eventValidator.loadingSpinner();
 
 			if (!result){
 				logger.info("skipping test for "+getBrowser()+" browser as it takes too much tim to load the video at the beginning");
