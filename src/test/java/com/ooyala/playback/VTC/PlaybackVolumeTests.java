@@ -1,18 +1,12 @@
 package com.ooyala.playback.VTC;
 
-import static java.lang.Thread.sleep;
-
-import org.apache.log4j.Logger;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import static java.lang.Thread.sleep;
 
 /**
  * Created by jitendra on 24/11/16.
@@ -43,17 +37,16 @@ public class PlaybackVolumeTests extends PlaybackWebTest {
 
             result=result && play.waitForPage();
 
-			Thread.sleep(10000);
-
 			injectScript();
 
 			logger.info("video is playing");
 
-            result=result && play.validate("playing_1", 60000);
+            result=result && playAction.startAction();
 
+			Thread.sleep(2000);
 
 			Boolean isAdplaying = isAdPlayingValidator.validate(
-					"CheckAdPlaying", 60);
+					"CheckAdPlaying", 2000);
 			if (isAdplaying) {
 				volumeValidator.validate("VOLUME_MAX", 60000);
 				logger.info("validated ad volume at full range");
@@ -61,13 +54,15 @@ public class PlaybackVolumeTests extends PlaybackWebTest {
 				logger.info("Ad played");
 			}
 
-			sleep(4000);
+			result=result && eventValidator.validate("playing_1", 60000);
+
+			Thread.sleep(5000);
 
             result=result && volumeValidator.validate("VOLUME_MAX", 60000);
 
 			logger.info("validated video volume at full range");
 
-            sleep(3000);
+            Thread.sleep(2000);
 
             result=result && seekValidator.validate("seeked_1",60);
 

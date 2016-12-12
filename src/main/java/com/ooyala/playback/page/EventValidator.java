@@ -1,13 +1,12 @@
 package com.ooyala.playback.page;
 
-import java.util.Map;
-
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.relevantcodes.extentreports.LogStatus;
+import java.util.Map;
 
 /**
  * Created by soundarya on 11/14/16.
@@ -71,35 +70,35 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		return false;
 	}
 
-	public boolean loadingSpinner() {
-		int time = 0;
-		boolean flag;
+    public boolean loadingSpinner() {
+        int time = 0;
+        boolean flag;
 
-		while (true) {
+        while (true) {
 
-			// Giving hardcoded end time as 2 minutes i.e it will check loading
-			// spinner upto 2 min otherwise will break
-			if (time <= 120) {
-				try {
-					flag = isElementVisible("SPINNER");
+            // Giving hardcoded end time as 2 minutes i.e it will check loading
+            // spinner upto 2 min otherwise will break
+            if (time <= 120) {
+                try {
+                    flag = isElementVisible("SPINNER");
                     if(!flag){
                         flag = true;
                         break;
                     }
-					Thread.sleep(1000);
-					time++;
-					logger.info("In loading spinner");
-				} catch (Exception e) {
-					return true;
-				}
-			} else {
-				logger.info("Loading spinner is not vanishing i.e it occured more that 2 minutes");
-				flag = false;
-				break;
-			}
+                    Thread.sleep(1000);
+                    time++;
+                    logger.info("In loading spinner");
+                } catch (Exception e) {
+                    return true;
+                }
+            } else {
+                logger.info("Loading spinner is not vanishing i.e it occured more that 2 minutes");
+                flag = false;
+                break;
+            }
 
-		}
-		return flag;
+        }
+        return flag;
 
-	}
+    }
 }
