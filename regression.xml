@@ -1,0 +1,46 @@
+<suite name="Playback Web Regression Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    <test name="Playback Web Regression Group">
+        <groups>
+            <define name="regression">
+                <include name="streams" />
+                <include name="playerFeatures" />
+                <include name="syndicationRules" />
+                <include name="playerLifecycle" />
+                <include name="drm" />
+            </define>
+            <run>
+                <include name="regression" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/Alice.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.playerfeatures.DiscoveryUpNextTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackBitrateTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackPlayerControlsTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackReplayVideoTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackFullScreenTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackLocalizationTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlayerMetadataStatesTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryCustomizationTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackClosedCaptionTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackAspectRatioTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackVerticalVideoTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackVolumeTest" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackSocialMediaTests" />
+            <class name="com.ooyala.playback.syndicationrules.PlaybackOptEntitlementTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackAutoplayTests" />
+            <class name="com.ooyala.playback.playerlifecycle.PlaybackPlayerDestroyTests" />
+            <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
+            <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
+            <class name="com.ooyala.playback.streams.BasicPlaybackTests" />
+            <class name="com.ooyala.playback.streams.PlaybackLiveTests" />
+        </classes>
+    </test>
+</suite>
+
