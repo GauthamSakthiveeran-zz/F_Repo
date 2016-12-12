@@ -52,13 +52,13 @@ public class PlaybackOverrideEncodingPriorityTests extends PlaybackWebTest {
 
 			playAction.startAction();
 
-			loadingSpinner();
+			result = result && event.loadingSpinner();
 
 			result = result && event.validate("adsPlayed_1", 20000);
 
 			result = result && seek.validate("seeked_1", 20);
 
-			loadingSpinner();
+			result = result && event.loadingSpinner();
 
 			result = result && event.validate("videoPlayed_1", 20000);
 
@@ -74,7 +74,7 @@ public class PlaybackOverrideEncodingPriorityTests extends PlaybackWebTest {
 
 			playAction.startAction();
 
-			loadingSpinner();
+			result = result && event.loadingSpinner();
 
 			result = result && event.validate("adsPlayed_1", 20000);
 

@@ -197,28 +197,6 @@ public abstract class PlayBackPage extends WebPage {
 		return browserName;
 	}
 
-	public void loadingSpinner() {
-		int time = 0;
-		while (true) {
-			if (time <= 120) {
-				try {
-					boolean result = isElementVisible("SPINNER");
-					Thread.sleep(1000);
-					time++;
-					logger.info("In loading spinner");
-					if (!result) {
-						break;
-					}
-				} catch (Exception e) {
-					break;
-				}
-			} else {
-				logger.info("Loading spinner is not vanishing i.e it occured more that 2 minutes");
-				break;
-			}
-		}
-	}
-
 	public void setExtentTest(ExtentTest test) {
 		this.extentTest = test;
 	}

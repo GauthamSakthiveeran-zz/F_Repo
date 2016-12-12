@@ -59,9 +59,9 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-			playAction.startAction();
+			result = result && playAction.startAction();
 
-			loadingSpinner();
+			result = result && eventValidator.loadingSpinner();
 
 			result = result && eventValidator.validate("playing_2", 60000);
 
