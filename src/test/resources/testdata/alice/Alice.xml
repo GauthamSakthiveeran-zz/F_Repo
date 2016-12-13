@@ -85,7 +85,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
         <url>
@@ -96,7 +97,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
         <!-- Adding mp4 hds and dash format embed codes for FFMPEG,AZURE and ELEMENTAL
@@ -129,7 +131,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
@@ -140,7 +143,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
@@ -183,7 +187,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
@@ -214,7 +219,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
@@ -541,7 +547,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="NzMyN2E4MzA4Y2ZiMzYwNjhiYzgzYzQ4" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/FoeG863GnBL4IhhlFC1Q2jqbkH9m/N3b2lhZzq_5Er-I09uWrmpwNUZZ_mEeX?api_key=FoeG863GnBL4IhhlFC1Q2jqbkH9m.-E1Kw&expires=2890068691&account_id=dulari_qa&&&signature=sCtNsIeb7XYqrdOdp0avqAjuFKvXansR+BWhAnJp5+A"}]]></playerParameter>
         </url>
         <url>
@@ -577,7 +584,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
     </test>
@@ -755,7 +763,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
         </url>
         <url>
@@ -787,7 +796,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
         </url>
     </test>
@@ -826,7 +836,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
     </test>
