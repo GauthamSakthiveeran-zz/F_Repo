@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
     <test name="BasicPlaybackTests">
-        <url>
+      <url>
             <description name="VOD_HLS_BITMOVIN" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -98,7 +98,7 @@
             <additionalPlugins name="" />
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
             <browsersSupported name="firefox,chrome,internet explorer,safari" />
-            <browserSupportedVersion name="safari,9"/>
+            <browserSupportedVersion name="safari,10"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
         <!-- Adding mp4 hds and dash format embed codes for FFMPEG,AZURE and ELEMENTAL
@@ -231,6 +231,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+             <browsersSupported name="firefox,chrome,internet explorer,safari" />
+               <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
         </url>
         <url>
@@ -412,7 +414,9 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
         <url>
             <description name="Live_HLS_MAIN_Elemental" />
@@ -442,7 +446,7 @@
                 <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
                 <provider>elemental</provider>
             </live>
-        </url>
+        </url>-->
         <url>
             <description name="Live_HDS_MAIN_Elemental" />
             <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
