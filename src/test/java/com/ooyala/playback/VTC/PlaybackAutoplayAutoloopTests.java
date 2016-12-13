@@ -5,6 +5,7 @@ import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.AutoplayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -36,9 +37,19 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 			injectScript();
 
 			Thread.sleep(3000);
+			String autoplay="";
 
-			result = result && autoplayAction.startAction();
+			try {
+				autoplay = ((JavascriptExecutor) driver).executeScript(
+						"return pp.parameters.autoPlay").toString();
+				logger.info("Autoplay is set for this video");
+				Assert.assertEquals(autoplay, "true", "verified autoplay");
 
+			}catch(Exception e) {
+				logger.error("Autoplay not set for this video");
+			}
+
+			Assert.assertEquals(autoplay, "true", "verified autoplay");
 			result = result && eventValidator.validate("adsPlayed_1", 30000);
 
 			result = result && eventValidator.loadingSpinner();
@@ -50,10 +61,10 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("replay_1", 60000);
 
+			result = result && eventValidator.validate("willPlaySingleAd_2", 30000);
+
 			boolean isAdplaying = isAdPlayingValidator.validate(
 					"CheckAdPlaying", 60000);
-
-			Thread.sleep(2000);
 
 			Assert.assertEquals(isAdplaying, true,
 					"Verified that ad is played after auto replay");
