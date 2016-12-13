@@ -40,6 +40,7 @@ public class LiveChannel {
 				description);
 		if (channelId != null && !channelIds.contains(channelId)
 				&& provider != null) {
+			logger.info("Starting live channel " + channelId);
 			channelIds.add(channelId);
 			channelProviders.put(channelId, provider);
 
@@ -59,7 +60,6 @@ public class LiveChannel {
 			logger.info("Channel start status is " + flag);
 
 		} else {
-			logger.info("Either Channel id does not exist or it is already started, so not required to start it");
 			flag = true;
 		}
 		return flag;

@@ -36,20 +36,22 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && playAction.startAction();
-
+			
+			result = result && event.validate("PreRoll_willPlaySingleAd_1", 6000);
+			
 			if (event.isAdPluginPresent("pulse"))
 				result = result && event.validate("singleAdPlayed_2", 60000);
 			else
 				result = result && event.validate("singleAdPlayed_1", 60000);
 
-			result = result && event.validate("playing_1", 10000);
+			result = result && event.validate("playing_1", 5000);
 
 			result = result && ccValidator.validate("cclanguage", 60000);
 
 			result = result && seekAction.seekTillEnd().startAction();
 
-			result = result && event.validate("seeked_1", 10000);
-			result = result && event.validate("played_1", 10000);
+			result = result && event.validate("seeked_1", 5000);
+			result = result && event.validate("played_1", 60000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
