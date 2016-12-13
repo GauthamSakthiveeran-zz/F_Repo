@@ -74,6 +74,7 @@ public class UrlGenerator {
 		liveChannelDetails = new HashMap<String, String>();
 		Map<String, String> urlsGenerated = new HashMap<String, String>();
 		String sslEnabled = null;
+		boolean browserExisted = false;
 		for (Test data : testData.getTest()) {
 			if (data.getName().equals(testName)) {
 				List<Url> urls = data.getUrl();
@@ -86,6 +87,8 @@ public class UrlGenerator {
 							&& !url.getBrowsersSupported().getName()
 									.contains(browserName))
 						continue;
+					else
+						browserExisted = true;
 
 					// Not returnign the data if the testdata contians the
 					// driver browser version that is not matching
@@ -97,10 +100,11 @@ public class UrlGenerator {
 								.getName().split(",");
 						if (tokens.length != 2)
 							continue;
-						if (!browserName.contains(tokens[0]))
-							continue;
-						else if (!tokens[1].contains(browserVersion))
-							continue;
+						if (browserExisted && browserName.contains(tokens[0])) {
+							if (!tokens[1].contains(browserVersion))
+								continue;
+						}
+
 					}
 
 					// to run tests for specific ad plugins
