@@ -196,7 +196,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 		browser = System.getProperty("browser");
 		if (browser == null || browser.equals(""))
-			browser = "chrome";
+			browser = "firefox";
 		logger.info("browser is " + browser);
 
 		driver = getDriver(browser);
@@ -221,6 +221,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@AfterMethod(alwaysRun = true)
 	protected void afterMethod(ITestResult result) {
 
+		boolean driverNotNullFlag = false;
 		logger.info("****** Inside @AfterMethod*****");
 		logger.info(driver);
 
@@ -233,14 +234,15 @@ public abstract class PlaybackWebTest extends FacileTest {
 			pageFactory.destroyInstance();
 			pageFactory = PlayBackFactory.getInstance(driver);
 		} else {
-			takeScreenshot(extentTest.getTest().getName());
+			driverNotNullFlag = true;
+
 		}
 		if (result.getStatus() == ITestResult.FAILURE) {
-			extentTest.log(
-					LogStatus.INFO,
-					"Snapshot is "
-							+ extentTest.addScreenCapture("images/"
-									+ extentTest.getTest().getName()));
+			if (driverNotNullFlag) {
+				String fileName = takeScreenshot(extentTest.getTest().getName());
+				extentTest.log(LogStatus.INFO,
+						"Snapshot is " + extentTest.addScreenCapture(fileName));
+			}
 			extentTest.log(LogStatus.FAIL, result.getThrowable());
 			logger.error("**** Test " + extentTest.getTest().getName()
 					+ " failed ******");
