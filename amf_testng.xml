@@ -8,7 +8,7 @@
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		
-		<!-- <packages>
+		<packages>
 			<package name="com.ooyala.playback.amf" />
 			<package name="com.ooyala.playback.amf.midroll" />
 			<package name="com.ooyala.playback.amf.postroll" />
@@ -17,11 +17,8 @@
 			<package name="com.ooyala.playback.amf.midroll.vast" />
 			<package name="com.ooyala.playback.amf.ima" /> 
 			<package name="com.ooyala.playback.amf.vast" />
-		</packages> -->
+		</packages>
 		
-		<classes>
-			<class name="com.ooyala.playback.amf.postroll.PlaybackPostRollAdsTests"/>
-		</classes>
 		
 	</test>
 
