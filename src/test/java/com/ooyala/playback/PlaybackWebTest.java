@@ -223,6 +223,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 		logger.info("****** Inside @AfterMethod*****");
 		logger.info(driver);
+		
+		boolean screenshot = false;
 
 		if (driver != null
 				&& (driver.getSessionId() == null || driver.getSessionId()
@@ -233,9 +235,11 @@ public abstract class PlaybackWebTest extends FacileTest {
 			pageFactory.destroyInstance();
 			pageFactory = PlayBackFactory.getInstance(driver);
 		} else {
-			takeScreenshot(extentTest.getTest().getName());
+			screenshot =true;
 		}
 		if (result.getStatus() == ITestResult.FAILURE) {
+			if(screenshot)
+				takeScreenshot(extentTest.getTest().getName());
 			extentTest.log(
 					LogStatus.INFO,
 					"Snapshot is "
