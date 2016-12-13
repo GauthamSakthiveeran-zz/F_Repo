@@ -52,10 +52,13 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 
 			result = result && ccValidator.validate("cclanguage", 6000);
 
-			result = result && seekAction.seekTillEnd().startAction();
+			if (!event.isAdPluginPresent("pulse"))
+				result = result && seekAction.seekTillEnd().startAction();
+			else
+				result = result && seekAction.fromLast().setTime(30).startAction();
 
-			result = result && event.validate("seeked_1", 10000);
-			result = result && event.validate("played_1", 10000);
+			result = result && event.validate("seeked_1", 90000);
+			result = result && event.validate("played_1", 120000); // inc because of pulse in FF
 
 		} catch (Exception e) {
 			e.printStackTrace();
