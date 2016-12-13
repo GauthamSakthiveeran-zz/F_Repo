@@ -93,12 +93,13 @@ public class UrlGenerator {
 
 					if (url.getBrowserSupportedVersion() != null
 							&& url.getBrowsersSupported().getName() != null) {
-						String[] tokens = url.getBrowserSupportedVersion().getName()
-								.split(",");
+						String[] tokens = url.getBrowserSupportedVersion()
+								.getName().split(",");
 						if (tokens.length != 2)
 							continue;
-						if (!browserName.contains(tokens[0])
-								&& !tokens[1].contains(browserVersion))
+						if (!browserName.contains(tokens[0]))
+							continue;
+						else if (!tokens[1].contains(browserVersion))
 							continue;
 					}
 
