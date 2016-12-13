@@ -86,7 +86,7 @@
 									</xs:simpleContent>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="browserSupportedVersions"
+							<xs:element name="browserSupportedVersion"
 								minOccurs="0" maxOccurs="1">
 								<xs:complexType>
 									<xs:simpleContent>

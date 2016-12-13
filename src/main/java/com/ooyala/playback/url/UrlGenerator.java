@@ -91,9 +91,9 @@ public class UrlGenerator {
 					// driver browser version that is not matching
 					// to the supported browser version
 
-					if (url.getBrowsersSupportedVersions() != null
+					if (url.getBrowserSupportedVersion() != null
 							&& url.getBrowsersSupported().getName() != null) {
-						String[] tokens = url.getBrowsersSupported().getName()
+						String[] tokens = url.getBrowserSupportedVersion().getName()
 								.split(",");
 						if (tokens.length != 2)
 							continue;
