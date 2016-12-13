@@ -39,7 +39,7 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && event.validate("willPlaySingleAd_1", 150000);
+			result = result && event.validate("willPlaySingleAd_1", 10000);
 			
 			result = result && event.validate("singleAdPlayed_1", 150000);
 
@@ -55,10 +55,9 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 
 			result = result && event.validate("singleAdPlayed_3", 150000);
 
-			result = result && event.validate("playing_1", 190000);
 
-			result = result && seekValidator.validate("seeked_1", 190000);
-			result = result && event.validate("played_1", 190000);
+			result = result && seekValidator.validate("seeked_1", 6000);
+			result = result && event.validate("played_1", 6000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

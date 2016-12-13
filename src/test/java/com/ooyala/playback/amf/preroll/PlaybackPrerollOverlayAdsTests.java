@@ -47,11 +47,11 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("videoPlaying_1", 90000);
 
-			result = result && seekValidator.validate("seeked_1", 120000);
+			result = result && seekValidator.validate("seeked_1", 6000);
 
-			result = result && event.validate("videoPlaying_1", 90000);
+			result = result && event.validate("videoPlaying_1", 9000);
 
-			result = result && seekValidator.validate("seeked_1", 120000);
+			result = result && seekValidator.validate("seeked_1", 6000);
 
 			result = result && event.validate("played_1", 190000);
 

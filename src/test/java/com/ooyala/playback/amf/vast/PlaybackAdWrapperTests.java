@@ -43,8 +43,8 @@ public class PlaybackAdWrapperTests extends PlaybackWebTest {
 			result = result && fullScreenAction.startAction();
 
 			result = result && volumeValidator.validate("", 10000);
-			result = result && seekValidator.validate("seeked_1", 10000);
-			result = result && event.validate("played_1", 10000);
+			result = result && seekValidator.validate("seeked_1", 5000);
+			result = result && event.validate("played_1", 5000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
