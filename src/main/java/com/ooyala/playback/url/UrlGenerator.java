@@ -3,6 +3,7 @@ package com.ooyala.playback.url;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
@@ -67,7 +68,7 @@ public class UrlGenerator {
 	 *         name and url is returned
 	 */
 	public static Map<String, String> parseXmlDataProvider(String testName,
-			Testdata testData, String browserName) {
+			Testdata testData, String browserName, String browserVersion) {
 		logger.info("Getting test url and test name from property file");
 
 		liveChannelDetails = new HashMap<String, String>();
@@ -85,6 +86,22 @@ public class UrlGenerator {
 							&& !browserName.contains(url.getBrowsersSupported()
 									.getName()))
 						continue;
+
+					// Not returnign the data if the testdata contians the
+					// driver browser version that is not matching
+					// to the supported browser version
+
+					if (url.getBrowserSupportedVersion() != null
+							&& url.getBrowsersSupported().getName() != null) {
+						String[] tokens = url.getBrowserSupportedVersion()
+								.getName().split(",");
+						if (tokens.length != 2)
+							continue;
+						if (!browserName.contains(tokens[0]))
+							continue;
+						else if (!tokens[1].contains(browserVersion))
+							continue;
+					}
 
 					// to run tests for specific ad plugins
 					if (applyFilter()
