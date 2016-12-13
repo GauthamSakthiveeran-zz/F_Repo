@@ -101,7 +101,7 @@ public class UrlGenerator {
 						if (tokens.length != 2)
 							continue;
 						if (browserExisted && browserName.contains(tokens[0])) {
-							if (!tokens[1].contains(browserVersion))
+							if (browserVersion.contains(tokens[1]))
 								continue;
 						}
 
