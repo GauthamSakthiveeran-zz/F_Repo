@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlType(name = "", propOrder = {
     "value"
 })
-public class Plugins {
+public class BrowserSupportedVersion {
 
     @XmlValue
     protected String value;

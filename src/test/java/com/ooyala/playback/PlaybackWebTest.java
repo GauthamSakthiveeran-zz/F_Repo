@@ -196,7 +196,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 		browser = System.getProperty("browser");
 		if (browser == null || browser.equals(""))
-			browser = "chrome";
+			browser = "firefox";
 		logger.info("browser is " + browser);
 
 		driver = getDriver(browser);
@@ -221,11 +221,10 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@AfterMethod(alwaysRun = true)
 	protected void afterMethod(ITestResult result) {
 
+		boolean driverNotNullFlag = false;
 		logger.info("****** Inside @AfterMethod*****");
 		logger.info(driver);
 		
-		boolean screenshot = false;
-
 		if (driver != null
 				&& (driver.getSessionId() == null || driver.getSessionId()
 						.toString().isEmpty())) {
@@ -235,16 +234,18 @@ public abstract class PlaybackWebTest extends FacileTest {
 			pageFactory.destroyInstance();
 			pageFactory = PlayBackFactory.getInstance(driver);
 		} else {
-			screenshot =true;
+
+			driverNotNullFlag = true;
+
 		}
 		if (result.getStatus() == ITestResult.FAILURE) {
-			if(screenshot)
-				takeScreenshot(extentTest.getTest().getName());
-			extentTest.log(
-					LogStatus.INFO,
-					"Snapshot is "
-							+ extentTest.addScreenCapture("images/"
-									+ extentTest.getTest().getName()));
+
+			if (driverNotNullFlag) {
+				String fileName = takeScreenshot(extentTest.getTest().getName());
+				extentTest.log(LogStatus.INFO,
+						"Snapshot is " + extentTest.addScreenCapture(fileName));
+			}
+			
 			extentTest.log(LogStatus.FAIL, result.getThrowable());
 			logger.error("**** Test " + extentTest.getTest().getName()
 					+ " failed ******");
@@ -358,8 +359,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 			object = js.executeScript("subscribeToEvents();");
 	}
 
-	
-
 	public String getPlatform() {
 		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
 		String platformName = cap.getPlatform().toString();
@@ -370,6 +369,12 @@ public abstract class PlaybackWebTest extends FacileTest {
 		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
 		String browser = cap.getBrowserName().toString();
 		return browser;
+	}
+
+	public String getBrowserVersion() {
+		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+		String version = cap.getVersion().toString();
+		return version;
 	}
 
 	public static String readPropertyOrEnv(String key, String defaultValue) {
@@ -403,8 +408,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@DataProvider(name = "testUrls")
 	public Object[][] getTestData() {
 
+		String version = getBrowserVersion();
 		Map<String, String> urls = UrlGenerator.parseXmlDataProvider(getClass()
-				.getSimpleName(), testData, browser);
+				.getSimpleName(), testData, browser, version);
 		String testName = getClass().getSimpleName();
 		Object[][] output = new Object[urls.size()][2];
 

@@ -3,6 +3,7 @@ package com.ooyala.playback.url;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
@@ -67,12 +68,13 @@ public class UrlGenerator {
 	 *         name and url is returned
 	 */
 	public static Map<String, String> parseXmlDataProvider(String testName,
-			Testdata testData, String browserName) {
+			Testdata testData, String browserName, String browserVersion) {
 		logger.info("Getting test url and test name from property file");
 
 		liveChannelDetails = new HashMap<String, String>();
 		Map<String, String> urlsGenerated = new HashMap<String, String>();
 		String sslEnabled = null;
+		boolean browserExisted = false;
 		for (Test data : testData.getTest()) {
 			if (data.getName().equals(testName)) {
 				List<Url> urls = data.getUrl();
@@ -82,9 +84,28 @@ public class UrlGenerator {
 					// browser.
 					if (url.getBrowsersSupported() != null
 							&& url.getBrowsersSupported().getName() != null
-							&& !browserName.contains(url.getBrowsersSupported()
-									.getName()))
+							&& !url.getBrowsersSupported().getName()
+									.contains(browserName))
 						continue;
+					else
+						browserExisted = true;
+
+					// Not returnign the data if the testdata contians the
+					// driver browser version that is not matching
+					// to the supported browser version
+
+					if (url.getBrowserSupportedVersion() != null
+							&& url.getBrowsersSupported().getName() != null) {
+						String[] tokens = url.getBrowserSupportedVersion()
+								.getName().split(",");
+						if (tokens.length != 2)
+							continue;
+						if (browserExisted && browserName.contains(tokens[0])) {
+							if (browserVersion.contains(tokens[1]))
+								continue;
+						}
+
+					}
 
 					// to run tests for specific ad plugins
 					if (applyFilter()
