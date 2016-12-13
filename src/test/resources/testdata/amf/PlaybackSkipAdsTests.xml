@@ -32,7 +32,7 @@
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="9c7271095c6b49fcbe09025af1d66f53"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2,"autoplay":true}]]></playerParameter>
+	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2,"autoplay":false}]]></playerParameter>
     	</url>
     	
     	<url>
