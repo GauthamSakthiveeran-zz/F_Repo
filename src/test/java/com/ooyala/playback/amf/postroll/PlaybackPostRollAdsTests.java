@@ -38,7 +38,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 			if (event.isAdPluginPresent("vast") && event.isVideoPluginPresent("bit_wrapper"))
 				result = result && seekValidator.validate("seeked_1", 90000);
 			else{
-				result = result && seekAction.fromLast().setTime(15).startAction();
+				result = result && seekAction.fromLast().setTime(30).startAction();
 				result = result && event.validate("seeked_1", 90000);
 			}
 			
