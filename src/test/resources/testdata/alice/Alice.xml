@@ -810,8 +810,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="ZWU3OGUxMDJjMmQ5ZTViNGE1YjdlYTdj" />
-            <playerParameter><![CDATA[]]>
-            </playerParameter>
+            <browsersSupported name="firefox,chrome,internet explorer" />
+            <playerParameter><![CDATA[]]> </playerParameter>
         </url>
     </test>
     <test name="PlaybackOptEntitlementTests">

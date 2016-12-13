@@ -98,7 +98,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		return "pp.getDuration()/" + factor;
 	}
 
-	private boolean seek(int time, boolean fromLast) throws Exception {
+	public boolean seek(int time, boolean fromLast) throws Exception {
 		String seekduration;
 		if (fromLast) {
 			seekduration = getDuration();
@@ -181,8 +181,4 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 
 	}
 
-	public void seekVideo(){
-			((JavascriptExecutor) driver)
-					.executeScript("pp.seek(pp.getDuration()-10);");
-	}
 }

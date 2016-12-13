@@ -17,51 +17,44 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackSocialMediaTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger
-			.getLogger(PlaybackSocialMediaTests.class);
-	private EventValidator eventValidator;
-	private PlayValidator play;
-	private PauseValidator pause;
-	private SocialScreenValidator social;
+    private static Logger logger = Logger
+            .getLogger(PlaybackSocialMediaTests.class);
+    private EventValidator eventValidator;
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SocialScreenValidator social;
 
-	public PlaybackSocialMediaTests() throws OoyalaException {
-		super();
-	}
+    public PlaybackSocialMediaTests() throws OoyalaException {
+        super();
+    }
 
-	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testScialMediaSharing(String testName, String url)
-			throws OoyalaException {
+    @Test(groups = "playerFeatures", dataProvider = "testUrls")
+    public void testScialMediaSharing(String testName, String url)
+            throws OoyalaException {
 
-		boolean result = true;
+        boolean result = true;
+        try {
+            driver.get(url);
 
-		if (getBrowser().equalsIgnoreCase("safari")){
-			throw new SkipException("Skipping test on safari...");
-		}
+            result = result && play.waitForPage();
 
-		try {
-			driver.get(url);
+            Thread.sleep(10000);
 
-			result = result && play.waitForPage();
+            injectScript();
 
-			Thread.sleep(10000);
+            result = result && play.validate("playing_1", 60000);
 
-			injectScript();
+            Thread.sleep(2000);
 
-			result = result && play.validate("playing_1", 60000);
+            result = result && social.validate("SHARE_BTN", 60000);
 
-			Thread.sleep(2000);
+            logger.info("Verified Social Media Sharing functionality for Facebook,Twitter and ");
 
-			result = result && social.validate("SHARE_BTN", 60000);
+        } catch (Exception e) {
+            e.printStackTrace();
 
-			logger.info("Verified Social Media Sharing functionality for Facebook,Twitter and ");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			if(e instanceof SkipException){
-				throw new SkipException("Test Skipped");
-			}else
-				result = false;
-		}
-		Assert.assertTrue(result, "Basic playback tests failed");
-	}
+            result = false;
+        }
+        Assert.assertTrue(result, "Basic playback tests failed");
+    }
 }

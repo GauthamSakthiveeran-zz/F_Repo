@@ -20,57 +20,57 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackAutoplayTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger
-			.getLogger(PlaybackAutoplayTests.class);
-	private EventValidator eventValidator;
-	private PlayValidator play;
-	private SeekValidator seek;
-	private AutoplayAction autoplayAction;
-	private SeekAction seekAction;
+    private static Logger logger = Logger
+            .getLogger(PlaybackAutoplayTests.class);
+    private EventValidator eventValidator;
+    private PlayValidator play;
+    private SeekValidator seek;
+    private AutoplayAction autoplayAction;
+    private SeekAction seekAction;
 
-	public PlaybackAutoplayTests() throws OoyalaException {
-		super();
-	}
+    public PlaybackAutoplayTests() throws OoyalaException {
+        super();
+    }
 
-	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testAutoPlay(String testName, String url)
-			throws OoyalaException {
-		boolean result = true;
+    @Test(groups = "playerFeatures", dataProvider = "testUrls")
+    public void testAutoPlay(String testName, String url)
+            throws OoyalaException {
+        boolean result = true;
 
-		if (getPlatform().equalsIgnoreCase("Android")) {
-			throw new SkipException("Test PlaybackAutoplayTests Is Skipped");
-		} else {
-			try {
-				driver.get(url);
+        if (getPlatform().equalsIgnoreCase("Android")) {
+            throw new SkipException("Test PlaybackAutoplayTests Is Skipped");
+        } else {
+            try {
+                driver.get(url);
 
-				injectScript();
+                injectScript();
 
-				Thread.sleep(5000);
+                Thread.sleep(5000);
 
-				autoplayAction.startAction();
+                autoplayAction.startAction();
 
-				try {
-					eventValidator.validate("singleAdPlayed_1", 5000);
-				} catch (Exception e) {
-					logger.info("No Preroll ad present in this autoplay video");
-				}
-				result = result && eventValidator.validate("playing_1", 60000);
+                try {
+                    eventValidator.validate("singleAdPlayed_1", 5000);
+                } catch (Exception e) {
+                    logger.info("No Preroll ad present in this autoplay video");
+                }
+                result = result && eventValidator.validate("playing_1", 60000);
 
-				sleep(500);
+                sleep(500);
 
-				seekAction.seekVideo();
+                result = result && seekAction.seek(10,true);
 
-				result = result && eventValidator.validate("seeked_1",20000);
+                result = result && eventValidator.validate("seeked_1",20000);
 
-				result = result && eventValidator.validate("played_1", 60000);
+                result = result && eventValidator.validate("played_1", 60000);
 
-				logger.info("Verified that video is played");
+                logger.info("Verified that video is played");
 
-			} catch (Exception e) {
-				e.printStackTrace();
-				result = false;
-			}
-			Assert.assertTrue(result, "Playback Autoplay tests failed");
-		}
-	}
+            } catch (Exception e) {
+                e.printStackTrace();
+                result = false;
+            }
+            Assert.assertTrue(result, "Playback Autoplay tests failed");
+        }
+    }
 }

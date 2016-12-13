@@ -15,72 +15,64 @@ import static java.lang.Thread.sleep;
  */
 public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger
-			.getLogger(PlaybackVerticalVideoTests.class);
-	private PlayValidator play;
-	private PauseValidator pause;
-	private SeekValidator seek;
-	private PlayAction playAction;
-	private EventValidator eventValidator;
-	private AspectRatioValidator aspectRatioValidator;
+    private static Logger logger = Logger
+            .getLogger(PlaybackVerticalVideoTests.class);
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private PlayAction playAction;
+    private EventValidator eventValidator;
+    private AspectRatioValidator aspectRatioValidator;
 
-	public PlaybackVerticalVideoTests() throws OoyalaException {
-		super();
-	}
+    public PlaybackVerticalVideoTests() throws OoyalaException {
+        super();
+    }
 
-	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testVerticalVideo(String testName, String url)
-			throws OoyalaException {
+    @Test(groups = "playerFeatures", dataProvider = "testUrls")
+    public void testVerticalVideo(String testName, String url)
+            throws OoyalaException {
 
-		boolean result = true;
-		try {
-			driver.get(url);
+        boolean result = true;
+        try {
+            driver.get(url);
 
-			result = result && play.waitForPage();
+            result = result && play.waitForPage();
 
-			injectScript();
+            injectScript();
 
-			result = result && playAction.startAction();
+            result = result && playAction.startAction();
 
-			result = result && eventValidator.loadingSpinner();
+            result = result && eventValidator.loadingSpinner();
 
-			if(!result){
-				logger.info("skipping test");
-				throw new SkipException("Failed to load TestPage");
-			}
+            result = result && eventValidator.validate("playing_1", 60000);
 
-			result = result && eventValidator.validate("playing_1", 60000);
+            sleep(2000);
 
-			sleep(2000);
+            result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60000);
 
-			result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60000);
+            result = result && pause.validate("paused_1", 60000);
 
-			result = result && pause.validate("paused_1", 60000);
+            result = result && playAction.startAction();
 
-			result = result && playAction.startAction();
+            result = result && seek.validate("seeked_1", 60000);
 
-			result = result && seek.validate("seeked_1", 60000);
+            logger.info("video seeked");
 
-			logger.info("video seeked");
+            result = result
+                    && aspectRatioValidator.setVerticalVideo().validate(
+                    "assetDimension_1", 60000);
 
-			result = result
-					&& aspectRatioValidator.setVerticalVideo().validate(
-							"assetDimension_1", 60000);
+            logger.info("validated vertical video dimention");
 
-			logger.info("validated vertical video dimention");
+            result = result && eventValidator.validate("videoPlayed_1", 60000);
 
-			result = result && eventValidator.validate("videoPlayed_1", 60000);
+            logger.info("video played");
 
-			logger.info("video played");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			if(e instanceof SkipException){
-				throw new SkipException("Test Skipped");
-			}else
-				result = false;
-		}
-		Assert.assertTrue(result, "Vertical Video tests failed");
-	}
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = false;
+        }
+        Assert.assertTrue(result, "Vertical Video tests failed");
+    }
 
 }
