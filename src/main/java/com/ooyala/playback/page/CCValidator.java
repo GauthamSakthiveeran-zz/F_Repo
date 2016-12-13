@@ -105,8 +105,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			logger.info("hovering mouse over the player");
 			Thread.sleep(2000);
 			moveElement(getWebElement("HIDDEN_CONTROL_BAR"));
-		} else {
-			if (isElementPresent("CONTROL_BAR"))
+		} else if (isElementPresent("CONTROL_BAR")) {
 				moveElement(getWebElement("CONTROL_BAR"));
 		}
 	}

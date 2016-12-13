@@ -8,7 +8,7 @@
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		
-		<packages>
+		<!-- <packages>
 			<package name="com.ooyala.playback.amf" />
 			<package name="com.ooyala.playback.amf.midroll" />
 			<package name="com.ooyala.playback.amf.postroll" />
@@ -17,8 +17,19 @@
 			<package name="com.ooyala.playback.amf.midroll.vast" />
 			<package name="com.ooyala.playback.amf.ima" /> 
 			<package name="com.ooyala.playback.amf.vast" />
-		</packages>
+		</packages> -->
 		
+		<classes>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackCCenableMidRollAdsTests"/>
+			<class name="com.ooyala.playback.amf.PlaybackClickthroughTests"/>
+			<class name="com.ooyala.playback.amf.PlaybackIMAPreVastMidAdsTests"/>
+			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsPoddedTests"/>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackPostRollAdsTests"/>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackMidRollAdsTests"/>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackCCenabledPreRollAdsTests"/>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackPostrollDiscoveryTests"/>
+			<class name="com.ooyala.playback.amf.PlaybackSkipAdsTests"/>
+		</classes>
 		
 	</test>
 
