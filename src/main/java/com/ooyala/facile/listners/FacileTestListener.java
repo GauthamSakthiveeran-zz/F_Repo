@@ -8,12 +8,15 @@ import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.testng.IAnnotationTransformer;
 import org.testng.IRetryAnalyzer;
+import org.testng.ITestContext;
+import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
@@ -332,4 +335,28 @@ public class FacileTestListener extends TestListenerAdapter implements
 			annotation.setRetryAnalyzer(FacileTestListener.class);
 		}
 	}
+
+	@Override
+	public void onFinish(ITestContext context) {
+		Iterator<ITestResult> failedTestCases = context.getFailedTests()
+				.getAllResults().iterator();
+		while (failedTestCases.hasNext()) {
+			logger.info("failedTestCases");
+			ITestResult failedTestCase = failedTestCases.next();
+			ITestNGMethod method = failedTestCase.getMethod();
+			if (context.getFailedTests().getResults(method).size() > 1) {
+				logger.info("failed test case remove as dup:"
+						+ failedTestCase.getTestClass().toString());
+				failedTestCases.remove();
+			} else {
+
+				if (context.getPassedTests().getResults(method).size() > 0) {
+					logger.info("failed test case remove as pass retry:"
+							+ failedTestCase.getTestClass().toString());
+					failedTestCases.remove();
+				}
+			}
+		}
+	}
+
 }
