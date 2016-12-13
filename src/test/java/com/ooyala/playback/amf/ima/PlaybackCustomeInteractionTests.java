@@ -32,11 +32,6 @@ public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 
 		boolean result = true;
 		
-		if(getBrowser().equals("safari")){
-			extentTest.log(LogStatus.SKIP, "Test skipped for safari!");
-			return;
-		}
-
 		try {
 
 			driver.get(url);

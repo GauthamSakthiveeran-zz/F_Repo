@@ -42,7 +42,7 @@ public class PlaybackPoddedwithOverlayStandaloneTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && event.validate("willPlaySingleAd_1", 60000);
+			result = result && event.validate("willPlaySingleAd_1", 10000);
 
 			result = result && event.validate("singleAdPlayed_1", 150000);
 
@@ -50,14 +50,13 @@ public class PlaybackPoddedwithOverlayStandaloneTests extends PlaybackWebTest {
 
 			result = result && event.validate("singleAdPlayed_2", 160000);
 
-			result = result && event.validate("playing_1", 160000);
+			result = result && event.validate("playing_1", 6000);
 
-			result = result
-					&& overlayValidator.validate("nonlinearAdPlayed_1", 90000);
+			result = result && overlayValidator.validate("nonlinearAdPlayed_1", 90000);
 
-			result = result && seekValidator.validate("seeked_1", 14000);
+			result = result && seekValidator.validate("seeked_1", 5000);
 
-			result = result && event.validate("played_1", 20000);
+			result = result && event.validate("played_1", 5000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
