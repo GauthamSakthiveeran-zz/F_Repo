@@ -83,8 +83,8 @@ public class UrlGenerator {
 					// browser.
 					if (url.getBrowsersSupported() != null
 							&& url.getBrowsersSupported().getName() != null
-							&& !browserName.contains(url.getBrowsersSupported()
-									.getName()))
+							&& !url.getBrowsersSupported().getName()
+									.contains(browserName))
 						continue;
 
 					// Not returnign the data if the testdata contians the
