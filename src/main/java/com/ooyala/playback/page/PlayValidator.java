@@ -25,7 +25,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		boolean errorScreen = false;
 
 		try {
-			if (!waitOnElement("PLAY_BUTTON", 60000)) {
+			if (!waitOnElement("PLAY_BUTTON", 90000)) {
 				errorScreen = isElementPresent("ERROR_SCREEN");
 				if (errorScreen && getWebElement("ERROR_DESCRIPTION").getText().equalsIgnoreCase("This video isn't encoded for your device"))
 				{
