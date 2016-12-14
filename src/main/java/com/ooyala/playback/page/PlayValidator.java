@@ -34,6 +34,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 				return false;
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			driver.navigate().refresh();
 			if (!waitOnElement("INNER_WRAPPER", 60000))
 				return false;

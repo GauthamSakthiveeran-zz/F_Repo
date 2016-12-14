@@ -1,10 +1,36 @@
 <elements area="multipleplayer">
-    <element key="PLAYER1_START_SCREEN" findBy="xPath"
-             xPath=".//*[@id='player1']//div[@id='oo-responsive']//span[normalize-space(@class)='oo-icon oo-icon-play-slick']"/>
-    <element key="PLAYER1_PAUSE" findBy="xPath"
-             xPath=".//*[@id='player1']//div[@id='oo-responsive']//span[normalize-space(@class)='oo-icon oo-icon-pause-slick']"/>
-    <element key="PLAYER2_START_SCREEN" findBy="xPath"
-             xPath=".//*[@id='player2']//div[@id='oo-responsive']//span[normalize-space(@class)='oo-icon oo-icon-play-slick']"/>
-    <element key="PLAYER2_PAUSE" findBy="xPath"
-             xPath=".//*[@id='player2']//div[@id='oo-responsive']//span[normalize-space(@class)='oo-icon oo-icon-pause-slick']"/>
+	<element key="PLAYER1_START_SCREEN" findBy="xPath"
+		xPath=".//*[@id='player1']//div[@id='oo-responsive']//span[normalize-space(@class)='oo-icon oo-icon-play-slick']" />
+	<element key="PLAYER1_PAUSE" findBy="xPath"
+		xPath=".//*[@id='player1']//div[@id='oo-responsive']//span[normalize-space(@class)='oo-icon oo-icon-pause-slick']" />
+	<element key="PLAYER2_START_SCREEN" findBy="xPath"
+		xPath=".//*[@id='player2']//div[@id='oo-responsive']//span[normalize-space(@class)='oo-icon oo-icon-play-slick']" />
+	<element key="PLAYER2_PAUSE" findBy="xPath"
+		xPath=".//*[@id='player2']//div[@id='oo-responsive']//span[normalize-space(@class)='oo-icon oo-icon-pause-slick']" />
+
+	<element key="PLAYER1_ONVOLUME" findBy="xPath"
+		xPath="./*//*[@id='ooplayer']//span[@class='oo-icon oo-icon-volume-on-ooyala-default ']" />
+		
+	<element key="PLAYER1_MUTEVOLUME" findBy="xPath"
+		xPath="./*//*[@id='ooplayer']//span[@class='oo-icon oo-icon-volume-mute-ooyala-default ']" />	
+		
+	<element key="PLAYER2_ONVOLUME" findBy="xPath"
+		xPath="./*//*[@id='ooplayer2']//span[@class='oo-icon oo-icon-volume-on-ooyala-default ']" />
+		
+	<element key="PLAYER2_MUTEVOLUME" findBy="xPath"
+		xPath="./*//*[@id='ooplayer2']//span[@class='oo-icon oo-icon-volume-mute-ooyala-default ']" />	
+		
+	<element key="PLAYER1_FULLSCREEN" findBy="xPath"
+		xPath="./*//*[@id='ooplayer']//span[@class='oo-icon oo-icon-system-fullscreen ']" />		
+	
+	<element key="PLAYER1_NORMALSCREEN" findBy="xPath"
+		xPath="./*//*[@id='ooplayer']//span[@class='oo-icon oo-icon-system-minimizescreen ']" />	
+		
+	<element key="PLAYER2_FULLSCREEN" findBy="xPath"
+		xPath="./*//*[@id='ooplayer2']//span[@class='oo-icon oo-icon-system-fullscreen ']" />		
+	
+	<element key="PLAYER2_NORMALSCREEN" findBy="xPath"
+		xPath="./*//*[@id='ooplayer2']//span[@class='oo-icon oo-icon-system-minimizescreen ']" />				
+
+
 </elements>

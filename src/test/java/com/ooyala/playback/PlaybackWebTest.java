@@ -78,10 +78,15 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
-		logger.info("*** Test " + testData[0].toString() + " started *********");
-		extentTest = ExtentManager.startTest(testData[0].toString());
-		logger.info("*** URL " + testData[1].toString() + " *********");
-		extentTest.log(LogStatus.INFO, "URL : " + testData[1].toString());
+		if(testData!=null && testData.length>0){
+			logger.info("*** Test " + testData[0].toString() + " started *********");
+			extentTest = ExtentManager.startTest(testData[0].toString());
+			logger.info("*** URL " + testData[1].toString() + " *********");
+			extentTest.log(LogStatus.INFO, "URL : " + testData[1].toString());
+		} else{
+			logger.info("*** Test " + getClass().getSimpleName() + " started *********");
+		}
+		
 		try {
 			Field[] fs = this.getClass().getDeclaredFields();
 			fs[0].setAccessible(true);
@@ -100,7 +105,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 					}
 				}
 			}
-			liveChannel.startChannel(testData[0].toString());
+			if(testData!=null && testData.length>0)
+				liveChannel.startChannel(testData[0].toString());
 
 		} catch (Exception e) {
 			e.printStackTrace();
