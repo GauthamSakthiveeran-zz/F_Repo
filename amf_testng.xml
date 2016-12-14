@@ -20,7 +20,7 @@
 		</packages> -->
 		
 		<classes>
-			<class name="com.ooyala.playback.amf.midroll.PlaybackMidRollAdsTests"/>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackCCenableMidRollAdsTests"/>
 		</classes>
 		
 	</test>

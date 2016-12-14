@@ -80,7 +80,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public void handleTestMethodName(Method method, Object[] testData) {
 		logger.info("*** Test " + testData[0].toString() + " started *********");
 		extentTest = ExtentManager.startTest(testData[0].toString());
-
+		logger.info("*** URL " + testData[1].toString() + " *********");
+		extentTest.log(LogStatus.INFO, "URL : " + testData[1].toString());
 		try {
 			Field[] fs = this.getClass().getDeclaredFields();
 			fs[0].setAccessible(true);
