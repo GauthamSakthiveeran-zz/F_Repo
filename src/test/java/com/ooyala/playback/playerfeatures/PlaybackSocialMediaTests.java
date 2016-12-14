@@ -46,7 +46,7 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest {
 
             Thread.sleep(2000);
 
-            result = result && social.validate("SHARE_BTN", 60000);
+            result = result && social.validate("", 60000);
 
             logger.info("Verified Social Media Sharing functionality for Facebook,Twitter and ");
 
