@@ -40,13 +40,6 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 
 		boolean result = true;
 
-		if ((testName.split(":")[1].toLowerCase())
-				.contains("HLS".toLowerCase())
-				&& !(getBrowser().equalsIgnoreCase("safari"))) {
-			throw new SkipException(
-					"HLS tests run only on Safari browser - Test Skipped");
-		}
-
 		try {
 			driver.get(url);
 
@@ -72,8 +65,8 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			result = false;
+            e.printStackTrace();
+                result = false;
 		}
 		Assert.assertTrue(result, "Playback Live tests failed");
 
