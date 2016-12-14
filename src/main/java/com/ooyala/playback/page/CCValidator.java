@@ -112,11 +112,9 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 
-		boolean flag = checkClosedCaptionButton()
-				&& verifyCloseClosedCaptionPanel()
-				&& checkClosedCaptionLanguages() && closedCaptionMicroPanel()
-				&& validateClosedCaptionPanel() && validateSwitchContainer()
-				&& verifyCloseClosedCaptionPanel();
+		boolean flag = checkClosedCaptionButton() && verifyCloseClosedCaptionPanel() && closedCaptionMicroPanel()
+				&& validateClosedCaptionPanel() && validateSwitchContainer() && verifyCloseClosedCaptionPanel()
+				&& checkClosedCaptionLanguages();
 
 		if (flag) {
 			if (clickOnIndependentElement("PAUSE_BUTTON")) {
@@ -135,7 +133,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 			if (!clickOnIndependentElement("CC_BTN"))
 				return false;
-			Thread.sleep(1000);
 
 			if (!waitOnElement("CC_POPHOVER_HORIZONTAL", 6000))
 				return false;

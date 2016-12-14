@@ -33,6 +33,8 @@
 	        <additionalPlugins name="IMA"/>
 	        <pbid name="d99dafe4535a4304948a7669e309ff9a"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+	        <browsersSupported name="chrome,firefox,internet explorer,safari" />
+	        <browserSupportedVersion name="safari,9"/>
     	</url>
     	
     </test>

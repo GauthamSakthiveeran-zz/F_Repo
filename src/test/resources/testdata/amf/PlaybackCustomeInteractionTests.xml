@@ -11,7 +11,8 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="615dc8e909e941c280e12155df838355"/>
 	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://vp-validation.videoplaza.tv/proxy/distributor/v2?rt=vast_2.0&t=vpaid2-sizmek&s=validation&tt=p"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
-    		<browsersSupported name="chrome,firefox,internet explorer" />
+    		<browsersSupported name="chrome,firefox,internet explorer,safari" />
+	        <browserSupportedVersion name="safari,9"/>
     	</url>
     </test>
     
