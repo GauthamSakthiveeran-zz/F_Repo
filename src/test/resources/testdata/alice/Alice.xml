@@ -11,7 +11,8 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
-        <url>
+        <!-- commented check the ticket number for more info PBW-6281 -->
+       <!-- <url>
             <description name="VOD_CLEAR_DASH_BITMOVIN" />
             <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -21,8 +22,8 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
+        </url>-->
+       <!-- <url>
             <description name="VOD_eHLS_BITMOVIN" />
             <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -100,10 +101,10 @@
             <browsersSupported name="firefox,chrome,internet explorer,safari" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-        </url>
+        </url>-->
         <!-- Adding mp4 hds and dash format embed codes for FFMPEG,AZURE and ELEMENTAL
             transcodings -->
-        <url>
+       <!-- <url>
             <description name="VOD_MP4_MAIN_FFMPEG" />
             <embed_code name="F3eGQyODE6cWV2DIsAPMq-XmpCuyWXSc" />
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
@@ -210,7 +211,7 @@
             <additionalPlugins name="" />
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
+        </url>-->
         <url>
             <description name="VOD_DASH_BITMOVIN_AZURE" />
             <embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq" />
@@ -365,7 +366,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
 
-      <!--  <url>
+        <url>
             <description name="Akamai_HLS_Live_Bitmovin" />
             <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -384,7 +385,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/hkN2YyOnWYuzHmiwc6gaXi9wPfwy/t4ODRzNTE6C3BGu13bE6y_fxxzEM9Fod?api_key=hkN2YyOnWYuzHmiwc6gaXi9wPfwy.7-2Sh&expires=1476304999752&signature=pt3uY/V1HX0IibQZBVFCwT3vxjgZ8hhBGgKVh1+ogJE"}]]></playerParameter>
-        </url>-->
+        </url>
         <url>
             <description name="PlaybackControls_LiveDVR" />
             <embed_code name="BsZjdieDrJdl9YjLBm1LVyl3FF0KdWtd" />
@@ -395,7 +396,7 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
-       <!-- <url>
+        <url>
             <description name="Playback_HLS_Live_Main" />
             <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -474,7 +475,7 @@
                 <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
                 <provider>elemental</provider>
             </live>
-        </url>-->
+        </url>
     </test>
 
     <test name="PlaybackLocalizationTests">
@@ -543,7 +544,7 @@
     </test>
 
     <test name="PlaybackBitrateTests">
-       <!-- <url>
+        <url>
             <description name="BitrateWithOnlyAuto" />
             <embed_code name="E2aHd3MTE6Yr3iJRbXWUDe_0g2H0flmU" />
             <pcode name="5zb2wxOlZcNCe_HVT3a6cawW298X" />
@@ -554,7 +555,7 @@
             <browsersSupported name="firefox,chrome,internet explorer,safari" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/FoeG863GnBL4IhhlFC1Q2jqbkH9m/N3b2lhZzq_5Er-I09uWrmpwNUZZ_mEeX?api_key=FoeG863GnBL4IhhlFC1Q2jqbkH9m.-E1Kw&expires=2890068691&account_id=dulari_qa&&&signature=sCtNsIeb7XYqrdOdp0avqAjuFKvXansR+BWhAnJp5+A"}]]></playerParameter>
-        </url>-->
+        </url>
         <url>
             <description name="MultipleBitrateOptions" />
             <embed_code name="QyajZsMjE6wT6XAfV0UAIs8WR4MjQ4Vn" />
@@ -629,7 +630,8 @@
             <pbid name="615dc8e909e941c280e12155df838355" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
-        <url>
+        <!-- commented check the ticket number for more info PBW-6281 -->
+       <!-- <url>
             <description name="VOD_CLEAR_DASH_BITMOVIN" />
             <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -638,7 +640,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
+        </url>-->
         <url>
             <description name="VOD_HLS_BITMOVIN" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
