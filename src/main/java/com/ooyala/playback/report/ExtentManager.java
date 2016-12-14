@@ -18,6 +18,9 @@ public class ExtentManager {
 
 			extentReports.addSystemInfo("Host Name", "Jenkins-Dallas-Slave")
 					.addSystemInfo("Environment", "QA");
+			String browser = System.getProperty("browser");
+			extentReports.addSystemInfo("browser", browser);
+
 		}
 	}
 
@@ -40,7 +43,7 @@ public class ExtentManager {
 		if (test == null) {
 			test = extentReports.startTest(testName);
 			extentTestMap.put(testName, test);
-		} 
+		}
 
 		return test;
 	}
@@ -48,5 +51,4 @@ public class ExtentManager {
 	public static synchronized void flush() {
 		extentReports.flush();
 	}
-
 }
