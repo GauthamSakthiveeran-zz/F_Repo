@@ -85,6 +85,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			extentTest.log(LogStatus.INFO, "URL : " + testData[1].toString());
 		} else{
 			logger.info("*** Test " + getClass().getSimpleName() + " started *********");
+			extentTest = ExtentManager.startTest(getClass().getSimpleName());
 		}
 		
 		try {
