@@ -15,7 +15,6 @@ import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -46,7 +45,6 @@ import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.url.Testdata;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -58,7 +56,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected ChromeDriverService service;
 	// protected PropertyReader propertyReader;
 	protected PlayBackFactory pageFactory;
-	protected ExtentReports extentReport;
+	// protected ExtentReports extentReport;
 	protected ExtentTest extentTest;
 	protected Testdata testData;
 	protected String[] jsUrl;
@@ -73,7 +71,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			throw new OoyalaException("could not read properties file");
 		}
 
-		extentReport = ExtentManager.getReporter();
+		// extentReport = ExtentManager.getReporter();
 		neoRequest = NeoRequest.getInstance();
 		liveChannel = new LiveChannel();
 	}
@@ -81,7 +79,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
 		logger.info("*** Test " + testData[0].toString() + " started *********");
-		extentTest = extentReport.startTest(testData[0].toString());
+		extentTest = ExtentManager.startTest(testData[0].toString());
 
 		try {
 			Field[] fs = this.getClass().getDeclaredFields();
@@ -186,6 +184,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 	@AfterSuite()
 	public void afterSuiteInPlaybackWeb() throws OoyalaException {
 		SimpleHttpServer.stopServer();
+		// ExtentManager.endTests();
+		// ExtentManager.flush();
 
 	}
 
@@ -224,7 +224,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		boolean driverNotNullFlag = false;
 		logger.info("****** Inside @AfterMethod*****");
 		logger.info(driver);
-		
+
 		if (driver != null
 				&& (driver.getSessionId() == null || driver.getSessionId()
 						.toString().isEmpty())) {
@@ -245,7 +245,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 				extentTest.log(LogStatus.INFO,
 						"Snapshot is " + extentTest.addScreenCapture(fileName));
 			}
-			
+
 			extentTest.log(LogStatus.FAIL, result.getThrowable());
 			logger.error("**** Test " + extentTest.getTest().getName()
 					+ " failed ******");
@@ -265,7 +265,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.error("**** Test" + extentTest.getTest().getName()
 					+ " passed ******");
 		}
-		extentReport.endTest(extentTest);
+		ExtentManager.endTest(extentTest);
+		ExtentManager.flush();
 
 	}
 
@@ -273,7 +274,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	public void tearDown() throws Exception {
 		if (isBrowserMobProxyEnabled())
 			BrowserMobProxyHelper.stopBrowserMobProxyServer();
-		extentReport.flush();
+		// ExtentManager.flush();
 		logger.info("************Inside tearDown*************");
 		if (driver != null) {
 			driver.quit();
