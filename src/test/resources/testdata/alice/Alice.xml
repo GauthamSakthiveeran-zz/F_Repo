@@ -556,6 +556,7 @@
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/FoeG863GnBL4IhhlFC1Q2jqbkH9m/N3b2lhZzq_5Er-I09uWrmpwNUZZ_mEeX?api_key=FoeG863GnBL4IhhlFC1Q2jqbkH9m.-E1Kw&expires=2890068691&account_id=dulari_qa&&&signature=sCtNsIeb7XYqrdOdp0avqAjuFKvXansR+BWhAnJp5+A"}]]></playerParameter>
         </url>
+        <!-- bitrate selector is available only if flash is turned on-->
         <url>
             <description name="MultipleBitrateOptions" />
             <embed_code name="QyajZsMjE6wT6XAfV0UAIs8WR4MjQ4Vn" />
@@ -564,6 +565,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
 
