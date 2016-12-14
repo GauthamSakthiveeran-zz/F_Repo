@@ -42,12 +42,16 @@
     <element key="GPLUS_SIGNIN_BTN" findBy="id"
              id="signIn" />
     <element key="GPLUS_TEXTAREA" findBy="xPath"
-             xPath="//div[@role='textbox']"/>
+             xPath="//textarea[@role='textbox']"/>
     <element key="GPLUS_SHARE_BTN" findBy="xPath"
              xPath="//div[@guidedhelpid='sharebutton']"/>
     <element key="GPLUS_POST_LIST" findBy="class"
              class="wftCae" />
     <element key="FB_PROFILE" findBy="xPath"
              xPath=".//a[@title='Profile']" />
+    <element key="EMAIL_DISPLAYED" findBy="id"
+             id="email-display"/>
+    <element key="GPLUS_POST_BUTTON" findBy="xPath"
+             xPath=".//*[text()='Post']"/>
 
 </elements>
