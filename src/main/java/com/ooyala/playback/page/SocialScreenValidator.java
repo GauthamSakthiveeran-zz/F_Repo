@@ -38,7 +38,14 @@ public class SocialScreenValidator extends PlayBackPage implements
 
 	public boolean validate(String element, int timeout) throws Exception {
 
-		if (!clickOnIndependentElement("SHARE_BTN")){return false;}
+		try{
+			waitOnElement("SHARE_BTN", 10000);
+			clickOnIndependentElement("SHARE_BTN");
+		}catch (Exception e) {
+			clickOnIndependentElement("MORE_OPTION_ITEM");
+			waitOnElement("SHARE_BTN", 10000);
+			clickOnIndependentElement("SHARE_BTN");
+		}
 
 		sleep(2000);
 
@@ -239,8 +246,7 @@ public class SocialScreenValidator extends PlayBackPage implements
 			getWebElement("GPLUS_TEXTAREA").sendKeys(
 					title_for_sharing_asset);
 			Thread.sleep(5000);
-			boolean  shareButton= clickOnIndependentElement("GPLUS_SHARE_BTN");
-			if (!shareButton)
+			if (!clickOnIndependentElement("GPLUS_SHARE_BTN"))
 				clickOnIndependentElement("GPLUS_POST_BUTTON");
 			Thread.sleep(10000);
 			driver.switchTo().window(currentWindow);
