@@ -3,6 +3,7 @@ package com.ooyala.playback.page.action;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -97,7 +98,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		return "pp.getDuration()/" + factor;
 	}
 
-	private boolean seek(int time, boolean fromLast) throws Exception {
+	public boolean seek(int time, boolean fromLast) throws Exception {
 		String seekduration;
 		if (fromLast) {
 			seekduration = getDuration();
@@ -179,4 +180,5 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		}
 
 	}
+
 }

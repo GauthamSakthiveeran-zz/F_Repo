@@ -1,22 +1,52 @@
 package com.ooyala.playback.report;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
 
 public class ExtentManager {
-	private static ExtentReports extent;
 
-	public synchronized static ExtentReports getReporter() {
-		if (extent == null) {
-			extent = new ExtentReports("./ExtentReport.html", true);
+	private static Map<String, ExtentTest> extentTestMap;
+	private static ExtentReports extentReports;
 
-			extent.addSystemInfo("Host Name", "Jenkins-Dallas-Slave")
+	static {
+		extentTestMap = new HashMap<String, ExtentTest>();
+		if (extentReports == null) {
+			extentReports = new ExtentReports("./ExtentReport.html", true);
+
+			extentReports.addSystemInfo("Host Name", "Jenkins-Dallas-Slave")
 					.addSystemInfo("Environment", "QA");
 		}
+	}
 
-		return extent;
+	public synchronized static ExtentReports getReporter() {
+		return extentReports;
 	}
 
 	public synchronized static ExtentReports sharedInstance() {
-		return extent;
+		return extentReports;
 	}
+
+	public static synchronized void endTest(ExtentTest test) {
+		extentReports.endTest(test);
+
+	}
+
+	public static synchronized ExtentTest startTest(String testName) {
+
+		ExtentTest test = extentTestMap.get(testName);
+		if (test == null) {
+			test = extentReports.startTest(testName);
+			extentTestMap.put(testName, test);
+		} 
+
+		return test;
+	}
+
+	public static synchronized void flush() {
+		extentReports.flush();
+	}
+
 }

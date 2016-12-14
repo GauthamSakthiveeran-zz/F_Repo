@@ -24,6 +24,7 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 	private SeekValidator seek;
 	private PlayAction playAction;
 	private AspectRatioValidator aspectRatioValidator;
+	private EndScreenValidator endScreenValidator;
 
 	public PlaybackAspectRatioTests() throws OoyalaException {
 		super();
@@ -45,14 +46,9 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 
 			sleep(2000);
 
-			result = result
-					&& aspectRatioValidator.validate("assetDimension_1", 60000);
-
     		result = result && pause.validate("paused_1", 60000);
 
 			result = result && playAction.startAction();
-
-			// add fullscreen functionality
 
 			result = result && seek.validate("seeked_1", 60000);
 
@@ -61,6 +57,14 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("videoPlayed_1", 60000);
 
 			logger.info("Verified that video is played");
+
+			result = result && eventValidator.eventAction("FULLSCREEN_BTN_1");
+
+			result = result && endScreenValidator.validate("fullscreenChangedtrue", 50);
+
+			logger.info("checked fullscreen");
+
+			result = result && aspectRatioValidator.validate("assetDimension_1", 60000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

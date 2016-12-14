@@ -154,26 +154,14 @@ public class SocialScreenValidator extends PlayBackPage implements
 
 				driver.navigate().to("https://twitter.com");
 				driver.navigate().refresh();
-
-				waitOnElement("TWEET_TEXT", 60000);
 				Thread.sleep(5000);
-				String tweet = getWebElement("TWEET_TEXT").getText();
-				for (int i = 1; i <= 10; i++) {
-					if (tweet.matches(".*\\b" + nameForTweet + "\\b.*")) {
-						logger.info("Comparing strings");
-						break;
-					}
-					tweet = driver.findElement(
-							By.xpath(".//*[@id='stream-items-id']/li[" + i
-									+ "]/div/div[2]/div[2]/p")).getText();
-				}
-
-				logger.info("tweet :" + tweet);
-
+				String tweet_path="//*[normalize-space(text())="+"'"+nameForTweet+"'"+"]";
+				Thread.sleep(10000);
+				boolean isTweetPresent = driver.findElement(By.xpath(tweet_path)).isDisplayed();
 				Assert.assertTrue(
-						tweet.matches(".*\\b" + nameForTweet + "\\b.*"),
+						isTweetPresent,
 						"Tweet is not posted on twitter");
-				// driver.switchTo().window(tabs.get(1));
+				logger.info("Tweet is tweeted");
 
 			}
 
