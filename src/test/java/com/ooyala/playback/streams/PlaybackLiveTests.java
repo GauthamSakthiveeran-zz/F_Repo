@@ -45,10 +45,6 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-            if(!result){
-                throw new SkipException("Failed to load the test page");
-            }
-
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
@@ -70,9 +66,6 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 
 		} catch (Exception e) {
             e.printStackTrace();
-            if(e instanceof SkipException){
-                throw new SkipException("Test Skipped");
-            }else
                 result = false;
 		}
 		Assert.assertTrue(result, "Playback Live tests failed");
