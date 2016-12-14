@@ -45,7 +45,7 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 
                 injectScript();
 
-                Thread.sleep(5000);
+                result = result && eventValidator.loadingSpinner();
 
                 autoplayAction.startAction();
 
