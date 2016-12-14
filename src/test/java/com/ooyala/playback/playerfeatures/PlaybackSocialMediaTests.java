@@ -2,6 +2,7 @@ package com.ooyala.playback.playerfeatures;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
+import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -16,44 +17,44 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackSocialMediaTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger
-			.getLogger(PlaybackSocialMediaTests.class);
-	private EventValidator eventValidator;
-	private PlayValidator play;
-	private PauseValidator pause;
-	private SocialScreenValidator social;
+    private static Logger logger = Logger
+            .getLogger(PlaybackSocialMediaTests.class);
+    private EventValidator eventValidator;
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SocialScreenValidator social;
 
-	public PlaybackSocialMediaTests() throws OoyalaException {
-		super();
-	}
+    public PlaybackSocialMediaTests() throws OoyalaException {
+        super();
+    }
 
-	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testScialMediaSharing(String testName, String url)
-			throws OoyalaException {
+    @Test(groups = "playerFeatures", dataProvider = "testUrls")
+    public void testScialMediaSharing(String testName, String url)
+            throws OoyalaException {
 
-		boolean result = true;
+        boolean result = true;
+        try {
+            driver.get(url);
 
-		try {
-			driver.get(url);
+            result = result && play.waitForPage();
 
-			result = result && play.waitForPage();
+            Thread.sleep(10000);
 
-			Thread.sleep(10000);
+            injectScript();
 
-			injectScript();
+            result = result && play.validate("playing_1", 60000);
 
-			result = result && play.validate("playing_1", 60000);
+            Thread.sleep(2000);
 
-			Thread.sleep(2000);
+            result = result && social.validate("SHARE_BTN", 60000);
 
-			result = result && social.validate("SHARE_BTN", 60000);
+            logger.info("Verified Social Media Sharing functionality for Facebook,Twitter and ");
 
-			logger.info("Verified Social Media Sharing functionality for Facebook,Twitter and ");
+        } catch (Exception e) {
+            e.printStackTrace();
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			result = false;
-		}
-		Assert.assertTrue(result, "Basic playback tests failed");
-	}
+            result = false;
+        }
+        Assert.assertTrue(result, "Basic playback tests failed");
+    }
 }
