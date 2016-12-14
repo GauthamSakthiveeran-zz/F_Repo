@@ -19,7 +19,6 @@
 			<package name="com.ooyala.playback.amf.vast" />
 		</packages>
 		
-		
 	</test>
 
 </suite>

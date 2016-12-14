@@ -87,6 +87,13 @@ public class PlayBackFactory {
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
 	}
+	
+	public MultiplePlayerValidator getMultiplePlayerValidator() {
+		if (multiplePlayerValidator == null)
+			multiplePlayerValidator = new MultiplePlayerValidator(driver);
+		return multiplePlayerValidator;
+
+	}
 
 	public SeekAction getSeekAction() {
 		if (seekAction == null)
