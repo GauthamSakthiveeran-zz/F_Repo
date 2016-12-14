@@ -78,7 +78,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
-		if(testData!=null && testData.length>0){
+		if(testData!=null && testData.length>=1){
 			logger.info("*** Test " + testData[0].toString() + " started *********");
 			extentTest = ExtentManager.startTest(testData[0].toString());
 			logger.info("*** URL " + testData[1].toString() + " *********");

@@ -31,7 +31,7 @@ public class PlaybackMultiplePlayerTests extends PlaybackWebTest {
 
 			driver.get(url);
 
-			Thread.sleep(10000);
+			result = result && play.waitForPage();
 
 			injectScript();
 
