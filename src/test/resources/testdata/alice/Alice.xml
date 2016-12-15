@@ -450,13 +450,15 @@
             </live>
         </url>
         <url>
-            <description name="Live_HDS_MAIN_Elemental" />
+            <description name="Live_HDS_OSMF_Elemental" />
             <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
             <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
             <plugins name="OSMF" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="c8954f0005a4d2a8da705994859e72b" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
             <live>
                 <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
