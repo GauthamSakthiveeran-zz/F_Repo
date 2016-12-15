@@ -23,7 +23,7 @@
             <browsersSupported name="firefox,chrome,internet explorer" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>-->
-       <!-- <url>
+        <url>
             <description name="VOD_eHLS_BITMOVIN" />
             <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -101,10 +101,10 @@
             <browsersSupported name="firefox,chrome,internet explorer,safari" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-        </url>-->
+        </url>
         <!-- Adding mp4 hds and dash format embed codes for FFMPEG,AZURE and ELEMENTAL
             transcodings -->
-       <!-- <url>
+        <url>
             <description name="VOD_MP4_MAIN_FFMPEG" />
             <embed_code name="F3eGQyODE6cWV2DIsAPMq-XmpCuyWXSc" />
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
@@ -211,7 +211,7 @@
             <additionalPlugins name="" />
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>-->
+        </url>
         <url>
             <description name="VOD_DASH_BITMOVIN_AZURE" />
             <embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq" />
