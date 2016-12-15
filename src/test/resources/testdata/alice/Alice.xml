@@ -394,6 +394,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
