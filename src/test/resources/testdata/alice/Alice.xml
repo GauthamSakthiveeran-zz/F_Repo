@@ -655,7 +655,7 @@
     </test>
 
     <test name="PlaybackDRMTests">
-        <url>
+        <!--<url>
             <description name="Elemental Widewine+Playready Dash VOD" />
             <embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
             <pcode name="FoeG863GnBL4IhhlFC1Q2jqbkH9m" />
@@ -698,7 +698,7 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer" />
             <playerParameter><![CDATA[]]></playerParameter>
-        </url>
+        </url>-->
         <url>
             <description name="Elemental Fairplay Fairplay HLS VOD" />
             <embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />

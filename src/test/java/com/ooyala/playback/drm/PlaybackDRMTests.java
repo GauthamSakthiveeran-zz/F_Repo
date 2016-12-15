@@ -35,7 +35,6 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 
 		try {
 			driver.get(url);
-			logger.info("url: "+url);
 
 			// need to add logic for verifying description
 			result = result && play.waitForPage();
@@ -50,8 +49,6 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 
 			result = result && pause.validate("paused_1", 60000);
 
-			logger.info("Verified that video is getting pause");
-
 			result = result && play.validate("playing_2", 60000);
 
 			if (!(testName.split(":")[1]
@@ -60,8 +57,6 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 			else
 				((JavascriptExecutor) driver)
 						.executeScript("pp.seek(pp.getDuration()-2);");
-
-			logger.info("Verified that video is seeked");
 
 			result = result && eventValidator.validate("played_1", 60000);
 
