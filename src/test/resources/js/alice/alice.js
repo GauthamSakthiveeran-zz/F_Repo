@@ -28,6 +28,7 @@ function subscribeToEvents() {
         var playingEventOrder = 1;
         var bitrateChangedEventOrder = 1;
         var destroyEventOrder = 1;
+        var adPodEndedEventOrder = 1;
 
 
 
@@ -178,6 +179,10 @@ function subscribeToEvents() {
 				OO.$('#ooplayer').append('<p id=destroy_'+destroyEventOrder+'>destroy '+destroyEventOrder+'</p>'); 
 				destroyEventOrder++;
 			}
+            if (event.match(/adPodEnded/)) {
+                OO.$("#ooplayer").append("<p id=adPodEnded_" + adPodEndedEventOrder + ">adPodEnded " + adPodEndedEventOrder + "</p>");
+                adPodEndedEventOrder++;
+            }
 
         };
     }());

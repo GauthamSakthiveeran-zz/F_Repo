@@ -31,18 +31,6 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 	public void testPlaybackDRM(String testName, String url)
 			throws OoyalaException {
 		boolean result = true;
-		// Including the DRM condition - Fairplay works in Safari - rest of
-		// DRM's in other browser
-		if ((testName.split(":")[1].toLowerCase()).contains("Fairplay"
-				.toLowerCase())) {
-			if (!(getBrowser().equalsIgnoreCase("safari"))) {
-				throw new SkipException(
-						"Fairplay DRM runs in Safari browser only - Test Skipped");
-			}
-		} else if ((getBrowser().equalsIgnoreCase("safari"))) {
-			throw new SkipException(
-					"Safari can play only Fairplay DRM - Test Skipped");
-		}
 
 		logger.info("Test Description :\n"
 				+ testName.split(":")[1].toLowerCase());

@@ -43,7 +43,7 @@ public class WaterMarkValidator extends PlayBackPage implements
 		}
 
 		Thread.sleep(10000);
-		flag = validatelogoDimension();
+		//flag = validatelogoDimension(); - need to check with varying player size
 
 		// Checking height and width in fullscreen
 		if (!getBrowser().equalsIgnoreCase("safari")) {
@@ -57,7 +57,7 @@ public class WaterMarkValidator extends PlayBackPage implements
 				flag = false;
 			}
 
-			flag = validatelogoDimension();
+			//flag = validatelogoDimension();  - need to check with varying player size
 			if (!waitOnElement("NORMAL_SCREEN", 10000))
 				return false;
 			if (!clickOnIndependentElement("NORMAL_SCREEN"))
