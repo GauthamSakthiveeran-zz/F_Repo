@@ -62,36 +62,13 @@ public abstract class PlayBackPage extends WebPage {
 						+ elementKey + "");
 				return true;
 			} else {
-				extentTest.log(LogStatus.FAIL, "Wait on element : "
+				extentTest.log(LogStatus.WARNING, "Wait on element : "
 						+ elementKey + ", failed after " + timeout + " ms");
 				return false;
 			}
 
 		} catch (Exception ex) {
-			extentTest.log(LogStatus.FAIL, "wait on element " + elementKey
-					+ "  failed with exception " + ex.getMessage());
-			ex.printStackTrace();
-		}
-		return false;
-
-	}
-
-	@Override
-	public boolean waitOnElement(By elementKey, int timeout) {
-
-		try {
-			if (super.waitOnElement(elementKey, timeout)) {
-				extentTest.log(LogStatus.PASS, "Wait on element : "
-						+ elementKey + "");
-				return true;
-			} else {
-				extentTest.log(LogStatus.FAIL, "Wait on element : "
-						+ elementKey + ", failed after " + timeout + " ms");
-				return false;
-			}
-
-		} catch (Exception ex) {
-			extentTest.log(LogStatus.FAIL, "wait on element " + elementKey
+			extentTest.log(LogStatus.WARNING, "wait on element " + elementKey
 					+ "  failed with exception " + ex.getMessage());
 			ex.printStackTrace();
 		}
@@ -114,12 +91,12 @@ public abstract class PlayBackPage extends WebPage {
 			logger.error("Exception occured while clicking on element "
 					+ elementKey);
 			extentTest
-					.log(LogStatus.INFO,
+					.log(LogStatus.WARNING,
 							"Exception occured while clicking on element "
 									+ elementKey);
 			logger.error("Calling clickOnHiddenElement function on the element "
 					+ elementKey);
-			extentTest.log(LogStatus.INFO,
+			extentTest.log(LogStatus.WARNING,
 					"Calling clickOnHiddenElement function on the element "
 							+ elementKey);
 			return clickOnHiddenElement(elementKey);
@@ -134,7 +111,7 @@ public abstract class PlayBackPage extends WebPage {
 			if (element != null)
 				js.executeScript("arguments[0].click()", element);
 			else {
-				extentTest.log(LogStatus.FAIL, "Element not found : "
+				extentTest.log(LogStatus.WARNING, "Element not found : "
 						+ elementKey);
 				return false;
 			}
@@ -146,7 +123,7 @@ public abstract class PlayBackPage extends WebPage {
 			logger.info("Exception while clicking on hidden element "
 					+ ex.getLocalizedMessage());
 			extentTest.log(
-					LogStatus.FAIL,
+					LogStatus.WARNING,
 					"Exception while clicking on hidden element "
 							+ ex.getLocalizedMessage());
 			return false;

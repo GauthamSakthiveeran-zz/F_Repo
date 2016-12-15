@@ -366,7 +366,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
 
-        <url>
+       <url>
             <description name="Akamai_HLS_Live_Bitmovin" />
             <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
