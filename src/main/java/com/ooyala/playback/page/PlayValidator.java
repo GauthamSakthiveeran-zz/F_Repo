@@ -25,7 +25,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		boolean errorScreen = false;
 
 		try {
-			if (!waitOnElement("PLAY_BUTTON", 60000)) {
+			if (!waitOnElement("PLAY_BUTTON", 90000)) {
 				errorScreen = isElementPresent("ERROR_SCREEN");
 				if (errorScreen && getWebElement("ERROR_DESCRIPTION").getText().equalsIgnoreCase("This video isn't encoded for your device"))
 				{
@@ -34,6 +34,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 				return false;
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			driver.navigate().refresh();
 			if (!waitOnElement("INNER_WRAPPER", 60000))
 				return false;
