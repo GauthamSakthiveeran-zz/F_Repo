@@ -2,10 +2,13 @@ package com.ooyala.facile.grid.saucelabs;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerDriverLogLevel;
 import org.openqa.selenium.remote.CapabilityType;
@@ -170,6 +173,14 @@ public class SaucelabsSessionManager {
 				SaucelabsAdditionalConfiguration.getMaxTestDurationTimeout());
 		chCapabilities.setCapability("idle-timeout",
 				SaucelabsAdditionalConfiguration.getIdleTestTimeout());
+
+		ChromeOptions options = new ChromeOptions();
+		List<String> list = new ArrayList<String>();
+		list.add("disable-component-update");
+		options.setExperimentalOption("excludeSwitches", list);
+		
+		chCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
+
 		try {
 
 			logger.info("---- Browser ---- "

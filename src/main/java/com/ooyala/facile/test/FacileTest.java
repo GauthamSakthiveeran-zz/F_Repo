@@ -16,9 +16,11 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
@@ -33,6 +35,7 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -58,7 +61,6 @@ import com.ooyala.facile.grid.saucelabs.SauceConnectManager;
 import com.ooyala.facile.grid.saucelabs.SauceREST;
 import com.ooyala.facile.grid.saucelabs.SaucelabsSessionManager;
 import com.ooyala.facile.listners.FacileTestListener;
-import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.page.ContextAwareFirefoxDriver;
 import com.ooyala.facile.page.WebPage;
 import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
@@ -129,6 +131,9 @@ public class FacileTest implements IHookable {
 
 	/** The Constant DEFAULT_MAC_CHROMEDRIVER_PATH. */
 	public static final String DEFAULT_MAC_CHROMEDRIVER_PATH = "/Users/Shared/chromedriver";
+
+	/** The Constant DEFAULT_MAC_CHROMEDRIVER_PATH. */
+	public static final String DEFAULT_LINUX_CHROMEDRIVER_PATH = "/Users/Shared/chromedriver";
 
 	/** The Constant DEFAULT_WIN_IEDRIVER_PATH. */
 	public static final String DEFAULT_WIN_IEDRIVER_PATH = "c:/temp/IEDriverServer.exe";
@@ -228,7 +233,8 @@ public class FacileTest implements IHookable {
 			try {
 				String ieDriverPath = null;
 
-				ieDriverPath = getDriverPath("IEDriverServer.exe");
+				ieDriverPath = getDriverPath("IEDriverServer.exe",
+						CommonUtils.getOSName());
 				if (ieDriverPath == "") {
 					logger.info("There is some problem with copying ie driver to the temp directory so using default path "
 							+ DEFAULT_WIN_IEDRIVER_PATH);
@@ -388,9 +394,15 @@ public class FacileTest implements IHookable {
 		logger.debug("OS Name : " + osName);
 
 		String chromeDriverPath;
+
+		DesiredCapabilities dc = DesiredCapabilities.chrome();
+		String[] switches = { "--ignore-certificate-errors",
+				"--disable-popup-blocking" };
+		dc.setCapability("chrome.switches", Arrays.asList(switches));
+
 		if (osName.contains("mac")) {
 			logger.debug("OS type : MAC*");
-			chromeDriverPath = getDriverPath("chromedriver");
+			chromeDriverPath = getDriverPath("chromedriver", osName);
 			if (chromeDriverPath == "") {
 				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
 						+ DEFAULT_MAC_CHROMEDRIVER_PATH);
@@ -399,38 +411,52 @@ public class FacileTest implements IHookable {
 
 		} else if (osName.contains("win")) {
 			logger.debug("OS type : Windows");
-			chromeDriverPath = getDriverPath("chromedriver.exe");
+			chromeDriverPath = getDriverPath("chromedriver.exe", osName);
 			if (chromeDriverPath == "") {
 				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
 						+ DEFAULT_MAC_CHROMEDRIVER_PATH);
 				chromeDriverPath = DEFAULT_WIN_CHROMEDRIVER_PATH;
 			}
 
-		} else {
-			logger.error("Could not create a driver for the OS : " + osName);
-			throw new UnsupportedOperationException(
-					"Could not create a driver for the os: " + osName);
-		}
-
-		try {
-			chromeServer = new ChromeDriverService.Builder()
-					.usingDriverExecutable(new File(chromeDriverPath))
-					.usingAnyFreePort().build();
-			if (chromeServer != null) {
-				logger.debug("Starting up the chrome service.");
-				chromeServer.start();
-				logger.debug("Successfully started chrome service...");
+		} else if (osName.contains("linux")) {
+			logger.debug("OS type : Linux*");
+			chromeDriverPath = getDriverPath("chromedriver", osName);
+			if (chromeDriverPath == "") {
+				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
+						+ DEFAULT_LINUX_CHROMEDRIVER_PATH);
+				chromeDriverPath = DEFAULT_LINUX_CHROMEDRIVER_PATH;
+			} else {
+				logger.error("Could not create a driver for the OS : " + osName);
+				throw new UnsupportedOperationException(
+						"Could not create a driver for the os: " + osName);
 			}
-		} catch (IOException ex) {
-			logger.error("Unable to startup the Chrome Server", ex);
+
+			try {
+				chromeServer = new ChromeDriverService.Builder()
+						.usingDriverExecutable(new File(chromeDriverPath))
+						.usingAnyFreePort().build();
+				if (chromeServer != null) {
+					logger.debug("Starting up the chrome service.");
+					chromeServer.start();
+					logger.debug("Successfully started chrome service...");
+				}
+			} catch (IOException ex) {
+				logger.error("Unable to startup the Chrome Server", ex);
+			}
+
+			ChromeOptions options = getChromeOptions();
+			dc.setCapability(ChromeOptions.CAPABILITY, options);
+
 		}
-
-		DesiredCapabilities dc = DesiredCapabilities.chrome();
-		String[] switches = { "--ignore-certificate-errors",
-				"--disable-popup-blocking" };
-		dc.setCapability("chrome.switches", Arrays.asList(switches));
 		return (new RemoteWebDriver(chromeServer.getUrl(), dc));
+	}
 
+	public ChromeOptions getChromeOptions() {
+		ChromeOptions options = new ChromeOptions();
+		List<String> list = new ArrayList<String>();
+		list.add("disable-component-update");
+		options.setExperimentalOption("excludeSwitches", list);
+		return options;
 	}
 
 	public static DesiredCapabilities getDesiredCapabilities(String browser) {
@@ -462,6 +488,14 @@ public class FacileTest implements IHookable {
 			desiredCapabilities.setVersion(version);
 		String platform = System.getProperty("platform");
 		desiredCapabilities.setCapability(CapabilityType.PLATFORM, platform);
+
+		if (browser.equalsIgnoreCase("chrome")) {
+
+			ChromeOptions options = getChromeOptions();
+			desiredCapabilities
+					.setCapability(ChromeOptions.CAPABILITY, options);
+		}
+
 		String ipAddress = System.getProperty("ipaddress");
 		if (ipAddress == null || ipAddress.equals(""))
 			ipAddress = "10.11.69.126:5555";
@@ -581,7 +615,8 @@ public class FacileTest implements IHookable {
 				sCaps.setJavascriptEnabled(true);
 				sCaps.setCapability("takesScreenshot", true);
 
-				String phantomjsPath = getDriverPath("phantomjs");
+				String phantomjsPath = getDriverPath("phantomjs",
+						CommonUtils.getOSName());
 				sCaps.setCapability(
 						PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
 						phantomjsPath);
@@ -712,7 +747,7 @@ public class FacileTest implements IHookable {
 				if (isSauceEnabled()) {
 					logger.debug("Enable Sauce Grid is Set to : "
 							+ isSauceEnabled());
-					
+
 					logger.debug("Creating " + browserName
 							+ "Instance on Saucelabs Grid");
 					SaucelabsSessionManager sauceLabsSessionManager = new SaucelabsSessionManager();
@@ -1318,7 +1353,7 @@ public class FacileTest implements IHookable {
 	 *            the driver exe
 	 * @return the driver path
 	 */
-	private String getDriverPath(String driverExe) {
+	private String getDriverPath(String driverExe, String osName) {
 		File tempDir = new File(System.getProperty("java.io.tmpdir"));
 		File temporaryFile = new File(tempDir, driverExe);
 
@@ -1327,7 +1362,7 @@ public class FacileTest implements IHookable {
 		if (!temporaryFile.exists()) {
 
 			InputStream driverStream = getClass().getResourceAsStream(
-					"/drivers/" + driverExe);
+					"/drivers/" + osName + "/" + driverExe);
 			try {
 				logger.info(driverExe
 						+ " driver does not exist, copying it to temp dir "
