@@ -132,7 +132,7 @@ public abstract class PlayBackPage extends WebPage {
 
 	// Added moveElement since Safari doesnt handle Action API interactions
 	public boolean moveElement(WebElement element) {
-		if (getBrowser().equalsIgnoreCase("safari")) {
+		if (getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")) {
 			return onMouseOverSafari(element);
 		} else {
 			return onmouseOver(element);

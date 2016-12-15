@@ -133,10 +133,10 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 				if (seekTime > 5) {
 					// Update after ticket is fixed pp.seek() api is not working if
 					// we try to seek less than 31 seconds form end of video
-					if (!getBrowser().equalsIgnoreCase("safari")) {
-						seek(7, true);
-					} else {
+					if (getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")) {
 						seek(31, true);
+					} else {
+						seek(7, true);
 					}
 					((JavascriptExecutor) driver).executeScript("pp.pause();");
 					Thread.sleep(2000);

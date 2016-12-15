@@ -49,7 +49,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
 					else if (value.contains("ima")
 							&& video_plugin.contains("bit")
 							&& isStreamingProtocolPrioritized("hls")
-							&& !getBrowser().contains("safari")) {
+							&& !getBrowser().contains("safari")
+							&& !getBrowser().contains("internet explorer")) {
 						if (!clickOnIndependentElement("AD_PANEL_1"))
 							return false;
 						if (!waitOnElement(By.id("adsClickThroughOpened"),
