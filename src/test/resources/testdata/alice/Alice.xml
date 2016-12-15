@@ -762,6 +762,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <sslEnabled name="https"/>
             <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
         </url>
         <url>
@@ -795,6 +796,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <sslEnabled name="https"/>
             <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
         </url>
         <url>
