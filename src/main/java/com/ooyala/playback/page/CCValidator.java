@@ -129,6 +129,12 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	protected boolean closedCaptionMicroPanel() throws Exception {
 		try {
+			
+			if(getBrowser().contains("internet explorer")){
+				extentTest.log(LogStatus.INFO, "CC Pop Over horizontal does not come up in IE.");
+				return true;
+			}
+			
 			switchToControlBar();
 
 			if (!clickOnIndependentElement("CC_BTN"))

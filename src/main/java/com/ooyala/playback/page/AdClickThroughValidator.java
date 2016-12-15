@@ -48,9 +48,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
 					else if (value.contains("ima")
 							&& video_plugin.contains("bit")
-							&& isStreamingProtocolPrioritized("hls")
-							&& !getBrowser().contains("safari")
-							&& !getBrowser().contains("internet explorer")) {
+							//&& isStreamingProtocolPrioritized("hls")
+							&& !getBrowser().contains("safari")) {
 						if (!clickOnIndependentElement("AD_PANEL_1"))
 							return false;
 						if (!waitOnElement(By.id("adsClickThroughOpened"),
@@ -75,9 +74,19 @@ public class AdClickThroughValidator extends PlayBackPage implements
 				}
 			}
 			if (!value.contains("ima")) {
-
-				if (!clickOnIndependentElement("LEARN_MORE"))
-					return false;
+				if (getBrowser().contains("internet explorer")) {
+					if(value.contains("freewheel") && video_plugin.contains("main") && !video_plugin.contains("osmf") && !video_plugin.contains("bit")){
+						if (!clickOnIndependentElement("LEARN_MORE_IE"))
+							return false;
+					} else{
+						if (!clickOnHiddenElement("LEARN_MORE"))
+							return false;
+					}
+					
+				} else {
+					if (!clickOnIndependentElement("LEARN_MORE"))
+						return false;
+				}
 				if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 5000))
 					return false;
 

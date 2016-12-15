@@ -73,7 +73,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 			Map<String, String> data = parseURL();
 			if (data.get("ad_plugin") != null
 					&& !data.get("ad_plugin").equals(adPlugin)) {
-				extentTest.log(LogStatus.SKIP,
+				extentTest.log(LogStatus.INFO,
 						"This particular step is skipped as it is valid only for "
 								+ adPlugin);
 				return true;

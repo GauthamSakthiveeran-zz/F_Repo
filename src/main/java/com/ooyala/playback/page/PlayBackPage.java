@@ -83,8 +83,9 @@ public abstract class PlayBackPage extends WebPage {
 			if (!flag) {
 				flag = clickOnHiddenElement(elementKey);
 			}
-			else
+			else{
 				logger.info("Clicked on element :"+elementKey);
+			}
 			return flag;
 		} catch (Exception ex) {
 			ex.printStackTrace();

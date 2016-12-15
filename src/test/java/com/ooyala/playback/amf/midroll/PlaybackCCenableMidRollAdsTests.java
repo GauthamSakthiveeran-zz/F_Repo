@@ -58,7 +58,7 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 				result = result && seekAction.fromLast().setTime(30).startAction();
 
 			result = result && event.validate("seeked_1", 90000);
-			result = result && event.validate("played_1", 120000); // inc because of pulse in FF
+			result = result && event.validate("played_1", 120000); // inc because of pulse in FF & IE
 
 		} catch (Exception e) {
 			e.printStackTrace();
