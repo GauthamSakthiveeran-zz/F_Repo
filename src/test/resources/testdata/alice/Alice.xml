@@ -11,7 +11,8 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
-        <url>
+        <!-- commented check the ticket number for more info PBW-6281 -->
+       <!-- <url>
             <description name="VOD_CLEAR_DASH_BITMOVIN" />
             <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -21,7 +22,7 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
+        </url>-->
         <url>
             <description name="VOD_eHLS_BITMOVIN" />
             <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
@@ -365,7 +366,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
 
-        <url>
+       <url>
             <description name="Akamai_HLS_Live_Bitmovin" />
             <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -446,7 +447,7 @@
                 <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
                 <provider>elemental</provider>
             </live>
-        </url>-->
+        </url>
         <url>
             <description name="Live_HDS_MAIN_Elemental" />
             <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
@@ -551,8 +552,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="NzMyN2E4MzA4Y2ZiMzYwNjhiYzgzYzQ4" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
-            <browserSupportedVersion name="safari,9"/>
+            <browsersSupported name="firefox,chrome,internet explorer" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/FoeG863GnBL4IhhlFC1Q2jqbkH9m/N3b2lhZzq_5Er-I09uWrmpwNUZZ_mEeX?api_key=FoeG863GnBL4IhhlFC1Q2jqbkH9m.-E1Kw&expires=2890068691&account_id=dulari_qa&&&signature=sCtNsIeb7XYqrdOdp0avqAjuFKvXansR+BWhAnJp5+A"}]]></playerParameter>
         </url>
         <url>
@@ -563,6 +563,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
 
@@ -629,7 +630,8 @@
             <pbid name="615dc8e909e941c280e12155df838355" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
-        <url>
+        <!-- commented check the ticket number for more info PBW-6281 -->
+       <!-- <url>
             <description name="VOD_CLEAR_DASH_BITMOVIN" />
             <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -638,7 +640,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
+        </url>-->
         <url>
             <description name="VOD_HLS_BITMOVIN" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
@@ -660,8 +662,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[]]>
-            </playerParameter>
+            <browsersSupported name="firefox,chrome,internet explorer" />
+            <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
             <description name="Elemental Widewine+Playready H.264 4K Dash Cenc VOD" />
@@ -671,8 +673,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[]]>
-            </playerParameter>
+            <browsersSupported name="firefox,chrome,internet explorer" />
+            <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
             <description name="Elemental Widewine+Playready dash + OPT + entitlement" />
@@ -682,6 +684,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213193&account_id=dulari_qa&&&signature=3ZIfOPsKS0AIvSSgUlNYUQq5blWfIT40vLlYl8nJqp8"}]]></playerParameter>
         </url>
         <url>
@@ -692,6 +695,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer" />
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
