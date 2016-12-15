@@ -1,11 +1,5 @@
 package com.ooyala.playback.drm;
 
-import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
-import org.testng.Assert;
-import org.testng.SkipException;
-import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
@@ -13,6 +7,10 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import org.apache.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class PlaybackDRMTests extends PlaybackWebTest {
 
@@ -37,23 +35,19 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 
 		try {
 			driver.get(url);
+			logger.info("url: "+url);
 
 			// need to add logic for verifying description
 			result = result && play.waitForPage();
-			Thread.sleep(5000);
 
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
 
+			result = result && eventValidator.loadingSpinner();
+
 			Thread.sleep(2000);
 
-			if (getBrowser().equalsIgnoreCase("firefox")) {
-				driver.navigate().refresh();
-				Thread.sleep(2000);
-				result = result && playAction.startAction();
-			}
-			Thread.sleep(2000);
 			result = result && pause.validate("paused_1", 60000);
 
 			logger.info("Verified that video is getting pause");
