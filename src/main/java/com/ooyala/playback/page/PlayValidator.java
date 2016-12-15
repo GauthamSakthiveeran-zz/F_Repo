@@ -27,9 +27,13 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		try {
 			if (!waitOnElement("PLAY_BUTTON", 90000)) {
 				errorScreen = isElementPresent("ERROR_SCREEN");
-				if (errorScreen && getWebElement("ERROR_DESCRIPTION").getText().equalsIgnoreCase("This video isn't encoded for your device"))
-				{
-					extentTest.log(LogStatus.ERROR, "Video format is not supported in this browser");
+				if (errorScreen
+						&& getWebElement("ERROR_DESCRIPTION")
+								.getText()
+								.equalsIgnoreCase(
+										"This video isn't encoded for your device")) {
+					extentTest.log(LogStatus.ERROR,
+							"Video format is not supported in this browser");
 				}
 				return false;
 			}
@@ -54,6 +58,9 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		// return false;
 
 		if (!clickOnIndependentElement("PLAY_BUTTON"))
+			return false;
+
+		if (!loadingSpinner())
 			return false;
 
 		if (!waitOnElement("PLAYING_SCREEN", 60000))

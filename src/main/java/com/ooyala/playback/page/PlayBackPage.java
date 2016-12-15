@@ -82,10 +82,10 @@ public abstract class PlayBackPage extends WebPage {
 			boolean flag = super.clickOnIndependentElement(elementKey);
 			if (!flag) {
 				flag = clickOnHiddenElement(elementKey);
-			}
-			else{
-				logger.info("Clicked on element :"+elementKey);
-			}
+
+			} else
+				logger.info("Clicked on element :" + elementKey);
+
 			return flag;
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -227,5 +227,38 @@ public abstract class PlayBackPage extends WebPage {
 		}
 
 		return null;
+	}
+
+	public boolean loadingSpinner() {
+		int time = 0;
+		boolean flag;
+
+		while (true) {
+
+			// Giving hardcoded end time as 2 minutes i.e it will check loading
+			// spinner upto 2 min otherwise will break
+			if (time <= 120) {
+				try {
+					flag = driver.findElement(By.className("oo-spinner"))
+							.isDisplayed();
+					if (!flag) {
+						flag = true;
+						break;
+					}
+					Thread.sleep(1000);
+					time++;
+					logger.info("In loading spinner");
+				} catch (Exception e) {
+					return true;
+				}
+			} else {
+				logger.info("Loading spinner is not vanishing i.e it occured more that 2 minutes");
+				flag = false;
+				break;
+			}
+
+		}
+		return flag;
+
 	}
 }
