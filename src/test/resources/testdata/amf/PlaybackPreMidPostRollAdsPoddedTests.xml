@@ -26,7 +26,7 @@
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
-    	<url>
+    	<!-- <url>
 	    	<description name="FreewheelPreMidPostPoddedAd_Akamai_HD"/>
 	        <embed_code name="J3bjBrdTpfYoHzD6XFfCuuyS-u5raRqa"/>
 	        <pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk"/>
@@ -175,7 +175,7 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
     		<browsersSupported name="chrome,firefox,internet explorer,safari" />
 	        <browserSupportedVersion name="safari,9"/>
-    	</url>
+    	</url> -->
     	
     </test>
 </testdata>
