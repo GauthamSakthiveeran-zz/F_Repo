@@ -197,6 +197,21 @@ public abstract class PlaybackWebTest extends FacileTest {
 		// ExtentManager.flush();
 
 	}
+	
+	private void init() throws Exception{
+		driver = getDriver(browser);
+		if (driver != null)
+			logger.info("Driver initialized successfully");
+		else {
+			logger.error("Driver is not initialized successfully");
+			throw new OoyalaException("Driver is not initialized successfully");
+		}
+
+		pageFactory = PlayBackFactory.getInstance(driver);
+		if (!getPlatform().equalsIgnoreCase("android")) {
+			maximizeMe(driver);
+		}
+	}
 
 	@BeforeClass(alwaysRun = true)
 	@Parameters({ "testData", "jsFile" })
@@ -208,27 +223,15 @@ public abstract class PlaybackWebTest extends FacileTest {
 			browser = "firefox";
 		logger.info("browser is " + browser);
 
-		driver = getDriver(browser);
-		if (driver != null)
-			logger.info("Driver initialized successfully");
-		else {
-			logger.error("Driver is not initialized successfully");
-			throw new OoyalaException("Driver is not initialized successfully");
-		}
-
-		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		// driver.manage().timeouts().implicitlyWait(240, TimeUnit.MINUTES);
-		pageFactory = PlayBackFactory.getInstance(driver);
-		if (!getPlatform().equalsIgnoreCase("android")) {
-			maximizeMe(driver);
-		}
+		init();
+		
 		parseXmlFileData(xmlFile);
 		getJSFile(jsFile);
 
 	}
 
 	@AfterMethod(alwaysRun = true)
-	protected void afterMethod(ITestResult result) {
+	protected void afterMethod(ITestResult result) throws Exception {
 
 		boolean driverNotNullFlag = false;
 		logger.info("****** Inside @AfterMethod*****");
@@ -239,9 +242,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 						.toString().isEmpty())) {
 			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
 
-			driver = getDriver(browser);
 			pageFactory.destroyInstance();
-			pageFactory = PlayBackFactory.getInstance(driver);
+			init();
+			
 		} else {
 
 			driverNotNullFlag = true;

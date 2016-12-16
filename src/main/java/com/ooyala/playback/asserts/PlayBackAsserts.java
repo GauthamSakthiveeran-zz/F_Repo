@@ -23,9 +23,9 @@ public class PlayBackAsserts {
 		this.extentTest = extentTest;
 	}
 
-	public PlayBackAsserts assertTrue(boolean condition, String stepstepMessage) {
+	public PlayBackAsserts assertTrue(boolean condition, String stepMessage) {
 		if (!condition) {
-			failures.add(stepstepMessage);
+			failures.add(stepMessage);
 		}
 		return this;
 	}
