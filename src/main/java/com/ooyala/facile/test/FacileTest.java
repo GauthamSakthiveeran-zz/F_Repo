@@ -425,29 +425,29 @@ public class FacileTest implements IHookable {
 				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
 						+ DEFAULT_LINUX_CHROMEDRIVER_PATH);
 				chromeDriverPath = DEFAULT_LINUX_CHROMEDRIVER_PATH;
-			} else {
-				logger.error("Could not create a driver for the OS : " + osName);
-				throw new UnsupportedOperationException(
-						"Could not create a driver for the os: " + osName);
 			}
-
-			try {
-				chromeServer = new ChromeDriverService.Builder()
-						.usingDriverExecutable(new File(chromeDriverPath))
-						.usingAnyFreePort().build();
-				if (chromeServer != null) {
-					logger.debug("Starting up the chrome service.");
-					chromeServer.start();
-					logger.debug("Successfully started chrome service...");
-				}
-			} catch (IOException ex) {
-				logger.error("Unable to startup the Chrome Server", ex);
-			}
-
-			ChromeOptions options = getChromeOptions();
-			dc.setCapability(ChromeOptions.CAPABILITY, options);
-
+		} else {
+			logger.error("Could not create a driver for the OS : " + osName);
+			throw new UnsupportedOperationException(
+					"Could not create a driver for the os: " + osName);
 		}
+
+		try {
+			chromeServer = new ChromeDriverService.Builder()
+					.usingDriverExecutable(new File(chromeDriverPath))
+					.usingAnyFreePort().build();
+			if (chromeServer != null) {
+				logger.debug("Starting up the chrome service.");
+				chromeServer.start();
+				logger.debug("Successfully started chrome service...");
+			}
+		} catch (IOException ex) {
+			logger.error("Unable to startup the Chrome Server", ex);
+		}
+
+		ChromeOptions options = getChromeOptions();
+		dc.setCapability(ChromeOptions.CAPABILITY, options);
+
 		return (new RemoteWebDriver(chromeServer.getUrl(), dc));
 	}
 
