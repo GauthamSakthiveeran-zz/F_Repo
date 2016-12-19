@@ -13,9 +13,9 @@ import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
+public class PlaybackCustomInteractionTests extends PlaybackWebTest {
 
-	public PlaybackCustomeInteractionTests() throws OoyalaException {
+	public PlaybackCustomInteractionTests() throws OoyalaException {
 		super();
 	}
 
@@ -44,8 +44,7 @@ public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 
 			result = result && event.validate("willPlaySingleAd_1", 190000);
 
-			result = result
-					&& adSkipButtonValidator.custom().validate("", 60000);
+			result = result && adSkipButtonValidator.validate("showAdSkipButton_1", 60000);
 
 			result = result && event.validate("singleAdPlayed_1", 190000);
 
