@@ -402,7 +402,7 @@ public class FacileTest implements IHookable {
 
 		if (osName.contains("mac")) {
 			logger.debug("OS type : MAC*");
-			chromeDriverPath = getDriverPath("chromedriver", osName);
+			chromeDriverPath = getDriverPath("chromedriver", "mac");
 			if (chromeDriverPath == "") {
 				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
 						+ DEFAULT_MAC_CHROMEDRIVER_PATH);
@@ -411,7 +411,7 @@ public class FacileTest implements IHookable {
 
 		} else if (osName.contains("win")) {
 			logger.debug("OS type : Windows");
-			chromeDriverPath = getDriverPath("chromedriver.exe", osName);
+			chromeDriverPath = getDriverPath("chromedriver.exe", "windows");
 			if (chromeDriverPath == "") {
 				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
 						+ DEFAULT_MAC_CHROMEDRIVER_PATH);
@@ -420,7 +420,7 @@ public class FacileTest implements IHookable {
 
 		} else if (osName.contains("linux")) {
 			logger.debug("OS type : Linux*");
-			chromeDriverPath = getDriverPath("chromedriver", osName);
+			chromeDriverPath = getDriverPath("chromedriver", "linux");
 			if (chromeDriverPath == "") {
 				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
 						+ DEFAULT_LINUX_CHROMEDRIVER_PATH);
@@ -1354,34 +1354,48 @@ public class FacileTest implements IHookable {
 	 * @return the driver path
 	 */
 	private String getDriverPath(String driverExe, String osName) {
-		File tempDir = new File(System.getProperty("java.io.tmpdir"));
-		File temporaryFile = new File(tempDir, driverExe);
+		// File tempDir = new File(System.getProperty("java.io.tmpdir"));
+		// File temporaryFile = new File(tempDir, driverExe);
+		//
+		// String temporaryFilePath = "";
+		//
+		// if (!temporaryFile.exists()) {
+		//
+		// InputStream driverStream = getClass().getResourceAsStream(
+		// "/drivers/" + osName + "/" + driverExe);
+		// try {
+		// logger.info(driverExe
+		// + " driver does not exist, copying it to temp dir "
+		// + temporaryFile.getAbsolutePath());
+		// IOUtils.copy(driverStream, new FileOutputStream(temporaryFile));
+		// /* Commenting the below line to fix the chrome issue. */
+		// // temporaryFile.setExecutable(true);
+		// temporaryFilePath = temporaryFile.getAbsolutePath();
+		//
+		// } catch (FileNotFoundException e1) {
+		// temporaryFilePath = "";
+		// e1.printStackTrace();
+		// } catch (IOException e1) {
+		// temporaryFilePath = "";
+		// e1.printStackTrace();
+		// }
+		// } else {
+		// logger.info("Driver path is " + temporaryFile.getAbsolutePath());
+		// temporaryFilePath = temporaryFile.getAbsolutePath();
+		// }
+		// return temporaryFilePath;
+		File driverFile = new File("src/test/resources/drivers/" + osName + "/" + driverExe);
 
+		File file = new File("./");
+		File[] files = file.listFiles();
 		String temporaryFilePath = "";
 
-		if (!temporaryFile.exists()) {
+		if (driverFile.exists()) {
 
-			InputStream driverStream = getClass().getResourceAsStream(
-					"/drivers/" + osName + "/" + driverExe);
-			try {
-				logger.info(driverExe
-						+ " driver does not exist, copying it to temp dir "
-						+ temporaryFile.getAbsolutePath());
-				IOUtils.copy(driverStream, new FileOutputStream(temporaryFile));
-				/* Commenting the below line to fix the chrome issue. */
-				// temporaryFile.setExecutable(true);
-				temporaryFilePath = temporaryFile.getAbsolutePath();
-
-			} catch (FileNotFoundException e1) {
-				temporaryFilePath = "";
-				e1.printStackTrace();
-			} catch (IOException e1) {
-				temporaryFilePath = "";
-				e1.printStackTrace();
-			}
+			temporaryFilePath = driverFile.getAbsolutePath();
 		} else {
-			logger.info("Driver path is " + temporaryFile.getAbsolutePath());
-			temporaryFilePath = temporaryFile.getAbsolutePath();
+			logger.error("Driver does not exist in the path  "
+					+ driverFile.getAbsolutePath());
 		}
 		return temporaryFilePath;
 
