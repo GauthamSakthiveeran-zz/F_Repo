@@ -13,4 +13,6 @@
              class="oo-switch-element" />
     <element key="CC_SWITCH_CONTAINER" findBy="class"
              class="oo-switch-container-selectable" />
+    <element key="oo-responsive" findBy="id"
+             id="oo-responsive" />
 </elements>

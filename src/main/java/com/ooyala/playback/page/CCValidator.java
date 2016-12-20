@@ -1,7 +1,6 @@
 package com.ooyala.playback.page;
 
-import java.util.ArrayList;
-
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.relevantcodes.extentreports.LogStatus;
+import java.util.ArrayList;
 
 /**
  * Created by soundarya on 11/3/16.
@@ -134,17 +133,23 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			if (!clickOnIndependentElement("CC_BTN"))
 				return false;
 
-			if (!waitOnElement("CC_POPHOVER_HORIZONTAL", 6000))
-				return false;
-			boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
+			if(!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
+				if (!waitOnElement("CC_POPHOVER_HORIZONTAL", 6000))
+					return false;
+				boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
 
-			if (horizontal_CC_Option) {
-				return waitOnElement("CC_SWITCH_CONTAINER_HORIZONTAL", 20000)
-						&& waitOnElement("CC_MORE_CAPTIONS", 10000)
-						&& waitOnElement("CC_CLOSE_BUTTON", 10000)
-						&& clickOnIndependentElement("CC_MORE_CAPTIONS");
+				if (horizontal_CC_Option) {
+					return waitOnElement("CC_SWITCH_CONTAINER_HORIZONTAL", 20000)
+							&& waitOnElement("CC_MORE_CAPTIONS", 10000)
+							&& waitOnElement("CC_CLOSE_BUTTON", 10000)
+							&& clickOnIndependentElement("CC_MORE_CAPTIONS");
+				}
+				return false;
+
+			}else {
+				return true;
 			}
-			return false;
+
 		} catch (Exception e) {
 			extentTest.log(LogStatus.FAIL,
 					"Horizontal cc option is not present");
