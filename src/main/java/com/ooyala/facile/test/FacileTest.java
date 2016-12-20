@@ -1386,8 +1386,6 @@ public class FacileTest implements IHookable {
 		// return temporaryFilePath;
 		File driverFile = new File("src/test/resources/drivers/" + osName + "/" + driverExe);
 
-		File file = new File("./");
-		File[] files = file.listFiles();
 		String temporaryFilePath = "";
 
 		if (driverFile.exists()) {
