@@ -7,6 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.relevantcodes.extentreports.LogStatus;
 
+import junit.framework.Assert;
+
 public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 	private static Logger logger = Logger.getLogger(PlayValidator.class);
@@ -26,15 +28,13 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 		try {
 			if (!waitOnElement("PLAY_BUTTON", 90000)) {
-				errorScreen = isElementPresent("ERROR_SCREEN");
-				if (errorScreen
-						&& getWebElement("ERROR_DESCRIPTION")
-								.getText()
-								.equalsIgnoreCase(
-										"This video isn't encoded for your device")) {
-					extentTest.log(LogStatus.ERROR,
-							"Video format is not supported in this browser");
+				
+				if(isElementPresent("ERROR_SCREEN")){
+					String text = getWebElement("ERROR_DESCRIPTION").getText();
+					extentTest.log(LogStatus.ERROR,text);
 				}
+				
+				Assert.assertTrue("Play button is not found", false);
 				return false;
 			}
 		} catch (Exception e) {
