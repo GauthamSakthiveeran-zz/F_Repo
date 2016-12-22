@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackCCenabledPreRollAdsTests" >
     	<url>
-	    	<description name="CC_enabled_preroll_IMA"/>
+	    	<description name="MAIN_IMA"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinCCenabledpreroll_IMA"/>
+	    	<description name="BITMOVIN_IMA"/>
 	        <embed_code name="Y4amJoMTE6chANpFOodeYv5HACvMfIyc"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -25,7 +25,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Preroll_Bitmovin_Pulse_CC"/>
+	    	<description name="BITMOVIN_PULSE"/>
 	        <embed_code name="9lNDNhMzE65U7FW_KR1bQm7m41SeT997"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -36,7 +36,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinCCenabledpreroll_FW"/>
+	    	<description name="BITMOVIN_FREEWHEEL"/>
 	        <embed_code name="RlNjhsMTE6stbukSNOqLTHUvxqyXX1W_"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -49,7 +49,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinCCenabledpreroll_Vast"/>
+	    	<description name="BITMOVIN_VAST"/>
 	        <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -60,7 +60,7 @@
     	</url>
     	
     	<url>
-	    	<description name="CC_enabled_preroll"/>
+	    	<description name="OSMF_FREEWHEEL"/>
 	        <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -72,7 +72,7 @@
     	</url>
     	
     	<url>
-	    	<description name="CC_enabled_preroll_Vast"/>
+	    	<description name="MAIN_VAST"/>
 	        <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -83,7 +83,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinCCenabledpreroll_Vast_HLS"/>
+	    	<description name="BITMOVIN_VAST_HLS"/>
 	        <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -94,7 +94,7 @@
     	</url>
     	
     	<url>
-	    	<description name="CC_enabled_preroll_IMA_OSMF"/>
+	    	<description name="OSMF_IMA"/>
 	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -106,7 +106,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinCCenabledpreroll_FW_HLS"/>
+	    	<description name="BITMOVIN_FREEWHEEL_HLS"/>
 	        <embed_code name="RlNjhsMTE6stbukSNOqLTHUvxqyXX1W_"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -117,7 +117,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinCCenabledpreroll_IMA_HLS"/>
+	    	<description name="BITMOVIN_IMA_HLS"/>
 	        <embed_code name="Y4amJoMTE6chANpFOodeYv5HACvMfIyc"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -128,7 +128,7 @@
     	</url>
     	
     	<url>
-	    	<description name="CC_enabled_preroll_VAST_OSMF"/>
+	    	<description name="OSMF_VAST"/>
 	        <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>

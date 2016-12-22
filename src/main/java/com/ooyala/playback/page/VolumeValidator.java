@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger Log = Logger.getLogger(VolumeValidator.class);
+	public static Logger logger = Logger.getLogger(VolumeValidator.class);
 
 	public VolumeValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -28,12 +28,10 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		double expectedmutevol = 0.0;
 		double expectedmaxvol = 1.0;
 
-		((JavascriptExecutor) driver)
-				.executeScript("pp.pause()");
+		((JavascriptExecutor) driver).executeScript("pp.pause()");
 
-		Long currentVolume = (Long) (((JavascriptExecutor) driver)
-				.executeScript("return pp.getVolume()"));
-		Log.info("Current volume: " + currentVolume);
+		Long currentVolume = (Long) (((JavascriptExecutor) driver).executeScript("return pp.getVolume()"));
+		logger.info("Current volume: " + currentVolume);
 		try {
 
 			if (!(isElementPresent("CONTROL_BAR"))) {
@@ -44,40 +42,44 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 				if (getmutevol != expectedmutevol) {
 					extentTest.log(LogStatus.FAIL, "Mute volume is't matching");
 					return false;
+				} else {
+					extentTest.log(LogStatus.PASS, "Mute volume works");
 				}
+
 				Thread.sleep(2000);
 
 			} else {
+				extentTest.log(LogStatus.FAIL, "Unable to click on Volume");
 				return false;
 			}
 			if (clickOnIndependentElement("VOLUME_MUTE")) {
 				double getMaxVol = getVolume();
 
 				if (getMaxVol != expectedmaxvol) {
-					extentTest
-							.log(LogStatus.FAIL, "Max volume is not the same");
+					extentTest.log(LogStatus.FAIL, "Max volume is not the same");
 					return false;
+				} else {
+					extentTest.log(LogStatus.PASS, "Max volume works");
 				}
 			} else {
+				extentTest.log(LogStatus.FAIL, "Unable to click on Volume");
 				return false;
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			extentTest.log(LogStatus.FAIL,
-					"Volume control is not working properly" + e.getMessage());
+			extentTest.log(LogStatus.FAIL, "Volume control is not working properly" + e.getMessage());
 			return false;
 		}
 
-		((JavascriptExecutor) driver)
-				.executeScript("pp.play()");
+		((JavascriptExecutor) driver).executeScript("pp.play()");
 		return true;
 	}
 
 	protected double getVolume() throws Exception {
 		Thread.sleep(3500);
-		double volume = Double.parseDouble(((JavascriptExecutor) driver)
-				.executeScript("return pp.getVolume()").toString());
+		double volume = Double
+				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getVolume()").toString());
 		extentTest.log(LogStatus.INFO, "volume set to " + volume);
 		return volume;
 

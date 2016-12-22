@@ -133,7 +133,7 @@ public abstract class PlayBackPage extends WebPage {
 
 	// Added moveElement since Safari doesnt handle Action API interactions
 	public boolean moveElement(WebElement element) {
-		if (getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")) {
+		if (getBrowser().equalsIgnoreCase("safari")) {
 			return onMouseOverSafari(element);
 		} else {
 			return onmouseOver(element);
@@ -144,9 +144,8 @@ public abstract class PlayBackPage extends WebPage {
 		boolean result = false;
 		try {
 			Actions action = new Actions(driver);
-			((JavascriptExecutor) driver).executeScript(
-					"arguments[0].scrollIntoView(true);", element);
-			action.moveToElement(element).perform();
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+			action.moveToElement(element).build().perform();
 			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
