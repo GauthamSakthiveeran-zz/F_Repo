@@ -240,6 +240,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 				&& (driver.getSessionId() == null || driver.getSessionId()
 						.toString().isEmpty())) {
 			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
+			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
 
 			pageFactory.destroyInstance();
 			init();
