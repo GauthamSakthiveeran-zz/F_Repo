@@ -3,6 +3,7 @@ function subscribeToEvents() {
         var playingEventOrder = 1;
         var playedEventOrder = 1;
         var pausedEventOrder = 1;
+        var videoSeekOrder=1;
 
         return function(event) {
             if (event.match(/playing/)) {
@@ -22,6 +23,11 @@ function subscribeToEvents() {
                                 '<p id=played_' + playedEventOrder + '>played '
                                 + playedEventOrder + '</p>');
                             playedEventOrder++;
+            }
+            if (event.match(/videoSeek/)) {
+                            OO.$('#ooplayer').append('<p id=seeked_'+videoSeekOrder
+                                +'>videoSeek '+videoSeekOrder+'</p>');
+                            videoSeekOrder++;
             }
         };
     }());

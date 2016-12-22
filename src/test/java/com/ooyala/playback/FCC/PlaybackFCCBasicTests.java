@@ -2,8 +2,10 @@ package com.ooyala.playback.FCC;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -21,6 +23,8 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
     private CCValidator cc;
     private FCCValidator fcc;
     private FullScreenValidator fullscreen;
+    private PlayAction playAction;
+    private SeekValidator seek;
 
     public PlaybackFCCBasicTests() throws OoyalaException {
         super();
@@ -46,9 +50,7 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             result = result && pause.validate("paused_1",30000);
 
-          //  result = result && cc.checkClosedCaptionButton();
-            logger.info("......after cc:");
-
+           //  result = result && cc.checkClosedCaptionButton();
             Thread.sleep(1000);
 
             result = result && cc.closedCaptionMicroPanel();
@@ -69,6 +71,32 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             // CC Color Selection
             result = result && fcc.verifyCCColorSelectionPanel();
+
+            // CC Opacity Selection
+            result = result && fcc.verifyCCOpacityPanel();
+
+            // CC font type selection
+            result = result && fcc.verifyCCFonttypePanel();
+
+            // Font Size selection
+            result = result && fcc.verifyCCFontSizePanel();
+
+            // Text Enhanvement Selection
+            result = result && fcc.verifyCCTextEnhancementPanel();
+
+            result = result && fcc.closeCCPanel();
+
+            for(int i=0;i<13;i++){
+                ((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
+            }
+
+            Thread.sleep(2000);
+
+            result = result && playAction.startAction();
+
+            result = result && seek.validate("seeked_1",30000);
+
+            result = result && eventValidator.validate("played_1", 60000);
 
 
         } catch (Exception e) {
