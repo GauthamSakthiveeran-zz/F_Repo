@@ -41,7 +41,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		return true;
 	}
 
-	private boolean checkClosedCaptionButton() {
+	public boolean checkClosedCaptionButton() {
 
 		try {
 			Thread.sleep(1000);
@@ -99,7 +99,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		return false;
 	}
 
-	private void switchToControlBar() throws Exception {
+	public void switchToControlBar() throws Exception {
 		if (isElementPresent("HIDDEN_CONTROL_BAR")) {
 			logger.info("hovering mouse over the player");
 			Thread.sleep(2000);
@@ -126,9 +126,11 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	}
 
-	protected boolean closedCaptionMicroPanel() throws Exception {
+	public boolean closedCaptionMicroPanel() throws Exception {
 		try {
 			switchToControlBar();
+
+			waitOnElement("CC_BTN",30000);
 
 			if (!clickOnIndependentElement("CC_BTN"))
 				return false;

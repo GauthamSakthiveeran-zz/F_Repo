@@ -1,0 +1,26 @@
+<elements area="fcc">
+    <element key="ccLeftScrollBtn" findBy="class" class="oo-left-tab-button" />
+    <element key="ccRightScrollBtn" findBy="class" class="oo-right-tab-button" />
+    <element key="ccContentBar" findBy="class" class="oo-content-screen-title-bar" />
+    <element key="closedCaptionPanel" findBy="class" class="oo-closed-captions-panel" />
+    <element key="ccRightBtn" findBy="xPath" xPath=".//*[@class='oo-right-button" />
+    <element key="rightBtn" findBy="class" class="oo-right-button" />
+    <element key="leftBtn" findBy="class" class="oo-left-button" />
+    <element key="ccPreviewCaption" findBy="class" class="oo-preview-caption" />
+    <element key="ccSwitchContainer" findBy="class" class="oo-switch-container-selectable" />
+    <element key="ccOff" findBy="xPath" xPath=".//*[@class='oo-switch-captions oo-switch-captions-off oo-switch-captions-active']" />
+    <element key="ccOn" findBy="xPath" xPath=".//*[@class='oo-switch-captions oo-switch-captions-on oo-switch-captions-active']" />
+
+    <element key="langList" findBy="xPath" xPath=".//*[@class='oo-language-tab']//span[@class='oo-data']" />
+    <element key="ccPreviewText" findBy="class" class="oo-text-track" />
+    <element key="colorSelectionPanel" findBy="xPath" xPath=".//*[normalize-space()='Color Selection']" />
+    <element key="captionOpacityPanel" findBy="class" class="tabs-menu-item-2" />
+    <element key="ccTextColorSelector" findBy="xPath" xPath=".//*[@class='oo-selection-container oo-text-color-selection-container']//div[@class='oo-color-selector']/div/a" />
+    <element key="ccTextColor" findBy="xPath" xPath=".//*[@class='oo-selection-container oo-text-color-selection-container'][1]//span[@class='oo-selection-container-selection-text']" />
+    <element key="ccBackgroundColorSelector" findBy="xPath" xPath=".//*[@class='oo-selection-container'][1]//div[@class='oo-color-selector']/div/a" />
+
+    <element key="ccPreviewTextBG" findBy="class" class="oo-text-track-background" />
+
+    <element key="ccBackgroundColor" findBy="xPath" xPath=".//*[@class='oo-selection-container'][1]//span[@class='oo-selection-container-selection-text']" />
+
+</elements>

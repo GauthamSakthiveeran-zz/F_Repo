@@ -29,4 +29,5 @@
     <entry key="element">resources/differentElement.xml</entry>
     <entry key="page">resources/page.xml</entry>
     <entry key="multipleplayer">resources/multiplePlayer.xml</entry>
+    <entry key="fcc">resources/fcc.xml</entry>
 </properties>

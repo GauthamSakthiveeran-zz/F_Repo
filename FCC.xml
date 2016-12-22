@@ -1,0 +1,20 @@
+<suite name="Playback Web Regression Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    <test name="FCC CC Regression Group">
+        <groups>
+            <define name="FCC_CC">
+                <include name="FCC" />
+            </define>
+            <run>
+                <include name="FCC_CC" />
+            </run>
+        </groups>
+        <classes>
+                <parameter name ="testData" value="FCC/FCC.xml" />
+                <parameter name ="jsFile" value="fcc/fcc.js" />
+                <class name ="com.ooyala.playback.FCC.PlaybackFCCBasicTests" />
+        </classes>
+    </test>
+</suite>
