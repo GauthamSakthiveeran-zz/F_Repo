@@ -1,7 +1,6 @@
 package com.ooyala.playback.page;
 
-import java.util.ArrayList;
-
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.relevantcodes.extentreports.LogStatus;
+import java.util.ArrayList;
 
 /**
  * Created by soundarya on 11/3/16.
@@ -153,29 +152,28 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	protected boolean closedCaptionMicroPanel() throws Exception {
 		try {
 			
-			/*if(getBrowser().contains("internet explorer")){
-				extentTest.log(LogStatus.INFO, "CC Pop Over horizontal does not come up in IE.");
-				return true;
-			}*/
-			
 			switchToControlBar();
 
 			if (!clickOnIndependentElement("CC_BTN"))
 				return false;
 
-			if (!waitOnElement("CC_POPHOVER_HORIZONTAL", 1000))
-				return false;
-			boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
-
-			if (horizontal_CC_Option) {
-				if (isElementPresent("CC_SWITCH_CONTAINER_HORIZONTAL") && isElementPresent("CC_MORE_CAPTIONS")
-						&& clickOnIndependentElement("CC_MORE_CAPTIONS")) {
-					return true;
-				} else {
-					extentTest.log(LogStatus.FAIL, "Verification of cc pop over horizontal elements failed.");
+			if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
+				if (!waitOnElement("CC_POPHOVER_HORIZONTAL", 6000))
 					return false;
-				}
+				boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
 
+				if (horizontal_CC_Option) {
+					if (isElementPresent("CC_SWITCH_CONTAINER_HORIZONTAL") && isElementPresent("CC_MORE_CAPTIONS")
+							&& clickOnIndependentElement("CC_MORE_CAPTIONS")) {
+						return true;
+					} else {
+						extentTest.log(LogStatus.FAIL, "Verification of cc pop over horizontal elements failed.");
+						return false;
+					}
+
+				} 
+			} else {
+				return true;
 			}
 			extentTest.log(LogStatus.FAIL, "CC_POPHOVER_HORIZONTAL is not present!");
 			return false;
