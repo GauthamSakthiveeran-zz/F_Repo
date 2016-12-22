@@ -5,7 +5,6 @@ import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -30,13 +29,15 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "FCC", dataProvider = "testUrls")
+    @Test(groups = "FCC", dataProvider = "testUrls", invocationCount = 3)
     public void testFCCClosedcaption(String testName, String url) throws OoyalaException {
         logger.info("Url is : " + url);
         boolean result = true;
         try {
 
             driver.get(url);
+
+            result = result && fcc.clearCache();
 
             result = result && play.waitForPage();
 
@@ -86,9 +87,7 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             result = result && fcc.closeCCPanel();
 
-            for(int i=0;i<13;i++){
-                ((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
-            }
+            result = result && fcc.clearCache();
 
             Thread.sleep(2000);
 

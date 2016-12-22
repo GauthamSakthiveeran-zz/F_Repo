@@ -405,6 +405,13 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
        }
     }
 
+    public boolean clearCache() throws Exception{
+        for(int i=0;i<13;i++){
+            ((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
+        }
+        return true;
+    }
+
     public boolean openCCPanel(){
 
         try {
