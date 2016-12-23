@@ -29,7 +29,7 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = "FCC", dataProvider = "testUrls", invocationCount = 3)
+    @Test(groups = "FCC", dataProvider = "testUrls")
     public void testFCCClosedcaption(String testName, String url) throws OoyalaException {
         logger.info("Url is : " + url);
         boolean result = true;
