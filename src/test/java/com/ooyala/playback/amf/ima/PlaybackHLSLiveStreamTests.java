@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf.vpaid;
+package com.ooyala.playback.amf.ima;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
