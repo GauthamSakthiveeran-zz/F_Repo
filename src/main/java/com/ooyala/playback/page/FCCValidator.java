@@ -11,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -21,6 +22,9 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     private static Logger logger = Logger.getLogger(FCCValidator.class);
 
    // private CCValidator ccValidator;
+   List<WebElement> lang, textColor, bgColor,ccWinColor;
+    String previewTextSelected, textSelected;
+    HashMap<String,String> ccOpacityMapBefore, ccOpacityMapAfter, ccColorSelectionBefore, ccColorSelectionAfter;
 
     public FCCValidator(WebDriver driver) {
         super(driver);
@@ -36,11 +40,11 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     public boolean validate(String element, int timeout) throws Exception {
         return switchToControlBar() && closedCaptionMicroPanel() && checkArrows() && verifyCCPanelElements()
                 && verifyClosedCaptionLanguages() && verifyCCColorSelectionPanel()
-                && verifyCCOpacityPanel() && verifyCCFonttypePanel()
+                && verifyCCOpacityPanel("") && verifyCCFonttypePanel()
                 && verifyCCFontSizePanel() && verifyCCTextEnhancementPanel() && closeCCPanel() && clearCache();
     }
 
-    public boolean checkArrows() throws Exception {
+    public boolean checkArrows() {
         try {
             if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
                 waitOnElement("ccLeftScrollBtn", 30000);
@@ -57,7 +61,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         }
     }
 
-    public boolean verifyCCPanelElements() throws Exception {
+    public boolean verifyCCPanelElements() {
         try {
             waitOnElement("ccContentBar", 30000);
             waitOnElement("closedCaptionPanel", 30000);
@@ -111,7 +115,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             langlist.toArray(langl);
 
             //select language and verify that Preview Text is shown
-            List<WebElement> lang = getWebElementsList("langList");
+            lang = getWebElementsList("langList");
             logger.info("language Count Value in Languages :" + lang.size());
             String langpreview1[] = {"Sample Text", "Texto de muestra", "Sample Text"};
 
@@ -154,7 +158,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             Thread.sleep(2000);
 
             // select text colors
-            List<WebElement> textColor = getWebElementsList("ccTextColorSelector");
+            textColor = getWebElementsList("ccTextColorSelector");
             logger.info("\t \t \t Color Count Value in Text Color:" + textColor.size());
             logger.info("\n*---------Verify Text Color Selection Panel---------*\n");
 
@@ -177,7 +181,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("verified text color selection is working fine");
 
             // select Background colors
-            List<WebElement> bgColor = getWebElementsList("ccBackgroundColorSelector");
+            bgColor = getWebElementsList("ccBackgroundColorSelector");
             logger.info("\t Color Count Value in Background Color:" + bgColor.size());
             logger.info("\n*---------Verify Background color Selection Panel---------*\n");
 
@@ -195,7 +199,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("verified background color selection is working fine");
 
             // select Windows  colors
-            List<WebElement> ccWinColor = getWebElementsList("ccWindowColorSelector");
+            ccWinColor = getWebElementsList("ccWindowColorSelector");
             logger.info("\n Color Count Value in Windows Color:" + ccWinColor.size() + "\n");
             logger.info("\n*---------Verify Window Color Selection Panel---------*\n");
             for (int i = 0; i < ccWinColor.size(); i++) {
@@ -214,7 +218,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         }
     }
 
-    public boolean verifyCCOpacityPanel() {
+    public boolean verifyCCOpacityPanel(String testName) {
         try {
             // verify CC Opacity Panel
             clickOnIndependentElement("captionOpacityPanel");
@@ -231,19 +235,25 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\t Text Opacity Selected :" + ccTextOpacity);
             String ccPreviewTextOpacity = getWebElement("ccPreviewText").getCssValue("color");
             logger.info("\t Preview Text Opacity Selected :" + ccPreviewTextOpacity);
-            Assert.assertEquals("rgba(0, 0, 0, 0.8)", ccPreviewTextOpacity);
+            if(!testName.contains("PlaybackFCCDefaultSettingTests")){
+                Assert.assertEquals("rgba(0, 0, 0, 0.8)", ccPreviewTextOpacity);
+            }
             logger.info("verified text opacity selection is working fine");
 
             // select Background Opacity
             WebElement slider1 = getWebElement("ccBackgroundOpacitySelector");
             int width1 = slider.getSize().getWidth();
-            move.dragAndDropBy(slider1, (width1 * 25) / 100, 0).build().perform();
+            move.dragAndDropBy(slider1,(width1*25)/100,0).build().perform();
             Thread.sleep(2000);
             String ccBgOpacity = getWebElement("ccBackgroundOpacity").getText();
-            logger.info("\t Background Opacity Selected :" + ccBgOpacity);
+            logger.info("\t \t \t Background Opacity Selected :" + ccBgOpacity);
             String ccPreviewBgOpacity = getWebElement("ccPreviewTextBG").getCssValue("background-color");
-            logger.info("\t Preview Text Background Opacity Selected :" + ccPreviewBgOpacity);
-            Assert.assertEquals("rgba(0, 0, 0, 0.8)", ccPreviewBgOpacity);
+            logger.info("\t \t \t Preview Text Background Opacity Selected :" + ccPreviewBgOpacity);
+
+            if(!testName.contains("PlaybackFCCDefaultSettingTests")){
+                Assert.assertEquals("rgba(0, 0, 0, 0.8)",ccPreviewBgOpacity);
+            }
+
             logger.info("verified Background opacity selection is working fine");
 
             // select Windows Opacity
@@ -254,7 +264,10 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\t Window Color Selected :" + ccWinOpacity);
             String ccPreviewWinOpacity = getWebElement("ccPreviewWinColor").getCssValue("background-color");
             logger.info("\t Window Opacity of Preview Text Selected :" + ccPreviewWinOpacity);
-            Assert.assertEquals("rgba(0, 0, 0, 0.8)", ccPreviewWinOpacity);
+
+            if(!testName.contains("PlaybackFCCDefaultSettingTests")){
+                Assert.assertEquals("rgba(0, 0, 0, 0.8)", ccPreviewWinOpacity);
+            }
             logger.info("verified Windows opacity selection is working fine");
             return true;
         } catch (Exception e) {
@@ -427,11 +440,9 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             if (!clickOnIndependentElement("NORMAL_SCREEN"))
                 return false;
-
         }
         return true;
     }
-
 
     public boolean clearCache() throws Exception {
         for (int i = 0; i < 13; i++) {
@@ -460,7 +471,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         }
     }
 
-    public boolean closedCaptionMicroPanel() throws Exception {
+    public boolean closedCaptionMicroPanel() {
         try {
 
             waitOnElement("CC_BTN", 30000);
@@ -492,7 +503,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         return false;
     }
 
-    public boolean switchToControlBar() throws Exception {
+    public boolean switchToControlBar() {
         try {
             if (isElementPresent("HIDDEN_CONTROL_BAR")) {
                 logger.info("hovering mouse over the player");
@@ -506,4 +517,172 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return false;
         }
     }
+
+    public String getCCLanguagePreviewText()
+    {
+        String previewTextDefault = getWebElement("ccPreviewText").getText();
+        return previewTextDefault;
+    }
+
+    public boolean beforeRefreshCCSetting(){
+        boolean result = true;
+        try{
+            Thread.sleep(2000);
+            checkArrows();
+
+            result = result && verifyCCPanelElements();
+
+            // CC Languages
+            result = result && verifyClosedCaptionLanguages();
+            result = result && setClosedCaptionLanguage(2);
+            Thread.sleep(2000);
+            previewTextSelected = getCCLanguagePreviewText();
+            logger.info("Preview Text Selected : " + previewTextSelected);
+
+            // CC Color Selection
+            result = result && verifyCCColorSelectionPanel();
+            result = result && setCCColorSelectionOptions();
+            ccColorSelectionBefore = getCCColorSelection();
+
+            // CC Opacity Selection
+            verifyCCOpacityPanel("PlaybackFCCDefaultSettingTests");
+            Thread.sleep(2000);
+            result = result && setCCOpacity();
+            ccOpacityMapBefore = getCCOpacityValues();
+
+            return result;
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean setClosedCaptionLanguage(int index)
+    {
+        index = index-1;
+        if(index < lang.size()){
+            lang.get(index).click();
+            return true;
+        }else{
+            logger.info("Invalid index passed.");
+        }
+        return false;
+    }
+
+    public boolean setCCColorSelectionOptions(){
+        try{
+            textColor.get(0).click();
+            bgColor.get(6).click();
+            ccWinColor.get(2).click();
+            return  true;
+        }catch(Exception e){
+            logger.info("Error while setting cc color selection");
+        }
+        return false;
+    }
+
+    public HashMap<String,String> getCCColorSelection(){
+        String ccTextColor, ccBgColor, ccWinColor;
+        HashMap<String,String> ccColorMap = new HashMap<String,String>();
+
+        ccTextColor = getWebElement("ccTextColor").getText();
+        ccBgColor = getWebElement("ccBackgroundColor").getText();
+        ccWinColor = getWebElement("ccWindowColor").getText();
+
+        ccColorMap.put("ccTextColor", ccTextColor);
+        ccColorMap.put("ccBgColor", ccBgColor);
+        ccColorMap.put("ccWinColor", ccWinColor);
+
+        return ccColorMap;
+    }
+
+    public boolean setCCOpacity(){
+        try{
+            WebElement slider;
+            int width;
+            Actions move = new Actions(driver);
+            slider = getWebElement("ccTextOpacitySelector");
+            width = slider.getSize().getWidth();
+            move.dragAndDropBy(slider,(width*20)/100,0).build().perform();
+
+            slider = getWebElement("ccBackgroundOpacitySelector");
+            width = slider.getSize().getWidth();
+            move.dragAndDropBy(slider,(width*20)/100,0).build().perform();
+
+            slider = getWebElement("ccWindowOpacitySelector");
+            width = slider.getSize().getWidth();
+            move.dragAndDropBy(slider,(width*20)/100,0).build().perform();
+            return true;
+        }catch (Exception e){
+            logger.info("Error while setting CC opacity");
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public HashMap<String,String> getCCOpacityValues(){
+
+        String ccTextOpacity, ccBgOpacity, ccWinOpacity;
+        HashMap<String,String> ccOpacityMap = new HashMap<String,String>();
+
+        clickOnIndependentElement("captionOpacityPanel");
+        ccTextOpacity = getWebElement("ccPreviewText").getCssValue("color");
+        ccBgOpacity = getWebElement("ccPreviewTextBG").getCssValue("background-color");
+        ccWinOpacity = getWebElement("ccPreviewWinColor").getCssValue("background-color");
+
+        ccOpacityMap.put("ccTextOpacity", ccTextOpacity);
+        ccOpacityMap.put("ccBgOpacity",ccBgOpacity);
+        ccOpacityMap.put("ccWinOpacity",ccWinOpacity);
+
+        return ccOpacityMap;
+    }
+
+    public boolean afterRefreshCCSettings() {
+        boolean result = true;
+        try {
+            Object ccobj = ((JavascriptExecutor) driver)
+                    .executeScript("var attrb = pp.getCurrentItemClosedCaptionsLanguages().languages;" +
+                            "{return attrb;}");
+
+            @SuppressWarnings("unchecked")
+            ArrayList<String> langlist = ((ArrayList<String>) ccobj);
+            logger.info("\t \t \t Closed Caption Available Languages: " + langlist + "\n \t \t \t languages available count :" + langlist.size());
+
+            String[] langl = new String[langlist.size()];
+            langlist.toArray(langl);
+
+            //select language and verify that Preview Text is shown
+            lang = getWebElementsList("langList");
+            textSelected = getCCLanguagePreviewText();
+            result = result && textSelected.contains(previewTextSelected);
+            logger.info("Previous Text Color Selected : " + previewTextSelected + " After refresh Text Color :" + textSelected);
+
+            waitOnElement("colorSelectionPanel", 30000);
+            clickOnIndependentElement("colorSelectionPanel");
+
+            ccColorSelectionAfter = getCCColorSelection();
+            ccColorSelectionAfter = getCCColorSelection();
+            result = result && compareValues(ccColorSelectionBefore, ccColorSelectionAfter);
+            clickOnIndependentElement("captionOpacityPanel");
+            ccOpacityMapAfter = getCCOpacityValues();
+
+            result = result && compareValues(ccOpacityMapBefore, ccOpacityMapAfter);
+            return result;
+
+        } catch (Exception e) {
+            result = false;
+            return result;
+        }
+    }
+
+    public boolean compareValues(HashMap<String, String> beforeRefreshPageMap, HashMap<String, String> afterRefreshValuesMap){
+        for (final String key : afterRefreshValuesMap.keySet()) {
+            if (afterRefreshValuesMap.containsKey(key) && beforeRefreshPageMap.containsKey(key)) {
+                Assert.assertEquals(afterRefreshValuesMap.get(key), beforeRefreshPageMap.get(key));
+                logger.info("ccOpacity Values for :" + key + " : Before Refresh" + beforeRefreshPageMap.get(key)+ " After Refresh : "+afterRefreshValuesMap.get(key));
+            }
+        }
+        return true;
+    }
+
 }
