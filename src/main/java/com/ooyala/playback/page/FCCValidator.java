@@ -22,8 +22,8 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     private static Logger logger = Logger.getLogger(FCCValidator.class);
 
    // private CCValidator ccValidator;
-   List<WebElement> lang, textColor, bgColor,ccWinColor;
-    String previewTextSelected, textSelected;
+   List<WebElement> lang, textColor, bgColor,ccWinColor,ccFontType, ccFontSize, ccTextEnhancement;
+    String previewTextSelected, textSelected, ccFontSizeBefore,ccFontSizeAfter, ccFontTypeBefore,ccFontTypeAfter, ccTextEnhancementSelectedBefore, ccTextEnhancementSelectedAfter;
     HashMap<String,String> ccOpacityMapBefore, ccOpacityMapAfter, ccColorSelectionBefore, ccColorSelectionAfter;
 
     public FCCValidator(WebDriver driver) {
@@ -35,7 +35,6 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         addElementToPageElements("pause");
         addElementToPageElements("controlbar");
     }
-
 
     public boolean validate(String element, int timeout) throws Exception {
         return switchToControlBar() && closedCaptionMicroPanel() && checkArrows() && verifyCCPanelElements()
@@ -144,7 +143,6 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return false;
         }
     }
-
 
     public boolean verifyCCColorSelectionPanel() {
         try {
@@ -282,7 +280,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\n*--------------Verify Font Type Panel-------------------------*\n");
             Thread.sleep(2000);
 
-            List<WebElement> ccFontType = getWebElementsList("ccFontType");
+            ccFontType = getWebElementsList("ccFontType");
             logger.info("\t \t \t Font Type Count Value :" + ccFontType.size());
             boolean ismoreFontType = false;
             int fontTypeCount = 0;
@@ -344,7 +342,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             clickOnIndependentElement("ccFontSizePanel");
             logger.info("\n*--------------Verify CC Font Size Panel---------------------*\n");
             Thread.sleep(2000);
-            List<WebElement> ccFontSize = getWebElementsList("ccFontSizeSelector");
+            ccFontSize = getWebElementsList("ccFontSizeSelector");
             logger.info("\t \t \t Font Size Count Value :" + ccFontSize.size());
 
             for (int i = 0; i < ccFontSize.size(); i++) {
@@ -393,12 +391,12 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\n*---------------Verify CC Text Enhancement Panel--------------*\n");
             Thread.sleep(2000);
 
-            List<WebElement> ccTextEnhancement = getWebElementsList("ccTextEnhancementSelector");
-            logger.info("\t \t \t Text Enhancement Type Count Value :" + ccTextEnhancement.size());
+            ccTextEnhancement = getWebElementsList("ccTextEnhancementSelector");
+            logger.info("\t Text Enhancement Type Count Value :" + ccTextEnhancement.size());
             for (int i = 0; i < ccTextEnhancement.size(); i++) {
 
                 ccTextEnhancement.get(i).click();
-                clickOnIndependentElement("ccPreviewCaption");
+             //   clickOnIndependentElement("ccPreviewCaption");
                 String ccTextEnh = getWebElement("ccFontSizeSelected").getText();
                 logger.info("\t Text Enhancement Selected :" + ccTextEnh);
                 String ccPreviewTextEnh = getWebElement("ccPreviewText").getCssValue("text-shadow");
@@ -451,26 +449,6 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         return true;
     }
 
-    public boolean openCCPanel() {
-
-        try {
-            switchToControlBar();
-            waitOnElement("CC_BTN", 30000);
-
-            if (!clickOnIndependentElement("CC_BTN"))
-                return false;
-
-            if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
-                clickOnIndependentElement("CC_MORE_CAPTIONS");
-            }
-            return true;
-        } catch (Exception e) {
-            extentTest.log(LogStatus.FAIL,
-                    "Horizontal cc option is not present");
-            return false;
-        }
-    }
-
     public boolean closedCaptionMicroPanel() {
         try {
 
@@ -518,12 +496,6 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         }
     }
 
-    public String getCCLanguagePreviewText()
-    {
-        String previewTextDefault = getWebElement("ccPreviewText").getText();
-        return previewTextDefault;
-    }
-
     public boolean beforeRefreshCCSetting(){
         boolean result = true;
         try{
@@ -545,10 +517,28 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             ccColorSelectionBefore = getCCColorSelection();
 
             // CC Opacity Selection
-            verifyCCOpacityPanel("PlaybackFCCDefaultSettingTests");
+            result = result && verifyCCOpacityPanel("PlaybackFCCDefaultSettingTests");
             Thread.sleep(2000);
             result = result && setCCOpacity();
             ccOpacityMapBefore = getCCOpacityValues();
+
+            // CC Font Type Selection
+            result = result && verifyCCFonttypePanel();
+            Thread.sleep(2000);
+            result =result && setFontType();
+            ccFontTypeBefore =getFontType();
+
+            // CC Font Size Selection
+            result = result && verifyCCFontSizePanel();
+            Thread.sleep(2000);
+            result =result && setFontSize();
+            ccFontSizeBefore=getCCFontSizePreviewText();
+
+            // CC Text Enhancement Selection
+            result = result && verifyCCTextEnhancementPanel();
+            Thread.sleep(2000);
+            result =result && setTextEnhancement();
+            ccTextEnhancementSelectedBefore=getTextEnhancement();
 
             return result;
         }catch(Exception e){
@@ -557,8 +547,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         }
     }
 
-    public boolean setClosedCaptionLanguage(int index)
-    {
+    public boolean setClosedCaptionLanguage(int index) {
         index = index-1;
         if(index < lang.size()){
             lang.get(index).click();
@@ -577,11 +566,14 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return  true;
         }catch(Exception e){
             logger.info("Error while setting cc color selection");
+            return false;
         }
-        return false;
     }
 
     public HashMap<String,String> getCCColorSelection(){
+        waitOnElement("colorSelectionPanel", 30000);
+        clickOnIndependentElement("colorSelectionPanel");
+
         String ccTextColor, ccBgColor, ccWinColor;
         HashMap<String,String> ccColorMap = new HashMap<String,String>();
 
@@ -620,7 +612,70 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         }
     }
 
+    public boolean setFontSize(){
+        try{
+            ccFontSize.get(2).click();
+            return true;
+        }catch (Exception e){
+            logger.info("Error while setting CC font size");
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean setTextEnhancement(){
+        try{
+            Thread.sleep(2000);
+            ccTextEnhancement.get(2).click();
+            return true;
+        }catch (Exception e){
+            logger.info("Error while setting CC Text Enhancement");
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public String getTextEnhancement() throws Exception{
+        clickOnIndependentElement("ccTextEnhancement");
+        Thread.sleep(2000);
+        String ccPreviewTextEnh = getWebElement("ccPreviewText").getCssValue("text-shadow");
+        logger.info("\t Text Enhancement Selected :" + ccPreviewTextEnh);
+        return ccPreviewTextEnh;
+    }
+
+    public boolean setFontType(){
+        try{
+            ccFontType.get(1).click();
+            return true;
+        }catch (Exception e){
+            logger.info("Error while setting CC font type");
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public String getFontType() throws Exception {
+        clickOnIndependentElement("ccFontTypePanel");
+        Thread.sleep(2000);
+        String ccPreviewTextFont = getWebElement("ccPreviewText").getCssValue("font-family");
+        return ccPreviewTextFont;
+    }
+
+    public String getCCLanguagePreviewText() {
+        String previewTextDefault = getWebElement("ccPreviewText").getText();
+        return previewTextDefault;
+    }
+
+    public String getCCFontSizePreviewText() throws Exception{
+        clickOnIndependentElement("ccFontSizePanel");
+        Thread.sleep(2000);
+        String ccTextFontSize = getWebElement("ccFontSizeSelected").getText();
+        logger.info("\t Text Font Size Selected.... :" + ccTextFontSize);
+        return ccTextFontSize;
+    }
+
     public HashMap<String,String> getCCOpacityValues(){
+        clickOnIndependentElement("captionOpacityPanel");
 
         String ccTextOpacity, ccBgOpacity, ccWinOpacity;
         HashMap<String,String> ccOpacityMap = new HashMap<String,String>();
@@ -646,32 +701,39 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             @SuppressWarnings("unchecked")
             ArrayList<String> langlist = ((ArrayList<String>) ccobj);
-            logger.info("\t \t \t Closed Caption Available Languages: " + langlist + "\n \t \t \t languages available count :" + langlist.size());
+            logger.info("\t Closed Caption Available Languages: " + langlist + "\n \t languages available count :" + langlist.size());
 
             String[] langl = new String[langlist.size()];
             langlist.toArray(langl);
 
-            //select language and verify that Preview Text is shown
+            // Select language and verify that Preview Text is shown
             lang = getWebElementsList("langList");
             textSelected = getCCLanguagePreviewText();
             result = result && textSelected.contains(previewTextSelected);
-            logger.info("Previous Text Color Selected : " + previewTextSelected + " After refresh Text Color :" + textSelected);
 
-            waitOnElement("colorSelectionPanel", 30000);
-            clickOnIndependentElement("colorSelectionPanel");
-
-            ccColorSelectionAfter = getCCColorSelection();
+            // Comparing Color selected values before refresh and after refresh
             ccColorSelectionAfter = getCCColorSelection();
             result = result && compareValues(ccColorSelectionBefore, ccColorSelectionAfter);
-            clickOnIndependentElement("captionOpacityPanel");
+
+            // Comparing Opacity values before refresh and after refresh
             ccOpacityMapAfter = getCCOpacityValues();
-
             result = result && compareValues(ccOpacityMapBefore, ccOpacityMapAfter);
-            return result;
 
-        } catch (Exception e) {
-            result = false;
+            // Comparing Font Type values before refresh and after refresh
+            ccFontTypeAfter = getFontType();
+            result = result && ccFontTypeBefore.contains(ccFontTypeAfter);
+
+            // Comparing Font size before refresh and after refresh
+            ccFontSizeAfter=getCCFontSizePreviewText();
+            result = result && ccFontSizeBefore.contains(ccFontSizeAfter);
+
+            // Comparing Text Enhancement value before refresh and after refresh
+            ccTextEnhancementSelectedAfter=getTextEnhancement();
+            result =result && ccTextEnhancementSelectedBefore.contains(ccTextEnhancementSelectedAfter);
+
             return result;
+        } catch (Exception e) {
+            return false;
         }
     }
 
