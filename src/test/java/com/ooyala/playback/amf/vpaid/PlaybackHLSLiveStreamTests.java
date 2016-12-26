@@ -1,0 +1,50 @@
+package com.ooyala.playback.amf.vpaid;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.ControlBarValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.qe.common.exception.OoyalaException;
+
+public class PlaybackHLSLiveStreamTests extends PlaybackWebTest {
+
+	public PlaybackHLSLiveStreamTests() throws OoyalaException {
+		super();
+	}
+
+	private EventValidator event;
+	private PlayValidator playValidator;
+	private ControlBarValidator controlBar;
+
+	@Test(groups = {"amf","preroll","live"}, dataProvider = "testUrls")
+	public void verifyHLSLiveStream(String testName, String url) throws OoyalaException {
+
+		boolean result = true;
+
+		try {
+
+			driver.get(url);
+
+			result = result && playValidator.waitForPage();
+			injectScript();
+
+			result = result && playValidator.validate("playing_1", 10000);
+			
+			result = result && event.validate("PreRoll_willPlaySingleAd_1", 6000);
+			result = result && event.validate("singleAdPlayed_1", 10000);
+			
+			result = result && controlBar.live().validate("", 60000);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = false;
+		}
+
+		Assert.assertTrue(result, "Test failed");
+
+	}
+
+}
