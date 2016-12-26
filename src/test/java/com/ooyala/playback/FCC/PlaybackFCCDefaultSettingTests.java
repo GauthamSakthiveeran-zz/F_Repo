@@ -2,6 +2,7 @@ package com.ooyala.playback.FCC;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -20,7 +21,8 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
     private EventValidator eventValidator;
     private CCValidator cc;
     private FCCValidator fcc;
-    private FullScreenValidator fullscreen;
+    private PlayAction playAction;
+    private SeekValidator seek;
 
     public PlaybackFCCDefaultSettingTests() throws OoyalaException {
         super();
@@ -67,6 +69,14 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
 
             result = result && fcc.closedCaptionMicroPanel();
             result = result && fcc.afterRefreshCCSettings();
+
+            result = result && fcc.closeCCPanel();
+
+            result = result && playAction.startAction();
+
+            result = result && seek.validate("seeked_1",30000);
+
+            result = result && eventValidator.validate("played_1", 60000);
 
         }catch(Exception e){
             e.printStackTrace();

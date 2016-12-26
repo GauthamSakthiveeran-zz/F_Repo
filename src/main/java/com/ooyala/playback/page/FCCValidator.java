@@ -348,7 +348,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             for (int i = 0; i < ccFontSize.size(); i++) {
                 ccFontSize.get(i).click();
                 String ccTextFontSize = getWebElement("ccFontSizeSelected").getText();
-                logger.info("\t \t \t Text Font Size Selected :" + ccTextFontSize);
+                logger.info("\t Text Font Size Selected :" + ccTextFontSize);
                 String ccPreviewTextFontSize[] = getWebElement("ccPreviewText").getAttribute("style").split(";");
                 String fontSizeInEm = null;
                 int flag = 0;
@@ -626,7 +626,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     public boolean setTextEnhancement(){
         try{
             Thread.sleep(2000);
-            ccTextEnhancement.get(2).click();
+            ccTextEnhancement.get(1).click();
             return true;
         }catch (Exception e){
             logger.info("Error while setting CC Text Enhancement");
