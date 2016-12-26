@@ -288,18 +288,13 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             if (ismoreFontType) {
                 fontTypeCount = 1;
                 clickOnIndependentElement("rigthArrow");
-
                 boolean rightArrowPresent = isElementPresent("rightArrowHidden");
-                if (!rightArrowPresent) {
-                    logger.info("\t No more right button :");
-                } else {
-                    ismoreFontType = isElementPresent("rightBtn");
-                    if (ismoreFontType)
-                        fontTypeCount = +1;
-                    logger.info("\t Font Type Panel Count :" + fontTypeCount);
-                    Thread.sleep(5000);
-                    clickOnIndependentElement("rigthArrow");
-                }
+                ismoreFontType = isElementPresent("rightBtn");
+                if (ismoreFontType)
+                    fontTypeCount = +1;
+                logger.info("\t Font Type Panel Count :" + fontTypeCount);
+                Thread.sleep(5000);
+                clickOnIndependentElement("leftBtn");
             }
 
             List<WebElement> ccFontType1 = getWebElementsList("ccFontType");
@@ -314,13 +309,10 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     logger.info("\t Font type selected for CC Preview Text :" + ccPreviewTextFont);
                 }
 
-                boolean rightArrowPresent = isElementPresent("rightArrowHidden");
-                if (!rightArrowPresent) {
-                } else {
-                    if (ismoreFontType)
-                        clickOnIndependentElement("rigthArrow");
-                }
+                if (ismoreFontType)
+                    clickOnIndependentElement("rigthArrow");
             }
+
             logger.info("verified Font Type selection is working fine");
 
             return true;
@@ -361,8 +353,14 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     }
                 }
                 if (flag == 0) {
-                    String fontSize[] = ccPreviewTextFontSize[3].split(":");
-                    fontSizeInEm = fontSize[1].trim();
+                    String fontSize[];
+                    if (getBrowser().equalsIgnoreCase("internet explorer")){
+                        fontSize = ccPreviewTextFontSize[2].split(":");
+                        fontSizeInEm = fontSize[1].trim();
+                    }else {
+                        fontSize = ccPreviewTextFontSize[3].split(":");
+                        fontSizeInEm = fontSize[1].trim();
+                    }
                 }
                 logger.info("\t font size in em : " + fontSizeInEm);
                 Assert.assertEquals(ccFonts[i], ccTextFontSize); //verify font size selected
@@ -375,8 +373,8 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall"))
                     Assert.assertEquals(font_size_xsmall[i], fontSizeInEm);
             }
-            logger.info("verified Font Size selection is working fine");
 
+            logger.info("verified Font Size selection is working fine");
             return true;
         } catch (Exception e) {
             return false;
@@ -387,6 +385,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         try {
             String textEnName[] = {"Uniform", "Depressed", "Raised", "Shadow"};
             String textEnCode[] = {"none", "rgb(255, 255, 255) 1px 1px 0px", "rgb(255, 255, 255) -1px -1px 0px, rgb(0, 0, 0) -3px 0px 5px", "rgb(26, 26, 26) 2px 2px 2px"};
+            String textEnCodeForIE[]={"none","1px 1px white","-1px -1px white, -3px 0px 5px black","2px 2px 2px #1a1a1a"};
             clickOnIndependentElement("ccTextEnhancement");
             logger.info("\n*---------------Verify CC Text Enhancement Panel--------------*\n");
             Thread.sleep(2000);
@@ -396,17 +395,31 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             for (int i = 0; i < ccTextEnhancement.size(); i++) {
 
                 ccTextEnhancement.get(i).click();
-             //   clickOnIndependentElement("ccPreviewCaption");
+
                 String ccTextEnh = getWebElement("ccFontSizeSelected").getText();
                 logger.info("\t Text Enhancement Selected :" + ccTextEnh);
                 String ccPreviewTextEnh = getWebElement("ccPreviewText").getCssValue("text-shadow");
                 logger.info("\t Text Enhancement for CC Preview Text :" + ccPreviewTextEnh);
-                Assert.assertEquals(textEnName[i], ccTextEnh); // verify text enhancement selected
-                Assert.assertEquals(textEnCode[i], ccPreviewTextEnh);
+                if (!(textEnName[i].equals(ccTextEnh))){
+                    logger.error("Preview Text enhancement is not matching");
+                    return false;
+                }
+                // verify text enhancement selected
+                if (getBrowser().equalsIgnoreCase("internet explorer")){
+                    if (!(textEnCodeForIE[i].equals(ccPreviewTextEnh))){
+                        logger.error("Preview Text enhancement is not matching for internet explorer browser");
+                        return false;
+                    }
+                }else
+                    if (!(textEnCode[i].equals(ccPreviewTextEnh))){
+                        logger.error("Preview Text enhancement is not matching for "+getBrowser() + "browser");
+                        return false;
+                    }
             }
             logger.info("verified CC Text Enhancement selection is working fine");
             return true;
         } catch (Exception e) {
+            logger.error("CC Text Enhancement selection is not working");
             return false;
         }
     }

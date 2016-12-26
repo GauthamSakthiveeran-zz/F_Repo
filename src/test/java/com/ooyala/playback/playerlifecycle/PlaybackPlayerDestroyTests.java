@@ -36,13 +36,9 @@ public class PlaybackPlayerDestroyTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
-			executeScript("pp.destroy()");
+			executeScript("pp.destroy();");
 
-			result = result && play.validate("destroy_1", 50);
-
-			result = result
-					&& eventValidator
-							.validateElementPresence("STATE_SCREEN_SELECTABLE");
+			result = result && eventValidator.validate("destroy_1", 50000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
