@@ -1,0 +1,41 @@
+<elements area="fcc">
+    <element key="ccLeftScrollBtn" findBy="class" class="oo-left-tab-button" />
+    <element key="ccRightScrollBtn" findBy="class" class="oo-right-tab-button" />
+    <element key="ccContentBar" findBy="class" class="oo-content-screen-title-bar" />
+    <element key="closedCaptionPanel" findBy="class" class="oo-closed-captions-panel" />
+    <element key="ccRightBtn" findBy="xPath" xPath=".//*[@class='oo-right-button" />
+    <element key="rightBtn" findBy="class" class="oo-right-button" />
+    <element key="leftBtn" findBy="class" class="oo-left-button" />
+    <element key="ccPreviewCaption" findBy="class" class="oo-preview-caption" />
+    <element key="ccSwitchContainer" findBy="class" class="oo-switch-container-selectable" />
+    <element key="ccOff" findBy="xPath" xPath=".//*[@class='oo-switch-captions oo-switch-captions-off oo-switch-captions-active']" />
+    <element key="ccOn" findBy="xPath" xPath=".//*[@class='oo-switch-captions oo-switch-captions-on oo-switch-captions-active']" />
+    <element key="langList" findBy="xPath" xPath=".//*[@class='oo-language-tab']//span[@class='oo-data']" />
+    <element key="ccPreviewText" findBy="class" class="oo-text-track" />
+    <element key="colorSelectionPanel" findBy="xPath" xPath=".//*[normalize-space()='Color Selection']" />
+    <element key="captionOpacityPanel" findBy="class" class="tabs-menu-item-2" />
+    <element key="ccTextColorSelector" findBy="xPath" xPath=".//*[@class='oo-selection-container oo-text-color-selection-container']//div[@class='oo-color-selector']/div/a" />
+    <element key="ccTextColor" findBy="xPath" xPath=".//*[@class='oo-selection-container oo-text-color-selection-container'][1]//span[@class='oo-selection-container-selection-text']" />
+    <element key="ccBackgroundColorSelector" findBy="xPath" xPath=".//*[@class='oo-selection-container'][1]//div[@class='oo-color-selector']/div/a" />
+    <element key="ccPreviewTextBG" findBy="class" class="oo-text-track-background" />
+    <element key="ccBackgroundColor" findBy="xPath" xPath=".//*[@class='oo-selection-container'][1]//span[@class='oo-selection-container-selection-text']" />
+    <element key="ccWindowColorSelector" findBy="xPath" xPath=".//*[@class='oo-selection-container'][2]//div[@class='oo-color-selector']/div/a" />
+    <element key="ccWindowColor" findBy="xPath" xPath=".//*[@class='oo-selection-container'][2]//span[@class='oo-selection-container-selection-text']" />
+    <element key="ccPreviewWinColor" findBy="class" class="oo-text-track-window" />
+    <element key="ccTextOpacitySelector" findBy="xPath" xPath=".//*[@class='oo-selection-container'][1]//input[@class='oo-slider oo-slider-caption-opacity']" />
+    <element key="ccTextOpacity" findBy="xPath" xPath="//*[@class='oo-selection-container'][1]//span[@class='oo-selection-container-selection-text']" />
+    <element key="ccBackgroundOpacitySelector" findBy="xPath" xPath=".//*[@class='oo-selection-container'][2]//input[@class='oo-slider oo-slider-caption-opacity']" />
+    <element key="ccBackgroundOpacity" findBy="xPath" xPath=".//*[@class='oo-selection-container'][2]//span[@class='oo-selection-container-selection-text']" />
+    <element key="ccWindowOpacitySelector" findBy="xPath" xPath=".//*[@class='oo-selection-container'][3]//input[@class='oo-slider oo-slider-caption-opacity']" />
+    <element key="ccWindowOpacity" findBy="xPath" xPath=".//*[@class='oo-selection-container'][3]//span[@class='oo-selection-container-selection-text']" />
+    <element key="ccFontTypePanel" findBy="class" class="tabs-menu-item-3" />
+    <element key="ccFontSizePanel" findBy="class" class="tabs-menu-item-4" />
+    <element key="ccFontSizeSelector" findBy="class" class="oo-font-size-letter" />
+    <element key="ccFontType" findBy="xPath" xPath=".//*[@class='oo-font-type-tab']//span[@class='oo-data']" />
+    <element key="rigthArrow" findBy="xPath" xPath=".//*[normalize-space(@class)='oo-icon oo-icon-system-right-arrow']" />
+    <element key="leftArrow" findBy="xPath" xPath=".//*[normalize-space(@class)='oo-icon oo-icon-system-left-arrow']" />
+    <element key="rightArrowHidden" findBy="xPath" xPath=".//*[normalize-space(@class)=oo-right-button oo-hidden']" />
+    <element key="ccFontSizeSelected" findBy="xPath" xPath=".//*[@class='oo-selection-container-title'][1]//span[@class='oo-selection-container-selection-text']" />
+    <element key="ccTextEnhancementSelector" findBy="class" class="oo-text-enhancement-letter" />
+    <element key="ccTextEnhancement" findBy="class" class="tabs-menu-item-5" />
+</elements>
