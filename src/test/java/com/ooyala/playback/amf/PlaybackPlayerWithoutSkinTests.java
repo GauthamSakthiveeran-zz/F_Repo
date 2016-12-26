@@ -18,7 +18,7 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 	private EventValidator event;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPlayerWithoutskin(String testName, String url) // TODO
+	public void verifyPlayerWithoutskin(String testName, String url) 
 			throws OoyalaException {
 
 		boolean result = true;
@@ -41,8 +41,7 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 
 			result = result && event.validate("singleAdPlayed_1", 60000);
 
-			double initialtimeset = Double
-					.parseDouble((executeScript("return VideoInitialTime.textContent")).toString());
+//			double initialtimeset = Double.parseDouble((executeScript("return VideoInitialTime.textContent")).toString());
 
 			result = result && event.validate("InitialTime_0", 60000);
 
