@@ -1,20 +1,19 @@
 <elements area="adclicks">
-	<element key="AD_SCREEN_PANEL" findBy="class"
-             class="oo-ad-screen-panel" />
-    <element key="AD_PANEL" findBy="class"
-             class="oo-ad-panel" />
-                      
-	<element key="LEARN_MORE" findBy="class"
-             class="oo-learn-more" />
-    <element key="AD_SKIP_BTN" findBy="class"
-             class="oo-icon-skip-slick" />
-             
-    <element key="AD_SKIP_BTN_CUSTOM" findBy="ID"
-             class="skipBtn" />         
-    
-     <element key="AD_PANEL_1" findBy="class"
-             class="oo-player-skin-plugins" />         
-             
-    <element key="VIDEO_AD_UI_PRE_SKIP_BUTTON" findBy="class"
-             class="videoAdUiSkipButton" />                  
+
+	<element key="AD_SCREEN_PANEL" findBy="class" class="oo-ad-screen-panel" />
+	<element key="AD_PANEL" findBy="class" class="oo-ad-panel" />
+
+	<element key="LEARN_MORE" findBy="class" class="oo-learn-more" />
+	<element key="AD_SKIP_BTN" findBy="class" class="oo-icon-skip-slick" />
+
+	<element key="AD_SKIP_BTN_CUSTOM" findBy="ID" class="skipBtn" />
+
+	<element key="AD_PANEL_1" findBy="class" class="oo-player-skin-plugins" />
+
+	<element key="VIDEO_AD_UI_PRE_SKIP_BUTTON" findBy="class"
+		class="videoAdUiSkipButton" />
+
+	<element key="LEARN_MORE_IE" findBy="xPath"
+		xPath="./*//a[@class='oo-learn-more']//span" />
+		
 </elements>

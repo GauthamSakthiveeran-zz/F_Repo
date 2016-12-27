@@ -17,28 +17,27 @@ public class AdSkipButtonValidator extends PlayBackPage implements PlaybackValid
 		addElementToPageElements("adclicks");
 	}
 
-	boolean custom = false;
-
-	public AdSkipButtonValidator custom() {
-		custom = true;
-		return this;
-	}
-
 	public boolean validate(String element, int timeout) throws Exception {
-		if (!waitOnElement(By.id("showAdSkipButton_1"), 60000))
+		if (!waitOnElement(By.id("showAdSkipButton_1"), 60000)){
+			extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");
 			return false;
+		}
 		try {
-			if (custom)
-				return true;
 
 			if (isElementPresent("AD_SKIP_BTN"))
-				return clickOnIndependentElement("AD_SKIP_BTN") && waitOnElement(By.id("skipAd_1"), 60000);
+				 if(clickOnIndependentElement("AD_SKIP_BTN") && waitOnElement(By.id("skipAd_1"), 60000)){
+					 extentTest.log(LogStatus.PASS, "Clicked on Ad Skip Button.");
+					 return true;
+				 }else{
+					 extentTest.log(LogStatus.FAIL, "Couldn't click on Ad Skip Button.");
+					 return false;
+				 }
 
-			extentTest.log(LogStatus.INFO, "AD_SKIP_BTN is not present!!");
+			extentTest.log(LogStatus.INFO, "Ad Skip Button is not present!!");
 			return true;
 
 		} catch (Exception e) {
-			extentTest.log(LogStatus.INFO, "adSkip Button is not present!!");
+			extentTest.log(LogStatus.INFO, "Ad Skip Button is not present!!");
 			extentTest.log(LogStatus.INFO, "Validating videoAdUiPreSkipButton");
 			return clickOnIndependentElement("VIDEO_AD_UI_PRE_SKIP_BUTTON") && waitOnElement("skipAd_1", 60000);
 		}

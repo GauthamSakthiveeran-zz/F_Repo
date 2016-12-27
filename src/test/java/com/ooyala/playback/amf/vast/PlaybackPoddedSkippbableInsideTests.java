@@ -57,7 +57,7 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 
 
 			result = result && seekValidator.validate("seeked_1", 6000);
-			result = result && event.validate("played_1", 6000);
+			result = result && event.validate("played_1", 90000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

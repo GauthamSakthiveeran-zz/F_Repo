@@ -32,7 +32,12 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		return waitOnElement(By.id(element), timeout);
+		if(waitOnElement(By.id(element), timeout)){
+			extentTest.log(LogStatus.PASS, "Wait on element : " + element);
+			return true;
+		}
+		extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");
+		return false;
 	}
 
 	public boolean eventAction(String element) throws Exception {
@@ -40,7 +45,12 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public void validateElement(String element, int timeout) throws Exception {
-		waitOnElement(element, timeout);
+		if(waitOnElement(element, timeout)){
+			extentTest.log(LogStatus.PASS, "Wait on element : " + element);
+		}else{
+			extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");
+		}
+				
 	}
 
 	public boolean validateElementPresence(String element) throws Exception {

@@ -30,8 +30,9 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 
 	String testUrl = new String();
 
-	public void setTestUrl(String testUrl) {
+	public EncodingValidator setTestUrl(String testUrl) {
 		this.testUrl = testUrl;
+		return this;
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
