@@ -112,7 +112,7 @@
 	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NocGg4bzoRJ1yu3JY3LP44tVlsC2E_gi","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true},"initialTime":0,"autoplay":false}]]></playerParameter>
     	</url>
     	
-    	<!-- <url>
+    	<url>
 	    	<description name="SkipAds_IMA"/>
 	        <embed_code name="5wbHlycToOimSZ-frmuqnhipueNLOUs8"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -121,7 +121,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="615dc8e909e941c280e12155df838355"/>
 	        <playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":10}]]></playerParameter>
-    	</url> -->
+    	</url>
     	
     	<url>
 	    	<description name="FlashSkipAds_Freewheel"/>
@@ -173,8 +173,7 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
-<!--     	Video not loading -->
-    	<!-- <url>
+    	<url>
 	    	<description name="SkipAds_Vast"/>
 	        <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -183,7 +182,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":10}]]></playerParameter>
-    	</url> -->
+    	</url>
     	
     	<url>
 	    	<description name="Skippable_AD_Vast3.0"/>

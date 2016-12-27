@@ -23,8 +23,8 @@
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
-<!--     	INVALI test data -->
-    	<!-- <url>
+
+    	<url>
 	    	<description name="IMA_PreRoll_VAST_MidRoll"/>
 	        <embed_code name="h4ZXBnMDE6mvd9Vtp_Zc9HmiWvS0izIx"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -33,7 +33,7 @@
 	        <additionalPlugins name="VAST"/>
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-    	</url> -->
+    	</url>
     	
     </test>
 </testdata>    	
