@@ -1,6 +1,5 @@
 package com.ooyala.playback.page;
 
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -131,7 +130,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                         try {
                             Assert.assertEquals(langpreview1[i], engPreviewText);
                         } catch (Exception e) {
-                            logger.info("Preview text is not visible");
+                            logger.error("Preview text is not visible");
                             return false;
                         }
                     }
@@ -293,7 +292,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     fontTypeCount = +1;
                 logger.info("\t Font Type Panel Count :" + fontTypeCount);
                 Thread.sleep(3000);
-                clickOnIndependentElement("LEFT_BTN");
+                clickOnIndependentElement("LEFT_ARROW");
             }
 
             List<WebElement> ccFontType1 = getWebElementsList("CC_FONT_TYPE");
@@ -311,8 +310,8 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     clickOnIndependentElement("RIGHT_ARROW");
             }
 
-            if(isElementPresent("LEFT_BTN")){
-                clickOnIndependentElement("LEFT_BTN");
+            if(isElementPresent("LEFT_ARROW")){
+                clickOnIndependentElement("LEFT_ARROW");
             }
 
             logger.info("verified Font Type selection is working fine");
@@ -521,8 +520,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             }
 
         } catch (Exception e) {
-            extentTest.log(LogStatus.FAIL,
-                    "Horizontal cc option is not present");
+            logger.error("Horizontal cc option is not present");
         }
         return false;
     }
@@ -611,7 +609,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             ccWinColor.get(2).click();
             return  true;
         }catch(Exception e){
-            logger.info("Error while setting cc color selection");
+            logger.error("Error while setting cc color selection");
             return false;
         }
     }
@@ -652,7 +650,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             move.dragAndDropBy(slider,(width*20)/100,0).build().perform();
             return true;
         }catch (Exception e){
-            logger.info("Error while setting CC opacity");
+            logger.error("Error while setting CC opacity");
             e.printStackTrace();
             return false;
         }
@@ -663,7 +661,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             ccFontSize.get(2).click();
             return true;
         }catch (Exception e){
-            logger.info("Error while setting CC font size");
+            logger.error("Error while setting CC font size");
             e.printStackTrace();
             return false;
         }
@@ -675,7 +673,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             ccTextEnhancement.get(1).click();
             return true;
         }catch (Exception e){
-            logger.info("Error while setting CC Text Enhancement");
+            logger.error("Error while setting CC Text Enhancement");
             e.printStackTrace();
             return false;
         }
@@ -696,7 +694,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             ccFontType.get(1).click();
             return true;
         }catch (Exception e){
-            logger.info("Error while setting CC font type");
+            logger.error("Error while setting CC font type");
             e.printStackTrace();
             return false;
         }
