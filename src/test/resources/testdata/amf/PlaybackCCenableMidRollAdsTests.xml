@@ -39,6 +39,7 @@
 	        <browserSupportedVersion name="safari,9"/>
     	</url>
     	
+<!--     	ad not playing -->
     	<!-- <url>
 	    	<description name="OSMF_VAST"/>
 	        <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF"/>

@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.AdClickThroughValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.OverlayValidator;
 import com.ooyala.playback.page.PlayValidator;
@@ -22,6 +23,7 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private OverlayValidator overLayValidator;
 	private SeekValidator seekValidator;
+	private AdClickThroughValidator adClicks;
 
 	@Test(groups = {"amf","preroll","overlay"}, dataProvider = "testUrls")
 	public void verifyPrerollOverlay(String testName, String url) throws OoyalaException {
@@ -37,6 +39,8 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && playAction.startAction();
+			
+			result = result && adClicks.overlay().validate("", 120000);
 
 			// added condition for IMA OVerlay as overlay is showing
 			// intermittently PBI-1825
@@ -46,10 +50,6 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 				result = result && event.validate("nonlinearAdPlayed_1", 90000);
 
 			result = result && event.validate("videoPlaying_1", 90000);
-
-			result = result && seekValidator.validate("seeked_1", 6000);
-
-			result = result && event.validate("videoPlaying_1", 9000);
 
 			result = result && seekValidator.validate("seeked_1", 6000);
 

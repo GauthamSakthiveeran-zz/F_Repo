@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackCustomInteractionTests" >
     	<url>
-	    	<description name="Playback_custom_interaction_IMA"/>
+	    	<description name="VPAID 2.0 With custom interaction"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -16,7 +16,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Playback_custom_interaction_IMA_1"/>
+	    	<description name="VPAID 2.0 with custom interaction"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

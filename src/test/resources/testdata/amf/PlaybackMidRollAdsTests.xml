@@ -88,6 +88,18 @@
     	</url>
     	
     	<url>
+	    	<description name="Playback_Midroll_VPAID2.0_IMA_1"/>
+	        <embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="615dc8e909e941c280e12155df838355"/>
+	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"5000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
+	        
+    	</url>
+    	
+    	<url>
 	    	<description name="FreewheelMidrollAd__Akamai_HD"/>
 	        <embed_code name="JvZjJrdTq6lxPx2egPQaaYn1CHDAVzcS"/>
 	        <pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk"/>
@@ -267,6 +279,18 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+	        
+    	</url>
+    	
+    	<url>
+	    	<description name="BitmovinMidroll_VPAID2.0"/>
+	        <embed_code name="0wdnI4MjE68TtC2n_PMT4HwiyDJXYEGX"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="MAIN,BITMOVIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 	        
     	</url>
     	
