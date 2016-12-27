@@ -38,4 +38,5 @@
     <element key="ccFontSizeSelected" findBy="xPath" xPath=".//*[@class='oo-selection-container-title'][1]//span[@class='oo-selection-container-selection-text']" />
     <element key="ccTextEnhancementSelector" findBy="class" class="oo-text-enhancement-letter" />
     <element key="ccTextEnhancement" findBy="class" class="tabs-menu-item-5" />
+    <element key="FULLSCREEN_BTN_1" findBy="class" class="oo-fullscreen" />
 </elements>

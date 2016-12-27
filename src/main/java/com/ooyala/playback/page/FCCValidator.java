@@ -1,6 +1,5 @@
 package com.ooyala.playback.page;
 
-import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
@@ -293,7 +292,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 if (ismoreFontType)
                     fontTypeCount = +1;
                 logger.info("\t Font Type Panel Count :" + fontTypeCount);
-                Thread.sleep(5000);
+                Thread.sleep(3000);
                 clickOnIndependentElement("leftBtn");
             }
 
@@ -438,25 +437,54 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     }
 
     public boolean verifyFccInFullscreen() throws Exception {
-
-        // PBW-5165 we are not verifying fullscreen change event for safari and
-        // firefox browser as fullscreen is not working in safari in automation
-        if(!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
-        || (getBrowser().equalsIgnoreCase("firefox")&& getPlatform().equalsIgnoreCase("mac")))) {
-
-            if (!PlayBackFactory.getInstance(driver).getFullScreenAction()
-                    .startAction())
-                return false;
-
-            Thread.sleep(3000);
+        try {
+            // PBW-5165 we are not verifying fullscreen change event for safari and
+            // firefox browser as fullscreen is not working in safari in automation
+            getFullscreen();
 
             validate("", 30000);
 
-            if (!clickOnIndependentElement("NORMAL_SCREEN"))
-                return false;
+            getNormalscreen();
+
+            return true;
+        }catch (Exception e) {
+            return false;
         }
-        return true;
     }
+
+    public boolean getFullscreen() {
+        try {
+            // PBW-5165 we are not verifying fullscreen change event for safari and
+            // firefox browser as fullscreen is not working in safari in automation
+            if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
+                    || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("mac")))) {
+
+                if (!clickOnIndependentElement("FULLSCREEN_BTN_1")) {
+                    return false;
+                }
+                Thread.sleep(2000);
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean getNormalscreen() {
+        try{
+            // PBW-5165 we are not verifying fullscreen change event for safari and
+            // firefox browser as fullscreen is not working in safari in automation
+            if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
+                    || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("mac")))) {
+                if (!clickOnIndependentElement("NORMAL_SCREEN"))
+                    return false;
+            }
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
+
 
     public boolean clearCache() throws Exception {
         for (int i = 0; i < 13; i++) {

@@ -48,6 +48,7 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
 
             result = result && pause.validate("paused_1",30000);
 
+            result = result && fcc.getFullscreen();
             result = result && fcc.closedCaptionMicroPanel();
             result = result && fcc.beforeRefreshCCSetting();
             Thread.sleep(2000);
@@ -66,14 +67,19 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
 
             result = result && pause.validate("paused_1",30000);
 
+            fcc.switchToControlBar();
+
+            result = result && fcc.getFullscreen();
             result = result && fcc.closedCaptionMicroPanel();
             result = result && fcc.afterRefreshCCSettings();
+            result = result && fcc.closeCCPanel();
+            result = result && fcc.getNormalscreen();
 
             result = result && fcc.closeCCPanel();
 
             result = result && playAction.startAction();
 
-            result = result && seek.validate("seeked_1",30000);
+            result = result && seek.validate("seeked_1",40000);
 
             result = result && eventValidator.validate("played_1", 60000);
 
