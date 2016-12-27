@@ -22,7 +22,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     private static Logger logger = Logger.getLogger(FCCValidator.class);
 
    // private CCValidator ccValidator;
-   List<WebElement> lang, textColor, bgColor,ccWinColor,ccFontType, ccFontSize, ccTextEnhancement;
+    List<WebElement> lang, textColor, bgColor,ccWinColor, ccFontSize, ccTextEnhancement;
     String previewTextSelected, textSelected, ccFontSizeBefore,ccFontSizeAfter, ccFontTypeBefore,ccFontTypeAfter, ccTextEnhancementSelectedBefore, ccTextEnhancementSelectedAfter;
     HashMap<String,String> ccOpacityMapBefore, ccOpacityMapAfter, ccColorSelectionBefore, ccColorSelectionAfter;
 
@@ -280,7 +280,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\n*--------------Verify Font Type Panel-------------------------*\n");
             Thread.sleep(2000);
 
-            ccFontType = getWebElementsList("ccFontType");
+            List<WebElement> ccFontType = getWebElementsList("ccFontType");
             logger.info("\t \t \t Font Type Count Value :" + ccFontType.size());
             boolean ismoreFontType = false;
             int fontTypeCount = 0;
@@ -308,9 +308,12 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     String ccPreviewTextFont = getWebElement("ccPreviewText").getCssValue("font-family");
                     logger.info("\t Font type selected for CC Preview Text :" + ccPreviewTextFont);
                 }
-
                 if (ismoreFontType)
                     clickOnIndependentElement("rigthArrow");
+            }
+
+            if(isElementPresent("leftBtn")){
+                clickOnIndependentElement("leftBtn");
             }
 
             logger.info("verified Font Type selection is working fine");
@@ -658,6 +661,8 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
     public boolean setFontType(){
         try{
+            List<WebElement> ccFontType = getWebElementsList("ccFontType");
+            Thread.sleep(1000);
             ccFontType.get(1).click();
             return true;
         }catch (Exception e){

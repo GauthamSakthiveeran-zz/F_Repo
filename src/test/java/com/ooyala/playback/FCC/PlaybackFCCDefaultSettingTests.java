@@ -19,7 +19,6 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
     private PlayValidator play;
     private PauseValidator pause;
     private EventValidator eventValidator;
-    private CCValidator cc;
     private FCCValidator fcc;
     private PlayAction playAction;
     private SeekValidator seek;
