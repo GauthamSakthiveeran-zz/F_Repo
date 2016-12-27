@@ -211,6 +211,28 @@
 	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
     	</url>
     	
+    	<url>
+	    	<description name="VPAID 2.0 Preroll over HDS"/>
+	        <embed_code name="Q5eTg4MTE6kYKa0pyPjXB3AYkpD6F_F0"/>
+	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+	        <plugins name="OSMF,MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="Playback_Preroll_Flash"/>
+	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="615dc8e909e941c280e12155df838355"/>
+	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.56cae93fe8fe14.17121155;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
+    	</url>
+    	
     </test>
 
 </testdata>   

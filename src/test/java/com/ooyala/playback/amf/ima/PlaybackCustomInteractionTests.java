@@ -1,6 +1,5 @@
 package com.ooyala.playback.amf.ima;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -13,9 +12,9 @@ import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
+public class PlaybackCustomInteractionTests extends PlaybackWebTest {
 
-	public PlaybackCustomeInteractionTests() throws OoyalaException {
+	public PlaybackCustomInteractionTests() throws OoyalaException {
 		super();
 	}
 
@@ -30,41 +29,36 @@ public class PlaybackCustomeInteractionTests extends PlaybackWebTest {
 	public void verifyCustomeInteractionAd(String testName, String url)
 			throws Exception {
 
-		boolean result = true;
-		
 		try {
 
 			driver.get(url);
 
-			result = result && playValidator.waitForPage();
+			playValidator.waitForPage();
 
 			injectScript();
 
-			result = result && playAction.startAction();
+			playAction.startAction();
 
-			result = result && event.validate("willPlaySingleAd_1", 190000);
+			event.validate("willPlaySingleAd_1", 190000);
 
-			result = result
-					&& adSkipButtonValidator.custom().validate("", 60000);
+			adSkipButtonValidator.validate("showAdSkipButton_1", 60000);
 
-			result = result && event.validate("singleAdPlayed_1", 190000);
+			event.validate("singleAdPlayed_1", 190000);
 
-			result = result && event.validate("playing_1", 60000);
+			event.validate("playing_1", 60000);
 
-			result = result && volumeValidator.validate("", 60000);
+			volumeValidator.validate("", 60000);
 
-			result = result && seekAction.seekTillEnd().startAction();
+			seekAction.seekTillEnd().startAction();
 
-			result = result && event.validate("seeked_1", 180000);
+			event.validate("seeked_1", 180000);
 
-			result = result && event.validate("played_1", 200000);
+			event.validate("played_1", 200000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			result = false;
+			extentTest.log(LogStatus.ERROR, e.getMessage());
 		}
-
-		Assert.assertTrue(result, "Tests failed");
 
 	}
 

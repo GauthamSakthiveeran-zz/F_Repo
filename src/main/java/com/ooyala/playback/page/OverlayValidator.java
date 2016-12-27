@@ -2,13 +2,8 @@ package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
-import com.ooyala.playback.factory.PlayBackFactory;
-import com.ooyala.playback.page.action.FullScreenAction;
-import com.relevantcodes.extentreports.LogStatus;
 
 public class OverlayValidator extends PlayBackPage implements PlaybackValidator {
 

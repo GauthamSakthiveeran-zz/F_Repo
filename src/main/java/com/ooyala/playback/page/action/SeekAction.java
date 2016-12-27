@@ -73,7 +73,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 			Map<String, String> data = parseURL();
 			if (data.get("ad_plugin") != null
 					&& !data.get("ad_plugin").equals(adPlugin)) {
-				extentTest.log(LogStatus.SKIP,
+				extentTest.log(LogStatus.INFO,
 						"This particular step is skipped as it is valid only for "
 								+ adPlugin);
 				return true;
@@ -133,10 +133,10 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 				if (seekTime > 5) {
 					// Update after ticket is fixed pp.seek() api is not working if
 					// we try to seek less than 31 seconds form end of video
-					if (!getBrowser().equalsIgnoreCase("safari")) {
-						seek(7, true);
-					} else {
+					if (getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")) {
 						seek(31, true);
+					} else {
+						seek(7, true);
 					}
 					((JavascriptExecutor) driver).executeScript("pp.pause();");
 					Thread.sleep(2000);

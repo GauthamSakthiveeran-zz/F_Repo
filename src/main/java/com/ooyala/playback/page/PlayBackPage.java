@@ -82,8 +82,10 @@ public abstract class PlayBackPage extends WebPage {
 			boolean flag = super.clickOnIndependentElement(elementKey);
 			if (!flag) {
 				flag = clickOnHiddenElement(elementKey);
+
 			} else
 				logger.info("Clicked on element :" + elementKey);
+
 			return flag;
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -142,9 +144,8 @@ public abstract class PlayBackPage extends WebPage {
 		boolean result = false;
 		try {
 			Actions action = new Actions(driver);
-			((JavascriptExecutor) driver).executeScript(
-					"arguments[0].scrollIntoView(true);", element);
-			action.moveToElement(element).perform();
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+			action.moveToElement(element).build().perform();
 			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();

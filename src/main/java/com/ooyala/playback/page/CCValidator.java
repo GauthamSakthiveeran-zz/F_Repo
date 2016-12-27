@@ -33,10 +33,14 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	private boolean verifyCloseClosedCaptionPanel() throws Exception {
 		switchToControlBar();
-		if (!isElementPresent("CC_PANEL_CLOSE"))
+		if (!isElementPresent("CC_PANEL_CLOSE")){
+			extentTest.log(LogStatus.FAIL, "CC_PANEL_CLOSE not present.");
 			return false;
-		if (!clickOnIndependentElement("CC_PANEL_CLOSE"))
+		}
+		if (!clickOnIndependentElement("CC_PANEL_CLOSE")){
+			extentTest.log(LogStatus.FAIL, "Couldn't click on CC_PANEL_CLOSE");
 			return false;
+		}
 		extentTest.log(LogStatus.PASS, "Verified closed caption panel close");
 		return true;
 	}
@@ -47,15 +51,14 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			Thread.sleep(1000);
 			switchToControlBar();
 			
-			if (!waitOnElement("CC_BTN", 6000)){
-				if (!clickOnIndependentElement("MORE_OPTION_ICON"))
-					return false;
-				if (!waitOnElement("CC_BTN", 6000))
-					return false;
+			if (!isElementPresent("CC_BTN")){
+				if (!waitOnElement("CC_BTN", 6000)){
+					if (!clickOnIndependentElement("MORE_OPTION_ICON"))
+						return false;
+					if (!waitOnElement("CC_BTN", 6000))
+						return false;
+				}
 			}
-			
-			if (!isElementPresent("CC_BTN"))
-				return false;
 			if (!clickOnIndependentElement("CC_BTN"))
 				return false;
 			Thread.sleep(1000);
@@ -75,16 +78,17 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	private boolean validateClosedCaptionPanel() throws Exception {
 		switchToControlBar();
-		if (!(isElementPresent("CLOSED_CAPTION_PANEL"))) {
-			if (!clickOnIndependentElement("CC_BTN"))
+		if (!isElementPresent("CLOSED_CAPTION_PANEL")) {
+			if (!clickOnIndependentElement("CC_BTN")){
 				return false;
+			}
 		}
 
 		if (isElementPresent("CLOSED_CAPTION_PANEL")) {
-			extentTest.log(LogStatus.PASS,
-					"Verified closed caption panel panel");
+			extentTest.log(LogStatus.PASS, "Verified closed caption panel");
 			return true;
 		}
+		extentTest.log(LogStatus.FAIL, "CLOSED_CAPTION_PANEL is not present");
 		return false;
 
 	}
@@ -113,7 +117,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 		boolean flag = checkClosedCaptionButton() && verifyCloseClosedCaptionPanel() && closedCaptionMicroPanel()
 				&& validateClosedCaptionPanel() && validateSwitchContainer() && verifyCloseClosedCaptionPanel()
-				&& checkClosedCaptionLanguages();
+				&& checkClosedCaptionLanguages() && validateClosedCaptionCloseButton();
 
 		if (flag) {
 			if (clickOnIndependentElement("PAUSE_BUTTON")) {
@@ -125,31 +129,54 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		return flag;
 
 	}
+	
+	private boolean validateClosedCaptionCloseButton() throws Exception {
+		switchToControlBar();
+		if (!isElementPresent("CC_CLOSE_BUTTON")) {
+			if (!clickOnIndependentElement("CC_BTN")){
+				return false;
+			}
+		}
+
+		if (isElementPresent("CC_CLOSE_BUTTON")) {
+			if(clickOnIndependentElement("CC_CLOSE_BUTTON")){
+				extentTest.log(LogStatus.PASS, "Verified CC_CLOSE_BUTTON");
+				return true;
+			}
+		}
+		extentTest.log(LogStatus.FAIL, "CC_CLOSE_BUTTON is not present");
+		return false;
+
+	}
 
 	protected boolean closedCaptionMicroPanel() throws Exception {
 		try {
+			
 			switchToControlBar();
 
 			if (!clickOnIndependentElement("CC_BTN"))
 				return false;
 
-			if(!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
+			if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
 				if (!waitOnElement("CC_POPHOVER_HORIZONTAL", 6000))
 					return false;
 				boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
 
 				if (horizontal_CC_Option) {
-					return waitOnElement("CC_SWITCH_CONTAINER_HORIZONTAL", 20000)
-							&& waitOnElement("CC_MORE_CAPTIONS", 10000)
-							&& waitOnElement("CC_CLOSE_BUTTON", 10000)
-							&& clickOnIndependentElement("CC_MORE_CAPTIONS");
-				}
-				return false;
+					if (isElementPresent("CC_SWITCH_CONTAINER_HORIZONTAL") && isElementPresent("CC_MORE_CAPTIONS")
+							&& clickOnIndependentElement("CC_MORE_CAPTIONS")) {
+						return true;
+					} else {
+						extentTest.log(LogStatus.FAIL, "Verification of cc pop over horizontal elements failed.");
+						return false;
+					}
 
-			}else {
+				} 
+			} else {
 				return true;
 			}
-
+			extentTest.log(LogStatus.FAIL, "CC_POPHOVER_HORIZONTAL is not present!");
+			return false;
 		} catch (Exception e) {
 			extentTest.log(LogStatus.FAIL,
 					"Horizontal cc option is not present");

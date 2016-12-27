@@ -12,7 +12,7 @@ import com.ooyala.playback.page.action.FullScreenAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackAdWrapperTests extends PlaybackWebTest {
+public class PlaybackAdWrapperAndLiveRailTests extends PlaybackWebTest {
 
 	private EventValidator event;
 	private PlayValidator playValidator;
@@ -21,7 +21,7 @@ public class PlaybackAdWrapperTests extends PlaybackWebTest {
 	private VolumeValidator volumeValidator;
 	private PauseAction pauseAction;
 
-	public PlaybackAdWrapperTests() throws OoyalaException {
+	public PlaybackAdWrapperAndLiveRailTests() throws OoyalaException {
 		super();
 	}
 

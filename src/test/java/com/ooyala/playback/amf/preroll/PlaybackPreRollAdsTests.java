@@ -45,7 +45,7 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 				result = result && event.validate("singleAdPlayed_1", 160000);
 			}
 
-			result = result && event.validate("playing_1", 5000);
+			result = result && event.validate("playing_1", 10000);
 
 			result = result && seekValidator.validate("seeked_1", 190000);
 

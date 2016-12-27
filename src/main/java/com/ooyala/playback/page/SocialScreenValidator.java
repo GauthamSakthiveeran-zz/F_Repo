@@ -1,7 +1,6 @@
 package com.ooyala.playback.page;
 
 import static java.lang.Thread.sleep;
-import static org.testng.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 /**
  * Created by soundarya on 11/21/16.

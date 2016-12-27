@@ -52,8 +52,6 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 					result = result && event.validate("singleAdPlayed_1", 60000);
 			}
 
-//			result = result && seekValidator.validate("seeked_1", 90000);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
