@@ -165,7 +165,7 @@ public class FacileTestListener extends TestListenerAdapter implements
 	 * @return the suite test name
 	 */
 	protected String getSuiteTestName(String fullTestName) {
-		fullTestName = fullTestName.replaceAll("com.intuit.webdriver.tests.",
+		fullTestName = fullTestName.replaceAll("com.ooyala.webdriver.tests.",
 				"");
 		return fullTestName;
 	}

@@ -161,7 +161,7 @@ public class TestWatchdog implements Runnable, IWebPageListener {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.intuit.webdriver.root.IWebPageListener#onEvent(java.lang.String)
+	 * @see com.ooyala.webdriver.root.IWebPageListener#onEvent(java.lang.String)
 	 */
 	public void onEvent(String event) {
 		this.ping();

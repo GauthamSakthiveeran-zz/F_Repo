@@ -178,7 +178,7 @@ public class ContextAwareFirefoxDriver extends FirefoxDriver implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.intuit.webdriver.root.ContextAwareDriver#getBaseTargetLocator()
+	 * @see com.ooyala.webdriver.root.ContextAwareDriver#getBaseTargetLocator()
 	 */
 	public TargetLocator getBaseTargetLocator() {
 		return super.switchTo();
@@ -188,7 +188,7 @@ public class ContextAwareFirefoxDriver extends FirefoxDriver implements
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.intuit.webdriver.root.ContextAwareDriver#addContext(java.lang.Object)
+	 * com.ooyala.webdriver.root.ContextAwareDriver#addContext(java.lang.Object)
 	 */
 	public void addContext(Object ctx) {
 		this.contextStack.add(ctx);
@@ -197,7 +197,7 @@ public class ContextAwareFirefoxDriver extends FirefoxDriver implements
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.intuit.webdriver.root.ContextAwareDriver#clearContext()
+	 * @see com.ooyala.webdriver.root.ContextAwareDriver#clearContext()
 	 */
 	public void clearContext() {
 		this.contextStack.clear();
