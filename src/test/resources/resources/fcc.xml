@@ -12,8 +12,8 @@
     <element key="ccOn" findBy="xPath" xPath=".//*[@class='oo-switch-captions oo-switch-captions-on oo-switch-captions-active']" />
     <element key="langList" findBy="xPath" xPath=".//*[@class='oo-language-tab']//span[@class='oo-data']" />
     <element key="ccPreviewText" findBy="class" class="oo-text-track" />
-    <element key="colorSelectionPanel" findBy="xPath" xPath=".//*[normalize-space()='Color Selection']" />
-    <element key="captionOpacityPanel" findBy="class" class="tabs-menu-item-2" />
+    <element key="colorSelectionPanel" findBy="xPath" xPath=".//*[normalize-space(text())='Color Selection']" />
+    <element key="captionOpacityPanel" findBy="xPath" xPath=".//*[normalize-space(text())='Caption Opacity']"/>
     <element key="ccTextColorSelector" findBy="xPath" xPath=".//*[@class='oo-selection-container oo-text-color-selection-container']//div[@class='oo-color-selector']/div/a" />
     <element key="ccTextColor" findBy="xPath" xPath=".//*[@class='oo-selection-container oo-text-color-selection-container'][1]//span[@class='oo-selection-container-selection-text']" />
     <element key="ccBackgroundColorSelector" findBy="xPath" xPath=".//*[@class='oo-selection-container'][1]//div[@class='oo-color-selector']/div/a" />
