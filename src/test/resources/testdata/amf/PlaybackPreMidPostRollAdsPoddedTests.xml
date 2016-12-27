@@ -3,17 +3,16 @@
 
 	<test name ="PlaybackPreMidPostRollAdsPoddedTests" >
 	
-		<!-- This only for podded tests, the below is not a podded ad -->
-    	<!-- <url>
+    	<url>
 	    	<description name="Playback_PreMidPost_VPAID2.0"/>
-	        <embed_code name="BnaG1iMjE6bQ3DQmsPTYyH_QiQ05Ggrj"/>
+	        <embed_code name="dzMm5iMjE6rPdV3p7yklZPdz85kWGNSj"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url> -->
+    	</url>
     	
     	<url>
 	    	<description name="Playback_PreMidPost__Podded_VPAID2.0"/>
