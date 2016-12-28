@@ -44,6 +44,7 @@ import com.ooyala.playback.page.PlayBackPage;
 import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.url.Testdata;
 import com.ooyala.playback.url.UrlGenerator;
+import com.ooyala.playback.util.PlayBackAsserts;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -62,6 +63,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected String[] jsUrl;
 	protected NeoRequest neoRequest;
 	protected LiveChannel liveChannel;
+	
+	PlayBackAsserts asserts;
 
 	public PlaybackWebTest() throws OoyalaException {
 
@@ -88,6 +91,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 			extentTest = ExtentManager.startTest(getClass().getSimpleName());
 		}
 		
+		asserts = new PlayBackAsserts(extentTest);
+		
 		try {
 			Field[] fs = this.getClass().getDeclaredFields();
 			fs[0].setAccessible(true);
@@ -103,6 +108,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 						if (function.getName()
 								.equalsIgnoreCase("setExtentTest"))
 							function.invoke(property.get(this), extentTest);
+						if (function.getName()
+								.equalsIgnoreCase("setPlayBackAsserts"))
+							function.invoke(property.get(this), asserts);
 					}
 				}
 			}
@@ -249,6 +257,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 			driverNotNullFlag = true;
 
+		}
+		if(asserts!=null){
+			asserts.assertAll();
 		}
 		if (result.getStatus() == ITestResult.FAILURE) {
 

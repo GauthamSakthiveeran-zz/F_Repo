@@ -17,6 +17,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.ooyala.facile.page.WebPage;
+import com.ooyala.playback.util.PlayBackAsserts;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -25,6 +26,7 @@ public abstract class PlayBackPage extends WebPage {
 	private static Logger logger = Logger.getLogger(PlayBackPage.class);
 
 	protected ExtentTest extentTest;
+	protected PlayBackAsserts asserts;
 
 	public PlayBackPage(WebDriver webDriver) {
 		super(webDriver);
@@ -178,6 +180,10 @@ public abstract class PlayBackPage extends WebPage {
 
 	public void setExtentTest(ExtentTest test) {
 		this.extentTest = test;
+	}
+	
+	public void setPlayBackAsserts(PlayBackAsserts playBackAsserts) {
+		this.asserts = playBackAsserts;
 	}
 
 	/**

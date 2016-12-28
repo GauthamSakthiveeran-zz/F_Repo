@@ -59,13 +59,16 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 			result = result
 					&& overLayValidator.validate("nonlinearAdPlayed_1", 160000);
 
+			// TODO , seeked_1 is not showing up in IE 11
 			if (!(getBrowser().equalsIgnoreCase("internet explorer") && event.isVideoPluginPresent("osmf")
-					&& event.isAdPluginPresent("vast"))) // TODO , seeked_1 is not showing up in IE 11
+					&& event.isAdPluginPresent("vast"))) {
+				
 				result = result && seekValidator.validate("seeked_1", 160000);
 
-			result = result && event.validate("videoPlayed_1", 160000);
-			result = result && event.validate("played_1", 160000);
-
+				result = result && event.validate("videoPlayed_1", 160000);
+				result = result && event.validate("played_1", 160000);
+			}
+				
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;

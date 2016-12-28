@@ -37,6 +37,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
 			if(clickOnIndependentElement("OVERLAY_IMAGE")){
 				if (!waitOnElement(By.id("adsClickThroughOpened"), 10000)){
 					extentTest.log(LogStatus.FAIL, "adsClickThroughOpened not found.");
+				}else{
+					extentTest.log(LogStatus.PASS, "adsClickThroughOpened found.");
 				}
 					
 			}else{

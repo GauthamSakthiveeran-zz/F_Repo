@@ -1,12 +1,16 @@
 package com.ooyala.playback.util;
 
+import java.util.Map;
+
+import org.testng.Assert;
+import org.testng.asserts.Assertion;
 import org.testng.asserts.IAssert;
-import org.testng.asserts.SoftAssert;
+import org.testng.collections.Maps;
 
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class PlayBackAsserts extends SoftAssert {
+public class PlayBackAsserts extends Assertion {
 
 	ExtentTest extentTest;
 
@@ -14,14 +18,35 @@ public class PlayBackAsserts extends SoftAssert {
 		this.extentTest = extentTest;
 	}
 
-	@Override
-	public void onAssertSuccess(IAssert assertCommand) {
-		extentTest.log(LogStatus.PASS, assertCommand.getMessage());
-	}
+	private Map<AssertionError, IAssert> m_errors = Maps.newLinkedHashMap();
 	
 	@Override
-	public void onAssertFailure(IAssert assertCommand) {
-		extentTest.log(LogStatus.FAIL, assertCommand.getMessage());
+	public void executeAssert(IAssert a) {
+		try {
+			a.doAssert();
+		} catch (AssertionError ex) {
+			m_errors.put(ex, a);
+		}
+	}
+
+	public void assertAll() {
+		if (hasErrors()) {
+			StringBuilder sb = new StringBuilder("The following asserts failed:\n");
+			boolean first = true;
+			for (Map.Entry<AssertionError, IAssert> ae : m_errors.entrySet()) {
+				if (first) {
+					first = false;
+				} else {
+					sb.append(", ");
+				}
+				sb.append(ae.getValue().getMessage());
+			}
+			extentTest.log(LogStatus.FAIL, sb.toString());
+		}
+	}
+	
+	public boolean hasErrors(){
+		return !m_errors.isEmpty();
 	}
 
 }

@@ -32,11 +32,14 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		if(waitOnElement(By.id(element), timeout)){
+		
+		asserts.assertTrue(waitOnElement(By.id(element), timeout), "Wait on element : " + element);
+		
+		/*if(waitOnElement(By.id(element), timeout)){
 			extentTest.log(LogStatus.PASS, "Wait on element : " + element);
 			return true;
 		}
-		extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");
+		extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");*/
 		return false;
 	}
 

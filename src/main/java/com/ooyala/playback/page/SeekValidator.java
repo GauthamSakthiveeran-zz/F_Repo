@@ -29,7 +29,7 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 			extentTest.log(LogStatus.PASS, "Seek successfull.");
 			return true;
 		}
-		extentTest.log(LogStatus.FAIL, "Wait on " + element + " failed after "+ timeout + " ms");
+		extentTest.log(LogStatus.INFO, "Wait on " + element + " failed after "+ timeout + " ms");
 		return false;
 	}
 

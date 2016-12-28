@@ -21,6 +21,15 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		 */
 		addElementToPageElements("play");
 	}
+	
+	private void errorDescription(){
+		if(isElementPresent("ERROR_SCREEN")){
+			String text = getWebElement("ERROR_DESCRIPTION").getText();
+			extentTest.log(LogStatus.INFO,"FAIL : " + text);
+		}
+		
+		Assert.assertTrue("Play button is not found", false);
+	}
 
 	@Override
 	public boolean waitForPage() {
@@ -28,13 +37,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 		try {
 			if (!waitOnElement("PLAY_BUTTON", 90000)) {
-				
-				if(isElementPresent("ERROR_SCREEN")){
-					String text = getWebElement("ERROR_DESCRIPTION").getText();
-					extentTest.log(LogStatus.ERROR,text);
-				}
-				
-				Assert.assertTrue("Play button is not found", false);
+				errorDescription();
 				return false;
 			}
 		} catch (Exception e) {
@@ -45,8 +48,10 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 			errorScreen = isElementPresent("ERROR_SCREEN");
 			if (errorScreen)
 				driver.navigate().refresh();
-			if (!waitOnElement("PLAY_BUTTON", 60000))
+			if (!waitOnElement("PLAY_BUTTON", 60000)){
+				errorDescription();
 				return false;
+			}
 		}
 		logger.info("Page is loaded completely");
 		return true;
@@ -57,11 +62,15 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		// if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction())
 		// return false;
 
-		if (!clickOnIndependentElement("PLAY_BUTTON"))
+		if (!clickOnIndependentElement("PLAY_BUTTON")){
+			extentTest.log(LogStatus.INFO, "FAILED to click on PLAY_BUTTON.");
 			return false;
+		}
 
-		if (!loadingSpinner())
+		if (!loadingSpinner()){
+			extentTest.log(LogStatus.INFO, "FAIL Loading spinner seems to be there for a really long time.");
 			return false;
+		}
 
 		if (!waitOnElement("PLAYING_SCREEN", 60000))
 			return false;

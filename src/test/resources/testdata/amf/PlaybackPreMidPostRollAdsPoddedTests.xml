@@ -167,17 +167,6 @@
     	
     	
     	<url>
-	    	<description name="IMA Countdown PreMidPost OSMF"/>
-	        <embed_code name="I2eGVmMDE6S2TG0jsa7NNE3thejf21i3"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"google-ima-ads-manager":{"useGoogleCountdown":true}}]]></playerParameter>
-    	</url>
-    	
-    	<url>
 	    	<description name="IMA Countdown PreMidPost BITMOVIN"/>
 	        <embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
