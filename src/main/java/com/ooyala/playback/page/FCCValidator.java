@@ -223,23 +223,19 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             // select text Opacity
             WebElement slider = getWebElement("CC_TEXT_OPACITY_SELECTOR");
-            Actions move = new Actions(driver);
-            int width = slider.getSize().getWidth();
-            move.dragAndDropBy(slider, (width * 25) / 100, 0).build().perform();
-
+            slideSliderCaptionOpacity(slider);
             String ccTextOpacity = getWebElement("CC_TEXT_OPACITY").getText();
             logger.info("\t Text Opacity Selected :" + ccTextOpacity);
             String ccPreviewTextOpacity = getWebElement("CC_PREVIEW_TEXT").getCssValue("color");
             logger.info("\t Preview Text Opacity Selected :" + ccPreviewTextOpacity);
             if(!testName.contains("PlaybackFCCDefaultSettingTests")){
-                Assert.assertEquals("rgba(0, 0, 0, 0.8)", ccPreviewTextOpacity);
+                    if (!validateCaptionOpacity(ccPreviewTextOpacity)){return false;}
             }
             logger.info("verified text opacity selection is working fine");
 
             // select Background Opacity
             WebElement slider1 = getWebElement("CC_BACKGROUND_OPACITY_SELECTOR");
-            int width1 = slider.getSize().getWidth();
-            move.dragAndDropBy(slider1,(width1*25)/100,0).build().perform();
+            slideSliderCaptionOpacity(slider1);
             Thread.sleep(2000);
             String ccBgOpacity = getWebElement("CC_BACKGROUND_OPACITY").getText();
             logger.info("\t \t \t Background Opacity Selected :" + ccBgOpacity);
@@ -247,22 +243,21 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\t \t \t Preview Text Background Opacity Selected :" + ccPreviewBgOpacity);
 
             if(!testName.contains("PlaybackFCCDefaultSettingTests")){
-                Assert.assertEquals("rgba(0, 0, 0, 0.8)",ccPreviewBgOpacity);
+                if (!validateCaptionOpacity(ccPreviewBgOpacity)){return false;}
             }
 
             logger.info("verified Background opacity selection is working fine");
 
             // select Windows Opacity
             WebElement slider3 = getWebElement("CC_WINDOW_OPACITY_SELECTOR");
-            int width3 = slider3.getSize().getWidth();
-            move.dragAndDropBy(slider3, (width3 * 25) / 100, 0).build().perform();
+            slideSliderCaptionOpacity(slider3);
             String ccWinOpacity = getWebElement("CC_WINDOW_OPACITY").getText();
             logger.info("\t Window Color Selected :" + ccWinOpacity);
             String ccPreviewWinOpacity = getWebElement("CC_PREVIEW_WIN_COLOR").getCssValue("background-color");
             logger.info("\t Window Opacity of Preview Text Selected :" + ccPreviewWinOpacity);
 
             if(!testName.contains("PlaybackFCCDefaultSettingTests")){
-                Assert.assertEquals("rgba(0, 0, 0, 0.8)", ccPreviewWinOpacity);
+                if (!validateCaptionOpacity(ccPreviewWinOpacity)){return false;}
             }
             logger.info("verified Windows opacity selection is working fine");
             return true;
@@ -346,11 +341,13 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 String fontSizeInEm = null;
                 int flag = 0;
                 for (String cc : ccPreviewTextFontSize) {
-                    if (cc.contains("font-variant-caps:")) {
-                        String fontSize[] = ccPreviewTextFontSize[4].split(":");
-                        fontSizeInEm = fontSize[1].trim();
-                        flag = 1;
-                        break;
+                    if (!getBrowser().equalsIgnoreCase("safari")) {
+                        if (cc.contains("font-variant-caps:")) {
+                            String fontSize[] = ccPreviewTextFontSize[4].split(":");
+                            fontSizeInEm = fontSize[1].trim();
+                            flag = 1;
+                            break;
+                        }
                     }
                 }
                 if (flag == 0) {
@@ -362,17 +359,26 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                         fontSize = ccPreviewTextFontSize[3].split(":");
                         fontSizeInEm = fontSize[1].trim();
                     }
+
+                    if (getBrowser().equalsIgnoreCase("safari")){
+                        fontSize = ccPreviewTextFontSize[8].split(":");
+                        fontSizeInEm = fontSize[1].trim();
+                    }
                 }
                 logger.info("\t font size in em : " + fontSizeInEm);
                 Assert.assertEquals(ccFonts[i], ccTextFontSize); //verify font size selected
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large"))
-                    Assert.assertEquals(font_size_large[i], fontSizeInEm);
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-medium"))
-                    Assert.assertEquals(font_size_medium[i], fontSizeInEm);
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small"))
-                    Assert.assertEquals(font_size_small[i], fontSizeInEm);
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall"))
-                    Assert.assertEquals(font_size_xsmall[i], fontSizeInEm);
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")) {
+                    if (!font_size_large[i].equals(fontSizeInEm)) {return false;}
+                }
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-medium")) {
+                    if (!font_size_medium[i].equals(fontSizeInEm)){return false;}
+                }
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")) {
+                    if (!font_size_small[i].equalsIgnoreCase(fontSizeInEm)){return false;}
+                }
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
+                    if (!font_size_xsmall[i].equals(fontSizeInEm)){return false;}
+                }
             }
 
             logger.info("verified Font Size selection is working fine");
@@ -791,6 +797,36 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             }
         }
         return true;
+    }
+
+
+    public void slideSliderCaptionOpacity(WebElement slider){
+        if (getBrowser().equalsIgnoreCase("safari")) {
+            ((JavascriptExecutor) driver).executeScript("function simulate(f,c,d,e){var b,a=null;for(b in eventMatchers)if(eventMatchers[b].test(c)){a=b;break}if(!a)return!1;document.createEvent?(b=document.createEvent(a),a==\"HTMLEvents\"?b.initEvent(c,!0,!0):b.initMouseEvent(c,!0,!0,document.defaultView,0,d,e,d,e,!1,!1,!1,!1,0,null),f.dispatchEvent(b)):(a=document.createEventObject(),a.detail=0,a.screenX=d,a.screenY=e,a.clientX=d,a.clientY=e,a.ctrlKey=!1,a.altKey=!1,a.shiftKey=!1,a.metaKey=!1,a.button=1,f.fireEvent(\"on\"+c,a));return!0} var eventMatchers={HTMLEvents:/^(?:load|unload|abort|error|select|change|submit|reset|focus|blur|resize|scroll)$/,MouseEvents:/^(?:click|dblclick|mouse(?:down|up|over|move|out))$/}; " +
+                            "simulate(arguments[0],\"mousedown\",0,0); simulate(arguments[0],\"mousemove\",arguments[1],arguments[2]); simulate(arguments[0],\"mouseup\",arguments[1],arguments[2]); ",
+                    slider);
+        }else {
+            Actions move = new Actions(driver);
+            int width = slider.getSize().getWidth();
+            move.dragAndDropBy(slider, (width * 25) / 100, 0).build().perform();
+        }
+    }
+
+    public boolean validateCaptionOpacity(String opacityValue){
+        if (!getBrowser().equalsIgnoreCase("safari")){
+            if (opacityValue.equals("rgba(0, 0, 0, 0.8)")){
+                return true;
+            }else {
+                logger.error(opacityValue + "is not matching with rgba(0, 0, 0, 0.8)");
+                return false;
+            }
+        }else{
+            if (opacityValue.equals("rgba(0, 0, 0, 0)")){
+                return true;
+            }
+        }
+        logger.error(opacityValue + "value is not matching with rgba(0, 0, 0, 0)");
+        return false;
     }
 
 }

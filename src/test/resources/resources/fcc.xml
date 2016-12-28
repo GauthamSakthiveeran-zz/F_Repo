@@ -28,8 +28,8 @@
     <element key="CC_BACKGROUND_OPACITY" findBy="xPath" xPath=".//*[@class='oo-selection-container'][2]//span[@class='oo-selection-container-selection-text']" />
     <element key="CC_WINDOW_OPACITY_SELECTOR" findBy="xPath" xPath=".//*[@class='oo-selection-container'][3]//input[@class='oo-slider oo-slider-caption-opacity']" />
     <element key="CC_WINDOW_OPACITY" findBy="xPath" xPath=".//*[@class='oo-selection-container'][3]//span[@class='oo-selection-container-selection-text']" />
-    <element key="CC_FONT_TYPE_PANEL" findBy="class" class="tabs-menu-item-3" />
-    <element key="CC_FONT_SIZE_PANEL" findBy="class" class="tabs-menu-item-4" />
+    <element key="CC_FONT_TYPE_PANEL" findBy="xPath" xPath=".//*[normalize-space(text())='Font Type']"/>
+    <element key="CC_FONT_SIZE_PANEL" findBy="xPath" xPath=".//*[normalize-space(text())='Font Size']"/>
     <element key="CC_FONT_SIZE_SELECTOR" findBy="class" class="oo-font-size-letter" />
     <element key="CC_FONT_TYPE" findBy="xPath" xPath=".//*[@class='oo-font-type-tab']//span[@class='oo-data']" />
     <element key="RIGHT_ARROW" findBy="xPath" xPath=".//*[normalize-space(@class)='oo-icon oo-icon-system-right-arrow']" />
@@ -37,6 +37,6 @@
     <element key="RIGHT_ARROW_HIDDEN" findBy="xPath" xPath=".//*[normalize-space(@class)=oo-right-button oo-hidden']" />
     <element key="CC_FONT_SIZE_SELECTED" findBy="xPath" xPath=".//*[@class='oo-selection-container-title'][1]//span[@class='oo-selection-container-selection-text']" />
     <element key="CC_TEXT_ENHANCEMENT_SELECTOR" findBy="class" class="oo-text-enhancement-letter" />
-    <element key="CC_TEXT_ENHANCEMENT" findBy="class" class="tabs-menu-item-5" />
+    <element key="CC_TEXT_ENHANCEMENT" findBy="xPath" xPath=".//*[normalize-space(text())='Text Enhancements']"/>
     <element key="FULLSCREEN_BTN_1" findBy="class" class="oo-fullscreen" />
 </elements>
