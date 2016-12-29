@@ -11,6 +11,7 @@
                 <include name="playerLifecycle" />
                 <include name="drm" />
                 <include name="FCC" />
+                <include name="api" />
             </define>
             <run>
                 <include name="regression" />
