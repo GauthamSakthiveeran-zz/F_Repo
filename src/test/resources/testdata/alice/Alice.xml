@@ -998,9 +998,17 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
         </url>
+        <url>
+            <description name="CC_Enabled_Preroll_FW_OSMF_Plugin" />
+            <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi" />
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+            <plugins name="MAIN,OSMF" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="DISCOVERY" />
+            <pbid name="917cabe49e704be9ba53e173a9b806fb" />
+            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
     </test>
-
-
     <test name="PlaybackFCCDefaultSettingTests">
         <url>
             <description name="Default_Setting _After_Refreshed" />

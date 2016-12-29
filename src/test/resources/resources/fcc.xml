@@ -39,4 +39,5 @@
     <element key="CC_TEXT_ENHANCEMENT_SELECTOR" findBy="class" class="oo-text-enhancement-letter" />
     <element key="CC_TEXT_ENHANCEMENT" findBy="xPath" xPath=".//*[normalize-space(text())='Text Enhancements']"/>
     <element key="FULLSCREEN_BTN_1" findBy="class" class="oo-fullscreen" />
+    <element key="DISCOVERY_CLOSE" findBy="class" class="oo-icon-system-close" />
 </elements>

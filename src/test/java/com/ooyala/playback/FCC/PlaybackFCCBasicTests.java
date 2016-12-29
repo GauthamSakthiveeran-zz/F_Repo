@@ -55,6 +55,8 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             result = result && pause.validate("paused_1",30000);
 
+            result = result && fcc.discoveryCheck();
+
             result = result &&fcc.validate("",30000);
 
             result = result && fcc.verifyFccInFullscreen();

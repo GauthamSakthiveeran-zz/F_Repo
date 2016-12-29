@@ -835,4 +835,16 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         return false;
     }
 
+    public boolean discoveryCheck(){
+        try{
+            if (isElementPresent("DISCOVERY_CLOSE")){
+                Thread.sleep(5000);
+                clickOnIndependentElement("DISCOVERY_CLOSE");
+            }
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
 }
