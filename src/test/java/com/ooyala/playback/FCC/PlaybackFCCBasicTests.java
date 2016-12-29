@@ -45,17 +45,17 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             injectScript();
 
-            result = result && play.validate("playing_1",60000);
+            result = result && playAction.startAction();
+
+            result = result && eventValidator.isAdPlaying();
+
+            result = result && eventValidator.validate("playing_1",60000);
 
             result = result && eventValidator.loadingSpinner();
-
-            Thread.sleep(2000);
 
             result = result && pause.validate("paused_1",30000);
 
             result = result &&fcc.validate("",30000);
-
-            Thread.sleep(2000);
 
             result = result && fcc.verifyFccInFullscreen();
 
