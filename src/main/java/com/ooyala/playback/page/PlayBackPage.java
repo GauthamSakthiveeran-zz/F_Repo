@@ -1,5 +1,7 @@
 package com.ooyala.playback.page;
 
+import static java.lang.Thread.sleep;
+
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.HashMap;
@@ -265,5 +267,21 @@ public abstract class PlayBackPage extends WebPage {
 		}
 		return flag;
 
+	}
+	
+	protected void closeOtherWindows(String baseWindowHdl) throws Exception{
+		sleep(2000);
+		java.util.Set<java.lang.String> windowHandles = driver
+				.getWindowHandles();
+		int count = windowHandles.size();
+		logger.info("Window handles : " + count);
+
+		for (String winHandle : driver.getWindowHandles()) {
+			if (!winHandle.equals(baseWindowHdl)) {
+				driver.switchTo().window(winHandle);
+				driver.close();
+				driver.switchTo().window(baseWindowHdl);
+			}
+		}
 	}
 }

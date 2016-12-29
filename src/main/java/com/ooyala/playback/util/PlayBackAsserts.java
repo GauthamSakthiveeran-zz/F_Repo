@@ -2,7 +2,6 @@ package com.ooyala.playback.util;
 
 import java.util.Map;
 
-import org.testng.Assert;
 import org.testng.asserts.Assertion;
 import org.testng.asserts.IAssert;
 import org.testng.collections.Maps;
@@ -29,7 +28,7 @@ public class PlayBackAsserts extends Assertion {
 		}
 	}
 
-	public void assertAll() {
+	public void assertAll() throws Exception {
 		if (hasErrors()) {
 			StringBuilder sb = new StringBuilder("The following asserts failed:\n");
 			boolean first = true;
@@ -48,5 +47,10 @@ public class PlayBackAsserts extends Assertion {
 	public boolean hasErrors(){
 		return !m_errors.isEmpty();
 	}
+	
+	public ElementPosition elementPosition(){
+		return new ElementPosition(this);
+	}
+	
 
 }

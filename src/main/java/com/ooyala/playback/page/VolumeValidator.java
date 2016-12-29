@@ -39,36 +39,22 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			}
 			if (clickOnIndependentElement("VOLUME_MAX")) {
 				double getmutevol = getVolume();
-				if (getmutevol != expectedmutevol) {
-					extentTest.log(LogStatus.FAIL, "Mute volume is't matching");
-					return false;
-				} else {
-					extentTest.log(LogStatus.PASS, "Mute volume works");
-				}
-
-				Thread.sleep(2000);
+				asserts.assertEquals(getmutevol, expectedmutevol, "Issue with Mute Volume.");
 
 			} else {
-				extentTest.log(LogStatus.FAIL, "Unable to click on Volume");
-				return false;
+				asserts.assertTrue(false, "Click on VOLUME_MAX failed.");
 			}
 			if (clickOnIndependentElement("VOLUME_MUTE")) {
 				double getMaxVol = getVolume();
-
-				if (getMaxVol != expectedmaxvol) {
-					extentTest.log(LogStatus.FAIL, "Max volume is not the same");
-					return false;
-				} else {
-					extentTest.log(LogStatus.PASS, "Max volume works");
-				}
+				asserts.assertEquals(getMaxVol, expectedmaxvol, "Issue with Max Volume.");
+				
 			} else {
-				extentTest.log(LogStatus.FAIL, "Unable to click on Volume");
-				return false;
+				asserts.assertTrue(false, "Click on VOLUME_MAX failed.");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			extentTest.log(LogStatus.FAIL, "Volume control is not working properly" + e.getMessage());
+			asserts.assertTrue(false, "Volume control is not working properly" + e.getMessage());
 			return false;
 		}
 

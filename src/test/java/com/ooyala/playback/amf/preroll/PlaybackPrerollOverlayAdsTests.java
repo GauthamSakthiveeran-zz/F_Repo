@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AdClickThroughValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.OverlayValidator;
 import com.ooyala.playback.page.PlayValidator;

@@ -1,7 +1,6 @@
 package com.ooyala.playback.page;
 
 import static com.relevantcodes.extentreports.LogStatus.PASS;
-import static java.lang.Thread.sleep;
 
 import java.util.Map;
 
@@ -141,22 +140,6 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
 	}
 	
-	private void closeOtherWindows(String baseWindowHdl) throws Exception{
-		sleep(2000);
-		java.util.Set<java.lang.String> windowHandles = driver
-				.getWindowHandles();
-		int count = windowHandles.size();
-		log.info("Window handles : " + count);
-
-		for (String winHandle : driver.getWindowHandles()) {
-			if (!winHandle.equals(baseWindowHdl)) {
-				driver.switchTo().window(winHandle);
-				driver.close();
-				driver.switchTo().window(baseWindowHdl);
-			}
-		}
-	}
-
 	public boolean isAdPlaying() {
 		Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
 				.executeScript("return pp.isAdPlaying()"));

@@ -40,7 +40,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 			return true;
 		}
 		extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");*/
-		return false;
+		return true;
 	}
 
 	public boolean eventAction(String element) throws Exception {
