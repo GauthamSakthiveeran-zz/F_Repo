@@ -856,7 +856,7 @@
     </test>
     <test name="PlaybackFCCBasicTests">
         <url>
-            <description name="" />
+            <description name="FCC Basic test" />
             <embed_code name="U5ZTFhNDE6xdu2sEldjX3WRLhSAb1Ql2" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -868,7 +868,7 @@
     </test>
     <test name="PlaybackFCCDefaultSettingTests">
         <url>
-            <description name="" />
+            <description name="FCC Default test" />
             <embed_code name="U5ZTFhNDE6xdu2sEldjX3WRLhSAb1Ql2" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -878,4 +878,19 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
     </test>
+
+    <test name="OoyalaAPITests">
+        <url>
+            <description name="Api Test" />
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"autoplay":true,"initialTime":10}]]></playerParameter>
+        </url>
+    </test>
+
+
 </testdata>

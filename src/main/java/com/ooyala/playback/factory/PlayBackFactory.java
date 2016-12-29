@@ -48,11 +48,18 @@ public class PlayBackFactory {
 	private AdClickThroughValidator adClickThroughValidator;
 	private PoddedAdValidator poddedAdValidator;
 	private FCCValidator fccValidator;
+	private OoyalaAPIValidator ooyalaAPIValidator;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
 	}
-	
+
+	public OoyalaAPIValidator getOoyalaAPIValidator() {
+		if (ooyalaAPIValidator == null)
+			ooyalaAPIValidator = new OoyalaAPIValidator(driver);
+		return ooyalaAPIValidator;
+	}
+
 	public MultiplePlayerValidator getMultiplePlayerValidator() {
 		if (multiplePlayerValidator == null)
 			multiplePlayerValidator = new MultiplePlayerValidator(driver);
