@@ -45,7 +45,7 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             injectScript();
 
-            result = result && play.validate("playing_1",30000);
+            result = result && play.validate("playing_1",60000);
 
             result = result && eventValidator.loadingSpinner();
 
