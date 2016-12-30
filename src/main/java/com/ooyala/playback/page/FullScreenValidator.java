@@ -1,13 +1,12 @@
 package com.ooyala.playback.page;
 
-import static java.lang.Thread.sleep;
-
+import com.ooyala.playback.factory.PlayBackFactory;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.ooyala.playback.factory.PlayBackFactory;
+import static java.lang.Thread.sleep;
 
 public class FullScreenValidator extends PlayBackPage implements
 		PlaybackValidator {
@@ -51,37 +50,16 @@ public class FullScreenValidator extends PlayBackPage implements
 	}
 
 	public boolean getFullscreen() {
-		try {
-			// PBW-5165 we are not verifying fullscreen change event for safari and
-			// firefox browser as fullscreen is not working in safari in automation
-			if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
-					|| (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("mac")))){
-				if (!clickOnIndependentElement("FULLSCREEN_BTN_1")) {
-					return false;
-				}
-				Thread.sleep(2000);
-			}
-			return true;
-		} catch (Exception e) {
+		if (!clickOnIndependentElement("FULLSCREEN_BTN_1")) {
 			return false;
 		}
+			return true;
 	}
 
 	public boolean getNormalscreen() {
-		try{
-			// PBW-5165 we are not verifying fullscreen change event for safari and
-			// firefox browser as fullscreen is not working in safari in automation
-			if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
-					|| (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("mac")))){
-				if (!clickOnIndependentElement("NORMAL_SCREEN"))
-					return false;
-			}
-			return true;
-		} catch (Exception e){
+		if (!clickOnIndependentElement("NORMAL_SCREEN")){
 			return false;
 		}
+		return true;
 	}
-
-
-
 }

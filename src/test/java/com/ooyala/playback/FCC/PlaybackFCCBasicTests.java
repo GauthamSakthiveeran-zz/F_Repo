@@ -65,11 +65,13 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             result = result &&fcc.validate("",30000);
 
-            result = result && fullscreen.getFullscreen();
-
-            result = result &&fcc.validate("",30000);
-
-            result = result && fullscreen.getNormalscreen();
+            if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
+                    || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("mac")))){
+                result = result && fullscreen.getFullscreen();
+                Thread.sleep(2000);
+                result = result && fcc.validate("",30000);
+                result = result && fullscreen.getNormalscreen();
+            }
 
             result = result && play.validate("playing_2",30000);
 
