@@ -3,7 +3,6 @@ package com.ooyala.playback.page;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -112,21 +111,4 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
         return flag;
 
     }
-	
-	public boolean isAdPlaying(){
-		try{
-			loadingSpinner();
-			Boolean isAdplaying =(Boolean) (Object) (((JavascriptExecutor) driver).executeScript("return pp.isAdPlaying()"));
-			logger.info("Ads are playing: " + isAdplaying);
-			if (isAdplaying) {
-				waitOnElement(By.id("singleAdPlayed_1"),50000);
-				logger.info("Ad played");
-			}
-			return true;
-		}catch (Exception e){
-			logger.error("Error in ad played");
-			return false;
-		}
-
-	}
 }
