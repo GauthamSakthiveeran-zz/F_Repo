@@ -93,6 +93,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -210,6 +211,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -262,6 +264,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("verified Windows opacity selection is working fine");
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -569,7 +572,9 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             // CC Opacity Selection
             result = result && verifyCCOpacityPanel("PlaybackFCCDefaultSettingTests");
             Thread.sleep(2000);
-            result = result && setCCOpacity();
+            if(!getBrowser().equalsIgnoreCase("safari")){
+                result = result && setCCOpacity();
+            }
             ccOpacityMapBefore = getCCOpacityValues();
 
             // CC Font Type Selection
@@ -785,6 +790,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             return result;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
@@ -827,6 +833,18 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         }
         logger.error(opacityValue + "value is not matching with rgba(0, 0, 0, 0)");
         return false;
+    }
+
+    public boolean discoveryCheck(){
+        try{
+            if (isElementPresent("DISCOVERY_CLOSE")){
+                Thread.sleep(5000);
+                clickOnIndependentElement("DISCOVERY_CLOSE");
+            }
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
 }

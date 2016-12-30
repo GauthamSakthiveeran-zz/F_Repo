@@ -45,27 +45,25 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             injectScript();
 
-            result = result && play.validate("playing_1",30000);
+            result = result && playAction.startAction();
+
+            result = result && eventValidator.isAdPlaying();
+
+            result = result && eventValidator.validate("playing_1",60000);
 
             result = result && eventValidator.loadingSpinner();
 
-            Thread.sleep(2000);
-
             result = result && pause.validate("paused_1",30000);
+
+            result = result && fcc.discoveryCheck();
 
             result = result &&fcc.validate("",30000);
 
-            Thread.sleep(2000);
-
             result = result && fcc.verifyFccInFullscreen();
-
-            Thread.sleep(2000);
 
             result = result && play.validate("playing_2",30000);
 
-            result = result && seekAction.seek(10,true);
-
-            result = result && eventValidator.validate("seeked_1",10000);
+            result = result && seek.validate("seeked_1",40000);
 
             result = result && eventValidator.validate("played_1", 60000);
 
@@ -73,6 +71,6 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
             e.printStackTrace();
             result = false;
         }
-        Assert.assertTrue(result, "Playback FCC CC tests failed");
+        Assert.assertTrue(result, "Playback FCC CC tests failed :"+testName);
     }
 }
