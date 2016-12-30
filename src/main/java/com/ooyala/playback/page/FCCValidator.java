@@ -32,6 +32,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         addElementToPageElements("fullscreen");
         addElementToPageElements("pause");
         addElementToPageElements("controlbar");
+        addElementToPageElements("discovery");
     }
 
     public boolean validate(String element, int timeout) throws Exception {
@@ -443,58 +444,6 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return false;
         }
     }
-
-    public boolean verifyFccInFullscreen() throws Exception {
-        try {
-            // PBW-5165 we are not verifying fullscreen change event for safari and
-            // firefox browser as fullscreen is not working in safari in automation
-            if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
-                    || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("mac")))) {
-                getFullscreen();
-
-                validate("", 30000);
-
-                getNormalscreen();
-
-            }
-            return true;
-        }catch (Exception e) {
-            return false;
-        }
-    }
-
-    public boolean getFullscreen() {
-        try {
-            // PBW-5165 we are not verifying fullscreen change event for safari and
-            // firefox browser as fullscreen is not working in safari in automation
-            if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
-                    || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("mac")))){
-                if (!clickOnIndependentElement("FULLSCREEN_BTN_1")) {
-                    return false;
-                }
-                Thread.sleep(2000);
-            }
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    public boolean getNormalscreen() {
-        try{
-            // PBW-5165 we are not verifying fullscreen change event for safari and
-            // firefox browser as fullscreen is not working in safari in automation
-            if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
-                    || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("mac")))){
-                if (!clickOnIndependentElement("NORMAL_SCREEN"))
-                    return false;
-            }
-            return true;
-        } catch (Exception e){
-            return false;
-        }
-    }
-
 
     public boolean clearCache() throws Exception {
         for (int i = 0; i < 13; i++) {
