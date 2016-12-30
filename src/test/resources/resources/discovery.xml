@@ -15,4 +15,6 @@
              class="oo-content-screen" />
     <element key="DISCOVERY_CLOSE_BTN" findBy="class"
              class="oo-close-button" />
+    <element key="DISCOVERY_CLOSE" findBy="class"
+             class="oo-icon-system-close" />
 </elements>
