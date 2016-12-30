@@ -22,6 +22,7 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
     private FCCValidator fcc;
     private PlayAction playAction;
     private SeekValidator seek;
+    private FullScreenValidator fullScreenValidator;
 
     public PlaybackFCCDefaultSettingTests() throws OoyalaException {
         super();
@@ -48,9 +49,12 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
 
             result = result && pause.validate("paused_1",30000);
 
-            result = result && fcc.getFullscreen();
+            result = result && fullScreenValidator.getFullscreen();
+
             result = result && fcc.closedCaptionMicroPanel();
+
             result = result && fcc.beforeRefreshCCSetting();
+
             Thread.sleep(2000);
 
             driver.navigate().refresh();
@@ -69,11 +73,15 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
 
             fcc.switchToControlBar();
 
-            result = result && fcc.getFullscreen();
+            result = result && fullScreenValidator.getFullscreen();
+
             result = result && fcc.closedCaptionMicroPanel();
+
             result = result && fcc.afterRefreshCCSettings();
+
             result = result && fcc.closeCCPanel();
-            result = result && fcc.getNormalscreen();
+
+            result = result && fullScreenValidator.getNormalscreen();
 
             result = result && fcc.closeCCPanel();
 

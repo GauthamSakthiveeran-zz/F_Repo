@@ -59,7 +59,11 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             result = result &&fcc.validate("",30000);
 
-            result = result && fcc.verifyFccInFullscreen();
+            result = result && fullscreen.getFullscreen();
+
+            result = result &&fcc.validate("",30000);
+
+            result = result && fullscreen.getNormalscreen();
 
             result = result && play.validate("playing_2",30000);
 
