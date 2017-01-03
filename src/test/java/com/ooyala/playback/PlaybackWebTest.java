@@ -44,8 +44,6 @@ import com.ooyala.playback.page.PlayBackPage;
 import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.url.Testdata;
 import com.ooyala.playback.url.UrlGenerator;
-import com.ooyala.playback.util.PlayBackAsserts;
-import com.ooyala.playback.util.StringArrayAppender;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -282,7 +280,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 		ExtentManager.endTest(extentTest);
 		ExtentManager.flush();
-		System.out.println("###########" + StringArrayAppender.getLog());
+//		System.out.println("###########" + StringArrayAppender.getLog());
 	}
 
 	@AfterClass(alwaysRun = true)
