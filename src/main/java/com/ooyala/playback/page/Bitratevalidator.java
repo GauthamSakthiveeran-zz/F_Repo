@@ -24,6 +24,7 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 		addElementToPageElements("play");
 		addElementToPageElements("pause");
 		addElementToPageElements("bitrate");
+		addElementToPageElements("replay");
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
@@ -49,6 +50,8 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 		try{
 			if(isElementPresent("BITRATE_CLOSE_BTN")) {
 				clickOnIndependentElement("BITRATE_CLOSE_BTN");
+				((JavascriptExecutor) driver)
+						.executeScript(" return pp.play()");
 			}
 		} catch (Exception e){
 			logger.info("Bitrate close button is not present");
@@ -60,19 +63,30 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 		if (length > 1) {
 			boolean flag = true;
 			for (int i = 0; i < length - 1; i++) {
+
 				String bitrate = ((JavascriptExecutor) driver).executeScript(
 						"return pp.getBitratesAvailable()[" + i
 								+ "]['bitrate']").toString();
+				logger.info("Current bitrate : "+bitrate);
 				((JavascriptExecutor) driver)
 						.executeScript("return pp.setTargetBitrate('" + i
 								+ "')");
+
 				((JavascriptExecutor) driver)
-						.executeScript(" return pp.seek(3)");
+						.executeScript("pp.seek(pp.getDuration()-10)");
+
+				waitOnElement("END_SCREEN",30000);
+
 				((JavascriptExecutor) driver)
 						.executeScript(" return pp.play()");
-				flag = flag
-						&& waitOnElement(By.id("bitrateChanged_" + (bitrate)),
-								60000);
+
+				loadingSpinner();
+
+				Thread.sleep(10000);
+
+				flag = flag && waitOnElement(By.id("bitrateChanged_" + (bitrate)),20000);
+
+				logger.info("\n Is "+"bitrateChanged_"+bitrate+" element present : "+flag);
 			}
 			return flag;
 		} else {

@@ -57,17 +57,10 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("playing_1", 60000);
 
-			sleep(4000);
-
-			result = result && pause.validate("paused_1", 60000);
-
 			result = result && bitratevalidator.validate("", 60000);
 
-			sleep(1000);
-
-			result = result && seek.validate("seeked_1", 60000);
-
 			result = result && eventValidator.validate("videoPlayed_1", 60000);
+
 			logger.info("Verified that video is played");
 
 		} catch (Exception e) {
