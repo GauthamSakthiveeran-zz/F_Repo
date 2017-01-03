@@ -187,27 +187,41 @@ public class FacileTestListener extends TestListenerAdapter implements
 			return false;
 		}
 
-		/**
-		 * In src/test/resources/facile.properties file, if retry=true, it will
-		 * retry all the failed test if retry=false, it will not retry any
-		 * failed test if retry is not set or any other value, it will retry all
-		 * the tests except tests with @NoRetry annotation
-		 */
+		String retryString = System.getProperty("retry");
+		String retryCountString = System.getProperty("retryCount");
 
-		File confFile = new File("src/test/resources/facile.properties");
-		if (confFile.exists()) {
-			ReadTriggerFile propertiesFile = new ReadTriggerFile(
-					"src/test/resources/facile.properties");
-			String retry = propertiesFile.getParameter("retry", "");
-			int retryCount = Integer.parseInt(propertiesFile.getParameter(
-					"retryCount", ""));
-			logger.info("Retry count is " + retryCount);
-			logger.info("Is Retry is enabled? " + retry);
-			if (retry != null) {
-				if (retry.equalsIgnoreCase("true")) {
-					return retryTracker(retryCount);
-				} else if (retry.equalsIgnoreCase("false")) {
-					return false;
+		if (retryString != null && !retryString.equals("")
+				&& retryCountString != null && !retryCountString.equals("")) {
+			int retryCount = Integer.parseInt(retryCountString);
+			boolean retry = Boolean.parseBoolean(retryString);
+			if (retry)
+				return retryTracker(retryCount);
+			else
+				return false;
+		} else {
+
+			/**
+			 * In src/test/resources/facile.properties file, if retry=true, it
+			 * will retry all the failed test if retry=false, it will not retry
+			 * any failed test if retry is not set or any other value, it will
+			 * retry all the tests except tests with @NoRetry annotation
+			 */
+
+			File confFile = new File("src/test/resources/facile.properties");
+			if (confFile.exists()) {
+				ReadTriggerFile propertiesFile = new ReadTriggerFile(
+						"src/test/resources/facile.properties");
+				String retry = propertiesFile.getParameter("retry", "");
+				int retryCount = Integer.parseInt(propertiesFile.getParameter(
+						"retryCount", ""));
+				logger.info("Retry count is " + retryCount);
+				logger.info("Is Retry is enabled? " + retry);
+				if (retry != null) {
+					if (retry.equalsIgnoreCase("true")) {
+						return retryTracker(retryCount);
+					} else if (retry.equalsIgnoreCase("false")) {
+						return false;
+					}
 				}
 			}
 		}
