@@ -24,7 +24,6 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 		addElementToPageElements("play");
 		addElementToPageElements("pause");
 		addElementToPageElements("bitrate");
-
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
@@ -42,6 +41,18 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 
 		if (!clickOnIndependentElement("BITRATE"))
 			return false;
+
+		if (isElementPresent("SET_BITRATE")){
+			if (!clickOnIndependentElement("SET_BITRATE")){return false;}
+		}
+
+		try{
+			if(isElementPresent("BITRATE_CLOSE_BTN")) {
+				clickOnIndependentElement("BITRATE_CLOSE_BTN");
+			}
+		} catch (Exception e){
+			logger.info("Bitrate close button is not present");
+		}
 
 		int length = Integer.parseInt(((JavascriptExecutor) driver)
 				.executeScript("return pp.getBitratesAvailable().length")
