@@ -93,7 +93,8 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 			String currentBitrate = ((JavascriptExecutor) driver)
 					.executeScript("return pp.getCurrentBitrate()[\"bitrate\"]")
 					.toString();
-			((JavascriptExecutor) driver).executeScript("return pp.play()");
+			((JavascriptExecutor) driver)
+					.executeScript("pp.seek(pp.getDuration()-10)");
 			// Assert.assertNotNull(currentBitrate);
 			if (currentBitrate == null) {
 				return false;
