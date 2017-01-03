@@ -1,18 +1,18 @@
 package com.ooyala.playback.page;
 
-import static java.lang.Thread.sleep;
-
+import com.ooyala.playback.factory.PlayBackFactory;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.ooyala.playback.factory.PlayBackFactory;
+import static java.lang.Thread.sleep;
 
 public class FullScreenValidator extends PlayBackPage implements
 		PlaybackValidator {
 
 	public static Logger logger = Logger.getLogger(FullScreenValidator.class);
+	private FCCValidator fccValidator;
 
 	public FullScreenValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -47,5 +47,19 @@ public class FullScreenValidator extends PlayBackPage implements
 		} else {
 			return true;
 		}
+	}
+
+	public boolean getFullscreen() {
+		if (!clickOnIndependentElement("FULLSCREEN_BTN_1")) {
+			return false;
+		}
+			return true;
+	}
+
+	public boolean getNormalscreen() {
+		if (!clickOnIndependentElement("NORMAL_SCREEN")){
+			return false;
+		}
+		return true;
 	}
 }

@@ -1,0 +1,41 @@
+<elements area="fcc">
+    <element key="CC_LEFT_SCROLL_BTN" findBy="class" class="oo-left-tab-button" />
+    <element key="CC_RIGHT_SCROLL_BTN" findBy="class" class="oo-right-tab-button" />
+    <element key="CC_CONTROL_BAR" findBy="class" class="oo-content-screen-title-bar" />
+    <element key="CLOSED_CAPTION_PANEL" findBy="class" class="oo-closed-captions-panel" />
+    <element key="CC_RIGHT_BTN" findBy="xPath" xPath=".//*[@class='oo-right-button" />
+    <element key="RIGHT_BTN" findBy="class" class="oo-right-button" />
+    <element key="LEFT_BTN" findBy="class" class="oo-left-button" />
+    <element key="CC_PREVIEW_CAPTION" findBy="class" class="oo-preview-caption" />
+    <element key="CC_SWITCH_CONTAINER" findBy="class" class="oo-switch-container-selectable" />
+    <element key="CC_OFF" findBy="xPath" xPath=".//*[@class='oo-switch-captions oo-switch-captions-off oo-switch-captions-active']" />
+    <element key="CC_ON" findBy="xPath" xPath=".//*[@class='oo-switch-captions oo-switch-captions-on oo-switch-captions-active']" />
+    <element key="LANG_LIST" findBy="xPath" xPath=".//*[@class='oo-language-tab']//span[@class='oo-data']" />
+    <element key="CC_PREVIEW_TEXT" findBy="class" class="oo-text-track" />
+    <element key="COLOR_SELECTION_PANEL" findBy="xPath" xPath=".//*[normalize-space(text())='Color Selection']" />
+    <element key="CAPTION_OPACITY_PANEL" findBy="xPath" xPath=".//*[normalize-space(text())='Caption Opacity']"/>
+    <element key="CC_TEXT_COLOR_SELECTOR" findBy="xPath" xPath=".//*[@class='oo-selection-container oo-text-color-selection-container']//div[@class='oo-color-selector']/div/a" />
+    <element key="CC_TEXT_COLOR" findBy="xPath" xPath=".//*[@class='oo-selection-container oo-text-color-selection-container'][1]//span[@class='oo-selection-container-selection-text']" />
+    <element key="CC_BACKGROUND_COLOR_SELECTOR" findBy="xPath" xPath=".//*[@class='oo-selection-container'][1]//div[@class='oo-color-selector']/div/a" />
+    <element key="CC_PREVIEW_TEXT_BG" findBy="class" class="oo-text-track-background" />
+    <element key="CC_BACKGROUND_COLOR" findBy="xPath" xPath=".//*[@class='oo-selection-container'][1]//span[@class='oo-selection-container-selection-text']" />
+    <element key="CC_WINDOW_COLOR_SELECTOR" findBy="xPath" xPath=".//*[@class='oo-selection-container'][2]//div[@class='oo-color-selector']/div/a" />
+    <element key="CC_WINDOW_COLOR" findBy="xPath" xPath=".//*[@class='oo-selection-container'][2]//span[@class='oo-selection-container-selection-text']" />
+    <element key="CC_PREVIEW_WIN_COLOR" findBy="class" class="oo-text-track-window" />
+    <element key="CC_TEXT_OPACITY_SELECTOR" findBy="xPath" xPath=".//*[@class='oo-selection-container'][1]//input[@class='oo-slider oo-slider-caption-opacity']" />
+    <element key="CC_TEXT_OPACITY" findBy="xPath" xPath="//*[@class='oo-selection-container'][1]//span[@class='oo-selection-container-selection-text']" />
+    <element key="CC_BACKGROUND_OPACITY_SELECTOR" findBy="xPath" xPath=".//*[@class='oo-selection-container'][2]//input[@class='oo-slider oo-slider-caption-opacity']" />
+    <element key="CC_BACKGROUND_OPACITY" findBy="xPath" xPath=".//*[@class='oo-selection-container'][2]//span[@class='oo-selection-container-selection-text']" />
+    <element key="CC_WINDOW_OPACITY_SELECTOR" findBy="xPath" xPath=".//*[@class='oo-selection-container'][3]//input[@class='oo-slider oo-slider-caption-opacity']" />
+    <element key="CC_WINDOW_OPACITY" findBy="xPath" xPath=".//*[@class='oo-selection-container'][3]//span[@class='oo-selection-container-selection-text']" />
+    <element key="CC_FONT_TYPE_PANEL" findBy="xPath" xPath=".//*[normalize-space(text())='Font Type']"/>
+    <element key="CC_FONT_SIZE_PANEL" findBy="xPath" xPath=".//*[normalize-space(text())='Font Size']"/>
+    <element key="CC_FONT_SIZE_SELECTOR" findBy="class" class="oo-font-size-letter" />
+    <element key="CC_FONT_TYPE" findBy="xPath" xPath=".//*[@class='oo-font-type-tab']//span[@class='oo-data']" />
+    <element key="RIGHT_ARROW" findBy="xPath" xPath=".//*[normalize-space(@class)='oo-icon oo-icon-system-right-arrow']" />
+    <element key="LEFT_ARROW" findBy="xPath" xPath=".//*[normalize-space(@class)='oo-icon oo-icon-system-left-arrow']" />
+    <element key="RIGHT_ARROW_HIDDEN" findBy="xPath" xPath=".//*[normalize-space(@class)=oo-right-button oo-hidden']" />
+    <element key="CC_FONT_SIZE_SELECTED" findBy="xPath" xPath=".//*[@class='oo-selection-container-title'][1]//span[@class='oo-selection-container-selection-text']" />
+    <element key="CC_TEXT_ENHANCEMENT_SELECTOR" findBy="class" class="oo-text-enhancement-letter" />
+    <element key="CC_TEXT_ENHANCEMENT" findBy="xPath" xPath=".//*[normalize-space(text())='Text Enhancements']"/>
+</elements>

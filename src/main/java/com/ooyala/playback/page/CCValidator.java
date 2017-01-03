@@ -151,7 +151,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	protected boolean closedCaptionMicroPanel() throws Exception {
 		try {
-			
 			switchToControlBar();
 
 			if (!clickOnIndependentElement("CC_BTN"))

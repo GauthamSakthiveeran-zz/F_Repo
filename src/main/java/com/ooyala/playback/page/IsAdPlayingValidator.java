@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 public class IsAdPlayingValidator extends PlayBackPage implements
 		PlaybackValidator {
 
-	public static Logger Log = Logger.getLogger(PlayValidator.class);
+	public static Logger logger = Logger.getLogger(IsAdPlayingValidator.class);
 
 	public IsAdPlayingValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -20,8 +20,10 @@ public class IsAdPlayingValidator extends PlayBackPage implements
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
+		loadingSpinner();
 		boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
 				.executeScript("return pp.isAdPlaying()"));
+		logger.info("Ad is playing: " + isAdplaying);
 		return isAdplaying;
 	}
 

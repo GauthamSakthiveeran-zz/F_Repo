@@ -29,6 +29,7 @@ function subscribeToEvents() {
         var bitrateChangedEventOrder = 1;
         var destroyEventOrder = 1;
         var adPodEndedEventOrder = 1;
+        var skipAdEventOrder = 1;
 
 
 
@@ -56,6 +57,12 @@ function subscribeToEvents() {
                 OO.$("#ooplayer").append("<p id=seeked_" + seekingEventOrder + ">seeked " +
                 seekingEventOrder + "</p>");
                 seekingEventOrder++;
+            }
+
+            if (event.match(/skipAd/)) {
+                OO.$("#ooplayer").append("<p id=skipAd_" + skipAdEventOrder + ">skipAd " +
+                    skipAdEventOrder + "</p>");
+                skipAdEventOrder++;
             }
 
             if (event.match(/videoPlaying/) && arguments[1] == "main") {

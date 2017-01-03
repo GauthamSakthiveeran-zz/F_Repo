@@ -1,21 +1,13 @@
 package com.ooyala.playback.playerfeatures;
 
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.ITestResult;
-import org.testng.Reporter;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
-
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.ControlBarValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.FullScreenValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
@@ -47,8 +39,6 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
             result = result && play.waitForPage();
 
-            Thread.sleep(10000);
-
             injectScript();
 
             result = result && playAction.startAction();
@@ -60,17 +50,22 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
                 throw new SkipException("Failed to load TestPage");
             }
 
-            result = result && eventValidator.validate("playing_1",10000);
+            result = result && eventValidator.validate("playing_1",20000);
 
             result = result && pause.validate("paused_1", 60000);
 
-            result = result && play.validate("playing_2", 60000);
-
-            result = result && fullScreenValidator.validate("", 60000);
+            if (!(getBrowser().equalsIgnoreCase("safari")
+                    || getBrowser().equalsIgnoreCase("firefox")
+                    || getBrowser().equalsIgnoreCase("internet explorer") || getPlatform()
+                    .equalsIgnoreCase("Android"))) {
+                result = result && fullScreenValidator.validate("", 60000);
+            }
 
             result = result && controlBarValidator.validate("", 60000);
 
             result = result && playAction.startAction();
+
+            result = result && eventValidator.validate("playing_2", 60000);
 
             result = result && seek.validate("seeked_1", 60000);
 
