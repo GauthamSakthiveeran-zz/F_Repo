@@ -1,12 +1,13 @@
 package com.ooyala.playback.page;
 
-import com.relevantcodes.extentreports.LogStatus;
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.Map;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by soundarya on 11/14/16.
@@ -33,13 +34,11 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 		
-		asserts.assertTrue(waitOnElement(By.id(element), timeout), "Wait on element : " + element);
-		
-		/*if(waitOnElement(By.id(element), timeout)){
+		if(waitOnElement(By.id(element), timeout)){
 			extentTest.log(LogStatus.PASS, "Wait on element : " + element);
 			return true;
 		}
-		extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");*/
+		extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");
 		return true;
 	}
 

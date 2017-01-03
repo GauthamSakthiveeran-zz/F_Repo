@@ -28,7 +28,6 @@ public abstract class PlayBackPage extends WebPage {
 	private static Logger logger = Logger.getLogger(PlayBackPage.class);
 
 	protected ExtentTest extentTest;
-	protected PlayBackAsserts asserts;
 
 	public PlayBackPage(WebDriver webDriver) {
 		super(webDriver);
@@ -184,9 +183,6 @@ public abstract class PlayBackPage extends WebPage {
 		this.extentTest = test;
 	}
 	
-	public void setPlayBackAsserts(PlayBackAsserts playBackAsserts) {
-		this.asserts = playBackAsserts;
-	}
 
 	/**
 	 * checking to see if the protocol is hds or hls or any protocol

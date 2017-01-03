@@ -41,7 +41,7 @@ public class PlaybackCustomInteractionTests extends PlaybackWebTest {
 
 			event.validate("willPlaySingleAd_1", 190000);
 
-//			adSkipButtonValidator.validate("showAdSkipButton_1", 60000);
+			adSkipButtonValidator.validate("showAdSkipButton_1", 60000);
 
 			event.validate("singleAdPlayed_1", 190000);
 

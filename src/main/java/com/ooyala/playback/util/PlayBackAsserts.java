@@ -27,6 +27,11 @@ public class PlayBackAsserts extends Assertion {
 			m_errors.put(ex, a);
 		}
 	}
+	
+	
+	public PlayBackAsserts then(){
+		return this;
+	}
 
 	public void assertAll() throws Exception {
 		if (hasErrors()) {
@@ -40,7 +45,7 @@ public class PlayBackAsserts extends Assertion {
 				}
 				sb.append(ae.getValue().getMessage());
 			}
-			extentTest.log(LogStatus.FAIL, sb.toString());
+			extentTest.log(LogStatus.INFO, sb.toString());
 		}
 	}
 	
