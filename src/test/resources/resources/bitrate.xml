@@ -5,4 +5,8 @@
              class="oo-more-options-items" />
     <element key="BITRATE_SELECTION" findBy="class"
              class="oo-quality-btn" />
+    <element key="BITRATE_CLOSE_BTN" findBy="xPath"
+             xPath=".//button[@class='oo-close-button']"/>
+    <element key="SET_BITRATE" findBy="xPath"
+             xPath=".//a[normalize-space(text())='569 kbps']"/>
 </elements>
