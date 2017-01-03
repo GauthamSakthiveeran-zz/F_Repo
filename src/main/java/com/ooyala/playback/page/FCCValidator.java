@@ -61,6 +61,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
     public boolean verifyCCPanelElements() {
         try {
+            boolean flag =true;
             waitOnElement("CC_CONTROL_BAR", 30000);
             waitOnElement("CLOSED_CAPTION_PANEL", 30000);
 
@@ -75,24 +76,24 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             // verify preview caption text available
             boolean isPreviewCaptionPresent = isElementPresent("CC_PREVIEW_CAPTION");
-            Assert.assertEquals(isPreviewCaptionPresent, true);
+            flag = flag && isPreviewCaptionPresent;
             logger.info("verified Preview Caption is Present");
 
             // verify cc off
             clickOnIndependentElement("CC_SWITCH_CONTAINER");
             Thread.sleep(2000);
             boolean ccoff = isElementPresent("CC_OFF");
-            Assert.assertEquals(ccoff, true);
+            flag = flag && ccoff;
             logger.info("verified the close caption On button working");
 
             //verify cc on
             clickOnIndependentElement("CC_SWITCH_CONTAINER");
             Thread.sleep(2000);
             boolean ccon = isElementPresent("CC_ON");
-            Assert.assertEquals(ccon, true);
+            flag = flag && ccon;
             logger.info("verified tha close caption On button working");
 
-            return true;
+            return flag;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -101,6 +102,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
     public boolean verifyClosedCaptionLanguages() {
         try {
+            boolean flag= true;
             //get available languages for video
             Object ccobj = ((JavascriptExecutor) driver)
                     .executeScript("var attrb = pp.getCurrentItemClosedCaptionsLanguages().languages;" +
@@ -108,7 +110,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             @SuppressWarnings("unchecked")
             ArrayList<String> langlist = ((ArrayList<String>) ccobj);
-            logger.info("\t \t \t Closed Caption Available Languages: " + langlist + "\n \t \t \t languages available count :" + langlist.size());
+            logger.info("\t Closed Caption Available Languages: " + langlist + "\n \t \t \t languages available count :" + langlist.size());
 
             String[] langl = new String[langlist.size()];
             langlist.toArray(langl);
@@ -116,7 +118,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             //select language and verify that Preview Text is shown
             lang = getWebElementsList("LANG_LIST");
             logger.info("language Count Value in Languages :" + lang.size());
-            String langpreview1[] = {"Sample Text", "Texto de muestra", "Sample Text"};
+            String langpreview1[] = {"Sample Text", "Texto de muestra", "Sample Text","Sample Text"};
 
             // issue id
             if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
@@ -128,18 +130,13 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                             return false;
                         }
                         String engPreviewText = getWebElement("CC_PREVIEW_TEXT").getText();
-
-                        try {
-                            Assert.assertEquals(langpreview1[i], engPreviewText);
-                        } catch (Exception e) {
-                            logger.error("Preview text is not visible");
-                            return false;
-                        }
+                        flag = flag && langpreview1[i].equalsIgnoreCase(engPreviewText);
                     }
                 }
             }
-            return true;
+            return flag;
         } catch (Exception e) {
+            logger.error("Preview text is not visible");
             return false;
         }
     }
@@ -148,6 +145,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         try {
             String colorsName[] = {"Transparent", "White", "Blue", "Magenta", "Green", "Yellow", "Red", "Cyan", "Black"};
             String colorsCode[] = {"rgba(255, 255, 255, 1)", "rgba(0, 0, 255, 1)", "rgba(255, 0, 255, 1)", "rgba(0, 255, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(255, 0, 0, 1)", "rgba(0, 255, 255, 1)", "rgba(0, 0, 0, 1)"};
+            boolean flag=true;
 
             // verify color selection panel
             waitOnElement("COLOR_SELECTION_PANEL", 30000);
@@ -164,7 +162,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 textColor.get(i).click();
                 String ccTextColor = getWebElement("CC_TEXT_COLOR").getText();
                 logger.info("\t Text Color Selected :" + ccTextColor);
-                Assert.assertEquals(colorsName[i + 1], ccTextColor);
+                flag = flag && colorsName[i + 1].equalsIgnoreCase(ccTextColor);
 
                 //verify color selected
                 // issue id
@@ -172,7 +170,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")) {
                         String ccPreviewTextColor = getWebElement("CC_PREVIEW_TEXT").getCssValue("color");
                         logger.info("\t Preview Text Color Selected :" + ccPreviewTextColor);
-                        Assert.assertEquals(colorsCode[i], ccPreviewTextColor);  //verify Preview Text color selected
+                        flag = flag && colorsCode[i].equalsIgnoreCase(ccPreviewTextColor);  //verify Preview Text color selected
                     }
                 }
             }
@@ -191,7 +189,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
                     String ccPreviewBgColor = getWebElement("CC_PREVIEW_TEXT_BG").getCssValue("color");
                     logger.info("\t Preview Text Color Selected :" + ccPreviewBgColor);
-                    Assert.assertEquals(colorsName[i], ccBgColor);
+                    flag = flag && colorsName[i].equalsIgnoreCase(ccBgColor);
                 }
             }
             logger.info("verified background color selection is working fine");
@@ -206,11 +204,11 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 logger.info("\t Window Color Selected :" + ccWindowColor);
                 String ccPreviewWinColor = getWebElement("CC_PREVIEW_WIN_COLOR").getCssValue("color");
                 logger.info("\t Window color of Preview Text Selected :" + ccPreviewWinColor);
-                Assert.assertEquals(colorsName[i], ccWindowColor);
+                flag = flag && colorsName[i].equalsIgnoreCase(ccWindowColor);
             }
             logger.info("verified CC Windows color selection is working fine");
 
-            return true;
+            return flag;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -330,6 +328,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             String font_size_small[] = {"1em", "1.4em", "1.8em", "2.2em"};
             String font_size_medium[] = {"1.2em", "1.6em", "2em", "2.4em"};
             String font_size_large[] = {"1.4em", "1.8em", "2.2em", "2.6em"};
+            boolean flag1 = true;
 
             clickOnIndependentElement("CC_FONT_SIZE_PANEL");
             logger.info("\n*--------------Verify CC Font Size Panel---------------------*\n");
@@ -370,7 +369,9 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     }
                 }
                 logger.info("\t font size in em : " + fontSizeInEm);
-                Assert.assertEquals(ccFonts[i], ccTextFontSize); //verify font size selected
+             //   Assert.assertEquals(ccFonts[i], ccTextFontSize); //verify font size selected
+                flag1 = flag1 && ccFonts[i].equalsIgnoreCase(ccTextFontSize);
+
                 if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")) {
                     if (!font_size_large[i].equals(fontSizeInEm)) {return false;}
                 }
@@ -386,7 +387,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             }
 
             logger.info("verified Font Size selection is working fine");
-            return true;
+            return flag1;
         } catch (Exception e) {
             return false;
         }

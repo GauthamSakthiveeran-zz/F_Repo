@@ -29,7 +29,11 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
 		}
 		moveElement(player);
 
-		clickOnIndependentElement("STATE_SCREEN_SELECTABLE");
+		try{
+			clickOnIndependentElement("STATE_SCREEN_SELECTABLE");
+		}catch (Exception e){
+			logger.info("error in click on state screen");
+		}
 		// if(!clickOnIndependentElement("FULLSCREEN_BTN")) {
 
 		if (!clickOnIndependentElement("FULLSCREEN_BTN_1")) {
