@@ -37,9 +37,9 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
     public boolean validate(String element, int timeout) throws Exception {
         return switchToControlBar() && closedCaptionMicroPanel() && checkArrows() && verifyCCPanelElements()
-                && verifyClosedCaptionLanguages() && verifyCCColorSelectionPanel()
-                && verifyCCOpacityPanel("") && verifyCCFonttypePanel()
-                && verifyCCFontSizePanel() && verifyCCTextEnhancementPanel() && closeCCPanel() && clearCache();
+                && verifyClosedCaptionLanguages()  && verifyCCColorSelectionPanel()
+               && verifyCCOpacityPanel("") && verifyCCFonttypePanel()
+                && verifyCCFontSizePanel() && verifyCCTextEnhancementPanel() &&  closeCCPanel() && clearCache();
     }
 
     public boolean checkArrows() {
@@ -121,11 +121,24 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             String langpreview1[] = {"Sample Text", "Texto de muestra", "Sample Text","Sample Text"};
 
             // issue id
-            if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
-                if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")){
+            if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
+                for (int j = 0; j < langlist.size(); j++) {
                     for (int i = 0; i < lang.size(); i++) {
-                        Thread.sleep(2000);
                         lang.get(i).click();
+                        if (isElementPresent("RIGHT_ARROW")) {
+                            clickOnIndependentElement("RIGHT_ARROW");
+                        }
+                    }
+                }
+                if (isElementPresent("LEFT_ARROW")) {
+                    clickOnIndependentElement("LEFT_ARROW");
+                }
+            } else {
+                for (int i = 0; i < lang.size(); i++) {
+                    Thread.sleep(1000);
+                    lang.get(i).click();
+
+                    if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")){
                         if (!waitOnElement("CC_PREVIEW_TEXT", 30000)) {
                             return false;
                         }
@@ -145,7 +158,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         try {
             String colorsName[] = {"Transparent", "White", "Blue", "Magenta", "Green", "Yellow", "Red", "Cyan", "Black"};
             String colorsCode[] = {"rgba(255, 255, 255, 1)", "rgba(0, 0, 255, 1)", "rgba(255, 0, 255, 1)", "rgba(0, 255, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(255, 0, 0, 1)", "rgba(0, 255, 255, 1)", "rgba(0, 0, 0, 1)"};
-            boolean flag=true;
+            boolean flag = true;
 
             // verify color selection panel
             waitOnElement("COLOR_SELECTION_PANEL", 30000);
@@ -160,18 +173,16 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             for (int i = 0; i < textColor.size(); i++) {
                 textColor.get(i).click();
-                String ccTextColor = getWebElement("CC_TEXT_COLOR").getText();
+                String ccTextColor = getWebElement("CC_TEXT_COLOR").getText();  // e.g. Text color: White
                 logger.info("\t Text Color Selected :" + ccTextColor);
                 flag = flag && colorsName[i + 1].equalsIgnoreCase(ccTextColor);
 
                 //verify color selected
                 // issue id
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
-                    if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")) {
-                        String ccPreviewTextColor = getWebElement("CC_PREVIEW_TEXT").getCssValue("color");
-                        logger.info("\t Preview Text Color Selected :" + ccPreviewTextColor);
-                        flag = flag && colorsCode[i].equalsIgnoreCase(ccPreviewTextColor);  //verify Preview Text color selected
-                    }
+                if (!((getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) || (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")))) {
+                    String ccPreviewTextColor = getWebElement("CC_PREVIEW_TEXT").getCssValue("color");
+                    logger.info("\t Preview Text Color Selected :" + ccPreviewTextColor);
+                    flag = flag && colorsCode[i].equalsIgnoreCase(ccPreviewTextColor);  //verify Preview Text color selected}
                 }
             }
             logger.info("verified text color selection is working fine");
@@ -183,10 +194,10 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             for (int i = 0; i < bgColor.size(); i++) {
                 bgColor.get(i).click();
-                String ccBgColor = getWebElement("CC_BACKGROUND_COLOR").getText();
+                String ccBgColor = getWebElement("CC_BACKGROUND_COLOR").getText(); // e.g Background color: Black
                 logger.info("\t Background Color Selected :" + ccBgColor);
                 // issue id
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
+                if (!((getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) || (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")))) {
                     String ccPreviewBgColor = getWebElement("CC_PREVIEW_TEXT_BG").getCssValue("color");
                     logger.info("\t Preview Text Color Selected :" + ccPreviewBgColor);
                     flag = flag && colorsName[i].equalsIgnoreCase(ccBgColor);
@@ -202,9 +213,11 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 ccWinColor.get(i).click();
                 String ccWindowColor = getWebElement("CC_WINDOW_COLOR").getText();
                 logger.info("\t Window Color Selected :" + ccWindowColor);
-                String ccPreviewWinColor = getWebElement("CC_PREVIEW_WIN_COLOR").getCssValue("color");
-                logger.info("\t Window color of Preview Text Selected :" + ccPreviewWinColor);
-                flag = flag && colorsName[i].equalsIgnoreCase(ccWindowColor);
+                if (!((getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) || (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")))) {
+                    String ccPreviewWinColor = getWebElement("CC_PREVIEW_WIN_COLOR").getCssValue("color");
+                    logger.info("\t Window color of Preview Text Selected :" + ccPreviewWinColor);
+                    flag = flag && colorsName[i].equalsIgnoreCase(ccWindowColor);
+                }
             }
             logger.info("verified CC Windows color selection is working fine");
 
@@ -239,9 +252,9 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             slideSliderCaptionOpacity(slider1);
             Thread.sleep(2000);
             String ccBgOpacity = getWebElement("CC_BACKGROUND_OPACITY").getText();
-            logger.info("\t \t \t Background Opacity Selected :" + ccBgOpacity);
+            logger.info("\t Background Opacity Selected :" + ccBgOpacity);
             String ccPreviewBgOpacity = getWebElement("CC_PREVIEW_TEXT_BG").getCssValue("background-color");
-            logger.info("\t \t \t Preview Text Background Opacity Selected :" + ccPreviewBgOpacity);
+            logger.info("\t Preview Text Background Opacity Selected :" + ccPreviewBgOpacity);
 
             if(!testName.contains("PlaybackFCCDefaultSettingTests")){
                 if (!validateCaptionOpacity(ccPreviewBgOpacity)){return false;}
@@ -276,41 +289,24 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             Thread.sleep(2000);
 
             List<WebElement> ccFontType = getWebElementsList("CC_FONT_TYPE");
-            logger.info("\t \t \t Font Type Count Value :" + ccFontType.size());
-            boolean ismoreFontType = false;
-            int fontTypeCount = 0;
-            ismoreFontType = isElementPresent("RIGHT_ARROW");
-            if (ismoreFontType) {
-                fontTypeCount = 1;
-                clickOnIndependentElement("RIGHT_ARROW");
-                boolean rightArrowPresent = isElementPresent("RIGHT_ARROW_HIDDEN");
-                ismoreFontType = isElementPresent("RIGHT_BTN");
-                if (ismoreFontType)
-                    fontTypeCount = +1;
-                logger.info("\t Font Type Panel Count :" + fontTypeCount);
-                Thread.sleep(3000);
-                clickOnIndependentElement("LEFT_ARROW");
-            }
+            logger.info("\t Font Type Count Value :" + ccFontType.size());
 
-            List<WebElement> ccFontType1 = getWebElementsList("CC_FONT_TYPE");
-
-            for (int j = 0; j < fontTypeCount; j++) {
+            while(isElementPresent("RIGHT_ARROW")){
+                List<WebElement> ccFontType1 = getWebElementsList("CC_FONT_TYPE");
                 for (int i = 0; i < ccFontType1.size(); i++) {
                     ccFontType1.get(i).click();
                     String ccFontTypeSelected = ccFontType1.get(i).getText();
-                    logger.info(ccFontTypeSelected);
+                    logger.info("/t Language Selected - "+ccFontTypeSelected);
                     Thread.sleep(1000);
                     String ccPreviewTextFont = getWebElement("CC_PREVIEW_TEXT").getCssValue("font-family");
                     logger.info("\t Font type selected for CC Preview Text :" + ccPreviewTextFont);
                 }
-                if (ismoreFontType)
-                    clickOnIndependentElement("RIGHT_ARROW");
-            }
 
-            if(isElementPresent("LEFT_ARROW")){
-                clickOnIndependentElement("LEFT_ARROW");
+                if(isElementPresent("TOGGLING_ARROW")){
+                    break;
+                }
+                clickOnIndependentElement("RIGHT_ARROW");
             }
-
             logger.info("verified Font Type selection is working fine");
 
             return true;
@@ -337,7 +333,13 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\t \t \t Font Size Count Value :" + ccFontSize.size());
 
             for (int i = 0; i < ccFontSize.size(); i++) {
-                ccFontSize.get(i).click();
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
+                    WebElement element = ccFontSize.get(i);
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                    ccFontSize.get(i).click();
+                }else {
+                    ccFontSize.get(i).click();
+                }
                 String ccTextFontSize = getWebElement("CC_FONT_SIZE_SELECTED").getText();
                 logger.info("\t Text Font Size Selected :" + ccTextFontSize);
                 String ccPreviewTextFontSize[] = getWebElement("CC_PREVIEW_TEXT").getAttribute("style").split(";");
@@ -406,7 +408,14 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\t Text Enhancement Type Count Value :" + ccTextEnhancement.size());
             for (int i = 0; i < ccTextEnhancement.size(); i++) {
 
-                ccTextEnhancement.get(i).click();
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
+                    WebElement element = ccTextEnhancement.get(i);
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                    ccTextEnhancement.get(i).click();
+                }else {
+                    ccTextEnhancement.get(i).click();
+                }
+
 
                 String ccTextEnh = getWebElement("CC_FONT_SIZE_SELECTED").getText();
                 logger.info("\t Text Enhancement Selected :" + ccTextEnh);
