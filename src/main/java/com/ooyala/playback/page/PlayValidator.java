@@ -63,12 +63,12 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		// return false;
 
 		if (!clickOnIndependentElement("PLAY_BUTTON")){
-			extentTest.log(LogStatus.INFO, "FAILED to click on PLAY_BUTTON.");
+			extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
 			return false;
 		}
 
 		if (!loadingSpinner()){
-			extentTest.log(LogStatus.INFO, "FAIL Loading spinner seems to be there for a really long time.");
+			extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
 			return false;
 		}
 

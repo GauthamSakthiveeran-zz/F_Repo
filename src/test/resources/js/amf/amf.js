@@ -19,12 +19,30 @@ function subscribeToEvents() {
 		var adReplayEventOrder = 1;
 		var videoPlayingEventOrder = 1;
 		var videoPlayedEventOrder = 1;
+		var willPauseAdsEventOrder = 1;
+		var videoPausedAdsEventOrder = 1;
+		var willPlayNonlinearAdEventOrder = 1;
 		
 		return function(event) {
 			
 			if (event.match(/showNonlinearAd/)) {
 				OO.$('#ooplayer').append('<p id=showNonlinearAd_'+willShowNonlinearAdEventOrder+'> showNonlinearAd '+willShowNonlinearAdEventOrder+'</p>'); 
 				willShowNonlinearAdEventOrder++;
+			}
+			
+			if (event.match(/willPlayNonlinearAd/)) {
+				OO.$('#ooplayer').append('<p id=willPlayNonlinearAd_'+willPlayNonlinearAdEventOrder+'> willPlayNonlinearAd '+willPlayNonlinearAdEventOrder+'</p>'); 
+				willPlayNonlinearAdEventOrder++;
+			}
+			
+			if (event.match(/willPauseAds/)) {
+				OO.$('#ooplayer').append('<p id=willPauseAds_'+willPauseAdsEventOrder+'> willPauseAds '+willPauseAdsEventOrder+'</p>'); 
+				willPauseAdsEventOrder++;
+			}
+			
+			if (event.match(/videoPaused/) && arguments[1] == 'ads') {
+				OO.$('#ooplayer').append('<p id=videoPausedAds_'+videoPausedAdsEventOrder+'>videoPausedAds '+videoPausedAdsEventOrder+'</p>'); 
+				videoPausedAdsEventOrder++;
 			}
 				
 			if (event.match(/videoPlaying/) && arguments[1] == 'main') {

@@ -34,6 +34,11 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 		
+		if (!loadingSpinner()){
+			extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
+			return false;
+		}
+		
 		if(waitOnElement(By.id(element), timeout)){
 			extentTest.log(LogStatus.PASS, "Wait on element : " + element);
 			return true;

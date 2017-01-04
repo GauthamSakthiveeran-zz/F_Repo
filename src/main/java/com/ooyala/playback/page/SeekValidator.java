@@ -26,7 +26,7 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 		PlayBackFactory.getInstance(driver).getSeekAction().seekTillEnd().startAction();
 
 		if (waitOnElement(By.id(element), timeout)) {
-			extentTest.log(LogStatus.PASS, "Seek successfull.");
+			extentTest.log(LogStatus.PASS, "Seek successful.");
 			return true;
 		}
 		extentTest.log(LogStatus.INFO, "Wait on " + element + " failed after "+ timeout + " ms");

@@ -43,9 +43,9 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 			result = result && event.validate("singleAdPlayed_1", 190000);
 			result = result && event.validate("playing_1", 120000);
 
-			result = result && pauseAction.startActionOnScreen();
+			result = result && pauseAction.onScreen().startAction();
 
-			result = result && pauseAction.startActionOnScreen();
+			result = result && playAction.onScreen().startAction();
 
 			result = result && seekValidator.validate("seeked_1", 190000);
 

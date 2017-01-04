@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.page.PlayBackPage;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlayAction extends PlayBackPage implements PlayerAction {
 
@@ -17,16 +18,31 @@ public class PlayAction extends PlayBackPage implements PlayerAction {
 		addElementToPageElements("startscreen");
 	}
 
+	private boolean onScreen = false;
+	
 	@Override
 	public boolean startAction() throws Exception {
-		return clickOnIndependentElement("PLAY_BUTTON");
+		if(onScreen){
+			return startActionOnScreen();
+		}
+		if(clickOnIndependentElement("PLAY_BUTTON")){
+			if (!loadingSpinner()){
+				extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
+				return false;
+			}
+		}
+		return true;
 
 	}
+	
+	public PlayAction onScreen(){
+		onScreen = true;
+		return this;
+	}
 
-	public boolean startActionOnScreen() throws Exception {
+	private boolean startActionOnScreen() throws Exception {
 		try {
-			if (!waitOnElement("STATE_SCREEN_SELECTABLE", 5000))
-				return false;
+			
 			if (!clickOnIndependentElement("STATE_SCREEN_SELECTABLE"))
 				return false;
 		} catch (Exception e) {

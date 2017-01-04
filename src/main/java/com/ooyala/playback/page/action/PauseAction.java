@@ -24,8 +24,20 @@ public class PauseAction extends PlayBackPage implements PlayerAction {
 		addElementToPageElements("startscreen");
 	}
 
+	private boolean onScreen = false;
+	
+	public PauseAction onScreen(){
+		onScreen = true;
+		return this;
+	}
+	
 	@Override
-	public boolean startAction() {
+	public boolean startAction() throws Exception {
+		
+		if(onScreen){
+			return startActionOnScreen();
+		}
+		
 		boolean isElement;
 		isElement = isElementPresent("HIDDEN_CONTROL_BAR");
 		if (isElement) {
@@ -36,16 +48,17 @@ public class PauseAction extends PlayBackPage implements PlayerAction {
 
 	}
 
-	public boolean startActionOnScreen() throws Exception {
+	private boolean startActionOnScreen() throws Exception {
 		try {
 			if (!waitOnElement("STATE_SCREENS", 50000))
 				return false;
 			if (!clickOnIndependentElement("STATE_SCREENS"))
 				return false;
 			logger.info("Clicked on screen to pause the video");
+			sleep(5000);
 		} catch (Exception e) {
 			moveElement(getWebElement("PAUSE_BUTTON"));
-			sleep(5000);
+			
 			try {
 				return PlayBackFactory.getInstance(driver).getPauseAction()
 						.startAction();

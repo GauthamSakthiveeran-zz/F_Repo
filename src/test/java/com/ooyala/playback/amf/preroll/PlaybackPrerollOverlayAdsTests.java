@@ -38,6 +38,8 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 			
+			result = result && event.validate("willPlayNonlinearAd_1", 1000);
+			
 			// added condition for IMA OVerlay as overlay is showing
 			// intermittently PBI-1825
 			if (!(event.isAdPluginPresent("ima") || event.isAdPluginPresent("freewheel")))
