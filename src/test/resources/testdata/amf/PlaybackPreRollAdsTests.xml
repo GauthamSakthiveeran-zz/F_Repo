@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 
-<!-- 	PreRoll Ads tests -->
-
-
 	<test name ="PlaybackPreRollAdsTests" >
     	<url>
 	    	<description name="BitmovinPreroll_FW_HLS"/>
@@ -48,7 +45,6 @@
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
-    	
     	
     	<url>
 	    	<description name="BitmovinPreroll_Vast_HLS"/>
@@ -155,6 +151,19 @@
     	</url>
     	
     	<url>
+	    	<description name="FlashPreroll_IMA Preroll with Google UI"/>
+	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
+	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+	        <plugins name="OSMF,MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"google-ima-ads-manager":{"useGoogleAdUI":true}}]]></playerParameter>
+	        <browsersSupported name="chrome,firefox,internet explorer,safari" />
+	        <browserSupportedVersion name="safari,9"/>
+    	</url>
+    	
+    	<url>
 	    	<description name="FlashPreroll_VAST"/>
 	        <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -211,6 +220,18 @@
 	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
     	</url>
     	
+    	
+    	<url>
+	    	<description name="Playback_Preroll_VPAID2.0_IMA_1"/>
+	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="615dc8e909e941c280e12155df838355"/>
+	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"}]}}]]></playerParameter>
+    	</url>
+    	
     	<url>
 	    	<description name="VPAID 2.0 Preroll over HDS"/>
 	        <embed_code name="Q5eTg4MTE6kYKa0pyPjXB3AYkpD6F_F0"/>
@@ -223,7 +244,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Playback_Preroll_Flash"/>
+	    	<description name="VPAID 1.0 Preroll Flash"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -231,6 +252,39 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="615dc8e909e941c280e12155df838355"/>
 	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.56cae93fe8fe14.17121155;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="VPAID Bitmovin Preroll"/>
+	        <embed_code name="14dXI4MjE6AIfNrq5pmjv3TdOlA1XNnN"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="MAIN,BITMOVIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="PULSE MAIN"/>
+	        <embed_code name="w3amU5MzE6NMd-4jMBxM0FNu4MzlIUGY"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="PULSE"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="PULSE BITMOVIN"/>
+	        <embed_code name="5kbmU5MzE6ivgWkobhscmQwGuD7fyNIa"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN"/>
+	        <adPlugins name="PULSE"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
     </test>

@@ -22,7 +22,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 
 	@Test(groups = {"amf","postroll"}, dataProvider = "testUrls")
-	public void verifyPostroll(String testName, String url) throws OoyalaException {
+	public void verifyPostroll(String testName, String url)  {
 
 		boolean result = true;
 

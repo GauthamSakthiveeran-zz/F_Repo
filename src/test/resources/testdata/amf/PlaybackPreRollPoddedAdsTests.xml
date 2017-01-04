@@ -47,17 +47,6 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST_Preroll_2_Podded_Vast3.0"/>
-	        <embed_code name="1nMmM1MTE6yZTv1GDLrMl-Cg0lfZtta6"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
 	    	<description name="Playback_Preroll_Podded_VPAID2.0"/>
 	        <embed_code name="B1ZmgzMTE6qeXMfeqJTw3IoqZXvKGrDw"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>

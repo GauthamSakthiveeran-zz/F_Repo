@@ -36,13 +36,10 @@ public class PlaybackSkipAdsTests extends PlaybackWebTest {
 
 			injectScript();
 
-			//if (!(event.isVideoPluginPresent("akamai") && event.isAdPluginPresent("vast"))) {
-				result = result && playAction.startAction();
-				result = result && event.validate("willPlaySingleAd_1", 150000);
-			//}
+			result = result && playAction.startAction();
+			result = result && event.validate("willPlaySingleAd_1", 150000);
 
-			if (!event.isAdPluginPresent("ima")) // Unable to click skip ad
-													// button for IMA
+			if (!event.isAdPluginPresent("ima")) // Unable to click skip ad button for IMA
 				result = result && skipButtonValidator.validate("", 120000);
 			else
 				result = result && event.validate("showAdSkipButton_1", 150000);

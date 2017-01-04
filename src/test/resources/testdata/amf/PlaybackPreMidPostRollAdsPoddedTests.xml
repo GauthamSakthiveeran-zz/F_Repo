@@ -3,20 +3,8 @@
 
 	<test name ="PlaybackPreMidPostRollAdsPoddedTests" >
 	
-		<!-- This only for podded tests, the below is not a podded ad -->
-    	<!-- <url>
-	    	<description name="Playback_PreMidPost_VPAID2.0"/>
-	        <embed_code name="BnaG1iMjE6bQ3DQmsPTYyH_QiQ05Ggrj"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url> -->
-    	
     	<url>
-	    	<description name="Playback_PreMidPost__Podded_VPAID2.0"/>
+	    	<description name="Playback_PreMidPost_VPAID2.0"/>
 	        <embed_code name="dzMm5iMjE6rPdV3p7yklZPdz85kWGNSj"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -175,6 +163,29 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
     		<browsersSupported name="chrome,firefox,internet explorer,safari" />
 	        <browserSupportedVersion name="safari,9"/>
+    	</url>
+    	
+    	
+    	<url>
+	    	<description name="IMA Countdown PreMidPost BITMOVIN"/>
+	        <embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="BITMOVIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="615dc8e909e941c280e12155df838355"/>
+	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"useGoogleCountdown":true}}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="IMA PreMidPost Podded"/>
+	        <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position_type":"r","tag_url":"http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/7521029/pb_pod_ad_unit&ciu_szs&impl=s&cmsid=949&vid=FjbGRjbzp0DV_5-NtXBVo5Rgp3Sj0R5C&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]"}]}}]]></playerParameter>
     	</url>
     	
     </test>

@@ -37,7 +37,7 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 			
-			result = result && event.validate("PreRoll_willPlaySingleAd_1", 6000);
+			result = result && event.validate("PreRoll_willPlaySingleAd_1", 1000);
 			
 			if (event.isAdPluginPresent("pulse"))
 				result = result && event.validate("singleAdPlayed_2", 60000);

@@ -62,7 +62,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected String[] jsUrl;
 	protected NeoRequest neoRequest;
 	protected LiveChannel liveChannel;
-
+	
 	public PlaybackWebTest() throws OoyalaException {
 
 		try {
@@ -250,6 +250,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			driverNotNullFlag = true;
 
 		}
+		
 		if (result.getStatus() == ITestResult.FAILURE) {
 
 			if (driverNotNullFlag) {
@@ -279,7 +280,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 		ExtentManager.endTest(extentTest);
 		ExtentManager.flush();
-
+//		System.out.println("###########" + StringArrayAppender.getLog());
 	}
 
 	@AfterClass(alwaysRun = true)
