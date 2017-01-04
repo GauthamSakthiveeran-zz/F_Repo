@@ -19,6 +19,7 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 		 * Here we will tell Facile to add the page elements of our Login Page
 		 */
 		addElementToPageElements("pause");
+		addElementToPageElements("discovery");
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
@@ -34,8 +35,13 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 
 		Thread.sleep(1000);
 
-		if (!waitOnElement("PAUSE_SCREEN", 60000))
-			return false;
+		// If discovery is enabled then we are not able to see pause screen and therefore handled that scenario
+		// for discovery
+		if (!waitOnElement("CONTENT_SCREEN",5000)){
+			if (!waitOnElement("PAUSE_SCREEN", 60000))
+				return false;
+		}
+
 
 		if (!waitOnElement(By.id(element), timeout))
 			return false;
