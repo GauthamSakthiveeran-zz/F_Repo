@@ -2,6 +2,9 @@
     <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
+    <listeners>
+        <listener class-name="com.ooyala.playback.updateSpreadSheet.TestListener" />
+    </listeners>
     <test name="Playback Web Regression Group">
         <groups>
             <define name="regression">
