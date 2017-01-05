@@ -55,7 +55,6 @@ public class TestListener implements ITestListener, IReporter {
         int totaltest = Integer.parseInt(pass) + Integer.parseInt(fail) + Integer.parseInt(skip) ;
         String CurrntDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
         Testdata.put("Date",CurrntDate);
-        Testdata.put("SuiteName",System.getProperty("group"));
         Testdata.put("Platform",System.getProperty("platform"));
         Testdata.put("Browser",System.getProperty("browser"));
         Testdata.put("Browser_Version",System.getProperty("version"));
@@ -65,6 +64,8 @@ public class TestListener implements ITestListener, IReporter {
         Testdata.put("Skip",skip);
         Testdata.put("Failed_Methode_Name",failtestname);
         Testdata.put("Passed_Tests",passedTests);
+        Testdata.put("SuiteName",System.getProperty("tests"));
+        Testdata.put("groups",System.getProperty("groups"));
         System.out.println("size of map : " + Testdata.size());
         for (String key : Testdata.keySet()){
             String value = Testdata.get(key);

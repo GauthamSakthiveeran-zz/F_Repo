@@ -3,10 +3,8 @@ package com.ooyala.playback.updateSpreadSheet;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.*;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -107,56 +105,72 @@ public class UpdateSheet {
                 .build();
     }
 
-    public static void writetosheet(LinkedHashMap<String,String> map)
-    {
+    public static void writetosheet(LinkedHashMap<String,String> map) {
         try {
+            String groupName="";
+            int sheetId=0;
+            String range="";
             Sheets service = getSheetsService();
-            String spreadsheetId = "12RygINho7Yu3w0QuIPCrXomV0ImiXuhvGDp8n9mGYqs";
+            String spreadsheetId = "1YV2osdUm-hEbAlrt6BcNA-b_js7OQ5xzhNG5xmlFMDk";
             int num_of_sheets = service.spreadsheets().get(spreadsheetId).execute().getSheets().size();
+            HashMap<String , Integer> sheetNameAndID = new HashMap<>();
             for (int i = 0; i < num_of_sheets; i++) {
                 String sheetNames = service.spreadsheets().get(spreadsheetId).execute().getSheets().get(i).getProperties().getTitle();
                 int sheet_Id = service.spreadsheets().get(spreadsheetId).execute().getSheets().get(i).getProperties().getSheetId();
-                System.out.println("Sheet Name : " + sheetNames + ", Sheet ID : " + sheet_Id);
+                sheetNameAndID.put(sheetNames,sheet_Id);
             }
 
-            String range = "playbackweb!A2:E";
-            ValueRange response = service.spreadsheets().values()
-                    .get(spreadsheetId, range)
-                    .execute();
-            // Read Data From Spreadsheet
-            List<List<Object>> readvalues = response.getValues();
-            System.out.println("Number of values in sheet :" + readvalues.size());
-            // write data to spreadsheet
-
-            List<Request> requests = new ArrayList<>();
-
-            List<CellData> values = new ArrayList<>();
-
-            for (String key : map.keySet()){
-                String value = map.get(key);
-                System.out.println(key + " : " + value);
-                values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(value)));
+            if (map.get("SuiteName").equals("regression.xml")) {
+                groupName = map.get("groups");
+                sheetId = sheetNameAndID.get(groupName);
+                range = groupName+"!A2:E";
             }
 
-            requests.add(new Request()
-                    .setUpdateCells(new UpdateCellsRequest()
-                            .setStart(new GridCoordinate()
-                                    .setSheetId(569177301)
-                                    .setRowIndex(readvalues.size() + 1)
-                                    .setColumnIndex(0))
-                            .setRows(Arrays.asList(
-                                    new RowData().setValues(values)))
-                            .setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
+            if (map.get("SuiteName").equals("VTC_Regression.xml")){
+                sheetId = 1728994705;
+                range = "vtc!A2:E";
+            }
 
-            BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()
-                    .setRequests(requests);
-            service.spreadsheets().batchUpdate(spreadsheetId, batchUpdateRequest)
-                    .execute();
-            System.out.println("Data written to spreadsheet");
+                ValueRange response = service.spreadsheets().values()
+                        .get(spreadsheetId, range)
+                        .execute();
+
+                // Read Data From Spreadsheet
+                List<List<Object>> readvalues = response.getValues();
+
+                // write data to spreadsheet
+                List<Request> requests = new ArrayList<>();
+                List<CellData> values = new ArrayList<>();
+                List<String> valuesInMap = new ArrayList<>();
+                for (String key : map.keySet()){
+                    String value = map.get(key);
+                    System.out.println(key + " : " + value);
+                    valuesInMap.add(value);
+                }
+
+                for (int i=0;i<valuesInMap.size()-2;i++){
+                    values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(valuesInMap.get(i))));
+                }
+
+                requests.add(new Request()
+                        .setUpdateCells(new UpdateCellsRequest()
+                                .setStart(new GridCoordinate()
+                                        .setSheetId(sheetId)
+                                        .setRowIndex(readvalues.size() + 1)
+                                        .setColumnIndex(0))
+                                .setRows(Arrays.asList(
+                                        new RowData().setValues(values)))
+                                .setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
+
+                BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()
+                        .setRequests(requests);
+                service.spreadsheets().batchUpdate(spreadsheetId, batchUpdateRequest)
+                        .execute();
+                System.out.println("Data written to spreadsheet");
+
         }
         catch (Exception e){
             e.printStackTrace();
         }
-
     }
 }
