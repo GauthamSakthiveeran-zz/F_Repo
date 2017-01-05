@@ -18,8 +18,7 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 	private EventValidator event;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPlayerWithoutskin(String testName, String url) 
-			throws OoyalaException {
+	public void verifyPlayerWithoutskin(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -29,7 +28,10 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 
 			injectScript();
 
-			executeScript("return pp.parameters.autoplay");
+			Boolean autoplay = (Boolean) executeScript(
+					"function test() {var bool = pp.parameters.autoplay; return bool;}; return test();");
+
+			result = result && !autoplay;
 
 			executeScript("pp.play();");
 
@@ -40,8 +42,6 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 			executeScript("pp.skipAd()");
 
 			result = result && event.validate("singleAdPlayed_1", 60000);
-
-//			double initialtimeset = Double.parseDouble((executeScript("return VideoInitialTime.textContent")).toString());
 
 			result = result && event.validate("InitialTime_0", 60000);
 
