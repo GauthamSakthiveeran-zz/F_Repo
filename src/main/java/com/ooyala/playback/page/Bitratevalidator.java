@@ -24,7 +24,6 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 		addElementToPageElements("play");
 		addElementToPageElements("pause");
 		addElementToPageElements("bitrate");
-		addElementToPageElements("replay");
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
@@ -43,15 +42,9 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 		if (!clickOnIndependentElement("BITRATE"))
 			return false;
 
-		if (isElementPresent("SET_BITRATE")){
-			if (!clickOnIndependentElement("SET_BITRATE")){return false;}
-		}
-
 		try{
 			if(isElementPresent("BITRATE_CLOSE_BTN")) {
 				clickOnIndependentElement("BITRATE_CLOSE_BTN");
-				((JavascriptExecutor) driver)
-						.executeScript(" return pp.play()");
 			}
 		} catch (Exception e){
 			logger.info("Bitrate close button is not present");
@@ -63,38 +56,26 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 		if (length > 1) {
 			boolean flag = true;
 			for (int i = 0; i < length - 1; i++) {
-
 				String bitrate = ((JavascriptExecutor) driver).executeScript(
 						"return pp.getBitratesAvailable()[" + i
 								+ "]['bitrate']").toString();
-				logger.info("Current bitrate : "+bitrate);
 				((JavascriptExecutor) driver)
 						.executeScript("return pp.setTargetBitrate('" + i
 								+ "')");
-
 				((JavascriptExecutor) driver)
-						.executeScript("pp.seek(pp.getDuration()-10)");
-
-				waitOnElement("END_SCREEN",30000);
-
+						.executeScript(" return pp.seek(3)");
 				((JavascriptExecutor) driver)
 						.executeScript(" return pp.play()");
-
-				loadingSpinner();
-
-				Thread.sleep(10000);
-
-				flag = flag && waitOnElement(By.id("bitrateChanged_" + (bitrate)),20000);
-
-				logger.info("\n Is "+"bitrateChanged_"+bitrate+" element present : "+flag);
+				flag = flag
+						&& waitOnElement(By.id("bitrateChanged_" + (bitrate)),
+						60000);
 			}
 			return flag;
 		} else {
 			String currentBitrate = ((JavascriptExecutor) driver)
 					.executeScript("return pp.getCurrentBitrate()[\"bitrate\"]")
 					.toString();
-			((JavascriptExecutor) driver)
-					.executeScript("pp.seek(pp.getDuration()-10)");
+			((JavascriptExecutor) driver).executeScript("return pp.play()");
 			// Assert.assertNotNull(currentBitrate);
 			if (currentBitrate == null) {
 				return false;
