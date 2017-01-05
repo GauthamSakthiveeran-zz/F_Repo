@@ -159,6 +159,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             String colorsName[] = {"Transparent", "White", "Blue", "Magenta", "Green", "Yellow", "Red", "Cyan", "Black"};
             String colorsCode[] = {"rgba(255, 255, 255, 1)", "rgba(0, 0, 255, 1)", "rgba(255, 0, 255, 1)", "rgba(0, 255, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(255, 0, 0, 1)", "rgba(0, 255, 255, 1)", "rgba(0, 0, 0, 1)"};
             String colorsCode1[] = {"rgba(255, 255, 255, 0.8)", "rgba(0, 0, 255, 0.8)", "rgba(255, 0, 255, 0.8)", "rgba(0, 255, 0, 0.8)", "rgba(255, 255, 0, 0.8)", "rgba(255, 0, 0, 0.8)", "rgba(0, 255, 255, 0.8)", "rgba(0, 0, 0, 0.8)"};
+            String bgColorsCode[] ={"transparent","rgba(255, 255, 255, 0.8)","rgba(0, 0, 255, 0.8)","rgba(255, 0, 255, 0.8)","rgba(0, 255, 0, 0.8)","rgba(255, 255, 0, 0.8)","rgba(255, 0, 0, 0.8)","rgba(0, 255, 255, 0.8)","rgba(0, 0, 0, 0.8)"};
             boolean flag = true;
 
             // verify color selection panel
@@ -186,7 +187,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     flag = flag && colorsCode[i].equalsIgnoreCase(ccPreviewTextColor);  //verify Preview Text color selected}
                     if(!flag){
                         flag = true && colorsCode1[i].equalsIgnoreCase(ccPreviewTextColor);
-                        logger.info(".....in flag......."+flag);
+                        logger.info("cache is not cleared in fullscreen");
                     }
                 }
             }
@@ -201,11 +202,12 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 bgColor.get(i).click();
                 String ccBgColor = getWebElement("CC_BACKGROUND_COLOR").getText(); // e.g Background color: Black
                 logger.info("\t Background Color Selected :" + ccBgColor);
+                flag = flag && colorsName[i].equalsIgnoreCase(ccBgColor);
                 // issue id
                 if (!((getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) || (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")))) {
-                    String ccPreviewBgColor = getWebElement("CC_PREVIEW_TEXT_BG").getCssValue("color");
-                    logger.info("\t Preview Text Color Selected :" + ccPreviewBgColor);
-                    flag = flag && colorsName[i].equalsIgnoreCase(ccBgColor);
+                    String ccPreviewBgColor = getWebElement("CC_PREVIEW_TEXT_BG").getCssValue("background-color");
+                    logger.info("\t Background color of Preview Text Selected :" + ccPreviewBgColor);
+                    flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewBgColor);
                 }
             }
             logger.info("verified background color selection is working fine");
@@ -218,10 +220,12 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 ccWinColor.get(i).click();
                 String ccWindowColor = getWebElement("CC_WINDOW_COLOR").getText();
                 logger.info("\t Window Color Selected :" + ccWindowColor);
+                flag = flag && colorsName[i].equalsIgnoreCase(ccWindowColor);
+                // issue id
                 if (!((getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) || (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")))) {
-                    String ccPreviewWinColor = getWebElement("CC_PREVIEW_WIN_COLOR").getCssValue("color");
+                    String ccPreviewWinColor = getWebElement("CC_PREVIEW_WIN_COLOR").getCssValue("background-color");
                     logger.info("\t Window color of Preview Text Selected :" + ccPreviewWinColor);
-                    flag = flag && colorsName[i].equalsIgnoreCase(ccWindowColor);
+                    flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewWinColor);
                 }
             }
             logger.info("verified CC Windows color selection is working fine");
@@ -301,7 +305,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 for (int i = 0; i < ccFontType1.size(); i++) {
                     ccFontType1.get(i).click();
                     String ccFontTypeSelected = ccFontType1.get(i).getText();
-                    logger.info("/t Language Selected - "+ccFontTypeSelected);
+                    logger.info("\n Language Selected - "+ccFontTypeSelected);
                     Thread.sleep(1000);
                     String ccPreviewTextFont = getWebElement("CC_PREVIEW_TEXT").getCssValue("font-family");
                     logger.info("\t Font type selected for CC Preview Text :" + ccPreviewTextFont);
@@ -691,7 +695,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         clickOnIndependentElement("CC_FONT_SIZE_PANEL");
         Thread.sleep(2000);
         String ccTextFontSize = getWebElement("CC_FONT_SIZE_SELECTED").getText();
-        logger.info("\t Text Font Size Selected.... :" + ccTextFontSize);
+        logger.info("\t Text Font Size Selected :" + ccTextFontSize);
         return ccTextFontSize;
     }
 
