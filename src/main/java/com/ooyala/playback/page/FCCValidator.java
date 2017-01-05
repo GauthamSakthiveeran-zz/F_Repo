@@ -37,7 +37,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
     public boolean validate(String element, int timeout) throws Exception {
         return switchToControlBar() && closedCaptionMicroPanel() && checkArrows() && verifyCCPanelElements()
-                && verifyClosedCaptionLanguages()  && verifyCCColorSelectionPanel()
+                && verifyClosedCaptionLanguages()  && verifyCCColorSelectionPanel("")
                && verifyCCOpacityPanel("") && verifyCCFonttypePanel()
                 && verifyCCFontSizePanel() && verifyCCTextEnhancementPanel() &&  closeCCPanel() && clearCache();
     }
@@ -154,7 +154,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         }
     }
 
-    public boolean verifyCCColorSelectionPanel() {
+    public boolean verifyCCColorSelectionPanel(String testName) {
         try {
             String colorsName[] = {"Transparent", "White", "Blue", "Magenta", "Green", "Yellow", "Red", "Cyan", "Black"};
             String colorsCode[] = {"rgba(255, 255, 255, 1)", "rgba(0, 0, 255, 1)", "rgba(255, 0, 255, 1)", "rgba(0, 255, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(255, 0, 0, 1)", "rgba(0, 255, 255, 1)", "rgba(0, 0, 0, 1)"};
@@ -215,10 +215,12 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 logger.info("\t Background Color Selected :" + ccBgColor);
                 flag = flag && colorsName[i].equalsIgnoreCase(ccBgColor);
                 // issue id
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")) {
-                    String ccPreviewBgColor = getWebElement("CC_PREVIEW_TEXT_BG").getCssValue("background-color");
-                    logger.info("\t Background color of Preview Text Selected :" + ccPreviewBgColor);
-                    flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewBgColor);
+                if(!testName.contains("PlaybackFCCDefaultSettingTests")){
+                    if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")) {
+                        String ccPreviewBgColor = getWebElement("CC_PREVIEW_TEXT_BG").getCssValue("background-color");
+                        logger.info("\t Background color of Preview Text Selected :" + ccPreviewBgColor);
+                        flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewBgColor);
+                    }
                 }
             }
             if(!flag){
@@ -243,10 +245,12 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 logger.info("\t Window Color Selected :" + ccWindowColor);
                 flag = flag && colorsName[i].equalsIgnoreCase(ccWindowColor);
                 // issue id
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")) {
-                    String ccPreviewWinColor = getWebElement("CC_PREVIEW_WIN_COLOR").getCssValue("background-color");
-                    logger.info("\t Window color of Preview Text Selected :" + ccPreviewWinColor);
-                    flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewWinColor);
+                if(!testName.contains("PlaybackFCCDefaultSettingTests")){
+                    if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")) {
+                        String ccPreviewWinColor = getWebElement("CC_PREVIEW_WIN_COLOR").getCssValue("background-color");
+                        logger.info("\t Window color of Preview Text Selected :" + ccPreviewWinColor);
+                        flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewWinColor);
+                    }
                 }
             }
             if(!flag){
@@ -558,7 +562,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("Preview Text Selected : " + previewTextSelected);
 
             // CC Color Selection
-            result = result && verifyCCColorSelectionPanel();
+            result = result && verifyCCColorSelectionPanel("PlaybackFCCDefaultSettingTests");
             result = result && setCCColorSelectionOptions();
             ccColorSelectionBefore = getCCColorSelection();
 
@@ -780,7 +784,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             // Comparing Text Enhancement value before refresh and after refresh
             ccTextEnhancementSelectedAfter=getTextEnhancement();
             result =result && ccTextEnhancementSelectedBefore.contains(ccTextEnhancementSelectedAfter);
-
+           
             return result;
         } catch (Exception e) {
             e.printStackTrace();
