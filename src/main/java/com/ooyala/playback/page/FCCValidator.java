@@ -159,7 +159,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             String colorsName[] = {"Transparent", "White", "Blue", "Magenta", "Green", "Yellow", "Red", "Cyan", "Black"};
             String colorsCode[] = {"rgba(255, 255, 255, 1)", "rgba(0, 0, 255, 1)", "rgba(255, 0, 255, 1)", "rgba(0, 255, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(255, 0, 0, 1)", "rgba(0, 255, 255, 1)", "rgba(0, 0, 0, 1)"};
             String colorsCode1[] = {"rgba(255, 255, 255, 0.8)", "rgba(0, 0, 255, 0.8)", "rgba(255, 0, 255, 0.8)", "rgba(0, 255, 0, 0.8)", "rgba(255, 255, 0, 0.8)", "rgba(255, 0, 0, 0.8)", "rgba(0, 255, 255, 0.8)", "rgba(0, 0, 0, 0.8)"};
-            String bgColorsCode[] ={"transparent","rgba(255, 255, 255, 0.8)","rgba(0, 0, 255, 0.8)","rgba(255, 0, 255, 0.8)","rgba(0, 255, 0, 0.8)","rgba(255, 255, 0, 0.8)","rgba(255, 0, 0, 0.8)","rgba(0, 255, 255, 0.8)","rgba(0, 0, 0, 0.8)"};
+            String bgColorsCode[] ={"rgba(0, 0, 0, 0)","rgba(255, 255, 255, 0.8)","rgba(0, 0, 255, 0.8)","rgba(255, 0, 255, 0.8)","rgba(0, 255, 0, 0.8)","rgba(255, 255, 0, 0.8)","rgba(255, 0, 0, 0.8)","rgba(0, 255, 255, 0.8)","rgba(0, 0, 0, 0.8)"};
             boolean flag = true;
 
             // verify color selection panel
