@@ -110,7 +110,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             @SuppressWarnings("unchecked")
             ArrayList<String> langlist = ((ArrayList<String>) ccobj);
-            logger.info("\t Closed Caption Available Languages: " + langlist + "\n \t \t \t languages available count :" + langlist.size());
+            logger.info("\t Closed Caption Available Languages: " + langlist + "\n \t  languages available count :" + langlist.size());
 
             String[] langl = new String[langlist.size()];
             langlist.toArray(langl);
@@ -158,6 +158,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         try {
             String colorsName[] = {"Transparent", "White", "Blue", "Magenta", "Green", "Yellow", "Red", "Cyan", "Black"};
             String colorsCode[] = {"rgba(255, 255, 255, 1)", "rgba(0, 0, 255, 1)", "rgba(255, 0, 255, 1)", "rgba(0, 255, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(255, 0, 0, 1)", "rgba(0, 255, 255, 1)", "rgba(0, 0, 0, 1)"};
+            String colorsCode1[] = {"rgba(255, 255, 255, 0.8)", "rgba(0, 0, 255, 0.8)", "rgba(255, 0, 255, 0.8)", "rgba(0, 255, 0, 0.8)", "rgba(255, 255, 0, 0.8)", "rgba(255, 0, 0, 0.8)", "rgba(0, 255, 255, 0.8)", "rgba(0, 0, 0, 0.8)"};
             boolean flag = true;
 
             // verify color selection panel
@@ -183,6 +184,10 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     String ccPreviewTextColor = getWebElement("CC_PREVIEW_TEXT").getCssValue("color");
                     logger.info("\t Preview Text Color Selected :" + ccPreviewTextColor);
                     flag = flag && colorsCode[i].equalsIgnoreCase(ccPreviewTextColor);  //verify Preview Text color selected}
+                    if(!flag){
+                        flag = true && colorsCode1[i].equalsIgnoreCase(ccPreviewTextColor);
+                        logger.info(".....in flag......."+flag);
+                    }
                 }
             }
             logger.info("verified text color selection is working fine");
@@ -456,7 +461,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     }
 
     public boolean clearCache() throws Exception {
-        for (int i = 0; i < 13; i++) {
+        for (int i = 0; i < 20; i++) {
             ((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
         }
         return true;
