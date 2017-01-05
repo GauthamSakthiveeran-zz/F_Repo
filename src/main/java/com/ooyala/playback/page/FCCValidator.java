@@ -191,6 +191,10 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     }
                 }
             }
+            if(!flag){
+                logger.error("Error in Text color selection");
+                return false;
+            }
             logger.info("verified text color selection is working fine");
 
             // select Background colors
@@ -199,16 +203,27 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\n*---------Verify Background color Selection Panel---------*\n");
 
             for (int i = 0; i < bgColor.size(); i++) {
-                bgColor.get(i).click();
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
+                    WebElement element = bgColor.get(i);
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                    bgColor.get(i).click();
+                }else {
+                    bgColor.get(i).click();
+                }
+
                 String ccBgColor = getWebElement("CC_BACKGROUND_COLOR").getText(); // e.g Background color: Black
                 logger.info("\t Background Color Selected :" + ccBgColor);
                 flag = flag && colorsName[i].equalsIgnoreCase(ccBgColor);
                 // issue id
-                if (!((getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) || (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")))) {
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")) {
                     String ccPreviewBgColor = getWebElement("CC_PREVIEW_TEXT_BG").getCssValue("background-color");
                     logger.info("\t Background color of Preview Text Selected :" + ccPreviewBgColor);
                     flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewBgColor);
                 }
+            }
+            if(!flag){
+                logger.error("Error in Background color selection");
+                return false;
             }
             logger.info("verified background color selection is working fine");
 
@@ -217,16 +232,26 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\n Color Count Value in Windows Color:" + ccWinColor.size() + "\n");
             logger.info("\n*---------Verify Window Color Selection Panel---------*\n");
             for (int i = 0; i < ccWinColor.size(); i++) {
-                ccWinColor.get(i).click();
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
+                    WebElement element = ccWinColor.get(i);
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                    ccWinColor.get(i).click();
+                }else {
+                    ccWinColor.get(i).click();
+                }
                 String ccWindowColor = getWebElement("CC_WINDOW_COLOR").getText();
                 logger.info("\t Window Color Selected :" + ccWindowColor);
                 flag = flag && colorsName[i].equalsIgnoreCase(ccWindowColor);
                 // issue id
-                if (!((getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) || (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")))) {
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")) {
                     String ccPreviewWinColor = getWebElement("CC_PREVIEW_WIN_COLOR").getCssValue("background-color");
                     logger.info("\t Window color of Preview Text Selected :" + ccPreviewWinColor);
                     flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewWinColor);
                 }
+            }
+            if(!flag){
+                logger.error("Error in Windows color selection");
+                return false;
             }
             logger.info("verified CC Windows color selection is working fine");
 
