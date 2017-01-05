@@ -181,7 +181,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
                 //verify color selected
                 // issue id
-                if (!((getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) || (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")))) {
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")){
                     String ccPreviewTextColor = getWebElement("CC_PREVIEW_TEXT").getCssValue("color");
                     logger.info("\t Preview Text Color Selected :" + ccPreviewTextColor);
                     flag = flag && colorsCode[i].equalsIgnoreCase(ccPreviewTextColor);  //verify Preview Text color selected}
