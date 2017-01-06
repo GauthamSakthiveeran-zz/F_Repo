@@ -6,13 +6,14 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Random;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
+import com.ooyala.playback.updateSpreadSheet.ParseJenkinsJobLink;
+import com.ooyala.playback.updateSpreadSheet.UpdateSheet;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
@@ -22,16 +23,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
@@ -47,6 +39,7 @@ import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+import org.testng.annotations.Optional;
 
 @Listeners(IMethodListener.class)
 public abstract class PlaybackWebTest extends FacileTest {
@@ -62,6 +55,13 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected String[] jsUrl;
 	protected NeoRequest neoRequest;
 	protected LiveChannel liveChannel;
+	protected static ArrayList<String> testPassed=new ArrayList<>();
+	protected static ArrayList<String> testFailed=new ArrayList<>();
+	protected static ArrayList<String> testSkipped= new ArrayList<>();
+	public static LinkedHashMap<String,String> testSheetData  =
+			new LinkedHashMap<String,String>();
+	protected static String passedTestList;
+	protected static String failedTestList;
 
 	public PlaybackWebTest() throws OoyalaException {
 
@@ -188,9 +188,21 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 		return false;
 	}
-
-	@AfterSuite()
+	
+	@AfterSuite(alwaysRun = true)
 	public void afterSuiteInPlaybackWeb() throws OoyalaException {
+		int total = testPassed.size()+testFailed.size()+testSkipped.size();
+		for (int i=0;i<testPassed.size();i++){
+			if (passedTestList == null)
+				passedTestList = " ";
+			passedTestList = passedTestList+"\n"+testPassed.get(i)+" ";
+		}
+		for (int i=0;i<testFailed.size();i++){
+			if (failedTestList == null)
+				failedTestList = " ";
+			failedTestList = failedTestList+"\n"+testFailed.get(i)+" ";
+		}
+		setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList);
 		SimpleHttpServer.stopServer();
 		// ExtentManager.endTests();
 		// ExtentManager.flush();
@@ -252,6 +264,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 		if (result.getStatus() == ITestResult.FAILURE) {
 
+			testFailed.add(extentTest.getTest().getName());
+
 			if (driverNotNullFlag) {
 				String fileName = takeScreenshot(extentTest.getTest().getName());
 				extentTest.log(LogStatus.INFO,
@@ -262,11 +276,15 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.error("**** Test " + extentTest.getTest().getName()
 					+ " failed ******");
 		} else if (result.getStatus() == ITestResult.SKIP) {
+
+			testSkipped.add(extentTest.getTest().getName());
+
 			extentTest.log(LogStatus.SKIP, extentTest.getTest().getName()
 					+ " Test skipped " + result.getThrowable());
 			logger.info("**** Test" + extentTest.getTest().getName()
 					+ " Skipped ******");
 		} else if (result.getStatus() == ITestResult.SUCCESS) {
+			testPassed.add(extentTest.getTest().getName());
 			/*extentTest.log(LogStatus.PASS, extentTest.getTest().getName()
 					+ " Test passed");*/
 			logger.info("**** Test" + extentTest.getTest().getName()
@@ -336,6 +354,46 @@ public abstract class PlaybackWebTest extends FacileTest {
 										+ "or should be renamed to the name of the class using the test data!");
 			}
 		}
+	}
+
+
+	public void setTestResult(String pass, String fail, String skip,int total,String failtestname,String passedTests){
+		Date date = new Date();
+		String CurrntDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
+		testSheetData.put("Date",CurrntDate);
+		testSheetData.put("Platform",System.getProperty("platform"));
+		testSheetData.put("Browser",System.getProperty("browser"));
+		testSheetData.put("Browser_Version",System.getProperty("version"));
+		testSheetData.put("Total",Integer.toString(total));
+		testSheetData.put("Pass",pass);
+		testSheetData.put("Fail",fail);
+		testSheetData.put("Skip",skip);
+		testSheetData.put("Failed_Tests",failtestname);
+		testSheetData.put("Passed_Tests",passedTests);
+		testSheetData.put("jenkinsJobLink" , getJenkinsJobLink());
+		testSheetData.put("SuiteName",System.getProperty("tests"));
+		testSheetData.put("groups",System.getProperty("groups"));
+		for (String key : testSheetData.keySet()){
+			String value = testSheetData.get(key);
+			logger.info(key + " " + value);
+		}
+
+		UpdateSheet.writetosheet(testSheetData);
+
+	}
+
+	public String getJenkinsJobLink(){
+		String testSuitename = System.getProperty("tests");
+		String jenkinsJobName = "";
+		switch (testSuitename){
+			case "regression.xml" :
+				jenkinsJobName = "playbackweb-groups";
+				break;
+			case "VTC_Regression.xml" :
+				jenkinsJobName = "playbackwebvtc";
+				break;
+		}
+		return ParseJenkinsJobLink.getJenkinsBuild(jenkinsJobName);
 	}
 
 	public void injectScript() throws Exception {
