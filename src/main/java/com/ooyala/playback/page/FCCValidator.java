@@ -160,6 +160,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             String colorsCode[] = {"rgba(255, 255, 255, 1)", "rgba(0, 0, 255, 1)", "rgba(255, 0, 255, 1)", "rgba(0, 255, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(255, 0, 0, 1)", "rgba(0, 255, 255, 1)", "rgba(0, 0, 0, 1)"};
             String colorsCode1[] = {"rgba(255, 255, 255, 0.8)", "rgba(0, 0, 255, 0.8)", "rgba(255, 0, 255, 0.8)", "rgba(0, 255, 0, 0.8)", "rgba(255, 255, 0, 0.8)", "rgba(255, 0, 0, 0.8)", "rgba(0, 255, 255, 0.8)", "rgba(0, 0, 0, 0.8)"};
             String bgColorsCode[] ={"rgba(0, 0, 0, 0)","rgba(255, 255, 255, 0.8)","rgba(0, 0, 255, 0.8)","rgba(255, 0, 255, 0.8)","rgba(0, 255, 0, 0.8)","rgba(255, 255, 0, 0.8)","rgba(255, 0, 0, 0.8)","rgba(0, 255, 255, 0.8)","rgba(0, 0, 0, 0.8)"};
+            String bgColorsCode1[] ={"Transparent","rgba(255, 255, 255, 0.8)","rgba(0, 0, 255, 0.8)","rgba(255, 0, 255, 0.8)","rgba(0, 255, 0, 0.8)","rgba(255, 255, 0, 0.8)","rgba(255, 0, 0, 0.8)","rgba(0, 255, 255, 0.8)","rgba(0, 0, 0, 0.8)"};
             boolean flag = true;
 
             // verify color selection panel
@@ -219,7 +220,11 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")) {
                         String ccPreviewBgColor = getWebElement("CC_PREVIEW_TEXT_BG").getCssValue("background-color");
                         logger.info("\t Background color of Preview Text Selected :" + ccPreviewBgColor);
-                        flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewBgColor);
+                        if(ccPreviewBgColor.contains("transparent")){
+                            flag = flag && bgColorsCode1[i].equalsIgnoreCase(ccPreviewBgColor);
+                        }else{
+                            flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewBgColor);
+                        }
                     }
                 }
             }
@@ -249,7 +254,11 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")) {
                         String ccPreviewWinColor = getWebElement("CC_PREVIEW_WIN_COLOR").getCssValue("background-color");
                         logger.info("\t Window color of Preview Text Selected :" + ccPreviewWinColor);
-                        flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewWinColor);
+                        if(ccPreviewWinColor.contains("transparent")){
+                            flag = flag && bgColorsCode1[i].equalsIgnoreCase(ccPreviewWinColor);
+                        }else{
+                            flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewWinColor);
+                        }
                     }
                 }
             }
@@ -271,24 +280,27 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             // verify CC Opacity Panel
             clickOnIndependentElement("CAPTION_OPACITY_PANEL");
             logger.info("\n*----------------------Verify Caption Opacity Panel--------------------*\n");
-            Thread.sleep(2000);
+            Thread.sleep(1000);
 
             // select text Opacity
-            WebElement slider = getWebElement("CC_TEXT_OPACITY_SELECTOR");
-            slideSliderCaptionOpacity(slider);
+            WebElement slider1 = getWebElement("CC_TEXT_OPACITY_SELECTOR");
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", slider1);
+
+            slideSliderCaptionOpacity(slider1);
             String ccTextOpacity = getWebElement("CC_TEXT_OPACITY").getText();
             logger.info("\t Text Opacity Selected :" + ccTextOpacity);
             String ccPreviewTextOpacity = getWebElement("CC_PREVIEW_TEXT").getCssValue("color");
             logger.info("\t Preview Text Opacity Selected :" + ccPreviewTextOpacity);
             if(!testName.contains("PlaybackFCCDefaultSettingTests")){
-                    if (!validateCaptionOpacity(ccPreviewTextOpacity)){return false;}
+                if (!validateCaptionOpacity(ccPreviewTextOpacity)){return false;}
             }
             logger.info("verified text opacity selection is working fine");
 
             // select Background Opacity
-            WebElement slider1 = getWebElement("CC_BACKGROUND_OPACITY_SELECTOR");
-            slideSliderCaptionOpacity(slider1);
-            Thread.sleep(2000);
+            WebElement slider2 = getWebElement("CC_BACKGROUND_OPACITY_SELECTOR");
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",slider2);
+            slideSliderCaptionOpacity(slider2);
+            Thread.sleep(1000);
             String ccBgOpacity = getWebElement("CC_BACKGROUND_OPACITY").getText();
             logger.info("\t Background Opacity Selected :" + ccBgOpacity);
             String ccPreviewBgOpacity = getWebElement("CC_PREVIEW_TEXT_BG").getCssValue("background-color");
@@ -302,6 +314,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             // select Windows Opacity
             WebElement slider3 = getWebElement("CC_WINDOW_OPACITY_SELECTOR");
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", slider3);
             slideSliderCaptionOpacity(slider3);
             String ccWinOpacity = getWebElement("CC_WINDOW_OPACITY").getText();
             logger.info("\t Window Color Selected :" + ccWinOpacity);
