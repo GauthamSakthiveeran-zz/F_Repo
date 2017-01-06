@@ -12,6 +12,7 @@ import java.util.*;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
+import com.ooyala.playback.updateSpreadSheet.ParseJenkinsJobLink;
 import com.ooyala.playback.updateSpreadSheet.UpdateSheet;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -369,6 +370,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		testSheetData.put("Skip",skip);
 		testSheetData.put("Failed_Tests",failtestname);
 		testSheetData.put("Passed_Tests",passedTests);
+		testSheetData.put("jenkinsJobLink" , getJenkinsJobLink());
 		testSheetData.put("SuiteName",System.getProperty("tests"));
 		testSheetData.put("groups",System.getProperty("groups"));
 		for (String key : testSheetData.keySet()){
@@ -378,6 +380,20 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 		UpdateSheet.writetosheet(testSheetData);
 
+	}
+
+	public String getJenkinsJobLink(){
+		String testSuitename = System.getProperty("tests");
+		String jenkinsJobName = "";
+		switch (testSuitename){
+			case "regression.xml" :
+				jenkinsJobName = "playbackweb-groups";
+				break;
+			case "VTC_Regression.xml" :
+				jenkinsJobName = "playbackwebvtc";
+				break;
+		}
+		return ParseJenkinsJobLink.getJenkinsBuild(jenkinsJobName);
 	}
 
 	public void injectScript() throws Exception {
