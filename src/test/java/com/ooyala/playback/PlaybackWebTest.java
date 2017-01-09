@@ -384,7 +384,12 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	public String getJenkinsJobLink(){
-		String testSuitename = System.getProperty("groups");
+		String testSuitename;
+		testSuitename = System.getProperty("groups");
+		if (testSuitename == null){
+			testSuitename = "default";
+		}
+		String regressionFileName = System.getProperty("tests");
 		String jenkinsJobName = "";
 		switch (testSuitename){
 			case "playerFeatures" :
@@ -396,12 +401,14 @@ public abstract class PlaybackWebTest extends FacileTest {
 			case "streams" :
 				jenkinsJobName = "playbackweb-streams";
 				break;
-			case "vtc" :
-				jenkinsJobName = "playbackwebvtc";
-				break;
 			case "FCC" :
 				jenkinsJobName = "playbackweb-FCC";
 				break;
+			case "default":
+				if (regressionFileName.contains("VTC_Regression.xml")) {
+					jenkinsJobName = "playbackwebvtc";
+					break;
+				}
 		}
 		return ParseJenkinsJobLink.getJenkinsBuild(jenkinsJobName);
 	}
