@@ -1,7 +1,11 @@
 <elements area="adoverlay">
 	<element key="OVERLAY_CLOSE_BTN" findBy="class"
-             class="oo-ad-overlay-close-button" />
-             
-    <element key="OVERLAY_CLOSE_BTN_1" findBy="class"
-             class="close-button" />         
+		class="oo-ad-overlay-close-button" />
+
+	<element key="OVERLAY_CLOSE_BTN_1" findBy="class" class="close-button" />
+
+	<element key="OVERLAY_RECALL_BTN" findBy="class" class="recall-button" />
+	
+	<element key="OVERLAY_IMAGE" findBy="class" class="oo-ad-overlay-image" />
+
 </elements>

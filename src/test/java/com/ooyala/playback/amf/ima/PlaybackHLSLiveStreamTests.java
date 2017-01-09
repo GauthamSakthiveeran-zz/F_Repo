@@ -7,6 +7,7 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.ControlBarValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackHLSLiveStreamTests extends PlaybackWebTest {
@@ -18,6 +19,7 @@ public class PlaybackHLSLiveStreamTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayValidator playValidator;
 	private ControlBarValidator controlBar;
+	private PauseAction pause;
 
 	@Test(groups = {"amf","preroll","live"}, dataProvider = "testUrls")
 	public void verifyHLSLiveStream(String testName, String url) throws OoyalaException {
@@ -35,6 +37,8 @@ public class PlaybackHLSLiveStreamTests extends PlaybackWebTest {
 			
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 6000);
 			result = result && event.validate("singleAdPlayed_1", 10000);
+			
+			result = result && pause.startAction();
 			
 			result = result && controlBar.live().validate("", 60000);
 			

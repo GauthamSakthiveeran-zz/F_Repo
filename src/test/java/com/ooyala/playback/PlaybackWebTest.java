@@ -262,6 +262,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			driverNotNullFlag = true;
 
 		}
+		
 		if (result.getStatus() == ITestResult.FAILURE) {
 
 			testFailed.add(extentTest.getTest().getName());
@@ -297,7 +298,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 		ExtentManager.endTest(extentTest);
 		ExtentManager.flush();
-
+//		System.out.println("###########" + StringArrayAppender.getLog());
 	}
 
 	@AfterClass(alwaysRun = true)

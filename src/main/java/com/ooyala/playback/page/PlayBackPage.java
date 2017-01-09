@@ -1,5 +1,7 @@
 package com.ooyala.playback.page;
 
+import static java.lang.Thread.sleep;
+
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.HashMap;
@@ -17,6 +19,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.ooyala.facile.page.WebPage;
+import com.ooyala.playback.util.PlayBackAsserts;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -179,6 +182,7 @@ public abstract class PlayBackPage extends WebPage {
 	public void setExtentTest(ExtentTest test) {
 		this.extentTest = test;
 	}
+	
 
 	/**
 	 * checking to see if the protocol is hds or hls or any protocol
@@ -259,5 +263,21 @@ public abstract class PlayBackPage extends WebPage {
 		}
 		return flag;
 
+	}
+	
+	protected void closeOtherWindows(String baseWindowHdl) throws Exception{
+		sleep(2000);
+		java.util.Set<java.lang.String> windowHandles = driver
+				.getWindowHandles();
+		int count = windowHandles.size();
+		logger.info("Window handles : " + count);
+
+		for (String winHandle : driver.getWindowHandles()) {
+			if (!winHandle.equals(baseWindowHdl)) {
+				driver.switchTo().window(winHandle);
+				driver.close();
+				driver.switchTo().window(baseWindowHdl);
+			}
+		}
 	}
 }

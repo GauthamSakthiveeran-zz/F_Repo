@@ -165,5 +165,16 @@
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"showNonLinearCloseButton":true}]]></playerParameter>
     	</url>
     	
+    	<url>
+	    	<description name="IMA_MAIN"/>
+	        <embed_code name="FlOHg4MTE698_SqEgfRuJepp0rjzl9h9"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="615dc8e909e941c280e12155df838355"/>
+	        <playerParameter><![CDATA[{"showNonLinearCloseButton":true}]]></playerParameter>
+    	</url>
+    	
     </test>
 </testdata>

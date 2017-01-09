@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 public class OverlayValidator extends PlayBackPage implements PlaybackValidator {
 
 	public static Logger logger = Logger.getLogger(OverlayValidator.class);
@@ -40,9 +42,8 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 
 		return true;
 	}
-
-	public boolean validate(String element, int timeout) throws Exception {
-		
+	
+	private boolean validateOverlayCloseButton(String element, int timeout) throws Exception{
 		if (!isElementPresent("OVERLAY_CLOSE_BTN")) {
 			return checkInFullScreen(element, timeout);
 		}
@@ -53,8 +54,25 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 		if (!clickOnIndependentElement("OVERLAY_CLOSE_BTN"))
 			return false;
 		
+		return true;
+		
+	}
+
+	public boolean validate(String element, int timeout) throws Exception {
+		
+		validateOverlayCloseButton(element,timeout);
+		
 		if (!waitOnElement(By.id(element), timeout))
 			return false;
+		
+		if(isElementPresent("OVERLAY_RECALL_BTN")){
+			extentTest.log(LogStatus.PASS, "OVERLAY_RECALL_BTN present.");
+			if(clickOnIndependentElement("OVERLAY_RECALL_BTN")){
+				validateOverlayCloseButton(element,timeout);
+			}else{
+				extentTest.log(LogStatus.FAIL, "OVERLAY_RECALL_BTN is present but not clickable..");
+			}
+		}
 		
 		return true;
 

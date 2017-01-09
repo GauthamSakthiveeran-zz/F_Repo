@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+
+	<test name ="PlaybackMidrollAdAndMidrollOverlayAdsTests" >
+    	<url>
+	    	<description name="IMA Midroll at 10 sec and overlay at 15"/>
+	        <embed_code name="VsMXV5eDp-uKDbBS2eZPv4G5hf7fbTYB"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="615dc8e909e941c280e12155df838355"/>
+	        <playerParameter><![CDATA[{"showNonLinearCloseButton":true}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="VAST Midroll at 10 sec and overlay at 15"/>
+	        <embed_code name="hkOGt4dDr71-6f0_aceyHIlanbjgeSZc"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+	        <playerParameter><![CDATA[{"showNonLinearCloseButton":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+    	</url>
+    	
+    </test>
+</testdata>

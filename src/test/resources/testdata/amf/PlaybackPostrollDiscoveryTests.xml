@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="POSTROLL_MAIN_VAST"/>
+	    	<description name="VPAID 2.0 Vast AD Manager Main video plugin"/>
 	        <embed_code name="tmbmxiMjE6M_3i7Eg6sVc8-6zp4vXQgw"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -140,7 +140,7 @@
     	
     	
     	<url>
-	    	<description name="POSTROLL_OSMF_VAST_IMA"/>
+	    	<description name="VAST2.0 OSMF"/>
 	        <embed_code name="85bm5kMDE6uYN7kMcTPz72AYcRuJLlgz"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>

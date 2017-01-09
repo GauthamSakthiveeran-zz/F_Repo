@@ -46,8 +46,6 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 					extentTest.log(LogStatus.PASS, "Mute volume works");
 				}
 
-				Thread.sleep(2000);
-
 			} else {
 				extentTest.log(LogStatus.FAIL, "Unable to click on Volume");
 				return false;
@@ -77,7 +75,6 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	protected double getVolume() throws Exception {
-		Thread.sleep(3500);
 		double volume = Double
 				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getVolume()").toString());
 		extentTest.log(LogStatus.INFO, "volume set to " + volume);

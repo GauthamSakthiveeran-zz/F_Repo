@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 
-	<test name ="PlaybackCustomInteractionTests" >
+	<test name ="OrderTest" >
     	<url>
 	    	<description name="VPAID 2.0 With custom interaction"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
@@ -15,18 +15,6 @@
 	        <browserSupportedVersion name="safari,9"/>
     	</url>
     	
-    	<url>
-	    	<description name="VPAID 2.0 with custom interaction"/>
-	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="615dc8e909e941c280e12155df838355"/>
-	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.56cae9d690c054.28077205;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
-    		<browsersSupported name="chrome,firefox,internet explorer,safari" />
-	        <browserSupportedVersion name="safari,9"/>
-    	</url>
     </test>
     
 </testdata>
