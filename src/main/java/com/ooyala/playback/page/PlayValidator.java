@@ -25,7 +25,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 	private void errorDescription(){
 		if(isElementPresent("ERROR_SCREEN")){
 			String text = getWebElement("ERROR_DESCRIPTION").getText();
-			extentTest.log(LogStatus.INFO,"FAIL : " + text);
+			extentTest.log(LogStatus.FAIL, text);
 		}
 		
 		Assert.assertTrue("Play button is not found", false);
@@ -36,10 +36,19 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		boolean errorScreen = false;
 
 		try {
-			if (!waitOnElement("PLAY_BUTTON", 90000)) {
-				errorDescription();
-				return false;
+			
+			if(waitOnElement("PLAYER_SKIN", 90000)){ // to avoid waiting for a long time for the play button to appear in case of error scenarios.
+				loadingSpinner();
+				if(isElementPresent("PLAY_BUTTON")){
+					extentTest.log(LogStatus.PASS, "Play button found.");
+					return true;
+				}else{
+					errorDescription();
+					return false;
+				}
 			}
+			return false;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			driver.navigate().refresh();
