@@ -21,7 +21,7 @@ public class OrderTest extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PauseAction pause;
 
-	@Test(groups = {"amf","customInteraction"}, dataProvider = "testUrls")
+	@Test(groups = {"amf","customInteraction"}, dataProvider = "testUrls", enabled=false)
 	public void validate(String testName, String url)
 			throws Exception {
 

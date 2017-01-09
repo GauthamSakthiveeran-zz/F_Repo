@@ -29,7 +29,7 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 			injectScript();
 
 			Boolean autoplay = (Boolean) executeScript(
-					"function test() {var bool = pp.parameters.autoplay; return bool;}; return test();");
+					"function test() {var bool = pp.parameters.autoplay; return bool;} return test();");
 
 			result = result && !autoplay;
 
