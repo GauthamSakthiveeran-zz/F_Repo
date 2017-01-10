@@ -1,5 +1,5 @@
 
-<suite name="Playback Web Regression Suite" verbose="1">
+<suite name="Playback Web Regression Suite" parallel="classes" thread-count="5">
 	<listeners>
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>

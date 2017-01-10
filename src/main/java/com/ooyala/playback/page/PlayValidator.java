@@ -36,7 +36,6 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		boolean errorScreen = false;
 
 		try {
-			System.out.println("***********@@@@@@@@@@@@ " + driver.getSessionId().toString());
 			if(waitOnElement("PLAYER_SKIN", 90000)){ // to avoid waiting for a long time for the play button to appear in case of error scenarios.
 				Thread.sleep(2000);
 				if(isElementPresent("PLAY_BUTTON")){

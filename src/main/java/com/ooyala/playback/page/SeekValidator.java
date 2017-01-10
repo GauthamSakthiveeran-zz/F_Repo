@@ -23,7 +23,7 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 
-		PlayBackFactory.getInstance(driver).getSeekAction().seekTillEnd().startAction();
+		(new PlayBackFactory(driver)).getSeekAction().seekTillEnd().startAction();
 
 		if (waitOnElement(By.id(element), timeout)) {
 			extentTest.log(LogStatus.PASS, "Seek successful.");

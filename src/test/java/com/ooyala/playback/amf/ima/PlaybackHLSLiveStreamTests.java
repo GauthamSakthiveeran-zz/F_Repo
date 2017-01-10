@@ -33,10 +33,10 @@ public class PlaybackHLSLiveStreamTests extends PlaybackWebTest {
 			result = result && playValidator.waitForPage();
 			injectScript();
 
-			result = result && playValidator.validate("playing_1", 10000);
-			
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 6000);
 			result = result && event.validate("singleAdPlayed_1", 10000);
+			
+			result = result && playValidator.validate("playing_1", 10000);
 			
 			result = result && pause.startAction();
 			

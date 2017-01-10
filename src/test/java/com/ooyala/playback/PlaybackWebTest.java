@@ -62,6 +62,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected String[] jsUrl;
 	protected NeoRequest neoRequest;
 	protected LiveChannel liveChannel;
+	protected RemoteWebDriver driver;
 	
 	public PlaybackWebTest() throws OoyalaException {
 
@@ -198,17 +199,17 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 	
 	private void init() throws Exception{
-		driver = getDriver(browser);
-		if (driver != null)
+		webDriverFacile = getDriver(browser);
+		driver = webDriverFacile.get();
+		if (webDriverFacile.get() != null)
 			logger.info("Driver initialized successfully");
 		else {
 			logger.error("Driver is not initialized successfully");
 			throw new OoyalaException("Driver is not initialized successfully");
 		}
-
-		pageFactory = PlayBackFactory.getInstance(driver);
+		pageFactory = new PlayBackFactory(driver);
 		if (!getPlatform().equalsIgnoreCase("android")) {
-			maximizeMe(driver);
+			maximizeMe(webDriverFacile.get());
 		}
 	}
 
@@ -234,12 +235,12 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 		boolean driverNotNullFlag = false;
 		logger.info("****** Inside @AfterMethod*****");
-		logger.info(driver);
+		logger.info(webDriverFacile.get());
 
-		if (driver != null
-				&& (driver.getSessionId() == null || driver.getSessionId()
-						.toString().isEmpty())) {
-			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
+		if (webDriverFacile.get() != null && (webDriverFacile.get().getSessionId() == null
+				|| webDriverFacile.get().getSessionId().toString().isEmpty())) {
+			logger.error(
+					"Browser closed during the test run. Renitializing the driver as the test failed during the test");
 			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
 
 			pageFactory.destroyInstance();
@@ -289,9 +290,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 			BrowserMobProxyHelper.stopBrowserMobProxyServer();
 		// ExtentManager.flush();
 		logger.info("************Inside tearDown*************");
-		if (driver != null) {
-			driver.quit();
-			driver = null;
+		if (webDriverFacile.get() != null) {
+			webDriverFacile.get().quit();
 		} else {
 			logger.info("Driver is already null");
 		}
@@ -358,7 +358,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	private void injectScript(String scriptURL) throws Exception {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
+		JavascriptExecutor js = (JavascriptExecutor) webDriverFacile.get();
 		Object object = js.executeScript("function injectScript(url) {\n"
 				+ "   var script = document.createElement ('script');\n"
 				+ "   script.src = url;\n"
@@ -374,19 +374,19 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	public String getPlatform() {
-		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+		Capabilities cap = ((RemoteWebDriver) webDriverFacile.get()).getCapabilities();
 		String platformName = cap.getPlatform().toString();
 		return platformName;
 	}
 
 	public String getBrowser() {
-		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+		Capabilities cap = ((RemoteWebDriver) webDriverFacile.get()).getCapabilities();
 		String browser = cap.getBrowserName().toString();
 		return browser;
 	}
 
 	public String getBrowserVersion() {
-		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+		Capabilities cap = ((RemoteWebDriver) webDriverFacile.get()).getCapabilities();
 		String version = cap.getVersion().toString();
 		return version;
 	}
@@ -408,7 +408,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		if (!destDir.exists())
 			destDir.mkdir();
 
-		File scrFile = ((TakesScreenshot) driver)
+		File scrFile = ((TakesScreenshot) webDriverFacile.get())
 				.getScreenshotAs(OutputType.FILE);
 		try {
 			FileUtils.copyFile(scrFile, new File("images/" + fileName));
@@ -450,7 +450,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	protected Object executeScript(String script) {
-		return ((JavascriptExecutor) driver).executeScript(script);
+		return ((JavascriptExecutor) webDriverFacile.get()).executeScript(script);
 	}
 
 }

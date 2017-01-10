@@ -51,8 +51,6 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
 	public boolean validate(String element, int timeout) throws Exception {
 		
-		int count =1 ;
-		
 		String baseWindowHdl = driver.getWindowHandle();
 		
 		if(overlay){
@@ -104,12 +102,6 @@ public class AdClickThroughValidator extends PlayBackPage implements
 								10000))
 							return false;
 					}
-					if (waitOnElement(By.id("willPauseAds_" + count), 1000)
-							&& waitOnElement(By.id("videoPausedAds_" + count), 1000)) {
-						count++;
-					} else {
-						extentTest.log(LogStatus.FAIL, "Video not paused when clicked on ad.");
-					}
 						
 					extentTest.log(PASS,
 							"AdsClicked by clicking on the ad screen");
@@ -132,10 +124,6 @@ public class AdClickThroughValidator extends PlayBackPage implements
 				if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 5000))
 					return false;
 
-				if (!waitOnElement(By.id("willPauseAds_" + count), 1000)
-						|| !waitOnElement(By.id("videoPausedAds_" + count), 1000)) {
-					extentTest.log(LogStatus.FAIL, "Video not paused when clicked on ad.");
-				}
 			}
 			extentTest.log(PASS, "AdsClicked by clicking on the learn more button");
 

@@ -50,7 +50,7 @@ public class PlayBackFactory {
 	private FCCValidator fccValidator;
 	private OoyalaAPIValidator ooyalaAPIValidator;
 
-	private PlayBackFactory(WebDriver driver) {
+	public PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
 	}
 
@@ -270,12 +270,12 @@ public class PlayBackFactory {
 		return liveAction;
 	}
 
-	public static PlayBackFactory getInstance(WebDriver driver) {
+	/*public static PlayBackFactory getInstance(WebDriver driver) {
 		if (playbackFactory == null || playbackFactory.getDriver() == null) {
 			playbackFactory = new PlayBackFactory(driver);
 		}
 		return playbackFactory;
-	}
+	}*/
 
 	public SaasPortValidator getSaasPortValidator() {
 		if (saasPortValidator == null)
