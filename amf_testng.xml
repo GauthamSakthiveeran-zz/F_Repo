@@ -20,12 +20,7 @@
 		</packages> -->
 		
 		<classes>
-			<class name="com.ooyala.playback.amf.PlaybackIMAPreVastMidAdsTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackClickthroughTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackPlayerWithoutSkinTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsPoddedTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackSkipAdsTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackVastPreIMAMidlAdsTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"></class>
 		</classes>
 		
