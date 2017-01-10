@@ -412,6 +412,22 @@ public abstract class PlaybackWebTest extends FacileTest {
 					jenkinsJobName = "playbackwebvtc";
 					break;
 				}
+				if (regressionFileName.contains("amf_testng.xml")){
+					switch (browser){
+						case "chrome" :
+							jenkinsJobName = "playbackweb-AMF-Chrome";
+							break;
+						case "firefox" :
+							jenkinsJobName = "playbackweb-AMF-FF";
+							break;
+						case "safari" :
+							jenkinsJobName = "playbackweb-AMF-Safari";
+							break;
+						case "internet explorer" :
+							jenkinsJobName = "playbackweb-AMF-IE";
+							break;
+					}
+				}
 		}
 		return ParseJenkinsJobLink.getJenkinsBuild(jenkinsJobName);
 	}
