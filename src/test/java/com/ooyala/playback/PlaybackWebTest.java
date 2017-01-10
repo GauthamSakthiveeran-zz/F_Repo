@@ -200,7 +200,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 		for (int i=0;i<testFailed.size();i++){
 			if (failedTestList == null)
 				failedTestList = " ";
-			failedTestList = failedTestList+"\n"+testFailed.get(i)+" ";
+			if (!failedTestList.contains(testFailed.get(i))) {
+				failedTestList = failedTestList + "\n" + testFailed.get(i) + " ";
+			}
 		}
 		setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList);
 		SimpleHttpServer.stopServer();
@@ -265,7 +267,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 		
 		if (result.getStatus() == ITestResult.FAILURE) {
 
-			testFailed.add(extentTest.getTest().getName());
+			if (!testFailed.contains(extentTest.getTest().getName()))
+					testFailed.add(extentTest.getTest().getName());
 
 			if (driverNotNullFlag) {
 				String fileName = takeScreenshot(extentTest.getTest().getName());
@@ -384,7 +387,12 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	public String getJenkinsJobLink(){
-		String testSuitename = System.getProperty("groups");
+		String testSuitename;
+		testSuitename = System.getProperty("groups");
+		if (testSuitename == null){
+			testSuitename = "default";
+		}
+		String regressionFileName = System.getProperty("tests");
 		String jenkinsJobName = "";
 		switch (testSuitename){
 			case "playerFeatures" :
@@ -396,12 +404,14 @@ public abstract class PlaybackWebTest extends FacileTest {
 			case "streams" :
 				jenkinsJobName = "playbackweb-streams";
 				break;
-			case "vtc" :
-				jenkinsJobName = "playbackwebvtc";
-				break;
 			case "FCC" :
 				jenkinsJobName = "playbackweb-FCC";
 				break;
+			case "default":
+				if (regressionFileName.contains("VTC_Regression.xml")) {
+					jenkinsJobName = "playbackwebvtc";
+					break;
+				}
 		}
 		return ParseJenkinsJobLink.getJenkinsBuild(jenkinsJobName);
 	}
