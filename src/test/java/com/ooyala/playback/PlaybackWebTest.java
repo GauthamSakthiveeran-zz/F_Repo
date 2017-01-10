@@ -200,7 +200,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 		for (int i=0;i<testFailed.size();i++){
 			if (failedTestList == null)
 				failedTestList = " ";
-			failedTestList = failedTestList+"\n"+testFailed.get(i)+" ";
+			if (!failedTestList.contains(testFailed.get(i))) {
+				failedTestList = failedTestList + "\n" + testFailed.get(i) + " ";
+			}
 		}
 		setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList);
 		SimpleHttpServer.stopServer();
@@ -265,7 +267,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 		
 		if (result.getStatus() == ITestResult.FAILURE) {
 
-			testFailed.add(extentTest.getTest().getName());
+			if (!testFailed.contains(extentTest.getTest().getName()))
+					testFailed.add(extentTest.getTest().getName());
 
 			if (driverNotNullFlag) {
 				String fileName = takeScreenshot(extentTest.getTest().getName());
