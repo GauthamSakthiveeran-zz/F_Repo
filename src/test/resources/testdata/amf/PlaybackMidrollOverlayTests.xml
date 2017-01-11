@@ -14,7 +14,7 @@
 	        
     	</url>
     	
-    	<!-- <url>
+    	<url>
 	    	<description name="BitmovinMidroll_overlay_Vast_HLS"/>
 	        <embed_code name="dndzNpMTE65uSupyRMgLwsfrO5SMCWRD"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -86,7 +86,7 @@
 	        <pbid name="5e813457c731460f808f62d93d7e4ff3"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 	        
-    	</url> -->
+    	</url>
     	
     	
     </test>

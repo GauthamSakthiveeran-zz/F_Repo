@@ -52,8 +52,6 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 
 			result = result && event.validate("showNonlinearAd_1", 160000);
 
-			result = result && adClicks.overlay().validate("", 120000);
-
 			result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
 
 			result = result && seekValidator.validate("seeked_1", 160000);

@@ -1,5 +1,5 @@
 
-<suite name="Playback Web Regression Suite" parallel="classes" thread-count="5">
+<suite name="Playback Web Regression Suite" parallel="classes" thread-count="3">
 	<listeners>
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
@@ -11,7 +11,7 @@
 		<packages>
 <!-- 			<package name="com.ooyala.playback.amf" /> -->
 <!-- 			<package name="com.ooyala.playback.amf.midroll" /> -->
-<!-- 			<package name="com.ooyala.playback.amf.postroll" /> -->
+			<package name="com.ooyala.playback.amf.postroll" />
 <!-- 			<package name="com.ooyala.playback.amf.preroll" /> -->
 <!-- 			<package name="com.ooyala.playback.amf.preroll.freewheel" /> -->
 <!-- 			<package name="com.ooyala.playback.amf.midroll.vast" /> -->
@@ -19,13 +19,10 @@
 <!-- 			<package name="com.ooyala.playback.amf.vast" /> -->
 		</packages>
 		
-		<classes>
-			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollOverlayTests"></class>
-			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollAdAndMidrollOverlayAdsTests"></class>
-			<class name="com.ooyala.playback.amf.midroll.PlaybackCCenableMidRollAdsTests"></class>
+		<!-- <classes>
 			<class name="com.ooyala.playback.amf.midroll.PlaybackMidRollAdsTests"></class>
 		</classes>
-		
+		 -->
 	</test>
 
 </suite>
