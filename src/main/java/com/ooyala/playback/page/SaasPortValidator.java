@@ -12,8 +12,8 @@ public class SaasPortValidator extends PlayBackPage implements
 		PlaybackValidator {
 
 	private static Logger logger = Logger.getLogger(SaasPortValidator.class);
-	
-	String embedCode = "x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln";
+
+	String embedCode = "1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa";
 	String sasportUrl = "http://sasport.us-east-1.atlantis.services.ooyala.com/static/?tab=rights_locker&pcode=BjcWYyOu1KK2DiKOkF41Z2k0X57l&accountId=dulari_qa&rlEnv=Production";
 
 	public static Logger Log = Logger.getLogger(SaasPortValidator.class);
@@ -31,19 +31,15 @@ public class SaasPortValidator extends PlayBackPage implements
 	public boolean validate(String element, int timeout) throws Exception {
 		if (element.contains("CREATE_ENTITLEMENT")) {
 			try {
-				boolean entitlementPresent;
 				if (!searchEntitlement())
 					return false;
-				try {
-					isElementVisible("ENTITLEMENT");
-					entitlementPresent = true;
-				} catch (Exception e) {
-					entitlementPresent = false;
-				}
-				if (entitlementPresent) {
+				Thread.sleep(5000);
+
+				if (isElementVisible("ENTITLEMENT")) {
 					if (!clickOnIndependentElement("DELETE_BTN"))
 						return false;
 					logger.info("Deleted asset from entitlement");
+					Thread.sleep(5000);
 					if (!createEntitlement())
 						return false;
 					logger.info("Created the entitlement");
@@ -59,7 +55,7 @@ public class SaasPortValidator extends PlayBackPage implements
 		} else {
 			if (!searchEntitlement())
 				return false;
-			if (!waitOnElement("DISPLAY_BTN", 5000))
+			if (!waitOnElement("DISPLAY_BTN", 10000))
 				return false;
 			if (!isElementPresent("DISPLAY_BTN")) {
 				throw new Exception(
@@ -67,26 +63,57 @@ public class SaasPortValidator extends PlayBackPage implements
 			}
 			if (!clickOnIndependentElement("DISPLAY_BTN"))
 				return false;
-			if (!waitOnElement("PLAYREADY", 5000))
+			if (!waitOnElement("DRM_POLICY", 10000))
 				return false;
+			logger.info(getWebElement("DRM_POLICY").getText());
+
 			logger.info("Device gets registered for entitlement on sasport.");
 		}
 		return true;
 	}
 
-	private boolean searchEntitlement() throws Exception {
+	public boolean searchEntitlement() throws Exception {
 		driver.get(sasportUrl);
-		return waitOnElement("SEARCH_BTN", 10000)
+		return waitOnElement("SEARCH_BTN", 30000)
 				&& clickOnIndependentElement("SEARCH_BTN");
 	}
 
 	private boolean createEntitlement() throws Exception {
-		return waitOnElement("CREATE_ENTITLEMENT_BTN", 10000)
-				&& clickOnIndependentElement("CREATE_ENTITLEMENT_BTN")
-				&& waitOnElement("CREATE_ENTITLEMENT_ID", 10000)
-				&& writeTextIntoTextBox("CREATE_ENTITLEMENT_ID", "embedCode")
-				&& writeTextIntoTextBox("EXTERNAL_PRODUCT_ID", "abc")
-				&& writeTextIntoTextBox("MAX_DEVICES", "2")
-				&& clickOnIndependentElement("CREATE_BTN");
+		waitOnElement("CREATE_ENTITLEMENT_BTN", 30000);
+		Thread.sleep(2000);
+		clickOnIndependentElement("CREATE_ENTITLEMENT_BTN");
+		Thread.sleep(5000);
+		waitOnElement("CREATE_ENTITLEMENT_ID", 30000);
+
+		writeTextIntoTextBox("CREATE_ENTITLEMENT_ID", embedCode);
+		writeTextIntoTextBox("EXTERNAL_PRODUCT_ID", "abc");
+		writeTextIntoTextBox("MAX_DEVICES", "2");
+		clickOnIndependentElement("CREATE_BTN");;
+		Thread.sleep(5000);
+		return true;
+	}
+
+	public boolean DeleteDevices(){
+		int noOfRegisteredDevices = 0;
+		if(isElementPresent("NO_DEVICES_REGISTERED")) {
+			logger.info("No Devices registered");
+			return true;
+		}
+		else{
+
+			noOfRegisteredDevices = getWebElementsList("ACCOUNT_DEVICES_LIST").size();
+			for(int i = 1; i<=noOfRegisteredDevices; i++){
+				try{
+					clickOnHiddenElement("DELETE_REGISTERED_DEVICE");
+					Thread.sleep(5000);
+
+				}catch(Exception e){
+					logger.info("Error While deleting registered devices");
+					return false;
+				}
+			}
+			logger.info("Registered Devices deleted : "+noOfRegisteredDevices);
+		}
+		return true;
 	}
 }
