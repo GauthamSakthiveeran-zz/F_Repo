@@ -13,7 +13,7 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url> 
     	
-    	<url>
+    	<!-- <url>
 	    	<description name="OSMF_FREEWHEEL"/>
 	        <embed_code name="Y5dWVmMDE6lIE-PNSXHfsuTNPmeWbjC4"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -24,7 +24,7 @@
 	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
     		<browsersSupported name="chrome,firefox,internet explorer,safari" />
 	        <browserSupportedVersion name="safari,9"/>
-    	</url>
+    	</url> -->
     	
     	<url>
 	    	<description name="OSMF_IMA"/>
@@ -44,7 +44,7 @@
 	        <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="VAST"/>
+	        <adPlugins name="VAST"/>|
 	        <additionalPlugins name=""/>
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
