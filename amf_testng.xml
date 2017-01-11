@@ -1,5 +1,5 @@
 
-<suite name="Playback Web Regression Suite" parallel="classes" thread-count="3">
+<suite name="Playback Web Regression Suite" parallel="classes" thread-count="2">
 	<listeners>
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
@@ -20,7 +20,8 @@
 		</packages>
 		
 		<!-- <classes>
-			<class name="com.ooyala.playback.amf.midroll.PlaybackMidRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackClickthroughTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackCCenabledPreRollAdsTests"></class>
 		</classes>
 		 -->
 	</test>
