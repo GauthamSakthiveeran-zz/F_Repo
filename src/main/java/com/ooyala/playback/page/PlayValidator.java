@@ -36,7 +36,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		boolean errorScreen = false;
 
 		try {
-			if(waitOnElement("PLAYER_SKIN", 90000)){ // to avoid waiting for a long time for the play button to appear in case of error scenarios.
+			/*if(waitOnElement("PLAYER_SKIN", 90000)){ // to avoid waiting for a long time for the play button to appear in case of error scenarios.
 				Thread.sleep(2000);
 				if(isElementPresent("PLAY_BUTTON")){
 					extentTest.log(LogStatus.PASS, "Play button found.");
@@ -46,7 +46,13 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 					return false;
 				}
 			}
-			return false;
+			return false;*/
+			
+			if(!waitOnElement("PLAY_BUTTON", 90000)){
+				errorDescription();
+				return false;
+			}
+			return true;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
