@@ -39,7 +39,7 @@
 	        <browserSupportedVersion name="safari,9"/>
     	</url>
     	
-    	<url>
+    	<!-- <url>
 	    	<description name="OSMF_VAST"/>
 	        <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -48,7 +48,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-    	</url>
+    	</url> -->
     	
     </test>
     
