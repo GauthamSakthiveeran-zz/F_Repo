@@ -18,7 +18,7 @@
     <element key="CC_TEXT_COLOR" findBy="xPath" xPath=".//*[@class='oo-selection-container oo-text-color-selection-container'][1]//span[@class='oo-selection-container-selection-text']" />
     <element key="CC_BACKGROUND_COLOR_SELECTOR" findBy="xPath" xPath=".//*[@class='oo-selection-container'][1]//div[@class='oo-color-selector']/div/a" />
     <element key="CC_PREVIEW_TEXT_BG" findBy="class" class="oo-text-track-background" />
-    <element key="CC_BACKGROUND_COLOR" findBy="xPath" xPath=".//*[@class='oo-selection-container'][1]//span[@class='oo-selection-container-selection-text']" />
+    <element key="CC_BACKGROUND_COLOR" findBy="xPath" xPath=".//*[normalize-space(@class)='oo-selection-container'][1]//span[normalize-space(@class)='oo-selection-container-selection-text']" />
     <element key="CC_WINDOW_COLOR_SELECTOR" findBy="xPath" xPath=".//*[@class='oo-selection-container'][2]//div[@class='oo-color-selector']/div/a" />
     <element key="CC_WINDOW_COLOR" findBy="xPath" xPath=".//*[@class='oo-selection-container'][2]//span[@class='oo-selection-container-selection-text']" />
     <element key="CC_PREVIEW_WIN_COLOR" findBy="class" class="oo-text-track-window" />
@@ -38,4 +38,6 @@
     <element key="CC_FONT_SIZE_SELECTED" findBy="xPath" xPath=".//*[@class='oo-selection-container-title'][1]//span[@class='oo-selection-container-selection-text']" />
     <element key="CC_TEXT_ENHANCEMENT_SELECTOR" findBy="class" class="oo-text-enhancement-letter" />
     <element key="CC_TEXT_ENHANCEMENT" findBy="xPath" xPath=".//*[normalize-space(text())='Text Enhancements']"/>
+    <element key="TOGGLING_ARROW" findBy="xPath"
+             xPath=".//a[normalize-space(@class)='oo-right-button oo-hidden']//span[normalize-space(@class)='oo-icon oo-icon-system-right-arrow']"/>
 </elements>
