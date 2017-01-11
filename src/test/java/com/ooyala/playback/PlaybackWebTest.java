@@ -213,8 +213,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	@BeforeClass(alwaysRun = true)
-	@Parameters({ "testData", "jsFile" })
-	public void setUp(@Optional String xmlFile, String jsFile) throws Exception {
+	@Parameters({ "testData", "xmlFilePkg", "jsFile" , })
+	public void setUp(@Optional String xmlFile,@Optional String xmlFilePkg, String jsFile) throws Exception {
 		logger.info("************Inside setup*************");
 
 		browser = System.getProperty("browser");
@@ -224,7 +224,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 		init();
 		
-		parseXmlFileData(xmlFile);
+		parseXmlFileData(xmlFile,xmlFilePkg);
 		getJSFile(jsFile);
 
 	}
@@ -309,16 +309,22 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 	}
 
-	public void parseXmlFileData(String xmlFile) {
+	public void parseXmlFileData(String xmlFile, String xmlFilePkg) {
 
 		try {
 
+			
 			if (xmlFile == null || xmlFile.isEmpty()) {
 				xmlFile = getClass().getSimpleName();
 				String packagename = getClass().getPackage().getName();
-				if (packagename.contains("amf")) { // TODO
-					xmlFile = "amf/" + xmlFile + ".xml";
+				
+				if (packagename.contains(xmlFilePkg)) { // TODO
+					xmlFile = xmlFilePkg+"/" + xmlFile + ".xml";
 				}
+				else
+					xmlFile = xmlFile + ".xml";
+		
+				logger.info("XML test data file:" + xmlFile);
 			}
 
 			File file = new File("src/test/resources/testdata/" + xmlFile);
