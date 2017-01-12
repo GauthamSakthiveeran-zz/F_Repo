@@ -1,10 +1,10 @@
 
-<suite name="Playback Web Regression Suite" parallel="classes" thread-count="2">
+<suite name="Playback Web Regression Suite" >
 	<listeners>
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
 
-	<test name="AMF Regression Group">
+	<test name="AMF Regression Group" parallel="classes" thread-count="5">
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		
@@ -20,10 +20,19 @@
 		</packages>
 		
 		<!-- <classes>
+			<class name="com.ooyala.playback.amf.PlaybackIMAPreVastMidAdsTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"></class>
+		</classes> -->
+		
+	</test>
+	
+	<test name="AMF Regression Group non parallel" parallel="false">
+		
+		<parameter name="jsFile" value="common.js,amf/amf.js" />
+	
+		<classes>
 			<class name="com.ooyala.playback.amf.PlaybackClickthroughTests"></class>
-			<class name="com.ooyala.playback.amf.preroll.PlaybackCCenabledPreRollAdsTests"></class>
 		</classes>
-		 -->
 	</test>
 
 </suite>
