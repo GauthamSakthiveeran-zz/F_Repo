@@ -7,6 +7,7 @@
 	<test name="AMF Regression Group" parallel="classes" thread-count="5">
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
+		<parameter name="xmlFilePkg" value="amf" />
 		
 		<packages>
 			<package name="com.ooyala.playback.amf" />
