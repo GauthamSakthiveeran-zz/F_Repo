@@ -1,5 +1,5 @@
 
-<suite name="Playback Web Regression Suite" >
+<suite name="Playback Web Regression Suite">
 	<listeners>
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
@@ -8,7 +8,13 @@
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
-		
+
+		<groups>
+			<run>
+				<exclude name="sequential" />
+			</run>
+		</groups>
+
 		<packages>
 			<package name="com.ooyala.playback.amf" />
 			<!-- <package name="com.ooyala.playback.amf.midroll" />
@@ -16,22 +22,17 @@
 			<package name="com.ooyala.playback.amf.preroll" />
 			<package name="com.ooyala.playback.amf.preroll.freewheel" />
 			<package name="com.ooyala.playback.amf.midroll.vast" />
-			<package name="com.ooyala.playback.amf.ima" /> 
+			<package name="com.ooyala.playback.amf.ima" />
 			<package name="com.ooyala.playback.amf.vast" /> -->
 		</packages>
-		
-		<!-- <classes>
-			<class name="com.ooyala.playback.amf.PlaybackIMAPreVastMidAdsTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"></class>
-		</classes> -->
-		
+
 	</test>
-	
+
 	<test name="AMF Regression Group non parallel" parallel="false">
-		
+
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
-	
+
 		<classes>
 			<class name="com.ooyala.playback.amf.PlaybackClickthroughTests"></class>
 		</classes>
