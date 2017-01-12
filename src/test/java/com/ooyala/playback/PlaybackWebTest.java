@@ -193,20 +193,25 @@ public abstract class PlaybackWebTest extends FacileTest {
 	
 	@AfterSuite(alwaysRun = true)
 	public void afterSuiteInPlaybackWeb() throws OoyalaException {
-		int total = testPassed.size()+testFailed.size()+testSkipped.size();
-		for (int i=0;i<testPassed.size();i++){
-			if (passedTestList == null)
-				passedTestList = " ";
-			passedTestList = passedTestList+"\n"+testPassed.get(i)+" ";
-		}
-		for (int i=0;i<testFailed.size();i++){
-			if (failedTestList == null)
-				failedTestList = " ";
-			if (!failedTestList.contains(testFailed.get(i))) {
-				failedTestList = failedTestList + "\n" + testFailed.get(i) + " ";
+		
+		String mode = System.getProperty("mode");
+		if (mode != null && mode.equalsIgnoreCase("remote")) {
+			int total = testPassed.size()+testFailed.size()+testSkipped.size();
+			for (int i=0;i<testPassed.size();i++){
+				if (passedTestList == null)
+					passedTestList = " ";
+				passedTestList = passedTestList+"\n"+testPassed.get(i)+" ";
 			}
+			for (int i=0;i<testFailed.size();i++){
+				if (failedTestList == null)
+					failedTestList = " ";
+				if (!failedTestList.contains(testFailed.get(i))) {
+					failedTestList = failedTestList + "\n" + testFailed.get(i) + " ";
+				}
+			}
+			setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList);
 		}
-		setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList);
+		
 		SimpleHttpServer.stopServer();
 		// ExtentManager.endTests();
 		// ExtentManager.flush();
