@@ -340,7 +340,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 				xmlFile = getClass().getSimpleName();
 				String packagename = getClass().getPackage().getName();
 				
-				if (packagename.contains(xmlFilePkg)) { // TODO
+				if (packagename.contains(xmlFilePkg)) { 
 					xmlFile = xmlFilePkg+"/" + xmlFile + ".xml";
 				}
 				else
