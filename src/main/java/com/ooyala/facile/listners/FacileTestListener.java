@@ -352,24 +352,20 @@ public class FacileTestListener extends TestListenerAdapter implements
 
 	@Override
 	public void onFinish(ITestContext context) {
-		Iterator<ITestResult> failedTestCases = context.getFailedTests()
-				.getAllResults().iterator();
+		Iterator<ITestResult> failedTestCases = context.getFailedTests().getAllResults().iterator();
 		while (failedTestCases.hasNext()) {
 			logger.info("failedTestCases");
 			ITestResult failedTestCase = failedTestCases.next();
 			ITestNGMethod method = failedTestCase.getMethod();
 			if (context.getFailedTests().getResults(method).size() > 1) {
-				logger.info("failed test case remove as dup:"
-						+ failedTestCase.getTestClass().toString());
+				logger.info("failed test case remove as dup:" + failedTestCase.getTestClass().toString());
 				failedTestCases.remove();
-			} else {
-
-				if (context.getPassedTests().getResults(method).size() > 0) {
-					logger.info("failed test case remove as pass retry:"
-							+ failedTestCase.getTestClass().toString());
-					failedTestCases.remove();
-				}
 			}
+			if (context.getPassedTests().getResults(method).size() > 0) {
+				logger.info("failed test case remove as pass retry:" + failedTestCase.getTestClass().toString());
+				failedTestCases.remove();
+			}
+
 		}
 	}
 
