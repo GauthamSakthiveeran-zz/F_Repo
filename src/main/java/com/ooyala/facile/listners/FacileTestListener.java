@@ -350,7 +350,7 @@ public class FacileTestListener extends TestListenerAdapter implements
 		}
 	}
 
-	@Override
+	/*@Override
 	public void onFinish(ITestContext context) {
 		Iterator<ITestResult> failedTestCases = context.getFailedTests().getAllResults().iterator();
 		while (failedTestCases.hasNext()) {
@@ -367,6 +367,6 @@ public class FacileTestListener extends TestListenerAdapter implements
 			}
 
 		}
-	}
+	}*/
 
 }
