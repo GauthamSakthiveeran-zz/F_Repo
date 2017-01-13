@@ -36,6 +36,7 @@ public class TestPageData {
 	private String skinConfigForDiscovery;
 	private String otherPlugin;
 	private String discoveryApiPlugin;
+	private String playlistPlugin;
 	private PropertyReader properties;
 
 	/**
@@ -72,6 +73,7 @@ public class TestPageData {
 					.getProperty("skinConfigForDiscovery");
 			discoveryApiPlugin = properties.getProperty("discovery_api_plugin");
 			otherPlugin = properties.getProperty("other_plugin");
+			playlistPlugin = properties.getProperty("playlist_plugin");
 
 		} catch (Exception e) {
 			logger.error("Error while reading data from properties file :"
@@ -367,6 +369,8 @@ public class TestPageData {
 		switch (additionalPluginType) {
 		case "DISCOVERY":
 			return envURL + otherPlugin + discoveryApiPlugin;
+			case "PLAYLIST" :
+				return envURL + otherPlugin + playlistPlugin;
 		}
 
 		return "";

@@ -12,6 +12,7 @@
                 <include name="drm" />
                 <include name="FCC" />
                 <include name="api" />
+                <include name="playlist" />
             </define>
             <run>
                 <include name="regression" />
@@ -45,7 +46,7 @@
             <class name="com.ooyala.playback.streams.PlaybackLiveTests" />
             <class name="com.ooyala.playback.FCC.PlaybackFCCBasicTests" />
             <class name="com.ooyala.playback.FCC.PlaybackFCCDefaultSettingTests" />
-
+            <class name="com.ooyala.playback.playlist.PlaybackDefaultParameterTests" />
         </classes>
     </test>
 </suite>

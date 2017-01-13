@@ -680,17 +680,6 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
-            <description name="Elemental Widewine+Playready dash + OPT + entitlement" />
-            <embed_code name="1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213193&account_id=dulari_qa&&&signature=3ZIfOPsKS0AIvSSgUlNYUQq5blWfIT40vLlYl8nJqp8"}]]></playerParameter>
-        </url>
-        <url>
             <description name="Elemental Widewine+Playready dash + Geo Restriction" />
             <embed_code name="tua2hqNTE61OtT9uCWV6IKb3s4dDd7DT" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -827,19 +816,6 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
     </test>
-    <test name="PlaybackOptEntitlementTests">
-        <url>
-            <description name="OPT_Entitlement" />
-            <embed_code name="x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2889048225&account_id=dulari_qa&&&signature=0AsQMaoDq58w9q/L6P7cJzOI85gocxWPyw69dlLoQm0"}]]></playerParameter>
-        </url>
-    </test>
-
     <test name="PlaybackPlayerDestroyTests">
         <url>
             <description name="Player_Destroy_Akamai_HD" />
@@ -1021,7 +997,6 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
     </test>
-
     <test name="OoyalaAPITests">
         <url>
             <description name="Api Test" />
@@ -1034,6 +1009,30 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"autoplay":true,"initialTime":10}]]></playerParameter>
         </url>
     </test>
-
-
+    <test name="PlaybackOptEntitlementTests">
+    <url>
+        <description name="Elemental Widewine+Playready dash + OPT + entitlement" />
+        <embed_code name="1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa" />
+        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+        <plugins name="BITMOVIN" />
+        <adPlugins name="" />
+        <additionalPlugins name="" />
+        <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+        <browsersSupported name="firefox,chrome,internet explorer" />
+        <browserSupportedVersion name="firefox,48"/>
+        <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213193&account_id=dulari_qa&&&signature=3ZIfOPsKS0AIvSSgUlNYUQq5blWfIT40vLlYl8nJqp8"}]]></playerParameter>
+    </url>
+    </test>
+    <test name="PlaybackDefaultParameterTests">
+        <url>
+            <description name="Default themebuilder parameters " />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"]}}]]></playerParameter>
+        </url>
+    </test>
 </testdata>

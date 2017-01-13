@@ -4,7 +4,7 @@
     <element key="CREATE_ENTITLEMENT_BTN"
              findBy="id" id="showEntitlementModalBtn" />
     <element key="ENTITLEMENT" findBy="xPath"
-             xPath="//button[@contentid='x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln']" />
+             xPath="//button[@contentid='1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa']" />
     <element key="CREATE_ENTITLEMENT_ID"
              findBy="id" id="createEntitlementContentId" />
     <element key="EXTERNAL_PRODUCT_ID"
@@ -14,9 +14,15 @@
     <element key="CREATE_BTN" findBy="id"
              id="createEntitlementBtn" />
     <element key="DELETE_BTN" findBy="xPath"
-             xPath="//button[@contentid='x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln']" />
+             xPath="//button[@contentid='1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa']" />
     <element key="DISPLAY_BTN" findBy="xPath"
-             xPath=".//button[@contentid='x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln']/../../../div[7]//a[contains(text(),'Display')]" />
-    <element key="PLAYREADY" findBy="xPath"
-             xPath=".//button[@contentid='x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln']']/../../../div[7]//div[contains(text(),'playready')]" />
+             xPath=".//button[@contentid='1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa']/../../../div[7]//a[contains(text(),'Display')]" />
+    <element key="ACCOUNT_DEVICES_LIST" findBy="xPath"
+             xPath="//div[@id='accountDevicesList']//div[normalize-space(@class)='row list-group-item container']" />
+    <element key="DELETE_REGISTERED_DEVICE" findBy="xPath"
+             xPath="//div[@id='accountDevicesList']/div[1]//button[text()='Delete']" />
+    <element key="NO_DEVICES_REGISTERED" findBy="xPath"
+             xPath=".//*[normalize-space(text())='No Devices registered']" />
+    <element key="DRM_POLICY" findBy="xPath"
+             xPath=".//button[@contentid='1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa']/../../../div[7]//a[contains(text(),'Display')]/../div" />
 </elements>
