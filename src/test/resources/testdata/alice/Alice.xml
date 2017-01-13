@@ -1025,14 +1025,24 @@
     </test>
     <test name="PlaybackDefaultParameterTests">
         <url>
-            <description name="Default themebuilder parameters " />
+            <description name="Orientation: vertical" />
             <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
             <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
             <plugins name="MAIN" />
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"]}}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical"}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Orientation: horizontal" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal"}}]]></playerParameter>
         </url>
     </test>
 </testdata>
