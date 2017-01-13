@@ -209,6 +209,10 @@ public abstract class PlaybackWebTest extends FacileTest {
 					failedTestList = failedTestList + "\n" + testFailed.get(i) + " ";
 				}
 			}
+			if (passedTestList == null)
+				passedTestList = " ";
+			if (failedTestList == null)
+				failedTestList = " ";
 			setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList);
 		}
 		
