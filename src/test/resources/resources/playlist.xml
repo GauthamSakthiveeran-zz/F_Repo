@@ -1,4 +1,8 @@
 <elements area="playlist">
     <element key="PLAYLIST_PLAYER" findBy="id" id="PlaylistsPlayerWrapper-ooplayer" />
     <element key="PLAYLIST_NAME" findBy="xPath" xPath=".//*[@class='oo-menu-item oo-menu-active']/a" />
+    <element key="NEXT_ARROW" findBy="class" class="oo-next" />
+    <element key="PREVIOUS_ARROW" findBy="class" class="oo-previous" />
+    <element key="VIDEO_LIST" findBy="class" class="oo-thumbnail-image" />
+    <element key="VIDEO" findBy="id" id="c3YXNyYzpYMxKDOxZT52X67lziRgEvNg" />
 </elements>
