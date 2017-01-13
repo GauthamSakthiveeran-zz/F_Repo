@@ -301,10 +301,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.info("**** Test" + extentTest.getTest().getName()
 					+ " passed ******");
 		} else {
-			extentTest.log(LogStatus.UNKNOWN, extentTest.getTest().getName()
-					+ " Test result is unknown");
-			logger.error("**** Test" + extentTest.getTest().getName()
-					+ " passed ******");
+			extentTest.log(LogStatus.FAIL, result.getThrowable());
+			logger.error("**** Test " + extentTest.getTest().getName()
+					+ " failed ******");
 		}
 		ExtentManager.endTest(extentTest);
 		ExtentManager.flush();

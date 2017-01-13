@@ -16,9 +16,9 @@
 		</groups>
 
 		<packages>
-			<package name="com.ooyala.playback.amf" />
-			<!-- <package name="com.ooyala.playback.amf.midroll" />
-			<package name="com.ooyala.playback.amf.postroll" />
+			<!-- <package name="com.ooyala.playback.amf" /> -->
+			<package name="com.ooyala.playback.amf.midroll" />
+			<!-- <package name="com.ooyala.playback.amf.postroll" />
 			<package name="com.ooyala.playback.amf.preroll" />
 			<package name="com.ooyala.playback.amf.preroll.freewheel" />
 			<package name="com.ooyala.playback.amf.midroll.vast" />
@@ -28,7 +28,7 @@
 
 	</test>
 
-	<test name="AMF Regression Group non parallel" parallel="false">
+	<!-- <test name="AMF Regression Group non parallel" parallel="false">
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
@@ -36,6 +36,6 @@
 		<classes>
 			<class name="com.ooyala.playback.amf.PlaybackClickthroughTests"></class>
 		</classes>
-	</test>
+	</test> -->
 
 </suite>
