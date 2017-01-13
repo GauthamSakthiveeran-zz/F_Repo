@@ -1,2 +1,4 @@
 <elements area="playlist">
+    <element key="PLAYLIST_PLAYER" findBy="id" id="PlaylistsPlayerWrapper-ooplayer" />
+    <element key="PLAYLIST_NAME" findBy="xPath" xPath=".//*[@class='oo-menu-item oo-menu-active']/a" />
 </elements>
