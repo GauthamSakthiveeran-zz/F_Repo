@@ -23,7 +23,7 @@ public class PlaybackCCenabledPreRollAdsTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private CCValidator ccValidator;
 
-	@Test(groups = {"amf","preroll","cc","sequential"}, dataProvider = "testUrls")
+	@Test(groups = {"amf","preroll","cc"}, dataProvider = "testUrls")
 	public void verifyCCenabledPreroll(String testName, String url)
 			throws Exception {
 		boolean result = true;

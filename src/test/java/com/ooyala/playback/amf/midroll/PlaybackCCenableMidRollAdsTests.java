@@ -23,7 +23,7 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private CCValidator ccValidator;
 
-	@Test(groups = {"amf","cc","midroll","sequential"}, dataProvider = "testUrls")
+	@Test(groups = {"amf","cc","midroll"}, dataProvider = "testUrls")
 	public void verifyCCenableMidRoll(String testName, String url)
 			throws Exception {
 		boolean result = true;
