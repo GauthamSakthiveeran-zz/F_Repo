@@ -30,4 +30,5 @@
     <entry key="page">resources/page.xml</entry>
     <entry key="multipleplayer">resources/multiplePlayer.xml</entry>
     <entry key="fcc">resources/fcc.xml</entry>
+    <entry key="playlist">resources/playlist.xml</entry>
 </properties>
