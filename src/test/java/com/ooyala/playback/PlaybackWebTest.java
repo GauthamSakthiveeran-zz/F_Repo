@@ -62,6 +62,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			new LinkedHashMap<String,String>();
 	protected static String passedTestList;
 	protected static String failedTestList;
+	protected String regressionFileName;
 
 	public PlaybackWebTest() throws OoyalaException {
 
@@ -382,7 +383,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.info(key + " " + value);
 		}
 
-		UpdateSheet.writetosheet(testSheetData);
+		if (regressionFileName!=null)
+			UpdateSheet.writetosheet(testSheetData);
 
 	}
 
@@ -392,42 +394,45 @@ public abstract class PlaybackWebTest extends FacileTest {
 		if (testSuitename == null){
 			testSuitename = "default";
 		}
-		String regressionFileName = System.getProperty("tests");
+		regressionFileName = System.getProperty("tests");
 		String jenkinsJobName = "";
-		switch (testSuitename){
-			case "playerFeatures" :
-				jenkinsJobName = "playbackweb-playerFeature";
-				break;
-			case "drm" :
-				jenkinsJobName = "playbackweb-drm";
-				break;
-			case "streams" :
-				jenkinsJobName = "playbackweb-streams";
-				break;
-			case "FCC" :
-				jenkinsJobName = "playbackweb-FCC";
-				break;
-			case "default":
-				if (regressionFileName.contains("VTC_Regression.xml")) {
-					jenkinsJobName = "playbackwebvtc";
+
+		if (regressionFileName!=null) {
+			switch (testSuitename) {
+				case "playerFeatures":
+					jenkinsJobName = "playbackweb-playerFeature";
 					break;
-				}
-				if (regressionFileName.contains("amf_testng.xml")){
-					switch (browser){
-						case "chrome" :
-							jenkinsJobName = "playbackweb-AMF-Chrome";
-							break;
-						case "firefox" :
-							jenkinsJobName = "playbackweb-AMF-FF";
-							break;
-						case "safari" :
-							jenkinsJobName = "playbackweb-AMF-Safari";
-							break;
-						case "internet explorer" :
-							jenkinsJobName = "playbackweb-AMF-IE";
-							break;
+				case "drm":
+					jenkinsJobName = "playbackweb-drm";
+					break;
+				case "streams":
+					jenkinsJobName = "playbackweb-streams";
+					break;
+				case "FCC":
+					jenkinsJobName = "playbackweb-FCC";
+					break;
+				case "default":
+					if (regressionFileName.contains("VTC_Regression.xml")) {
+						jenkinsJobName = "playbackwebvtc";
+						break;
 					}
-				}
+					if (regressionFileName.contains("amf_testng.xml")) {
+						switch (browser) {
+							case "chrome":
+								jenkinsJobName = "playbackweb-AMF-Chrome";
+								break;
+							case "firefox":
+								jenkinsJobName = "playbackweb-AMF-FF";
+								break;
+							case "safari":
+								jenkinsJobName = "playbackweb-AMF-Safari";
+								break;
+							case "internet explorer":
+								jenkinsJobName = "playbackweb-AMF-IE";
+								break;
+						}
+					}
+			}
 		}
 		return ParseJenkinsJobLink.getJenkinsBuild(jenkinsJobName);
 	}
