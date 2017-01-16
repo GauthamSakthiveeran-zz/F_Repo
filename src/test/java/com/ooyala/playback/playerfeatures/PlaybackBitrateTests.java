@@ -1,20 +1,15 @@
 package com.ooyala.playback.playerfeatures;
 
-import static java.lang.Thread.sleep;
-
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.Bitratevalidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.qe.common.exception.OoyalaException;
+import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/17/16.
@@ -28,6 +23,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 	private EventValidator eventValidator;
 	private Bitratevalidator bitratevalidator;
 	private PlayAction playAction;
+	private FCCValidator fcc;
 
 	public PlaybackBitrateTests() throws OoyalaException {
 		super();
@@ -41,10 +37,11 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 		try {
 			driver.get(url);
 
+			result = result && fcc.clearCache();
+
 			result = result && play.waitForPage();
 
 			injectScript();
-
 
 			result = result && playAction.startAction();
 
@@ -78,7 +75,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 				result = false;
 
 		}
-		Assert.assertTrue(result, "Playback bitrate/Quality tests failed");
+		Assert.assertTrue(result, "Playback bitrate/Quality tests failed"+testName);
 
 	}
 
