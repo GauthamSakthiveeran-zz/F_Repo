@@ -62,6 +62,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			new LinkedHashMap<String,String>();
 	protected static String passedTestList;
 	protected static String failedTestList;
+	protected String regressionFileName;
 
 	public PlaybackWebTest() throws OoyalaException {
 
@@ -227,8 +228,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	@BeforeClass(alwaysRun = true)
-	@Parameters({ "testData", "jsFile" })
-	public void setUp(@Optional String xmlFile, String jsFile) throws Exception {
+	@Parameters({ "testData", "xmlFilePkg", "jsFile" , })
+	public void setUp(@Optional String xmlFile,@Optional String xmlFilePkg, String jsFile) throws Exception {
 		logger.info("************Inside setup*************");
 
 		browser = System.getProperty("browser");
@@ -238,7 +239,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 		init();
 		
-		parseXmlFileData(xmlFile);
+		parseXmlFileData(xmlFile,xmlFilePkg);
 		getJSFile(jsFile);
 
 	}
@@ -330,16 +331,22 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 	}
 
-	public void parseXmlFileData(String xmlFile) {
+	public void parseXmlFileData(String xmlFile, String xmlFilePkg) {
 
 		try {
 
+			
 			if (xmlFile == null || xmlFile.isEmpty()) {
 				xmlFile = getClass().getSimpleName();
 				String packagename = getClass().getPackage().getName();
-				if (packagename.contains("amf")) { // TODO
-					xmlFile = "amf/" + xmlFile + ".xml";
+				
+				if (packagename.contains(xmlFilePkg)) { // TODO
+					xmlFile = xmlFilePkg+"/" + xmlFile + ".xml";
 				}
+				else
+					xmlFile = xmlFile + ".xml";
+		
+				logger.info("XML test data file:" + xmlFile);
 			}
 
 			File file = new File("src/test/resources/testdata/" + xmlFile);
@@ -382,7 +389,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.info(key + " " + value);
 		}
 
-		UpdateSheet.writetosheet(testSheetData);
+		if (regressionFileName!=null)
+			UpdateSheet.writetosheet(testSheetData);
 
 	}
 
@@ -392,26 +400,45 @@ public abstract class PlaybackWebTest extends FacileTest {
 		if (testSuitename == null){
 			testSuitename = "default";
 		}
-		String regressionFileName = System.getProperty("tests");
+		regressionFileName = System.getProperty("tests");
 		String jenkinsJobName = "";
-		switch (testSuitename){
-			case "playerFeatures" :
-				jenkinsJobName = "playbackweb-playerFeature";
-				break;
-			case "drm" :
-				jenkinsJobName = "playbackweb-drm";
-				break;
-			case "streams" :
-				jenkinsJobName = "playbackweb-streams";
-				break;
-			case "FCC" :
-				jenkinsJobName = "playbackweb-FCC";
-				break;
-			case "default":
-				if (regressionFileName.contains("VTC_Regression.xml")) {
-					jenkinsJobName = "playbackwebvtc";
+
+		if (regressionFileName!=null) {
+			switch (testSuitename) {
+				case "playerFeatures":
+					jenkinsJobName = "playbackweb-playerFeature";
 					break;
-				}
+				case "drm":
+					jenkinsJobName = "playbackweb-drm";
+					break;
+				case "streams":
+					jenkinsJobName = "playbackweb-streams";
+					break;
+				case "FCC":
+					jenkinsJobName = "playbackweb-FCC";
+					break;
+				case "default":
+					if (regressionFileName.contains("VTC_Regression.xml")) {
+						jenkinsJobName = "playbackwebvtc";
+						break;
+					}
+					if (regressionFileName.contains("amf_testng.xml")) {
+						switch (browser) {
+							case "chrome":
+								jenkinsJobName = "playbackweb-AMF-Chrome";
+								break;
+							case "firefox":
+								jenkinsJobName = "playbackweb-AMF-FF";
+								break;
+							case "safari":
+								jenkinsJobName = "playbackweb-AMF-Safari";
+								break;
+							case "internet explorer":
+								jenkinsJobName = "playbackweb-AMF-IE";
+								break;
+						}
+					}
+			}
 		}
 		return ParseJenkinsJobLink.getJenkinsBuild(jenkinsJobName);
 	}

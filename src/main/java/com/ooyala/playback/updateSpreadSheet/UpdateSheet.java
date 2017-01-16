@@ -131,6 +131,11 @@ public class UpdateSheet {
                 range = "vtc!A2:E";
             }
 
+            if (map.get("SuiteName").equals("amf_testng.xml")){
+                sheetId = 264291465;
+                range = "amf!A2:E";
+            }
+
                 ValueRange response = service.spreadsheets().values()
                         .get(spreadsheetId, range)
                         .execute();
