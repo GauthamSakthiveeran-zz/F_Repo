@@ -49,7 +49,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
 			result = result && seekAction.setTime(30).fromLast().startAction();
 
-			result = result && event.validate("PostRoll_willPlayAds", 150000);
+			result = result && event.validate("PostRoll_willPlayAds", 200000);
 
 			if (event.isAdPluginPresent("pulse")) {
 				result = result && event.validate("singleAdPlayed_6", 60000);
@@ -64,7 +64,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Verified Pre Mid Post Roll Ads failed.");
+		Assert.assertTrue(result, "Pre Mid Post Roll Ads failed.");
 
 	}
 

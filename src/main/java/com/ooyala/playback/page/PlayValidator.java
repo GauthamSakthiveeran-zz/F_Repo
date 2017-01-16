@@ -4,10 +4,9 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import com.relevantcodes.extentreports.LogStatus;
-
-import junit.framework.Assert;
 
 public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
@@ -28,7 +27,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 			extentTest.log(LogStatus.FAIL, text);
 		}
 		
-		Assert.assertTrue("Play button is not found", false);
+		Assert.assertTrue(false,"Play button is not found");
 	}
 
 	@Override
