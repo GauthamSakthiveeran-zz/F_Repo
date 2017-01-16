@@ -28,32 +28,31 @@ public class PlaybackDefaultParameterTests  extends PlaybackWebTest {
 
     @Test(groups = "playlist", dataProvider = "testUrls")
     public void testDefaultParameterPlaylistTests(String testName, String url) throws OoyalaException {
-
+        String[] parts= testName.split(":");
+        String tcName = parts[1].trim();
+        String tcValue = parts[2].trim();
         boolean result = true;
         try {
 
             driver.get(url);
-
-            logger.info("Test Name is "+testName);   //PlaybackDefaultParameterTests : Orientation: vertical
-
-            String[] parts= testName.split(":");
-            String tcName = parts[1].trim();
-            String tcValue = parts[2].trim();
+            if (!tcValue.equalsIgnoreCase("true")){
+                result = result && play.waitForPage();
+            }
 
             injectScript();
 
-            result = result && play.waitForPage();
-
-            result=result && play.validate("playing_1",30000);
+            //result=result && play.validate("playing_1",30000);
 
             result=result && playlist.playlistValidator(tcName, tcValue);
 
-            result = result && seek.validate("seeked_1",40000);
+            //result = result && playlist.validate("dgrdf",20000);
 
-            result = result && eventValidator.validate("played_1", 60000);
+           /* result = result && seek.validate("seeked_1",40000);
+
+            result = result && eventValidator.validate("played_1", 60000);*/
 
         } catch (Exception e) {
-            logger.error(e);
+            e.getMessage();
             result = false;
         }
         Assert.assertTrue(result, "Playback Default Parameter Playlist tests failed"+testName);

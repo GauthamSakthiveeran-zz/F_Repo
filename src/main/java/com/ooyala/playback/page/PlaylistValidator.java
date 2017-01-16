@@ -1,6 +1,11 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -20,7 +25,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     @Override
-    public boolean validate(String element, int timeout){
+    public boolean validate(String element, int timeout) {
         try {
             getWebElement("NEXT_ARROW").click();
             Thread.sleep(2000);
@@ -28,11 +33,11 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         /*    getWebElement("PREVIOUS_ARROW").click();
             getWebElementsList("VIDEO_LIST").get(11).click();*/
             return true;
-        }catch (NoSuchElementException noSuchElement){
-            logger.error("Element is not found"+noSuchElement.getMessage());
+        } catch (NoSuchElementException noSuchElement) {
+            logger.error("Element is not found" + noSuchElement.getMessage());
             return false;
-        }catch (Exception e){
-            logger.error("Error while validating playlist "+e.getMessage());
+        } catch (Exception e) {
+            logger.error("Error while validating playlist " + e.getMessage());
             return false;
         }
     }
@@ -41,16 +46,18 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 
         switch (tcName){
             case "Orientation":
-                return getOrientation(value);
+                return scrollToEitherSide()&&getOrientation(value);
             case "Position":
-                return getPosition(value);
+                return scrollToEitherSide()&&getPosition(value);
+            case "Autoplay":
+                return isAutoplay(value);
             case "Podtype":
                 return getPodType(value);
             case "useFirstVideoFromPlaylist":
                 return getFirstVideoFromPlaylist(value);
             case "CaptionPosition":
                 return getCaptionPosition(value);
-            case "ThumbnailSize":
+            case "Thumbnailsize":
                 return getThumbnailSize(value);
             case "ThumbnailSpace":
                 return getThumbnailSpacing(value);
@@ -58,25 +65,99 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         return false;
     }
 
-    public boolean getOrientation(String orientationValue) throws InterruptedException {
+
+     /*
+     pass int playNumberOfAsset
+     this number of Asset's playback will be checked randomly.
+    */
+
+    public boolean selectAssetFromPlaylist(){
+        int totalPlaylistVideo = getWebElementsList("PLAYLIST_VIDEOS").size();
+        System.out.println("size : "+totalPlaylistVideo);
+        boolean result = true;
+        for (int i=0;i<=totalPlaylistVideo;i++) {
+            try {
+                String s = ((JavascriptExecutor) driver).executeScript("return document.getElementsByClassName('oo-thumbnail')["+i+"].getAttribute('id');").toString();
+                if(!driver.findElement(By.id(s)).isDisplayed()){
+                    getWebElement("SCROLL_DOWN").click();
+                }
+                if (driver.findElement(By.id(s)).isDisplayed()) {
+                    driver.findElement(By.id(s)).click();
+                    Thread.sleep(3000);
+                    result = result && checkPlayback();
+                    i = i + 2;
+                }
+            } catch (Exception e){
+                e.getMessage();
+            }
+
+        }
+        return result;
+    }
+
+    public boolean checkPlayback(){
+
+        try {
+            if (!PlayBackFactory.getInstance(driver).getPlayValidator().waitForPage()){return false;}
+            loadingSpinner();
+            if(!PlayBackFactory.getInstance(driver).getPlayValidator().validate("playing_1",20000)){return false;}
+            loadingSpinner();
+            if (!PlayBackFactory.getInstance(driver).getPauseValidator().validate("paused_1",20000)){return false;}
+            loadingSpinner();
+            if (!PlayBackFactory.getInstance(driver).getPlayValidator().validate("playing_2",20000)){return false;}
+            loadingSpinner();
+            if (!PlayBackFactory.getInstance(driver).getSeekValidator().validate("seeked_1",20000)){return false;}
+
+        } catch (Exception e){
+            return false;
+        }
+
+        return true;
+    }
+
+
+
+    public boolean getOrientation(String orientationValue){
         String orientation = getWebElement("PLAYLIST_PLAYER").getAttribute("data-playlist-orientation");
         logger.info("Playlist Orientation is - "+orientation);
-        boolean flag = orientation.contains(orientationValue);
-        return flag;
+        if (!orientation.contains(orientationValue)){return false;}
+        return selectAssetFromPlaylist();
     }
 
     public boolean getPosition(String positionValue){
         String position = getWebElement("PLAYLIST_PLAYER").getAttribute("data-playlist-layout");
         logger.info("Playlist Position is - "+position);
-        boolean flag = position.contains(positionValue);
-        return flag;
+        if (!position.contains(positionValue)){return false;}
+        return selectAssetFromPlaylist();
     }
 
     public boolean getPodType(String podValue){
         String podType = getWebElement("PLAYLIST_PLAYER").getAttribute("data-playlist-pod-type");
         logger.info("Playlist Pod Type is - "+podType);
-        boolean flag = podType.contains(podValue);
-        return flag;
+        if (!podValue.contains(podType)){
+            logger.info("pod is not getting");
+            return false;
+        }
+
+        if (podValue.equalsIgnoreCase("paging")){
+            int totalPagingElement = getWebElementsList("PAGGING_ELEMENT").size();
+            boolean result = true;
+            for (int i=0 ; i<totalPagingElement ; i++){
+                if ((Boolean) driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')["+i+"].isActive()")){
+                    if ((Boolean) driver.executeScript("return $(document.getElementsByClassName('oo-next')).is(\":visible\");")){
+                        int assetsUnderPagingElement =Integer.parseInt(driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')["+i+"].getElementsByClassName('oo-thumbnail').length").toString());
+                        for (int j=0 ;j<assetsUnderPagingElement ; j++){
+                            String assetUnderPagingEmbedCode = driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')["+i+"].getElementsByClassName('oo-thumbnail')["+j+"].getAttribute('id')").toString();
+                            driver.findElement(By.id(assetUnderPagingEmbedCode)).click();
+                            j = j + 2;
+                            result = result && checkPlayback();
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+        return true;
     }
 
     public boolean getFirstVideoFromPlaylist(String value){
@@ -94,8 +175,10 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     public boolean getThumbnailSize(String thumbnailSizeValue){
         String thumbnailSize = getWebElement("PLAYLIST_PLAYER").getAttribute("data-playlists-thumbnails-size");
         logger.info("Playlist Caption Position is - "+thumbnailSize);
-        boolean flag = thumbnailSize.equals(thumbnailSizeValue);
-        return flag;
+        if (!thumbnailSize.equals(thumbnailSizeValue)){
+            return false;
+        }
+        return true;
     }
 
     public boolean getThumbnailSpacing(String thumbnailSpaceValue){
@@ -104,4 +187,55 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         boolean flag = thumbnailSpace.equals(thumbnailSpaceValue);
         return flag;
     }
+
+    public boolean isAutoplay(String isAutoPlay){
+        try {
+            if (isAutoPlay.equalsIgnoreCase("true")) {
+                if (!PlayBackFactory.getInstance(driver).getEventValidator().validate("playing_1", 20000)){
+                    logger.error("Auto play is not working");
+                    return false;
+                }
+            }
+
+            if (isAutoPlay.equalsIgnoreCase("false")){
+                loadingSpinner();
+                boolean isVideoPlaying = (Boolean)((JavascriptExecutor) driver).executeScript("return pp.isPlaying();");
+                if (isVideoPlaying){
+                    logger.info("Video is playing even if Auto play is set to false..");
+                    return false;
+                }
+            }
+        } catch (Exception e){
+
+        }
+        return true;
+    }
+
+    public boolean scrollToEitherSide(){
+        int totalPlaylistVideo = getWebElementsList("PLAYLIST_VIDEOS").size();
+        for (int i=0;i<totalPlaylistVideo;i++) {
+            try{
+                if (isElementPresent("SCROLL_DOWN")){
+                    getWebElement("SCROLL_DOWN").click();
+                }
+            }catch (Exception e){
+                logger.info("No more bext scroll button is present.");
+            }
+
+        }
+
+        for (int i=0;i<totalPlaylistVideo;i++) {
+            try{
+                if (isElementPresent("PREVIOUS_ARROW")){
+                    getWebElement("PREVIOUS_ARROW").click();
+                }
+            }catch (Exception e){
+                logger.info("NO more previous button present");
+            }
+
+        }
+
+        return true;
+    }
+
 }
