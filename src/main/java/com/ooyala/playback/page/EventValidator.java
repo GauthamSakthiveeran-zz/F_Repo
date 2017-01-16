@@ -14,7 +14,7 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class EventValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger logger = Logger.getLogger(DiscoveryValidator.class);
+	public static Logger logger = Logger.getLogger(EventValidator.class);
 
 	public EventValidator(WebDriver driver) {
 		super(driver);
