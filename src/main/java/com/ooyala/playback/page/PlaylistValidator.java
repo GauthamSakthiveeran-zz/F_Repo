@@ -53,14 +53,14 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
                 return isAutoplay(value);
             case "Podtype":
                 return getPodType(value);
-            case "useFirstVideoFromPlaylist":
-                return getFirstVideoFromPlaylist(value);
-            case "CaptionPosition":
-                return getCaptionPosition(value);
             case "Thumbnailsize":
                 return getThumbnailSize(value);
             case "ThumbnailSpace":
                 return getThumbnailSpacing(value);
+            case "useFirstVideoFromPlaylist":
+                return getFirstVideoFromPlaylist(value);
+            case "CaptionPosition":
+                return getCaptionPosition(value);
         }
         return false;
     }
@@ -138,19 +138,26 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
             logger.info("pod is not getting");
             return false;
         }
-
         if (podValue.equalsIgnoreCase("paging")){
+            if (!waitOnElement("PAGGING_ELEMENT",20000)){
+                logger.error("paging is not set !!!");
+                return false;
+            }
             int totalPagingElement = getWebElementsList("PAGGING_ELEMENT").size();
             boolean result = true;
             for (int i=0 ; i<totalPagingElement ; i++){
                 if ((Boolean) driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')["+i+"].isActive()")){
-                    if ((Boolean) driver.executeScript("return $(document.getElementsByClassName('oo-next')).is(\":visible\");")){
                         int assetsUnderPagingElement =Integer.parseInt(driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')["+i+"].getElementsByClassName('oo-thumbnail').length").toString());
                         for (int j=0 ;j<assetsUnderPagingElement ; j++){
                             String assetUnderPagingEmbedCode = driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')["+i+"].getElementsByClassName('oo-thumbnail')["+j+"].getAttribute('id')").toString();
                             driver.findElement(By.id(assetUnderPagingEmbedCode)).click();
-                            j = j + 2;
+                            j = j+2;
                             result = result && checkPlayback();
+                        }
+                    if ((Boolean) driver.executeScript("return $(document.getElementsByClassName('oo-next')).is(\":visible\");")){
+                        if (!clickOnIndependentElement("SCROLL_DOWN")){
+                            logger.error("Failed while clicking on next button in Playlist");
+                            return false;
                         }
                     }
                 }
