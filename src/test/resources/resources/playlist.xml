@@ -8,4 +8,7 @@
     <element key="PLAYLIST_VIDEOS" findBy="xPath" xPath=".//*[@class='oo-thumbnail']"/>
     <element key="SCROLL_DOWN" findBy="xPath" xPath=".//div[@class='oo-next']"/>
     <element key="PAGGING_ELEMENT" findBy="class" class="oo-thumbnail-paging-ooplayer"/>
+    <element key="SPCAING_PLAYLIST_ASSETS" findBy="class" class="slide-ooplayer"/>
+    <element key="PLAYLISTS" findBy="xPath" xPath=".//ul[@class='oo-menu-items oo-cf']/li"/>
+    <element key="PLAYLISTS_PLAYER" findBy="id" id="oo-playlists-ooplayer"/>
 </elements>
