@@ -35,7 +35,7 @@ public class DiscoveryValidator extends PlayBackPage implements
 		if (isElementPresent("PAUSE_BUTTON")) {
 			clickOnIndependentElement("PAUSE_BUTTON");
 		}
-		return waitOnElement("DISCOVERY_TOASTER", 200000);
+		return waitOnElement("DISCOVERY_TOASTER", 10000);
 		
 	}
 	

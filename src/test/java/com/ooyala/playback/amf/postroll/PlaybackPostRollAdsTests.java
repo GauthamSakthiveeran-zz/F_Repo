@@ -45,7 +45,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 			result = result && event.validate("videoPlayed_1", 90000);
 			result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
 			
-			// this is not working for IE11 BitmovinPostrol_VPAID2.0_HLS - need to check in actual browser
+			// this is not working for IE11 BitmovinPostrol_VPAID2.0_HLS - need to check in actual browser TODO
 			
 			if (!(getBrowser().contains("internet explorer") && event.isVideoPluginPresent("bit")
 					&& event.isAdPluginPresent("vast") && event.isStreamingProtocolPrioritized("hls")))
