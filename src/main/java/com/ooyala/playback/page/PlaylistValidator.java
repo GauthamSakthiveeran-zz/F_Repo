@@ -56,11 +56,13 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
             case "Thumbnailsize":
                 return getThumbnailSize(value);
             case "ThumbnailSpace":
-                return getThumbnailSpacing(value);
+                return scrollToEitherSide()&&getThumbnailSpacing(value);
             case "useFirstVideoFromPlaylist":
                 return getFirstVideoFromPlaylist(value);
             case "CaptionPosition":
                 return getCaptionPosition(value);
+            case "Menustyle":
+                return getMenuSytle(value);
         }
         return false;
     }
@@ -145,17 +147,17 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
             }
             int totalPagingElement = getWebElementsList("PAGGING_ELEMENT").size();
             boolean result = true;
-            for (int i=0 ; i<totalPagingElement ; i++){
-                if ((Boolean) driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')["+i+"].isActive()")){
-                        int assetsUnderPagingElement =Integer.parseInt(driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')["+i+"].getElementsByClassName('oo-thumbnail').length").toString());
-                        for (int j=0 ;j<assetsUnderPagingElement ; j++){
-                            String assetUnderPagingEmbedCode = driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')["+i+"].getElementsByClassName('oo-thumbnail')["+j+"].getAttribute('id')").toString();
-                            driver.findElement(By.id(assetUnderPagingEmbedCode)).click();
-                            j = j+2;
-                            result = result && checkPlayback();
-                        }
-                    if ((Boolean) driver.executeScript("return $(document.getElementsByClassName('oo-next')).is(\":visible\");")){
-                        if (!clickOnIndependentElement("SCROLL_DOWN")){
+            for (int i=0 ; i<totalPagingElement ; i++) {
+                if ((Boolean) driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i + "].isActive()")) {
+                    int assetsUnderPagingElement = Integer.parseInt(driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i + "].getElementsByClassName('oo-thumbnail').length").toString());
+                    for (int j = 0; j < assetsUnderPagingElement; j++) {
+                        String assetUnderPagingEmbedCode = driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i + "].getElementsByClassName('oo-thumbnail')[" + j + "].getAttribute('id')").toString();
+                        driver.findElement(By.id(assetUnderPagingEmbedCode)).click();
+                        j = j + 2;
+                            //result = result && checkPlayback();
+                    }
+                    if ((Boolean) driver.executeScript("return $(document.getElementsByClassName('oo-next')).is(\":visible\");")) {
+                        if (!clickOnIndependentElement("SCROLL_DOWN")) {
                             logger.error("Failed while clicking on next button in Playlist");
                             return false;
                         }
@@ -189,10 +191,35 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getThumbnailSpacing(String thumbnailSpaceValue){
-        String thumbnailSpace = getWebElement("PLAYLIST_PLAYER").getAttribute(""); /// Searching got thumbnail spacing element
-        logger.info("Playlist Caption Position is - "+thumbnailSpace);
-        boolean flag = thumbnailSpace.equals(thumbnailSpaceValue);
-        return flag;
+        int numberOfAsset = getWebElementsList("SPCAING_PLAYLIST_ASSETS").size();
+        int givenThumbnailSize = Integer.parseInt(thumbnailSpaceValue);
+        for (int i=0;i<numberOfAsset;i++){
+            String assetName = driver.executeScript("return document.getElementsByClassName('slide-ooplayer')["+i+"].innerText").toString();
+            logger.info("Asset Name is : "+assetName);
+            int thumbnailSizeWithAsset = Integer.parseInt(driver.executeScript("return document.getElementsByClassName('slide-ooplayer')["+i+"].offsetHeight").toString());
+            int assetSize = Integer.parseInt(driver.executeScript("return document.getElementsByClassName('slide-ooplayer')["+i+"].getElementsByClassName('oo-thumbnail')[0].offsetHeight;").toString());
+            int obtainedThumbnailSize = thumbnailSizeWithAsset-assetSize;
+            if (!(obtainedThumbnailSize == givenThumbnailSize)){return false;}
+        }
+        return true;
+    }
+
+    public boolean getMenuSytle(String value){
+        if (!waitOnElement("PLAYLISTS_PLAYER",10000)){return false;}
+        int totalPlaylists = getWebElementsList("PLAYLISTS").size();
+        for (int i=0; i<totalPlaylists; i++){
+            String playlistId = driver.executeScript("return document.getElementsByClassName('oo-menu-items oo-cf')[0].getElementsByTagName('li')["+i+"].id").toString();
+            String plalistName = driver.executeScript("return document.getElementsByClassName('oo-menu-items oo-cf')[0].getElementsByTagName('li')["+i+"].innerText").toString();
+            logger.info("playlistId :"+playlistId +"\n"+"playlistName : "+plalistName+ " \n");
+            if (!playlistId.contains(plalistName)){return false;}
+            // select each playlist
+            if (!clickOnIndependentElement(By.id(playlistId))){return false;}
+            if (!getPodType(driver.executeScript(
+                    "return document.getElementById('PlaylistsPlayerWrapper-ooplayer')." +
+                            "getAttribute('data-playlist-pod-type')" +
+                            "").toString())){return false;}
+        }
+        return true;
     }
 
     public boolean isAutoplay(String isAutoPlay){
