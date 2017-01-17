@@ -54,8 +54,6 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("playing_1", 60000);
 
-			sleep(4000);
-
 			result = result && pause.validate("paused_1", 60000);
 
 			result = result && bitratevalidator.validate("", 60000);

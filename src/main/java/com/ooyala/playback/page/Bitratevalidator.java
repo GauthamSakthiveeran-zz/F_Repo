@@ -80,7 +80,10 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 				((JavascriptExecutor) driver)
 							.executeScript("pp.seek(10)");
 
+				Thread.sleep(5000);
+
 				loadingSpinner();
+
 				((JavascriptExecutor) driver)
 						.executeScript(" return pp.play()");
 				flag = flag && waitOnElement(
