@@ -47,6 +47,12 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 			}
 			return false;*/
 			
+			if(!loadingSpinner()){
+				Assert.assertTrue(false,"In loading spinner for a very long time.");
+				extentTest.log(LogStatus.FAIL, "In loading spinner for a very long time.");
+				return false;
+			}
+			
 			if(!waitOnElement("PLAY_BUTTON", 90000)){
 				errorDescription();
 				return false;

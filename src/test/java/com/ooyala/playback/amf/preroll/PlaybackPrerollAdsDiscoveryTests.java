@@ -41,9 +41,7 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 			result = result && event.validate("singleAdPlayed_1", 150000);
 
 			result = result && event.validate("playing_1", 150000);
-			result = result
-					&& discoveryValidator.validate("reportDiscoveryClick_1",
-							60000);
+			result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

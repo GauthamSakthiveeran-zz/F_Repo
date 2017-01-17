@@ -23,7 +23,7 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private UpNextValidator upNextValidator;
 
-	@Test(groups = {"amf","postroll","discovery","upnext"}, dataProvider = "testUrls")
+	@Test(groups = {"amf","postroll","discovery","upnext","sequential"}, dataProvider = "testUrls")
 	public void verifyPostrollDiscovery(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
@@ -56,7 +56,9 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 
 			result = result && discoveryValidator.validateLeftRightButton();
 
-			result = result && discoveryValidator.clickOnDiscoveryCloseButton("DISCOVERY_CLOSE_BTN", 20000);
+			result = result && discoveryValidator.clickOnDiscoveryCloseButton();
+			
+			result = result && discoveryValidator.clickOnDiscoveryButton();
 
 		} catch (Exception e) {
 			e.printStackTrace();
