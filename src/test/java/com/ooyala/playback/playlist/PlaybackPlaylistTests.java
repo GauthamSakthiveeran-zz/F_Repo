@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 /**
  * Created by snehal on 13/01/17.
  */
-public class PlaybackDefaultParameterTests  extends PlaybackWebTest {
+public class PlaybackPlaylistTests extends PlaybackWebTest {
 
 
     private PlaylistValidator playlist;
@@ -20,14 +20,14 @@ public class PlaybackDefaultParameterTests  extends PlaybackWebTest {
     private EventValidator eventValidator;
 
     private static Logger logger = Logger
-            .getLogger(PlaybackDefaultParameterTests.class);
+            .getLogger(PlaybackPlaylistTests.class);
 
-    public PlaybackDefaultParameterTests() throws OoyalaException {
+    public PlaybackPlaylistTests() throws OoyalaException {
         super();
     }
 
     @Test(groups = "playlist", dataProvider = "testUrls")
-    public void testDefaultParameterPlaylistTests(String testName, String url) throws OoyalaException {
+    public void testPlaylistTests(String testName, String url) throws OoyalaException {
         String[] parts= testName.split(":");
         String tcName = parts[1].trim();
         String tcValue = parts[2].trim();
@@ -41,20 +41,12 @@ public class PlaybackDefaultParameterTests  extends PlaybackWebTest {
 
             injectScript();
 
-            //result=result && play.validate("playing_1",30000);
-
             result=result && playlist.playlistValidator(tcName, tcValue);
-
-            //result = result && playlist.validate("dgrdf",20000);
-
-           /* result = result && seek.validate("seeked_1",40000);
-
-            result = result && eventValidator.validate("played_1", 60000);*/
 
         } catch (Exception e) {
             e.getMessage();
             result = false;
         }
-        Assert.assertTrue(result, "Playback Default Parameter Playlist tests failed"+testName);
+        Assert.assertTrue(result, "Playback Playlist tests failed"+testName);
     }
 }
