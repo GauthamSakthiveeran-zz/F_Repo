@@ -1205,14 +1205,14 @@
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right","ThumbnailsSpacing":"100"},"autoplay":"false"}]]></playerParameter>
         </url>
         <url>
-            <description name="WrapperFontSize:20" />
+            <description name="WrapperFontSize:40" />
             <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
             <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
             <plugins name="MAIN" />
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal"},"autoplay":"false","CaptionPosition":"outside'","Menustyle":"tabs","WrapperFontSize":"40"}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","WrapperFontSize":"40"},"autoplay":"false","CaptionPosition":"outside'","Menustyle":"tabs"}]]></playerParameter>
         </url>
         <url>
             <description name="CaptionPosition: inside" />
@@ -1222,7 +1222,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal"},"autoplay":"false","CaptionPosition":"inside'","Menustyle":"tabs","WrapperFontSize":"40"}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"inside"},"autoplay":"false","Menustyle":"tabs","WrapperFontSize":"40"}]]></playerParameter>
         </url>
         <url>
             <description name="CaptionPosition: outside" />
@@ -1232,7 +1232,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal"},"autoplay":"false","CaptionPosition":"outside'","Menustyle":"tabs","WrapperFontSize":"40"}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"outside"},"autoplay":"false","Menustyle":"tabs","WrapperFontSize":"40"}]]></playerParameter>
         </url>
         <url>
             <description name="Multiple Playlists:tabs" />
