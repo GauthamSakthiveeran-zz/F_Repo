@@ -11,4 +11,7 @@
     <element key="SPCAING_PLAYLIST_ASSETS" findBy="class" class="slide-ooplayer"/>
     <element key="PLAYLISTS" findBy="xPath" xPath=".//ul[@class='oo-menu-items oo-cf']/li"/>
     <element key="PLAYLISTS_PLAYER" findBy="id" id="oo-playlists-ooplayer"/>
+    <element key="ASSET_TITLE" findBy="class" class="oo-caption-title" />
+    <element key="ASSET_DESCRIPTION" findBy="class" class="oo-caption-description" />
+    <element key="ASSET_DURATION" findBy="class" class="oo-caption-duration" />
 </elements>

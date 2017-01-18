@@ -5,8 +5,10 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -63,6 +65,8 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
                 return getMenuSytle(value);
             case "WrapperFontSize":
                 return getWrapperFontSize(value);
+            case "Caption":
+                return getCaption();
         }
         return false;
     }
@@ -279,4 +283,16 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         return flag;
     }
 
+    public boolean getCaption(){
+        List<WebElement> titleList = getWebElementsList("ASSET_TITLE");
+        List<WebElement> desciptionList = getWebElementsList("ASSET_DESCRIPTION");
+        List<WebElement> durationList = getWebElementsList("ASSET_DURATION");
+
+        for(int i=0; i<titleList.size(); i++){
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", titleList.get(i));
+            onmouseOver(desciptionList.get(i));
+            logger.info("Title,Description,Duration of asset "+(i+1)+" is : "+'\n'+titleList.get(i).getText()+'\n'+desciptionList.get(i).getText()+'\n'+durationList.get(i).getText());
+        }
+        return true;
+    }
 }

@@ -1244,5 +1244,15 @@
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c11522c3a2424709bc8b0829d0e4fbaa","87dc703bdd03450ba709dbfcaa752034"]},"autoPlay":true,"loop":false,"height":573,"width":800,"useFirstVideoFromPlaylist":true}]]></playerParameter>
         </url>
+        <url>
+            <description name="Caption:title,desc,duration" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Caption":["description","duration"],"ThumbnailsSpacing":"30"}}]]></playerParameter>
+        </url>
     </test>
 </testdata>
