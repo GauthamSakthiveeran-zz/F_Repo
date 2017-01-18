@@ -1,8 +1,6 @@
 package com.ooyala.playback.page;
 
 import com.ooyala.playback.factory.PlayBackFactory;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -60,9 +58,11 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
             case "useFirstVideoFromPlaylist":
                 return getFirstVideoFromPlaylist(value);
             case "CaptionPosition":
-                return getCaptionPosition(value);
+                return scrollToEitherSide()&&getCaptionPosition(value);
             case "Menustyle":
                 return getMenuSytle(value);
+            case "WrapperFontSize":
+                return getWrapperFontSize(value);
         }
         return false;
     }
@@ -270,6 +270,13 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         }
 
         return true;
+    }
+
+    public boolean getWrapperFontSize(String wrapperSizeValue){
+        String fontSize =getWebElement("PLAYLIST_PLAYER").getCssValue("font-size");
+        logger.info("Playlist Font Size is - "+fontSize);
+        boolean flag = fontSize.contains(wrapperSizeValue);
+        return flag;
     }
 
 }
