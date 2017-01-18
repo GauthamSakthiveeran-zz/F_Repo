@@ -1122,7 +1122,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"true","useFirstVideoFromPlaylist":"true"}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false","useFirstVideoFromPlaylist":"true"}]]></playerParameter>
         </url>
         <url>
             <description name="useFirstVideoFromPlaylist: false" />

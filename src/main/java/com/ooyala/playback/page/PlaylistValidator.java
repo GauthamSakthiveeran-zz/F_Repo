@@ -174,8 +174,22 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getFirstVideoFromPlaylist(String value){
-
-        return true;
+        boolean flag;
+        List<WebElement> videoList = getWebElementsList("VIDEO_LIST");
+        String emebedCodeOfFirstAsset = videoList.get(0).getAttribute("src");
+        String emebedCodeOfCurrentAsset = getEmbedCode();
+        logger.info("Current video playing is : "+emebedCodeOfCurrentAsset);
+        if (value.equalsIgnoreCase("true")){
+            flag = emebedCodeOfFirstAsset.contains(emebedCodeOfCurrentAsset);
+            return flag;
+        }else {
+            flag = emebedCodeOfFirstAsset.contains(emebedCodeOfCurrentAsset);
+            if(flag){
+                return false;
+            }else{
+                return true;
+            }
+        }
     }
 
     public boolean getCaptionPosition(String captionPositionValue){
@@ -299,5 +313,9 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
             flag = flag && titleList.get(i).getText().contains("tb_");   */
         }
         return flag;
+    }
+
+    public String getEmbedCode(){
+        return ((JavascriptExecutor) driver).executeScript("return pp.getEmbedCode()").toString();
     }
 }
