@@ -79,6 +79,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         int totalPlaylistVideo = getWebElementsList("PLAYLIST_VIDEOS").size();
         System.out.println("size : "+totalPlaylistVideo);
         int count =1;
+        eventCount=0;
         boolean result = true;
         for (int i=0;i<=totalPlaylistVideo;i++) {
             try {
@@ -125,7 +126,6 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 
 
     public boolean getOrientation(String orientationValue){
-        eventCount = 0;
         String orientation = getWebElement("PLAYLIST_PLAYER").getAttribute("data-playlist-orientation");
         logger.info("Playlist Orientation is - "+orientation);
         if (!orientation.contains(orientationValue)){return false;}
@@ -133,7 +133,6 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getPosition(String positionValue){
-        eventCount = 0;
         String position = getWebElement("PLAYLIST_PLAYER").getAttribute("data-playlist-layout");
         logger.info("Playlist Position is - "+position);
         if (!position.contains(positionValue)){return false;}
@@ -142,6 +141,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 
     public boolean getPodType(String podValue){
         String podType = getWebElement("PLAYLIST_PLAYER").getAttribute("data-playlist-pod-type");
+        eventCount = 0;
         logger.info("Playlist Pod Type is - "+podType);
         if (!podValue.contains(podType)){
             logger.info("pod is not getting");
@@ -226,7 +226,6 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getMenuSytle(String value){
-        eventCount = 0;
         if (!waitOnElement("PLAYLISTS_PLAYER",10000)){return false;}
         int totalPlaylists = getWebElementsList("PLAYLISTS").size();
         for (int i=0; i<totalPlaylists; i++){
