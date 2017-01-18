@@ -24,6 +24,8 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         addElementToPageElements("playlist");
     }
 
+    int eventCount = 0;
+
     @Override
     public boolean validate(String element, int timeout) {
         try {
@@ -80,6 +82,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     public boolean selectAssetFromPlaylist(){
         int totalPlaylistVideo = getWebElementsList("PLAYLIST_VIDEOS").size();
         System.out.println("size : "+totalPlaylistVideo);
+        int count =1;
         boolean result = true;
         for (int i=0;i<=totalPlaylistVideo;i++) {
             try {
@@ -90,7 +93,8 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
                 if (driver.findElement(By.id(s)).isDisplayed()) {
                     driver.findElement(By.id(s)).click();
                     Thread.sleep(3000);
-                    result = result && checkPlayback();
+                    result = result && checkPlayback(count);
+                    count++;
                     i = i + 2;
                 }
             } catch (Exception e){
@@ -101,18 +105,20 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         return result;
     }
 
-    public boolean checkPlayback(){
-
+    public boolean checkPlayback(int count){
+        count = count+eventCount;
         try {
             if (!PlayBackFactory.getInstance(driver).getPlayValidator().waitForPage()){return false;}
             loadingSpinner();
-            if(!PlayBackFactory.getInstance(driver).getPlayValidator().validate("playing_1",20000)){return false;}
+            Thread.sleep(5000);
+            if(!PlayBackFactory.getInstance(driver).getPlayValidator().validate("playing_"+count+"",20000)){return false;}
             loadingSpinner();
-            if (!PlayBackFactory.getInstance(driver).getPauseValidator().validate("paused_1",20000)){return false;}
+            if (!PlayBackFactory.getInstance(driver).getPauseValidator().validate("paused_"+(count-eventCount)+"",20000)){return false;}
             loadingSpinner();
-            if (!PlayBackFactory.getInstance(driver).getPlayValidator().validate("playing_2",20000)){return false;}
+            if (!PlayBackFactory.getInstance(driver).getPlayValidator().validate("playing_"+(count+1)+"",20000)){return false;}
             loadingSpinner();
-            if (!PlayBackFactory.getInstance(driver).getSeekValidator().validate("seeked_1",20000)){return false;}
+            if (!PlayBackFactory.getInstance(driver).getSeekValidator().validate("seeked_"+(count-eventCount)+"",20000)){return false;}
+            eventCount++;
 
         } catch (Exception e){
             return false;
@@ -122,8 +128,8 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
 
-
     public boolean getOrientation(String orientationValue){
+        eventCount = 0;
         String orientation = getWebElement("PLAYLIST_PLAYER").getAttribute("data-playlist-orientation");
         logger.info("Playlist Orientation is - "+orientation);
         if (!orientation.contains(orientationValue)){return false;}
@@ -131,6 +137,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getPosition(String positionValue){
+        eventCount = 0;
         String position = getWebElement("PLAYLIST_PLAYER").getAttribute("data-playlist-layout");
         logger.info("Playlist Position is - "+position);
         if (!position.contains(positionValue)){return false;}
@@ -151,21 +158,35 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
             }
             int totalPagingElement = getWebElementsList("PAGGING_ELEMENT").size();
             boolean result = true;
+            boolean isPagingElementActive;
+            int count = 1;
             for (int i=0 ; i<totalPagingElement ; i++) {
-                if ((Boolean) driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i + "].isActive()")) {
-                    int assetsUnderPagingElement = Integer.parseInt(driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i + "].getElementsByClassName('oo-thumbnail').length").toString());
-                    for (int j = 0; j < assetsUnderPagingElement; j++) {
-                        String assetUnderPagingEmbedCode = driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i + "].getElementsByClassName('oo-thumbnail')[" + j + "].getAttribute('id')").toString();
-                        driver.findElement(By.id(assetUnderPagingEmbedCode)).click();
-                        j = j + 2;
-                            //result = result && checkPlayback();
-                    }
-                    if ((Boolean) driver.executeScript("return $(document.getElementsByClassName('oo-next')).is(\":visible\");")) {
-                        if (!clickOnIndependentElement("SCROLL_DOWN")) {
-                            logger.error("Failed while clicking on next button in Playlist");
-                            return false;
+                try{
+                    isPagingElementActive = (Boolean) driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i + "].isActive()");
+                }catch (Exception e){
+                    logger.info("May be paging element is not active");
+                    isPagingElementActive = true;
+                }
+                try {
+                    if (isPagingElementActive) {
+                        int assetsUnderPagingElement = Integer.parseInt(driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i + "].getElementsByClassName('oo-thumbnail').length").toString());
+                        for (int j = 0; j < assetsUnderPagingElement; j++) {
+                            String assetUnderPagingEmbedCode = driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i + "].getElementsByClassName('oo-thumbnail')[" + j + "].getAttribute('id')").toString();
+                            Thread.sleep(3000);
+                            driver.findElement(By.id(assetUnderPagingEmbedCode)).click();
+                            result = result && checkPlayback(count);
+                            j = j + 2;
+                            count++;
+                        }
+                        if ((Boolean) driver.executeScript("return $(document.getElementsByClassName('oo-next')).is(\":visible\");")) {
+                            if (!clickOnIndependentElement("SCROLL_DOWN")) {
+                                logger.error("Failed while clicking on next button in Playlist");
+                                return false;
+                            }
                         }
                     }
+                }catch (Exception e){
+                    e.getMessage();
                 }
             }
             return result;
@@ -223,6 +244,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getMenuSytle(String value){
+        eventCount = 0;
         if (!waitOnElement("PLAYLISTS_PLAYER",10000)){return false;}
         int totalPlaylists = getWebElementsList("PLAYLISTS").size();
         for (int i=0; i<totalPlaylists; i++){
