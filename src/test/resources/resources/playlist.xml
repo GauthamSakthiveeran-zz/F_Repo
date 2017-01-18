@@ -5,7 +5,7 @@
     <element key="PREVIOUS_ARROW" findBy="class" class="oo-previous" />
     <element key="VIDEO_LIST" findBy="class" class="oo-thumbnail-image" />
     <element key="VIDEO" findBy="id" id="c3YXNyYzpYMxKDOxZT52X67lziRgEvNg" />
-    <element key="PLAYLIST_VIDEOS" findBy="xPath" xPath=".//*[@class='oo-thumbnail']"/>
+    <element key="PLAYLIST_VIDEOS" findBy="class" class="oo-thumbnail"/>
     <element key="SCROLL_DOWN" findBy="xPath" xPath=".//div[@class='oo-next']"/>
     <element key="PAGGING_ELEMENT" findBy="class" class="oo-thumbnail-paging-ooplayer"/>
     <element key="SPCAING_PLAYLIST_ASSETS" findBy="class" class="slide-ooplayer"/>

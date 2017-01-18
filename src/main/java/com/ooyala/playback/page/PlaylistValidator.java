@@ -195,22 +195,18 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getFirstVideoFromPlaylist(String value){
-        boolean flag;
-        List<WebElement> videoList = getWebElementsList("VIDEO_LIST");
-        String emebedCodeOfFirstAsset = videoList.get(0).getAttribute("src");
+        List<WebElement> videoList = getWebElementsList("PLAYLIST_VIDEOS");
+        String emebedCodeOfFirstAsset = videoList.get(0).getAttribute("id");
         String emebedCodeOfCurrentAsset = getEmbedCode();
-        logger.info("Current video playing is : "+emebedCodeOfCurrentAsset);
+        logger.info("\n"+ "First video from playlist is : "+ emebedCodeOfFirstAsset +"\n"+ "Current video playing is : "+emebedCodeOfCurrentAsset);
         if (value.equalsIgnoreCase("true")){
-            flag = emebedCodeOfFirstAsset.contains(emebedCodeOfCurrentAsset);
-            return flag;
-        }else {
-            flag = emebedCodeOfFirstAsset.contains(emebedCodeOfCurrentAsset);
-            if(flag){
-                return false;
-            }else{
-                return true;
-            }
+            if (!emebedCodeOfFirstAsset.contains(emebedCodeOfCurrentAsset)){return false;}
         }
+        if (value.equalsIgnoreCase("false")){
+            if (emebedCodeOfFirstAsset.contains(emebedCodeOfCurrentAsset)){return false;}
+        }
+
+        return checkPlayback(1);
     }
 
     public boolean getCaptionPosition(String captionPositionValue){
