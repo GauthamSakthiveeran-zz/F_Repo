@@ -24,7 +24,7 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 
 	@Test(groups = {"amf","preroll","overlay"}, dataProvider = "testUrls")
-	public void verifyPrerollOverlay(String testName, String url) throws OoyalaException {
+	public void verifyPrerollPodded(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
