@@ -1,11 +1,14 @@
 package com.ooyala.playback;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -14,6 +17,7 @@ import javax.xml.bind.Unmarshaller;
 
 import com.ooyala.playback.updateSpreadSheet.ParseJenkinsJobLink;
 import com.ooyala.playback.updateSpreadSheet.UpdateSheet;
+import com.ooyala.playback.url.TestPageData;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
@@ -63,6 +67,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected static String passedTestList;
 	protected static String failedTestList;
 	protected String regressionFileName;
+	protected String v4Version;
 
 	public PlaybackWebTest() throws OoyalaException {
 
@@ -236,7 +241,10 @@ public abstract class PlaybackWebTest extends FacileTest {
 		if (browser == null || browser.equals(""))
 			browser = "firefox";
 		logger.info("browser is " + browser);
-
+		v4Version = System.getProperty("v4Version");
+		if (v4Version == null || v4Version.equals("")){
+			v4Version = "Candidate/latest";
+		}
 		init();
 		
 		parseXmlFileData(xmlFile,xmlFilePkg);
@@ -375,6 +383,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		testSheetData.put("Platform",System.getProperty("platform"));
 		testSheetData.put("Browser",System.getProperty("browser"));
 		testSheetData.put("Browser_Version",System.getProperty("version"));
+		testSheetData.put("v4Version",getV4Version(v4Version));
 		testSheetData.put("Total",Integer.toString(total));
 		testSheetData.put("Pass",pass);
 		testSheetData.put("Fail",fail);
@@ -441,6 +450,40 @@ public abstract class PlaybackWebTest extends FacileTest {
 			}
 		}
 		return ParseJenkinsJobLink.getJenkinsBuild(jenkinsJobName);
+	}
+
+	protected String getV4Version(String branch){
+		String v4Version="";
+		String link ="http://player.ooyala.com/static/v4/candidate/latest/version.txt";
+
+		if(branch.equalsIgnoreCase("candidate"))
+		{
+			link ="http://player.ooyala.com/static/v4/candidate/latest/version.txt";
+		}
+		else if( branch.equalsIgnoreCase("stable"))
+		{
+			link ="http://player.ooyala.com/static/v4/stable/latest/version.txt";
+		}
+
+		try {
+			URL lnk = new URL(link);
+			BufferedReader in = new BufferedReader(new InputStreamReader(lnk.openStream()));
+
+			String inputLine;
+			while ((inputLine = in.readLine()) != null)
+			{
+				if(inputLine.contains("Version:"))
+				{
+					String[] _version = inputLine.split(" ");
+					v4Version = _version[1];
+					break;
+				}
+			}
+			in.close();
+		} catch (Exception ex) {
+			System.out.println("Error occured while reading V4 version in Utils.getV4Version()");
+		}
+		return  v4Version;
 	}
 
 	public void injectScript() throws Exception {
