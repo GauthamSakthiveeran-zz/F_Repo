@@ -7,6 +7,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -60,6 +61,8 @@ public class FacileTestListener extends TestListenerAdapter implements
 
 	/** The Constant DEFAULT_MAX_RETRY. */
 	protected final int DEFAULT_MAX_RETRY = 3;
+	
+	private static final Map<Integer, Integer> methods = Collections.synchronizedMap(new HashMap<Integer, Integer>());
 
 	/*
 	 * (non-Javadoc)
@@ -195,7 +198,7 @@ public class FacileTestListener extends TestListenerAdapter implements
 			int retryCount = Integer.parseInt(retryCountString);
 			boolean retry = Boolean.parseBoolean(retryString);
 			if (retry)
-				return retryTracker(retryCount);
+				return retryTracker(retryCount, result);
 			else
 				return false;
 		} else {
@@ -218,7 +221,7 @@ public class FacileTestListener extends TestListenerAdapter implements
 				logger.info("Is Retry is enabled? " + retry);
 				if (retry != null) {
 					if (retry.equalsIgnoreCase("true")) {
-						return retryTracker(retryCount);
+						return retryTracker(retryCount,result);
 					} else if (retry.equalsIgnoreCase("false")) {
 						return false;
 					}
@@ -226,7 +229,7 @@ public class FacileTestListener extends TestListenerAdapter implements
 			}
 		}
 
-		return retryTracker(DEFAULT_MAX_RETRY);
+		return retryTracker(DEFAULT_MAX_RETRY,result);
 	}
 
 	/**
@@ -241,20 +244,33 @@ public class FacileTestListener extends TestListenerAdapter implements
 		return (new SimpleDateFormat(format)).format(cal.getTime());
 	}
 
+	private int getHashCode(ITestResult result){
+		String name = result.getTestName() + result.getMethod().getMethodName();
+		for(Object obj : result.getParameters()){
+			name = name + obj.toString();
+		}
+		return name.hashCode();
+	}
+	
 	/**
 	 * Retry tracker.
 	 * 
 	 * @return true, if successful
 	 */
-	private boolean retryTracker(int maxRetryCount) {
-		logger.info("retry count is " + retryCount);
-		logger.info("Max Retry Count is " + maxRetryCount);
-		if (retryCount <= maxRetryCount) {
-			logger.error("Test failed, but Facile will try to rerun the test");
-			retryCount++;
+	private boolean retryTracker(int maxRetryCount,ITestResult result) {
+		int hashCode = getHashCode(result);
+		if(methods.containsKey(hashCode)){
+			int count = methods.get(hashCode);
+			if(count <= maxRetryCount){
+				count++;
+				methods.put(hashCode, count);
+				return true;
+			}else{
+				return false;
+			}
+		}else {
+			methods.put(hashCode, 2);
 			return true;
-		} else {
-			return false;
 		}
 	}
 
