@@ -284,6 +284,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getCaption(){
+        boolean flag=true;
         List<WebElement> titleList = getWebElementsList("ASSET_TITLE");
         List<WebElement> desciptionList = getWebElementsList("ASSET_DESCRIPTION");
         List<WebElement> durationList = getWebElementsList("ASSET_DURATION");
@@ -292,7 +293,11 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", titleList.get(i));
             onmouseOver(desciptionList.get(i));
             logger.info("Title,Description,Duration of asset "+(i+1)+" is : "+'\n'+titleList.get(i).getText()+'\n'+desciptionList.get(i).getText()+'\n'+durationList.get(i).getText());
+            flag = desciptionList.get(i).getText().contains("Test Description");
+            flag = flag && durationList.get(i).getText().contains(":");
+        /*  Only two values are displaying on asset. Issue id PLAYER-457.
+            flag = flag && titleList.get(i).getText().contains("tb_");   */
         }
-        return true;
+        return flag;
     }
 }
