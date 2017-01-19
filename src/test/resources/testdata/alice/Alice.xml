@@ -1213,8 +1213,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal"},"autoplay":"false","CaptionPosition":"outside'","Menustyle":"tabs","WrapperFontSize":"40"}]]></playerParameter>
-        </url>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","WrapperFontSize":"20"},"autoplay":"false","CaptionPosition":"outside'","Menustyle":"tabs"}]]></playerParameter>  </url>
         <url>
             <description name="CaptionPosition: inside" />
             <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
@@ -1223,7 +1222,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal"},"autoplay":"false","CaptionPosition":"inside'","Menustyle":"tabs","WrapperFontSize":"40"}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"inside"},"autoplay":"false","Menustyle":"tabs"}]]></playerParameter>
         </url>
         <url>
             <description name="CaptionPosition: outside" />
@@ -1233,7 +1232,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal"},"autoplay":"false","CaptionPosition":"outside'","Menustyle":"tabs","WrapperFontSize":"40"}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"outside"},"autoplay":"false","Menustyle":"tabs"}]]></playerParameter>
         </url>
 <!--    This test case is simmilar to Menustyle: tabs. Need Confirmation.
         <url>
