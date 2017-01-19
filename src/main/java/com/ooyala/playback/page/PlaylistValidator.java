@@ -85,18 +85,17 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         int count =1;
         eventCount=0;
         boolean result = true;
-        for (int i=0;i<=totalPlaylistVideo;i++) {
+        for (int i=0;i<totalPlaylistVideo;i=i+3) {
             try {
-                String s = ((JavascriptExecutor) driver).executeScript("return document.getElementsByClassName('oo-thumbnail')["+i+"].getAttribute('id');").toString();
-                if(!driver.findElement(By.id(s)).isDisplayed()){
-                    getWebElement("SCROLL_DOWN").click();
-                }
-                if (driver.findElement(By.id(s)).isDisplayed()) {
-                    driver.findElement(By.id(s)).click();
+                String asset = ((JavascriptExecutor) driver).executeScript("return document.getElementsByClassName('oo-thumbnail')["+i+"].getAttribute('id');").toString();
+
+                driver.executeScript("arguments[0].scrollIntoView(true);",driver.findElement(By.id(asset)));
+
+                if (driver.findElement(By.id(asset)).isDisplayed()) {
+                    driver.findElement(By.id(asset)).click();
                     Thread.sleep(3000);
                     result = result && checkPlayback(count);
                     count++;
-                    i = i + 2;
                 }
             } catch (Exception e){
                 e.getMessage();
