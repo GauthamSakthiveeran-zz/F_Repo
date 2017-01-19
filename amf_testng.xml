@@ -1,5 +1,5 @@
 
-<suite name="Playback Web Regression Suite">
+<suite name="Playback Web Regression Suite" parallel="tests">
 	<listeners>
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
@@ -8,6 +8,7 @@
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
+<!-- 		<parameter name="ipaddress" value="10.11.64.34:5555" /> -->
 
 		<groups>
 			<run>
@@ -17,21 +18,22 @@
 
 		<packages>
 			<package name="com.ooyala.playback.amf" />
-			<!-- <package name="com.ooyala.playback.amf.midroll" />
+			<package name="com.ooyala.playback.amf.midroll" />
 			<package name="com.ooyala.playback.amf.postroll" />
 			<package name="com.ooyala.playback.amf.preroll" />
 			<package name="com.ooyala.playback.amf.preroll.freewheel" />
 			<package name="com.ooyala.playback.amf.midroll.vast" />
 			<package name="com.ooyala.playback.amf.ima" />
-			<package name="com.ooyala.playback.amf.vast" /> -->
+			<package name="com.ooyala.playback.amf.vast" />
 		</packages>
 		
 	</test>
 
-	<!-- <test name="AMF Regression Group non parallel" parallel="false">
+	<test name="AMF Regression Group non parallel" parallel="false">
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
+<!-- 		<parameter name="ipaddress" value="10.11.69.42:5555" /> -->
 
 		<groups>
 			<run>
@@ -51,5 +53,5 @@
 		</packages>
 		
 	</test>
- -->
+
 </suite>

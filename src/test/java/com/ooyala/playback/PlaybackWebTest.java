@@ -238,7 +238,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
 	@BeforeClass(alwaysRun = true)
-	@Parameters({ "testData", "xmlFilePkg", "jsFile" , })
+	@Parameters({ "testData", "xmlFilePkg", "jsFile"})
 	public void setUp(@Optional String xmlFile,@Optional String xmlFilePkg, String jsFile) throws Exception {
 		logger.info("************Inside setup*************");
 

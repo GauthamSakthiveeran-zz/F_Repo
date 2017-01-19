@@ -24,7 +24,7 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 	private AdClickThroughValidator adClicks;
 	private SeekValidator seekValidator;
 
-	@Test(groups = { "amf", "midroll", "overlay" }, dataProvider = "testUrls")
+	@Test(groups = { "amf", "midroll", "overlay", "sequential" }, dataProvider = "testUrls")
 	public void verifyMidRoll(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
