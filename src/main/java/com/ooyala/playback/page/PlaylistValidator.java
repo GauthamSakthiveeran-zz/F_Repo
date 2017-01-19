@@ -87,13 +87,16 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         boolean result = true;
         for (int i=0;i<totalPlaylistVideo;i=i+3) {
             try {
-                String asset = ((JavascriptExecutor) driver).executeScript("return document.getElementsByClassName('oo-thumbnail')["+i+"].getAttribute('id');").toString();
+                String asset = ((JavascriptExecutor) driver).executeScript("return document.getElementsByClassName('oo-thumbnail')["+i+"].getAttribute('id');").toString().trim();
 
                 driver.executeScript("arguments[0].scrollIntoView(true);",driver.findElement(By.id(asset)));
-
+                if(isElementVisible("SCROLL_DOWN")){
+                    getWebElement("SCROLL_DOWN").click();
+                }
+                Thread.sleep(1000);
                 if (driver.findElement(By.id(asset)).isDisplayed()) {
-                    driver.findElement(By.id(asset)).click();
-                    Thread.sleep(3000);
+                    clickOnIndependentElement(By.id(asset));
+                    Thread.sleep(2000);
                     result = result && checkPlayback(count);
                     count++;
                 }
@@ -287,7 +290,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
                     getWebElement("SCROLL_DOWN").click();
                 }
             }catch (Exception e){
-                logger.info("No more bext scroll button is present.");
+                logger.info("No more next scroll button is present.");
             }
 
         }
@@ -298,7 +301,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
                     getWebElement("PREVIOUS_ARROW").click();
                 }
             }catch (Exception e){
-                logger.info("NO more previous button present");
+                logger.info("No more previous button present");
             }
 
         }
