@@ -1024,7 +1024,7 @@
     </url>
     </test>
     <test name="PlaybackPlaylistTests">
-        <url>
+<!--        <url>
             <description name="Default : themebuilder parameters" />
             <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
             <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
@@ -1033,7 +1033,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"]}}]]></playerParameter>
-        </url>
+        </url>-->
         <url>
             <description name="Orientation: vertical" />
             <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
