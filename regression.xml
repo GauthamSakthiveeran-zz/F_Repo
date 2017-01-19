@@ -46,7 +46,7 @@
             <class name="com.ooyala.playback.streams.PlaybackLiveTests" />
             <class name="com.ooyala.playback.FCC.PlaybackFCCBasicTests" />
             <class name="com.ooyala.playback.FCC.PlaybackFCCDefaultSettingTests" />
-            <class name="com.ooyala.playback.playlist.PlaybackDefaultParameterTests" />
+            <class name="com.ooyala.playback.playlist.PlaybackPlaylistTests" />
         </classes>
     </test>
 </suite>
