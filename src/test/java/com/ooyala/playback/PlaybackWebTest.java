@@ -426,6 +426,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 				case "FCC":
 					jenkinsJobName = "playbackweb-FCC";
 					break;
+				case "playlist":
+					jenkinsJobName = "playbackweb-playlist";
+					break;
 				case "default":
 					if (regressionFileName.contains("VTC_Regression.xml")) {
 						jenkinsJobName = "playbackwebvtc";
