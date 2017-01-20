@@ -1,8 +1,11 @@
 package com.ooyala.playback.updateSpreadSheet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -23,6 +26,12 @@ import com.google.api.services.sheets.v4.Sheets;
  * Created by jitendra on 4/1/17.
  */
 public class UpdateSheet {
+
+    /** Create linkedHasMap for storing data */
+    public static LinkedHashMap<String,String> testSheetData  =
+            new LinkedHashMap<String,String>();
+
+    public static String regressionFileName;
 
     /** Application name. */
     private static final String APPLICATION_NAME =
@@ -177,5 +186,118 @@ public class UpdateSheet {
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public static void setTestResult(String pass, String fail, String skip,int total,String failtestname,String passedTests,String v4Version){
+        Date date = new Date();
+        String CurrntDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
+        testSheetData.put("Date",CurrntDate);
+        testSheetData.put("Platform",System.getProperty("platform"));
+        testSheetData.put("Browser",System.getProperty("browser"));
+        testSheetData.put("Browser_Version",System.getProperty("version"));
+        testSheetData.put("v4Version",getV4Version(v4Version));
+        testSheetData.put("Total",Integer.toString(total));
+        testSheetData.put("Pass",pass);
+        testSheetData.put("Fail",fail);
+        testSheetData.put("Skip",skip);
+        testSheetData.put("Failed_Tests",failtestname);
+        testSheetData.put("Passed_Tests",passedTests);
+        testSheetData.put("jenkinsJobLink" , getJenkinsJobLink(System.getProperty("browser")));
+        testSheetData.put("SuiteName",System.getProperty("tests"));
+        testSheetData.put("groups",System.getProperty("groups"));
+        for (String key : testSheetData.keySet()){
+            String value = testSheetData.get(key);
+            System.out.println(key + " : " + value);
+        }
+
+        if (regressionFileName!=null)
+            writetosheet(testSheetData);
+
+    }
+
+    public static String getJenkinsJobLink(String browser){
+        String testSuitename;
+        testSuitename = System.getProperty("groups");
+        if (testSuitename == null){
+            testSuitename = "default";
+        }
+        regressionFileName = System.getProperty("tests");
+        String jenkinsJobName = "";
+
+        if (regressionFileName!=null) {
+            switch (testSuitename) {
+                case "playerFeatures":
+                    jenkinsJobName = "playbackweb-playerFeature";
+                    break;
+                case "drm":
+                    jenkinsJobName = "playbackweb-drm";
+                    break;
+                case "streams":
+                    jenkinsJobName = "playbackweb-streams";
+                    break;
+                case "FCC":
+                    jenkinsJobName = "playbackweb-FCC";
+                    break;
+                case "playlist":
+                    jenkinsJobName = "playbackweb-playlist";
+                    break;
+                case "default":
+                    if (regressionFileName.contains("VTC_Regression.xml")) {
+                        jenkinsJobName = "playbackwebvtc";
+                        break;
+                    }
+                    if (regressionFileName.contains("amf_testng.xml")) {
+                        switch (browser) {
+                            case "chrome":
+                                jenkinsJobName = "playbackweb-AMF-Chrome";
+                                break;
+                            case "firefox":
+                                jenkinsJobName = "playbackweb-AMF-FF";
+                                break;
+                            case "safari":
+                                jenkinsJobName = "playbackweb-AMF-Safari";
+                                break;
+                            case "internet explorer":
+                                jenkinsJobName = "playbackweb-AMF-IE";
+                                break;
+                        }
+                    }
+            }
+        }
+        return ParseJenkinsJobLink.getJenkinsBuild(jenkinsJobName);
+    }
+
+    protected static String getV4Version(String branch){
+        String v4Version="";
+        String link ="http://player.ooyala.com/static/v4/candidate/latest/version.txt";
+
+        if(branch.equalsIgnoreCase("candidate"))
+        {
+            link ="http://player.ooyala.com/static/v4/candidate/latest/version.txt";
+        }
+        else if( branch.equalsIgnoreCase("stable"))
+        {
+            link ="http://player.ooyala.com/static/v4/stable/latest/version.txt";
+        }
+
+        try {
+            URL lnk = new URL(link);
+            BufferedReader in = new BufferedReader(new InputStreamReader(lnk.openStream()));
+
+            String inputLine;
+            while ((inputLine = in.readLine()) != null)
+            {
+                if(inputLine.contains("Version:"))
+                {
+                    String[] _version = inputLine.split(" ");
+                    v4Version = _version[1];
+                    break;
+                }
+            }
+            in.close();
+        } catch (Exception ex) {
+            System.out.println("Error occured while reading V4 version in Utils.getV4Version()");
+        }
+        return  v4Version;
     }
 }
