@@ -20,6 +20,7 @@ public class UrlGenerator {
 	private static Map<PlayerPropertyKey, PlayerPropertyValue> playerProperties = new HashMap<PlayerPropertyKey, PlayerPropertyValue>();
 	private static Logger logger = Logger.getLogger(UrlGenerator.class);
 	private static String adPluginFilter = new String();
+    private static String videoPluginFilter = new String();
 	private static Map<String, String> liveChannelDetails = new HashMap<String, String>();
 	private static Map<String, String> liveChannelProviders = new HashMap<String, String>();
 
@@ -116,6 +117,15 @@ public class UrlGenerator {
 						continue;
 					}
 
+                    // to run tests for specific video plugins
+                    if (applyVideoFilter()
+                            && url.getPlugins().getName() != null
+                            && !url.getPlugins().getName().isEmpty()
+                            && !url.getPlugins().getName().toUpperCase()
+                            .contains(videoPluginFilter.toUpperCase())) {
+                        continue;
+                    }
+
 					if (url.getLive() != null
 							&& url.getLive().getChannelId() != null) {
 						liveChannelDetails.put(url.getDescription().getName(),
@@ -165,6 +175,13 @@ public class UrlGenerator {
 		}
 		return false;
 	}
+    private static boolean applyVideoFilter() {
+        videoPluginFilter = System.getProperty("videoPlugin");
+        if (videoPluginFilter != null && !videoPluginFilter.isEmpty()) {
+            return true;
+        }
+        return false;
+    }
 
 	public static Map<String, String> getLiveChannelProviders() {
 		return liveChannelProviders;
