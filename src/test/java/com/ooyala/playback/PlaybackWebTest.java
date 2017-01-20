@@ -56,7 +56,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected static ArrayList<String> testSkipped= new ArrayList<>();
 	protected static String passedTestList;
 	protected static String failedTestList;
-	protected String v4Version;
+	protected static String v4Version;
 
 	public PlaybackWebTest() throws OoyalaException {
 
