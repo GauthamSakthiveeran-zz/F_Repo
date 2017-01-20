@@ -173,7 +173,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
                     if (isPagingElementActive) {
                         int assetsUnderPagingElement = Integer.parseInt(driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i + "].getElementsByClassName('oo-thumbnail').length").toString());
                         for (int j = 0; j < assetsUnderPagingElement; j++) {
-                            String assetUnderPagingEmbedCode = driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i + "].getElementsByClassName('oo-thumbnail')[" + j + "].getAttribute('id')").toString();
+                                String assetUnderPagingEmbedCode = driver.executeScript("return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i + "].getElementsByClassName('oo-thumbnail')[" + j + "].getAttribute('id')").toString();
                             Thread.sleep(3000);
                             driver.findElement(By.id(assetUnderPagingEmbedCode)).click();
                             result = result && checkPlayback(count);
@@ -250,7 +250,10 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
             logger.info("playlistId :"+playlistId +"\n"+"playlistName : "+plalistName+ " \n");
             if (!playlistId.contains(plalistName)){return false;}
             // select each playlist
-            if (!clickOnIndependentElement(By.id(playlistId))){return false;}
+            String playlistName = driver.executeScript("return document.getElementById('"+playlistId+"').innerText").toString();
+            WebElement playlistElement = driver.findElement(By.xpath(".//*[text()='"+playlistName+"']"));
+            playlistElement.click();
+            //if (!playlistElement.isSelected()){return false;}
             if (!getPodType(driver.executeScript(
                     "return document.getElementById('PlaylistsPlayerWrapper-ooplayer')." +
                             "getAttribute('data-playlist-pod-type')" +
