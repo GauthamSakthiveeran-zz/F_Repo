@@ -1,23 +1,14 @@
 package com.ooyala.playback;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.*;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-
-import com.ooyala.playback.updateSpreadSheet.ParseJenkinsJobLink;
-import com.ooyala.playback.updateSpreadSheet.UpdateSheet;
-import com.ooyala.playback.url.TestPageData;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
@@ -28,7 +19,6 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-
 import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
 import com.ooyala.facile.test.FacileTest;
@@ -44,6 +34,8 @@ import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import org.testng.annotations.Optional;
+
+import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.setTestResult;
 
 @Listeners(IMethodListener.class)
 public abstract class PlaybackWebTest extends FacileTest {
@@ -62,11 +54,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 	protected static ArrayList<String> testPassed=new ArrayList<>();
 	protected static ArrayList<String> testFailed=new ArrayList<>();
 	protected static ArrayList<String> testSkipped= new ArrayList<>();
-	public static LinkedHashMap<String,String> testSheetData  =
-			new LinkedHashMap<String,String>();
 	protected static String passedTestList;
 	protected static String failedTestList;
-	protected String regressionFileName;
 	protected String v4Version;
 
 	public PlaybackWebTest() throws OoyalaException {
@@ -210,7 +199,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 				failedTestList = failedTestList + "\n" + testFailed.get(i) + " ";
 			}
 		}
-		setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList);
+		setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList,v4Version);
 		SimpleHttpServer.stopServer();
 		// ExtentManager.endTests();
 		// ExtentManager.flush();
@@ -373,120 +362,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 										+ "or should be renamed to the name of the class using the test data!");
 			}
 		}
-	}
-
-
-	public void setTestResult(String pass, String fail, String skip,int total,String failtestname,String passedTests){
-		Date date = new Date();
-		String CurrntDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
-		testSheetData.put("Date",CurrntDate);
-		testSheetData.put("Platform",System.getProperty("platform"));
-		testSheetData.put("Browser",System.getProperty("browser"));
-		testSheetData.put("Browser_Version",System.getProperty("version"));
-		testSheetData.put("v4Version",getV4Version(v4Version));
-		testSheetData.put("Total",Integer.toString(total));
-		testSheetData.put("Pass",pass);
-		testSheetData.put("Fail",fail);
-		testSheetData.put("Skip",skip);
-		testSheetData.put("Failed_Tests",failtestname);
-		testSheetData.put("Passed_Tests",passedTests);
-		testSheetData.put("jenkinsJobLink" , getJenkinsJobLink());
-		testSheetData.put("SuiteName",System.getProperty("tests"));
-		testSheetData.put("groups",System.getProperty("groups"));
-		for (String key : testSheetData.keySet()){
-			String value = testSheetData.get(key);
-			logger.info(key + " " + value);
-		}
-
-		if (regressionFileName!=null)
-			UpdateSheet.writetosheet(testSheetData);
-
-	}
-
-	public String getJenkinsJobLink(){
-		String testSuitename;
-		testSuitename = System.getProperty("groups");
-		if (testSuitename == null){
-			testSuitename = "default";
-		}
-		regressionFileName = System.getProperty("tests");
-		String jenkinsJobName = "";
-
-		if (regressionFileName!=null) {
-			switch (testSuitename) {
-				case "playerFeatures":
-					jenkinsJobName = "playbackweb-playerFeature";
-					break;
-				case "drm":
-					jenkinsJobName = "playbackweb-drm";
-					break;
-				case "streams":
-					jenkinsJobName = "playbackweb-streams";
-					break;
-				case "FCC":
-					jenkinsJobName = "playbackweb-FCC";
-					break;
-				case "playlist":
-					jenkinsJobName = "playbackweb-playlist";
-					break;
-				case "default":
-					if (regressionFileName.contains("VTC_Regression.xml")) {
-						jenkinsJobName = "playbackwebvtc";
-						break;
-					}
-					if (regressionFileName.contains("amf_testng.xml")) {
-						switch (browser) {
-							case "chrome":
-								jenkinsJobName = "playbackweb-AMF-Chrome";
-								break;
-							case "firefox":
-								jenkinsJobName = "playbackweb-AMF-FF";
-								break;
-							case "safari":
-								jenkinsJobName = "playbackweb-AMF-Safari";
-								break;
-							case "internet explorer":
-								jenkinsJobName = "playbackweb-AMF-IE";
-								break;
-						}
-					}
-			}
-		}
-		return ParseJenkinsJobLink.getJenkinsBuild(jenkinsJobName);
-	}
-
-	protected String getV4Version(String branch){
-		String v4Version="";
-		String link ="http://player.ooyala.com/static/v4/candidate/latest/version.txt";
-
-		if(branch.equalsIgnoreCase("candidate"))
-		{
-			link ="http://player.ooyala.com/static/v4/candidate/latest/version.txt";
-		}
-		else if( branch.equalsIgnoreCase("stable"))
-		{
-			link ="http://player.ooyala.com/static/v4/stable/latest/version.txt";
-		}
-
-		try {
-			URL lnk = new URL(link);
-			BufferedReader in = new BufferedReader(new InputStreamReader(lnk.openStream()));
-
-			String inputLine;
-			while ((inputLine = in.readLine()) != null)
-			{
-				if(inputLine.contains("Version:"))
-				{
-					String[] _version = inputLine.split(" ");
-					v4Version = _version[1];
-					break;
-				}
-			}
-			in.close();
-		} catch (Exception ex) {
-			System.out.println("Error occured while reading V4 version in Utils.getV4Version()");
-		}
-		return  v4Version;
 	}
 
 	public void injectScript() throws Exception {
