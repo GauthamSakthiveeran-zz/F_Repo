@@ -665,7 +665,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
@@ -676,132 +676,132 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
-            <description name="Elemental Widewine+Playready dash + Geo Restriction" />
-            <embed_code name="tua2hqNTE61OtT9uCWV6IKb3s4dDd7DT" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
+              <description name="Elemental Widewine+Playready dash + Geo Restriction" />
+              <embed_code name="tua2hqNTE61OtT9uCWV6IKb3s4dDd7DT" />
+              <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+              <plugins name="BITMOVIN" />
+              <adPlugins name="" />
+              <additionalPlugins name="" />
+              <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+              <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+              <playerParameter><![CDATA[]]></playerParameter>
+          </url>
         <url>
-            <description name="Elemental Fairplay Fairplay HLS VOD" />
-            <embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
-            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Elemental Fairplay Fairplay HLS + OPT" />
-            <embed_code name="c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu" />
-            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892591060&account_id=dulari_qa&&&signature=iVNk9dUp9ohR39ud/rsYjxdN3X4Kao6oV/LC8DuPObg"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Elemental Fairplay Fairplay HLS + Geo Restriction" />
-            <embed_code name="U0NDNiNDE6CaJv41fU4QpRFS4FDUGX4x" />
-            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Elemental Fairplay Fairplay HLS + CC" />
-            <embed_code name="4xMzQ1NTE62_5ckCOZ7kSCQ1jQ8ke_8v" />
-            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892591060&account_id=dulari_qa&&&signature=iVNk9dUp9ohR39ud/rsYjxdN3X4Kao6oV/LC8DuPObg"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HLS_AES_MAIN_FFMPEG" />
-            <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HLS_AES_BITMOVIN_FFMPEG" />
-            <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <sslEnabled name="https"/>
-            <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HDS_ACCESS_OSMF_FFMPEG" />
-            <embed_code name="lqYmUyODE6H2HflPLwBNIEhLxreAsKWT" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
-            <browserSupportedVersion name="safari,9"/>
-            <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HLS_AES_MAIN_ELEMENTAL" />
-            <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HLS_AES_BITMOVIN_ELEMENTAL" />
-            <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <sslEnabled name="https"/>
-            <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HDS_ACCESS_OSMF_ELEMENTAL" />
-            <embed_code name="ltc2UyODE6XR8-kJ47Ioh0QNWsWpLsq9" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
-            <browserSupportedVersion name="safari,9"/>
-            <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
-        </url>
+               <description name="Elemental Fairplay Fairplay HLS VOD" />
+               <embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
+               <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+               <plugins name="BITMOVIN" />
+               <adPlugins name="" />
+               <additionalPlugins name="" />
+               <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+               <browsersSupported name="safari" />
+               <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
+           </url>
+           <url>
+               <description name="Elemental Fairplay Fairplay HLS + OPT" />
+               <embed_code name="c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu" />
+               <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+               <plugins name="BITMOVIN" />
+               <adPlugins name="" />
+               <additionalPlugins name="" />
+               <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+               <browsersSupported name="safari" />
+               <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892591060&account_id=dulari_qa&&&signature=iVNk9dUp9ohR39ud/rsYjxdN3X4Kao6oV/LC8DuPObg"}]]></playerParameter>
+           </url>
+           <url>
+               <description name="Elemental Fairplay Fairplay HLS + Geo Restriction" />
+               <embed_code name="U0NDNiNDE6CaJv41fU4QpRFS4FDUGX4x" />
+               <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+               <plugins name="BITMOVIN" />
+               <adPlugins name="" />
+               <additionalPlugins name="" />
+               <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+               <browsersSupported name="safari" />
+               <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
+           </url>
+           <url>
+               <description name="Elemental Fairplay Fairplay HLS + CC" />
+               <embed_code name="4xMzQ1NTE62_5ckCOZ7kSCQ1jQ8ke_8v" />
+               <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+               <plugins name="BITMOVIN" />
+               <adPlugins name="" />
+               <additionalPlugins name="" />
+               <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+               <browsersSupported name="safari" />
+               <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892591060&account_id=dulari_qa&&&signature=iVNk9dUp9ohR39ud/rsYjxdN3X4Kao6oV/LC8DuPObg"}]]></playerParameter>
+           </url>
+           <url>
+               <description name="VOD_HLS_AES_MAIN_FFMPEG" />
+               <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
+               <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+               <plugins name="MAIN" />
+               <adPlugins name="" />
+               <additionalPlugins name="" />
+               <pbid name="378512f55dd44fc287d0fa609353c268" />
+               <browsersSupported name="safari" />
+               <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
+           </url>
+           <url>
+                <description name="VOD_HLS_AES_BITMOVIN_FFMPEG" />
+                <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
+                <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+                <plugins name="BITMOVIN" />
+                <adPlugins name="" />
+                <additionalPlugins name="" />
+                <pbid name="378512f55dd44fc287d0fa609353c268" />
+                <sslEnabled name="https"/>
+                <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
+           </url>
+            <url>
+                <description name="VOD_HDS_ACCESS_OSMF_FFMPEG" />
+                <embed_code name="lqYmUyODE6H2HflPLwBNIEhLxreAsKWT" />
+                <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+                <plugins name="OSMF" />
+                <adPlugins name="" />
+                <additionalPlugins name="" />
+                <pbid name="378512f55dd44fc287d0fa609353c268" />
+                <browsersSupported name="firefox,chrome,internet explorer,safari" />
+                <browserSupportedVersion name="safari,9"/>
+                <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
+            </url>
+            <url>
+                <description name="VOD_HLS_AES_MAIN_ELEMENTAL" />
+                <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
+                <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+                <plugins name="MAIN" />
+                <adPlugins name="" />
+                <additionalPlugins name="" />
+                <pbid name="378512f55dd44fc287d0fa609353c268" />
+                <browsersSupported name="safari" />
+                <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
+            </url>
+            <url>
+                <description name="VOD_HLS_AES_BITMOVIN_ELEMENTAL" />
+                <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
+                <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+                <plugins name="BITMOVIN" />
+                <adPlugins name="" />
+                <additionalPlugins name="" />
+                <pbid name="378512f55dd44fc287d0fa609353c268" />
+                <sslEnabled name="https"/>
+                <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
+            </url>
+            <url>
+                <description name="VOD_HDS_ACCESS_OSMF_ELEMENTAL" />
+                <embed_code name="ltc2UyODE6XR8-kJ47Ioh0QNWsWpLsq9" />
+                <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+                <plugins name="OSMF" />
+                <adPlugins name="" />
+                <additionalPlugins name="" />
+                <pbid name="378512f55dd44fc287d0fa609353c268" />
+                <browsersSupported name="firefox,chrome,internet explorer,safari" />
+                <browserSupportedVersion name="safari,9"/>
+                <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
+            </url>
     </test>
     <test name="PlaybackSocialMediaTests">
         <url>
@@ -816,19 +816,6 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
     </test>
-    <test name="PlaybackOptEntitlementTests">
-        <url>
-            <description name="OPT_Entitlement" />
-            <embed_code name="x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2889048225&account_id=dulari_qa&&&signature=0AsQMaoDq58w9q/L6P7cJzOI85gocxWPyw69dlLoQm0"}]]></playerParameter>
-        </url>
-    </test>
-
     <test name="PlaybackPlayerDestroyTests">
         <url>
             <description name="Player_Destroy_Akamai_HD" />
@@ -1031,8 +1018,242 @@
         <adPlugins name="" />
         <additionalPlugins name="" />
         <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-        <browsersSupported name="firefox,chrome,internet explorer" />
+        <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+        <browserSupportedVersion name="firefox,48"/>
         <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213193&account_id=dulari_qa&&&signature=3ZIfOPsKS0AIvSSgUlNYUQq5blWfIT40vLlYl8nJqp8"}]]></playerParameter>
     </url>
+    </test>
+    <test name="PlaybackPlaylistTests">
+<!--        <url>
+            <description name="Default : themebuilder parameters" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"]}}]]></playerParameter>
+        </url>-->
+        <url>
+            <description name="Orientation: vertical" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical"}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Orientation: horizontal" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal"}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Position :top" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"top"}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Position :bottom" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Position :right" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right"}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Position :left" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"left"}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Autoplay: true" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"true"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Autoplay: false" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="useFirstVideoFromPlaylist: true" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false","useFirstVideoFromPlaylist":"true"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="useFirstVideoFromPlaylist: false" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false","useFirstVideoFromPlaylist":"false"}]]></playerParameter>
+        </url>
+<!--    Commented this test case because of Issue PLAYER-448. Loop functionality is not working correctly
+        <url>
+            <description name="Loop:true" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"true","loop":"true"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Loop:false" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"true","loop":"false"}]]></playerParameter>
+        </url>-->
+        <url>
+            <description name="Thumbnailsize : 300" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom","ThumbnailsSize":"300"},"autoplay":"false"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Podtype : scrolling" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right","PodType":"scrolling"},"autoplay":"false"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Podtype : paging" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","position":"bottom","PodType":"paging"},"autoplay":"false"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Menustyle: tabs" />
+            <embed_code name="5zMjRmNzE6NGf3VY_OI-70YeS7Tr4poC" />
+            <pcode name="BueGIyOpngHS8pplQ1AW4Ssf89ms" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c11522c3a2424709bc8b0829d0e4fbaa","87dc703bdd03450ba709dbfcaa752034"]},"autoPlay":false,"loop":false,"height":573,"width":800,"useFirstVideoFromPlaylist":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="ThumbnailSpace : 100" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right","ThumbnailsSpacing":"100"},"autoplay":"false"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="WrapperFontSize:20" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","WrapperFontSize":"20"},"autoplay":"false","CaptionPosition":"outside'","Menustyle":"tabs"}]]></playerParameter>  </url>
+        <url>
+            <description name="CaptionPosition: inside" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"inside"},"autoplay":"false","Menustyle":"tabs"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="CaptionPosition: outside" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"outside"},"autoplay":"false","Menustyle":"tabs"}]]></playerParameter>
+        </url>
+<!--    This test case is simmilar to Menustyle: tabs. Need Confirmation.
+        <url>
+            <description name="Multiple Playlists:tabs" />
+            <embed_code name="5zMjRmNzE6NGf3VY_OI-70YeS7Tr4poC" />
+            <pcode name="BueGIyOpngHS8pplQ1AW4Ssf89ms" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c11522c3a2424709bc8b0829d0e4fbaa","87dc703bdd03450ba709dbfcaa752034"]},"autoPlay":true,"loop":false,"height":573,"width":800,"useFirstVideoFromPlaylist":true}]]></playerParameter>
+        </url>-->
+        <url>
+            <description name="Caption:title,desc,duration" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Caption":["description","duration"],"ThumbnailsSpacing":"30"}}]]></playerParameter>
+        </url>
     </test>
 </testdata>

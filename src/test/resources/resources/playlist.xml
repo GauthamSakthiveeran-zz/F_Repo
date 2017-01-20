@@ -1,0 +1,17 @@
+<elements area="playlist">
+    <element key="PLAYLIST_PLAYER" findBy="id" id="PlaylistsPlayerWrapper-ooplayer" />
+    <element key="PLAYLIST_NAME" findBy="xPath" xPath=".//*[@class='oo-menu-item oo-menu-active']/a" />
+    <element key="NEXT_ARROW" findBy="class" class="oo-next" />
+    <element key="PREVIOUS_ARROW" findBy="class" class="oo-previous" />
+    <element key="VIDEO_LIST" findBy="class" class="oo-thumbnail-image" />
+    <element key="VIDEO" findBy="id" id="c3YXNyYzpYMxKDOxZT52X67lziRgEvNg" />
+    <element key="PLAYLIST_VIDEOS" findBy="class" class="oo-thumbnail"/>
+    <element key="SCROLL_DOWN" findBy="xPath" xPath=".//div[@class='oo-next']"/>
+    <element key="PAGGING_ELEMENT" findBy="class" class="oo-thumbnail-paging-ooplayer"/>
+    <element key="SPCAING_PLAYLIST_ASSETS" findBy="class" class="slide-ooplayer"/>
+    <element key="PLAYLISTS" findBy="xPath" xPath=".//ul[@class='oo-menu-items oo-cf']/li"/>
+    <element key="PLAYLISTS_PLAYER" findBy="id" id="oo-playlists-ooplayer"/>
+    <element key="ASSET_TITLE" findBy="class" class="oo-caption-title" />
+    <element key="ASSET_DESCRIPTION" findBy="class" class="oo-caption-description" />
+    <element key="ASSET_DURATION" findBy="class" class="oo-caption-duration" />
+</elements>

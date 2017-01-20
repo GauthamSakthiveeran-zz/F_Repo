@@ -95,7 +95,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             return flag;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Error while verifying CC Panel Elements "+e);
             return false;
         }
     }
@@ -270,7 +270,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             return flag;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Error while verifying CC Color Selection Panel "+e);
             return false;
         }
     }
@@ -327,7 +327,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("verified Windows opacity selection is working fine");
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Errors while verifying CC Opacity Panel "+e);
             return false;
         }
     }
@@ -362,6 +362,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             return true;
         } catch (Exception e) {
+            logger.error("Error while verifying CC Font type Panel "+e);
             return false;
         }
     }
@@ -442,6 +443,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("verified Font Size selection is working fine");
             return flag1;
         } catch (Exception e) {
+            logger.error("Error while verifying font size "+e);
             return false;
         }
     }
@@ -607,7 +609,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             return result;
         }catch(Exception e){
-            e.printStackTrace();
+            logger.error("Error while before Refreshing FCC Setting. "+e);
             return false;
         }
     }
@@ -671,8 +673,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             move.dragAndDropBy(slider,(width*20)/100,0).build().perform();
             return true;
         }catch (Exception e){
-            logger.error("Error while setting CC opacity");
-            e.printStackTrace();
+            logger.error("Error while setting CC opacity"+e);
             return false;
         }
     }
@@ -682,8 +683,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             ccFontSize.get(2).click();
             return true;
         }catch (Exception e){
-            logger.error("Error while setting CC font size");
-            e.printStackTrace();
+            logger.error("Error while setting CC font size"+e);
             return false;
         }
     }
@@ -694,8 +694,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             ccTextEnhancement.get(1).click();
             return true;
         }catch (Exception e){
-            logger.error("Error while setting CC Text Enhancement");
-            e.printStackTrace();
+            logger.error("Error while setting CC Text Enhancement"+e);
             return false;
         }
     }
@@ -715,8 +714,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             ccFontType.get(1).click();
             return true;
         }catch (Exception e){
-            logger.error("Error while setting CC font type");
-            e.printStackTrace();
+            logger.error("Error while setting CC font type"+e);
             return false;
         }
     }
@@ -800,7 +798,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
            
             return result;
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Error while comparing values after refresh "+e);
             return false;
         }
     }

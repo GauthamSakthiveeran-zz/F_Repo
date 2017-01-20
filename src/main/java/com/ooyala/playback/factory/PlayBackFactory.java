@@ -49,6 +49,7 @@ public class PlayBackFactory {
 	private PoddedAdValidator poddedAdValidator;
 	private FCCValidator fccValidator;
 	private OoyalaAPIValidator ooyalaAPIValidator;
+	private PlaylistValidator playlistValidator;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
@@ -301,6 +302,11 @@ public class PlayBackFactory {
 		return fccValidator;
 	}
 
+	public PlaylistValidator PlaylistValidator() {
+		if (playlistValidator == null)
+			playlistValidator = new PlaylistValidator(driver);
+		return playlistValidator;
+	}
 
 	public void destroyInstance() {
 		playbackFactory = null;

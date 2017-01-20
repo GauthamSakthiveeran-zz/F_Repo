@@ -80,7 +80,7 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
             result = result && eventValidator.validate("played_1", 60000);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e);
             result = false;
         }
         Assert.assertTrue(result, "Playback FCC CC tests failed :"+testName);
