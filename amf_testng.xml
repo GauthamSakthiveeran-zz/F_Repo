@@ -8,7 +8,6 @@
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
-<!-- 		<parameter name="ipaddress" value="10.11.64.34:5555" /> -->
 
 		<groups>
 			<run>
@@ -26,21 +25,20 @@
 			<package name="com.ooyala.playback.amf.ima" />
 			<package name="com.ooyala.playback.amf.vast" />
 		</packages>
-		
+
 	</test>
 
 	<test name="AMF Regression Group non parallel" parallel="false">
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
-<!-- 		<parameter name="ipaddress" value="10.11.69.42:5555" /> -->
 
 		<groups>
 			<run>
 				<include name="sequential" />
 			</run>
 		</groups>
-		
+
 		<packages>
 			<package name="com.ooyala.playback.amf" />
 			<package name="com.ooyala.playback.amf.midroll" />
@@ -51,7 +49,7 @@
 			<package name="com.ooyala.playback.amf.ima" />
 			<package name="com.ooyala.playback.amf.vast" />
 		</packages>
-		
+
 	</test>
 
 </suite>

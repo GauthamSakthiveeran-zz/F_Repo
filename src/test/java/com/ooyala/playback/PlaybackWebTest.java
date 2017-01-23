@@ -27,6 +27,7 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -34,6 +35,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
@@ -255,6 +257,19 @@ public abstract class PlaybackWebTest extends FacileTest {
         	maximizeMe(webDriverFacile.get());
         }
     }
+    
+	@BeforeTest
+	public void initializeThreads(ITestContext context) {
+		browser = System.getProperty("browser");
+		if (browser == null || browser.equals(""))
+			browser = "firefox";
+		logger.info("browser is " + browser);
+		if (browser.equalsIgnoreCase("safari")) { 
+			// safari driver does not allow parallel execution of tests
+			context.getCurrentXmlTest().setParallel("false");
+		}
+
+	}
 
     @BeforeClass(alwaysRun = true)
     @Parameters({ "testData", "xmlFilePkg", "jsFile"})
@@ -283,20 +298,26 @@ public abstract class PlaybackWebTest extends FacileTest {
         boolean driverNotNullFlag = false;
         logger.info("****** Inside @AfterMethod*****");
         logger.info(webDriverFacile.get());
-
-		if (webDriverFacile.get() != null && (webDriverFacile.get().getSessionId() == null
-				|| webDriverFacile.get().getSessionId().toString().isEmpty())) {
+        
+		if (!browser.equalsIgnoreCase("safari") && webDriverFacile.get() != null
+				&& (webDriverFacile.get().getSessionId() == null
+						|| webDriverFacile.get().getSessionId().toString().isEmpty())) {
 			logger.error(
 					"Browser closed during the test run. Renitializing the driver as the test failed during the test");
 			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
-
 			pageFactory.destroyInstance();
 			init();
 
+		} else if(browser.equalsIgnoreCase("safari") && webDriverFacile.get()==null){
+			
+			logger.error(
+					"Browser closed during the test run. Renitializing the driver as the test failed during the test");
+			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
+			pageFactory.destroyInstance();
+			init();
+			
 		} else {
-
 			driverNotNullFlag = true;
-
 		}
 
         if (result.getStatus() == ITestResult.FAILURE) {
