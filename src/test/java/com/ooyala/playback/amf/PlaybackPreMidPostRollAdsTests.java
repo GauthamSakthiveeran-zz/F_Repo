@@ -38,7 +38,8 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("PreRoll_willPlayAds", 150000);
 			
-			executeScript("pp.skipAd()");
+			if (!event.isAdPluginPresent("pulse")) 
+				executeScript("pp.skipAd()");
 
 			result = result && event.validate("adsPlayed_1", 200000);
 
@@ -48,7 +49,8 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("MidRoll_willPlayAds", 150000);
 			
-			executeScript("pp.skipAd()");
+			if (!event.isAdPluginPresent("pulse")) 
+				executeScript("pp.skipAd()");
 			
 			result = result && event.validate("adsPlayed_2", 150000);
 
@@ -56,7 +58,8 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("PostRoll_willPlayAds", 200000);
 			
-			executeScript("pp.skipAd()");
+			if (!event.isAdPluginPresent("pulse")) 
+				executeScript("pp.skipAd()");
 
 			if (event.isAdPluginPresent("pulse")) {
 				result = result && event.validate("singleAdPlayed_6", 60000);
