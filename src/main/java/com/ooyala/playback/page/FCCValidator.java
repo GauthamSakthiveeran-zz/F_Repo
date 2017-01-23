@@ -409,7 +409,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 }
                 if (flag == 0) {
                     String fontSize[];
-                    if (getBrowser().equalsIgnoreCase("internet explorer")){
+                    if (getBrowser().equalsIgnoreCase("internet explorer") || getBrowser().equalsIgnoreCase("MicrosoftEdge")){
                         fontSize = ccPreviewTextFontSize[2].split(":");
                         fontSizeInEm = fontSize[1].trim();
                     }else {
@@ -479,7 +479,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     return false;
                 }
                 // verify text enhancement selected
-                if (getBrowser().equalsIgnoreCase("internet explorer")){
+                if (getBrowser().equalsIgnoreCase("internet explorer") || getBrowser().equalsIgnoreCase("MicrosoftEdge")){
                     if (!(textEnCodeForIE[i].equals(ccPreviewTextEnh))){
                         logger.error("Preview Text enhancement is not matching for internet explorer browser");
                         return false;
