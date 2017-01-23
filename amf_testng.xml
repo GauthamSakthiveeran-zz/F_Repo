@@ -4,7 +4,7 @@
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
 
-	<test name="AMF Regression Group" parallel="classes" thread-count="10">
+	<test name="AMF Regression Group" parallel="classes" thread-count="5">
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
@@ -25,6 +25,10 @@
 			<package name="com.ooyala.playback.amf.ima" />
 			<package name="com.ooyala.playback.amf.vast" />
 		</packages>
+		
+		<!-- <classes>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackPostrollDiscoveryTests"></class>
+		</classes> -->
 
 	</test>
 
