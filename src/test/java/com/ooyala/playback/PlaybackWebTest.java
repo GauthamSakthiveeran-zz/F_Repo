@@ -1,5 +1,7 @@
 package com.ooyala.playback;
 
+import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.setTestResult;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -7,14 +9,14 @@ import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Random;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
-import com.ooyala.playback.updateSpreadSheet.ParseJenkinsJobLink;
-import com.ooyala.playback.updateSpreadSheet.UpdateSheet;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
@@ -26,7 +28,16 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
@@ -42,7 +53,6 @@ import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import org.testng.annotations.Optional;
 
 @Listeners(IMethodListener.class)
 public abstract class PlaybackWebTest extends FacileTest {
@@ -62,10 +72,9 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected static ArrayList<String> testPassed=new ArrayList<>();
     protected static ArrayList<String> testFailed=new ArrayList<>();
     protected static ArrayList<String> testSkipped= new ArrayList<>();
-    public static LinkedHashMap<String,String> testSheetData  =
-            new LinkedHashMap<String,String>();
     protected static String passedTestList;
     protected static String failedTestList;
+    protected static String v4Version;
 
     public PlaybackWebTest() throws OoyalaException {
 
@@ -193,9 +202,9 @@ public abstract class PlaybackWebTest extends FacileTest {
         return false;
     }
 
-	@AfterSuite(alwaysRun = true)
-	public void afterSuiteInPlaybackWeb() throws OoyalaException {
 
+    @AfterSuite(alwaysRun = true)
+    public void afterSuiteInPlaybackWeb() throws OoyalaException {
 		String mode = System.getProperty("mode");
 		if (mode != null && mode.equalsIgnoreCase("remote")) {
 			int total = testPassed.size() + testFailed.size() + testSkipped.size();
@@ -215,10 +224,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 				passedTestList = " ";
 			if (failedTestList == null)
 				failedTestList = " ";
-			setTestResult(Integer.toString(testPassed.size()), Integer.toString(testFailed.size()),
-					Integer.toString(testSkipped.size()), total, failedTestList, passedTestList);
+			setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList,v4Version);
 		}
-
 		SimpleHttpServer.stopServer();
 	}
 
@@ -258,6 +265,10 @@ public abstract class PlaybackWebTest extends FacileTest {
         if (browser == null || browser.equals(""))
             browser = "firefox";
         logger.info("browser is " + browser);
+        v4Version = System.getProperty("v4Version");
+        if (v4Version == null || v4Version.equals("")){
+            v4Version = "Candidate/latest";
+        }
         parseXmlFileData(xmlFile,xmlFilePkg);
         init();
 
@@ -386,78 +397,6 @@ public abstract class PlaybackWebTest extends FacileTest {
         }
     }
 
-
-    public void setTestResult(String pass, String fail, String skip,int total,String failtestname,String passedTests){
-        Date date = new Date();
-        String CurrntDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
-        testSheetData.put("Date",CurrntDate);
-        testSheetData.put("Platform",System.getProperty("platform"));
-        testSheetData.put("Browser",System.getProperty("browser"));
-        testSheetData.put("Browser_Version",System.getProperty("version"));
-        testSheetData.put("Total",Integer.toString(total));
-        testSheetData.put("Pass",pass);
-        testSheetData.put("Fail",fail);
-        testSheetData.put("Skip",skip);
-        testSheetData.put("Failed_Tests",failtestname);
-        testSheetData.put("Passed_Tests",passedTests);
-        testSheetData.put("jenkinsJobLink" , getJenkinsJobLink());
-        testSheetData.put("SuiteName",System.getProperty("tests"));
-        testSheetData.put("groups",System.getProperty("groups"));
-        for (String key : testSheetData.keySet()){
-            String value = testSheetData.get(key);
-            logger.info(key + " " + value);
-        }
-
-        UpdateSheet.writetosheet(testSheetData);
-
-    }
-
-    public String getJenkinsJobLink(){
-        String testSuitename;
-        testSuitename = System.getProperty("groups");
-        if (testSuitename == null){
-            testSuitename = "default";
-        }
-        String regressionFileName = System.getProperty("tests");
-        String jenkinsJobName = "";
-        switch (testSuitename){
-            case "playerFeatures" :
-                jenkinsJobName = "playbackweb-playerFeature";
-                break;
-            case "drm" :
-                jenkinsJobName = "playbackweb-drm";
-                break;
-            case "streams" :
-                jenkinsJobName = "playbackweb-streams";
-                break;
-            case "FCC" :
-                jenkinsJobName = "playbackweb-FCC";
-                break;
-            case "default":
-                if (regressionFileName.contains("VTC_Regression.xml")) {
-                    jenkinsJobName = "playbackwebvtc";
-                    break;
-                }
-                if (regressionFileName.contains("amf_testng.xml")){
-                    switch (browser){
-                        case "chrome" :
-                            jenkinsJobName = "playbackweb-AMF-Chrome";
-                            break;
-                        case "firefox" :
-                            jenkinsJobName = "playbackweb-AMF-FF";
-                            break;
-                        case "safari" :
-                            jenkinsJobName = "playbackweb-AMF-Safari";
-                            break;
-                        case "internet explorer" :
-                            jenkinsJobName = "playbackweb-AMF-IE";
-                            break;
-                    }
-                }
-        }
-        return ParseJenkinsJobLink.getJenkinsBuild(jenkinsJobName);
-    }
-
     public void injectScript() throws Exception {
         if (jsUrl != null && jsUrl.length > 0) {
             for (String url : jsUrl) {
@@ -542,9 +481,9 @@ public abstract class PlaybackWebTest extends FacileTest {
     public Object[][] getTestData() {
         String version;
         if(!browser.equalsIgnoreCase("MicrosoftEdge")){
-         version = getBrowserVersion();}
+            version = getBrowserVersion();}
         else{
-             version = "";
+            version = "";
         }
         Map<String, String> urls = UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(), testData, browser, version);
         String testName = getClass().getSimpleName();
