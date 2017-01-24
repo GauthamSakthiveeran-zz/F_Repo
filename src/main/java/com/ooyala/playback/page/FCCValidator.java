@@ -301,7 +301,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             WebElement backgroundOpacity = getWebElement("BACKGROUND_OPACITY");
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", backgroundOpacity);
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",slider2);
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             slideSliderCaptionOpacity(slider2);
             Thread.sleep(1000);
             String ccBgOpacity = getWebElement("CC_BACKGROUND_OPACITY").getText();
@@ -391,6 +391,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
                     WebElement element = ccFontSize.get(i);
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                    Thread.sleep(1000);
                     ccFontSize.get(i).click();
                 }else {
                     ccFontSize.get(i).click();
@@ -467,6 +468,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
                     WebElement element = ccTextEnhancement.get(i);
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                    Thread.sleep(1000);
                     ccTextEnhancement.get(i).click();
                 }else {
                     ccTextEnhancement.get(i).click();
