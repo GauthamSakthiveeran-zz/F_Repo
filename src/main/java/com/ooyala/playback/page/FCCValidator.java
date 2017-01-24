@@ -524,6 +524,8 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 return false;
 
             if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
+                WebElement element = getWebElement("CC_TRAY");
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
                 if (!waitOnElement("CC_POPHOVER_HORIZONTAL", 6000))
                     return false;
                 boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
