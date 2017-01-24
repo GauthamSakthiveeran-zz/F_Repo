@@ -298,7 +298,10 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             // select Background Opacity
             WebElement slider2 = getWebElement("CC_BACKGROUND_OPACITY_SELECTOR");
+            WebElement backgroundOpacity = getWebElement("BACKGROUND_OPACITY");
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", backgroundOpacity);
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",slider2);
+            Thread.sleep(2000);
             slideSliderCaptionOpacity(slider2);
             Thread.sleep(1000);
             String ccBgOpacity = getWebElement("CC_BACKGROUND_OPACITY").getText();

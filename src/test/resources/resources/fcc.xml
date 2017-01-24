@@ -41,4 +41,5 @@
     <element key="TOGGLING_ARROW" findBy="xPath"
              xPath=".//a[normalize-space(@class)='oo-right-button oo-hidden']//span[normalize-space(@class)='oo-icon oo-icon-system-right-arrow']"/>
     <element key="CC_TRAY" findBy="class" class="oo-popover oo-popover-pull-right" />
+    <element key="BACKGROUND_OPACITY" findBy="xPath" xPath=".//*[normalize-space(text())='Background opacity']" />
 </elements>
