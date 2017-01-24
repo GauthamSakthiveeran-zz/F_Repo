@@ -50,9 +50,16 @@ public class PlayBackFactory {
 	private FCCValidator fccValidator;
 	private OoyalaAPIValidator ooyalaAPIValidator;
 	private PlaylistValidator playlistValidator;
+	private AdFrequencyValidator adFrequencyValidator;
 
 	public PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
+	}
+	
+	public AdFrequencyValidator getAdFrequencyValidator() {
+		if (adFrequencyValidator == null)
+			adFrequencyValidator = new AdFrequencyValidator(driver);
+		return adFrequencyValidator;
 	}
 
 	public OoyalaAPIValidator getOoyalaAPIValidator() {

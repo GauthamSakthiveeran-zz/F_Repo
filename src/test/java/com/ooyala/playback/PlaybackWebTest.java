@@ -501,17 +501,16 @@ public abstract class PlaybackWebTest extends FacileTest {
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
         String version;
-        if(!browser.equalsIgnoreCase("MicrosoftEdge")){
-            version = getBrowserVersion();}
-        else{
-            version = "";
-        }
+		if (!browser.equalsIgnoreCase("MicrosoftEdge")) {
+			version = getBrowserVersion();
+		} else {
+			version = "";
+		}
         Map<String, String> urls = UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(), testData, browser, version);
         String testName = getClass().getSimpleName();
         Object[][] output = new Object[urls.size()][2];
 
-        Iterator<Map.Entry<String, String>> entries = urls.entrySet()
-                .iterator();
+		Iterator<Map.Entry<String, String>> entries = urls.entrySet().iterator();
         int i = 0;
         while (entries.hasNext()) {
             Map.Entry<String, String> entry = entries.next();
