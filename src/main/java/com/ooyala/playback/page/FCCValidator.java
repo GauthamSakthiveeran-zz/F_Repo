@@ -45,13 +45,15 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     public boolean checkArrows() {
         try {
             if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
-                waitOnElement("CC_LEFT_SCROLL_BTN", 30000);
-                clickOnIndependentElement("CC_LEFT_SCROLL_BTN");
-                logger.info("Left CC Scroll arrow is not present");
+                if(waitOnElement("CC_LEFT_SCROLL_BTN", 10000)){
+                    clickOnIndependentElement("CC_LEFT_SCROLL_BTN");
+                    logger.info("Left CC Scroll arrow is  present");
+                }
                 Thread.sleep(2000);
-                waitOnElement("CC_RIGHT_SCROLL_BTN", 60000);
-                clickOnIndependentElement("CC_RIGHT_SCROLL_BTN");
-                logger.info("Right CC Scroll arrow is not present");
+                if(waitOnElement("CC_RIGHT_SCROLL_BTN", 10000)){
+                    clickOnIndependentElement("CC_RIGHT_SCROLL_BTN");
+                    logger.info("Right CC Scroll arrow is present");
+                }
             }
             return true;
         } catch (Exception e) {
@@ -528,9 +530,12 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             if (!clickOnIndependentElement("CC_BTN"))
                 return false;
 
-            if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
+            if(getBrowser().equalsIgnoreCase("MicrosoftEdge")){
                 WebElement element = getWebElement("CC_TRAY");
                 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            }
+
+            if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
                 if (!waitOnElement("CC_POPHOVER_HORIZONTAL", 6000))
                     return false;
                 boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
@@ -572,17 +577,15 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         boolean result = true;
         try{
             Thread.sleep(2000);
-            checkArrows();
-
-            result = result && verifyCCPanelElements();
 
             // CC Languages
             result = result && verifyClosedCaptionLanguages();
+
             result = result && setClosedCaptionLanguage(2);
+
             Thread.sleep(2000);
             previewTextSelected = getCCLanguagePreviewText();
             logger.info("Preview Text Selected : " + previewTextSelected);
-
             // CC Color Selection
             result = result && verifyCCColorSelectionPanel("PlaybackFCCDefaultSettingTests");
             result = result && setCCColorSelectionOptions();
