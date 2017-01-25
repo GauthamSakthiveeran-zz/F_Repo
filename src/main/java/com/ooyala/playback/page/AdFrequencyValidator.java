@@ -71,7 +71,7 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
-		
+
 		if (firstAdPlay == 0 || adFrequency == 0) {
 			return false;
 		}
@@ -80,6 +80,10 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 		play.validate("playing_1", 10000);
 		while (i < firstAdPlay) {
 			extentTest.log(LogStatus.INFO, "Play #" + i);
+			if (adPlaying(true)) {
+				extentTest.log(LogStatus.FAIL, "Ad should not be playing right now.");
+				return false;
+			}
 			if (!seek.seekTillEnd().startAction()) {
 				extentTest.log(LogStatus.FAIL, i + " Seek failed.");
 				return false;
@@ -92,7 +96,12 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 			i++;
 		}
 
-		adPlaying();
+		if (!adPlaying(true)) {
+			extentTest.log(LogStatus.FAIL, "Ad should be playing right now.");
+			return false;
+		}
+
+		adPlaying(false);
 
 		extentTest.log(LogStatus.PASS, "Validated if ad played.");
 
@@ -111,7 +120,16 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 		while (j < adFrequency * 3) {
 			extentTest.log(LogStatus.INFO, "Play #" + i);
 			if (j % adFrequency == 0) {
-				adPlaying();
+				if (!adPlaying(true)) {
+					extentTest.log(LogStatus.FAIL, "Ad should be playing right now.");
+					return false;
+				}
+				adPlaying(false);
+			} else{
+				if (adPlaying(true)) {
+					extentTest.log(LogStatus.FAIL, "Ad should not be playing right now.");
+					return false;
+				}
 			}
 			if (!seek.seekTillEnd().startAction()) {
 				extentTest.log(LogStatus.FAIL, i + " Seek failed.");
@@ -127,12 +145,17 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 
 		return true;
 	}
-	
-	public boolean adPlaying() {
+
+	public boolean adPlaying(boolean checkOnce) throws Exception {
 		int time = 0;
 		boolean flag;
-		
+
 		IsAdPlayingValidator adPlaying = new PlayBackFactory(driver).isAdPlaying();
+
+		if (checkOnce){
+			Thread.sleep(1000);
+			return adPlaying.validate("", 1000);
+		}
 
 		while (true) {
 			if (time <= 120) {
@@ -153,7 +176,7 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 			}
 
 		}
-		if(!flag){
+		if (!flag) {
 			extentTest.log(LogStatus.FAIL, "Ad is playing for a really long time. Some issue.");
 			assert false;
 		}

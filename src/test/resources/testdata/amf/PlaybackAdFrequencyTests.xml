@@ -34,6 +34,39 @@
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
 			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 		</url>
+		
+		<url>
+			<description name="IMA MAIN First ad @1 and every 2" />
+			<embed_code name="g1dm15NjE6gocLEw_SwtDKsLqDKga0O5" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="IMA" adFirstPlay="1" adFrequency="2" />
+			<additionalPlugins name="" />
+			<pbid name="615dc8e909e941c280e12155df838355" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+		
+		<url>
+			<description name="IMA MAIN First AD @ 2, then every play" />
+			<embed_code name="0xcm15NjE6wuFIjHRrISorUX0OUC-GCl" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="IMA" adFirstPlay="2" adFrequency="1" />
+			<additionalPlugins name="" />
+			<pbid name="615dc8e909e941c280e12155df838355" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+		
+		<url>
+			<description name="IMA MAIN First AD @ 3, then play after 4" />
+			<embed_code name="g2OWx5NjE6xigaB2m4VLmyI3HnRNvYgH" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="IMA" adFirstPlay="3" adFrequency="4" />
+			<additionalPlugins name="" />
+			<pbid name="615dc8e909e941c280e12155df838355" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
 
 
 	</test>
