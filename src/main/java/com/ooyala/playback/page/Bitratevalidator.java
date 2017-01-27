@@ -55,37 +55,35 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 				.toString());
 		if (length > 1) {
 			boolean flag = true;
-			for (int i = 0; i < length - 1; i++) {
-				((JavascriptExecutor) driver)
-						.executeScript(" return pp.pause()");
-
-				String bitrate = ((JavascriptExecutor) driver).executeScript(
+			for (int i = 1; i < length; i++) {
+				String bitrate = driver.executeScript(
 						"return pp.getBitratesAvailable()[" + i
 								+ "]['bitrate']").toString();
-				((JavascriptExecutor) driver)
-						.executeScript("return pp.setTargetBitrate('" + i
-								+ "')");
-				String bufferedLengthOfVideo = ((JavascriptExecutor) driver)
-						.executeScript(" return pp.getBufferLength().toFixed()").toString();
-				int bufferedLength = Integer.parseInt(bufferedLengthOfVideo);
+
+				String id = driver.executeScript(
+						"return pp.getBitratesAvailable()[" + i
+								+ "]['id']").toString();
+
+				logger.info("value of bitrate id is : "+id);
+
+				driver.executeScript("return pp.setTargetBitrate('"+id+"')");
+
+				int bufferedLength = Integer.parseInt(driver
+						.executeScript(" return pp.getBufferLength().toFixed()").toString());
+
 				logger.info("Buffered length is "+bufferedLength);
-				String totalDurationOfVideo = ((JavascriptExecutor) driver)
-						.executeScript(" return pp.getDuration().toFixed()").toString();
-				int totalDuration = Integer.parseInt(totalDurationOfVideo);
+
+				int totalDuration = Integer.parseInt(driver
+						.executeScript(" return pp.getDuration().toFixed()").toString());
+
 				logger.info("Total time duration is "+totalDuration);
 
-				((JavascriptExecutor) driver)
-							.executeScript("pp.seek(pp.getBufferLength()-15)");
-
-				((JavascriptExecutor) driver)
-							.executeScript("pp.seek(10)");
+				driver.executeScript("pp.seek(10)");
 
 				Thread.sleep(5000);
 
-				loadingSpinner();
+				driver.executeScript("pp.play();");
 
-				((JavascriptExecutor) driver)
-						.executeScript(" return pp.play()");
 				flag = flag && waitOnElement(
 						By.id("bitrateChanged_" + (bitrate)), 25000);
 			}
