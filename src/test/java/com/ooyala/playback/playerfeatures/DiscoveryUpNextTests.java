@@ -40,8 +40,6 @@ public class DiscoveryUpNextTests extends PlaybackWebTest {
 				throw new SkipException("Test page not loaded");
 			}
 
-			logger.info("Verified that video is seeked");
-
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
