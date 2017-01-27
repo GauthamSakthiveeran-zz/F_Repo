@@ -94,7 +94,16 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	private boolean validateSwitchContainer() {
-		if (waitOnElement("CC_SWITCH", 60000)
+		try{
+			if(getBrowser().equalsIgnoreCase("MicrosoftEdge")){
+				WebElement element = getWebElement("CC_SWITCH");
+				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+				}
+		}catch (Exception e){
+			logger.error("Error in focus on element cc switch");
+		}
+
+		if (waitOnElement("CC_SWITCH", 30000)
 				&& clickOnIndependentElement("CC_SWITCH_CONTAINER")) {
 			extentTest.log(LogStatus.PASS,
 					"Verified closed caption panel switch container");
