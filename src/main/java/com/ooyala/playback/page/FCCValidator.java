@@ -1,9 +1,7 @@
 package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
@@ -45,13 +43,16 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     public boolean checkArrows() {
         try {
             if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
-                waitOnElement("CC_LEFT_SCROLL_BTN", 30000);
-                clickOnIndependentElement("CC_LEFT_SCROLL_BTN");
-                logger.info("Left CC Scroll arrow is not present");
+
+                if(waitOnElement("CC_LEFT_SCROLL_BTN", 10000)){
+                    clickOnIndependentElement("CC_LEFT_SCROLL_BTN");
+                    logger.info("Left CC Scroll arrow is  present");
+                }
                 Thread.sleep(2000);
-                waitOnElement("CC_RIGHT_SCROLL_BTN", 60000);
-                clickOnIndependentElement("CC_RIGHT_SCROLL_BTN");
-                logger.info("Right CC Scroll arrow is not present");
+                if(waitOnElement("CC_RIGHT_SCROLL_BTN", 10000)){
+                    clickOnIndependentElement("CC_RIGHT_SCROLL_BTN");
+                    logger.info("Right CC Scroll arrow is present");
+                }
             }
             return true;
         } catch (Exception e) {
@@ -62,7 +63,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     public boolean verifyCCPanelElements() {
         try {
             boolean flag =true;
-            waitOnElement("CC_CONTROL_BAR", 30000);
+            waitOnElement("CC_CONTROL_BAR", 10000);
             waitOnElement("CLOSED_CAPTION_PANEL", 30000);
 
             //verify scroll i.e left or right button for languages option if lang more than 4
@@ -298,7 +299,10 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             // select Background Opacity
             WebElement slider2 = getWebElement("CC_BACKGROUND_OPACITY_SELECTOR");
+            WebElement backgroundOpacity = getWebElement("BACKGROUND_OPACITY");
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", backgroundOpacity);
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",slider2);
+            Thread.sleep(1000);
             slideSliderCaptionOpacity(slider2);
             Thread.sleep(1000);
             String ccBgOpacity = getWebElement("CC_BACKGROUND_OPACITY").getText();
@@ -388,6 +392,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
                     WebElement element = ccFontSize.get(i);
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                    Thread.sleep(1000);
                     ccFontSize.get(i).click();
                 }else {
                     ccFontSize.get(i).click();
@@ -409,7 +414,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 }
                 if (flag == 0) {
                     String fontSize[];
-                    if (getBrowser().equalsIgnoreCase("internet explorer")){
+                    if (getBrowser().equalsIgnoreCase("internet explorer") || getBrowser().equalsIgnoreCase("MicrosoftEdge")){
                         fontSize = ccPreviewTextFontSize[2].split(":");
                         fontSizeInEm = fontSize[1].trim();
                     }else {
@@ -464,6 +469,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
                     WebElement element = ccTextEnhancement.get(i);
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                    Thread.sleep(1000);
                     ccTextEnhancement.get(i).click();
                 }else {
                     ccTextEnhancement.get(i).click();
@@ -479,7 +485,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     return false;
                 }
                 // verify text enhancement selected
-                if (getBrowser().equalsIgnoreCase("internet explorer")){
+                if (getBrowser().equalsIgnoreCase("internet explorer") || getBrowser().equalsIgnoreCase("MicrosoftEdge")){
                     if (!(textEnCodeForIE[i].equals(ccPreviewTextEnh))){
                         logger.error("Preview Text enhancement is not matching for internet explorer browser");
                         return false;
@@ -524,6 +530,16 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 return false;
 
             if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
+                try{
+                    if(getBrowser().equalsIgnoreCase("MicrosoftEdge") && (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large"))){
+                        WebElement element = getWebElement("CC_TRAY");
+                        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                    }
+                }catch (Exception e){
+                    logger.error("Error in focus on element cc tray");
+                }
+
+
                 if (!waitOnElement("CC_POPHOVER_HORIZONTAL", 6000))
                     return false;
                 boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
@@ -565,17 +581,15 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         boolean result = true;
         try{
             Thread.sleep(2000);
-            checkArrows();
-
-            result = result && verifyCCPanelElements();
 
             // CC Languages
             result = result && verifyClosedCaptionLanguages();
+
             result = result && setClosedCaptionLanguage(2);
+
             Thread.sleep(2000);
             previewTextSelected = getCCLanguagePreviewText();
             logger.info("Preview Text Selected : " + previewTextSelected);
-
             // CC Color Selection
             result = result && verifyCCColorSelectionPanel("PlaybackFCCDefaultSettingTests");
             result = result && setCCColorSelectionOptions();
@@ -615,14 +629,22 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     }
 
     public boolean setClosedCaptionLanguage(int index) {
-        index = index-1;
-        if(index < lang.size()){
-            lang.get(index).click();
-            return true;
-        }else{
-            logger.info("Invalid index passed.");
+        try{
+            index = index-1;
+            if(index < lang.size()){
+                lang.get(index).click();
+                return true;
+            }else {
+                lang = getWebElementsList("LANG_LIST");
+                lang.get(0).click();
+                return true;
+            }
         }
-        return false;
+        catch (Exception e){
+            logger.error("Error in language selection."+e.getMessage());
+            return false;
+
+        }
     }
 
     public boolean setCCColorSelectionOptions(){
@@ -638,7 +660,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     }
 
     public HashMap<String,String> getCCColorSelection(){
-        waitOnElement("COLOR_SELECTION_PANEL", 30000);
+    //    waitOnElement("COLOR_SELECTION_PANEL", 15000);
         clickOnIndependentElement("COLOR_SELECTION_PANEL");
 
         String ccTextColor, ccBgColor, ccWinColor;
@@ -661,14 +683,20 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             int width;
             Actions move = new Actions(driver);
             slider = getWebElement("CC_TEXT_OPACITY_SELECTOR");
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", slider);
+            Thread.sleep(1000);
             width = slider.getSize().getWidth();
             move.dragAndDropBy(slider,(width*20)/100,0).build().perform();
 
             slider = getWebElement("CC_BACKGROUND_OPACITY_SELECTOR");
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", slider);
+            Thread.sleep(1000);
             width = slider.getSize().getWidth();
             move.dragAndDropBy(slider,(width*20)/100,0).build().perform();
 
             slider = getWebElement("CC_WINDOW_OPACITY_SELECTOR");
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", slider);
+            Thread.sleep(1000);
             width = slider.getSize().getWidth();
             move.dragAndDropBy(slider,(width*20)/100,0).build().perform();
             return true;
@@ -708,12 +736,16 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     }
 
     public boolean setFontType(){
+        List<WebElement> ccFontType = getWebElementsList("CC_FONT_TYPE");
         try{
-            List<WebElement> ccFontType = getWebElementsList("CC_FONT_TYPE");
             Thread.sleep(1000);
             ccFontType.get(1).click();
             return true;
-        }catch (Exception e){
+        } catch (IndexOutOfBoundsException e){
+            ccFontType.get(0).click();
+            return true;
+        }
+        catch (Exception e){
             logger.error("Error while setting CC font type"+e);
             return false;
         }
