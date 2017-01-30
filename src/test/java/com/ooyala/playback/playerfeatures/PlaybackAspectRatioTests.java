@@ -54,10 +54,6 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 
 			result = result && aspectRatioValidator.validate("assetDimension_1", 60000);
 
-			result = result && eventValidator.validate("videoPlayed_1", 60000);
-
-			logger.info("Verified that video is played");
-
 			result = result && eventValidator.eventAction("FULLSCREEN_BTN_1");
 
 			logger.info("checked fullscreen");
