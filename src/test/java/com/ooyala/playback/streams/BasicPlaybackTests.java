@@ -75,6 +75,6 @@ public class BasicPlaybackTests extends PlaybackWebTest {
             }else
                 result = false;
         }
-        Assert.assertTrue(result, "Basic playback tests failed");
+        Assert.assertTrue(result, "Basic playback tests failed"+testName);
     }
 }
