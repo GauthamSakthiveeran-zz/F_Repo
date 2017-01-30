@@ -49,7 +49,11 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
 
             result = result && pause.validate("paused_1",30000);
 
-            result = result && fullScreenValidator.getFullscreen();
+            if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
+                    || getBrowser().equalsIgnoreCase("MicrosoftEdge")
+                    || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("mac")))){
+                result = result && fullScreenValidator.getFullscreen();
+            }
 
             result = result && fcc.closedCaptionMicroPanel();
 
@@ -73,7 +77,11 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
 
             fcc.switchToControlBar();
 
-            result = result && fullScreenValidator.getFullscreen();
+            if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
+                    || getBrowser().equalsIgnoreCase("MicrosoftEdge")
+                    || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("mac")))){
+                result = result && fullScreenValidator.getFullscreen();
+            }
 
             result = result && fcc.closedCaptionMicroPanel();
 
@@ -81,7 +89,11 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
 
             result = result && fcc.closeCCPanel();
 
-            result = result && fullScreenValidator.getNormalscreen();
+            if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
+                    || getBrowser().equalsIgnoreCase("MicrosoftEdge")
+                    || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("mac")))){
+                result = result && fullScreenValidator.getNormalscreen();
+            }
 
             result = result && fcc.closeCCPanel();
 

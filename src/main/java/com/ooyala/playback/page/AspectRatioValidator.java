@@ -32,12 +32,16 @@ public class AspectRatioValidator extends PlayBackPage implements
 
 	public boolean validate(String element, int timeout) throws Exception {
 
+		waitOnElement(By.id(element),10000);
+
 		if (isElementPresent(By.id(element))) {
 
 			int width = Integer.parseInt(getWebElement(element).getAttribute(
 					"width"));
 			int height = Integer.parseInt(getWebElement(element).getAttribute(
 					"height"));
+
+			Log.info("Width : "+width+" Height : "+height);
 
 			if (verticalVideo) {
 				Assert.assertEquals(width, 320, "Width Matches");
