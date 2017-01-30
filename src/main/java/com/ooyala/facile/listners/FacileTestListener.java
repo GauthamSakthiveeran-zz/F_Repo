@@ -158,6 +158,17 @@ public class FacileTestListener extends TestListenerAdapter implements
 				&& tr.getAttribute("jobId") != null)
 			this.updateSauceTestJob(tr.getAttribute("jobId").toString(), false,
 					tr);
+		
+		int hashCode = getHashCode(tr);
+		if (methods.containsKey(hashCode)) {
+			if (methods.get(hashCode) <= 2) {
+				tr.setStatus(ITestResult.SKIP);
+				tr.getTestContext().getFailedTests().removeResult(tr.getMethod());
+			}
+		} else {
+			tr.setStatus(ITestResult.SKIP);
+			tr.getTestContext().getFailedTests().removeResult(tr.getMethod());
+		}
 	}
 
 	/**
@@ -383,6 +394,20 @@ public class FacileTestListener extends TestListenerAdapter implements
 			}
 
 		}
-	}*/
+	}
 
+	@Override
+	public void onFinish(ITestContext context) {
+		String publishMetrics = System.getProperty("publishMetrics");
+		if(publishMetrics!=null && !publishMetrics.isEmpty() && publishMetrics.equalsIgnoreCase("true")){
+			Metrics metrics = new Metrics();
+			metrics.setBrowser(System.getProperty("browser"));
+			metrics.setPlatform(System.getProperty("platform"));
+			metrics.setPassedTests(context.getPassedTests().size());
+			metrics.setFailedTests(context.getFailedTests().size());
+			metrics.setSkippedTests(context.getSkippedTests().size());
+			metrics.setProjectName(context.getCurrentXmlTest().getParameter("projectName"));
+			
+		}
+	}*/
 }
