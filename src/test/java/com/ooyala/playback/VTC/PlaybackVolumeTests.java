@@ -35,8 +35,6 @@ public class PlaybackVolumeTests extends PlaybackWebTest {
         try {
             driver.get(url);
 
-
-
             result=result && play.waitForPage();
 
 			injectScript();

@@ -3,7 +3,6 @@ package com.ooyala.playback.page;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -29,10 +28,11 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		double expectedmutevol = 0.0;
 		double expectedmaxvol = 1.0;
 
-		try{
-			((JavascriptExecutor) driver).executeScript("pp.pause()");
-			Long currentVolume = (Long) (((JavascriptExecutor) driver).executeScript("return pp.getVolume()"));
-			logger.info("Current volume: " + currentVolume);
+		((JavascriptExecutor) driver).executeScript("pp.pause()");
+
+		Long currentVolume = (Long) (((JavascriptExecutor) driver).executeScript("return pp.getVolume()"));
+		logger.info("Current volume: " + currentVolume);
+		try {
 
 			if (!(isElementPresent("CONTROL_BAR"))) {
 				moveElement(getWebElement("CONTROL_BAR"));
@@ -63,16 +63,15 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 				extentTest.log(LogStatus.FAIL, "Unable to click on Volume");
 				return false;
 			}
-			return true;
-		}catch (NoSuchElementException e){
-		logger.error("Control bar is not visible");
-		return false;
-		}catch(Exception e){
-		extentTest.log(LogStatus.FAIL, "Volume control is not working properly" + e.getMessage());
-		return false;
-		}finally{
-		((JavascriptExecutor) driver).executeScript("pp.play()");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			extentTest.log(LogStatus.FAIL, "Volume control is not working properly" + e.getMessage());
+			return false;
 		}
+
+		((JavascriptExecutor) driver).executeScript("pp.play()");
+		return true;
 	}
 
 	protected double getVolume() throws Exception {
