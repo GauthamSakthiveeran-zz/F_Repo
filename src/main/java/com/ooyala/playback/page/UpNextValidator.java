@@ -1,5 +1,6 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.facile.page.WebPage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -11,7 +12,7 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class UpNextValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger Log = Logger.getLogger(UpNextValidator.class);
+	public static Logger logger = Logger.getLogger(UpNextValidator.class);
 
 	public UpNextValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -30,6 +31,7 @@ public class UpNextValidator extends PlayBackPage implements PlaybackValidator {
 					&& clickOnIndependentElement("UPNEXT_CLOSE_BTN");
 		} catch (Exception ex) {
 			ex.printStackTrace();
+			logger.error("UpNext is not showing");
 			extentTest.log(LogStatus.FAIL, "No Upnext panel");
 			return false;
 		}
