@@ -560,14 +560,14 @@
         </url>
         <url>
             <description name="MultipleBitrateOptions" />
-            <embed_code name="QyajZsMjE6wT6XAfV0UAIs8WR4MjQ4Vn" />
+            <embed_code name="l1N2RiOTE6xsCe_-rwBTL6vErLRSh0jB" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <playerParameter><![CDATA[{"encodingPriority":["dash"]}]]></playerParameter>
         </url>
 
     </test>
@@ -737,24 +737,24 @@
            <url>
                <description name="VOD_HLS_AES_MAIN_FFMPEG" />
                <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
-               <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+               <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
                <plugins name="MAIN" />
                <adPlugins name="" />
                <additionalPlugins name="" />
                <pbid name="378512f55dd44fc287d0fa609353c268" />
                <browsersSupported name="safari" />
-               <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
+               <playerParameter><![CDATA[]]></playerParameter>
            </url>
            <url>
                 <description name="VOD_HLS_AES_BITMOVIN_FFMPEG" />
-                <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
-                <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+                <embed_code name="V2YWJiOTE639mgH-kFSzGuGNSa7Wpcwc" />
+                <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
                 <plugins name="BITMOVIN" />
                 <adPlugins name="" />
                 <additionalPlugins name="" />
                 <pbid name="378512f55dd44fc287d0fa609353c268" />
                 <sslEnabled name="https"/>
-                <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
+                <playerParameter><![CDATA[]]></playerParameter>
            </url>
             <url>
                 <description name="VOD_HDS_ACCESS_OSMF_FFMPEG" />
@@ -766,29 +766,29 @@
                 <pbid name="378512f55dd44fc287d0fa609353c268" />
                 <browsersSupported name="firefox,chrome,internet explorer,safari" />
                 <browserSupportedVersion name="safari,9"/>
-                <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
+                <playerParameter><![CDATA[]]></playerParameter>
             </url>
             <url>
                 <description name="VOD_HLS_AES_MAIN_ELEMENTAL" />
-                <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
-                <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+                <embed_code name="V2YWJiOTE639mgH-kFSzGuGNSa7Wpcwc" />
+                <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
                 <plugins name="MAIN" />
                 <adPlugins name="" />
                 <additionalPlugins name="" />
-                <pbid name="378512f55dd44fc287d0fa609353c268" />
+                <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
                 <browsersSupported name="safari" />
-                <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
+                <playerParameter><![CDATA[]]></playerParameter>
             </url>
             <url>
                 <description name="VOD_HLS_AES_BITMOVIN_ELEMENTAL" />
-                <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
-                <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+                <embed_code name="V2YWJiOTE639mgH-kFSzGuGNSa7Wpcwc" />
+                <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
                 <plugins name="BITMOVIN" />
                 <adPlugins name="" />
                 <additionalPlugins name="" />
-                <pbid name="378512f55dd44fc287d0fa609353c268" />
+                <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
                 <sslEnabled name="https"/>
-                <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
+                <playerParameter><![CDATA[]]></playerParameter>
             </url>
             <url>
                 <description name="VOD_HDS_ACCESS_OSMF_ELEMENTAL" />
@@ -800,7 +800,7 @@
                 <pbid name="378512f55dd44fc287d0fa609353c268" />
                 <browsersSupported name="firefox,chrome,internet explorer,safari" />
                 <browserSupportedVersion name="safari,9"/>
-                <playerParameter><![CDATA[{"api_ssl_server":"https://player-staging.ooyala.com","api_server":"http://player.ooyala.com","auth_ssl_server":"https://player.ooyala.com/sas","auth_server":"http://player.ooyala.com/sas","analytics_ssl_server":"https://player.ooyala.com","analytics_server":"http://player.ooyala.com"}]]></playerParameter>
+                <playerParameter><![CDATA[]]></playerParameter>
             </url>
     </test>
     <test name="PlaybackSocialMediaTests">
