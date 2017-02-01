@@ -55,37 +55,31 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 				.toString());
 		if (length > 1) {
 			boolean flag = true;
-			for (int i = 1; i < length; i++) {
+			for (int i = 0; i < length; i++) {
 				String bitrate = driver.executeScript(
 						"return pp.getBitratesAvailable()[" + i
 								+ "]['bitrate']").toString();
 
-				String id = driver.executeScript(
-						"return pp.getBitratesAvailable()[" + i
-								+ "]['id']").toString();
+				if (!("0".equals(bitrate))) {
+					String id = driver.executeScript(
+							"return pp.getBitratesAvailable()[" + i
+									+ "]['id']").toString();
 
-				logger.info("value of bitrate id is : "+id);
+					logger.info("value of bitrate id is : " + id);
 
-				driver.executeScript("return pp.setTargetBitrate('"+id+"')");
+					driver.executeScript("return pp.setTargetBitrate('" + id + "')");
 
-				int bufferedLength = Integer.parseInt(driver
-						.executeScript(" return pp.getBufferLength().toFixed()").toString());
+					driver.executeScript("pp.seek(10)");
 
-				logger.info("Buffered length is "+bufferedLength);
+					Thread.sleep(5000);
 
-				int totalDuration = Integer.parseInt(driver
-						.executeScript(" return pp.getDuration().toFixed()").toString());
+					driver.executeScript("pp.play();");
 
-				logger.info("Total time duration is "+totalDuration);
+					flag = flag && waitOnElement(
+							By.id("bitrateChanged_" + (bitrate)),50000);
 
-				driver.executeScript("pp.seek(10)");
-
-				Thread.sleep(5000);
-
-				driver.executeScript("pp.play();");
-
-				flag = flag && waitOnElement(
-						By.id("bitrateChanged_" + (bitrate)), 25000);
+					logger.info("Is bitrateChanged_" + bitrate + " present :?" + flag);
+				}
 			}
 			return flag;
 		} else {
