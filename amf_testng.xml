@@ -45,6 +45,7 @@
 
 		<packages>
 			<package name="com.ooyala.playback.amf" />
+			<package name="com.ooyala.playback.amf.adfrequency" />
 			<package name="com.ooyala.playback.amf.midroll" />
 			<package name="com.ooyala.playback.amf.postroll" />
 			<package name="com.ooyala.playback.amf.preroll" />
