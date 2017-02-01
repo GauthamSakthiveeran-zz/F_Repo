@@ -4,10 +4,9 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import com.relevantcodes.extentreports.LogStatus;
-
-import junit.framework.Assert;
 
 public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
@@ -25,10 +24,10 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 	private void errorDescription(){
 		if(isElementPresent("ERROR_SCREEN")){
 			String text = getWebElement("ERROR_DESCRIPTION").getText();
-			extentTest.log(LogStatus.INFO,"FAIL : " + text);
+			extentTest.log(LogStatus.FAIL, text);
 		}
 		
-		Assert.assertTrue("Play button is not found", false);
+		Assert.assertTrue(false,"Play button is not found");
 	}
 
 	@Override
@@ -36,10 +35,30 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		boolean errorScreen = false;
 
 		try {
-			if (!waitOnElement("PLAY_BUTTON", 90000)) {
+			/*if(waitOnElement("PLAYER_SKIN", 90000)){ // to avoid waiting for a long time for the play button to appear in case of error scenarios.
+				Thread.sleep(2000);
+				if(isElementPresent("PLAY_BUTTON")){
+					extentTest.log(LogStatus.PASS, "Play button found.");
+					return true;
+				}else{
+					errorDescription();
+					return false;
+				}
+			}
+			return false;*/
+			
+			if(!loadingSpinner()){
+				Assert.assertTrue(false,"In loading spinner for a very long time.");
+				extentTest.log(LogStatus.FAIL, "In loading spinner for a very long time.");
+				return false;
+			}
+			
+			if(!waitOnElement("PLAY_BUTTON", 90000)){
 				errorDescription();
 				return false;
 			}
+			return true;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			driver.navigate().refresh();

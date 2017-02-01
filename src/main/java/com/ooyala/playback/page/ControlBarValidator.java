@@ -88,21 +88,4 @@ public class ControlBarValidator extends PlayBackPage implements PlaybackValidat
 
 	}
 	
-	public boolean validateOrderingOfElements(){
-		/*	boolean iscontrolshown = isElementPresent("CONTROL_BAR");
-
-		if (!iscontrolshown) {
-			extentTest.log(LogStatus.INFO, "Control bar is hiden hence mouse hovering on it");
-			moveElement(getWebElement("CONTROL_BAR"));
-
-		}
-		
-		asserts.elementPosition()
-		.thisIs(getWebElement("PLAY_PAUSE"))
-		.leftOf(getWebElement("VOLUME_BUTTON"))
-		.leftOf(getWebElement("SHARE_BTN"))
-		.leftOf(getWebElement("FULLSCREEN_BTN"));
-		*/
-		return true;
-	}
 }

@@ -23,7 +23,7 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private UpNextValidator upNextValidator;
 
-	@Test(groups = {"amf","postroll","discovery","upnext"}, dataProvider = "testUrls")
+	@Test(groups = {"amf","postroll","discovery","upnext","sequential"}, dataProvider = "testUrls")
 	public void verifyPostrollDiscovery(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
@@ -41,6 +41,8 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 			if (!event.isAdPluginPresent("pulse"))
 				result = result && seekAction.fromLast().setTime(30).startAction();
 			
+			result = result && event.loadingSpinner();
+			
 			result = result && upNextValidator.validate("", 60000);
 			
 			result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
@@ -54,7 +56,9 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 
 			result = result && discoveryValidator.validateLeftRightButton();
 
-			result = result && discoveryValidator.clickOnDiscoveryCloseButton("DISCOVERY_CLOSE_BTN", 20000);
+			result = result && discoveryValidator.clickOnDiscoveryCloseButton();
+			
+			result = result && discoveryValidator.clickOnDiscoveryButton();
 
 		} catch (Exception e) {
 			e.printStackTrace();

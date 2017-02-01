@@ -4,25 +4,23 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.ControlBarValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.action.PauseAction;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackHLSLiveStreamTests extends PlaybackWebTest {
+public class PlaybackOnlyMp4Tests extends PlaybackWebTest {
 
-	public PlaybackHLSLiveStreamTests() throws OoyalaException {
+	public PlaybackOnlyMp4Tests() throws OoyalaException {
 		super();
 	}
 
 	private EventValidator event;
 	private PlayValidator playValidator;
-	private ControlBarValidator controlBar;
-	private PauseAction pause;
+	private SeekValidator seek;
 
-	@Test(groups = {"amf","preroll","live"}, dataProvider = "testUrls")
-	public void verifyHLSLiveStream(String testName, String url) throws OoyalaException {
+	@Test(groups = {"amf"}, dataProvider = "testUrls", enabled=false)
+	public void verifyOnlyMp4(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -38,9 +36,9 @@ public class PlaybackHLSLiveStreamTests extends PlaybackWebTest {
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 6000);
 			result = result && event.validate("singleAdPlayed_1", 20000);
 			
-			result = result && pause.startAction();
+			result = result && seek.validate("seeked_1", 1000);
 			
-			result = result && controlBar.live().validate("", 60000);
+			result = result && event.validate("played_1", 20000);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,5 +48,4 @@ public class PlaybackHLSLiveStreamTests extends PlaybackWebTest {
 		Assert.assertTrue(result, "Test failed");
 
 	}
-
 }

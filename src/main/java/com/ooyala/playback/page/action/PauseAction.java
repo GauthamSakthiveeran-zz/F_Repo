@@ -60,8 +60,7 @@ public class PauseAction extends PlayBackPage implements PlayerAction {
 			moveElement(getWebElement("PAUSE_BUTTON"));
 			
 			try {
-				return PlayBackFactory.getInstance(driver).getPauseAction()
-						.startAction();
+				return (new PlayBackFactory(driver)).getPauseAction().startAction();
 			} catch (Exception e1) {
 				return clickOnIndependentElement("STATE_SCREEN_SELECTABLE");
 			}

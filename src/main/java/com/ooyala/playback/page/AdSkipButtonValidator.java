@@ -19,7 +19,7 @@ public class AdSkipButtonValidator extends PlayBackPage implements PlaybackValid
 
 	public boolean validate(String element, int timeout) throws Exception {
 		if (!waitOnElement(By.id("showAdSkipButton_1"), 60000)){
-			extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");
+			extentTest.log(LogStatus.FAIL, "Wait on element : showAdSkipButton_1 failed after " + timeout + " ms");
 			return false;
 		}
 		try {

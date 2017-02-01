@@ -50,7 +50,7 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 					result = result && event.validate("adPodEnd_vast_2_1", 6000);
 			}
 
-			result = result && event.validate("playing_1", 5000);
+			result = result && event.validate("playing_1", 10000);
 
 			result = result && seekAction.seekTillEnd().startAction();
 

@@ -1,5 +1,7 @@
 package com.ooyala.playback;
 
+import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.setTestResult;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -7,11 +9,14 @@ import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Random;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
@@ -22,8 +27,19 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
@@ -39,9 +55,6 @@ import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-import org.testng.annotations.Optional;
-
-import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.setTestResult;
 
 @Listeners(IMethodListener.class)
 public abstract class PlaybackWebTest extends FacileTest {
@@ -57,6 +70,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected String[] jsUrl;
     protected NeoRequest neoRequest;
     protected LiveChannel liveChannel;
+    protected RemoteWebDriver driver;
     protected static ArrayList<String> testPassed=new ArrayList<>();
     protected static ArrayList<String> testFailed=new ArrayList<>();
     protected static ArrayList<String> testSkipped= new ArrayList<>();
@@ -190,27 +204,32 @@ public abstract class PlaybackWebTest extends FacileTest {
         return false;
     }
 
+
     @AfterSuite(alwaysRun = true)
     public void afterSuiteInPlaybackWeb() throws OoyalaException {
-        int total = testPassed.size()+testFailed.size()+testSkipped.size();
-        for (int i=0;i<testPassed.size();i++){
-            if (passedTestList == null)
-                passedTestList = " ";
-            passedTestList = passedTestList+"\n"+testPassed.get(i)+" ";
-        }
-        for (int i=0;i<testFailed.size();i++){
-            if (failedTestList == null)
-                failedTestList = " ";
-            if (!failedTestList.contains(testFailed.get(i))) {
-                failedTestList = failedTestList + "\n" + testFailed.get(i) + " ";
-            }
-        }
-        setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList,v4Version);
-        SimpleHttpServer.stopServer();
-        // ExtentManager.endTests();
-        // ExtentManager.flush();
-
-    }
+		String mode = System.getProperty("mode");
+		if (mode != null && mode.equalsIgnoreCase("remote")) {
+			int total = testPassed.size() + testFailed.size() + testSkipped.size();
+			for (int i = 0; i < testPassed.size(); i++) {
+				if (passedTestList == null)
+					passedTestList = " ";
+				passedTestList = passedTestList + "\n" + testPassed.get(i) + " ";
+			}
+			for (int i = 0; i < testFailed.size(); i++) {
+				if (failedTestList == null)
+					failedTestList = " ";
+				if (!failedTestList.contains(testFailed.get(i))) {
+					failedTestList = failedTestList + "\n" + testFailed.get(i) + " ";
+				}
+			}
+			if (passedTestList == null)
+				passedTestList = " ";
+			if (failedTestList == null)
+				failedTestList = " ";
+			setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList,v4Version);
+		}
+		SimpleHttpServer.stopServer();
+	}
 
     private void init() throws Exception{
         if(browser.equalsIgnoreCase("MicrosoftEdge")){
@@ -221,24 +240,39 @@ public abstract class PlaybackWebTest extends FacileTest {
             String platform = System.getProperty("platform");
             dr.setCapability(CapabilityType.PLATFORM, platform);
             driver = new RemoteWebDriver(new URL(ipaddress), dr);
+            webDriverFacile.set(driver);
         }else {
-            driver = getDriver(browser);
+        	webDriverFacile = getDriver(browser);
+    		driver = webDriverFacile.get();
         }
-        if (driver != null)
+        if (webDriverFacile.get() != null)
             logger.info("Driver initialized successfully");
         else {
             logger.error("Driver is not initialized successfully");
             throw new OoyalaException("Driver is not initialized successfully");
         }
 
-        pageFactory = PlayBackFactory.getInstance(driver);
+        pageFactory = new PlayBackFactory(webDriverFacile.get());
         if (!getPlatform().equalsIgnoreCase("android")) {
-            maximizeMe(driver);
+        	maximizeMe(webDriverFacile.get());
         }
     }
+    
+	@BeforeTest
+	public void initializeThreads(ITestContext context) {
+		browser = System.getProperty("browser");
+		if (browser == null || browser.equals(""))
+			browser = "firefox";
+		logger.info("browser is " + browser);
+		if (browser.equalsIgnoreCase("safari")) { 
+			// safari driver does not allow parallel execution of tests
+			context.getCurrentXmlTest().setParallel("false");
+		}
+
+	}
 
     @BeforeClass(alwaysRun = true)
-    @Parameters({ "testData", "xmlFilePkg", "jsFile" , })
+    @Parameters({ "testData", "xmlFilePkg", "jsFile"})
     public void setUp(@Optional String xmlFile,@Optional String xmlFilePkg, String jsFile) throws Exception {
         logger.info("************Inside setup*************");
 
@@ -263,22 +297,28 @@ public abstract class PlaybackWebTest extends FacileTest {
 
         boolean driverNotNullFlag = false;
         logger.info("****** Inside @AfterMethod*****");
-        logger.info(driver);
+        logger.info(webDriverFacile.get());
+        
+		if (!browser.equalsIgnoreCase("safari") && webDriverFacile.get() != null
+				&& (webDriverFacile.get().getSessionId() == null
+						|| webDriverFacile.get().getSessionId().toString().isEmpty())) {
+			logger.error(
+					"Browser closed during the test run. Renitializing the driver as the test failed during the test");
+			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
+			pageFactory.destroyInstance();
+			init();
 
-        if (driver != null
-                && (driver.getSessionId() == null || driver.getSessionId()
-                .toString().isEmpty())) {
-            logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
-            extentTest.log(LogStatus.INFO, "Browser closed during the test.");
-
-            pageFactory.destroyInstance();
-            init();
-
-        } else {
-
-            driverNotNullFlag = true;
-
-        }
+		} else if(browser.equalsIgnoreCase("safari") && webDriverFacile.get()==null){
+			
+			logger.error(
+					"Browser closed during the test run. Renitializing the driver as the test failed during the test");
+			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
+			pageFactory.destroyInstance();
+			init();
+			
+		} else {
+			driverNotNullFlag = true;
+		}
 
         if (result.getStatus() == ITestResult.FAILURE) {
 
@@ -313,25 +353,22 @@ public abstract class PlaybackWebTest extends FacileTest {
             logger.info("**** Test" + extentTest.getTest().getName()
                     + " passed ******");
         } else {
-            extentTest.log(LogStatus.UNKNOWN, extentTest.getTest().getName()
-                    + " Test result is unknown");
-            logger.error("**** Test" + extentTest.getTest().getName()
-                    + " passed ******");
+        	extentTest.log(LogStatus.FAIL, result.getThrowable());
+			logger.error("**** Test " + extentTest.getTest().getName()
+					+ " failed ******");
         }
         ExtentManager.endTest(extentTest);
         ExtentManager.flush();
-//		System.out.println("###########" + StringArrayAppender.getLog());
     }
 
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
         if (isBrowserMobProxyEnabled())
             BrowserMobProxyHelper.stopBrowserMobProxyServer();
-        // ExtentManager.flush();
+
         logger.info("************Inside tearDown*************");
-        if (driver != null) {
-            driver.quit();
-            driver = null;
+        if (webDriverFacile.get() != null) {
+			webDriverFacile.get().quit();
         } else {
             logger.info("Driver is already null");
         }
@@ -358,7 +395,7 @@ public abstract class PlaybackWebTest extends FacileTest {
                 xmlFile = getClass().getSimpleName();
                 String packagename = getClass().getPackage().getName();
 
-                if (packagename.contains(xmlFilePkg)) { // TODO
+                if (packagename.contains(xmlFilePkg)) { 
                     xmlFile = xmlFilePkg+"/" + xmlFile + ".xml";
                 }
                 else
@@ -404,7 +441,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     }
 
     private void injectScript(String scriptURL) throws Exception {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+    	JavascriptExecutor js = (JavascriptExecutor) webDriverFacile.get();
         Object object = js.executeScript("function injectScript(url) {\n"
                 + "   var script = document.createElement ('script');\n"
                 + "   script.src = url;\n"
@@ -420,19 +457,19 @@ public abstract class PlaybackWebTest extends FacileTest {
     }
 
     public String getPlatform() {
-        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+    	Capabilities cap = ((RemoteWebDriver) webDriverFacile.get()).getCapabilities();
         String platformName = cap.getPlatform().toString();
         return platformName;
     }
 
     public String getBrowser() {
-        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+    	Capabilities cap = ((RemoteWebDriver) webDriverFacile.get()).getCapabilities();
         String browser = cap.getBrowserName().toString();
         return browser;
     }
 
     public String getBrowserVersion() {
-        Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+    	Capabilities cap = ((RemoteWebDriver) webDriverFacile.get()).getCapabilities();
         String version = cap.getVersion().toString();
         return version;
     }
@@ -454,7 +491,7 @@ public abstract class PlaybackWebTest extends FacileTest {
         if (!destDir.exists())
             destDir.mkdir();
 
-        File scrFile = ((TakesScreenshot) driver)
+        File scrFile = ((TakesScreenshot) webDriverFacile.get())
                 .getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(scrFile, new File("images/" + fileName));
@@ -468,17 +505,16 @@ public abstract class PlaybackWebTest extends FacileTest {
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
         String version;
-        if(!browser.equalsIgnoreCase("MicrosoftEdge")){
-            version = getBrowserVersion();}
-        else{
-            version = "";
-        }
+		if (!browser.equalsIgnoreCase("MicrosoftEdge")) {
+			version = getBrowserVersion();
+		} else {
+			version = "";
+		}
         Map<String, String> urls = UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(), testData, browser, version);
         String testName = getClass().getSimpleName();
         Object[][] output = new Object[urls.size()][2];
 
-        Iterator<Map.Entry<String, String>> entries = urls.entrySet()
-                .iterator();
+		Iterator<Map.Entry<String, String>> entries = urls.entrySet().iterator();
         int i = 0;
         while (entries.hasNext()) {
             Map.Entry<String, String> entry = entries.next();
@@ -491,7 +527,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     }
 
-    protected String removeSkin(String url) { // TODO
+    protected String removeSkin(String url) { 
         return url
                 .replace(
                         "http%3A%2F%2Fplayer.ooyala.com%2Fstatic%2Fv4%2Fcandidate%2Flatest%2Fskin-plugin%2Fhtml5-skin.min.js",
@@ -499,7 +535,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     }
 
     protected Object executeScript(String script) {
-        return ((JavascriptExecutor) driver).executeScript(script);
+        return ((JavascriptExecutor) webDriverFacile.get()).executeScript(script);
     }
 
 }

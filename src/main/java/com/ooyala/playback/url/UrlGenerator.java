@@ -65,7 +65,7 @@ public class UrlGenerator {
 	 * @param testData
 	 *            Passing node list so that we can have access to the nodes data
 	 *            from xml file
-	 * @return output : output contains two dimentional Object in which test
+	 * @return output : output contains two dimensional Object in which test
 	 *         name and url is returned
 	 */
 	public static Map<String, String> parseXmlDataProvider(String testName,
@@ -91,7 +91,7 @@ public class UrlGenerator {
 					else
 						browserExisted = true;
 
-					// Not returnign the data if the testdata contians the
+					// Not returning the data if the testdata contains the
 					// driver browser version that is not matching
 					// to the supported browser version
 
@@ -136,7 +136,6 @@ public class UrlGenerator {
 					}
 
 					String embedCode = url.getEmbedCode().getName();
-					// String embedCode = test.;
 					String pCode = url.getPcode().getName();
 					String videoPlugin = url.getPlugins().getName();
 					String adPlugin = url.getAdPlugins().getName();
@@ -155,6 +154,14 @@ public class UrlGenerator {
 					String urlGenerated = UrlGenerator.getURL(sslEnabled,
 							embedCode, pCode, pbid, videoPlugin, adPlugin,
 							additionalPlugin, playerParameter);
+					
+					String adFirstPlay = url.getAdPlugins().getAdFirstPlay();
+					String adFrequency = url.getAdPlugins().getAdFrequency();
+					
+					if(adFirstPlay!=null && !adFirstPlay.isEmpty() && adFrequency!=null && !adFrequency.isEmpty()){
+						urlGenerated = urlGenerated + " " + adFirstPlay + " " + adFrequency;
+					}
+					
 					String desc = url.getDescription().getName();
 					urlsGenerated.put(desc, urlGenerated);
 

@@ -14,7 +14,7 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class EventValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger logger = Logger.getLogger(DiscoveryValidator.class);
+	public static Logger logger = Logger.getLogger(EventValidator.class);
 
 	public EventValidator(WebDriver driver) {
 		super(driver);
@@ -44,7 +44,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 			return true;
 		}
 		extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");
-		return true;
+		return false;
 	}
 
 	public boolean eventAction(String element) throws Exception {
@@ -86,36 +86,4 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		}
 		return false;
 	}
-
-    public boolean loadingSpinner() {
-        int time = 0;
-        boolean flag;
-
-        while (true) {
-
-            // Giving hardcoded end time as 2 minutes i.e it will check loading
-            // spinner upto 2 min otherwise will break
-            if (time <= 120) {
-                try {
-                    flag = isElementVisible("SPINNER");
-                    if(!flag){
-                        flag = true;
-                        break;
-                    }
-                    Thread.sleep(1000);
-                    time++;
-                    logger.info("In loading spinner");
-                } catch (Exception e) {
-                    return true;
-                }
-            } else {
-                logger.info("Loading spinner is not vanishing i.e it occured more that 2 minutes");
-                flag = false;
-                break;
-            }
-
-        }
-        return flag;
-
-    }
 }

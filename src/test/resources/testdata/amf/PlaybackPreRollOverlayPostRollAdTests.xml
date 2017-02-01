@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+
+	<test name ="PlaybackPreRollOverlayPostRollAdTests" >
+    	<url>
+	    	<description name="MAIN_IMA"/>
+	        <embed_code name="Rjc3RreTqghZLRq93GQ-Sl1OGVyJoK2d"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="615dc8e909e941c280e12155df838355"/>
+	        <playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":10}]]></playerParameter>
+    	</url>
+    </test>
+    
+</testdata>

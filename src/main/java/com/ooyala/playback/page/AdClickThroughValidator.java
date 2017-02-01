@@ -51,7 +51,10 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
 	public boolean validate(String element, int timeout) throws Exception {
 		
-		int count =1 ;
+		if(!loadingSpinner()){
+			extentTest.log(LogStatus.FAIL, "In Loading spinner for a really long time.");
+			return false;
+		}
 		
 		String baseWindowHdl = driver.getWindowHandle();
 		
@@ -78,64 +81,48 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
 				if (!value.contains("freewheel")) {
 					if (value.contains("vast")) {
-						if (!clickOnIndependentElement("AD_SCREEN_PANEL"))
+						if (!(waitOnElement("AD_SCREEN_PANEL", 5000) && clickOnIndependentElement("AD_SCREEN_PANEL"))) 
+							// adding the wait, because sometimes the ad takes time to load when executing tests in parallel
 							return false;
-					}
-
-					else if (value.contains("ima")
-							&& video_plugin.contains("bit")
+					} else if (value.contains("ima") && video_plugin.contains("bit")
 							&& !getBrowser().contains("safari")) {
 						if (!clickOnIndependentElement("AD_PANEL_1"))
 							return false;
-						if (!waitOnElement(By.id("adsClickThroughOpened"),
-								10000))
+						if (!waitOnElement(By.id("adsClickThroughOpened"), 10000))
 							return false;
 						flag = false;
-					}
-
-					else {
+					} else {
 						if (!clickOnIndependentElement("AD_PANEL"))
 							return false;
 					}
 					if (flag) {
 						if (!waitOnElement(By.id("adsClicked_1"), 10000))
 							return false;
-						if (!waitOnElement(By.id("adsClicked_videoWindow"),
-								10000))
+						if (!waitOnElement(By.id("adsClicked_videoWindow"), 10000))
 							return false;
 					}
-					if (waitOnElement(By.id("willPauseAds_" + count), 1000)
-							&& waitOnElement(By.id("videoPausedAds_" + count), 1000)) {
-						count++;
-					} else {
-						extentTest.log(LogStatus.FAIL, "Video not paused when clicked on ad.");
-					}
-						
-					extentTest.log(PASS,
-							"AdsClicked by clicking on the ad screen");
+
+					extentTest.log(PASS, "AdsClicked by clicking on the ad screen");
 				}
 			}
 			if (!value.contains("ima")) {
 				if (getBrowser().contains("internet explorer")) {
-					if(value.contains("freewheel") && video_plugin.contains("main") && !video_plugin.contains("osmf") && !video_plugin.contains("bit")){
-						if (!clickOnIndependentElement("LEARN_MORE_IE"))
+					if (value.contains("freewheel") && video_plugin.contains("main") && !video_plugin.contains("osmf")
+							&& !video_plugin.contains("bit")) {
+						if (!(waitOnElement("LEARN_MORE_IE", 5000) && clickOnIndependentElement("LEARN_MORE_IE")))
 							return false;
-					} else{
-						if (!clickOnHiddenElement("LEARN_MORE"))
+					} else {
+						if (!(waitOnElement("LEARN_MORE", 5000) && clickOnHiddenElement("LEARN_MORE")))
 							return false;
 					}
-					
+
 				} else {
-					if (!clickOnIndependentElement("LEARN_MORE"))
+					if (!(waitOnElement("LEARN_MORE", 5000) && clickOnIndependentElement("LEARN_MORE")))
 						return false;
 				}
 				if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 5000))
 					return false;
 
-				if (!waitOnElement(By.id("willPauseAds_" + count), 1000)
-						|| !waitOnElement(By.id("videoPausedAds_" + count), 1000)) {
-					extentTest.log(LogStatus.FAIL, "Video not paused when clicked on ad.");
-				}
 			}
 			extentTest.log(PASS, "AdsClicked by clicking on the learn more button");
 

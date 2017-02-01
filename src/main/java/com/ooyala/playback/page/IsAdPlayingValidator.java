@@ -20,7 +20,9 @@ public class IsAdPlayingValidator extends PlayBackPage implements
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
-		loadingSpinner();
+		if (!loadingSpinner()) {
+			return false;
+		}
 		boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
 				.executeScript("return pp.isAdPlaying()"));
 		logger.info("Ad is playing: " + isAdplaying);

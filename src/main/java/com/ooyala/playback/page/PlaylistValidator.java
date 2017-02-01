@@ -110,22 +110,33 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 
     public boolean checkPlayback(int count){
         count = count+eventCount;
-        try {
-            if (!PlayBackFactory.getInstance(driver).getPlayValidator().waitForPage()){return false;}
-            loadingSpinner();
-            Thread.sleep(5000);
-            if(!PlayBackFactory.getInstance(driver).getPlayValidator().validate("playing_"+count+"",20000)){return false;}
-            loadingSpinner();
-            if (!PlayBackFactory.getInstance(driver).getPauseValidator().validate("paused_"+(count-eventCount)+"",20000)){return false;}
-            loadingSpinner();
-            if (!PlayBackFactory.getInstance(driver).getPlayValidator().validate("playing_"+(count+1)+"",20000)){return false;}
-            loadingSpinner();
-            if (!PlayBackFactory.getInstance(driver).getSeekValidator().validate("seeked_"+(count-eventCount)+"",20000)){return false;}
-            eventCount++;
+		try {
+			PlayBackFactory factory = new PlayBackFactory(driver);
+			if (!factory.getPlayValidator().waitForPage()) {
+				return false;
+			}
+			loadingSpinner();
+			Thread.sleep(5000);
+			if (!factory.getPlayValidator().validate("playing_" + count + "", 20000)) {
+				return false;
+			}
+			loadingSpinner();
+			if (!factory.getPauseValidator().validate("paused_" + (count - eventCount) + "", 20000)) {
+				return false;
+			}
+			loadingSpinner();
+			if (!factory.getPlayValidator().validate("playing_" + (count + 1) + "", 20000)) {
+				return false;
+			}
+			loadingSpinner();
+			if (!factory.getSeekValidator().validate("seeked_" + (count - eventCount) + "", 20000)) {
+				return false;
+			}
+			eventCount++;
 
-        } catch (Exception e){
-            return false;
-        }
+		} catch (Exception e) {
+			return false;
+		}
 
         return true;
     }
@@ -265,7 +276,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     public boolean isAutoplay(String isAutoPlay){
         try {
             if (isAutoPlay.equalsIgnoreCase("true")) {
-                if (!PlayBackFactory.getInstance(driver).getEventValidator().validate("playing_1", 20000)){
+                if (!new PlayBackFactory(driver).getEventValidator().validate("playing_1", 20000)){
                     logger.error("Auto play is not working");
                     return false;
                 }

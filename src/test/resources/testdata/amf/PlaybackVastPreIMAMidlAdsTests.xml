@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 
-	<test name ="PlaybackVastPreIMAMidlAdsTests" >
-    	<url>
-	    	<description name="BitmovinVastPreRoll_IMAMidRoll"/>
-	        <embed_code name="RmaDhoMTE6pJOKic0l3jhDPZJUnC8dIw"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name="VAST"/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="BitmovinVastPreRoll_IMAMidRoll_HLS"/>
-	        <embed_code name="RmaDhoMTE6pJOKic0l3jhDPZJUnC8dIw"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name="VAST"/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="VAST_PreRoll_IMA_MidRoll"/>
-	        <embed_code name="gwZnBnMDE6REH10kbDDR4nbf1HqZkxCL"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name="IMA"/>
-	        <pbid name="d99dafe4535a4304948a7669e309ff9a"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-	        <browsersSupported name="chrome,firefox,internet explorer,safari" />
-	        <browserSupportedVersion name="safari,9"/>
-    	</url>
-    	
-    </test>
-    
+	<test name="PlaybackVastPreIMAMidlAdsTests">
+		<url>
+			<description name="BitmovinVastPreRoll_IMAMidRoll" />
+			<embed_code name="RmaDhoMTE6pJOKic0l3jhDPZJUnC8dIw" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="VAST" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+
+		<url>
+			<description name="BitmovinVastPreRoll_IMAMidRoll_HLS" />
+			<embed_code name="RmaDhoMTE6pJOKic0l3jhDPZJUnC8dIw" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="VAST" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+
+		<url>
+			<description name="VAST_PreRoll_IMA_MidRoll" />
+			<embed_code name="gwZnBnMDE6REH10kbDDR4nbf1HqZkxCL" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF,MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="IMA" />
+			<pbid name="d99dafe4535a4304948a7669e309ff9a" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,safari" />
+			<browserSupportedVersion name="safari,9" />
+		</url>
+
+	</test>
+
 </testdata>
