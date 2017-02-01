@@ -21,7 +21,7 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private DiscoveryValidator discoveryValidator;
 
-	@Test(groups = {"amf","preroll","discovery"}, dataProvider = "testUrls")
+	@Test(groups = {"amf","preroll","discovery","sequential"}, dataProvider = "testUrls")
 	public void verifyPrerollDiscovery(String testName, String url)
 			throws OoyalaException {
 
@@ -41,9 +41,7 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 			result = result && event.validate("singleAdPlayed_1", 150000);
 
 			result = result && event.validate("playing_1", 150000);
-			result = result
-					&& discoveryValidator.validate("reportDiscoveryClick_1",
-							60000);
+			result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

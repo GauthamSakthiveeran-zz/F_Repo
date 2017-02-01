@@ -18,7 +18,7 @@ public class PlaybackEncodingPriorityTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyIMAPreVastMidAds(String testName, String url) throws OoyalaException {
+	public void verifyEncodingPriority(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 

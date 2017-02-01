@@ -6,4 +6,5 @@
 	<element key="ERROR_SCREEN" findBy="class" class="oo-error-screen" />
 	<element key="SPINNER" findBy="class" class="oo-spinner" />
 	<element key="ERROR_DESCRIPTION" findBy="class" class="oo-error-description" />
+	<element key="PLAYER_SKIN" findBy="class" class="oo-player-skin" />
 </elements>

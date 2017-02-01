@@ -1,20 +1,17 @@
 <elements area="discovery">
 	<element key="DISCOVERY_TOASTER" findBy="id"
-             id="DiscoveryToasterContainer" />
+		id="DiscoveryToasterContainer" />
 	<element key="DISCOVERY_IMG_WRAPPER" findBy="class"
-             class="oo-discovery-image-wrapper-style" />
-	<element key="RIGHT_BTN" findBy="class"
-             class="oo-right-button" />
-	<element key="LEFT_BTN" findBy="class"
-             class="oo-left-button" />
-    <element key="IMAGE_STYLE" findBy="class"
-             class="oo-image-style" />
-    <element key="DISCOVERY_STYLE" findBy="class"
-             class="oo-discovery-toaster-container-style" />
-    <element key="CONTENT_SCREEN" findBy="class"
-             class="oo-content-screen" />
-    <element key="DISCOVERY_CLOSE_BTN" findBy="class"
-             class="oo-close-button" />
-    <element key="DISCOVERY_CLOSE" findBy="xPath"
-             xPath=".//*[normalize-space(@class)='oo-icon oo-icon-system-close']" />
+		class="oo-discovery-image-wrapper-style" />
+	<element key="RIGHT_BTN" findBy="class" class="oo-right-button" />
+	<element key="LEFT_BTN" findBy="class" class="oo-left-button" />
+	<element key="IMAGE_STYLE" findBy="class" class="oo-image-style" />
+	<element key="DISCOVERY_STYLE" findBy="class"
+		class="oo-discovery-toaster-container-style" />
+	<element key="CONTENT_SCREEN" findBy="class" class="oo-content-screen" />
+	<element key="DISCOVERY_CLOSE_BTN" findBy="class" class="oo-close-button" />
+	<element key="DISCOVERY_CLOSE" findBy="xPath"
+		xPath=".//*[normalize-space(@class)='oo-icon oo-icon-system-close']" />
+	<element key="DISCOVERY_BTN" findBy="class"
+		class="oo-icon-discovery-binoculars" />
 </elements>

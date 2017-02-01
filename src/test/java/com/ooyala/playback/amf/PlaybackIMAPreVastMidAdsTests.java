@@ -39,10 +39,7 @@ public class PlaybackIMAPreVastMidAdsTests extends PlaybackWebTest {
 			result = result && event.validate("PreRoll_willPlayAds", 120000);
 			result = result && event.validate("adsPlayed_1", 200000);
 
-			if (!event.isVideoPluginPresent("osmf"))
-				result = result && event.validate("adPodEnd_google-ima-ads-manager_0_1", 6000);
-			else
-				result = result && event.validate("adPodEnd_google-ima-ads-manager_1_2", 6000);
+			result = result && event.validate("adPodEnd_google-ima-ads-manager_0_1", 6000);
 
 			result = result && event.validate("playing_1", 20000);
 
@@ -52,10 +49,7 @@ public class PlaybackIMAPreVastMidAdsTests extends PlaybackWebTest {
 			result = result && seekValidator.validate("seeked_1", 190000);
 
 			if(!getBrowser().contains("internet explorer") && !getBrowser().contains("safari")){
-				if (!event.isVideoPluginPresent("osmf"))
-					result = result && event.validate("adPodEnd_vast_2_3", 6000);
-				else
-					result = result && event.validate("adPodEnd_vast_0_1", 6000);
+				result = result && event.validate("adPodEnd_vast_2_3", 6000);
 			}else{
 				result = result && event.validate("adPodEnd_vast_2_2", 6000);
 			}

@@ -19,7 +19,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.ooyala.facile.page.WebPage;
-import com.ooyala.playback.util.PlayBackAsserts;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -98,7 +97,7 @@ public abstract class PlayBackPage extends WebPage {
 					.log(LogStatus.INFO,
 							"Exception occured while clicking on element "
 									+ elementKey);
-			logger.error("Calling clickOnHiddenElement function on the element "
+			logger.info("Calling clickOnHiddenElement function on the element "
 					+ elementKey);
 			extentTest.log(LogStatus.INFO,
 					"Calling clickOnHiddenElement function on the element "
@@ -124,7 +123,7 @@ public abstract class PlayBackPage extends WebPage {
 			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			logger.info("Exception while clicking on hidden element "
+			logger.error("Exception while clicking on hidden element "
 					+ ex.getLocalizedMessage());
 			extentTest.log(
 					LogStatus.INFO,

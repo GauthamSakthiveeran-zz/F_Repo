@@ -35,7 +35,7 @@ public class DiscoveryValidator extends PlayBackPage implements
 		if (isElementPresent("PAUSE_BUTTON")) {
 			clickOnIndependentElement("PAUSE_BUTTON");
 		}
-		return waitOnElement("DISCOVERY_TOASTER", 200000);
+		return waitOnElement("DISCOVERY_TOASTER", 10000);
 		
 	}
 	
@@ -101,8 +101,13 @@ public class DiscoveryValidator extends PlayBackPage implements
 
 	}
 
-	public boolean clickOnDiscoveryCloseButton(String element, int timeout) {
-		return waitOnElement(element, timeout)
-				&& clickOnIndependentElement(element);
+	public boolean clickOnDiscoveryCloseButton() {
+		return waitOnElement("DISCOVERY_CLOSE_BTN", 20000)
+				&& clickOnIndependentElement("DISCOVERY_CLOSE_BTN");
+	}
+	
+	public boolean clickOnDiscoveryButton() throws Exception {
+		return clickOnIndependentElement("DISCOVERY_BTN") && validateDiscoveryToaster() && validateLeftRightButton()
+				&& validateImageStyle();
 	}
 }
