@@ -1,16 +1,14 @@
 package com.ooyala.playback.playerfeatures;
 
-import org.apache.log4j.Logger;
-import org.testng.Assert;
-import org.testng.SkipException;
-import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SocialScreenValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
+import org.apache.log4j.Logger;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 /**
  * Created by jitendra on 23/11/16.
@@ -51,10 +49,9 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest {
             logger.info("Verified Social Media Sharing functionality for Facebook,Twitter and ");
 
         } catch (Exception e) {
-            e.printStackTrace();
-
+            logger.error("Error in Social Media Test"+e.getMessage());
             result = false;
         }
-        Assert.assertTrue(result, "Basic playback tests failed");
+        Assert.assertTrue(result, "Social Media tests failed");
     }
 }
