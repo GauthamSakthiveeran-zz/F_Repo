@@ -747,7 +747,7 @@
         </url>
         <url>
             <description name="VOD_HLS_AES_BITMOVIN_FFMPEG" />
-            <embed_code name="V2YWJiOTE639mgH-kFSzGuGNSa7Wpcwc" />
+            <embed_code name="o1N2JjOTE6kNGqukqJJcPwBIj0a7hWmL" />
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
@@ -770,7 +770,7 @@
         </url>
         <url>
             <description name="VOD_HLS_AES_MAIN_ELEMENTAL" />
-            <embed_code name="V2YWJiOTE639mgH-kFSzGuGNSa7Wpcwc" />
+            <embed_code name="o1N2JjOTE6kNGqukqJJcPwBIj0a7hWmL" />
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
             <plugins name="MAIN" />
             <adPlugins name="" />
@@ -781,7 +781,7 @@
         </url>
         <url>
             <description name="VOD_HLS_AES_BITMOVIN_ELEMENTAL" />
-            <embed_code name="V2YWJiOTE639mgH-kFSzGuGNSa7Wpcwc" />
+            <embed_code name="o1N2JjOTE6kNGqukqJJcPwBIj0a7hWmL" />
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
