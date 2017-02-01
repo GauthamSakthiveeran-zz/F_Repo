@@ -50,6 +50,7 @@ public class PlayBackFactory {
 	private FCCValidator fccValidator;
 	private OoyalaAPIValidator ooyalaAPIValidator;
 	private PlaylistValidator playlistValidator;
+	private ThumbnailCarouselValidator thumbnailCarouselValidator;
 
 	private PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
@@ -59,6 +60,13 @@ public class PlayBackFactory {
 		if (ooyalaAPIValidator == null)
 			ooyalaAPIValidator = new OoyalaAPIValidator(driver);
 		return ooyalaAPIValidator;
+	}
+
+	public ThumbnailCarouselValidator getThumbnailCarouselValidator() {
+		if (thumbnailCarouselValidator == null)
+			thumbnailCarouselValidator = new ThumbnailCarouselValidator(driver);
+		return thumbnailCarouselValidator;
+
 	}
 
 	public MultiplePlayerValidator getMultiplePlayerValidator() {
