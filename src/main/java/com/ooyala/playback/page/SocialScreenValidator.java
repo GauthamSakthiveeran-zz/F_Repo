@@ -30,7 +30,7 @@ public class SocialScreenValidator extends PlayBackPage implements
 
 	}
 
-	public boolean validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) {
 		try{
 			try{
 				waitOnElement("SHARE_BTN", 10000);
@@ -63,6 +63,7 @@ public class SocialScreenValidator extends PlayBackPage implements
 			}
 			// Verify Facebook link is working
 
+			waitOnElement("FACEBOOK",20000);
 			if(!clickOnIndependentElement("FACEBOOK")){
 				logger.info("Not able to click on Facebook button");
 				return false;
@@ -77,11 +78,12 @@ public class SocialScreenValidator extends PlayBackPage implements
 
 			// Verify Google link is working
 
+			waitOnElement("GOOGLE_PLUS",20000);
 			if (!clickOnIndependentElement("GOOGLE_PLUS")){
 				logger.info("Not able to click on Google+ Button");
 				return false;
 			}
-			sleep(10000);
+			sleep(7000);
 
 			if (!switchToWindowByTitle("google", getBrowser())){
 				logger.info("Google+ post is not shared");
@@ -90,7 +92,8 @@ public class SocialScreenValidator extends PlayBackPage implements
 
 			// Verify Social screen is closed
 
-			return clickOnIndependentElement("SHARE_CLOSE_BTN");
+			clickOnIndependentElement("SHARE_CLOSE_BTN");
+			return true;
 		}catch (NoSuchWindowException e){
 			logger.error("Error in swtiching a window"+e.getMessage());
 			return false;
@@ -120,6 +123,7 @@ public class SocialScreenValidator extends PlayBackPage implements
 					if(!googlePlusShare(switchedWindowTitle, currentWindow,
 							browserName, windowId)){return false;}
 					driver.close();
+					Thread.sleep(3000);
 					driver.switchTo().window(currentWindow);
 					return true;
 				} else {
@@ -255,9 +259,14 @@ public class SocialScreenValidator extends PlayBackPage implements
 			getWebElement("GPLUS_TEXTAREA").sendKeys(
 					title_for_sharing_asset);
 			Thread.sleep(5000);
-			if (!clickOnIndependentElement("GPLUS_SHARE_BTN"))
+			//if (!clickOnIndependentElement("GPLUS_SHARE_BTN"))
+			if(isElementPresent("GPLUS_SHARE_BTN")){
+				clickOnIndependentElement("GPLUS_SHARE_BTN");
+			}else{
 				clickOnIndependentElement("GPLUS_POST_BUTTON");
-			Thread.sleep(10000);
+			}
+
+			Thread.sleep(5000);
 			driver.switchTo().window(currentWindow);
 			Thread.sleep(5000);
 			openOnNewTab(getPlatform(),
