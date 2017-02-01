@@ -87,8 +87,8 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 					.executeScript("return pp.getCurrentBitrate()[\"bitrate\"]")
 					.toString();
 			((JavascriptExecutor) driver).executeScript("return pp.play()");
-			// Assert.assertNotNull(currentBitrate);
 			if (currentBitrate == null) {
+				logger.error("Current bitrate should not be null for Auto Bitrate option");
 				return false;
 			}
 			return true;

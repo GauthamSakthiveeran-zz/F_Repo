@@ -65,8 +65,10 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("videoPlayed_1", 60000);
 			logger.info("Verified that video is played");
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.getMessage();
+		} catch (Exception e){
+			e.getMessage();
 			if(e instanceof SkipException){
 				throw new SkipException("Test Skipped");
 			}else
