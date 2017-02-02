@@ -2,7 +2,6 @@ package com.ooyala.playback.streams;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -65,7 +64,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
             logger.info("Verified that video is played");
 
         }catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Exception while checking basic playback "+e.getMessage());
             result = false;
         }
         Assert.assertTrue(result, "Basic playback tests failed"+testName);

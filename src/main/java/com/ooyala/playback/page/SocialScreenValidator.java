@@ -115,6 +115,7 @@ public class SocialScreenValidator extends PlayBackPage implements
 					switchedWindowTitle = "withoutTitlePage";
 				}
 				logger.info("switchWindow title :"+switchedWindowTitle);
+				logger.info("Current Window is :"+currentWindow);
 				if ((switchedWindowTitle.toLowerCase().contains(title.toLowerCase()))||switchedWindowTitle.equalsIgnoreCase("withoutTitlePage")) {
 					if(!twitterShare(switchedWindowTitle, currentWindow,
 							browserName, windowId)){return false;}
@@ -165,6 +166,7 @@ public class SocialScreenValidator extends PlayBackPage implements
 					}
 					Thread.sleep(5000);
 					driver.switchTo().window(currentWindow);
+
 					logger.info("Current page Title : " + driver.getTitle());
 					Thread.sleep(5000);
 					openOnNewTab(getPlatform(),
@@ -263,6 +265,7 @@ public class SocialScreenValidator extends PlayBackPage implements
 			if(isElementPresent("GPLUS_SHARE_BTN")){
 				clickOnIndependentElement("GPLUS_SHARE_BTN");
 			}else{
+				waitOnElement("GPLUS_POST_BUTTON",25000);
 				clickOnIndependentElement("GPLUS_POST_BUTTON");
 			}
 
