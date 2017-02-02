@@ -59,7 +59,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
             logger.info("Verified that video is played");
 
         } catch (Exception e){
-            logger.error(e.getMessage());            ;
+            logger.error(e.getMessage());
             result = false;
 
         }

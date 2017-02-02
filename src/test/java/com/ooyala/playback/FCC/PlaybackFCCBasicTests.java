@@ -3,7 +3,6 @@ package com.ooyala.playback.FCC;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -20,12 +19,10 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
     private PlayValidator play;
     private PauseValidator pause;
     private EventValidator eventValidator;
-    private CCValidator cc;
     private FCCValidator fcc;
     private FullScreenValidator fullscreen;
     private PlayAction playAction;
     private SeekValidator seek;
-    private SeekAction seekAction;
     private IsAdPlayingValidator isAdPlaying;
 
     public PlaybackFCCBasicTests() throws OoyalaException {
@@ -40,7 +37,7 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             driver.get(url);
 
-            result = result && fcc.clearCache();
+            result = result && play.clearCache();
 
             result = result && play.waitForPage();
 
@@ -63,7 +60,7 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             result = result && fcc.discoveryCheck();
 
-            result = result &&fcc.validate("",30000);
+            result = result && fcc.validate("",30000);
 
             if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
                     || getBrowser().equalsIgnoreCase("MicrosoftEdge")
