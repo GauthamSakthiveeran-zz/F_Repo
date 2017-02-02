@@ -151,7 +151,7 @@ public class UrlGenerator {
                     } catch (Exception e) {
                         sslEnabled = "";
                     }
-
+                    //enabling sas staging - to run test in sas staging environment
                     if(enableSASstaging()) {
                         PropertyReader properties = null;
                         try {
