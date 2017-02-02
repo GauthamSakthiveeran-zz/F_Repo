@@ -45,11 +45,6 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
             result = result && eventValidator.loadingSpinner();
 
-            if(!result){
-                logger.info("skipping test");
-                throw new SkipException("Failed to load TestPage");
-            }
-
             result = result && eventValidator.validate("playing_1",20000);
 
             result = result && pause.validate("paused_1", 60000);
@@ -77,10 +72,7 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
         } catch (Exception e) {
             e.printStackTrace();
-            if(e instanceof SkipException){
-                throw new SkipException("Test Skipped");
-            }else
-                result = false;
+            result = false;
         }
         Assert.assertTrue(result, "Alice basic playback tests failed");
     }

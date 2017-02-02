@@ -22,6 +22,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         super(webDriver);
         PageFactory.initElements(webDriver, this);
         addElementToPageElements("playlist");
+        addElementToPageElements("play");
     }
 
     int eventCount = 0;
@@ -110,7 +111,15 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 
     public boolean checkPlayback(int count){
         count = count+eventCount;
-		try {
+        try {
+            if(getBrowser().equalsIgnoreCase("MicrosoftEdge")){
+                try{
+                    WebElement element = getWebElement("PLAY_BUTTON");
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                }catch (Exception e){
+                    logger.error("Error while focus on element play button.");
+                }
+            }
 			PlayBackFactory factory = new PlayBackFactory(driver);
 			if (!factory.getPlayValidator().waitForPage()) {
 				return false;
@@ -137,7 +146,6 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 		} catch (Exception e) {
 			return false;
 		}
-
         return true;
     }
 

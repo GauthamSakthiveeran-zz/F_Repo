@@ -1,18 +1,14 @@
 package com.ooyala.playback.page;
 
-import static java.lang.Thread.sleep;
+import org.apache.log4j.Logger;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
+import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/21/16.
@@ -34,69 +30,78 @@ public class SocialScreenValidator extends PlayBackPage implements
 
 	}
 
-	public boolean validate(String element, int timeout) throws Exception {
-
+	public boolean validate(String element, int timeout) {
 		try{
-			waitOnElement("SHARE_BTN", 10000);
-			clickOnIndependentElement("SHARE_BTN");
-		}catch (Exception e) {
-			clickOnIndependentElement("MORE_OPTION_ITEM");
-			waitOnElement("SHARE_BTN", 10000);
-			clickOnIndependentElement("SHARE_BTN");
-		}
+			try{
+				waitOnElement("SHARE_BTN", 10000);
+				clickOnIndependentElement("SHARE_BTN");
+			}catch (Exception e) {
+				clickOnIndependentElement("MORE_OPTION_ITEM");
+				waitOnElement("SHARE_BTN", 10000);
+				clickOnIndependentElement("SHARE_BTN");
+			}
 
-		sleep(2000);
+			sleep(2000);
 
-		if (!(waitOnElement("CONTENT_SCREEN",10000)
-				&&waitOnElement("SHARE_PANEL",10000)
-				&&waitOnElement("TWITTER",10000)
-				&&waitOnElement("FACEBOOK",10000)
-				&&waitOnElement("GOOGLE_PLUS",10000))){
-			return false;
-		}
-
-		// Verify Twitter link is working
-		// Ignoring twitter sharing on firefox as it is actual failure
-		if (!getBrowser().equalsIgnoreCase("firefox")) {
-			if(!clickOnIndependentElement("TWITTER")){return false;};
-			Thread.sleep(5000);
-			if (!switchToWindowByTitle("Share a link on Twitter", getBrowser())){
-				logger.info("Twitter link is not working on share tab.");
+			if (!(waitOnElement("CONTENT_SCREEN",10000)
+					&&waitOnElement("SHARE_PANEL",10000)
+					&&waitOnElement("TWITTER",10000)
+					&&waitOnElement("FACEBOOK",10000)
+					&&waitOnElement("GOOGLE_PLUS",10000))){
 				return false;
 			}
-		}
-		// Verify Facebook link is working
 
-		if(!clickOnIndependentElement("FACEBOOK")){
-			logger.info("Not able to click on Facebook button");
+			// Verify Twitter link is working
+			// Ignoring twitter sharing on firefox as it is actual failure
+			if (!getBrowser().equalsIgnoreCase("firefox")) {
+				if(!clickOnIndependentElement("TWITTER")){return false;};
+				Thread.sleep(5000);
+				if (!switchToWindowByTitle("Share a link on Twitter", getBrowser())){
+					logger.info("Twitter link is not working on share tab.");
+					return false;
+				}
+			}
+			// Verify Facebook link is working
+
+			waitOnElement("FACEBOOK",20000);
+			if(!clickOnIndependentElement("FACEBOOK")){
+				logger.info("Not able to click on Facebook button");
+				return false;
+			}
+
+			sleep(5000);
+
+			if (!switchToWindowByTitle("Facebook", getBrowser())){
+				logger.info("Facebook post is not posted");
+				return false;
+			}
+
+			// Verify Google link is working
+
+			waitOnElement("GOOGLE_PLUS",20000);
+			if (!clickOnIndependentElement("GOOGLE_PLUS")){
+				logger.info("Not able to click on Google+ Button");
+				return false;
+			}
+			sleep(7000);
+
+			if (!switchToWindowByTitle("google", getBrowser())){
+				logger.info("Google+ post is not shared");
+				return false;
+			}
+
+			// Verify Social screen is closed
+
+			clickOnIndependentElement("SHARE_CLOSE_BTN");
+			return true;
+		}catch (NoSuchWindowException e){
+			logger.error("Error in swtiching a window"+e.getMessage());
+			return false;
+		}catch (Exception e){
+			logger.error("Error in validating social windows "+e.getMessage());
 			return false;
 		}
-
-		sleep(5000);
-
-		if (!switchToWindowByTitle("Facebook", getBrowser())){
-			logger.info("Facebook post is not posted");
-			return false;
-		}
-
-		// Verify Google link is working
-
-		if (!clickOnIndependentElement("GOOGLE_PLUS")){
-			logger.info("Not able to click on Google+ Button");
-			return false;
-		}
-		sleep(10000);
-
-		if (!switchToWindowByTitle("google", getBrowser())){
-			logger.info("Google+ post is not shared");
-			return false;
-		}
-
-		// Verify Social screen is closed
-
-		return clickOnIndependentElement("SHARE_CLOSE_BTN");
 	}
-
 
 	public boolean switchToWindowByTitle(String title, String browserName)
 			throws InterruptedException {
@@ -118,6 +123,7 @@ public class SocialScreenValidator extends PlayBackPage implements
 					if(!googlePlusShare(switchedWindowTitle, currentWindow,
 							browserName, windowId)){return false;}
 					driver.close();
+					Thread.sleep(3000);
 					driver.switchTo().window(currentWindow);
 					return true;
 				} else {
@@ -130,64 +136,73 @@ public class SocialScreenValidator extends PlayBackPage implements
 
 
 	public boolean twitterShare(String switchedWindowTitle, String currentWindow,
-			String browserName, String windowId) throws InterruptedException {
+								String browserName, String windowId) {
+		try{
+			if (switchedWindowTitle.toLowerCase().contains("twitter")) {
 
-		if (switchedWindowTitle.toLowerCase().contains("twitter")) {
-
-			if (getWebElement("TWEETER_USERNAME").isDisplayed()
-					&& getWebElement("TWEETER_PASSWORD").isDisplayed()) {
-				String tweetShare = getWebElement("TWITTER_STATUS").getText();
-				tweetShare = tweetShare
-						.substring(tweetShare.lastIndexOf(":") - 6);
-				logger.info("originnal Tweet " + tweetShare);
-				String nameForTweet = "Intern_2015 Movie at " + Math.random()
-						+ "";
-				String tweetItOnTwitter = nameForTweet + tweetShare;
-				logger.info("updated Tweet " + tweetItOnTwitter);
-				WebElement updateStatus = getWebElement("TWITTER_STATUS");
-				updateStatus.clear();
-				updateStatus.sendKeys(tweetItOnTwitter);
-				writeTextIntoTextBox("TWEETER_USERNAME",
-						"ooyalatester@vertisinfotech.com");
-				writeTextIntoTextBox("TWEETER_PASSWORD", "!password*");
-				waitOnElement("TWITTER_LOGIN_BUTTON", 30000);
-				clickOnIndependentElement("TWITTER_LOGIN_BUTTON");
-				Thread.sleep(5000);
-				logger.info("browser name is :" + browserName);
-				if (browserName.equalsIgnoreCase("firefox")) {
-					driver.switchTo().window(windowId).close();
+				if (getWebElement("TWEETER_USERNAME").isDisplayed()
+						&& getWebElement("TWEETER_PASSWORD").isDisplayed()) {
+					String tweetShare = getWebElement("TWITTER_STATUS").getText();
+					tweetShare = tweetShare
+							.substring(tweetShare.lastIndexOf(":") - 6);
+					logger.info("originnal Tweet " + tweetShare);
+					String nameForTweet = "Intern_2015 Movie at " + Math.random()
+							+ "";
+					String tweetItOnTwitter = nameForTweet + tweetShare;
+					logger.info("updated Tweet " + tweetItOnTwitter);
+					WebElement updateStatus = getWebElement("TWITTER_STATUS");
+					updateStatus.clear();
+					updateStatus.sendKeys(tweetItOnTwitter);
+					writeTextIntoTextBox("TWEETER_USERNAME",
+							"ooyalatester@vertisinfotech.com");
+					writeTextIntoTextBox("TWEETER_PASSWORD", "!password*");
+					waitOnElement("TWITTER_LOGIN_BUTTON", 30000);
+					clickOnIndependentElement("TWITTER_LOGIN_BUTTON");
+					Thread.sleep(5000);
+					logger.info("browser name is :" + browserName);
+					if (browserName.equalsIgnoreCase("firefox")) {
+						driver.switchTo().window(windowId).close();
+					}
+					Thread.sleep(5000);
+					driver.switchTo().window(currentWindow);
+					logger.info("Current page Title : " + driver.getTitle());
+					Thread.sleep(5000);
+					openOnNewTab(getPlatform(),
+							"window.open('http://www.twitter.com')", browserName);
+					driver.navigate().to("https://twitter.com");
+					driver.navigate().refresh();
+					Thread.sleep(5000);
+					String tweet_path="//*[normalize-space(text())="+"'"+nameForTweet+"'"+"]";
+					Thread.sleep(10000);
+					boolean isTweetPresent = driver.findElement(By.xpath(tweet_path)).isDisplayed();
+					if (!isTweetPresent){
+						logger.info("Tweet is not tweeted successfully");
+						return false;
+					}
 				}
-				Thread.sleep(5000);
-				driver.switchTo().window(currentWindow);
-				logger.info("Current page Title : " + driver.getTitle());
-				Thread.sleep(5000);
-				openOnNewTab(getPlatform(),
-						"window.open('http://www.twitter.com')", browserName);
-				driver.navigate().to("https://twitter.com");
-				driver.navigate().refresh();
-				Thread.sleep(5000);
-				String tweet_path="//*[normalize-space(text())="+"'"+nameForTweet+"'"+"]";
-				Thread.sleep(10000);
-				boolean isTweetPresent = driver.findElement(By.xpath(tweet_path)).isDisplayed();
-				if (!isTweetPresent){
-					logger.info("Tweet is not tweeted successfully");
-					return false;
-				}
-
 			}
+			return true;
+		}catch(NoSuchWindowException e){
+			logger.error("Error while switching a window"+e.getMessage());
+			return false;
+		}catch(Exception e){
+			return false;
 		}
-		return true;
 	}
 
 	public boolean facebookShare(String switchedWindowTitle, String currentWindow,
-			String browserName, String windowId) throws InterruptedException {
+								 String browserName, String windowId) throws InterruptedException {
 
 		boolean isFBEmail;
 
 		if (switchedWindowTitle.toLowerCase().contains("facebook")) {
 
 			try {
+				waitOnElement("FB_EMAIL",10000);
 				isFBEmail=getWebElement("FB_EMAIL").isDisplayed();
+			} catch (NoSuchElementException e){
+				logger.error("FB email text box not found. "+e.getMessage());
+				isFBEmail=false;
 			} catch (Exception e){
 				isFBEmail=false;
 			}
@@ -230,7 +245,7 @@ public class SocialScreenValidator extends PlayBackPage implements
 	}
 
 	public boolean googlePlusShare(String switchedWindowTitle,
-			String currentWindow, String browserName, String windowId)
+								   String currentWindow, String browserName, String windowId)
 			throws InterruptedException {
 
 		if (switchedWindowTitle.toLowerCase().contains("google")||switchedWindowTitle.equalsIgnoreCase("withoutTitlePage")) {
@@ -244,13 +259,18 @@ public class SocialScreenValidator extends PlayBackPage implements
 			getWebElement("GPLUS_TEXTAREA").sendKeys(
 					title_for_sharing_asset);
 			Thread.sleep(5000);
-			if (!clickOnIndependentElement("GPLUS_SHARE_BTN"))
+			//if (!clickOnIndependentElement("GPLUS_SHARE_BTN"))
+			if(isElementPresent("GPLUS_SHARE_BTN")){
+				clickOnIndependentElement("GPLUS_SHARE_BTN");
+			}else{
 				clickOnIndependentElement("GPLUS_POST_BUTTON");
-			Thread.sleep(10000);
+			}
+
+			Thread.sleep(5000);
 			driver.switchTo().window(currentWindow);
 			Thread.sleep(5000);
 			openOnNewTab(getPlatform(),
-						"window.open('https://plus.google.com')", browserName);
+					"window.open('https://plus.google.com')", browserName);
 			driver.navigate().to("https://plus.google.com");
 			Thread.sleep(5000);
 			driver.navigate().refresh();
@@ -277,7 +297,7 @@ public class SocialScreenValidator extends PlayBackPage implements
 		return true;
 	}
 
-	public void openOnNewTab(String platform, String webSite, String browserName) {
+	public void openOnNewTab(String platform, String webSite, String browserName) throws InterruptedException {
 
 		if (platform.equalsIgnoreCase("Mac")) {
 			clickOnIndependentElement("SHARE_CLOSE_BTN");
@@ -289,14 +309,16 @@ public class SocialScreenValidator extends PlayBackPage implements
 
 		} else {
 			((JavascriptExecutor) driver).executeScript(webSite);
+			Thread.sleep(2000);
 			ArrayList<String> multipleTabs = new ArrayList<String>(
 					driver.getWindowHandles());
 			logger.info("total tabs opened : " + multipleTabs.size());
 		}
 
+		Thread.sleep(5000);
 		ArrayList<String> tabs = new ArrayList<String>(
 				driver.getWindowHandles());
-			driver.switchTo().window(tabs.get(1));
+		driver.switchTo().window(tabs.get(1));
 
 	}
 
