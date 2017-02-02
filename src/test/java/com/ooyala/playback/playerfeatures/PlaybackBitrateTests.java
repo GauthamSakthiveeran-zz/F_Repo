@@ -16,67 +16,56 @@ import static java.lang.Thread.sleep;
  */
 public class PlaybackBitrateTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackBitrateTests.class);
-	private PlayValidator play;
-	private PauseValidator pause;
-	private SeekValidator seek;
-	private EventValidator eventValidator;
-	private Bitratevalidator bitratevalidator;
-	private PlayAction playAction;
-	private FCCValidator fcc;
+    private static Logger logger = Logger.getLogger(PlaybackBitrateTests.class);
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private Bitratevalidator bitratevalidator;
+    private PlayAction playAction;
 
-	public PlaybackBitrateTests() throws OoyalaException {
-		super();
-	}
+    public PlaybackBitrateTests() throws OoyalaException {
+        super();
+    }
 
-	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testBitrate(String testName, String url) throws OoyalaException {
+    @Test(groups = "playerFeatures", dataProvider = "testUrls")
+    public void testBitrate(String testName, String url) throws OoyalaException {
 
-		boolean result = true;
+        boolean result = true;
 
-		try {
-			driver.get(url);
+        try {
+            driver.get(url);
 
-			result = result && fcc.clearCache();
+            result = result && play.clearCache();
 
-			result = result && play.waitForPage();
+            result = result && play.waitForPage();
 
-			injectScript();
+            injectScript();
 
-			result = result && playAction.startAction();
+            result = result && playAction.startAction();
 
-			result = result && eventValidator.loadingSpinner();
+            result = result && eventValidator.loadingSpinner();
 
-			if (!result){
-				logger.info("skipping test for "+getBrowser()+" browser as it takes too much tim to load the video at the beginning");
-				throw new SkipException("Failed to load TestPage");
-			}
+            result = result && eventValidator.validate("playing_1", 60000);
 
-			result = result && eventValidator.validate("playing_1", 60000);
+            result = result && pause.validate("paused_1", 60000);
 
-			result = result && pause.validate("paused_1", 60000);
+            result = result && bitratevalidator.validate("", 60000);
 
-			result = result && bitratevalidator.validate("", 60000);
+            sleep(1000);
 
-			sleep(1000);
+            result = result && seek.validate("seeked_1", 60000);
 
-			result = result && seek.validate("seeked_1", 60000);
+            result = result && eventValidator.validate("videoPlayed_1", 60000);
+            logger.info("Verified that video is played");
 
-			result = result && eventValidator.validate("videoPlayed_1", 60000);
-			logger.info("Verified that video is played");
+        } catch (Exception e){
+            e.getMessage();
+            result = false;
 
-		} catch (InterruptedException e) {
-			e.getMessage();
-		} catch (Exception e){
-			e.getMessage();
-			if(e instanceof SkipException){
-				throw new SkipException("Test Skipped");
-			}else
-				result = false;
+        }
+        Assert.assertTrue(result, "Playback bitrate/Quality tests failed"+testName);
 
-		}
-		Assert.assertTrue(result, "Playback bitrate/Quality tests failed"+testName);
-
-	}
+    }
 
 }

@@ -40,10 +40,6 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
             result = result && play.waitForPage();
 
-            if(!result){
-                throw new SkipException("Failed to load the test page");
-            }
-
             Thread.sleep(5000);
 
             injectScript();
@@ -70,10 +66,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
         }catch (Exception e) {
             e.printStackTrace();
-            if(e instanceof SkipException){
-                throw new SkipException("Test Skipped");
-            }else
-                result = false;
+            result = false;
         }
         Assert.assertTrue(result, "Basic playback tests failed"+testName);
     }

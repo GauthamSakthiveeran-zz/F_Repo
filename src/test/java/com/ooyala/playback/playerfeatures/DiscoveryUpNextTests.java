@@ -36,10 +36,6 @@ public class DiscoveryUpNextTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-			if (!result) {
-				throw new SkipException("Test page not loaded");
-			}
-
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
