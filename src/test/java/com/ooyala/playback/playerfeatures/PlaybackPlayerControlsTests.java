@@ -6,7 +6,6 @@ import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 public class PlaybackPlayerControlsTests extends PlaybackWebTest {
@@ -71,9 +70,9 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
             logger.info("Verified that video is played");
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             result = false;
         }
-        Assert.assertTrue(result, "Alice basic playback tests failed");
+        Assert.assertTrue(result, "Alice basic playback tests failed"+testName);
     }
 }

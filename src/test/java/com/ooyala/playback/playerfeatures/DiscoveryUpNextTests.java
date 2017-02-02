@@ -2,9 +2,7 @@ package com.ooyala.playback.playerfeatures;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.SkipException;
 import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
@@ -51,7 +49,7 @@ public class DiscoveryUpNextTests extends PlaybackWebTest {
 
 			logger.info("Verified that video is played");
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Exception while checking discovery up next "+e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "Discovery up next tests failed");
