@@ -26,7 +26,7 @@ public abstract class PlayBackPage extends WebPage {
 
 	private static Logger logger = Logger.getLogger(PlayBackPage.class);
 
-	protected ExtentTest extentTest;
+	protected static ExtentTest extentTest;
 
 	public PlayBackPage(WebDriver webDriver) {
 		super(webDriver);
@@ -90,7 +90,6 @@ public abstract class PlayBackPage extends WebPage {
 
 			return flag;
 		} catch (Exception ex) {
-			ex.printStackTrace();
 			logger.error("Exception occured while clicking on element "
 					+ elementKey);
 			extentTest
@@ -186,7 +185,6 @@ public abstract class PlayBackPage extends WebPage {
 	/**
 	 * checking to see if the protocol is hds or hls or any protocol
 	 *
-	 * @param data
 	 * @param protocol
 	 * @return
 	 * @throws Exception
@@ -285,4 +283,9 @@ public abstract class PlayBackPage extends WebPage {
         }
         return true;
     }
+
+	public static ExtentTest getExtentTest(){
+		return extentTest;
+	}
+
 }
