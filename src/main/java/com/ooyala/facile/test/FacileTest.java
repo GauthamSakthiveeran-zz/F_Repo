@@ -7,7 +7,6 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -25,7 +24,6 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Dimension;
@@ -95,7 +93,7 @@ public class FacileTest implements IHookable {
 	public static Logger logger = Logger.getLogger(FacileTest.class);
 
 	/** The driver. */
-	private RemoteWebDriver driver;
+	protected RemoteWebDriver driver;
 
 	/** The chrome server. */
 	private static ChromeDriverService chromeServer;
