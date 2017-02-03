@@ -218,6 +218,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getFirstVideoFromPlaylist(String value){
+        eventCount = 0;
         List<WebElement> videoList = getWebElementsList("PLAYLIST_VIDEOS");
         String emebedCodeOfFirstAsset = videoList.get(0).getAttribute("id");
         String emebedCodeOfCurrentAsset = getEmbedCode();
@@ -241,6 +242,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getThumbnailSize(String thumbnailSizeValue){
+        eventCount = 0;
         String thumbnailSize = getWebElement("PLAYLIST_PLAYER").getAttribute("data-playlists-thumbnails-size");
         logger.info("Playlist Caption Position is - "+thumbnailSize);
         if (!thumbnailSize.equals(thumbnailSizeValue)){
@@ -250,6 +252,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getThumbnailSpacing(String thumbnailSpaceValue){
+        eventCount = 0;
         int numberOfAsset = getWebElementsList("SPCAING_PLAYLIST_ASSETS").size();
         int givenThumbnailSize = Integer.parseInt(thumbnailSpaceValue);
         for (int i=0;i<numberOfAsset;i++){
@@ -335,6 +338,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getWrapperFontSize(String wrapperSizeValue){
+        eventCount = 0;
         String fontSize =getWebElement("PLAYLIST_PLAYER").getCssValue("font-size");
         logger.info("Playlist Font Size is - "+fontSize);
         if(!fontSize.contains(wrapperSizeValue)){
@@ -344,6 +348,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getCaption(){
+        eventCount =0;
         boolean flag=true;
         List<WebElement> titleList = getWebElementsList("ASSET_TITLE");
         List<WebElement> desciptionList = getWebElementsList("ASSET_DESCRIPTION");
