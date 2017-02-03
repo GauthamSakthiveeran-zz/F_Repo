@@ -36,7 +36,7 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
         try{
             driver.get(url);
 
-            result = result && fcc.clearCache();
+            result = result && play.clearCache();
             result = result && play.waitForPage();
 
             injectScript();
@@ -104,7 +104,7 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
             result = result && eventValidator.validate("played_1", 60000);
 
         }catch(Exception e){
-            logger.error(e);
+            logger.error(e.getMessage());
             result = false;
         }
         Assert.assertTrue(result, "Playback FCC CC Default Setting tests failed");
