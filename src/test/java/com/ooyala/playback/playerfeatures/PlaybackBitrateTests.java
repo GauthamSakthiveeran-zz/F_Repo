@@ -6,7 +6,6 @@ import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import static java.lang.Thread.sleep;
@@ -60,7 +59,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
             logger.info("Verified that video is played");
 
         } catch (Exception e){
-            e.getMessage();
+            logger.error(e.getMessage());
             result = false;
 
         }

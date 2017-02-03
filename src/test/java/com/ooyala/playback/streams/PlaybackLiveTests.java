@@ -2,7 +2,6 @@ package com.ooyala.playback.streams;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
-import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -65,8 +64,8 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 
 		} catch (Exception e) {
-            e.printStackTrace();
-                result = false;
+            logger.error(e.getMessage());
+			result = false;
 		}
 		Assert.assertTrue(result, "Playback Live tests failed");
 

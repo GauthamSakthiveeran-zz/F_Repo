@@ -5,7 +5,6 @@ import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
-import org.testng.SkipException;
 import org.testng.annotations.Test;
 import org.apache.log4j.Logger;
 import static java.lang.Thread.sleep;
@@ -69,7 +68,7 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
             logger.info("video played");
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             result = false;
         }
         Assert.assertTrue(result, "Vertical Video tests failed");
