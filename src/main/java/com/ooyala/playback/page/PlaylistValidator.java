@@ -120,7 +120,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
                     logger.error("Error while focus on element play button.");
                 }
             }
-			PlayBackFactory factory = new PlayBackFactory(driver);
+			PlayBackFactory factory = new PlayBackFactory(driver,extentTest);
 			if (!factory.getPlayValidator().waitForPage()) {
 				return false;
 			}
@@ -284,7 +284,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     public boolean isAutoplay(String isAutoPlay){
         try {
             if (isAutoPlay.equalsIgnoreCase("true")) {
-                if (!new PlayBackFactory(driver).getEventValidator().validate("playing_1", 20000)){
+                if (!new PlayBackFactory(driver,extentTest).getEventValidator().validate("playing_1", 20000)){
                     logger.error("Auto play is not working");
                     return false;
                 }

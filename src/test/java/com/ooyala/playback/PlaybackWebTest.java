@@ -252,7 +252,7 @@ public abstract class PlaybackWebTest extends FacileTest {
             throw new OoyalaException("Driver is not initialized successfully");
         }
 
-        pageFactory = new PlayBackFactory(webDriverFacile.get());
+        pageFactory = new PlayBackFactory(webDriverFacile.get(), extentTest);
         if (!getPlatform().equalsIgnoreCase("android")) {
         	maximizeMe(webDriverFacile.get());
         }
