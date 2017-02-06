@@ -27,7 +27,7 @@ public class FullScreenValidator extends PlayBackPage implements
 
 	public boolean validate(String element, int timeout) throws Exception {
 
-		if (!(new PlayBackFactory(driver)).getFullScreenAction().startAction())
+		if (!(new PlayBackFactory(driver,extentTest)).getFullScreenAction().startAction())
 			return false;
 
 		Thread.sleep(3000);
