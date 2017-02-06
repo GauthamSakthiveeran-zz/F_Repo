@@ -4,7 +4,7 @@
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
 
-	<test name="AMF Regression Group" parallel="classes" thread-count="5">
+	<test name="AMF Regression Group" parallel="classes" thread-count="10">
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
