@@ -1,8 +1,11 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.qe.common.util.PropertyReader;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.Map;
 
 /**
  * Created by snehal on 23/11/16.
@@ -12,11 +15,9 @@ public class SaasPortValidator extends PlayBackPage implements
 		PlaybackValidator {
 
 	private static Logger logger = Logger.getLogger(SaasPortValidator.class);
-
-	String embedCode = "1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa";
-	String sasportUrl = "http://sasport.us-east-1.atlantis.services.ooyala.com/static/?tab=rights_locker&pcode=BjcWYyOu1KK2DiKOkF41Z2k0X57l&accountId=dulari_qa&rlEnv=Production";
-
-	public static Logger Log = Logger.getLogger(SaasPortValidator.class);
+	private String embedCode;
+	private String sasportUrl;
+	Map<String, String> data;
 
 	public SaasPortValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -31,8 +32,13 @@ public class SaasPortValidator extends PlayBackPage implements
 	public boolean validate(String element, int timeout) throws Exception {
 		if (element.contains("CREATE_ENTITLEMENT")) {
 			try {
+				data = parseURL();
+				embedCode=data.get("ec");
+				PropertyReader properties = PropertyReader.getInstance("urlData.properties");
+				sasportUrl=properties.getProperty("sasport_url");
 				if (!searchEntitlement())
 					return false;
+				deleteDevices();
 				Thread.sleep(5000);
 
 				if (isElementVisible("ENTITLEMENT")) {
@@ -55,8 +61,11 @@ public class SaasPortValidator extends PlayBackPage implements
 		} else {
 			if (!searchEntitlement())
 				return false;
-			if (!waitOnElement("DISPLAY_BTN", 10000))
+			if (!waitOnElement("DISPLAY_BTN", 15000)){
+				logger.error("Device is not registered");
 				return false;
+			}
+
 			if (!isElementPresent("DISPLAY_BTN")) {
 				throw new Exception(
 						"Device is not registered for entitlement on sasport.");
@@ -75,7 +84,7 @@ public class SaasPortValidator extends PlayBackPage implements
 	public boolean searchEntitlement() throws Exception {
 		driver.get(sasportUrl);
 		return waitOnElement("SEARCH_BTN", 30000)
-				&& clickOnIndependentElement("SEARCH_BTN");
+				&& clickOnIndependentElement("SEARCH_BTN") && waitOnElement("CREATE_ENTITLEMENT_BTN", 30000);
 	}
 
 	private boolean createEntitlement() throws Exception {
@@ -90,17 +99,21 @@ public class SaasPortValidator extends PlayBackPage implements
 		writeTextIntoTextBox("MAX_DEVICES", "2");
 		clickOnIndependentElement("CREATE_BTN");;
 		Thread.sleep(5000);
+		if(!waitOnElement("CREATE_ENTITLEMENT_BTN", 30000)){
+			logger.error("Entitlement is not getting created");
+			return false;
+		}
+		logger.info("Entitlement created suceessfully");
 		return true;
 	}
 
-	public boolean DeleteDevices(){
+	public boolean deleteDevices(){
 		int noOfRegisteredDevices = 0;
 		if(isElementPresent("NO_DEVICES_REGISTERED")) {
 			logger.info("No Devices registered");
 			return true;
 		}
 		else{
-
 			noOfRegisteredDevices = getWebElementsList("ACCOUNT_DEVICES_LIST").size();
 			for(int i = 1; i<=noOfRegisteredDevices; i++){
 				try{
