@@ -52,8 +52,6 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("played_1", 60000);
 
-			result = result && sasport.searchEntitlement();
-
 			result = result && sasport.validate("DISPLAY_BTN", 10);
 
 		} catch (Exception e) {
