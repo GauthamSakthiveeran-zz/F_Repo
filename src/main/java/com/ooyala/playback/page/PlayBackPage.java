@@ -177,8 +177,8 @@ public abstract class PlayBackPage extends WebPage {
 		return browserName;
 	}
 
-	public void setExtentTest(ExtentTest test) {
-		this.extentTest = test;
+	public void setExtentTest(ExtentTest extentTest) {
+		this.extentTest = extentTest;
 	}
 	
 

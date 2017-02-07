@@ -150,7 +150,7 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 		int time = 0;
 		boolean flag;
 
-		IsAdPlayingValidator adPlaying = new PlayBackFactory(driver).isAdPlaying();
+		IsAdPlayingValidator adPlaying = new PlayBackFactory(driver,extentTest).isAdPlaying();
 
 		if (checkOnce){
 			Thread.sleep(1000);
