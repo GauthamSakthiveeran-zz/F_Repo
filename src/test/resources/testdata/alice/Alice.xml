@@ -746,12 +746,12 @@
         </url>
         <url>
             <description name="VOD_HLS_AES_BITMOVIN_FFMPEG" />
-            <embed_code name="ZoMmd3NTE6zAFEYbLkU5hKXp8zF2ctK0" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <embed_code name="lpMWdlOTE6dNxa4hDAIosKY4taT-Bofx" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
             <sslEnabled name="https"/>
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
@@ -780,12 +780,12 @@
         </url>
         <url>
             <description name="VOD_HLS_AES_BITMOVIN_ELEMENTAL" />
-            <embed_code name="ZoMmd3NTE6zAFEYbLkU5hKXp8zF2ctK0" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <embed_code name="lpMWdlOTE6dNxa4hDAIosKY4taT-Bofx" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
             <sslEnabled name="https"/>
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
