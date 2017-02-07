@@ -26,7 +26,7 @@ public abstract class PlayBackPage extends WebPage {
 
 	private static Logger logger = Logger.getLogger(PlayBackPage.class);
 
-	protected static ExtentTest extentTest;
+	protected ExtentTest extentTest;
 
 	public PlayBackPage(WebDriver webDriver) {
 		super(webDriver);
@@ -283,9 +283,5 @@ public abstract class PlayBackPage extends WebPage {
         }
         return true;
     }
-
-	public static ExtentTest getExtentTest(){
-		return extentTest;
-	}
 
 }
