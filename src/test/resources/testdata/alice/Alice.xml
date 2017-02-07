@@ -247,7 +247,7 @@
             <playerParameter><![CDATA[{"encodingPriority":["hls","dash"]}]]></playerParameter>
         </url>
 
-    </tes
+    </test>
     <test name="PlaybackDiscoveryCustomizationTests">
         <url>
             <description name="Customization_Discovery" />
