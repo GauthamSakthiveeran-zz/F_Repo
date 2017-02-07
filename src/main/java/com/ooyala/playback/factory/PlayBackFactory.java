@@ -2,7 +2,6 @@ package com.ooyala.playback.factory;
 
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.*;
-import com.relevantcodes.extentreports.ExtentTest;
 import org.openqa.selenium.WebDriver;
 
 import java.lang.reflect.Field;
@@ -53,11 +52,9 @@ public class PlayBackFactory {
 	private PlaylistValidator playlistValidator;
 	private AdFrequencyValidator adFrequencyValidator;
 	private ThumbnailCarouselValidator thumbnailCarouselValidator;
-	private ExtentTest extentTest;
 
 	public PlayBackFactory(WebDriver driver) {
 		this.driver = driver;
-		extentTest=PlayBackPage.getExtentTest();
 	}
 	
 	public AdFrequencyValidator getAdFrequencyValidator() {
