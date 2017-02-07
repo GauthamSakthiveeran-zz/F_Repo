@@ -32,7 +32,7 @@ public class AspectRatioValidator extends PlayBackPage implements
 
 	public boolean validate(String element, int timeout) throws Exception {
 
-		waitOnElement(By.id(element),10000);
+		waitOnElement(By.id(element),40000);
 
 		if (isElementPresent(By.id(element))) {
 
@@ -57,6 +57,7 @@ public class AspectRatioValidator extends PlayBackPage implements
 			}
 			return true;
 		} else {
+			Log.error(element+" is not found.");
 			extentTest.log(LogStatus.FAIL, "Aspect ratio element not present");
 			return false;
 		}
