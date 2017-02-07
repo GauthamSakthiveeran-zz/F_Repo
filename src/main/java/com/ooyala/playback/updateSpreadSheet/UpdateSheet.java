@@ -241,6 +241,9 @@ public class UpdateSheet {
                 case "playlist":
                     jenkinsJobName = "playbackweb-playlist";
                     break;
+                case "syndicationRules":
+                    jenkinsJobName = "playbackweb-syndicationRules";
+                    break;
                 case "default":
                     if (regressionFileName.contains("VTC_Regression.xml")) {
                         jenkinsJobName = "playbackwebvtc";
