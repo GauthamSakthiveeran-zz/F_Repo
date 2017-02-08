@@ -48,14 +48,14 @@ public class FullScreenValidator extends PlayBackPage implements
 		}
 	}
 
-	public boolean getFullscreen() {
+	public boolean getFullScreen() {
 		if (!clickOnIndependentElement("FULLSCREEN_BTN_1")) {
 			return false;
 		}
 			return true;
 	}
 
-	public boolean getNormalscreen() {
+	public boolean getNormalScreen() {
 		if (!clickOnIndependentElement("NORMAL_SCREEN")){
 			return false;
 		}

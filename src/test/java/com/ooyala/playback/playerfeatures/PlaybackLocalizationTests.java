@@ -1,13 +1,12 @@
 package com.ooyala.playback.playerfeatures;
 
+import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.action.PlayPauseAction;
-import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -20,7 +19,7 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 	private PlayValidator play;
 	private PauseValidator pause;
 	private SeekValidator seek;
-	private PlayPauseAction playPauseAction;
+	private PlayAction playAction;
 	private EventValidator eventValidator;
 	private ShareTabValidator shareTabValidator;
 	private FullScreenValidator fullScreenValidator;
@@ -54,14 +53,14 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 			result = result && shareTabValidator.validate("", 60000);
 
 			if (!(getBrowser().equalsIgnoreCase("safari") || getPlatform().equalsIgnoreCase("Android"))) {
-				result = result && fullScreenValidator.getFullscreen();
+				result = result && fullScreenValidator.getFullScreen();
 
 				result = result && shareTabValidator.validate("", 60000);
 
-				result = result && fullScreenValidator.getNormalscreen();
+				result = result && fullScreenValidator.getNormalScreen();
 			}
 
-			result = result && playPauseAction.startAction();
+			result = result && playAction.startAction();
 
 			result = result && eventValidator.validate("playing_2", 60000);
 

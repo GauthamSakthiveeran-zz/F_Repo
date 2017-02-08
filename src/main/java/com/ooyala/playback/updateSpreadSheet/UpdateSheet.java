@@ -192,7 +192,7 @@ public class UpdateSheet {
         Date date = new Date();
         String CurrntDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
         testSheetData.put("Date",CurrntDate);
-        testSheetData.put("Platform",System.getProperty("os.name")+" "+System.getProperty("os.version"));
+        testSheetData.put("Platform",System.getProperty("platform"));
         testSheetData.put("Browser",System.getProperty("browser"));
         testSheetData.put("Browser_Version",System.getProperty("version"));
         testSheetData.put("v4Version",getV4Version(v4Version));
