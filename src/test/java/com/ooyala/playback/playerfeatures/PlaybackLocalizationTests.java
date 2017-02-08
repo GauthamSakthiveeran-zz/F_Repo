@@ -47,19 +47,23 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
+			Thread.sleep(3000);
+
 			result = result && pause.validate("paused_1", 60000);
 
-			result = result && play.validate("playing_2", 60000);
-
 			result = result && shareTabValidator.validate("", 60000);
 
-			result = result && fullScreenValidator.getFullscreen();
+			if (!(getBrowser().equalsIgnoreCase("safari") || getPlatform().equalsIgnoreCase("Android"))) {
+				result = result && fullScreenValidator.getFullscreen();
 
-			result = result && shareTabValidator.validate("", 60000);
+				result = result && shareTabValidator.validate("", 60000);
 
-			result = result && fullScreenValidator.getNormalscreen();
+				result = result && fullScreenValidator.getNormalscreen();
+			}
 
 			result = result && playPauseAction.startAction();
+
+			result = result && eventValidator.validate("playing_2", 60000);
 
 			result = result && seek.validate("seeked_1", 60000);
 
