@@ -32,12 +32,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 			throws OoyalaException {
 		boolean result = true;
 		try {
-
-			result = result && sasport.searchEntitlement();
-
-			Thread.sleep(5000);
-
-			result = result && sasport.DeleteDevices();
+			driver.get(url);
 
 			result = result && sasport.validate("CREATE_ENTITLEMENT", 30000);
 
@@ -56,8 +51,6 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 			result = result && seek.validate("seeked_1", 60000);
 
 			result = result && eventValidator.validate("played_1", 60000);
-
-			result = result && sasport.searchEntitlement();
 
 			result = result && sasport.validate("DISPLAY_BTN", 10);
 

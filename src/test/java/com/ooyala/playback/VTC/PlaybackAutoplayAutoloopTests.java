@@ -32,6 +32,7 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 
 		boolean result = true;
 		try {
+
 			driver.get(url);
 
 			injectScript();
@@ -66,13 +67,14 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 			boolean isAdplaying = isAdPlayingValidator.validate(
 					"CheckAdPlaying", 60000);
 
-			Assert.assertEquals(isAdplaying, true,
-					"Verified that ad is played after auto replay");
+			if(!isAdplaying){
+				result = result && eventValidator.validate("adsPlayed_2", 30000);
+			}
 
 			logger.info("Video Played");
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e);
 			result = false;
 		}
 		Assert.assertTrue(result, "Playback Autoplay Autoloop test failed");
