@@ -44,7 +44,11 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 				result = result && event.validate("PreRoll_willPlaySingleAd_1", 1000);
 				result = result && event.validate("singleAdPlayed_1", 160000);
 			}
-
+			
+			if(testName.contains("OOYALA_ADS")){
+				result = result && event.validate("ooyalaAds", 1000);
+			}
+			
 			result = result && event.validate("playing_1", 20000);
 
 			result = result && seekValidator.validate("seeked_1", 190000);

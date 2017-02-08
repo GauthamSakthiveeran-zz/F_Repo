@@ -184,6 +184,10 @@ function subscribeToEvents() {
 					OO.$('#ooplayer').append('<p id=PostRoll_willPlayAds_OnReplay'+'>PostRoll_willPlayAds_OnReplay</p>');
 					adReplayEventOrder++;
 				}
+				
+				if(arguments[1].includes('ooyala-ads-manager')){
+					OO.$('#ooplayer').append('<p id=ooyalaAds'+'>ooyalaAds</p>');
+				}
 			}
 			
 			if (event.match(/videoPlayed/)&& arguments[1] == 'main') {

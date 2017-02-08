@@ -287,6 +287,28 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
+    	<url>
+	    	<description name="OOYALA_ADS MAIN"/>
+	        <embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name=""/>
+	        <additionalPlugins name=""/>
+	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="OOYALA_ADS BITMOVIN"/>
+	        <embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="BITMOVIN,MAIN"/>
+	        <adPlugins name=""/>
+	        <additionalPlugins name=""/>
+	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+    	</url>
+    	
     </test>
 
 </testdata>   

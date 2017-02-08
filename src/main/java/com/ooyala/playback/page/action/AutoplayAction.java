@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.page.PlayBackPage;
-import com.ooyala.playback.page.VolumeValidator;
 
 /**
  * Created by soundarya on 11/16/16.
