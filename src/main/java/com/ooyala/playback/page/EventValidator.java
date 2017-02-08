@@ -62,10 +62,8 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validateElementPresence(String element) throws Exception {
 		if (isElementPresent(By.id(element))) {
-			extentTest.log(LogStatus.PASS, element + " presence verified.");
 			return true;
 		}
-		extentTest.log(LogStatus.FAIL, element + " not present.");
 		return false;
 	}
 

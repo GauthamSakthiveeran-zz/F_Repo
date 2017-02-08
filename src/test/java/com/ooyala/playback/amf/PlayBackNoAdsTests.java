@@ -33,7 +33,7 @@ public class PlayBackNoAdsTests extends PlaybackWebTest {
 			
 			result = result && event.validate("played_1", 240000); // waiting for the whole video to complete playing 
 			
-			result = result && !event.validate("willPlaySingleAd_1", 6000);
+			result = result && !event.validateElementPresence("willPlaySingleAd_1");
 
 			
 		} catch (Exception e) {
