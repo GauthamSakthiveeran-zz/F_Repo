@@ -27,7 +27,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 			extentTest.log(LogStatus.FAIL, text);
 		}
 		
-		Assert.assertTrue(false,"Play button is not found");
+		Assert.assertTrue(false,"Getting error like NETWORK ERROR or Play button is not present.");
 	}
 
 	@Override

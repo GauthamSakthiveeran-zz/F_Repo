@@ -86,15 +86,17 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         int count =1;
         eventCount=0;
         boolean result = true;
-        for (int i=0;i<totalPlaylistVideo;i=i+3) {
+        for (int i=0;i<totalPlaylistVideo;i=i+4) {
             try {
                 String asset = ((JavascriptExecutor) driver).executeScript("return document.getElementsByClassName('oo-thumbnail')["+i+"].getAttribute('id');").toString().trim();
-
                 driver.executeScript("arguments[0].scrollIntoView(true);",driver.findElement(By.id(asset)));
-                if(isElementVisible("SCROLL_DOWN")){
-                    getWebElement("SCROLL_DOWN").click();
+                if (i!=0) {
+                    // scrolling to left as asset may get hide in right arrow button
+                    if (isElementVisible("SCROLL_DOWN")) {
+                        getWebElement("SCROLL_DOWN").click();
+                    }
                 }
-                Thread.sleep(1000);
+                Thread.sleep(2000);
                 if (driver.findElement(By.id(asset)).isDisplayed()) {
                     clickOnIndependentElement(By.id(asset));
                     Thread.sleep(2000);
@@ -216,6 +218,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getFirstVideoFromPlaylist(String value){
+        eventCount = 0;
         List<WebElement> videoList = getWebElementsList("PLAYLIST_VIDEOS");
         String emebedCodeOfFirstAsset = videoList.get(0).getAttribute("id");
         String emebedCodeOfCurrentAsset = getEmbedCode();
@@ -233,20 +236,23 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     public boolean getCaptionPosition(String captionPositionValue){
         String captionPosition = getWebElement("PLAYLIST_PLAYER").getAttribute("data-caption-position");
         logger.info("Playlist Caption Position is - "+captionPosition);
-        boolean flag = captionPosition.contains(captionPositionValue);
-        return flag;
+        if(!captionPosition.contains(captionPositionValue)){return false;}
+        eventCount = 0;
+        return checkPlayback(1);
     }
 
     public boolean getThumbnailSize(String thumbnailSizeValue){
+        eventCount = 0;
         String thumbnailSize = getWebElement("PLAYLIST_PLAYER").getAttribute("data-playlists-thumbnails-size");
         logger.info("Playlist Caption Position is - "+thumbnailSize);
         if (!thumbnailSize.equals(thumbnailSizeValue)){
             return false;
         }
-        return true;
+        return checkPlayback(1);
     }
 
     public boolean getThumbnailSpacing(String thumbnailSpaceValue){
+        eventCount = 0;
         int numberOfAsset = getWebElementsList("SPCAING_PLAYLIST_ASSETS").size();
         int givenThumbnailSize = Integer.parseInt(thumbnailSpaceValue);
         for (int i=0;i<numberOfAsset;i++){
@@ -257,7 +263,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
             int obtainedThumbnailSize = thumbnailSizeWithAsset-assetSize;
             if (!(obtainedThumbnailSize == givenThumbnailSize)){return false;}
         }
-        return true;
+        return checkPlayback(1);
     }
 
     public boolean getMenuSytle(String value){
@@ -332,13 +338,17 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean getWrapperFontSize(String wrapperSizeValue){
+        eventCount = 0;
         String fontSize =getWebElement("PLAYLIST_PLAYER").getCssValue("font-size");
         logger.info("Playlist Font Size is - "+fontSize);
-        boolean flag = fontSize.contains(wrapperSizeValue);
-        return flag;
+        if(!fontSize.contains(wrapperSizeValue)){
+            return false;
+        }
+        return checkPlayback(1);
     }
 
     public boolean getCaption(){
+        eventCount =0;
         boolean flag=true;
         List<WebElement> titleList = getWebElementsList("ASSET_TITLE");
         List<WebElement> desciptionList = getWebElementsList("ASSET_DESCRIPTION");
@@ -349,11 +359,11 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
             onmouseOver(desciptionList.get(i));
             logger.info("Title,Description,Duration of asset "+(i+1)+" is : "+'\n'+titleList.get(i).getText()+'\n'+desciptionList.get(i).getText()+'\n'+durationList.get(i).getText());
             flag = desciptionList.get(i).getText().contains("Test Description");
-            flag = flag && durationList.get(i).getText().contains(":");
+            if (!(flag && durationList.get(i).getText().contains(":"))){return false;}
         /*  Only two values are displaying on asset. Issue id PLAYER-457.
             flag = flag && titleList.get(i).getText().contains("tb_");   */
         }
-        return flag;
+        return checkPlayback(1);
     }
 
     public String getEmbedCode(){

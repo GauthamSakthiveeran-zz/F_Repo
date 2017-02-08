@@ -54,14 +54,11 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 
 			result = result && aspectRatioValidator.validate("assetDimension_1", 60000);
 
-			result = result && eventValidator.eventAction("FULLSCREEN_BTN_1");
+			result = result && eventValidator.validate("played_1", 60000);
 
-			logger.info("checked fullscreen");
-
-			result = result && aspectRatioValidator.validate("assetDimension_1", 60000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e);
 			result = false;
 		}
 		Assert.assertTrue(result, "Aspect ratio tests failed");
