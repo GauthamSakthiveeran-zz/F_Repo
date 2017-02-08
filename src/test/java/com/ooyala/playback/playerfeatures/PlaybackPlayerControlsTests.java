@@ -52,7 +52,9 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
                     || getBrowser().equalsIgnoreCase("firefox")
                     || getBrowser().equalsIgnoreCase("internet explorer") || getPlatform()
                     .equalsIgnoreCase("Android"))) {
-                result = result && fullScreenValidator.validate("", 60000);
+                result = result && fullScreenValidator.getFullscreen();
+                Thread.sleep(3000);
+                result = result && fullScreenValidator.getNormalscreen();
             }
 
             result = result && controlBarValidator.validate("", 60000);
