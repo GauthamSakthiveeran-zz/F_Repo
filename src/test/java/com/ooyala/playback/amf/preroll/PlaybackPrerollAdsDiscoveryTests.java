@@ -39,11 +39,11 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 1000);
 			
+			result = result && event.validate("singleAdPlayed_1", 150000);
+			
 			if(testName.contains("OOYALA_ADS")){
 				result = result && event.validate("ooyalaAds", 1000);
 			}
-			
-			result = result && event.validate("singleAdPlayed_1", 150000);
 
 			result = result && event.validate("playing_1", 150000);
 			result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);

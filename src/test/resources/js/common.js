@@ -103,7 +103,11 @@ function subscribeToCommonEvents() {
 				OO.$('#ooplayer').append('<p id=adPodEnded_'+adPodEndedEventOrder+'>adPodEnded '+adPodEndedEventOrder+'</p>'); 
 				OO.$('#ooplayer').append('<p id=adPodEnd_'+arguments[1]+'_'+adPodEndedEventOrder+'>adPodPlayed '+arguments[1]+' '+adPodEndedEventOrder+'  </p>');
 				adPodEndedEventOrder++;
+				if (arguments[1]=='ooyala-ads-manager_0') {
+					OO.$('#ooplayer').append('<p id=ooyalaAds>ooyalaAds</p>'); 
+				}  
 			}
+			
 		};
 	}());
 }

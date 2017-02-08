@@ -39,16 +39,15 @@ public class PlaybackSkipAdsTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 			result = result && event.validate("willPlaySingleAd_1", 150000);
 			
-			if(testName.contains("OOYALA_ADS")){
-				result = result && event.validate("ooyalaAds", 1000);
-			}
-
 			if (!event.isAdPluginPresent("ima")) // Unable to click skip ad button for IMA
 				result = result && skipButtonValidator.validate("", 120000);
 			else
 				result = result && event.validate("showAdSkipButton_1", 150000);
 
 			result = result && event.validate("singleAdPlayed_1", 150000);
+			if(testName.contains("OOYALA_ADS")){
+				result = result && event.validate("ooyalaAds", 1000);
+			}
 			result = result && event.validate("playing_1", 150000);
 
 			result = result && seekValidator.validate("seeked_1", 150000);

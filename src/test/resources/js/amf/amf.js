@@ -185,15 +185,13 @@ function subscribeToEvents() {
 					adReplayEventOrder++;
 				}
 				
-				if(arguments[1].includes('ooyala-ads-manager')){
-					OO.$('#ooplayer').append('<p id=ooyalaAds'+'>ooyalaAds</p>');
-				}
 			}
 			
 			if (event.match(/videoPlayed/)&& arguments[1] == 'main') {
 				OO.$('#ooplayer').append('<p id=videoPlayed_'+videoPlayedEventOrder+'>videoPlayed '+videoPlayedEventOrder+'</p>'); 
                 videoPlayedEventOrder++;
 			}  
+			
 		};
 	}());
 }
