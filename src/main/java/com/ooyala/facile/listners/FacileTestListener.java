@@ -160,14 +160,17 @@ public class FacileTestListener extends TestListenerAdapter implements
 					tr);
 		
 		int hashCode = getHashCode(tr);
-		if (methods.containsKey(hashCode)) {
-			if (methods.get(hashCode) <= 2) {
+		int retryCount = getRetryCount(tr);
+		if(retryCount > 0){
+			if (methods.containsKey(hashCode)) {
+				if (methods.get(hashCode) <= retryCount) {
+					tr.setStatus(ITestResult.SKIP);
+					tr.getTestContext().getFailedTests().removeResult(tr.getMethod());
+				}
+			} else {
 				tr.setStatus(ITestResult.SKIP);
 				tr.getTestContext().getFailedTests().removeResult(tr.getMethod());
 			}
-		} else {
-			tr.setStatus(ITestResult.SKIP);
-			tr.getTestContext().getFailedTests().removeResult(tr.getMethod());
 		}
 	}
 
@@ -189,58 +192,53 @@ public class FacileTestListener extends TestListenerAdapter implements
 	 * 
 	 * @see org.testng.IRetryAnalyzer#retry(org.testng.ITestResult)
 	 */
-	public boolean retry(ITestResult result) {
-
+	
+	private int getRetryCount(ITestResult result) {
 		// Check to see if the "NoRetry" annotation is present in which case the
 		// test SHOULD NOT be retried.
-		if (result
-				.getMethod()
-				.getMethod()
-				.isAnnotationPresent(
-						(Class<? extends Annotation>) NoRetry.class)) {
-			return false;
+		if (result.getMethod().getMethod().isAnnotationPresent((Class<? extends Annotation>) NoRetry.class)) {
+			return -1;
 		}
 
 		String retryString = System.getProperty("retry");
 		String retryCountString = System.getProperty("retryCount");
 
-		if (retryString != null && !retryString.equals("")
-				&& retryCountString != null && !retryCountString.equals("")) {
+		if (retryString != null && !retryString.equals("") && retryCountString != null
+				&& !retryCountString.equals("")) {
 			int retryCount = Integer.parseInt(retryCountString);
 			boolean retry = Boolean.parseBoolean(retryString);
 			if (retry)
-				return retryTracker(retryCount, result);
+				return retryCount;
 			else
-				return false;
+				return -1;
 		} else {
-
-			/**
-			 * In src/test/resources/facile.properties file, if retry=true, it
-			 * will retry all the failed test if retry=false, it will not retry
-			 * any failed test if retry is not set or any other value, it will
-			 * retry all the tests except tests with @NoRetry annotation
-			 */
 
 			File confFile = new File("src/test/resources/facile.properties");
 			if (confFile.exists()) {
-				ReadTriggerFile propertiesFile = new ReadTriggerFile(
-						"src/test/resources/facile.properties");
+				ReadTriggerFile propertiesFile = new ReadTriggerFile("src/test/resources/facile.properties");
 				String retry = propertiesFile.getParameter("retry", "");
-				int retryCount = Integer.parseInt(propertiesFile.getParameter(
-						"retryCount", ""));
+				int retryCount = Integer.parseInt(propertiesFile.getParameter("retryCount", ""));
 				logger.info("Retry count is " + retryCount);
 				logger.info("Is Retry is enabled? " + retry);
 				if (retry != null) {
 					if (retry.equalsIgnoreCase("true")) {
-						return retryTracker(retryCount,result);
+						return retryCount;
 					} else if (retry.equalsIgnoreCase("false")) {
-						return false;
+						return -1;
 					}
 				}
 			}
 		}
-
-		return retryTracker(DEFAULT_MAX_RETRY,result);
+		return DEFAULT_MAX_RETRY;
+	}
+	
+	public boolean retry(ITestResult result) {
+		
+		int retryCount = getRetryCount(result);
+		if(retryCount==-1)
+			return false;
+		else
+			return retryTracker(retryCount, result);
 	}
 
 	/**
@@ -269,6 +267,8 @@ public class FacileTestListener extends TestListenerAdapter implements
 	 * @return true, if successful
 	 */
 	private boolean retryTracker(int maxRetryCount,ITestResult result) {
+		if(retryCount<=0)
+			return false;
 		int hashCode = getHashCode(result);
 		if(methods.containsKey(hashCode)){
 			int count = methods.get(hashCode);
