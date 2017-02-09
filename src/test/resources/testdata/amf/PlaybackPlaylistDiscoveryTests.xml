@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 
-	<test name ="PlaybackPlaylistTests" >
+	<test name ="PlaybackPlaylistDiscoveryTests" >
     	<url>
 	    	<description name="MAIN OOYALA_ADS PLAYLIST"/>
 	        <embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8"/>
