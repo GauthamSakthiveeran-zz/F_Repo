@@ -12,4 +12,6 @@
              class="oo-close-button" />
     <element key="SHARE_PANEL" findBy="class"
                 class="oo-share-tab-panel" />
+    <element key="SHARE_BUTTON" findBy="xPath"
+             xPath=".//*[normalize-space(@class)='oo-icon oo-icon-share']" />
 </elements>

@@ -213,8 +213,9 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
                 }
             }
             return result;
+        }else{
+            return checkPlayback(1);
         }
-        return true;
     }
 
     public boolean getFirstVideoFromPlaylist(String value){
