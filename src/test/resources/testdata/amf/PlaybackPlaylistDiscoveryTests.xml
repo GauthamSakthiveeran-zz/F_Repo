@@ -24,7 +24,7 @@
 	        <playerParameter><![CDATA[{"playlistsPlugin":{"data":["12d77969a77432787608dc12f3f469a"]},"showInAdControlBar":true}]]></playerParameter>
     	</url>
     	
-    	<url>
+    	<!-- <url>
 	    	<description name="BITMOVIN OOYALA_ADS PLAYLIST DISCOVERY"/>
 	        <embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -33,7 +33,7 @@
 	        <additionalPlugins name="PLAYLIST,DISCOVERY"/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter><![CDATA[{"playlistsPlugin":{"data":["12d77969a77432787608dc12f3f469a"]},"showInAdControlBar":true}]]></playerParameter>
-    	</url>
+    	</url> -->
     	
     </test>
     
