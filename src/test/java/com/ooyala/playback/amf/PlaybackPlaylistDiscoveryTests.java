@@ -11,7 +11,7 @@ import com.ooyala.playback.page.PlaylistValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackPlaylistTests extends PlaybackWebTest {
+public class PlaybackPlaylistDiscoveryTests extends PlaybackWebTest {
 
 	private PlaylistValidator playlist;
 	private PlayValidator play;
@@ -19,7 +19,7 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
 	private EventValidator event;
 	private DiscoveryValidator discoveryValidator;
 
-	public PlaybackPlaylistTests() throws OoyalaException {
+	public PlaybackPlaylistDiscoveryTests() throws OoyalaException {
 		super();
 	}
 
