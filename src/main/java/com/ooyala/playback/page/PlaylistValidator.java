@@ -234,13 +234,15 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         return checkPlayback(1);
     }
 
-    public boolean getCaptionPosition(String captionPositionValue){
-        String captionPosition = getWebElement("PLAYLIST_PLAYER").getAttribute("data-caption-position");
-        logger.info("Playlist Caption Position is - "+captionPosition);
-        if(!captionPosition.contains(captionPositionValue)){return false;}
-        eventCount = 0;
-        return checkPlayback(1);
-    }
+	public boolean getCaptionPosition(String captionPositionValue) {
+		String captionPosition = getWebElement("PLAYLIST_PLAYER").getAttribute("data-caption-position");
+		logger.info("Playlist Caption Position is - " + captionPosition);
+		if (!captionPosition.contains(captionPositionValue)) {
+			return false;
+		}
+		eventCount = 0;
+		return checkPlayback(1);
+	}
 
     public boolean getThumbnailSize(String thumbnailSizeValue){
         eventCount = 0;

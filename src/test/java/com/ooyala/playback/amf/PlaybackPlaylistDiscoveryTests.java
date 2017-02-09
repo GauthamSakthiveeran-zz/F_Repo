@@ -38,11 +38,6 @@ public class PlaybackPlaylistDiscoveryTests extends PlaybackWebTest {
 			
 			result = result && event.validate("PreRoll_willPlayAds", 1000);
 			
-			result = result && playlist.scrollToEitherSide() && playlist.getOrientation("vertical");
-			result = result && playlist.getPosition("bottom");
-			result = result && playlist.getCaptionPosition("inside");
-			
-			
 			result = result && event.validate("adsPlayed_1", 160000);
 			
 			if(testName.contains("OOYALA_ADS")){
@@ -50,6 +45,10 @@ public class PlaybackPlaylistDiscoveryTests extends PlaybackWebTest {
 			}
 			
 			result = result && event.validate("playing_1", 20000);
+			
+			result = result && playlist.scrollToEitherSide() && playlist.getOrientation("vertical");
+			result = result && playlist.getPosition("bottom");
+			result = result && playlist.getCaptionPosition("inside");
 
 			if(testName.contains("DISCOVERY")){
 				result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
