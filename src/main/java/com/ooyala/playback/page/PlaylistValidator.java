@@ -1,6 +1,8 @@
 package com.ooyala.playback.page;
 
 import com.ooyala.playback.factory.PlayBackFactory;
+import com.relevantcodes.extentreports.LogStatus;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -128,8 +130,10 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 			}
 			loadingSpinner();
 			Thread.sleep(5000);
-			if (!factory.getPlayValidator().validate("playing_" + count + "", 20000)) {
-				return false;
+			if(!isElementPresent(By.id("playing_3"))){ // for ooyala ads
+				if (!factory.getPlayValidator().validate("playing_" + count + "", 20000)) {
+					return false;
+				}
 			}
 			loadingSpinner();
 			if (!factory.getPauseValidator().validate("paused_" + (count - eventCount) + "", 20000)) {
@@ -146,6 +150,8 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 			eventCount++;
 
 		} catch (Exception e) {
+			e.printStackTrace();
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			return false;
 		}
         return true;
@@ -209,7 +215,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
                         }
                     }
                 }catch (Exception e){
-                    e.getMessage();
+                	e.printStackTrace();
                 }
             }
             return result;

@@ -17,11 +17,17 @@ function subscribeToCommonEvents() {
 		var skipAdEventOrder = 1;
 		var nonLinearAdPlayedEventOrder = 1;
 		var adPodEndedEventOrder = 1;
+		var pausedEventOrder = 1;
 		
 		return function(event) {
 			if (event.match(/played/)) {
 				OO.$('#ooplayer').append('<p id=played_'+playedEventOrder+'>played '+playedEventOrder+'</p>'); 
 				playedEventOrder++;
+			}
+			
+			if(event.match(/paused/)) {
+				OO.$('#ooplayer').append('<p id=paused_'+pausedEventOrder+'>paused '+pausedEventOrder+'</p>'); 
+				pausedEventOrder++;
 			}
 			
 			if (event.match(/fullscreenChanged/)) {

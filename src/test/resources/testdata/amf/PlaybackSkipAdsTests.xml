@@ -2,7 +2,7 @@
 
 <testdata>
 	<test name ="PlaybackSkipAdsTests" >
-		<url>
+		<!-- <url>
 	    	<description name="FreewheelSkippableAd_Akamai_HD"/>
 	        <embed_code name="lmdTBrdTqB11W0ZpdETZHUyl4ohO9FJC"/>
 	        <pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk"/>
@@ -193,7 +193,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter></playerParameter>
-    	</url>
+    	</url> -->
     	
     	<url>
 	    	<description name="MAIN OOYALA_ADS"/>
@@ -210,7 +210,7 @@
 	    	<description name="BITMOVIN OOYALA_ADS"/>
 	        <embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="BITMOVIN,MAIN"/>
+	        <plugins name="BITMOVIN"/>
 	        <adPlugins name=""/>
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
