@@ -156,11 +156,6 @@ public class UpdateSheet {
                 List<Request> requests = new ArrayList<>();
                 List<CellData> values = new ArrayList<>();
                 List<String> valuesInMap = new ArrayList<>();
-                for (String key : map.keySet()){
-                    String value = map.get(key);
-                    System.out.println(key + " : " + value);
-                    valuesInMap.add(value);
-                }
 
                 for (int i=0;i<valuesInMap.size()-2;i++){
                     values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(valuesInMap.get(i))));
@@ -188,11 +183,11 @@ public class UpdateSheet {
         }
     }
 
-    public static void setTestResult(String pass, String fail, String skip,int total,String failtestname,String passedTests,String v4Version){
+    public static void setTestResult(String pass, String fail, String skip,int total,String failtestname,String passedTests,String v4Version, String osNameAndOsVersion){
         Date date = new Date();
         String CurrntDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
         testSheetData.put("Date",CurrntDate);
-        testSheetData.put("Platform",System.getProperty("platform"));
+        testSheetData.put("Platform",osNameAndOsVersion);
         testSheetData.put("Browser",System.getProperty("browser"));
         testSheetData.put("Browser_Version",System.getProperty("version"));
         testSheetData.put("v4Version",getV4Version(v4Version));

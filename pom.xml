@@ -74,6 +74,11 @@
 			<artifactId>google-api-services-urlshortener</artifactId>
 			<version>v1-rev45-1.22.0</version>
 		</dependency>
+		<dependency>
+			<groupId>net.sf.uadetector</groupId>
+			<artifactId>uadetector-resources</artifactId>
+			<version>2014.04</version>
+		</dependency>
 
 	</dependencies>
 	<build>
