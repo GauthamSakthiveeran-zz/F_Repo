@@ -44,9 +44,10 @@ public class PlaybackPreRollOverlayPostRollAdTests extends PlaybackWebTest {
 
 			result = result && event.validate("videoPlaying_1", 90000);
 
-			result = result && seekValidator.validate("seeked_1", 6000);
+			if(!getBrowser().toLowerCase().contains("edge"))
+				result = result && seekValidator.validate("seeked_1", 6000);
 
-			result = result && event.validate("videoPlayed_1", 90000);
+			result = result && event.validate("videoPlayed_1", 160000);
 			result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
 
 			result = result && event.validate("singleAdPlayed_1", 190000);

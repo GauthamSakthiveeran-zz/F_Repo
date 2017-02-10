@@ -52,8 +52,14 @@ public class PlaybackSkipAdsTests extends PlaybackWebTest {
 			} else {
 				result = result && event.validate("playing_1", 150000);
 			}
+			if (!(getBrowser().toLowerCase().contains("edge") && event.isAdPluginPresent("ima")
+					&& event.isVideoPluginPresent("akamai"))
+					&& !(getBrowser().toLowerCase().contains("edge") && event.isAdPluginPresent("freewheel")
+							&& event.isVideoPluginPresent("main") && event.isVideoPluginPresent("bit")
+							&& event.isStreamingProtocolPrioritized("hls"))) {// TODO
 
-			result = result && seekValidator.validate("seeked_1", 150000);
+				result = result && seekValidator.validate("seeked_1", 150000);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -252,7 +252,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		if (browser == null || browser.equals(""))
 			browser = "firefox";
 		logger.info("browser is " + browser);
-		if (browser.equalsIgnoreCase("safari")) { 
+		if (browser.equalsIgnoreCase("safari") || browser.toLowerCase().contains("edge")) { 
 			// safari driver does not allow parallel execution of tests
 			context.getCurrentXmlTest().setParallel("false");
 		}
