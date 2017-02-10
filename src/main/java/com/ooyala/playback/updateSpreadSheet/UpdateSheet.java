@@ -156,6 +156,10 @@ public class UpdateSheet {
                 List<Request> requests = new ArrayList<>();
                 List<CellData> values = new ArrayList<>();
                 List<String> valuesInMap = new ArrayList<>();
+                for (String key : map.keySet()){
+                    String value = map.get(key);
+                    valuesInMap.add(value);
+                }
 
                 for (int i=0;i<valuesInMap.size()-2;i++){
                     values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(valuesInMap.get(i))));
