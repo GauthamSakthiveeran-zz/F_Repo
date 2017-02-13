@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 
-	<test name ="PlaybackPlaylistDiscoveryTests" >
-    	<url>
-	    	<description name="MAIN OOYALA_ADS PLAYLIST"/>
-	        <embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name=""/>
-	        <additionalPlugins name="PLAYLIST"/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"playlistsPlugin":{"data":["12d77969a77432787608dc12f3f469a"]},"showInAdControlBar":true}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="MAIN OOYALA_ADS PLAYLIST DISCOVERY"/>
-	        <embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name=""/>
-	        <additionalPlugins name="PLAYLIST,DISCOVERY"/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"playlistsPlugin":{"data":["12d77969a77432787608dc12f3f469a"]},"showInAdControlBar":true}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="BITMOVIN OOYALA_ADS PLAYLIST DISCOVERY"/>
-	        <embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name=""/>
-	        <additionalPlugins name="PLAYLIST,DISCOVERY"/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"playlistsPlugin":{"data":["12d77969a77432787608dc12f3f469a"]},"showInAdControlBar":true}]]></playerParameter>
-    	</url>
-    	
-    </test>
-    
+	<test name="PlaybackPlaylistDiscoveryTests">
+		<url>
+			<description name="MAIN OOYALA_ADS PLAYLIST" />
+			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="PLAYLIST" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"playlistsPlugin":{"data":["12d77969a77432787608dc12f3f469a"]},"showInAdControlBar":true}]]></playerParameter>
+		</url>
+
+		<url>
+			<description name="MAIN OOYALA_ADS PLAYLIST DISCOVERY" />
+			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="PLAYLIST,DISCOVERY" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"playlistsPlugin":{"data":["12d77969a77432787608dc12f3f469a"]},"showInAdControlBar":true}]]></playerParameter>
+		</url>
+
+		<url>
+			<description name="BITMOVIN OOYALA_ADS PLAYLIST DISCOVERY" />
+			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="PLAYLIST,DISCOVERY" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"playlistsPlugin":{"data":["12d77969a77432787608dc12f3f469a"]},"showInAdControlBar":true}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,safari" />
+		</url>
+
+	</test>
+
 </testdata>

@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.OverlayValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
@@ -20,7 +19,6 @@ public class PlaybackPreRollOverlayPostRollAdTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayAction playAction;
 	private PlayValidator playValidator;
-	private OverlayValidator overLayValidator;
 	private SeekValidator seekValidator;
 
 	@Test(groups = { "amf", "preroll", "overlay", "postroll" }, dataProvider = "testUrls")
@@ -39,8 +37,6 @@ public class PlaybackPreRollOverlayPostRollAdTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 
 			result = result && event.validate("willPlayNonlinearAd_1", 1000);
-
-			result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
 
 			result = result && event.validate("videoPlaying_1", 90000);
 

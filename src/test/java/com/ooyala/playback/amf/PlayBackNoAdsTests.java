@@ -5,7 +5,9 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.IsAdPlayingValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlayBackNoAdsTests extends PlaybackWebTest {
@@ -16,6 +18,8 @@ public class PlayBackNoAdsTests extends PlaybackWebTest {
 
 	private EventValidator event;
 	private PlayValidator playValidator;
+	private SeekValidator seek;
+	private IsAdPlayingValidator isAdPlaying;
 
 	@Test(groups = {"amf"}, dataProvider = "testUrls")
 	public void verifyNoAds(String testName, String url) throws OoyalaException {
@@ -28,10 +32,22 @@ public class PlayBackNoAdsTests extends PlaybackWebTest {
 
 			result = result && playValidator.waitForPage();
 			injectScript();
+			
+			result = result && !isAdPlaying.validate("",50000);
 
 			result = result && playValidator.validate("playing_1", 10000);
 			
-			result = result && event.validate("played_1", 240000); // waiting for the whole video to complete playing 
+			Thread.sleep(10000);
+			
+			result = result && !isAdPlaying.validate("",50000);
+			
+			result = result && seek.validate("seeked_1", 19000);
+			
+			result = result && !isAdPlaying.validate("",50000);
+			
+			result = result && event.validate("played_1", 240000);
+			
+			result = result && !isAdPlaying.validate("",50000);
 			
 			result = result && !event.validateElementPresence("willPlaySingleAd_1");
 

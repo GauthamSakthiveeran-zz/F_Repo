@@ -72,18 +72,16 @@ function subscribeToEvents() {
 				if(videoPlayingEventOrder == 1){
 					OO.$('#ooplayer').append('<p id= willPlaySingleAd_'+willPlaySingleAdsEventOrder+'>Preroll_willPlaySingleAd '+willPlaySingleAdsEventOrder+'</p>'); 
 					OO.$('#ooplayer').append('<p id=PreRoll_willPlaySingleAd_'+willPlaySingleAdsEventOrder+'>Preroll_willPlaySingleAd '+willPlaySingleAdsEventOrder+'</p>'); 
-					willPlaySingleAdsEventOrder++;
 				}
 				if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
 					OO.$('#ooplayer').append('<p id=MidRoll_willPlaySingleAd_'+willPlaySingleAdsEventOrder+'>Midroll_willPlaySingleAd '+willPlaySingleAdsEventOrder+'</p>'); 
 					OO.$('#ooplayer').append('<p id=willPlaySingleAd_'+willPlaySingleAdsEventOrder+'>Midroll_willPlaySingleAd '+willPlaySingleAdsEventOrder+'</p>'); 
-					willPlaySingleAdsEventOrder++;
 				}
 				if(videoPlayedEventOrder == 2){
 					OO.$('#ooplayer').append('<p id=willPlaySingleAd_'+willPlaySingleAdsEventOrder+'>Postroll_willPlaySingleAd '+willPlaySingleAdsEventOrder+'</p>');
 					OO.$('#ooplayer').append('<p id=PostRoll_willPlaySingleAd_'+willPlaySingleAdsEventOrder+'>Postroll_willPlaySingleAd '+willPlaySingleAdsEventOrder+'</p>');
-					willPlaySingleAdsEventOrder++;
 				}
+				willPlaySingleAdsEventOrder++;
 				OO.$('#ooplayer').append('<p id=willPlayPrerollAd'+'>willPlayPrerollAd</p>');
 				OO.$('#ooplayer').append('<p id=adIsPlaying'+'>adIsPlaying</p>');
 			}
@@ -166,8 +164,6 @@ function subscribeToEvents() {
 				}
 				if(videoPlayedEventOrder == 2){
 					OO.$('#ooplayer').append('<p id=PostRoll_willPlayAds'+'>PostRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
-					
-					adReplayEventOrder++;
 					willPlayAdsEventOrder++;
 				}
 				
@@ -176,11 +172,12 @@ function subscribeToEvents() {
 					adReplayEventOrder++;
 				}
 				
-				if(adReplayEventOrder == 3 && willPlaySingleAdsEventOrder == 5){
+				else if(adReplayEventOrder == 3){
 					OO.$('#ooplayer').append('<p id=MidRoll_willPlayAds_OnReplay'+'>MidRoll_willPlayAds_OnReplay</p>');
 					adReplayEventOrder++;
 				}
-				if(adReplayEventOrder == 4 && willPlaySingleAdsEventOrder == 6){
+				
+				else if(adReplayEventOrder == 4){
 					OO.$('#ooplayer').append('<p id=PostRoll_willPlayAds_OnReplay'+'>PostRoll_willPlayAds_OnReplay</p>');
 					adReplayEventOrder++;
 				}
