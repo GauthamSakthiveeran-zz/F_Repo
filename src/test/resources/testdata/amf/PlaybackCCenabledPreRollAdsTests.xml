@@ -113,7 +113,7 @@
 	        <adPlugins name="FREEWHEEL"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"platform":"html5","freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
     	</url>
     	
     	<url>
