@@ -42,9 +42,9 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
             result = result && playAction.startAction();
 
-            result = result && eventValidator.loadingSpinner();
-
             result = result && eventValidator.validate("playing_1",20000);
+
+            Thread.sleep(3000);
 
             result = result && pause.validate("paused_1", 60000);
 

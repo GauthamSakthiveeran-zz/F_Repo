@@ -32,42 +32,44 @@ public class SaasPortValidator extends PlayBackPage implements
 	}
 
 	@Override
-	public boolean validate(String element, int timeout) throws Exception {
+	public boolean validate(String element, int timeout) {
 		// Create an entitlement for an asset.
-		if (element.contains("CREATE_ENTITLEMENT")) {
-			try {
-				data = parseURL();
-				embedCode=data.get("ec");
-				pCode=data.get("pcode");
-				PropertyReader properties = PropertyReader.getInstance("urlData.properties");
-				sasportUrl=properties.getProperty("sasport_url");
-				accountId=properties.getProperty("account_id");
-				if (!searchEntitlement())
-					return false;
-				deleteDevices();
-				Thread.sleep(2000);
-
-				// Checking the presence of Delete button
-				if (isElementPresent(By.xpath("//button[@contentid='"+embedCode+"']"))) {
-					if (!clickOnIndependentElement(By.xpath("//button[@contentid='"+embedCode+"']")))
-						return false;
-					logger.info("Deleted asset from entitlement");
-					Thread.sleep(2000);
-					if (!createEntitlement())
-						return false;
-					logger.info("Created the entitlement");
-				} else {
-					if (!createEntitlement())
-						return false;
-					logger.info("Created the entitlement");
-				}
-			} catch (Exception e) {
-				logger.error("Error in creating entitlement"+e.getMessage());
+		try {
+			data = parseURL();
+			embedCode = data.get("ec");
+			pCode = data.get("pcode");
+			PropertyReader properties = PropertyReader.getInstance("urlData.properties");
+			sasportUrl = properties.getProperty("sasport_url");
+			accountId = properties.getProperty("account_id");
+			if (!searchEntitlement())
 				return false;
+			deleteDevices();
+			Thread.sleep(2000);
+
+			// Checking the presence of Delete button
+			if (isElementPresent(By.xpath("//button[@contentid='" + embedCode + "']"))) {
+				if (!clickOnIndependentElement(By.xpath("//button[@contentid='" + embedCode + "']")))
+					return false;
+				logger.info("Deleted asset from entitlement");
+				Thread.sleep(2000);
+				if (!createEntitlement())
+					return false;
+				logger.info("Created the entitlement");
+			} else {
+				if (!createEntitlement())
+					return false;
+				logger.info("Created the entitlement");
 			}
+			return true;
+		} catch (Exception e) {
+			logger.error("Error in creating entitlement" + e.getMessage());
+			return false;
 		}
-		// Checking if device is registered or not for that particular entitlement
-		else {
+	}
+
+	// Checking if device is registered or not for that particular entitlement
+	public boolean checkDeviceRegistration(){
+		try{
 			if (!searchEntitlement())
 				return false;
 
@@ -83,10 +85,14 @@ public class SaasPortValidator extends PlayBackPage implements
 				return false;
 
 			logger.info("Device gets registered for entitlement on sasport.");
+			return true;
+		}catch(Exception e){
+			logger.error("Error in serching device not sasport "+ e);
+			return false;
 		}
-		return true;
 	}
 
+	// Search Entitlements data for given pcode and account id.
 	public boolean searchEntitlement() {
 		try{
 			driver.get(sasportUrl);
@@ -103,6 +109,7 @@ public class SaasPortValidator extends PlayBackPage implements
 		}
 	}
 
+	// Fill the details after click on 'Create entitlement' button
 	private boolean createEntitlement() {
 		try{
 			if(!waitOnElement("CREATE_ENTITLEMENT_BTN", 30000))
@@ -126,6 +133,7 @@ public class SaasPortValidator extends PlayBackPage implements
 		}
 	}
 
+	// Delete devices from Account Devices
 	public boolean deleteDevices(){
 		int noOfRegisteredDevices = 0;
 		if(isElementPresent("NO_DEVICES_REGISTERED")) {
