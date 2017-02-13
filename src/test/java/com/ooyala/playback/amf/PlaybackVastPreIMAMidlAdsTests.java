@@ -21,7 +21,7 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
 
-	@Test(groups = {"amf","preroll","midroll"}, dataProvider = "testUrls")
+	@Test(groups = { "amf", "preroll", "midroll" }, dataProvider = "testUrls")
 	public void verifyVastPreIMAMidlAds(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
@@ -37,10 +37,11 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 
 			result = result && event.validate("PreRoll_willPlayAds", 5000);
-			
+
 			result = result && event.validate("adsPlayed_1", 200000);
-			
-			if (!getBrowser().contains("internet explorer") && !getBrowser().contains("safari")) {
+
+			if (!getBrowser().contains("internet explorer") && !getBrowser().contains("safari")
+					&& !getBrowser().contains("edge")) {
 				if (!event.isVideoPluginPresent("osmf"))
 					result = result && event.validate("adPodEnd_vast_2_2", 6000);
 				else
@@ -58,16 +59,20 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("adsPlayed_2", 200000);
 
-			if(!getBrowser().contains("internet explorer") && !getBrowser().contains("safari")){
+			if (!getBrowser().contains("internet explorer") && !getBrowser().contains("safari")
+					&& !getBrowser().contains("edge")) {
 				if (!event.isVideoPluginPresent("osmf"))
 					result = result && event.validate("adPodEnd_google-ima-ads-manager_0_1", 6000);
 				else
 					result = result && event.validate("adPodEnd_google-ima-ads-manager_1_2", 6000);
-			}else{
+			} else {
 				if (!event.isVideoPluginPresent("osmf"))
 					result = result && event.validate("adPodEnd_google-ima-ads-manager_0_2", 6000);
 			}
 			
+			result = result && seekAction.seekTillEnd().startAction();
+			
+			result = result && event.validate("played_1", 200000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
