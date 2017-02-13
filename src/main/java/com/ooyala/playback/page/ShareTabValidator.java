@@ -22,7 +22,7 @@ public class ShareTabValidator extends PlayBackPage implements
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
 		try {
-			if (!waitOnElement("SHARE_BTN", 60000))
+			if (!waitOnElement("SHARE_BTN", 30000))
 				return false;
 			if (!clickOnIndependentElement("SHARE_BTN"))
 				return false;
@@ -39,11 +39,13 @@ public class ShareTabValidator extends PlayBackPage implements
 				if (!clickOnIndependentElement("SHARE_BTN"))
 					return false;
 		}
+
+		if (!isElementPresent("SHARE_TAB"))
+			if (!clickOnIndependentElement("SHARE_BUTTON"))
+				return false;
 		if (!waitOnElement("CONTENT_SCREEN", 60000))
 			return false;
-		if (!isElementPresent("SHARE_TAB"))
-			if (!clickOnIndependentElement("SHARE_BTN"))
-				return false;
+
 		Thread.sleep(2000);
 
 		String shareTab = readTextFromElement("SHARE_TAB");
