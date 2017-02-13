@@ -8,6 +8,7 @@ import com.ooyala.playback.page.AdSkipButtonValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.OoyalaAPIValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -18,6 +19,7 @@ public class PlaybackInitialTimeForOoyalaAdsTests extends PlaybackWebTest {
 	private EventValidator event;
 	private OoyalaAPIValidator api;
 	private AdSkipButtonValidator skip;
+	private SeekValidator seek;
 
 	public PlaybackInitialTimeForOoyalaAdsTests() throws OoyalaException {
 		super();
@@ -47,6 +49,12 @@ public class PlaybackInitialTimeForOoyalaAdsTests extends PlaybackWebTest {
 			result = result && event.validate("playing_2", 20000);
 
 			result = result && api.validateInitailTime();
+			
+			Thread.sleep(10000); // play the video for sometime
+			
+			result = result && seek.validate("seeked_1", 20000);
+			
+			result = result && event.validate("videoPlayed_1", 20000);
 
 		} catch (Exception e) {
 			e.getMessage();

@@ -17,7 +17,7 @@
 	    	<description name="BITMOVIN OOYALA_ADS"/>
 	        <embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="BITMOVIN"/>
+	        <plugins name="BITMOVIN,MAIN"/>
 	        <adPlugins name=""/>
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
