@@ -7,7 +7,6 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.PoddedAdValidator;
-import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
@@ -18,7 +17,6 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 
 	private EventValidator event;
 	private PlayValidator playValidator;
-	private SeekAction seekAction;
 	private PoddedAdValidator poddedAdValidator;
 
 	@Test(groups = {"amf","midroll"}, dataProvider = "testUrls")
@@ -36,16 +34,10 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 
 			result = result && playValidator.validate("playing_1", 90000);
 
-            if(!event.isAdPluginPresent("pulse"))
-            	result = result && seekAction.seekTillEnd().startAction();
-            
-            result = result && event.validate("MidRoll_willPlayAds", 60000);
+            result = result && event.validate("MidRoll_willPlayAds", 200000);
 			result = result && event.validate("countPoddedAds", 200000);
 
 			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds", 60000);
-
-            if(!event.isAdPluginPresent("pulse"))
-				result = result && event.validate("seeked_1", 60000);
 
 			result = result && event.validate("played_1", 200000);
 

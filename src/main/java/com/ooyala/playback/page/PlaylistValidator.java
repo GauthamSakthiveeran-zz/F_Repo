@@ -1,6 +1,8 @@
 package com.ooyala.playback.page;
 
 import com.ooyala.playback.factory.PlayBackFactory;
+import com.relevantcodes.extentreports.LogStatus;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -146,6 +148,8 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 			eventCount++;
 
 		} catch (Exception e) {
+			e.printStackTrace();
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			return false;
 		}
         return true;
@@ -209,7 +213,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
                         }
                     }
                 }catch (Exception e){
-                    e.getMessage();
+                	e.printStackTrace();
                 }
             }
             return result;

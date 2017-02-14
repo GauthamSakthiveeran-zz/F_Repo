@@ -4,7 +4,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AdClickThroughValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.OverlayValidator;
 import com.ooyala.playback.page.PlayValidator;
@@ -21,7 +20,6 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 	private EventValidator event;
 	private PlayValidator playValidator;
 	private OverlayValidator overLayValidator;
-	private AdClickThroughValidator adClicks;
 	private SeekValidator seekValidator;
 
 	@Test(groups = { "amf", "midroll", "overlay", "sequential" }, dataProvider = "testUrls")
@@ -54,10 +52,10 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 
 			result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
 
-			/*result = result && seekValidator.validate("seeked_1", 160000);
+			result = result && seekValidator.validate("seeked_1", 160000);
 
 			result = result && event.validate("videoPlayed_1", 160000);
-			result = result && event.validate("played_1", 160000);*/
+			result = result && event.validate("played_1", 160000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
