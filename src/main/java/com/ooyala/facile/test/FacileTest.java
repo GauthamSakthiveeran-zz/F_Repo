@@ -467,12 +467,15 @@ public class FacileTest implements IHookable {
 		} else if (browser.equalsIgnoreCase("chrome")) {
 			dr = DesiredCapabilities.chrome();
 			dr.setBrowserName("chrome");
-		} else if (browser.equalsIgnoreCase("internet explorer")) {
+		} else if (browser.equalsIgnoreCase("internet explorer") || browser.equalsIgnoreCase("ie")) {
 			dr = DesiredCapabilities.internetExplorer();
 			dr.setBrowserName("internet explorer");
 		} else if (browser.equalsIgnoreCase("safari")) {
 			dr = DesiredCapabilities.safari();
 			dr.setBrowserName("safari");
+		} else if (browser.equalsIgnoreCase("MicrosoftEdge")){
+			dr=DesiredCapabilities.edge();;
+            dr.setBrowserName("MicrosoftEdge");
 		} else {
 			dr = DesiredCapabilities.chrome();
 			dr.setBrowserName("chrome");
