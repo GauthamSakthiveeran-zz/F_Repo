@@ -130,10 +130,8 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 			}
 			loadingSpinner();
 			Thread.sleep(5000);
-			if(!isElementPresent(By.id("playing_3"))){ // for ooyala ads
-				if (!factory.getPlayValidator().validate("playing_" + count + "", 20000)) {
-					return false;
-				}
+			if (!factory.getPlayValidator().validate("playing_" + count + "", 20000)) {
+				return false;
 			}
 			loadingSpinner();
 			if (!factory.getPauseValidator().validate("paused_" + (count - eventCount) + "", 20000)) {
@@ -240,15 +238,13 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         return checkPlayback(1);
     }
 
-	public boolean getCaptionPosition(String captionPositionValue) {
-		String captionPosition = getWebElement("PLAYLIST_PLAYER").getAttribute("data-caption-position");
-		logger.info("Playlist Caption Position is - " + captionPosition);
-		if (!captionPosition.contains(captionPositionValue)) {
-			return false;
-		}
-		eventCount = 0;
-		return checkPlayback(1);
-	}
+    public boolean getCaptionPosition(String captionPositionValue){
+        String captionPosition = getWebElement("PLAYLIST_PLAYER").getAttribute("data-caption-position");
+        logger.info("Playlist Caption Position is - "+captionPosition);
+        if(!captionPosition.contains(captionPositionValue)){return false;}
+        eventCount = 0;
+        return checkPlayback(1);
+    }
 
     public boolean getThumbnailSize(String thumbnailSizeValue){
         eventCount = 0;
