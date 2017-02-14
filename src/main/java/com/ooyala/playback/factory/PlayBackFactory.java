@@ -62,8 +62,10 @@ public class PlayBackFactory {
 	}
 	
 	public AdFrequencyValidator getAdFrequencyValidator() {
-		if (adFrequencyValidator == null)
+		if (adFrequencyValidator == null){
 			adFrequencyValidator = new AdFrequencyValidator(driver);
+			adFrequencyValidator.setExtentTest(extentTest);
+		}
 		return adFrequencyValidator;
 	}
 
