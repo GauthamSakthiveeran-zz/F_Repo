@@ -51,8 +51,6 @@ public class PlaybackThumbnailCarouselTests extends PlaybackWebTest {
 
             result = result && eventValidator.validate("played_1", 60000);
 
-            logger.info("Thumbnail Carousel test Passed");
-
         } catch (InterruptedException e) {
             logger.error("Thread interruption for wait method");
             result = false;

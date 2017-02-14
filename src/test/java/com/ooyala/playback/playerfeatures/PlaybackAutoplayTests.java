@@ -63,8 +63,6 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 
                 result = result && eventValidator.validate("played_1", 60000);
 
-                logger.info("Verified that video is played");
-
             } catch (Exception e) {
                 logger.error("Exception while checking autplay  "+e.getMessage());
                 result = false;

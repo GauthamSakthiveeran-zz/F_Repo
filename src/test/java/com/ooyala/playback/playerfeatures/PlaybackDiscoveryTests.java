@@ -41,14 +41,12 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
 			result = result && play.waitForPage();
 
 			injectScript();
-			result = result && play.validate("playing_1", 60000);
 
-			logger.info("verified video is playing");
+			result = result && play.validate("playing_1", 60000);
 
 			result = result
 					&& discoveryValidator.validate("reportDiscoveryClick_1",
 							60000);
-			logger.info("verified discovery");
 
 			sleep(2000);
 
@@ -57,7 +55,7 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
 			sleep(2000);
 
 			result = result && eventValidator.validate("played_1", 60000);
-			logger.info("video played");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;

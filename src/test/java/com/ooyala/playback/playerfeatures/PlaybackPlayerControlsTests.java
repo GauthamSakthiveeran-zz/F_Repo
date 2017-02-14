@@ -62,11 +62,7 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
             result = result && seek.validate("seeked_1", 60000);
 
-            logger.info("Verified that video is seeked");
-
             result = result && eventValidator.validate("played_1", 60000);
-
-            logger.info("Verified that video is played");
 
         } catch (Exception e) {
             logger.error(e.getMessage());
