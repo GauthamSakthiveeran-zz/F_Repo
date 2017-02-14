@@ -45,6 +45,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
 
+import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.getJenkinsJobLink;
 import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.setTestResult;
 
 @Listeners(IMethodListener.class)
@@ -69,6 +70,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected static String failedTestList;
     protected static String v4Version;
     protected static String osNameAndOsVersion;
+    protected static String jenkinsJobLink;
 
     public PlaybackWebTest() throws OoyalaException {
 
@@ -164,6 +166,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     public void beforeSuiteInPlaybackWeb() throws OoyalaException {
         int portNumber = getRandomOpenPort();
         SimpleHttpServer.startServer(portNumber);
+        jenkinsJobLink = getJenkinsJobLink(System.getProperty("browser"));
     }
 
     public int getRandomOpenPort() {
@@ -218,7 +221,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 				passedTestList = " ";
 			if (failedTestList == null)
 				failedTestList = " ";
-			setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList,v4Version,osNameAndOsVersion);
+			setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList,v4Version,osNameAndOsVersion,jenkinsJobLink);
 		}
 		SimpleHttpServer.stopServer();
 	}

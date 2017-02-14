@@ -187,7 +187,7 @@ public class UpdateSheet {
         }
     }
 
-    public static void setTestResult(String pass, String fail, String skip,int total,String failtestname,String passedTests,String v4Version, String osNameAndOsVersion){
+    public static void setTestResult(String pass, String fail, String skip,int total,String failtestname,String passedTests,String v4Version, String osNameAndOsVersion,String jenkinsLink){
         Date date = new Date();
         String CurrntDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
         testSheetData.put("Date",CurrntDate);
@@ -201,7 +201,7 @@ public class UpdateSheet {
         testSheetData.put("Skip",skip);
         testSheetData.put("Failed_Tests",failtestname);
         testSheetData.put("Passed_Tests",passedTests);
-        testSheetData.put("jenkinsJobLink" , getJenkinsJobLink(System.getProperty("browser")));
+        testSheetData.put("jenkinsJobLink" ,jenkinsLink);
         testSheetData.put("SuiteName",System.getProperty("tests"));
         testSheetData.put("groups",System.getProperty("groups"));
         for (String key : testSheetData.keySet()){
