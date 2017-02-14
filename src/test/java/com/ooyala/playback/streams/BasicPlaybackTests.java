@@ -51,17 +51,11 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
             result = result && pause.validate("paused_1", 60000);
 
-            logger.info("Verified that video is getting pause");
-
             result = result && play.validate("playing_2", 60000);
 
             result = result && seek.validate("seeked_1", 60000);
 
-            logger.info("Verified that video is seeked");
-
             result = result && eventValidator.validate("played_1", 60000);
-
-            logger.info("Verified that video is played");
 
         }catch (Exception e) {
             logger.error("Exception while checking basic playback "+e.getMessage());
