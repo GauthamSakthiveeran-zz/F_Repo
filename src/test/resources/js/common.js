@@ -17,11 +17,17 @@ function subscribeToCommonEvents() {
 		var skipAdEventOrder = 1;
 		var nonLinearAdPlayedEventOrder = 1;
 		var adPodEndedEventOrder = 1;
+		var pausedEventOrder = 1;
 		
 		return function(event) {
 			if (event.match(/played/)) {
 				OO.$('#ooplayer').append('<p id=played_'+playedEventOrder+'>played '+playedEventOrder+'</p>'); 
 				playedEventOrder++;
+			}
+			
+			if(event.match(/paused/)) {
+				OO.$('#ooplayer').append('<p id=paused_'+pausedEventOrder+'>paused '+pausedEventOrder+'</p>'); 
+				pausedEventOrder++;
 			}
 			
 			if (event.match(/fullscreenChanged/)) {
@@ -103,7 +109,11 @@ function subscribeToCommonEvents() {
 				OO.$('#ooplayer').append('<p id=adPodEnded_'+adPodEndedEventOrder+'>adPodEnded '+adPodEndedEventOrder+'</p>'); 
 				OO.$('#ooplayer').append('<p id=adPodEnd_'+arguments[1]+'_'+adPodEndedEventOrder+'>adPodPlayed '+arguments[1]+' '+adPodEndedEventOrder+'  </p>');
 				adPodEndedEventOrder++;
+				if (arguments[1]=='ooyala-ads-manager_0') {
+					OO.$('#ooplayer').append('<p id=ooyalaAds>ooyalaAds</p>'); 
+				}  
 			}
+			
 		};
 	}());
 }

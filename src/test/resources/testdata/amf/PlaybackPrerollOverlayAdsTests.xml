@@ -154,18 +154,6 @@
 	        <playerParameter><![CDATA[{"showNonLinearCloseButton":true}]]></playerParameter>
     	</url>
     	
-<!--     	overlay does not come up immediately  -->
-    	<!-- <url>
-	    	<description name="Overlay_Vast3.0"/>
-	        <embed_code name="0yZDg4MTE6vq9XTeATXOBjO4Blr4a7fN"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"showNonLinearCloseButton":true}]]></playerParameter>
-    	</url>
-    	 -->
     	<url>
 	    	<description name="IMA_MAIN"/>
 	        <embed_code name="FlOHg4MTE698_SqEgfRuJepp0rjzl9h9"/>

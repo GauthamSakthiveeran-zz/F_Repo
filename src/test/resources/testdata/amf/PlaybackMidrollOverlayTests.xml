@@ -35,7 +35,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showNonLinearCloseButton":true}]]></playerParameter>
-	        <browsersSupported name="chrome,firefox,internet explorer,safari" />
+	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 	        <browserSupportedVersion name="safari,9"/>
     	</url>
     	
@@ -72,7 +72,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 	        <playerParameter><![CDATA[{"showNonLinearCloseButton":true,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-	        <browsersSupported name="chrome,firefox,internet explorer,safari" />
+	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 	        <browserSupportedVersion name="safari,9"/>
     	</url>
     	
