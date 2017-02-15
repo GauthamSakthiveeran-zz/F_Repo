@@ -5,6 +5,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.relevantcodes.extentreports.LogStatus;
+
 /**
  * Created by snehal on 29/11/16.
  */
@@ -23,9 +25,8 @@ public class IsAdPlayingValidator extends PlayBackPage implements
 		if (!loadingSpinner()) {
 			return false;
 		}
-		boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
-				.executeScript("return pp.isAdPlaying()"));
-		logger.info("Ad is playing: " + isAdplaying);
+		boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver).executeScript("return pp.isAdPlaying()"));
+		extentTest.log(LogStatus.INFO, "Ad is playing: " + isAdplaying);
 		return isAdplaying;
 	}
 

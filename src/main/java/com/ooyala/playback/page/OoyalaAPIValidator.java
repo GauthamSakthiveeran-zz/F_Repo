@@ -1,6 +1,8 @@
 package com.ooyala.playback.page;
 
 import com.ooyala.playback.page.action.SeekAction;
+import com.relevantcodes.extentreports.LogStatus;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -139,6 +141,18 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
             }
         }
 
+        return true;
+    }
+    
+    public boolean validateInitailTime(){
+    	double initialtime = parseDouble(((JavascriptExecutor) driver).executeScript("return pp.parameters.initialTime").toString());
+
+        double playaheadTime = parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime()").toString());
+
+        if(!(playaheadTime>initialtime)){
+            extentTest.log(LogStatus.FAIL,"Video playback not started from initial time");
+            return false;
+        }
         return true;
     }
 

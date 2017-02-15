@@ -227,19 +227,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 	}
 
     private void init() throws Exception{
-        if(browser.equalsIgnoreCase("MicrosoftEdge")){
-            DesiredCapabilities dr=DesiredCapabilities.edge();;
-            dr.setBrowserName("MicrosoftEdge");
-            String ipaddress=System.getProperty("ipaddress");
-            ipaddress = "http://"+ipaddress+"/wd/hub";
-            String platform = System.getProperty("platform");
-            dr.setCapability(CapabilityType.PLATFORM, platform);
-            driver = new RemoteWebDriver(new URL(ipaddress), dr);
-            webDriverFacile.set(driver);
-        }else {
-        	webDriverFacile = getDriver(browser);
-    		driver = webDriverFacile.get();
-        }
+    	webDriverFacile = getDriver(browser);
+		driver = webDriverFacile.get();
         if (webDriverFacile.get() != null)
             logger.info("Driver initialized successfully");
         else {
@@ -259,7 +248,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		if (browser == null || browser.equals(""))
 			browser = "firefox";
 		logger.info("browser is " + browser);
-		if (browser.equalsIgnoreCase("safari")) { 
+		if (browser.equalsIgnoreCase("safari") || browser.toLowerCase().contains("edge")) { 
 			// safari driver does not allow parallel execution of tests
 			context.getCurrentXmlTest().setParallel("false");
 		}

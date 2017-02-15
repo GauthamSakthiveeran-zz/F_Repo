@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMidRollAdsTests extends PlaybackWebTest {
@@ -16,6 +17,7 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 
 	private EventValidator event;
 	private PlayValidator playValidator;
+	private SeekValidator seekValidator;
 
 	@Test(groups = {"amf","midroll"}, dataProvider = "testUrls")
 	public void verifyMidRoll(String testName, String url) throws OoyalaException {
@@ -51,6 +53,9 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 				else
 					result = result && event.validate("singleAdPlayed_1", 60000);
 			}
+			
+			result = result && seekValidator.validate("seeked_1", 160000);
+			result = result && event.validate("played_1", 160000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

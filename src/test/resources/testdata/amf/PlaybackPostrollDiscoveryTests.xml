@@ -78,7 +78,7 @@
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="d99dafe4535a4304948a7669e309ff9a"/>
 	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
-    		<browsersSupported name="chrome,firefox,internet explorer" />
+    		<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
     	</url> -->
     	
     	
@@ -113,7 +113,7 @@
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="d99dafe4535a4304948a7669e309ff9a"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showInAdControlBar":true}]]></playerParameter>
-	        <browsersSupported name="chrome,firefox,internet explorer" />
+	        <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
     	</url>
     	
     	<url>
@@ -124,7 +124,7 @@
 	        <adPlugins name="FREEWHEEL"/>
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="14a1b2eb21104617948405aeac11271b"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"platform":"html5","freewheel-ads-manager":{"fw_video_asset_id":"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
     	</url>
     	
     	<url>
@@ -148,7 +148,7 @@
 	        <additionalPlugins name="DISCOVERY,VAST"/>
 	        <pbid name="d99dafe4535a4304948a7669e309ff9a"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showInAdControlBar":true}]]></playerParameter>
-	        <browsersSupported name="chrome,firefox,internet explorer" />
+	        <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
     	</url>
     	
     </test>

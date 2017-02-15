@@ -5,8 +5,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.page.PlayBackPage;
-import com.ooyala.playback.page.VolumeValidator;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -35,6 +35,10 @@ public class AutoplayAction extends PlayBackPage implements PlayerAction {
 			logger.error("Autoplay not set for this video");
 		}
 		if (!autoplay) {
+			
+			if(!new PlayBackFactory(driver, extentTest).getPlayValidator().waitForPage())
+				return false;
+			
 			if (waitOnElement("PLAY_BUTTON", 60000)) {
 				if (clickOnIndependentElement("PLAY_BUTTON")) {
 					return true;

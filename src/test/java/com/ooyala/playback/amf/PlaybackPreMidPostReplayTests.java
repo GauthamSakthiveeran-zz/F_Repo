@@ -4,11 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AdClickThroughValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.ReplayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
@@ -19,13 +17,10 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 
 	private EventValidator event;
 	private PlayValidator playValidator;
-	private SeekValidator seekValidator;
 	private ReplayValidator replayValidator;
-	private AdClickThroughValidator adClickThrough;
 
-	@Test(groups = {"amf","preroll","midroll","postroll","replay","sequential"}, dataProvider = "testUrls", enabled =false)
-	public void verifyPreMidPostcontrols(String testName, String url)
-			throws OoyalaException {
+	@Test(groups = { "amf", "preroll", "midroll", "postroll", "replay", "sequential" }, dataProvider = "testUrls")
+	public void verifyPreMidPostcontrols(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -43,35 +38,19 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 
 			result = result && event.validate("PostRoll_willPlayAds", 120000);
 
-			result = result && seekValidator.validate("seeked_1", 120000);
 			result = result && event.validate("played_1", 190000);
 
 			result = result && replayValidator.validate("replay_1", 120000);
 
-			result = result
-					&& event.validate("PreRoll_willPlayAds_OnReplay", 120000);
-			
-			if (!getPlatform().equalsIgnoreCase("Android")) {
-				result = result && adClickThrough.validate("", 120000);
-			}
+			result = result && event.validate("PreRoll_willPlayAds_OnReplay", 120000);
 
 			result = result && event.validate("singleAdPlayed_4", 120000);
 
-			result = result
-					&& event.validate("MidRoll_willPlayAds_OnReplay", 120000);
-
-			if (!getPlatform().equalsIgnoreCase("Android")) {
-				result = result && adClickThrough.validate("", 120000);
-			}
+			result = result && event.validate("MidRoll_willPlayAds_OnReplay", 120000);
 
 			result = result && event.validate("singleAdPlayed_5", 120000);
 
-			result = result
-					&& event.validate("PostRoll_willPlayAds_OnReplay", 120000);
-
-			if (!getPlatform().equalsIgnoreCase("Android")) {
-				result = result && adClickThrough.validate("", 120000);
-			}
+			result = result && event.validate("PostRoll_willPlayAds_OnReplay", 120000);
 
 			result = result && event.validate("singleAdPlayed_6", 120000);
 

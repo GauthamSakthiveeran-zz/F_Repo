@@ -21,9 +21,8 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private DiscoveryValidator discoveryValidator;
 
-	@Test(groups = {"amf","preroll","discovery","sequential"}, dataProvider = "testUrls")
-	public void verifyPrerollDiscovery(String testName, String url)
-			throws OoyalaException {
+	@Test(groups = { "amf", "preroll", "discovery", "sequential" }, dataProvider = "testUrls")
+	public void verifyPrerollDiscovery(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
@@ -38,9 +37,17 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 1000);
+
 			result = result && event.validate("singleAdPlayed_1", 150000);
 
-			result = result && event.validate("playing_1", 150000);
+			if (testName.contains("OOYALA_ADS")) {
+				result = result && event.validate("ooyalaAds", 1000);
+				Thread.sleep(5000); // the main video takes some time to play.
+				result = result && event.validate("playing_2", 150000);
+			} else {
+				result = result && event.validate("playing_1", 150000);
+			}
+
 			result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 
 		} catch (Exception e) {
