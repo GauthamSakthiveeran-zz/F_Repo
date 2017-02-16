@@ -298,7 +298,7 @@ public class TestPageData {
 
 		case STAGING:
 			envURL = sslEnabled + properties.getProperty("staging_env_url");
-			String specificBranch = System.getProperty("specificBranchRun");
+			String specificBranch = System.getProperty("sandboxBranch");
 			if (!(specificBranch == null || specificBranch == "")){
 				envURL = envURL.replace("candidate/latest",specificBranch);
 			}
