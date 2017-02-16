@@ -53,8 +53,6 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
-			logger.info("verified video playing");
-
 			Thread.sleep(3000);
 
 			try {
@@ -65,10 +63,9 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
 				result = result
 						&& eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
-				logger.info("verified discovery close button is present or not");
+
 				sleep(2000);
 				result = result && play.validate("playing_2", 60000);
-				logger.info("verified video playing again after discovery check");
 
 				/*
 				 * result = result && pauseAction.startAction();
@@ -81,7 +78,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 				 */
 
 				result = result && eventValidator.eventAction("FULLSCREEN_BTN");
-				logger.info("verified fullscreen");
+
 				try {
 					eventValidator.eventAction("PAUSE_BUTTON");
 				} catch (Exception e) {
@@ -102,7 +99,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 						"On_discoveryclick_fullScreen", true);
 				result = result
 						&& eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
-				logger.info("verified discovery in full screen");
+
 				eventValidator.eventAction("NORMAL_SCREEN");
 
 				sleep(2000);

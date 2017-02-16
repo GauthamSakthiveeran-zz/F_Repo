@@ -58,15 +58,12 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 			result = result && volumeValidator.validate("VOLUME_MAX", 60000);
 
-			logger.info("validated video volume at full range");
-
 			Thread.sleep(2000);
 
 			result = result && seek.validate("seeked_1", 60000);
 
 			result = result && eventValidator.validate("played_1", 60000);
 
-			logger.info("video played");
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;

@@ -55,15 +55,11 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 
 			result = result && ccValidator.validate("cclanguage", 60000);
 
-			logger.info("Verified cc languages");
-
 			sleep(1000);
 
 			result = result && seek.validate("seeked_1", 60000);
 
 			result = result && eventValidator.validate("played_1", 60000);
-
-			logger.info("verified Video played");
 
 		} catch (Exception e) {
 			e.printStackTrace();

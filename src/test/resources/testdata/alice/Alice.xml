@@ -1022,6 +1022,31 @@
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213193&account_id=dulari_qa&&&signature=3ZIfOPsKS0AIvSSgUlNYUQq5blWfIT40vLlYl8nJqp8"}]]></playerParameter>
         </url>
         <url>
+            <description name="OPT + entitlement" />
+            <embed_code name="x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge,safari" />
+            <browserSupportedVersion name="firefox,48"/>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2889048225&account_id=dulari_qa&&&signature=0AsQMaoDq58w9q/L6P7cJzOI85gocxWPyw69dlLoQm0"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Fairplay HLS + OPT + entitlement" />
+            <embed_code name="E1eTJiNDE6JxNLNrM_CK-vicoKeZtW1e" />
+            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/E1eTJiNDE6JxNLNrM_CK-vicoKeZtW1e?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892590984&account_id=dulari_qa&&&signature=ihvzIhOpC8EKQIB4xMHDf/XoixnXodMD0HNGA3Vw4o4"}]]></playerParameter>
+        </url>
+    </test>
+    <test name="PlaybackDeviceRegistrationTests">
+        <url>
             <description name="dash + Device Registration" />
             <embed_code name="ZoMmd3NTE6zAFEYbLkU5hKXp8zF2ctK0" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />

@@ -42,9 +42,9 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
             result = result && playAction.startAction();
 
-            result = result && eventValidator.loadingSpinner();
-
             result = result && eventValidator.validate("playing_1",20000);
+
+            Thread.sleep(3000);
 
             result = result && pause.validate("paused_1", 60000);
 
@@ -62,11 +62,7 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
             result = result && seek.validate("seeked_1", 60000);
 
-            logger.info("Verified that video is seeked");
-
             result = result && eventValidator.validate("played_1", 60000);
-
-            logger.info("Verified that video is played");
 
         } catch (Exception e) {
             logger.error(e.getMessage());

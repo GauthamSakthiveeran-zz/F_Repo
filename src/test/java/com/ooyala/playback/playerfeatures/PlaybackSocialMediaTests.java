@@ -46,8 +46,6 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest {
 
             result = result && social.validate("", 60000);
 
-            logger.info("Verified Social Media Sharing functionality for Facebook,Twitter and ");
-
         } catch (Exception e) {
             logger.error("Error in Social Media Test"+e.getMessage());
             result = false;

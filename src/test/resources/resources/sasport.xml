@@ -20,4 +20,5 @@
     <element key="PCODE" findBy="id" id="pcode"></element>
     <element key="ACCOUNT_ID" findBy="id" id="accountId"></element>
     <element key="ENVIRONMENT" findBy="id" id="rlEnv"></element>
+    <element key="ACCOUNT_DEVICES" findBy="id" id="accountDevicesContainer"></element>
 </elements>

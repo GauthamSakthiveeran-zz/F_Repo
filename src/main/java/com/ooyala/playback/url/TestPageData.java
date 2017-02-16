@@ -298,6 +298,10 @@ public class TestPageData {
 
 		case STAGING:
 			envURL = sslEnabled + properties.getProperty("staging_env_url");
+			String specificBranch = System.getProperty("specificBranchRun");
+			if (!(specificBranch == null || specificBranch == "")){
+				envURL = envURL.replace("candidate/latest",specificBranch);
+			}
 			pluginURL = envURL + pluginURL;
 			corePlayer = envURL + corePlayer;
 			html5Skin = envURL + html5Skin;

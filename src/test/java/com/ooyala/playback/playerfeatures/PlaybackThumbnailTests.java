@@ -57,8 +57,6 @@ public class PlaybackThumbnailTests extends PlaybackWebTest {
 
 				result = result && eventValidator.validate("played_1", 60000);
 
-				logger.info("Verified that video is played");
-
 			} catch (Exception e) {
 				e.printStackTrace();
 				result = false;
