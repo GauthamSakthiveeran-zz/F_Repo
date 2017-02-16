@@ -38,7 +38,7 @@ public class StartScreenValidator extends PlayBackPage implements
 			String url = value.replaceAll(".*\\(|\\).*", "");
 			url = url.replaceAll("^\"|\"$", "");
 
-			if (!url.equals("http://cf.c.ooyala.com/piMXdiczqydplt6ojmhNzdfAERdgVvaj/3Gduepif0T1UGY8H4xMDoxOjBiO1q_Vi")) {
+			if (!url.contains("http://cf.c.ooyala.com/piMXdiczqydplt6ojmhNzdfAERdgVvaj/3Gduepif0T1UGY8H4xMDoxOjBiO1q_Vi")) {
 				extentTest.log(LogStatus.FAIL, "Preview Image is not matching");
 				flag = false;
 			}
