@@ -236,7 +236,8 @@
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
         </url>
-        <url>
+        <!-- commented check the ticket number for more info PLAYER-595-->
+        <!--<url>
             <description name="Priority as HLS - H.264_4K_Dash/HLS_Movie" />
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -245,7 +246,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"encodingPriority":["hls","dash"]}]]></playerParameter>
-        </url>
+        </url>-->
 
     </test>
     <test name="PlaybackDiscoveryCustomizationTests">
@@ -466,6 +467,19 @@
                 <provider>elemental</provider>
             </live>
         </url>
+        <!-- check if channel is available and then enable it-->
+       <!-- <url>
+            <description name="Akamai HDS Live" />
+            <embed_code name="xvdDNyOTE6PspMu29hqJthushdFevpcO" />
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
+            <plugins name="AKAMAI" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="d19c9608714a45c9a82f9e42702939c7" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"platform":"flash"}]]></playerParameter>
+        </url>-->
     </test>
 
     <test name="PlaybackLocalizationTests">
