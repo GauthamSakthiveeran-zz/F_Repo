@@ -52,12 +52,10 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("played_1", 60000);
 
-			result = result && sasport.checkDeviceRegistration();
-
 		} catch (Exception e) {
 			logger.info("Error while checking entitlement"+e);
 			result = false;
 		}
-		Assert.assertTrue(result, "OPT ENtitlement tests failed");
+		Assert.assertTrue(result, "OPT Entitlement tests failed");
 	}
 }
