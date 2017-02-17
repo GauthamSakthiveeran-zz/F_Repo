@@ -142,9 +142,15 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 				return false;
 			}
 			loadingSpinner();
-			if (!factory.getSeekValidator().validate("seeked_" + (count - eventCount) + "", 20000)) {
-				return false;
-			}
+            if (getBrowser().equalsIgnoreCase("internet explorer")){
+                driver.executeScript("pp.seek(pp.getDuration()-12)");
+                if (!factory.getEventValidator().validate("seeked_" + (count - eventCount) + "", 20000))
+                    return false;
+            }else{
+                if (!factory.getSeekValidator().validate("seeked_" + (count - eventCount) + "", 20000)) {
+                    return false;
+                }
+            }
 			eventCount++;
 
 		} catch (Exception e) {
