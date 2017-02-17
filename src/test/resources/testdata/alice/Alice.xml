@@ -423,7 +423,8 @@
                 <provider>elemental</provider>
             </live>
         </url>
-        <url>
+        <!-- uncomment after this ticket LVP-3162 is resolved -->
+       <!-- <url>
             <description name="Live_HLS_BITMOVIN_Elemental" />
             <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
             <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
@@ -466,7 +467,7 @@
                 <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
                 <provider>elemental</provider>
             </live>
-        </url>
+        </url>-->
         <!-- check if channel is available and then enable it-->
        <!-- <url>
             <description name="Akamai HDS Live" />
