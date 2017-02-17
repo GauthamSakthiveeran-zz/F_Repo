@@ -408,18 +408,6 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Akamai HDS Live" />
-            <embed_code name="ZzYjl0MTE6q67pMzfDHLjHsh5ZPR7rMO" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="AKAMAI" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
-            <browserSupportedVersion name="safari,9"/>
-            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-        </url>
-        <url>
             <description name="Live_HLS_MAIN_Elemental" />
             <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
             <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
