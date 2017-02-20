@@ -1,5 +1,6 @@
 package com.ooyala.playback;
 
+import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.getJenkinsJobLink;
 import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.setTestResult;
 
 import java.io.File;
@@ -53,6 +54,10 @@ import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
+import net.sf.uadetector.ReadableUserAgent;
+import net.sf.uadetector.UserAgentStringParser;
+import net.sf.uadetector.service.UADetectorServiceFactory;
+
 @Listeners(IMethodListener.class)
 public abstract class PlaybackWebTest extends FacileTest {
 
@@ -74,6 +79,8 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected static String passedTestList;
     protected static String failedTestList;
     protected static String v4Version;
+    protected static String osNameAndOsVersion;
+    protected static String jenkinsJobLink;
 
     public PlaybackWebTest() throws OoyalaException {
 
@@ -169,6 +176,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     public void beforeSuiteInPlaybackWeb() throws OoyalaException {
         int portNumber = getRandomOpenPort();
         SimpleHttpServer.startServer(portNumber);
+        jenkinsJobLink = getJenkinsJobLink(System.getProperty("browser"));
     }
 
     public int getRandomOpenPort() {
@@ -223,7 +231,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 				passedTestList = " ";
 			if (failedTestList == null)
 				failedTestList = " ";
-			setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList,v4Version);
+			setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList,v4Version,osNameAndOsVersion,jenkinsJobLink);
 		}
 		SimpleHttpServer.stopServer();
 	}
@@ -349,6 +357,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
+        osNameAndOsVersion = getOsNameAndOsVersion();
+        logger.info("OS Name and Version is : "+osNameAndOsVersion);
         if (isBrowserMobProxyEnabled())
             BrowserMobProxyHelper.stopBrowserMobProxyServer();
 
@@ -522,6 +532,16 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     protected Object executeScript(String script) {
         return ((JavascriptExecutor) webDriverFacile.get()).executeScript(script);
+    }
+
+    protected String getOsNameAndOsVersion(){
+        UserAgentStringParser parser = UADetectorServiceFactory.getResourceModuleParser();
+        ReadableUserAgent agent = parser.parse(driver.executeScript("return navigator.userAgent;").toString());
+        if (!agent.getOperatingSystem().getName().toLowerCase().matches(".*\\d+.*")){
+            return agent.getOperatingSystem().getName()+" "+agent.getOperatingSystem().getVersionNumber().toVersionString();
+        }else {
+            return agent.getOperatingSystem().getName();
+        }
     }
 
 }

@@ -56,7 +56,6 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
             result = result && seek.validate("seeked_1", 60000);
 
             result = result && eventValidator.validate("videoPlayed_1", 60000);
-            logger.info("Verified that video is played");
 
         } catch (Exception e){
             logger.error(e.getMessage());

@@ -33,6 +33,10 @@ public class SocialScreenValidator extends PlayBackPage implements
 	public boolean validate(String element, int timeout) {
 		try{
 			try{
+				if (isElementPresent("HIDDEN_CONTROL_BAR")) {
+					logger.info("hovering mouse over the player");
+					moveElement(getWebElement("HIDDEN_CONTROL_BAR"));
+				}
 				waitOnElement("SHARE_BTN", 10000);
 				clickOnIndependentElement("SHARE_BTN");
 			}catch (Exception e) {

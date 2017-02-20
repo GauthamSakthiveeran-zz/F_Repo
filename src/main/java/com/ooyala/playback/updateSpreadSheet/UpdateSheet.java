@@ -158,7 +158,6 @@ public class UpdateSheet {
                 List<String> valuesInMap = new ArrayList<>();
                 for (String key : map.keySet()){
                     String value = map.get(key);
-                    System.out.println(key + " : " + value);
                     valuesInMap.add(value);
                 }
 
@@ -188,11 +187,11 @@ public class UpdateSheet {
         }
     }
 
-    public static void setTestResult(String pass, String fail, String skip,int total,String failtestname,String passedTests,String v4Version){
+    public static void setTestResult(String pass, String fail, String skip,int total,String failtestname,String passedTests,String v4Version, String osNameAndOsVersion,String jenkinsLink){
         Date date = new Date();
         String CurrntDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
         testSheetData.put("Date",CurrntDate);
-        testSheetData.put("Platform",System.getProperty("platform"));
+        testSheetData.put("Platform",osNameAndOsVersion);
         testSheetData.put("Browser",System.getProperty("browser"));
         testSheetData.put("Browser_Version",System.getProperty("version"));
         testSheetData.put("v4Version",getV4Version(v4Version));
@@ -202,7 +201,7 @@ public class UpdateSheet {
         testSheetData.put("Skip",skip);
         testSheetData.put("Failed_Tests",failtestname);
         testSheetData.put("Passed_Tests",passedTests);
-        testSheetData.put("jenkinsJobLink" , getJenkinsJobLink(System.getProperty("browser")));
+        testSheetData.put("jenkinsJobLink" ,jenkinsLink);
         testSheetData.put("SuiteName",System.getProperty("tests"));
         testSheetData.put("groups",System.getProperty("groups"));
         for (String key : testSheetData.keySet()){

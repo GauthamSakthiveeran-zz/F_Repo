@@ -60,9 +60,9 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 				result = result && fullScreenValidator.getNormalScreen();
 			}
 
-			result = result && playAction.startAction();
+			Thread.sleep(3000);
 
-			result = result && eventValidator.validate("playing_2", 60000);
+			result = result && playAction.startAction();
 
 			result = result && seek.validate("seeked_1", 60000);
 

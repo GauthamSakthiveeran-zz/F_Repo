@@ -43,17 +43,22 @@ public class AspectRatioValidator extends PlayBackPage implements
 
 			Log.info("Width : "+width+" Height : "+height);
 
-			if (verticalVideo) {
-				Assert.assertEquals(width, 320, "Width Matches");
-				Assert.assertEquals(height, 568, "Heigth Matches");
+			int factor = greatestCommonFactor(width, height);
+			int widthRatio = width / factor;
+			int heightRatio = height / factor;
+
+			Log.info("Resolution: " + width + "x" + height);
+			Log.info("Aspect Ratio: " + widthRatio + ":" + heightRatio);
+			Log.info("Decimal Equivalent: " + widthRatio / heightRatio);
+
+			if (verticalVideo){
+				Assert.assertEquals(widthRatio, 16, "Width Matches");
+				Assert.assertEquals(heightRatio, 9, "Heigth Matches");
 				extentTest.log(LogStatus.PASS, " Verified Vertical Video");
 			} else {
-				int diff = width / 4;
-				int expectedHeight = width - diff;
-				Assert.assertEquals(expectedHeight, height,
-						"Video is in 4:3 ratio");
-				extentTest.log(LogStatus.PASS, " Verified Aspect Ratio 4:3");
-
+				Assert.assertEquals(widthRatio, 4, "Width Matches");
+				Assert.assertEquals(heightRatio, 3, "Heigth Matches");
+				extentTest.log(LogStatus.PASS, "Verified Aspect Ratio Video");
 			}
 			return true;
 		} else {
@@ -61,6 +66,10 @@ public class AspectRatioValidator extends PlayBackPage implements
 			extentTest.log(LogStatus.FAIL, "Aspect ratio element not present");
 			return false;
 		}
+	}
+
+	public int greatestCommonFactor(int width, int height) {
+		return (height == 0) ? width : greatestCommonFactor(height, width % height);
 	}
 
 }

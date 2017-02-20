@@ -55,17 +55,11 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
             result = result && seek.validate("seeked_1", 60000);
 
-            logger.info("video seeked");
-
             result = result
                     && aspectRatioValidator.setVerticalVideo().validate(
                     "assetDimension_1", 60000);
 
-            logger.info("validated vertical video dimention");
-
             result = result && eventValidator.validate("videoPlayed_1", 60000);
-
-            logger.info("video played");
 
         } catch (Exception e) {
             logger.error(e.getMessage());

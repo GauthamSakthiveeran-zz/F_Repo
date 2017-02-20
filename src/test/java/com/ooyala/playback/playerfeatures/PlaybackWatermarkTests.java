@@ -49,14 +49,13 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
-			logger.info("video is playing");
+
 			Thread.sleep(3000);
 
 			result = result && pause.validate("paused_1", 60000);
 
 			result = result
 					&& waterMarkValidator.validate("WATERMARK_LOGO", 60000);
-			logger.info("checked watermark logo");
 
 			Thread.sleep(10000);
 
@@ -64,11 +63,7 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 
 			result = result && seek.validate("seeked_1", 60000);
 
-			logger.info("video seeked");
-
 			result = result && eventValidator.validate("videoPlayed_1", 60000);
-
-			logger.info("video played");
 
 		} catch (Exception e) {
 			e.printStackTrace();

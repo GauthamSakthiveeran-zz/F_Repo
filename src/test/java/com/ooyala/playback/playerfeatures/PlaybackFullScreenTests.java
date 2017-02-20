@@ -54,7 +54,6 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("played_1", 60000);
 
-			logger.info("video played");
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
