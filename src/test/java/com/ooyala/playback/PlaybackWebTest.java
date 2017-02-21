@@ -249,6 +249,7 @@ public abstract class PlaybackWebTest extends FacileTest {
         }
 
         pageFactory = new PlayBackFactory(webDriverFacile.get(), extentTest);
+        logger.info("PLATFORM : "+getPlatform());
         if (!getPlatform().equalsIgnoreCase("android")) {
         	maximizeMe(webDriverFacile.get());
         }
