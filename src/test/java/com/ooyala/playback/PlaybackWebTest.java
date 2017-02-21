@@ -176,7 +176,9 @@ public abstract class PlaybackWebTest extends FacileTest {
     public void beforeSuiteInPlaybackWeb() throws OoyalaException {
         int portNumber = getRandomOpenPort();
         SimpleHttpServer.startServer(portNumber);
-        jenkinsJobLink = getJenkinsJobLink(System.getProperty("browser"));
+        String mode = System.getProperty("mode");
+        if(mode!=null && mode.equalsIgnoreCase("remote"))
+        	jenkinsJobLink = getJenkinsJobLink(System.getProperty("browser"));
     }
 
     public int getRandomOpenPort() {
