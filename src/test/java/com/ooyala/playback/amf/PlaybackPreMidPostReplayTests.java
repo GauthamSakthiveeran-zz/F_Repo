@@ -19,7 +19,7 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private ReplayValidator replayValidator;
 
-	@Test(groups = { "amf", "preroll", "midroll", "postroll", "replay", "sequential" }, dataProvider = "testUrls")
+	@Test(groups = { "amf", "preroll", "midroll", "postroll", "replay" }, dataProvider = "testUrls")
 	public void verifyPreMidPostcontrols(String testName, String url) throws OoyalaException {
 
 		boolean result = true;

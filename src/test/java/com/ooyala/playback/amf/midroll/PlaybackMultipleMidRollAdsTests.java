@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.PoddedAdValidator;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
@@ -17,15 +17,15 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 
 	private EventValidator event;
 	private PlayValidator playValidator;
-	private PoddedAdValidator poddedAdValidator;
+	private SeekValidator seek;
 
-	@Test(groups = {"amf","midroll"}, dataProvider = "testUrls")
-	public void verifyMultipleMidroll(String testName, String url)
-			throws OoyalaException {
+	@Test(groups = { "amf", "midroll" }, dataProvider = "testUrls")
+	public void verifyMultipleMidroll(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
+			
 			driver.get(url);
 
 			result = result && playValidator.waitForPage();
@@ -34,10 +34,24 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 
 			result = result && playValidator.validate("playing_1", 90000);
 
-            result = result && event.validate("MidRoll_willPlayAds", 200000);
-			result = result && event.validate("countPoddedAds", 200000);
+			result = result && event.validate("MidRoll_willPlayAds", 200000);
 
-			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds", 60000);
+			result = result && event.validate("MidRoll_willPlaySingleAd_1", 200000);
+			result = result && event.validate("singleAdPlayed_1", 200000);
+
+			result = result && event.validate("MidRoll_willPlaySingleAd_2", 200000);
+			result = result && event.validate("singleAdPlayed_2", 200000);
+
+			if (event.isAdPluginPresent("pulse")) {
+
+				result = result && event.validate("MidRoll_willPlaySingleAd_3", 200000);
+				result = result && event.validate("singleAdPlayed_3", 200000);
+
+				result = result && event.validate("MidRoll_willPlaySingleAd_4", 200000);
+				result = result && event.validate("singleAdPlayed_4", 200000);
+			}
+
+			result = result && seek.validate("seeked_1", 10000);
 
 			result = result && event.validate("played_1", 200000);
 

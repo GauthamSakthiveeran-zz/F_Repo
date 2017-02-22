@@ -125,6 +125,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 				double seekTime = Double.parseDouble(((JavascriptExecutor) driver)
 						.executeScript("return pp.getPlayheadTime();").toString());
 				if (seekTime == -1) {
+					extentTest.log(LogStatus.INFO, "Video is in error mode");
 					logger.error("Video is in error mode");
 					seek(15, true);
 					break;
