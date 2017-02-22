@@ -192,7 +192,7 @@
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter></playerParameter>
+	        <playerParameter><![CDATA[{"linearAdSkipButtonStartTime":1,"showLinearAdSkipButton":true}]]></playerParameter>
     	</url>
     	
     	<url>
@@ -215,7 +215,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter><![CDATA[{"linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true,"initialTime":10}]]></playerParameter>
-	        <browsersSupported name="chrome,firefox,internet explorer,safari" />
+	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
     	</url>
     	
     </test>

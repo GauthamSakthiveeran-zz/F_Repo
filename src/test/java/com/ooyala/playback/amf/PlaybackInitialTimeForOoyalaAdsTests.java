@@ -25,7 +25,7 @@ public class PlaybackInitialTimeForOoyalaAdsTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = { "playlist", "discovery", "amf" }, dataProvider = "testUrls")
+	@Test(groups = { "playlist", "discovery", "amf" }, dataProvider = "testUrls", enabled = false) // TODO once the bug is fixed have to re-enable this
 	public void testInitialTime(String testName, String url) throws OoyalaException {
 
 		boolean result = true;

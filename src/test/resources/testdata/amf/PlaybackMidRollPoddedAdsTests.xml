@@ -46,5 +46,16 @@
 	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
     	</url>
     	
+    	<url>
+	    	<description name="BitmovinMidroll_Vast3"/>
+	        <embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN,MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+    	</url>
+    	
     </test>
 </testdata>

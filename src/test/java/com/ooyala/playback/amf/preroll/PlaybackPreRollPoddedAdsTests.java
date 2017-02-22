@@ -22,7 +22,7 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 	private PoddedAdValidator poddedAdValidator;
 
 	@Test(groups = {"amf","preroll","podded"}, dataProvider = "testUrls")
-	public void verifyPrerollOverlay(String testName, String url) throws OoyalaException {
+	public void verifyPrerollPodded(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
 
