@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -22,25 +23,6 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 
 	int firstAdPlay = 0;
 	int adFrequency = 0;
-
-	PlayValidator play;
-	SeekAction seek;
-	ReplayValidator replay;
-
-	public AdFrequencyValidator setPlayValidator(PlayValidator play) {
-		this.play = play;
-		return this;
-	}
-
-	public AdFrequencyValidator setSeekAction(SeekAction seek) {
-		this.seek = seek;
-		return this;
-	}
-
-	public AdFrequencyValidator setReplayValidator(ReplayValidator replay) {
-		this.replay = replay;
-		return this;
-	}
 
 	public AdFrequencyValidator split(String url) {
 
@@ -75,10 +57,18 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 		if (firstAdPlay == 0 || adFrequency == 0) {
 			return false;
 		}
+		
+		PlayBackFactory factory = new PlayBackFactory(driver, extentTest);
+		
+		PlayAction play = factory.getPlayAction();
+		EventValidator event = factory.getEventValidator();
+		SeekAction seek = factory.getSeekAction();
+		ReplayValidator replay = factory.getReplayValidator();
 
 		int i = 1;
-		play.validate("playing_1", 10000);
+		play.startAction();
 		while (i < firstAdPlay) {
+			event.validate("playing_1", 10000);
 			extentTest.log(LogStatus.INFO, "Play #" + i);
 			if (adPlaying(true)) {
 				extentTest.log(LogStatus.FAIL, "Ad should not be playing right now.");
@@ -104,7 +94,7 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 		adPlaying(false);
 
 		extentTest.log(LogStatus.PASS, "Validated if ad played.");
-
+		
 		if (!seek.seekTillEnd().startAction()) {
 			extentTest.log(LogStatus.FAIL, i + " Seek failed.");
 			return false;
@@ -117,7 +107,7 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 		extentTest.log(LogStatus.PASS, "Ad played for the first time");
 
 		int j = 1;
-		while (j < adFrequency * 3) {
+		while (j < adFrequency * 2) {
 			extentTest.log(LogStatus.INFO, "Play #" + i);
 			if (j % adFrequency == 0) {
 				if (!adPlaying(true)) {
