@@ -1,5 +1,44 @@
 package com.ooyala.playback;
 
+import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.getJenkinsJobLink;
+import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.setTestResult;
+
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Random;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.ITestContext;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
+
 import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
 import com.ooyala.facile.test.FacileTest;
@@ -14,39 +53,10 @@ import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+
 import net.sf.uadetector.ReadableUserAgent;
 import net.sf.uadetector.UserAgentStringParser;
 import net.sf.uadetector.service.UADetectorServiceFactory;
-import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
-import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.ITestContext;
-import org.testng.ITestResult;
-import org.testng.annotations.*;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
-import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Random;
-
-import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.getJenkinsJobLink;
-import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.setTestResult;
 
 @Listeners(IMethodListener.class)
 public abstract class PlaybackWebTest extends FacileTest {
@@ -166,7 +176,9 @@ public abstract class PlaybackWebTest extends FacileTest {
     public void beforeSuiteInPlaybackWeb() throws OoyalaException {
         int portNumber = getRandomOpenPort();
         SimpleHttpServer.startServer(portNumber);
-        jenkinsJobLink = getJenkinsJobLink(System.getProperty("browser"));
+        String mode = System.getProperty("mode");
+        if(mode!=null && mode.equalsIgnoreCase("remote"))
+        	jenkinsJobLink = getJenkinsJobLink(System.getProperty("browser"));
     }
 
     public int getRandomOpenPort() {
@@ -237,12 +249,13 @@ public abstract class PlaybackWebTest extends FacileTest {
         }
 
         pageFactory = new PlayBackFactory(webDriverFacile.get(), extentTest);
+        logger.info("PLATFORM : "+getPlatform());
         if (!getPlatform().equalsIgnoreCase("android")) {
         	maximizeMe(webDriverFacile.get());
         }
     }
     
-	@BeforeTest
+	@BeforeTest(alwaysRun = true)
 	public void initializeThreads(ITestContext context) {
 		browser = System.getProperty("browser");
 		if (browser == null || browser.equals(""))
@@ -251,6 +264,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		if (browser.equalsIgnoreCase("safari") || browser.toLowerCase().contains("edge")) { 
 			// safari driver does not allow parallel execution of tests
 			context.getCurrentXmlTest().setParallel("false");
+			logger.info("****************");
 		}
 
 	}

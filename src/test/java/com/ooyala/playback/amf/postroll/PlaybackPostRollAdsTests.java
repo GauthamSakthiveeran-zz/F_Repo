@@ -21,8 +21,8 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private SeekAction seekAction;
 
-	@Test(groups = {"amf","postroll"}, dataProvider = "testUrls")
-	public void verifyPostroll(String testName, String url)  {
+	@Test(groups = { "amf", "postroll" }, dataProvider = "testUrls")
+	public void verifyPostroll(String testName, String url) {
 
 		boolean result = true;
 
@@ -35,24 +35,20 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && playValidator.validate("playing_1", 90000);
-			if (event.isAdPluginPresent("vast") && event.isVideoPluginPresent("bit_wrapper"))
+			/*if (event.isAdPluginPresent("vast") && event.isVideoPluginPresent("bit_wrapper"))
 				result = result && seekValidator.validate("seeked_1", 10000);
-			else{
+			else {
 				result = result && seekAction.fromLast().setTime(30).startAction();
 				result = result && event.validate("seeked_1", 10000);
-			}
+			}*/
 			
-			result = result && event.validate("videoPlayed_1", 90000);
-			result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
-			
-			// this is not working for IE11 BitmovinPostrol_VPAID2.0_HLS - need to check in actual browser TODO
-			
-			if (!(getBrowser().contains("internet explorer") && event.isVideoPluginPresent("bit")
-					&& event.isAdPluginPresent("vast") && event.isStreamingProtocolPrioritized("hls")))
-				result = result && event.validate("singleAdPlayed_1", 190000); 
-			
+			result = result && seekValidator.validate("seeked_1", 10000);
+
 			result = result && event.validate("played_1", 200000);
 			
+			result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
+
+			result = result && event.validate("singleAdPlayed_1", 190000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

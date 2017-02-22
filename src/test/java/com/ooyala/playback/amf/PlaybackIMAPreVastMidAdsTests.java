@@ -54,7 +54,7 @@ public class PlaybackIMAPreVastMidAdsTests extends PlaybackWebTest {
 				result = result && event.validate("adPodEnd_vast_2_2", 6000);
 			}
 			
-			result = result && event.validate("played_1", 60000);
+			result = result && event.validate("played_1", 200000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -134,7 +134,7 @@ function subscribeToEvents() {
 			
 			
 			if (event.match(/adManagerControllerAllAdsDone/)) {
-				OO.$('#ooplayer').append('<p id=countPoddedAds>'+(willPlayAdsEventOrder-1) +'</p>');
+				OO.$('#ooplayer').append('<p id=countPoddedAds>'+(willPlaySingleAdsEventOrder-1) +'</p>');
 				adManagerControllerAllAdsDone++;
 			}
 			
