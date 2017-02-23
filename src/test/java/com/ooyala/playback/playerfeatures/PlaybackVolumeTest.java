@@ -44,11 +44,11 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 			result = result && eventValidator.loadingSpinner();
 
-			Boolean isAdplaying = isAdPlayingValidator.validate("CheckAdPlaying",60);
+			Boolean isAdplaying = isAdPlayingValidator.validate("",60);
 			if (isAdplaying) {
-				volumeValidator.validate("VOLUME_MAX", 60000);
+				result = result && volumeValidator.validate("", 60000);
 				logger.info("validated ad volume at full range");
-				eventValidator.validate("adPodEnded_1", 20000);
+				result = result && eventValidator.validate("adPodEnded_1", 20000);
 				logger.info("Ad played");
 			}
 
@@ -56,7 +56,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 			Thread.sleep(2000);
 
-			result = result && volumeValidator.validate("VOLUME_MAX", 60000);
+			result = result && volumeValidator.validate("", 60000);
 
 			Thread.sleep(2000);
 
