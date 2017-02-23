@@ -4,6 +4,8 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
+
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -62,7 +64,7 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("played_1", 60000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "Closed Caption tests failed");

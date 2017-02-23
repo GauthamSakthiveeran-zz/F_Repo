@@ -7,6 +7,8 @@ import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.AutoplayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
+
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.SkipException;
@@ -65,6 +67,7 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 
             } catch (Exception e) {
                 logger.error("Exception while checking autplay  "+e.getMessage());
+                extentTest.log(LogStatus.FAIL, e.getMessage());
                 result = false;
             }
             Assert.assertTrue(result, "Playback Autoplay tests failed");
