@@ -1,5 +1,5 @@
 
-<suite name="Playback Web Regression Suite for AMF">
+<suite name="AMF_Preroll_Tests">
 	<listeners>
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
@@ -16,14 +16,8 @@
 		</groups>
 
 		<packages>
-			<package name="com.ooyala.playback.amf" />
-			<package name="com.ooyala.playback.amf.midroll" />
-			<package name="com.ooyala.playback.amf.postroll" />
 			<package name="com.ooyala.playback.amf.preroll" />
 			<package name="com.ooyala.playback.amf.preroll.freewheel" />
-			<package name="com.ooyala.playback.amf.midroll.vast" />
-			<package name="com.ooyala.playback.amf.ima" />
-			<package name="com.ooyala.playback.amf.vast" />
 		</packages>
 		
 		
@@ -42,15 +36,8 @@
 		</groups>
 
 		<packages>
-			<package name="com.ooyala.playback.amf" />
-			<package name="com.ooyala.playback.amf.adfrequency" />
-			<package name="com.ooyala.playback.amf.midroll" />
-			<package name="com.ooyala.playback.amf.postroll" />
 			<package name="com.ooyala.playback.amf.preroll" />
 			<package name="com.ooyala.playback.amf.preroll.freewheel" />
-			<package name="com.ooyala.playback.amf.midroll.vast" />
-			<package name="com.ooyala.playback.amf.ima" />
-			<package name="com.ooyala.playback.amf.vast" />
 		</packages>
 
 	</test>

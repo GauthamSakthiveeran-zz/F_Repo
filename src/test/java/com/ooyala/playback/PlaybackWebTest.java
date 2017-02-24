@@ -25,6 +25,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.ISuite;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -173,7 +174,9 @@ public abstract class PlaybackWebTest extends FacileTest {
     }
 
     @BeforeSuite(alwaysRun = true)
-    public void beforeSuiteInPlaybackWeb() throws OoyalaException {
+    public void beforeSuiteInPlaybackWeb(ITestContext context) throws OoyalaException {
+    	System.setProperty("suiteName", context.getSuite().getName());
+    	logger.info("********" + context.getSuite().getName());
         int portNumber = getRandomOpenPort();
         SimpleHttpServer.startServer(portNumber);
         String mode = System.getProperty("mode");
