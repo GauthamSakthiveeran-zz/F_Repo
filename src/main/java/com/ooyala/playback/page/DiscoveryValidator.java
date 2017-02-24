@@ -75,6 +75,13 @@ public class DiscoveryValidator extends PlayBackPage implements
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
+		
+		if(!loadingSpinner()){
+			extentTest.log(LogStatus.FAIL, "Loading spinner is persistent!");
+			return false;
+		}
+		
+		Thread.sleep(5000);
 
 		if (validateDiscoveryToaster() && validateLeftRightButton()
 				&& validateImageStyle()) {
@@ -84,7 +91,6 @@ public class DiscoveryValidator extends PlayBackPage implements
 					&& waitOnElement(By.id("videoPreload_1"), 60000);
 		}
 
-//		loadingSpinner();
 		return false;
 	}
 
