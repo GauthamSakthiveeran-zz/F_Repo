@@ -107,6 +107,10 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 				&& clickOnIndependentElement("CC_SWITCH_CONTAINER")) {
 			extentTest.log(LogStatus.PASS,
 					"Verified closed caption panel switch container");
+
+			if(waitOnElement(By.id("ccmode_disabled"),15000)){
+				clickOnIndependentElement("CC_SWITCH_CONTAINER");
+			}
 			return true;
 		}
 		return false;
@@ -209,6 +213,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			((JavascriptExecutor) driver)
 					.executeScript("pp.setClosedCaptionsLanguage(\""
 							+ langlist.get(i) + "\")");
+			
 			WebElement ccElement1 = (new WebDriverWait(driver, 60000))
 					.until(ExpectedConditions.presenceOfElementLocated(By
 							.id("cclanguage_" + langlist.get(i))));
