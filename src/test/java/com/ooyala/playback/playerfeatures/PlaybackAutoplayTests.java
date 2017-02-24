@@ -24,8 +24,6 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
     private static Logger logger = Logger
             .getLogger(PlaybackAutoplayTests.class);
     private EventValidator eventValidator;
-    private PlayValidator play;
-    private SeekValidator seek;
     private AutoplayAction autoplayAction;
     private SeekAction seekAction;
 

@@ -23,7 +23,6 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private EventValidator eventValidator;
 	private PauseValidator pauseValidator;
-	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 
 	public PlaybackVerifyEventsTests() throws OoyalaException {

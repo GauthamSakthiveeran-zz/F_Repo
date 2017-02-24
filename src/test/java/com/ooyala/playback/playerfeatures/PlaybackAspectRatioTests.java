@@ -26,7 +26,6 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 	private SeekValidator seek;
 	private PlayAction playAction;
 	private AspectRatioValidator aspectRatioValidator;
-	private EndScreenValidator endScreenValidator;
 
 	public PlaybackAspectRatioTests() throws OoyalaException {
 		super();

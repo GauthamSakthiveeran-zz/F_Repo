@@ -1,13 +1,15 @@
 package com.ooyala.playback.VTC;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.AutoplayAction;
-import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.IsAdPlayingValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by snehal on 25/11/16.
@@ -15,12 +17,9 @@ import org.testng.annotations.Test;
 public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 
 	private static Logger logger = Logger.getLogger(PlaybackAutoplayAutoloopTests.class);
-	private PlayValidator play;
 	private EventValidator eventValidator;
 	private SeekValidator seekValidator;
-	private ReplayValidator replayValidator;
 	private IsAdPlayingValidator isAdPlayingValidator;
-	private AutoplayAction autoplayAction;
 
 	public PlaybackAutoplayAutoloopTests() throws OoyalaException {
 		super();

@@ -1,8 +1,8 @@
 package com.ooyala.playback.playerfeatures;
 
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
@@ -17,7 +17,6 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class DiscoveryUpNextTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(DiscoveryUpNextTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private UpNextValidator discoveryUpNext;
@@ -48,7 +47,6 @@ public class DiscoveryUpNextTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("played_1", 60000);
 
 		} catch (Exception e) {
-			logger.error("Exception while checking discovery up next "+e.getMessage());
 			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
