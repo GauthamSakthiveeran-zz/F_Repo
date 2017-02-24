@@ -17,8 +17,6 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackThumbnailTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger
-			.getLogger(PlaybackThumbnailTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private PauseValidator pause;

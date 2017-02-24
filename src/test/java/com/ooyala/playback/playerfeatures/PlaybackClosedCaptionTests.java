@@ -1,8 +1,8 @@
 package com.ooyala.playback.playerfeatures;
 
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
@@ -20,9 +20,7 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 	private PauseValidator pause;
 	private SeekValidator seek;
 	private EventValidator eventValidator;
-	private FullScreenValidator fullScreenValidator;
 	private CCValidator ccValidator;
-	private PlayAction playAction;
 
 	public PlaybackClosedCaptionTests() throws OoyalaException {
 		super();

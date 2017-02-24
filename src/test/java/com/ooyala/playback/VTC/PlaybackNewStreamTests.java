@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -20,7 +19,6 @@ public class PlaybackNewStreamTests extends PlaybackWebTest {
 
 	private static Logger logger = Logger.getLogger(PlaybackNewStreamTests.class);
 	private PlayValidator play;
-	private PauseValidator pause;
 	private DiscoveryValidator discoveryValidator;
 	private EventValidator eventValidator;
 	private PlayAction playAction;

@@ -1,16 +1,16 @@
 package com.ooyala.playback.drm;
 
+import org.apache.log4j.Logger;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
-import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 public class PlaybackDRMTests extends PlaybackWebTest {
 
@@ -19,7 +19,7 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 	private PlayValidator play;
 	private PauseValidator pause;
 	private SeekValidator seek;
-	private PlayAction playAction;
+	private SeekAction seekAction;
 
 	public PlaybackDRMTests() throws OoyalaException {
 		super();
@@ -54,9 +54,10 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 			if (!(testName.split(":")[1]
 					.equalsIgnoreCase(" elemental fairplay fairplay hls + opt")))
 				result = result && seek.validate("seeked_1", 60000);
-			else
-				((JavascriptExecutor) driver)
-						.executeScript("pp.seek(pp.getDuration()-2);");
+			else{
+				result = result && seekAction.fromLast().setTime(2).startAction();
+				result = result && eventValidator.validate("seeked_1", 60000);
+			}
 
 			result = result && eventValidator.validate("played_1", 60000);
 
