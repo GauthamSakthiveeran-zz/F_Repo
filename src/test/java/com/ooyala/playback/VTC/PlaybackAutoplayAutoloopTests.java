@@ -4,8 +4,8 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.AutoplayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -37,26 +37,21 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 
 			injectScript();
 
-			Thread.sleep(3000);
-			String autoplay="";
+			boolean autoplay = false;
 
-			try {
-				autoplay = ((JavascriptExecutor) driver).executeScript(
-						"return pp.parameters.autoPlay").toString();
-				logger.info("Autoplay is set for this video");
-				Assert.assertEquals(autoplay, "true", "verified autoplay");
+			autoplay = Boolean.parseBoolean(driver.executeScript(
+					"return pp.parameters.autoPlay").toString());
 
-			}catch(Exception e) {
+			if(!autoplay){
 				logger.error("Autoplay not set for this video");
+				result = false;
 			}
 
-			Assert.assertEquals(autoplay, "true", "verified autoplay");
 			result = result && eventValidator.validate("adsPlayed_1", 30000);
 
 			result = result && eventValidator.loadingSpinner();
 
 			result = result && eventValidator.validate("playing_1", 60000);
-			logger.info("Autoplayed the asset.");
 
 			result = result && seekValidator.validate("seeked_1", 60000);
 
@@ -64,18 +59,12 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("willPlaySingleAd_2", 30000);
 
-			boolean isAdplaying = isAdPlayingValidator.validate(
-					"CheckAdPlaying", 60000);
-
-			if(!isAdplaying){
-				result = result && eventValidator.validate("adsPlayed_2", 30000);
-			}
-
-			logger.info("Video Played");
+			result = result && eventValidator.validate("adsPlayed_2", 30000);
 
 		} catch (Exception e) {
 			logger.error(e);
 			result = false;
+			extentTest.log(LogStatus.FAIL, "Playback Autoplay Autoloop test failed", e);
 		}
 		Assert.assertTrue(result, "Playback Autoplay Autoloop test failed");
 	}
