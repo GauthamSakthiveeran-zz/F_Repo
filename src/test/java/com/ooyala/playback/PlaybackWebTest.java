@@ -264,7 +264,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 		if (browser.equalsIgnoreCase("safari") || browser.toLowerCase().contains("edge")) { 
 			// safari driver does not allow parallel execution of tests
 			context.getCurrentXmlTest().setParallel("false");
-			logger.info("****************");
 		}
 
 	}

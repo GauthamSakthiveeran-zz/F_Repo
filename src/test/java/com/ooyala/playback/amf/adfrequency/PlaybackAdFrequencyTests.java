@@ -27,7 +27,7 @@ public class PlaybackAdFrequencyTests extends PlaybackWebTest {
 
 			driver.get(url);
 			
-			executeScript("window.localStorage.clear(); ");
+			result = result && playValidator.clearCache();
 
 			result = result && playValidator.waitForPage();
 

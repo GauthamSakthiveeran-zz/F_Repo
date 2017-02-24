@@ -1,14 +1,19 @@
 package com.ooyala.playback.playerfeatures;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.qe.common.exception.OoyalaException;
+import static java.lang.Thread.sleep;
+
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static java.lang.Thread.sleep;
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.CCValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -21,9 +26,7 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 	private PauseValidator pause;
 	private SeekValidator seek;
 	private EventValidator eventValidator;
-	private FullScreenValidator fullScreenValidator;
 	private CCValidator ccValidator;
-	private PlayAction playAction;
 
 	public PlaybackClosedCaptionTests() throws OoyalaException {
 		super();
@@ -62,7 +65,7 @@ public class PlaybackClosedCaptionTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("played_1", 60000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "Closed Caption tests failed");

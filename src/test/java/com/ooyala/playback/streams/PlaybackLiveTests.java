@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.ControlBarValidator;
-import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.FullScreenValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
@@ -23,7 +22,6 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 	private static Logger logger = Logger.getLogger(PlaybackLiveTests.class);
 	private PlayValidator play;
 	private PauseValidator pause;
-	private EventValidator eventValidator;
 	private ControlBarValidator controlBarValidator;
 	private FullScreenValidator fullScreenValidator;
 	private LiveAction liveAction;

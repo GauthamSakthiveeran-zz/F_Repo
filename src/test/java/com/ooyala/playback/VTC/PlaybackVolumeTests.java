@@ -45,8 +45,8 @@ public class PlaybackVolumeTests extends PlaybackWebTest {
 
 			result=result && eventValidator.loadingSpinner();
 
-			Boolean isAdplaying = isAdPlayingValidator.validate(
-					"CheckAdPlaying", 2000);
+			Boolean isAdplaying = isAdPlayingValidator.validate("", 2000);
+			
 			if (isAdplaying) {
 				logger.info("Checking volume for Ad");
 				volumeValidator.validate("VOLUME_MAX", 20000);

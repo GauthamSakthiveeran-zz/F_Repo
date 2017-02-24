@@ -1,7 +1,7 @@
 package com.ooyala.playback.VTC;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,10 +9,8 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.UpNextValidator;
 import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
@@ -26,8 +24,6 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
 	private UpNextValidator discoveryUpNext;
 	private DiscoveryValidator discoveryValidator;
 	private PlayAction playAction;
-	private SeekAction seekAction;
-	private SeekValidator seek;
 
 	PlaybackDiscoverTests() throws OoyalaException {
 		super();
@@ -73,7 +69,7 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("seeked_1",20000);
 
 
-    		result = result && discoveryUpNext.validate("UPNEXT_CONTENT", 60000);
+    		result = result && discoveryUpNext.validate("", 60000);
 
 			logger.info("Verified UpNext content");
 
