@@ -108,7 +108,8 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			extentTest.log(LogStatus.PASS,
 					"Verified closed caption panel switch container");
 
-			if(waitOnElement(By.id("ccmode_disabled"),15000)){
+
+			if(isElementPresent("CC_BTN_OFF")){
 				clickOnIndependentElement("CC_SWITCH_CONTAINER");
 			}
 			return true;
