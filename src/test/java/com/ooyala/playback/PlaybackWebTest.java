@@ -174,9 +174,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     }
 
     @BeforeSuite(alwaysRun = true)
-    public void beforeSuiteInPlaybackWeb(ITestContext context) throws OoyalaException {
-    	System.setProperty("suiteName", context.getSuite().getName());
-    	logger.info("********" + context.getSuite().getName());
+    public void beforeSuiteInPlaybackWeb() throws OoyalaException {
         int portNumber = getRandomOpenPort();
         SimpleHttpServer.startServer(portNumber);
         String mode = System.getProperty("mode");
