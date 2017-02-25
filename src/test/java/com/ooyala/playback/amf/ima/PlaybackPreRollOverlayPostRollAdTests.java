@@ -36,7 +36,9 @@ public class PlaybackPreRollOverlayPostRollAdTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && event.validate("willPlayNonlinearAd_1", 1000);
+			if (!event.isAdPluginPresent("ima")){
+				result = result && event.validate("willPlayNonlinearAd_1", 1000);
+			}
 
 			result = result && event.validate("videoPlaying_1", 90000);
 
