@@ -30,6 +30,7 @@
             <class name="com.ooyala.playback.playerfeatures.PlaybackAspectRatioTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackVerticalVideoTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailCarouselTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackSocialMediaTests" />
             <class name="com.ooyala.playback.syndicationrules.PlaybackOptEntitlementTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackAutoplayTests" />
