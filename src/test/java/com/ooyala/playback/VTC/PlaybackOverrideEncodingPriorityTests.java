@@ -1,5 +1,6 @@
 package com.ooyala.playback.VTC;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -41,8 +42,6 @@ public class PlaybackOverrideEncodingPriorityTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-			Thread.sleep(10000);
-
 			injectScript();
 
 			encode.setTestUrl(url);
@@ -50,15 +49,11 @@ public class PlaybackOverrideEncodingPriorityTests extends PlaybackWebTest {
 			result = result
 					&& encode.validate("validate_default_encoding", 20000);
 
-			playAction.startAction();
-
-			result = result && event.loadingSpinner();
+			result = result && playAction.startAction();
 
 			result = result && event.validate("adsPlayed_1", 20000);
 
 			result = result && seek.validate("seeked_1", 20);
-
-			result = result && event.loadingSpinner();
 
 			result = result && event.validate("videoPlayed_1", 20000);
 
@@ -66,15 +61,11 @@ public class PlaybackOverrideEncodingPriorityTests extends PlaybackWebTest {
 
 			encode.setTestUrl(encode.getNewUrl(param, browser));
 
-			Thread.sleep(10000);
-
 			injectScript();
 
 			result = result && encode.validate("Override", 60000);
 
-			playAction.startAction();
-
-			result = result && event.loadingSpinner();
+			result = result && playAction.startAction();
 
 			result = result && event.validate("adsPlayed_1", 20000);
 
@@ -83,7 +74,9 @@ public class PlaybackOverrideEncodingPriorityTests extends PlaybackWebTest {
 			result = result && event.validate("videoPlayed_1", 60000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Exception while checking OverrideEncoding Priority test  "+e.getMessage());
+			extentTest.log(LogStatus.FAIL, e.getMessage());
+			result = false;
 		}
 
 		Assert.assertTrue(result, "OverrideEncoding Priority test failed");

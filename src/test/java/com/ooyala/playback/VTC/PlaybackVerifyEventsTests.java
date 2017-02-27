@@ -1,5 +1,6 @@
 package com.ooyala.playback.VTC;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -41,20 +42,14 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-			Thread.sleep(10000);
-
 			injectScript();
 
 			result = result && playAction.startAction();
-
-			result = result && eventValidator.loadingSpinner();
 
 			result = result
 					&& eventValidator.validate("willPlaySingleAd_1", 10000);
 
 			result = result && eventValidator.validate("adsPlayed_1", 20000);
-
-			result = result && eventValidator.loadingSpinner();
 
 			result = result && eventValidator.validate("playing_1", 60000);
 
@@ -72,12 +67,15 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_2", 10000);
 
-			result = result && seekValidator.validate("seeked_1", 60);
+			result = result && seekValidator.validate("seeked_1", 6000);
 
 			result = result && eventValidator.validate("videoPaused_1", 60000);
 
+			result = result && eventValidator.validate("videoPlayed_1",50000);
+
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Exception while checking Controller Event test  "+e.getMessage());
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 
