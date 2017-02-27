@@ -12,7 +12,6 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.UpNextValidator;
 import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
-import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.PlayPauseAction;
 import com.ooyala.playback.page.action.SeekAction;
@@ -30,7 +29,6 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 	private EventValidator eventValidator;
 	private DiscoveryValidator discoveryValidator;
 	private ClickDiscoveryButtonAction clickDiscoveryButtonAction;
-	private PauseAction pauseAction;
 	private PlayAction playAction;
 	private PlayPauseAction playPauseAction;
 	private SeekAction seekAction;

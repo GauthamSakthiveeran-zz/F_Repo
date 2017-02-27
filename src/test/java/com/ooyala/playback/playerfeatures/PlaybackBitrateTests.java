@@ -4,6 +4,8 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
+
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -59,6 +61,7 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
         } catch (Exception e){
             logger.error(e.getMessage());
+            extentTest.log(LogStatus.FAIL, e.getMessage());
             result = false;
 
         }

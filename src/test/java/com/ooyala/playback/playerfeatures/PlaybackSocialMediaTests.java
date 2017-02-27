@@ -1,8 +1,6 @@
 package com.ooyala.playback.playerfeatures;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SocialScreenValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -17,9 +15,7 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest {
 
     private static Logger logger = Logger
             .getLogger(PlaybackSocialMediaTests.class);
-    private EventValidator eventValidator;
     private PlayValidator play;
-    private PauseValidator pause;
     private SocialScreenValidator social;
 
     public PlaybackSocialMediaTests() throws OoyalaException {

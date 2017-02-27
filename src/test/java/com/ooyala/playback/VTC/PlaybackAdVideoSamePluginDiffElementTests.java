@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.DifferentElementValidator;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.IsAdPlayingValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
@@ -23,7 +22,6 @@ public class PlaybackAdVideoSamePluginDiffElementTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private SeekValidator seekValidator;
 	private DifferentElementValidator elementValidator;
-	private IsAdPlayingValidator isAdPlayingValidator;
 
 	PlaybackAdVideoSamePluginDiffElementTests() throws OoyalaException {
 		super();

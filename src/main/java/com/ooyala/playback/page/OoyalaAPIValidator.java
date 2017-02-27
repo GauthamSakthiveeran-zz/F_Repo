@@ -1,16 +1,17 @@
 package com.ooyala.playback.page;
 
-import com.ooyala.playback.page.action.SeekAction;
-import com.relevantcodes.extentreports.LogStatus;
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
+
+import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import java.util.ArrayList;
-import static java.lang.Double.parseDouble;
-import static java.lang.Integer.parseInt;
+
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by jitendra on 29/12/16.
@@ -18,12 +19,6 @@ import static java.lang.Integer.parseInt;
 public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidator {
 
     public static Logger logger = Logger.getLogger(OoyalaAPIValidator.class);
-    private static String ipaddress;
-    private static String v4Branch;
-
-    private IsAdPlayingValidator isAdPlayingValidator;
-    private SeekValidator seek;
-    private SeekAction seekAction;
 
     public OoyalaAPIValidator(WebDriver webDriver) {
         super(webDriver);

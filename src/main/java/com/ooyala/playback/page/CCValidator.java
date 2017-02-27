@@ -1,16 +1,15 @@
 package com.ooyala.playback.page;
 
-import com.relevantcodes.extentreports.LogStatus;
+import java.util.ArrayList;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayList;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by soundarya on 11/3/16.
@@ -107,6 +106,11 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 				&& clickOnIndependentElement("CC_SWITCH_CONTAINER")) {
 			extentTest.log(LogStatus.PASS,
 					"Verified closed caption panel switch container");
+
+
+			if(isElementPresent("CC_BTN_OFF")){
+				clickOnIndependentElement("CC_SWITCH_CONTAINER");
+			}
 			return true;
 		}
 		return false;
@@ -209,12 +213,11 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			((JavascriptExecutor) driver)
 					.executeScript("pp.setClosedCaptionsLanguage(\""
 							+ langlist.get(i) + "\")");
-			WebElement ccElement1 = (new WebDriverWait(driver, 60000))
-					.until(ExpectedConditions.presenceOfElementLocated(By
-							.id("cclanguage_" + langlist.get(i))));
-			if (ccElement1 == null) {
-				flag = flag && false;
-			}
+			
+			flag = flag && waitOnElement(By.id("cclanguage_" + langlist.get(i)),10000);
+			
+			if(!flag)
+				extentTest.log(LogStatus.FAIL, "Wait on element cclanguage_" + langlist.get(i) + " failed.");
 
 		}
 		if (flag)

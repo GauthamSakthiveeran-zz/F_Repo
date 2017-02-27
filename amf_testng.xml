@@ -1,5 +1,5 @@
 
-<suite name="Playback Web Regression Suite">
+<suite name="Playback Web Regression Suite for AMF">
 	<listeners>
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
@@ -26,9 +26,7 @@
 			<package name="com.ooyala.playback.amf.vast" />
 		</packages>
 		
-		<!-- <classes>
-			<class name="com.ooyala.playback.amf.postroll.PlaybackPostrollDiscoveryTests"></class>
-		</classes> -->
+		
 
 	</test>
 

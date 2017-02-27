@@ -34,7 +34,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 		try {
 			driver.get(url);
 
-			result = result && sasport.validate("CREATE_ENTITLEMENT", 30000);
+			result = result && sasport.validate("", 30000);
 
 			if (!getPlatform().equalsIgnoreCase("android")) {
 				driver.manage().window().maximize();

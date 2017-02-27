@@ -17,6 +17,7 @@ public class ExtentManager {
 	static {
 		extentTestMap = new HashMap<String, ExtentTest>();
 		if (extentReports == null) {
+			
 			extentReports = new PBWExtentReports("./ExtentReport.html", true);
 
 			extentReports.addSystemInfo("Host Name", "Jenkins-Dallas-Slave")

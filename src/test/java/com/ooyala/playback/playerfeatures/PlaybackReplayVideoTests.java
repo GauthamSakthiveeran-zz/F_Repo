@@ -1,6 +1,5 @@
 package com.ooyala.playback.playerfeatures;
 
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,9 +14,6 @@ import com.ooyala.qe.common.exception.OoyalaException;
  * Created by soundarya on 11/17/16.
  */
 public class PlaybackReplayVideoTests extends PlaybackWebTest {
-
-	private static Logger logger = Logger
-			.getLogger(PlaybackReplayVideoTests.class);
 
 	private PlayValidator play;
 	private SeekValidator seek;
