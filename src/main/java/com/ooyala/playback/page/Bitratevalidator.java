@@ -76,7 +76,7 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
                     logger.info("Is bitrateChanged_" + bitrate + " present :?" + flag);
                 }else {
                     String currentBitrate = ((JavascriptExecutor) driver).executeScript("return pp.getCurrentBitrate()[\"bitrate\"]").toString();
-                    flag = flag &&(currentBitrate!=null?true:false);
+					flag = flag && (currentBitrate != null ? true : false);
                 }
             }
             return flag;
