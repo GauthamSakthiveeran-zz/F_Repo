@@ -305,7 +305,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			pageFactory.destroyInstance();
 			init();
 
-		} else if(browser.equalsIgnoreCase("safari") && webDriverFacile.get()==null){
+		} else if(browser.equalsIgnoreCase("safari") && webDriverFacile.get().toString().contains("(null)")){
 			
 			logger.error(
 					"Browser closed during the test run. Renitializing the driver as the test failed during the test");
