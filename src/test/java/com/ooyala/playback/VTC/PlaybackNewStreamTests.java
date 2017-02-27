@@ -1,5 +1,6 @@
 package com.ooyala.playback.VTC;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
@@ -33,9 +34,6 @@ public class PlaybackNewStreamTests extends PlaybackWebTest {
 		boolean result = true;
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
 			play.waitForPage();
 
@@ -44,25 +42,22 @@ public class PlaybackNewStreamTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 
 			result = result && eventValidator.validate("playing_1", 60000);
-			logger.info("Video starts playing");
 
-			((JavascriptExecutor) driver)
-					.executeScript("pp.setEmbedCode('Vmd2VmeDq6-92C-kPkkZGoOkTCeSZq4e')");
+			driver.executeScript("pp.setEmbedCode('Vmd2VmeDq6-92C-kPkkZGoOkTCeSZq4e')");
 
 			result = result && eventValidator.validate("setEmbedCode_1", 15000);
-			logger.info("Loaded New Asset");
 
-			((JavascriptExecutor) driver).executeScript("pp.play()");
+			driver.executeScript("pp.play()");
 
 			result = result && eventValidator.validate("playing_2", 60000);
-			logger.info("Played new asset");
 
 			result = result
 					&& discoveryValidator.validate("reportDiscoveryClick_1",
 							6000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Exception while checking stream tests  "+e.getMessage());
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "Playback new stream tests failed");

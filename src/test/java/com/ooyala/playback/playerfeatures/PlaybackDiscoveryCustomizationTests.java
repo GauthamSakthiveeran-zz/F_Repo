@@ -2,6 +2,7 @@ package com.ooyala.playback.playerfeatures;
 
 import static java.lang.Thread.sleep;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -51,80 +52,47 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
-			Thread.sleep(3000);
+			result = result && clickDiscoveryButtonAction.startAction();
 
-			try {
-				result = result && clickDiscoveryButtonAction.startAction();
+			result = result && discoveryValidator.verifyDiscoveryEnabled("On_discovery_click",true); // verify discovery is disabled on discovery
 
-				discoveryValidator.verifyDiscoveryEnabled("On_discovery_click",
-						true); // verify discovery is disabled on discovery
+			result = result && eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
 
-				result = result
-						&& eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
+			result = result && play.validate("playing_2", 60000);
 
-				sleep(2000);
-				result = result && play.validate("playing_2", 60000);
+			result = result && eventValidator.eventAction("FULLSCREEN_BTN");
 
-				/*
-				 * result = result && pauseAction.startAction();
-				 * discoveryValidator.verifyDiscoveryEnabled("On_pauseScreen",
-				 * true); // verify discovery is disabled on pause screen
-				 * 
-				 * Thread.sleep(10000);
-				 * 
-				 * result = result && playAction.startAction();
-				 */
+            result = result && eventValidator.eventAction("PAUSE_BUTTON");
 
-				result = result && eventValidator.eventAction("FULLSCREEN_BTN");
+			result = result && discoveryValidator.verifyDiscoveryEnabled("On_pause_FullScreen",true);
 
-				try {
-					eventValidator.eventAction("PAUSE_BUTTON");
-				} catch (Exception e) {
-					eventValidator.eventAction("VIDEO");
-				}
-				discoveryValidator.verifyDiscoveryEnabled(
-						"On_pause_FullScreen", true);
-				sleep(1000);
-				result = result
-						&& eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
+			result = result && eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
 
-				result = result && playPauseAction.startAction();
+			result = result && playPauseAction.startAction();
 
-				result = result && clickDiscoveryButtonAction.startAction();
+			result = result && clickDiscoveryButtonAction.startAction();
 
-				sleep(2000);
-				discoveryValidator.verifyDiscoveryEnabled(
-						"On_discoveryclick_fullScreen", true);
-				result = result
-						&& eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
+			result = result && discoveryValidator.verifyDiscoveryEnabled("On_discoveryclick_fullScreen",true);
 
-				eventValidator.eventAction("NORMAL_SCREEN");
+			result = result && eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
 
-				sleep(2000);
+			result = result && eventValidator.eventAction("NORMAL_SCREEN");
 
-				result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
-				result = result
-						&& seekAction.setTime(20).fromLast().startAction();// seek(20,
-																			// true);
+			result = result && seekAction.setTime(20).fromLast().startAction();
 
-				result = result && eventValidator.loadingSpinner();
-				discoveryUpNext.validate("", 60000);
-				try {
-					discoveryValidator.clickOnDiscoveryCloseButton();
-				} catch (Exception e) {
-					playAction.startAction();
-					seekAction.setTime(20).fromLast().startAction();// seek(20,
-																	// true);
-					eventValidator.validateElement("END_SCREEN", 60000);
-				}
-				discoveryValidator
-						.verifyDiscoveryEnabled("On_endScreen", false);
-			} catch (Exception e) {
-				logger.info("Exception " + e);
-			}
+			result = result && eventValidator.loadingSpinner();
+
+			result = result && discoveryUpNext.validate("", 60000);
+
+            result = result && discoveryValidator.clickOnDiscoveryCloseButton();
+
+            result =result && discoveryValidator
+						.verifyDiscoveryEnabled("On_endScreen",false);
 		} catch (Exception e) {
-			e.printStackTrace();
+            logger.error("Discovery customization tests failed" + e.getMessage());
+            extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "Discovery customization tests failed");
