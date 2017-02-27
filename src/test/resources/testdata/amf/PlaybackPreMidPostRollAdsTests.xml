@@ -14,7 +14,7 @@
 
 		</url>
 
-		<url>
+		<!-- <url>
 			<description name="GoogleIMAPreMidPostAd_Akamai_HD" />
 			<embed_code name="drdWNqdTo5s-UwmS53xqUuioO-Ck8-yI" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
@@ -24,7 +24,7 @@
 			<pbid name="5e813457c731460f808f62d93d7e4ff3" />
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 
-		</url>
+		</url> -->
 
 		<url>
 			<description name="BitmovinPreMidPostFW_HLS" />
