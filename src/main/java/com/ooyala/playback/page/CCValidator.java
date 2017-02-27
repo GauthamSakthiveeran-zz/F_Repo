@@ -106,6 +106,11 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 				&& clickOnIndependentElement("CC_SWITCH_CONTAINER")) {
 			extentTest.log(LogStatus.PASS,
 					"Verified closed caption panel switch container");
+
+
+			if(isElementPresent("CC_BTN_OFF")){
+				clickOnIndependentElement("CC_SWITCH_CONTAINER");
+			}
 			return true;
 		}
 		return false;
@@ -213,7 +218,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			
 			if(!flag)
 				extentTest.log(LogStatus.FAIL, "Wait on element cclanguage_" + langlist.get(i) + " failed.");
-			
+
 		}
 		if (flag)
 			extentTest.log(LogStatus.PASS,

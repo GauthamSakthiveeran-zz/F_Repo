@@ -15,4 +15,5 @@
              class="oo-switch-container-selectable" />
     <element key="oo-responsive" findBy="id"
              id="oo-responsive" />
+    <element key="CC_BTN_OFF" findBy="xPath" xPath=".//*[@class='oo-switch-body oo-switch-body-off']" />
 </elements>
