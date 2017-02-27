@@ -44,8 +44,6 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
 
             result = result && play.validate("playing_1",30000);
 
-            result = result && eventValidator.loadingSpinner();
-
             result = result && pause.validate("paused_1",30000);
 
             if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
@@ -65,8 +63,6 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
             injectScript();
 
             result = result && play.validate("playing_1",30000);
-
-            result = result && eventValidator.loadingSpinner();
 
             result = result && pause.validate("paused_1",30000);
 
@@ -89,8 +85,6 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
                     || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("mac")))){
                 result = result && fullScreenValidator.getNormalScreen();
             }
-
-            result = result && fcc.closeCCPanel();
 
             result = result && playAction.startAction();
 

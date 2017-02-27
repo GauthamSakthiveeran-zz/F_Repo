@@ -56,8 +56,6 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             result = result && eventValidator.validate("playing_1",60000);
 
-            result = result && eventValidator.loadingSpinner();
-
             result = result && pause.validate("paused_1",30000);
 
             result = result && fcc.discoveryCheck();
