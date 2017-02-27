@@ -1,5 +1,6 @@
 package com.ooyala.playback.syndicationrules;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -36,13 +37,9 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
 			result = result && sasport.validate("", 30000);
 
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 			driver.get(url);
 
 			result = result && play.waitForPage();
-			Thread.sleep(3000);
 
 			injectScript();
 			
@@ -54,6 +51,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
 		} catch (Exception e) {
 			logger.info("Error while checking entitlement"+e);
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "OPT Entitlement tests failed");
