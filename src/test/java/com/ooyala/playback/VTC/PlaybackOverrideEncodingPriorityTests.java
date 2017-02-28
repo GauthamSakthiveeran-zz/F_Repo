@@ -46,10 +46,9 @@ public class PlaybackOverrideEncodingPriorityTests extends PlaybackWebTest {
 
 			encode.setTestUrl(url);
 
-			result = result
-					&& encode.validate("validate_default_encoding", 20000);
+			result = result && encode.validate("validate_default_encoding", 20000);
 
-			result = result && playAction.startAction();
+            result = result && playAction.startAction();
 
 			result = result && event.validate("adsPlayed_1", 20000);
 
