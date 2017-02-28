@@ -4,6 +4,7 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -39,8 +40,6 @@ public class PlaybackVolumeTests extends PlaybackWebTest {
 
 			injectScript();
 
-			logger.info("video is playing");
-
             result=result && playAction.startAction();
 
 			result=result && eventValidator.loadingSpinner();
@@ -49,29 +48,23 @@ public class PlaybackVolumeTests extends PlaybackWebTest {
 			
 			if (isAdplaying) {
 				logger.info("Checking volume for Ad");
-				volumeValidator.validate("VOLUME_MAX", 20000);
-				eventValidator.validate("adPodEnded_1", 20000);
+				result = result && volumeValidator.validate("VOLUME_MAX", 20000);
+				result = result && eventValidator.validate("adPodEnded_1", 20000);
 				logger.info("Ad played");
-				eventValidator.loadingSpinner();
 			}
 
 			result=result && eventValidator.validate("playing_1", 60000);
 
-			Thread.sleep(1000);
-
             result=result && volumeValidator.validate("VOLUME_MAX", 60000);
-
-			logger.info("validated video volume at full range");
 
             result=result && seekValidator.validate("seeked_1",20000);
 
-			eventValidator.validate("played_1", 60000);
-
-			logger.info("video played");
+			result = result && eventValidator.validate("played_1", 60000);
 
         } catch (Exception e) {
-            logger.error("Error in volume test"+e.getMessage());
-            result = false;
+			logger.error("Exception while checking  Volume tests  "+e.getMessage());
+			extentTest.log(LogStatus.FAIL, e.getMessage());
+			result = false;
         }
         Assert.assertTrue(result, "Playback Volume tests failed");
     }

@@ -35,7 +35,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
     public boolean validate(String element, int timeout) throws Exception {
         return switchToControlBar() && closedCaptionMicroPanel() && checkArrows() && verifyCCPanelElements()
-                && verifyClosedCaptionLanguages()  && verifyCCColorSelectionPanel("")
+                && verifyClosedCaptionLanguages() && verifyCCColorSelectionPanel("")
                && verifyCCOpacityPanel("") && verifyCCFonttypePanel()
                 && verifyCCFontSizePanel() && verifyCCTextEnhancementPanel() &&  closeCCPanel() && clearCache();
     }
@@ -63,16 +63,16 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     public boolean verifyCCPanelElements() {
         try {
             boolean flag =true;
-            waitOnElement("CC_CONTROL_BAR", 10000);
-            waitOnElement("CLOSED_CAPTION_PANEL", 30000);
+            flag = flag && waitOnElement("CC_CONTROL_BAR", 10000);
+            flag = flag && waitOnElement("CLOSED_CAPTION_PANEL", 30000);
 
             //verify scroll i.e left or right button for languages option if lang more than 4
             boolean isLeftRightBtn = isElementPresent("CC_RIGHT_BTN");
             if (isLeftRightBtn) {
                 logger.info("verifying the scrolling for langauges");
-                clickOnIndependentElement("RIGHT_BTN");
+                flag = flag && clickOnIndependentElement("RIGHT_BTN");
                 Thread.sleep(1000);
-                clickOnIndependentElement("LEFT_BTN");
+                flag = flag && clickOnIndependentElement("LEFT_BTN");
             }
 
             // verify preview caption text available
@@ -81,14 +81,14 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("verified Preview Caption is Present");
 
             // verify cc off
-            clickOnIndependentElement("CC_SWITCH_CONTAINER");
+            flag = flag && clickOnIndependentElement("CC_SWITCH_CONTAINER");
             Thread.sleep(2000);
             boolean ccoff = isElementPresent("CC_OFF");
             flag = flag && ccoff;
             logger.info("verified the close caption On button working");
 
             //verify cc on
-            clickOnIndependentElement("CC_SWITCH_CONTAINER");
+            flag = flag && clickOnIndependentElement("CC_SWITCH_CONTAINER");
             Thread.sleep(2000);
             boolean ccon = isElementPresent("CC_ON");
             flag = flag && ccon;
@@ -127,12 +127,12 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     for (int i = 0; i < lang.size(); i++) {
                         lang.get(i).click();
                         if (isElementPresent("RIGHT_ARROW")) {
-                            clickOnIndependentElement("RIGHT_ARROW");
+                            flag = flag && clickOnIndependentElement("RIGHT_ARROW");
                         }
                     }
                 }
                 if (isElementPresent("LEFT_ARROW")) {
-                    clickOnIndependentElement("LEFT_ARROW");
+                    flag = flag && clickOnIndependentElement("LEFT_ARROW");
                 }
             } else {
                 for (int i = 0; i < lang.size(); i++) {
@@ -150,7 +150,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             }
             return flag;
         } catch (Exception e) {
-            logger.error("Preview text is not visible");
+            logger.error("Preview text is not visible" + e.getMessage());
             return false;
         }
     }
@@ -165,8 +165,8 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             boolean flag = true;
 
             // verify color selection panel
-            waitOnElement("COLOR_SELECTION_PANEL", 30000);
-            clickOnIndependentElement("COLOR_SELECTION_PANEL");
+            flag = flag && waitOnElement("COLOR_SELECTION_PANEL", 30000);
+            flag = flag && clickOnIndependentElement("COLOR_SELECTION_PANEL");
             logger.info("\n*---------Verifying Color Selection Panel---------*\n");
             Thread.sleep(2000);
 
@@ -279,7 +279,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     public boolean verifyCCOpacityPanel(String testName) {
         try {
             // verify CC Opacity Panel
-            clickOnIndependentElement("CAPTION_OPACITY_PANEL");
+            if(!clickOnIndependentElement("CAPTION_OPACITY_PANEL")) return false;
             logger.info("\n*----------------------Verify Caption Opacity Panel--------------------*\n");
             Thread.sleep(1000);
 
@@ -339,7 +339,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     public boolean verifyCCFonttypePanel() {
         try {
             // verify CC Font Type Panel
-            clickOnIndependentElement("CC_FONT_TYPE_PANEL");
+            if(!clickOnIndependentElement("CC_FONT_TYPE_PANEL")) return false;
             logger.info("\n*--------------Verify Font Type Panel-------------------------*\n");
             Thread.sleep(2000);
 
@@ -360,7 +360,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 if(isElementPresent("TOGGLING_ARROW")){
                     break;
                 }
-                clickOnIndependentElement("RIGHT_ARROW");
+                if(!clickOnIndependentElement("RIGHT_ARROW")) return false;
             }
             logger.info("verified Font Type selection is working fine");
 
@@ -382,7 +382,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             String font_size_large[] = {"1.4em", "1.8em", "2.2em", "2.6em"};
             boolean flag1 = true;
 
-            clickOnIndependentElement("CC_FONT_SIZE_PANEL");
+            if(!clickOnIndependentElement("CC_FONT_SIZE_PANEL")) return false;
             logger.info("\n*--------------Verify CC Font Size Panel---------------------*\n");
             Thread.sleep(2000);
             ccFontSize = getWebElementsList("CC_FONT_SIZE_SELECTOR");
@@ -458,7 +458,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             String textEnName[] = {"Uniform", "Depressed", "Raised", "Shadow"};
             String textEnCode[] = {"none", "rgb(255, 255, 255) 1px 1px 0px", "rgb(255, 255, 255) -1px -1px 0px, rgb(0, 0, 0) -3px 0px 5px", "rgb(26, 26, 26) 2px 2px 2px"};
             String textEnCodeForIE[]={"none","1px 1px white","-1px -1px white, -3px 0px 5px black","2px 2px 2px #1a1a1a"};
-            clickOnIndependentElement("CC_TEXT_ENHANCEMENT");
+            if(!clickOnIndependentElement("CC_TEXT_ENHANCEMENT")) return false;
             logger.info("\n*---------------Verify CC Text Enhancement Panel--------------*\n");
             Thread.sleep(2000);
 
@@ -474,7 +474,6 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 }else {
                     ccTextEnhancement.get(i).click();
                 }
-
 
                 String ccTextEnh = getWebElement("CC_FONT_SIZE_SELECTED").getText();
                 logger.info("\t Text Enhancement Selected :" + ccTextEnh);
@@ -499,7 +498,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("verified CC Text Enhancement selection is working fine");
             return true;
         } catch (Exception e) {
-            logger.error("CC Text Enhancement selection is not working");
+            logger.error("CC Text Enhancement selection is not working" + e);
             return false;
         }
     }
@@ -507,7 +506,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     public boolean closeCCPanel() {
         try {
             Thread.sleep(2000);
-            clickOnIndependentElement("CC_PANEL_CLOSE");
+            if(!clickOnIndependentElement("CC_PANEL_CLOSE")) return false;
             return true;
         } catch (Exception e) {
             return false;
@@ -517,7 +516,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     public boolean closedCaptionMicroPanel() {
         try {
 
-            waitOnElement("CC_BTN", 30000);
+            if(!waitOnElement("CC_BTN", 30000)) return false;
 
             if (!clickOnIndependentElement("CC_BTN"))
                 return false;

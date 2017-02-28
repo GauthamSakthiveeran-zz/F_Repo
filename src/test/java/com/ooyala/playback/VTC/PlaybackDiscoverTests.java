@@ -1,15 +1,14 @@
 package com.ooyala.playback.VTC;
 
+import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.SeekAction;
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.DiscoveryValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.UpNextValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -24,6 +23,7 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
 	private UpNextValidator discoveryUpNext;
 	private DiscoveryValidator discoveryValidator;
 	private PlayAction playAction;
+	private SeekAction seekAction;
 
 	PlaybackDiscoverTests() throws OoyalaException {
 		super();
@@ -39,47 +39,28 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-			Thread.sleep(10000);
-
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
-
-			logger.info("Verifed that video is getting playing");
 
 			result = result
 					&& discoveryValidator.validate("reportDiscoveryClick_1",
 							60000);
 
-			logger.info("verified discovery");
-
-			result = result && play.waitForPage();
-
-			result = result && playAction.startAction();
-
-			result = result && eventValidator.loadingSpinner();
-
 			result = result && eventValidator.validate("playing_2", 60000);
 
-			logger.info("Verified that 2nd video is playing");
-
-			((JavascriptExecutor) driver)
-					.executeScript("pp.seek(pp.getDuration()-15)");
+			result = result && seekAction.seek(15,true);
 
 			result = result && eventValidator.validate("seeked_1",20000);
 
-
     		result = result && discoveryUpNext.validate("", 60000);
-
-			logger.info("Verified UpNext content");
 
 			result = result && eventValidator.validate("played_1", 60000);
 
-			logger.info("Verified that video is played");
-
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e);
 			result = false;
+			extentTest.log(LogStatus.FAIL, "Playback Discovery tests failed", e);
 		}
 		Assert.assertTrue(result, "Playback Discovery tests failed");
 	}

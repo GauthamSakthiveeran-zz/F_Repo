@@ -3,7 +3,7 @@
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
 
-    <test name="VTC Web Regression Group" parallel="classes" thread-count="10">
+    <test name="VTC Web Regression Group">
         <groups>
             <define name="VTC_Regression">
                 <include name="Playback" />

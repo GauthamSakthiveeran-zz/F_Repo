@@ -94,16 +94,17 @@ public class DiscoveryValidator extends PlayBackPage implements
 		return false;
 	}
 
-	public void verifyDiscoveryEnabled(String Onevent, boolean flag) { // TODO
+	public boolean verifyDiscoveryEnabled(String Onevent,boolean isPresent) {
 		boolean discoverytray = isElementPresent("DISCOVERY_STYLE");
 		boolean discoveryscreen = isElementPresent("CONTENT_SCREEN");
-
 		logger.info("discovery screen is enabled " + Onevent + ": "
 				+ discoveryscreen);
 		logger.info("discovery Toaster is Shown " + Onevent + ": "
 				+ discoverytray);
-		Assert.assertEquals(discoveryscreen, flag);
-		Assert.assertEquals(discoverytray, flag);
+        if (isPresent)
+		    return discoverytray && discoveryscreen;
+        else
+            return !discoverytray && !discoveryscreen;
 
 	}
 
