@@ -50,7 +50,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("played_1", 60000);
 
 		} catch (Exception e) {
-			logger.info("Error while checking entitlement"+e);
+			logger.error("Error while checking entitlement"+e);
 			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
