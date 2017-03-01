@@ -2,7 +2,7 @@
     <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
-    <test name="Playback Web Regression Group">
+    <test name="Playback Web Regression Group" parallel="classes" thread-count="10">
         <groups>
             <define name="regression">
                 <include name="streams" />
@@ -30,6 +30,7 @@
             <class name="com.ooyala.playback.playerfeatures.PlaybackAspectRatioTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackVerticalVideoTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailCarouselTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackSocialMediaTests" />
             <class name="com.ooyala.playback.syndicationrules.PlaybackOptEntitlementTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackAutoplayTests" />

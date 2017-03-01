@@ -6,6 +6,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SaasPortValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -59,7 +60,8 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
             result = result && sasport.checkAccountDeviceRegistration();
 
         } catch (Exception e) {
-            logger.info("Error while checking device registration"+e);
+            logger.error("Error while checking device registration" + e);
+            extentTest.log(LogStatus.FAIL, e.getMessage());
             result = false;
         }
         Assert.assertTrue(result, "Device Registration Test failed");

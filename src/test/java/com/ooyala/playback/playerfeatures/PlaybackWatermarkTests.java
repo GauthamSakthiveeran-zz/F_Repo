@@ -1,5 +1,7 @@
 package com.ooyala.playback.playerfeatures;
 
+import com.relevantcodes.extentreports.LogStatus;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,6 +18,9 @@ import com.ooyala.qe.common.exception.OoyalaException;
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackWatermarkTests extends PlaybackWebTest {
+
+	private static Logger logger = Logger
+			.getLogger(PlaybackWatermarkTests.class);
 
 	private PlayValidator play;
 	private SeekValidator seek;
@@ -37,19 +42,13 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-			Thread.sleep(5000);
-
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
 
-			Thread.sleep(3000);
-
 			result = result && pause.validate("paused_1", 60000);
 
 			result = result && waterMarkValidator.validate("", 60000);
-
-			Thread.sleep(10000);
 
 			result = result && playAction.startAction();
 
@@ -58,7 +57,8 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("videoPlayed_1", 60000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e);
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 

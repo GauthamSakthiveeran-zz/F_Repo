@@ -1,5 +1,8 @@
 package com.ooyala.playback.VTC;
 
+import com.ooyala.playback.streams.BasicPlaybackTests;
+import com.relevantcodes.extentreports.LogStatus;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,6 +17,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackMultipleV4PlayerTests extends PlaybackWebTest {
 
+	private static Logger logger = Logger.getLogger(PlaybackMultipleV4PlayerTests.class);
 	private PlayValidator play;
 	private MultiplePlayerValidator multiplePlayerValidator;
 	private EventValidator eventValidator;
@@ -22,8 +26,8 @@ public class PlaybackMultipleV4PlayerTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "multiplePlayer", dataProvider = "testUrls")
-	public void verifyMultipleV4Player(String testName, String url)
+	@Test(groups = "multiplePlayer")
+	public void verifyMultipleV4Player()
 			throws Exception {
 
 		String urlLink = "http://shared.ooyala.com/RCTTestAssets/tushar/Multiple_Player.html";
@@ -35,8 +39,6 @@ public class PlaybackMultipleV4PlayerTests extends PlaybackWebTest {
 		try {
 
 			result = result && play.waitForPage();
-
-			Thread.sleep(10000);
 
 			injectScript();
 
@@ -75,7 +77,8 @@ public class PlaybackMultipleV4PlayerTests extends PlaybackWebTest {
 					&& eventValidator.validate("player2_seeked_1", 20000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Exception while checking MultipleV4Player  "+e.getMessage());
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 
