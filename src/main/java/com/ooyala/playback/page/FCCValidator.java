@@ -1,5 +1,6 @@
 package com.ooyala.playback.page;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -56,6 +57,8 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             }
             return true;
         } catch (Exception e) {
+            logger.error("Error in checking arrows from closed caption window."+ e);
+            extentTest.log(LogStatus.FAIL, "Error in checking arrows from closed caption window", e);
             return false;
         }
     }
@@ -63,16 +66,16 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
     public boolean verifyCCPanelElements() {
         try {
             boolean flag =true;
-            flag = flag && waitOnElement("CC_CONTROL_BAR", 10000);
-            flag = flag && waitOnElement("CLOSED_CAPTION_PANEL", 30000);
+            if(!waitOnElement("CC_CONTROL_BAR", 10000)) return false;
+            if(!isElementPresent("CLOSED_CAPTION_PANEL")) return false;
 
             //verify scroll i.e left or right button for languages option if lang more than 4
             boolean isLeftRightBtn = isElementPresent("CC_RIGHT_BTN");
             if (isLeftRightBtn) {
                 logger.info("verifying the scrolling for langauges");
-                flag = flag && clickOnIndependentElement("RIGHT_BTN");
+                if(!clickOnIndependentElement("RIGHT_BTN")) return false;
                 Thread.sleep(1000);
-                flag = flag && clickOnIndependentElement("LEFT_BTN");
+                if(!clickOnIndependentElement("LEFT_BTN")) return false;
             }
 
             // verify preview caption text available
@@ -97,6 +100,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return flag;
         } catch (Exception e) {
             logger.error("Error while verifying CC Panel Elements "+e);
+            extentTest.log(LogStatus.FAIL,"Error while verifying CC Panel Elements", e);
             return false;
         }
     }
@@ -128,11 +132,15 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                         lang.get(i).click();
                         if (isElementPresent("RIGHT_ARROW")) {
                             flag = flag && clickOnIndependentElement("RIGHT_ARROW");
+                        }else {
+                            logger.info("Right Arrow is not present");
                         }
                     }
                 }
                 if (isElementPresent("LEFT_ARROW")) {
                     flag = flag && clickOnIndependentElement("LEFT_ARROW");
+                }else {
+                    logger.info("Left Arrow is not present");
                 }
             } else {
                 for (int i = 0; i < lang.size(); i++) {
@@ -150,7 +158,8 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             }
             return flag;
         } catch (Exception e) {
-            logger.error("Preview text is not visible" + e.getMessage());
+            logger.error("Preview text is not visible" + e);
+            extentTest.log(LogStatus.FAIL, "Error while checking closed caption languages.", e);
             return false;
         }
     }
@@ -165,8 +174,8 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             boolean flag = true;
 
             // verify color selection panel
-            flag = flag && waitOnElement("COLOR_SELECTION_PANEL", 30000);
-            flag = flag && clickOnIndependentElement("COLOR_SELECTION_PANEL");
+            if(!waitOnElement("COLOR_SELECTION_PANEL", 30000)) return false;
+            if(!clickOnIndependentElement("COLOR_SELECTION_PANEL")) return false;
             logger.info("\n*---------Verifying Color Selection Panel---------*\n");
             Thread.sleep(2000);
 
@@ -195,6 +204,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             }
             if(!flag){
                 logger.error("Error in Text color selection");
+                extentTest.log(LogStatus.FAIL, "Error in Text color selection");
                 return false;
             }
             logger.info("verified text color selection is working fine");
@@ -272,6 +282,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return flag;
         } catch (Exception e) {
             logger.error("Error while verifying CC Color Selection Panel "+e);
+            extentTest.log(LogStatus.FAIL, "Error while verifying CC Color Selection Panel.", e);
             return false;
         }
     }
@@ -332,6 +343,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return true;
         } catch (Exception e) {
             logger.error("Errors while verifying CC Opacity Panel "+e);
+            extentTest.log(LogStatus.FAIL, "Error while verifying CC Opacity Panel.", e);
             return false;
         }
     }
@@ -367,6 +379,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return true;
         } catch (Exception e) {
             logger.error("Error while verifying CC Font type Panel "+e);
+            extentTest.log(LogStatus.FAIL, "Error while verifying CC Font type Panel.", e);
             return false;
         }
     }
@@ -449,6 +462,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return flag1;
         } catch (Exception e) {
             logger.error("Error while verifying font size "+e);
+            extentTest.log(LogStatus.FAIL, "Error while verifying CC Font size Panel.", e);
             return false;
         }
     }
@@ -499,6 +513,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return true;
         } catch (Exception e) {
             logger.error("CC Text Enhancement selection is not working" + e);
+            extentTest.log(LogStatus.FAIL, "Error while checking CC Text Enhancement panel.", e);
             return false;
         }
     }
@@ -509,6 +524,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             if(!clickOnIndependentElement("CC_PANEL_CLOSE")) return false;
             return true;
         } catch (Exception e) {
+            extentTest.log(LogStatus.FAIL, "Error while closing cc panel.", e);
             return false;
         }
     }
@@ -549,7 +565,8 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             }
 
         } catch (Exception e) {
-            logger.error("Horizontal cc option is not present");
+            logger.error("Horizontal cc option is not present"+e);
+            extentTest.log(LogStatus.FAIL, "Error while checking CC micro panel.", e);
         }
         return false;
     }
@@ -565,6 +582,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             }
             return true;
         } catch (Exception e) {
+            extentTest.log(LogStatus.FAIL, "Error while switching to control bar.", e);
             return false;
         }
     }
@@ -615,7 +633,8 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             return result;
         }catch(Exception e){
-            logger.error("Error while before Refreshing FCC Setting. "+e);
+            logger.error("Error while checking before Refreshing FCC Setting. "+e);
+            extentTest.log(LogStatus.FAIL, "Error while checking before Refreshing FCC Setting.", e);
             return false;
         }
     }
@@ -633,7 +652,8 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             }
         }
         catch (Exception e){
-            logger.error("Error in language selection."+e.getMessage());
+            logger.error("Error in selecting cc language."+e.getMessage());
+            extentTest.log(LogStatus.FAIL, "Error while selecting CC langauge.", e);
             return false;
 
         }
@@ -647,6 +667,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return  true;
         }catch(Exception e){
             logger.error("Error while setting cc color selection");
+            extentTest.log(LogStatus.FAIL, "Error while selecting CC color.", e);
             return false;
         }
     }
@@ -694,6 +715,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return true;
         }catch (Exception e){
             logger.error("Error while setting CC opacity"+e);
+            extentTest.log(LogStatus.FAIL, "Error while selecting CC opacity.", e);
             return false;
         }
     }
@@ -704,6 +726,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return true;
         }catch (Exception e){
             logger.error("Error while setting CC font size"+e);
+            extentTest.log(LogStatus.FAIL, "Error while selecting CC Font Size.", e);
             return false;
         }
     }
@@ -715,6 +738,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             return true;
         }catch (Exception e){
             logger.error("Error while setting CC Text Enhancement"+e);
+            extentTest.log(LogStatus.FAIL, "Error while selecting CC Text Enhancement.", e);
             return false;
         }
     }
@@ -739,6 +763,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         }
         catch (Exception e){
             logger.error("Error while setting CC font type"+e);
+            extentTest.log(LogStatus.FAIL, "Error while selecting CC Font Type.", e);
             return false;
         }
     }
@@ -875,6 +900,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             }
             return true;
         }catch (Exception e){
+            extentTest.log(LogStatus.FAIL, "Error while closing discovery window.", e);
             return false;
         }
     }
