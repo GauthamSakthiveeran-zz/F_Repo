@@ -37,17 +37,12 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
 			result = result && play.waitForPage();
 
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
-
-			Thread.sleep(3000);
 
 			result = result && pause.validate("paused_1", 60000);
 
@@ -60,8 +55,6 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 
 				result = result && fullScreenValidator.getNormalScreen();
 			}
-
-			Thread.sleep(3000);
 
 			result = result && playAction.startAction();
 
