@@ -176,7 +176,7 @@
             <adPlugins name="FREEWHEEL" />
             <additionalPlugins name="" />
             <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
-            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autopPlay":true,"loop":true}]]></playerParameter>
+            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoPlay":true,"loop":true}]]></playerParameter>
         </url>
     </test>
     <test name="PlaybackPreAdMultipleVpluginTests">
