@@ -1,12 +1,16 @@
 package com.ooyala.playback.updateSpreadSheet;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import org.testng.ITestResult;
 
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
@@ -20,6 +24,8 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.*;
+import com.ooyala.qe.common.exception.OoyalaException;
+import com.sun.jna.platform.win32.OaIdl.DECIMAL;
 import com.google.api.services.sheets.v4.Sheets;
 
 /**
@@ -27,279 +33,267 @@ import com.google.api.services.sheets.v4.Sheets;
  */
 public class UpdateSheet {
 
-    /** Create linkedHasMap for storing data */
-    public static LinkedHashMap<String,String> testSheetData  =
-            new LinkedHashMap<String,String>();
+	/** Create linkedHasMap for storing data */
+	public static LinkedHashMap<String, String> testSheetData = new LinkedHashMap<String, String>();
 
-    public static String regressionFileName;
+	public static String regressionFileName;
 
-    /** Application name. */
-    private static final String APPLICATION_NAME =
-            "Google Sheets API Java Quickstart";
+	/** Application name. */
+	private static final String APPLICATION_NAME = "Google Sheets API Java Quickstart";
 
-    /** Directory to store user credentials for this application. */
-    private static final java.io.File DATA_STORE_DIR = new java.io.File(
-            System.getProperty("user.home"), ".credentials/sheets.googleapis.com-java-quickstart.json");
+	/** Directory to store user credentials for this application. */
+	private static final java.io.File DATA_STORE_DIR = new java.io.File(System.getProperty("user.home"),
+			".credentials/sheets.googleapis.com-java-quickstart.json");
 
-    /** Global instance of the {@link FileDataStoreFactory}. */
-    private static FileDataStoreFactory DATA_STORE_FACTORY;
+	/** Global instance of the {@link FileDataStoreFactory}. */
+	private static FileDataStoreFactory DATA_STORE_FACTORY;
 
-    /** Global instance of the JSON factory. */
-    private static final JsonFactory JSON_FACTORY =
-            JacksonFactory.getDefaultInstance();
+	/** Global instance of the JSON factory. */
+	private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
-    /** Global instance of the HTTP transport. */
-    private static HttpTransport HTTP_TRANSPORT;
+	/** Global instance of the HTTP transport. */
+	private static HttpTransport HTTP_TRANSPORT;
 
-    /** Global instance of the scopes required by this quickstart.
-     *
-     * If modifying these scopes, delete your previously saved credentials
-     * at ~/.credentials/sheets.googleapis.com-java-quickstart.json
-     */
-    private static final List<String> SCOPES =
-            Arrays.asList(SheetsScopes.SPREADSHEETS);
+	/**
+	 * Global instance of the scopes required by this quickstart.
+	 *
+	 * If modifying these scopes, delete your previously saved credentials at
+	 * ~/.credentials/sheets.googleapis.com-java-quickstart.json
+	 */
+	private static final List<String> SCOPES = Arrays.asList(SheetsScopes.SPREADSHEETS);
 
-    static {
-        try {
-            HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-            DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
-        } catch (Throwable t) {
-            t.printStackTrace();
-            System.exit(1);
-        }
-    }
+	static {
+		try {
+			HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+			DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
+		} catch (Throwable t) {
+			t.printStackTrace();
+			System.exit(1);
+		}
+	}
 
-    /**
-     * Creates an authorized Credential object.
-     * @return an authorized Credential object.
-     * @throws IOException
-     */
-    public static Credential authorize() throws IOException {
-        // Load client secrets.
-        try {
-            InputStream in =
-                    UpdateSheet.class.getResourceAsStream("/client_secret.json");
-            GoogleClientSecrets clientSecrets =
-                    GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+	/**
+	 * Creates an authorized Credential object.
+	 * 
+	 * @return an authorized Credential object.
+	 * @throws Exception
+	 */
+	public static Credential authorize() throws Exception {
+		/*
+		 * // Load client secrets. try { InputStream in =
+		 * UpdateSheet.class.getResourceAsStream("/client_secret.json");
+		 * GoogleClientSecrets clientSecrets =
+		 * GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+		 * 
+		 * // Build flow and trigger user authorization request.
+		 * GoogleAuthorizationCodeFlow flow = new
+		 * GoogleAuthorizationCodeFlow.Builder( HTTP_TRANSPORT, JSON_FACTORY,
+		 * clientSecrets, SCOPES) .setDataStoreFactory(DATA_STORE_FACTORY)
+		 * .setAccessType("offline") .build(); Credential credential = new
+		 * AuthorizationCodeInstalledApp( flow, new
+		 * LocalServerReceiver()).authorize("playbackqa@gmail.com");
+		 * System.out.println( "Credentials saved to " +
+		 * DATA_STORE_DIR.getAbsolutePath()); return credential; } catch
+		 * (Exception e){ e.printStackTrace(); return null; }
+		 */
 
-            // Build flow and trigger user authorization request.
-            GoogleAuthorizationCodeFlow flow =
-                    new GoogleAuthorizationCodeFlow.Builder(
-                            HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
-                            .setDataStoreFactory(DATA_STORE_FACTORY)
-                            .setAccessType("offline")
-                            .build();
-            Credential credential = new AuthorizationCodeInstalledApp(
-                    flow, new LocalServerReceiver()).authorize("playbackqa@gmail.com");
-            System.out.println(
-                    "Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
-            return credential;
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
+		InputStream in = new FileInputStream(new File("client_secret.json"));
 
-    }
+		GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
-    /**
-     * Build and return an authorized Sheets API client service.
-     * @return an authorized Sheets API client service
-     * @throws IOException
-     */
-    public static Sheets getSheetsService() throws IOException {
-        Credential credential = authorize();
-        return new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
-                .setApplicationName(APPLICATION_NAME)
-                .build();
-    }
+		// Build flow and trigger user authorization request.
+		GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY,
+				clientSecrets, SCOPES).setDataStoreFactory(DATA_STORE_FACTORY).setAccessType("offline").build();
+		Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+		System.out.println("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
+		return credential;
 
-    public static void writetosheet(LinkedHashMap<String,String> map) {
-        try {
-            String groupName="";
-            int sheetId=0;
-            String range="";
-            Sheets service = getSheetsService();
-            String spreadsheetId = "1YV2osdUm-hEbAlrt6BcNA-b_js7OQ5xzhNG5xmlFMDk";
-            int num_of_sheets = service.spreadsheets().get(spreadsheetId).execute().getSheets().size();
-            HashMap<String , Integer> sheetNameAndID = new HashMap<>();
-            for (int i = 0; i < num_of_sheets; i++) {
-                String sheetNames = service.spreadsheets().get(spreadsheetId).execute().getSheets().get(i).getProperties().getTitle();
-                int sheet_Id = service.spreadsheets().get(spreadsheetId).execute().getSheets().get(i).getProperties().getSheetId();
-                sheetNameAndID.put(sheetNames,sheet_Id);
-            }
+	}
 
-            if (map.get("SuiteName").equals("regression.xml")) {
-                groupName = map.get("groups");
-                sheetId = sheetNameAndID.get(groupName);
-                range = groupName+"!A2:E";
-            }
+	/**
+	 * Build and return an authorized Sheets API client service.
+	 * 
+	 * @return an authorized Sheets API client service
+	 * @throws Exception
+	 */
+	public static Sheets getSheetsService() throws Exception {
+		Credential credential = authorize();
+		return new Sheets.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential).setApplicationName(APPLICATION_NAME)
+				.build();
+	}
 
-            if (map.get("SuiteName").equals("VTC_Regression.xml")){
-                sheetId = 1728994705;
-                range = "vtc!A2:E";
-            }
+	private static String getSpreadSheetId() {
+		String spreadsheetId = System.getProperty("spreadSheetId");
+		if (spreadsheetId != null && !spreadsheetId.isEmpty()) {
+			return spreadsheetId;
+		} else {
+			return "1IPaTRGHgO6hPbmTIBUUhTn9jMtAdHNGCoAzU1HffVAY";
+		}
 
-            if (map.get("SuiteName").equals("amf_testng.xml")){
-                sheetId = 264291465;
-                range = "amf!A2:E";
-            }
+	}
 
-                ValueRange response = service.spreadsheets().values()
-                        .get(spreadsheetId, range)
-                        .execute();
+	private static int getSheetId(Sheets service, String spreadsheetId, String sheetName) throws IOException {
+		int num_of_sheets = service.spreadsheets().get(spreadsheetId).execute().getSheets().size();
+		int sheetId = 0;
+		for (int i = 0; i < num_of_sheets; i++) {
+			String sheetNames = service.spreadsheets().get(spreadsheetId).execute().getSheets().get(i).getProperties()
+					.getTitle();
+			if (sheetNames.equals(sheetName))
+				sheetId = service.spreadsheets().get(spreadsheetId).execute().getSheets().get(i).getProperties()
+						.getSheetId();
+		}
+		return sheetId;
+	}
+	
+	public static void writetosheet(String sheetName, String testCaseName, String platform, String browser,
+			String version, String v4, TestResult result) {
 
-                // Read Data From Spreadsheet
-                List<List<Object>> readvalues = response.getValues();
+		try {
+			Sheets service = getSheetsService();
+			String spreadsheetId = getSpreadSheetId();
 
-                // write data to spreadsheet
-                List<Request> requests = new ArrayList<>();
-                List<CellData> values = new ArrayList<>();
-                List<String> valuesInMap = new ArrayList<>();
-                for (String key : map.keySet()){
-                    String value = map.get(key);
-                    valuesInMap.add(value);
-                }
+			String range = sheetName + "!A2:G"; // TODO
 
-                for (int i=0;i<valuesInMap.size()-2;i++){
-                    values.add(new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(valuesInMap.get(i))));
-                }
+			int sheetId = getSheetId(service, spreadsheetId, sheetName);
 
-                requests.add(new Request()
-                        .setUpdateCells(new UpdateCellsRequest()
-                                .setStart(new GridCoordinate()
-                                        .setSheetId(sheetId)
-                                        .setRowIndex(readvalues.size() + 1)
-                                        .setColumnIndex(0))
-                                .setRows(Arrays.asList(
-                                        new RowData().setValues(values)))
-                                .setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
+			ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).execute();
 
-                BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()
-                        .setRequests(requests);
-                service.spreadsheets().batchUpdate(spreadsheetId, batchUpdateRequest)
-                        .execute();
-                System.out.println("Data written to spreadsheet");
+			List<List<Object>> values = response.getValues();
+			
+			
+			int i = 1;
+			if (values == null || values.size() == 0) {
+				throw new OoyalaException("Spread sheet is empty");
+			} else {
+				for (List row : values) {
 
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+					if (testCaseName.equals(row.get(1).toString())) {
+						int col = 8; // TODO
+						List<CellData> cellData = new ArrayList<>();
+						cellData.add(new CellData()
+								.setUserEnteredValue(new ExtendedValue().setStringValue(result.getValue()))
+								.setUserEnteredFormat(new CellFormat().setBackgroundColor(result.getColor())));
+						List<Request> requests = new ArrayList<>();
+						requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
+								.setStart(new GridCoordinate().setSheetId(sheetId).setRowIndex(i).setColumnIndex(col))
+								.setRows(Arrays.asList(new RowData().setValues(cellData)))
+								.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
 
-    public static void setTestResult(String pass, String fail, String skip,int total,String failtestname,String passedTests,String v4Version, String osNameAndOsVersion,String jenkinsLink){
-        Date date = new Date();
-        String CurrntDate = new SimpleDateFormat("yyyy-MM-dd").format(date);
-        testSheetData.put("Date",CurrntDate);
-        testSheetData.put("Platform",osNameAndOsVersion);
-        testSheetData.put("Browser",System.getProperty("browser"));
-        testSheetData.put("Browser_Version",System.getProperty("version"));
-        testSheetData.put("v4Version",getV4Version(v4Version));
-        testSheetData.put("Total",Integer.toString(total));
-        testSheetData.put("Pass",pass);
-        testSheetData.put("Fail",fail);
-        testSheetData.put("Skip",skip);
-        testSheetData.put("Failed_Tests",failtestname);
-        testSheetData.put("Passed_Tests",passedTests);
-        testSheetData.put("jenkinsJobLink" ,jenkinsLink);
-        testSheetData.put("SuiteName",System.getProperty("tests"));
-        testSheetData.put("groups",System.getProperty("groups"));
-        for (String key : testSheetData.keySet()){
-            String value = testSheetData.get(key);
-            System.out.println(key + " : " + value);
-        }
+						BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()
+								.setRequests(requests);
+						service.spreadsheets().batchUpdate(spreadsheetId, batchUpdateRequest).execute();
+						System.out.println("Data written to spreadsheet");
+						break;
+					}
+					i++;
+				}
+			}
 
-        if (regressionFileName!=null)
-            writetosheet(testSheetData);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-    }
+	public static String getJenkinsJobLink(String browser) {
+		String testSuitename;
+		testSuitename = System.getProperty("groups");
+		if (testSuitename == null) {
+			testSuitename = "default";
+		}
+		regressionFileName = System.getProperty("tests");
+		String jenkinsJobName = "";
 
-    public static String getJenkinsJobLink(String browser){
-        String testSuitename;
-        testSuitename = System.getProperty("groups");
-        if (testSuitename == null){
-            testSuitename = "default";
-        }
-        regressionFileName = System.getProperty("tests");
-        String jenkinsJobName = "";
+		if (regressionFileName != null) {
+			switch (testSuitename) {
+			case "playerFeatures":
+				jenkinsJobName = "playbackweb-playerFeature";
+				break;
+			case "drm":
+				jenkinsJobName = "playbackweb-drm";
+				break;
+			case "streams":
+				jenkinsJobName = "playbackweb-streams";
+				break;
+			case "FCC":
+				jenkinsJobName = "playbackweb-FCC";
+				break;
+			case "playlist":
+				jenkinsJobName = "playbackweb-playlist";
+				break;
+			case "syndicationRules":
+				jenkinsJobName = "playbackweb-syndicationRules";
+				break;
+			case "default":
+				if (regressionFileName.contains("VTC_Regression.xml")) {
+					jenkinsJobName = "playbackwebvtc";
+					break;
+				}
+				if (regressionFileName.contains("amf_testng.xml")) {
+					switch (browser) {
+					case "chrome":
+						jenkinsJobName = "playbackweb-AMF-Chrome";
+						break;
+					case "firefox":
+						jenkinsJobName = "playbackweb-AMF-FF";
+						break;
+					case "safari":
+						jenkinsJobName = "playbackweb-AMF-Safari";
+						break;
+					case "internet explorer":
+						jenkinsJobName = "playbackweb-AMF-IE";
+						break;
+					}
+				}
+			}
+		}
+		return ParseJenkinsJobLink.getJenkinsBuild(jenkinsJobName);
+	}
 
-        if (regressionFileName!=null) {
-            switch (testSuitename) {
-                case "playerFeatures":
-                    jenkinsJobName = "playbackweb-playerFeature";
-                    break;
-                case "drm":
-                    jenkinsJobName = "playbackweb-drm";
-                    break;
-                case "streams":
-                    jenkinsJobName = "playbackweb-streams";
-                    break;
-                case "FCC":
-                    jenkinsJobName = "playbackweb-FCC";
-                    break;
-                case "playlist":
-                    jenkinsJobName = "playbackweb-playlist";
-                    break;
-                case "syndicationRules":
-                    jenkinsJobName = "playbackweb-syndicationRules";
-                    break;
-                case "default":
-                    if (regressionFileName.contains("VTC_Regression.xml")) {
-                        jenkinsJobName = "playbackwebvtc";
-                        break;
-                    }
-                    if (regressionFileName.contains("amf_testng.xml")) {
-                        switch (browser) {
-                            case "chrome":
-                                jenkinsJobName = "playbackweb-AMF-Chrome";
-                                break;
-                            case "firefox":
-                                jenkinsJobName = "playbackweb-AMF-FF";
-                                break;
-                            case "safari":
-                                jenkinsJobName = "playbackweb-AMF-Safari";
-                                break;
-                            case "internet explorer":
-                                jenkinsJobName = "playbackweb-AMF-IE";
-                                break;
-                        }
-                    }
-            }
-        }
-        return ParseJenkinsJobLink.getJenkinsBuild(jenkinsJobName);
-    }
+	protected static String getV4Version(String branch) {
+		String v4Version = "";
+		String link = "http://player.ooyala.com/static/v4/candidate/latest/version.txt";
 
-    protected static String getV4Version(String branch){
-        String v4Version="";
-        String link ="http://player.ooyala.com/static/v4/candidate/latest/version.txt";
+		if (branch.equalsIgnoreCase("candidate")) {
+			link = "http://player.ooyala.com/static/v4/candidate/latest/version.txt";
+		} else if (branch.equalsIgnoreCase("stable")) {
+			link = "http://player.ooyala.com/static/v4/stable/latest/version.txt";
+		}
 
-        if(branch.equalsIgnoreCase("candidate"))
-        {
-            link ="http://player.ooyala.com/static/v4/candidate/latest/version.txt";
-        }
-        else if( branch.equalsIgnoreCase("stable"))
-        {
-            link ="http://player.ooyala.com/static/v4/stable/latest/version.txt";
-        }
+		try {
+			URL lnk = new URL(link);
+			BufferedReader in = new BufferedReader(new InputStreamReader(lnk.openStream()));
 
-        try {
-            URL lnk = new URL(link);
-            BufferedReader in = new BufferedReader(new InputStreamReader(lnk.openStream()));
+			String inputLine;
+			while ((inputLine = in.readLine()) != null) {
+				if (inputLine.contains("Version:")) {
+					String[] _version = inputLine.split(" ");
+					v4Version = _version[1];
+					break;
+				}
+			}
+			in.close();
+		} catch (Exception ex) {
+			System.out.println("Error occured while reading V4 version in Utils.getV4Version()");
+		}
+		return v4Version;
+	}
 
-            String inputLine;
-            while ((inputLine = in.readLine()) != null)
-            {
-                if(inputLine.contains("Version:"))
-                {
-                    String[] _version = inputLine.split(" ");
-                    v4Version = _version[1];
-                    break;
-                }
-            }
-            in.close();
-        } catch (Exception ex) {
-            System.out.println("Error occured while reading V4 version in Utils.getV4Version()");
-        }
-        return  v4Version;
-    }
+	public static void main(String[] args) throws IOException {
+
+		String description = "Sheet1:ABC";
+
+		String testCaseName = description.split(":")[1];
+		System.out.println(testCaseName);
+		String sheetName = description.split(":")[0];
+
+		String platform = "Windows NT";
+		String browser = "Chrome";
+		String version = "57";
+
+		String v4 = "4.12.1";
+
+		writetosheet(sheetName, testCaseName, platform, browser, version, v4, TestResult.PASSED);
+		writetosheet(sheetName, "DEF", platform, browser, version, v4, TestResult.FAILED);
+		writetosheet(sheetName, "PQR", platform, browser, version, v4, TestResult.PASSED);
+	}
 }

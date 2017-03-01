@@ -1,7 +1,6 @@
 package com.ooyala.playback;
 
 import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.getJenkinsJobLink;
-import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.setTestResult;
 
 import java.io.File;
 import java.io.IOException;
@@ -233,7 +232,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 				passedTestList = " ";
 			if (failedTestList == null)
 				failedTestList = " ";
-			setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList,v4Version,osNameAndOsVersion,jenkinsJobLink);
+//			setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList,v4Version,osNameAndOsVersion,jenkinsJobLink);
 		}
 		SimpleHttpServer.stopServer();
 	}
