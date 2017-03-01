@@ -515,12 +515,12 @@
     <test name="PlaybackVerticalVideoTests">
         <url>
             <description name="Playback_AspectRatio_16:9" />
-            <embed_code name="9od3M3MDE6-WRg_DRbpCzRyjtK-NTLMp" />
-            <pcode name="p5bGExOjp6PZ-dEUw_GRJqh2Qdaq" />
+            <embed_code name="xnNncyYTE62vx3rHnwJwUtBbeBt4Y2pw" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN,BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
-            <pbid name="26e2e3c1049c4e70ae08a242638b5c40" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
     </test>

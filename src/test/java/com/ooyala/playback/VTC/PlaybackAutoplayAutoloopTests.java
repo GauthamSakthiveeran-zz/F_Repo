@@ -46,8 +46,6 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("adsPlayed_1", 30000);
 
-			result = result && eventValidator.loadingSpinner();
-
 			result = result && eventValidator.validate("playing_1", 60000);
 
 			result = result && seekValidator.validate("seeked_1", 60000);

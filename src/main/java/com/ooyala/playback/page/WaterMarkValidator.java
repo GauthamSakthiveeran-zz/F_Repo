@@ -46,7 +46,7 @@ public class WaterMarkValidator extends PlayBackPage implements
 		//flag = validatelogoDimension(); - need to check with varying player size
 
 		// Checking height and width in fullscreen
-		if (!getBrowser().equalsIgnoreCase("safari") && !getBrowser().equalsIgnoreCase("internet explorer")) {
+		if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("MicrosoftEdge"))) {
 
 			if (!clickOnIndependentElement("FULLSCREEN_BTN"))
 				return false;

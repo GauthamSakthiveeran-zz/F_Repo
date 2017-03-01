@@ -52,8 +52,8 @@ public class AspectRatioValidator extends PlayBackPage implements
 			Log.info("Decimal Equivalent: " + widthRatio / heightRatio);
 
 			if (verticalVideo){
-				Assert.assertEquals(widthRatio, 16, "Width Matches");
-				Assert.assertEquals(heightRatio, 9, "Heigth Matches");
+				Assert.assertEquals(widthRatio, 9, "Width Matches");
+				Assert.assertEquals(heightRatio, 16, "Heigth Matches");
 				extentTest.log(LogStatus.PASS, " Verified Vertical Video");
 			} else {
 				Assert.assertEquals(widthRatio, 4, "Width Matches");

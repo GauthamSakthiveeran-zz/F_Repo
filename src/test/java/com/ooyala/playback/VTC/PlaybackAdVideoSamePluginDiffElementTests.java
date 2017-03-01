@@ -1,5 +1,6 @@
 package com.ooyala.playback.VTC;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -35,33 +36,27 @@ public class PlaybackAdVideoSamePluginDiffElementTests extends PlaybackWebTest {
 
 		try {
 			driver.get(url);
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
-			Thread.sleep(2000);
-
-			injectScript();
 
 			result = result && play.waitForPage();
+
+			injectScript();
 
 			result = result && playAction.startAction();
 
 			result = result && eventValidator.validate("playing_1", 60000);
-			result = result && elementValidator.validate("VIDEO_PATH", 30000);
-			logger.info("Two different elements created for ad and main video");
 
-			Thread.sleep(5000);
+			result = result && elementValidator.validate("VIDEO_PATH", 30000);
 
 			result = result && seekValidator.validate("seeked_1", 60000);
 
 			result = result && eventValidator.validate("played_1", 60000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
-		Assert.assertTrue(result,
-				"Playback Same plugins Different Element test failed");
+		Assert.assertTrue(result, "Playback Same plugins Different Element test failed");
 	}
 
 }
