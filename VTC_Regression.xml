@@ -25,6 +25,7 @@
             <class name="com.ooyala.playback.VTC.PlaybackAdVideoSamePluginDiffElementTests" />
             <class name="com.ooyala.playback.VTC.PlaybackNewStreamTests" />
             <class name="com.ooyala.playback.VTC.PlaybackOverrideEncodingPriorityTests" />
+            <class name="com.ooyala.playback.VTC.PlaybackBasicMidrollTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackClosedCaptionTests" />
         </classes>
     </test>
