@@ -29,6 +29,7 @@ function subscribeToEvents() {
         var reportDiscoveryImpressionOrder = 1;
         var playbackReadyEventOrder = 1;
         var videoPreloadEventOrder = 1;
+        var downloadingEventOrder = 1;
 
         return function(event) {
             if (event.match(/playing/)) {
@@ -43,6 +44,22 @@ function subscribeToEvents() {
                     '<p id=willPlaySingleAd_' + willPlaySingleAdOrder + '>willAdPlay '
                     + willPlaySingleAdOrder + '</p>');
                 willPlaySingleAdOrder++;
+            }
+
+            if (event.match(/downloading/) && arguments[5] == 'main'){
+                var initialTime = arguments[1].toFixed();
+
+                if ((initialTime > 0&&initialTime < 10)) {
+                    OO.$('#ooplayer').append('<p id=initialTime10_false' +'>initialTime_false ' + '' +
+                        '</p>');
+                }
+                if (!(initialTime > 0&&initialTime < 10)) {
+                    if ((initialTime == 10) && !(initialTime < 10)) {
+                        console.log('initialTime10_' + downloadingEventOrder);
+                        OO.$('#ooplayer').append('<p id=initialTime_' + initialTime + '>initialTime ' + '' +
+                            '</p>');
+                    }
+                }
             }
 
             if (event.match(/played/)) {
