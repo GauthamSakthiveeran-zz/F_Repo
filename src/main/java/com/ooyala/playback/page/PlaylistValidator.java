@@ -125,14 +125,15 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
                 }
             }
 			PlayBackFactory factory = new PlayBackFactory(driver,extentTest);
-			if (!factory.getPlayValidator().waitForPage()) {
-				return false;
-			}
-			loadingSpinner();
-			Thread.sleep(5000);
-			if (!factory.getPlayValidator().validate("playing_" + count + "", 20000)) {
-				return false;
-			}
+            if (!isElementPresent(By.id("playing_1"))){
+                if (!factory.getPlayValidator().validate("playing_" + count + "", 20000)) {
+                    return false;
+                }
+            }else {
+                 if (!factory.getEventValidator().validate("playing_"+ count +"",20000)){
+                    return false;
+                }
+            }
 			loadingSpinner();
 			if (!factory.getPauseValidator().validate("paused_" + (count - eventCount) + "", 20000)) {
 				return false;
