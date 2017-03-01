@@ -16,8 +16,6 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
 
-	private Logger logger = Logger
-			.getLogger(PlaybackVideoControllerEventTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private SeekValidator seekValidator;

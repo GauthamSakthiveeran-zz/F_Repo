@@ -26,11 +26,9 @@
 			<package name="com.ooyala.playback.amf.vast" />
 		</packages>
 		
-		
-
 	</test>
 
-	<test name="AMF Regression Group non parallel" parallel="false">
+	<!-- <test name="AMF Regression Group non parallel" parallel="false">
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
@@ -53,6 +51,6 @@
 			<package name="com.ooyala.playback.amf.vast" />
 		</packages>
 
-	</test>
+	</test> -->
 
 </suite>

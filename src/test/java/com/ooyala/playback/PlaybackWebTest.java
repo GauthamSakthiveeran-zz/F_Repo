@@ -261,8 +261,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 		if (browser == null || browser.equals(""))
 			browser = "firefox";
 		logger.info("browser is " + browser);
-		if (browser.equalsIgnoreCase("safari") || browser.toLowerCase().contains("edge")) { 
+		if (browser.equalsIgnoreCase("safari") || browser.toLowerCase().contains("edge") || browser.toLowerCase().contains("internet") || browser.equalsIgnoreCase("ie")) { 
 			// safari driver does not allow parallel execution of tests
+			// ie because the browser hangs - this is a temp soln.
 			context.getCurrentXmlTest().setParallel("false");
 		}
 
@@ -305,7 +306,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			pageFactory.destroyInstance();
 			init();
 
-		} else if(browser.equalsIgnoreCase("safari") && webDriverFacile.get()==null){
+		} else if(browser.equalsIgnoreCase("safari") && webDriverFacile.get().toString().contains("(null)")){
 			
 			logger.error(
 					"Browser closed during the test run. Renitializing the driver as the test failed during the test");
