@@ -43,7 +43,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
     public boolean checkArrows() {
         try {
-            if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
+            if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-xsmall")) {
 
                 if(waitOnElement("CC_LEFT_SCROLL_BTN", 10000)){
                     clickOnIndependentElement("CC_LEFT_SCROLL_BTN");
@@ -126,7 +126,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             String langpreview1[] = {"Sample Text", "Texto de muestra", "Sample Text","Sample Text"};
 
             // issue id
-            if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
+            if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-xsmall")) {
                 for (int j = 0; j < langlist.size(); j++) {
                     for (int i = 0; i < lang.size(); i++) {
                         lang.get(i).click();
@@ -147,7 +147,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                     Thread.sleep(1000);
                     lang.get(i).click();
 
-                    if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")){
+                    if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-small")){
                         if (!waitOnElement("CC_PREVIEW_TEXT", 30000)) {
                             return false;
                         }
@@ -192,7 +192,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
                 //verify color selected
                 // issue id
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")){
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-large")){
                     String ccPreviewTextColor = getWebElement("CC_PREVIEW_TEXT").getCssValue("color");
                     logger.info("\t Preview Text Color Selected :" + ccPreviewTextColor);
                     flag = flag && colorsCode[i].equalsIgnoreCase(ccPreviewTextColor);  //verify Preview Text color selected}
@@ -215,7 +215,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\n*---------Verify Background color Selection Panel---------*\n");
 
             for (int i = 0; i < bgColor.size(); i++) {
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-xsmall")){
                     WebElement element = bgColor.get(i);
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
                     bgColor.get(i).click();
@@ -228,7 +228,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 flag = flag && colorsName[i].equalsIgnoreCase(ccBgColor);
                 // issue id
                 if(!testName.contains("PlaybackFCCDefaultSettingTests")){
-                    if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")) {
+                    if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-large")) {
                         String ccPreviewBgColor = getWebElement("CC_PREVIEW_TEXT_BG").getCssValue("background-color");
                         logger.info("\t Background color of Preview Text Selected :" + ccPreviewBgColor);
                         if(ccPreviewBgColor.contains("transparent")){
@@ -250,7 +250,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\n Color Count Value in Windows Color:" + ccWinColor.size() + "\n");
             logger.info("\n*---------Verify Window Color Selection Panel---------*\n");
             for (int i = 0; i < ccWinColor.size(); i++) {
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-xsmall")){
                     WebElement element = ccWinColor.get(i);
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
                     ccWinColor.get(i).click();
@@ -262,7 +262,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 flag = flag && colorsName[i].equalsIgnoreCase(ccWindowColor);
                 // issue id
                 if(!testName.contains("PlaybackFCCDefaultSettingTests")){
-                    if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")) {
+                    if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-large")) {
                         String ccPreviewWinColor = getWebElement("CC_PREVIEW_WIN_COLOR").getCssValue("background-color");
                         logger.info("\t Window color of Preview Text Selected :" + ccPreviewWinColor);
                         if(ccPreviewWinColor.contains("transparent")){
@@ -402,7 +402,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\t \t \t Font Size Count Value :" + ccFontSize.size());
 
             for (int i = 0; i < ccFontSize.size(); i++) {
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-xsmall")){
                     WebElement element = ccFontSize.get(i);
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
                     Thread.sleep(1000);
@@ -444,16 +444,16 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
              //   Assert.assertEquals(ccFonts[i], ccTextFontSize); //verify font size selected
                 flag1 = flag1 && ccFonts[i].equalsIgnoreCase(ccTextFontSize);
 
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large")) {
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-large")) {
                     if (!font_size_large[i].equals(fontSizeInEm)) {return false;}
                 }
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-medium")) {
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-medium")) {
                     if (!font_size_medium[i].equals(fontSizeInEm)){return false;}
                 }
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-small")) {
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-small")) {
                     if (!font_size_small[i].equalsIgnoreCase(fontSizeInEm)){return false;}
                 }
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-xsmall")) {
                     if (!font_size_xsmall[i].equals(fontSizeInEm)){return false;}
                 }
             }
@@ -480,7 +480,7 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\t Text Enhancement Type Count Value :" + ccTextEnhancement.size());
             for (int i = 0; i < ccTextEnhancement.size(); i++) {
 
-                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")){
+                if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-xsmall")){
                     WebElement element = ccTextEnhancement.get(i);
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
                     Thread.sleep(1000);
@@ -537,9 +537,9 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             if (!clickOnIndependentElement("CC_BTN"))
                 return false;
 
-            if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
+            if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-xsmall")) {
                 try{
-                    if(getBrowser().equalsIgnoreCase("MicrosoftEdge") && (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-large"))){
+                    if(getBrowser().equalsIgnoreCase("MicrosoftEdge") && (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-large"))){
                         WebElement element = getWebElement("CC_TRAY");
                         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
                     }
