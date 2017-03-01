@@ -118,6 +118,7 @@
 								</xs:complexType>
 							</xs:element>
 							<xs:element type="xs:string" name="playerParameter" />
+							<xs:element type="xs:string" name="bugId" minOccurs="0" maxOccurs="1"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
