@@ -32,6 +32,12 @@ function subscribeToEvents() {
         var downloadingEventOrder = 1;
 
         return function(event) {
+
+            if (event.match(/videoControllerVideoElementCreated/) && arguments[1].videoId == 'main') {
+                OO.$('#ooplayer').append('<p id=videoCreatedForMain'+'>videoCreated for main '+'</p>');
+                videoCreatedOrder++;
+            }
+
             if (event.match(/playing/)) {
                 OO.$('#ooplayer').append(
                     '<p id=playing_' + playingEventOrder + '>playing '
@@ -103,6 +109,11 @@ function subscribeToEvents() {
                     "<p id=reportDiscoveryClick_"+reportDiscoveryClickOrder+
                     ">reportDiscoveryClick "+reportDiscoveryClickOrder+"</p>");
                 reportDiscoveryClickOrder++;
+            }
+
+            if (event.match(/videoControllerVideoElementCreated/) && arguments[1].videoId == 'ads') {
+                OO.$('#ooplayer').append('<p id=videoCreatedForAds'+'>videoCreated for ads '+'</p>');
+                videoCreatedOrder++;
             }
 
             if (event.match(/reportDiscoveryImpression/)) {
