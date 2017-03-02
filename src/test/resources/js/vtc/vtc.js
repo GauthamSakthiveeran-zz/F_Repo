@@ -195,6 +195,10 @@ function subscribeToEvents() {
                 videoWillPlayOrder++;
             }
 
+            if (event.match(/videoWillPlay/)) {
+                 OO.$('#ooplayer').append('<p id=videoWillPlay_'+arguments[1]+'>videoWillPlay_'+ arguments[1]+'</p>');
+            }
+
             if (event.match(/videoPlaying/)) {
                 OO.$('#ooplayer').append('<p id=videoPlaying_'+videoPlayingOrder
                     +'>videoPlaying '+videoPlayingOrder+'</p>');
