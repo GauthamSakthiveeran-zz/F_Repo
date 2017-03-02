@@ -30,6 +30,9 @@ public class PlaybackInitialTimeTests extends PlaybackWebTest{
     @Test(groups = "Playback", dataProvider = "testUrls")
     public void testInitialTime(String testName, String url)
             throws OoyalaException {
+        String[] parts= testName.split(":");
+        String tcName = parts[1].trim();
+        String tcValue = parts[2].trim();
 
         boolean result = true;
         try {
@@ -45,7 +48,7 @@ public class PlaybackInitialTimeTests extends PlaybackWebTest{
 
             result = result && eventValidator.validate("playing_1",20000);
 
-            result = result && initalTimeValidator.validate("",30000);
+            result = result && initalTimeValidator.validate(tcValue,30000);
 
             result = result && pauseAction.startAction();
 

@@ -22,12 +22,13 @@ public class InitalTimeValidator extends PlayBackPage implements
     @Override
     public boolean validate(String element, int timeout) throws Exception {
         PlayBackFactory factory = new PlayBackFactory(driver,extentTest);
-        if (factory.getEventValidator().validate("initialTime_10",timeout) && !factory.getEventValidator().validate("initialTime10_false",200)){
+
+        if (factory.getEventValidator().validate(element,timeout) && !factory.getEventValidator().validate(element+"_false",2000)){
             logger.info("Initial time matches");
             extentTest.log(LogStatus.PASS, "Initial time matches");
             return true;
         }
-        extentTest.log(LogStatus.FAIL, "video is not starting from Initial time i.e 10th sec");
+        extentTest.log(LogStatus.FAIL, "video is not starting from "+ element+" sec");
         return false;
     }
 }

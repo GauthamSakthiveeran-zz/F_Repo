@@ -135,7 +135,7 @@
 	        <adPlugins name="IMA"/>
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="14a1b2eb21104617948405aeac11271b"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"]}]]></playerParameter>
+	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"platform":"html5"}]]></playerParameter>
     	</url>
     	
     	
