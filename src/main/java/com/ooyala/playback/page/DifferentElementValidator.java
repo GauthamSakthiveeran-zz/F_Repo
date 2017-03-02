@@ -37,7 +37,7 @@ public class DifferentElementValidator extends PlayBackPage implements
             extentTest.log(LogStatus.FAIL,"Element is not present for main video");
             return false;
         }
-        logger.error("Element is present for video");
+        logger.info("Element is present for video");
 		return true;
 	}
 
@@ -47,7 +47,7 @@ public class DifferentElementValidator extends PlayBackPage implements
             extentTest.log(LogStatus.FAIL,"Element is not present for ad ");
             return false;
         }
-        logger.error("Element is present for ad ");
+        logger.info("Element is present for ad ");
         return true;
 	}
 }
