@@ -1,15 +1,13 @@
 package com.ooyala.playback.VTC;
 
-import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 /**
  * Created by jitendra on 25/11/16.
@@ -34,8 +32,6 @@ public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-			Thread.sleep(10000);
-
 			injectScript();
 
 			((JavascriptExecutor) driver)
@@ -49,17 +45,17 @@ public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
 
 			result = result
 					&& eventValidator.validate("videoElementDisposed_1", 20000);
-
-			result = result && play.validate("playing_1", 60000);
-
 			result = result && eventValidator.validate("focusVideo_1", 20000);
 
 			result = result && eventValidator.validate("videoInFocus_1", 20000);
 
 			result = result && seekValidator.validate("seeked_1", 60);
 
-			result = result
-					&& eventValidator.validate("videoLostFocus_1", 60000);
+			result = result && eventValidator.validate("videoLostFocus_1", 60000);
+
+			result = result && seekValidator.validate("played_1", 30000);
+
+			result = result && eventValidator.validate("setVideoStream_1",20000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

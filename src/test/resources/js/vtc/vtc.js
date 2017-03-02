@@ -30,6 +30,7 @@ function subscribeToEvents() {
         var playbackReadyEventOrder = 1;
         var videoPreloadEventOrder = 1;
         var downloadingEventOrder = 1;
+        var videoControllerSetVideoStreamsOrder = 1
 
         return function(event) {
             if (event.match(/playing/)) {
@@ -61,6 +62,21 @@ function subscribeToEvents() {
                     }
                 }
             }
+
+            if (event.match(/downloading/) && arguments[5] == 'main'){
+                var initialTime = arguments[1].toFixed();
+                    if ((initialTime > 0&&initialTime < 20)) {
+                                OO.$('#ooplayer').append('<p id=initialTime20_false' +'>initialTime_false ' + '' +
+                                    '</p>');
+                            }
+                            if (!(initialTime > 0&&initialTime < 20)) {
+                                if ((initialTime == 20) && !(initialTime < 20)) {
+                                    console.log('initialTime10_' + downloadingEventOrder);
+                                    OO.$('#ooplayer').append('<p id=initialTime_' + initialTime + '>initialTime ' + '' +
+                                        '</p>');
+                            }
+                     }
+                 }
 
             if (event.match(/played/)) {
                 OO.$('#ooplayer').append(
@@ -142,6 +158,12 @@ function subscribeToEvents() {
                 OO.$('#ooplayer').append('<p id=videoLostFocus_'+videoLostFocusOrder
                     +'>videoLostFocus '+videoLostFocusOrder+'</p>');
                 videoLostFocusOrder++;
+            }
+
+            if (event.match(/videoControllerSetVideoStreams/)) {
+                OO.$('#ooplayer').append('<p id=setVideoStream_'+videoControllerSetVideoStreamsOrder
+                    +'>setVideoStream  '+videoControllerSetVideoStreamsOrder+'</p>');
+                videoControllerSetVideoStreamsOrder++;
             }
 
             if (event.match(/videoControllerDisposeVideoElement/)) {
