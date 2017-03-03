@@ -44,6 +44,7 @@ function subscribeToEvents() {
         var videoPreloadEventOrder = 1;
         var videoPlayEventOrder = 1;
         var videoWillPlayOrder = 1;
+        var videoCreatedForAdsEventOrder = 1;
 
         return function(event) {
 
@@ -290,8 +291,8 @@ function subscribeToEvents() {
             }
 
             if (event.match(/videoControllerVideoElementCreated/) && arguments[1].videoId == 'ads') {
-                OO.$('#ooplayer').append('<p id=videoCreatedForAds'+'>videoCreated for ads '+'</p>');
-                videoCreatedEventOrder++;
+                OO.$('#ooplayer').append('<p id=videoCreatedForAds_'+videoCreatedForAdsEventOrder+'>videoCreated for ads '+'</p>');
+                videoCreatedForAdsEventOrder++;
             }
 
             if (event.match(/reportDiscoveryImpression/)) {
