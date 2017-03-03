@@ -2,7 +2,7 @@
 <testdata>
 
 	<test name ="PlaybackPreRollAdsTests" >
-    	<url>
+    	<!-- <url>
 	    	<description name="BitmovinPreroll_FW_HLS"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -23,10 +23,10 @@
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
-    	
+    	 -->
     	<url>
-	    	<description name="BitmovinPreroll_FW"/>
-	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
+	    	<description name="Freewheel:Bitmovin Preroll"/>
+	        <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
 	        <adPlugins name="FREEWHEEL"/>
@@ -36,7 +36,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPreroll_IMA"/>
+	    	<description name="IMA:Bitmovin Preroll"/>
 	        <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -46,7 +46,7 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
-    	<url>
+    	<!-- <url>
 	    	<description name="BitmovinPreroll_Vast_HLS"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -55,10 +55,10 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
+    	</url> -->
     	
     	<url>
-	    	<description name="BitmovinPreroll_Vast"/>
+	    	<description name="VAST:Preroll Vast 2.0 bitmovin"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -69,7 +69,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPreroll_Vast3"/>
+	    	<description name="VAST:Preroll Vast 3.0 + Bitmovin"/>
 	        <embed_code name="F3ZDZnMTE6wRhTx8jtsvskI76Gx1RbZG"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -79,7 +79,7 @@
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
-    	<url>
+    	<!-- <url>
 	    	<description name="BitmovinPreroll_VPAID2.0_HLS"/>
 	        <embed_code name="ZvMXljMTE6FVtQnL5SJJlM4j06NY0fnV"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -88,10 +88,10 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://vp-validation.videoplaza.tv/proxy/distributor/v2?rt=vast_2.0&t=vpaid2-sizmek&s=validation&tt=p"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
-    	</url>
+    	</url> -->
     	
     	
-    	<url>
+    	<!-- <url>
 	    	<description name="BitmovinPreroll_VPAID2.0"/>
 	        <embed_code name="ZvMXljMTE6FVtQnL5SJJlM4j06NY0fnV"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -100,10 +100,10 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://vp-validation.videoplaza.tv/proxy/distributor/v2?rt=vast_2.0&t=vpaid2-sizmek&s=validation&tt=p"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
-    	</url>
+    	</url> -->
     	
     	<url>
-	    	<description name="Preroll_Freewheel"/>
+	    	<description name="Freewheel:Main Preroll"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -114,7 +114,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Preroll_IMA"/>
+	    	<description name="IMA:Main Preroll"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -125,7 +125,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPreroll_Freewheel"/>
+	    	<description name="Freewheel:OSMF Preroll"/>
 	        <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -138,7 +138,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPreroll_IMA"/>
+	    	<description name="IMA:OSMF Preroll"/>
 	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -151,7 +151,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPreroll_IMA Preroll with Google UI"/>
+	    	<description name="IMA:OSMF Preroll with Google UI"/>
 	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -164,7 +164,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPreroll_VAST"/>
+	    	<description name="VAST:OSMF Preroll"/>
 	        <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -177,7 +177,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Preroll_Vast"/>
+	    	<description name="VAST:Main Preroll"/>
 	        <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -188,7 +188,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST_preroll_Vast3.0"/>
+	    	<description name="VAST:Preroll VAST 3.0 + Main plugin"/>
 	        <embed_code name="tycXgxMTE6O8YBBBInYkwaKF0mNSqln9"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -199,7 +199,7 @@
     	</url>
     	
       	<url>
-	    	<description name="Playback_Preroll_VPAID2.0"/>
+	    	<description name="VPAID:VPAID2.0 Preroll Vast AD Manager+ Main video plugin"/>
 	        <embed_code name="BtOGxiMjE6V7y0GBfHGzwJHoXDplM9Gf"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -209,7 +209,7 @@
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
-    	<url>
+    	<!-- <url>
 	    	<description name="Playback_Preroll_VPAID2.0_IMA"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -252,10 +252,10 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="615dc8e909e941c280e12155df838355"/>
 	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.56cae93fe8fe14.17121155;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
-    	</url>
+    	</url> -->
     	
     	<url>
-	    	<description name="VPAID Bitmovin Preroll"/>
+	    	<description name="VPAID:Bitmovin Preroll"/>
 	        <embed_code name="14dXI4MjE6AIfNrq5pmjv3TdOlA1XNnN"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="MAIN,BITMOVIN"/>
@@ -265,7 +265,7 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
-    	<url>
+    	<!-- <url>
 	    	<description name="PULSE MAIN"/>
 	        <embed_code name="w3amU5MzE6NMd-4jMBxM0FNu4MzlIUGY"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -307,7 +307,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    	</url>
+    	</url> -->
     	
     </test>
 

@@ -15,7 +15,7 @@
 			</run>
 		</groups>
 
-		<packages>
+		<!-- <packages>
 			<package name="com.ooyala.playback.amf" />
 			<package name="com.ooyala.playback.amf.midroll" />
 			<package name="com.ooyala.playback.amf.postroll" />
@@ -24,7 +24,12 @@
 			<package name="com.ooyala.playback.amf.midroll.vast" />
 			<package name="com.ooyala.playback.amf.ima" />
 			<package name="com.ooyala.playback.amf.vast" />
-		</packages>
+		</packages> -->
+		
+		<classes>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackPreRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackMidRollAdsTests"></class>
+		</classes>
 		
 	</test>
 

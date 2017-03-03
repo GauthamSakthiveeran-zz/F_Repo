@@ -1,6 +1,6 @@
 package com.ooyala.playback;
 
-import static com.ooyala.playback.updateSpreadSheet.UpdateSheet.getJenkinsJobLink;
+import static com.ooyala.playback.updateSpreadSheet.TestDataSheet.getJenkinsJobLink;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +9,8 @@ import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
@@ -47,6 +49,9 @@ import com.ooyala.playback.live.LiveChannel;
 import com.ooyala.playback.live.NeoRequest;
 import com.ooyala.playback.page.PlayBackPage;
 import com.ooyala.playback.report.ExtentManager;
+import com.ooyala.playback.updateSpreadSheet.TestDataSheet;
+import com.ooyala.playback.updateSpreadSheet.TestDetails;
+import com.ooyala.playback.updateSpreadSheet.TestResult;
 import com.ooyala.playback.url.Testdata;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -80,6 +85,8 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected static String v4Version;
     protected static String osNameAndOsVersion;
     protected static String jenkinsJobLink;
+    private static Map<String,ITestResult> testDetails = new HashMap<String,ITestResult>();;
+
 
     public PlaybackWebTest() throws OoyalaException {
 
@@ -176,6 +183,7 @@ public abstract class PlaybackWebTest extends FacileTest {
         int portNumber = getRandomOpenPort();
         SimpleHttpServer.startServer(portNumber);
         String mode = System.getProperty("mode");
+        
         if(mode!=null && mode.equalsIgnoreCase("remote"))
         	jenkinsJobLink = getJenkinsJobLink(System.getProperty("browser"));
     }
@@ -212,28 +220,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 
 
     @AfterSuite(alwaysRun = true)
-    public void afterSuiteInPlaybackWeb() throws OoyalaException {
-		String mode = System.getProperty("mode");
-		if (mode != null && mode.equalsIgnoreCase("remote")) {
-			int total = testPassed.size() + testFailed.size() + testSkipped.size();
-			for (int i = 0; i < testPassed.size(); i++) {
-				if (passedTestList == null)
-					passedTestList = " ";
-				passedTestList = passedTestList + "\n" + testPassed.get(i) + " ";
-			}
-			for (int i = 0; i < testFailed.size(); i++) {
-				if (failedTestList == null)
-					failedTestList = " ";
-				if (!failedTestList.contains(testFailed.get(i))) {
-					failedTestList = failedTestList + "\n" + testFailed.get(i) + " ";
-				}
-			}
-			if (passedTestList == null)
-				passedTestList = " ";
-			if (failedTestList == null)
-				failedTestList = " ";
-//			setTestResult(Integer.toString(testPassed.size()),Integer.toString(testFailed.size()),Integer.toString(testSkipped.size()),total,failedTestList,passedTestList,v4Version,osNameAndOsVersion,jenkinsJobLink);
-		}
+    public void afterSuiteInPlaybackWeb() throws Exception {
+
+    	TestDataSheet.update(testDetails, osNameAndOsVersion, browser, "", v4Version);
 		SimpleHttpServer.stopServer();
 	}
 
@@ -354,9 +343,14 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.error("**** Test " + extentTest.getTest().getName()
 					+ " failed ******");
         }
+        
+        testDetails.put(extentTest.getTest().getName().split(" - ")[1],result);
+        
         ExtentManager.endTest(extentTest);
         ExtentManager.flush();
+        
     }
+    
 
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
@@ -517,7 +511,7 @@ public abstract class PlaybackWebTest extends FacileTest {
         int i = 0;
         while (entries.hasNext()) {
             Map.Entry<String, String> entry = entries.next();
-            output[i][0] = testName + " : " + entry.getKey();
+            output[i][0] = testName + " - " + entry.getKey();
             output[i][1] = entry.getValue();
             i++;
         }
