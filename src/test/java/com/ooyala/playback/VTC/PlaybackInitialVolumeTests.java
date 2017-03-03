@@ -28,31 +28,60 @@ public class PlaybackInitialVolumeTests extends PlaybackWebTest {
     @Test(groups = "Playback", dataProvider = "testUrls")
     public void testInitialVolumeVTC(String testName, String url)
             throws OoyalaException {
-
-        logger.info("Url is : " + url);
+        String[] parts= testName.split(":");
+        String adType = parts[2].trim();
+        double volumeValue = Double.parseDouble(parts[3]);
 
         boolean result = true;
         try {
             driver.get(url);
 
-            result=result && play.waitForPage();
+            result = result && play.waitForPage();
 
             injectScript();
 
-            result=result && playAction.startAction();
+            result = result && playAction.startAction();
 
-            Boolean isAdplaying = isAdPlayingValidator.validate("", 20000);
+            Boolean isPrerollAdplaying = isAdPlayingValidator.validate("", 20000);
 
-            if (isAdplaying) {
-                logger.info("Checking initial volume for Ad");
-                result = result && volumeValidator.checkInitialVolume("ad");
+            if (isPrerollAdplaying) {
+                logger.info("Checking initial volume for Preroll Ad");
+                result = result && volumeValidator.checkInitialVolume("ad",volumeValue);
+            }else{
+                logger.error("Preroll ad is not played");
             }
 
             result=result && eventValidator.validate("playing_1", 60000);
 
-            result=result && volumeValidator.checkInitialVolume("video");
+            result=result && volumeValidator.checkInitialVolume("video",volumeValue);
+
+            if(adType.equalsIgnoreCase("midroll")){
+                result=result && eventValidator.validate("videoWillPlay_ads", 60000);
+                Thread.sleep(1000);
+                Boolean isMidrollAdplaying = isAdPlayingValidator.validate("", 20000);
+                if (isMidrollAdplaying) {
+                    logger.info("Checking initial volume for Midroll Ad");
+                    result = result && volumeValidator.checkInitialVolume("ad",volumeValue);
+                    result=result && eventValidator.validate("playing_2", 60000);
+                }else{
+                    logger.error("Midroll ad is not played");
+                }
+            }
 
             result=result && seekValidator.validate("seeked_1",20000);
+
+            if(adType.equalsIgnoreCase("postroll")){
+                result=result && eventValidator.validate("videoWillPlay_ads", 60000);
+                Thread.sleep(1000);
+                Boolean isPostrollAdplaying = isAdPlayingValidator.validate("", 20000);
+                if (isPostrollAdplaying) {
+                    logger.info("Checking initial volume for Postroll Ad");
+                    result = result && volumeValidator.checkInitialVolume("ad",volumeValue);
+                    result=result && eventValidator.validate("playing_2", 60000);
+                }else{
+                    logger.error("Postroll ad is not played");
+                }
+            }
 
             result = result && eventValidator.validate("played_1", 60000);
 

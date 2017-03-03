@@ -1,4 +1,8 @@
 <elements area="element">
     <element key="VIDEO_PATH" findBy="xPath"
              xPath=".//*[@class='video']" />
+    <element key="VIDEO_ELEMENT" findBy="xPath"
+             xPath=".//*[@class='innerWrapper oo-player']/video"/>
+    <element key="AD_ELEMENT" findBy="xPath"
+             xPath=".//div[@id='ooyala-plugins-element']/video"/>
 </elements>

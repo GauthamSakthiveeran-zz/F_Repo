@@ -30,8 +30,15 @@ function subscribeToEvents() {
         var playbackReadyEventOrder = 1;
         var videoPreloadEventOrder = 1;
         var downloadingEventOrder = 1;
+        var videoControllerSetVideoStreamsOrder = 1
 
         return function(event) {
+
+            if (event.match(/videoControllerVideoElementCreated/) && arguments[1].videoId == 'main') {
+                OO.$('#ooplayer').append('<p id=videoCreatedForMain'+'>videoCreated for main '+'</p>');
+                videoCreatedOrder++;
+            }
+
             if (event.match(/playing/)) {
                 OO.$('#ooplayer').append(
                     '<p id=playing_' + playingEventOrder + '>playing '
@@ -61,6 +68,21 @@ function subscribeToEvents() {
                     }
                 }
             }
+
+            if (event.match(/downloading/) && arguments[5] == 'main'){
+                var initialTime = arguments[1].toFixed();
+                    if ((initialTime > 0&&initialTime < 20)) {
+                                OO.$('#ooplayer').append('<p id=initialTime20_false' +'>initialTime_false ' + '' +
+                                    '</p>');
+                            }
+                            if (!(initialTime > 0&&initialTime < 20)) {
+                                if ((initialTime == 20) && !(initialTime < 20)) {
+                                    console.log('initialTime10_' + downloadingEventOrder);
+                                    OO.$('#ooplayer').append('<p id=initialTime_' + initialTime + '>initialTime ' + '' +
+                                        '</p>');
+                            }
+                     }
+                 }
 
             if (event.match(/played/)) {
                 OO.$('#ooplayer').append(
@@ -105,6 +127,11 @@ function subscribeToEvents() {
                 reportDiscoveryClickOrder++;
             }
 
+            if (event.match(/videoControllerVideoElementCreated/) && arguments[1].videoId == 'ads') {
+                OO.$('#ooplayer').append('<p id=videoCreatedForAds'+'>videoCreated for ads '+'</p>');
+                videoCreatedOrder++;
+            }
+
             if (event.match(/reportDiscoveryImpression/)) {
 
                 OO.$("#ooplayer").append(
@@ -144,6 +171,12 @@ function subscribeToEvents() {
                 videoLostFocusOrder++;
             }
 
+            if (event.match(/videoControllerSetVideoStreams/)) {
+                OO.$('#ooplayer').append('<p id=setVideoStream_'+videoControllerSetVideoStreamsOrder
+                    +'>setVideoStream  '+videoControllerSetVideoStreamsOrder+'</p>');
+                videoControllerSetVideoStreamsOrder++;
+            }
+
             if (event.match(/videoControllerDisposeVideoElement/)) {
                 OO.$('#ooplayer').append('<p id=disposeVideo_'+disposeVideoOrder
                     +'>disposeVideo '+disposeVideoOrder+'</p>');
@@ -160,6 +193,10 @@ function subscribeToEvents() {
                 OO.$('#ooplayer').append('<p id=videoWillPlay_'+videoWillPlayOrder
                     +'>videoWillPlay '+videoWillPlayOrder+'</p>');
                 videoWillPlayOrder++;
+            }
+
+            if (event.match(/videoWillPlay/)) {
+                 OO.$('#ooplayer').append('<p id=videoWillPlay_'+arguments[1]+'>videoWillPlay_'+ arguments[1]+'</p>');
             }
 
             if (event.match(/videoPlaying/)) {
