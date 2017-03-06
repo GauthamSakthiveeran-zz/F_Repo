@@ -10,10 +10,8 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,9 +44,9 @@ import com.google.api.services.sheets.v4.model.UpdateCellsRequest;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class TestDataSheet {
+public class TestCaseSheet {
 	
-	private static Logger logger = Logger.getLogger(TestDataSheet.class);
+	private static Logger logger = Logger.getLogger(TestCaseSheet.class);
 
 	/** Create linkedHasMap for storing data */
 	public static LinkedHashMap<String, String> testSheetData = new LinkedHashMap<String, String>();
@@ -105,7 +103,7 @@ public class TestDataSheet {
 		GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY,
 				clientSecrets, SCOPES).setDataStoreFactory(DATA_STORE_FACTORY).setAccessType("offline").build();
 		Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
-		System.out.println("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
+		logger.info("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
 		return credential;
 
 	}
@@ -206,11 +204,11 @@ public class TestDataSheet {
 									.setWrapStrategy("WRAP")));
 
 					requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
-							.setStart(new GridCoordinate().setSheetId(sheetId).setRowIndex(3).setColumnIndex(6))
+							.setStart(new GridCoordinate().setSheetId(sheetId).setRowIndex(3).setColumnIndex(6)) // TODO
 							.setRows(Arrays.asList(new RowData().setValues(cellData)))
 							.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
 					
-					String range = sheetName + "!A4:G"; // TODO
+					String range = sheetName + "!A1:Z"; // TODO
 					ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).execute();
 					sheetNameList.put(sheetName, response);
 					logger.info("Column header " + sheetName);
@@ -342,9 +340,24 @@ public class TestDataSheet {
 			}
 			in.close();
 		} catch (Exception ex) {
-			System.out.println("Error occured while reading V4 version in Utils.getV4Version()");
+			logger.info("Error occured while reading V4 version in Utils.getV4Version()");
+			return branch;
 		}
 		return v4Version;
+	}
+	
+	
+	private static int getColumnNumber(List<List<Object>> values){
+		
+		int columnNumber  = 0;
+		
+		for(List<Object> row : values){
+			if(row==null){
+				continue;
+			}
+		}
+		
+		return columnNumber;
 	}
 
 	public static void main(String[] args) throws IOException {

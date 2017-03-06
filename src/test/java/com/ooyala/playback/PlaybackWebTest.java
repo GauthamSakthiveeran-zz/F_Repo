@@ -1,6 +1,6 @@
 package com.ooyala.playback;
 
-import static com.ooyala.playback.updateSpreadSheet.TestDataSheet.getJenkinsJobLink;
+import static com.ooyala.playback.updateSpreadSheet.TestCaseSheet.getJenkinsJobLink;
 
 import java.io.File;
 import java.io.IOException;
@@ -49,7 +49,7 @@ import com.ooyala.playback.live.LiveChannel;
 import com.ooyala.playback.live.NeoRequest;
 import com.ooyala.playback.page.PlayBackPage;
 import com.ooyala.playback.report.ExtentManager;
-import com.ooyala.playback.updateSpreadSheet.TestDataSheet;
+import com.ooyala.playback.updateSpreadSheet.TestCaseSheet;
 import com.ooyala.playback.updateSpreadSheet.TestDetails;
 import com.ooyala.playback.updateSpreadSheet.TestResult;
 import com.ooyala.playback.url.Testdata;
@@ -222,7 +222,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     @AfterSuite(alwaysRun = true)
     public void afterSuiteInPlaybackWeb() throws Exception {
 
-    	TestDataSheet.update(testDetails, osNameAndOsVersion, browser, "", v4Version);
+    	TestCaseSheet.update(testDetails, osNameAndOsVersion, browser, "", v4Version);
 		SimpleHttpServer.stopServer();
 	}
 
