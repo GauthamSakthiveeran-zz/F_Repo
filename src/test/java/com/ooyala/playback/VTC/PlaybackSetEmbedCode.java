@@ -48,17 +48,29 @@ public class PlaybackSetEmbedCode extends PlaybackWebTest {
 
             result = result && playAction.startAction();
 
-            if(!tcName.contains("Preroll")){
+            if(!(tcName.contains("Preroll") || tcName.contains("PreMidPost"))){
                 result = result && seek.validate("seeked_1",20000);
             }
 
             result = result && eventValidator.validate("adsPlayed_1", 60000);
 
-            if(tcName.contains("Podded")){
+            // Checking all Podded asset and PreMidPost asset
+            if(tcName.contains("Podded") || tcName.contains("PreMidPost")){
                 result = result && poddedAdValidator.setPosition(adType).validate("countPoddedAds_1", 60000);
             }
 
-            ((JavascriptExecutor) driver).executeScript("pp.setEmbedCode('"+embedCode+"')");
+            // Checking all PreMidPostPodded asset and PreMidPost asset
+            if(tcName.contains("PreMidPost")){
+                result = result && seek.validate("seeked_1", 20000);
+                result = result && eventValidator.validate("adsPlayed_2", 60000);
+                result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 60000);
+                result = result && eventValidator.validate("adsPlayed_3", 60000);
+                result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds_3", 60000);
+            }
+
+            if(result){
+                ((JavascriptExecutor) driver).executeScript("pp.setEmbedCode('"+embedCode+"')");
+            }
 
             result = result && eventValidator.validate("setEmbedCode_1", 60000);
 
