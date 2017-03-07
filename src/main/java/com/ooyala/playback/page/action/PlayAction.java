@@ -25,6 +25,11 @@ public class PlayAction extends PlayBackPage implements PlayerAction {
 		if(onScreen){
 			return startActionOnScreen();
 		}
+
+		if (!loadingSpinner()){
+			extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
+			return false;
+		}
 		if(clickOnIndependentElement("PLAY_BUTTON")){
 			if (!loadingSpinner()){
 				extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");

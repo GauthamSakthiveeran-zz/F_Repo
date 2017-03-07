@@ -4,6 +4,7 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -25,16 +26,13 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
     }
 
     @Test(groups = "playerFeatures", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url)
+    public void testBasicPlaybackPlayerControl(String testName, String url)
             throws OoyalaException {
 
         boolean result = true;
 
         try{
             driver.get(url);
-            if (!getPlatform().equalsIgnoreCase("android")) {
-                driver.manage().window().maximize();
-            }
 
             result = result && play.waitForPage();
 
@@ -43,8 +41,6 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
             result = result && playAction.startAction();
 
             result = result && eventValidator.validate("playing_1",20000);
-
-            Thread.sleep(3000);
 
             result = result && pause.validate("paused_1", 60000);
 
@@ -65,7 +61,8 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
             result = result && eventValidator.validate("played_1", 60000);
 
         } catch (Exception e) {
-            logger.error(e.getMessage());
+            logger.error("Alice basic playback tests failed" + e.getMessage());
+            extentTest.log(LogStatus.FAIL, e.getMessage());
             result = false;
         }
         Assert.assertTrue(result, "Alice basic playback tests failed"+testName);

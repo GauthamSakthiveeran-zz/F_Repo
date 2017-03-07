@@ -27,6 +27,10 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 	public void testAutoplayAutoloop(String testName, String url)
 			throws OoyalaException {
 
+		String[] parts= testName.split(":");
+		String tcName = parts[1].trim();
+		String adType = parts[2].trim();
+
 		boolean result = true;
 		try {
 
@@ -44,19 +48,27 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 				result = false;
 			}
 
-			result = result && eventValidator.validate("adsPlayed_1", 30000);
-
-			result = result && eventValidator.loadingSpinner();
+			if(!adType.contains("Postroll")){
+				result = result && eventValidator.validate("adsPlayed_1", 45000);
+			}
 
 			result = result && eventValidator.validate("playing_1", 60000);
 
 			result = result && seekValidator.validate("seeked_1", 60000);
 
+			if(adType.contains("Postroll")){
+				result = result && eventValidator.validate("adsPlayed_1", 45000);
+			}
+
 			result = result && eventValidator.validate("replay_1", 60000);
 
-			result = result && eventValidator.validate("willPlaySingleAd_2", 30000);
+			if(adType.contains("Postroll")){
+				result = result && seekValidator.validate("seeked_1", 60000);
+			}
 
-			result = result && eventValidator.validate("adsPlayed_2", 30000);
+			result = result && eventValidator.validate("willPlaySingleAd_2", 45000);
+
+			result = result && eventValidator.validate("adsPlayed_2", 45000);
 
 		} catch (Exception e) {
 			logger.error(e);

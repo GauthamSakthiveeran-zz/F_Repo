@@ -4,6 +4,7 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -43,10 +44,6 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
 
             result = result && play.validate("playing_1",30000);
 
-            result = result && eventValidator.loadingSpinner();
-
-            Thread.sleep(2000);
-
             result = result && pause.validate("paused_1",30000);
 
             if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
@@ -59,8 +56,6 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
 
             result = result && fcc.beforeRefreshCCSetting();
 
-            Thread.sleep(2000);
-
             driver.navigate().refresh();
 
             result = result && play.waitForPage();
@@ -68,10 +63,6 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
             injectScript();
 
             result = result && play.validate("playing_1",30000);
-
-            result = result && eventValidator.loadingSpinner();
-
-            Thread.sleep(2000);
 
             result = result && pause.validate("paused_1",30000);
 
@@ -95,8 +86,6 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
                 result = result && fullScreenValidator.getNormalScreen();
             }
 
-            result = result && fcc.closeCCPanel();
-
             result = result && playAction.startAction();
 
             result = result && seek.validate("seeked_1",40000);
@@ -105,6 +94,7 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
 
         }catch(Exception e){
             logger.error(e.getMessage());
+            extentTest.log(LogStatus.FAIL, e.getMessage());
             result = false;
         }
         Assert.assertTrue(result, "Playback FCC CC Default Setting tests failed");

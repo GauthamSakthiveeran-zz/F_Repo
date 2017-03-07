@@ -54,11 +54,20 @@ public class PlayBackFactory {
 	private PlaylistValidator playlistValidator;
 	private AdFrequencyValidator adFrequencyValidator;
 	private ThumbnailCarouselValidator thumbnailCarouselValidator;
+	private InitalTimeValidator initalTimeValidator;
 	private ExtentTest extentTest;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
 		this.extentTest = extentTest;
+	}
+
+	public InitalTimeValidator getInitalTimeValidator(){
+		if (initalTimeValidator == null){
+			initalTimeValidator = new InitalTimeValidator(driver);
+			initalTimeValidator.setExtentTest(extentTest);
+		}
+		return initalTimeValidator;
 	}
 	
 	public AdFrequencyValidator getAdFrequencyValidator() {

@@ -74,6 +74,17 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		return true;
 	}
 
+	public boolean checkInitialVolume(String asset, double volume) throws Exception{
+		double initialVolume = volume;
+		logger.info("Intial Volume is set to "+volume);
+        boolean isInitialTimeMatches = initialVolume == getVolume();
+        if (isInitialTimeMatches)
+            logger.info("initial time matched for "+asset);
+        else
+            logger.error("initial time not matching for "+asset);
+		return isInitialTimeMatches;
+	}
+
 	protected double getVolume() throws Exception {
 		double volume = Double
 				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getVolume()").toString());

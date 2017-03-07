@@ -50,13 +50,11 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
             boolean isAdplaying= isAdPlaying.validate("",50000);
 
             if (isAdplaying) {
-                eventValidator.validate("singleAdPlayed_1", 60000);
+                result = result && eventValidator.validate("singleAdPlayed_1", 30000);
                 logger.info("Ad is played");
             }
 
             result = result && eventValidator.validate("playing_1",60000);
-
-            result = result && eventValidator.loadingSpinner();
 
             result = result && pause.validate("paused_1",30000);
 

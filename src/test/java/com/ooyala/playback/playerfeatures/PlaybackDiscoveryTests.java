@@ -2,6 +2,8 @@ package com.ooyala.playback.playerfeatures;
 
 import static java.lang.Thread.sleep;
 
+import com.relevantcodes.extentreports.LogStatus;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,6 +18,9 @@ import com.ooyala.qe.common.exception.OoyalaException;
  * Created by soundarya on 11/16/16.
  */
 public class PlaybackDiscoveryTests extends PlaybackWebTest {
+
+	private static Logger logger = Logger
+			.getLogger(PlaybackDiscoveryTests.class);
 
 	private PlayValidator play;
 	private DiscoveryValidator discoveryValidator;
@@ -41,20 +46,15 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
-			result = result
-					&& discoveryValidator.validate("reportDiscoveryClick_1",
-							60000);
-
-			sleep(2000);
+			result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 
 			result = result && playAction.startAction();
-
-			sleep(2000);
 
 			result = result && eventValidator.validate("played_1", 60000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("Playback Discovery tests failed" + e.getMessage());
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "Playback Discovery tests failed");
