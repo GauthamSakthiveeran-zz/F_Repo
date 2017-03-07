@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPreRollPoddedAdsTests" >
     	<url>
-	    	<description name="Preroll_Podded_Freewheel"/>
+	    	<description name="Preroll_Podded_SetEmbedCode_Freewheel"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Preroll_Podded_IMA"/>
+	    	<description name="Preroll_Podded_SetEmbedCode_IMA"/>
 	        <embed_code name="htYWxjczousVmIKvp56u7Cb9btEnyJK9"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -25,7 +25,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Preroll_Podded_Vast"/>
+	    	<description name="Preroll_Podded_SetEmbedCode_Vast"/>
 	        <embed_code name="xxbDB4dDovMCDiqvo2DSqON3lIGSM5N5"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -67,7 +67,6 @@
 	        <pbid name="615dc8e909e941c280e12155df838355"/>
 	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"},{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"},{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"}]}}]]></playerParameter>
     	</url>
-    	
-    	
+
     </test>
 </testdata>

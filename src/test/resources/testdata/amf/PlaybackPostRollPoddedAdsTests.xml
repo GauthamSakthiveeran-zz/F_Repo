@@ -2,7 +2,7 @@
 <testdata>
 
 	<test name ="PlaybackPostRollPoddedAdsTests" >
-    	<url>
+    	<!--<url>
 	    	<description name="Playback_Postroll_Podded_VPAID2.0"/>
 	        <embed_code name="94ajI4MjE67rcugQEGwylcOLG9Ggbads"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -11,10 +11,10 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
+    	</url>-->
     	
     	<url>
-	    	<description name="Postroll_Podded_IMA"/>
+	    	<description name="Postroll_Podded_SetEmbedCode_IMA"/>
 	        <embed_code name="gzYmxjczrvM0qh0gPqKy6QFSKSr2t3FC"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -25,7 +25,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Postroll_Podded_Freewheel"/>
+	    	<description name="Postroll_Podded_SetEmbedCode_Freewheel"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -36,7 +36,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Postroll_Podded_Vast"/>
+	    	<description name="Postroll_Podded_SetEmbedCode_Vast"/>
 	        <embed_code name="Rna2x4dDrdRWdZnUS4lxeLR6sZWhdpZD"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -45,6 +45,5 @@
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
     	</url>
-    	
     </test>
 </testdata>
