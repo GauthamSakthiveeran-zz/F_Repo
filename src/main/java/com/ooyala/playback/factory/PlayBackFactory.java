@@ -56,6 +56,7 @@ public class PlayBackFactory {
 	private ThumbnailCarouselValidator thumbnailCarouselValidator;
 	private InitalTimeValidator initalTimeValidator;
 	private ExtentTest extentTest;
+	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -410,6 +411,14 @@ public class PlayBackFactory {
 			fccValidator.setExtentTest(extentTest);
 		}
 		return fccValidator;
+	}
+
+	public SetEmbedCodeValidator getSetEmbedCodeValidator() {
+		if (setEmbedCodeValidator == null){
+			setEmbedCodeValidator = new SetEmbedCodeValidator(driver);
+			setEmbedCodeValidator.setExtentTest(extentTest);
+		}
+		return setEmbedCodeValidator;
 	}
 
 	public PlaylistValidator PlaylistValidator() {

@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="MidrollPodded_IMA"/>
+	    	<description name="MidrollPodded_SetEmbedCode_IMA"/>
 	        <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -25,7 +25,7 @@
     	</url>
     	
     	<url>
-	    	<description name="MidrollPodded_Freewheel"/>
+	    	<description name="MidrollPodded_SetEmbedCode_Freewheel"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -36,7 +36,7 @@
     	</url>
     	
     	<url>
-	    	<description name="MidrollPodded_Vast"/>
+	    	<description name="MidrollPodded_SetEmbedCode_Vast"/>
 	        <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
