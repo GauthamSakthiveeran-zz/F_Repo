@@ -28,7 +28,10 @@
 		
 		<classes>
 			<class name="com.ooyala.playback.amf.preroll.PlaybackPreRollAdsTests"></class>
-			<class name="com.ooyala.playback.amf.midroll.PlaybackMidRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.freewheel.PlaybackBumperPrerollAdTests"></class>
+			<!-- <class name="com.ooyala.playback.amf.preroll.PlaybackCCenabledPreRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.freewheel.PlaybackBumperPrerollAdTests"></class>
+			<class name="com.ooyala.playback.amf.adfrequency.PlaybackAdFrequencyTests" ></class> -->
 		</classes>
 		
 	</test>

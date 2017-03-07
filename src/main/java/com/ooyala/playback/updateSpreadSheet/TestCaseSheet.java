@@ -34,8 +34,10 @@ import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.BatchUpdateSpreadsheetRequest;
 import com.google.api.services.sheets.v4.model.CellData;
 import com.google.api.services.sheets.v4.model.CellFormat;
+import com.google.api.services.sheets.v4.model.CutPasteRequest;
 import com.google.api.services.sheets.v4.model.ExtendedValue;
 import com.google.api.services.sheets.v4.model.GridCoordinate;
+import com.google.api.services.sheets.v4.model.GridRange;
 import com.google.api.services.sheets.v4.model.Request;
 import com.google.api.services.sheets.v4.model.RowData;
 import com.google.api.services.sheets.v4.model.Sheet;
@@ -148,13 +150,14 @@ public class TestCaseSheet {
 		Sheets service = getSheetsService();
 		String spreadsheetId = getSpreadSheetId();
 		HashMap<String, ValueRange> sheetNameList = new HashMap<>();
-		List<Request> requests = new ArrayList<>();
+		
 
 		String pattern = "MM/dd/yyyy";
 		SimpleDateFormat format = new SimpleDateFormat(pattern);
 		String date = format.format(new Date());
 		
 		List<Sheet> sheets  = service.spreadsheets().get(spreadsheetId).execute().getSheets();
+		List<Request> requests = new ArrayList<>();
 
 		for (Map.Entry<String, ITestResult> entry : testDetails.entrySet()) {
 			
@@ -194,29 +197,36 @@ public class TestCaseSheet {
 				}
 				
 				int sheetId = getSheetId(sheets, spreadsheetId, sheetName);
-
-				if (sheetNameList.size() == 0 || !sheetNameList.containsKey(sheetName)) {
+				boolean flag = false;
+				String range = sheetName + "!A1:Z"; // TODO
+				ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).execute();
+				if (!sheetNameList.containsKey(sheetName)) {
+					sheetNameList.put(sheetName, response);
+					flag =true;
+				}
+				
+				List<List<Object>> values = sheetNameList.get(sheetName).getValues();
+				
+				String resultColumnTitle = platform + "\n" + browser + " " + browserVersion;
+				
+				if (flag) {
+					parseData(values, resultColumnTitle,requests,sheetId);
 					List<CellData> cellData = new ArrayList<>();
 					cellData.add(new CellData()
-							.setUserEnteredValue(new ExtendedValue().setStringValue(platform + "\n" + browser + " "
-									+ browserVersion + "\n" + getV4Version(v4Version) + "\n" + date))
+							.setUserEnteredValue(new ExtendedValue()
+									.setStringValue(resultColumnTitle + "\n" + getV4Version(v4Version) + "\n" + date))
 							.setUserEnteredFormat(new CellFormat().setTextFormat(new TextFormat().setBold(true))
 									.setWrapStrategy("WRAP")));
 
 					requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
-							.setStart(new GridCoordinate().setSheetId(sheetId).setRowIndex(3).setColumnIndex(6)) // TODO
+							.setStart(new GridCoordinate().setSheetId(sheetId).setRowIndex(rowNumber)
+									.setColumnIndex(columnNumber)) // TODO
 							.setRows(Arrays.asList(new RowData().setValues(cellData)))
-							.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
-					
-					String range = sheetName + "!A1:Z"; // TODO
-					ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).execute();
-					sheetNameList.put(sheetName, response);
-					logger.info("Column header " + sheetName);
+							.setFields("userEnteredValue,userEnteredFormat.textFormat")));
+
 				}
 				
-				List<List<Object>> values = sheetNameList.get(sheetName).getValues();
-
-				int i = 3; // TODO
+				int i = rowNumber; // TODO
 
 				if (values == null || values.size() == 0) {
 					logger.error("Spread sheet is empty");
@@ -225,11 +235,10 @@ public class TestCaseSheet {
 
 					for (List row : values) {
 						if(row.size()==0){
-							i++;
 							continue;
 						}
-						if (testCaseName.equals(row.get(2).toString())) { // TODO
-							int col = 6; // TODO
+						if (testCaseName.equals(row.get(testCaseColumn).toString())) { // TODO
+							int col = columnNumber; // TODO
 							List<CellData> cellData = new ArrayList<>();
 							cellData.add(new CellData()
 									.setUserEnteredValue(
@@ -347,17 +356,51 @@ public class TestCaseSheet {
 	}
 	
 	
-	private static int getColumnNumber(List<List<Object>> values){
+	static int columnNumber = 0;
+	static int rowNumber = 0;
+	static int testCaseColumn = 0;
+	
+	private static void parseData(List<List<Object>> values, String resultColumnTitle, List<Request> requests, int sheetId){
 		
-		int columnNumber  = 0;
+		int j =0;
 		
 		for(List<Object> row : values){
-			if(row==null){
+			if(row==null || row.size()<=0){
+				j++;
 				continue;
 			}
+			rowNumber = j;
+			if(row!=null) {
+				for(int i =0;i<row.size();i++){
+					logger.info(row.get(i).toString().toLowerCase());
+					if(row.get(i).toString().toLowerCase().contains("automated")){
+						columnNumber =  i+2;
+						int k=i+2;
+						if (k<row.size()) {
+							while (true) {
+								if(k>=row.size())
+									break;
+								k++;
+							}
+							requests.add(new Request().setCutPaste(new CutPasteRequest()
+									.setSource(new GridRange().setSheetId(sheetId).setStartColumnIndex(i+2).setEndColumnIndex(k))
+									.setDestination(new GridCoordinate().setSheetId(sheetId).setColumnIndex(columnNumber+1)))
+									);			
+							
+						}
+						return;
+					}
+					if(row.get(i).toString().toLowerCase().contains("test case")){ // TODO
+						testCaseColumn = i;
+					}
+				}
+				
+				return;
+			}
+				
 		}
 		
-		return columnNumber;
+		return;
 	}
 
 	public static void main(String[] args) throws IOException {

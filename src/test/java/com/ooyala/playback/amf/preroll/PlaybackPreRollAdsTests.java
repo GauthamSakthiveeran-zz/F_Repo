@@ -27,7 +27,7 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 		boolean result = true;
 
 		try {
-
+			
 			driver.get(url);
 
 			result = result && playValidator.waitForPage();

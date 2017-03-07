@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackCCenabledPreRollAdsTests" >
     	<url>
-	    	<description name="MAIN_IMA"/>
+	    	<description name="IMA:CC enabled preroll Main"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BITMOVIN_IMA"/>
+	    	<description name="IMA:CC enabled preroll Bitmovin"/>
 	        <embed_code name="Y4amJoMTE6chANpFOodeYv5HACvMfIyc"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -25,7 +25,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BITMOVIN_PULSE"/>
+	    	<description name="Pulse:Preroll with CC Bitmovin"/>
 	        <embed_code name="9lNDNhMzE65U7FW_KR1bQm7m41SeT997"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -36,7 +36,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BITMOVIN_FREEWHEEL"/>
+	    	<description name="Freewheel:CC enabled preroll Bitmovin"/>
 	        <embed_code name="RlNjhsMTE6stbukSNOqLTHUvxqyXX1W_"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -49,7 +49,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BITMOVIN_VAST"/>
+	    	<description name="VAST:CC enabled preroll bitmovin"/>
 	        <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
