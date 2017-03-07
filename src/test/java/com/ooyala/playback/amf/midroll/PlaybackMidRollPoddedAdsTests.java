@@ -41,11 +41,11 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
 
 			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_1", 120000);
 
-			result = result && event.validate("seeked_1", 60000);
-			result = result && event.validate("played_1", 200000);
-
 			if(testName.contains("SetEmbedCode")){
 				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);
+			}else{
+				result = result && event.validate("seeked_1", 60000);
+				result = result && event.validate("played_1", 200000);
 			}
 
 		} catch (Exception e) {

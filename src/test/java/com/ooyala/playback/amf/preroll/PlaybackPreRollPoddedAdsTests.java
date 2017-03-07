@@ -38,13 +38,13 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 
 			result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 120000);
 
-			result = result && seekValidator.validate("seeked_1", 60000);
-			result = result && event.validate("played_1", 60000);
-
 			if(testName.contains("SetEmbedCode")){
 				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);
-			}
+			} else {
+				result = result && seekValidator.validate("seeked_1", 60000);
+				result = result && event.validate("played_1", 60000);
 
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

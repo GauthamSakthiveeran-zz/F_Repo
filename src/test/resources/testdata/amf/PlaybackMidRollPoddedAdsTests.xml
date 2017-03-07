@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="MidrollPodded_SetEmbedCode_IMA"/>
+	    	<description name="MidrollPodded_IMA"/>
 	        <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -25,7 +25,7 @@
     	</url>
     	
     	<url>
-	    	<description name="MidrollPodded_SetEmbedCode_Freewheel"/>
+	    	<description name="MidrollPodded_Freewheel"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -36,7 +36,7 @@
     	</url>
     	
     	<url>
-	    	<description name="MidrollPodded_SetEmbedCode_Vast"/>
+	    	<description name="MidrollPodded_Vast"/>
 	        <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -56,6 +56,37 @@
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
+		<url>
+			<description name="MidrollPodded_SetEmbedCode_IMA"/>
+			<embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG"/>
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+			<plugins name="MAIN"/>
+			<adPlugins name="IMA"/>
+			<additionalPlugins name=""/>
+			<pbid name="615dc8e909e941c280e12155df838355"/>
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		<url>
+			<description name="MidrollPodded_SetEmbedCode_Freewheel"/>
+			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+			<plugins name="MAIN"/>
+			<adPlugins name="FREEWHEEL"/>
+			<additionalPlugins name=""/>
+			<pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
+			<playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fsa2tmcjpvD21CN9WthbTbE4MIpWJoaK","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+		</url>
+
+		<url>
+			<description name="MidrollPodded_SetEmbedCode_Vast"/>
+			<embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj"/>
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+			<plugins name="MAIN"/>
+			<adPlugins name="VAST"/>
+			<additionalPlugins name=""/>
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
     	
     </test>
 </testdata>
