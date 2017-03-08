@@ -1,5 +1,6 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
@@ -78,10 +79,13 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		double initialVolume = volume;
 		logger.info("Intial Volume is set to "+volume);
         boolean isInitialTimeMatches = initialVolume == getVolume();
-        if (isInitialTimeMatches)
-            logger.info("initial time matched for "+asset);
-        else
-            logger.error("initial time not matching for "+asset);
+        if (isInitialTimeMatches) {
+			logger.info("initial time matched for " + asset);
+			extentTest.log(LogStatus.PASS, "initial time matched for " + asset);
+		}
+        else {
+			logger.error("initial time not matching for " + asset);
+		}
 		return isInitialTimeMatches;
 	}
 
