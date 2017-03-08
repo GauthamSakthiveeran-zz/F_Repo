@@ -60,7 +60,7 @@
     	</url>
     	
     	<url>
-	    	<description name="OSMF_FREEWHEEL"/>
+	    	<description name="Freewheel:CC enabled preroll OSMF"/>
 	        <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -72,7 +72,7 @@
     	</url>
     	
     	<url>
-	    	<description name="MAIN_VAST"/>
+	    	<description name="VAST:Main  CC enabled preroll"/>
 	        <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -94,7 +94,7 @@
     	</url>
     	
     	<url>
-	    	<description name="OSMF_IMA"/>
+	    	<description name="IMA:CC enabled preroll OSMF"/>
 	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -128,7 +128,7 @@
     	</url>
     	
     	<url>
-	    	<description name="OSMF_VAST"/>
+	    	<description name="VAST:CC enabled preroll OSMF"/>
 	        <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>

@@ -146,6 +146,9 @@ public class TestCaseSheet {
 
 	public static void update(Map<String, ITestResult> testDetails, String platform, String browser, String browserVersion,
 			String v4Version) throws Exception {
+		
+		if(testDetails==null || testDetails.isEmpty())
+			return;
 
 		Sheets service = getSheetsService();
 		String spreadsheetId = getSpreadSheetId();
@@ -191,6 +194,7 @@ public class TestCaseSheet {
 					}
 				} else {
 					testCaseName = entry.getKey();
+					logger.error("No matching data found in excel for "+testCaseName);
 					sheetName = null;
 					testResult = TestResult.UNKOWN;
 					continue;
@@ -263,6 +267,12 @@ public class TestCaseSheet {
 
 
 		}
+		
+		if(requests==null || requests.isEmpty()){
+			logger.error("No matching data found in excel.");
+			return;
+		}
+			
 
 		BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()
 				.setRequests(requests);

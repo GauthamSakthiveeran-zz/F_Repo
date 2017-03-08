@@ -46,7 +46,7 @@
 	        <adPlugins name="IMA"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="615dc8e909e941c280e12155df838355"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position_type":"r","tag_url":"http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/7521029/pb_pod_ad_unit&ciu_szs&impl=s&cmsid=949&vid=FjbGRjbzp0DV_5-NtXBVo5Rgp3Sj0R5C&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]"}]}}]]></playerParameter>
     	</url>
     	
     	<url>

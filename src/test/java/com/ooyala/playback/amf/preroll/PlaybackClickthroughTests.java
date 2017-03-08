@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.amf.preroll;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -23,7 +23,7 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private AdClickThroughValidator clickThrough;
 
-	@Test(groups = {"amf","clickThrough","sequential"}, dataProvider = "testUrls")
+	@Test(groups = {"amf","clickThrough","sequential","preroll"}, dataProvider = "testUrls")
 	public void verifyClickthrough(String testName, String url)
 			throws Exception {
 
@@ -39,7 +39,7 @@ public class PlaybackClickthroughTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-            result = result && event.validate("willPlaySingleAd_1", 120000);
+			result = result && event.validate("PreRoll_willPlaySingleAd_1", 10000);
 
 			result = result && clickThrough.validate("", 120000);
 

@@ -47,7 +47,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinSkipAdsFW"/>
+	    	<description name="Freewheel:Skippable Ads [ skip button after 10 seconds ] Bitmovin"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>

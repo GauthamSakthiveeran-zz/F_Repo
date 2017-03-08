@@ -210,7 +210,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Playback_Preroll_VPAID2.0_IMA"/>
+	    	<description name="VPAID:VPAID 1.0 Preroll"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -222,7 +222,7 @@
     	
     	
     	<url>
-	    	<description name="Playback_Preroll_VPAID2.0_IMA_1"/>
+	    	<description name="VPAID:VPAID 2.0 Preroll "/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -266,7 +266,7 @@
     	</url>
     	
     	<url>
-	    	<description name="PULSE MAIN"/>
+	    	<description name="Pulse:Preroll Main"/>
 	        <embed_code name="w3amU5MzE6NMd-4jMBxM0FNu4MzlIUGY"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -277,7 +277,7 @@
     	</url>
     	
     	<url>
-	    	<description name="PULSE BITMOVIN"/>
+	    	<description name="Pulse:Preroll Bitmovin"/>
 	        <embed_code name="5kbmU5MzE6ivgWkobhscmQwGuD7fyNIa"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
