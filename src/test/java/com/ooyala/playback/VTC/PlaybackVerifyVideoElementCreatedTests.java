@@ -46,7 +46,7 @@ public class PlaybackVerifyVideoElementCreatedTests extends PlaybackWebTest {
 
             result=result && playAction.startAction();
 
-
+            // Checking Video element for Preroll and Midroll
             if (testName.contains("Preroll") || testName.contains("Midroll")){
 
                 result = result && eventValidator.validate("CreateVideo_1", 20000);
@@ -60,6 +60,7 @@ public class PlaybackVerifyVideoElementCreatedTests extends PlaybackWebTest {
                 result = result && eventValidator.validate("videoCreatedForAds_1", 20000);
             }
 
+            // Checking Video element for Postroll
             if (testName.contains("Postroll")){
 
                 result = result && seekAction.seek(15,true);
@@ -73,6 +74,8 @@ public class PlaybackVerifyVideoElementCreatedTests extends PlaybackWebTest {
                 result = result && eventValidator.validate("adsPlayed_1", 30000);
             }
 
+
+            // Checking Video element for PreMidPostroll
             if (testName.contains("PreMidPost")){
 
                 result = result && eventValidator.validate("CreateVideo_1", 20000);
@@ -97,10 +100,12 @@ public class PlaybackVerifyVideoElementCreatedTests extends PlaybackWebTest {
 
             }
 
+            // Checking Video element for Podded
             if (testName.contains("Podded")){
 
                 int counter = 0;
 
+                // Checking Video element for Preroll Podded
                 if (testName.contains("PrePodded")){
 
                     result = result && eventValidator.validate("videoPlaying_1",50000);
@@ -119,6 +124,7 @@ public class PlaybackVerifyVideoElementCreatedTests extends PlaybackWebTest {
 
                 }
 
+                // Checking Video element for Midroll Podded
                 if (testName.contains("MidPodded")){
 
                     result = result && eventValidator.validate("playing_1", 5000);
@@ -140,6 +146,97 @@ public class PlaybackVerifyVideoElementCreatedTests extends PlaybackWebTest {
                             result = result && eventValidator.validate("videoCreatedForAds_" + i + "", 20000);
                         }
                     }
+                }
+
+
+                // Checking Video element for Postroll Podded
+                if (testName.contains("PostPodded")){
+
+                    result = result && eventValidator.validate("playing_1", 60000);
+
+                    result = result && seekValidator.validate("seeked_1", 60000);
+
+                    result = result && eventValidator.validate("played_1", 60000);
+
+                    result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 10000);
+
+                    // for IMA ad videoControllerVideoElementCreated event is not triggering
+                    if (!eventValidator.isAdPluginPresent("ima")) {
+                        int noOfPoddedAds = parseInt(
+                                (((JavascriptExecutor) driver).executeScript("return countPoddedAds.textContent")).toString());
+
+                        for (int i = 1 + counter; i <= noOfPoddedAds; i++) {
+                            result = result && eventValidator.validate("videoCreatedForAds_" + i + "", 20000);
+                        }
+                    }
+                }
+
+                // Checking Video element for PreMidPostroll Podded
+                if (testName.contains("PreMidPosPodded")){
+
+                    int noOfPoddedAdsMid = 0;
+                    int noOfPoddedAdsPre = 0;
+                    int noOfPoddedAdsPost =0;
+
+                    result = result && eventValidator.validate("PreRoll_willPlayAds", 60000);
+
+                    result = result && eventValidator.validate("adsPlayed_1", 600000);
+
+                    result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 60000);
+
+                    // for IMA ad videoControllerVideoElementCreated event is not triggering
+                    if (!eventValidator.isAdPluginPresent("ima")) {
+                        noOfPoddedAdsPre = parseInt(
+                                (((JavascriptExecutor) driver).executeScript("return countPoddedAds_1.textContent")).toString());
+
+                        for (int i = 1 + counter; i <= noOfPoddedAdsPre; i++) {
+                            result = result && eventValidator.validate("videoCreatedForAds_" + i + "", 20000);
+                        }
+                    }
+
+                    result = result && eventValidator.validate("playing_1", 90000);
+
+
+                    if (!eventValidator.validate("MidRoll_willPlayAds", 5000)) {
+                        result = result && seekAction.setFactor(2).fromLast().setTime(10).startAction();
+                    }
+
+                    result = result && eventValidator.validate("MidRoll_willPlayAds", 200000);
+
+                    result = result && eventValidator.validate("adsPlayed_2", 600000);
+
+                    result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 600000);
+
+                    // for IMA ad videoControllerVideoElementCreated event is not triggering
+                    if (!eventValidator.isAdPluginPresent("ima")) {
+                        noOfPoddedAdsMid = parseInt(
+                                (((JavascriptExecutor) driver).executeScript("return countPoddedAds_2.textContent")).toString())-noOfPoddedAdsPre;
+
+                        for (int i = 1 + counter; i <= noOfPoddedAdsMid; i++) {
+                            result = result && eventValidator.validate("videoCreatedForAds_" + i + "", 20000);
+                        }
+                    }
+
+                    if (!eventValidator.validate("played_1", 4000)) {
+                        result = result && seekAction.seekTillEnd().startAction();
+                    }
+
+                    result = result && eventValidator.validate("PostRoll_willPlayAds", 200000);
+                    result = result && eventValidator.validate("adsPlayed_3", 600000);
+
+                    result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds_3", 600000);
+
+                    // for IMA ad videoControllerVideoElementCreated event is not triggering
+                    if (!eventValidator.isAdPluginPresent("ima")) {
+                        noOfPoddedAdsPost = parseInt(
+                                (((JavascriptExecutor) driver).executeScript("return countPoddedAds_3.textContent")).toString())-noOfPoddedAdsPre-noOfPoddedAdsMid;
+
+                        for (int i = 1 + counter; i <= noOfPoddedAdsPost; i++) {
+                            result = result && eventValidator.validate("videoCreatedForAds_" + i + "", 20000);
+                        }
+                    }
+
+                    result = result && eventValidator.validate("played_1", 180000);
                 }
             }
 
