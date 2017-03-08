@@ -91,6 +91,46 @@ public class PlaybackInitialVolumeTests extends PlaybackWebTest {
                 }
             }
 
+            if (adType.equalsIgnoreCase("PreMidPost")){
+                result=result && eventValidator.validate("videoPlayingAd_1", 10000);
+                driver.executeScript("pp.pause()");
+                Boolean isPrerollAdplaying = isAdPlayingValidator.validate("", 20000);
+                if (isPrerollAdplaying) {
+                    logger.info("Checking initial volume for Preroll Ad");
+                    result = result && volumeValidator.checkInitialVolume("ad",volumeValue);
+                }else{
+                    logger.error("Preroll ad is not played");
+                }
+                driver.executeScript("pp.play()");
+                result=result && eventValidator.validate("playing_1", 60000);
+                result=result && volumeValidator.checkInitialVolume("video",volumeValue);
+
+                result=result && eventValidator.validate("willPlaySingleAd_2", 60000);
+                driver.executeScript("pp.pause()");
+                Boolean isMidrollAdplaying = isAdPlayingValidator.validate("", 20000);
+                if (isMidrollAdplaying) {
+                    logger.info("Checking initial volume for Midroll Ad");
+                    result = result && volumeValidator.checkInitialVolume("ad",volumeValue);
+                    result=result && eventValidator.validate("playing_2", 60000);
+                }else{
+                    logger.error("Midroll ad is not played");
+                }
+                driver.executeScript("pp.play()");
+
+                result=result && seekValidator.validate("seeked_1",20000);
+                result=result && eventValidator.validate("willPlaySingleAd_1", 60000);
+                Boolean isPostrollAdplaying = isAdPlayingValidator.validate("", 20000);
+                if (isPostrollAdplaying) {
+                    logger.info("Checking initial volume for Postroll Ad");
+                    result = result && volumeValidator.checkInitialVolume("ad",volumeValue);
+                    result=result && eventValidator.validate("playing_2", 60000);
+                }else{
+                    logger.error("Postroll ad is not played");
+                }
+
+
+            }
+
             if (adType.equalsIgnoreCase("PrerollPodded")){
                 result=result && eventValidator.validate("willPlaySingleAd_1", 60000);
                 result = result && eventValidator.validate("adPodStarted_2",10000);
