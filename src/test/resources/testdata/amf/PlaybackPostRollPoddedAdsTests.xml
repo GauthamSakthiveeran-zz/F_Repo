@@ -2,7 +2,7 @@
 <testdata>
 
 	<test name ="PlaybackPostRollPoddedAdsTests" >
-    	<!--<url>
+    	<url>
 	    	<description name="Playback_Postroll_Podded_VPAID2.0"/>
 	        <embed_code name="94ajI4MjE67rcugQEGwylcOLG9Ggbads"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -11,7 +11,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>-->
+    	</url>
     	
     	<url>
 	    	<description name="Postroll_Podded_SetEmbedCode_IMA"/>
