@@ -36,7 +36,6 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
 
         String[] parts= testName.split(":");
         String adPosition = parts[1].trim();
-        String tcDesc = parts[2].trim();
 
         boolean result = true;
         try {
