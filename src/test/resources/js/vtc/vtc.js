@@ -47,6 +47,7 @@ function subscribeToEvents() {
         var videoCreatedForAdsEventOrder = 1;
         var adPodStartedEventOrder = 1;
         var videoPlayingAdEventOrder = 1;
+        var willPlayAdOnReplayEventOrder = 1;
 
         return function(event) {
 
@@ -115,6 +116,14 @@ function subscribeToEvents() {
                 OO.$('#ooplayer').append('<p id=willPlayPrerollAd'+'>willPlayPrerollAd</p>');
                 OO.$('#ooplayer').append('<p id=adIsPlaying'+'>adIsPlaying</p>');
             }
+
+
+            if (event.match(/willPlaySingleAd/) && replayEventOrder == 2) {
+                OO.$('#ooplayer').append('<p id=willPlayAdOnReplay_'+willPlayAdOnReplayEventOrder+'>willPlayAdOnReplayEventOrder</p>');
+                willPlayAdOnReplayEventOrder++;
+            }
+
+
             if (event.match(/singleAdPlayed/)) {
                 OO.$('#ooplayer').append('<p id=singleAdPlayed_'+singleadsPlayedEventOrder+'>singleAdPlayed '+singleadsPlayedEventOrder+'</p>');
                 singleadsPlayedEventOrder++;
