@@ -48,19 +48,6 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("adsPlayed_2", 60000);
 			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 20000);
 
-/*
-			if(testName.contains("IMA") || testName.contains("FW")){
-				result = result && eventValidator.validate("adsPlayed_1", 60000);
-				result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 20000);
-				result = result && eventValidator.validate("adsPlayed_2", 60000);
-				result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 20000);
-			}else {
-				result = result && eventValidator.validate("adsPlayed_1", 60000);
-				result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 20000);
-				result = result && eventValidator.validate("adsPlayed_2", 60000);
-				result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 20000);
-			}*/
-
 			result = result && pause.validate("paused_1", 30000);
 
 			result = result && eventValidator.validate("seeked_1", 30000);
