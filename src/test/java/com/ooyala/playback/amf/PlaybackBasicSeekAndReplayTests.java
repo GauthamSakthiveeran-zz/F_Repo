@@ -1,4 +1,4 @@
-package com.ooyala.playback.VTC;
+package com.ooyala.playback.amf;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
@@ -13,9 +13,9 @@ import org.testng.annotations.Test;
 /**
  * Created by snehal on 01/03/17.
  */
-public class PlaybackBasicMidrollTests extends PlaybackWebTest {
+public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
 
-    private static Logger logger = Logger.getLogger(PlaybackBasicMidrollTests.class);
+    private static Logger logger = Logger.getLogger(PlaybackBasicSeekAndReplayTests.class);
     private PlayValidator play;
     private EventValidator eventValidator;
     private PlayAction playAction;
@@ -26,11 +26,11 @@ public class PlaybackBasicMidrollTests extends PlaybackWebTest {
     private IsAdPlayingValidator isAdPlaying;
     private PoddedAdValidator poddedAdValidator;
 
-    public PlaybackBasicMidrollTests() throws OoyalaException {
+    public PlaybackBasicSeekAndReplayTests() throws OoyalaException {
         super();
     }
 
-    @Test(groups = "Playback", dataProvider = "testUrls")
+    @Test(groups = {"amf","preroll", "midroll", "replay"}, dataProvider = "testUrls")
     public void basicPlaybackMidrollTests(String testName, String url)
             throws OoyalaException {
 
