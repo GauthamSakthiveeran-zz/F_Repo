@@ -1,14 +1,11 @@
 package com.ooyala.playback;
 
-import static com.ooyala.playback.updateSpreadSheet.TestCaseSheet.getJenkinsJobLink;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -49,6 +46,7 @@ import com.ooyala.playback.live.NeoRequest;
 import com.ooyala.playback.page.PlayBackPage;
 import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.updateSpreadSheet.TestCaseSheet;
+import com.ooyala.playback.updateSpreadSheet.TestDetails;
 import com.ooyala.playback.url.Testdata;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -65,35 +63,20 @@ public abstract class PlaybackWebTest extends FacileTest {
     private Logger logger = Logger.getLogger(PlaybackWebTest.class);
     protected String browser;
     protected ChromeDriverService service;
-    // protected PropertyReader propertyReader;
     protected PlayBackFactory pageFactory;
-    // protected ExtentReports extentReport;
     protected ExtentTest extentTest;
     protected Testdata testData;
     protected String[] jsUrl;
     protected NeoRequest neoRequest;
     protected LiveChannel liveChannel;
     protected RemoteWebDriver driver;
-    protected static ArrayList<String> testPassed=new ArrayList<>();
-    protected static ArrayList<String> testFailed=new ArrayList<>();
-    protected static ArrayList<String> testSkipped= new ArrayList<>();
-    protected static String passedTestList;
-    protected static String failedTestList;
     protected static String v4Version;
     protected static String osNameAndOsVersion;
-    protected static String jenkinsJobLink;
-    private static Map<String,ITestResult> testDetails = new HashMap<String,ITestResult>();;
+    private static Map<String,TestDetails> testDetails = new HashMap<String,TestDetails>();;
 
 
     public PlaybackWebTest() throws OoyalaException {
 
-        try {
-            // propertyReader = PropertyReader.getInstance("config.properties");
-        } catch (Exception e) {
-            throw new OoyalaException("could not read properties file");
-        }
-
-        // extentReport = ExtentManager.getReporter();
         neoRequest = NeoRequest.getInstance();
         liveChannel = new LiveChannel();
     }
@@ -145,7 +128,6 @@ public abstract class PlaybackWebTest extends FacileTest {
             jsFiles = new String[1];
             jsFiles[0] = jsFile;
         }
-        // String jsHost = readPropertyOrEnv("jshostIpAddress","10.11.66.55");
         if (jsFiles != null && jsFiles.length > 0) {
             jsUrl = new String[jsFiles.length];
             for (int i = 0; i < jsFiles.length; i++) {
@@ -179,10 +161,6 @@ public abstract class PlaybackWebTest extends FacileTest {
     public void beforeSuiteInPlaybackWeb() throws OoyalaException {
         int portNumber = getRandomOpenPort();
         SimpleHttpServer.startServer(portNumber);
-        String mode = System.getProperty("mode");
-        
-        if(mode!=null && mode.equalsIgnoreCase("remote"))
-        	jenkinsJobLink = getJenkinsJobLink(System.getProperty("browser"));
     }
 
     public int getRandomOpenPort() {
@@ -219,7 +197,10 @@ public abstract class PlaybackWebTest extends FacileTest {
     @AfterSuite(alwaysRun = true)
     public void afterSuiteInPlaybackWeb() throws Exception {
 
-    	TestCaseSheet.update(testDetails, osNameAndOsVersion, browser, "", v4Version);
+    	String updateSheet = System.getProperty("updateSheet");
+    	if(updateSheet != null && !updateSheet.isEmpty() && updateSheet.equalsIgnoreCase("true")){
+    		TestCaseSheet.update(testDetails, osNameAndOsVersion, browser, "", v4Version);
+    	}
 		SimpleHttpServer.stopServer();
 	}
 
@@ -269,8 +250,6 @@ public abstract class PlaybackWebTest extends FacileTest {
         }
         parseXmlFileData(xmlFile,xmlFilePkg);
         init();
-
-
         getJSFile(jsFile);
 
     }
@@ -302,11 +281,13 @@ public abstract class PlaybackWebTest extends FacileTest {
 		} else {
 			driverNotNullFlag = true;
 		}
+		
+//		if(extentTest.getRunStatus()==LogStatus.FAIL || extentTest.getRunStatus()==LogStatus.ERROR){
+//			result.setStatus(ITestResult.FAILURE);
+//			result.setThrowable(new Throwable("The test failed midway"));
+//		}
 
         if (result.getStatus() == ITestResult.FAILURE) {
-
-            if (!testFailed.contains(extentTest.getTest().getName()))
-                testFailed.add(extentTest.getTest().getName());
 
             if (driverNotNullFlag) {
                 String fileName = takeScreenshot(extentTest.getTest().getName());
@@ -319,17 +300,11 @@ public abstract class PlaybackWebTest extends FacileTest {
                     + " failed ******");
         } else if (result.getStatus() == ITestResult.SKIP) {
 
-            testSkipped.add(extentTest.getTest().getName());
-
             extentTest.log(LogStatus.SKIP, extentTest.getTest().getName()
                     + " Test skipped " + result.getThrowable());
             logger.info("**** Test" + extentTest.getTest().getName()
                     + " Skipped ******");
         } else if (result.getStatus() == ITestResult.SUCCESS) {
-            testPassed.add(extentTest.getTest().getName());
-            if (testPassed.contains(extentTest.getTest().getName()) && testFailed.contains(extentTest.getTest().getName())){
-                testFailed.remove(extentTest.getTest().getName());
-            }
 
 			/*extentTest.log(LogStatus.PASS, extentTest.getTest().getName()
 					+ " Test passed");*/
@@ -341,7 +316,11 @@ public abstract class PlaybackWebTest extends FacileTest {
 					+ " failed ******");
         }
         
-        testDetails.put(extentTest.getTest().getName().split(" - ")[1],result);
+        TestDetails test = new TestDetails();
+        test.setExtentTest(extentTest);
+        test.setITestResult(result);
+        
+        testDetails.put(extentTest.getTest().getName().split(" - ")[1],test);
         
         ExtentManager.endTest(extentTest);
         ExtentManager.flush();

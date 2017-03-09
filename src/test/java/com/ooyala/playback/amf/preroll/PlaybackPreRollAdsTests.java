@@ -21,7 +21,7 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 
-	@Test(groups = { "amf", "preroll" }, dataProvider = "testUrls")
+	@Test(groups = { "amf", "preroll" }, dataProvider = "testUrls", enabled =false)
 	public void verifyPreroll(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
@@ -36,7 +36,7 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && event.validate("PreRoll_willPlaySingleAd_1", 1000);
+			result = result && event.validate("PreRoll_willPlaySingleAd_1", 5000);
 			result = result && event.validate("singleAdPlayed_1", 160000);
 			
 			if (event.isAdPluginPresent("pulse"))

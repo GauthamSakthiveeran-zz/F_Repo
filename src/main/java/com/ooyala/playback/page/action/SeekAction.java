@@ -142,6 +142,8 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 					Thread.sleep(2000);
 					((JavascriptExecutor) driver).executeScript("pp.play();");
 					break;
+				} else{
+					seek(7, true);
 				}
 			}
 			Thread.sleep(10000);

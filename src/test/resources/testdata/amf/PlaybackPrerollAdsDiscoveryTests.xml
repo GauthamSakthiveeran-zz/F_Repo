@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPrerollAdsDiscoveryTests" > 
     	<url>
-	    	<description name="Discovery_Preroll_VPAID2.0"/>
+	    	<description name="VPAID:Discovery_Preroll_VPAID2.0"/>
 	        <embed_code name="BtOGxiMjE6V7y0GBfHGzwJHoXDplM9Gf"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -15,7 +15,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinDiscoveryPreroll_IMA"/>
+	    	<description name="IMA:Discovery Preroll Bitmovin"/>
 	        <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -27,7 +27,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Discovery_Preroll_Bitmovin_Pulse"/>
+	    	<description name="Pulse:Discovery Preroll Bitmovin"/>
 	        <embed_code name="5kbmU5MzE6ivgWkobhscmQwGuD7fyNIa"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -39,7 +39,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Discovery_Preroll_IMA"/>
+	    	<description name="IMA:Discovery Preroll UP Next Main"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -50,7 +50,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinDiscoveryPreroll_FW"/>
+	    	<description name="Freewheel:Discovery Preroll Bitmovin"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -61,7 +61,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinDiscoveryPreroll_Vast"/>
+	    	<description name="VAST:Discovery Preroll bitmovin"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -72,7 +72,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Discovery_Preroll_Freewheel"/>
+	    	<description name="Freewheel:Discovery Preroll UP Next Main"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -83,7 +83,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashDiscovery_Preroll_Freewheel"/>
+	    	<description name="Freewheel:Discovery Preroll OSMF"/>
 	        <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -96,7 +96,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Discovery_Preroll_Vast"/>
+	    	<description name="VAST:Main  Discovery Preroll UP Next"/>
 	        <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -107,7 +107,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinDiscoveryPreroll_Vast_HLS"/>
+	    	<description name="VAST:Bitmovin Discovery Preroll UP Next HLS"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -118,7 +118,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashDiscovery_Preroll_IMA"/>
+	    	<description name="IMA:Discovery Preroll OSMF"/>
 	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -131,7 +131,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinDiscoveryPreroll_FW_HLS"/>
+	    	<description name="Freewheel:BitmovinDiscoveryPreroll_FW_HLS"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -142,7 +142,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinDiscoveryPreroll_IMA_HLS"/>
+	    	<description name="IMA:BitmovinDiscoveryPreroll_IMA_HLS"/>
 	        <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -153,7 +153,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashDiscovery_Preroll_Vast"/>
+	    	<description name="VAST:Discovery Preroll OSMF"/>
 	        <embed_code name="NwaWVmMDE6G5leqg5q9q-D9MsWt6k1ta"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -165,7 +165,7 @@
 	        <browserSupportedVersion name="safari,9"/>
     	</url>
     	
-    	<url>
+    	<!-- <url>
 	    	<description name="OOYALA_ADS MAIN"/>
 	        <embed_code name="s5czdxODE6wRK7f5QQ5DXIGvFYbCUSYY"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -185,7 +185,7 @@
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="fb4f6cd2b4ae4ad68cc5c2d2cb981a18"/>
 	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    	</url>
+    	</url> -->
     	
     </test>
 </testdata>

@@ -69,7 +69,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinSkipAds_IMA"/>
+	    	<description name="IMA:Skippable Ads [ skip button after 10 seconds ] Bitmovin"/>
 	        <embed_code name="Z5cmFnMTE69gZ0Y1vFwLnZlm-Ngdw1xW"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -91,7 +91,7 @@
     	</url>
     	
     	 <url>
-	    	<description name="BitmovinSkipAds_Vast"/>
+	    	<description name="VAST:Skippable Ads [ skip button after 10 seconds ] bitmovin"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -102,7 +102,7 @@
     	</url>
     	
     	<url>
-	    	<description name="SkipAds_Freewheel"/>
+	    	<description name="Freewheel:Skippable Ads [ skip button after 7 seconds ]  Main"/>
 	        <embed_code name="NocGg4bzoRJ1yu3JY3LP44tVlsC2E_gi"/>
 	        <pcode name="V0NDYyOuL4a4eLle69su0dP_7vs1"/>
 	        <plugins name="MAIN"/>
@@ -113,7 +113,7 @@
     	</url>
     	
     	<url>
-	    	<description name="SkipAds_IMA"/>
+	    	<description name="IMA:Skippable Ads [ skip button after 7 seconds ] Main"/>
 	        <embed_code name="5wbHlycToOimSZ-frmuqnhipueNLOUs8"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -124,7 +124,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashSkipAds_Freewheel"/>
+	    	<description name="Freewheel:Skippable Ads [ skip button after 7 seconds ] OSMF"/>
 	        <embed_code name="s1eWhnMDE6vzhcW3raunXqG4NChonMCz"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -137,7 +137,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashSkipAds_IMA"/>
+	    	<description name="IMA:Skippable Ads [ skip button after 5 seconds ] OSMF"/>
 	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -150,7 +150,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashSkipAds_Vast"/>
+	    	<description name="VAST:Skippable Ads [ skip button after 7 seconds ] OSMF"/>
 	        <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -163,7 +163,7 @@
     	</url>
     	
     	<url>
-	    	<description name="SkipAds_Bitmovin_Pulse"/>
+	    	<description name="Pulse:Skip Ads Bitmovin|Pulse:Preroll Bitmovin"/>
 	        <embed_code name="5kbmU5MzE6ivgWkobhscmQwGuD7fyNIa"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -174,7 +174,7 @@
     	</url>
     	
     	<url>
-	    	<description name="SkipAds_Vast"/>
+	    	<description name="VAST:Main Skippable Ads [ skip button after 7 seconds ]"/>
 	        <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -185,7 +185,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Skippable_AD_Vast3.0"/>
+	    	<description name="VAST:Vast3.0 main skip ads"/>
 	        <embed_code name="w5ZTg4MTE6jKe3bS0Oi8uOuCA7w3kMS7"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

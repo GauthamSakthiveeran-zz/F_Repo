@@ -46,6 +46,10 @@ public class PlaybackSkipAdsTests extends PlaybackWebTest {
 				result = result && event.validate("showAdSkipButton_1", 150000);
 
 			result = result && event.validate("singleAdPlayed_1", 150000);
+			
+			if (event.isAdPluginPresent("pulse"))
+				result = result && event.validate("singleAdPlayed_2", 60000);
+			
 			if (testName.contains("OOYALA_ADS")) {
 				result = result && event.validate("ooyalaAds", 1000);
 				result = result && event.validate("playing_2", 150000);

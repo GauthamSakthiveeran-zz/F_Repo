@@ -47,7 +47,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	private boolean checkClosedCaptionButton() {
 
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(10000);
 			switchToControlBar();
 			
 			if (!isElementPresent("CC_BTN")){
@@ -127,7 +127,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-
+		
 		boolean flag = checkClosedCaptionButton() && verifyCloseClosedCaptionPanel() && closedCaptionMicroPanel()
 				&& validateClosedCaptionPanel() && validateSwitchContainer() && verifyCloseClosedCaptionPanel()
 				&& checkClosedCaptionLanguages() && validateClosedCaptionCloseButton();
@@ -138,6 +138,9 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			} else {
 				flag = false;
 			}
+		}
+		if(!flag){
+			extentTest.log(LogStatus.FAIL, "closed caption validation failed.");
 		}
 		return flag;
 

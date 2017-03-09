@@ -1,42 +1,37 @@
 package com.ooyala.playback.updateSpreadSheet;
 
+import org.testng.ITestResult;
+
+import com.relevantcodes.extentreports.ExtentTest;
+
 public class TestDetails {
 
-	private String testCaseName = "";
-	private String sheetName = "";
-	private TestResult testResult;
-	private String bugID = "";
+//	private String testName = "";
+	private ExtentTest extentTest;
+	private ITestResult result;
 
-	public String getTestCaseName() {
-		return testCaseName;
+//	public String getTestName() {
+//		return testName;
+//	}
+//
+//	public void setTestName(String testName) {
+//		this.testName = testName;
+//	}
+
+	public ExtentTest getExtentTest() {
+		return extentTest;
 	}
 
-	public void setTestCaseName(String testCaseName) {
-		this.testCaseName = testCaseName;
+	public void setExtentTest(ExtentTest extentTest) {
+		this.extentTest = extentTest;
 	}
 
-	public String getSheetName() {
-		return sheetName;
+	public ITestResult getITestResult() {
+		return result;
 	}
 
-	public void setSheetName(String sheetName) {
-		this.sheetName = sheetName;
-	}
-
-	public TestResult getTestResult() {
-		return testResult;
-	}
-
-	public void setTestResult(TestResult testResult) {
-		this.testResult = testResult;
-	}
-
-	public String getBugID() {
-		return bugID;
-	}
-
-	public void setBugID(String bugID) {
-		this.bugID = bugID;
+	public void setITestResult(ITestResult result) {
+		this.result = result;
 	}
 
 }

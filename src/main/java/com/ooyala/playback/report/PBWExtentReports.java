@@ -1,6 +1,5 @@
 package com.ooyala.playback.report;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.relevantcodes.extentreports.ExtentReports;
@@ -24,17 +23,16 @@ public class PBWExtentReports extends ExtentReports{
 		return testList.remove(extentTest);
 	}
 	
-	public ArrayList<String> getFeatureFailedLogList(ExtentTest test){
+	public static String getFeatureFailedLogList(ExtentTest test){
 		
 		List<Log> list = test.getTest().getLogList();
-		ArrayList<String> failedFeatures = new ArrayList<>();
 		
 		for(Log log : list){
 			if(log.getLogStatus()==LogStatus.FAIL && log.getDetails().contains("TEST FAILED")){
-				failedFeatures.add(log.getDetails().split("TEST FAILED ")[1]);
+				return log.getDetails().split("TEST FAILED: ")[1];
 			}
 		}
-		return failedFeatures;
+		return "";
 	}
 
 	

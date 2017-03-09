@@ -81,7 +81,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
 				if (!value.contains("freewheel")) {
 					if (value.contains("vast")) {
-						if (!(waitOnElement("AD_SCREEN_PANEL", 5000) && clickOnIndependentElement("AD_SCREEN_PANEL"))) 
+						if (clickOnIndependentElement("AD_SCREEN_PANEL")) 
 							// adding the wait, because sometimes the ad takes time to load when executing tests in parallel
 							return false;
 					} else if (value.contains("ima") && video_plugin.contains("bit")
@@ -109,18 +109,18 @@ public class AdClickThroughValidator extends PlayBackPage implements
 				if (getBrowser().contains("internet explorer")) {
 					if (value.contains("freewheel") && video_plugin.contains("main") && !video_plugin.contains("osmf")
 							&& !video_plugin.contains("bit")) {
-						if (!(waitOnElement("LEARN_MORE_IE", 5000) && clickOnIndependentElement("LEARN_MORE_IE")))
+						if (!(waitOnElement("LEARN_MORE_IE", 10000) && clickOnIndependentElement("LEARN_MORE_IE")))
 							return false;
 					} else {
-						if (!(waitOnElement("LEARN_MORE", 5000) && clickOnHiddenElement("LEARN_MORE")))
+						if (!(waitOnElement("LEARN_MORE", 10000) && clickOnHiddenElement("LEARN_MORE")))
 							return false;
 					}
 
 				} else {
-					if (!(waitOnElement("LEARN_MORE", 5000) && clickOnIndependentElement("LEARN_MORE")))
+					if (!(waitOnElement("LEARN_MORE", 10000) && clickOnIndependentElement("LEARN_MORE")))
 						return false;
 				}
-				if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 5000))
+				if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 10000))
 					return false;
 
 			}
