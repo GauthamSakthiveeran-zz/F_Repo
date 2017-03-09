@@ -34,6 +34,10 @@ public class PlaybackBasicMidrollTests extends PlaybackWebTest {
     public void basicPlaybackMidrollTests(String testName, String url)
             throws OoyalaException {
 
+        String[] parts= testName.split(":");
+        String adPosition = parts[1].trim();
+        String tcDesc = parts[2].trim();
+
         boolean result = true;
         try {
             driver.get(url);
@@ -46,12 +50,12 @@ public class PlaybackBasicMidrollTests extends PlaybackWebTest {
 
             result = result && seekAction.seek(10,true);
 
-            if(testName.contains("IMA") || testName.contains("FW")){
+            if(!testName.contains("PreRoll") && (testName.contains("IMA") || testName.contains("FW"))){
                 result = result && eventValidator.validate("adsPlayed_2", 60000);
-                result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 20000);
+                result = result && poddedAdValidator.setPosition(adPosition).validate("countPoddedAds_2", 20000);
             }else {
                 result = result && eventValidator.validate("adsPlayed_1", 60000);
-                result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_1", 20000);
+                result = result && poddedAdValidator.setPosition(adPosition).validate("countPoddedAds_1", 20000);
             }
 
             result = result && pause.validate("paused_1", 30000);
@@ -75,7 +79,7 @@ public class PlaybackBasicMidrollTests extends PlaybackWebTest {
 
             result = result && replayValidator.validate("replay_1", 30000);
 
-            if(testName.contains("IMA") || testName.contains("FW")) {
+            if(!testName.contains("PreRoll") && (testName.contains("IMA") || testName.contains("FW"))) {
                 result = result && eventValidator.validate("adsPlayed_4", 60000);
             } else {
                 result = result && eventValidator.validate("adsPlayed_2", 60000);
