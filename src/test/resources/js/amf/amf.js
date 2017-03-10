@@ -23,6 +23,7 @@ function subscribeToEvents() {
 		var videoPausedAdsEventOrder = 1;
 		var willPlayNonlinearAdEventOrder = 1;
 		var videoPlayingAdEventOrder = 1;
+		var adPodStartedEventOrder = 1;
 		
 		return function(event) {
 			
@@ -193,7 +194,14 @@ function subscribeToEvents() {
 			if (event.match(/videoPlayed/)&& arguments[1] == 'main') {
 				OO.$('#ooplayer').append('<p id=videoPlayed_'+videoPlayedEventOrder+'>videoPlayed '+videoPlayedEventOrder+'</p>'); 
                 videoPlayedEventOrder++;
-			}  
+			}
+
+			if (event.match(/adPodStarted/)) {
+                var adCount = arguments[1];
+                console.log("number of ads : "+adCount);
+                OO.$("#ooplayer").append("<p id=adPodStarted_"+adPodStartedEventOrder+">"+arguments[1]+"</p>");
+                adPodStartedEventOrder++;
+            }
 			
 		};
 	}());

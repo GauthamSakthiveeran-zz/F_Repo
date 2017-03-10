@@ -43,21 +43,24 @@ public class PlaybackPrerollInitialVolumeTests extends PlaybackWebTest {
 
             result=result && eventValidator.validate("videoPlayingAd_1", 10000);
 
-            driver.executeScript("pp.pause()");
+            result = result && eventValidator.validate("adPodStarted_2",10000);
 
-            Boolean isPrerollAdplaying = isAdPlayingValidator.validate("", 20000);
-            if (isPrerollAdplaying) {
-                logger.info("Checking initial volume for Preroll Ad");
-                result = result && volumeValidator.checkInitialVolume("ad",Double.parseDouble("0.5"));
-            }else{
-                logger.error("Preroll ad is not played");
+            int noOfAds = Integer.parseInt(driver.executeScript("return adPodStarted_2.textContent").toString());
+
+            for (int i = 1 ; i <= noOfAds ; i++){
+                Boolean isPreRollAdplaying = isAdPlayingValidator.validate("", 20000);
+                if (isPreRollAdplaying) {
+                    logger.info("Checking initial volume for PrerollPodded Ad");
+                    result = result && eventValidator.validate("willPlaySingleAd_"+i+"",50000);
+                    result = result && volumeValidator.checkInitialVolume("ad");
+                }else{
+                    logger.error("PrerollPodded ad is not played");
+                }
             }
-
-            driver.executeScript("pp.play()");
 
             result=result && eventValidator.validate("playing_1", 60000);
 
-            result=result && volumeValidator.checkInitialVolume("video",Double.parseDouble("0.5"));
+            result=result && volumeValidator.checkInitialVolume("video");
 
             result = result && seekValidator.validate("seeked_1", 60000);
 
