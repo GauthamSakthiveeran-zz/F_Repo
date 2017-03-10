@@ -1488,4 +1488,172 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
     </test>
+
+    <test name ="PlaybackOverrideEncodingPriorityMidrollAdTests" >
+        <url>
+            <description name="EncodingPriorityMidrollVastAd"/>
+            <embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter><![CDATA[{"encodingPriority":["mp4","webm","hls","dash"],"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="EncodingPriorityMidrollFWAd"/>
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="FREEWHEEL"/>
+            <additionalPlugins name=""/>
+            <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
+            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["mp4","webm","hls","dash"]}]]></playerParameter>
+        </url>
+    </test>
+
+    <test name="PlaybackOverrideEncodingPriorityPostrollAdTests">
+        <url>
+            <description name="EncodingPriorityPostrollFWAd" />
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="" />
+            <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
+            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["mp4","webm","hls","dash"]}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="EncodingPriorityPostrollVastAd" />
+            <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <playerParameter><![CDATA[{"encodingPriority":["mp4","webm","hls","dash"],"showInAdControlBar":true}]]></playerParameter>
+        </url>
+    </test>
+
+    <test name="PlaybackOverrideEncodingPriorityPreMidPostAdTests">
+        <url>
+            <description name="EncodingPriorityPreMidPostVastAd" />
+            <embed_code name="lzMGdpdDq6Dsvi-c32p6u7k46mbT_cxm" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <playerParameter><![CDATA[{"encodingPriority":["mp4","webm","hls","dash"],"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="EncodingPriorityPreMidPostFWAd" />
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="" />
+            <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
+            <playerParameter>{"freewheel-ads-manager":{"fw_video_asset_id":"NqcGg4bzoOmMiV35ZttQDtBX1oNQBnT-","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["mp4","webm","hls","dash"]}</playerParameter>
+        </url>
+    </test>
+
+    <test name="PlaybackOverrideEncodingPriorityPrerollPoddedTests">
+        <url>
+            <description name="EncodingPriorityPrerollPoddedVastAd" />
+            <embed_code name="xxbDB4dDovMCDiqvo2DSqON3lIGSM5N5" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <playerParameter><![CDATA[{"encodingPriority":["mp4","webm","hls","dash"],"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="EncodingPriorityPrerollPaddedFWAd" />
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="" />
+            <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls","webm","mp4","dash"],"freewheel-ads-manager":{"fw_video_asset_id":"Fua2tmcjqpz9g6tBUEHukAOLuXaVZ7Lw","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+        </url>
+    </test>
+
+    <test name="PlaybackOverrideEncodingPriorityMidrollPoddedAdTests">
+        <url>
+            <description name="EncodingPriorityMidrollPoddedVastAd" />
+            <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <playerParameter><![CDATA[{"encodingPriority":["mp4","webm","hls","dash"],"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="EncodingPriorityMidrollPoddedFWAd" />
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="" />
+            <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
+            <playerParameter><![CDATA[{"encodingPriority":["mp4","webm","hls","dash"],"freewheel-ads-manager":{"fw_video_asset_id":"Fsa2tmcjpvD21CN9WthbTbE4MIpWJoaK","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+        </url>
+    </test>
+
+    <test name="PlaybackOverrideEncodingPriorityPostrollPoddedAdTests">
+        <url>
+            <description name="EncodingPriorityPostrollPoddedVastAd" />
+            <embed_code name="Rna2x4dDrdRWdZnUS4lxeLR6sZWhdpZD" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <playerParameter><![CDATA[{"encodingPriority":["mp4","webm","hls","dash"],"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="EncodingPriorityPostrollPoddedFWAd" />
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="" />
+            <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
+            <playerParameter><![CDATA[{"encodingPriority":["mp4","webm","hls","dash"],"freewheel-ads-manager":{"fw_video_asset_id":"Fqa2tmcjrWml7baw9R0-RD5aT-2ku-LJ","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+        </url>
+    </test>
+
+    <test name="PlaybackOverrideEncodingPriorityPreMidPostPoddedAdTests">
+        <url>
+            <description name="EncodingPriorityPreMidPostPoddedVastAd" />
+            <embed_code name="hlc2x4dDpQYlsGsvnipHmaIJge2aqtaP" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <playerParameter><![CDATA[{"encodingPriority":["mp4","webm","hls","dash"],"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="EncodingPriorityPreMidPostPoddedFWAd" />
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="" />
+            <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
+            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["mp4","webm","hls","dash"]}]]></playerParameter>
+        </url>
+    </test>
 </testdata>
