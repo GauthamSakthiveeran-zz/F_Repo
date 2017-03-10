@@ -9,6 +9,7 @@
                 <include name="Playback" />
                 <include name="closedCaption"/>
                 <include name="playerFeatures"/>
+                <include name="EncodingPriority"/>
             </define>
             <run>
                 <include name="VTC_Regression" />
@@ -26,9 +27,17 @@
             <class name="com.ooyala.playback.VTC.PlaybackNewStreamTests" />
             <class name="com.ooyala.playback.VTC.PlaybackOverrideEncodingPriorityTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackClosedCaptionTests" />
-        </classes>
+            <class name="com.ooyala.playback.amf.PlaybackOverrideEncodingPriorityPreMidPostAdTests" />
+            <class name="com.ooyala.playback.amf.PlaybackOverrideEncodingPriorityPreMidPostPoddedAdTests"/>
+            <class name="com.ooyala.playback.amf.preroll.PlaybackOverrideEncodingPriorityPrerollPoddedTests"/>
+            <class name="com.ooyala.playback.amf.midroll.PlaybackOverrideEncodingPriorityMidrollPoddedAdTests"/>
+            <class name="com.ooyala.playback.amf.midroll.PlaybackOverrideEncodingPriorityMidrollAdTests"/>
+            <class name="com.ooyala.playback.amf.postroll.PlaybackOverrideEncodingPriorityPostrollPoddedAdTests"/>
+            <class name="com.ooyala.playback.amf.postroll.PlaybackOverrideEncodingPriorityPostrollAdTests"/>
+
+         </classes>
     </test>
-    <test name = "VTC Multiple Player">
+    <test name = " VTC Multiple Player">
         <groups>
             <define name="VTC_Regression_multiple_player">
                 <include name="multiplePlayer"/>
