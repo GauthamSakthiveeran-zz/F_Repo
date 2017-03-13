@@ -22,6 +22,8 @@ function subscribeToEvents() {
 		var willPauseAdsEventOrder = 1;
 		var videoPausedAdsEventOrder = 1;
 		var willPlayNonlinearAdEventOrder = 1;
+		var videoPlayingAdEventOrder = 1;
+		var adPodStartedEventOrder = 1;
 		
 		return function(event) {
 			
@@ -49,6 +51,11 @@ function subscribeToEvents() {
 				OO.$('#ooplayer').append('<p id=videoPlaying_'+videoPlayingEventOrder+'>videoPlaying '+videoPlayingEventOrder+'</p>'); 
 				videoPlayingEventOrder++;
 			}
+
+			if (event.match(/videoPlaying/) && arguments[1] == 'ads') {
+                OO.$('#ooplayer').append('<p id=videoPlayingAd_'+videoPlayingAdEventOrder+'>videoPlayingAd '+videoPlayingAdEventOrder+'</p>');
+                videoPlayingAdEventOrder++;
+            }
 		
 			if (event.match(/playerCreated/)) {
 				OO.$('#ooplayer').append('<p id=playerCreated_'+playerCreatedOrder+'>playerCreated '+arguments[1]+'</p>'); 
@@ -187,7 +194,14 @@ function subscribeToEvents() {
 			if (event.match(/videoPlayed/)&& arguments[1] == 'main') {
 				OO.$('#ooplayer').append('<p id=videoPlayed_'+videoPlayedEventOrder+'>videoPlayed '+videoPlayedEventOrder+'</p>'); 
                 videoPlayedEventOrder++;
-			}  
+			}
+
+			if (event.match(/adPodStarted/)) {
+                var adCount = arguments[1];
+                console.log("number of ads : "+adCount);
+                OO.$("#ooplayer").append("<p id=adPodStarted_"+adPodStartedEventOrder+">"+arguments[1]+"</p>");
+                adPodStartedEventOrder++;
+            }
 			
 		};
 	}());
