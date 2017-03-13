@@ -47,7 +47,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	private boolean checkClosedCaptionButton() {
 
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(5000);
 			switchToControlBar();
 			
 			if (!isElementPresent("CC_BTN")){
@@ -168,6 +168,10 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	protected boolean closedCaptionMicroPanel() throws Exception {
 		try {
 			switchToControlBar();
+			
+			if(!isElementPresent("CC_BTN")){
+				switchToControlBar();
+			}
 
 			if (!clickOnIndependentElement("CC_BTN"))
 				return false;

@@ -43,9 +43,7 @@ import com.google.api.services.sheets.v4.model.Sheet;
 import com.google.api.services.sheets.v4.model.TextFormat;
 import com.google.api.services.sheets.v4.model.UpdateCellsRequest;
 import com.google.api.services.sheets.v4.model.ValueRange;
-import com.ooyala.playback.report.PBWExtentReports;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 
 public class TestCaseSheet {
 	
@@ -152,25 +150,25 @@ public class TestCaseSheet {
 	}
 	
 	
-	private static TestResult getTestResult(TestDetails result, String testCaseName){
-		if (result.getExtentTest().getRunStatus() == LogStatus.PASS && result.getITestResult().getStatus()==ITestResult.SUCCESS) {
-			return TestResult.PASSED;
-		} else if (result.getExtentTest().getRunStatus() == LogStatus.FAIL || result.getExtentTest().getRunStatus() == LogStatus.ERROR) { // TODO
-			if (testCaseName.contains(PBWExtentReports.getFeatureFailedLogList(result.getExtentTest()))) {
-				return TestResult.FAILED;
-			} else if(result.getITestResult().getStatus()==ITestResult.FAILURE){
-				return TestResult.FAILED;
-			} else{
-				return TestResult.PASSED;
-			}
-		} else if (result.getITestResult().getStatus()==ITestResult.SKIP) {
-			return TestResult.SKIPPED;
-		} 
+	private static TestResult getTestResult(ITestResult result, String testCaseName){
 		
+		if(result.getStatus()==ITestResult.SUCCESS){
+			return TestResult.PASSED;
+		}
+		if(result.getStatus()==ITestResult.FAILURE){
+			if(testCaseName.toLowerCase().contains(result.getThrowable().getMessage().toLowerCase())){
+				return TestResult.FAILED;
+			}else{
+				return TestResult.PASSED; 
+			}
+		}
+		if(result.getStatus()==ITestResult.SKIP){
+			return TestResult.SKIPPED; 
+		}
 		return TestResult.SKIPPED;
 	}
 
-	public static void update(Map<String, TestDetails> testDetails, String platform, String browser,
+	public static void update(Map<String, ITestResult> testDetails, String platform, String browser,
 			String browserVersion, String v4Version) throws Exception {
 
 		if (testDetails == null || testDetails.isEmpty())
@@ -188,7 +186,7 @@ public class TestCaseSheet {
 		List<Sheet> sheets = service.spreadsheets().get(spreadsheetId).execute().getSheets();
 		List<Request> requests = new ArrayList<>();
 
-		for (Map.Entry<String, TestDetails> entry : testDetails.entrySet()) {
+		for (Map.Entry<String, ITestResult> entry : testDetails.entrySet()) {
 
 			String[] singleTests = entry.getKey().split(TestCaseSheetProperties.delimiterForDifferentTests);
 
@@ -206,7 +204,7 @@ public class TestCaseSheet {
 				if (singleTest.contains(TestCaseSheetProperties.delimiterForTabAndTest)) {
 					sheetName = singleTest.split(TestCaseSheetProperties.delimiterForTabAndTest)[0];
 					testCaseName = singleTest.split(TestCaseSheetProperties.delimiterForTabAndTest)[1];
-					TestDetails result = entry.getValue();
+					ITestResult result = entry.getValue();
 					testResult = getTestResult(result, testCaseName);
 
 				} else {
@@ -260,9 +258,9 @@ public class TestCaseSheet {
 					testCaseData = sheetNameList.get(sheetName);
 				}
 
-				if (testCaseData != null) {
+				if (testCaseData != null && testCaseData.getTestCaseMap().get(testCaseName)!=null) {
 					int rowNumber = testCaseData.getTestCaseMap().get(testCaseName);
-
+					
 					List<CellData> cellData = new ArrayList<>();
 					cellData.add(new CellData()
 							.setUserEnteredValue(new ExtendedValue().setStringValue(testResult.getValue()))

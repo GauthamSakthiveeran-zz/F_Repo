@@ -35,6 +35,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import org.testng.asserts.SoftAssert;
 
 import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
@@ -46,7 +47,6 @@ import com.ooyala.playback.live.NeoRequest;
 import com.ooyala.playback.page.PlayBackPage;
 import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.updateSpreadSheet.TestCaseSheet;
-import com.ooyala.playback.updateSpreadSheet.TestDetails;
 import com.ooyala.playback.url.Testdata;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -72,7 +72,8 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected RemoteWebDriver driver;
     protected static String v4Version;
     protected static String osNameAndOsVersion;
-    private static Map<String,TestDetails> testDetails = new HashMap<String,TestDetails>();;
+    private static Map<String,ITestResult> testDetails = new HashMap<String,ITestResult>();
+    public SoftAssert s_assert;
 
 
     public PlaybackWebTest() throws OoyalaException {
@@ -83,6 +84,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     @BeforeMethod(alwaysRun = true)
     public void handleTestMethodName(Method method, Object[] testData) {
+    	
+    	s_assert = new SoftAssert();
+    	
         if(testData!=null && testData.length>=1){
             logger.info("*** Test " + testData[0].toString() + " started *********");
             extentTest = ExtentManager.startTest(testData[0].toString());
@@ -282,11 +286,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 			driverNotNullFlag = true;
 		}
 		
-//		if(extentTest.getRunStatus()==LogStatus.FAIL || extentTest.getRunStatus()==LogStatus.ERROR){
-//			result.setStatus(ITestResult.FAILURE);
-//			result.setThrowable(new Throwable("The test failed midway"));
-//		}
-
         if (result.getStatus() == ITestResult.FAILURE) {
 
             if (driverNotNullFlag) {
@@ -295,7 +294,7 @@ public abstract class PlaybackWebTest extends FacileTest {
                         "Snapshot is " + extentTest.addScreenCapture(fileName));
             }
 
-            extentTest.log(LogStatus.FAIL, result.getThrowable());
+            extentTest.log(LogStatus.FAIL, result.getThrowable().getMessage());
             logger.error("**** Test " + extentTest.getTest().getName()
                     + " failed ******");
         } else if (result.getStatus() == ITestResult.SKIP) {
@@ -316,11 +315,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 					+ " failed ******");
         }
         
-        TestDetails test = new TestDetails();
-        test.setExtentTest(extentTest);
-        test.setITestResult(result);
-        
-        testDetails.put(extentTest.getTest().getName().split(" - ")[1],test);
+        testDetails.put(extentTest.getTest().getName().split(" - ")[1],result);
         
         ExtentManager.endTest(extentTest);
         ExtentManager.flush();

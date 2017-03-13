@@ -46,8 +46,8 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 10000);
 			
-			if(result && click && !clickThrough.validate("", 120000)){
-				extentTest.log(LogStatus.FAIL, "TEST FAILED: Clickthrough");
+			if(result && click){
+				s_assert.assertTrue(clickThrough.validate("", 120000), "Clickthrough failed.");
 			}
 			
 			if (event.isAdPluginPresent("pulse"))
@@ -55,10 +55,12 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			else
 				result = result && event.validate("singleAdPlayed_1", 120000);
 
-			result = result && event.validate("playing_1", 15000);
+			result = result && event.validate("playing_1", 30000);
+			
+			result = result && event.loadingSpinner();
 
-			if(result && cc && !ccValidator.validate("cclanguage", 60000)){
-				extentTest.log(LogStatus.FAIL, "TEST FAILED: CC");
+			if(result && cc){
+				s_assert.assertTrue(ccValidator.validate("cclanguage", 60000), "CC failed.");
 			}
 			
 			result = result && seekAction.seekTillEnd().startAction();
@@ -71,7 +73,8 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Playback CC Enabled PreRoll Ad tests failed");
+		s_assert.assertTrue(result, "Playback PreRoll Ad tests failed");
+		s_assert.assertAll();
 
 	}
 

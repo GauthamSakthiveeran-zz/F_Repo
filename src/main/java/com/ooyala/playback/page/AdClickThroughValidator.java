@@ -81,8 +81,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
 				if (!value.contains("freewheel")) {
 					if (value.contains("vast")) {
-						if (clickOnIndependentElement("AD_SCREEN_PANEL")) 
-							// adding the wait, because sometimes the ad takes time to load when executing tests in parallel
+						if (!clickOnIndependentElement("AD_SCREEN_PANEL")) 
 							return false;
 					} else if (value.contains("ima") && video_plugin.contains("bit")
 							&& !getBrowser().contains("safari")) {
@@ -129,9 +128,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
 			closeOtherWindows(baseWindowHdl);
 
 			boolean isAd = isAdPlaying();
-			if (isAd) {
-				((JavascriptExecutor) driver).executeScript("pp.play()");
-			}
+			((JavascriptExecutor) driver).executeScript("pp.play()");
 			return true;
 
 		} else {
