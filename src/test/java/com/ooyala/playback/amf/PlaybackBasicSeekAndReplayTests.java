@@ -31,7 +31,7 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
     }
 
     @Test(groups = {"amf","preroll", "midroll", "replay"}, dataProvider = "testUrls")
-    public void basicPlaybackMidrollTests(String testName, String url)
+    public void testBasicSeekAndReplay(String testName, String url)
             throws OoyalaException {
 
         String[] parts= testName.split(":");
