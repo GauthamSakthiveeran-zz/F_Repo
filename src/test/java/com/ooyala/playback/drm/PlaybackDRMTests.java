@@ -31,7 +31,7 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 		boolean result = true;
 
 		logger.info("Test Description :\n"
-				+ testName.split(":")[1].toLowerCase());
+				+ testName.split("-")[1].toLowerCase());
 
 		try {
 			driver.get(url);
@@ -51,8 +51,8 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_2", 60000);
 
-			if (!(testName.split(":")[1]
-					.equalsIgnoreCase(" elemental fairplay fairplay hls + opt")))
+			if (!(testName.split("-")[1].trim()
+					.equalsIgnoreCase("elemental fairplay fairplay hls + opt")))
 				result = result && seek.validate("seeked_1", 60000);
 			else{
 				result = result && seekAction.fromLast().setTime(2).startAction();

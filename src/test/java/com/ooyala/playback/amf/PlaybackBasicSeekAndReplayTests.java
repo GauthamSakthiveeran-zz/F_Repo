@@ -34,8 +34,8 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
     public void testBasicSeekAndReplay(String testName, String url)
             throws OoyalaException {
 
-        String[] parts= testName.split(":");
-        String adPosition = parts[1].trim();
+        String[] parts= testName.split("-")[1].trim().split(":");
+        String adPosition = parts[0].trim();
 
         boolean result = true;
         try {
