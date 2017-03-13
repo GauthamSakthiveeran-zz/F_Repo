@@ -18,6 +18,7 @@ function subscribeToCommonEvents() {
 		var nonLinearAdPlayedEventOrder = 1;
 		var adPodEndedEventOrder = 1;
 		var pausedEventOrder = 1;
+		var videoElementDisposedEventOrder = 1;
 		
 		return function(event) {
 			if (event.match(/played/)) {
@@ -113,6 +114,12 @@ function subscribeToCommonEvents() {
 					OO.$('#ooplayer').append('<p id=ooyalaAds>ooyalaAds</p>'); 
 				}  
 			}
+
+			if (event.match(/videoControllerVideoElementDisposed/)) {
+                OO.$('#ooplayer').append('<p id=videoElementDisposed_'+videoElementDisposedEventOrder
+                +'>videoElementDisposed '+videoElementDisposedEventOrder+'</p>');
+                videoElementDisposedEventOrder++;
+            }
 			
 		};
 	}());

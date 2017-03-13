@@ -1,5 +1,6 @@
 package com.ooyala.playback.amf.postroll;
 
+import com.ooyala.playback.page.SetEmbedCodeValidator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,6 +21,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 	private SeekAction seekAction;
+	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = { "amf", "postroll" }, dataProvider = "testUrls")
 	public void verifyPostroll(String testName, String url) {
@@ -49,6 +51,10 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 			result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
 
 			result = result && event.validate("singleAdPlayed_1", 190000);
+
+			if(testName.contains("SetEmbedCode")){
+				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

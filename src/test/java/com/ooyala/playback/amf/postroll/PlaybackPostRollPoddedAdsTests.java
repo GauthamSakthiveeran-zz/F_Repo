@@ -1,13 +1,10 @@
 package com.ooyala.playback.amf.postroll;
 
+import com.ooyala.playback.page.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.PoddedAdValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
@@ -20,6 +17,7 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 	private PoddedAdValidator poddedAdValidator;
+	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = { "amf", "postroll", "podded" }, dataProvider = "testUrls")
 	public void verifyPostrollPodded(String testName, String url) throws OoyalaException {
@@ -34,11 +32,16 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 
 			injectScript();
 
-			result = result && playValidator.validate("playing_1", 6000);
-			result = result && seekValidator.validate("seeked_1", 6000);
-			result = result && event.validate("played_1", 180000);
+			result = result && playValidator.validate("playing_1", 60000);
+			result = result && seekValidator.validate("seeked_1", 60000);
+			result = result && event.validate("played_1", 60000);
 
 			result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 10000);
+
+			if(testName.contains("SetEmbedCode")){
+				result = result && setEmbedCodeValidator.validate("",6000);
+			}
+
 
 		} catch (Exception e) {
 			e.printStackTrace();

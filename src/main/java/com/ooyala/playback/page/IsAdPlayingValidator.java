@@ -26,6 +26,7 @@ public class IsAdPlayingValidator extends PlayBackPage implements
 			return false;
 		}
 		boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver).executeScript("return pp.isAdPlaying()"));
+		logger.info("is Ad Playing : ? "+isAdplaying);
 		extentTest.log(LogStatus.INFO, "Ad is playing: " + isAdplaying);
 		return isAdplaying;
 	}
