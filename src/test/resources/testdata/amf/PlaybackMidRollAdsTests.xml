@@ -172,7 +172,7 @@
 
 
 		<url>
-			<description name="BitmovinMidroll_Vast" />
+			<description name="VAST:Midroll Vast 2.0 + bitmovin" />
 			<embed_code name="VwYzdoMTE6MFmVcSNiwQyGpeSOuvGpcc" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -182,7 +182,7 @@
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 
 		</url>
-
+		
 		<url>
 			<description name="Midroll_Freewheel" />
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
@@ -236,7 +236,7 @@
 		</url>
 
 		<url>
-			<description name="Midroll_Vast" />
+			<description name="VAST:Main Midroll" />
 			<embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -282,18 +282,6 @@
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 
 		</url>
-
-		<!-- <url>
-			<description name="FlashMidroll_Vast" />
-			<embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF" />
-			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-			<plugins name="OSMF,MAIN" />
-			<adPlugins name="VAST" />
-			<additionalPlugins name="" />
-			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-
-		</url> -->
 
 		<url>
 			<description name="Midroll_SetEmbedCode_IMA" />

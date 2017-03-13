@@ -20,6 +20,5 @@ public class PBWExtentReports extends ExtentReports{
 	public synchronized boolean removeTest(ExtentTest extentTest){
 		return testList.remove(extentTest);
 	}
-
 	
 }

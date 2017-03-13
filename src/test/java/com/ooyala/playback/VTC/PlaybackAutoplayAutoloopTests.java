@@ -29,9 +29,9 @@ public class PlaybackAutoplayAutoloopTests extends PlaybackWebTest {
 	public void testAutoplayAutoloop(String testName, String url)
 			throws OoyalaException {
 
-		String[] parts= testName.split(":");
-		String tcName = parts[1].trim();
-		String adType = parts[2].trim();
+		String[] parts= testName.split("-")[1].trim().split(":");
+		String tcName = parts[0].trim();
+		String adType = parts[1].trim();
 
 		boolean result = true;
 		try {

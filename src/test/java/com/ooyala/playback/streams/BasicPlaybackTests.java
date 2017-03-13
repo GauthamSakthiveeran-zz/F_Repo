@@ -32,7 +32,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
         boolean result = true;
 
-        logger.info("Test Description : " + testName.split(":")[1].toLowerCase() + "\n" + url);
+        logger.info("Test Description : " + testName.split("-")[1].toLowerCase() + "\n" + url);
 
         try {
             driver.get(url);

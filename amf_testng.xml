@@ -4,7 +4,7 @@
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
 
-	<test name="AMF Regression Group" parallel="classes" thread-count="10">
+	<test name="AMF Regression Group" parallel="classes" thread-count="5">
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
@@ -26,9 +26,14 @@
 			<package name="com.ooyala.playback.amf.vast" />
 		</packages>
 		
+		<!-- <classes>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackPreRollAdsClickThroughClosedCaptionTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackPreRollPoddedAdsTests"></class>
+		</classes> -->
+		
 	</test>
 
-	<!-- <test name="AMF Regression Group non parallel" parallel="false">
+	<test name="AMF Regression Group non parallel" parallel="false">
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
@@ -41,7 +46,6 @@
 
 		<packages>
 			<package name="com.ooyala.playback.amf" />
-			<package name="com.ooyala.playback.amf.adfrequency" />
 			<package name="com.ooyala.playback.amf.midroll" />
 			<package name="com.ooyala.playback.amf.postroll" />
 			<package name="com.ooyala.playback.amf.preroll" />
@@ -51,6 +55,6 @@
 			<package name="com.ooyala.playback.amf.vast" />
 		</packages>
 
-	</test> -->
+	</test>
 
 </suite>
