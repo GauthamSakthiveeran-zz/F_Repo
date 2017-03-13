@@ -20,7 +20,6 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
-	private SeekAction seekAction;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = { "amf", "postroll" }, dataProvider = "testUrls")
@@ -37,12 +36,6 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && playValidator.validate("playing_1", 90000);
-			/*if (event.isAdPluginPresent("vast") && event.isVideoPluginPresent("bit_wrapper"))
-				result = result && seekValidator.validate("seeked_1", 10000);
-			else {
-				result = result && seekAction.fromLast().setTime(30).startAction();
-				result = result && event.validate("seeked_1", 10000);
-			}*/
 			
 			result = result && seekValidator.validate("seeked_1", 10000);
 
