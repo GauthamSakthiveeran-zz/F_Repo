@@ -8,6 +8,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.SetEmbedCodeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -22,6 +23,7 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private SeekValidator seekValidator;
 	private PoddedAdValidator poddedAdValidator;
+	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = {"amf","preroll","podded"}, dataProvider = "testUrls")
 	public void verifyPrerollPodded(String testName, String url) throws OoyalaException {
@@ -44,8 +46,13 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 			
 			result = result && event.validate("playing_1", 10000);
 
-			result = result && seekValidator.validate("seeked_1", 60000);
-			result = result && event.validate("played_1", 90000);
+			if(testName.contains("SetEmbedCode")){
+				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);
+			} else {
+				result = result && seekValidator.validate("seeked_1", 60000);
+				result = result && event.validate("played_1", 90000);
+
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

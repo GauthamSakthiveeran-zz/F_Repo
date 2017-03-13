@@ -45,6 +45,9 @@ function subscribeToEvents() {
         var videoPlayEventOrder = 1;
         var videoWillPlayOrder = 1;
         var videoCreatedForAdsEventOrder = 1;
+        var adPodStartedEventOrder = 1;
+        var videoPlayingAdEventOrder = 1;
+        var willPlayAdOnReplayEventOrder = 1;
 
         return function(event) {
 
@@ -71,6 +74,11 @@ function subscribeToEvents() {
             if (event.match(/videoPlaying/) && arguments[1] == 'main') {
                 OO.$('#ooplayer').append('<p id=videoPlaying_'+videoPlayingEventOrder+'>videoPlaying '+videoPlayingEventOrder+'</p>');
                 videoPlayingEventOrder++;
+            }
+
+            if (event.match(/videoPlaying/) && arguments[1] == 'ads') {
+                OO.$('#ooplayer').append('<p id=videoPlayingAd_'+videoPlayingAdEventOrder+'>videoPlayingAd '+videoPlayingAdEventOrder+'</p>');
+                videoPlayingAdEventOrder++;
             }
 
             if (event.match(/playerCreated/)) {
@@ -108,6 +116,14 @@ function subscribeToEvents() {
                 OO.$('#ooplayer').append('<p id=willPlayPrerollAd'+'>willPlayPrerollAd</p>');
                 OO.$('#ooplayer').append('<p id=adIsPlaying'+'>adIsPlaying</p>');
             }
+
+
+            if (event.match(/willPlaySingleAd/) && replayEventOrder == 2) {
+                OO.$('#ooplayer').append('<p id=willPlayAdOnReplay_'+willPlayAdOnReplayEventOrder+'>willPlayAdOnReplayEventOrder</p>');
+                willPlayAdOnReplayEventOrder++;
+            }
+
+
             if (event.match(/singleAdPlayed/)) {
                 OO.$('#ooplayer').append('<p id=singleAdPlayed_'+singleadsPlayedEventOrder+'>singleAdPlayed '+singleadsPlayedEventOrder+'</p>');
                 singleadsPlayedEventOrder++;
@@ -409,6 +425,13 @@ function subscribeToEvents() {
                 OO.$('#ooplayer').append('<p id=videoPlay_'+videoPlayEventOrder
                     +'>videoPlay '+videoPlayEventOrder+'</p>');
                 videoPlayEventOrder++;
+            }
+
+            if (event.match(/adPodStarted/)) {
+                var adCount = arguments[1];
+                console.log("number of ads : "+adCount);
+                OO.$("#ooplayer").append("<p id=adPodStarted_"+adPodStartedEventOrder+">"+arguments[1]+"</p>");
+                adPodStartedEventOrder++;
             }
         };
     }());

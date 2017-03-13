@@ -1,4 +1,4 @@
-package com.ooyala.playback.VTC;
+package com.ooyala.playback.amf;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
@@ -13,9 +13,9 @@ import org.testng.annotations.Test;
 /**
  * Created by snehal on 01/03/17.
  */
-public class PlaybackBasicMidrollTests extends PlaybackWebTest {
+public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
 
-    private static Logger logger = Logger.getLogger(PlaybackBasicMidrollTests.class);
+    private static Logger logger = Logger.getLogger(PlaybackBasicSeekAndReplayTests.class);
     private PlayValidator play;
     private EventValidator eventValidator;
     private PlayAction playAction;
@@ -24,14 +24,18 @@ public class PlaybackBasicMidrollTests extends PlaybackWebTest {
     private ReplayValidator replayValidator;
     private PauseValidator pause;
     private IsAdPlayingValidator isAdPlaying;
+    private PoddedAdValidator poddedAdValidator;
 
-    public PlaybackBasicMidrollTests() throws OoyalaException {
+    public PlaybackBasicSeekAndReplayTests() throws OoyalaException {
         super();
     }
 
-    @Test(groups = "Playback", dataProvider = "testUrls")
+    @Test(groups = {"amf","preroll", "midroll", "replay"}, dataProvider = "testUrls")
     public void basicPlaybackMidrollTests(String testName, String url)
             throws OoyalaException {
+
+        String[] parts= testName.split(":");
+        String adPosition = parts[1].trim();
 
         boolean result = true;
         try {
@@ -43,15 +47,21 @@ public class PlaybackBasicMidrollTests extends PlaybackWebTest {
 
             result = result && play.validate("playing_1", 60000);
 
-            result = result && eventValidator.validate("adsPlayed_1", 60000);
-
             result = result && seekAction.seek(10,true);
+
+            if(!testName.contains("PreRoll") && (testName.contains("IMA") || testName.contains("FW"))){
+                result = result && eventValidator.validate("adsPlayed_2", 60000);
+                result = result && poddedAdValidator.setPosition(adPosition).validate("countPoddedAds_2", 20000);
+            }else {
+                result = result && eventValidator.validate("adsPlayed_1", 60000);
+                result = result && poddedAdValidator.setPosition(adPosition).validate("countPoddedAds_1", 20000);
+            }
 
             result = result && pause.validate("paused_1", 30000);
 
             result = result && eventValidator.validate("seeked_1", 30000);
 
-            result = result && seekAction.seek(20,true);
+            result = result && seekAction.seek("10");
 
             result = result && playAction.startAction();
 
@@ -68,7 +78,11 @@ public class PlaybackBasicMidrollTests extends PlaybackWebTest {
 
             result = result && replayValidator.validate("replay_1", 30000);
 
-            result = result && eventValidator.validate("adsPlayed_2", 60000);
+            if(!testName.contains("PreRoll") && (testName.contains("IMA") || testName.contains("FW"))) {
+                result = result && eventValidator.validate("adsPlayed_4", 60000);
+            } else {
+                result = result && eventValidator.validate("adsPlayed_2", 60000);
+            }
 
         }catch (Exception e) {
             logger.error(e);

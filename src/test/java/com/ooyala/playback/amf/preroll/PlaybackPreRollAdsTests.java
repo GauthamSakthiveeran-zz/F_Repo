@@ -1,5 +1,6 @@
 package com.ooyala.playback.amf.preroll;
 
+import com.ooyala.playback.page.SetEmbedCodeValidator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,6 +21,7 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
+	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = { "amf", "preroll" }, dataProvider = "testUrls", enabled =false)
 	public void verifyPreroll(String testName, String url) throws OoyalaException {
@@ -49,10 +51,13 @@ public class PlaybackPreRollAdsTests extends PlaybackWebTest {
 				result = result && event.validate("playing_1", 20000);
 			}
 
-			result = result && seekValidator.validate("seeked_1", 190000);
+			if(testName.contains("SetEmbedCode")){
+				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);
+			}else{
+				result = result && seekValidator.validate("seeked_1", 190000);
 
-			result = result && event.validate("played_1", 200000);
-
+				result = result && event.validate("played_1", 200000);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
