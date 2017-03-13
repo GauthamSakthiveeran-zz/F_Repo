@@ -1,6 +1,5 @@
 package com.ooyala.playback.amf.preroll;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -11,7 +10,6 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWebTest {
 
@@ -47,7 +45,7 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 10000);
 			
 			if(result && click){
-				s_assert.assertTrue(clickThrough.validate("", 120000), "Clickthrough failed.");
+				s_assert.assertTrue(clickThrough.validate("", 120000), "Clickthrough");
 			}
 			
 			if (event.isAdPluginPresent("pulse"))
@@ -60,7 +58,7 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			result = result && event.loadingSpinner();
 
 			if(result && cc){
-				s_assert.assertTrue(ccValidator.validate("cclanguage", 60000), "CC failed.");
+				s_assert.assertTrue(ccValidator.validate("cclanguage", 60000), "CC");
 			}
 			
 			result = result && seekAction.seekTillEnd().startAction();
@@ -73,7 +71,7 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			result = false;
 		}
 
-		s_assert.assertTrue(result, "Playback PreRoll Ad tests failed");
+		s_assert.assertTrue(result, "PreRoll");
 		s_assert.assertAll();
 
 	}

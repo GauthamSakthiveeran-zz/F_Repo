@@ -260,7 +260,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     @AfterMethod(alwaysRun = true)
     protected void afterMethod(ITestResult result) throws Exception {
-
         boolean driverNotNullFlag = false;
         logger.info("****** Inside @AfterMethod*****");
         logger.info(webDriverFacile.get());

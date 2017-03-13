@@ -169,10 +169,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		try {
 			switchToControlBar();
 			
-			if(!isElementPresent("CC_BTN")){
-				switchToControlBar();
-			}
-
 			if (!clickOnIndependentElement("CC_BTN"))
 				return false;
 
@@ -182,6 +178,9 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 				boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
 
 				if (horizontal_CC_Option) {
+					if(!isElementPresent("CC_POPHOVER_HORIZONTAL")){
+						switchToControlBar();
+					}
 					if (isElementPresent("CC_SWITCH_CONTAINER_HORIZONTAL") && isElementPresent("CC_MORE_CAPTIONS")
 							&& clickOnIndependentElement("CC_MORE_CAPTIONS")) {
 						return true;

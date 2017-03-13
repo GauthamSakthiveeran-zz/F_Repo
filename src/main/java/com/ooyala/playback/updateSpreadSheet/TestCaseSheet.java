@@ -24,6 +24,7 @@ import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.googleapis.json.GoogleJsonResponseException;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
@@ -150,20 +151,27 @@ public class TestCaseSheet {
 	}
 	
 	
-	private static TestResult getTestResult(ITestResult result, String testCaseName){
-		
-		if(result.getStatus()==ITestResult.SUCCESS){
+	private static TestResult getTestResult(ITestResult result, String testCaseName) {
+
+		String[] failures = result.getThrowable().getMessage().split(":")[1].trim().split(",");
+		if (failures == null || failures.length <= 0) {
+			failures[0] = result.getThrowable().getMessage().split(":")[1].trim();
+		}
+
+		if (result.getStatus() == ITestResult.SUCCESS) {
 			return TestResult.PASSED;
 		}
-		if(result.getStatus()==ITestResult.FAILURE){
-			if(testCaseName.toLowerCase().contains(result.getThrowable().getMessage().toLowerCase())){
-				return TestResult.FAILED;
-			}else{
-				return TestResult.PASSED; 
+		if (result.getStatus() == ITestResult.FAILURE) {
+
+			for (String failure : failures) {
+				if (testCaseName.toLowerCase().contains(failure.toLowerCase())) {
+					return TestResult.FAILED;
+				}
 			}
+			return TestResult.PASSED;
 		}
-		if(result.getStatus()==ITestResult.SKIP){
-			return TestResult.SKIPPED; 
+		if (result.getStatus() == ITestResult.SKIP) {
+			return TestResult.SKIPPED;
 		}
 		return TestResult.SKIPPED;
 	}
@@ -184,9 +192,11 @@ public class TestCaseSheet {
 		String date = format.format(new Date());
 
 		List<Sheet> sheets = service.spreadsheets().get(spreadsheetId).execute().getSheets();
-		List<Request> requests = new ArrayList<>();
+		
 
 		for (Map.Entry<String, ITestResult> entry : testDetails.entrySet()) {
+			
+			List<Request> requests = new ArrayList<>();
 
 			String[] singleTests = entry.getKey().split(TestCaseSheetProperties.delimiterForDifferentTests);
 
@@ -276,16 +286,24 @@ public class TestCaseSheet {
 				}
 
 			}
+			
+			if (requests == null || requests.isEmpty()) {
+				logger.error("No matching data found in excel.");
+				return;
+			}
+
+			try{
+				
+				BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest().setRequests(requests);
+				service.spreadsheets().batchUpdate(spreadsheetId, batchUpdateRequest).execute();
+				
+			}catch(GoogleJsonResponseException ex){
+				logger.error(ex.getMessage());
+				return;
+			}
 
 		}
-
-		if (requests == null || requests.isEmpty()) {
-			logger.error("No matching data found in excel.");
-			return;
-		}
-
-		BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest().setRequests(requests);
-		service.spreadsheets().batchUpdate(spreadsheetId, batchUpdateRequest).execute();
+		
 		logger.info("Data written to spreadsheet");
 	}
 
