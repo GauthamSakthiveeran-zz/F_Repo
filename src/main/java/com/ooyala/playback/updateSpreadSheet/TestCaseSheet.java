@@ -153,15 +153,15 @@ public class TestCaseSheet {
 	
 	private static TestResult getTestResult(ITestResult result, String testCaseName) {
 
-		String[] failures = result.getThrowable().getMessage().split(":")[1].trim().split(",");
-		if (failures == null || failures.length <= 0) {
-			failures[0] = result.getThrowable().getMessage().split(":")[1].trim();
-		}
-
 		if (result.getStatus() == ITestResult.SUCCESS) {
 			return TestResult.PASSED;
 		}
 		if (result.getStatus() == ITestResult.FAILURE) {
+			
+			String[] failures = result.getThrowable().getMessage().split(":")[1].trim().split(",");
+			if (failures == null || failures.length <= 0) {
+				failures[0] = result.getThrowable().getMessage().split(":")[1].trim();
+			}
 
 			for (String failure : failures) {
 				if (testCaseName.toLowerCase().contains(failure.toLowerCase())) {

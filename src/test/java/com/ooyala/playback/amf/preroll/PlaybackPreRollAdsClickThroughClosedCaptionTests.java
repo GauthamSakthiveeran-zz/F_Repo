@@ -1,5 +1,6 @@
 package com.ooyala.playback.amf.preroll;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -46,6 +47,7 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			
 			if(result && click){
 				s_assert.assertTrue(clickThrough.validate("", 120000), "Clickthrough");
+				((JavascriptExecutor) driver).executeScript("pp.play()");
 			}
 			
 			if (event.isAdPluginPresent("pulse"))

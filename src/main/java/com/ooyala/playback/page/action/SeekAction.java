@@ -120,6 +120,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 
 	private boolean seekPlayback() {
 		try{
+			int count = 10;
 			while (true) {
 				double seekTime = Double.parseDouble(((JavascriptExecutor) driver)
 						.executeScript("return pp.getPlayheadTime();").toString());
@@ -148,6 +149,9 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 					extentTest.log(LogStatus.FAIL, "In loading spinner for a really long time while seeking");
 					return false;
 				}
+				if(count<=0)
+					return false;
+				count--;
 			}
 			Thread.sleep(10000);
 		}catch(Exception ex){
