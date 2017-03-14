@@ -83,7 +83,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Preroll Overlay bitmovin"/>
+	    	<description name="VAST:Preroll Overlay Bitmovin"/>
 	        <embed_code name="JtajdoMTE6UWt0G0Gct5dyIabTclDsDy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -144,7 +144,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Main Overlay"/>
+	    	<description name="VAST:Overlay Main"/>
 	        <embed_code name="gwbjJqdDobn3Ky6rNnwPzeA2tVVfQ8YJ"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

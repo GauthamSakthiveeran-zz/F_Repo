@@ -159,7 +159,7 @@
 		</url>
 
 		<url>
-			<description name="BitmovinMidrollFW" />
+			<description name="Freewheel:Midroll Bitmovin" />
 			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
@@ -184,7 +184,7 @@
 		</url>
 		
 		<url>
-			<description name="Freewheel:Midroll" />
+			<description name="Freewheel:Midroll Main" />
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -196,7 +196,7 @@
 		</url>
 
 		<url>
-			<description name="FlashMidroll_Freewheel" />
+			<description name="Freewheel:Midroll OSMF" />
 			<embed_code name="Y5dWVmMDE6lIE-PNSXHfsuTNPmeWbjC4" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN,OSMF" />
@@ -236,7 +236,7 @@
 		</url>
 
 		<url>
-			<description name="VAST:Main Midroll" />
+			<description name="VAST:Midroll Main" />
 			<embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -248,7 +248,7 @@
 		</url>
 
 		<url>
-			<description name="BitmovinMidrollFW_HLS" />
+			<description name="" />
 			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
