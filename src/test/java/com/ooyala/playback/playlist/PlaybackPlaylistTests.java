@@ -23,7 +23,7 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
 
     @Test(groups = "playlist", dataProvider = "testUrls")
     public void testPlaylistTests(String testName, String url) throws OoyalaException {
-        String[] parts= testName.split("-")[1].trim().split(":");
+        String[] parts= testName.split("-")[1].trim().split("-");
         String tcName = parts[0].trim();
         String tcValue = parts[1].trim();
         boolean result = true;
