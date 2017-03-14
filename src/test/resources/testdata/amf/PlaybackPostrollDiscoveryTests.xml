@@ -47,7 +47,7 @@
     	</url>
     	
     	<url>
-	    	<description name="POSTROLL_BITMOVIN_FW"/>
+	    	<description name="Freewheel:Discovery Postroll Up Next Bitmovin"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -70,7 +70,7 @@
     	</url>
     	
     	<!-- <url>
-	    	<description name="POSTROLL_OSMF_FW"/>
+	    	<description name="Freewheel:Discovery Postroll Up Next OSMF"/>
 	        <embed_code name="lkdWVmMDE6cWNTORjWAURSZanDLpVGP7"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>

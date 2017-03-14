@@ -39,7 +39,7 @@
 		</url>
 
 		<url>
-			<description name="BitmovinPreMidPostFW" />
+			<description name="Freewheel:PreMidPost Bitmovin" />
 			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
@@ -135,7 +135,7 @@
 		</url>
 
 		<url>
-			<description name="FlashPreMidPost_Freewheel" />
+			<description name="Freewheel:PreMidPost OSMF" />
 			<embed_code name="lmdWVmMDE6z-KeydAAXsjREkZOApmA8y" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -223,7 +223,7 @@
 		</url>
 
 		<url>
-			<description name="VAST:PreMidPost|VTC:SetEmbedCode" />
+			<description name="VAST:PreMidPost Main|VTC:SetEmbedCode" />
 			<embed_code name="lzMGdpdDq6Dsvi-c32p6u7k46mbT_cxm" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -235,7 +235,7 @@
 		</url>
 
 		<url>
-			<description name="Freewheel:PreMidPost|VTC:SetEmbedCode" />
+			<description name="Freewheel:PreMidPost Main|VTC:SetEmbedCode" />
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />

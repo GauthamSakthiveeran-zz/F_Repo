@@ -91,7 +91,7 @@
     	</url>
     	
     	 <url>
-	    	<description name="VAST:Skippable Ads [ skip button after 10 seconds ] bitmovin"/>
+	    	<description name="VAST:Skippable Ads [ skip button after 10 seconds ] Bitmovin"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>

@@ -39,7 +39,7 @@
 		</url>
 
 		<url>
-			<description name="MAIN_FREEWHEEL" />
+			<description name="Freewheel:Lower Bandwidth Main" />
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -51,7 +51,7 @@
 		</url>
 
 		<url>
-			<description name="BITMOVIN_FREEWHEEL" />
+			<description name="Freewheel:Lower Bandwidth Bitmovin" />
 			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
@@ -63,7 +63,7 @@
 		</url>
 
 		<url>
-			<description name="OSMF_FREEWHEEL" />
+			<description name="Freewheel:Lower Bandwidth OSMF" />
 			<embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />

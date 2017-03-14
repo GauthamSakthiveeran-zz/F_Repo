@@ -3,7 +3,7 @@
 
 	<test name="PlaybackMultipleMidRollAdsTests">
 		<url>
-			<description name="Multimidroll_Bitmovin_Pulse" />
+			<description name="Pulse:Multimidroll Bitmovin" />
 			<embed_code name="dvbGY5MzE6EAI-FdPyCbG7u5Vr6lZ_oY" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -14,7 +14,7 @@
 		</url>
 
 		<url>
-			<description name="Multimidroll_Freewheel" />
+			<description name="Freewheel:Multimidroll Main" />
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -25,7 +25,7 @@
 		</url>
 
 		<url>
-			<description name="Multimidroll_Vast" />
+			<description name="VAST:Multimidroll Main" />
 			<embed_code name="lzajlndDoOfESs3VQahCNG5k3iPus3SI" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
