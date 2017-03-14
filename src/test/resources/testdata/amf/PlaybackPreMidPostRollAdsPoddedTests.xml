@@ -120,7 +120,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPreMidPost_Podded_IMA"/>
+	    	<description name="IMA:Ad Rule PreMidPost Podded OSMF"/>
 	        <embed_code name="YweGVmMDE6saN_0epjxkepYlC6m7hXe7"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -145,7 +145,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA PreMidPost Podded"/>
+	    	<description name="IMA:PreMidPost Podded Bitmovin"/>
 	        <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>

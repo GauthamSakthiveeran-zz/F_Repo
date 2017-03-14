@@ -299,7 +299,7 @@
     	
     	
     	<url>
-	    	<description name="IMA:Bitmovin Preroll HLS"/>
+	    	<description name="IMA:Bitmovin Preroll HLS|IMA:Preroll with Google UI"/>
 	        <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>

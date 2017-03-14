@@ -135,7 +135,7 @@
 		</url>
 
 		<url>
-			<description name="Midroll_IMA" />
+			<description name="IMA:Ad Rule Midroll" />
 			<embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -147,7 +147,7 @@
 		</url>
 
 		<url>
-			<description name="BitmovinMidroll_IMA" />
+			<description name="IMA:Midroll Bitmovin" />
 			<embed_code name="IxOTVnMTE6mwR52DOItZ1k1DioFcKQrk" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -184,7 +184,7 @@
 		</url>
 		
 		<url>
-			<description name="Midroll_Freewheel" />
+			<description name="Freewheel:Midroll" />
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -284,7 +284,7 @@
 		</url>
 
 		<url>
-			<description name="Midroll_SetEmbedCode_IMA" />
+			<description name="IMA:Midroll|VTC:SetEmbedCode" />
 			<embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -295,7 +295,7 @@
 
 		</url>
 		<url>
-			<description name="Midroll_SetEmbedCode_Vast" />
+			<description name="VAST:Midroll|VTC:SetEmbedCode" />
 			<embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -306,7 +306,7 @@
 
 		</url>
 		<url>
-			<description name="Midroll_SetEmbedCode_Freewheel" />
+			<description name="Freewheel:Midroll|VTC:SetEmbedCode" />
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -314,7 +314,6 @@
 			<additionalPlugins name="" />
 			<pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
 			<playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
-
 		</url>
 	</test>
 

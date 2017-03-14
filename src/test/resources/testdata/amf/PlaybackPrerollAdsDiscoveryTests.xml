@@ -142,7 +142,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:BitmovinDiscoveryPreroll_IMA_HLS"/>
+	    	<description name="IMA:Discovery Preroll Bitmovin HLS"/>
 	        <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>

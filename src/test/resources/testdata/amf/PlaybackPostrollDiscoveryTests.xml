@@ -36,7 +36,7 @@
     	</url>
     	
     	<url>
-	    	<description name="POSTROLL_MAIN_IMA"/>
+	    	<description name="IMA:Discovery Postroll Up Next Main"/>
 	        <embed_code name="5sbHlycTqQ5dqQoCVcY3Rpe78TVvJKjg"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -105,7 +105,7 @@
     	</url>
     	
     	<url>
-	    	<description name="POSTROLL_OSMF_IMA"/>
+	    	<description name="IMA:Discovery Postroll Up Next OSMF"/>
 	        <embed_code name="lud2VmMDE6KVrJhm09aKRO9JhdCbLt2-"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -128,7 +128,7 @@
     	</url>
     	
     	<url>
-	    	<description name="POSTROLL_BITMOVIN_IMA_HLS"/>
+	    	<description name="IMA:Discovery Postroll Up Next Bitmovin HLS"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
