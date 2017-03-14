@@ -174,7 +174,7 @@
 		</url>
 
 		<url>
-			<description name="PreMidPost_Bitmovin_Pulse" />
+			<description name="Pulse:PreMidPost Bitmovin" />
 			<embed_code name="VlZGY5MzE63yUh1dSJkD8P5r3QLN4krQ" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />

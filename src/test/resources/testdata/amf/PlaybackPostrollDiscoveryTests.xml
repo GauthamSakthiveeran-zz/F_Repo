@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPostrollDiscoveryTests" >
     	<url>
-	    	<description name="Discovery_Postroll_Bitmovin_Pulse"/>
+	    	<description name="Pulse:Discovery Postroll Bitmovin"/>
 	        <embed_code name="A3Y2Y5MzE6vyMaoirADDRV6bpmtIDHH2"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>

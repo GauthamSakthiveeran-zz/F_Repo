@@ -39,7 +39,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Postroll_Bitmovin_Pulse"/>
+	    	<description name="Pulse:Postroll Bitmovin"/>
 	        <embed_code name="A3Y2Y5MzE6vyMaoirADDRV6bpmtIDHH2"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -51,7 +51,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Postroll_HTML5_Pulse"/>
+	    	<description name="Pulse:Postroll main"/>
 	        <embed_code name="VjcGY5MzE6CLAiCSPoTztUc2yBXQZksS"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
