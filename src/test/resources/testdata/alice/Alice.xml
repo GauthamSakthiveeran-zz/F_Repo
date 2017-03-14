@@ -663,7 +663,7 @@
 
     <test name="PlaybackDRMTests">
         <url>
-            <description name="Elemental Widewine+Playready Dash VOD" />
+            <description name="DRM + Content Protection:Dash VOD bitmovin" />
             <embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
             <pcode name="FoeG863GnBL4IhhlFC1Q2jqbkH9m" />
             <plugins name="BITMOVIN" />
@@ -674,7 +674,7 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
-            <description name="Elemental Widewine+Playready H.264 4K Dash Cenc VOD" />
+            <description name="DRM + Content Protection:H.264 4K Dash Cenc VOD bitmovin" />
             <embed_code name="hsM2h3NTE6oVIIGFqk1fERPOXv-2Myr0" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN,MAIN" />
@@ -685,7 +685,7 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
-            <description name="Elemental Widewine+Playready dash + Geo Restriction" />
+            <description name="DRM + Content Protection:dash + Geo Restriction bitmovin" />
             <embed_code name="tua2hqNTE61OtT9uCWV6IKb3s4dDd7DT" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
@@ -696,7 +696,7 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
-            <description name="Elemental Fairplay Fairplay HLS VOD" />
+            <description name="DRM + Content Protection:Fairplay HLS VOD bitmovin" />
             <embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
@@ -707,7 +707,7 @@
             <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
         </url>
         <url>
-            <description name="Elemental Fairplay Fairplay HLS + OPT" />
+            <description name="DRM + Content Protection:Fairplay HLS + OPT bitmovin" />
             <embed_code name="c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
@@ -718,7 +718,7 @@
             <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892591060&account_id=dulari_qa&&&signature=iVNk9dUp9ohR39ud/rsYjxdN3X4Kao6oV/LC8DuPObg"}]]></playerParameter>
         </url>
         <url>
-            <description name="Elemental Fairplay Fairplay HLS + Geo Restriction" />
+            <description name="DRM + Content Protection:Fairplay HLS + Geo Restriction bitmovin" />
             <embed_code name="U0NDNiNDE6CaJv41fU4QpRFS4FDUGX4x" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
@@ -729,7 +729,7 @@
             <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
         </url>
         <url>
-            <description name="Elemental Fairplay Fairplay HLS + CC" />
+            <description name="DRM + Content Protection:Fairplay HLS + CC bitmovin" />
             <embed_code name="4xMzQ1NTE62_5ckCOZ7kSCQ1jQ8ke_8v" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
@@ -1016,7 +1016,7 @@
     </test>
     <test name="PlaybackOptEntitlementTests">
         <url>
-            <description name="Elemental Widewine+Playready dash + OPT + entitlement" />
+            <description name="DRM + Content Protection:dash + OPT + entitlement bitmovin" />
             <embed_code name="1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
@@ -1040,7 +1040,7 @@
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2889048225&account_id=dulari_qa&&&signature=0AsQMaoDq58w9q/L6P7cJzOI85gocxWPyw69dlLoQm0"}]]></playerParameter>
         </url>
         <url>
-            <description name="Fairplay HLS + OPT + entitlement" />
+            <description name="DRM + Content Protection:Fairplay HLS + OPT + entitlement bitmovin" />
             <embed_code name="E1eTJiNDE6JxNLNrM_CK-vicoKeZtW1e" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
@@ -1053,7 +1053,7 @@
     </test>
     <test name="PlaybackDeviceRegistrationTests">
         <url>
-            <description name="Alice Core:Device restriction" />
+            <description name="Alice Core:Device restriction| DRM + Content Protection:dash + Device Registration(Limit:2)" />
             <embed_code name="ZoMmd3NTE6zAFEYbLkU5hKXp8zF2ctK0" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
