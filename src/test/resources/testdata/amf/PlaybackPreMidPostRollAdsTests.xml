@@ -87,7 +87,7 @@
 		</url>
 
 		<url>
-			<description name="BitmovinPreMidPost_Vast" />
+			<description name="VAST:PreMidPost Bitmovin" />
 			<embed_code name="w0bjdoMTE6pvm5MjCey7t2WJavX08Ob1" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -123,7 +123,7 @@
 		</url>
 
 		<url>
-			<description name="IMA:PreMidPost" />
+			<description name="IMA:PreMidPost Main" />
 			<embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -161,7 +161,7 @@
 		</url>
 
 		<url>
-			<description name="FlashPreMidPost_Vast" />
+			<description name="VAST:PreMidPost OSMF" />
 			<embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />

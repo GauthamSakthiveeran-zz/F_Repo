@@ -72,7 +72,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Main CC enabled preroll"/>
+	    	<description name="VAST:CC enabled preroll Main"/>
 	        <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -253,7 +253,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Preroll Vast 2.0 bitmovin"/>
+	    	<description name="VAST:Preroll Vast 2.0 + Bitmovin"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>

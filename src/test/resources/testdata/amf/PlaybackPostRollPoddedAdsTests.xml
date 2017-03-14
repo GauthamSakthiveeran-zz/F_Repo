@@ -25,7 +25,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:3 Midroll Podded at 10 or 20 second Main|VTC:SetEmbedCode"/>
+	    	<description name="Freewheel:3 Postroll Podded at 10 or 20 second Main|VTC:SetEmbedCode"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -36,7 +36,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:3 Midroll Podded at 10 or 20 second Main|VTC:SetEmbedCode"/>
+	    	<description name="VAST:3 Postroll Podded at 10 or 20 second Main|VTC:SetEmbedCode"/>
 	        <embed_code name="Rna2x4dDrdRWdZnUS4lxeLR6sZWhdpZD"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

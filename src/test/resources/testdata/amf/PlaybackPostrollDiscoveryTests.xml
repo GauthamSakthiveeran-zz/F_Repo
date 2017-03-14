@@ -59,7 +59,7 @@
     	
     	
     	<url>
-	    	<description name="POSTROLL_BITMOVIN_VAST"/>
+	    	<description name="VAST:Discovery Postroll Up Next Bitmovin"/>
 	        <embed_code name="5pZjdoMTE6ABVRm7f8R4poI7AK2PRd1I"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -83,7 +83,7 @@
     	
     	
     	<url>
-	    	<description name="POSTROLL_MAIN_VAST"/>
+	    	<description name="VAST:Discovery Postroll Up Next Main"/>
 	        <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -140,7 +140,7 @@
     	
     	
     	<url>
-	    	<description name="VAST2.0 OSMF"/>
+	    	<description name="VAST:Discovery Postroll Up Next OSMF"/>
 	        <embed_code name="85bm5kMDE6uYN7kMcTPz72AYcRuJLlgz"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>

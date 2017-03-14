@@ -16,6 +16,18 @@
 		</url>
 
 		<url>
+			<description name="VAST|Midroll Vast 3.0 + Bitmovin" />
+			<embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN,MAIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+
+		</url>
+
+		<url>
 			<description name="BitmovinMidroll_VPAID2.0_HLS" />
 			<embed_code name="0zdnZnMTE6_eSVEEE_C1X1tCmJE5GmDe" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -172,7 +184,7 @@
 
 
 		<url>
-			<description name="VAST:Midroll Vast 2.0 + bitmovin" />
+			<description name="VAST:Midroll Vast 2.0 + Bitmovin" />
 			<embed_code name="VwYzdoMTE6MFmVcSNiwQyGpeSOuvGpcc" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
