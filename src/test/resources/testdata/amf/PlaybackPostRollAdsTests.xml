@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPostRollAdsTests" > 
     	<url>
-	    	<description name="BitmovinPostrol_Vast3"/>
+	    	<description name="VAST|Postroll Vast 3.0 + Bitmovin"/>
 	        <embed_code name="w0cDZnMTE6lsFVFkP2qVcLOLOLVjY4r0"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -231,7 +231,7 @@
     	</url>
 
 		<url>
-			<description name="VAST:Postroll|VTC:SetEmbedCode"/>
+			<description name="VAST:Postroll Main|VTC:SetEmbedCode"/>
 			<embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="MAIN"/>

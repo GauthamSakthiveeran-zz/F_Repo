@@ -174,7 +174,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Main Skippable Ads [ skip button after 7 seconds ]"/>
+	    	<description name="VAST:Skippable Ads [ skip button after 7 seconds ] Main"/>
 	        <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

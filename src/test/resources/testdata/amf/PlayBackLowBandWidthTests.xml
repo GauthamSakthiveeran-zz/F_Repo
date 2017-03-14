@@ -100,7 +100,7 @@
 
 
 		<url>
-			<description name="OSMF_VAST" />
+			<description name="VAST:Lower Bandwidth OSMF" />
 			<embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />

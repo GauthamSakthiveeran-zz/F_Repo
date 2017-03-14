@@ -40,7 +40,7 @@
     	</url>
     	
     	<!-- <url>
-	    	<description name="OSMF_VAST"/>
+	    	<description name="VAST:CC enabled Midroll OSMF"/>
 	        <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>

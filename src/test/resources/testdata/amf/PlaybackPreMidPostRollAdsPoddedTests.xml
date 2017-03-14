@@ -61,7 +61,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPreMidPostPodded_Vast"/>
+	    	<description name="VAST:PreMidPost Podded Bitmovin"/>
 	        <embed_code name="liNThoMTE6sIORN8TVQ0b0Z-xzMDlCQT"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -96,7 +96,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPreMidPost_Podded_Vast"/>
+	    	<description name="VAST:PreMidPost Podded OSMF"/>
 	        <embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
