@@ -135,7 +135,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPostrol_IMA"/>
+	    	<description name="IMA:Postroll Bitmovin"/>
 	        <embed_code name="h0ODZnMTE6FB_Hfx1D4CUKXmzWyQUbXC"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -147,7 +147,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPostrollFW"/>
+	    	<description name="Freewheel:Postroll Bitmovin"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -159,7 +159,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPostroll_Vast"/>
+	    	<description name="VAST:Postroll Bitmovin"/>
 	        <embed_code name="5pZjdoMTE6ABVRm7f8R4poI7AK2PRd1I"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -183,7 +183,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPostrol_Vast_HLS"/>
+	    	<description name="VAST:Postroll Bitmovin"/>
 	        <embed_code name="5pZjdoMTE6ABVRm7f8R4poI7AK2PRd1I"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -195,7 +195,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPostroll_IMA"/>
+	    	<description name="IMA:Postroll OSMF"/>
 	        <embed_code name="Z4d2VmMDE67NI7nxP_RQ6EBEhnkBMmAP"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -207,19 +207,19 @@
 	        
     	</url>
 
-    	<url>
-	    	<description name="BitmovinPostrollFW_HLS"/>
-	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN,MAIN"/>
-	        <adPlugins name="FREEWHEEL"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"platform":"html5","freewheel-ads-manager":{"fw_video_asset_id":"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
-    	</url>
+		<url>
+			<description name="Freewheel:Postroll Bitmovin"/>
+			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+			<plugins name="BITMOVIN,MAIN"/>
+			<adPlugins name="FREEWHEEL"/>
+			<additionalPlugins name=""/>
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+			<playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"platform":"html5","freewheel-ads-manager":{"fw_video_asset_id":"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+		</url>
     	
     	<url>
-	    	<description name="BitmovinPostrol_IMA_HLS"/>
+	    	<description name="IMA:Postroll Bitmovin"/>
 	        <embed_code name="h0ODZnMTE6FB_Hfx1D4CUKXmzWyQUbXC"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -230,7 +230,7 @@
 	        
     	</url>
     	<url>
-	    	<description name="FlashPostroll_Vast"/>
+	    	<description name="VAST:Postroll OSMF"/>
 	        <embed_code name="85bm5kMDE6uYN7kMcTPz72AYcRuJLlgz"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -242,7 +242,7 @@
     	</url>
 
 		<url>
-			<description name="Postroll_SetEmbedCode_Vast"/>
+			<description name="VAST:Postroll|VTC:SetEmbedCode"/>
 			<embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="MAIN"/>
@@ -254,7 +254,7 @@
 		</url>
 
 		<url>
-			<description name="Postroll_SetEmbedCode_Freewheel"/>
+			<description name="Freewheel:Postroll|VTC:SetEmbedCode"/>
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="MAIN"/>
@@ -266,7 +266,7 @@
 		</url>
 
 		<url>
-			<description name="Postroll_SetEmbedCode_IMA"/>
+			<description name="IMA:Ad Rule Postroll|VTC:SetEmbedCode"/>
 			<embed_code name="5sbHlycTqQ5dqQoCVcY3Rpe78TVvJKjg"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="MAIN"/>

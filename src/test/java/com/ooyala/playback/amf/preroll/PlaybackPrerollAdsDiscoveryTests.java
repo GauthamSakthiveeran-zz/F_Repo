@@ -36,7 +36,7 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && event.validate("PreRoll_willPlaySingleAd_1", 1000);
+			result = result && event.validate("PreRoll_willPlaySingleAd_1", 10000);
 
 			result = result && event.validate("singleAdPlayed_1", 150000);
 

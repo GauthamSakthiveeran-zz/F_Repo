@@ -3,7 +3,7 @@
 
 	<test name ="PlayBackNoAdsTests" >
     	<url>
-	    	<description name="OSMF_IMA"/>
+	    	<description name="IMA:OSMF No Ad"/>
 	        <embed_code name="lyd2VmMDE6TJNxuMy4twOT3HkoFDf0ZW"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="MAIN_FW"/>
+	    	<description name="Freewheel:No Ad Main"/>
 	        <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -25,7 +25,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST2.0 MAIN"/>
+	    	<description name="VAST:Main No Ad"/>
 	        <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -36,7 +36,7 @@
     	</url>
     	
     	<url>
-	    	<description name="OSMF_FW"/>
+	    	<description name="Freewheel:OSMF No Ad"/>
 	        <embed_code name="YxdWVmMDE6Zio2ab5f96HpfxoQ1Lm3x8"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -47,7 +47,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST2.0 OSMF"/>
+	    	<description name="VAST:No Ad OSMF"/>
 	        <embed_code name="0zbm5kMDE6hbM_xDZmnsKUYqXs3N9JrL"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>

@@ -74,64 +74,64 @@ public class AdClickThroughValidator extends PlayBackPage implements
 		String video_plugin = data.get("video_plugins");
 		
 		if (value != null) {
+			
+			boolean flag = true;
 
-			if (!getPlatform().equalsIgnoreCase("Android")) {
-
-				boolean flag = true;
-
-				if (!value.contains("freewheel")) {
-					if (value.contains("vast")) {
-						if (!(waitOnElement("AD_SCREEN_PANEL", 5000) && clickOnIndependentElement("AD_SCREEN_PANEL"))) 
-							// adding the wait, because sometimes the ad takes time to load when executing tests in parallel
-							return false;
-					} else if (value.contains("ima") && video_plugin.contains("bit")
-							&& !getBrowser().contains("safari")) {
-						if (!clickOnIndependentElement("AD_PANEL_1"))
-							return false;
-						if (!waitOnElement(By.id("adsClickThroughOpened"), 10000))
-							return false;
-						flag = false;
-					} else {
-						if (!clickOnIndependentElement("AD_PANEL"))
-							return false;
-					}
-					if (flag) {
-						if (!waitOnElement(By.id("adsClicked_1"), 10000))
-							return false;
-						if (!waitOnElement(By.id("adsClicked_videoWindow"), 10000))
-							return false;
-					}
-
-					extentTest.log(PASS, "AdsClicked by clicking on the ad screen");
+			if (isElementPresent("AD_SCREEN_PANEL")) {
+				if (!clickOnIndependentElement("AD_SCREEN_PANEL"))
+					return false;
+			} else if (isElementPresent("AD_PANEL_1")) {
+				if (!(clickOnIndependentElement("AD_PANEL_1") && waitOnElement(By.id("adsClickThroughOpened"), 10000))) {
+					return false;
 				}
+				flag = false;
+			} else {
+				if (!clickOnIndependentElement("AD_PANEL"))
+					return false;
 			}
-			if (!value.contains("ima")) {
+
+			if (flag) {
+				if (!waitOnElement(By.id("adsClicked_1"), 10000))
+					return false;
+				if (!waitOnElement(By.id("adsClicked_videoWindow"), 10000))
+					return false;
+			}
+
+			if (getWindowHandleCount() <= 1) {
+				extentTest.log(LogStatus.FAIL, "New tab did not open on ad click.");
+			}
+
+			extentTest.log(PASS, "AdsClicked by clicking on the ad screen");
+			
+//			if (!value.contains("ima")) {
+			{
 				if (getBrowser().contains("internet explorer")) {
 					if (value.contains("freewheel") && video_plugin.contains("main") && !video_plugin.contains("osmf")
 							&& !video_plugin.contains("bit")) {
-						if (!(waitOnElement("LEARN_MORE_IE", 5000) && clickOnIndependentElement("LEARN_MORE_IE")))
+						if (!(waitOnElement("LEARN_MORE_IE", 10000) && clickOnIndependentElement("LEARN_MORE_IE")))
 							return false;
 					} else {
-						if (!(waitOnElement("LEARN_MORE", 5000) && clickOnHiddenElement("LEARN_MORE")))
+						if (!(waitOnElement("LEARN_MORE", 10000) && clickOnHiddenElement("LEARN_MORE")))
 							return false;
 					}
 
 				} else {
-					if (!(waitOnElement("LEARN_MORE", 5000) && clickOnIndependentElement("LEARN_MORE")))
+					if (!(waitOnElement("LEARN_MORE", 10000) && clickOnIndependentElement("LEARN_MORE")))
 						return false;
 				}
-				if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 5000))
+				if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 10000))
 					return false;
+				
+				if(getWindowHandleCount()<=1){
+					extentTest.log(LogStatus.FAIL, "New tab did not open on ad click.");
+				}
 
 			}
 			extentTest.log(PASS, "AdsClicked by clicking on the learn more button");
 
 			closeOtherWindows(baseWindowHdl);
 
-			boolean isAd = isAdPlaying();
-			if (isAd) {
-				((JavascriptExecutor) driver).executeScript("pp.play()");
-			}
+			((JavascriptExecutor) driver).executeScript("pp.play()");
 			return true;
 
 		} else {

@@ -36,7 +36,7 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && playAction.startAction();
-			result = result && event.validate("BumperAd", 60000);
+			result = result && event.validate("BumperAd", 5000);
 
 			result = result && event.validate("playing_FirstTime", 30000);
 

@@ -14,7 +14,7 @@
     	</url> 
     	
     	<url>
-	    	<description name="OSMF_FREEWHEEL"/>
+	    	<description name="Freewheel:CC enabled Midroll OSMF"/>
 	        <embed_code name="Y5dWVmMDE6lIE-PNSXHfsuTNPmeWbjC4"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN,OSMF"/>
@@ -27,7 +27,7 @@
     	</url>
     	
     	<url>
-	    	<description name="OSMF_IMA"/>
+	    	<description name="IMA:CC enabled Midroll OSMF"/>
 	        <embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>

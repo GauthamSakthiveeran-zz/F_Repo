@@ -47,7 +47,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	private boolean checkClosedCaptionButton() {
 
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(5000);
 			switchToControlBar();
 			
 			if (!isElementPresent("CC_BTN")){
@@ -127,7 +127,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-
+		
 		boolean flag = checkClosedCaptionButton() && verifyCloseClosedCaptionPanel() && closedCaptionMicroPanel()
 				&& validateClosedCaptionPanel() && validateSwitchContainer() && verifyCloseClosedCaptionPanel()
 				&& checkClosedCaptionLanguages() && validateClosedCaptionCloseButton();
@@ -138,6 +138,9 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			} else {
 				flag = false;
 			}
+		}
+		if(!flag){
+			extentTest.log(LogStatus.FAIL, "closed caption validation failed.");
 		}
 		return flag;
 
@@ -165,7 +168,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	protected boolean closedCaptionMicroPanel() throws Exception {
 		try {
 			switchToControlBar();
-
+			
 			if (!clickOnIndependentElement("CC_BTN"))
 				return false;
 
@@ -175,6 +178,9 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 				boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
 
 				if (horizontal_CC_Option) {
+					if(!isElementPresent("CC_POPHOVER_HORIZONTAL")){
+						switchToControlBar();
+					}
 					if (isElementPresent("CC_SWITCH_CONTAINER_HORIZONTAL") && isElementPresent("CC_MORE_CAPTIONS")
 							&& clickOnIndependentElement("CC_MORE_CAPTIONS")) {
 						return true;

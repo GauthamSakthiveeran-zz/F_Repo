@@ -6,6 +6,7 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
@@ -262,13 +263,18 @@ public abstract class PlayBackPage extends WebPage {
 
 	}
 	
+	protected int getWindowHandleCount(){
+		Set<String> windowHandles = driver.getWindowHandles();
+		return windowHandles.size();
+	}
+	
 	protected void closeOtherWindows(String baseWindowHdl) throws Exception{
 		sleep(2000);
-		java.util.Set<java.lang.String> windowHandles = driver
-				.getWindowHandles();
-		int count = windowHandles.size();
+		
+		int count = getWindowHandleCount();
+		
 		logger.info("Window handles : " + count);
-
+		
 		for (String winHandle : driver.getWindowHandles()) {
 			if (!winHandle.equals(baseWindowHdl)) {
 				driver.switchTo().window(winHandle);
