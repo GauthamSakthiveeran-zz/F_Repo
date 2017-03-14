@@ -151,7 +151,7 @@
     	</url>
     	
       	<url>
-	    	<description name="VPAID:VPAID2.0 Preroll Vast AD Manager+ Main video plugin"/>
+	    	<description name="VPAID:Preroll"/>
 	        <embed_code name="BtOGxiMjE6V7y0GBfHGzwJHoXDplM9Gf"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -174,7 +174,7 @@
     	
     	
     	<url>
-	    	<description name="VPAID:VPAID 2.0 Preroll "/>
+	    	<description name="VPAID:VPAID 2.0 Preroll"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

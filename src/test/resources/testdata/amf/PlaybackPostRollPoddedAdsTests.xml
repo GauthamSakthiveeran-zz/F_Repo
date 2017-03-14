@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPostRollPoddedAdsTests" >
     	<url>
-	    	<description name="Playback_Postroll_Podded_VPAID2.0"/>
+	    	<description name="VPAID:3 Postroll Podded"/>
 	        <embed_code name="94ajI4MjE67rcugQEGwylcOLG9Ggbads"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

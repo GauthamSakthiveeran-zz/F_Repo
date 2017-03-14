@@ -63,7 +63,7 @@
 		</url>
 
 		<url>
-			<description name="Playback_Midroll_VPAID2.0_IMA" />
+			<description name="VPAID:VPAID 2.0 Midroll" />
 			<embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -135,7 +135,7 @@
 		</url>
 
 		<url>
-			<description name="Playback_Midroll_VPAID2.0" />
+			<description name="VPAID:Midroll" />
 			<embed_code name="A1bmxiMjE64igdFOvxveOJdKRC7tqQ2C" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -284,7 +284,7 @@
 		</url>
 
 		<url>
-			<description name="BitmovinMidroll_VPAID2.0" />
+			<description name="VPAID:Bitmovin Midroll" />
 			<embed_code name="0wdnI4MjE68TtC2n_PMT4HwiyDJXYEGX" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="MAIN,BITMOVIN" />
