@@ -321,7 +321,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:Bitmovin Clickthrough|IMA:Bitmovin Preroll"/>
+	    	<description name="IMA:Clickthrough Bitmovin|IMA:Preroll Bitmovin"/>
 	        <embed_code name="Q2MHE4YTE6k5PBgjLoAdIYi-4F2NM8kV"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -332,7 +332,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:Bitmovin Clickthrough"/>
+	    	<description name="Freewheel:Clickthrough Bitmovin"/>
 	        <embed_code name="pjY2lhYTE6kw5PhTwOSuW0EqH_JFLLWe"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -387,7 +387,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:Clickthrough Bitmovin"/>
+	    	<description name="Freewheel:Bitmovin Clickthrough HLS"/>
 	        <embed_code name="pjY2lhYTE6kw5PhTwOSuW0EqH_JFLLWe"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -399,7 +399,7 @@
     	
     		
     	<url>
-	    	<description name="IMA:Clickthrough Bitmovin"/>
+	    	<description name="IMA:Bitmovin Clickthrough HLS"/>
 	        <embed_code name="Q2MHE4YTE6k5PBgjLoAdIYi-4F2NM8kV"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>

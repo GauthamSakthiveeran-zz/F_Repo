@@ -16,7 +16,7 @@
 		</url>
 
 		<url>
-			<description name="VAST|Midroll Vast 3.0 + Bitmovin" />
+			<description name="VAST:Midroll Vast 3.0 + Bitmovin" />
 			<embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
@@ -260,7 +260,7 @@
 		</url>
 
 		<url>
-			<description name="" />
+			<description name="BitmovinMidrollFW_HLS" />
 			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
