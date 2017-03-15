@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackMidRollPoddedAdsTests" > 
     	<url>
-	    	<description name="Playback_Midroll_Podded_VPAID2.0"/>
+	    	<description name="VPAID:3 Midroll Podded at 10 or 20 second"/>
 	        <embed_code name="t4cmxiMjE6jsw26kuwwYIPBPG15jy2hO"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

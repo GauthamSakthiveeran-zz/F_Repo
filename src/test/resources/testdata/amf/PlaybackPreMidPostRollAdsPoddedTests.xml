@@ -4,7 +4,7 @@
 	<test name ="PlaybackPreMidPostRollAdsPoddedTests" >
 	
     	<url>
-	    	<description name="Playback_PreMidPost_VPAID2.0"/>
+	    	<description name="VPAID:PreMidPost Podded"/>
 	        <embed_code name="dzMm5iMjE6rPdV3p7yklZPdz85kWGNSj"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

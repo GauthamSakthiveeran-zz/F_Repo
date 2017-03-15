@@ -111,7 +111,7 @@
 		</url>
 
 		<url>
-			<description name="BitmovinPreMidPost_VPAID2.0" />
+			<description name="VPAID:Bitmovin PreMidPost" />
 			<embed_code name="sydnI4MjE6Mupnaunbb8jtY1M49KsDPv" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="MAIN,BITMOVIN" />
@@ -174,7 +174,7 @@
 		</url>
 
 		<url>
-			<description name="PreMidPost_Bitmovin_Pulse" />
+			<description name="Pulse:PreMidPost Bitmovin" />
 			<embed_code name="VlZGY5MzE63yUh1dSJkD8P5r3QLN4krQ" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -186,7 +186,7 @@
 		</url>
 
 		<url>
-			<description name="VPAID 2.0 PreMidPost" />
+			<description name="VPAID:VPAID 2.0 PreMidPost" />
 			<embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />

@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPrerollAdsDiscoveryTests" > 
     	<url>
-	    	<description name="VPAID:Discovery_Preroll_VPAID2.0"/>
+	    	<description name="VPAID:Discovery Preroll UP Next"/>
 	        <embed_code name="BtOGxiMjE6V7y0GBfHGzwJHoXDplM9Gf"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
