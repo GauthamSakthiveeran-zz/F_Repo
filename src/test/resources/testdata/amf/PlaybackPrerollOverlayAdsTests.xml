@@ -61,7 +61,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:Preroll Overlay Bitmovin"/>
+	    	<description name="IMA:Overlay Bitmovin"/>
 	        <embed_code name="w2bmFnMTE66yXj73IMWj_zcylLOnXpdR"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
