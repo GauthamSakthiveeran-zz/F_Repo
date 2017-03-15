@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackIMAPreVastMidAdsTests" >
     	<url>
-	    	<description name="BITMOVIN_IMA_VAST"/>
+	    	<description name="IMA:IMA PreRoll + VAST MidRoll Bitmovin"/>
 	        <embed_code name="J1ODhoMTE6psbYgbXq5pT8-wuHwRb1lr"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
