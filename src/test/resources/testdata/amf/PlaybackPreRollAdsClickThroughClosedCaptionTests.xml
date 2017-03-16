@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPreRollAdsClickThroughClosedCaptionTests" >
     	<url>
-	    	<description name="IMA:CC enabled preroll Main|IMA:Main Preroll|IMA:Clickthrough Main"/>
+	    	<description name="IMA:CC enabled preroll Main|IMA:Ad Rule Preroll Main|IMA:Clickthrough Main"/>
 	        <embed_code name="1hZHQ4YTE6-JSjQJuODqJkLoOC2IfXWr"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -49,7 +49,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:CC enabled preroll bitmovin"/>
+	    	<description name="VAST:CC enabled preroll Bitmovin"/>
 	        <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -60,7 +60,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:CC enabled preroll OSMF|Freewheel:OSMF Preroll|Freewheel:Clickthrough OSMF"/>
+	    	<description name="Freewheel:CC enabled preroll OSMF|Freewheel:Preroll OSMF|Freewheel:Clickthrough OSMF"/>
 	        <embed_code name="JtcXM4YTE6-RdgfZM_X3oC9VHcbz5NuM"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -72,7 +72,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Main  CC enabled preroll"/>
+	    	<description name="VAST:CC enabled preroll Main"/>
 	        <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -94,7 +94,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:CC enabled preroll OSMF|IMA:OSMF Preroll|IMA:Clickthrough OSM"/>
+	    	<description name="IMA:CC enabled preroll OSMF|IMA:OSMF Preroll|IMA:Clickthrough OSMF"/>
 	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -128,7 +128,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:CC enabled preroll OSMF|VAST:OSMF Preroll|VAST:Clickthrough OSMF"/>
+	    	<description name="VAST:CC enabled preroll OSMF|VAST:Preroll OSMF|VAST:Clickthrough OSMF"/>
 	        <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -151,7 +151,7 @@
     	</url>
     	
       	<url>
-	    	<description name="VPAID:VPAID2.0 Preroll Vast AD Manager+ Main video plugin"/>
+	    	<description name="VPAID:Preroll"/>
 	        <embed_code name="BtOGxiMjE6V7y0GBfHGzwJHoXDplM9Gf"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -174,7 +174,7 @@
     	
     	
     	<url>
-	    	<description name="VPAID:VPAID 2.0 Preroll "/>
+	    	<description name="VPAID:VPAID 2.0 Preroll"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -253,7 +253,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Preroll Vast 2.0 bitmovin"/>
+	    	<description name="VAST:Preroll Vast 2.0 + Bitmovin"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -299,7 +299,7 @@
     	
     	
     	<url>
-	    	<description name="IMA:Bitmovin Preroll HLS"/>
+	    	<description name="IMA:Preroll Bitmovin|IMA:Preroll with Google UI"/>
 	        <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -310,7 +310,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:Bitmovin Preroll"/>
+	    	<description name="Freewheel:Preroll Bitmovin|Freewheel:CC enabled preroll Bitmovin"/>
 	        <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -321,7 +321,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:Bitmovin Clickthrough|IMA:Bitmovin Preroll"/>
+	    	<description name="IMA:Clickthrough Bitmovin|IMA:Preroll Bitmovin"/>
 	        <embed_code name="Q2MHE4YTE6k5PBgjLoAdIYi-4F2NM8kV"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -332,7 +332,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:Bitmovin Clickthrough"/>
+	    	<description name="Freewheel:Clickthrough Bitmovin"/>
 	        <embed_code name="pjY2lhYTE6kw5PhTwOSuW0EqH_JFLLWe"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -354,7 +354,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:Clickthrough Main|Freewheel:Main Preroll"/>
+	    	<description name="Freewheel:Clickthrough Main|Freewheel:Preroll Main"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -365,7 +365,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Main Clickthrough|VAST:Main Preroll"/>
+	    	<description name="VAST:Clickthrough Main|VAST:Preroll Main"/>
 	        <embed_code name="Bwd3A4YTE61jiXgzo3k5MkrFCnJrUw_4"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -376,7 +376,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Bitmovin Clickthrough HLS"/>
+	    	<description name="VAST:Clickthrough Bitmovin"/>
 	        <embed_code name="U0dnA4YTE6IMBy7T9pgc3MbXumLKIcyD"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>

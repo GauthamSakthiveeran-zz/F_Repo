@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPostRollAdsTests" > 
     	<url>
-	    	<description name="BitmovinPostrol_Vast3"/>
+	    	<description name="VAST|Postroll Vast 3.0 + Bitmovin"/>
 	        <embed_code name="w0cDZnMTE6lsFVFkP2qVcLOLOLVjY4r0"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -15,7 +15,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPostrol_VPAID2.0"/>
+	    	<description name="VPAID:Bitmovin Postroll"/>
 	        <embed_code name="93anI4MjE6qgS_sr2KepPHDWNfJb9au2"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="MAIN,BITMOVIN"/>
@@ -39,7 +39,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Postroll_Bitmovin_Pulse"/>
+	    	<description name="Pulse:Postroll Bitmovin"/>
 	        <embed_code name="A3Y2Y5MzE6vyMaoirADDRV6bpmtIDHH2"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -51,7 +51,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Postroll_HTML5_Pulse"/>
+	    	<description name="Pulse:Postroll main"/>
 	        <embed_code name="VjcGY5MzE6CLAiCSPoTztUc2yBXQZksS"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -63,7 +63,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Playback_Postroll_VPAID2.0_IMA"/>
+	    	<description name="VPAID:VPAID 2.0 Postroll 1"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -75,7 +75,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Playback_Postroll_VPAID2.0_IMA_1"/>
+	    	<description name="VPAID:VPAID 2.0 Postroll 2"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -123,7 +123,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Playback_Postroll_VPAID2.0"/>
+	    	<description name="VPAID:Postroll"/>
 	        <embed_code name="tmbmxiMjE6M_3i7Eg6sVc8-6zp4vXQgw"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -135,7 +135,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPostrol_IMA"/>
+	    	<description name="IMA:Postroll Bitmovin"/>
 	        <embed_code name="h0ODZnMTE6FB_Hfx1D4CUKXmzWyQUbXC"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -147,7 +147,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPostrollFW"/>
+	    	<description name="Freewheel:Postroll Bitmovin"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -159,7 +159,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPostroll_Vast"/>
+	    	<description name="VAST:Postroll Bitmovin"/>
 	        <embed_code name="5pZjdoMTE6ABVRm7f8R4poI7AK2PRd1I"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -171,7 +171,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPostroll_Freewheel"/>
+	    	<description name="Freewheel:Postroll OSMF"/>
 	        <embed_code name="lkdWVmMDE6cWNTORjWAURSZanDLpVGP7"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -183,7 +183,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPostrol_Vast_HLS"/>
+	    	<description name="VAST:Postroll Bitmovin"/>
 	        <embed_code name="5pZjdoMTE6ABVRm7f8R4poI7AK2PRd1I"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -195,7 +195,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPostroll_IMA"/>
+	    	<description name="IMA:Postroll OSMF"/>
 	        <embed_code name="Z4d2VmMDE67NI7nxP_RQ6EBEhnkBMmAP"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -208,18 +208,7 @@
     	</url>
 
     	<url>
-	    	<description name="BitmovinPostrollFW_HLS"/>
-	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN,MAIN"/>
-	        <adPlugins name="FREEWHEEL"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"platform":"html5","freewheel-ads-manager":{"fw_video_asset_id":"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="BitmovinPostrol_IMA_HLS"/>
+	    	<description name="IMA:Postroll Bitmovin"/>
 	        <embed_code name="h0ODZnMTE6FB_Hfx1D4CUKXmzWyQUbXC"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -230,7 +219,7 @@
 	        
     	</url>
     	<url>
-	    	<description name="FlashPostroll_Vast"/>
+	    	<description name="VAST:Postroll OSMF"/>
 	        <embed_code name="85bm5kMDE6uYN7kMcTPz72AYcRuJLlgz"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -242,7 +231,7 @@
     	</url>
 
 		<url>
-			<description name="Postroll_SetEmbedCode_Vast"/>
+			<description name="VAST:Postroll Main|VTC:SetEmbedCode"/>
 			<embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="MAIN"/>
@@ -254,7 +243,7 @@
 		</url>
 
 		<url>
-			<description name="Postroll_SetEmbedCode_Freewheel"/>
+			<description name="Freewheel:Postroll Main|VTC:SetEmbedCode"/>
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="MAIN"/>
@@ -266,7 +255,7 @@
 		</url>
 
 		<url>
-			<description name="Postroll_SetEmbedCode_IMA"/>
+			<description name="IMA:Ad Rule Postroll Main|VTC:SetEmbedCode"/>
 			<embed_code name="5sbHlycTqQ5dqQoCVcY3Rpe78TVvJKjg"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="MAIN"/>

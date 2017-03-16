@@ -70,7 +70,7 @@
     	
     	
     	<url>
-	    	<description name="VAST:Choose Encoding Priority to Dash bitmovin"/>
+	    	<description name="VAST:Choose Encoding Priority to Dash Bitmovin"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -81,7 +81,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Choose Encoding Priority to HLS bitmovin"/>
+	    	<description name="VAST:Choose Encoding Priority to HLS Bitmovin"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -92,7 +92,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Choose Encoding Priority to Mp4 bitmovin"/>
+	    	<description name="VAST:Choose Encoding Priority to Mp4 Bitmovin"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>

@@ -3,7 +3,7 @@
 
 	<test name="PlayBackLowBandWidthTests">
 		<url>
-			<description name="MAIN_IMA" />
+			<description name="IMA:Lower Bandwidth" />
 			<embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -15,7 +15,7 @@
 		</url>
 
 		<url>
-			<description name="BITMOVIN_IMA" />
+			<description name="IMA:Lower Bandwidth Bitmovin" />
 			<embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -27,7 +27,7 @@
 		</url>
 
 		<url>
-			<description name="OSMF_IMA" />
+			<description name="IMA:Lower Bandwidth OSMF" />
 			<embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -39,7 +39,7 @@
 		</url>
 
 		<url>
-			<description name="MAIN_FREEWHEEL" />
+			<description name="Freewheel:Lower Bandwidth Main" />
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -51,7 +51,7 @@
 		</url>
 
 		<url>
-			<description name="BITMOVIN_FREEWHEEL" />
+			<description name="Freewheel:Lower Bandwidth Bitmovin" />
 			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
@@ -63,7 +63,7 @@
 		</url>
 
 		<url>
-			<description name="OSMF_FREEWHEEL" />
+			<description name="Freewheel:Lower Bandwidth OSMF" />
 			<embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -75,7 +75,7 @@
 		</url>
 
 		<url>
-			<description name="MAIN_VAST" />
+			<description name="VAST:Lower Bandwidth Main" />
 			<embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -87,7 +87,7 @@
 		</url>
 
 		<url>
-			<description name="BITMOVIN_VAST" />
+			<description name="VAST:Lower Bandwidth Bitmovin" />
 			<embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -100,7 +100,7 @@
 
 
 		<url>
-			<description name="OSMF_VAST" />
+			<description name="VAST:Lower Bandwidth OSMF" />
 			<embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
