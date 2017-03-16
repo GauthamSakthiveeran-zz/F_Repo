@@ -22,7 +22,6 @@
             <class name="com.ooyala.playback.VTC.PlaybackVolumeTests" />
             <class name="com.ooyala.playback.VTC.PlaybackVideoControllerEventTests" />
             <class name="com.ooyala.playback.VTC.PlaybackVerifyEventsTests" />
-            <class name="com.ooyala.playback.VTC.PlaybackAutoplayAutoloopTests" />
             <class name="com.ooyala.playback.VTC.PlaybackAdVideoSamePluginDiffElementTests" />
             <class name="com.ooyala.playback.VTC.PlaybackNewStreamTests" />
             <class name="com.ooyala.playback.VTC.PlaybackOverrideEncodingPriorityTests" />

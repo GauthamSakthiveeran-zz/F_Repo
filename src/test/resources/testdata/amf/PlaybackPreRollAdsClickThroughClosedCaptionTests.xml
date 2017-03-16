@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPreRollAdsClickThroughClosedCaptionTests" >
     	<url>
-	    	<description name="IMA:CC enabled preroll Main|IMA:Preroll Main|IMA:Clickthrough Main"/>
+	    	<description name="IMA:CC enabled preroll Main|IMA:Ad Rule Preroll Main|IMA:Clickthrough Main"/>
 	        <embed_code name="1hZHQ4YTE6-JSjQJuODqJkLoOC2IfXWr"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
