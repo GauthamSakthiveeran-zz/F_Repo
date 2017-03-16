@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPostRollPoddedAdsTests" >
     	<url>
-	    	<description name="Playback_Postroll_Podded_VPAID2.0"/>
+	    	<description name="VPAID:3 Postroll Podded"/>
 	        <embed_code name="94ajI4MjE67rcugQEGwylcOLG9Ggbads"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Postroll_Podded_SetEmbedCode_IMA"/>
+	    	<description name="IMA:3 Postroll Podded|VTC:SetEmbedCode"/>
 	        <embed_code name="gzYmxjczrvM0qh0gPqKy6QFSKSr2t3FC"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -25,7 +25,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Postroll_Podded_SetEmbedCode_Freewheel"/>
+	    	<description name="Freewheel:3 Postroll Podded at 10 or 20 second Main|VTC:SetEmbedCode"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -36,7 +36,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Postroll_Podded_SetEmbedCode_Vast"/>
+	    	<description name="VAST:3 Postroll Podded at 10 or 20 second Main|VTC:SetEmbedCode"/>
 	        <embed_code name="Rna2x4dDrdRWdZnUS4lxeLR6sZWhdpZD"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

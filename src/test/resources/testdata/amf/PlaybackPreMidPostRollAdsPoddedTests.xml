@@ -4,7 +4,7 @@
 	<test name ="PlaybackPreMidPostRollAdsPoddedTests" >
 	
     	<url>
-	    	<description name="Playback_PreMidPost_VPAID2.0"/>
+	    	<description name="VPAID:PreMidPost Podded"/>
 	        <embed_code name="dzMm5iMjE6rPdV3p7yklZPdz85kWGNSj"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -50,7 +50,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPreMidPostPoddedFW"/>
+	    	<description name="Freewheel:PreMidPost Podded Bitmovin"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -61,7 +61,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPreMidPostPodded_Vast"/>
+	    	<description name="VAST:PreMidPost Podded Bitmovin"/>
 	        <embed_code name="liNThoMTE6sIORN8TVQ0b0Z-xzMDlCQT"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -72,7 +72,7 @@
     	</url>
 
     	<url>
-	    	<description name="FlashPreMidPost_Podded_Freewheel"/>
+	    	<description name="Freewheel:PreMidPost Podded OSMF"/>
 	        <embed_code name="ZidWVmMDE6g8lYaFhhF-O0WiDn-kteDu"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -96,7 +96,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPreMidPost_Podded_Vast"/>
+	    	<description name="VAST:PreMidPost Podded OSMF"/>
 	        <embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -120,7 +120,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPreMidPost_Podded_IMA"/>
+	    	<description name="IMA:Ad Rule PreMidPost Podded OSMF"/>
 	        <embed_code name="YweGVmMDE6saN_0epjxkepYlC6m7hXe7"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -145,7 +145,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA PreMidPost Podded"/>
+	    	<description name="IMA:PreMidPost Podded Bitmovin"/>
 	        <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -156,7 +156,7 @@
     	</url>
 
 		<url>
-			<description name="PreMidPost_Podded_IMA_SetEmbedCode"/>
+			<description name="IMA:PreMidPost Podded Main|VTC:SetEmbedCode"/>
 			<embed_code name="g4OGxjczqVk87w_P2z291ahvIR4RYrHT"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="MAIN"/>
@@ -167,7 +167,7 @@
 		</url>
 
 		<url>
-			<description name="PreMidPost_Podded_Vast_SetEmbedCode"/>
+			<description name="VAST:PreMidPost Podded Main|VTC:SetEmbedCode"/>
 			<embed_code name="hlc2x4dDpQYlsGsvnipHmaIJge2aqtaP"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="MAIN"/>
@@ -178,7 +178,7 @@
 		</url>
 
 		<url>
-			<description name="PreMidPost_Podded_Freewheel_SetEmbedCode"/>
+			<description name="Freewheel:PreMidPost Podded Main|VTC:SetEmbedCode"/>
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="MAIN"/>

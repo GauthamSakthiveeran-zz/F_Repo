@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackOnlyMp4Tests" >
     	<url>
-	    	<description name="Only Mp4"/>
+	    	<description name="IMA:Only Mp4"/>
 	        <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

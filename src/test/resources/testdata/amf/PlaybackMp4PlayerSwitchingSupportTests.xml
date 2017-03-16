@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackMp4PlayerSwitchingSupportTests" > 
     	<url>
-	    	<description name="CheckPlaybackOfMp4Video_OSMF_FW"/>
+	    	<description name="Freewheel:Mp4 player switching support OSMF"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="CheckPlaybackOfMp4Video_OSMF_VAST"/>
+	    	<description name="VAST:Mp4 player switching support OSMF"/>
 	        <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -25,7 +25,7 @@
     	</url>
     	
     	<url>
-	    	<description name="CheckPlaybackOfMp4Video_OSMF_IMA"/>
+	    	<description name="IMA:Mp4 player switching support OSMF"/>
 	        <embed_code name="M1YXNjczoNBi7z3UGsbDFOK1agpTsbg-"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>

@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackMidrollOverlayUpNextTests" > 
     	<url>
-	    	<description name="MidrollOverlayDiscoveryUpNext_Vast"/>
+	    	<description name="VAST:Midroll at 10 sec and overlay at 15"/>
 	        <embed_code name="hkOGt4dDr71-6f0_aceyHIlanbjgeSZc"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

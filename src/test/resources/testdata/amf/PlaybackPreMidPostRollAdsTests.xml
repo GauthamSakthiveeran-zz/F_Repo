@@ -39,7 +39,7 @@
 		</url>
 
 		<url>
-			<description name="BitmovinPreMidPostFW" />
+			<description name="Freewheel:PreMidPost Bitmovin" />
 			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
@@ -63,7 +63,7 @@
 		</url>
 
 		<url>
-			<description name="BitmovinPreMidPost_IMA" />
+			<description name="IMA:PreMidPost Bitmovin" />
 			<embed_code name="kxYzZnMTE6ZCgrz07-3C3pMbCcqYySyZ" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -75,7 +75,7 @@
 		</url>
 
 		<url>
-			<description name="BitmovinPreMidPost_Vast_HLS" />
+			<description name="VAST:PreMidPost Bitmovin HLS" />
 			<embed_code name="w0bjdoMTE6pvm5MjCey7t2WJavX08Ob1" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -87,7 +87,7 @@
 		</url>
 
 		<url>
-			<description name="BitmovinPreMidPost_Vast" />
+			<description name="VAST:PreMidPost Bitmovin" />
 			<embed_code name="w0bjdoMTE6pvm5MjCey7t2WJavX08Ob1" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -111,7 +111,7 @@
 		</url>
 
 		<url>
-			<description name="BitmovinPreMidPost_VPAID2.0" />
+			<description name="VPAID:Bitmovin PreMidPost" />
 			<embed_code name="sydnI4MjE6Mupnaunbb8jtY1M49KsDPv" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="MAIN,BITMOVIN" />
@@ -123,7 +123,7 @@
 		</url>
 
 		<url>
-			<description name="PreMidPost_IMA" />
+			<description name="IMA:PreMidPost Main" />
 			<embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -135,7 +135,7 @@
 		</url>
 
 		<url>
-			<description name="FlashPreMidPost_Freewheel" />
+			<description name="Freewheel:PreMidPost OSMF" />
 			<embed_code name="lmdWVmMDE6z-KeydAAXsjREkZOApmA8y" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -161,7 +161,7 @@
 		</url>
 
 		<url>
-			<description name="FlashPreMidPost_Vast" />
+			<description name="VAST:PreMidPost OSMF" />
 			<embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -174,7 +174,7 @@
 		</url>
 
 		<url>
-			<description name="PreMidPost_Bitmovin_Pulse" />
+			<description name="Pulse:PreMidPost Bitmovin" />
 			<embed_code name="VlZGY5MzE63yUh1dSJkD8P5r3QLN4krQ" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -186,7 +186,7 @@
 		</url>
 
 		<url>
-			<description name="VPAID 2.0 PreMidPost" />
+			<description name="VPAID:VPAID 2.0 PreMidPost" />
 			<embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -198,7 +198,7 @@
 		</url>
 
 		<url>
-			<description name="IMA Countdown PreMidPost OSMF" />
+			<description name="IMA:IMA Countdown PreMidPost OSMF" />
 			<embed_code name="I2eGVmMDE6S2TG0jsa7NNE3thejf21i3" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -211,7 +211,7 @@
 		</url>
 
 		<url>
-			<description name="IMA Countdown SetEmbedCode PreMidPost" />
+			<description name="IMA:IMA Countdown PreMidPost Main|VTC:SetEmbedCode" />
 			<embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -223,7 +223,7 @@
 		</url>
 
 		<url>
-			<description name="PreMidPost_SetEmbedCode_Vast" />
+			<description name="VAST:PreMidPost Main|VTC:SetEmbedCode" />
 			<embed_code name="lzMGdpdDq6Dsvi-c32p6u7k46mbT_cxm" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -235,7 +235,7 @@
 		</url>
 
 		<url>
-			<description name="PreMidPost_SetEmbedCode_Freewheel" />
+			<description name="Freewheel:PreMidPost Main|VTC:SetEmbedCode" />
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
