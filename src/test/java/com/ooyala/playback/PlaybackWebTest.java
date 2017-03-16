@@ -16,10 +16,7 @@ import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
@@ -509,6 +506,11 @@ public abstract class PlaybackWebTest extends FacileTest {
         }else {
             return agent.getOperatingSystem().getName();
         }
+    }
+
+    public WebDriver getWebdriver(String browser){
+        pageFactory = new PlayBackFactory(getDriver(browser).get(),extentTest);
+        return pageFactory.getDriver();
     }
 
 }
