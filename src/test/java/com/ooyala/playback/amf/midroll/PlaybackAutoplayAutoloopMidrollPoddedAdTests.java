@@ -24,7 +24,7 @@ public class PlaybackAutoplayAutoloopMidrollPoddedAdTests extends PlaybackWebTes
 		super();
 	}
 
-	@Test(groups = "amf,autoplay", dataProvider = "testUrls")
+	@Test(groups = { "amf", "autoplay", "midroll" }, dataProvider = "testUrls")
 	public void testAutoplayAutoloop(String testName, String url)
 			throws OoyalaException {
 
