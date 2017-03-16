@@ -57,11 +57,20 @@ public class PlayBackFactory {
 	private InitalTimeValidator initalTimeValidator;
 	private ExtentTest extentTest;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
+    private ConcurrentStreamValidator concurrentStreamValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
 		this.extentTest = extentTest;
 	}
+
+    public ConcurrentStreamValidator getConcurrentStreamValidator() {
+        if (concurrentStreamValidator == null){
+            concurrentStreamValidator = new ConcurrentStreamValidator(driver);
+            concurrentStreamValidator.setExtentTest(extentTest);
+        }
+        return concurrentStreamValidator;
+    }
 
 	public InitalTimeValidator getInitalTimeValidator(){
 		if (initalTimeValidator == null){
@@ -453,5 +462,7 @@ public class PlayBackFactory {
 		}
 		return null;
 	}
+
+
 
 }
