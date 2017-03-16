@@ -24,7 +24,7 @@ public class PlaybackAutoplayAutoloopPostrollAdTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "Playback", dataProvider = "testUrls")
+	@Test(groups = "amf,autoplay", dataProvider = "testUrls")
 	public void testAutoplayAutoloop(String testName, String url)
 			throws OoyalaException {
 
