@@ -1360,6 +1360,19 @@
         </url>
     </test>
 
+    <test name="PlaybackNewProcessingProfileTests">
+        <url>
+            <description name="Alice Core:New Processing Profile" />
+            <embed_code name="V2bDllOTE684rlIa8BypuDq6ESXjNjYM" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+    </test>
+
     <test name="PlaybackConcurrentStreamDRMTests">
         <url>
             <description name="Playlist:Caption-title,desc,duration" />
@@ -1372,4 +1385,5 @@
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/kza2hqNTE6SjwZYCVNlKtMp2QdU3IRNc?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213410&account_id=dulari_qa&&&signature=mdGBivStf80t96jM35bAGyFfKTrEFNnomc6dE4rik+E"}]]></playerParameter>
         </url>
     </test>
+
 </testdata>
