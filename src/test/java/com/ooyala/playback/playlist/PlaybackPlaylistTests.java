@@ -13,35 +13,42 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackPlaylistTests extends PlaybackWebTest {
 
+	private PlaylistValidator playlist;
+	private PlayValidator play;
 
-    private PlaylistValidator playlist;
-    private PlayValidator play;
+	public PlaybackPlaylistTests() throws OoyalaException {
+		super();
+	}
 
-    public PlaybackPlaylistTests() throws OoyalaException {
-        super();
-    }
+	@Test(groups = "playlist", dataProvider = "testUrls")
+	public void testPlaylistTests(String testName, String url) throws OoyalaException {
 
-    @Test(groups = "playlist", dataProvider = "testUrls")
-    public void testPlaylistTests(String testName, String url) throws OoyalaException {
-        String[] parts= testName.split(":")[1].trim().split("-");
-        String tcName = parts[0].trim();
-        String tcValue = parts[1].trim();
-        boolean result = true;
-        try {
+		String[] parts = testName.split(":")[1].trim().split("-");
 
-            driver.get(url);
-            if (!testName.contains("true")){
-                result = result && play.waitForPage();
-            }
+		String tcName = parts[0].trim();
+		String tcValue = "";
+		if(parts.length>1)
+			tcValue = parts[1].trim();
 
-            injectScript();
+		boolean result = true;
+		try {
 
-            result=result && playlist.playlistValidator(tcName, tcValue);
+			driver.get(url);
+			if (!(testName.contains("true") || testName.contains("Menustyle-tabs"))) {
+				result = result && play.waitForPage();
+			} else{
+				Thread.sleep(10000);
+			}
 
-        } catch (Exception e) {
-            e.getMessage();
-            result = false;
-        }
-        Assert.assertTrue(result, "Playback Playlist tests failed"+testName);
-    }
+			injectScript();
+
+			result = result && playlist.playlistValidator(tcName, tcValue);
+
+		} catch (Exception e) {
+			e.getMessage();
+			e.printStackTrace();
+			result = false;
+		}
+		Assert.assertTrue(result, "Playback Playlist tests failed" + testName);
+	}
 }
