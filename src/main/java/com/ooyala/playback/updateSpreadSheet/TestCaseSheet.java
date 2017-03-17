@@ -367,15 +367,15 @@ public class TestCaseSheet {
 					for (int i = 0; i < row.size(); i++) {
 						logger.info(row.get(i).toString().toLowerCase());
 						if (row.get(i).toString().toLowerCase()
-								.contains(TestCaseSheetProperties.lastColumnForTestCase)) {
+								.contains(TestCaseSheetProperties.lastColumnForTestCase.toLowerCase())) {
 							lastColumnForTestCase = i + 2;
 						}
 						if (row.get(i).toString().toLowerCase().contains(resultColumnTitle.toLowerCase())) {
 							testCaseData.setHeaderColumnNumber(i);
 							break;
 						}
-						if (row.get(i).toString().toLowerCase()
-								.contains(TestCaseSheetProperties.testCaseDescriptionColumn)) {
+						if (row.get(i).toString().toLowerCase().trim()
+								.contains(TestCaseSheetProperties.testCaseDescriptionColumn.toLowerCase())) {
 							testCaseData.setTestCaseColumnNumber(i);
 						}
 
