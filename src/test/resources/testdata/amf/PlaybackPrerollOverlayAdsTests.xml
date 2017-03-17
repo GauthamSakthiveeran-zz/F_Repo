@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPrerollOverlayAdsTests" >
     	<url>
-	    	<description name="FreewheelPreroll-OverlayAd_Akamai_HD"/>
+	    	<description name="Freewheel:FreewheelPreroll OverlayAd_Akamai_HD"/>
 	        <embed_code name="05azBrdTp1mKB6CzYky-MVwHuLDx9FDo"/>
 	        <pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk"/>
 	        <plugins name="AKAMAI"/>
@@ -15,7 +15,7 @@
     	
     	
     	<url>
-	    	<description name="GoogleIMAPreroll-OverlayAd__Akamai_HD"/>
+	    	<description name="IMA:GoogleIMAPreroll OverlayAd__Akamai_HD"/>
 	        <embed_code name="dtdWNqdTrR0LLV5hMVDATrvedMIPafOW"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="AKAMAI"/>
@@ -27,7 +27,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPreroll_Overlay__FW_HLS"/>
+	    	<description name="Freewheel:BitmovinPreroll_Overlay__FW_HLS"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -38,7 +38,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPreroll_Overlay__FW"/>
+	    	<description name="Freewheel:Preroll Overlay Bitmovin"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -50,7 +50,7 @@
     	
     	
     	<url>
-	    	<description name="BitmovinPrerollOverlay_IMA_HLS"/>
+	    	<description name="IMA:BitmovinPrerollOverlay_IMA_HLS"/>
 	        <embed_code name="w2bmFnMTE66yXj73IMWj_zcylLOnXpdR"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -61,7 +61,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPrerollOverlay_IMA"/>
+	    	<description name="IMA:Overlay Bitmovin"/>
 	        <embed_code name="w2bmFnMTE66yXj73IMWj_zcylLOnXpdR"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -72,7 +72,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPrerollOverlay_Vast_HLS"/>
+	    	<description name="VAST:BitmovinPrerollOverlay_Vast_HLS"/>
 	        <embed_code name="JtajdoMTE6UWt0G0Gct5dyIabTclDsDy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -83,7 +83,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinPrerollOverlay_Vast"/>
+	    	<description name="VAST:Preroll Overlay Bitmovin"/>
 	        <embed_code name="JtajdoMTE6UWt0G0Gct5dyIabTclDsDy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -94,7 +94,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Preroll_Overlay__Freewheel"/>
+	    	<description name="Freewheel:Overlay Main"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -105,7 +105,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPreroll_Overlay__Freewheel"/>
+	    	<description name="Freewheel:Preroll Overlay OSMF"/>
 	        <embed_code name="YzdWVmMDE6llN4HwBPzs9BkH9OG-_f7d"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -118,7 +118,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPreroll_Overlay_IMA"/>
+	    	<description name="IMA:Preroll Overlay OSMF"/>
 	        <embed_code name="l2d2VmMDE6ia_EnlFS2hF6cV1Ezp_Isp"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -131,7 +131,7 @@
     	</url>
     	
     	<url>
-	    	<description name="FlashPreroll_Overlay__Vast"/>
+	    	<description name="VAST:Preroll Overlay OSMF"/>
 	        <embed_code name="01bm5kMDE6iV10Jrf5Lngdx2B6bd0lxR"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -144,7 +144,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Preroll_Overlay__Vast"/>
+	    	<description name="VAST:Overlay Main"/>
 	        <embed_code name="gwbjJqdDobn3Ky6rNnwPzeA2tVVfQ8YJ"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -155,7 +155,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA_MAIN"/>
+	    	<description name="IMA:Overlay Main"/>
 	        <embed_code name="FlOHg4MTE698_SqEgfRuJepp0rjzl9h9"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

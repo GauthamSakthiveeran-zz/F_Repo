@@ -1,14 +1,14 @@
 package com.ooyala.playback.amf;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SetEmbedCodeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
@@ -20,6 +20,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
+	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = {"amf","preroll","midroll","postroll"}, dataProvider = "testUrls")
 	public void verifyPreMidPostroll(String testName, String url) throws OoyalaException {
@@ -73,6 +74,9 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("played_1", 200000);
 
+			if(testName.contains("SetEmbedCode")){
+				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;

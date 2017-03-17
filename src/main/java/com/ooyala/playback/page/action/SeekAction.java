@@ -1,14 +1,13 @@
 package com.ooyala.playback.page.action;
 
-import java.util.Map;
-
+import com.ooyala.playback.page.PlayBackPage;
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.ooyala.playback.page.PlayBackPage;
-import com.relevantcodes.extentreports.LogStatus;
+import java.util.Map;
 
 /**
  * 
@@ -108,7 +107,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		return seek(seekduration + "-" + time + "");
 	}
 
-	private boolean seek(String time) {
+	public boolean seek(String time) {
 		try{
 			((JavascriptExecutor) driver).executeScript("return pp.seek(" + time
 					+ ")" + "");
@@ -121,6 +120,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 
 	private boolean seekPlayback() {
 		try{
+			int count = 10;
 			while (true) {
 				double seekTime = Double.parseDouble(((JavascriptExecutor) driver)
 						.executeScript("return pp.getPlayheadTime();").toString());
@@ -138,11 +138,20 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 					} else {
 						seek(7, true);
 					}
-					((JavascriptExecutor) driver).executeScript("pp.pause();");
-					Thread.sleep(2000);
-					((JavascriptExecutor) driver).executeScript("pp.play();");
+//					((JavascriptExecutor) driver).executeScript("pp.pause();");
+//					Thread.sleep(2000);
+//					((JavascriptExecutor) driver).executeScript("pp.play();");
 					break;
+				} else{
+					seek(4, true);
 				}
+				if(!loadingSpinner()){
+					extentTest.log(LogStatus.FAIL, "In loading spinner for a really long time while seeking");
+					return false;
+				}
+				if(count<=0)
+					return false;
+				count--;
 			}
 			Thread.sleep(10000);
 		}catch(Exception ex){
@@ -180,5 +189,5 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		}
 
 	}
-
+	
 }

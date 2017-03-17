@@ -1,20 +1,19 @@
 package com.ooyala.playback.playerfeatures;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SocialScreenValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
-import org.apache.log4j.Logger;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by jitendra on 23/11/16.
  */
 public class PlaybackSocialMediaTests extends PlaybackWebTest {
 
-    private static Logger logger = Logger
-            .getLogger(PlaybackSocialMediaTests.class);
     private PlayValidator play;
     private SocialScreenValidator social;
 
@@ -40,12 +39,13 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest {
 
             Thread.sleep(2000);
 
-            result = result && social.validate("", 60000);
+            result = result && social.softAssert(s_assert).validate("", 60000);
 
         } catch (Exception e) {
-            logger.error("Error in Social Media Test"+e.getMessage());
+            extentTest.log(LogStatus.FAIL, "Error in Social Media Test"+e.getMessage());
             result = false;
         }
+        s_assert.assertAll();
         Assert.assertTrue(result, "Social Media tests failed");
     }
 }

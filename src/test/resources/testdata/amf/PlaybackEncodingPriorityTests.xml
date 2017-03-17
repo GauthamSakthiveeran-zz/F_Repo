@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackEncodingPriorityTests" >
     	<url>
-	    	<description name="BitmovinEncodingPriorityDash_FW"/>
+	    	<description name="Freewheel:Choose Encoding Priority to Dash Bitmovin"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinEncodingPriorityHLS_FW"/>
+	    	<description name="Freewheel:Choose Encoding Priority to HLS Bitmovin"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -25,7 +25,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinEncodingPriorityMp4_FW"/>
+	    	<description name="Freewheel:Choose Encoding Priority to Mp4 Bitmovin"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -36,7 +36,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinEncodingPriorityDash_IMA"/>
+	    	<description name="IMA:Choose Encoding Priority to Dash Bitmovin"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -47,7 +47,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinEncodingPriorityHLS_IMA"/>
+	    	<description name="IMA:Choose Encoding Priority to HLS Bitmovin"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -58,7 +58,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinEncodingPrioritymp4_IMA"/>
+	    	<description name="IMA:Choose Encoding Priority to Mp4 Bitmovin"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -70,7 +70,7 @@
     	
     	
     	<url>
-	    	<description name="BitmovinEncodingPriorityDash_Vast"/>
+	    	<description name="VAST:Choose Encoding Priority to Dash Bitmovin"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -81,7 +81,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinEncodingPriorityHLS_Vast"/>
+	    	<description name="VAST:Choose Encoding Priority to HLS Bitmovin"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -92,7 +92,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinEncodingPriorityMp4_Vast"/>
+	    	<description name="VAST:Choose Encoding Priority to Mp4 Bitmovin"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>

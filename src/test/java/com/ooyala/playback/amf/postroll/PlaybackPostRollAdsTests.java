@@ -1,5 +1,6 @@
 package com.ooyala.playback.amf.postroll;
 
+import com.ooyala.playback.page.SetEmbedCodeValidator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,7 +20,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
-	private SeekAction seekAction;
+	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = { "amf", "postroll" }, dataProvider = "testUrls")
 	public void verifyPostroll(String testName, String url) {
@@ -35,12 +36,6 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && playValidator.validate("playing_1", 90000);
-			/*if (event.isAdPluginPresent("vast") && event.isVideoPluginPresent("bit_wrapper"))
-				result = result && seekValidator.validate("seeked_1", 10000);
-			else {
-				result = result && seekAction.fromLast().setTime(30).startAction();
-				result = result && event.validate("seeked_1", 10000);
-			}*/
 			
 			result = result && seekValidator.validate("seeked_1", 10000);
 
@@ -49,6 +44,10 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 			result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
 
 			result = result && event.validate("singleAdPlayed_1", 190000);
+
+			if(testName.contains("SetEmbedCode")){
+				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

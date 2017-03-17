@@ -190,6 +190,10 @@ function subscribeToEvents() {
                 OO.$("#ooplayer").append("<p id=adPodEnded_" + adPodEndedEventOrder + ">adPodEnded " + adPodEndedEventOrder + "</p>");
                 adPodEndedEventOrder++;
             }
+            
+            if(event.match(/videoControllerCreateVideoElement/)){
+            	OO.$('#ooplayer').append('<p id = drm_tag >' + JSON.stringify(arguments[2]) + '</p>');
+            }
 
         };
     }());

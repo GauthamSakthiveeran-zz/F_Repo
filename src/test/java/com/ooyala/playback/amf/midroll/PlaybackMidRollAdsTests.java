@@ -1,5 +1,6 @@
 package com.ooyala.playback.amf.midroll;
 
+import com.ooyala.playback.page.SetEmbedCodeValidator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,6 +19,7 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
+	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = {"amf","midroll"}, dataProvider = "testUrls")
 	public void verifyMidRoll(String testName, String url) throws OoyalaException {
@@ -53,9 +55,13 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 				else
 					result = result && event.validate("singleAdPlayed_1", 60000);
 			}
-			
-			result = result && seekValidator.validate("seeked_1", 160000);
-			result = result && event.validate("played_1", 160000);
+
+			if(testName.contains("SetEmbedCode")){
+				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);
+			}else{
+				result = result && seekValidator.validate("seeked_1", 160000);
+				result = result && event.validate("played_1", 160000);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

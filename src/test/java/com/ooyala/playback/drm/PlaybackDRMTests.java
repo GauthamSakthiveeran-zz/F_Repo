@@ -1,10 +1,12 @@
 package com.ooyala.playback.drm;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriverException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.DRMValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
@@ -20,6 +22,7 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 	private PauseValidator pause;
 	private SeekValidator seek;
 	private SeekAction seekAction;
+	private DRMValidator drm;
 
 	public PlaybackDRMTests() throws OoyalaException {
 		super();
@@ -31,18 +34,36 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 		boolean result = true;
 
 		logger.info("Test Description :\n"
-				+ testName.split(":")[1].toLowerCase());
+				+ testName.split("-")[1].toLowerCase());
 
 		try {
 			driver.get(url);
 
 			// need to add logic for verifying description
+			
+			boolean flag = true;
+			
+			while(flag){
+				logger.info("waiting on message bus");
+				try{
+					injectScript();
+					flag = false;
+				}catch(WebDriverException ex){
+					if(ex.getMessage().contains("unknown error: Cannot read property 'mb' of undefined")){
+						flag = true;
+					} else{
+						flag = false;
+					}
+				}
+					
+			}
+			
+			result = result && drm.validate("drm_tag", 5000);
+			
 			result = result && play.waitForPage();
-
-			injectScript();
-
+			
 			result = result && play.validate("playing_1", 60000);
-
+			
 			result = result && eventValidator.loadingSpinner();
 
 			Thread.sleep(2000);
@@ -51,8 +72,8 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_2", 60000);
 
-			if (!(testName.split(":")[1]
-					.equalsIgnoreCase(" elemental fairplay fairplay hls + opt")))
+			if (!(testName.split("-")[1].trim()
+					.equalsIgnoreCase("elemental fairplay fairplay hls + opt")))
 				result = result && seek.validate("seeked_1", 60000);
 			else{
 				result = result && seekAction.fromLast().setTime(2).startAction();
