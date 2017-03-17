@@ -58,7 +58,7 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 					
 			}
 			
-		//	result = result && drm.validate("drm_tag", 5000); -- TODO : uncomment this after separating out the tests and include only for DRM
+			result = result && drm.validate("drm_tag", 5000);
 			
 			result = result && play.waitForPage();
 			
