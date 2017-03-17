@@ -810,7 +810,7 @@
     </test>
     <test name="PlaybackSocialMediaTests">
         <url>
-            <description name="Alice Core:Verify Facebook Share via Social Share Screen | Alice Core:Verify Twitter  Share via Social Share Screen" />
+            <description name="Alice Core:Verify Facebook Share via Social Share Screen|Alice Core:Verify Twitter  Share via Social Share Screen" />
             <embed_code name="FkdmRmeDrJcchSTpHR1SVkkHO2PN7XsX" />
             <pcode name="N1aWw6aHnsVDr5vDoQnY2gBMOnEV" />
             <plugins name="BITMOVIN,MAIN" />

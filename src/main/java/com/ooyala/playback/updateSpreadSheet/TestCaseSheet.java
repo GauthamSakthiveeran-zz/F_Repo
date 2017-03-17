@@ -226,6 +226,8 @@ public class TestCaseSheet {
 					testResult = TestResult.UNKOWN;
 					continue;
 				}
+				
+				testCaseName = testCaseName.trim();
 
 				TestCaseData testCaseData = null;
 
@@ -408,7 +410,7 @@ public class TestCaseSheet {
 
 				} else {
 					String testCaseName = row.get(testCaseData.getTestCaseColumnNumber()).toString();
-					map.put(testCaseName, j);
+					map.put(testCaseName.trim(), j);
 					testCaseData.setTestCaseMap(map);
 				}
 				j++;
