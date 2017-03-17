@@ -1,17 +1,20 @@
 package com.ooyala.playback.amf.preroll;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
+import static java.lang.Integer.parseInt;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static java.lang.Integer.parseInt;
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.DifferentElementValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.PoddedAdValidator;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by jitendra on 2/3/17.
@@ -22,17 +25,14 @@ public class PlaybackVerifyVideoElementCreatedAllPrerollAdsTests extends Playbac
     private EventValidator eventValidator;
     private PlayValidator play;
     private PlayAction playAction;
-    private IsAdPlayingValidator isAdPlayingValidator;
     private DifferentElementValidator differentElementValidator;
-    private SeekAction seekAction;
-    private SeekValidator seekValidator;
     private PoddedAdValidator poddedAdValidator;
 
     PlaybackVerifyVideoElementCreatedAllPrerollAdsTests() throws OoyalaException {
         super();
     }
 
-    @Test(groups = "VideoCreated", dataProvider = "testUrls")
+	@Test(groups = { "VideoCreated", "preroll" }, dataProvider = "testUrls")
     public void testVideoElementCreated(String testName, String url)
             throws OoyalaException {
 

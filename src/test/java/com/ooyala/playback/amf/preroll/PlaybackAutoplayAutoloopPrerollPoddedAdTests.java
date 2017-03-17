@@ -18,13 +18,12 @@ public class PlaybackAutoplayAutoloopPrerollPoddedAdTests extends PlaybackWebTes
 	private static Logger logger = Logger.getLogger(PlaybackAutoplayAutoloopPrerollPoddedAdTests.class);
 	private EventValidator eventValidator;
 	private SeekValidator seekValidator;
-    private SeekAction seek;
 
 	public PlaybackAutoplayAutoloopPrerollPoddedAdTests() throws OoyalaException {
 		super();
 	}
 
-	@Test(groups = "amf,autoplay", dataProvider = "testUrls")
+	@Test(groups = { "amf", "autoplay" }, dataProvider = "testUrls")
 	public void testAutoplayAutoloop(String testName, String url)
 			throws OoyalaException {
 

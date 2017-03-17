@@ -1,0 +1,56 @@
+<suite name="Playback Web Regression Suite for AMF">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+
+	<test name="AMF Preroll" parallel="classes" thread-count="5">
+
+		<parameter name="jsFile" value="common.js,amf/amf.js" />
+		<parameter name="xmlFilePkg" value="amf" />
+
+		<classes>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackAutoplayAutoloopPrerollPoddedAdTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlayBackLowBandWidthTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackPreRollAdsClickThroughClosedCaptionTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackPreRollAdsSetEmbedCodeTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackPrerollInitialVolumeTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackPrerollOverlayAdsTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackPreRollPoddedAdsTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackSkipAdsTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.freewheel.PlaybackBumperPrerollAdTests"></class>
+			<class name="com.ooyala.playback.amf.adfrequency.PlaybackAdFrequencyTests"></class>
+			<class name="com.ooyala.playback.amf.ima.PlaybackCustomInteractionTests"></class>
+			<class name="com.ooyala.playback.amf.ima.PlaybackHLSLiveStreamTests"></class>
+			<class name="com.ooyala.playback.amf.ima.PlaybackOnlyMp4Tests"></class>
+		</classes>
+		
+		
+		
+	</test>
+	
+	<test name="AMF Preroll Seq" parallel="false" thread-count="1">
+
+		<parameter name="jsFile" value="common.js,amf/amf.js" />
+		<parameter name="xmlFilePkg" value="amf" />
+
+		<classes>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackPrerollAdsDiscoveryTests"></class>
+		</classes>
+		
+		
+		
+	</test>
+
+	<test name="AMF Preroll VTC" parallel="classes" thread-count="5">
+
+		<parameter name="jsFile" value="vtc/vtc.js,amf/amf.js" />
+		<parameter name="testData" value="VTC.xml"/>
+
+		<classes>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackOverrideEncodingPriorityPrerollPoddedTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackVerifyVideoElementCreatedAllPrerollAdsTests"></class>
+		</classes>
+		
+	</test>
+
+</suite>
