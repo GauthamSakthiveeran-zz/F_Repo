@@ -159,7 +159,7 @@ public class TestCaseSheet {
 			String message = result.getThrowable().getMessage();
 
 			if(!message.contains("The following asserts failed:"))
-				return TestResult.PASSED;
+				return TestResult.FAILED;
 
 			String[] failures = result.getThrowable().getMessage().split(":")[1].trim().split(",");
 			if (failures == null || failures.length <= 0) {
