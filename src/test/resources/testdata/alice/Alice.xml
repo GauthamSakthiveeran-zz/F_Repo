@@ -1078,6 +1078,18 @@
             <browserSupportedVersion name="firefox,48"/>
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/ZoMmd3NTE6zAFEYbLkU5hKXp8zF2ctK0?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2900009470&account_id=dulari_qa&&&signature=zfMNjFdK8lRNZsTkSSHyrExtGD9aWxmCD/5znAReylY"}]]></playerParameter>
         </url>
+
+        <url>
+            <description name="DRM + Content Protection:Fairplay HLS + Device Registration" />
+            <embed_code name="o2djFsMzE6R-tb3pew2puwvQvAQWFRUo" />
+            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls_drm"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/o2djFsMzE6R-tb3pew2puwvQvAQWFRUo?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2900017190&account_id=dulari_qa&&&signature=7LgME591QFTnhOjF4x9p6GMxE0EDX72SUtRqVgwiy1s"}]]></playerParameter>
+        </url>
     </test>
     <test name="PlaybackPlaylistTests">
         <!--        <url>
