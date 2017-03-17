@@ -58,6 +58,7 @@ public class PlayBackFactory {
 	private ExtentTest extentTest;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
     private ConcurrentStreamValidator concurrentStreamValidator;
+	private DRMValidator drmValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -78,6 +79,14 @@ public class PlayBackFactory {
 			initalTimeValidator.setExtentTest(extentTest);
 		}
 		return initalTimeValidator;
+	}
+	
+	public DRMValidator getDRMValidator(){
+		if (drmValidator == null){
+			drmValidator = new DRMValidator(driver);
+			drmValidator.setExtentTest(extentTest);
+		}
+		return drmValidator;
 	}
 	
 	public AdFrequencyValidator getAdFrequencyValidator() {

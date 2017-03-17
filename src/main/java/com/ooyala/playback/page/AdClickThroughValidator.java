@@ -103,8 +103,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
 			extentTest.log(PASS, "AdsClicked by clicking on the ad screen");
 			
-//			if (!value.contains("ima")) {
-			{
+			if (!value.contains("ima")) {
 				if (getBrowser().contains("internet explorer")) {
 					if (value.contains("freewheel") && video_plugin.contains("main") && !video_plugin.contains("osmf")
 							&& !video_plugin.contains("bit")) {

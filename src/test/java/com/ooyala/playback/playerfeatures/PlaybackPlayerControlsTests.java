@@ -46,7 +46,7 @@ public class PlaybackPlayerControlsTests extends PlaybackWebTest {
 
             if (!(getBrowser().equalsIgnoreCase("safari") || getPlatform().equalsIgnoreCase("Android"))) {
                 result = result && fullScreenValidator.getFullScreen();
-                Thread.sleep(3000);
+                Thread.sleep(1000);
                 result = result && fullScreenValidator.getNormalScreen();
             }
 

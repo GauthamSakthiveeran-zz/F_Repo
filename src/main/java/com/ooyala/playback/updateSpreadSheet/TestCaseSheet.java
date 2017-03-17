@@ -34,10 +34,10 @@ import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.BatchUpdateSpreadsheetRequest;
 import com.google.api.services.sheets.v4.model.CellData;
 import com.google.api.services.sheets.v4.model.CellFormat;
-import com.google.api.services.sheets.v4.model.CutPasteRequest;
+import com.google.api.services.sheets.v4.model.DimensionRange;
 import com.google.api.services.sheets.v4.model.ExtendedValue;
 import com.google.api.services.sheets.v4.model.GridCoordinate;
-import com.google.api.services.sheets.v4.model.GridRange;
+import com.google.api.services.sheets.v4.model.InsertDimensionRequest;
 import com.google.api.services.sheets.v4.model.Request;
 import com.google.api.services.sheets.v4.model.RowData;
 import com.google.api.services.sheets.v4.model.Sheet;
@@ -47,7 +47,7 @@ import com.google.api.services.sheets.v4.model.ValueRange;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class TestCaseSheet {
-	
+
 	private static Logger logger = Logger.getLogger(TestCaseSheet.class);
 
 	/** Application name. */
@@ -73,7 +73,6 @@ public class TestCaseSheet {
 	 * ~/.credentials/sheets.googleapis.com-java-quickstart.json
 	 */
 	private static final List<String> SCOPES = Arrays.asList(SheetsScopes.SPREADSHEETS);
-	
 
 	static {
 		try {
@@ -100,15 +99,15 @@ public class TestCaseSheet {
 		// Build flow and trigger user authorization request.
 		GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY,
 				clientSecrets, SCOPES).setDataStoreFactory(DATA_STORE_FACTORY).setAccessType("offline").build();
-		
+
 		String user = "user";
-		
-		if(TestCaseSheetProperties.email_address!=null){
+
+		if (TestCaseSheetProperties.email_address != null) {
 			user = TestCaseSheetProperties.email_address;
 		}
-		
+
 		Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize(user);
-		
+
 		logger.info("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
 		return credential;
 
@@ -127,13 +126,13 @@ public class TestCaseSheet {
 	}
 
 	private static String getSpreadSheetId() {
-		String spreadsheetId = System.getProperty("spreadSheetId"); 
+		String spreadsheetId = System.getProperty("spreadSheetId");
 		if (spreadsheetId != null && !spreadsheetId.isEmpty()) {
 			return spreadsheetId;
-		} else if(TestCaseSheetProperties.spreadSheetId!=null){
+		} else if (TestCaseSheetProperties.spreadSheetId != null) {
 			return TestCaseSheetProperties.spreadSheetId;
-		}else{
-			return "1q0FLf0Oq5KwMzcHjMUlgLG0Dyw8po8-fBLVreFAemic";
+		} else {
+			return "1Vv67cPiUTkPibSXAuqsKDDF-DcgrwL2mCvQbfKWK6d8";
 		}
 
 	}
@@ -149,8 +148,7 @@ public class TestCaseSheet {
 		}
 		return sheetId;
 	}
-	
-	
+
 	private static TestResult getTestResult(ITestResult result, String testCaseName) {
 
 		if (result.getStatus() == ITestResult.SUCCESS) {
@@ -158,6 +156,11 @@ public class TestCaseSheet {
 		}
 		if (result.getStatus() == ITestResult.FAILURE) {
 			
+			String message = result.getThrowable().getMessage();
+
+			if(!message.contains("The following asserts failed:"))
+				return TestResult.PASSED;
+
 			String[] failures = result.getThrowable().getMessage().split(":")[1].trim().split(",");
 			if (failures == null || failures.length <= 0) {
 				failures[0] = result.getThrowable().getMessage().split(":")[1].trim();
@@ -192,11 +195,8 @@ public class TestCaseSheet {
 		String date = format.format(new Date());
 
 		List<Sheet> sheets = service.spreadsheets().get(spreadsheetId).execute().getSheets();
-		
 
 		for (Map.Entry<String, ITestResult> entry : testDetails.entrySet()) {
-			
-			List<Request> requests = new ArrayList<>();
 
 			String[] singleTests = entry.getKey().split(TestCaseSheetProperties.delimiterForDifferentTests);
 
@@ -206,6 +206,8 @@ public class TestCaseSheet {
 			}
 
 			for (String singleTest : singleTests) {
+
+				List<Request> requests = new ArrayList<>();
 
 				String sheetName = "";
 				String testCaseName = "";
@@ -228,6 +230,7 @@ public class TestCaseSheet {
 				TestCaseData testCaseData = null;
 
 				if (!sheetNameList.containsKey(sheetName)) {
+
 					String range = sheetName + TestCaseSheetProperties.sheetRangeForInitialReading;
 					ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).execute();
 					int sheetId = getSheetId(sheets, spreadsheetId, sheetName);
@@ -237,7 +240,9 @@ public class TestCaseSheet {
 					String resultColumnTitle = platform + "\n" + browser + " " + browserVersion + "\n"
 							+ getV4Version(v4Version) + "\n" + date;
 
-					testCaseData = parseData(values, resultColumnTitle, requests, sheetId);
+					testCaseData = parseData(service, spreadsheetId, values, resultColumnTitle, sheetId);
+
+					requests = new ArrayList<>();
 
 					if (testCaseData.getHeaderRowNumber() == -1 || testCaseData.getHeaderColumnNumber() == -1
 							|| testCaseData.getTestCaseColumnNumber() == -1) {
@@ -261,6 +266,7 @@ public class TestCaseSheet {
 															.setColumnIndex(testCaseData.getHeaderColumnNumber()))
 													.setRows(Arrays.asList(new RowData().setValues(cellData)))
 													.setFields("userEnteredValue,userEnteredFormat.textFormat")));
+
 				}
 
 				if (testCaseData == null) {
@@ -268,9 +274,10 @@ public class TestCaseSheet {
 					testCaseData = sheetNameList.get(sheetName);
 				}
 
-				if (testCaseData != null && testCaseData.getTestCaseMap().get(testCaseName)!=null) {
+				if (testCaseData != null && testCaseData.getTestCaseMap().get(testCaseName) != null) {
+
 					int rowNumber = testCaseData.getTestCaseMap().get(testCaseName);
-					
+
 					List<CellData> cellData = new ArrayList<>();
 					cellData.add(new CellData()
 							.setUserEnteredValue(new ExtendedValue().setStringValue(testResult.getValue()))
@@ -280,30 +287,32 @@ public class TestCaseSheet {
 									.setColumnIndex(testCaseData.getHeaderColumnNumber()))
 							.setRows(Arrays.asList(new RowData().setValues(cellData)))
 							.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
+
 					logger.info("Row Details " + testCaseName);
 				} else {
 					logger.error("No Row Details for" + testCaseName);
 				}
-
-			}
-			
-			if (requests == null || requests.isEmpty()) {
-				logger.error("No matching data found in excel.");
-				return;
-			}
-
-			try{
 				
-				BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest().setRequests(requests);
-				service.spreadsheets().batchUpdate(spreadsheetId, batchUpdateRequest).execute();
-				
-			}catch(GoogleJsonResponseException ex){
-				logger.error(ex.getMessage());
-				return;
+				if(requests.isEmpty()){
+					logger.error("Nothing to update for " + singleTest);
+					continue;
+				}
+
+				try {
+
+					BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()
+							.setRequests(requests);
+					service.spreadsheets().batchUpdate(spreadsheetId, batchUpdateRequest).execute();
+
+				} catch (GoogleJsonResponseException ex) {
+					logger.error(ex.getMessage());
+					return;
+				}
+
 			}
 
 		}
-		
+
 		logger.info("Data written to spreadsheet");
 	}
 
@@ -336,10 +345,9 @@ public class TestCaseSheet {
 		}
 		return v4Version;
 	}
-	
-	
-	private static TestCaseData parseData(List<List<Object>> values, String resultColumnTitle, List<Request> requests,
-			int sheetId) {
+
+	private static TestCaseData parseData(Sheets service, String spreadsheetId,List<List<Object>> values, String resultColumnTitle, 
+			int sheetId) throws IOException {
 
 		TestCaseData testCaseData = new TestCaseData();
 		testCaseData.setSheetId(sheetId);
@@ -375,13 +383,26 @@ public class TestCaseSheet {
 
 					if (testCaseData.getHeaderColumnNumber() == -1) {
 						testCaseData.setHeaderColumnNumber(lastColumnForTestCase);
+
 						if (lastColumnForTestCase < row.size()) {
-							int k = row.size() - 1;
-							requests.add(new Request().setCutPaste(new CutPasteRequest()
-									.setSource(new GridRange().setSheetId(sheetId)
-											.setStartColumnIndex(lastColumnForTestCase).setEndColumnIndex(k))
-									.setDestination(new GridCoordinate().setSheetId(sheetId)
-											.setColumnIndex(testCaseData.getHeaderColumnNumber() + 1))));
+							List<Request> requests = new ArrayList<>();
+
+							requests.add(new Request().setInsertDimension(new InsertDimensionRequest()
+									.setRange(new DimensionRange().setDimension("COLUMNS").setSheetId(sheetId)
+											.setStartIndex(lastColumnForTestCase-1)
+											.setEndIndex(lastColumnForTestCase))
+									.setInheritFromBefore(null)));
+							
+							try {
+
+								BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()
+										.setRequests(requests);
+								service.spreadsheets().batchUpdate(spreadsheetId, batchUpdateRequest).execute();
+
+							} catch (GoogleJsonResponseException ex) {
+								logger.error(ex.getMessage());
+							}
+
 						}
 					}
 

@@ -55,7 +55,7 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			else
 				result = result && event.validate("singleAdPlayed_1", 120000);
 
-			result = result && event.validate("playing_1", 30000);
+			result = result && event.validate("playing_1", 35000);
 			
 			result = result && event.loadingSpinner();
 
@@ -66,7 +66,8 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			result = result && seekAction.seekTillEnd().startAction();
 
 			result = result && event.validate("seeked_1", 120000);
-			result = result && event.validate("played_1", 120000);
+			
+			result = result && event.validate("played_1", 200000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -49,22 +49,24 @@ public class ControlBarValidator extends PlayBackPage implements PlaybackValidat
 		boolean iscontrolshown = isElementPresent("CONTROL_BAR");
 
 		if (!iscontrolshown) {
-			extentTest.log(LogStatus.INFO, "Control bar is hiden hence mouse hovering on it");
+			extentTest.log(LogStatus.INFO, "Control bar is hidden hence mouse hovering on it");
 			moveElement(getWebElement("CONTROL_BAR"));
 
 		}
 		try {
 
 			if (live) {
-				if (!waitOnElement("LIVE", 6000)) {
+				if (!isElementPresent("LIVE")) {
 					extentTest.log(LogStatus.FAIL, "Live not shown in control bar.");
-					return false;
 				}
 			}
 
 			for (String icon : controlBarElement) {
-				if (!waitOnElement(icon, 60000))
+				if (!isElementPresent(icon)) {
+					extentTest.log(LogStatus.FAIL, icon+" not shown in control bar.");
 					return false;
+				}
+					
 			}
 			boolean ismoreoption = isElementVisible("MORE_OPTION_ITEM");
 			if (ismoreoption) {
@@ -73,23 +75,9 @@ public class ControlBarValidator extends PlayBackPage implements PlaybackValidat
 			} else
 				return true;
 		} catch (Exception e) {
-
-			return waitOnElement("PLAY_PAUSE", 60000) && waitOnElement("VOLUME_BUTTON", 60000)
-					&& waitOnElement("FULLSCREEN_BTN", 60000);
-
+			extentTest.log(LogStatus.FAIL, e.getMessage());
+			return false;
 		}
-
-		// Add feature for ooyalalogo
-		/*
-		 * String ooyalalogo =
-		 * webDriver.findElement(locators.getobjectLocator("ooyalaLogo"
-		 * )).findElement(By.tagName("img")).getAttribute("src");
-		 * if(!(ooyalalogo.contains(".png") || ooyalalogo.contains(".svg") ||
-		 * ooyalalogo.contains(".jpg") || ooyalalogo.contains(".gif")))
-		 * Assert.assertTrue(ooyalalogo.contains(".png"),
-		 * "Ooyala branding Logo is not present");
-		 */
-
 	}
 	
 }

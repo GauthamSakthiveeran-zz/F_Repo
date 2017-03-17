@@ -143,7 +143,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 					((JavascriptExecutor) driver).executeScript("pp.play();");
 					break;
 				} else{
-					seek(7, true);
+					seek(4, true);
 				}
 				if(!loadingSpinner()){
 					extentTest.log(LogStatus.FAIL, "In loading spinner for a really long time while seeking");
@@ -189,5 +189,5 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		}
 
 	}
-
+	
 }
