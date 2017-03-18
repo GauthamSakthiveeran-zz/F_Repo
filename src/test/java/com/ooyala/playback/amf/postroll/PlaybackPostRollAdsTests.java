@@ -1,6 +1,5 @@
 package com.ooyala.playback.amf.postroll;
 
-import com.ooyala.playback.page.SetEmbedCodeValidator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -8,7 +7,7 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.page.SetEmbedCodeValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPostRollAdsTests extends PlaybackWebTest {

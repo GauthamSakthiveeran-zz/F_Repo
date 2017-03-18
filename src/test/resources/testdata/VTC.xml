@@ -641,7 +641,7 @@
     </test>
 
     <test name="PlaybackVerifyVideoElementCreatedAllPrerollAdsTests">
-        <url>
+        <!-- <url>
             <description name="Playback_Element_Created_Vast_PrePodded" />
             <embed_code name="xxbDB4dDovMCDiqvo2DSqON3lIGSM5N5" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
@@ -650,7 +650,7 @@
             <additionalPlugins name="" />
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
+        </url> -->
 
         <url>
             <description name="Playback_Element_Created_IMA_PrePodded" />
@@ -663,7 +663,9 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
 
-        <url>
+<!-- 		not podded -->
+
+        <!-- <url>
             <description name="Playback_Element_Created_FW_PrePodded" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
@@ -692,7 +694,7 @@
             <additionalPlugins name="" />
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0}]]></playerParameter>
-        </url>
+        </url> -->
         <url>
             <description name="Playback_Element_Created_IMA_Preroll" />
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />

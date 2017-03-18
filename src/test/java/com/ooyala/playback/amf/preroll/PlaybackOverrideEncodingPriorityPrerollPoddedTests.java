@@ -28,7 +28,7 @@ public class PlaybackOverrideEncodingPriorityPrerollPoddedTests extends Playback
 		super();
 	}
 
-	@Test(groups = "EncodingPriority", dataProvider = "testUrls")
+	@Test(groups = { "EncodingPriority", "preroll" }, dataProvider = "testUrls")
 	public void testOverrideEncodingPriorities(String testName, String url) {
 
 		boolean result = true;

@@ -1,14 +1,18 @@
 package com.ooyala.playback.amf.postroll;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.IsAdPlayingValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.VolumeValidator;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by jitendra on 28/2/17.
@@ -21,7 +25,6 @@ public class PlaybackPostrollInitialVolumeTests extends PlaybackWebTest {
     private PlayAction playAction;
     private SeekValidator seekValidator;
     private IsAdPlayingValidator isAdPlayingValidator;
-    private SeekAction seekAction;
 
     PlaybackPostrollInitialVolumeTests() throws OoyalaException {
         super();
