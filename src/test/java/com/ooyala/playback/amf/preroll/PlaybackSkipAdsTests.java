@@ -58,7 +58,7 @@ public class PlaybackSkipAdsTests extends PlaybackWebTest {
 			}
 
 			result = result && seekValidator.validate("seeked_1", 150000);
-			result = result && event.validate("played_1", 150000);
+			result = result && event.validate("played_1", 200000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
