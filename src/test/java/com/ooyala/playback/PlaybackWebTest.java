@@ -342,7 +342,7 @@ public abstract class PlaybackWebTest extends FacileTest {
         }
         logger.info("Assigning the neopagefactory instance to null");
         // Stopping the live channels if exists after this class
-//        liveChannel.stopChannels();
+        liveChannel.stopChannels();
         logger.info("Stopping the live channels if exists after this class");
     }
 

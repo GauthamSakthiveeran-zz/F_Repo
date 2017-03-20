@@ -49,7 +49,7 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
 
             result = result && seekAction.seek(10,true);
 
-            if(!testName.contains("PreRoll") && (testName.contains("IMA") || testName.contains("FW"))){
+            if(!testName.contains("PreRoll") && (eventValidator.isAdPluginPresent("ima") || eventValidator.isAdPluginPresent("freewheel"))){
                 result = result && eventValidator.validate("adsPlayed_2", 60000);
                 result = result && poddedAdValidator.setPosition(adPosition).validate("countPoddedAds_2", 20000);
             }else {
@@ -78,7 +78,7 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
 
             result = result && replayValidator.validate("replay_1", 30000);
 
-            if(!testName.contains("PreRoll") && (testName.contains("IMA") || testName.contains("FW"))) {
+            if(!testName.contains("PreRoll") && (eventValidator.isAdPluginPresent("ima") || eventValidator.isAdPluginPresent("freewheel"))){
                 result = result && eventValidator.validate("adsPlayed_4", 60000);
             } else {
                 result = result && eventValidator.validate("adsPlayed_2", 60000);

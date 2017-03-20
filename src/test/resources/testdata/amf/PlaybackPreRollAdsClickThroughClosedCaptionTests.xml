@@ -72,7 +72,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:CC enabled preroll Main"/>
+	    	<description name="VAST:CC enabled preroll"/>
 	        <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -94,7 +94,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:CC enabled preroll OSMF|IMA:OSMF Preroll|IMA:Clickthrough OSMF"/>
+	    	<description name="IMA:CC enabled preroll OSMF|IMA:Preroll OSMF|IMA:Clickthrough OSMF"/>
 	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -229,7 +229,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:OSMF Preroll with Google UI"/>
+	    	<description name="IMA:Preroll with Google UI OSMF"/>
 	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
