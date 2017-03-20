@@ -9,20 +9,20 @@
 		<parameter name="xmlFilePkg" value="amf" />
 
 		<classes>
-			<!-- <class name="com.ooyala.playback.amf.preroll.PlaybackAutoplayAutoloopPrerollPoddedAdTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackAutoplayAutoloopPrerollPoddedAdTests"></class>
 			<class name="com.ooyala.playback.amf.preroll.PlayBackLowBandWidthTests"></class>
 			<class name="com.ooyala.playback.amf.preroll.PlaybackPreRollAdsClickThroughClosedCaptionTests"></class>
 			<class name="com.ooyala.playback.amf.preroll.PlaybackPreRollAdsSetEmbedCodeTests"></class>
 			<class name="com.ooyala.playback.amf.preroll.PlaybackPrerollInitialVolumeTests"></class>
 			<class name="com.ooyala.playback.amf.preroll.PlaybackPrerollOverlayAdsTests"></class>
 			<class name="com.ooyala.playback.amf.preroll.PlaybackPreRollPoddedAdsTests"></class>
-			<class name="com.ooyala.playback.amf.preroll.PlaybackSkipAdsTests"></class> -->
+			<class name="com.ooyala.playback.amf.preroll.PlaybackSkipAdsTests"></class>
 			<class name="com.ooyala.playback.amf.preroll.freewheel.PlaybackBumperPrerollAdTests"></class>
-			<!-- <class name="com.ooyala.playback.amf.adfrequency.PlaybackAdFrequencyTests"></class>
+			<class name="com.ooyala.playback.amf.adfrequency.PlaybackAdFrequencyTests"></class>
 			<class name="com.ooyala.playback.amf.ima.PlaybackCustomInteractionTests"></class>
 			<class name="com.ooyala.playback.amf.ima.PlaybackHLSLiveStreamTests"></class>
 			<class name="com.ooyala.playback.amf.ima.PlaybackOnlyMp4Tests"></class>
-			<class name="com.ooyala.playback.amf.preroll.PlaybackPrerollAdsDiscoveryTests"></class> -->
+			<class name="com.ooyala.playback.amf.preroll.PlaybackPrerollAdsDiscoveryTests"></class>
 		</classes>
 		
 		
