@@ -821,7 +821,7 @@
     </test>
     <test name="PlaybackSocialMediaTests">
         <url>
-            <description name="Alice Core:Verify Facebook Share via Social Share Screen | Alice Core:Verify Twitter  Share via Social Share Screen" />
+            <description name="Alice Core:Verify Facebook Share via Social Share Screen|Alice Core:Verify Twitter  Share via Social Share Screen" />
             <embed_code name="FkdmRmeDrJcchSTpHR1SVkkHO2PN7XsX" />
             <pcode name="N1aWw6aHnsVDr5vDoQnY2gBMOnEV" />
             <plugins name="BITMOVIN,MAIN" />
@@ -1126,27 +1126,27 @@
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/thaDgyOrzKRQV_Izdp2WmiX9kCWL/Uyd3lyNTE66XYHmqMh5JX331rjfZZ6Dv?api_key=thaDgyOrzKRQV_Izdp2WmiX9kCWL.tFkPz&expires=2899404809&account_id=dulari_qa&&&signature=xCTaPUlWo0OqnFcDFtVp81+JV3n8zG5QoXoHT9Tpp1c"}]]></playerParameter>
         </url>
     </test>
-    <test name="PlaybackPlaylistTests">
-        <!--        <url>
-                    <description name="Playlist:Default themebuilder parameters " />
-                    <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-                    <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-                    <plugins name="MAIN" />
-                    <adPlugins name="" />
-                    <additionalPlugins name="PLAYLIST" />
-                    <pbid name="896a567555d451d94dcf2849f075a4c" />
-                    <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"]}}]]></playerParameter>
-                </url>-->
-        <url>
-            <description name="Playlist:Orientation-vertical" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical"}}]]></playerParameter>
-        </url>
+	    <test name="PlaybackPlaylistTests">
+		<url>
+			<description name="Playlist:Default themebuilder parameters" />
+			<embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+			<pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="PLAYLIST" />
+			<pbid name="896a567555d451d94dcf2849f075a4c" />
+			<playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"]}}]]></playerParameter>
+		</url>
+		<url>
+			<description name="Playlist:Orientation-vertical" />
+			<embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+			<pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="PLAYLIST" />
+			<pbid name="896a567555d451d94dcf2849f075a4c" />
+			<playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical"}}]]></playerParameter>
+		</url>
         <url>
             <description name="Playlist:Orientation-horizontal" />
             <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
@@ -1289,7 +1289,7 @@
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","position":"bottom","PodType":"paging"},"autoplay":"false"}]]></playerParameter>
         </url>
         <url>
-            <description name="Playlist:Menustyle-true " />
+            <description name="Playlist:Menustyle-tabs" />
             <embed_code name="5zMjRmNzE6NGf3VY_OI-70YeS7Tr4poC" />
             <pcode name="BueGIyOpngHS8pplQ1AW4Ssf89ms" />
             <plugins name="MAIN" />
@@ -1337,19 +1337,8 @@
             <pbid name="896a567555d451d94dcf2849f075a4c" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"outside"},"autoplay":"false","Menustyle":"tabs"}]]></playerParameter>
         </url>
-        <!--    This test case is simmilar to Menustyle: tabs. Need Confirmation.
-                <url>
-                    <description name="Playlist:Multiple Playlists:tabs" />
-                    <embed_code name="5zMjRmNzE6NGf3VY_OI-70YeS7Tr4poC" />
-                    <pcode name="BueGIyOpngHS8pplQ1AW4Ssf89ms" />
-                    <plugins name="MAIN" />
-                    <adPlugins name="" />
-                    <additionalPlugins name="PLAYLIST" />
-                    <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
-                    <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c11522c3a2424709bc8b0829d0e4fbaa","87dc703bdd03450ba709dbfcaa752034"]},"autoPlay":true,"loop":false,"height":573,"width":800,"useFirstVideoFromPlaylist":true}]]></playerParameter>
-                </url>-->
         <url>
-            <description name="Playlist:Caption-title,desc,duration" />
+            <description name="Playlist:Caption-title,description,duration" />
             <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
             <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
             <plugins name="MAIN" />

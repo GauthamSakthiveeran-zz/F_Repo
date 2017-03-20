@@ -22,9 +22,7 @@ public class PlaybackVerifyVideoElementCreatedAllPostrollAdsTests extends Playba
     private EventValidator eventValidator;
     private PlayValidator play;
     private PlayAction playAction;
-    private IsAdPlayingValidator isAdPlayingValidator;
     private DifferentElementValidator differentElementValidator;
-    private SeekAction seekAction;
     private SeekValidator seekValidator;
     private PoddedAdValidator poddedAdValidator;
 

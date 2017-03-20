@@ -136,42 +136,4 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 		return true;
 	}
 
-	public boolean adPlaying(boolean checkOnce) throws Exception {
-		int time = 0;
-		boolean flag;
-
-		IsAdPlayingValidator adPlaying = new PlayBackFactory(driver,extentTest).isAdPlaying();
-
-		if (checkOnce){
-			Thread.sleep(1000);
-			return adPlaying.validate("", 1000);
-		}
-
-		while (true) {
-			if (time <= 120) {
-				try {
-					flag = adPlaying.validate("", 1000);
-					if (!flag) {
-						flag = true;
-						break;
-					}
-					Thread.sleep(1000);
-					time++;
-				} catch (Exception e) {
-					return true;
-				}
-			} else {
-				flag = false;
-				break;
-			}
-
-		}
-		if (!flag) {
-			extentTest.log(LogStatus.FAIL, "Ad is playing for a really long time. Some issue.");
-			assert false;
-		}
-		return flag;
-
-	}
-
 }

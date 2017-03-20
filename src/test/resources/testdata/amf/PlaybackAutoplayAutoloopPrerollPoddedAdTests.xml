@@ -2,7 +2,7 @@
 <testdata>
     <test name="PlaybackAutoplayAutoloopPrerollPoddedAdTests">
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_FW:PrerollPodded" />
+            <description name="Playback_AutoPlay_AutoLoop_FW PrerollPodded" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -13,7 +13,7 @@
         </url>
 
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_Vast:PrerollPodded" />
+            <description name="Playback_AutoPlay_AutoLoop_Vast PrerollPodded" />
             <embed_code name="xxbDB4dDovMCDiqvo2DSqON3lIGSM5N5" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -24,7 +24,7 @@
         </url>
 
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_IMA:PrerollPodded" />
+            <description name="Playback_AutoPlay_AutoLoop_IMA PrerollPodded" />
             <embed_code name="htYWxjczousVmIKvp56u7Cb9btEnyJK9" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
