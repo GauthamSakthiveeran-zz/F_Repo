@@ -28,7 +28,7 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
     }
 
     @Test(groups = "syndicationRules", dataProvider = "testUrls")
-    public void testDeviceRegistration(String url) {
+    public void testDeviceRegistration(String testName,String url) {
         boolean result = true;
         try {
             driver.get(url);
