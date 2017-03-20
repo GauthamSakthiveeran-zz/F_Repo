@@ -20,6 +20,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.ooyala.facile.page.WebPage;
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -288,6 +289,69 @@ public abstract class PlayBackPage extends WebPage {
             ((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
         }
         return true;
+    }
+    
+    public boolean adPlaying(boolean checkOnce) throws Exception {
+		int time = 0;
+		boolean flag;
+
+		IsAdPlayingValidator adPlaying = new PlayBackFactory(driver,extentTest).isAdPlaying();
+
+		if (checkOnce){
+			Thread.sleep(1000);
+			return adPlaying.validate("", 1000);
+		}
+		
+		while (true) {
+			if (time <= 120) {
+				try {
+					flag = adPlaying.validate("", 1000);
+					if (!flag) {
+						flag = true;
+						break;
+					}
+					Thread.sleep(1000);
+					time++;
+				} catch (Exception e) {
+					return true;
+				}
+			} else {
+				flag = false;
+				break;
+			}
+
+		}
+		if (!flag) {
+			extentTest.log(LogStatus.FAIL, "Ad is playing for a really long time. Some issue.");
+			assert false;
+		}
+		return flag;
+
+	}
+    
+    public boolean waitTillAdPlays(){
+    	IsAdPlayingValidator adPlaying = new PlayBackFactory(driver,extentTest).isAdPlaying();
+    	boolean flag = false;
+    	int time = 0;
+    	while (true) {
+			if (time <= 120) {
+				try {
+					flag = adPlaying.validate("", 1000);
+					Thread.sleep(1000);
+					time++;
+				} catch (Exception e) {
+				}
+			} else {
+				break;
+			}
+			
+			if(flag){
+				return true;
+			}
+
+		}
+    	extentTest.log(LogStatus.FAIL, "Ad is not playing after waiting for a long time.");
+    	return false;
     }
 
 }

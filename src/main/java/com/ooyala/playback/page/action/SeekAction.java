@@ -138,9 +138,9 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 					} else {
 						seek(7, true);
 					}
-					((JavascriptExecutor) driver).executeScript("pp.pause();");
-					Thread.sleep(2000);
-					((JavascriptExecutor) driver).executeScript("pp.play();");
+//					((JavascriptExecutor) driver).executeScript("pp.pause();");
+//					Thread.sleep(2000);
+//					((JavascriptExecutor) driver).executeScript("pp.play();");
 					break;
 				} else{
 					seek(4, true);

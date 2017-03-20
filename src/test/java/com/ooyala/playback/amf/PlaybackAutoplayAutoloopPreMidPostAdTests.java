@@ -1,14 +1,14 @@
 package com.ooyala.playback.amf;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by jitendra on 15/03/17.
@@ -18,7 +18,6 @@ public class PlaybackAutoplayAutoloopPreMidPostAdTests extends PlaybackWebTest {
 	private static Logger logger = Logger.getLogger(PlaybackAutoplayAutoloopPreMidPostAdTests.class);
 	private EventValidator eventValidator;
 	private SeekValidator seekValidator;
-    private SeekAction seek;
 
 	public PlaybackAutoplayAutoloopPreMidPostAdTests() throws OoyalaException {
 		super();

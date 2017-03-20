@@ -1,0 +1,37 @@
+<suite name="Playback Web Regression Suite for AMF">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+
+	<test name="AMF Postroll" parallel="classes" thread-count="5">
+
+		<parameter name="jsFile" value="common.js,amf/amf.js" />
+		<parameter name="xmlFilePkg" value="amf" />
+
+		<classes>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackAutoplayAutoloopPostrollAdTests"></class>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackAutoplayAutoloopPostrollPoddedAdTests"></class>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackPostrollInitialVolumeTests"></class>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackPostRollPoddedAdsTests"></class>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackPostRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackPostrollDiscoveryTests"></class>
+		</classes>
+		
+		
+		
+	</test>
+	
+	<test name="AMF Postroll VTC" parallel="classes" thread-count="5">
+
+		<parameter name="jsFile" value="vtc/vtc.js,amf/amf.js" />
+		<parameter name="testData" value="VTC.xml"/>
+
+		<classes>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackOverrideEncodingPriorityPostrollAdTests"></class>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackOverrideEncodingPriorityPostrollPoddedAdTests"></class>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackVerifyVideoElementCreatedAllPostrollAdsTests"></class>
+		</classes>
+		
+	</test>
+
+</suite>

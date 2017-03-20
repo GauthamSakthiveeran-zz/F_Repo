@@ -63,106 +63,115 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
         }
     }
 
-    public boolean verifyCCPanelElements() {
-        try {
-            boolean flag =true;
-            if(!waitOnElement("CC_CONTROL_BAR", 10000)) return false;
-            if(!isElementPresent("CLOSED_CAPTION_PANEL")) return false;
+	public boolean verifyCCPanelElements() {
+		try {
+			if (!waitOnElement("CC_CONTROL_BAR", 10000))
+				return false;
+			if (!isElementPresent("CLOSED_CAPTION_PANEL")) {
+				extentTest.log(LogStatus.FAIL, "CLOSED_CAPTION_PANEL is not present.");
+				return false;
+			}
 
-            //verify scroll i.e left or right button for languages option if lang more than 4
-            boolean isLeftRightBtn = isElementPresent("CC_RIGHT_BTN");
-            if (isLeftRightBtn) {
-                logger.info("verifying the scrolling for langauges");
-                if(!clickOnIndependentElement("RIGHT_BTN")) return false;
-                Thread.sleep(1000);
-                if(!clickOnIndependentElement("LEFT_BTN")) return false;
-            }
+			// verify scroll i.e left or right button for languages option if
+			// lang more than 4
+			boolean isLeftRightBtn = isElementPresent("CC_RIGHT_BTN");
+			if (isLeftRightBtn) {
+				logger.info("verifying the scrolling for langauges");
+				if (!clickOnIndependentElement("RIGHT_BTN")) {
+					extentTest.log(LogStatus.FAIL, "Click on RIGHT_BTN failed");
+					return false;
+				}
+				Thread.sleep(1000);
+				if (!clickOnIndependentElement("LEFT_BTN")) {
+					extentTest.log(LogStatus.FAIL, "Click on LEFT_BTN failed");
+					return false;
+				}
+			}
 
-            // verify preview caption text available
-            boolean isPreviewCaptionPresent = isElementPresent("CC_PREVIEW_CAPTION");
-            flag = flag && isPreviewCaptionPresent;
-            logger.info("verified Preview Caption is Present");
+			if (!isElementPresent("CC_PREVIEW_CAPTION")) {
+				extentTest.log(LogStatus.FAIL, "CC_PREVIEW_CAPTION is not present.");
+			}
 
-            // verify cc off
-            flag = flag && clickOnIndependentElement("CC_SWITCH_CONTAINER");
-            Thread.sleep(2000);
-            boolean ccoff = isElementPresent("CC_OFF");
-            flag = flag && ccoff;
-            logger.info("verified the close caption On button working");
+			if (clickOnIndependentElement("CC_SWITCH_CONTAINER")) {
+				if (!isElementPresent("CC_OFF")) {
+					extentTest.log(LogStatus.FAIL, "CC_OFF is not present.");
+					return false;
+				}
+				if (!(clickOnIndependentElement("CC_SWITCH_CONTAINER") && isElementPresent("CC_ON"))) {
+					extentTest.log(LogStatus.FAIL, "CC_ON is not present");
+					return false;
+				}
+			} else {
+				extentTest.log(LogStatus.FAIL, "click on CC_SWITCH_CONTAINER failed");
+				return false;
+			}
 
-            //verify cc on
-            flag = flag && clickOnIndependentElement("CC_SWITCH_CONTAINER");
-            Thread.sleep(2000);
-            boolean ccon = isElementPresent("CC_ON");
-            flag = flag && ccon;
-            logger.info("verified tha close caption On button working");
+			return true;
+		} catch (Exception e) {
+			logger.error("Error while verifying CC Panel Elements " + e);
+			extentTest.log(LogStatus.FAIL, "Error while verifying CC Panel Elements", e);
+			return false;
+		}
+	}
 
-            return flag;
-        } catch (Exception e) {
-            logger.error("Error while verifying CC Panel Elements "+e);
-            extentTest.log(LogStatus.FAIL,"Error while verifying CC Panel Elements", e);
-            return false;
-        }
-    }
+	public boolean verifyClosedCaptionLanguages() {
+		try {
+			boolean flag = true;
+			// get available languages for video
+			Object ccobj = ((JavascriptExecutor) driver).executeScript(
+					"var attrb = pp.getCurrentItemClosedCaptionsLanguages().languages;" + "{return attrb;}");
 
-    public boolean verifyClosedCaptionLanguages() {
-        try {
-            boolean flag= true;
-            //get available languages for video
-            Object ccobj = ((JavascriptExecutor) driver)
-                    .executeScript("var attrb = pp.getCurrentItemClosedCaptionsLanguages().languages;" +
-                            "{return attrb;}");
+			ArrayList<String> langlist = ((ArrayList<String>) ccobj);
+			logger.info("\t Closed Caption Available Languages: " + langlist + "\n \t  languages available count :"
+					+ langlist.size());
 
-            @SuppressWarnings("unchecked")
-            ArrayList<String> langlist = ((ArrayList<String>) ccobj);
-            logger.info("\t Closed Caption Available Languages: " + langlist + "\n \t  languages available count :" + langlist.size());
+			String[] langl = new String[langlist.size()];
+			langlist.toArray(langl);
 
-            String[] langl = new String[langlist.size()];
-            langlist.toArray(langl);
+			// select language and verify that Preview Text is shown
+			lang = getWebElementsList("LANG_LIST");
+			logger.info("language Count Value in Languages :" + lang.size());
+			String langpreview1[] = { "Sample Text", "Texto de muestra", "Sample Text", "Sample Text" };
 
-            //select language and verify that Preview Text is shown
-            lang = getWebElementsList("LANG_LIST");
-            logger.info("language Count Value in Languages :" + lang.size());
-            String langpreview1[] = {"Sample Text", "Texto de muestra", "Sample Text","Sample Text"};
+			// issue id
+			if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-xsmall")) {
+				for (int j = 0; j < langlist.size(); j++) {
+					for (int i = 0; i < lang.size(); i++) {
+						lang.get(i).click();
+						if (isElementPresent("RIGHT_ARROW")) {
+							flag = flag && clickOnIndependentElement("RIGHT_ARROW");
+						} else {
+							logger.info("Right Arrow is not present");
+						}
+					}
+				}
+				if (isElementPresent("LEFT_ARROW")) {
+					flag = flag && clickOnIndependentElement("LEFT_ARROW");
+				} else {
+					logger.info("Left Arrow is not present");
+				}
+			} else {
+				for (int i = 0; i < lang.size(); i++) {
+					Thread.sleep(1000);
+					lang.get(i).click();
 
-            // issue id
-            if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-xsmall")) {
-                for (int j = 0; j < langlist.size(); j++) {
-                    for (int i = 0; i < lang.size(); i++) {
-                        lang.get(i).click();
-                        if (isElementPresent("RIGHT_ARROW")) {
-                            flag = flag && clickOnIndependentElement("RIGHT_ARROW");
-                        }else {
-                            logger.info("Right Arrow is not present");
-                        }
-                    }
-                }
-                if (isElementPresent("LEFT_ARROW")) {
-                    flag = flag && clickOnIndependentElement("LEFT_ARROW");
-                }else {
-                    logger.info("Left Arrow is not present");
-                }
-            } else {
-                for (int i = 0; i < lang.size(); i++) {
-                    Thread.sleep(1000);
-                    lang.get(i).click();
-
-                    if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-small")){
-                        if (!waitOnElement("CC_PREVIEW_TEXT", 30000)) {
-                            return false;
-                        }
-                        String engPreviewText = getWebElement("CC_PREVIEW_TEXT").getText();
-                        flag = flag && langpreview1[i].equalsIgnoreCase(engPreviewText);
-                    }
-                }
-            }
-            return flag;
-        } catch (Exception e) {
-            logger.error("Preview text is not visible" + e);
-            extentTest.log(LogStatus.FAIL, "Error while checking closed caption languages.", e);
-            return false;
-        }
-    }
+					if (!getWebElement("oo-responsive").getAttribute("className")
+							.equalsIgnoreCase("oo-responsive oo-small")) {
+						if (!waitOnElement("CC_PREVIEW_TEXT", 30000)) {
+							return false;
+						}
+						String engPreviewText = getWebElement("CC_PREVIEW_TEXT").getText();
+						flag = flag && langpreview1[i].equalsIgnoreCase(engPreviewText);
+					}
+				}
+			}
+			return flag;
+		} catch (Exception e) {
+			logger.error("Preview text is not visible" + e);
+			extentTest.log(LogStatus.FAIL, "Error while checking closed caption languages.", e);
+			return false;
+		}
+	}
 
     public boolean verifyCCColorSelectionPanel(String testName) {
         try {
@@ -181,6 +190,11 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
 
             // select text colors
             textColor = getWebElementsList("CC_TEXT_COLOR_SELECTOR");
+            
+            if(textColor==null || textColor.size()==0){
+            	extentTest.log(LogStatus.FAIL, "CC_TEXT_COLOR_SELECTOR not found");
+            }
+            
             logger.info("\t \t \t Color Count Value in Text Color:" + textColor.size());
             logger.info("\n*---------Verify Text Color Selection Panel---------*\n");
 
@@ -188,24 +202,23 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 textColor.get(i).click();
                 String ccTextColor = getWebElement("CC_TEXT_COLOR").getText();  // e.g. Text color: White
                 logger.info("\t Text Color Selected :" + ccTextColor);
-                flag = flag && colorsName[i + 1].equalsIgnoreCase(ccTextColor);
+                
+                if(!colorsName[i + 1].equalsIgnoreCase(ccTextColor)){
+                	extentTest.log(LogStatus.FAIL, "Color mismatch : Expected - "+colorsName[i + 1] + " Actual : " + ccTextColor);
+                }
 
                 //verify color selected
                 // issue id
                 if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-large")){
                     String ccPreviewTextColor = getWebElement("CC_PREVIEW_TEXT").getCssValue("color");
                     logger.info("\t Preview Text Color Selected :" + ccPreviewTextColor);
-                    flag = flag && colorsCode[i].equalsIgnoreCase(ccPreviewTextColor);  //verify Preview Text color selected}
-                    if(!flag){
-                        flag = true && colorsCode1[i].equalsIgnoreCase(ccPreviewTextColor);
-                        logger.info("cache is not cleared in fullscreen");
-                    }
+                    
+                    if(colorsCode[i].equalsIgnoreCase(ccPreviewTextColor)){
+                    	extentTest.log(LogStatus.PASS, "Color mismatch : Expected - "+colorsCode[i] + " Actual : " + ccPreviewTextColor);
+                    } else if(!colorsCode1[i].equalsIgnoreCase(ccPreviewTextColor)){
+                    	extentTest.log(LogStatus.FAIL, "Color mismatch : Expected - "+colorsCode1[i] + " Actual : " + ccPreviewTextColor);
+                    } 
                 }
-            }
-            if(!flag){
-                logger.error("Error in Text color selection");
-                extentTest.log(LogStatus.FAIL, "Error in Text color selection");
-                return false;
             }
             logger.info("verified text color selection is working fine");
 
@@ -213,6 +226,10 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
             bgColor = getWebElementsList("CC_BACKGROUND_COLOR_SELECTOR");
             logger.info("\t Color Count Value in Background Color:" + bgColor.size());
             logger.info("\n*---------Verify Background color Selection Panel---------*\n");
+            
+            if(bgColor==null || bgColor.size()==0){
+            	extentTest.log(LogStatus.FAIL, "CC_BACKGROUND_COLOR_SELECTOR not found");
+            }
 
             for (int i = 0; i < bgColor.size(); i++) {
                 if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-xsmall")){
@@ -226,29 +243,40 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 String ccBgColor = getWebElement("CC_BACKGROUND_COLOR").getText(); // e.g Background color: Black
                 logger.info("\t Background Color Selected :" + ccBgColor);
                 flag = flag && colorsName[i].equalsIgnoreCase(ccBgColor);
+                
+                if(!colorsName[i].equalsIgnoreCase(ccBgColor)){
+                	extentTest.log(LogStatus.FAIL, "Bg Color mismatch : Expected - "+colorsName[i] + " Actual : " + ccBgColor);
+                }
+                
                 // issue id
                 if(!testName.contains("PlaybackFCCDefaultSettingTests")){
                     if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-large")) {
                         String ccPreviewBgColor = getWebElement("CC_PREVIEW_TEXT_BG").getCssValue("background-color");
                         logger.info("\t Background color of Preview Text Selected :" + ccPreviewBgColor);
                         if(ccPreviewBgColor.contains("transparent")){
-                            flag = flag && bgColorsCode1[i].equalsIgnoreCase(ccPreviewBgColor);
+                            if(!bgColorsCode1[i].equalsIgnoreCase(ccPreviewBgColor)){
+                            	extentTest.log(LogStatus.FAIL, "Bg Color mismatch : Expected - "+bgColorsCode1[i] + " Actual : " + ccPreviewBgColor);
+                            }
                         }else{
-                            flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewBgColor);
+                            if(!bgColorsCode[i].equalsIgnoreCase(ccPreviewBgColor)){
+                            	extentTest.log(LogStatus.FAIL, "Bg Color mismatch : Expected - "+bgColorsCode[i] + " Actual : " + ccPreviewBgColor);
+                            }
                         }
                     }
                 }
             }
-            if(!flag){
-                logger.error("Error in Background color selection");
-                return false;
-            }
+            
             logger.info("verified background color selection is working fine");
 
             // select Windows  colors
             ccWinColor = getWebElementsList("CC_WINDOW_COLOR_SELECTOR");
             logger.info("\n Color Count Value in Windows Color:" + ccWinColor.size() + "\n");
             logger.info("\n*---------Verify Window Color Selection Panel---------*\n");
+            
+            if(ccWinColor==null || ccWinColor.size()==0){
+            	extentTest.log(LogStatus.FAIL, "CC_WINDOW_COLOR_SELECTOR not found");
+            }
+            
             for (int i = 0; i < ccWinColor.size(); i++) {
                 if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-xsmall")){
                     WebElement element = ccWinColor.get(i);
@@ -259,27 +287,29 @@ public class FCCValidator extends PlayBackPage implements PlaybackValidator {
                 }
                 String ccWindowColor = getWebElement("CC_WINDOW_COLOR").getText();
                 logger.info("\t Window Color Selected :" + ccWindowColor);
-                flag = flag && colorsName[i].equalsIgnoreCase(ccWindowColor);
+
+                if(!colorsName[i].equalsIgnoreCase(ccWindowColor)){
+                	extentTest.log(LogStatus.FAIL, "Window Color mismatch : Expected - "+colorsName[i] + " Actual : " + ccWindowColor);
+                }
                 // issue id
                 if(!testName.contains("PlaybackFCCDefaultSettingTests")){
                     if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-large")) {
                         String ccPreviewWinColor = getWebElement("CC_PREVIEW_WIN_COLOR").getCssValue("background-color");
                         logger.info("\t Window color of Preview Text Selected :" + ccPreviewWinColor);
                         if(ccPreviewWinColor.contains("transparent")){
-                            flag = flag && bgColorsCode1[i].equalsIgnoreCase(ccPreviewWinColor);
+                            if(bgColorsCode1[i].equalsIgnoreCase(ccPreviewWinColor)){
+                            	extentTest.log(LogStatus.FAIL, "Window Color mismatch : Expected - "+bgColorsCode1[i] + " Actual : " + ccPreviewWinColor);
+                            }
                         }else{
-                            flag = flag && bgColorsCode[i].equalsIgnoreCase(ccPreviewWinColor);
+                            if(bgColorsCode[i].equalsIgnoreCase(ccPreviewWinColor)){
+                            	extentTest.log(LogStatus.FAIL, "Window Color mismatch : Expected - "+bgColorsCode[i] + " Actual : " + ccPreviewWinColor);
+                            }
                         }
                     }
                 }
             }
-            if(!flag){
-                logger.error("Error in Windows color selection");
-                return false;
-            }
-            logger.info("verified CC Windows color selection is working fine");
-
-            return flag;
+            
+            return true;
         } catch (Exception e) {
             logger.error("Error while verifying CC Color Selection Panel "+e);
             extentTest.log(LogStatus.FAIL, "Error while verifying CC Color Selection Panel.", e);

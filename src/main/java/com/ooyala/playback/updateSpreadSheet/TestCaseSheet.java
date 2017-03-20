@@ -158,8 +158,8 @@ public class TestCaseSheet {
 			
 			String message = result.getThrowable().getMessage();
 
-			if(!message.contains("The following asserts failed:"))
-				return TestResult.PASSED;
+			if (!message.contains("The following asserts failed:"))
+				return TestResult.FAILED;
 
 			String[] failures = result.getThrowable().getMessage().split(":")[1].trim().split(",");
 			if (failures == null || failures.length <= 0) {
@@ -226,46 +226,60 @@ public class TestCaseSheet {
 					testResult = TestResult.UNKOWN;
 					continue;
 				}
+				
+				testCaseName = testCaseName.trim();
 
 				TestCaseData testCaseData = null;
 
 				if (!sheetNameList.containsKey(sheetName)) {
 
 					String range = sheetName + TestCaseSheetProperties.sheetRangeForInitialReading;
-					ValueRange response = service.spreadsheets().values().get(spreadsheetId, range).execute();
-					int sheetId = getSheetId(sheets, spreadsheetId, sheetName);
+					ValueRange response;
+					try {
+						response = service.spreadsheets().values().get(spreadsheetId, range).execute();
 
-					List<List<Object>> values = response.getValues();
+						int sheetId = getSheetId(sheets, spreadsheetId, sheetName);
 
-					String resultColumnTitle = platform + "\n" + browser + " " + browserVersion + "\n"
-							+ getV4Version(v4Version) + "\n" + date;
+						List<List<Object>> values = response.getValues();
 
-					testCaseData = parseData(service, spreadsheetId, values, resultColumnTitle, sheetId);
+						String resultColumnTitle = platform + "\n" + browser + " " + browserVersion + "\n"
+								+ getV4Version(v4Version) + "\n" + date;
 
-					requests = new ArrayList<>();
+						testCaseData = parseData(service, spreadsheetId, values, resultColumnTitle, sheetId);
 
-					if (testCaseData.getHeaderRowNumber() == -1 || testCaseData.getHeaderColumnNumber() == -1
-							|| testCaseData.getTestCaseColumnNumber() == -1) {
-						throw new OoyalaException("Error while formatting the excel sheet");
+						requests = new ArrayList<>();
+
+						if (testCaseData.getHeaderRowNumber() == -1 || testCaseData.getHeaderColumnNumber() == -1
+								|| testCaseData.getTestCaseColumnNumber() == -1) {
+							throw new OoyalaException("Error while formatting the excel sheet");
+						}
+
+						sheetNameList.put(sheetName, testCaseData);
+
+						List<CellData> cellData = new ArrayList<>();
+						cellData.add(new CellData()
+								.setUserEnteredValue(new ExtendedValue().setStringValue(resultColumnTitle))
+								.setUserEnteredFormat(new CellFormat().setTextFormat(new TextFormat().setBold(true))
+										.setWrapStrategy("WRAP")));
+
+						requests.add(
+								new Request()
+										.setUpdateCells(
+												new UpdateCellsRequest()
+														.setStart(new GridCoordinate().setSheetId(sheetId)
+																.setRowIndex(testCaseData.getHeaderRowNumber())
+																.setColumnIndex(testCaseData.getHeaderColumnNumber()))
+														.setRows(Arrays.asList(new RowData().setValues(cellData)))
+														.setFields("userEnteredValue,userEnteredFormat.textFormat")));
+
+					} catch (GoogleJsonResponseException ex) {
+						if (ex.getMessage().toLowerCase().contains("unable to parse range")) {
+							logger.error("Unable to parse range");
+						} else {
+							logger.error(ex.getMessage());
+							return;
+						}
 					}
-
-					sheetNameList.put(sheetName, testCaseData);
-
-					List<CellData> cellData = new ArrayList<>();
-					cellData.add(
-							new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(resultColumnTitle))
-									.setUserEnteredFormat(new CellFormat().setTextFormat(new TextFormat().setBold(true))
-											.setWrapStrategy("WRAP")));
-
-					requests.add(
-							new Request()
-									.setUpdateCells(
-											new UpdateCellsRequest()
-													.setStart(new GridCoordinate().setSheetId(sheetId)
-															.setRowIndex(testCaseData.getHeaderRowNumber())
-															.setColumnIndex(testCaseData.getHeaderColumnNumber()))
-													.setRows(Arrays.asList(new RowData().setValues(cellData)))
-													.setFields("userEnteredValue,userEnteredFormat.textFormat")));
 
 				}
 
@@ -292,8 +306,8 @@ public class TestCaseSheet {
 				} else {
 					logger.error("No Row Details for" + testCaseName);
 				}
-				
-				if(requests.isEmpty()){
+
+				if (requests.isEmpty()) {
 					logger.error("Nothing to update for " + singleTest);
 					continue;
 				}
@@ -346,8 +360,8 @@ public class TestCaseSheet {
 		return v4Version;
 	}
 
-	private static TestCaseData parseData(Sheets service, String spreadsheetId,List<List<Object>> values, String resultColumnTitle, 
-			int sheetId) throws IOException {
+	private static TestCaseData parseData(Sheets service, String spreadsheetId, List<List<Object>> values,
+			String resultColumnTitle, int sheetId) throws IOException {
 
 		TestCaseData testCaseData = new TestCaseData();
 		testCaseData.setSheetId(sheetId);
@@ -367,15 +381,15 @@ public class TestCaseSheet {
 					for (int i = 0; i < row.size(); i++) {
 						logger.info(row.get(i).toString().toLowerCase());
 						if (row.get(i).toString().toLowerCase()
-								.contains(TestCaseSheetProperties.lastColumnForTestCase)) {
+								.contains(TestCaseSheetProperties.lastColumnForTestCase.toLowerCase())) {
 							lastColumnForTestCase = i + 2;
 						}
 						if (row.get(i).toString().toLowerCase().contains(resultColumnTitle.toLowerCase())) {
 							testCaseData.setHeaderColumnNumber(i);
 							break;
 						}
-						if (row.get(i).toString().toLowerCase()
-								.contains(TestCaseSheetProperties.testCaseDescriptionColumn)) {
+						if (row.get(i).toString().toLowerCase().trim()
+								.contains(TestCaseSheetProperties.testCaseDescriptionColumn.toLowerCase())) {
 							testCaseData.setTestCaseColumnNumber(i);
 						}
 
@@ -387,12 +401,13 @@ public class TestCaseSheet {
 						if (lastColumnForTestCase < row.size()) {
 							List<Request> requests = new ArrayList<>();
 
-							requests.add(new Request().setInsertDimension(new InsertDimensionRequest()
-									.setRange(new DimensionRange().setDimension("COLUMNS").setSheetId(sheetId)
-											.setStartIndex(lastColumnForTestCase-1)
-											.setEndIndex(lastColumnForTestCase))
-									.setInheritFromBefore(null)));
-							
+							requests.add(new Request().setInsertDimension(
+									new InsertDimensionRequest()
+											.setRange(new DimensionRange().setDimension("COLUMNS").setSheetId(sheetId)
+													.setStartIndex(lastColumnForTestCase - 1)
+													.setEndIndex(lastColumnForTestCase))
+											.setInheritFromBefore(null)));
+
 							try {
 
 								BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()
@@ -408,7 +423,7 @@ public class TestCaseSheet {
 
 				} else {
 					String testCaseName = row.get(testCaseData.getTestCaseColumnNumber()).toString();
-					map.put(testCaseName, j);
+					map.put(testCaseName.trim(), j);
 					testCaseData.setTestCaseMap(map);
 				}
 				j++;

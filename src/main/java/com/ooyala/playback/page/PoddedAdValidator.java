@@ -29,6 +29,11 @@ public class PoddedAdValidator extends PlayBackPage implements PlaybackValidator
 
 	public boolean validate(String element, int timeout) throws Exception {
 		try {
+			
+			if(!waitOnElement(By.id(element), timeout)){
+				return false;
+			}
+			
 			int result = parseInt(
 					(((JavascriptExecutor) driver).executeScript("return " + element + ".textContent")).toString());
 			extentTest.log(LogStatus.INFO, "No of ads " + result);
