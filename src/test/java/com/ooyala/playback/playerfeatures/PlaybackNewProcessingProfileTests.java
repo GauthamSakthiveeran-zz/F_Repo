@@ -2,6 +2,7 @@ package com.ooyala.playback.playerfeatures;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
@@ -15,6 +16,7 @@ public class PlaybackNewProcessingProfileTests extends PlaybackWebTest {
 
     private PlayValidator play;
     private SeekValidator seek;
+    private SeekAction seekAction;
     private PauseValidator pause;
     private ControlBarValidator control;
     private FullScreenValidator fullScreen;
@@ -39,13 +41,13 @@ public class PlaybackNewProcessingProfileTests extends PlaybackWebTest {
 
             result = result && control.validate("",60000);
 
+            result = result && play.validate("playing_2",30000);
+
             result = result && fullScreen.getFullScreen();
 
             result = result &&fullScreen.getNormalScreen();
 
-            result = result && play.validate("playing_2",30000);
-
-            result = result && seek.validate("",60000);
+            result = result && seekAction.seek(10,true);
 
         }catch(Exception e)
         {
