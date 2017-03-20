@@ -61,6 +61,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
 		if(overlay){
 			validateOverlayClickThrough();
 			closeOtherWindows(baseWindowHdl);
+			((JavascriptExecutor) driver).executeScript("pp.play()");
 			return true;
 		}
 

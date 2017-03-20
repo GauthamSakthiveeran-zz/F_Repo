@@ -44,19 +44,21 @@ public class PlaybackOverrideEncodingPriorityMidrollAdTests extends PlaybackWebT
 
             encode.setTestUrl(url);
 
-            result = result && encode.validate("validate_default_encoding", 20000);
+            result = result && encode.validate("validate_default_encoding", 60000);
 
             result = result && playAction.startAction();
+            
+            result = result && event.validate("playing_1", 10000);
 
-            result = result && seek.validate("seeked_1", 20000);
+            result = result && seek.validate("seeked_1", 60000);
 
-            result = result && event.validate("adsPlayed_1", 20000);
+            result = result && event.validate("adsPlayed_1", 60000);
 
-            result = result && event.validate("videoPlayed_1", 20000);
+            result = result && event.validate("videoPlayed_1", 60000);
 
 
             if (event.isAdPluginPresent("freewheel")) {
-                param = "{\"freewheel-ads-manager\":{\"fw_video_asset_id\":\"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v\",\"html5_ad_server\":\"http://g1.v.fwmrm.net\",\"html5_player_profile\":\"90750:ooyala_html5\",\"fw_mrm_network_id\":\"380912\",\"showInAdControlBar\":true},\"initialTime\":0,\"autoplay\":false,\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"]}";
+                param = "{\"freewheel-ads-manager\":{\"fw_video_asset_id\":\"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a\",\"html5_ad_server\":\"http://g1.v.fwmrm.net\",\"html5_player_profile\":\"90750:ooyala_html5\",\"fw_mrm_network_id\":\"380912\",\"showInAdControlBar\":true},\"initialTime\":0,\"autoplay\":false,\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"]}";
             } else {
                 param = "{\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"],\"showInAdControlBar\":true}";
             }
@@ -68,10 +70,12 @@ public class PlaybackOverrideEncodingPriorityMidrollAdTests extends PlaybackWebT
             result = result && encode.validate("Override", 60000);
 
             result = result && playAction.startAction();
+            
+            result = result && event.validate("playing_1", 10000);
 
             result = result && seek.validate("seeked_1", 60000);
 
-            result = result && event.validate("adsPlayed_1", 20000);
+            result = result && event.validate("adsPlayed_1", 60000);
 
             result = result && event.validate("videoPlayed_1", 60000);
 
