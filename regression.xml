@@ -33,6 +33,7 @@
             <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailCarouselTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackSocialMediaTests" />
             <class name="com.ooyala.playback.syndicationrules.PlaybackOptEntitlementTests" />
+            <class name="com.ooyala.playback.syndicationrules.PlaybackDeviceRegistrationTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackAutoplayTests" />
             <class name="com.ooyala.playback.playerfeatures.OoyalaAPITests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackBitrateTests" />
