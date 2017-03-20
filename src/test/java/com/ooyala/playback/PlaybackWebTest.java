@@ -341,9 +341,9 @@ public abstract class PlaybackWebTest extends FacileTest {
             logger.info("Driver is already null");
         }
         logger.info("Assigning the neopagefactory instance to null");
-        pageFactory.destroyInstance();
         // Stopping the live channels if exists after this class
-        liveChannel.stopChannels();
+//        liveChannel.stopChannels();
+        logger.info("Stopping the live channels if exists after this class");
     }
 
     public void waitForSecond(int sec) {
