@@ -44,13 +44,59 @@
             <class name="com.ooyala.playback.playerlifecycle.PlaybackPlayerDestroyTests" />
             <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
-            <class name="com.ooyala.playback.streams.BasicPlaybackTests" />
-            <class name="com.ooyala.playback.streams.PlaybackLiveTests" />
-            <class name="com.ooyala.playback.FCC.PlaybackFCCDefaultSettingTests" />
-            <class name="com.ooyala.playback.FCC.PlaybackFCCBasicTests" />
-            <class name="com.ooyala.playback.playlist.PlaybackPlaylistTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackNewProcessingProfileTests" />
         </classes>
     </test>
+
+    <test name="Live_Regression">
+        <groups>
+            <define name="live">
+                <include name="streams" />
+            </define>
+            <run>
+                <include name="live" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/Live.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.streams.PlaybackLiveTests" />
+            <class name="com.ooyala.playback.streams.BasicPlaybackTests" />
+        </classes>
+    </test>
+
+    <test name="Playlist_Regression">
+        <groups>
+            <define name="playlist">
+                <include name="playlist" />
+            </define>
+            <run>
+                <include name="playlist" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/Playlist.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.playlist.PlaybackPlaylistTests" />
+        </classes>
+    </test>
+
+    <test name="FCC_Regression">
+        <groups>
+            <define name="fcc">
+                <include name="FCC" />
+            </define>
+            <run>
+                <include name="fcc" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/FCC.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.FCC.PlaybackFCCDefaultSettingTests" />
+            <class name="com.ooyala.playback.FCC.PlaybackFCCBasicTests" />
+        </classes>
+    </test>
+
 </suite>
 
