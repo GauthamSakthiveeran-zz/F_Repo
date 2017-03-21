@@ -12,7 +12,6 @@ public class FullScreenValidator extends PlayBackPage implements
 		PlaybackValidator {
 
 	public static Logger logger = Logger.getLogger(FullScreenValidator.class);
-	private FCCValidator fccValidator;
 
 	public FullScreenValidator(WebDriver webDriver) {
 		super(webDriver);

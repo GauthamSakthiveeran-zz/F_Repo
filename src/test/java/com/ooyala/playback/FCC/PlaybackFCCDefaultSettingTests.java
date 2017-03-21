@@ -20,7 +20,7 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
     private PlayValidator play;
     private PauseValidator pause;
     private EventValidator eventValidator;
-    private FCCValidator fcc;
+    private CCValidator fcc;
     private PlayAction playAction;
     private SeekValidator seek;
     private FullScreenValidator fullScreenValidator;
@@ -94,6 +94,7 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
 
         }catch(Exception e){
             logger.error(e.getMessage());
+            e.printStackTrace();
             extentTest.log(LogStatus.FAIL, e.getMessage());
             result = false;
         }

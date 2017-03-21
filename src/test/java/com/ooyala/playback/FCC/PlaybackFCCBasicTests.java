@@ -21,7 +21,7 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
     private PlayValidator play;
     private PauseValidator pause;
     private EventValidator eventValidator;
-    private FCCValidator fcc;
+    private CCValidator fcc;
     private FullScreenValidator fullscreen;
     private PlayAction playAction;
     private SeekValidator seek;
@@ -60,14 +60,14 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             result = result && fcc.discoveryCheck();
 
-            result = result && fcc.validate("",30000);
+            result = result && fcc.fcc().validate("",30000);
 
             if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")
                     || getBrowser().equalsIgnoreCase("MicrosoftEdge")
                     || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("mac")))){
                 result = result && fullscreen.getFullScreen();
                 Thread.sleep(2000);
-                result = result && fcc.validate("",30000);
+                result = result && fcc.fcc().validate("",30000);
                 result = result && fullscreen.getNormalScreen();
             }
 
