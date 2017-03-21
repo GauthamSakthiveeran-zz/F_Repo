@@ -23,6 +23,14 @@
 			<class name="com.ooyala.playback.amf.ima.PlaybackHLSLiveStreamTests"></class>
 			<class name="com.ooyala.playback.amf.ima.PlaybackOnlyMp4Tests"></class>
 			<class name="com.ooyala.playback.amf.preroll.PlaybackPrerollAdsDiscoveryTests"></class>
+			
+			<class name="com.ooyala.playback.amf.PlaybackPlayerWithoutSkinTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackMp4PlayerSwitchingSupportTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackEncodingPriorityTests"></class> 
+			<class name="com.ooyala.playback.amf.vast.PlaybackPoddedSkippbableInsideTests"></class>
+			<class name="com.ooyala.playback.amf.vast.PlaybackPoddedwithOverlayStandaloneTests"></class>
+			
+			
 		</classes>
 		
 		

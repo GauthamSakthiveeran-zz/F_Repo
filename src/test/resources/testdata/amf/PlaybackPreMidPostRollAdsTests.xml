@@ -196,6 +196,18 @@
 			<playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"},{"position":"5000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"},{"position":"100000000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"}]}}]]></playerParameter>
 
 		</url>
+		
+		<url>
+			<description name="VPAID:PreMidPost" />
+			<embed_code name="BnaG1iMjE6bQ3DQmsPTYyH_QiQ05Ggrj" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+
+		</url>
 
 		<url>
 			<description name="IMA:IMA Countdown PreMidPost OSMF" />
@@ -209,12 +221,37 @@
 			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
 		</url>
+		
+		<url>
+			<description name="IMA:PreMidPost OSMF" />
+			<embed_code name="I2eGVmMDE6S2TG0jsa7NNE3thejf21i3" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF,MAIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+			<browserSupportedVersion name="safari,9" />
+		</url>
 
 		<url>
 			<description name="IMA:IMA Countdown PreMidPost Main|VTC:SetEmbedCode" />
 			<embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="" />
+			<pbid name="615dc8e909e941c280e12155df838355" />
+			<playerParameter><![CDATA[{"google-ima-ads-manager":{"useGoogleCountdown":true}}]]></playerParameter>
+
+		</url>
+		
+		<url>
+			<description name="IMA:IMA Countdown PreMidPost Bitmovin" />
+			<embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="BITMOVIN" />
 			<adPlugins name="IMA" />
 			<additionalPlugins name="" />
 			<pbid name="615dc8e909e941c280e12155df838355" />

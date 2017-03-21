@@ -60,7 +60,7 @@ import net.sf.uadetector.service.UADetectorServiceFactory;
 @Listeners(IMethodListener.class)
 public abstract class PlaybackWebTest extends FacileTest {
 
-    private Logger logger = Logger.getLogger(PlaybackWebTest.class);
+    protected Logger logger = Logger.getLogger(PlaybackWebTest.class);
     protected String browser;
     protected ChromeDriverService service;
     protected PlayBackFactory pageFactory;
@@ -341,9 +341,9 @@ public abstract class PlaybackWebTest extends FacileTest {
             logger.info("Driver is already null");
         }
         logger.info("Assigning the neopagefactory instance to null");
-        pageFactory.destroyInstance();
         // Stopping the live channels if exists after this class
         liveChannel.stopChannels();
+        logger.info("Stopping the live channels if exists after this class");
     }
 
     public void waitForSecond(int sec) {

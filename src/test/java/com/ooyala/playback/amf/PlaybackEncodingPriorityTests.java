@@ -40,8 +40,6 @@ public class PlaybackEncodingPriorityTests extends PlaybackWebTest {
 			
 			result = result && seek.validate("seeked_1", 19000);
 			
-			result = result && event.validate("played_1", 200000);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;

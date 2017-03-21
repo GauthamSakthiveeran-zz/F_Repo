@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:3 Midroll Podded at 10 or 20 second"/>
+	    	<description name="IMA:3 Midroll Podded at 10 or 20 second Main"/>
 	        <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -47,7 +47,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinMidroll_Vast3"/>
+	    	<description name="VAST:Midroll Vast 3.0 + Bitmovin"/>
 	        <embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>

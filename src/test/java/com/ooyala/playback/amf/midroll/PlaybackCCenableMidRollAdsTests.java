@@ -43,7 +43,7 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 			result = result && event.validate("videoPlaying_1", 20000);
 
 			result = result
-					&& event.validate("MidRoll_willPlaySingleAd_1", 200000);
+					&& event.validate("MidRoll_willPlaySingleAd_1", 250000);
 
 			if (event.isAdPluginPresent("pulse"))
 				result = result && event.validate("singleAdPlayed_2", 60000);

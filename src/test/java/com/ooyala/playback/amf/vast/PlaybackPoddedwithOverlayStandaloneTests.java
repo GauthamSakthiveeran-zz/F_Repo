@@ -23,7 +23,7 @@ public class PlaybackPoddedwithOverlayStandaloneTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private OverlayValidator overlayValidator;
 
-	@Test(groups = {"amf","podded","overlay"}, dataProvider = "testUrls")
+	@Test(groups = {"amf","podded","overlay"}, dataProvider = "testUrls", enabled=false)
 	public void verifyPoddedStandaloneOverlay(String testName, String url)
 			throws OoyalaException {
 

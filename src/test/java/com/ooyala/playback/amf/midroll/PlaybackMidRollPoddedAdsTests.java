@@ -1,6 +1,8 @@
 package com.ooyala.playback.amf.midroll;
 
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.SeekAction;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -15,6 +17,7 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
 
 	private EventValidator event;
 	private PlayValidator playValidator;
+	private SeekAction seek;
 	private SeekValidator seekValidator;
 	private PoddedAdValidator poddedAdValidator;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
@@ -33,18 +36,22 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
 
 			result = result && playValidator.validate("playing_1", 60000);
 
-			result = result && seekValidator.validate("seeked_1", 60000);
+			result = result && seek.fromLast().setTime(20).startAction();
 			
 			result = result && event.validate("MidRoll_willPlayAds", 60000);
 
-			result = result && event.validate("adsPlayed_1", 200000);
-
-			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_1", 120000);
+			if(event.isAdPluginPresent("freewheel") || event.isAdPluginPresent("ima")){
+				result = result && event.validate("adsPlayed_2", 200000); // TODO
+				result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 120000);
+			} else{
+				result = result && event.validate("adsPlayed_1", 250000);
+				result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_1", 120000);
+			}
 
 			if(testName.contains("SetEmbedCode")){
 				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);
 			}else{
-				result = result && event.validate("seeked_1", 60000);
+				result = result && seekValidator.validate("seeked_1", 60000);
 				result = result && event.validate("played_1", 200000);
 			}
 
