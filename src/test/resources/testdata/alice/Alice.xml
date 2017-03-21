@@ -11,6 +11,7 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
+
         <!-- commented check the ticket number for more info PBW-6281 -->
         <!-- <url>
              <description name="VOD_CLEAR_DASH_BITMOVIN" />
@@ -438,6 +439,28 @@
         </url>
 
         <url>
+            <description name="Alice Core:DASH CENC Live" />
+            <embed_code name="5kaDBlODE6fqcosXyCQ9myvTxpObwIOw" />
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash_drm"]}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Alice Core:(Azure) Dash CENC Vod" />
+            <embed_code name="V1ZDVrNjE6LoqgO7tdNKb8Tcz85-QSLo" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+
+        <url>
             <description name="Alice Core:Akamai HLS Live bitmovin" />
             <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -774,7 +797,7 @@
 
     <test name="PlaybackDRMTests">
         <url>
-            <description name="DRM + Content Protection:Dash VOD bitmovin" />
+            <description name="DRM + Content Protection:Dash VOD bitmovin | Alice Core:Dash CENC Vod without OPT" />
             <embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
             <pcode name="FoeG863GnBL4IhhlFC1Q2jqbkH9m" />
             <plugins name="BITMOVIN" />
@@ -807,7 +830,7 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
-            <description name="DRM + Content Protection:Fairplay HLS VOD bitmovin" />
+            <description name="DRM + Content Protection:Fairplay HLS VOD bitmovin|Alice Core:Fairplay HLS" />
             <embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
