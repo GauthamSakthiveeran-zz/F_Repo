@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.ooyalaads;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -25,7 +25,7 @@ public class PlaybackInitialTimeForOoyalaAdsTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = { "playlist", "discovery", "amf" }, dataProvider = "testUrls", enabled = false) // TODO once the bug is fixed have to re-enable this
+	@Test(groups = { "ooyalads" }, dataProvider = "testUrls") 
 	public void testInitialTime(String testName, String url) throws OoyalaException {
 
 		boolean result = true;

@@ -40,13 +40,7 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 
 			result = result && event.validate("singleAdPlayed_1", 150000);
 
-			if (testName.contains("OOYALA_ADS")) {
-				result = result && event.validate("ooyalaAds", 1000);
-				Thread.sleep(5000); // the main video takes some time to play.
-				result = result && event.validate("playing_2", 150000);
-			} else {
-				result = result && event.validate("playing_1", 150000);
-			}
+			result = result && event.validate("playing_1", 150000);
 
 			result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 

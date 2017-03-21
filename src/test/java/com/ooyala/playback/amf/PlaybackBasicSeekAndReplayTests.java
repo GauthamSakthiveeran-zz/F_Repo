@@ -56,6 +56,8 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
                 result = result && eventValidator.validate("adsPlayed_1", 60000);
                 result = result && poddedAdValidator.setPosition(adPosition).validate("countPoddedAds_1", 20000);
             }
+            
+            result = result && play.validate("playing_2", 60000);
 
             result = result && pause.validate("paused_1", 30000);
 

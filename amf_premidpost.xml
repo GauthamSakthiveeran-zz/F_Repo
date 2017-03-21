@@ -13,21 +13,14 @@
 			<class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPreMidPostPoddedAdTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPrerollAndMidrollAdTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackBasicSeekAndReplayTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackEncodingPriorityTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackIMAPreVastMidAdsTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackInitialTimeForOoyalaAdsTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackMp4PlayerSwitchingSupportTests"></class>
 			<class name="com.ooyala.playback.amf.PlayBackNoAdsTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackPlayerWithoutSkinTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackPlaylistDiscoveryTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostInitialVolumeTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostReplayTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsPoddedTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackVastPreIMAMidlAdsTests"></class>
 			<class name="com.ooyala.playback.amf.ima.PlaybackPreRollOverlayPostRollAdTests"></class>
-			<class name="com.ooyala.playback.amf.vast.PlaybackPoddedSkippbableInsideTests"></class>
-			<class name="com.ooyala.playback.amf.vast.PlaybackPoddedwithOverlayStandaloneTests"></class>
 		</classes>
 		
 	</test>

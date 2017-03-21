@@ -40,18 +40,18 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
 			
 			result = result && event.validate("MidRoll_willPlayAds", 60000);
 
-			if(event.isAdPluginPresent("freewheel")){
+			if(event.isAdPluginPresent("freewheel") || event.isAdPluginPresent("ima")){
 				result = result && event.validate("adsPlayed_2", 200000); // TODO
+				result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 120000);
 			} else{
-				result = result && event.validate("adsPlayed_1", 200000);
+				result = result && event.validate("adsPlayed_1", 250000);
+				result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_1", 120000);
 			}
-
-			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_1", 120000);
 
 			if(testName.contains("SetEmbedCode")){
 				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);
 			}else{
-				result = result && seekValidator.validate("seeked_2", 60000);
+				result = result && seekValidator.validate("seeked_1", 60000);
 				result = result && event.validate("played_1", 200000);
 			}
 

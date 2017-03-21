@@ -35,7 +35,7 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 
 			executeScript("pp.play();");
 
-			result = result && event.validate("willPlayPrerollAd", 60000);
+			result = result && event.validate("PreRoll_willPlaySingleAd_1", 10000);
 
 			result = result && event.validate("adIsPlaying", 60000);
 

@@ -1,0 +1,23 @@
+<suite name="Playback Web Regression Suite for Ooyala ads" parallel="classes" thread-count="5">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+
+	<test name="Ooyala ads">
+
+		<parameter name="jsFile" value="common.js,amf/amf.js" />
+		<parameter name="xmlFilePkg" value="ooyalads" />
+
+		<classes>
+			
+			<class name="com.ooyala.playback.ooyalaads.PlaybackOoyalaAdsTests"></class>
+			<class name="com.ooyala.playback.ooyalaads.PlaybackInitialTimeForOoyalaAdsTests"></class>
+			<class name="com.ooyala.playback.ooyalaads.PlaybackPlaylistDiscoveryTests"></class>
+			
+		</classes>
+		
+		
+		
+	</test>
+	
+</suite>
