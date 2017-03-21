@@ -479,6 +479,48 @@
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
+        <url>
+            <description name="Live Testing:eHLS Bitmovin" />
+            <embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL" />
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8abff377aec2400e9337fe9088e65d40" />
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=8h+npYn8aTusBeAUru7nrMPVC8xXnulZipot74Ab2lc&override_syndication_group=override_all_synd_groups","encodingPriority":["hls","dash","webm","mp4","dash"],"platform":"html5"}]]></playerParameter>
+            <live>
+                <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+        <url>
+            <description name="Live Testing:Dash CENC (DRM) Bitmovin"/>
+            <embed_code name="8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB"/>
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8abff377aec2400e9337fe9088e65d40"/>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=xDF8lsLV7EPvOdD6XqO2jZrFQonCOP+bNdSfAewWC+w&override_syndication_group=override_all_synd_groups","platform":"html5"}]]></playerParameter>
+            <live>
+                <channelId>4e925289af57408384f58832323bfe51</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+        <url>
+            <description name="Live Testing:Smooth PR (DRM) Bitmovin"/>
+            <embed_code name="8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB"/>
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8abff377aec2400e9337fe9088e65d40"/>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=xDF8lsLV7EPvOdD6XqO2jZrFQonCOP+bNdSfAewWC+w&override_syndication_group=override_all_synd_groups","encodingPriority":["smooth","hds","webm","mp4"],"platform":"html5"}]]></playerParameter>
+            <live>
+                <channelId>4e925289af57408384f58832323bfe51</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
         <!--Getting SAS Error for this asset. uncomment after this ticket PLAYER-617 is resolved -->
        <!-- <url>
             <description name="Live_HLS_MAIN_Elemental" />
