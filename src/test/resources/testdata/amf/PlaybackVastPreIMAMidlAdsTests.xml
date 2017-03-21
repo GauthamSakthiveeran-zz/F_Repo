@@ -25,7 +25,7 @@
 		</url>
 
 		<url>
-			<description name="VAST_PreRoll_IMA_MidRoll" />
+			<description name="VAST:VAST PreRoll + IMA MidRoll OSMF" />
 			<embed_code name="gwZnBnMDE6REH10kbDDR4nbf1HqZkxCL" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />

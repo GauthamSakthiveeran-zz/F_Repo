@@ -60,7 +60,7 @@ import net.sf.uadetector.service.UADetectorServiceFactory;
 @Listeners(IMethodListener.class)
 public abstract class PlaybackWebTest extends FacileTest {
 
-    private Logger logger = Logger.getLogger(PlaybackWebTest.class);
+    protected Logger logger = Logger.getLogger(PlaybackWebTest.class);
     protected String browser;
     protected ChromeDriverService service;
     protected PlayBackFactory pageFactory;

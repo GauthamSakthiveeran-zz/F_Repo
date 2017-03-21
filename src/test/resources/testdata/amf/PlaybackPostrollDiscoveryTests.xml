@@ -25,17 +25,6 @@
     	</url>
     	
     	<url>
-	    	<description name="POSTROLL_BITMOVIN_IMA"/>
-	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="14a1b2eb21104617948405aeac11271b"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"]}]]></playerParameter>
-    	</url>
-    	
-    	<url>
 	    	<description name="IMA:Discovery Postroll Up Next Main"/>
 	        <embed_code name="5sbHlycTqQ5dqQoCVcY3Rpe78TVvJKjg"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>

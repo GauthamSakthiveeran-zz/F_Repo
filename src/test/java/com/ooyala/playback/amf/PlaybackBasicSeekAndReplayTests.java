@@ -1,14 +1,19 @@
 package com.ooyala.playback.amf;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.IsAdPlayingValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.PoddedAdValidator;
+import com.ooyala.playback.page.ReplayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by snehal on 01/03/17.
@@ -18,11 +23,9 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
     private static Logger logger = Logger.getLogger(PlaybackBasicSeekAndReplayTests.class);
     private PlayValidator play;
     private EventValidator eventValidator;
-    private PlayAction playAction;
     private SeekValidator seek;
     private SeekAction seekAction;
     private ReplayValidator replayValidator;
-    private PauseValidator pause;
     private IsAdPlayingValidator isAdPlaying;
     private PoddedAdValidator poddedAdValidator;
 
@@ -30,7 +33,7 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
         super();
     }
 
-    @Test(groups = {"amf","preroll", "midroll", "replay"}, dataProvider = "testUrls")
+	@Test(groups = { "amf", "premidpost", "replay" }, dataProvider = "testUrls")
     public void testBasicSeekAndReplay(String testName, String url)
             throws OoyalaException {
 
@@ -57,15 +60,11 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
                 result = result && poddedAdValidator.setPosition(adPosition).validate("countPoddedAds_1", 20000);
             }
             
-            result = result && play.validate("playing_2", 60000);
-
-            result = result && pause.validate("paused_1", 30000);
+            result = result && eventValidator.validate("playing_2", 60000);
 
             result = result && eventValidator.validate("seeked_1", 30000);
 
             result = result && seekAction.seek("10");
-
-            result = result && playAction.startAction();
 
             result = result && eventValidator.validate("seeked_2", 30000);
 

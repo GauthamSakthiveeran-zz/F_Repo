@@ -38,10 +38,9 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 			
-			// added condition for IMA OVerlay as overlay is showing
-			// intermittently PBI-1825
+			result = result && event.validate("willPlayNonlinearAd_1", 5000);
+			
 			if (!event.isAdPluginPresent("ima")){
-				result = result && event.validate("willPlayNonlinearAd_1", 5000);
 				result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
 			}
 			

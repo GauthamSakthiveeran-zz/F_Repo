@@ -50,13 +50,13 @@ public class PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests extends Playb
 
             injectScript();
 
-            result=result && playAction.startAction();
+			result = result && playAction.startAction();
 
             result = result && eventValidator.validate("PreRoll_willPlayAds", 60000);
 
             result = result && eventValidator.validate("adsPlayed_1", 600000);
 
-            result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 60000);
+//            result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 60000);
 
             // for IMA ad videoControllerVideoElementCreated event is not triggering
             if (!eventValidator.isAdPluginPresent("ima")) {
@@ -79,7 +79,7 @@ public class PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests extends Playb
 
             result = result && eventValidator.validate("adsPlayed_2", 600000);
 
-            result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 600000);
+//            result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 600000);
 
             // for IMA ad videoControllerVideoElementCreated event is not triggering
             if (!eventValidator.isAdPluginPresent("ima")) {
@@ -98,7 +98,7 @@ public class PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests extends Playb
             result = result && eventValidator.validate("PostRoll_willPlayAds", 200000);
             result = result && eventValidator.validate("adsPlayed_3", 600000);
 
-            result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds_3", 600000);
+//            result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds_3", 600000);
 
             // for IMA ad videoControllerVideoElementCreated event is not triggering
             if (!eventValidator.isAdPluginPresent("ima")) {
