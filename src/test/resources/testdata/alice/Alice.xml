@@ -348,7 +348,7 @@
 
     <test name="PlaybackAspectRatioTests">
         <url>
-            <description name="Alice Core:4:3 Aspect Ratio bitmovin" />
+            <description name="Alice Core:4 as 3 Aspect Ratio bitmovin" />
             <embed_code name="FwaXZjcjrkydIftLal2cq9ymQMuvjvD8" />
             <pcode name="c0cTkxOqALQviQIGAHWY5hP0q9gU" />
             <plugins name="MAIN" />
@@ -427,7 +427,7 @@
     <test name="PlaybackLiveTests">
 
         <url>
-            <description name="Alice Core:HLS Live (Customer link itbn):Bitmovin" />
+            <description name="Alice Core:HLS Live (Customer link itbn)" />
             <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
@@ -583,7 +583,7 @@
 
     <test name="PlaybackVerticalVideoTests">
         <url>
-            <description name="Alice Core:Vertical Video Aspect Ration 16:9" />
+            <description name="Alice Core:Vertical Video Aspect Ration 16 as 9" />
             <embed_code name="xnNncyYTE62vx3rHnwJwUtBbeBt4Y2pw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN,BITMOVIN" />
@@ -1027,7 +1027,7 @@
     </test>
     <test name="PlaybackOptEntitlementTests">
         <url>
-            <description name="DRM + Content Protection:dash + OPT + entitlement bitmovin" />
+            <description name="DRM + Content Protection:dash + OPT + entitlement bitmovin | Alice Core:Dash CENC Vod with OPT" />
             <embed_code name="1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
