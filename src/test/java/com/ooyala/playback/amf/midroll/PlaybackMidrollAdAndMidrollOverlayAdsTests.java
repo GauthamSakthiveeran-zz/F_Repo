@@ -30,13 +30,6 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 		try {
 			driver.get(url);
 
-			// IMA Overlay is not showing
-			// https://jira.corp.ooyala.com/browse/PBI-1825
-			if (event.isAdPluginPresent("ima")) {
-				extentTest.log(LogStatus.SKIP, "IMA Overlay is not showing as PBI-1825");
-				return;
-			}
-
 			result = result && playValidator.waitForPage();
 
 			injectScript();

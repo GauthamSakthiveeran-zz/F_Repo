@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPreRollAdsClickThroughClosedCaptionTests" >
     	<url>
-	    	<description name="IMA:CC enabled preroll Main|IMA:Ad Rule Preroll Main|IMA:Clickthrough Main"/>
+	    	<description name="IMA:CC enabled preroll Main|IMA:Ad Rule Preroll Main|IMA:Clickthrough Main|VTC:Verify Preroll IMA with Video Plugin"/>
 	        <embed_code name="1hZHQ4YTE6-JSjQJuODqJkLoOC2IfXWr"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -354,7 +354,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:Clickthrough Main|Freewheel:Preroll Main"/>
+	    	<description name="Freewheel:Clickthrough Main|Freewheel:Preroll Main|VTC:Verify Preroll Freewheel with Video Plugin"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -365,7 +365,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Clickthrough Main|VAST:Preroll Main"/>
+	    	<description name="VAST:Clickthrough Main|VAST:Preroll Main|VTC:Verify Preroll Vast Ad with Video Plugin"/>
 	        <embed_code name="Bwd3A4YTE61jiXgzo3k5MkrFCnJrUw_4"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

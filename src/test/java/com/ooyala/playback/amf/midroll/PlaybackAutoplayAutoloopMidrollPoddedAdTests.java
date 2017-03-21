@@ -70,6 +70,9 @@ public class PlaybackAutoplayAutoloopMidrollPoddedAdTests extends PlaybackWebTes
 				result = result && eventValidator.validate("willPlaySingleAd_"+i+"", 45000);
 				result = result && eventValidator.validate("singleAdPlayed_"+i+"", 45000);
 			}
+			
+			result = result && seek.seek(15,true);
+			
 			result = result && eventValidator.validate("replay_1", 60000);
 			
 			result = result && seek.seek(15,true);
