@@ -26,7 +26,12 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 			url = removeSkin(url);
 			driver.get(url);
 
-			injectScript();
+			try {
+				injectScript();
+            } catch (Exception e) {
+                Thread.sleep(5000);
+                injectScript();
+            }
 
 			Boolean autoplay = (Boolean) executeScript(
 					"function test() {var bool = pp.parameters.autoplay; return bool;} return test();");

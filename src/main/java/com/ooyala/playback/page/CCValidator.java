@@ -173,8 +173,10 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 				return false;
 
 			if (!getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-xsmall")) {
-				if (!waitOnElement("CC_POPHOVER_HORIZONTAL", 6000))
-					return false;
+				if (!waitOnElement("CC_POPHOVER_HORIZONTAL", 6000)){
+					switchToControlBar();
+					clickOnIndependentElement("CC_BTN");
+				}
 				boolean horizontal_CC_Option = isElementPresent("CC_POPHOVER_HORIZONTAL");
 
 				if (horizontal_CC_Option) {
