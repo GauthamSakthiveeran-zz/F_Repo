@@ -1,4 +1,4 @@
-package com.ooyala.playback.syndicationrules;
+package com.ooyala.playback.contentProtection;
 
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
