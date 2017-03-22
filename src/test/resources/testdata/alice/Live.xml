@@ -25,17 +25,6 @@
         </url>
 
         <url>
-            <description name="Alice Core:(Azure) Dash CENC Vod" />
-            <embed_code name="V1ZDVrNjE6LoqgO7tdNKb8Tcz85-QSLo" />
-            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-
-        <url>
             <description name="Alice Core:Akamai HLS Live bitmovin" />
             <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
