@@ -165,27 +165,5 @@
 	        <browserSupportedVersion name="safari,9"/>
     	</url>
     	
-    	<!-- <url>
-	    	<description name="OOYALA_ADS MAIN"/>
-	        <embed_code name="s5czdxODE6wRK7f5QQ5DXIGvFYbCUSYY"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name=""/>
-	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="fb4f6cd2b4ae4ad68cc5c2d2cb981a18"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="OOYALA_ADS BITMOVIN"/>
-	        <embed_code name="s5czdxODE6wRK7f5QQ5DXIGvFYbCUSYY"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="BITMOVIN,MAIN"/>
-	        <adPlugins name=""/>
-	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="fb4f6cd2b4ae4ad68cc5c2d2cb981a18"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    	</url> -->
-    	
     </test>
 </testdata>

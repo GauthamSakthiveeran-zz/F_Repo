@@ -102,7 +102,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:Skippable Ads [ skip button after 7 seconds ]  Main"/>
+	    	<description name="Freewheel:Skippable Ads [ skip button after 7 seconds ] Main"/>
 	        <embed_code name="NocGg4bzoRJ1yu3JY3LP44tVlsC2E_gi"/>
 	        <pcode name="V0NDYyOuL4a4eLle69su0dP_7vs1"/>
 	        <plugins name="MAIN"/>
@@ -194,29 +194,6 @@
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter><![CDATA[{"linearAdSkipButtonStartTime":1,"showLinearAdSkipButton":true}]]></playerParameter>
     	</url> -->
-    	
-    	<url>
-	    	<description name="MAIN OOYALA_ADS"/>
-	        <embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name=""/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true,"initialTime":10}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="BITMOVIN OOYALA_ADS"/>
-	        <embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name=""/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true,"initialTime":10}]]></playerParameter>
-	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-    	</url>
     	
     </test>
 </testdata>

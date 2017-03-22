@@ -70,9 +70,11 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 					result = result && event.validate("adPodEnd_google-ima-ads-manager_0_2", 6000);
 			}
 			
-			result = result && seekAction.seekTillEnd().startAction();
 			
-			result = result && event.validate("played_1", 200000);
+			if(!event.validate("played_1", 20000))
+				result = result && seekAction.seekTillEnd().startAction();
+			
+			result = result && event.validate("played_1", 20000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

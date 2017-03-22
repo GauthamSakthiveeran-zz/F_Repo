@@ -47,12 +47,18 @@ public class PlaybackOverrideEncodingPriorityMidrollPoddedAdTests extends Playba
             result = result && encode.validate("validate_default_encoding", 20000);
 
             result = result && playAction.startAction();
+            
+            result = result && event.validate("playing_1", 60000);
 
-            result = result && seek.validate("seeked_1", 20000);
+            result = result && seek.validate("seeked_1", 60000);
 
-            result = result && event.validate("adsPlayed_1", 60000);
+            if(event.isAdPluginPresent("freewheel")){
+				result = result && event.validate("adsPlayed_2", 200000); // TODO
+			} else{
+				result = result && event.validate("adsPlayed_1", 200000);
+			}
 
-            result = result && event.validate("videoPlayed_1", 20000);
+            result = result && event.validate("videoPlayed_1", 60000);
 
 
             if (event.isAdPluginPresent("freewheel")) {
@@ -68,10 +74,16 @@ public class PlaybackOverrideEncodingPriorityMidrollPoddedAdTests extends Playba
             result = result && encode.validate("Override", 60000);
 
             result = result && playAction.startAction();
+            
+            result = result && event.validate("playing_1", 60000);
 
             result = result && seek.validate("seeked_1", 60000);
 
-            result = result && event.validate("adsPlayed_1", 60000);
+            if(event.isAdPluginPresent("freewheel")){
+				result = result && event.validate("adsPlayed_2", 200000); // TODO
+			} else{
+				result = result && event.validate("adsPlayed_1", 200000);
+			}
 
             result = result && event.validate("videoPlayed_1", 60000);
 

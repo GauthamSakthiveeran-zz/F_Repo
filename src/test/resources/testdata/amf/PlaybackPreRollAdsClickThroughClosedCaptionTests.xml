@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPreRollAdsClickThroughClosedCaptionTests" >
     	<url>
-	    	<description name="IMA:CC enabled preroll Main|IMA:Ad Rule Preroll Main|IMA:Clickthrough Main"/>
+	    	<description name="IMA:CC enabled preroll Main|IMA:Ad Rule Preroll Main|IMA:Clickthrough Main|VTC:Verify Preroll IMA with Video Plugin"/>
 	        <embed_code name="1hZHQ4YTE6-JSjQJuODqJkLoOC2IfXWr"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -72,7 +72,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:CC enabled preroll Main"/>
+	    	<description name="VAST:CC enabled preroll"/>
 	        <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -94,7 +94,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:CC enabled preroll OSMF|IMA:OSMF Preroll|IMA:Clickthrough OSMF"/>
+	    	<description name="IMA:CC enabled preroll OSMF|IMA:Preroll OSMF|IMA:Clickthrough OSMF"/>
 	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -229,7 +229,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:OSMF Preroll with Google UI"/>
+	    	<description name="IMA:Preroll with Google UI OSMF"/>
 	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -354,7 +354,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:Clickthrough Main|Freewheel:Preroll Main"/>
+	    	<description name="Freewheel:Clickthrough Main|Freewheel:Preroll Main|VTC:Verify Preroll Freewheel with Video Plugin"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -365,7 +365,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Clickthrough Main|VAST:Preroll Main"/>
+	    	<description name="VAST:Clickthrough Main|VAST:Preroll Main|VTC:Verify Preroll Vast Ad with Video Plugin"/>
 	        <embed_code name="Bwd3A4YTE61jiXgzo3k5MkrFCnJrUw_4"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -408,29 +408,6 @@
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
-    	
-    	
-    	<!-- <url>
-	    	<description name="OOYALA_ADS MAIN"/>
-	        <embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name=""/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="OOYALA_ADS BITMOVIN"/>
-	        <embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name=""/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    	</url> -->
     	
     	
     </test>

@@ -49,8 +49,13 @@ public class PlaybackOverrideEncodingPriorityPostrollAdTests extends PlaybackWeb
             result = result && playAction.startAction();
 
             result = result && seek.validate("seeked_1", 20000);
+            
+			if (event.isAdPluginPresent("freewheel"))
+				result = result && event.validate("adsPlayed_2", 60000);
+			else
+				result = result && event.validate("adsPlayed_1", 60000);
 
-            result = result && event.validate("adsPlayed_1", 60000);
+           
 
             result = result && event.validate("videoPlayed_1", 20000);
 
@@ -71,7 +76,10 @@ public class PlaybackOverrideEncodingPriorityPostrollAdTests extends PlaybackWeb
 
             result = result && seek.validate("seeked_1", 60000);
 
-            result = result && event.validate("adsPlayed_1", 60000);
+			if (event.isAdPluginPresent("freewheel"))
+				result = result && event.validate("adsPlayed_2", 60000);
+			else
+				result = result && event.validate("adsPlayed_1", 60000);
 
             result = result && event.validate("videoPlayed_1", 60000);
 

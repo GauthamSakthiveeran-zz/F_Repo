@@ -11,7 +11,6 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.DifferentElementValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -28,7 +27,6 @@ public class PlaybackVerifyVideoElementCreatedAllMidrollAdsTests extends Playbac
     private PlayAction playAction;
     private DifferentElementValidator differentElementValidator;
     private SeekValidator seekValidator;
-    private PoddedAdValidator poddedAdValidator;
 
     PlaybackVerifyVideoElementCreatedAllMidrollAdsTests() throws OoyalaException {
         super();
@@ -55,19 +53,21 @@ public class PlaybackVerifyVideoElementCreatedAllMidrollAdsTests extends Playbac
 
             result = result && eventValidator.validate("MidRoll_willPlayAds", 60000);
 
-            result = result && eventValidator.validate("adsPlayed_1", 40000);
+            if(eventValidator.isAdPluginPresent("freewheel"))
+            	result = result && eventValidator.validate("adsPlayed_2", 40000); // TODO
+            else
+            	result = result && eventValidator.validate("adsPlayed_1", 40000);
+            
+            //TODO - need to get this clarified.
 
-            result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_1", 120000);
-
-            // for IMA ad videoControllerVideoElementCreated event is not triggering
-            if (!eventValidator.isAdPluginPresent("ima")) {
+/*            if (!eventValidator.isAdPluginPresent("ima")) {
                 int noOfPoddedAds = parseInt(
                         (((JavascriptExecutor) driver).executeScript("return adPodStarted_1.textContent")).toString());
 
                 for (int i = 1 + counter; i <= noOfPoddedAds; i++) {
                     result = result && eventValidator.validate("videoCreatedForAds_" + i + "", 20000);
                 }
-            }
+            }*/
 
             result = result && differentElementValidator.validateMainVideoElementId("VIDEO_ELEMENT",20000);
 

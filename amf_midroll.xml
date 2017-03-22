@@ -16,18 +16,6 @@
 			<class name="com.ooyala.playback.amf.midroll.PlaybackMidRollPoddedAdsTests"></class>
 			<class name="com.ooyala.playback.amf.midroll.PlaybackMultipleMidRollAdsTests"></class>
 			<class name="com.ooyala.playback.amf.midroll.vast.PlaybackMidrollOverlayUpNextTests"></class>
-		</classes>
-		
-		
-		
-	</test>
-	
-	<test name="AMF Midroll Seq" parallel="false" thread-count="1">
-
-		<parameter name="jsFile" value="common.js,amf/amf.js" />
-		<parameter name="xmlFilePkg" value="amf" />
-
-		<classes>
 			<class name="com.ooyala.playback.amf.midroll.PlaybackCCenableMidRollAdsTests"></class>
 			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollAdAndMidrollOverlayAdsTests"></class>
 		</classes>
@@ -35,7 +23,7 @@
 		
 		
 	</test>
-
+	
 	<test name="AMF Midroll VTC" parallel="classes" thread-count="5">
 
 		<parameter name="jsFile" value="vtc/vtc.js,amf/amf.js" />

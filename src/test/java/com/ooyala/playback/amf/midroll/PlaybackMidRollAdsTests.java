@@ -55,6 +55,8 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 				else
 					result = result && event.validate("singleAdPlayed_1", 60000);
 			}
+			
+			result = result && event.validate("playing_2", 60000);
 
 			if(testName.contains("SetEmbedCode")){
 				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);

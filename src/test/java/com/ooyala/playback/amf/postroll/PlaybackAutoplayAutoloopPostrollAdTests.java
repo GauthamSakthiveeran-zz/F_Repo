@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -17,7 +18,7 @@ public class PlaybackAutoplayAutoloopPostrollAdTests extends PlaybackWebTest {
 
 	private static Logger logger = Logger.getLogger(PlaybackAutoplayAutoloopPostrollAdTests.class);
 	private EventValidator eventValidator;
-    private SeekAction seek;
+    private SeekValidator seek;
 
 	public PlaybackAutoplayAutoloopPostrollAdTests() throws OoyalaException {
 		super();
@@ -46,11 +47,15 @@ public class PlaybackAutoplayAutoloopPostrollAdTests extends PlaybackWebTest {
 			}
 
 			result = result && eventValidator.validate("playing_1", 60000);
-			result = result && seek.seek(10,true);
+			result = result && seek.validate("seeked_1", 60000);
+			result = result && eventValidator.validate("played_1", 60000);
+			result = result && eventValidator.validate("PostRoll_willPlaySingleAd_1", 5000);
 			result = result && eventValidator.validate("adsPlayed_1", 45000);
 			result = result && eventValidator.validate("replay_1", 60000);
-			result = result && seek.seek(10,true);
-			result = result && eventValidator.validate("willPlayAdOnReplay_1", 45000);
+			result = result && eventValidator.validate("playing_2", 60000);
+			result = result && seek.validate("seeked_4", 60000);
+			result = result && eventValidator.validate("played_2", 60000);
+			result = result && eventValidator.validate("willPlayAds_OnReplay", 5000);
 			result = result && eventValidator.validate("adsPlayed_2", 45000);
 
 		} catch (Exception e) {

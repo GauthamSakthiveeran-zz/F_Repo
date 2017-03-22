@@ -16,29 +16,6 @@
 		</url>
 
 		<url>
-			<description name="VAST:Midroll Vast 3.0 + Bitmovin" />
-			<embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82" />
-			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-			<plugins name="BITMOVIN,MAIN" />
-			<adPlugins name="IMA" />
-			<additionalPlugins name="" />
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-
-		</url>
-
-		<url>
-			<description name="BitmovinMidroll_VPAID2.0_HLS" />
-			<embed_code name="0zdnZnMTE6_eSVEEE_C1X1tCmJE5GmDe" />
-			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-			<plugins name="BITMOVIN,MAIN" />
-			<adPlugins name="IMA" />
-			<additionalPlugins name="" />
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-			<playerParameter><![CDATA[{"encodingPriority":["hls","dash"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":3,"google-ima-ads-manager":{"all_ads":[{"position":"10000","position_type":"t","tag_url":"http://vp-validation.videoplaza.tv/proxy/distributor/v2?rt=vast_2.0&t=vpaid2-sizmek&s=validation&tt=p"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
-		</url>
-
-		<url>
 			<description name="Pulse:Midroll Bitmovin" />
 			<embed_code name="Blb2U5MzE6mLeSsYNyfqiDbsaYBODDka" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -147,7 +124,7 @@
 		</url>
 
 		<url>
-			<description name="IMA:Ad Rule Midroll" />
+			<description name="IMA:Ad Rule Midroll Main" />
 			<embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -196,6 +173,18 @@
 		</url>
 		
 		<url>
+			<description name="VAST:Midroll OSMF" />
+			<embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF,MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+
+		</url>
+		
+		<url>
 			<description name="Freewheel:Midroll Main" />
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
@@ -234,7 +223,7 @@
 		</url>
 
 		<url>
-			<description name="FlashMidroll_IMA" />
+			<description name="IMA:Midroll OSMF" />
 			<embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
