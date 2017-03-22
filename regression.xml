@@ -32,8 +32,6 @@
             <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailCarouselTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackSocialMediaTests" />
-            <class name="com.ooyala.playback.syndicationrules.PlaybackOptEntitlementTests" />
-            <class name="com.ooyala.playback.syndicationrules.PlaybackDeviceRegistrationTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackAutoplayTests" />
             <class name="com.ooyala.playback.playerfeatures.OoyalaAPITests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackBitrateTests" />
@@ -45,11 +43,10 @@
             <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackNewProcessingProfileTests" />
-            <class name="com.ooyala.playback.syndicationrules.PlaybackGeoRestrictionTests"/>
         </classes>
     </test>
 
-    <test name="Live_Regression">
+    <test name="Live Regression">
         <groups>
             <define name="live">
                 <include name="streams" />
@@ -66,7 +63,7 @@
         </classes>
     </test>
 
-    <test name="Playlist_Regression">
+    <test name="Playlist Regression">
         <groups>
             <define name="playlist">
                 <include name="playlist" />
@@ -82,7 +79,7 @@
         </classes>
     </test>
 
-    <test name="FCC_Regression">
+    <test name="FCC Regression">
         <groups>
             <define name="fcc">
                 <include name="FCC" />
@@ -96,6 +93,24 @@
             <parameter name="jsFile" value="alice/alice.js" />
             <class name="com.ooyala.playback.FCC.PlaybackFCCDefaultSettingTests" />
             <class name="com.ooyala.playback.FCC.PlaybackFCCBasicTests" />
+        </classes>
+    </test>
+
+    <test name="ContentProtection Regression">
+        <groups>
+            <define name="syndicationRules">
+                <include name="syndicationRules" />
+            </define>
+            <run>
+                <include name="syndicationRules" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/ContentProtection.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.contentProtection.PlaybackGeoRestrictionTests"/>
+            <class name="com.ooyala.playback.contentProtection.PlaybackOptEntitlementTests" />
+            <class name="com.ooyala.playback.contentProtection.PlaybackDeviceRegistrationTests"/>
         </classes>
     </test>
 
