@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <test name="PlaybackDeviceRegistrationTests">
+        <url>
+            <description name="Alice Core:Device restriction| DRM + Content Protection:dash + Device Registration(Limit:2)" />
+            <embed_code name="ZoMmd3NTE6zAFEYbLkU5hKXp8zF2ctK0" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <browserSupportedVersion name="firefox,48"/>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/ZoMmd3NTE6zAFEYbLkU5hKXp8zF2ctK0?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2900009470&account_id=dulari_qa&&&signature=zfMNjFdK8lRNZsTkSSHyrExtGD9aWxmCD/5znAReylY"}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="DRM + Content Protection:Fairplay HLS + Device Registration" />
+            <embed_code name="o2djFsMzE6R-tb3pew2puwvQvAQWFRUo" />
+            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls_drm"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/o2djFsMzE6R-tb3pew2puwvQvAQWFRUo?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2900017190&account_id=dulari_qa&&&signature=7LgME591QFTnhOjF4x9p6GMxE0EDX72SUtRqVgwiy1s"}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="DRM + Content Protection:Adobe Access DRM + Device Registration" />
+            <embed_code name="Uyd3lyNTE66XYHmqMh5JX331rjfZZ6Dv" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/thaDgyOrzKRQV_Izdp2WmiX9kCWL/Uyd3lyNTE66XYHmqMh5JX331rjfZZ6Dv?api_key=thaDgyOrzKRQV_Izdp2WmiX9kCWL.tFkPz&expires=2899404809&account_id=dulari_qa&&&signature=xCTaPUlWo0OqnFcDFtVp81+JV3n8zG5QoXoHT9Tpp1c"}]]></playerParameter>
+        </url>
+    </test>
+    <test name="PlaybackOptEntitlementTests">
+        <url>
+            <description name="DRM + Content Protection:dash + OPT + entitlement bitmovin | Alice Core:Dash CENC Vod with OPT" />
+            <embed_code name="1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <browserSupportedVersion name="firefox,48"/>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213193&account_id=dulari_qa&&&signature=3ZIfOPsKS0AIvSSgUlNYUQq5blWfIT40vLlYl8nJqp8"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Alice Core:OPT + Entitlement" />
+            <embed_code name="x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge,safari" />
+            <browserSupportedVersion name="firefox,48"/>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2889048225&account_id=dulari_qa&&&signature=0AsQMaoDq58w9q/L6P7cJzOI85gocxWPyw69dlLoQm0"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="DRM + Content Protection:Fairplay HLS + OPT + entitlement bitmovin" />
+            <embed_code name="E1eTJiNDE6JxNLNrM_CK-vicoKeZtW1e" />
+            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/E1eTJiNDE6JxNLNrM_CK-vicoKeZtW1e?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892590984&account_id=dulari_qa&&&signature=ihvzIhOpC8EKQIB4xMHDf/XoixnXodMD0HNGA3Vw4o4"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="DRM + Content Protection:(Over secure network)dash + OPT + entitlement" />
+            <embed_code name="1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <sslEnabled name="https"/>
+            <playerParameter><![CDATA[{"embedToken":"https://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213193&account_id=dulari_qa&&&signature=3ZIfOPsKS0AIvSSgUlNYUQq5blWfIT40vLlYl8nJqp8"}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="DRM + Content Protection:OPT+Adobe Access DRM" />
+            <embed_code name="t1MXVnMzE6RtM-VN_Y99PQ67OQbLKcUf" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <sslEnabled name="https"/>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/thaDgyOrzKRQV_Izdp2WmiX9kCWL/t1MXVnMzE6RtM-VN_Y99PQ67OQbLKcUf?api_key=thaDgyOrzKRQV_Izdp2WmiX9kCWL.tFkPz&expires=2890416123&account_id=dulari_qa&&&signature=oZ765UjeFGTpq4Qph3PivXhamWWehEChjl7sUjtALC0"}]]></playerParameter>
+        </url>
+    </test>
+    <test name="PlaybackGeoRestrictionTests">
+        <url>
+            <description name="DRM + Content Protection:dash + Geo Restriction bitmovin" />
+            <embed_code name="tua2hqNTE61OtT9uCWV6IKb3s4dDd7DT" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="DRM + Content Protection:Fairplay HLS + Geo Restriction bitmovin" />
+            <embed_code name="U0NDNiNDE6CaJv41fU4QpRFS4FDUGX4x" />
+            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
+        </url>
+    </test>
+</testdata>
