@@ -557,7 +557,7 @@
     <!-- Added playercontrolTests for each stream format -->
     <test name="PlaybackPlayerControlsTests">
         <url>
-            <description name="VOD_eHLS_MAIN" />
+            <description name="Alice Core:eHLS Vod main" />
             <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN" />
@@ -568,7 +568,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
-            <description name="VOD_MP4_MAIN" />
+            <description name="Alice Core:MP4 Only Asset with Main Plugin" />
             <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -589,7 +589,7 @@
              <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
          </url>-->
         <url>
-            <description name="VOD_HLS_BITMOVIN" />
+            <description name="Alice Core:HLS Vod bitmovin" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
@@ -624,17 +624,6 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
-            <description name="DRM + Content Protection:dash + Geo Restriction bitmovin" />
-            <embed_code name="tua2hqNTE61OtT9uCWV6IKb3s4dDd7DT" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-        <url>
             <description name="DRM + Content Protection:Fairplay HLS VOD bitmovin|Alice Core:Fairplay HLS" />
             <embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
@@ -655,17 +644,6 @@
             <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892591060&account_id=dulari_qa&&&signature=iVNk9dUp9ohR39ud/rsYjxdN3X4Kao6oV/LC8DuPObg"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="DRM + Content Protection:Fairplay HLS + Geo Restriction bitmovin" />
-            <embed_code name="U0NDNiNDE6CaJv41fU4QpRFS4FDUGX4x" />
-            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
         </url>
         <url>
             <description name="DRM + Content Protection:Fairplay HLS + CC bitmovin" />
@@ -1075,6 +1053,32 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/kza2hqNTE6SjwZYCVNlKtMp2QdU3IRNc?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213410&account_id=dulari_qa&&&signature=mdGBivStf80t96jM35bAGyFfKTrEFNnomc6dE4rik+E"}]]></playerParameter>
+        </url>
+    </test>
+
+    <test name="PlaybackGeoRestrictionTests">
+        <url>
+            <description name="DRM + Content Protection:dash + Geo Restriction bitmovin" />
+            <embed_code name="tua2hqNTE61OtT9uCWV6IKb3s4dDd7DT" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="DRM + Content Protection:Fairplay HLS + Geo Restriction bitmovin" />
+            <embed_code name="U0NDNiNDE6CaJv41fU4QpRFS4FDUGX4x" />
+            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
         </url>
     </test>
 
