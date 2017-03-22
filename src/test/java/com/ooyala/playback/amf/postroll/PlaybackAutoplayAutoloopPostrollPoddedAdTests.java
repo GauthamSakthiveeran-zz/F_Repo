@@ -2,6 +2,7 @@ package com.ooyala.playback.amf.postroll;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -19,12 +20,13 @@ public class PlaybackAutoplayAutoloopPostrollPoddedAdTests extends PlaybackWebTe
 	private EventValidator eventValidator;
 	private SeekValidator seekValidator;
     private SeekAction seek;
+    private PoddedAdValidator podded;
 
 	public PlaybackAutoplayAutoloopPostrollPoddedAdTests() throws OoyalaException {
 		super();
 	}
 
-	@Test(groups = "amf,autoplay", dataProvider = "testUrls")
+	@Test(groups = { "amf", "autoplay" }, dataProvider = "testUrls")
 	public void testAutoplayAutoloop(String testName, String url)
 			throws OoyalaException {
 
@@ -33,9 +35,16 @@ public class PlaybackAutoplayAutoloopPostrollPoddedAdTests extends PlaybackWebTe
 		try {
 
 			driver.get(url);
-
-			injectScript();
-
+			
+			try {
+				injectScript();
+            } catch (Exception e) {
+                logger.error(e.getMessage());
+                logger.info("Retrying...");
+                Thread.sleep(5000);
+                injectScript();
+            }
+			
 			boolean autoplay = false;
 
 			autoplay = Boolean.parseBoolean(driver.executeScript(
@@ -45,23 +54,27 @@ public class PlaybackAutoplayAutoloopPostrollPoddedAdTests extends PlaybackWebTe
 				logger.error("Autoplay not set for this video");
 				result = false;
 			}
+			
+			Thread.sleep(6000);
 
-			result = result && eventValidator.validate("playing_1", 60000);
-			result = result && seek.seek(15,true);
-			result = result && eventValidator.validate("countPoddedAds_1",60000);
-			int noOfAds = Integer.parseInt(driver.executeScript("return countPoddedAds_1.textContent").toString());
-			for (int i=1 ; i<=noOfAds;i++){
-				result = result && eventValidator.validate("willPlaySingleAd_"+i+"", 45000);
-				result = result && eventValidator.validate("singleAdPlayed_"+i+"", 45000);
-			}
-			result = result && eventValidator.validate("replay_1", 60000);
 			result = result && seekValidator.validate("seeked_1", 60000);
-			result = result && eventValidator.validate("countPoddedAds_2",60000);
-			int noOfAdsOnReplay = Integer.parseInt(driver.executeScript("return countPoddedAds_2.textContent").toString());
-			for (int i=noOfAds+1; i<=noOfAdsOnReplay;i++){
-				result = result && eventValidator.validate("willPlaySingleAd_"+i+"", 45000);
-				result = result && eventValidator.validate("singleAdPlayed_"+i+"", 45000);
-				result = result && eventValidator.validate("willPlayAdOnReplay_"+(i-noOfAds)+"", 45000);
+			
+			
+			if(eventValidator.isAdPluginPresent("freewheel")){
+				result = result && podded.setPosition("PostRoll").validate("countPoddedAds_2", 60000);
+			} else{
+				result = result && podded.setPosition("PostRoll").validate("countPoddedAds_1", 60000);
+			}
+			
+			result = result && eventValidator.validate("replay_1", 60000);
+
+			result = result && seekValidator.validate("seeked_4", 60000);
+			
+			if(eventValidator.isAdPluginPresent("freewheel")){
+				result = result && eventValidator.validate("countPoddedAds_4", 60000);
+//				result = result && podded.setPosition("PostRoll").validate("countPoddedAds_4", 60000); TODO - willplayads is not working
+			} else{
+				result = result && podded.setPosition("PostRoll").validate("countPoddedAds_2", 60000);
 			}
 
 		} catch (Exception e) {

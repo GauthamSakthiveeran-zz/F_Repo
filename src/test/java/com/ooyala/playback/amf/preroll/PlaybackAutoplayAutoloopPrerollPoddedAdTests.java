@@ -71,8 +71,6 @@ public class PlaybackAutoplayAutoloopPrerollPoddedAdTests extends PlaybackWebTes
 				result = result && eventValidator.validate("singleAdPlayed_" + i + "", 1000);
 			}
 			
-			result = result && eventValidator.validate("playing_3", 10000);
-			
 		} catch (Exception e) {
 			logger.error(e);
 			result = false;

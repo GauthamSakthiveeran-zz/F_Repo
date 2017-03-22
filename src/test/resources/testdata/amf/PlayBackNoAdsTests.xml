@@ -2,6 +2,17 @@
 <testdata>
 
 	<test name ="PlayBackNoAdsTests" >
+	
+		<url>
+	    	<description name="IMA:Only Mp4 Main"/>
+	        <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="615dc8e909e941c280e12155df838355"/>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+    	</url>
     	<url>
 	    	<description name="IMA:No Ad OSMF"/>
 	        <embed_code name="lyd2VmMDE6TJNxuMy4twOT3HkoFDf0ZW"/>

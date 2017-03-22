@@ -23,7 +23,7 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private AdSkipButtonValidator skipValidator;
 
-	@Test(groups = {"amf","podded","skipads"}, dataProvider = "testUrls")
+	@Test(groups = {"amf","podded","skipads"}, dataProvider = "testUrls", enabled=false)
 	public void verifyPoddedInsideSkipButton(String testName, String url)
 			throws OoyalaException {
 

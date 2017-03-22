@@ -49,7 +49,6 @@ public class PlayBackFactory {
 	private MultiplePlayerValidator multiplePlayerValidator;
 	private AdClickThroughValidator adClickThroughValidator;
 	private PoddedAdValidator poddedAdValidator;
-	private FCCValidator fccValidator;
 	private OoyalaAPIValidator ooyalaAPIValidator;
 	private PlaylistValidator playlistValidator;
 	private AdFrequencyValidator adFrequencyValidator;
@@ -421,14 +420,6 @@ public class PlayBackFactory {
 			isAdPlaying.setExtentTest(extentTest);
 		}
 		return isAdPlaying;
-	}
-
-	public FCCValidator getFccValidator() {
-		if (fccValidator == null){
-			fccValidator = new FCCValidator(driver);
-			fccValidator.setExtentTest(extentTest);
-		}
-		return fccValidator;
 	}
 
 	public SetEmbedCodeValidator getSetEmbedCodeValidator() {

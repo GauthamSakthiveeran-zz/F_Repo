@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackHLSLiveStreamTests" >
     	<url>
-	    	<description name="BITMOVIN_IMA"/>
+	    	<description name="VPAID:HLS Live stream Bitmovin"/>
 	        <embed_code name="x0YWJ0MTE6QM3ql9iskB29rLHn63qqrx"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="MAIN,BITMOVIN"/>

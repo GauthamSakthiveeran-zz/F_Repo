@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+
+	<test name="PlaybackOoyalaAdsTests">
+		<url>
+			<description name="Ooyala Ads:Main Plugin without discovery and playlist" />
+			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+
+		<url>
+			<description name="Ooyala Ads:Bitmovin(MP4) without discovery and playlist" />
+			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+
+
+	</test>
+
+</testdata>

@@ -1,5 +1,6 @@
 package com.ooyala.playback.amf.postroll;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -51,6 +52,8 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 				result = result && event.validate("singleAdPlayed_2", 90000);
 			else
 				result = result && event.validate("singleAdPlayed_1", 90000);
+			
+			((JavascriptExecutor) driver).executeScript("pp.pause();");
 			
 			result = result && discoveryValidator.validateDiscoveryToaster();
 

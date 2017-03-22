@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackCCenableMidRollAdsTests" >
     	<url>
-	    	<description name="BITMOVIN_PULSE"/>
+	    	<description name="Pulse:Midroll with CC Bitmovin"/>
 	        <embed_code name="pqZDNhMzE66W7eS-Mvy4iyTP3nrbh_tK"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -39,16 +39,16 @@
 	        <browserSupportedVersion name="safari,9"/>
     	</url>
     	
-    	<!-- <url>
+    	<url>
 	    	<description name="VAST:CC enabled Midroll OSMF"/>
 	        <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="VAST"/>|
+	        <adPlugins name="VAST"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-    	</url> -->
+    	</url>
     	
     </test>
     

@@ -173,9 +173,10 @@ function subscribeToEvents() {
 					OO.$('#ooplayer').append('<p id=PostRoll_willPlayAds'+'>PostRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
 					willPlayAdsEventOrder++;
 				}
-				
+								
 				if(adReplayEventOrder == 2){
 					OO.$('#ooplayer').append('<p id=PreRoll_willPlayAds_OnReplay'+'>PreRoll_willPlayAds_OnReplay '+willPlaySingleAdsEventOrder+'</p>');
+					OO.$('#ooplayer').append('<p id=willPlayAds_OnReplay'+'>willPlayAds_OnReplay '+willPlaySingleAdsEventOrder+'</p>');
 					adReplayEventOrder++;
 				}
 				

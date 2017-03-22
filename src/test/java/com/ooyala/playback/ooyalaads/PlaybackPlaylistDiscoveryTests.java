@@ -1,4 +1,4 @@
-package com.ooyala.playback.amf;
+package com.ooyala.playback.ooyalaads;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -23,7 +23,7 @@ public class PlaybackPlaylistDiscoveryTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = { "playlist", "discovery", "amf" }, dataProvider = "testUrls")
+	@Test(groups = { "playlist", "discovery", "ooyalads" }, dataProvider = "testUrls")
 	public void testPlaylistTests(String testName, String url) throws OoyalaException {
 
 		boolean result = true;
@@ -40,7 +40,7 @@ public class PlaybackPlaylistDiscoveryTests extends PlaybackWebTest {
 
 			result = result && event.validate("adsPlayed_1", 160000);
 
-			if (testName.contains("OOYALA_ADS")) {
+			if (testName.contains("Ooyala Ads")) {
 				result = result && event.validate("ooyalaAds", 160000);
 			}
 
@@ -48,9 +48,11 @@ public class PlaybackPlaylistDiscoveryTests extends PlaybackWebTest {
 			
 			Thread.sleep(10000);
 
-			result = result && playlist.scrollToEitherSide();
+			if (testName.contains("playlist")) {
+				result = result && playlist.scrollToEitherSide();
+			}
 
-			if (testName.contains("DISCOVERY")) {
+			if (testName.contains("discovery")) {
 				result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 			}
 
@@ -58,6 +60,6 @@ public class PlaybackPlaylistDiscoveryTests extends PlaybackWebTest {
 			e.getMessage();
 			result = false;
 		}
-		Assert.assertTrue(result, "Playback Playlist tests failed" + testName);
+		Assert.assertTrue(result, "Test failed");
 	}
 }
