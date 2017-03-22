@@ -19,6 +19,7 @@ public class PlaybackAutoplayAutoloopPostrollAdTests extends PlaybackWebTest {
 	private static Logger logger = Logger.getLogger(PlaybackAutoplayAutoloopPostrollAdTests.class);
 	private EventValidator eventValidator;
     private SeekValidator seek;
+    private SeekAction seekAction;
 
 	public PlaybackAutoplayAutoloopPostrollAdTests() throws OoyalaException {
 		super();
@@ -53,7 +54,7 @@ public class PlaybackAutoplayAutoloopPostrollAdTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("adsPlayed_1", 45000);
 			result = result && eventValidator.validate("replay_1", 60000);
 			result = result && eventValidator.validate("playing_2", 60000);
-			result = result && seek.validate("seeked_4", 60000);
+			result = result && seekAction.seekTillEnd().startAction();
 			result = result && eventValidator.validate("played_2", 60000);
 			result = result && eventValidator.validate("willPlayAds_OnReplay", 5000);
 			result = result && eventValidator.validate("adsPlayed_2", 45000);
