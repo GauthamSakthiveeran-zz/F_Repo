@@ -45,6 +45,7 @@
             <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackNewProcessingProfileTests" />
+            <class name="com.ooyala.playback.syndicationrules.PlaybackGeoRestrictionTests"/>
         </classes>
     </test>
 

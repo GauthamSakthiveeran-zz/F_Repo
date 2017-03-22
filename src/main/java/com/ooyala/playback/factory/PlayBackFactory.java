@@ -58,6 +58,7 @@ public class PlayBackFactory {
 	private SetEmbedCodeValidator setEmbedCodeValidator;
     private ConcurrentStreamValidator concurrentStreamValidator;
 	private DRMValidator drmValidator;
+	private GeoValidator geoValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
