@@ -95,7 +95,6 @@
             <class name="com.ooyala.playback.FCC.PlaybackFCCBasicTests" />
         </classes>
     </test>
-
     <test name="ContentProtection Regression">
         <groups>
             <define name="syndicationRules">
@@ -111,6 +110,7 @@
             <class name="com.ooyala.playback.contentProtection.PlaybackGeoRestrictionTests"/>
             <class name="com.ooyala.playback.contentProtection.PlaybackOptEntitlementTests" />
             <class name="com.ooyala.playback.contentProtection.PlaybackDeviceRegistrationTests"/>
+            <class name="com.ooyala.playback.contentProtection.PlaybackFlightTimeTests"/>
         </classes>
     </test>
 
