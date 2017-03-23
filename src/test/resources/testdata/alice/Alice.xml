@@ -537,7 +537,7 @@
             <additionalPlugins name="" />
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
             <browsersSupported name="firefox,chrome,internet explorer,safari" />
-            <browserSupportedVersion name="safari,9"/>
+            <browserSupportedVersion name="safari,9,firefox,49"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
     </test>
