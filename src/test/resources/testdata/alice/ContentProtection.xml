@@ -125,4 +125,18 @@
             <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
         </url>
     </test>
+
+    <test name="PlaybackFlightTimeTests">
+        <url>
+            <description name="Alice Core:Flight Time" />
+            <embed_code name="RpeWttMDE6atfCpq0hP5t95qpd9NbxLv" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <browsersSupported name="safari,firefox,chrome,internet explorer,MicrosoftEdge" />
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/pyaDkyOqdnY0iQC2sTO4JeaXggl9/RpeWttMDE6atfCpq0hP5t95qpd9NbxLv?api_key=pyaDkyOqdnY0iQC2sTO4JeaXggl9.Hvg5M&expires=2880483517&account_id=dulari_qa&&&signature=e/vzXgf0lbmuR1V8pLbBNTvqVxIWcx8/yTZz44dj0pU"}]]></playerParameter>
+        </url>
+    </test>
 </testdata>
