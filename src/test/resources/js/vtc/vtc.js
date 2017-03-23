@@ -48,6 +48,8 @@ function subscribeToEvents() {
         var adPodStartedEventOrder = 1;
         var videoPlayingAdEventOrder = 1;
         var willPlayAdOnReplayEventOrder = 1;
+        var videoInFocusOrder = 1;
+        var videoLostFocusEventOrder = 1;
 
         return function(event) {
 
