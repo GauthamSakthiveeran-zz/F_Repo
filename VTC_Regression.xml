@@ -24,11 +24,10 @@
             <class name="com.ooyala.playback.VTC.PlaybackVerifyEventsTests" />
             <class name="com.ooyala.playback.VTC.PlaybackAdVideoSamePluginDiffElementTests" />
             <class name="com.ooyala.playback.VTC.PlaybackNewStreamTests" />
-            <class name="com.ooyala.playback.VTC.PlaybackOverrideEncodingPriorityTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackClosedCaptionTests" />
          </classes>
     </test>
-    <test name = " VTC Multiple Player">
+    <!--<test name = " VTC Multiple Player">
         <groups>
             <define name="VTC_Regression_multiple_player">
                 <include name="multiplePlayer"/>
@@ -43,6 +42,6 @@
             <parameter name="jsFile" value="vtc/multiplePlayer.js"/>
             <class name="com.ooyala.playback.VTC.PlaybackMultipleV4PlayerTests" />
         </classes>
-    </test>
+    </test>-->
 
 </suite>
