@@ -2,6 +2,7 @@ package com.ooyala.playback.playerfeatures;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
@@ -20,6 +21,7 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
     private PauseValidator pause;
     private SeekValidator seek;
     private PlayAction playAction;
+    private PauseAction pauseAction;
     private EventValidator eventValidator;
     private AspectRatioValidator aspectRatioValidator;
 
@@ -39,19 +41,13 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
 
             injectScript();
 
-            result = result && playAction.startAction();
-
-            result = result && eventValidator.loadingSpinner();
-
-            result = result && eventValidator.validate("playing_1", 60000);
-
-            sleep(2000);
+            result = result && play.validate("playing_1", 60000);
 
             result = result && aspectRatioValidator.setVerticalVideo().validate("assetDimension_1", 60000);
 
-            result = result && pause.validate("paused_1", 60000);
+            executeScript("pp.pause();");  // pausing video by js as for this test video screen size vertical.
 
-            result = result && playAction.startAction();
+            result = result && play.validate("playing_2", 60000);
 
             result = result && seek.validate("seeked_1", 60000);
 
