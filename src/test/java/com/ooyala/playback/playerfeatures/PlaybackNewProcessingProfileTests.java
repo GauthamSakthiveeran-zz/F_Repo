@@ -20,6 +20,9 @@ public class PlaybackNewProcessingProfileTests extends PlaybackWebTest {
     private PauseValidator pause;
     private ControlBarValidator control;
     private FullScreenValidator fullScreen;
+    private EventValidator eventValidator;
+    private StreamTypeValidator streamTypeValidator;
+    public String stream;
 
     PlaybackNewProcessingProfileTests() throws OoyalaException{
         super();
@@ -27,7 +30,13 @@ public class PlaybackNewProcessingProfileTests extends PlaybackWebTest {
 
     @Test(groups = "playerFeatures", dataProvider = "testUrls")
     public void testNewProcessingProfile(String testName, String url){
+
         boolean result = true;
+
+        if(testName.contains("//")){
+            stream = testName.split("//")[1].toLowerCase();
+        }
+
         try{
             driver.get(url);
 
@@ -36,6 +45,13 @@ public class PlaybackNewProcessingProfileTests extends PlaybackWebTest {
             injectScript();
 
             result = result && play.validate("playing_1",30000);
+
+            if(testName.contains("//")){
+
+                result = result && eventValidator.validate("videoPlayingurl",40000);
+
+                result = result && streamTypeValidator.validateStream("videoPlayingurl",stream);
+            }
 
             result = result && pause.validate("paused_1", 30000);
 

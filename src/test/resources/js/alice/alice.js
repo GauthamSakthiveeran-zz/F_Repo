@@ -195,6 +195,10 @@ function subscribeToEvents() {
             	OO.$('#ooplayer').append('<p id = drm_tag >' + JSON.stringify(arguments[2]) + '</p>');
             }
 
+            if (event.match(/videoWillPlay/) && arguments[1] == "main") {
+                            OO.$("#ooplayer").append("<p id=videoPlayingurl"+">Video URL "+arguments[2]+"</p>");
+                        }
+
         };
     }());
 }

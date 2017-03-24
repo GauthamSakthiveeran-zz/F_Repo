@@ -1,14 +1,11 @@
 package com.ooyala.playback.streams;
 
+import com.ooyala.playback.page.*;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
@@ -21,6 +18,8 @@ public class BasicPlaybackTests extends PlaybackWebTest {
     private PlayValidator play;
     private PauseValidator pause;
     private SeekValidator seek;
+    private StreamTypeValidator streamTypeValidator;
+    public String stream;
 
     public BasicPlaybackTests() throws OoyalaException {
         super();
@@ -32,22 +31,27 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
         boolean result = true;
 
-        logger.info("Test Description : " + testName.split("-")[1].toLowerCase() + "\n" + url);
+        if(testName.contains("//")){
+            stream = testName.split("//")[1].toLowerCase();
+        }
 
         try {
             driver.get(url);
 
             result = result && play.waitForPage();
 
-            Thread.sleep(5000);
-
             injectScript();
 
             result = result && play.validate("playing_1", 60000);
 
-            result = result && eventValidator.loadingSpinner();
+            if(testName.contains("//")){
 
-            Thread.sleep(2000);
+                result = result && eventValidator.validate("videoPlayingurl",40000);
+
+                result = result && streamTypeValidator.validateStream("videoPlayingurl",stream);
+            }
+
+            result = result && eventValidator.loadingSpinner();
 
             result = result && pause.validate("paused_1", 60000);
 
