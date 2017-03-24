@@ -60,6 +60,7 @@ public class PlayBackFactory {
 	private DRMValidator drmValidator;
 	private GeoValidator geoValidator;
 	private FlightTimeValidator flightTimeValidator;
+	private StreamTypeValidator streamTypeValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;

@@ -2,7 +2,7 @@
     <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
-    <test name="Playback Web Regression Group" parallel="classes" thread-count="10">
+    <test name="Playback Web Regression Group" parallel="classes" thread-count="1">
         <groups>
             <define name="regression">
                 <include name="streams" />
@@ -43,6 +43,7 @@
             <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackNewProcessingProfileTests" />
+            <class name="com.ooyala.playback.streams.BasicPlaybackTests"/>
         </classes>
     </test>
 
@@ -59,7 +60,6 @@
             <parameter name="testData" value="alice/Live.xml" />
             <parameter name="jsFile" value="alice/alice.js" />
             <class name="com.ooyala.playback.streams.PlaybackLiveTests" />
-            <class name="com.ooyala.playback.streams.BasicPlaybackTests" />
         </classes>
     </test>
 
@@ -95,6 +95,7 @@
             <class name="com.ooyala.playback.FCC.PlaybackFCCBasicTests" />
         </classes>
     </test>
+
     <test name="ContentProtection Regression">
         <groups>
             <define name="syndicationRules">
@@ -110,7 +111,7 @@
             <class name="com.ooyala.playback.contentProtection.PlaybackGeoRestrictionTests"/>
             <class name="com.ooyala.playback.contentProtection.PlaybackOptEntitlementTests" />
             <class name="com.ooyala.playback.contentProtection.PlaybackDeviceRegistrationTests"/>
-            <class name="com.ooyala.playback.contentProtection.PlaybackFlightTimeTests"/>
+            <class name="com.ooyala.playback.contentProtection.PlaybackFlightTimeTests"
         </classes>
     </test>
 
