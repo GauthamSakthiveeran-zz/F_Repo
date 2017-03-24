@@ -52,7 +52,7 @@
     <test name="PlaybackVerifyEventsTests">
 
         <url>
-            <description name="Playback_Events_FW_Preroll" />
+            <description name="VTC:Verify Playback events Preroll" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -82,7 +82,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Events_Vast_Midroll" />
+            <description name="VTC:Verify Playback events Midroll" />
             <embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -113,7 +113,7 @@
         </url>
 
         <url>
-               <description name="Playback_Events_FW:Postroll" />
+               <description name="VTC:Verify Playback events Postroll" />
                <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
                <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
                <plugins name="MAIN" />
@@ -143,7 +143,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0.1}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Events_Vast_PreMidPost" />
+            <description name="VTC:Verify Playback events PreMidPost" />
             <embed_code name="lzMGdpdDq6Dsvi-c32p6u7k46mbT_cxm" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -176,7 +176,7 @@
         </url>
 
         <url>
-            <description name="Playback_Events_Vast_PrePodded" />
+            <description name="VTC:Verify Playback events preroll podded" />
             <embed_code name="xxbDB4dDovMCDiqvo2DSqON3lIGSM5N5" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -209,7 +209,7 @@
         </url>
 
         <url>
-            <description name="Playback_Events_Vast_MidPodded" />
+            <description name="VTC:Verify Playback events Midroll podded" />
             <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -241,7 +241,7 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NqcGg4bzoOmMiV35ZttQDtBX1oNQBnT-","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Events_Vast_PostPodded" />
+            <description name="VTC:Verify Playback events Postroll podded" />
             <embed_code name="Rna2x4dDrdRWdZnUS4lxeLR6sZWhdpZD" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -272,7 +272,7 @@
         </url>
 
         <url>
-            <description name="Playback_Events_VAST_PreMidPosPodded" />
+            <description name="VTC:Verify Playback events PreMidPost Podded" />
             <embed_code name="hlc2x4dDpQYlsGsvnipHmaIJge2aqtaP" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -306,7 +306,7 @@
     </test>
     <test name="PlaybackVolumeTests">
         <url>
-            <description name="Playback_Volume_FW" />
+            <description name="VTC:Verify Volume Change(FW Ads)" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -316,7 +316,7 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"skin":{"inline":{"adScreen":{"showAdMarquee":true,"showControlBar":true}}}}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Volume_VAST" />
+            <description name="VTC:Verify Volume Change Preroll Vast" />
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -326,7 +326,7 @@
             <playerParameter><![CDATA[{"skin":{"inline":{"adScreen":{"showAdMarquee":true,"showControlBar":true}}}}]]></playerParameter>
         </url>
         <!--<url>
-            <description name="Playback_Volume_IMA" />
+            <description name="VTC:Verify Volume Change(IMA Ads)" />
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -353,7 +353,7 @@
     </test>
     <test name="PlaybackAdVideoSamePluginDiffElementTests">
         <url>
-            <description name="Playback_MultipleVideo_Plugin" />
+            <description name="VTC:Verify Preroll Freewheel with multiple Video Plugin" />
             <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
             <plugins name="OSMF,MAIN" />
@@ -365,7 +365,7 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Same_Plugins_And_Different_Element" />
+            <description name="VTC:Verify Preroll  Ad + Video with Same Plugin, different element" />
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -453,7 +453,7 @@
     </test>
     <test name ="PlaybackOverrideEncodingPriorityMidrollAdTests" >
         <url>
-            <description name="EncodingPriorityMidrollVastAd"/>
+            <description name="VTC:Override encodingPriority's for MidrollVast + Video"/>
             <embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -464,7 +464,7 @@
         </url>
 
         <url>
-            <description name="EncodingPriorityMidrollFWAd"/>
+            <description name="VTC:Override encodingPriority's for Midroll Freehwheel+ Video"/>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -477,7 +477,7 @@
 
     <test name="PlaybackOverrideEncodingPriorityPostrollAdTests">
         <url>
-            <description name="EncodingPriorityPostrollFWAd" />
+            <description name="VTC:Override encodingPriority's for Postroll Freehwheel+ Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -488,7 +488,7 @@
         </url>
 
         <url>
-            <description name="EncodingPriorityPostrollVastAd" />
+            <description name="VTC:Override encodingPriority's for PostrollVast + Video" />
             <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -501,7 +501,7 @@
 
     <test name="PlaybackOverrideEncodingPriorityPreMidPostAdTests">
         <url>
-            <description name="EncodingPriorityPreMidPostVastAd" />
+            <description name="VTC:Override encodingPriority's for PreMidPostVast + Video" />
             <embed_code name="lzMGdpdDq6Dsvi-c32p6u7k46mbT_cxm" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -512,7 +512,7 @@
         </url>
 
         <url>
-            <description name="EncodingPriorityPreMidPostFWAd" />
+            <description name="VTC:Override encodingPriority's for PreMidPost Freehwheel+ Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -525,7 +525,7 @@
 
     <test name="PlaybackOverrideEncodingPriorityPrerollPoddedTests">
         <url>
-            <description name="EncodingPriorityPrerollPoddedVastAd" />
+            <description name="VTC:Override encodingPriority's for Preroll PoddedVast + Video" />
             <embed_code name="xxbDB4dDovMCDiqvo2DSqON3lIGSM5N5" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -536,7 +536,7 @@
         </url>
 
         <url>
-            <description name="EncodingPriorityPrerollPaddedFWAd" />
+            <description name="VTC:Override encodingPriority's for Preroll Podded Freehwheel+ Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -549,7 +549,7 @@
 
     <test name="PlaybackOverrideEncodingPriorityMidrollPoddedAdTests">
         <url>
-            <description name="EncodingPriorityMidrollPoddedVastAd" />
+            <description name="VTC:Override encodingPriority's for Midroll PoddedVast + Video" />
             <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -560,7 +560,7 @@
         </url>
 
         <url>
-            <description name="EncodingPriorityMidrollPoddedFWAd" />
+            <description name="VTC:Override encodingPriority's for Midroll Podded Freehwheel+ Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="MAIN"/>
@@ -573,7 +573,7 @@
 
     <test name="PlaybackOverrideEncodingPriorityPostrollPoddedAdTests">
         <url>
-            <description name="EncodingPriorityPostrollPoddedVastAd" />
+            <description name="VTC:Override encodingPriority's for Postroll PoddedVast + Video" />
             <embed_code name="Rna2x4dDrdRWdZnUS4lxeLR6sZWhdpZD" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -584,7 +584,7 @@
         </url>
 
         <url>
-            <description name="EncodingPriorityPostrollPoddedFWAd" />
+            <description name="VTC:Override encodingPriority's for Postroll Podded Freehwheel+ Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -597,7 +597,7 @@
 
     <test name="PlaybackOverrideEncodingPriorityPreMidPostPoddedAdTests">
         <url>
-            <description name="EncodingPriorityPreMidPostPoddedVastAd" />
+            <description name="VTC:Override encodingPriority's for PreMidPost PoddedVast + Video" />
             <embed_code name="hlc2x4dDpQYlsGsvnipHmaIJge2aqtaP" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -608,7 +608,7 @@
         </url>
 
         <url>
-            <description name="EncodingPriorityPreMidPostPoddedFWAd" />
+            <description name="VTC:Override encodingPriority's for PreMidPost Podded Freehwheel+ Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -621,7 +621,7 @@
 
     <test name="PlaybackVerifyVideoElementCreatedAllPrerollAdsTests">
         <!-- <url>
-            <description name="Playback_Element_Created_Vast_PrePodded" />
+            <description name="VTC:Check Video element is created for Preroll Podded Vast Ad + Video" />
             <embed_code name="xxbDB4dDovMCDiqvo2DSqON3lIGSM5N5" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -632,7 +632,7 @@
         </url> -->
 
         <url>
-            <description name="Playback_Element_Created_IMA_PrePodded" />
+            <description name="VTC:Check Video element is created for Preroll Podded IMA Ad + Video" />
             <embed_code name="htYWxjczousVmIKvp56u7Cb9btEnyJK9" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -645,7 +645,7 @@
 <!-- 		not podded -->
 
         <!-- <url>
-            <description name="Playback_Element_Created_FW_PrePodded" />
+            <description name="VTC:Check Video element is created for Preroll Podded Freewheel Ad + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -655,7 +655,7 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NqcGg4bzoOmMiV35ZttQDtBX1oNQBnT-","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Element_Created_FW_Preroll" />
+            <description name="VTC:Check Video element is created for Preroll Freewheel Ad + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -665,7 +665,7 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"initialVolume":0,"autoplay":false,"skin":{"inline":{"adScreen":{"showAdMarquee":true,"showControlBar":true}}}}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Element_Created_VAST_Preroll" />
+            <description name="VTC:Check Video element is created for Preroll Vast Ad + Video" />
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -675,7 +675,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0}]]></playerParameter>
         </url> -->
         <url>
-            <description name="Playback_Element_Created_IMA_Preroll" />
+            <description name="VTC:Check Video element is created for Preroll IMA Ad + Video" />
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -753,7 +753,7 @@
 
     <test name="PlaybackVerifyVideoElementCreatedAllMidrollAdsTests">
         <url>
-            <description name="Playback_Element_Created_Vast_MidPodded" />
+            <description name="VTC:Check Video element is created for Midroll Podded Vast Ad + Video" />
             <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -764,7 +764,7 @@
         </url>
 
         <url>
-            <description name="Playback_Element_Created_IMA_MidPodded" />
+            <description name="VTC:Check Video element is created for Midroll Podded IMA Ad + Video" />
             <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -776,7 +776,7 @@
 
 <!-- 		Not podded, not midroll -->
         <!-- <url>
-            <description name="Playback_Element_Created_FW_MidPodded" />
+            <description name="VTC:Check Video element is created for Midroll Podded Freewheel Ad + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -788,7 +788,7 @@
 
 <!-- Not podded -->
        <!--  <url>
-            <description name="Playback_Element_Created_Vast_Midroll" />
+            <description name="VTC:Check Video element is created for Midroll Vast Ad + Video" />
             <embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -798,7 +798,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialTime":0}]]></playerParameter>
         </url> -->
         <url>
-            <description name="Playback_Element_Created_FW_Midroll" />
+            <description name="VTC:Check Video element is created for Midroll Freewheel Ad + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -808,7 +808,7 @@
 	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fsa2tmcjpvD21CN9WthbTbE4MIpWJoaK","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
     	</url>
         <url>
-            <description name="Playback_Element_Created_IMA_Midroll" />
+            <description name="VTC:Check Video element is created for Midroll IMA Ad + Video" />
             <embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -821,7 +821,7 @@
 
     <test name="PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests">
         <url>
-            <description name="Playback_Element_Created_Vast_PreMidPost" />
+            <description name="VTC:Check Video element is created for PreMidPost Vast Ad + Video" />
             <embed_code name="lzMGdpdDq6Dsvi-c32p6u7k46mbT_cxm" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -832,7 +832,7 @@
         </url>
 
         <url>
-            <description name="Playback_Element_Created_IMA_PreMidPost" />
+            <description name="VTC:Check Video element is created for PreMidPost IMA Ad + Video" />
             <embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -843,7 +843,7 @@
         </url>
 
         <url>
-            <description name="Playback_Element_Created_FW_PreMidPost" />
+            <description name="VTC:Check Video element is created for PreMidPost Freewheel Ad + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -855,7 +855,7 @@
 
         <!-- for Vast PreMiPodded Ads videoControllerVideoCreated is not triggering for every ad : NEED CONFIRMATION-->
         <!--<url>
-            <description name="Playback_Element_Created_VAST_PreMidPosPodded" />
+            <description name="VTC:Check Video element is created for PreMidPost Podded Vast Ad + Video" />
             <embed_code name="hlc2x4dDpQYlsGsvnipHmaIJge2aqtaP" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -865,7 +865,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>-->
         <url>
-            <description name="Playback_Element_Created_IMA_PreMidPosPodded" />
+            <description name="VTC:Check Video element is created for PreMidPost Podded IMA Ad + Video" />
             <embed_code name="g4OGxjczqVk87w_P2z291ahvIR4RYrHT" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -877,7 +877,7 @@
 
         <!-- for Freewheel PreMiPodded Ads videoControllerVideoCreated is not triggering for every ad : NEED CONFIRMATION-->
         <!-- <url>
-             <description name="Playback_Element_Created_FW_PreMidPosPodded" />
+             <description name="VTC:Check Video element is created for PreMidPost Podded Freewheel Ad + Video" />
              <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
              <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
              <plugins name="MAIN" />
@@ -886,6 +886,76 @@
              <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
              <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
          </url>-->
+    </test>
+
+    <test name="PlaybackVerifyVideoElementCreatedAllPostrollAdsTests">
+
+        <url>
+            <description name="VTC:Check Video element is created for Postroll Vast Ad + Video" />
+            <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VTC:Check Video element is created for Postroll Freewheel Ad + Video" />
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="" />
+            <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
+            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VTC:Check Video element is created for Postroll IMA Ad + Video" />
+            <embed_code name="5sbHlycTqQ5dqQoCVcY3Rpe78TVvJKjg" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="615dc8e909e941c280e12155df838355" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VTC:Check Video element is created for Postroll Podded Vast Ad + Video" />
+            <embed_code name="Rna2x4dDrdRWdZnUS4lxeLR6sZWhdpZD" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VTC:Check Video element is created for Postroll Podded Freewheel Ad + Video" />
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="" />
+            <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
+            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fqa2tmcjrWml7baw9R0-RD5aT-2ku-LJ","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VTC:Check Video element is created for Postroll Podded IMA Ad + Video" />
+            <embed_code name="gzYmxjczrvM0qh0gPqKy6QFSKSr2t3FC" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="615dc8e909e941c280e12155df838355" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
     </test>
 
 </testdata>

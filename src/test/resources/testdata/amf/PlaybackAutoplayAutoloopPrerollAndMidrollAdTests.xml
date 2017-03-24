@@ -2,7 +2,7 @@
 <testdata>
     <test name="PlaybackAutoplayAutoloopPrerollAndMidrollAdTests">
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_IMA:Preroll" />
+            <description name="VTC:Verify AutoPlay and AutoLoop properties for Preroll IMA+ Video" />
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -12,7 +12,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"autoPlay":true,"loop":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_Vast:Preroll" />
+            <description name="VTC:Verify AutoPlay and AutoLoop properties for Preroll Vast + Video" />
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -22,7 +22,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"autoPlay":true,"loop":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_FW:Preroll" />
+            <description name="VTC:Verify AutoPlay and AutoLoop properties for Preroll Freewheel + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -32,7 +32,7 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoPlay":true,"loop":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_FW:Midroll" />
+            <description name="VTC:Verify AutoPlay and AutoLoop properties for Midroll Freewheel + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -42,7 +42,7 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoPlay":true,"loop":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_VAST:Midroll" />
+            <description name="VTC:Verify AutoPlay and AutoLoop properties for Midroll Vast + Video" />
             <embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -52,7 +52,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"autoPlay":true,"loop":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_IMA:Midroll" />
+            <description name="VTC:Verify AutoPlay and AutoLoop properties for Midroll IMA+ Video" />
             <embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />

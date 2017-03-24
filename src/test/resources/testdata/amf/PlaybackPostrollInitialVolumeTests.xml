@@ -2,7 +2,7 @@
 <testdata>
     <test name ="PlaybackPostrollInitialVolumeTests" >
         <url>
-            <description name="Playback_Initial_Volume_FW:Postroll:0.5" />
+            <description name="VTC:Verify initial Volume for Postroll Freewheel + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -12,7 +12,7 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"initialVolume":0.5}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Initial_Volume_IMA:Postroll:0.5" />
+            <description name="VTC:Verify initial Volume for Postroll IMA+ Video" />
             <embed_code name="5sbHlycTqQ5dqQoCVcY3Rpe78TVvJKjg" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -22,7 +22,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0.5}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Initial_Volume_Vast:Postroll:0.5" />
+            <description name="VTC:Verify initial Volume for Postroll Vast + Video" />
             <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -32,7 +32,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0.5}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Initial_Volume_Vast:PostrollPodded:0.5" />
+            <description name="VTC:Verify initial Volume for Postroll Podded Vast + Video" />
             <embed_code name="Rna2x4dDrdRWdZnUS4lxeLR6sZWhdpZD" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -42,7 +42,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0.5}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Initial_Volume_FW:PostrollPodded:0.5" />
+            <description name="VTC:Verify initial Volume for Postroll Podded Freewheel + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -52,7 +52,7 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fqa2tmcjrWml7baw9R0-RD5aT-2ku-LJ","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialVolume":0.5,"autoplay":false}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Initial_Volume_IMA:PostrollPodded:0.5" />
+            <description name="VTC:Verify initial Volume for Postroll Podded IMA+ Video" />
             <embed_code name="gzYmxjczrvM0qh0gPqKy6QFSKSr2t3FC" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />

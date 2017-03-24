@@ -2,7 +2,7 @@
 <testdata>
     <test name="PlaybackAutoplayAutoloopPreMidPostPoddedAdTests">
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_VAST:PreMidPostPodded" />
+            <description name="VAST:Verify AutoPlay and AutoLoop properties for PreMidPost Podded Vast + Video" />
             <embed_code name="hlc2x4dDpQYlsGsvnipHmaIJge2aqtaP" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -12,7 +12,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0,"autoPlay":true,"loop":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_IMA:PreMidPostPodded" />
+            <description name="VTC:Verify AutoPlay and AutoLoop properties for PreMidPost Podded IMA+ Video" />
             <embed_code name="g4OGxjczqVk87w_P2z291ahvIR4RYrHT" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -22,7 +22,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0,"autoPlay":true,"loop":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_FW:PreMidPostPodded" />
+            <description name="VTC:Verify AutoPlay and AutoLoop properties for PreMidPost Podded Freewheel + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
