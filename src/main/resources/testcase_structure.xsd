@@ -54,8 +54,10 @@
 									<xs:simpleContent>
 										<xs:extension base="xs:string">
 											<xs:attribute type="xs:string" name="name" use="optional" />
-											<xs:attribute type="xs:string" name="adFirstPlay" use="optional" />
-											<xs:attribute type="xs:string" name="adFrequency" use="optional" />
+											<xs:attribute type="xs:string" name="adFirstPlay"
+												use="optional" />
+											<xs:attribute type="xs:string" name="adFrequency"
+												use="optional" />
 										</xs:extension>
 									</xs:simpleContent>
 								</xs:complexType>
@@ -88,8 +90,8 @@
 									</xs:simpleContent>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="browserSupportedVersion"
-								minOccurs="0" maxOccurs="1">
+							<xs:element name="browserSupportedVersion" minOccurs="0"
+								maxOccurs="1">
 								<xs:complexType>
 									<xs:simpleContent>
 										<xs:extension base="xs:string">
@@ -118,6 +120,15 @@
 								</xs:complexType>
 							</xs:element>
 							<xs:element type="xs:string" name="playerParameter" />
+							<xs:element name="streamType" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute type="xs:string" name="name" use="optional" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
