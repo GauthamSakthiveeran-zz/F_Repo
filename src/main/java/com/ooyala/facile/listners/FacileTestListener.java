@@ -9,15 +9,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.testng.IAnnotationTransformer;
 import org.testng.IRetryAnalyzer;
-import org.testng.ITestContext;
-import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.TestListenerAdapter;
@@ -232,6 +229,12 @@ public class FacileTestListener extends TestListenerAdapter implements
 		return DEFAULT_MAX_RETRY;
 	}
 	
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.testng.IRetryAnalyzer#retry(org.testng.ITestResult)
+	 */
 	public boolean retry(ITestResult result) {
 		
 		int retryCount = getRetryCount(result);
@@ -253,6 +256,12 @@ public class FacileTestListener extends TestListenerAdapter implements
 		return (new SimpleDateFormat(format)).format(cal.getTime());
 	}
 
+	/***
+	 * creating a hashcode to add it to the map to take care of retries. Needed this as testng's retry does not support data provider tests.
+	 * 
+	 * @param result
+	 * @return
+	 */
 	private int getHashCode(ITestResult result){
 		String name = result.getTestName() + result.getMethod().getMethodName();
 		for(Object obj : result.getParameters()){
@@ -377,37 +386,4 @@ public class FacileTestListener extends TestListenerAdapter implements
 		}
 	}
 
-	/*@Override
-	public void onFinish(ITestContext context) {
-		Iterator<ITestResult> failedTestCases = context.getFailedTests().getAllResults().iterator();
-		while (failedTestCases.hasNext()) {
-			logger.info("failedTestCases");
-			ITestResult failedTestCase = failedTestCases.next();
-			ITestNGMethod method = failedTestCase.getMethod();
-			if (context.getFailedTests().getResults(method).size() > 1) {
-				logger.info("failed test case remove as dup:" + failedTestCase.getTestClass().toString());
-				failedTestCases.remove();
-			}
-			if (context.getPassedTests().getResults(method).size() > 0) {
-				logger.info("failed test case remove as pass retry:" + failedTestCase.getTestClass().toString());
-				failedTestCases.remove();
-			}
-
-		}
-	}
-
-	@Override
-	public void onFinish(ITestContext context) {
-		String publishMetrics = System.getProperty("publishMetrics");
-		if(publishMetrics!=null && !publishMetrics.isEmpty() && publishMetrics.equalsIgnoreCase("true")){
-			Metrics metrics = new Metrics();
-			metrics.setBrowser(System.getProperty("browser"));
-			metrics.setPlatform(System.getProperty("platform"));
-			metrics.setPassedTests(context.getPassedTests().size());
-			metrics.setFailedTests(context.getFailedTests().size());
-			metrics.setSkippedTests(context.getSkippedTests().size());
-			metrics.setProjectName(context.getCurrentXmlTest().getParameter("projectName"));
-			
-		}
-	}*/
 }

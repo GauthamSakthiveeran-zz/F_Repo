@@ -465,7 +465,7 @@ public class FacileTest implements IHookable {
 		} else if (browser.equalsIgnoreCase("chrome")) {
 			dr = DesiredCapabilities.chrome();
 			dr.setBrowserName("chrome");
-		} else if (browser.equalsIgnoreCase("internet explorer") || browser.contains("ie")) {
+		} else if (browser.equalsIgnoreCase("internet explorer") || browser.equalsIgnoreCase("ie")) {
 			dr = DesiredCapabilities.internetExplorer();
 			dr.setBrowserName("internet explorer");
 		} else if (browser.equalsIgnoreCase("safari")) {
@@ -1404,7 +1404,6 @@ public class FacileTest implements IHookable {
 
 	}
 
-	@SuppressWarnings("deprecation")
 	public void takeBrowserScreenshot(String fileName, String destinationDir) {
 		if (!(new File(destinationDir).isDirectory())) {
 			new File(destinationDir).mkdir();
