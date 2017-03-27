@@ -82,6 +82,30 @@ public class PlayBackFactory {
 		}
 		return initalTimeValidator;
 	}
+
+	public FlightTimeValidator getFlightTimeValidator() {
+		if (flightTimeValidator == null){
+			flightTimeValidator = new FlightTimeValidator(driver);
+			flightTimeValidator.setExtentTest(extentTest);
+		}
+		return flightTimeValidator;
+	}
+
+	public StreamTypeValidator getStreamTypeValidator() {
+		if (streamTypeValidator == null){
+			streamTypeValidator = new StreamTypeValidator(driver);
+			streamTypeValidator.setExtentTest(extentTest);
+		}
+		return streamTypeValidator;
+	}
+
+	public GeoValidator getGeoValidator() {
+		if (geoValidator == null){
+			geoValidator = new GeoValidator(driver);
+			geoValidator.setExtentTest(extentTest);
+		}
+		return geoValidator;
+	}
 	
 	public DRMValidator getDRMValidator(){
 		if (drmValidator == null){
