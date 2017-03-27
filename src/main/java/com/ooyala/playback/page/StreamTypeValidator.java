@@ -1,5 +1,6 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.playback.url.UrlGenerator;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -23,9 +24,9 @@ public class StreamTypeValidator extends PlayBackPage implements PlaybackValidat
         return true;
     }
 
-    public boolean validateStream(String element, String streamType) {
+    public boolean validateStream(String element, String description) {
         String streamContains = driver.findElement(By.id(element)).getText();
-
+        String streamType = UrlGenerator.getStreamTypeDetails().get(description);
         if (!streamContains.contains(streamType)){
             logger.info("Stream is not matching as per expected result "+streamContains);
             extentTest.log(LogStatus.PASS,"Stream is not matching as per expected result "+streamContains);
@@ -33,5 +34,6 @@ public class StreamTypeValidator extends PlayBackPage implements PlaybackValidat
         }
         return true;
     }
+
 
 }
