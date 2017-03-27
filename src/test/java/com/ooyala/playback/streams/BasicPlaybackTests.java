@@ -28,12 +28,9 @@ public class BasicPlaybackTests extends PlaybackWebTest {
     @Test(groups = "streams", dataProvider = "testUrls")
     public void testBasicPlaybackAlice(String testName, String url)
             throws OoyalaException {
+        String description = testName.split("-")[1].trim();
 
         boolean result = true;
-
-        if(testName.contains("//")){
-            stream = testName.split("//")[1].toLowerCase();
-        }
 
         try {
             driver.get(url);
@@ -44,14 +41,9 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
             result = result && play.validate("playing_1", 60000);
 
-            if(testName.contains("//")){
+            result = result && eventValidator.validate("videoPlayingurl",40000);
 
-                result = result && eventValidator.validate("videoPlayingurl",40000);
-
-                result = result && streamTypeValidator.validateStream("videoPlayingurl",stream);
-            }
-
-            result = result && eventValidator.loadingSpinner();
+            result = result && streamTypeValidator.validateStream("videoPlayingurl",description);
 
             result = result && pause.validate("paused_1", 60000);
 
