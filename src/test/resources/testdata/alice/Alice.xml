@@ -2,13 +2,14 @@
 <testdata>
     <test name="BasicPlaybackTests">
         <url>
-            <description name="Alice Core:HLS Vod bitmovin//m3u8" />
+            <description name="Alice Core:HLS Vod bitmovin" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
 
@@ -26,13 +27,14 @@
          </url>-->
         <!--  Getting playback stream error for IE for more info https://jira.corp.ooyala.com/browse/PBW-6084-->
         <url>
-            <description name="Alice Core:eHLS Vod bitmovin//m3u8" />
+            <description name="Alice Core:eHLS Vod bitmovin" />
             <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
             <browsersSupported name="chrome,firefox,safari,MicrosoftEdge" />
             <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
         </url>
@@ -48,24 +50,26 @@
         </url>
 
         <url>
-            <description name="Alice Core:HLS main//m3u8" />
+            <description name="Alice Core:HLS main" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Alice Core:eHLS Vod main//m3u8" />
+            <description name="Alice Core:eHLS Vod main" />
             <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
@@ -82,25 +86,27 @@
         </url>
 
         <url>
-            <description name="Alice Core:HDS Asset OSMF//f4m" />
+            <description name="Alice Core:HDS Asset OSMF" />
             <embed_code name="0zbm5kMDE6hbM_xDZmnsKUYqXs3N9JrL" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
             <plugins name="OSMF" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+            <streamType name="f4m" />
             <browsersSupported name="firefox,chrome,internet explorer,safari" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
         <url>
-            <description name="Alice Core:HD2 Vod Akamai//f4m" />
+            <description name="Alice Core:HD2 Vod Akamai" />
             <embed_code name="82eWJ2NDE6UWX__B6oTjtU1COh-gF3pP" />
             <pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk" />
             <plugins name="AKAMAI" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <streamType name="f4m" />
             <browsersSupported name="firefox,chrome,internet explorer,safari" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
