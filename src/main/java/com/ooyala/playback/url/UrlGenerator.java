@@ -24,6 +24,7 @@ public class UrlGenerator {
     private static String videoPluginFilter = new String();
     private static Map<String, String> liveChannelDetails = new HashMap<String, String>();
     private static Map<String, String> liveChannelProviders = new HashMap<String, String>();
+    private static Map<String, String> streamTypeDetails = new HashMap<String, String>();
 
     /**
      * @param embedcode
@@ -136,6 +137,11 @@ public class UrlGenerator {
                                         .getProvider());
                     }
 
+                    if (url.getStreamType() != null
+                            && url.getStreamType().getName() != null){
+                        streamTypeDetails.put(url.getDescription().getName(),url.getStreamType().getName());
+                    }
+
                     String embedCode = url.getEmbedCode().getName();
                     String pCode = url.getPcode().getName();
                     String videoPlugin = url.getPlugins().getName();
@@ -217,5 +223,7 @@ public class UrlGenerator {
     public static Map<String, String> getLiveChannelProviders() {
         return liveChannelProviders;
     }
+
+    public static Map<String, String> getStreamTypeDetails() { return streamTypeDetails; }
 
 }
