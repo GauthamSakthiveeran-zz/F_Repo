@@ -15,6 +15,7 @@ public class FlightTimeValidator extends PlayBackPage implements PlaybackValidat
     public FlightTimeValidator(WebDriver webDriver) {
         super(webDriver);
         PageFactory.initElements(driver, this);
+        addElementToPageElements("play");
     }
 
 
@@ -32,4 +33,17 @@ public class FlightTimeValidator extends PlayBackPage implements PlaybackValidat
         return true;
     }
 
+    public boolean errorDescription(){
+
+        logger.info("Checking error description");
+
+        if (!waitOnElement("ERROR_SCREEN",20000)){
+            logger.error("Error screen is not showing");
+            extentTest.log(LogStatus.FAIL,"Error screen is not showing");
+            return false;
+        }
+
+        logger.info("Error description is present");
+        return true;
+    }
 }
