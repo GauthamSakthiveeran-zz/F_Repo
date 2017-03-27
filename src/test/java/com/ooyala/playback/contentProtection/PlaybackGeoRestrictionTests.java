@@ -1,6 +1,7 @@
 package com.ooyala.playback.contentProtection;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.FlightTimeValidator;
 import com.ooyala.playback.page.GeoValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -17,6 +18,7 @@ public class PlaybackGeoRestrictionTests extends PlaybackWebTest {
     private static Logger logger = Logger
             .getLogger(PlaybackGeoRestrictionTests.class);
     private GeoValidator geo;
+    private FlightTimeValidator flight;
 
     public PlaybackGeoRestrictionTests() throws OoyalaException{
         super();
@@ -28,23 +30,11 @@ public class PlaybackGeoRestrictionTests extends PlaybackWebTest {
         try{
             driver.get(url);
 
-            boolean flag = true;
+            result = result && flight.errorDescription();
 
-            while(flag){
-                logger.info("waiting on message bus");
-                try{
-                    injectScript();
-                    flag = false;
-                }catch(WebDriverException ex){
-                    if(ex.getMessage().contains("unknown error: Cannot read property 'mb' of undefined")){
-                        flag = true;
-                    } else{
-                        flag = false;
-                    }
-                }
-            }
+            injectScript();
 
-         result = result && geo.validate("",60000);
+            result = result && geo.validate("",60000);
 
         }catch(Exception e){
             logger.error("Error while checking geo restriction" + e);

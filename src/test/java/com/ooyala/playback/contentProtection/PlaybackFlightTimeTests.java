@@ -2,6 +2,7 @@ package com.ooyala.playback.contentProtection;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.FlightTimeValidator;
+import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
@@ -16,7 +17,9 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest{
 
     private static Logger logger = Logger
             .getLogger(PlaybackGeoRestrictionTests.class);
-    FlightTimeValidator flight;
+
+    private FlightTimeValidator flight;
+    private PlayValidator play;
 
     PlaybackFlightTimeTests() throws OoyalaException{
         super();
@@ -28,21 +31,9 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest{
         try{
             driver.get(url);
 
-            boolean flag = true;
+            result = result && flight.errorDescription();
 
-            while(flag){
-                logger.info("waiting on message bus");
-                try{
-                    injectScript();
-                    flag = false;
-                }catch(WebDriverException ex){
-                    if(ex.getMessage().contains("unknown error: Cannot read property 'mb' of undefined")){
-                        flag = true;
-                    } else{
-                        flag = false;
-                    }
-                }
-            }
+            injectScript();
 
             result = result && flight.validate("",60000);
 
