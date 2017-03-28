@@ -27,7 +27,6 @@ public class PlaybackConcurrentStreamDRMTests extends PlaybackWebTest {
             Thread.sleep(10000);
             injectScript();
             result = !driver.executeScript("return pp.getErrorCode()").toString().equalsIgnoreCase("concurrent_streams");
-            System.out.println("result is ://"+result);
             getWebdriver(browser).get(url);
             Thread.sleep(10000);
             injectScript();
