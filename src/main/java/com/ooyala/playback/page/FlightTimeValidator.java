@@ -1,9 +1,13 @@
 package com.ooyala.playback.page;
 
+import com.google.common.base.Predicate;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by suraj on 3/23/17.
@@ -21,6 +25,10 @@ public class FlightTimeValidator extends PlayBackPage implements PlaybackValidat
 
     public boolean validate(String element, int timeout) throws Exception {
         if (!loadingSpinner()){
+            return false;
+        }
+
+        if (!errorDescription()){
             return false;
         }
         String errorCode = driver.executeScript("return pp.getErrorCode()").toString();
@@ -44,6 +52,23 @@ public class FlightTimeValidator extends PlayBackPage implements PlaybackValidat
         }
 
         logger.info("Error description is present");
+        return true;
+    }
+
+    public boolean isPageLoaded(){
+        WebDriverWait wait = new WebDriverWait(driver,15);
+        wait.until(new Predicate<WebDriver>() {
+            public boolean apply(WebDriver webDriver) {
+                return driver.executeScript("return typeof pp")
+                        .toString().equals("object");
+            }
+        });
+        if (!driver.executeScript("return typeof pp")
+                .toString().equals("object")){
+            logger.error("pp object is not loaded");
+            extentTest.log(LogStatus.FAIL,"pp object is not loaded");
+            return false;
+        }
         return true;
     }
 }
