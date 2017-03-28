@@ -30,7 +30,7 @@ public class PlaybackGeoRestrictionTests extends PlaybackWebTest {
         try{
             driver.get(url);
 
-            result = result && flight.errorDescription();
+            result = result && flight.isPageLoaded();
 
             injectScript();
 

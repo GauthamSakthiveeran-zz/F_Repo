@@ -31,7 +31,7 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest{
         try{
             driver.get(url);
 
-            result = result && flight.errorDescription();
+            result = result && flight.isPageLoaded();
 
             injectScript();
 
