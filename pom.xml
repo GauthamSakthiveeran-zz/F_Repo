@@ -79,7 +79,7 @@
 			<artifactId>uadetector-resources</artifactId>
 			<version>2014.04</version>
 		</dependency>
-
+		
 	</dependencies>
 	<build>
 		<plugins>

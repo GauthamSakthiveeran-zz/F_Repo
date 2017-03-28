@@ -19,7 +19,7 @@ public class PlaybackAutoplayAutoloopPostrollPoddedAdTests extends PlaybackWebTe
 	private static Logger logger = Logger.getLogger(PlaybackAutoplayAutoloopPostrollPoddedAdTests.class);
 	private EventValidator eventValidator;
 	private SeekValidator seekValidator;
-    private SeekAction seek;
+    private SeekAction seekAction;
     private PoddedAdValidator podded;
 
 	public PlaybackAutoplayAutoloopPostrollPoddedAdTests() throws OoyalaException {
@@ -68,7 +68,7 @@ public class PlaybackAutoplayAutoloopPostrollPoddedAdTests extends PlaybackWebTe
 			
 			result = result && eventValidator.validate("replay_1", 60000);
 
-			result = result && seekValidator.validate("seeked_4", 60000);
+			result = result && seekAction.seekTillEnd().startAction();
 			
 			if(eventValidator.isAdPluginPresent("freewheel")){
 				result = result && eventValidator.validate("countPoddedAds_4", 60000);
