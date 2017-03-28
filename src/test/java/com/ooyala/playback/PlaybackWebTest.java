@@ -513,7 +513,7 @@ public abstract class PlaybackWebTest extends FacileTest {
         }
     }
 
-    public WebDriver getWebdriver(String browser){
+    protected WebDriver getWebdriver(String browser){
         pageFactory = new PlayBackFactory(getDriver(browser).get(),extentTest);
         return pageFactory.getDriver();
     }
