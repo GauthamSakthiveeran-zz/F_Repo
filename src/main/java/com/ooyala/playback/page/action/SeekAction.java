@@ -161,33 +161,4 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		return true;
 	}
 
-	// As there is problem for pulse asset that if we seek the video then ads
-	// get skip therefore adding below condition
-
-	public void seekSpecific(int time) throws Exception {
-
-		Map<String, String> data = parseURL();
-		boolean flag = false;
-
-		if (data != null) {
-			String videoPlugin = data.get("video_plugins");
-			String adPlugin = data.get("ad_plugin");
-			if (videoPlugin != null && adPlugin != null) {
-				if (adPlugin.contains("pulse")) {
-					if (videoPlugin.contains("bit_wrapper")
-							|| videoPlugin.contains("main")) {
-						flag = true;
-					}
-				} else if (videoPlugin.contains("bit_wrapper")
-						&& adPlugin.contains("ima")) {
-					flag = true;
-				}
-				if (flag) {
-					setTime(time).fromLast().startAction();
-				}
-			}
-		}
-
-	}
-	
 }

@@ -15,6 +15,7 @@ public class TestCaseSheetProperties {
 	protected static String sheetRangeForInitialReading;
 	protected static String lastColumnForTestCase;
 	protected static String testCaseDescriptionColumn;
+	protected static String firstColumnForTestCase;
 	
 	
 	static {
@@ -30,6 +31,7 @@ public class TestCaseSheetProperties {
 				sheetRangeForInitialReading = properties.getProperty("sheetRangeForInitialReading");
 				lastColumnForTestCase = properties.getProperty("lastColumnForTestCase");
 				testCaseDescriptionColumn = properties.getProperty("testCaseDescriptionColumn");
+				firstColumnForTestCase = properties.getProperty("firstColumnForTestCase");
 			}
 			
 			

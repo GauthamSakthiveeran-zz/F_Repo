@@ -249,6 +249,38 @@ public class TestCaseSheet {
 
 						requests = new ArrayList<>();
 
+						String columnLetter = toName(testCaseData.getHeaderColumnNumber() + 1);
+						String rowNumber = testCaseData.getHeaderRowNumber() + 1 + "";
+
+						List<CellData> cellformulaPassed = new ArrayList<>();
+						cellformulaPassed.add(new CellData().setUserEnteredValue(new ExtendedValue().setFormulaValue(
+								"=COUNTIF(" + columnLetter + rowNumber + ":" + columnLetter + "500,\"=Passed\")")));
+						List<CellData> cellFormulaFailed = new ArrayList<>();
+						cellFormulaFailed.add(new CellData().setUserEnteredValue(new ExtendedValue().setFormulaValue(
+								"=COUNTIF(" + columnLetter + rowNumber + ":" + columnLetter + "500,\"=Failed\")")));
+
+						requests.add(
+								new Request()
+										.setUpdateCells(
+												new UpdateCellsRequest()
+														.setStart(new GridCoordinate().setSheetId(sheetId)
+																.setRowIndex(testCaseData.getHeaderRowNumber() - 2)
+																.setColumnIndex(testCaseData.getHeaderColumnNumber()))
+														.setRows(Arrays
+																.asList(new RowData().setValues(cellformulaPassed)))
+														.setFields("userEnteredValue")));
+
+						requests.add(
+								new Request()
+										.setUpdateCells(
+												new UpdateCellsRequest()
+														.setStart(new GridCoordinate().setSheetId(sheetId)
+																.setRowIndex(testCaseData.getHeaderRowNumber() - 1)
+																.setColumnIndex(testCaseData.getHeaderColumnNumber()))
+														.setRows(Arrays
+																.asList(new RowData().setValues(cellFormulaFailed)))
+														.setFields("userEnteredValue")));
+
 						if (testCaseData.getHeaderRowNumber() == -1 || testCaseData.getHeaderColumnNumber() == -1
 								|| testCaseData.getTestCaseColumnNumber() == -1) {
 							throw new OoyalaException("Error while formatting the excel sheet");
@@ -371,14 +403,27 @@ public class TestCaseSheet {
 
 		int j = 0;
 		for (List<Object> row : values) {
+			// entire row not present
 			if (row == null || row.size() <= 0) {
+				j++;
+				continue;
+			}
+			// first column in row is null
+			if (row.get(0) == null) {
+				j++;
+				continue;
+			}
+			// first column in row is not null but does not have the value test
+			// case id.
+			if (!row.get(0).toString().equalsIgnoreCase(TestCaseSheetProperties.firstColumnForTestCase)
+					&& testCaseData.getHeaderColumnNumber() == -1) {
 				j++;
 				continue;
 			}
 			if (row != null) {
 				if (testCaseData.getHeaderColumnNumber() == -1) {
 					testCaseData.setHeaderRowNumber(j);
-					for (int i = 0; i < row.size(); i++) {
+					for (int i = 1; i < row.size(); i++) {
 						logger.info(row.get(i).toString().toLowerCase());
 						if (row.get(i).toString().toLowerCase()
 								.contains(TestCaseSheetProperties.lastColumnForTestCase.toLowerCase())) {
@@ -430,6 +475,15 @@ public class TestCaseSheet {
 			}
 		}
 		return testCaseData;
+	}
+
+	private static String toName(int number) {
+		StringBuilder sb = new StringBuilder();
+		while (number-- > 0) {
+			sb.append((char) ('A' + (number % 26)));
+			number /= 26;
+		}
+		return sb.reverse().toString();
 	}
 
 }
