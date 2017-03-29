@@ -3,6 +3,7 @@ package com.ooyala.playback.FCC;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
@@ -30,12 +31,12 @@ public class PlaybackFCCDefaultSettingTests extends PlaybackWebTest {
     }
 
     @Test(groups = "FCC", dataProvider = "testUrls")
-    public void testFCCDefaultSetting(String testName, String url) throws OoyalaException {
+    public void testFCCDefaultSetting(String testName, UrlObject url) throws OoyalaException {
 
         boolean result = true;
 
         try{
-            driver.get(url);
+            driver.get(url.getUrl());
 
             result = result && play.clearCache();
             result = result && play.waitForPage();

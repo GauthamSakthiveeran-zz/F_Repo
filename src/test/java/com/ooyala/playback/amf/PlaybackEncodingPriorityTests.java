@@ -5,9 +5,9 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EncodingValidator;
-import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackEncodingPriorityTests extends PlaybackWebTest {
@@ -19,22 +19,21 @@ public class PlaybackEncodingPriorityTests extends PlaybackWebTest {
 	private EncodingValidator encode;
 	private PlayValidator playValidator;
 	private SeekValidator seek;
-	private EventValidator event;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyEncodingPriority(String testName, String url) throws OoyalaException {
+	public void verifyEncodingPriority(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 
 			injectScript();
 
-			result = result && encode.setTestUrl(url).validate("", 6000);
+			result = result && encode.setTestUrl(url.getUrl()).validate("", 6000);
 
 			result = result && playValidator.validate("playing_1", 60000);
 			

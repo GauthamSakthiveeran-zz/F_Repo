@@ -1,6 +1,8 @@
 package com.ooyala.playback.amf.midroll;
 
 import com.ooyala.playback.page.SetEmbedCodeValidator;
+import com.ooyala.playback.url.UrlObject;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -22,12 +24,12 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = {"amf","midroll"}, dataProvider = "testUrls")
-	public void verifyMidRoll(String testName, String url) throws OoyalaException {
+	public void verifyMidRoll(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 

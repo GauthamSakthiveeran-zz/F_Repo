@@ -11,9 +11,9 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.DifferentElementValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -28,14 +28,13 @@ public class PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests extends Playb
     private PlayAction playAction;
     private DifferentElementValidator differentElementValidator;
     private SeekAction seekAction;
-    private PoddedAdValidator poddedAdValidator;
 
     PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests() throws OoyalaException {
         super();
     }
 
     @Test(groups = "VideoCreated", dataProvider = "testUrls")
-    public void testVideoElementCreated(String testName, String url)
+    public void testVideoElementCreated(String testName, UrlObject url)
             throws OoyalaException {
 
         boolean result = true;
@@ -44,7 +43,7 @@ public class PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests extends Playb
         int noOfPoddedAdsPre = 0;
         int noOfPoddedAdsPost =0;
         try {
-            driver.get(url);
+            driver.get(url.getUrl());
 
             result=result && play.waitForPage();
 

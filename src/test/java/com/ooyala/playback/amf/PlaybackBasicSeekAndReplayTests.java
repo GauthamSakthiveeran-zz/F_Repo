@@ -12,6 +12,7 @@ import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.ReplayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -34,7 +35,7 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
     }
 
 	@Test(groups = { "amf", "premidpost", "replay" }, dataProvider = "testUrls")
-    public void testBasicSeekAndReplay(String testName, String url)
+    public void testBasicSeekAndReplay(String testName, UrlObject url)
             throws OoyalaException {
 
         String[] parts= testName.split("-")[1].trim().split(":");
@@ -42,7 +43,7 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
 
         boolean result = true;
         try {
-            driver.get(url);
+            driver.get(url.getUrl());
 
             result = result && play.waitForPage();
 

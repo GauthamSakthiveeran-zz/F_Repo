@@ -1,9 +1,6 @@
 package com.ooyala.playback.amf.midroll;
 
-import static java.lang.Integer.parseInt;
-
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,6 +10,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -33,13 +31,13 @@ public class PlaybackVerifyVideoElementCreatedAllMidrollAdsTests extends Playbac
     }
 
     @Test(groups = "VideoCreated", dataProvider = "testUrls")
-    public void testVideoElementCreated(String testName, String url)
+    public void testVideoElementCreated(String testName, UrlObject url)
             throws OoyalaException {
 
         boolean result = true;
         int counter = 0;
         try {
-            driver.get(url);
+            driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 

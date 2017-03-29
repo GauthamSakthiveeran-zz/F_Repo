@@ -2,7 +2,7 @@
     <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
-    <test name="Playback Web Regression Group" parallel="classes" thread-count="1">
+    <test name="Playback Web Regression Group" parallel="classes" thread-count="5">
         <groups>
             <define name="regression">
                 <include name="streams" />
@@ -47,7 +47,7 @@
         </classes>
     </test>
 
-    <test name="Live Regression">
+    <test name="Live Regression" parallel="classes" thread-count="1">
         <groups>
             <define name="live">
                 <include name="streams" />
@@ -63,7 +63,7 @@
         </classes>
     </test>
 
-    <test name="Playlist Regression">
+    <test name="Playlist Regression" parallel="classes" thread-count="1">
         <groups>
             <define name="playlist">
                 <include name="playlist" />
@@ -79,7 +79,7 @@
         </classes>
     </test>
 
-    <test name="FCC Regression">
+    <test name="FCC Regression" parallel="classes" thread-count="2">
         <groups>
             <define name="fcc">
                 <include name="FCC" />
@@ -96,7 +96,7 @@
         </classes>
     </test>
 
-    <test name="ContentProtection Regression">
+    <test name="ContentProtection Regression" parallel="classes" thread-count="5">
         <groups>
             <define name="syndicationRules">
                 <include name="syndicationRules" />

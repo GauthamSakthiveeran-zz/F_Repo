@@ -9,6 +9,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
@@ -24,13 +25,13 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 	private CCValidator ccValidator;
 
 	@Test(groups = {"amf","cc","midroll","sequential"}, dataProvider = "testUrls")
-	public void verifyCCenableMidRoll(String testName, String url)
+	public void verifyCCenableMidRoll(String testName, UrlObject url)
 			throws Exception {
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 

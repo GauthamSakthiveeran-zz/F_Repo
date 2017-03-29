@@ -9,6 +9,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
@@ -24,14 +25,14 @@ public class PlaybackPoddedSkippbableInsideTests extends PlaybackWebTest {
 	private AdSkipButtonValidator skipValidator;
 
 	@Test(groups = {"amf","podded","skipads"}, dataProvider = "testUrls", enabled=false)
-	public void verifyPoddedInsideSkipButton(String testName, String url)
+	public void verifyPoddedInsideSkipButton(String testName, UrlObject url)
 			throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 

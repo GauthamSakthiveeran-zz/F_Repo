@@ -6,6 +6,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
@@ -29,22 +30,20 @@ public class PlaybackOverrideEncodingPriorityMidrollAdTests extends PlaybackWebT
     }
 
     @Test(groups = "EncodingPriority", dataProvider = "testUrls")
-    public void testOverrideEncodingPriorities(String testName, String url) {
+    public void testOverrideEncodingPriorities(String testName, UrlObject url) {
 
         boolean result = true;
         String param = "";
 
         try {
 
-            driver.get(url);
+            driver.get(url.getUrl());
 
             result = result && play.waitForPage();
 
             injectScript();
 
-            encode.setTestUrl(url);
-
-            result = result && encode.validate("validate_default_encoding", 60000);
+            result = result && encode.setTestUrl(url.getUrl()).validate("validate_default_encoding", 60000);
 
             result = result && playAction.startAction();
             

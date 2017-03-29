@@ -8,6 +8,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SetEmbedCodeValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPreRollAdsSetEmbedCodeTests extends PlaybackWebTest {
@@ -22,13 +23,13 @@ public class PlaybackPreRollAdsSetEmbedCodeTests extends PlaybackWebTest {
 	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = { "amf", "preroll","setEmbedCode" }, dataProvider = "testUrls", enabled =false)
-	public void verifyPrerollSetEmbedCode(String testName, String url) throws OoyalaException {
+	public void verifyPrerollSetEmbedCode(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 			
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 

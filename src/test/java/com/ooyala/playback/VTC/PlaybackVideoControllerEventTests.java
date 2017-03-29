@@ -4,6 +4,7 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
@@ -23,12 +24,12 @@ public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "Playback", dataProvider = "testUrls")
-	public void testVideoControllerEvents(String testName, String url) {
+	public void testVideoControllerEvents(String testName, UrlObject url) {
 
 		boolean result = true;
 
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 

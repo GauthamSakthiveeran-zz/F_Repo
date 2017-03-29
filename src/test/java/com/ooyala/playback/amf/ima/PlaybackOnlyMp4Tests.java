@@ -7,6 +7,7 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackOnlyMp4Tests extends PlaybackWebTest {
@@ -20,13 +21,13 @@ public class PlaybackOnlyMp4Tests extends PlaybackWebTest {
 	private SeekValidator seek;
 
 	@Test(groups = {"amf"}, dataProvider = "testUrls", enabled=false)
-	public void verifyOnlyMp4(String testName, String url) throws OoyalaException {
+	public void verifyOnlyMp4(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 			injectScript();

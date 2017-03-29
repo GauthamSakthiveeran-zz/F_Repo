@@ -8,6 +8,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.IsAdPlayingValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlayBackNoAdsTests extends PlaybackWebTest {
@@ -22,13 +23,13 @@ public class PlayBackNoAdsTests extends PlaybackWebTest {
 	private IsAdPlayingValidator isAdPlaying;
 
 	@Test(groups = {"amf"}, dataProvider = "testUrls")
-	public void verifyNoAds(String testName, String url) throws OoyalaException {
+	public void verifyNoAds(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 			injectScript();

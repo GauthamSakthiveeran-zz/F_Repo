@@ -7,6 +7,7 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
@@ -20,13 +21,13 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 	private SeekValidator seek;
 
 	@Test(groups = { "amf", "midroll" }, dataProvider = "testUrls")
-	public void verifyMultipleMidroll(String testName, String url) throws OoyalaException {
+	public void verifyMultipleMidroll(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 			
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 

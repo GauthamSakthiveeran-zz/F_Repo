@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.AdFrequencyValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackAdFrequencyTests extends PlaybackWebTest {
@@ -18,22 +19,20 @@ public class PlaybackAdFrequencyTests extends PlaybackWebTest {
 	private AdFrequencyValidator adFrequencyValidator;
 
 	@Test(groups = { "amf", "adFrequency" }, dataProvider = "testUrls")
-	public void verifyAdFrequency(String testName, String url) throws OoyalaException {
+	public void verifyAdFrequency(String testName, UrlObject url) throws OoyalaException {
 		boolean result = true;
 
 		try {
 
-			url = adFrequencyValidator.split(url).getUrl();
+			driver.get(url.getUrl());
 
-			driver.get(url);
-			
 			result = result && playValidator.clearCache();
 
 			result = result && playValidator.waitForPage();
 
 			injectScript();
 
-			result = result && adFrequencyValidator.validate("", 1000);
+			result = result && adFrequencyValidator.split(url).validate("", 1000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

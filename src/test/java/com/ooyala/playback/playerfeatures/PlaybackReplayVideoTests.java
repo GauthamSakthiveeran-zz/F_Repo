@@ -8,6 +8,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.ReplayValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
@@ -25,13 +26,13 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testVideoReplay(String testName, String url)
+	public void testVideoReplay(String testName, UrlObject url)
 			throws OoyalaException {
 
 		boolean result = true;
 
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 

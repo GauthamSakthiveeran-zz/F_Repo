@@ -2,6 +2,7 @@ package com.ooyala.playback.amf.midroll;
 
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -23,12 +24,12 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
 	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = {"amf","podded","midroll"}, dataProvider = "testUrls")
-	public void verifyMidrollPodded(String testName, String url) throws OoyalaException {
+	public void verifyMidrollPodded(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 

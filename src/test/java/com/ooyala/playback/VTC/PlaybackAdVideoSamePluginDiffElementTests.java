@@ -11,6 +11,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
@@ -29,13 +30,13 @@ public class PlaybackAdVideoSamePluginDiffElementTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "Playback", dataProvider = "testUrls")
-	public void testSamePluginsDiffElementTests(String testName, String url)
+	public void testSamePluginsDiffElementTests(String testName, UrlObject url)
 			throws OoyalaException {
 
 		boolean result = true;
 
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 

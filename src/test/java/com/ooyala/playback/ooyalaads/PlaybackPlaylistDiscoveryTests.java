@@ -9,6 +9,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.PlaylistValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPlaylistDiscoveryTests extends PlaybackWebTest {
@@ -24,12 +25,12 @@ public class PlaybackPlaylistDiscoveryTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = { "playlist", "discovery", "ooyalads" }, dataProvider = "testUrls")
-	public void testPlaylistTests(String testName, String url) throws OoyalaException {
+	public void testPlaylistTests(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 			result = result && play.waitForPage();
 
 			injectScript();

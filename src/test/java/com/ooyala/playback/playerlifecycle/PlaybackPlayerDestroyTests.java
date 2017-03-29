@@ -1,18 +1,16 @@
 package com.ooyala.playback.playerlifecycle;
 
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackPlayerDestroyTests extends PlaybackWebTest {
-
-	private static Logger logger = Logger
-			.getLogger(PlaybackPlayerDestroyTests.class);
 
 	private PlayValidator play;
 	private EventValidator eventValidator;
@@ -22,13 +20,13 @@ public class PlaybackPlayerDestroyTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "playerLifecycle", dataProvider = "testUrls")
-	public void testVideoReplay(String testName, String url)
+	public void testVideoReplay(String testName, UrlObject url)
 			throws OoyalaException {
 
 		boolean result = true;
 
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 
@@ -41,7 +39,7 @@ public class PlaybackPlayerDestroyTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("destroy_1", 50000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "Player Destroy tests failed");

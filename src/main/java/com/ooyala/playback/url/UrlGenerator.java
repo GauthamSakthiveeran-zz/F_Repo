@@ -3,13 +3,10 @@ package com.ooyala.playback.url;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
+
+import org.apache.log4j.Logger;
 
 import com.ooyala.qe.common.util.PropertyReader;
-import org.apache.log4j.Logger;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 /**
  * Created by jitendra
@@ -70,12 +67,12 @@ public class UrlGenerator {
      * @return output : output contains two dimensional Object in which test
      *         name and url is returned
      */
-    public static Map<String, String> parseXmlDataProvider(String testName,
+    public static Map<String, UrlObject> parseXmlDataProvider(String testName,
                                                            Testdata testData, String browserName, String browserVersion) {
         logger.info("Getting test url and test name from property file");
 
         liveChannelDetails = new HashMap<String, String>();
-        Map<String, String> urlsGenerated = new HashMap<String, String>();
+        Map<String, UrlObject> urlsGenerated = new HashMap<String, UrlObject>();
         String sslEnabled = null;
         boolean browserExisted = false;
         for (Test data : testData.getTest()) {
@@ -137,10 +134,10 @@ public class UrlGenerator {
                                         .getProvider());
                     }
 
-                    if (url.getStreamType() != null
+                    /*if (url.getStreamType() != null
                             && url.getStreamType().getName() != null){
                         streamTypeDetails.put(url.getDescription().getName(),url.getStreamType().getName());
-                    }
+                    }*/
 
                     String embedCode = url.getEmbedCode().getName();
                     String pCode = url.getPcode().getName();
@@ -176,16 +173,25 @@ public class UrlGenerator {
                     String urlGenerated = UrlGenerator.getURL(sslEnabled,
                             embedCode, pCode, pbid, videoPlugin, adPlugin,
                             additionalPlugin, playerParameter);
+                    
+                    UrlObject urlObject = new UrlObject();
+                    urlObject.setUrl(urlGenerated);
 
                     String adFirstPlay = url.getAdPlugins().getAdFirstPlay();
                     String adFrequency = url.getAdPlugins().getAdFrequency();
 
                     if(adFirstPlay!=null && !adFirstPlay.isEmpty() && adFrequency!=null && !adFrequency.isEmpty()){
-                        urlGenerated = urlGenerated + " " + adFirstPlay + " " + adFrequency;
+                       urlObject.setAdFirstPlay(adFirstPlay);
+                       urlObject.setAdFrequency(adFrequency);
                     }
 
                     String desc = url.getDescription().getName();
-                    urlsGenerated.put(desc, urlGenerated);
+                    
+					if (url.getStreamType() != null && !url.getStreamType().getName().isEmpty()) {
+						urlObject.setStreamType(url.getStreamType().getName());
+					}
+					
+                    urlsGenerated.put(desc, urlObject);
 
                 }
             }

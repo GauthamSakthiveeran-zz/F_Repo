@@ -2,7 +2,10 @@ package com.ooyala.playback.playerfeatures;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
+
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -24,14 +27,14 @@ public class PlaybackThumbnailCarouselTests extends PlaybackWebTest {
     }
 
     @Test(groups = "playerFeatures", dataProvider = "testUrls")
-    public void testThumbnailCarousel(String testName, String url)
+    public void testThumbnailCarousel(String testName, UrlObject url)
             throws OoyalaException {
 
         boolean result = true;
 
         try {
 
-            driver.get(url);
+            driver.get(url.getUrl());
 
             result = result && play.waitForPage();
 
@@ -52,10 +55,10 @@ public class PlaybackThumbnailCarouselTests extends PlaybackWebTest {
             result = result && eventValidator.validate("played_1", 60000);
 
         } catch (InterruptedException e) {
-            logger.error("Thread interruption for wait method");
+            extentTest.log(LogStatus.FAIL,"Thread interruption for wait method");
             result = false;
         } catch (Exception ex){
-            logger.error("**** Failed ***** : Thumbnail Carousel is failing");
+        	extentTest.log(LogStatus.FAIL,"**** Failed ***** : Thumbnail Carousel is failing");
             result = false;
         }
 

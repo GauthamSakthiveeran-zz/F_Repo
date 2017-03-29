@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
@@ -18,13 +19,13 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 	private EventValidator event;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPlayerWithoutskin(String testName, String url) throws OoyalaException {
+	public void verifyPlayerWithoutskin(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
-			url = removeSkin(url);
-			driver.get(url);
+			String urlWithoutSkin = removeSkin(url.getUrl());
+			driver.get(urlWithoutSkin);
 
 			try {
 				injectScript();

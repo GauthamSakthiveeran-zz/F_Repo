@@ -1,12 +1,15 @@
 package com.ooyala.playback.streams;
 
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.url.UrlObject;
+
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by soundarya on 11/21/16.
@@ -19,21 +22,19 @@ public class BasicPlaybackTests extends PlaybackWebTest {
     private PauseValidator pause;
     private SeekValidator seek;
     private StreamTypeValidator streamTypeValidator;
-    public String stream;
 
     public BasicPlaybackTests() throws OoyalaException {
         super();
     }
 
     @Test(groups = "streams", dataProvider = "testUrls")
-    public void testBasicPlaybackAlice(String testName, String url)
+    public void testBasicPlaybackAlice(String testName, UrlObject url)
             throws OoyalaException {
-        String description = testName.split("-")[1].trim();
-
+        
         boolean result = true;
 
         try {
-            driver.get(url);
+            driver.get(url.getUrl());
 
             result = result && play.waitForPage();
 
@@ -43,7 +44,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
             result = result && eventValidator.validate("videoPlayingurl",40000);
 
-            result = result && streamTypeValidator.validateStream("videoPlayingurl",description);
+            result = result && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 
             result = result && pause.validate("paused_1", 60000);
 
@@ -55,6 +56,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
         }catch (Exception e) {
             logger.error("Exception while checking basic playback "+e.getMessage());
+            extentTest.log(LogStatus.FAIL, "Exception while checking basic playback "+e.getMessage());
             result = false;
         }
         Assert.assertTrue(result, "Basic playback tests failed"+testName);

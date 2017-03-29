@@ -10,6 +10,7 @@ import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.FullScreenAction;
 import com.ooyala.playback.page.action.PauseAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackAdWrapperAndLiveRailTests extends PlaybackWebTest {
@@ -26,13 +27,13 @@ public class PlaybackAdWrapperAndLiveRailTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = {"amf"}, dataProvider = "testUrls", enabled=false)
-	public void verifyPlaybackAdWrapper(String testName, String url)
+	public void verifyPlaybackAdWrapper(String testName, UrlObject url)
 			throws Exception {
 
 		boolean result = true;
 
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 			injectScript();

@@ -10,6 +10,7 @@ import com.ooyala.playback.page.OoyalaAPIValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackInitialTimeForOoyalaAdsTests extends PlaybackWebTest {
@@ -26,12 +27,12 @@ public class PlaybackInitialTimeForOoyalaAdsTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = { "ooyalads" }, dataProvider = "testUrls") 
-	public void testInitialTime(String testName, String url) throws OoyalaException {
+	public void testInitialTime(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 			result = result && play.waitForPage();
 
 			injectScript();

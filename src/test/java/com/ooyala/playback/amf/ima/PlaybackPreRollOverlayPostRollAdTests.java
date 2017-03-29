@@ -8,6 +8,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPreRollOverlayPostRollAdTests extends PlaybackWebTest {
@@ -22,13 +23,13 @@ public class PlaybackPreRollOverlayPostRollAdTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 
 	@Test(groups = { "amf", "preroll", "overlay", "postroll" }, dataProvider = "testUrls")
-	public void verifyPrerollOverlayPostrollAd(String testName, String url) throws OoyalaException {
+	public void verifyPrerollOverlayPostrollAd(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 
@@ -36,13 +37,13 @@ public class PlaybackPreRollOverlayPostRollAdTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			if (!event.isAdPluginPresent("ima")){
+			if (!event.isAdPluginPresent("ima")) {
 				result = result && event.validate("willPlayNonlinearAd_1", 1000);
 			}
 
 			result = result && event.validate("videoPlaying_1", 90000);
 
-			if(!getBrowser().equalsIgnoreCase("MicrosoftEdge"))
+			if (!getBrowser().equalsIgnoreCase("MicrosoftEdge"))
 				result = result && seekValidator.validate("seeked_1", 6000);
 
 			result = result && event.validate("videoPlayed_1", 160000);

@@ -9,6 +9,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
@@ -24,14 +25,14 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 	private PauseAction pauseAction;
 
 	@Test(groups = "amf", dataProvider = "testUrls")
-	public void verifyPlaybackOfOSMFMp4(String testName, String url)
+	public void verifyPlaybackOfOSMFMp4(String testName, UrlObject url)
 			throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 			result = result && playValidator.waitForPage();
 			Thread.sleep(2000);
 

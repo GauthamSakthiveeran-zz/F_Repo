@@ -1,8 +1,6 @@
 package com.ooyala.playback.VTC;
 
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +9,9 @@ import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by snehal on 25/11/16.
@@ -29,11 +29,11 @@ public class PlaybackNewStreamTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "Playback", dataProvider = "testUrls")
-	public void testLoadingNewStream(String testName, String url)
+	public void testLoadingNewStream(String testName, UrlObject url)
 			throws OoyalaException {
 		boolean result = true;
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			play.waitForPage();
 

@@ -12,6 +12,7 @@ import com.ooyala.playback.page.DifferentElementValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -31,12 +32,12 @@ public class PlaybackVerifyVideoElementCreatedAllPrerollAdsTests extends Playbac
 	}
 
 	@Test(groups = { "VideoCreated", "preroll", "podded" }, dataProvider = "testUrls")
-	public void testVideoElementCreated(String testName, String url) throws OoyalaException {
+	public void testVideoElementCreated(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 		int counter = 0;
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 

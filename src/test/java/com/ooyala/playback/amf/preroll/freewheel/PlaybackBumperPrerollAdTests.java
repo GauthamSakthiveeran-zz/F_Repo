@@ -9,6 +9,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.ReplayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
@@ -24,12 +25,12 @@ public class PlaybackBumperPrerollAdTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = {"amf","preroll"}, dataProvider = "testUrls")
-	public void verifyBumperPrerollPlayback(String testName, String url) throws Exception {
+	public void verifyBumperPrerollPlayback(String testName, UrlObject url) throws Exception {
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 

@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -24,13 +25,13 @@ public class PlaybackAutoplayAutoloopPrerollPoddedAdTests extends PlaybackWebTes
 	}
 
 	@Test(groups = { "amf", "autoplay" }, dataProvider = "testUrls")
-	public void testAutoplayAutoloop(String testName, String url) throws OoyalaException {
+	public void testAutoplayAutoloop(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && eventValidator.waitTillAdPlays();
 			

@@ -8,6 +8,7 @@ import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.OverlayValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMidrollOverlayUpNextTests extends PlaybackWebTest {
@@ -22,14 +23,14 @@ public class PlaybackMidrollOverlayUpNextTests extends PlaybackWebTest {
 	private DiscoveryValidator discoverValidator;
 
 	@Test(groups = {"amf","overlay","midroll","upnext","sequential"}, dataProvider = "testUrls")
-	public void verifyMidrollOverlayUpNext(String testName, String url)
+	public void verifyMidrollOverlayUpNext(String testName, UrlObject url)
 			throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 

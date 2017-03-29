@@ -2,6 +2,7 @@ package com.ooyala.playback.VTC;
 
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
@@ -22,7 +23,6 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
 	private PlayValidator play;
 	private UpNextValidator discoveryUpNext;
 	private DiscoveryValidator discoveryValidator;
-	private PlayAction playAction;
 	private SeekAction seekAction;
 
 	PlaybackDiscoverTests() throws OoyalaException {
@@ -30,12 +30,12 @@ public class PlaybackDiscoverTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "Playback", dataProvider = "testUrls")
-	public void testDiscoveryVTC(String testName, String url)
+	public void testDiscoveryVTC(String testName, UrlObject url)
 			throws OoyalaException {
 
 		boolean result = true;
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 

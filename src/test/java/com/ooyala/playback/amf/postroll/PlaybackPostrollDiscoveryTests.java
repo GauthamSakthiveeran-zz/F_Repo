@@ -10,6 +10,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.UpNextValidator;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
@@ -25,13 +26,13 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 	private UpNextValidator upNextValidator;
 
 	@Test(groups = {"amf","postroll","discovery","upnext","sequential"}, dataProvider = "testUrls")
-	public void verifyPostrollDiscovery(String testName, String url) throws OoyalaException {
+	public void verifyPostrollDiscovery(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 

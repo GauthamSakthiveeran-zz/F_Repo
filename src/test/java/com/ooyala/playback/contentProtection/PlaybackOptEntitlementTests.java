@@ -10,6 +10,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SaasPortValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
@@ -17,8 +18,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger
-			.getLogger(PlaybackOptEntitlementTests.class);
+	private static Logger logger = Logger.getLogger(PlaybackOptEntitlementTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private SeekValidator seek;
@@ -29,20 +29,19 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "syndicationRules", dataProvider = "testUrls")
-	public void testOptEntitlementAlice(String testName, String url)
-			throws OoyalaException {
+	public void testOptEntitlementAlice(String testName, UrlObject url) throws OoyalaException {
 		boolean result = true;
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && sasport.validate("", 30000);
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 
 			injectScript();
-			
+
 			result = result && play.validate("playing_1", 60000);
 
 			result = result && seek.validate("seeked_1", 60000);
@@ -50,7 +49,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("played_1", 60000);
 
 		} catch (Exception e) {
-			logger.error("Error while checking entitlement"+e);
+			logger.error("Error while checking entitlement" + e);
 			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}

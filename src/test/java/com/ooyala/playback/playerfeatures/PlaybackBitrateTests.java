@@ -3,6 +3,7 @@ package com.ooyala.playback.playerfeatures;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -30,12 +31,12 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
     }
 
     @Test(groups = "playerFeatures", dataProvider = "testUrls")
-    public void testBitrate(String testName, String url) throws OoyalaException {
+    public void testBitrate(String testName, UrlObject url) throws OoyalaException {
 
         boolean result = true;
 
         try {
-            driver.get(url);
+            driver.get(url.getUrl());
 
             result = result && play.clearCache();
 

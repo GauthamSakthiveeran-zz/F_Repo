@@ -1,7 +1,5 @@
 package com.ooyala.playback.VTC;
 
-import com.ooyala.playback.streams.BasicPlaybackTests;
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,6 +9,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.MultiplePlayerValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by jitendra on 28/11/16.

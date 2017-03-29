@@ -1,37 +1,35 @@
 package com.ooyala.playback.drm;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.qe.common.exception.OoyalaException;
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.url.UrlObject;
+import com.ooyala.qe.common.exception.OoyalaException;
+
 public class PlaybackConcurrentStreamDRMTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackConcurrentStreamDRMTests.class);
-	private ConcurrentStreamValidator concurrentStream;
-    private PlayValidator play;
 
 	public PlaybackConcurrentStreamDRMTests() throws OoyalaException {
 		super();
 	}
 
 	@Test(groups = "drm", dataProvider = "testUrls")
-	public void testPlaybackDRM(String testName, String url)
-			throws OoyalaException {
+	public void testPlaybackDRM(String testName, UrlObject url) throws OoyalaException {
 		boolean result = true;
 
 		try {
-            driver.get(url);
-            Thread.sleep(10000);
-            injectScript();
-            result = !driver.executeScript("return pp.getErrorCode()").toString().equalsIgnoreCase("concurrent_streams");
-            getWebdriver(browser).get(url);
-            Thread.sleep(10000);
-            injectScript();
-            result = !driver.executeScript("return pp.getErrorCode()").toString().equalsIgnoreCase("concurrent_streams");
-            getWebdriver(browser).close();
+			driver.get(url.getUrl());
+			Thread.sleep(10000);
+			injectScript();
+			result = !driver.executeScript("return pp.getErrorCode()").toString()
+					.equalsIgnoreCase("concurrent_streams");
+			getWebdriver(browser).get(url.getUrl());
+			Thread.sleep(10000);
+			injectScript();
+			result = !driver.executeScript("return pp.getErrorCode()").toString()
+					.equalsIgnoreCase("concurrent_streams");
+			getWebdriver(browser).close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
