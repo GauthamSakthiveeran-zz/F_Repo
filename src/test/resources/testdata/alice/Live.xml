@@ -3,7 +3,7 @@
     <test name="PlaybackLiveTests">
 
         <url>
-            <description name="Alice Core:HLS Live (Customer link itbn)" />
+            <description name="Alice Core:HLS Live (Customer link itbn)|Live Stream Testing(Without DRM):Elemental Delta HLS Bitmovin No Channel" />
             <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
@@ -11,6 +11,51 @@
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):Live Bitmovin Dash" />
+            <embed_code name="tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE" />
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8abff377aec2400e9337fe9088e65d40" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"]}]]></playerParameter>
+            <live>
+                <channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):Elemental Delta HLS Bitmovin Channel" />
+            <embed_code name="tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE" />
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8abff377aec2400e9337fe9088e65d40" />
+            <playerParameter><![CDATA[]]></playerParameter>
+            <live>
+                <channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):Elemental Delta Live OSMF HDS" />
+            <embed_code name="tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE" />
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8abff377aec2400e9337fe9088e65d40" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","mp4"]}]]></playerParameter>
+            <live>
+                <channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
+                <provider>elemental</provider>
+            </live>
         </url>
 
         <url>
@@ -25,7 +70,29 @@
         </url>
 
         <url>
-            <description name="Alice Core:Akamai HLS Live bitmovin" />
+            <description name="Live Stream Testing(Without DRM):Elemental Delta Live DVR HLS Bitmovin" />
+            <embed_code name="Bob2V0MjE6S3P5Zs-5GbDs7J9lzBFxVc" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):Akamai HD Live HDS" />
+            <embed_code name="ZzYjl0MTE6q67pMzfDHLjHsh5ZPR7rMO" />
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+            <plugins name="AKAMAI" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Alice Core:Akamai HLS Live bitmovin|Live Stream Testing(Without DRM):Akamai Live HLS Bitmovin" />
             <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="AKAMAI,BITMOVIN" />
@@ -45,7 +112,7 @@
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/hkN2YyOnWYuzHmiwc6gaXi9wPfwy/t4ODRzNTE6C3BGu13bE6y_fxxzEM9Fod?api_key=hkN2YyOnWYuzHmiwc6gaXi9wPfwy.7-2Sh&expires=1476304999752&signature=pt3uY/V1HX0IibQZBVFCwT3vxjgZ8hhBGgKVh1+ogJE"}]]></playerParameter>
         </url>
         <url>
-            <description name="Alice Core:Player Controls - Live DVR main" />
+            <description name="Alice Core:Player Controls - Live DVR main|Live Stream Testing(Without DRM):Live DVR Main" />
             <embed_code name="BsZjdieDrJdl9YjLBm1LVyl3FF0KdWtd" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN" />
@@ -56,7 +123,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Alice Core:HLS Live main" />
+            <description name="Alice Core:HLS Live main|Live Stream Testing(Without DRM):Elemental Delta Live HLS Main" />
             <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN" />
