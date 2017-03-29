@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.ErrorDescriptionValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SaasPortValidator;
@@ -23,6 +24,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 	private PlayValidator play;
 	private SeekValidator seek;
 	private SaasPortValidator sasport;
+	private ErrorDescriptionValidator error;
 
 	public PlaybackOptEntitlementTests() throws OoyalaException {
 		super();
@@ -32,9 +34,27 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 	public void testOptEntitlementAlice(String testName, UrlObject url) throws OoyalaException {
 		boolean result = true;
 		try {
+			
 			driver.get(url.getUrl());
 
-			result = result && sasport.validate("", 30000);
+			result = result && sasport.getProperties();
+			result = result && sasport.searchEntitlement();
+			result = result && sasport.deleteEntitlement();
+			
+			Thread.sleep(5000);
+
+			driver.get(url.getUrl());
+
+			result = result && eventValidator.isPageLoaded();
+
+			result = result && error.expectedErrorCode("sas").expectedErrorDesc("Invalid Authorization Response")
+					.validate("", 1000);
+
+			result = result && sasport.searchEntitlement();
+
+			result = result && sasport.createEntitlement("");
+			
+			Thread.sleep(5000);
 
 			driver.get(url.getUrl());
 
@@ -43,6 +63,8 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
+			
+			Thread.sleep(10000);
 
 			result = result && seek.validate("seeked_1", 60000);
 

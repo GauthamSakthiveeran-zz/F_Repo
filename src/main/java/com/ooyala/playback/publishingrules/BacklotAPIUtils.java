@@ -28,8 +28,6 @@ public class BacklotAPIUtils {
 	private String endPoint;
 	private String version;
 	private String assets;
-	private String api_key;
-	private String secret;
 	private String epochTime;
 	private String publishing_rules;
 	private String publishing_rule;
@@ -40,8 +38,6 @@ public class BacklotAPIUtils {
 			endPoint = properties.getProperty("endPoint");
 			version = properties.getProperty("version");
 			assets = properties.getProperty("assets");
-			api_key = properties.getProperty("api_key");
-			secret = properties.getProperty("secret");
 			epochTime = properties.getProperty("epochTime");
 			publishing_rules = properties.getProperty("publishing_rules");
 			publishing_rule = properties.getProperty("publishing_rule");
@@ -93,7 +89,8 @@ public class BacklotAPIUtils {
 
 	}
 
-	public void updatePublishingRule(String embedCode, String publishingRuleId) throws Exception {
+	public void updatePublishingRule(String embedCode, String publishingRuleId, String api_key, String secret)
+			throws Exception {
 
 		String toBeSigned = secret + "PUT/" + version + assets + embedCode + publishing_rule + publishingRuleId
 				+ "api_key=" + api_key + "expires=" + epochTime;
@@ -116,16 +113,16 @@ public class BacklotAPIUtils {
 		HashMap<String, String> rules = new HashMap<>();
 
 		JSONArray items = json.getJSONArray("items");
-		
-		for(int i=0;i<items.length();i++){
+
+		for (int i = 0; i < items.length(); i++) {
 			JSONObject j = items.getJSONObject(i);
-			if(j.getString("name").equals("Default Group")){
+			if (j.getString("name").equals("Default Group")) {
 				rules.put("default", j.getString("id"));
-			} else if(j.getString("name").equals("Flight Time") || j.getString("name").equals("Geo Restriction")) {
+			} else if (j.getString("name").equals("Flight Time") || j.getString("name").equals("Geo Restriction")) {
 				rules.put("specific", j.getString("id"));
 			}
 		}
-		
+
 		return rules;
 
 	}
