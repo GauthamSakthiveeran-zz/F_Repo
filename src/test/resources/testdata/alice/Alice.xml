@@ -2,7 +2,7 @@
 <testdata>
     <test name="BasicPlaybackTests">
         <url>
-            <description name="Alice Core:HLS Vod bitmovin" />
+            <description name="Streams:Bitmovin Elemental Delta HLS VOD" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
@@ -14,8 +14,8 @@
         </url>
 
         <!-- commented check the ticket number for more info PBW-6281 -->
-        <!-- <url>
-             <description name="VOD_CLEAR_DASH_BITMOVIN" />
+        <url>
+             <description name="Streams:Bitmovin Elemental Delta DASH VOD (Clear Dash)" />
              <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
              <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
              <plugins name="BITMOVIN" />
@@ -24,7 +24,7 @@
              <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
              <browsersSupported name="firefox,chrome,internet explorer" />
              <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-         </url>-->
+         </url>
         <!--  Getting playback stream error for IE for more info https://jira.corp.ooyala.com/browse/PBW-6084-->
         <url>
             <description name="Alice Core:eHLS Vod bitmovin" />
@@ -39,7 +39,7 @@
             <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
         </url>
         <url>
-            <description name="Alice Core:MP4 Only Asset bitmovin" />
+            <description name="Streams:Bitmovin MP4" />
             <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="BITMOVIN" />
@@ -47,10 +47,11 @@
             <additionalPlugins name="" />
             <pbid name="615dc8e909e941c280e12155df838355" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <streamType name="mp4" />
         </url>
 
         <url>
-            <description name="Alice Core:HLS main" />
+            <description name="Streams:Main Elemental Delta HLS VOD" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN" />
@@ -75,7 +76,7 @@
         </url>
 
         <url>
-            <description name="Alice Core:MP4 Only Asset with Main Plugin" />
+            <description name="Streams:Main MP4" />
             <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -83,10 +84,23 @@
             <additionalPlugins name="" />
             <pbid name="615dc8e909e941c280e12155df838355" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+        
+        <url>
+            <description name="Streams:Bitmovin Elemental Delta DASH Remote Asset" />
+            <embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        	<sslEnabled name="https"/>
         </url>
 
         <url>
-            <description name="Alice Core:HDS Asset OSMF" />
+            <description name="Streams:OSMF Elemental Delta HDS VOD" />
             <embed_code name="0zbm5kMDE6hbM_xDZmnsKUYqXs3N9JrL" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
             <plugins name="OSMF" />
@@ -99,7 +113,7 @@
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
         <url>
-            <description name="Alice Core:HD2 Vod Akamai" />
+            <description name="Streams:Akamai HD Flash HD2 VOD" />
             <embed_code name="82eWJ2NDE6UWX__B6oTjtU1COh-gF3pP" />
             <pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk" />
             <plugins name="AKAMAI" />
@@ -134,7 +148,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
-            <description name="VOD_HDS_OSMF_FFMPEG" />
+            <description name="Streams:OSMF FFMPEG HDS VOD" />
             <embed_code name="syMGUyODE60uVae2GkFJovDNcN_W5TGE" />
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
             <plugins name="OSMF" />
@@ -222,7 +236,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
-            <description name="VOD_DASH_BITMOVIN_AZURE" />
+            <description name="Streams:Bitmovin Azure DASH VOD" />
             <embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq" />
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="BITMOVIN" />
@@ -258,7 +272,7 @@
         </url>-->
 
         <url>
-            <description name="VOD_HLS_AES_MAIN_FFMPEG" />
+            <description name="Streams:Main FFMPEG HLS VOD" />
             <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
             <plugins name="MAIN" />
@@ -267,9 +281,37 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[]]></playerParameter>
+            <streamType name="m3u8"></streamType>
         </url>
+        
         <url>
-            <description name="VOD_HLS_AES_BITMOVIN_FFMPEG" />
+            <description name="Streams:Main Akamai HLS Remote Asset" />
+            <embed_code name="44ZTlxNTE6qlSijlH3j2_dDZbXgPcEXv" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+            <streamType name="m3u8"></streamType>
+        </url>
+        
+        <url>
+            <description name="Streams:Bitmovin Akamai HLS Remote Asset" />
+            <embed_code name="44ZTlxNTE6qlSijlH3j2_dDZbXgPcEXv" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+            <streamType name="m3u8"></streamType>
+        </url>
+        
+        <url>
+            <description name="Streams:Bitmovin FFMPEG HLS VOD" />
             <embed_code name="lpMWdlOTE6dNxa4hDAIosKY4taT-Bofx" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
@@ -278,6 +320,7 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <sslEnabled name="https"/>
             <playerParameter><![CDATA[]]></playerParameter>
+            <streamType name="m3u8"></streamType>
         </url>
         <url>
             <description name="VOD_HDS_ACCESS_OSMF_FFMPEG" />
