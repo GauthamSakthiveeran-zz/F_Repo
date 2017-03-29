@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SocialScreenValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -22,12 +23,12 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest {
     }
 
     @Test(groups = "playerFeatures", dataProvider = "testUrls")
-    public void testScialMediaSharing(String testName, String url)
+    public void testScialMediaSharing(String testName, UrlObject url)
             throws OoyalaException {
 
         boolean result = true;
         try {
-            driver.get(url);
+            driver.get(url.getUrl());
 
             result = result && play.waitForPage();
 

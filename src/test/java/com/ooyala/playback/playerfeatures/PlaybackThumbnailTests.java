@@ -1,6 +1,5 @@
 package com.ooyala.playback.playerfeatures;
 
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,6 +9,7 @@ import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.ThumbnailValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
@@ -28,14 +28,14 @@ public class PlaybackThumbnailTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testThumbnail(String testName, String url)
+	public void testThumbnail(String testName, UrlObject url)
 			throws OoyalaException {
 
 		boolean result = true;
 
 			try {
 
-				driver.get(url);
+				driver.get(url.getUrl());
 
 				result = result && play.waitForPage();
 

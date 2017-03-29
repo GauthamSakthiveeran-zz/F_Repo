@@ -1,14 +1,14 @@
 package com.ooyala.playback.contentProtection;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.FlightTimeValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriverException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.FlightTimeValidator;
+import com.ooyala.playback.url.UrlObject;
+import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by suraj on 3/23/17.
@@ -19,17 +19,16 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest{
             .getLogger(PlaybackGeoRestrictionTests.class);
 
     private FlightTimeValidator flight;
-    private PlayValidator play;
 
     PlaybackFlightTimeTests() throws OoyalaException{
         super();
     }
 
     @Test(groups = "syndicationRules", dataProvider = "testUrls")
-    public void testFlightTime(String testName, String url){
+    public void testFlightTime(String testName, UrlObject url){
         boolean result = true;
         try{
-            driver.get(url);
+            driver.get(url.getUrl());
 
             result = result && flight.isPageLoaded();
 

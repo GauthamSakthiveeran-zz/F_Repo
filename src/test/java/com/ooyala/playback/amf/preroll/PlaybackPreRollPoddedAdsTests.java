@@ -10,6 +10,7 @@ import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.SetEmbedCodeValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
@@ -26,13 +27,13 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = {"amf","preroll","podded"}, dataProvider = "testUrls")
-	public void verifyPrerollPodded(String testName, String url) throws OoyalaException {
+	public void verifyPrerollPodded(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 			injectScript();

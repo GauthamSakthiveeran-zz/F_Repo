@@ -6,6 +6,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SetEmbedCodeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -23,14 +24,13 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = {"amf","preroll","midroll","postroll"}, dataProvider = "testUrls")
-	public void verifyPreMidPostroll(String testName, String url) throws OoyalaException {
+	public void verifyPreMidPostroll(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
-			
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 

@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class AdFrequencyValidator extends PlayBackPage implements PlaybackValidator {
@@ -18,37 +19,20 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 		PageFactory.initElements(driver, this);
 	}
 
-	String urlData = "";
-	String url = "";
-
 	int firstAdPlay = 0;
 	int adFrequency = 0;
 
-	public AdFrequencyValidator split(String url) {
+	public AdFrequencyValidator split(UrlObject url) {
 
-		if (url == null || url.isEmpty()) {
-			extentTest.log(LogStatus.FAIL, "Insufficient data");
-			assert false;
-		}
-
-		if (url.contains(" ")) {
-			String splits[] = url.split(" ");
-			if (splits.length != 3) {
-				extentTest.log(LogStatus.FAIL, "Insufficient data");
-			} else {
-				this.url = splits[0];
-				firstAdPlay = Integer.parseInt(splits[1]);
-				adFrequency = Integer.parseInt(splits[2]);
-			}
+		if (url != null && url.getAdFirstPlay() != null && url.getAdFrequency() != null
+				&& !url.getAdFirstPlay().isEmpty() && !url.getAdFrequency().isEmpty()) {
+			firstAdPlay = Integer.parseInt(url.getAdFirstPlay());
+			adFrequency = Integer.parseInt(url.getAdFrequency());
 		} else {
 			extentTest.log(LogStatus.FAIL, "Insufficient data");
 			assert false;
 		}
 		return this;
-	}
-
-	public String getUrl() {
-		return this.url;
 	}
 
 	@Override

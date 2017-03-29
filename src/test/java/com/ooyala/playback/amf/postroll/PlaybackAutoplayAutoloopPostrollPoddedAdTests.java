@@ -5,6 +5,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
@@ -27,23 +28,16 @@ public class PlaybackAutoplayAutoloopPostrollPoddedAdTests extends PlaybackWebTe
 	}
 
 	@Test(groups = { "amf", "autoplay" }, dataProvider = "testUrls")
-	public void testAutoplayAutoloop(String testName, String url)
+	public void testAutoplayAutoloop(String testName, UrlObject url)
 			throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 			
-			try {
-				injectScript();
-            } catch (Exception e) {
-                logger.error(e.getMessage());
-                logger.info("Retrying...");
-                Thread.sleep(5000);
-                injectScript();
-            }
+			result = result && eventValidator.isPageLoaded();
 			
 			boolean autoplay = false;
 
@@ -51,7 +45,7 @@ public class PlaybackAutoplayAutoloopPostrollPoddedAdTests extends PlaybackWebTe
 					"return pp.parameters.autoPlay").toString());
 
 			if(!autoplay){
-				logger.error("Autoplay not set for this video");
+				extentTest.log(LogStatus.FAIL, "Autoplay not set for this video");
 				result = false;
 			}
 			

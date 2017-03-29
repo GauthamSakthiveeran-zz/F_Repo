@@ -8,6 +8,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -23,14 +24,14 @@ public class PlaybackAdIconTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = {"amf","adicon"}, dataProvider = "testUrls", enabled = false)
-	public void verifyADIcon(String testName, String url)
+	public void verifyADIcon(String testName, UrlObject url)
 			throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 			Thread.sleep(10000);

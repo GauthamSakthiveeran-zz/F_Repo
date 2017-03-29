@@ -1,14 +1,16 @@
 package com.ooyala.playback.playerfeatures;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PauseAction;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.qe.common.exception.OoyalaException;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.apache.log4j.Logger;
-import static java.lang.Thread.sleep;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.AspectRatioValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.url.UrlObject;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by soundarya on 11/17/16.
@@ -18,10 +20,7 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
     private static Logger logger = Logger
             .getLogger(PlaybackVerticalVideoTests.class);
     private PlayValidator play;
-    private PauseValidator pause;
     private SeekValidator seek;
-    private PlayAction playAction;
-    private PauseAction pauseAction;
     private EventValidator eventValidator;
     private AspectRatioValidator aspectRatioValidator;
 
@@ -30,12 +29,12 @@ public class PlaybackVerticalVideoTests extends PlaybackWebTest {
     }
 
     @Test(groups = "playerFeatures", dataProvider = "testUrls")
-    public void testVerticalVideo(String testName, String url)
+    public void testVerticalVideo(String testName, UrlObject url)
             throws OoyalaException {
 
         boolean result = true;
         try {
-            driver.get(url);
+            driver.get(url.getUrl());
 
             result = result && play.waitForPage();
 

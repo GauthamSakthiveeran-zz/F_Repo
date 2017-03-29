@@ -8,6 +8,7 @@ import com.ooyala.playback.page.ControlBarValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PauseAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackHLSLiveStreamTests extends PlaybackWebTest {
@@ -22,13 +23,13 @@ public class PlaybackHLSLiveStreamTests extends PlaybackWebTest {
 	private PauseAction pause;
 
 	@Test(groups = {"amf","preroll","live"}, dataProvider = "testUrls")
-	public void verifyHLSLiveStream(String testName, String url) throws OoyalaException {
+	public void verifyHLSLiveStream(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 			injectScript();

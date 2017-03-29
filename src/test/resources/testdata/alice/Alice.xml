@@ -726,7 +726,7 @@
 
     <test name="PlaybackNewProcessingProfileTests">
         <url>
-            <description name="Alice Core:New Processing Profile Bitmovin//m3u8" />
+            <description name="Alice Core:New Processing Profile Bitmovin" />
             <embed_code name="V2bDllOTE684rlIa8BypuDq6ESXjNjYM" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN,MAIN" />
@@ -734,6 +734,7 @@
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <playerParameter><![CDATA[]]></playerParameter>
+            <streamType name="m3u8" />
         </url>
     </test>
 

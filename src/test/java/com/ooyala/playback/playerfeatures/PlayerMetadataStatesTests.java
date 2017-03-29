@@ -11,7 +11,9 @@ import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.StartScreenValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -32,13 +34,13 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testPlayerMetadataStates(String testName, String url)
+	public void testPlayerMetadataStates(String testName, UrlObject url)
 			throws OoyalaException {
 
 		boolean result = true;
 
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 
@@ -69,6 +71,7 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
 		} catch (Exception e) {
 			logger.error(e);
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "Playback MetadataStates tests failed");

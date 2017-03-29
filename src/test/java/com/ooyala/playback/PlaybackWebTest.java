@@ -46,6 +46,7 @@ import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.updateSpreadSheet.TestCaseSheet;
 import com.ooyala.playback.url.Testdata;
 import com.ooyala.playback.url.UrlGenerator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -87,8 +88,9 @@ public abstract class PlaybackWebTest extends FacileTest {
         if(testData!=null && testData.length>=1){
             logger.info("*** Test " + testData[0].toString() + " started *********");
             extentTest = ExtentManager.startTest(testData[0].toString());
-            logger.info("*** URL " + testData[1].toString() + " *********");
-            extentTest.log(LogStatus.INFO, "URL : " + testData[1].toString());
+            UrlObject url = (UrlObject) testData[1];
+            logger.info("*** URL " + url.getUrl() + " *********");
+            extentTest.log(LogStatus.INFO, "URL : " +  url.getUrl() );
         } else{
             logger.info("*** Test " + getClass().getSimpleName() + " started *********");
             extentTest = ExtentManager.startTest(getClass().getSimpleName());
@@ -475,14 +477,14 @@ public abstract class PlaybackWebTest extends FacileTest {
 		} else {
 			version = "";
 		}
-        Map<String, String> urls = UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(), testData, browser, version);
+        Map<String, UrlObject> urls = UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(), testData, browser, version);
         String testName = getClass().getSimpleName();
         Object[][] output = new Object[urls.size()][2];
 
-		Iterator<Map.Entry<String, String>> entries = urls.entrySet().iterator();
+		Iterator<Map.Entry<String, UrlObject>> entries = urls.entrySet().iterator();
         int i = 0;
         while (entries.hasNext()) {
-            Map.Entry<String, String> entry = entries.next();
+            Map.Entry<String, UrlObject> entry = entries.next();
             output[i][0] = testName + " - " + entry.getKey();
             output[i][1] = entry.getValue();
             i++;

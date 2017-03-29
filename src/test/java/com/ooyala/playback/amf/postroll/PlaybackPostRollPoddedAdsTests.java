@@ -1,6 +1,8 @@
 package com.ooyala.playback.amf.postroll;
 
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.url.UrlObject;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,13 +22,13 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 	private SetEmbedCodeValidator setEmbedCodeValidator;
 
 	@Test(groups = { "amf", "postroll", "podded" }, dataProvider = "testUrls")
-	public void verifyPostrollPodded(String testName, String url) throws OoyalaException {
+	public void verifyPostrollPodded(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 

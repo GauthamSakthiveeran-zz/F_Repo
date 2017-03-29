@@ -10,6 +10,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWebTest {
@@ -26,7 +27,7 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 	private AdClickThroughValidator clickThrough;
 
 	@Test(groups = {"amf","preroll","cc","sequential", "clickThrough"}, dataProvider = "testUrls")
-	public void verifyPreroll(String testName, String url)
+	public void verifyPreroll(String testName, UrlObject url)
 			throws Exception {
 		boolean result = true;
 
@@ -35,7 +36,7 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			boolean cc = testName.contains("CC");
 			boolean click = testName.contains("Clickthrough");
 			
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 

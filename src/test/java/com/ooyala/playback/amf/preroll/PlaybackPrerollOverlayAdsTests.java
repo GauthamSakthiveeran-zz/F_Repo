@@ -9,6 +9,7 @@ import com.ooyala.playback.page.OverlayValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
@@ -24,13 +25,13 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 
 	@Test(groups = {"amf","preroll","overlay"}, dataProvider = "testUrls")
-	public void verifyPrerollOverlay(String testName, String url) throws OoyalaException {
+	public void verifyPrerollOverlay(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 

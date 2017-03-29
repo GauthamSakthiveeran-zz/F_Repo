@@ -11,6 +11,7 @@ import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
@@ -21,9 +22,7 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest {
 	private static Logger logger = Logger
 			.getLogger(PlaybackVerifyEventsTests.class);
 	private PlayValidator play;
-	private PlayAction playAction;
 	private EventValidator eventValidator;
-	private PauseValidator pauseValidator;
 	private SeekValidator seekValidator;
 
 	public PlaybackVerifyEventsTests() throws OoyalaException {
@@ -31,14 +30,12 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "Playback", dataProvider = "testUrls")
-	public void testVerifyEvents(String testName, String url) {
-
-		logger.info("Test url for " + testName + " is : " + url);
+	public void testVerifyEvents(String testName, UrlObject url) {
 
 		boolean result = true;
 
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 

@@ -12,6 +12,7 @@ import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackDRMTests extends PlaybackWebTest {
@@ -29,7 +30,7 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "drm", dataProvider = "testUrls")
-	public void testPlaybackDRM(String testName, String url)
+	public void testPlaybackDRM(String testName, UrlObject url)
 			throws OoyalaException {
 		boolean result = true;
 
@@ -37,7 +38,7 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 				+ testName.split("-")[1].toLowerCase());
 
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			// need to add logic for verifying description
 			

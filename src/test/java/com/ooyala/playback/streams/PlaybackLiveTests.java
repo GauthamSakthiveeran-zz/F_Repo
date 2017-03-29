@@ -12,6 +12,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.LiveAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
@@ -33,12 +34,12 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "streams", dataProvider = "testUrls")
-	public void testLive(String testName, String url) throws OoyalaException {
+	public void testLive(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 

@@ -3,6 +3,7 @@ package com.ooyala.playback.amf;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.relevantcodes.extentreports.LogStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -27,13 +28,13 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	private SeekValidator seek;
 
 	@Test(groups = { "amf", "preroll", "midroll", "postroll", "replay" }, dataProvider = "testUrls")
-	public void verifyPreMidPostcontrols(String testName, String url) throws OoyalaException {
+	public void verifyPreMidPostcontrols(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 			injectScript();

@@ -4,6 +4,7 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
@@ -28,7 +29,7 @@ public class PlaybackInitialTimeTests extends PlaybackWebTest{
     }
 
     @Test(groups = "Playback", dataProvider = "testUrls")
-    public void testInitialTime(String testName, String url)
+    public void testInitialTime(String testName, UrlObject url)
             throws OoyalaException {
         String[] parts= testName.split("-")[1].trim().split(":");
         String tcName = parts[0].trim();
@@ -36,7 +37,7 @@ public class PlaybackInitialTimeTests extends PlaybackWebTest{
 
         boolean result = true;
         try {
-            driver.get(url);
+            driver.get(url.getUrl());
 
             result = result && play.waitForPage();
 

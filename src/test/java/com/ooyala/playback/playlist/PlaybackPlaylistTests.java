@@ -6,7 +6,9 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.PlaylistValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by snehal on 13/01/17.
@@ -21,31 +23,30 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "playlist", dataProvider = "testUrls")
-	public void testPlaylistTests(String testName, String url) throws OoyalaException {
+	public void testPlaylistTests(String testName, UrlObject url) throws OoyalaException {
 
 		String[] parts = testName.split(":")[1].trim().split("-");
 
 		String tcName = parts[0].trim();
 		String tcValue = "";
-		if(parts.length>1)
+		if (parts.length > 1)
 			tcValue = parts[1].trim();
 
 		boolean result = true;
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 			if (!(testName.contains("true") || testName.contains("Menustyle-tabs"))) {
 				result = result && play.waitForPage();
-			} else{
-				Thread.sleep(10000);
+				injectScript();
+			} else {
+				result = result && playlist.isPageLoaded();
 			}
-
-			injectScript();
 
 			result = result && playlist.playlistValidator(tcName, tcValue);
 
 		} catch (Exception e) {
-			e.getMessage();
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			e.printStackTrace();
 			result = false;
 		}

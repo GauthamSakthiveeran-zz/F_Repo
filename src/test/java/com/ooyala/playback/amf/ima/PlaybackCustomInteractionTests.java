@@ -9,6 +9,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -26,12 +27,12 @@ public class PlaybackCustomInteractionTests extends PlaybackWebTest {
 	private AdSkipButtonValidator adSkipButtonValidator;
 
 	@Test(groups = {"amf","customInteraction"}, dataProvider = "testUrls")
-	public void verifyCustomeInteractionAd(String testName, String url)
+	public void verifyCustomeInteractionAd(String testName, UrlObject url)
 			throws Exception {
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 
 			playValidator.waitForPage();
 

@@ -9,6 +9,7 @@ import com.ooyala.playback.page.OverlayValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPoddedwithOverlayStandaloneTests extends PlaybackWebTest {
@@ -24,14 +25,14 @@ public class PlaybackPoddedwithOverlayStandaloneTests extends PlaybackWebTest {
 	private OverlayValidator overlayValidator;
 
 	@Test(groups = {"amf","podded","overlay"}, dataProvider = "testUrls", enabled=false)
-	public void verifyPoddedStandaloneOverlay(String testName, String url)
+	public void verifyPoddedStandaloneOverlay(String testName, UrlObject url)
 			throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
-			driver.get(url);
+			driver.get(url.getUrl());
 			if (!getPlatform().equalsIgnoreCase("android")) {
 				driver.manage().window().maximize();
 			}
