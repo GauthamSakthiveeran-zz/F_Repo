@@ -41,7 +41,7 @@ public class PlaybackVerifyVideoElementCreatedAllMidrollAdsTests extends Playbac
         try {
             driver.get(url);
 
-            result=result && play.waitForPage();
+			result = result && play.waitForPage();
 
             injectScript();
 

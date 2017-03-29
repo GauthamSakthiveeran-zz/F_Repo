@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <test name="PlaybackFCCBasicTests">
+        <url>
+            <description name="FCC:Preroll IMA Main" />
+            <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="615dc8e909e941c280e12155df838355" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <!--Bitmovin required-->
+        <url>
+            <description name="FCC:Preroll IMA Bitmovin" />
+            <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="615dc8e909e941c280e12155df838355" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="FCC:Preroll IMA OSMF" />
+            <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F" />
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+            <plugins name="MAIN,OSMF" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+        <url>
+            <description name="FCC:Midroll IMA OSMF" />
+            <embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z" />
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+            <plugins name="MAIN,OSMF" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+        <url>
+            <description name="FCC:Preroll Vast2.0 Main" />
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+        <!--Bitmovin required-->
+        <url>
+            <description name="FCC:Preroll Vast2.0 Bitmovin" />
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+        <url>
+            <description name="FCC:Preroll Vast2.0 OSMF" />
+            <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS" />
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+            <plugins name="MAIN,OSMF" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+        </url>
+        <url>
+            <description name="FCC:Midroll Vast2.0 OSMF" />
+            <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF" />
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+            <plugins name="MAIN,OSMF" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="abafee01    67b14ca48d8738b994f5d2d4" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+        <!--Freewheel plugin required-->
+        <url>
+            <description name="FCC:Preroll Freewheel Main" />
+            <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="615dc8e909e941c280e12155df838355" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="FCC:Midroll Freewheel OSMF" />
+            <embed_code name="Y5dWVmMDE6lIE-PNSXHfsuTNPmeWbjC4" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN,OSMF" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="" />
+            <pbid name="917cabe49e704be9ba53e173a9b806fb" />
+            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+        <url>
+            <description name="FCC:Preroll IMA Ad manager Main" />
+            <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="615dc8e909e941c280e12155df838355" />
+            <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="FCC:PreMidPost Mp4 Main" />
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="" />
+            <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
+            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NqcGg4bzoOmMiV35ZttQDtBX1oNQBnT-","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+        </url>
+        <url>
+            <description name="FCC:4 as 3 Video Main" />
+            <embed_code name="U5ZTFhNDE6xdu2sEldjX3WRLhSAb1Ql2" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="615dc8e909e941c280e12155df838355" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="FCC:Postroll Vast Main" />
+            <embed_code name="tmbmxiMjE6M_3i7Eg6sVc8-6zp4vXQgw" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+        <url>
+            <description name="FCC:Preroll Freewheel OSMF" />
+            <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi" />
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+            <plugins name="MAIN,OSMF" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="DISCOVERY" />
+            <pbid name="917cabe49e704be9ba53e173a9b806fb" />
+            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+    </test>
+    <test name="PlaybackFCCDefaultSettingTests">
+        <url>
+            <description name="FCC:Default Setting After Refresh check" />
+            <embed_code name="Y5dWVmMDE6lIE-PNSXHfsuTNPmeWbjC4" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN,OSMF" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="" />
+            <pbid name="917cabe49e704be9ba53e173a9b806fb" />
+            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+    </test>
+</testdata>

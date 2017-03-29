@@ -2,7 +2,7 @@
 <testdata>
     <test name ="PlaybackPreMidPostInitialVolumeTests" >
         <url>
-            <description name="Playback_Initial_Volume_VAST:PreMidPostPodded:0.5" />
+            <description name="VTC:Verify initial Volume for PreMidPost Podded Vast + Video" />
             <embed_code name="hlc2x4dDpQYlsGsvnipHmaIJge2aqtaP" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -12,7 +12,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0.5}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Initial_Volume_IMA:PreMidPostPodded:0.5" />
+            <description name="VTC:Verify initial Volume for PreMidPost Podded IMA+ Video" />
             <embed_code name="g4OGxjczqVk87w_P2z291ahvIR4RYrHT" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -22,7 +22,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0.5}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Initial_Volume_FW:PreMidPostPodded:0.5" />
+            <description name="VTC:Verify initial Volume for PreMidPost Podded Freewheel + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -32,7 +32,7 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialVolume":0.5,"autoplay":false}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Initial_Volume_Vast:PreMidPost:0.5" />
+            <description name="VTC:Verify initial Volume for PreMidPost Vast + Video" />
             <embed_code name="lzMGdpdDq6Dsvi-c32p6u7k46mbT_cxm" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -42,7 +42,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0.5}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Initial_Volume_IMA:PreMidPost:0.5" />
+            <description name="VTC:Verify initial Volume for PreMidPost IMA+ Video" />
             <embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -52,7 +52,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0.5}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Initial_Volume_ FW:PreMidPost:0.5" />
+            <description name="VTC:Verify initial Volume for PreMidPost Freewheel + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />

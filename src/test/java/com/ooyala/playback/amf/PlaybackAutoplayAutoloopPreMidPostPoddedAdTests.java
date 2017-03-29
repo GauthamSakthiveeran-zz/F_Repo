@@ -32,14 +32,9 @@ public class PlaybackAutoplayAutoloopPreMidPostPoddedAdTests extends PlaybackWeb
 
 			driver.get(url);
 
-			try {
-				injectScript();
-			} catch (Exception e) {
-				logger.error(e.getMessage());
-				logger.info("Retrying...");
-				Thread.sleep(5000);
-				injectScript();
-			}
+			result = result && eventValidator.isPageLoaded();
+			
+			injectScript();
 
 			boolean autoplay = false;
 

@@ -1,4 +1,4 @@
-package com.ooyala.playback.syndicationrules;
+package com.ooyala.playback.contentProtection;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
@@ -28,7 +28,7 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
     }
 
     @Test(groups = "syndicationRules", dataProvider = "testUrls")
-    public void testDeviceRegistration(String url) {
+    public void testDeviceRegistration(String testName,String url) {
         boolean result = true;
         try {
             driver.get(url);

@@ -113,7 +113,10 @@ public class DiscoveryValidator extends PlayBackPage implements
 	}
 	
 	public boolean clickOnDiscoveryButton() throws Exception {
-		return clickOnIndependentElement("DISCOVERY_BTN") && validateDiscoveryToaster() && validateLeftRightButton()
-				&& validateImageStyle();
+		if(!loadingSpinner()){
+			extentTest.log(LogStatus.FAIL, "Loading spinner is persistent!");
+			return false;
+		}
+		return clickOnIndependentElement("DISCOVERY_BTN") && validateDiscoveryToaster() && validateLeftRightButton();
 	}
 }

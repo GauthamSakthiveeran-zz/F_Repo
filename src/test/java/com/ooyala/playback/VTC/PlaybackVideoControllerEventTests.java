@@ -34,26 +34,25 @@ public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
 
 			injectScript();
 
-			((JavascriptExecutor) driver)
+			result = result && play.validate("playing_1",60000);
+
+            result = result && eventValidator.validate("focusVideo_1", 20000);
+
+            result = result && eventValidator.validate("videoInFocus_1", 20000);
+
+            result = result && seekValidator.validate("seeked_1", 60);
+
+            result = result && eventValidator.validate("videoLostFocus_1", 60000);
+
+
+            ((JavascriptExecutor) driver)
 					.executeScript("pp.setEmbedCode('htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R')");
 
-			result = result && eventValidator.validate("CreateVideo_1", 20000);
-
-			result = result && eventValidator.validate("videoCreated_1", 20000);
 
 			result = result && eventValidator.validate("disposeVideo_1", 20000);
 
 			result = result
 					&& eventValidator.validate("videoElementDisposed_1", 20000);
-			result = result && eventValidator.validate("focusVideo_1", 20000);
-
-			result = result && eventValidator.validate("videoInFocus_1", 20000);
-
-			result = result && seekValidator.validate("seeked_1", 60);
-
-			result = result && eventValidator.validate("videoLostFocus_1", 60000);
-
-			result = result && seekValidator.validate("played_1", 30000);
 
 			result = result && eventValidator.validate("setVideoStream_1",20000);
 

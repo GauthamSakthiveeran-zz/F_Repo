@@ -217,10 +217,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	private boolean verifyCCPanelElements() {
 		try {
-
-			if (!validateClosedCaptionCloseButton())
-				return false;
-
 			// verify scroll i.e left or right button for languages option if
 			// lang more than 4
 			boolean isLeftRightBtn = isElementPresent("CC_RIGHT_BTN");
@@ -295,11 +291,13 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 					if (!getWebElement("oo-responsive").getAttribute("className")
 							.equalsIgnoreCase("oo-responsive oo-small")) {
-						if (!waitOnElement("CC_PREVIEW_TEXT", 30000)) {
-							return false;
+						if (isElementPresent(By.id("fullscreenChanged_true"))) {
+							if (!waitOnElement("CC_PREVIEW_TEXT", 30000)) {
+								return false;
+							}
+							String engPreviewText = getWebElement("CC_PREVIEW_TEXT").getText();
+							flag = flag && langpreview1[i].equalsIgnoreCase(engPreviewText);
 						}
-						String engPreviewText = getWebElement("CC_PREVIEW_TEXT").getText();
-						flag = flag && langpreview1[i].equalsIgnoreCase(engPreviewText);
 					}
 				}
 			}

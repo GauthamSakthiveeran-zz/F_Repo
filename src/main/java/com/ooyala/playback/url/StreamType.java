@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlType(name = "", propOrder = {
     "value"
 })
-public class SslEnabled {
+public class StreamType {
 
     @XmlValue
     protected String value;

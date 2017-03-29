@@ -2,7 +2,7 @@
     <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
-    <test name="Playback Web Regression Group" parallel="classes" thread-count="10">
+    <test name="Playback Web Regression Group" parallel="classes" thread-count="1">
         <groups>
             <define name="regression">
                 <include name="streams" />
@@ -32,7 +32,6 @@
             <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailCarouselTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackSocialMediaTests" />
-            <class name="com.ooyala.playback.syndicationrules.PlaybackOptEntitlementTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackAutoplayTests" />
             <class name="com.ooyala.playback.playerfeatures.OoyalaAPITests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackBitrateTests" />
@@ -43,12 +42,78 @@
             <class name="com.ooyala.playback.playerlifecycle.PlaybackPlayerDestroyTests" />
             <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
-            <class name="com.ooyala.playback.streams.BasicPlaybackTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackNewProcessingProfileTests" />
+            <class name="com.ooyala.playback.streams.BasicPlaybackTests"/>
+        </classes>
+    </test>
+
+    <test name="Live Regression">
+        <groups>
+            <define name="live">
+                <include name="streams" />
+            </define>
+            <run>
+                <include name="live" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/Live.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
             <class name="com.ooyala.playback.streams.PlaybackLiveTests" />
-            <class name="com.ooyala.playback.FCC.PlaybackFCCDefaultSettingTests" />
-            <class name="com.ooyala.playback.FCC.PlaybackFCCBasicTests" />
+        </classes>
+    </test>
+
+    <test name="Playlist Regression">
+        <groups>
+            <define name="playlist">
+                <include name="playlist" />
+            </define>
+            <run>
+                <include name="playlist" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/Playlist.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
             <class name="com.ooyala.playback.playlist.PlaybackPlaylistTests" />
         </classes>
     </test>
+
+    <test name="FCC Regression">
+        <groups>
+            <define name="fcc">
+                <include name="FCC" />
+            </define>
+            <run>
+                <include name="fcc" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/FCC.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.FCC.PlaybackFCCDefaultSettingTests" />
+            <class name="com.ooyala.playback.FCC.PlaybackFCCBasicTests" />
+        </classes>
+    </test>
+
+    <test name="ContentProtection Regression">
+        <groups>
+            <define name="syndicationRules">
+                <include name="syndicationRules" />
+            </define>
+            <run>
+                <include name="syndicationRules" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/ContentProtection.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.contentProtection.PlaybackGeoRestrictionTests"/>
+            <class name="com.ooyala.playback.contentProtection.PlaybackOptEntitlementTests" />
+            <class name="com.ooyala.playback.contentProtection.PlaybackDeviceRegistrationTests"/>
+            <class name="com.ooyala.playback.contentProtection.PlaybackFlightTimeTests"/>
+        </classes>
+    </test>
+
 </suite>
 

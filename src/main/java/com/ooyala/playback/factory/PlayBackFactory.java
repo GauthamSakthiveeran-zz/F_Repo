@@ -56,12 +56,24 @@ public class PlayBackFactory {
 	private InitalTimeValidator initalTimeValidator;
 	private ExtentTest extentTest;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
+    private ConcurrentStreamValidator concurrentStreamValidator;
 	private DRMValidator drmValidator;
+	private GeoValidator geoValidator;
+	private FlightTimeValidator flightTimeValidator;
+	private StreamTypeValidator streamTypeValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
 		this.extentTest = extentTest;
 	}
+
+    public ConcurrentStreamValidator getConcurrentStreamValidator() {
+        if (concurrentStreamValidator == null){
+            concurrentStreamValidator = new ConcurrentStreamValidator(driver);
+            concurrentStreamValidator.setExtentTest(extentTest);
+        }
+        return concurrentStreamValidator;
+    }
 
 	public InitalTimeValidator getInitalTimeValidator(){
 		if (initalTimeValidator == null){
@@ -69,6 +81,30 @@ public class PlayBackFactory {
 			initalTimeValidator.setExtentTest(extentTest);
 		}
 		return initalTimeValidator;
+	}
+
+	public FlightTimeValidator getFlightTimeValidator() {
+		if (flightTimeValidator == null){
+			flightTimeValidator = new FlightTimeValidator(driver);
+			flightTimeValidator.setExtentTest(extentTest);
+		}
+		return flightTimeValidator;
+	}
+
+	public StreamTypeValidator getStreamTypeValidator() {
+		if (streamTypeValidator == null){
+			streamTypeValidator = new StreamTypeValidator(driver);
+			streamTypeValidator.setExtentTest(extentTest);
+		}
+		return streamTypeValidator;
+	}
+
+	public GeoValidator getGeoValidator() {
+		if (geoValidator == null){
+			geoValidator = new GeoValidator(driver);
+			geoValidator.setExtentTest(extentTest);
+		}
+		return geoValidator;
 	}
 	
 	public DRMValidator getDRMValidator(){
@@ -453,5 +489,7 @@ public class PlayBackFactory {
 		}
 		return null;
 	}
+
+
 
 }

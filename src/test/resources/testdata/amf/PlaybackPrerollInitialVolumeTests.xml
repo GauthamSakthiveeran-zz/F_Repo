@@ -2,7 +2,7 @@
 <testdata>
     <test name ="PlaybackPrerollInitialVolumeTests" >
         <url>
-            <description name="Playback_Initial_Volume_FW:Preroll:0.5" />
+            <description name="VTC:Verify initial Volume for Preroll Freewheel + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -13,7 +13,7 @@
         </url>
 
         <url>
-            <description name="Playback_Initial_Volume_VAST:Preroll:0.5" />
+            <description name="VTC:Verify initial Volume for Preroll Vast + Video" />
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -24,7 +24,7 @@
         </url>
 
         <url>
-            <description name="Playback_Initial_Volume_IMA:Preroll:0.5" />
+            <description name="VTC:Verify initial Volume for Preroll IMA+ Video" />
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -35,7 +35,7 @@
         </url>
 
         <url>
-            <description name="Playback_Initial_Volume_FW:PrerollPodded:0.5" />
+            <description name="VTC:Verify initial Volume for Preroll Podded Freewheel + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -46,7 +46,7 @@
         </url>
 
         <url>
-            <description name="Playback_Initial_Volume_Vast:PrerollPodded:0.5" />
+            <description name="VTC:Verify initial Volume for Preroll Podded Vast + Video" />
             <embed_code name="xxbDB4dDovMCDiqvo2DSqON3lIGSM5N5" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -57,7 +57,7 @@
         </url>
 
         <url>
-            <description name="Playback_Initial_Volume_IMA:PrerollPodded:0.5" />
+            <description name="VTC:Verify initial Volume for Preroll Podded IMA+ Video" />
             <embed_code name="htYWxjczousVmIKvp56u7Cb9btEnyJK9" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />

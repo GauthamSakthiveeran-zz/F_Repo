@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <test name="PlaybackLiveTests">
+
+        <url>
+            <description name="Alice Core:HLS Live (Customer link itbn)" />
+            <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Alice Core:DASH CENC Live" />
+            <embed_code name="5kaDBlODE6fqcosXyCQ9myvTxpObwIOw" />
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash_drm"]}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Alice Core:Akamai HLS Live bitmovin" />
+            <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="AKAMAI,BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Alice Core:SSAI Demo page" />
+            <embed_code name="t4ODRzNTE6C3BGu13bE6y_fxxzEM9Fod" />
+            <pcode name="hkN2YyOnWYuzHmiwc6gaXi9wPfwy" />
+            <plugins name="BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/hkN2YyOnWYuzHmiwc6gaXi9wPfwy/t4ODRzNTE6C3BGu13bE6y_fxxzEM9Fod?api_key=hkN2YyOnWYuzHmiwc6gaXi9wPfwy.7-2Sh&expires=1476304999752&signature=pt3uY/V1HX0IibQZBVFCwT3vxjgZ8hhBGgKVh1+ogJE"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Alice Core:Player Controls - Live DVR main" />
+            <embed_code name="BsZjdieDrJdl9YjLBm1LVyl3FF0KdWtd" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Alice Core:HLS Live main" />
+            <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Live Testing:eHLS Bitmovin|Live Testing:Smooth Bitmovin" />
+            <embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL" />
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8abff377aec2400e9337fe9088e65d40" />
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=8h+npYn8aTusBeAUru7nrMPVC8xXnulZipot74Ab2lc&override_syndication_group=override_all_synd_groups","encodingPriority":["hls","dash","webm","mp4","dash"],"platform":"html5"}]]></playerParameter>
+            <live>
+                <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+        <url>
+            <description name="Live Testing:Dash CENC (DRM) Bitmovin"/>
+            <embed_code name="8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB"/>
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8abff377aec2400e9337fe9088e65d40"/>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=xDF8lsLV7EPvOdD6XqO2jZrFQonCOP+bNdSfAewWC+w&override_syndication_group=override_all_synd_groups","platform":"html5"}]]></playerParameter>
+            <live>
+                <channelId>4e925289af57408384f58832323bfe51</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+        <url>
+            <description name="Live Testing:Smooth PR (DRM) Bitmovin"/>
+            <embed_code name="8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB"/>
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8abff377aec2400e9337fe9088e65d40"/>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=xDF8lsLV7EPvOdD6XqO2jZrFQonCOP+bNdSfAewWC+w&override_syndication_group=override_all_synd_groups","encodingPriority":["smooth","hds","webm","mp4"],"platform":"html5"}]]></playerParameter>
+            <live>
+                <channelId>4e925289af57408384f58832323bfe51</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+        <url>
+            <description name="Live Testing:Dash CENC (DRM)"/>
+            <embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL"/>
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8abff377aec2400e9337fe9088e65d40"/>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=8h+npYn8aTusBeAUru7nrMPVC8xXnulZipot74Ab2lc&override_syndication_group=override_all_synd_groups","platform":"html5"}]]></playerParameter>
+            <live>
+                <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+
+        <!--Getting SAS Error for this asset. uncomment after this ticket PLAYER-617 is resolved -->
+        <!-- <url>
+             <description name="Live_HLS_MAIN_Elemental" />
+             <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
+             <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
+             <plugins name="MAIN" />
+             <adPlugins name="" />
+             <additionalPlugins name="" />
+             <pbid name="c8954f0005a4d2a8da705994859e72b" />
+             <browsersSupported name="safari" />
+             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+             <live>
+                 <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
+                 <provider>elemental</provider>
+             </live>
+         </url>-->
+        <!-- uncomment after this ticket LVP-3162 is resolved -->
+        <!-- <url>
+             <description name="Live_HLS_BITMOVIN_Elemental" />
+             <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
+             <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
+             <plugins name="BITMOVIN" />
+             <adPlugins name="" />
+             <additionalPlugins name="" />
+             <pbid name="c8954f0005a4d2a8da705994859e72b" />
+             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+             <live>
+                 <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
+                 <provider>elemental</provider>
+             </live>
+         </url>
+         <url>
+             <description name="Live_HDS_OSMF_Elemental" />
+             <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
+             <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="" />
+             <pbid name="c8954f0005a4d2a8da705994859e72b" />
+             <browsersSupported name="firefox,chrome,internet explorer,safari" />
+             <browserSupportedVersion name="safari,9"/>
+             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+             <live>
+                 <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
+                 <provider>elemental</provider>
+             </live>
+         </url>
+         <url>
+             <description name="Live_DASH_BITMOVIN_Elemental" />
+             <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
+             <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
+             <plugins name="BITMOVIN" />
+             <adPlugins name="" />
+             <additionalPlugins name="" />
+             <pbid name="c8954f0005a4d2a8da705994859e72b" />
+             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+             <live>
+                 <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
+                 <provider>elemental</provider>
+             </live>
+         </url>-->
+        <!-- check if channel is available and then enable it-->
+        <!-- <url>
+             <description name="Alice Core:Akamai HDS Live" />
+             <embed_code name="xvdDNyOTE6PspMu29hqJthushdFevpcO" />
+             <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
+             <plugins name="AKAMAI" />
+             <adPlugins name="" />
+             <additionalPlugins name="" />
+             <pbid name="d19c9608714a45c9a82f9e42702939c7" />
+             <browsersSupported name="firefox,chrome,internet explorer,safari" />
+             <browserSupportedVersion name="safari,9"/>
+             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"platform":"flash"}]]></playerParameter>
+         </url>-->
+    </test>
+
+</testdata>

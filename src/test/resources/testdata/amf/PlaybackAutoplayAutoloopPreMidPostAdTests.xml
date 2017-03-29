@@ -2,7 +2,7 @@
 <testdata>
     <test name="PlaybackAutoplayAutoloopPreMidPostAdTests">
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_Vast:PreMidPost" />
+            <description name="VAST:Verify AutoPlay and AutoLoop properties for PreMidPost Vast + Video" />
             <embed_code name="lzMGdpdDq6Dsvi-c32p6u7k46mbT_cxm" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -13,7 +13,7 @@
         </url>
 
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_IMA:PreMidPost" />
+            <description name="VTC:Verify AutoPlay and AutoLoop properties for PreMidPost IMA+ Video" />
             <embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -24,7 +24,7 @@
         </url>
 
         <url>
-            <description name="Playback_AutoPlay_AutoLoop_ FW:PreMidPost" />
+            <description name="VTC:Verify AutoPlay and AutoLoop properties for PreMidPost Freewheel + Video" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />

@@ -9,8 +9,10 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
+
         <!-- commented check the ticket number for more info PBW-6281 -->
         <!-- <url>
              <description name="VOD_CLEAR_DASH_BITMOVIN" />
@@ -32,6 +34,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
             <browsersSupported name="chrome,firefox,safari,MicrosoftEdge" />
             <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
         </url>
@@ -54,6 +57,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
@@ -65,6 +69,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
@@ -88,6 +93,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+            <streamType name="f4m" />
             <browsersSupported name="firefox,chrome,internet explorer,safari" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
@@ -100,6 +106,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <streamType name="f4m" />
             <browsersSupported name="firefox,chrome,internet explorer,safari" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
@@ -250,6 +257,75 @@
             <playerParameter><![CDATA[{"encodingPriority":["hls","dash"]}]]></playerParameter>
         </url>-->
 
+        <url>
+            <description name="VOD_HLS_AES_MAIN_FFMPEG" />
+            <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
+            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="VOD_HLS_AES_BITMOVIN_FFMPEG" />
+            <embed_code name="lpMWdlOTE6dNxa4hDAIosKY4taT-Bofx" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <sslEnabled name="https"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="VOD_HDS_ACCESS_OSMF_FFMPEG" />
+            <embed_code name="lqYmUyODE6H2HflPLwBNIEhLxreAsKWT" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="VOD_HLS_AES_MAIN_ELEMENTAL" />
+            <embed_code name="o1N2JjOTE6kNGqukqJJcPwBIj0a7hWmL" />
+            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="VOD_HLS_AES_BITMOVIN_ELEMENTAL" />
+            <embed_code name="lpMWdlOTE6dNxa4hDAIosKY4taT-Bofx" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <sslEnabled name="https"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="VOD_HDS_ACCESS_OSMF_ELEMENTAL" />
+            <embed_code name="ltc2UyODE6XR8-kJ47Ioh0QNWsWpLsq9" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browserSupportedVersion name="safari,9"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+
     </test>
     <test name="PlaybackDiscoveryCustomizationTests">
         <url>
@@ -279,7 +355,7 @@
 
     <test name="PlaybackAspectRatioTests">
         <url>
-            <description name="Alice Core:4:3 Aspect Ratio bitmovin" />
+            <description name="Alice Core:4 as 3 Aspect Ratio bitmovin" />
             <embed_code name="FwaXZjcjrkydIftLal2cq9ymQMuvjvD8" />
             <pcode name="c0cTkxOqALQviQIGAHWY5hP0q9gU" />
             <plugins name="MAIN" />
@@ -355,137 +431,6 @@
         </url>
     </test>
 
-    <test name="PlaybackLiveTests">
-
-        <url>
-            <description name="Alice Core:HLS Live (Customer link itbn):Bitmovin" />
-            <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-
-        <url>
-            <description name="Alice Core:Akamai HLS Live bitmovin" />
-            <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="AKAMAI,BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Alice Core:SSAI Demo page" />
-            <embed_code name="t4ODRzNTE6C3BGu13bE6y_fxxzEM9Fod" />
-            <pcode name="hkN2YyOnWYuzHmiwc6gaXi9wPfwy" />
-            <plugins name="BITMOVIN,MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/hkN2YyOnWYuzHmiwc6gaXi9wPfwy/t4ODRzNTE6C3BGu13bE6y_fxxzEM9Fod?api_key=hkN2YyOnWYuzHmiwc6gaXi9wPfwy.7-2Sh&expires=1476304999752&signature=pt3uY/V1HX0IibQZBVFCwT3vxjgZ8hhBGgKVh1+ogJE"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Alice Core:Player Controls - Live DVR main" />
-            <embed_code name="BsZjdieDrJdl9YjLBm1LVyl3FF0KdWtd" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Alice Core:HLS Live main" />
-            <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <!--Getting SAS Error for this asset. uncomment after this ticket PLAYER-617 is resolved -->
-       <!-- <url>
-            <description name="Live_HLS_MAIN_Elemental" />
-            <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
-            <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="c8954f0005a4d2a8da705994859e72b" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-            <live>
-                <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
-                <provider>elemental</provider>
-            </live>
-        </url>-->
-        <!-- uncomment after this ticket LVP-3162 is resolved -->
-       <!-- <url>
-            <description name="Live_HLS_BITMOVIN_Elemental" />
-            <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
-            <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="c8954f0005a4d2a8da705994859e72b" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-            <live>
-                <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
-                <provider>elemental</provider>
-            </live>
-        </url>
-        <url>
-            <description name="Live_HDS_OSMF_Elemental" />
-            <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
-            <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="c8954f0005a4d2a8da705994859e72b" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
-            <browserSupportedVersion name="safari,9"/>
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-            <live>
-                <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
-                <provider>elemental</provider>
-            </live>
-        </url>
-        <url>
-            <description name="Live_DASH_BITMOVIN_Elemental" />
-            <embed_code name="d3YmYyODE6mz4mmcblbAAxZYP9NBIx0k" />
-            <pcode name="B0NGMyOvMtcDl_K0XQI_7-BVpRJG" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="c8954f0005a4d2a8da705994859e72b" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-            <live>
-                <channelId>1a42deaba6784ac0855a7b835863a62a</channelId>
-                <provider>elemental</provider>
-            </live>
-        </url>-->
-        <!-- check if channel is available and then enable it-->
-       <!-- <url>
-            <description name="Alice Core:Akamai HDS Live" />
-            <embed_code name="xvdDNyOTE6PspMu29hqJthushdFevpcO" />
-            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
-            <plugins name="AKAMAI" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="d19c9608714a45c9a82f9e42702939c7" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
-            <browserSupportedVersion name="safari,9"/>
-            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"platform":"flash"}]]></playerParameter>
-        </url>-->
-    </test>
-
     <test name="PlaybackLocalizationTests">
         <url>
             <description name="Alice Core:Localization" />
@@ -514,7 +459,7 @@
 
     <test name="PlaybackVerticalVideoTests">
         <url>
-            <description name="Alice Core:Vertical Video Aspect Ration 16:9" />
+            <description name="Alice Core:Vertical Video Aspect Ration 16 as 9" />
             <embed_code name="xnNncyYTE62vx3rHnwJwUtBbeBt4Y2pw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN,BITMOVIN" />
@@ -598,7 +543,7 @@
             <additionalPlugins name="" />
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
             <browsersSupported name="firefox,chrome,internet explorer,safari" />
-            <browserSupportedVersion name="safari,9"/>
+            <browserSupportedVersion name="safari,9,firefox,49"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
     </test>
@@ -618,7 +563,7 @@
     <!-- Added playercontrolTests for each stream format -->
     <test name="PlaybackPlayerControlsTests">
         <url>
-            <description name="VOD_eHLS_MAIN" />
+            <description name="Alice Core:eHLS Vod main//m3u8" />
             <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN" />
@@ -629,7 +574,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
-            <description name="VOD_MP4_MAIN" />
+            <description name="Alice Core:MP4 Only Asset with Main Plugin" />
             <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -650,7 +595,7 @@
              <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
          </url>-->
         <url>
-            <description name="VOD_HLS_BITMOVIN" />
+            <description name="Alice Core:HLS Vod bitmovin//m3u8" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
@@ -663,7 +608,7 @@
 
     <test name="PlaybackDRMTests">
         <url>
-            <description name="DRM + Content Protection:Dash VOD bitmovin" />
+            <description name="DRM + Content Protection:Dash VOD bitmovin | Alice Core:Dash CENC Vod without OPT" />
             <embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
             <pcode name="FoeG863GnBL4IhhlFC1Q2jqbkH9m" />
             <plugins name="BITMOVIN" />
@@ -671,6 +616,16 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Alice Core:(Azure) Dash CENC Vod" />
+            <embed_code name="V1ZDVrNjE6LoqgO7tdNKb8Tcz85-QSLo" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
@@ -685,18 +640,7 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
-            <description name="DRM + Content Protection:dash + Geo Restriction bitmovin" />
-            <embed_code name="tua2hqNTE61OtT9uCWV6IKb3s4dDd7DT" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-        <url>
-            <description name="DRM + Content Protection:Fairplay HLS VOD bitmovin" />
+            <description name="DRM + Content Protection:Fairplay HLS VOD bitmovin|Alice Core:Fairplay HLS" />
             <embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
@@ -718,17 +662,6 @@
             <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892591060&account_id=dulari_qa&&&signature=iVNk9dUp9ohR39ud/rsYjxdN3X4Kao6oV/LC8DuPObg"}]]></playerParameter>
         </url>
         <url>
-            <description name="DRM + Content Protection:Fairplay HLS + Geo Restriction bitmovin" />
-            <embed_code name="U0NDNiNDE6CaJv41fU4QpRFS4FDUGX4x" />
-            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
-        </url>
-        <url>
             <description name="DRM + Content Protection:Fairplay HLS + CC bitmovin" />
             <embed_code name="4xMzQ1NTE62_5ckCOZ7kSCQ1jQ8ke_8v" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
@@ -740,71 +673,13 @@
             <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892591060&account_id=dulari_qa&&&signature=iVNk9dUp9ohR39ud/rsYjxdN3X4Kao6oV/LC8DuPObg"}]]></playerParameter>
         </url>
         <url>
-            <description name="VOD_HLS_AES_MAIN_FFMPEG" />
-            <embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HLS_AES_BITMOVIN_FFMPEG" />
-            <embed_code name="lpMWdlOTE6dNxa4hDAIosKY4taT-Bofx" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <sslEnabled name="https"/>
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HDS_ACCESS_OSMF_FFMPEG" />
-            <embed_code name="lqYmUyODE6H2HflPLwBNIEhLxreAsKWT" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <description name="DRM + Content Protection:Adobe Access DRM" />
+            <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
             <plugins name="OSMF" />
             <adPlugins name="" />
             <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
-            <browserSupportedVersion name="safari,9"/>
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HLS_AES_MAIN_ELEMENTAL" />
-            <embed_code name="o1N2JjOTE6kNGqukqJJcPwBIj0a7hWmL" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HLS_AES_BITMOVIN_ELEMENTAL" />
-            <embed_code name="lpMWdlOTE6dNxa4hDAIosKY4taT-Bofx" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <sslEnabled name="https"/>
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HDS_ACCESS_OSMF_ELEMENTAL" />
-            <embed_code name="ltc2UyODE6XR8-kJ47Ioh0QNWsWpLsq9" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
-            <browserSupportedVersion name="safari,9"/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
     </test>
@@ -835,173 +710,7 @@
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
     </test>
-    <test name="PlaybackFCCBasicTests">
-        <url>
-            <description name="CC_Enabled_Preroll_IMA_Main_Plugin" />
-            <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN" />
-            <adPlugins name="IMA" />
-            <additionalPlugins name="" />
-            <pbid name="615dc8e909e941c280e12155df838355" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <!--Bitmovin required-->
-        <url>
-            <description name="CC_Enabled_Preroll_IMA_Bitmovin_Plugin" />
-            <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN" />
-            <adPlugins name="IMA" />
-            <additionalPlugins name="" />
-            <pbid name="615dc8e909e941c280e12155df838355" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="CC_Enabled_Preroll_IMA_OSMF_Plugin" />
-            <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="MAIN,OSMF" />
-            <adPlugins name="IMA" />
-            <additionalPlugins name="" />
-            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-        </url>
-        <url>
-            <description name="CC_Enabled_Midroll_IMA_OSMF_Plugin" />
-            <embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="MAIN,OSMF" />
-            <adPlugins name="IMA" />
-            <additionalPlugins name="" />
-            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-        </url>
-        <url>
-            <description name="CC_Enabled_Preroll_Vast2.0_Main_Plugin" />
-            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN" />
-            <adPlugins name="VAST" />
-            <additionalPlugins name="" />
-            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-        </url>
-        <!--Bitmovin required-->
-        <url>
-            <description name="CC_Enabled_Preroll_Vast2.0_Bitmovin_Plugin" />
-            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN" />
-            <adPlugins name="VAST" />
-            <additionalPlugins name="" />
-            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-        </url>
-        <url>
-            <description name="CC_Enabled_Preroll_Vast2.0_OSMF_Plugin" />
-            <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="MAIN,OSMF" />
-            <adPlugins name="VAST" />
-            <additionalPlugins name="" />
-            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
-        </url>
-        <url>
-            <description name="CC_Enabled_Midroll_Vast2.0_OSMF_Plugin" />
-            <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="MAIN,OSMF" />
-            <adPlugins name="VAST" />
-            <additionalPlugins name="" />
-            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-        </url>
-        <!--Freewheel plugin required-->
-        <url>
-            <description name="CC_Enabled_Preroll_FW_Main_Plugin" />
-            <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN" />
-            <adPlugins name="IMA" />
-            <additionalPlugins name="" />
-            <pbid name="615dc8e909e941c280e12155df838355" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="CC_Enabled_Midroll_FW_OSMF_Plugin" />
-            <embed_code name="Y5dWVmMDE6lIE-PNSXHfsuTNPmeWbjC4" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN,OSMF" />
-            <adPlugins name="FREEWHEEL" />
-            <additionalPlugins name="" />
-            <pbid name="917cabe49e704be9ba53e173a9b806fb" />
-            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-        </url>
-        <url>
-            <description name="CC_Enabled_Preroll_IMA_Ad_Manager_Main_plugin" />
-            <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN" />
-            <adPlugins name="IMA" />
-            <additionalPlugins name="" />
-            <pbid name="615dc8e909e941c280e12155df838355" />
-            <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="CC_Enabled_PreMidPostroll_MP4_Main_plugin" />
-            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN" />
-            <adPlugins name="FREEWHEEL" />
-            <additionalPlugins name="" />
-            <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
-            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NqcGg4bzoOmMiV35ZttQDtBX1oNQBnT-","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
-        </url>
-        <url>
-            <description name="4_3_Video_Main_plugin" />
-            <embed_code name="U5ZTFhNDE6xdu2sEldjX3WRLhSAb1Ql2" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN" />
-            <adPlugins name="IMA" />
-            <additionalPlugins name="" />
-            <pbid name="615dc8e909e941c280e12155df838355" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="CC_Enabled_Vast_Postroll_Main_plugin" />
-            <embed_code name="tmbmxiMjE6M_3i7Eg6sVc8-6zp4vXQgw" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN" />
-            <adPlugins name="VAST" />
-            <additionalPlugins name="" />
-            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-        </url>
-        <url>
-            <description name="CC_Enabled_Preroll_FW_OSMF_Plugin" />
-            <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="MAIN,OSMF" />
-            <adPlugins name="FREEWHEEL" />
-            <additionalPlugins name="DISCOVERY" />
-            <pbid name="917cabe49e704be9ba53e173a9b806fb" />
-            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-        </url>
-    </test>
-    <test name="PlaybackFCCDefaultSettingTests">
-        <url>
-            <description name="Default_Setting _After_Refreshed" />
-            <embed_code name="Y5dWVmMDE6lIE-PNSXHfsuTNPmeWbjC4" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN,OSMF" />
-            <adPlugins name="FREEWHEEL" />
-            <additionalPlugins name="" />
-            <pbid name="917cabe49e704be9ba53e173a9b806fb" />
-            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-        </url>
-    </test>
+
     <test name="OoyalaAPITests">
         <url>
             <description name="Api Test" />
@@ -1014,277 +723,18 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"autoplay":true,"initialTime":10}]]></playerParameter>
         </url>
     </test>
-    <test name="PlaybackOptEntitlementTests">
+
+    <test name="PlaybackNewProcessingProfileTests">
         <url>
-            <description name="DRM + Content Protection:dash + OPT + entitlement bitmovin" />
-            <embed_code name="1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
+            <description name="Alice Core:New Processing Profile Bitmovin//m3u8" />
+            <embed_code name="V2bDllOTE684rlIa8BypuDq6ESXjNjYM" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="BITMOVIN,MAIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <browserSupportedVersion name="firefox,48"/>
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213193&account_id=dulari_qa&&&signature=3ZIfOPsKS0AIvSSgUlNYUQq5blWfIT40vLlYl8nJqp8"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Alice Core:OPT + Entitlement" />
-            <embed_code name="x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge,safari" />
-            <browserSupportedVersion name="firefox,48"/>
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2889048225&account_id=dulari_qa&&&signature=0AsQMaoDq58w9q/L6P7cJzOI85gocxWPyw69dlLoQm0"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="DRM + Content Protection:Fairplay HLS + OPT + entitlement bitmovin" />
-            <embed_code name="E1eTJiNDE6JxNLNrM_CK-vicoKeZtW1e" />
-            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/E1eTJiNDE6JxNLNrM_CK-vicoKeZtW1e?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892590984&account_id=dulari_qa&&&signature=ihvzIhOpC8EKQIB4xMHDf/XoixnXodMD0HNGA3Vw4o4"}]]></playerParameter>
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <playerParameter><![CDATA[]]></playerParameter>
         </url>
     </test>
-    <test name="PlaybackDeviceRegistrationTests">
-        <url>
-            <description name="Alice Core:Device restriction| DRM + Content Protection:dash + Device Registration(Limit:2)" />
-            <embed_code name="ZoMmd3NTE6zAFEYbLkU5hKXp8zF2ctK0" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <browserSupportedVersion name="firefox,48"/>
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/ZoMmd3NTE6zAFEYbLkU5hKXp8zF2ctK0?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2900009470&account_id=dulari_qa&&&signature=zfMNjFdK8lRNZsTkSSHyrExtGD9aWxmCD/5znAReylY"}]]></playerParameter>
-        </url>
-    </test>
-	    <test name="PlaybackPlaylistTests">
-		<url>
-			<description name="Playlist:Default themebuilder parameters" />
-			<embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-			<pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-			<plugins name="MAIN" />
-			<adPlugins name="" />
-			<additionalPlugins name="PLAYLIST" />
-			<pbid name="896a567555d451d94dcf2849f075a4c" />
-			<playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"]}}]]></playerParameter>
-		</url>
-		<url>
-			<description name="Playlist:Orientation-vertical" />
-			<embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-			<pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-			<plugins name="MAIN" />
-			<adPlugins name="" />
-			<additionalPlugins name="PLAYLIST" />
-			<pbid name="896a567555d451d94dcf2849f075a4c" />
-			<playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical"}}]]></playerParameter>
-		</url>
-        <url>
-            <description name="Playlist:Orientation-horizontal" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Position-top" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"top"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Position-bottom" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Position-right" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Position-left" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"left"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Autoplay-true" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"true"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Autoplay-false" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:useFirstVideoFromPlaylist-true" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false","useFirstVideoFromPlaylist":"true"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:useFirstVideoFromPlaylist-false" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false","useFirstVideoFromPlaylist":"false"}]]></playerParameter>
-        </url>
-        <!--    Commented this test case because of Issue PLAYER-448. Loop functionality is not working correctly
-                <url>
-                    <description name="Playlist:Loop-true" />
-                    <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-                    <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-                    <plugins name="MAIN" />
-                    <adPlugins name="" />
-                    <additionalPlugins name="PLAYLIST" />
-                    <pbid name="896a567555d451d94dcf2849f075a4c" />
-                    <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"true","loop":"true"}]]></playerParameter>
-                </url>
-                <url>
-                    <description name="Playlist:Loop-false" />
-                    <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-                    <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-                    <plugins name="MAIN" />
-                    <adPlugins name="" />
-                    <additionalPlugins name="PLAYLIST" />
-                    <pbid name="896a567555d451d94dcf2849f075a4c" />
-                    <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"true","loop":"false"}]]></playerParameter>
-                </url>-->
-        <url>
-            <description name="Playlist:Thumbnailsize-300" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom","ThumbnailsSize":"300"},"autoplay":"false"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Podtype-scrolling" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right","PodType":"scrolling"},"autoplay":"false"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Podtype-paging" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","position":"bottom","PodType":"paging"},"autoplay":"false"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Menustyle-tabs" />
-            <embed_code name="5zMjRmNzE6NGf3VY_OI-70YeS7Tr4poC" />
-            <pcode name="BueGIyOpngHS8pplQ1AW4Ssf89ms" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c11522c3a2424709bc8b0829d0e4fbaa","87dc703bdd03450ba709dbfcaa752034"]},"autoPlay":false,"loop":false,"height":573,"width":800,"useFirstVideoFromPlaylist":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:ThumbnailSpace-100" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right","ThumbnailsSpacing":"100"},"autoplay":"false"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:WrapperFontSize-20" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","WrapperFontSize":"20"},"autoplay":"false","CaptionPosition":"outside'","Menustyle":"tabs"}]]></playerParameter>  </url>
-        <url>
-            <description name="Playlist:CaptionPosition-inside" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"inside"},"autoplay":"false","Menustyle":"tabs"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:CaptionPosition-outside" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"outside"},"autoplay":"false","Menustyle":"tabs"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Caption-title,description,duration" />
-            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
-            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Caption":["description","duration"],"ThumbnailsSpacing":"30"}}]]></playerParameter>
-        </url>
-    </test>
+
 </testdata>
