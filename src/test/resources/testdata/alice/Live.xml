@@ -95,11 +95,11 @@
             <description name="Alice Core:Akamai HLS Live bitmovin|Live Stream Testing(Without DRM):Akamai Live HLS Bitmovin" />
             <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="AKAMAI,BITMOVIN" />
+            <plugins name="BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
             <description name="Alice Core:SSAI Demo page" />
@@ -188,6 +188,18 @@
                 <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
                 <provider>elemental</provider>
             </live>
+        </url>
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):Akamai Live HLS Main" />
+            <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
 
         <!--Getting SAS Error for this asset. uncomment after this ticket PLAYER-617 is resolved -->
