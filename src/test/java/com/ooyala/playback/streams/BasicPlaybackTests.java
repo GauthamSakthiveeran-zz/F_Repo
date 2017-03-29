@@ -35,9 +35,6 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 		if (!testName.contains("Streams:"))
 			return;
 		
-		if(!testName.contains("Streams:Bitmovin Elemental Delta DASH VOD (Clear Dash)"))
-			return;
-
 		try {
 			driver.get(url.getUrl());
 
