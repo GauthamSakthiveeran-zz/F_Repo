@@ -18,7 +18,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.google.common.base.Predicate;
 import com.ooyala.facile.page.WebPage;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -353,5 +355,20 @@ public abstract class PlayBackPage extends WebPage {
     	extentTest.log(LogStatus.FAIL, "Ad is not playing after waiting for a long time.");
     	return false;
     }
+    
+	public boolean isPageLoaded() {
+		WebDriverWait wait = new WebDriverWait(driver, 15);
+		wait.until(new Predicate<WebDriver>() {
+			public boolean apply(WebDriver webDriver) {
+				return driver.executeScript("return typeof pp").toString().equals("object");
+			}
+		});
+		if (!driver.executeScript("return typeof pp").toString().equals("object")) {
+			logger.error("pp object is not loaded");
+			extentTest.log(LogStatus.FAIL, "pp object is not loaded");
+			return false;
+		}
+		return true;
+	}
 
 }
