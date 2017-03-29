@@ -357,7 +357,7 @@ public abstract class PlayBackPage extends WebPage {
     }
     
 	public boolean isPageLoaded() {
-		WebDriverWait wait = new WebDriverWait(driver, 15);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(new Predicate<WebDriver>() {
 			public boolean apply(WebDriver webDriver) {
 				return driver.executeScript("return typeof pp").toString().equals("object");
