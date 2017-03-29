@@ -1,14 +1,11 @@
 package com.ooyala.playback.streams;
 
+import com.ooyala.playback.page.*;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.ControlBarValidator;
-import com.ooyala.playback.page.FullScreenValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.LiveAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
@@ -28,6 +25,7 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 	private LiveAction liveAction;
 	private PauseAction pauseAction;
 	private PlayAction playAction;
+    private LiveValidator live;
 
 	public PlaybackLiveTests() throws OoyalaException {
 		super();
@@ -36,9 +34,18 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 	@Test(groups = "streams", dataProvider = "testUrls")
 	public void testLive(String testName, UrlObject url) throws OoyalaException {
 
+        String description = testName.split("-")[1].trim();
+        boolean isChannelIdPresent = false;
 		boolean result = true;
 
 		try {
+
+            isChannelIdPresent = live.isChannelIdPresent(description);
+
+            if (isChannelIdPresent) {
+                result = result && url.getLiveChannel().startChannel(testName);
+            }
+
 			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
@@ -46,7 +53,6 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
-			Thread.sleep(3000);
 
 			result = result && pause.validate("paused_1", 60000);
 
@@ -61,6 +67,17 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 			result = result && liveAction.startAction();
 
 			result = result && playAction.startAction();
+
+
+            if (isChannelIdPresent) {
+                result = result && url.getLiveChannel().stopChannels();
+
+                driver.get(url.getUrl());
+
+                result = result && live.isGettingError();
+
+            }
+
 
 		} catch (Exception e) {
             logger.error(e.getMessage());
