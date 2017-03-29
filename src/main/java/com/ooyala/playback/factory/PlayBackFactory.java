@@ -61,6 +61,7 @@ public class PlayBackFactory {
 	private GeoValidator geoValidator;
 	private FlightTimeValidator flightTimeValidator;
 	private StreamTypeValidator streamTypeValidator;
+	private LiveValidator liveValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -74,6 +75,14 @@ public class PlayBackFactory {
         }
         return concurrentStreamValidator;
     }
+
+	public LiveValidator getLiveValidator() {
+		if (liveValidator == null){
+			liveValidator = new LiveValidator(driver);
+			liveValidator.setExtentTest(extentTest);
+		}
+		return liveValidator;
+	}
 
 	public InitalTimeValidator getInitalTimeValidator(){
 		if (initalTimeValidator == null){

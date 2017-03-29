@@ -32,7 +32,7 @@ public class LiveChannel {
 	public boolean startChannel(String testDescription) {
 		boolean flag = false;
 		String description = testDescription.substring(
-				testDescription.indexOf(":") + 1).trim();
+				testDescription.indexOf("-") + 1).trim();
 		// Starting the live channel if exists for this test case
 		String channelId = UrlGenerator.getLiveChannelDetails()
 				.get(description);
