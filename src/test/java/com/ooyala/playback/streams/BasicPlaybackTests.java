@@ -34,7 +34,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
 		if (!testName.contains("Streams:"))
 			return;
-		
+
 		try {
 			driver.get(url.getUrl());
 
@@ -43,24 +43,25 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
-			
-			Thread.sleep(5000); 
+
+			Thread.sleep(5000);
 
 			if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
 				result = result && eventValidator.validate("videoPlayingurl", 40000);
-				result = result && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
+				result = result
+						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 			}
 
 			result = result && pause.validate("paused_1", 60000);
 
 			// because of https://jira.corp.ooyala.com:8443/browse/PBW-6281
-			if(!testName.contains("Streams:Bitmovin Elemental Delta DASH VOD (Clear Dash)")) {
+			if (!testName.contains("Streams:Bitmovin Elemental Delta DASH VOD (Clear Dash)")) {
 				result = result && play.validate("playing_2", 60000);
 				result = result && seek.validate("seeked_1", 60000);
-				result = result && eventValidator.validate("played_1", 60000);
+				
+				if (!testName.contains("Streams:Main Akamai HLS Remote Asset") && !testName.contains("Streams:Bitmovin Akamai HLS Remote Asset")) // live video
+					result = result && eventValidator.validate("played_1", 120000);
 			}
-			
-			
 
 		} catch (Exception e) {
 			logger.error("Exception while checking basic playback " + e.getMessage());

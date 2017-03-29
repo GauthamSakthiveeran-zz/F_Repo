@@ -127,7 +127,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 				if (seekTime == -1) {
 					extentTest.log(LogStatus.INFO, "Video is in error mode");
 					logger.error("Video is in error mode");
-					seek(15, true);
+					seek(31, true);
 					break;
 				}
 				if (seekTime > 5) {

@@ -12,8 +12,7 @@ import java.util.Map;
  * Created by snehal on 23/11/16.
  */
 
-public class SaasPortValidator extends PlayBackPage implements
-		PlaybackValidator {
+public class SaasPortValidator extends PlayBackPage implements PlaybackValidator {
 
 	private static Logger logger = Logger.getLogger(SaasPortValidator.class);
 	private String embedCode;
@@ -34,83 +33,89 @@ public class SaasPortValidator extends PlayBackPage implements
 	@Override
 	public boolean validate(String element, int timeout) {
 
-		return  getProperties()&&searchEntitlement()&&deleteDevices()&&deleteEntitlement()&&createEntitlement("2");
+		return getProperties() && searchEntitlement() && deleteDevices() && deleteEntitlement()
+				&& createEntitlement("2");
 	}
 
 	// Checking if device is registered or not for that particular entitlement
-	public boolean checkDeviceRegistration(){
-		try{
+	public boolean checkDeviceRegistration() {
+		try {
 			if (!searchEntitlement())
 				return false;
 
-			if (!waitOnElement(By.xpath(".//button[@contentid='"+embedCode+"']/../../../div[7]//a[contains(text(),'Display')]"),20000)){
-				throw new Exception(
-						"Device is not registered for entitlement on sasport.");
+			if (!waitOnElement(
+					By.xpath(
+							".//button[@contentid='" + embedCode + "']/../../../div[7]//a[contains(text(),'Display')]"),
+					20000)) {
+				throw new Exception("Device is not registered for entitlement on sasport.");
 			}
 
-			if (!clickOnIndependentElement(By.xpath(".//button[@contentid='"+embedCode+"']/../../../div[7]//a[contains(text(),'Display')]")))
+			if (!clickOnIndependentElement(By
+					.xpath(".//button[@contentid='" + embedCode + "']/../../../div[7]//a[contains(text(),'Display')]")))
 				return false;
 
-			if (!waitOnElement(By.xpath(".//button[@contentid='"+embedCode+"']/../../../div[7]//a[contains(text(),'Display')]/../div"), 10000))
+			if (!waitOnElement(By.xpath(
+					".//button[@contentid='" + embedCode + "']/../../../div[7]//a[contains(text(),'Display')]/../div"),
+					10000))
 				return false;
 
 			logger.info("Device gets registered for entitlement on sasport.");
 			return true;
-		}catch(Exception e){
-			logger.error("Error in serching device not sasport "+ e);
+		} catch (Exception e) {
+			logger.error("Error in serching device not sasport " + e);
 			return false;
 		}
 	}
-
+	
 	// Search Entitlements data for given pcode and account id.
 	public boolean searchEntitlement() {
-		try{
+		try {
 			driver.get(sasportUrl);
 			waitOnElement("PCODE", 30000);
-			writeTextIntoTextBox("PCODE",pCode);
-			writeTextIntoTextBox("ACCOUNT_ID",accountId);
-			selectDropDownByVisibleText("ENVIRONMENT","Production");
+			writeTextIntoTextBox("PCODE", pCode);
+			writeTextIntoTextBox("ACCOUNT_ID", accountId);
+			selectDropDownByVisibleText("ENVIRONMENT", "Production");
 			Thread.sleep(2000);
-			return waitOnElement("SEARCH_BTN", 30000)
-					&& clickOnIndependentElement("SEARCH_BTN") && waitOnElement("CREATE_ENTITLEMENT_BTN", 30000);
-		}catch (Exception e){
-			logger.error("Error while serching entitlement"+e.getMessage());
+			return waitOnElement("SEARCH_BTN", 30000) && clickOnIndependentElement("SEARCH_BTN")
+					&& waitOnElement("CREATE_ENTITLEMENT_BTN", 30000);
+		} catch (Exception e) {
+			logger.error("Error while serching entitlement" + e.getMessage());
 			return false;
 		}
 	}
 
 	// Fill the details after click on 'Create entitlement' button
 	public boolean createEntitlement(String maxDeviceCount) {
-		try{
-			if(!waitOnElement("CREATE_ENTITLEMENT_BTN", 30000))
+		try {
+			if (!waitOnElement("CREATE_ENTITLEMENT_BTN", 30000))
 				return false;
 			clickOnIndependentElement("CREATE_ENTITLEMENT_BTN");
 			waitOnElement("CREATE_ENTITLEMENT_ID", 30000);
 			writeTextIntoTextBox("CREATE_ENTITLEMENT_ID", embedCode);
-			writeTextIntoTextBox("EXTERNAL_PRODUCT_ID", "abc");
+			writeTextIntoTextBox("EXTERNAL_PRODUCT_ID", "default");
 			writeTextIntoTextBox("MAX_DEVICES", maxDeviceCount);
 			clickOnIndependentElement("CREATE_BTN");
 			Thread.sleep(5000);
-			if(!waitOnElement("CREATE_ENTITLEMENT_BTN", 30000)){
+			if (!waitOnElement("CREATE_ENTITLEMENT_BTN", 30000)) {
 				logger.error("Entitlement is not getting created");
 				return false;
 			}
 			logger.info("Entitlement created suceessfully");
 			return true;
-		}catch (Exception e){
-			logger.error("Error in creating entitlement"+e.getMessage());
+		} catch (Exception e) {
+			logger.error("Error in creating entitlement" + e.getMessage());
 			return false;
 		}
 	}
 
-	public boolean deleteEntitlement(){
-		try{
+	public boolean deleteEntitlement() {
+		try {
 			// Checking the presence of Delete button in Entitlement
 			if (isElementPresent(By.xpath("//button[@contentid='" + embedCode + "']"))) {
 				if (!clickOnIndependentElement(By.xpath("//button[@contentid='" + embedCode + "']")))
 					return false;
 				logger.info("Deleted asset from entitlement");
-				if(!waitOnElement(By.xpath("//button[@contentid='" + embedCode + "']"),5000))
+				if (!waitOnElement(By.xpath("//button[@contentid='" + embedCode + "']"), 5000))
 					return true;
 			}
 			return true;
@@ -121,48 +126,50 @@ public class SaasPortValidator extends PlayBackPage implements
 	}
 
 	// Delete devices from Account Devices
-	public boolean deleteDevices(){
+	public boolean deleteDevices() {
 		waitOnElement("ACCOUNT_DEVICES");
 		int noOfRegisteredDevices = 0;
-		if(isElementPresent("NO_DEVICES_REGISTERED")) {
+		if (isElementPresent("NO_DEVICES_REGISTERED")) {
 			logger.info("No Devices registered");
 			return true;
-		}
-		else{
+		} else {
 			noOfRegisteredDevices = getWebElementsList("ACCOUNT_DEVICES_LIST").size();
-			for(int i = 1; i<=noOfRegisteredDevices; i++){
-				try{
+			for (int i = 1; i <= noOfRegisteredDevices; i++) {
+				try {
 					clickOnHiddenElement("DELETE_REGISTERED_DEVICE");
 					Thread.sleep(1000);
 
-				}catch(Exception e){
+				} catch (Exception e) {
 					logger.info("Error While deleting registered devices");
 					return false;
 				}
 			}
-			logger.info("Registered Devices deleted : "+ noOfRegisteredDevices);
+			logger.info("Registered Devices deleted : " + noOfRegisteredDevices);
 		}
 		return true;
 	}
 
 	// Check account devices registration on sasport.
-	public boolean checkAccountDeviceRegistration(){
+	public boolean checkAccountDeviceRegistration() {
 		int noOfRegisteredDevices = 0;
-		if(isElementPresent("NO_DEVICES_REGISTERED")) {
+		if (isElementPresent("NO_DEVICES_REGISTERED")) {
 			logger.error("No Devices registered");
 			return false;
-		}else{
+		} else {
 			noOfRegisteredDevices = getWebElementsList("ACCOUNT_DEVICES_LIST").size();
-			for(int i = 1; i<=noOfRegisteredDevices; i++){
-				String userAgent = driver.findElement(By.xpath(".//*[@id='accountDevicesList']/div[" + i + "]/div[3]/div")).getText().toLowerCase();
-				if(!userAgent.contains(getBrowser()))return false;
+			for (int i = 1; i <= noOfRegisteredDevices; i++) {
+				String userAgent = driver
+						.findElement(By.xpath(".//*[@id='accountDevicesList']/div[" + i + "]/div[3]/div")).getText()
+						.toLowerCase();
+				if (!userAgent.contains(getBrowser()))
+					return false;
 			}
 			return true;
 		}
 	}
 
-	public boolean getProperties(){
-		try{
+	public boolean getProperties() {
+		try {
 			data = parseURL();
 			embedCode = data.get("ec");
 			pCode = data.get("pcode");
@@ -170,7 +177,7 @@ public class SaasPortValidator extends PlayBackPage implements
 			sasportUrl = properties.getProperty("sasport_url");
 			accountId = properties.getProperty("account_id");
 			return true;
-		}catch (Exception e){
+		} catch (Exception e) {
 			logger.error(e);
 			return false;
 		}

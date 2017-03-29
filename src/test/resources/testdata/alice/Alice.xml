@@ -22,7 +22,6 @@
              <adPlugins name="" />
              <additionalPlugins name="" />
              <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-             <browsersSupported name="firefox,chrome,internet explorer" />
              <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
          </url>
         <!--  Getting playback stream error for IE for more info https://jira.corp.ooyala.com/browse/PBW-6084-->
@@ -96,6 +95,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        	<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
         	<sslEnabled name="https"/>
         </url>
 
@@ -108,7 +108,7 @@
             <additionalPlugins name="" />
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
             <streamType name="f4m" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
@@ -121,7 +121,7 @@
             <additionalPlugins name="" />
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
             <streamType name="f4m" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
@@ -155,7 +155,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
@@ -167,7 +167,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
@@ -199,7 +199,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="firefox,chrome,internet explorer" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
 
@@ -211,7 +211,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
@@ -243,7 +243,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
@@ -255,7 +255,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
         </url>
@@ -330,7 +330,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
@@ -364,7 +364,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari" />
+            <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[]]></playerParameter>
         </url>

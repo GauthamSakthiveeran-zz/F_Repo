@@ -30,8 +30,6 @@ public class PlaybackGeoRestrictionTests extends PlaybackWebTest {
 
 			result = result && geo.isPageLoaded();
 
-			injectScript();
-
 			result = result && geo.validate("", 60000);
 
 		} catch (Exception e) {
