@@ -40,7 +40,6 @@
             <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryCustomizationTests" />
             <class name="com.ooyala.playback.playerlifecycle.PlaybackPlayerDestroyTests" />
-            <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackNewProcessingProfileTests" />
             <class name="com.ooyala.playback.streams.BasicPlaybackTests"/>
@@ -112,6 +111,23 @@
             <class name="com.ooyala.playback.contentProtection.PlaybackOptEntitlementTests" />
             <class name="com.ooyala.playback.contentProtection.PlaybackDeviceRegistrationTests"/>
             <class name="com.ooyala.playback.contentProtection.PlaybackFlightTimeTests"/>
+        </classes>
+    </test>
+
+    <test name="DRMRegression" parallel="classes" thread-count="1">
+        <groups>
+            <define name="drm">
+                <include name="drm"/>
+            </define>
+            <run>
+                <include name="drm"/>
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/DRM.xml"/>
+            <parameter name="jsFile" value="alice/alice.js"/>
+            <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
+            <class name="com.ooyala.playback.drm.PlaybackWithDRMLiveTests"/>
         </classes>
     </test>
 

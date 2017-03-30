@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <test name="PlaybackDRMTests">
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental H.264 4K Dash Cenc VOD" />
+            <embed_code name="hsM2h3NTE6oVIIGFqk1fERPOXv-2Myr0" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash VOD" />
+            <embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
+            <pcode name="FoeG863GnBL4IhhlFC1Q2jqbkH9m" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental HLS VOD|Alice Core:Fairplay HLS" />
+            <embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
+            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
+        </url>
+        <!--  Getting playback stream error for IE for more info https://jira.corp.ooyala.com/browse/PBW-6084-->
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta eHLS" />
+            <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
+            <browsersSupported name="chrome,firefox,safari,MicrosoftEdge" />
+            <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS" />
+            <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):OSMF Elemental Delta HDS VOD" />
+            <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+    </test>
+    <test name="PlaybackWithDRMLiveTests">
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash Live" />
+            <embed_code name="5kaDBlODE6fqcosXyCQ9myvTxpObwIOw" />
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash_drm"]}]]></playerParameter>
+        </url>
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash Live" />
+            <embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL" />
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8abff377aec2400e9337fe9088e65d40" />
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=8h+npYn8aTusBeAUru7nrMPVC8xXnulZipot74Ab2lc&override_syndication_group=override_all_synd_groups","encodingPriority":["hls","dash","webm","mp4","dash"],"platform":"html5"}]]></playerParameter>
+            <live>
+                <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):OSMF Elemental Dash Live" />
+            <embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL" />
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8abff377aec2400e9337fe9088e65d40" />
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=8h+npYn8aTusBeAUru7nrMPVC8xXnulZipot74Ab2lc&override_syndication_group=override_all_synd_groups","encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <live>
+                <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental HLS Live"/>
+            <embed_code name="8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB"/>
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8abff377aec2400e9337fe9088e65d40"/>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=xDF8lsLV7EPvOdD6XqO2jZrFQonCOP+bNdSfAewWC+w&override_syndication_group=override_all_synd_groups","encodingPriority":["hls","hds","webm","mp4"]}]]></playerParameter>
+            <live>
+                <channelId>4e925289af57408384f58832323bfe51</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta HLS Live"/>
+            <embed_code name="l5ZHE3NDE6s6tbi1aFGXCT7GiilqKSOY"/>
+            <pcode name="Jrb2IyOg0J1i-f0odLz_T3jusJno"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"encodingPriority":["dash"],"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/ZkMTViNDE6ShDM36D5mW6L3gWP2Pu2GW?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2892594508&account_id=dulari_qa&&&signature=y3yxsLboa7T21w1wLxDPwh+zAiJCqDuvpIMBqxJBVKs","auth_ssl_server":"https://player-staging.ooyala.com/sas","auth_server":"http://player-staging.ooyala.com/sas"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta eHLS "/>
+            <embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL"/>
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8abff377aec2400e9337fe9088e65d40"/>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=8h+npYn8aTusBeAUru7nrMPVC8xXnulZipot74Ab2lc&override_syndication_group=override_all_synd_groups","platform":"html5"}]]></playerParameter>
+            <live>
+                <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+    </test>
+</testdata>
