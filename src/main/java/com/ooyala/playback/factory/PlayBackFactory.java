@@ -63,6 +63,7 @@ public class PlayBackFactory {
 	private StreamTypeValidator streamTypeValidator;
 	private LiveValidator liveValidator;
 	private ErrorDescriptionValidator errorDescriptionValidator;
+	private BitmovinTechnologyValidator bitmovinTechnologyValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -75,6 +76,14 @@ public class PlayBackFactory {
             concurrentStreamValidator.setExtentTest(extentTest);
         }
         return concurrentStreamValidator;
+    }
+    
+    public BitmovinTechnologyValidator getBitmovinTechnologyValidator() {
+        if (bitmovinTechnologyValidator == null){
+        	bitmovinTechnologyValidator = new BitmovinTechnologyValidator(driver);
+        	bitmovinTechnologyValidator.setExtentTest(extentTest);
+        }
+        return bitmovinTechnologyValidator;
     }
     
     public ErrorDescriptionValidator getErrorDescriptionValidator() {
