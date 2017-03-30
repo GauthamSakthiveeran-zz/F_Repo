@@ -191,11 +191,12 @@ public class UrlGenerator {
 						urlObject.setStreamType(url.getStreamType().getName());
 					}
 
-                    if (url.getLive().getChannelId()!=null){
+                    if (url.getLive() != null
+                            && url.getLive().getChannelId() != null){
                         urlObject.setChannelId(url.getLive().getChannelId());
                     }
 
-                    if (url.getLive().getProvider()!=null){
+                    if (url.getLive() != null && url.getLive().getProvider()!=null){
                         urlObject.setProvider(url.getLive().getProvider());
                     }
 					
