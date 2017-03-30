@@ -45,15 +45,17 @@ public class UrlObject {
 		this.streamType = streamType;
 	}
 
-    public LiveChannel liveChannel;
+	public LiveChannel liveChannel;
 
-    public LiveChannel getLiveChannel() throws OoyalaException {
-        if (liveChannel==null){
-            liveChannel = new LiveChannel();
-        }
-        return liveChannel;
-    }
+	public LiveChannel getLiveChannel() throws OoyalaException {
+		if (liveChannel == null) {
+			liveChannel = new LiveChannel();
+		}
+		return liveChannel;
+	}
 
-    public void setLiveChannel(LiveChannel liveChannel){this.liveChannel = liveChannel;};
+	public void setLiveChannel(LiveChannel liveChannel) {
+		this.liveChannel = liveChannel;
+	};
 
 }
