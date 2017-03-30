@@ -67,8 +67,6 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 			
 			result = result && eventValidator.loadingSpinner();
 
-			Thread.sleep(2000);
-
 			result = result && pause.validate("paused_1", 60000);
 
 			result = result && play.validate("playing_2", 60000);
