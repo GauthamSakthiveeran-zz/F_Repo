@@ -1,37 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-    <test name="HTML5FirstPlaybackTests">
-        <url>
-            <description name="Core:Validate html5.hls default" />
-            <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-        
-        <url>
-            <description name="Core:Validate html5.hls" />
-            <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-            <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
-        </url>
-        
-        <url>
-            <description name="Core:Validate flash.hls" />
-            <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-            <playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
-        </url>
-    </test>
+	<test name="HTML5FirstPlaybackTests">
+		<url>
+			<description name="Core:Validate html5.hls default" />
+			<embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[]]>
+			</playerParameter>
+			<streamType name="hls"></streamType>
+		</url>
+
+		<url>
+			<description name="Core:Validate html5.hls" />
+			<embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+			<streamType name="hls"></streamType>
+		</url>
+
+		<url>
+			<description name="Core:Validate flash.hls" />
+			<embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
+			<streamType name="hls"></streamType>
+		</url>
+	</test>
 </testdata>

@@ -16,6 +16,13 @@ public class BitmovinTechnologyValidator extends PlayBackPage implements Playbac
 	public BitmovinTechnologyValidator(WebDriver webDriver) {
 		super(webDriver);
 	}
+	
+	private String streamType;
+	
+	public BitmovinTechnologyValidator setStream(String streamType) {
+		this.streamType = streamType;
+		return this;
+	}
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
@@ -31,11 +38,13 @@ public class BitmovinTechnologyValidator extends PlayBackPage implements Playbac
 		JSONParser parser = new JSONParser();
 		JSONObject json = (JSONObject) parser.parse(options[1]);
 
-		String expectedValue = "html5.hls";
+		String expectedValue = "html5";
 
 		if (json.containsKey("platform")) {
-			expectedValue = (String) json.get("platform") + ".hls";
+			expectedValue = (String) json.get("platform");
 		}
+		
+		expectedValue = expectedValue + "." + streamType;
 
 		String techString = driver.findElementById("bitmovin_technology").getText();
 
