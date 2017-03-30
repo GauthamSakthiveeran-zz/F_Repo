@@ -26,6 +26,7 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 	private PauseAction pauseAction;
 	private PlayAction playAction;
     private LiveValidator live;
+    private ErrorDescriptionValidator error;
 
 	public PlaybackLiveTests() throws OoyalaException {
 		super();
@@ -40,10 +41,10 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 
 		try {
 
-            isChannelIdPresent = live.isChannelIdPresent(description);
+            isChannelIdPresent = live.isChannelIdPresent(url);
 
             if (isChannelIdPresent) {
-                result = result && url.getLiveChannel().startChannel(testName);
+                result = result && url.getLiveChannel().startChannel(url.getChannelId(),url.getProvider());
             }
 
 			driver.get(url.getUrl());
@@ -70,12 +71,13 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 
 
             if (isChannelIdPresent) {
-                result = result && url.getLiveChannel().stopChannels();
+
+                url.getLiveChannel().stopChannels();
 
                 driver.get(url.getUrl());
 
-                result = result && live.isGettingError();
-
+                result = result && error.expectedErrorCode("sas")
+                        .expectedErrorDesc("Invalid Authorization Response").validate("",30000);
             }
 
 

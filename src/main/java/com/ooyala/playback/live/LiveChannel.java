@@ -29,15 +29,8 @@ public class LiveChannel {
 		channelProviders = new HashMap<String, String>();
 	}
 
-	public boolean startChannel(String testDescription) {
+	public boolean startChannel(String channelId,String provider) {
 		boolean flag = false;
-		String description = testDescription.substring(
-				testDescription.indexOf("-") + 1).trim();
-		// Starting the live channel if exists for this test case
-		String channelId = UrlGenerator.getLiveChannelDetails()
-				.get(description);
-		String provider = UrlGenerator.getLiveChannelProviders().get(
-				description);
 		if (channelId != null && !channelIds.contains(channelId)
 				&& provider != null) {
 			logger.info("Starting live channel " + channelId);
