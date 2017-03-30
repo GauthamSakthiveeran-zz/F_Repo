@@ -1,6 +1,7 @@
 package com.ooyala.playback.page;
 
 import com.ooyala.playback.url.UrlGenerator;
+import com.ooyala.playback.url.UrlObject;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -25,8 +26,8 @@ public class LiveValidator extends PlayBackPage implements PlaybackValidator {
     /*
         isChannelIdPresent method return true if for particular asset Channel needs in Live state.
      */
-	public boolean isChannelIdPresent(String description){
-		if (UrlGenerator.getLiveChannelDetails().get(description)!=null){
+	public boolean isChannelIdPresent(UrlObject url){
+		if (url.getChannelId()!=null){
 			return true;
 		}
 		return false;

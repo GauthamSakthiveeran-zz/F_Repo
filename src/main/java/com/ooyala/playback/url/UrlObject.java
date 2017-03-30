@@ -1,11 +1,17 @@
 package com.ooyala.playback.url;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.live.LiveChannel;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class UrlObject {
 
 	private String url;
+    private String adFrequency;
+    private String adFirstPlay;
+    private String streamType;
+    private String channelId;
+    private String provider;
 
 	public String getUrl() {
 		return url;
@@ -15,8 +21,6 @@ public class UrlObject {
 		this.url = url;
 	}
 
-	private String adFirstPlay;
-
 	public String getAdFirstPlay() {
 		return adFirstPlay;
 	}
@@ -25,8 +29,6 @@ public class UrlObject {
 		this.adFirstPlay = adFirstPlay;
 	}
 
-	private String adFrequency;
-
 	public String getAdFrequency() {
 		return adFrequency;
 	}
@@ -34,8 +36,6 @@ public class UrlObject {
 	public void setAdFrequency(String adFrequency) {
 		this.adFrequency = adFrequency;
 	}
-
-	private String streamType;
 
 	public String getStreamType() {
 		return streamType;
@@ -58,4 +58,11 @@ public class UrlObject {
 		this.liveChannel = liveChannel;
 	};
 
+    public String getChannelId() {return channelId;}
+
+    public String getProvider() {return provider;}
+
+    public void setChannelId(String channelId) {this.channelId = channelId;}
+
+    public void setProvider(String provider) {this.provider = provider;}
 }
