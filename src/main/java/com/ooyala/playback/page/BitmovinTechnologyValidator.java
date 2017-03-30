@@ -16,9 +16,14 @@ public class BitmovinTechnologyValidator extends PlayBackPage implements Playbac
 	public BitmovinTechnologyValidator(WebDriver webDriver) {
 		super(webDriver);
 	}
-	
+
 	private String streamType;
-	
+
+	public void getConsoleLogs() {
+		driver.executeScript(
+				"var oldf = console.log;console.log = function() {oldf.apply(console, arguments);if(arguments[0].includes('Bitmovin player is using technology')) OO.$(\"#ooplayer\").append(\"<p id=bitmovin_technology>\" + arguments[0] + \"</p>\");}");
+	}
+
 	public BitmovinTechnologyValidator setStream(String streamType) {
 		this.streamType = streamType;
 		return this;
@@ -32,18 +37,15 @@ public class BitmovinTechnologyValidator extends PlayBackPage implements Playbac
 			return false;
 
 		String[] options = result.split("options=");
-		if (options == null || options.length < 2)
-			return false;
-
-		JSONParser parser = new JSONParser();
-		JSONObject json = (JSONObject) parser.parse(options[1]);
-
 		String expectedValue = "html5";
-
-		if (json.containsKey("platform")) {
-			expectedValue = (String) json.get("platform");
+		if (options != null && options.length >= 2) {
+			JSONParser parser = new JSONParser();
+			JSONObject json = (JSONObject) parser.parse(options[1]);
+			if (json.containsKey("platform")) {
+				expectedValue = (String) json.get("platform");
+			}
 		}
-		
+
 		expectedValue = expectedValue + "." + streamType;
 
 		String techString = driver.findElementById("bitmovin_technology").getText();
@@ -56,6 +58,7 @@ public class BitmovinTechnologyValidator extends PlayBackPage implements Playbac
 			return false;
 		}
 
+		extentTest.log(LogStatus.PASS, "Expected to find " + expectedValue + " in " + techString);
 		return true;
 	}
 

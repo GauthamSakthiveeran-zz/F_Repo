@@ -389,12 +389,6 @@ public abstract class PlaybackWebTest extends FacileTest {
         }
     }
     
-    public void injectLogs() throws Exception {
-    	InetAddress inetAdd = InetAddress.getLocalHost();
-    	injectScript("http://" + inetAdd.getHostAddress() + ":"
-                + SimpleHttpServer.portNumber + "/js?fileName=logs.js");
-    }
-
     public void injectScript() throws Exception {
         if (jsUrl != null && jsUrl.length > 0) {
             for (String url : jsUrl) {

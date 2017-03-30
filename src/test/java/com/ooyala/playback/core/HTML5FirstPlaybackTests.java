@@ -12,17 +12,17 @@ import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class HTML5FirstPlaybackTests extends PlaybackWebTest{
+public class HTML5FirstPlaybackTests extends PlaybackWebTest {
 
 	public HTML5FirstPlaybackTests() throws OoyalaException {
 		super();
 	}
-	
+
 	private PlayValidator play;
 	private BitmovinTechnologyValidator tech;
 	private SeekValidator seek;
 	private EventValidator eventValidator;
-	
+
 	@Test(groups = "html5", dataProvider = "testUrls")
 	public void testHTML5FirstPlayback(String testName, UrlObject url) throws OoyalaException {
 		boolean result = true;
@@ -32,14 +32,15 @@ public class HTML5FirstPlaybackTests extends PlaybackWebTest{
 			result = result && play.waitForPage();
 
 			injectScript();
-			injectLogs();
-			
+
+			tech.getConsoleLogs();
+
 			result = result && play.validate("playing_1", 60000);
 
 			result = result && tech.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
-			
+
 			result = result && seek.validate("seeked_1", 60000);
-			
+
 			result = result && eventValidator.validate("played_1", 120000);
 
 		} catch (Exception e) {
@@ -49,6 +50,6 @@ public class HTML5FirstPlaybackTests extends PlaybackWebTest{
 			result = false;
 		}
 		Assert.assertTrue(result, "Basic playback tests failed" + testName);
-		
+
 	}
 }
