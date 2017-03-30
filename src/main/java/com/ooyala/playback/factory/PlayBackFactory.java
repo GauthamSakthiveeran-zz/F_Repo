@@ -61,7 +61,6 @@ public class PlayBackFactory {
 	private GeoValidator geoValidator;
 	private FlightTimeValidator flightTimeValidator;
 	private StreamTypeValidator streamTypeValidator;
-	private LiveValidator liveValidator;
 	private ErrorDescriptionValidator errorDescriptionValidator;
 	private BitmovinTechnologyValidator bitmovinTechnologyValidator;
 
@@ -93,14 +92,6 @@ public class PlayBackFactory {
         }
         return errorDescriptionValidator;
     }
-
-	public LiveValidator getLiveValidator() {
-		if (liveValidator == null){
-			liveValidator = new LiveValidator(driver);
-			liveValidator.setExtentTest(extentTest);
-		}
-		return liveValidator;
-	}
 
 	public InitalTimeValidator getInitalTimeValidator(){
 		if (initalTimeValidator == null){

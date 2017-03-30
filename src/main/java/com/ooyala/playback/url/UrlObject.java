@@ -1,8 +1,5 @@
 package com.ooyala.playback.url;
 
-import com.ooyala.playback.live.LiveChannel;
-import com.ooyala.qe.common.exception.OoyalaException;
-
 public class UrlObject {
 
 	private String url;
@@ -44,18 +41,5 @@ public class UrlObject {
 	public void setStreamType(String streamType) {
 		this.streamType = streamType;
 	}
-
-	public LiveChannel liveChannel;
-
-	public LiveChannel getLiveChannel() throws OoyalaException {
-		if (liveChannel == null) {
-			liveChannel = new LiveChannel();
-		}
-		return liveChannel;
-	}
-
-	public void setLiveChannel(LiveChannel liveChannel) {
-		this.liveChannel = liveChannel;
-	};
 
 }
