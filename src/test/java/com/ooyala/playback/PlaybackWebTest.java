@@ -263,7 +263,7 @@ public abstract class PlaybackWebTest extends FacileTest {
         logger.info("****** Inside @AfterMethod*****");
         logger.info(webDriverFacile.get());
         
-		if (browser.equalsIgnoreCase("safari") && webDriverFacile.get().toString().contains("(null)")) {
+		/*if (browser.equalsIgnoreCase("safari") && webDriverFacile.get().toString().contains("(null)")) {
 
 			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
 			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
@@ -271,7 +271,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			init();
 			driverNotNullFlag = false;
 
-		} else if (webDriverFacile.get() != null && (webDriverFacile.get().getSessionId() == null
+		} else*/ if (!browser.equalsIgnoreCase("safari") && webDriverFacile.get() != null && (webDriverFacile.get().getSessionId() == null
 				|| webDriverFacile.get().getSessionId().toString().isEmpty())) {
 			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
 			extentTest.log(LogStatus.INFO, "Browser closed during the test.");

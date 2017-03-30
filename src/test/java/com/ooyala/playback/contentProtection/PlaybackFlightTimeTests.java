@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.ErrorDescriptionValidator;
 import com.ooyala.playback.page.FlightTimeValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -19,6 +20,7 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest{
             .getLogger(PlaybackGeoRestrictionTests.class);
 
     private FlightTimeValidator flight;
+    private ErrorDescriptionValidator error;
 
     PlaybackFlightTimeTests() throws OoyalaException{
         super();
@@ -34,7 +36,7 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest{
 
             injectScript();
 
-            result = result && flight.validate("",60000);
+            result = result && error.expectedErrorCode("past").expectedErrorDesc("This video is no longer available").validate("",60000);
 
         }catch(Exception e){
             logger.error("Error while checking flight time syndication" + e);
