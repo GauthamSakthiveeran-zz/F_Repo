@@ -9,7 +9,6 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.ErrorDescriptionValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SaasPortValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -23,7 +22,6 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private SeekValidator seek;
-	private SaasPortValidator sasport;
 	private ErrorDescriptionValidator error;
 
 	public PlaybackOptEntitlementTests() throws OoyalaException {
@@ -37,9 +35,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 			
 			driver.get(url.getUrl());
 
-			result = result && sasport.getProperties();
-			result = result && sasport.searchEntitlement();
-			result = result && sasport.deleteEntitlement();
+			result = result && eventValidator.deleteEntitlement(url.getEmbedCode(), url.getPCode());
 			
 			Thread.sleep(5000);
 
@@ -50,9 +46,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 			result = result && error.expectedErrorCode("sas").expectedErrorDesc("Invalid Authorization Response")
 					.validate("", 1000);
 
-			result = result && sasport.searchEntitlement();
-
-			result = result && sasport.createEntitlement("");
+			result = result && eventValidator.addEntitlement(url.getEmbedCode(), url.getPCode());
 			
 			Thread.sleep(5000);
 
