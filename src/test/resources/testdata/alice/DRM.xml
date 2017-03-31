@@ -21,7 +21,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental HLS VOD" />
