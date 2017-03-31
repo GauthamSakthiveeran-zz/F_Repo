@@ -29,7 +29,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "syndicationRules", dataProvider = "testUrls")
-	public void testOptEntitlementAlice(String testName, UrlObject url) throws OoyalaException {
+	public void testOptEntitlement(String testName, UrlObject url) throws OoyalaException {
 		boolean result = true;
 		try {
 			
@@ -58,8 +58,6 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 			
-			Thread.sleep(10000);
-
 			result = result && seek.validate("seeked_1", 60000);
 
 			result = result && eventValidator.validate("played_1", 60000);

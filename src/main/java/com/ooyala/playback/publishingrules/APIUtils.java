@@ -96,6 +96,7 @@ public abstract class APIUtils {
 			HttpEntity entity = new ByteArrayEntity(requestBody.getBytes("UTF-8"));
 			post.setEntity(entity);
 			HttpResponse response = httpClient.execute(post);
+			httpStatus = response.getStatusLine().getStatusCode();
 			return EntityUtils.toString(response.getEntity());
 
 		} else if (requestMethod.equals("DELETE")) {

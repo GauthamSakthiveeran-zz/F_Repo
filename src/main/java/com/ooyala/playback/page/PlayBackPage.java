@@ -409,6 +409,7 @@ public abstract class PlayBackPage extends WebPage {
 		if (api.isEntitlementAvailable(pcode, embedCode)) {
 			return true;
 		} else {
+			
 			if (!api.addEntitlement(pcode, embedCode)) {
 				extentTest.log(LogStatus.FAIL, "Failed to add entitlement");
 				return false;

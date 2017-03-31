@@ -14,32 +14,32 @@ public class RightsLockerAPIUtils extends APIUtils {
 
 	public boolean isEntitlementAvailable(String pcode, String embedCode) throws Exception {
 		String url = rl_api_endpoint + version + entitlements + providers + pcode + "/" + accounts + account_id + "/"
-				+ content + assets + embedCode + "/" + external_products + "default";
+				+ content + "/" + assets + embedCode + "/" + external_products + "default";
 
 		makeAPIcall(url, "GET", "");
 
 		if (httpStatus == 200)
 			return true;
-		
+
 		return false;
 	}
-	
+
 	public boolean deleteEntitlement(String pcode, String embedCode) throws Exception {
 		String url = rl_api_endpoint + version + entitlements + providers + pcode + "/" + accounts + account_id + "/"
-				+ content + assets + embedCode + "/" + external_products + "default";
+				+ content + "/" + assets + embedCode + "/" + external_products + "default";
 
 		makeAPIcall(url, "DELETE", "");
 
 		if (httpStatus == 200)
 			return true;
-		
+
 		return false;
 	}
-	
+
 	public boolean addEntitlement(String pcode, String embedCode) throws Exception {
 		String url = rl_api_endpoint + version + entitlements + providers + pcode + "/" + accounts + account_id + "/"
 				+ content;
-		
+
 		JSONObject json = new JSONObject();
 		json.put("content_id", embedCode);
 		json.put("external_product_id", "default");
@@ -52,7 +52,7 @@ public class RightsLockerAPIUtils extends APIUtils {
 
 		if (httpStatus == 200)
 			return true;
-		
+
 		return false;
 	}
 
