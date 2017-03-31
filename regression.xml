@@ -5,14 +5,10 @@
     <test name="Playback Web Regression Group" parallel="classes" thread-count="5">
         <groups>
             <define name="regression">
-                <include name="streams" />
                 <include name="playerFeatures" />
                 <include name="syndicationRules" />
                 <include name="playerLifecycle" />
-                <include name="drm" />
-                <include name="FCC" />
                 <include name="api" />
-                <include name="playlist" />
             </define>
             <run>
                 <include name="regression" />
