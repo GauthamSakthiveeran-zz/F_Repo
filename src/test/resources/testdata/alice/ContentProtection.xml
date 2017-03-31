@@ -122,6 +122,8 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[]]></playerParameter>
+            <secret name="1ysC3V-g8m9V3QoGJwRa_fXcfi_G2ZV778m17pux"></secret>
+			<apiKey name="BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4"></apiKey>
         </url>
 
         <url>
@@ -134,6 +136,8 @@
             <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
+            <secret name="ZCMQt2CCVqlHWce6dG5w2WA6fkAM_JaWgoI_yzQp"></secret>
+			<apiKey name="x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH"></apiKey>
         </url>
     </test>
 
