@@ -48,7 +48,7 @@
         </url>
     </test>
 
-    <test name="PlaybackDRMWithEHLSTests">
+    <test name="PlaybackDRMWitheHLSTests">
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):OSMF Elemental Delta HDS VOD" />
             <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf" />

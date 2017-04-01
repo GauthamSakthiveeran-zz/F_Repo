@@ -40,24 +40,9 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 		try {
 			driver.get(url.getUrl());
 
-			// need to add logic for verifying description
-			
-			boolean flag = true;
-			
-			while(flag){
-				logger.info("waiting on message bus");
-				try{
-					injectScript();
-					flag = false;
-				}catch(WebDriverException ex){
-					if(ex.getMessage().contains("unknown error: Cannot read property 'mb' of undefined")){
-						flag = true;
-					} else{
-						flag = false;
-					}
-				}
-					
-			}
+            result = result && drm.isPageLoaded();
+
+            injectScript();
 			
 			result = result && drm.validate("drm_tag", 5000);
 			
