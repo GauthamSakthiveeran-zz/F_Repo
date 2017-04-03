@@ -46,10 +46,9 @@
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
-    </test>
 
-    <test name="PlaybackDRMWitheHLSTests">
-        <url>
+        <!--Not getting the sas/drm request in network log-->
+       <!-- <url>
             <description name="DRM Testing(Live,VOD and Remote assets):OSMF Elemental Delta HDS VOD" />
             <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf" />
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
@@ -58,7 +57,10 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[]]></playerParameter>
-        </url>
+        </url>-->
+    </test>
+
+    <test name="PlaybackWithoutDRMTests">
         <!--  Getting playback stream error for IE for more info https://jira.corp.ooyala.com/browse/PBW-6084-->
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta eHLS" />
@@ -73,6 +75,7 @@
             <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
         </url>
     </test>
+
     <test name="PlaybackWithDRMLiveTests">
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash Live" />

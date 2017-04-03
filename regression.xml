@@ -124,7 +124,7 @@
             <parameter name="jsFile" value="alice/alice.js"/>
             <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
             <class name="com.ooyala.playback.drm.PlaybackWithDRMLiveTests"/>
-            <class name="com.ooyala.playback.drm.PlaybackDRMWitheHLSTests"/>
+            <class name="com.ooyala.playback.drm.PlaybackWithoutDRMTests"/>
         </classes>
     </test>
 

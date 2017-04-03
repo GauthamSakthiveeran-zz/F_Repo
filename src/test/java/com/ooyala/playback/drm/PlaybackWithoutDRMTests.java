@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 /**
  * Created by suraj on 3/31/17.
  */
-public class PlaybackDRMWitheHLSTests extends PlaybackWebTest {
+public class PlaybackWithoutDRMTests extends PlaybackWebTest {
 
-    private static Logger logger = Logger.getLogger(PlaybackDRMWitheHLSTests.class);
+    private static Logger logger = Logger.getLogger(PlaybackWithoutDRMTests.class);
     private EventValidator eventValidator;
     private PlayValidator play;
     private PauseValidator pause;
@@ -22,7 +22,7 @@ public class PlaybackDRMWitheHLSTests extends PlaybackWebTest {
     private SeekAction seekAction;
     private DRMValidator drm;
 
-    public PlaybackDRMWitheHLSTests() throws OoyalaException{
+    public PlaybackWithoutDRMTests() throws OoyalaException{
         super();
     }
 
