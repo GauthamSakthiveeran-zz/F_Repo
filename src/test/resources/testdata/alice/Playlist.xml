@@ -222,16 +222,4 @@
              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Caption":["description","duration"],"ThumbnailsSpacing":"30"}}]]></playerParameter>
          </url>
     </test>
-    <test name="PlaybackConcurrentStreamDRMTests">
-        <url>
-            <description name="Playlist:Caption-title,desc,duration" />
-            <embed_code name="kza2hqNTE6SjwZYCVNlKtMp2QdU3IRNc" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/kza2hqNTE6SjwZYCVNlKtMp2QdU3IRNc?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213410&account_id=dulari_qa&&&signature=mdGBivStf80t96jM35bAGyFfKTrEFNnomc6dE4rik+E"}]]></playerParameter>
-        </url>
-    </test>
 </testdata>
