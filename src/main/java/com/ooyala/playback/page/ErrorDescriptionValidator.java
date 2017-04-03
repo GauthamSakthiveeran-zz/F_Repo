@@ -59,6 +59,12 @@ public class ErrorDescriptionValidator extends PlayBackPage implements PlaybackV
 			return false;
 		}
 		
+		if (!waitOnElement("ERROR_DESCRIPTION", 20000)) {
+			logger.error("ERROR_DESCRIPTION is not showing");
+			extentTest.log(LogStatus.FAIL, "ERROR_DESCRIPTION is not showing");
+			return false;
+		}
+		
 		String text = getWebElement("ERROR_DESCRIPTION").getText();
 		
 		if(!text.equals(expectedErrorDesc)) {

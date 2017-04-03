@@ -1,11 +1,11 @@
 package com.ooyala.playback.contentProtection;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.ErrorDescriptionValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
@@ -24,7 +24,6 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 	private PlayValidator play;
 	private SeekValidator seek;
 	private SyndicationRuleValidator syndicationRuleValidator;
-	private ErrorDescriptionValidator error;
 
 	public PlaybackDeviceRegistrationTests() throws OoyalaException {
 		super();
@@ -55,21 +54,18 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("played_1", 60000);
 
-			result = result && syndicationRuleValidator.initializeNewDriverAndCheckError(getWebdriver(getNewBrowser()),
-					"drm", "drm server error");
+			if (!getBrowser().contains("safari")) {
+				WebDriver newDriver = getWebdriver(getNewBrowser());
 
-			result = result && syndicationRuleValidator.deleteDevices(url.getPCode());
+				result = result && syndicationRuleValidator.initializeNewDriverAndValidateError(url.getUrl(), newDriver,
+						"drm_server_error", "DRM server error", url.getPCode());
 
-			result = result && syndicationRuleValidator.deleteEntitlement(url.getEmbedCode(), url.getPCode());
+				result = result && syndicationRuleValidator.deleteDevices(url.getPCode());
 
-			result = result && syndicationRuleValidator.createEntitlement(url.getEmbedCode(), url.getPCode(), 0);
+				newDriver.quit();
 
-			driver.get(url.getUrl());
-
-			result = result && eventValidator.isPageLoaded();
-
-			result = result && error.expectedErrorCode("past").expectedErrorDesc("This video is no longer available")
-					.validate("", 60000);
+				driver.quit();
+			}
 
 		} catch (Exception e) {
 			logger.error("Error while checking device registration" + e);

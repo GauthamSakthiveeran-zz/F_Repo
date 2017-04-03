@@ -5,9 +5,10 @@ import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.publishingrules.APIUtils;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -16,8 +17,8 @@ public class SyndicationRuleValidator extends PlayBackPage implements PlaybackVa
 	APIUtils api = new APIUtils();
 
 	public SyndicationRuleValidator(WebDriver webDriver) {
-
 		super(webDriver);
+		addElementToPageElements("play");
 	}
 
 	public static Logger logger = Logger.getLogger(SyndicationRuleValidator.class);
@@ -94,36 +95,62 @@ public class SyndicationRuleValidator extends PlayBackPage implements PlaybackVa
 		return true;
 	}
 
-	public boolean isDeviceRegistered( String pcode) throws IOException {
+	public boolean isDeviceRegistered(String pcode) throws IOException {
 		String userAgent = getUserAgent();
 		HashMap<String, String> devices = api.getDevices(pcode);
-		
-		if(devices ==null) {
+
+		if (devices == null) {
 			extentTest.log(LogStatus.INFO, "No devices registered.");
 			return false;
 		}
-		
+
 		if (devices.containsKey(userAgent)) {
 			extentTest.log(LogStatus.INFO, "Device " + userAgent + " has been registered.");
 			return true;
-		} 
-		
+		}
+
 		extentTest.log(LogStatus.INFO, "Device " + userAgent + " is not registered.");
 		return false;
 	}
 
-	public boolean initializeNewDriverAndCheckError(WebDriver newDriver, String errorCode,
-			String errorDescription) throws Exception {
+	public boolean initializeNewDriverAndValidateError(String url, WebDriver newDriver, String errorCode,
+			String errorDescription, String pcode) throws Exception {
 		if (newDriver != null) {
-			newDriver.get(driver.getCurrentUrl());
-			if (isPageLoaded()) {
-				return new PlayBackFactory(newDriver, extentTest).getErrorDescriptionValidator()
-						.expectedErrorCode(errorCode).expectedErrorDesc(errorDescription).validate("", 60000);
+			newDriver.get(url);
+
+			PlayValidator playValidator = new PlayBackFactory(newDriver, extentTest).getPlayValidator();
+			PlayAction playAction = new PlayBackFactory(newDriver, extentTest).getPlayAction();
+			ErrorDescriptionValidator error = new PlayBackFactory(newDriver, extentTest).getErrorDescriptionValidator();
+
+			if (playValidator.waitForPage()) {
+				if (playAction.startAction()) {
+					newDriver.navigate().refresh();
+					return playValidator.waitForPage() && playAction.startAction() && error.expectedErrorCode(errorCode)
+							.expectedErrorDesc(errorDescription).validate("", 60000);
+				} else {
+					extentTest.log(LogStatus.FAIL, "Page is not loaded");
+				}
+
 			} else {
 				extentTest.log(LogStatus.FAIL, "Page is not loaded");
 			}
+
+			return false;
 		}
 		extentTest.log(LogStatus.FAIL, "new driver initialized is null");
+		return false;
+	}
+
+	public boolean validatePlayback(WebDriver newDriver) throws Exception {
+		PlayValidator playValidator = new PlayBackFactory(newDriver, extentTest).getPlayValidator();
+		SeekValidator seek = new PlayBackFactory(newDriver, extentTest).getSeekValidator();
+		EventValidator event = new PlayBackFactory(newDriver, extentTest).getEventValidator();
+
+		if (playValidator.waitForPage()) {
+			return playValidator.validate("playing_1", 10000) && seek.validate("seeked_1", 60000)
+					&& event.validate("played_1", 60000);
+		}
+		extentTest.log(LogStatus.FAIL, "video not playable");
 		return false;
 	}
 
