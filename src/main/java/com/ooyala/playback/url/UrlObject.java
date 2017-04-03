@@ -42,4 +42,44 @@ public class UrlObject {
 		this.streamType = streamType;
 	}
 
+	private String pcode;
+
+	public String getPCode() {
+		return pcode;
+	}
+
+	public void setPCode(String pcode) {
+		this.pcode = pcode;
+	}
+
+	private String embedCode;
+
+	public String getEmbedCode() {
+		return embedCode;
+	}
+
+	public void setEmbedCode(String embedCode) {
+		this.embedCode = embedCode;
+	}
+
+	private String apiKey;
+
+	public String getApiKey() {
+		return apiKey;
+	}
+
+	public void setApiKey(String apiKey) {
+		this.apiKey = apiKey;
+	}
+
+	private String secret;
+
+	public String getSecret() {
+		return secret;
+	}
+
+	public void setSecret(String secret) {
+		this.secret = secret;
+	}
+
 }
