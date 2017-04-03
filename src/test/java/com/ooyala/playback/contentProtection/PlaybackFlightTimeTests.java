@@ -7,9 +7,9 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.ErrorDescriptionValidator;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.FlightTimeValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.SyndicationRuleValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -21,11 +21,11 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest {
 
 	private static Logger logger = Logger.getLogger(PlaybackGeoRestrictionTests.class);
 
-	private FlightTimeValidator flight;
 	private ErrorDescriptionValidator error;
 	private EventValidator event;
 	private PlayValidator play;
 	private SeekValidator seek;
+	private SyndicationRuleValidator syndicationRuleValidator;
 
 	PlaybackFlightTimeTests() throws OoyalaException {
 		super();
@@ -36,7 +36,8 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest {
 		boolean result = true;
 		try {
 
-			result = result && flight.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), url.getSecret(), true);
+			result = result && syndicationRuleValidator.updatePublishingRule(url.getEmbedCode(), url.getApiKey(),
+					url.getSecret(), true);
 
 			driver.get(url.getUrl());
 
@@ -50,17 +51,16 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest {
 
 			result = result && event.validate("played_1", 60000);
 
-			result = result && flight.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), url.getSecret(), false);
-			
+			result = result && syndicationRuleValidator.updatePublishingRule(url.getEmbedCode(), url.getApiKey(),
+					url.getSecret(), false);
+
 			Thread.sleep(10000);
-			
+
 			extentTest.log(LogStatus.INFO, "Applied the publishing rule for flight time.");
 
 			driver.get(url.getUrl());
 
 			result = result && event.isPageLoaded();
-
-			injectScript();
 
 			result = result && error.expectedErrorCode("past").expectedErrorDesc("This video is no longer available")
 					.validate("", 60000);

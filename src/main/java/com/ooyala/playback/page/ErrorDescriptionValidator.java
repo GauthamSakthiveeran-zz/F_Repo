@@ -49,7 +49,7 @@ public class ErrorDescriptionValidator extends PlayBackPage implements PlaybackV
 		return true;
 	}
 
-	public boolean errorDescription() {
+	private boolean errorDescription() {
 
 		logger.info("Checking error description");
 

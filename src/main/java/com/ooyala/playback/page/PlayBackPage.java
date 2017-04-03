@@ -23,10 +23,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.google.common.base.Predicate;
 import com.ooyala.facile.page.WebPage;
 import com.ooyala.playback.factory.PlayBackFactory;
-import com.ooyala.playback.publishingrules.BacklotAPIUtils;
-import com.ooyala.playback.publishingrules.RightsLockerAPIUtils;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+
+import io.netty.util.internal.SystemPropertyUtil;
 
 public abstract class PlayBackPage extends WebPage {
 
@@ -373,62 +373,8 @@ public abstract class PlayBackPage extends WebPage {
 		return true;
 	}
 	
-	public boolean updatePublishingRule(String embedCode, String api_key, String secret, boolean defaultGroup)
-			throws Exception {
-		BacklotAPIUtils api = new BacklotAPIUtils();
-		HashMap<String, String> rules = api.getPublishingRuleIds(api_key, secret);
-
-		if (rules == null) {
-			extentTest.log(LogStatus.FAIL, "Issue with getting the publishing rules");
-			return false;
-		}
-
-		String publishingRuleId = "";
-
-		if (defaultGroup) {
-			publishingRuleId = rules.get("default");
-		} else {
-			publishingRuleId = rules.get("specific");
-		}
-
-		if (publishingRuleId.isEmpty()) {
-			extentTest.log(LogStatus.FAIL, "Issue with getting the publishing rules");
-			return false;
-		}
-
-		if (api.updatePublishingRule(embedCode, publishingRuleId, api_key, secret)) {
-			return true;
-		} else {
-			extentTest.log(LogStatus.FAIL, "Issue with updating publishing rule");
-			return false;
-		}
-	}
-	
-	public boolean addEntitlement(String embedCode, String pcode) throws Exception {
-		RightsLockerAPIUtils api = new RightsLockerAPIUtils();
-		if (api.isEntitlementAvailable(pcode, embedCode)) {
-			return true;
-		} else {
-			
-			if (!api.addEntitlement(pcode, embedCode)) {
-				extentTest.log(LogStatus.FAIL, "Failed to add entitlement");
-				return false;
-			}
-			return true;
-		}
-	}
-
-	public boolean deleteEntitlement(String embedCode, String pcode) throws Exception {
-		RightsLockerAPIUtils api = new RightsLockerAPIUtils();
-		if (!api.isEntitlementAvailable(pcode, embedCode)) {
-			return true;
-		} else {
-			if (!api.deleteEntitlement(pcode, embedCode)) {
-				extentTest.log(LogStatus.FAIL, "Failed to delete entitlement");
-				return false;
-			}
-			return true;
-		}
+	public String getUserAgent() {
+		return (String) ((JavascriptExecutor) driver).executeScript("return navigator.userAgent;");
 	}
 
 }

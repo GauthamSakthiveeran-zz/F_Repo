@@ -10,6 +10,7 @@ import com.ooyala.playback.page.ErrorDescriptionValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.SyndicationRuleValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -23,6 +24,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 	private PlayValidator play;
 	private SeekValidator seek;
 	private ErrorDescriptionValidator error;
+	private SyndicationRuleValidator syndicationRuleValidator;
 
 	public PlaybackOptEntitlementTests() throws OoyalaException {
 		super();
@@ -35,7 +37,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 			
 			driver.get(url.getUrl());
 
-			result = result && eventValidator.deleteEntitlement(url.getEmbedCode(), url.getPCode());
+			result = result && syndicationRuleValidator.deleteEntitlement(url.getEmbedCode(), url.getPCode());
 			
 			Thread.sleep(5000);
 
@@ -46,7 +48,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 			result = result && error.expectedErrorCode("sas").expectedErrorDesc("Invalid Authorization Response")
 					.validate("", 1000);
 
-			result = result && eventValidator.addEntitlement(url.getEmbedCode(), url.getPCode());
+			result = result && syndicationRuleValidator.createEntitlement(url.getEmbedCode(), url.getPCode(), 2);
 			
 			Thread.sleep(5000);
 

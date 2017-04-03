@@ -1,16 +1,18 @@
 package com.ooyala.playback.contentProtection;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SaasPortValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.url.UrlObject;
-import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.ErrorDescriptionValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.SyndicationRuleValidator;
+import com.ooyala.playback.url.UrlObject;
+import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by snehal on 14/02/17.
@@ -18,10 +20,11 @@ import org.testng.annotations.Test;
 public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 
 	private static Logger logger = Logger.getLogger(PlaybackDeviceRegistrationTests.class);
-	private SaasPortValidator sasport;
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private SeekValidator seek;
+	private SyndicationRuleValidator syndicationRuleValidator;
+	private ErrorDescriptionValidator error;
 
 	public PlaybackDeviceRegistrationTests() throws OoyalaException {
 		super();
@@ -31,17 +34,12 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 	public void testDeviceRegistration(String testName, UrlObject url) {
 		boolean result = true;
 		try {
-			driver.get(url.getUrl());
 
-			result = result && sasport.getProperties();
+			result = result && syndicationRuleValidator.deleteDevices(url.getPCode());
 
-			result = result && sasport.searchEntitlement();
+			result = result && syndicationRuleValidator.deleteEntitlement(url.getEmbedCode(), url.getPCode());
 
-			result = result && sasport.deleteEntitlement();
-
-			result = result && sasport.createEntitlement("");
-
-			result = result && sasport.deleteDevices();
+			result = result && syndicationRuleValidator.createEntitlement(url.getEmbedCode(), url.getPCode(), 1);
 
 			driver.get(url.getUrl());
 
@@ -51,20 +49,49 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
+			result = result && syndicationRuleValidator.isDeviceRegistered(url.getPCode());
+
 			result = result && seek.validate("seeked_1", 60000);
 
 			result = result && eventValidator.validate("played_1", 60000);
 
-			result = result && sasport.searchEntitlement();
+			result = result && syndicationRuleValidator.initializeNewDriverAndCheckError(getWebdriver(getNewBrowser()),
+					"drm", "drm server error");
 
-			result = result && sasport.checkAccountDeviceRegistration();
+			result = result && syndicationRuleValidator.deleteDevices(url.getPCode());
+
+			result = result && syndicationRuleValidator.deleteEntitlement(url.getEmbedCode(), url.getPCode());
+
+			result = result && syndicationRuleValidator.createEntitlement(url.getEmbedCode(), url.getPCode(), 0);
+
+			driver.get(url.getUrl());
+
+			result = result && eventValidator.isPageLoaded();
+
+			result = result && error.expectedErrorCode("past").expectedErrorDesc("This video is no longer available")
+					.validate("", 60000);
 
 		} catch (Exception e) {
 			logger.error("Error while checking device registration" + e);
-			extentTest.log(LogStatus.FAIL, e.getMessage());
+			extentTest.log(LogStatus.FAIL, e);
 			result = false;
 		}
 		Assert.assertTrue(result, "Device Registration Test failed");
 
+	}
+
+	private String getNewBrowser() { // TODO for safari
+		switch (browser) {
+		case "chrome":
+			return "firefox";
+		case "firefox":
+			if (getPlatform().toLowerCase().contains("windows"))
+				return "internet explorer";
+			else
+				return "chrome";
+		case "internet explorer":
+			return "chrome";
+		}
+		return "chrome";
 	}
 }
