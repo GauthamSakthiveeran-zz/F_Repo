@@ -26,6 +26,8 @@ import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
+import io.netty.util.internal.SystemPropertyUtil;
+
 public abstract class PlayBackPage extends WebPage {
 
 	private static Logger logger = Logger.getLogger(PlayBackPage.class);
@@ -369,6 +371,10 @@ public abstract class PlayBackPage extends WebPage {
 			return false;
 		}
 		return true;
+	}
+	
+	public String getUserAgent() {
+		return (String) ((JavascriptExecutor) driver).executeScript("return navigator.userAgent;");
 	}
 
 }

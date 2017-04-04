@@ -35,23 +35,33 @@ public class ErrorDescriptionValidator extends PlayBackPage implements PlaybackV
 		if (!errorDescription()) {
 			return false;
 		}
+		if(driver.executeScript("return pp.getErrorCode()")==null){
+			extentTest.log(LogStatus.FAIL, "Failed to get error code.");
+			return false;
+		}
 		String errorCode = driver.executeScript("return pp.getErrorCode()").toString();
 		logger.info("Error code :" + errorCode);
 		if (!errorCode.equalsIgnoreCase(expectedErrorCode)) {
-			logger.error("Syndication is not working");
-			extentTest.log(LogStatus.FAIL, "Syndication is not working");
+			logger.error("Failed to get error code.");
+			extentTest.log(LogStatus.FAIL, "Failed to get error code.");
 			return false;
 		}
 		return true;
 	}
 
-	public boolean errorDescription() {
+	private boolean errorDescription() {
 
 		logger.info("Checking error description");
 
 		if (!waitOnElement("ERROR_SCREEN", 20000)) {
 			logger.error("Error screen is not showing");
 			extentTest.log(LogStatus.FAIL, "Error screen is not showing");
+			return false;
+		}
+		
+		if (!waitOnElement("ERROR_DESCRIPTION", 20000)) {
+			logger.error("ERROR_DESCRIPTION is not showing");
+			extentTest.log(LogStatus.FAIL, "ERROR_DESCRIPTION is not showing");
 			return false;
 		}
 		
