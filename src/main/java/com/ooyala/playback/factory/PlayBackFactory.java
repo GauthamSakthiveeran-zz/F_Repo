@@ -8,6 +8,7 @@ import com.ooyala.playback.page.AdClickThroughValidator;
 import com.ooyala.playback.page.AdFrequencyValidator;
 import com.ooyala.playback.page.AdSkipButtonValidator;
 import com.ooyala.playback.page.AspectRatioValidator;
+import com.ooyala.playback.page.BitmovinTechnologyValidator;
 import com.ooyala.playback.page.Bitratevalidator;
 import com.ooyala.playback.page.CCValidator;
 import com.ooyala.playback.page.ConcurrentStreamValidator;
@@ -108,6 +109,7 @@ public class PlayBackFactory {
 	private GeoValidator geoValidator;
 	private StreamTypeValidator streamTypeValidator;
 	private ErrorDescriptionValidator errorDescriptionValidator;
+	private BitmovinTechnologyValidator bitmovinTechnologyValidator;
 	private SyndicationRuleValidator syndicationRuleValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
@@ -129,6 +131,14 @@ public class PlayBackFactory {
             concurrentStreamValidator.setExtentTest(extentTest);
         }
         return concurrentStreamValidator;
+    }
+    
+    public BitmovinTechnologyValidator getBitmovinTechnologyValidator() {
+        if (bitmovinTechnologyValidator == null){
+        	bitmovinTechnologyValidator = new BitmovinTechnologyValidator(driver);
+        	bitmovinTechnologyValidator.setExtentTest(extentTest);
+        }
+        return bitmovinTechnologyValidator;
     }
     
     public ErrorDescriptionValidator getErrorDescriptionValidator() {
