@@ -91,7 +91,7 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
-            <description name="Alice Core:SSAI Demo page" />
+            <description name="Core:SSAI Demo page" />
             <embed_code name="t4ODRzNTE6C3BGu13bE6y_fxxzEM9Fod" />
             <pcode name="hkN2YyOnWYuzHmiwc6gaXi9wPfwy" />
             <plugins name="BITMOVIN,MAIN" />

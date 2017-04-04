@@ -161,10 +161,21 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
 
+        <url>
+            <description name="Core:Device restriction Bitmovin" />
+            <embed_code name="A1bzhnMzE6f9bcHW6aT_KznQm5xyiTOi" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/A1bzhnMzE6f9bcHW6aT_KznQm5xyiTOi?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2889048378&account_id=dulari_qa&&&signature=6RhOTCO8W/jCQk+x6uR5Jg8OGQg56mRsn0mL3eEx7FE"}]]></playerParameter>
+        </url>
+
     </test>
     <test name="PlaybackDiscoveryCustomizationTests">
         <url>
-            <description name="Core:Discovery from specific label" />
+            <description name="Core:Discovery from specific label Main" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -177,7 +188,7 @@
 
     <test name="DiscoveryUpNextTests">
         <url>
-            <description name="Core:Discovery upnext" />
+            <description name="Core:Discovery upnext Main" />
             <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -190,7 +201,7 @@
 
     <test name="PlaybackAspectRatioTests">
         <url>
-            <description name="Core:4 as 3 Aspect Ratio bitmovin" />
+            <description name="Core:4 as 3 Aspect Ratio main" />
             <embed_code name="FwaXZjcjrkydIftLal2cq9ymQMuvjvD8" />
             <pcode name="c0cTkxOqALQviQIGAHWY5hP0q9gU" />
             <plugins name="MAIN" />
@@ -216,14 +227,34 @@
 
     <test name="PlaybackClosedCaptionTests">
         <url>
-            <description name="Core:Closed Caption" />
+            <description name="Core:Closed Caption Main" />
             <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
-            <adPlugins name="VAST" />
+            <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"showLinearAdSkipButton":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Closed Caption Bitmovin" />
+            <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Closed Caption OSMF" />
+            <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS" />
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
         </url>
     </test>
 
@@ -268,7 +299,7 @@
 
     <test name="PlaybackLocalizationTests">
         <url>
-            <description name="Core:Localization" />
+            <description name="Core:Localization Main" />
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -277,11 +308,31 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}]]></playerParameter>
         </url>
+       <!-- <url>
+            <description name="Core:Localization Bitmovin" />
+            <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Localization OSMF" />
+            <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>-->
     </test>
 
     <test name="PlayerMetadataStatesTests">
         <url>
-            <description name="Core:Player States and Metadata" />
+            <description name="Core:Player States and Metadata Main" />
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -289,6 +340,26 @@
             <additionalPlugins name="" />
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Player States and Metadata Bitmovin" />
+            <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Player States and Metadata OSMF" />
+            <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[]]></playerParameter>
         </url>
     </test>
 
@@ -302,6 +373,16 @@
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Vertical Video Bitmovin" />
+            <embed_code name="9od3M3MDE6-WRg_DRbpCzRyjtK-NTLMp" />
+            <pcode name="p5bGExOjp6PZ-dEUw_GRJqh2Qdaq" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="26e2e3c1049c4e70ae08a242638b5c40" />
+            <playerParameter><![CDATA[]]></playerParameter>
         </url>
     </test>
 
@@ -359,10 +440,32 @@
 
     <test name="PlaybackThumbnailTests">
         <url>
-            <description name="Core:Thumbnail Based Seeking" />
+            <description name="Core:Thumbnail Based Seeking Main" />
             <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
-            <plugins name="BITMOVIN,AKAMAI,MAIN" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Core:Thumbnail Based Seeking OSMF" />
+            <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Core:Thumbnail Based Seeking Bitmovin" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
