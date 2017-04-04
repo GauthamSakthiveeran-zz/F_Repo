@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.BitmovinTechnologyValidator;
 import com.ooyala.playback.page.DRMValidator;
 import com.ooyala.playback.page.ErrorDescriptionValidator;
 import com.ooyala.playback.page.EventValidator;
@@ -29,6 +30,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 	private SyndicationRuleValidator syndicationRuleValidator;
 	private DRMValidator drm;
 	private StreamTypeValidator streams;
+	private BitmovinTechnologyValidator tech;
 
 	public PlaybackOptEntitlementTests() throws OoyalaException {
 		super();
@@ -61,10 +63,21 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 			result = result && drm.opt().validate("drm_tag", 5000);
 
 			injectScript();
-
+			
+			tech.getConsoleLogs();
+			
 			result = result && play.validate("playing_1", 60000);
 			
-			result = result && streams.setStreamType("mpd").validate("videoPlayingurl", 1000);
+			if(eventValidator.isVideoPluginPresent("bit_wrapper")) {
+				result = result && streams.setStreamType("mpd").validate("videoPlayingurl", 1000);
+				result = result && tech.setStream("dash").validate("bitmovin_technology", 6000);
+			}
+			
+			if(eventValidator.isVideoPluginPresent("osmf")) { 
+				result = result && streams.setStreamType("f4m").validate("videoPlayingurl", 1000);
+			}
+			
+			
 			
 			result = result && seek.validate("seeked_1", 60000);
 
