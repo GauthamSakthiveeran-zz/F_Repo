@@ -1,4 +1,4 @@
-package com.ooyala.playback.drm;
+package com.ooyala.playback.contentProtection;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,10 +7,10 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
-public class PlaybackConcurrentStreamDRMTests extends PlaybackWebTest {
+public class PlaybackConcurrentStreamTests extends PlaybackWebTest {
 
 
-	public PlaybackConcurrentStreamDRMTests() throws OoyalaException {
+	public PlaybackConcurrentStreamTests() throws OoyalaException {
 		super();
 	}
 
