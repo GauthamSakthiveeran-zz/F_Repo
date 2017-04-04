@@ -21,14 +21,9 @@ public class DRMValidator extends PlayBackPage implements PlaybackValidator {
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
-		
-		if(!waitOnElement(By.id(element), timeout)){
-			return false;
-		}
-		
-		String text = driver.findElement(By.id("drm_tag")).getText();
-		
-		
+
+		String text = driver.executeScript("return OO.DEBUG.consoleOutput[0].toString().split(/2\":(.+)/)[1]").toString();
+
 		JSONObject json = new JSONObject(text);
 		
 		if (getBrowser().equalsIgnoreCase("chrome") || getBrowser().equalsIgnoreCase("firefox")) {

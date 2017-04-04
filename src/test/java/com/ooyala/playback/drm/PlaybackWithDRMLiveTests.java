@@ -1,23 +1,18 @@
 package com.ooyala.playback.drm;
 
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
+import com.ooyala.qe.common.exception.OoyalaException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriverException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.DRMValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.url.UrlObject;
-import com.ooyala.qe.common.exception.OoyalaException;
+public class PlaybackWithDRMLiveTests extends PlaybackWebTest {
 
-public class PlaybackDRMTests extends PlaybackWebTest {
-
-	private static Logger logger = Logger.getLogger(PlaybackDRMTests.class);
+	private static Logger logger = Logger.getLogger(PlaybackWithDRMLiveTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private PauseValidator pause;
@@ -25,12 +20,12 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private DRMValidator drm;
 
-	public PlaybackDRMTests() throws OoyalaException {
+	public PlaybackWithDRMLiveTests() throws OoyalaException {
 		super();
 	}
 
 	@Test(groups = "drm", dataProvider = "testUrls")
-	public void testPlaybackDRM(String testName, UrlObject url)
+	public void testPlaybackWithDRMLive(String testName, UrlObject url)
 			throws OoyalaException {
 		boolean result = true;
 
@@ -40,9 +35,24 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 		try {
 			driver.get(url.getUrl());
 
-            result = result && drm.isPageLoaded();
-
-            injectScript();
+			// need to add logic for verifying description
+			
+			boolean flag = true;
+			
+			while(flag){
+				logger.info("waiting on message bus");
+				try{
+					injectScript();
+					flag = false;
+				}catch(WebDriverException ex){
+					if(ex.getMessage().contains("unknown error: Cannot read property 'mb' of undefined")){
+						flag = true;
+					} else{
+						flag = false;
+					}
+				}
+					
+			}
 			
 			result = result && drm.validate("drm_tag", 5000);
 			
@@ -51,6 +61,8 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 			result = result && play.validate("playing_1", 60000);
 			
 			result = result && eventValidator.loadingSpinner();
+
+			Thread.sleep(2000);
 
 			result = result && pause.validate("paused_1", 60000);
 

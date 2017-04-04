@@ -82,15 +82,27 @@ public class UrlObject {
 		this.secret = secret;
 	}
 
-    public String errorCode;
+	public String errorCode;
 
-    public String getErrorCode() {return errorCode;}
+	public String getErrorCode() {return errorCode;}
 
-    public void setErrorCode(String errorCode) {this.errorCode = errorCode;}
+	public void setErrorCode(String errorCode) {this.errorCode = errorCode;}
 
-    private String errorDescription;
+	private String errorDescription;
 
-    public String getErrorDescription() {return errorDescription;}
+	public String getErrorDescription() {return errorDescription;}
 
-    public void setErrorDescription(String errorDescription) {this.errorDescription = errorDescription;}
+	public void setErrorDescription(String errorDescription) {this.errorDescription = errorDescription;}
+
+    private String channelId;
+
+    public void setChannelId(String channelId) {this.channelId = channelId;}
+
+    public String getChannelId() {return channelId;}
+
+    public String provider;
+
+    public String getProvider() {return provider;}
+
+    public void setProvider(String provider) {this.provider = provider;}
 }

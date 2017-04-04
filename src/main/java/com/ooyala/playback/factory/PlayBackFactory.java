@@ -24,6 +24,7 @@ import com.ooyala.playback.page.FullScreenValidator;
 import com.ooyala.playback.page.GeoValidator;
 import com.ooyala.playback.page.InitalTimeValidator;
 import com.ooyala.playback.page.IsAdPlayingValidator;
+import com.ooyala.playback.page.LiveValidator;
 import com.ooyala.playback.page.MultiplePlayerValidator;
 import com.ooyala.playback.page.OoyalaAPIValidator;
 import com.ooyala.playback.page.OverlayValidator;
