@@ -94,7 +94,7 @@ public class TestPage {
 						+ "&additional_plugins="
 						+ URLEncoder.encode(additionalPlugins, "UTF8")
 						+ "&options="
-						+ URLEncoder.encode(playerParameter, "UTF8");
+						+ URLEncoder.encode(playerParameter, "UTF8").replace("+","%20");
 
 		} catch (Exception e) {
 			e.printStackTrace();

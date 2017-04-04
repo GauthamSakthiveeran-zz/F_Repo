@@ -6,10 +6,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.DRMValidator;
 import com.ooyala.playback.page.ErrorDescriptionValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.StreamTypeValidator;
 import com.ooyala.playback.page.SyndicationRuleValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -25,6 +27,8 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 	private SeekValidator seek;
 	private ErrorDescriptionValidator error;
 	private SyndicationRuleValidator syndicationRuleValidator;
+	private DRMValidator drm;
+	private StreamTypeValidator streams;
 
 	public PlaybackOptEntitlementTests() throws OoyalaException {
 		super();
@@ -35,8 +39,6 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 		boolean result = true;
 		try {
 			
-			driver.get(url.getUrl());
-
 			result = result && syndicationRuleValidator.deleteEntitlement(url.getEmbedCode(), url.getPCode());
 			
 			Thread.sleep(5000);
@@ -53,20 +55,25 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 			Thread.sleep(5000);
 
 			driver.get(url.getUrl());
-
+			
 			result = result && play.waitForPage();
+			
+			result = result && drm.opt().validate("drm_tag", 5000);
 
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
+			
+			result = result && streams.setStreamType("mpd").validate("videoPlayingurl", 1000);
 			
 			result = result && seek.validate("seeked_1", 60000);
 
 			result = result && eventValidator.validate("played_1", 60000);
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error("Error while checking entitlement" + e);
-			extentTest.log(LogStatus.FAIL, e.getMessage());
+			extentTest.log(LogStatus.FAIL, e);
 			result = false;
 		}
 		Assert.assertTrue(result, "OPT Entitlement tests failed");
