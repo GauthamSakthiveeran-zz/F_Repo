@@ -82,4 +82,15 @@ public class UrlObject {
 		this.secret = secret;
 	}
 
+    public String errorCode;
+
+    public String getErrorCode() {return errorCode;}
+
+    public void setErrorCode(String errorCode) {this.errorCode = errorCode;}
+
+    private String errorDescription;
+
+    public String getErrorDescription() {return errorDescription;}
+
+    public void setErrorDescription(String errorDescription) {this.errorDescription = errorDescription;}
 }

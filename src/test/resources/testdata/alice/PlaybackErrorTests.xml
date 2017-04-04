@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <test name="PlaybackErrorTests">
+        <!-- No decription present for this asset -->
+        <!--<url>
+            <description name="Error Handling:content_tree" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>content_tree</code>
+                <description>""</description>
+            </error>
+        </url>-->
+        <url>
+            <description name="Error Handling:metadata" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>metadata</code>
+                <description>Invalid Metadata</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:metadata" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>network</code>
+                <description>Cannot Contact Server</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:concurrent_streams" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>concurrent_streams</code>
+                <description>You have exceeded the maximum number of concurrent streams</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:device" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>device</code>
+                <description>This video is not authorized for playback on this device</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:domain" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>domain</code>
+                <description>This video is not authorized for your domain</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:device_id_too_long" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>device_id_too_long</code>
+                <description>Device ID is too long</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:device_invalid_auth_token" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>device_invalid_auth_token</code>
+                <description>Invalid Ooyala Player token</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:device_limit_reached" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>device_limit_reached</code>
+                <description>Device limit has been reached</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:drm_general_failure" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>drm_general_failure</code>
+                <description>General error acquiring license</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:invalid_entitlements" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>invalid_entitlements</code>
+                <description>User Entitlement Terminated - Stream No Longer Active for the User</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:drm_server_error" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>drm_server_error</code>
+                <description>DRM server error</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:future" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>future</code>
+                <description>This video will be available soon</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:sas" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>sas</code>
+                <description>Invalid Authorization Response</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:geo" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>geo</code>
+                <description>This video is not authorized in your location</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:invalid_heartbeat" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>invalid_heartbeat</code>
+                <description>Invalid heartbeat response</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:past" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>past</code>
+                <description>This video is no longer available</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:proxy" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>proxy</code>
+                <description>An anonymous proxy was detected. Please disable the proxy and retry.</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:channel_content" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>channel_content</code>
+                <description>This channel is not playable at this time</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:empty_channel" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>empty_channel</code>
+                <description>This channel is empty</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:empty_channel_set" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>empty_channel_set</code>
+                <description>This channel set is empty</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:invalid_external_id" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>invalid_external_id</code>
+                <description>Invalid External ID</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:playback" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>playback</code>
+                <description>Could not play the content</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:livestream" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>livestream</code>
+                <description>Live stream is off air</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:network_error" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>network_error</code>
+                <description>Network connection temporarily lost</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:stream" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>stream</code>
+                <description>This video isn't encoded for your device</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:unplayable_content" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>unplayable_content</code>
+                <description>This video is not playable on this player</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:unable_to_create_video_element" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>unable_to_create_video_element</code>
+                <description>Something happened while we were trying to play your video! Click replay or simply reload your page.</description>
+            </error>
+        </url>
+
+        <url>
+            <description name="Error Handling:unsupported_encoding" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="AKAMAI,BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <error>
+                <code>unsupported_encoding</code>
+                <description>This video isn't encoded for your device</description>
+            </error>
+        </url>
+    </test>
+</testdata>

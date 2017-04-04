@@ -75,6 +75,10 @@ public class ErrorDescriptionValidator extends PlayBackPage implements PlaybackV
 		logger.info("Error description is present");
 		return true;
 	}
+
+    public void setErrorCode(String errorCode){
+        driver.executeScript("pp.mb.publish(OO.EVENTS.ERROR,{code:\""+errorCode+"\"})");
+    }
 	
 
 }
