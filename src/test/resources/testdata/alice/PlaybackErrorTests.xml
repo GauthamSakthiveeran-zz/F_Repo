@@ -2,7 +2,7 @@
 <testdata>
     <test name="PlaybackErrorTests">
         <!-- No decription present for this asset -->
-        <!--<url>
+        <url>
             <description name="Error Handling:content_tree" />
             <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
@@ -13,9 +13,9 @@
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <error>
                 <code>content_tree</code>
-                <description>""</description>
+                <description></description>
             </error>
-        </url>-->
+        </url>
         <url>
             <description name="Error Handling:metadata" />
             <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />

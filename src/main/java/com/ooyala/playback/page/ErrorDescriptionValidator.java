@@ -14,8 +14,8 @@ public class ErrorDescriptionValidator extends PlayBackPage implements PlaybackV
 		addElementToPageElements("play");
 	}
 	
-	private String expectedErrorCode;
-	private String expectedErrorDesc;
+	private String expectedErrorCode = "";
+	private String expectedErrorDesc = "";
 	
 	public ErrorDescriptionValidator expectedErrorCode(String expectedErrorCode){
 		this.expectedErrorCode = expectedErrorCode;
@@ -60,6 +60,8 @@ public class ErrorDescriptionValidator extends PlayBackPage implements PlaybackV
 		}
 		
 		if (!waitOnElement("ERROR_DESCRIPTION", 20000)) {
+			if(expectedErrorDesc.isEmpty())
+				return true;
 			logger.error("ERROR_DESCRIPTION is not showing");
 			extentTest.log(LogStatus.FAIL, "ERROR_DESCRIPTION is not showing");
 			return false;
