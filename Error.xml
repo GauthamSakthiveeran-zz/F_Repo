@@ -1,0 +1,22 @@
+<suite name="Playback Web Regression Suite" verbose="1">
+
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+
+    <test name="Error Regression" parallel="classes" thread-count="1">
+        <groups>
+            <define name="error">
+                <include name="error"/>
+            </define>
+            <run>
+                <include name="error"/>
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/PlaybackErrorTests.xml"/>
+            <parameter name="jsFile" value="alice/alice.js"/>
+            <class name ="com.ooyala.playback.errorHandling.PlaybackErrorTests"/>
+        </classes>
+    </test>
+</suite>
