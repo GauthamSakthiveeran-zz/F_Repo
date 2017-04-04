@@ -10,9 +10,8 @@ package com.ooyala.playback.url;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -22,11 +21,14 @@ import javax.xml.bind.annotation.XmlValue;
  * 
  * <pre>
  * &lt;complexType>
- *   &lt;simpleContent>
- *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
- *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/extension>
- *   &lt;/simpleContent>
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="code" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
  * 
@@ -34,61 +36,62 @@ import javax.xml.bind.annotation.XmlValue;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "value"
+    "code",
+    "description"
 })
-public class AdditionalPlugins {
+public class Error {
 
-    @XmlValue
-    protected String value;
-    @XmlAttribute(name = "name")
-    protected String name;
+    @XmlElement(required = true)
+    protected String code;
+    @XmlElement(required = true)
+    protected String description;
 
     /**
-     * Gets the value of the value property.
+     * Gets the value of the code property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getValue() {
-        return value;
+    public String getCode() {
+        return code;
     }
 
     /**
-     * Sets the value of the value property.
+     * Sets the value of the code property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setValue(String value) {
-        this.value = value;
+    public void setCode(String value) {
+        this.code = value;
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the description property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the description property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setDescription(String value) {
+        this.description = value;
     }
 
 }

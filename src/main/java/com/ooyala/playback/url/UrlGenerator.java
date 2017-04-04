@@ -197,6 +197,14 @@ public class UrlGenerator {
                        urlObject.setAdFrequency(adFrequency);
                     }
 
+                    if (url.getError() != null && url.getError().getCode() != null){
+                        urlObject.setErrorCode(url.getError().getCode());
+                    }
+
+                    if (url.getError() != null && url.getError().getDescription() != null){
+                        urlObject.setErrorDescription(url.getError().getDescription());
+                    }
+
                     String desc = url.getDescription().getName();
                     
 					if (url.getStreamType() != null && !url.getStreamType().getName().isEmpty()) {
