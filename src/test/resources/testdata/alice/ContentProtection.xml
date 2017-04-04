@@ -51,7 +51,7 @@
             <browserSupportedVersion name="firefox,48"/>
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213193&account_id=dulari_qa&&&signature=3ZIfOPsKS0AIvSSgUlNYUQq5blWfIT40vLlYl8nJqp8","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
-       <!--  <url>
+        <url>
             <description name="Alice Core:OPT + Entitlement" />
             <embed_code name="x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -109,7 +109,7 @@
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <sslEnabled name="https"/>
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/thaDgyOrzKRQV_Izdp2WmiX9kCWL/t1MXVnMzE6RtM-VN_Y99PQ67OQbLKcUf?api_key=thaDgyOrzKRQV_Izdp2WmiX9kCWL.tFkPz&expires=2890416123&account_id=dulari_qa&&&signature=oZ765UjeFGTpq4Qph3PivXhamWWehEChjl7sUjtALC0"}]]></playerParameter>
-        </url> -->
+        </url>
     </test>
     <test name="PlaybackGeoRestrictionTests">
         <url>

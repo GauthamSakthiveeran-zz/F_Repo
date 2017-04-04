@@ -6,10 +6,10 @@
         <classes>
             <parameter name="testData" value="alice/ContentProtection.xml" />
             <parameter name="jsFile" value="alice/alice.js" />
-<!--             <class name="com.ooyala.playback.contentProtection.PlaybackGeoRestrictionTests"/> -->
+            <class name="com.ooyala.playback.contentProtection.PlaybackGeoRestrictionTests"/>
             <class name="com.ooyala.playback.contentProtection.PlaybackOptEntitlementTests" />
-<!--             <class name="com.ooyala.playback.contentProtection.PlaybackDeviceRegistrationTests"/> -->
-<!--             <class name="com.ooyala.playback.contentProtection.PlaybackFlightTimeTests"/> -->
+            <class name="com.ooyala.playback.contentProtection.PlaybackDeviceRegistrationTests"/>
+            <class name="com.ooyala.playback.contentProtection.PlaybackFlightTimeTests"/>
         </classes>
     </test>
 
