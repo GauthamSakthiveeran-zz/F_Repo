@@ -112,6 +112,7 @@ public class PlayBackFactory {
 	private ErrorDescriptionValidator errorDescriptionValidator;
 	private BitmovinTechnologyValidator bitmovinTechnologyValidator;
 	private SyndicationRuleValidator syndicationRuleValidator;
+	private LiveValidator liveValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -530,6 +531,14 @@ public class PlayBackFactory {
 			playlistValidator.setExtentTest(extentTest);
 		}
 		return playlistValidator;
+	}
+
+	public LiveValidator getLiveValidator() {
+		if (liveValidator == null){
+			liveValidator = new LiveValidator(driver);
+			liveValidator.setExtentTest(extentTest);
+		}
+		return liveValidator;
 	}
 
 	public void destroyInstance() {
