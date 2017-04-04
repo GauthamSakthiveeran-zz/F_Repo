@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlType(name = "", propOrder = {
     "value"
 })
-public class AdditionalPlugins {
+public class ApiKey {
 
     @XmlValue
     protected String value;

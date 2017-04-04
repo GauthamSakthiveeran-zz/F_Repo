@@ -388,7 +388,7 @@ public abstract class PlaybackWebTest extends FacileTest {
             }
         }
     }
-
+    
     public void injectScript() throws Exception {
         if (jsUrl != null && jsUrl.length > 0) {
             for (String url : jsUrl) {
@@ -417,6 +417,7 @@ public abstract class PlaybackWebTest extends FacileTest {
                 + "var scriptURL = arguments[0];\n"
                 + "injectScript(scriptURL);", scriptURL);
         Thread.sleep(1000); // to avoid js failures
+        
         if (scriptURL.contains("common"))
             object = js.executeScript("subscribeToCommonEvents();");
         else
@@ -515,9 +516,19 @@ public abstract class PlaybackWebTest extends FacileTest {
         }
     }
 
-    protected WebDriver getWebdriver(String browser){
-        pageFactory = new PlayBackFactory(getDriver(browser).get(),extentTest);
-        return pageFactory.getDriver();
-    }
+	protected WebDriver getWebdriver(String browser) throws OoyalaException {
+		RemoteWebDriver driver = getDriver(browser).get();
+		if (driver != null)
+			logger.info("Driver initialized successfully");
+		else {
+			logger.error("Driver is not initialized successfully");
+			throw new OoyalaException("Driver is not initialized successfully");
+		}
+
+		if (!getPlatform().equalsIgnoreCase("android")) {
+			maximizeMe(driver);
+		}
+		return driver;
+	}
 
 }

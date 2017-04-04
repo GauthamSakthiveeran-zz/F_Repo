@@ -176,6 +176,18 @@ public class UrlGenerator {
                     
                     UrlObject urlObject = new UrlObject();
                     urlObject.setUrl(urlGenerated);
+                    urlObject.setEmbedCode(embedCode);
+                    urlObject.setPCode(pCode);
+                    
+					if (url.getSecret() != null && url.getSecret().getName() != null
+							&& !url.getSecret().getName().isEmpty()) {
+						urlObject.setSecret(url.getSecret().getName());
+					}
+
+					if (url.getApiKey() != null && url.getApiKey().getName() != null
+							&& !url.getApiKey().getName().isEmpty()) {
+						urlObject.setApiKey(url.getApiKey().getName());
+					}
 
                     String adFirstPlay = url.getAdPlugins().getAdFirstPlay();
                     String adFrequency = url.getAdPlugins().getAdFrequency();

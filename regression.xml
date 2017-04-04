@@ -114,6 +114,18 @@
             <class name="com.ooyala.playback.contentProtection.PlaybackFlightTimeTests"/>
         </classes>
     </test>
+    
+    
+    <test name="HTML5 Playback first Regression" parallel="false" thread-count="1">
+        
+        <classes>
+            <parameter name="testData" value="alice/HTML5FirstPlaybackTests.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.core.HTML5FirstPlaybackTests"/>
+        </classes>
+    </test>
+    
+    
 
 </suite>
 
