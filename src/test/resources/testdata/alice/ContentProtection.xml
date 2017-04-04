@@ -122,6 +122,8 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[]]></playerParameter>
+            <secret name="1ysC3V-g8m9V3QoGJwRa_fXcfi_G2ZV778m17pux"></secret>
+			<apiKey name="BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4"></apiKey>
         </url>
 
         <url>
@@ -134,13 +136,15 @@
             <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
+            <secret name="ZCMQt2CCVqlHWce6dG5w2WA6fkAM_JaWgoI_yzQp"></secret>
+			<apiKey name="x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH"></apiKey>
         </url>
     </test>
 
     <test name="PlaybackFlightTimeTests">
         <url>
             <description name="Alice Core:Flight Time" />
-            <embed_code name="RpeWttMDE6atfCpq0hP5t95qpd9NbxLv" />
+            <embed_code name="R5ZmlqYTE6Ia0Z0J1YyQ8tRHhoPmBFOF" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
             <adPlugins name="" />
@@ -148,6 +152,8 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <browsersSupported name="safari,firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/pyaDkyOqdnY0iQC2sTO4JeaXggl9/RpeWttMDE6atfCpq0hP5t95qpd9NbxLv?api_key=pyaDkyOqdnY0iQC2sTO4JeaXggl9.Hvg5M&expires=2880483517&account_id=dulari_qa&&&signature=e/vzXgf0lbmuR1V8pLbBNTvqVxIWcx8/yTZz44dj0pU"}]]></playerParameter>
+        	<secret name="h_DaSZWs-FQTfcxug3lt7hPGj05FYUwM1HvoDPAF"></secret>
+			<apiKey name="pyaDkyOqdnY0iQC2sTO4JeaXggl9.Hvg5M"></apiKey>
         </url>
     </test>
 </testdata>

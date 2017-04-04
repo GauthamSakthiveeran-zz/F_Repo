@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlType(name = "", propOrder = {
     "value"
 })
-public class BrowsersSupported {
+public class ApiKey {
 
     @XmlValue
     protected String value;

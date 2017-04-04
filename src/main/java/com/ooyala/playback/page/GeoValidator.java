@@ -19,7 +19,7 @@ public class GeoValidator extends PlayBackPage implements PlaybackValidator {
 		PageFactory.initElements(driver, this);
 	}
 
-	public boolean validate(String element, int timeout) throws Exception { // TODO
+	public boolean validate(String element, int timeout) throws Exception { 
 		if (!loadingSpinner()) {
 			return false;
 		}
