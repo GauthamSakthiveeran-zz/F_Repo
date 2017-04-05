@@ -61,7 +61,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <streamType name="m3u8" />
+            <streamType name="hls" />
             <browsersSupported name="chrome,firefox,safari,MicrosoftEdge" />
             <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
         </url>
