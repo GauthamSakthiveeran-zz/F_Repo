@@ -121,6 +121,10 @@ function subscribeToCommonEvents() {
                 videoElementDisposedEventOrder++;
             }
 			
+			if (event.match(/videoWillPlay/) && arguments[1] == "main") {
+                OO.$("#ooplayer").append("<p id=videoPlayingurl"+">Video URL "+arguments[2]+"</p>");
+            }
+			
 		};
 	}());
 }

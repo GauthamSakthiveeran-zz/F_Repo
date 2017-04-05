@@ -43,7 +43,7 @@ public class PlaybackOverrideEncodingPriorityMidrollAdTests extends PlaybackWebT
 
             injectScript();
 
-            result = result && encode.setTestUrl(url.getUrl()).validate("validate_default_encoding", 60000);
+            result = result && encode.validate("validate_default_encoding", 60000);
 
             result = result && playAction.startAction();
             
@@ -62,7 +62,7 @@ public class PlaybackOverrideEncodingPriorityMidrollAdTests extends PlaybackWebT
                 param = "{\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"],\"showInAdControlBar\":true}";
             }
 
-            encode.setTestUrl(encode.getNewUrl(param, browser));
+            encode.getNewUrl(param, browser);
 
             injectScript();
 
