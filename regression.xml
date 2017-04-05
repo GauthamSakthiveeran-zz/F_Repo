@@ -58,6 +58,22 @@
         </classes>
     </test>
 
+    <test name="Streams Regression" parallel="classes" thread-count="1">
+        <groups>
+            <define name="stream">
+                <include name="streams" />
+            </define>
+            <run>
+                <include name="stream" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/streams.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.streams.BasicPlaybackTests" />
+        </classes>
+    </test>
+
     <test name="Playlist Regression" parallel="classes" thread-count="1">
         <groups>
             <define name="playlist">
@@ -136,7 +152,7 @@
             <parameter name="jsFile" value="alice/alice.js"/>
             <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
             <class name="com.ooyala.playback.drm.PlaybackWithDRMLiveTests"/>
-            <class name="com.ooyala.playback.drm.PlaybackWithoutDRMTests"/>
+            <class name="com.ooyala.playback.drm.PlaybackWithoutDRMValidationsTests"/>
         </classes>
     </test>
 
