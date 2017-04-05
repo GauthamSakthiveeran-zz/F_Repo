@@ -29,14 +29,9 @@ public class DRMValidator extends PlayBackPage implements PlaybackValidator {
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
-		
-		/*if(!waitOnElement(By.id(element), timeout)){
-			extentTest.log(LogStatus.FAIL, "wait on " +element + " failed");
-			return false;
-		}*/
-		
 		String text = driver.executeScript("return OO.DEBUG.consoleOutput[0].toString().split(/2\":(.+)/)[1]").toString();
 		logger.info(text);
+
 		JSONObject json = new JSONObject(text);
 		
 		String certificate_url = "";

@@ -1,14 +1,11 @@
 package com.ooyala.playback.streams;
 
+import com.ooyala.playback.page.*;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.ControlBarValidator;
-import com.ooyala.playback.page.FullScreenValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.LiveAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
@@ -28,6 +25,8 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 	private LiveAction liveAction;
 	private PauseAction pauseAction;
 	private PlayAction playAction;
+    private LiveValidator live;
+    private ErrorDescriptionValidator error;
 
 	public PlaybackLiveTests() throws OoyalaException {
 		super();
@@ -35,10 +34,17 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 
 	@Test(groups = "streams", dataProvider = "testUrls")
 	public void testLive(String testName, UrlObject url) throws OoyalaException {
-
+		boolean isChannelIdPresent = false;
 		boolean result = true;
 
 		try {
+
+            isChannelIdPresent = live.isChannelIdPresent(url);
+
+            if (isChannelIdPresent) {
+                liveChannel.startChannel(url.getChannelId(),url.getProvider());
+            }
+
 			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
@@ -62,6 +68,15 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
+            if (isChannelIdPresent) {
+
+                liveChannel.stopChannels();
+
+                driver.get(url.getUrl());
+
+                result = result && error.expectedErrorCode("sas")
+                        .expectedErrorDesc("Invalid Authorization Response").validate("",30000);
+            }
 		} catch (Exception e) {
             logger.error(e.getMessage());
 			result = false;

@@ -114,8 +114,6 @@ public abstract class PlaybackWebTest extends FacileTest {
                     }
                 }
             }
-            if(testData!=null && testData.length>0)
-                liveChannel.startChannel(testData[0].toString());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -340,9 +338,6 @@ public abstract class PlaybackWebTest extends FacileTest {
             logger.info("Driver is already null");
         }
         logger.info("Assigning the neopagefactory instance to null");
-        // Stopping the live channels if exists after this class
-        liveChannel.stopChannels();
-        logger.info("Stopping the live channels if exists after this class");
     }
 
     public void waitForSecond(int sec) {

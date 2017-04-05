@@ -210,6 +210,15 @@ public class UrlGenerator {
 					if (url.getStreamType() != null && !url.getStreamType().getName().isEmpty()) {
 						urlObject.setStreamType(url.getStreamType().getName());
 					}
+
+                    if (url.getLive() != null
+                            && url.getLive().getChannelId() != null){
+                        urlObject.setChannelId(url.getLive().getChannelId());
+                    }
+
+                    if (url.getLive() != null && url.getLive().getProvider()!=null){
+                        urlObject.setProvider(url.getLive().getProvider());
+                    }
 					
                     urlsGenerated.put(desc, urlObject);
 
