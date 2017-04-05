@@ -29,7 +29,7 @@ public class StreamTypeValidator extends PlayBackPage implements PlaybackValidat
 		
 		if(streamType.contains("mp4")) return true; // TODO for mp4
 		
-		String streamContains = driver.findElement(By.id(element)).getText();
+		String streamContains = driver.findElement(By.id("videoPlayingurl")).getText();
 		
 		if (!streamContains.contains(streamType)) {
 			logger.info("Stream is not matching as per expected result " + streamContains);

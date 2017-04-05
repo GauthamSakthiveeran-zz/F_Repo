@@ -13,6 +13,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
+
 /**
  *
  * @author dmanohar
@@ -28,16 +30,51 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 		addElementToPageElements("page");
 	}
 
-	String testUrl = new String();
-
-	public EncodingValidator setTestUrl(String testUrl) {
-		this.testUrl = testUrl;
-		return this;
-	}
-
 	public boolean validate(String element, int timeout) throws Exception {
 
-		return verifyEncodingPriority(testUrl);
+		String result = decode(driver.getCurrentUrl(), "UTF-8");
+		if (result == null)
+			return false;
+
+		String[] options = result.split("options=");
+		if (options == null || options.length < 2)
+			return false;
+
+		JSONParser parser = new JSONParser();
+		JSONObject obj = (JSONObject) parser.parse(options[1]);
+		Object expectedEncodings = "";
+		if (obj.containsKey("encodingPriority")) {
+			Object actualEncodings = obj.get("encodingPriority");
+			logger.info("\nActual encodingPriority :\n" + actualEncodings);
+			expectedEncodings = ((JavascriptExecutor) driver).executeScript("return pp.parameters.encodingPriority");
+			logger.info("\nExpected encodingPriority :\n" + expectedEncodings);
+			assertEquals(actualEncodings, expectedEncodings, "Encoding Priorities are as expected");
+			if (!actualEncodings.equals(expectedEncodings))
+				return false;
+
+			StreamTypeValidator streams = new PlayBackFactory(driver, extentTest).getStreamTypeValidator();
+
+			org.json.simple.JSONArray json = (org.json.simple.JSONArray) obj.get("encodingPriority");
+
+			for (int i = 0; i < json.size(); i++) {
+				String encoding = json.get(i).toString();
+				if (encoding.contains("hls")) {
+					return streams.setStreamType("m3u8").validate("videoPlayingurl", 6000);
+				}
+				if (encoding.contains("dash")) {
+					return streams.setStreamType("mpd").validate("videoPlayingurl", 6000);
+				}
+				if (encoding.contains("mp4")) {
+					return streams.setStreamType("mp4").validate("videoPlayingurl", 6000);
+				}
+				if (encoding.contains("hds")) {
+					return streams.setStreamType("f4m").validate("videoPlayingurl", 6000);
+				}
+			}
+
+		}
+
+		return false;
 
 	}
 
@@ -57,33 +94,6 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 		waitForPage();
 
 		return driver.getCurrentUrl();
-	}
-
-	public boolean verifyEncodingPriority(String url) throws Exception {
-		String result = decode(driver.getCurrentUrl(), "UTF-8");
-		if (result == null)
-			return false;
-
-		String[] options = result.split("options=");
-		if (options == null || options.length < 2)
-			return false;
-
-		JSONParser parser = new JSONParser();
-		JSONObject obj = (JSONObject) parser.parse(options[1]);
-		Object expectedEncodings = "";
-		if (obj.containsKey("encodingPriority")) {
-			Object actualEncodings = obj.get("encodingPriority");
-			logger.info("\nActual encodingPriority :\n" + actualEncodings);
-			expectedEncodings = ((JavascriptExecutor) driver)
-					.executeScript("return pp.parameters.encodingPriority");
-			logger.info("\nExpected encodingPriority :\n" + expectedEncodings);
-			assertEquals(actualEncodings, expectedEncodings,
-					"Encoding Priorities are as expected");
-			if (actualEncodings.equals(expectedEncodings))
-				return true;
-		}
-
-		return false;
 	}
 
 }

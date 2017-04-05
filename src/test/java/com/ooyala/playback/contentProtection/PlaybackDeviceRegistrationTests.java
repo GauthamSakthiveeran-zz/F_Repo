@@ -6,10 +6,15 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.BitmovinTechnologyValidator;
+import com.ooyala.playback.page.DRMValidator;
 import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.StreamTypeValidator;
 import com.ooyala.playback.page.SyndicationRuleValidator;
+import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -24,6 +29,11 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 	private PlayValidator play;
 	private SeekValidator seek;
 	private SyndicationRuleValidator syndicationRuleValidator;
+	private DRMValidator drm;
+	private StreamTypeValidator streams;
+	private BitmovinTechnologyValidator tech;
+	private PauseValidator pause;
+	private PlayAction playAction;
 
 	public PlaybackDeviceRegistrationTests() throws OoyalaException {
 		super();
@@ -50,7 +60,22 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 
 			result = result && syndicationRuleValidator.isDeviceRegistered(url.getPCode());
 
+			result = result && drm.opt().validate("drm_tag", 5000);
+
+			result = result && pause.validate("paused_1", 60000);
+
+			result = result && playAction.startAction();
+
 			result = result && seek.validate("seeked_1", 60000);
+
+			if (eventValidator.isVideoPluginPresent("bit_wrapper")) {
+				result = result && streams.setStreamType("mpd").validate("videoPlayingurl", 1000);
+				result = result && tech.setStream("dash").validate("bitmovin_technology", 6000);
+			}
+
+			if (eventValidator.isVideoPluginPresent("osmf")) {
+				result = result && streams.setStreamType("f4m").validate("videoPlayingurl", 1000);
+			}
 
 			result = result && eventValidator.validate("played_1", 60000);
 

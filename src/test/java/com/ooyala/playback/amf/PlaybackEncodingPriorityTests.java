@@ -33,9 +33,9 @@ public class PlaybackEncodingPriorityTests extends PlaybackWebTest {
 
 			injectScript();
 
-			result = result && encode.setTestUrl(url.getUrl()).validate("", 6000);
-
 			result = result && playValidator.validate("playing_1", 60000);
+			
+			result = result && encode.validate("", 6000);
 			
 			result = result && seek.validate("seeked_1", 19000);
 			

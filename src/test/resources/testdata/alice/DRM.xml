@@ -60,10 +60,10 @@
         </url>-->
     </test>
 
-    <test name="PlaybackWithoutDRMTests">
+    <test name="PlaybackWithoutDRMValidationsTests">
         <!--  Getting playback stream error for IE for more info https://jira.corp.ooyala.com/browse/PBW-6084-->
         <url>
-            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta eHLS" />
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta eHLS VOD" />
             <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
@@ -88,7 +88,7 @@
             <playerParameter><![CDATA[{"encodingPriority":["dash_drm"]}]]></playerParameter>
         </url>
         <url>
-            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash Live" />
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash Live Channel live" />
             <embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL" />
             <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
             <plugins name="BITMOVIN" />
@@ -141,7 +141,7 @@
             <playerParameter><![CDATA[{"encodingPriority":["dash"],"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/ZkMTViNDE6ShDM36D5mW6L3gWP2Pu2GW?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2892594508&account_id=dulari_qa&&&signature=y3yxsLboa7T21w1wLxDPwh+zAiJCqDuvpIMBqxJBVKs","auth_ssl_server":"https://player-staging.ooyala.com/sas","auth_server":"http://player-staging.ooyala.com/sas"}]]></playerParameter>
         </url>-->
         <url>
-            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta eHLS "/>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta eHLS Live"/>
             <embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL"/>
             <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
             <plugins name="BITMOVIN"/>
