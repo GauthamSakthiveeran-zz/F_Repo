@@ -37,7 +37,8 @@ public class StreamTypeValidator extends PlayBackPage implements PlaybackValidat
 			extentTest.log(LogStatus.PASS, "Stream is not matching as per expected result " + streamContains);
 			return false;
 		}
-		
+        logger.info("verified Stream type :"+streamType);
+        extentTest.log(LogStatus.PASS,"verified Stream type :"+streamType);
 		return true;
 	}
 
