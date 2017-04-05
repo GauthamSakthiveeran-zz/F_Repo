@@ -1,16 +1,12 @@
 package com.ooyala.playback.drm;
 
+import com.ooyala.playback.page.*;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriverException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.DRMValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -24,6 +20,8 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 	private SeekValidator seek;
 	private SeekAction seekAction;
 	private DRMValidator drm;
+	private BitmovinTechnologyValidator tech;
+    private StreamTypeValidator stream;
 
 	public PlaybackDRMTests() throws OoyalaException {
 		super();
@@ -43,16 +41,21 @@ public class PlaybackDRMTests extends PlaybackWebTest {
             result = result && drm.isPageLoaded();
 
             injectScript();
+
+            tech.getConsoleLogs();
 			
 			result = result && drm.validate("drm_tag", 5000);
 			
 			result = result && play.waitForPage();
 			
 			result = result && play.validate("playing_1", 60000);
-			
-			result = result && eventValidator.loadingSpinner();
 
-			result = result && pause.validate("paused_1", 60000);
+            result = result && pause.validate("paused_1", 60000);
+
+			if (url.getStreamType()!=null && !url.getStreamType().isEmpty()){
+				result = result && tech.setStream(url.getStreamType()).validate("bitmovin_technology", 15000);
+                result = result && stream.verifyStreamType(url.getStreamType());
+			}
 
 			result = result && play.validate("playing_2", 60000);
 
