@@ -52,7 +52,7 @@
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213193&account_id=dulari_qa&&&signature=3ZIfOPsKS0AIvSSgUlNYUQq5blWfIT40vLlYl8nJqp8"}]]></playerParameter>
         </url>
         <url>
-            <description name="Alice Core:OPT + Entitlement" />
+            <description name="Core:OPT + Entitlement Bitmovin" />
             <embed_code name="x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
@@ -140,10 +140,32 @@
 			<apiKey name="x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH"></apiKey>
         </url>
     </test>
+    <test name="PlaybackConcurrentStreamTests">
+        <url>
+            <description name="Content Protection:Bitmovin Elemental Dash Encrypted + OPT +Concurrent Streams" />
+            <embed_code name="kza2hqNTE6SjwZYCVNlKtMp2QdU3IRNc" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/kza2hqNTE6SjwZYCVNlKtMp2QdU3IRNc?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213410&account_id=dulari_qa&&&signature=mdGBivStf80t96jM35bAGyFfKTrEFNnomc6dE4rik+E"}]]></playerParameter>
+        </url>
 
+        <url>
+            <description name="Content Protection:Bitmovin Elemental Fairplay HLS + Concurrent streams" />
+            <embed_code name="9oOGhqNTE6Be1ZsAU_zQp3_3YkFADnuz" />
+            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/9oOGhqNTE6Be1ZsAU_zQp3_3YkFADnuz?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2898212399&account_id=dulari_qa&&&signature=9cgoUQpcfUtxwqzKrEvBEMZT4MWwFrrlrlnrQVWOh1s"}]]></playerParameter>
+        </url>
+    </test>
     <test name="PlaybackFlightTimeTests">
         <url>
-            <description name="Alice Core:Flight Time" />
+            <description name="Core:Flight Time Main" />
             <embed_code name="R5ZmlqYTE6Ia0Z0J1YyQ8tRHhoPmBFOF" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />

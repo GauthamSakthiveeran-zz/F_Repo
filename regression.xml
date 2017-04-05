@@ -5,14 +5,10 @@
     <test name="Playback Web Regression Group" parallel="classes" thread-count="5">
         <groups>
             <define name="regression">
-                <include name="streams" />
                 <include name="playerFeatures" />
                 <include name="syndicationRules" />
                 <include name="playerLifecycle" />
-                <include name="drm" />
-                <include name="FCC" />
                 <include name="api" />
-                <include name="playlist" />
             </define>
             <run>
                 <include name="regression" />
@@ -40,7 +36,6 @@
             <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryCustomizationTests" />
             <class name="com.ooyala.playback.playerlifecycle.PlaybackPlayerDestroyTests" />
-            <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackNewProcessingProfileTests" />
             <class name="com.ooyala.playback.streams.BasicPlaybackTests"/>
@@ -126,6 +121,24 @@
     </test>
     
     
+
+    <test name="DRMRegression" parallel="classes" thread-count="1">
+        <groups>
+            <define name="drm">
+                <include name="drm"/>
+            </define>
+            <run>
+                <include name="drm"/>
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/DRM.xml"/>
+            <parameter name="jsFile" value="alice/alice.js"/>
+            <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
+            <class name="com.ooyala.playback.drm.PlaybackWithDRMLiveTests"/>
+            <class name="com.ooyala.playback.drm.PlaybackWithoutDRMTests"/>
+        </classes>
+    </test>
 
 </suite>
 
