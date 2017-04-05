@@ -11,6 +11,7 @@ import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -25,8 +26,8 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 	private LiveAction liveAction;
 	private PauseAction pauseAction;
 	private PlayAction playAction;
-    private LiveValidator live;
-    private ErrorDescriptionValidator error;
+	private LiveValidator live;
+	private ErrorDescriptionValidator error;
 
 	public PlaybackLiveTests() throws OoyalaException {
 		super();
@@ -39,11 +40,11 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 
 		try {
 
-            isChannelIdPresent = live.isChannelIdPresent(url);
+			isChannelIdPresent = live.isChannelIdPresent(url);
 
-            if (isChannelIdPresent) {
-                liveChannel.startChannel(url.getChannelId(),url.getProvider());
-            }
+			if (isChannelIdPresent) {
+				liveChannel.startChannel(url.getChannelId(), url.getProvider());
+			}
 
 			driver.get(url.getUrl());
 
@@ -59,8 +60,7 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 			result = result && controlBarValidator.validate("", 60000);
 			// to-do add ooyala logo to the test page
 
-			result = result
-					&& fullScreenValidator.validate("FULLSCREEN_BTN_1", 60000);
+			result = result && fullScreenValidator.validate("FULLSCREEN_BTN_1", 60000);
 
 			result = result && pauseAction.startAction();
 
@@ -68,17 +68,18 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-            if (isChannelIdPresent) {
+			if (isChannelIdPresent) {
 
-                liveChannel.stopChannels();
+				liveChannel.stopChannels();
 
-                driver.get(url.getUrl());
+				driver.get(url.getUrl());
 
-                result = result && error.expectedErrorCode("sas")
-                        .expectedErrorDesc("Invalid Authorization Response").validate("",30000);
-            }
+				result = result && error.expectedErrorCode("unplayable_content")
+						.expectedErrorDesc("Unplyable Content Error").validate("", 30000);
+			}
 		} catch (Exception e) {
-            logger.error(e.getMessage());
+			logger.error(e.getMessage());
+			extentTest.log(LogStatus.FAIL, e);
 			result = false;
 		}
 		Assert.assertTrue(result, "Playback Live tests failed");

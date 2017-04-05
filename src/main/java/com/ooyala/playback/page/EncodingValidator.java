@@ -32,29 +32,6 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 
 	public boolean validate(String element, int timeout) throws Exception {
 
-		return verifyEncodingPriority();
-
-	}
-
-	public String getNewUrl(String parameter, String browser) {
-		clickOnIndependentElement("OPTIONAL");
-		waitOnElement("PLAYER_PARAMETER_INPUT", 20000);
-
-		if (browser.equalsIgnoreCase("internet explorer")) {
-			WebElement playerParameter = getWebElement("PLAYER_PARAMETER_INPUT");
-			playerParameter.sendKeys(CONTROL + "a");
-			playerParameter.sendKeys(DELETE);
-		} else
-			clearTextFromElement("PLAYER_PARAMETER_INPUT");
-
-		writeTextIntoTextBox("PLAYER_PARAMETER_INPUT", parameter);
-		clickOnIndependentElement("TEST_VIDEO");
-		waitForPage();
-
-		return driver.getCurrentUrl();
-	}
-
-	public boolean verifyEncodingPriority() throws Exception {
 		String result = decode(driver.getCurrentUrl(), "UTF-8");
 		if (result == null)
 			return false;
@@ -98,6 +75,25 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 		}
 
 		return false;
+
+	}
+
+	public String getNewUrl(String parameter, String browser) {
+		clickOnIndependentElement("OPTIONAL");
+		waitOnElement("PLAYER_PARAMETER_INPUT", 20000);
+
+		if (browser.equalsIgnoreCase("internet explorer")) {
+			WebElement playerParameter = getWebElement("PLAYER_PARAMETER_INPUT");
+			playerParameter.sendKeys(CONTROL + "a");
+			playerParameter.sendKeys(DELETE);
+		} else
+			clearTextFromElement("PLAYER_PARAMETER_INPUT");
+
+		writeTextIntoTextBox("PLAYER_PARAMETER_INPUT", parameter);
+		clickOnIndependentElement("TEST_VIDEO");
+		waitForPage();
+
+		return driver.getCurrentUrl();
 	}
 
 }

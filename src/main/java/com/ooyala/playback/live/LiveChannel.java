@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
-import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.ooyala.qe.common.http.Response;
 
