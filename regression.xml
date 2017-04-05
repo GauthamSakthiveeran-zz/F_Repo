@@ -68,7 +68,7 @@
             </run>
         </groups>
         <classes>
-            <parameter name="testData" value="alice/streams.xml" />
+            <parameter name="testData" value="alice/Streams.xml" />
             <parameter name="jsFile" value="alice/alice.js" />
             <class name="com.ooyala.playback.streams.BasicPlaybackTests" />
         </classes>

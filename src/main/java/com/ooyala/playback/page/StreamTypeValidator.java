@@ -30,12 +30,15 @@ public class StreamTypeValidator extends PlayBackPage implements PlaybackValidat
 	public boolean validate(String element, int timeout) throws Exception {
 
         if(streamType.contains("mp4")){
+            logger.info("checking mp4 stream type");
             String mp4Url = driver.findElementById(element).getText();
+            logger.info("opening a new tab");
             driver.executeScript("window.open('"+mp4Url+"')");
             ArrayList<String> tabs = new ArrayList<String>(
                     driver.getWindowHandles());
             Thread.sleep(2000);
             driver.switchTo().window(tabs.get(1));
+            logger.info("navigated to new tab");
             Thread.sleep(2000);
             waitOnElement(By.xpath(".//*[@type='video/mp4']"),20000);
             String isMp4 = driver.findElement(By.xpath(".//*[@type='video/mp4']")).getAttribute("type");
@@ -44,6 +47,8 @@ public class StreamTypeValidator extends PlayBackPage implements PlaybackValidat
             driver.switchTo().window(tabs.get(0));
             Thread.sleep(2000);
             if (isMp4.contains("mp4")){
+                logger.info("Stream is matching as per expected result " + streamType);
+                extentTest.log(LogStatus.PASS, "Stream is matching as per expected result " + streamType);
                 return true;
             } else {
                 logger.info("Stream is not matching as per expected result " + streamType);
