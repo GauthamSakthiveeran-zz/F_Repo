@@ -582,13 +582,35 @@
     </test>
     <test name="PlaybackSocialMediaTests">
         <url>
-            <description name="Core:Verify Facebook Share via Social Share Screen|Core:Verify Twitter  Share via Social Share Screen" />
-            <embed_code name="FkdmRmeDrJcchSTpHR1SVkkHO2PN7XsX" />
-            <pcode name="N1aWw6aHnsVDr5vDoQnY2gBMOnEV" />
-            <plugins name="BITMOVIN,MAIN" />
+            <description name="Core:Verify Facebook Share via Social Share Screen Bitmovin|Core:Verify Twitter  Share via Social Share Screen Bitmovin" />
+            <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
-            <pbid name="ZWU3OGUxMDJjMmQ5ZTViNGE1YjdlYTdj" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported name="firefox,chrome,internet explorer" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Verify Facebook Share via Social Share Screen Main|Core:Verify Twitter  Share via Social Share Screen Main" />
+            <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <browsersSupported name="firefox,chrome,internet explorer" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Verify Facebook Share via Social Share Screen OSMF|Core:Verify Twitter  Share via Social Share Screen OSMF" />
+            <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer" />
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
