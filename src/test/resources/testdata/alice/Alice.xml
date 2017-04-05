@@ -198,7 +198,6 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
     </test>
-
     <test name="PlaybackAspectRatioTests">
         <url>
             <description name="Core:4 as 3 Aspect Ratio main" />
@@ -209,6 +208,7 @@
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <streamType name="mp4" />
         </url>
     </test>
 
