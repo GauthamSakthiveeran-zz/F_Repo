@@ -44,12 +44,11 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-			result = result && startScreenValidator.validate("", 60000);
+			result = result && startScreenValidator.validateMetadata(url);
 
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
-			Thread.sleep(2000);
 
 			result = result && pause.validate("paused_1", 60000);
 
