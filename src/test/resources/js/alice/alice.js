@@ -196,7 +196,7 @@ function subscribeToEvents() {
             }
 
             if (event.match(/videoWillPlay/) && arguments[1] == "main") {
-                            OO.$("#ooplayer").append("<p id=videoPlayingurl"+">Video URL "+arguments[2]+"</p>");
+                            OO.$("#ooplayer").append("<p id=videoPlayingurl"+">"+arguments[2]+"</p>");
                         }
 
         };
