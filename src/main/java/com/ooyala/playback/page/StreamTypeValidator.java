@@ -1,5 +1,6 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -64,8 +65,27 @@ public class StreamTypeValidator extends PlayBackPage implements PlaybackValidat
 			extentTest.log(LogStatus.PASS, "Stream is not matching as per expected result " + streamContains);
 			return false;
 		}
-		
+        logger.info("verified Stream type :"+streamType);
+        extentTest.log(LogStatus.PASS,"verified Stream type :"+streamType);
 		return true;
+	}
+
+	public boolean verifyStreamType(String encoding) throws Exception{
+		StreamTypeValidator streams = new PlayBackFactory(driver, extentTest).getStreamTypeValidator();
+		if (encoding.contains("hls")) {
+			return streams.setStreamType("m3u8").validate("videoPlayingurl", 6000);
+		}
+		if (encoding.contains("dash")) {
+			return streams.setStreamType("mpd").validate("videoPlayingurl", 6000);
+		}
+		if (encoding.contains("mp4")) {
+			return streams.setStreamType("mp4").validate("videoPlayingurl", 6000);
+		}
+		if (encoding.contains("hds")) {
+			return streams.setStreamType("f4m").validate("videoPlayingurl", 6000);
+		}
+
+		return false;
 	}
 
 }

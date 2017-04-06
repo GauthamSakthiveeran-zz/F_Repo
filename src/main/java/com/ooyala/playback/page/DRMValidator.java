@@ -41,7 +41,7 @@ public class DRMValidator extends PlayBackPage implements PlaybackValidator {
 				extentTest.log(LogStatus.FAIL, "hls_drm not found.");
 				return false;
 			}
-			JSONObject hls_drm = json.getJSONObject("dash_drm");
+			JSONObject hls_drm = json.getJSONObject("hls_drm");
 			if (!hls_drm.has("drm")){
 				extentTest.log(LogStatus.FAIL, "drm not found.");
 				return false;

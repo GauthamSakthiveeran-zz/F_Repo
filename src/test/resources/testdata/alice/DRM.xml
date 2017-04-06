@@ -9,6 +9,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <streamType name="dash"/>
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
@@ -21,6 +22,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <streamType name="dash"/>
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
         <url>
@@ -32,19 +34,8 @@
             <additionalPlugins name="" />
             <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
             <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
-        </url>
-        <url>
-            <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS" />
-            <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <streamType name="m3u8" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <streamType name="hls"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
 
         <!--Not getting the sas/drm request in network log-->
@@ -70,9 +61,22 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <streamType name="m3u8" />
+            <streamType name="hls" />
             <browsersSupported name="chrome,firefox,safari,MicrosoftEdge" />
             <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS" />
+            <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="hls" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
     </test>
 
