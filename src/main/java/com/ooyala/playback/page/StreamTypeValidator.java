@@ -61,8 +61,8 @@ public class StreamTypeValidator extends PlayBackPage implements PlaybackValidat
 		String streamContains = driver.findElement(By.id("videoPlayingurl")).getText();
 		
 		if (!streamContains.contains(streamType)) {
-			logger.info("Stream is not matching as per expected result " + streamContains);
-			extentTest.log(LogStatus.PASS, "Stream is not matching as per expected result " + streamContains);
+			logger.error("Stream is not matching as per expected result " + streamContains);
+			extentTest.log(LogStatus.FAIL, "Stream is not matching as per expected result " + streamContains);
 			return false;
 		}
         logger.info("verified Stream type :"+streamType);
