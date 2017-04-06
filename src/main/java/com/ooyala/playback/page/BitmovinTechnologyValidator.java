@@ -54,10 +54,12 @@ public class BitmovinTechnologyValidator extends PlayBackPage implements Playbac
 				.trim();
 
 		if (!actualValue.equals(expectedValue)) {
+			logger.error("Expected to find " + expectedValue + " in " + techString);
 			extentTest.log(LogStatus.FAIL, "Expected to find " + expectedValue + " in " + techString);
 			return false;
 		}
 
+		logger.info("Expected to find " + expectedValue + " in " + techString);
 		extentTest.log(LogStatus.PASS, "Expected to find " + expectedValue + " in " + techString);
 		return true;
 	}
