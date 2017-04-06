@@ -121,7 +121,7 @@
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
             <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <playerParameter><![CDATA[{"encodingPriority":["dash"]}]]></playerParameter>
         </url>
         <url>
             <description name="Streams:H.264 4K Dash" />
