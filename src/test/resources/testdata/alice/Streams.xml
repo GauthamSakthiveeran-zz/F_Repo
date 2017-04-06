@@ -48,7 +48,6 @@
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
-
         <url>
             <description name="Streams:Main MP4" />
             <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
