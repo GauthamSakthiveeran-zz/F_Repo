@@ -198,6 +198,10 @@ public class UrlGenerator {
 						urlObject.setProvider(url.getLive().getProvider());
 					}
 
+					if (url.getPlugins()!=null){
+					    urlObject.setVideoPlugins(url.getPlugins().getName());
+                    }
+
 					urlsGenerated.put(desc, urlObject);
 
 				}
