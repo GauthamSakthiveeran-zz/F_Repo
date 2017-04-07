@@ -1,0 +1,32 @@
+<suite name="Playback Web Regression Suite for AMF">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+
+	<test name="AMF P1" parallel="classes" thread-count="5">
+
+		<parameter name="jsFile" value="common.js,amf/amf.js" />
+		<parameter name="xmlFilePkg" value="amf" />
+
+		<classes>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackPostRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackPostrollDiscoveryTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackMidRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollOverlayTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.vast.PlaybackMidrollOverlayUpNextTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackCCenableMidRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackPreMidPostReplayTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackVastPreIMAMidlAdsTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackPreRollAdsClickThroughClosedCaptionTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackPrerollOverlayAdsTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackPreRollPoddedAdsTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.PlaybackSkipAdsTests"></class>
+			<class name="com.ooyala.playback.amf.preroll.freewheel.PlaybackBumperPrerollAdTests"></class>
+		</classes>
+		
+		
+		
+	</test>
+	
+</suite>

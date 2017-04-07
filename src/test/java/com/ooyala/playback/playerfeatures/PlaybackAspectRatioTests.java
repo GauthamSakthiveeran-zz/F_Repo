@@ -27,6 +27,7 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 	private SeekValidator seek;
 	private PlayAction playAction;
 	private AspectRatioValidator aspectRatioValidator;
+	private StreamTypeValidator streamTypeValidator;
 
 	public PlaybackAspectRatioTests() throws OoyalaException {
 		super();
@@ -47,6 +48,12 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 			result = result && play.validate("playing_1", 60000);
 
 			sleep(2000);
+
+            if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
+                result = result && eventValidator.validate("videoPlayingurl", 40000);
+                result = result
+                        && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
+            }
 
     		result = result && pause.validate("paused_1", 60000);
 

@@ -3,7 +3,7 @@
     <test name="BasicPlaybackTests">
         <url>
             <description name="Streams:Bitmovin Elemental Delta HLS VOD" />
-            <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
+            <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
@@ -38,7 +38,7 @@
 
         <url>
             <description name="Streams:Main Elemental Delta HLS VOD" />
-            <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
+            <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN" />
             <adPlugins name="" />
@@ -48,7 +48,6 @@
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
-
         <url>
             <description name="Streams:Main MP4" />
             <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
@@ -122,7 +121,7 @@
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
             <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <playerParameter><![CDATA[{"encodingPriority":["dash"]}]]></playerParameter>
         </url>
         <url>
             <description name="Streams:H.264 4K Dash" />
@@ -187,4 +186,66 @@
             <playerParameter><![CDATA[]]></playerParameter>
             <streamType name="m3u8"></streamType>
         </url>
+        
+        <url>
+            <description name="Streams:Bitmovin Azure HLS VOD" />
+            <embed_code name="RndDhvYTE6dmNoGfQcV4vTWIgiAA7NnS" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <playerParameter><![CDATA[]]></playerParameter>
+            <streamType name="m3u8"></streamType>
+        </url>
+        
+         <url>
+            <description name="Streams:Main Azure HLS VOD" />
+            <embed_code name="RndDhvYTE6dmNoGfQcV4vTWIgiAA7NnS" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <playerParameter><![CDATA[]]></playerParameter>
+            <browsersSupported name="safari" />
+            <streamType name="m3u8"></streamType>
+        </url>
+        
+        <url>
+            <description name="Streams:Bitmovin +Main plugin H.264 4K HLS" />
+            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls","dash"]}]]></playerParameter>
+            <streamType name="m3u8"></streamType>
+        </url>
+        
+        <url>
+            <description name="Streams:Bitmovin +Main plugin H.264 4K Dash" />
+            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
+            <streamType name="m3u8"></streamType>
+        </url>
+        
+        <url>
+            <description name="Streams:Bitmovin +Main plugin H.265 4K Dash Movie" />
+            <embed_code name="JiNWh3NTE6mdX5DQOcJYRoa2owJKPq7a" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
+            <streamType name="mpd"></streamType>
+        </url>
     </test>
+</testdata>

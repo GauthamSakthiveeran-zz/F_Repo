@@ -18,6 +18,7 @@ public class PlaybackWithoutDRMValidationsTests extends PlaybackWebTest {
     private PlayValidator play;
     private PauseValidator pause;
     private SeekValidator seek;
+    private StreamTypeValidator stream;
 
     public PlaybackWithoutDRMValidationsTests() throws OoyalaException{
         super();
@@ -37,9 +38,11 @@ public class PlaybackWithoutDRMValidationsTests extends PlaybackWebTest {
 
             result = result && play.validate("playing_1", 60000);
 
-            result = result && eventValidator.loadingSpinner();
-
             result = result && pause.validate("paused_1", 60000);
+
+            if (url.getStreamType()!=null && !url.getStreamType().isEmpty()){
+                result = result && stream.verifyStreamType(url.getStreamType());
+            }
 
             result = result && play.validate("playing_2", 60000);
 
