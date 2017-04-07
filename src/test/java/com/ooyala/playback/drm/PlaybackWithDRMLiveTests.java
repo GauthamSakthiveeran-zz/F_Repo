@@ -19,6 +19,9 @@ public class PlaybackWithDRMLiveTests extends PlaybackWebTest {
 	private SeekValidator seek;
 	private SeekAction seekAction;
 	private DRMValidator drm;
+    private LiveValidator live;
+    private ErrorDescriptionValidator error;
+    private BitmovinTechnologyValidator tech;
 
 	public PlaybackWithDRMLiveTests() throws OoyalaException {
 		super();
@@ -27,42 +30,30 @@ public class PlaybackWithDRMLiveTests extends PlaybackWebTest {
 	@Test(groups = "drm", dataProvider = "testUrls")
 	public void testPlaybackWithDRMLive(String testName, UrlObject url)
 			throws OoyalaException {
+
+        boolean isChannelIdPresent = false;
 		boolean result = true;
 
-		logger.info("Test Description :\n"
-				+ testName.split("-")[1].toLowerCase());
-
 		try {
+
+            isChannelIdPresent = live.isChannelIdPresent(url);
+            if (isChannelIdPresent) {
+                result = result && liveChannel.startChannel(url.getChannelId(), url.getProvider());
+            }
+
 			driver.get(url.getUrl());
 
-			// need to add logic for verifying description
-			
-			boolean flag = true;
-			
-			while(flag){
-				logger.info("waiting on message bus");
-				try{
-					injectScript();
-					flag = false;
-				}catch(WebDriverException ex){
-					if(ex.getMessage().contains("unknown error: Cannot read property 'mb' of undefined")){
-						flag = true;
-					} else{
-						flag = false;
-					}
-				}
-					
-			}
-			
+			result = result && drm.isPageLoaded();
+
+			injectScript();
+
+            tech.getConsoleLogs();
+
 			result = result && drm.validate("drm_tag", 5000);
 			
 			result = result && play.waitForPage();
 			
 			result = result && play.validate("playing_1", 60000);
-			
-			result = result && eventValidator.loadingSpinner();
-
-			Thread.sleep(2000);
 
 			result = result && pause.validate("paused_1", 60000);
 
@@ -77,6 +68,16 @@ public class PlaybackWithDRMLiveTests extends PlaybackWebTest {
 			}
 
 			result = result && eventValidator.validate("played_1", 60000);
+
+            if (isChannelIdPresent) {
+
+                result = result && liveChannel.stopChannels();
+
+                driver.get(url.getUrl());
+
+                result = result && error.expectedErrorCode("unplayable_content")
+                        .expectedErrorDesc("Unplayable Content Error").validate("", 30000);
+            }
 
 		} catch (Exception e) {
 			e.printStackTrace();
