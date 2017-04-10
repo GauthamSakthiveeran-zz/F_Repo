@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackMidrollAdAndMidrollOverlayAdsTests" >
     	<url>
-	    	<description name="IMA:Midroll at 10 sec and overlay at 15 Main"/>
+	    	<description name="IMA:Main Midroll at 10 sec and overlay at 15"/>
 	        <embed_code name="VsMXV5eDp-uKDbBS2eZPv4G5hf7fbTYB"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Midroll at 10 sec and overlay at 15"/>
+	    	<description name="VAST:Main Vast2.0 Midroll at 10 sec and overlay at 15"/>
 	        <embed_code name="hkOGt4dDr71-6f0_aceyHIlanbjgeSZc"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackIMAPreVastMidAdsTests" >
     	<url>
-	    	<description name="IMA:IMA PreRoll + VAST MidRoll Bitmovin"/>
+	    	<description name="IMA:Bitmovin IMA PreRoll + VAST MidRoll"/>
 	        <embed_code name="J1ODhoMTE6psbYgbXq5pT8-wuHwRb1lr"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -11,28 +11,6 @@
 	        <additionalPlugins name="VAST"/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="BITMOVIN_IMA_VAST_HLS"/>
-	        <embed_code name="J1ODhoMTE6psbYgbXq5pT8-wuHwRb1lr"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name="VAST"/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-
-    	<url>
-	    	<description name="IMA_PreRoll_VAST_MidRoll"/>
-	        <embed_code name="h4ZXBnMDE6mvd9Vtp_Zc9HmiWvS0izIx"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name="VAST"/>
-	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
     	</url>
     	
     </test>
