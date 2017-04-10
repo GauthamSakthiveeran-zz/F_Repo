@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPreRollPoddedAdsTests" >
     	<url>
-	    	<description name="Freewheel:3 Preroll Podded Main"/>
+	    	<description name="Freewheel:Main 3 Preroll Podded"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:3 Preroll Podded Main"/>
+	    	<description name="IMA:Main 3 Preroll Podded"/>
 	        <embed_code name="htYWxjczousVmIKvp56u7Cb9btEnyJK9"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -25,7 +25,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:3 Preroll Podded Main"/>
+	    	<description name="VAST:Main Vast2.0 3 Preroll Podded"/>
 	        <embed_code name="xxbDB4dDovMCDiqvo2DSqON3lIGSM5N5"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -36,7 +36,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:PrerollPoddedad_3.0"/>
+	    	<description name="VAST:Main Vast3.0 3 Preroll Podded"/>
 	        <embed_code name="1nMmM1MTE6yZTv1GDLrMl-Cg0lfZtta6"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -47,7 +47,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VPAID:3 Preroll Podded"/>
+	    	<description name="VPAID:Main Vast VPAID2.0 3 Preroll Podded"/>
 	        <embed_code name="B1ZmgzMTE6qeXMfeqJTw3IoqZXvKGrDw"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -58,7 +58,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VPAID:VPAID 2.0 Preroll Podded Ad"/>
+	    	<description name="VPAID:Main IMA VPAID2.0 Preroll Podded Ad"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

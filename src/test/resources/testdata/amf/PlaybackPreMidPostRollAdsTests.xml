@@ -2,7 +2,7 @@
 <testdata>
 
 	<test name="PlaybackPreMidPostRollAdsTests">
-		<url>
+		<!-- <url>
 			<description name="FreewheelPreMidPostAd_Akamai_HD" />
 			<embed_code name="J3bjBrdTpfYoHzD6XFfCuuyS-u5raRqa" />
 			<pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk" />
@@ -12,7 +12,7 @@
 			<pbid name="fb08f383acf74dfd857b20764073fd16" />
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"freewheel-ads-manager":{"fw_video_asset_id":"NqcGg4bzoOmMiV35ZttQDtBX1oNQBnT-","html5_ad_server":"http://g1.v.fwmrm.net","fw_android_ad_server":"http://g1.v.fwmrm.net/","html5_player_profile":"90750:ooyala_html5","fw_android_player_profile":"90750:ooyala_android","fw_mrm_network_id":"380912"}}]]></playerParameter>
 
-		</url>
+		</url> -->
 
 		<!-- <url>
 			<description name="GoogleIMAPreMidPostAd_Akamai_HD" />
@@ -27,19 +27,7 @@
 		</url> -->
 
 		<url>
-			<description name="BitmovinPreMidPostFW_HLS" />
-			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
-			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-			<plugins name="BITMOVIN,MAIN" />
-			<adPlugins name="FREEWHEEL" />
-			<additionalPlugins name="" />
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-			<playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"platform":"html5","freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
-
-		</url>
-
-		<url>
-			<description name="Freewheel:PreMidPost Bitmovin" />
+			<description name="Freewheel:Bitmovin PreMidPost" />
 			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
@@ -50,20 +38,9 @@
 
 		</url>
 
-		<url>
-			<description name="BitmovinPreMidPost_IMA_HLS" />
-			<embed_code name="kxYzZnMTE6ZCgrz07-3C3pMbCcqYySyZ" />
-			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-			<plugins name="BITMOVIN" />
-			<adPlugins name="IMA" />
-			<additionalPlugins name="" />
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-			<playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-
-		</url>
 
 		<url>
-			<description name="IMA:PreMidPost Bitmovin" />
+			<description name="IMA:Bitmovin PreMidPost" />
 			<embed_code name="kxYzZnMTE6ZCgrz07-3C3pMbCcqYySyZ" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -75,19 +52,7 @@
 		</url>
 
 		<url>
-			<description name="VAST:PreMidPost Bitmovin HLS" />
-			<embed_code name="w0bjdoMTE6pvm5MjCey7t2WJavX08Ob1" />
-			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-			<plugins name="BITMOVIN" />
-			<adPlugins name="VAST" />
-			<additionalPlugins name="" />
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-			<playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-
-		</url>
-
-		<url>
-			<description name="VAST:PreMidPost Bitmovin" />
+			<description name="VAST:Bitmovin Vast2.0 PreMidPost" />
 			<embed_code name="w0bjdoMTE6pvm5MjCey7t2WJavX08Ob1" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -98,20 +63,9 @@
 
 		</url>
 
-		<url>
-			<description name="BitmovinPreMidPost_VPAID2.0_HLS" />
-			<embed_code name="sydnI4MjE6Mupnaunbb8jtY1M49KsDPv" />
-			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-			<plugins name="MAIN,BITMOVIN" />
-			<adPlugins name="VAST" />
-			<additionalPlugins name="" />
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-			<playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-
-		</url>
 
 		<url>
-			<description name="VPAID:Bitmovin PreMidPost" />
+			<description name="VPAID:Bitmovin Vast VPAID2.0 PreMidPost" />
 			<embed_code name="sydnI4MjE6Mupnaunbb8jtY1M49KsDPv" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="MAIN,BITMOVIN" />
@@ -123,7 +77,7 @@
 		</url>
 
 		<url>
-			<description name="IMA:PreMidPost Main" />
+			<description name="IMA:Main PreMidPost" />
 			<embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -135,7 +89,7 @@
 		</url>
 
 		<url>
-			<description name="Freewheel:PreMidPost OSMF" />
+			<description name="Freewheel:OSMF PreMidPost" />
 			<embed_code name="lmdWVmMDE6z-KeydAAXsjREkZOApmA8y" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -148,7 +102,7 @@
 		</url>
 
 		<url>
-			<description name="FlashPreMidPost_IMA" />
+			<description name="IMA:OSMF PreMidPost" />
 			<embed_code name="I2eGVmMDE6S2TG0jsa7NNE3thejf21i3" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -161,7 +115,7 @@
 		</url>
 
 		<url>
-			<description name="VAST:PreMidPost OSMF" />
+			<description name="VAST:OSMF Vast2.0 PreMidPost" />
 			<embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -174,7 +128,7 @@
 		</url>
 
 		<url>
-			<description name="Pulse:PreMidPost Bitmovin" />
+			<description name="Pulse:Bitmovin PreMidPost" />
 			<embed_code name="VlZGY5MzE63yUh1dSJkD8P5r3QLN4krQ" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -186,7 +140,7 @@
 		</url>
 
 		<url>
-			<description name="VPAID:VPAID 2.0 PreMidPost" />
+			<description name="VPAID:Main IMA VPAID2.0 PreMidPost" />
 			<embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -198,7 +152,7 @@
 		</url>
 		
 		<url>
-			<description name="VPAID:PreMidPost" />
+			<description name="VPAID:Main Vast VPAID2.0 PreMidPost" />
 			<embed_code name="BnaG1iMjE6bQ3DQmsPTYyH_QiQ05Ggrj" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -210,7 +164,7 @@
 		</url>
 
 		<url>
-			<description name="IMA:IMA Countdown PreMidPost OSMF" />
+			<description name="IMA:OSMF IMA Countdown PreMidPost" />
 			<embed_code name="I2eGVmMDE6S2TG0jsa7NNE3thejf21i3" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -223,32 +177,18 @@
 		</url>
 		
 		<url>
-			<description name="IMA:PreMidPost OSMF" />
-			<embed_code name="I2eGVmMDE6S2TG0jsa7NNE3thejf21i3" />
-			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-			<plugins name="OSMF,MAIN" />
-			<adPlugins name="IMA" />
-			<additionalPlugins name="" />
-			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-			<browserSupportedVersion name="safari,9" />
-		</url>
-
-		<url>
-			<description name="IMA:IMA Countdown PreMidPost Main|VTC:SetEmbedCode" />
-			<embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
-			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-			<plugins name="MAIN" />
-			<adPlugins name="IMA" />
-			<additionalPlugins name="" />
-			<pbid name="615dc8e909e941c280e12155df838355" />
-			<playerParameter><![CDATA[{"google-ima-ads-manager":{"useGoogleCountdown":true}}]]></playerParameter>
-
-		</url>
+	    	<description name="IMA:Main IMA Countdown PreMidPost|VTC:SetEmbedCode"/>
+	        <embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="BITMOVIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="615dc8e909e941c280e12155df838355"/>
+	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"useGoogleCountdown":true}}]]></playerParameter>
+    	</url>
 		
 		<url>
-			<description name="IMA:IMA Countdown PreMidPost Bitmovin" />
+			<description name="IMA:Bitmovin IMA Countdown PreMidPost" />
 			<embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="BITMOVIN" />
@@ -260,7 +200,7 @@
 		</url>
 
 		<url>
-			<description name="VAST:PreMidPost Main|VTC:SetEmbedCode" />
+			<description name="VAST:Main Vast2.0 PreMidPost|VTC:SetEmbedCode" />
 			<embed_code name="lzMGdpdDq6Dsvi-c32p6u7k46mbT_cxm" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -272,7 +212,7 @@
 		</url>
 
 		<url>
-			<description name="Freewheel:PreMidPost Main|VTC:SetEmbedCode" />
+			<description name="Freewheel:Main PreMidPost|VTC:SetEmbedCode" />
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />

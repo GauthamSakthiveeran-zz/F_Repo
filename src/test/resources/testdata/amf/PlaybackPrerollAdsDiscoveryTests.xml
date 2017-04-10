@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPrerollAdsDiscoveryTests" > 
     	<url>
-	    	<description name="VPAID:Discovery Preroll UP Next"/>
+	    	<description name="VPAID:Main Vast VPAID2.0 Discovery Preroll UP Next"/>
 	        <embed_code name="BtOGxiMjE6V7y0GBfHGzwJHoXDplM9Gf"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -15,7 +15,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:Discovery Preroll Bitmovin"/>
+	    	<description name="IMA:Bitmovin Discovery Preroll"/>
 	        <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -27,7 +27,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Pulse:Discovery Preroll Bitmovin"/>
+	    	<description name="Pulse:Bitmovin Discovery Preroll"/>
 	        <embed_code name="5kbmU5MzE6ivgWkobhscmQwGuD7fyNIa"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -39,7 +39,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:Discovery Preroll UP Next Main"/>
+	    	<description name="IMA:Main Discovery Preroll UP Next"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -50,7 +50,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:Discovery Preroll Bitmovin"/>
+	    	<description name="Freewheel:Bitmovin Discovery Preroll"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -61,7 +61,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Discovery Preroll Bitmovin"/>
+	    	<description name="VAST:Bitmovin Vast2.0 Discovery Preroll"/>
 	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -72,7 +72,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:Discovery Preroll UP Next Main"/>
+	    	<description name="Freewheel:Main Discovery Preroll UP Next"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -83,7 +83,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:Discovery Preroll OSMF"/>
+	    	<description name="Freewheel:OSMF Discovery Preroll"/>
 	        <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -96,7 +96,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Discovery Preroll UP Next Main"/>
+	    	<description name="VAST:Main Vast2.0 Discovery Preroll UP Next"/>
 	        <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -106,19 +106,9 @@
 	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
     	</url>
     	
-    	<url>
-	    	<description name="VAST:Discovery Preroll UP Next HLS Bitmovin"/>
-	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
     	
     	<url>
-	    	<description name="IMA:Discovery Preroll OSMF"/>
+	    	<description name="IMA:OSMF Discovery Preroll"/>
 	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -130,30 +120,9 @@
 	        <browserSupportedVersion name="safari,9"/>
     	</url>
     	
-    	<url>
-	    	<description name="Freewheel:BitmovinDiscoveryPreroll_FW_HLS"/>
-	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN,MAIN"/>
-	        <adPlugins name="FREEWHEEL"/>
-	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true},"initialTime":0,"autoplay":false}]]></playerParameter>
-    	</url>
     	
     	<url>
-	    	<description name="IMA:Discovery Preroll Bitmovin HLS"/>
-	        <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="VAST:Discovery Preroll OSMF"/>
+	    	<description name="VAST:OSMF Vast2.0 Discovery Preroll"/>
 	        <embed_code name="NwaWVmMDE6G5leqg5q9q-D9MsWt6k1ta"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
