@@ -29,7 +29,7 @@
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
-	        <adPlugins name="FREEWHEEL"/>
+	        <adPlugins name="FREEWHEEL" adPlayTime="20"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
 	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fsa2tmcjpvD21CN9WthbTbE4MIpWJoaK","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
