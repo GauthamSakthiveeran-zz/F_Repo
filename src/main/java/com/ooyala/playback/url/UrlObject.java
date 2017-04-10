@@ -3,6 +3,18 @@ package com.ooyala.playback.url;
 public class UrlObject {
 
 	private String url;
+    private String videoPlugins;
+    private String adFirstPlay;
+    private String adFrequency;
+    private String streamType;
+    private String pcode;
+    private String embedCode;
+    private String apiKey;
+    private String secret;
+    private String errorCode;
+    private String errorDescription;
+    private String channelId;
+    private String provider;
 
 	public String getUrl() {
 		return url;
@@ -12,8 +24,6 @@ public class UrlObject {
 		this.url = url;
 	}
 
-	private String adFirstPlay;
-
 	public String getAdFirstPlay() {
 		return adFirstPlay;
 	}
@@ -21,8 +31,6 @@ public class UrlObject {
 	public void setAdFirstPlay(String adFirstPlay) {
 		this.adFirstPlay = adFirstPlay;
 	}
-
-	private String adFrequency;
 
 	public String getAdFrequency() {
 		return adFrequency;
@@ -32,8 +40,6 @@ public class UrlObject {
 		this.adFrequency = adFrequency;
 	}
 
-	private String streamType;
-
 	public String getStreamType() {
 		return streamType;
 	}
@@ -41,8 +47,6 @@ public class UrlObject {
 	public void setStreamType(String streamType) {
 		this.streamType = streamType;
 	}
-
-	private String pcode;
 
 	public String getPCode() {
 		return pcode;
@@ -52,17 +56,11 @@ public class UrlObject {
 		this.pcode = pcode;
 	}
 
-	private String embedCode;
-
 	public String getEmbedCode() {
 		return embedCode;
 	}
 
-	public void setEmbedCode(String embedCode) {
-		this.embedCode = embedCode;
-	}
-
-	private String apiKey;
+	public void setEmbedCode(String embedCode) {this.embedCode = embedCode;}
 
 	public String getApiKey() {
 		return apiKey;
@@ -72,8 +70,6 @@ public class UrlObject {
 		this.apiKey = apiKey;
 	}
 
-	private String secret;
-
 	public String getSecret() {
 		return secret;
 	}
@@ -82,27 +78,23 @@ public class UrlObject {
 		this.secret = secret;
 	}
 
-	public String errorCode;
-
 	public String getErrorCode() {return errorCode;}
 
 	public void setErrorCode(String errorCode) {this.errorCode = errorCode;}
-
-	private String errorDescription;
 
 	public String getErrorDescription() {return errorDescription;}
 
 	public void setErrorDescription(String errorDescription) {this.errorDescription = errorDescription;}
 
-    private String channelId;
-
     public void setChannelId(String channelId) {this.channelId = channelId;}
 
     public String getChannelId() {return channelId;}
 
-    public String provider;
-
     public String getProvider() {return provider;}
 
     public void setProvider(String provider) {this.provider = provider;}
+
+	public String getVideoPlugins() {return videoPlugins;}
+
+	public void setVideoPlugins(String plugins) {this.videoPlugins = plugins;}
 }
