@@ -1,8 +1,6 @@
 package com.ooyala.playback.playerfeatures;
 
 import com.ooyala.playback.page.*;
-import com.ooyala.playback.playlist.TestConsoleLog;
-import com.ooyala.playback.utils.ConsoleLogs;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.logging.LogEntries;
