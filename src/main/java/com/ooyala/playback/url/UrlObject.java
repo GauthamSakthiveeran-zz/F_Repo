@@ -15,6 +15,7 @@ public class UrlObject {
     private String errorDescription;
     private String channelId;
     private String provider;
+	private String adStartTime;
 
 	public String getUrl() {
 		return url;
@@ -97,4 +98,8 @@ public class UrlObject {
 	public String getVideoPlugins() {return videoPlugins;}
 
 	public void setVideoPlugins(String plugins) {this.videoPlugins = plugins;}
+
+	public String getAdStartTime() {return adStartTime;}
+
+	public void setAdStartTime(String adStartTime) {this.adStartTime = adStartTime;}
 }
