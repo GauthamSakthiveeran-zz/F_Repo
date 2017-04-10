@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackHLSLiveStreamTests" >
     	<url>
-	    	<description name="VPAID:HLS Live stream Bitmovin"/>
+	    	<description name="VPAID:Bitmovin VAST VPAID 2.0 HLS Live stream"/>
 	        <embed_code name="x0YWJ0MTE6QM3ql9iskB29rLHn63qqrx"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="MAIN,BITMOVIN"/>
