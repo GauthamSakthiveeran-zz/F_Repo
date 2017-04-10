@@ -308,7 +308,7 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}]]></playerParameter>
         </url>
-       <!-- <url>
+        <url>
             <description name="Core:Localization Bitmovin" />
             <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -316,7 +316,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}]]></playerParameter>
         </url>
         <url>
             <description name="Core:Localization OSMF" />
@@ -326,8 +326,8 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>-->
+            <playerParameter><![CDATA[]]>{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}</playerParameter>
+        </url>
     </test>
 
     <test name="PlayerMetadataStatesTests">
