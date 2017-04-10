@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackMidrollOverlayTests" > 
     	<url>
-	    	<description name="VAST:Midroll Overlay Bitmovin"/>
+	    	<description name="VAST:Bitmovin Vast2.0 Midroll Overlay"/>
 	        <embed_code name="dndzNpMTE65uSupyRMgLwsfrO5SMCWRD"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -15,19 +15,7 @@
     	</url>
     	
     	<url>
-	    	<description name="BitmovinMidroll_overlay_Vast_HLS"/>
-	        <embed_code name="dndzNpMTE65uSupyRMgLwsfrO5SMCWRD"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-	        
-    	</url>
-    	
-    	<url>
-	    	<description name="IMA:Midroll Overlay OSMF"/>
+	    	<description name="IMA:OSMF Midroll Overlay"/>
 	        <embed_code name="szcXRpMDE6nB2yfLRHK3Pzk0Nu6794Nm"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -38,25 +26,13 @@
 	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 	        <browserSupportedVersion name="safari,9"/>
     	</url>
-    	
+
     	<url>
-	    	<description name="VAST:Midroll Overlay"/>
-	        <embed_code name="hkOGt4dDr71-6f0_aceyHIlanbjgeSZc"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"showNonLinearCloseButton":true}]]></playerParameter>
-	        
-    	</url>
-    	
-    	<url>
-	    	<description name="IMA:Midroll Overlay Bitmovin"/>
+	    	<description name="IMA:Bitmovin Midroll Overlay"/>
 	        <embed_code name="9vNTRpMTE6vLNJsH3lx1bCT0SitTgeTJ"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="IMA"/>
+	        <adPlugins name="IMA" />
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -64,7 +40,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Midroll Overlay OSMF"/>
+	    	<description name="VAST:OSMF Vast2.0 Midroll Overlay"/>
 	        <embed_code name="txbGVkMDE6vMUkpoiCMwjoGMROPeGVDv"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -75,19 +51,6 @@
 	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 	        <browserSupportedVersion name="safari,9"/>
     	</url>
-    	
-    	<url>
-	    	<description name="GoogleIMAMidroll-OverlayAd_Akamai_HD"/>
-	        <embed_code name="15bWNqdTpyAUdvXH_fMuj0xZWJAZRnDP"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="AKAMAI"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="5e813457c731460f808f62d93d7e4ff3"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-	        
-    	</url>
-    	
     	
     </test>
 </testdata>

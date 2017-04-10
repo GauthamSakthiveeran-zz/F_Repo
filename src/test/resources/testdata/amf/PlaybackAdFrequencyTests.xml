@@ -3,7 +3,7 @@
 
 	<test name="PlaybackAdFrequencyTests">
 		<url>
-			<description name="VAST:First ad @3 and then ever 2" />
+			<description name="VAST:Main Vast3.0 First ad @3 and then ever 2" />
 			<embed_code name="hxbGYxNzE69BJEtNxVwyZQV1Bw0DGQmG" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -14,7 +14,7 @@
 		</url>
 
 		<url>
-			<description name="VAST:First ad @2 and every 3" />
+			<description name="VAST:Main Vast3.0 First ad @2 and every 3" />
 			<embed_code name="9rbmYxNzE6vVyJ7UrhaKGZMjKR786A05" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -25,7 +25,7 @@
 		</url>
 
 		<url>
-			<description name="VAST:First ad @1 and every 4" />
+			<description name="VAST:Main Vast3.0 First ad @1 and every 4" />
 			<embed_code name="d0b2YxNzE6BMB3QrJ--kvF9mJA1t_kXk" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -36,7 +36,7 @@
 		</url>
 		
 		<url>
-			<description name="IMA:First AD @ 1 video, then every 2" />
+			<description name="IMA:Main First AD @ 1 video, then every 2" />
 			<embed_code name="g1dm15NjE6gocLEw_SwtDKsLqDKga0O5" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -47,7 +47,7 @@
 		</url>
 		
 		<url>
-			<description name="IMA:First AD @ 2, then every play" />
+			<description name="IMA:Main First AD @ 2, then every play" />
 			<embed_code name="0xcm15NjE6wuFIjHRrISorUX0OUC-GCl" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -58,7 +58,7 @@
 		</url>
 		
 		<url>
-			<description name="IMA:First AD @ 3, then play after 4" />
+			<description name="IMA:Main First AD @ 3, then play after 4" />
 			<embed_code name="g2OWx5NjE6xigaB2m4VLmyI3HnRNvYgH" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
