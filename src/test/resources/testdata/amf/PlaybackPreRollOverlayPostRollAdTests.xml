@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackPreRollOverlayPostRollAdTests" >
     	<url>
-	    	<description name="IMA:Preroll Overlay + Postroll Main"/>
+	    	<description name="IMA:Main Preroll Overlay + Postroll"/>
 	        <embed_code name="Rjc3RreTqghZLRq93GQ-Sl1OGVyJoK2d"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

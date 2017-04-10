@@ -2,7 +2,7 @@
 <testdata>
 
 	<test name ="PlaybackPrerollOverlayAdsTests" >
-    	<url>
+    	<!-- <url>
 	    	<description name="Freewheel:FreewheelPreroll OverlayAd_Akamai_HD"/>
 	        <embed_code name="05azBrdTp1mKB6CzYky-MVwHuLDx9FDo"/>
 	        <pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk"/>
@@ -24,21 +24,10 @@
 	        <pbid name="5e813457c731460f808f62d93d7e4ff3"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 	        <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
-    	</url>
+    	</url> -->
     	
     	<url>
-	    	<description name="Freewheel:BitmovinPreroll_Overlay__FW_HLS"/>
-	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN,MAIN"/>
-	        <adPlugins name="FREEWHEEL"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"platform":"html5","freewheel-ads-manager":{"fw_video_asset_id":"NucGg4bzrVrilZrMdlSA9tyg6Vty46DN","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true},"initialTime":0,"autoplay":false}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="Freewheel:Preroll Overlay Bitmovin"/>
+	    	<description name="Freewheel:Bitmovin Preroll Overlay"/>
 	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -50,18 +39,7 @@
     	
     	
     	<url>
-	    	<description name="IMA:BitmovinPrerollOverlay_IMA_HLS"/>
-	        <embed_code name="w2bmFnMTE66yXj73IMWj_zcylLOnXpdR"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="IMA:Overlay Bitmovin"/>
+	    	<description name="IMA:Bitmovin Overlay"/>
 	        <embed_code name="w2bmFnMTE66yXj73IMWj_zcylLOnXpdR"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -72,18 +50,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:BitmovinPrerollOverlay_Vast_HLS"/>
-	        <embed_code name="JtajdoMTE6UWt0G0Gct5dyIabTclDsDy"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="VAST:Preroll Overlay Bitmovin"/>
+	    	<description name="VAST:Bitmovin Vast2.0 Preroll Overlay"/>
 	        <embed_code name="JtajdoMTE6UWt0G0Gct5dyIabTclDsDy"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -94,7 +61,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:Overlay Main"/>
+	    	<description name="Freewheel:Main Overlay"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -105,7 +72,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:Preroll Overlay OSMF"/>
+	    	<description name="Freewheel:OSMF Preroll Overlay"/>
 	        <embed_code name="YzdWVmMDE6llN4HwBPzs9BkH9OG-_f7d"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -118,7 +85,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:Preroll Overlay OSMF"/>
+	    	<description name="IMA:OSMF Preroll Overlay"/>
 	        <embed_code name="l2d2VmMDE6ia_EnlFS2hF6cV1Ezp_Isp"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -131,7 +98,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Preroll Overlay OSMF"/>
+	    	<description name="VAST:OSMF Vast2.0 Preroll Overlay"/>
 	        <embed_code name="01bm5kMDE6iV10Jrf5Lngdx2B6bd0lxR"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -144,7 +111,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Overlay Main"/>
+	    	<description name="VAST:Main Vast2.0 Overlay"/>
 	        <embed_code name="gwbjJqdDobn3Ky6rNnwPzeA2tVVfQ8YJ"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -155,7 +122,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:Overlay Main"/>
+	    	<description name="IMA:Main Overlay"/>
 	        <embed_code name="FlOHg4MTE698_SqEgfRuJepp0rjzl9h9"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
