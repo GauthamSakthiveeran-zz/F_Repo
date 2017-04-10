@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackCCenableMidRollAdsTests" >
     	<url>
-	    	<description name="Pulse:Midroll with CC Bitmovin"/>
+	    	<description name="Pulse:Bitmovin Midroll with CC"/>
 	        <embed_code name="pqZDNhMzE66W7eS-Mvy4iyTP3nrbh_tK"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -14,7 +14,7 @@
     	</url> 
     	
     	<url>
-	    	<description name="Freewheel:CC enabled Midroll OSMF"/>
+	    	<description name="Freewheel:OSMF CC enabled Midroll"/>
 	        <embed_code name="Y5dWVmMDE6lIE-PNSXHfsuTNPmeWbjC4"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN,OSMF"/>
@@ -27,7 +27,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:CC enabled Midroll OSMF"/>
+	    	<description name="IMA:OSMF CC enabled Midroll"/>
 	        <embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -40,7 +40,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:CC enabled Midroll OSMF"/>
+	    	<description name="VAST:OSMF Vast2.0 CC enabled Midroll"/>
 	        <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
