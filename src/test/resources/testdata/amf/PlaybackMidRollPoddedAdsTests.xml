@@ -3,7 +3,7 @@
 
 	<test name ="PlaybackMidRollPoddedAdsTests" > 
     	<url>
-	    	<description name="VPAID:3 Midroll Podded at 10 or 20 second"/>
+	    	<description name="VPAID:Main Vast VPAID2.0 3 Midroll Podded at 10 or 20 second"/>
 	        <embed_code name="t4cmxiMjE6jsw26kuwwYIPBPG15jy2hO"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -14,7 +14,7 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:3 Midroll Podded at 10 or 20 second Main"/>
+	    	<description name="IMA:Main 3 Midroll Podded at 10 or 20 second"/>
 	        <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -25,7 +25,7 @@
     	</url>
     	
     	<url>
-	    	<description name="Freewheel:3 Midroll Podded at 10 or 20 second Main"/>
+	    	<description name="Freewheel:Main 3 Midroll Podded at 10 or 20 second"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -36,7 +36,29 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:3 Midroll Podded at 10 or 20 second Main"/>
+	    	<description name="Freewheel:Bitmovin Midroll Podded"/>
+	        <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN,MAIN"/>
+	        <adPlugins name="FREEWHEEL"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Fsa2tmcjpvD21CN9WthbTbE4MIpWJoaK","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="Freewheel:OSMF Midroll Podded"/>
+	        <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi"/>
+	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+	        <plugins name="OSMF,MAIN"/>
+	        <adPlugins name="FREEWHEEL"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
+	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fsa2tmcjpvD21CN9WthbTbE4MIpWJoaK","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="VAST:Main Vast2.0 3 Midroll Podded at 10 or 20 second"/>
 	        <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -47,7 +69,7 @@
     	</url>
     	
     	<url>
-	    	<description name="VAST:Midroll Vast 3.0 + Bitmovin"/>
+	    	<description name="VAST:Bitmovin Vast3.0 Midroll"/>
 	        <embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
