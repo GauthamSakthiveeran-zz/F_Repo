@@ -11,10 +11,10 @@ public class UrlObject {
     private String embedCode;
     private String apiKey;
     private String secret;
-    public String errorCode;
+    private String errorCode;
     private String errorDescription;
     private String channelId;
-    public String provider;
+    private String provider;
 
 	public String getUrl() {
 		return url;
@@ -60,9 +60,7 @@ public class UrlObject {
 		return embedCode;
 	}
 
-	public void setEmbedCode(String embedCode) {
-		this.embedCode = embedCode;
-	}
+	public void setEmbedCode(String embedCode) {this.embedCode = embedCode;}
 
 	public String getApiKey() {
 		return apiKey;
