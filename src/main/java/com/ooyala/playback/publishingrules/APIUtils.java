@@ -304,6 +304,21 @@ public class APIUtils {
 		return null;
 
 	}
+
+	public String getPromoImageUrl(String embedCode, String pCode){
+		logger.info("Inside getPromoImageUrl method");
+		String promoImageUrl = null;
+		String apiUrl="http://player.ooyala.com/player_api/v1/content_tree/embed_code/"+pCode+"/"+embedCode;
+		try {
+			String output=makeAPIcall(apiUrl,"GET","");
+			JSONObject json = new JSONObject(output);
+			promoImageUrl=json.getJSONObject("content_tree").getJSONObject(embedCode).getString("promo_image");
+			logger.info("Promo Image URL : "+promoImageUrl);
+		}catch (Exception e){
+			logger.error("Issue in getPromoImageUrl method : "+e.getMessage());
+		}
+		return promoImageUrl;
+	}
 	
 	public static void main(String... strings) throws Exception {
 		HashMap<String, String> rules = new APIUtils().getPublishingRuleIds("x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH",

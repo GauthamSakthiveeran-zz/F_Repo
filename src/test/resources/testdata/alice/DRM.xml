@@ -13,6 +13,19 @@
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
+        
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Azure H.264 4K Dash Cenc VOD" />
+            <embed_code name="p5czlvYTE6DunKQ3il63PH5T7G5pG0Md" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="BITMOVIN,MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <streamType name="dash"/>
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash VOD" />
             <embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
@@ -26,8 +39,46 @@
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
         <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Azure Dash VOD" />
+            <embed_code name="91bTlvYTE6OOI_wKMsLdn4_suUEvZjJ4" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <streamType name="dash"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental HLS VOD" />
-            <embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
+            <embed_code name="RtaHNvYTE6issljHMtyQYvN3Htj6QSnG" />
+            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+            <browsersSupported name="safari" />
+            <streamType name="hls"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin FFMPEG HLS VOD" />
+            <embed_code name="YyYmFvYTE6je_KrhLjGDkVXHTGXJN3l7" />
+            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+            <browsersSupported name="safari" />
+            <streamType name="hls"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental HLS VOD" />
+            <embed_code name="YyYmFvYTE6je_KrhLjGDkVXHTGXJN3l7" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
@@ -55,7 +106,7 @@
         <!--  Getting playback stream error for IE for more info https://jira.corp.ooyala.com/browse/PBW-6084-->
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta eHLS VOD" />
-            <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
+            <embed_code name="c3b3NvYTE6gRRfWJdupyxGDYLiqEkl21" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
@@ -76,7 +127,59 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <streamType name="hls" />
             <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
+         <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS" />
+            <embed_code name="c3b3NvYTE6gRRfWJdupyxGDYLiqEkl21" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="hls" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
+        
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS Remote Asset" />
+            <embed_code name="s3dXNvYTE6q4vFYHG0EifD84pkDkrdwr" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="hls" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Main Azure eHLS" />
+            <embed_code name="R5dGFvYTE6LtPk9PvuatOLk_Y7gfC5dk" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <streamType name="hls" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Azure eHLS" />
+            <embed_code name="R5dGFvYTE6LtPk9PvuatOLk_Y7gfC5dk" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <streamType name="hls" />
+            <playerParameter><![CDATA[{"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
     </test>
 
@@ -89,7 +192,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash_drm"]}]]></playerParameter>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/5kaDBlODE6fqcosXyCQ9myvTxpObwIOw?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=vtyvjHItiFh3SclS0+CjIMsHDiPVOabRkN6GCdIKu6Q&override_syndication_group=override_all_synd_groups","encodingPriority":["dash_drm"],"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash Live Channel live" />
@@ -99,7 +202,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8abff377aec2400e9337fe9088e65d40" />
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=8h+npYn8aTusBeAUru7nrMPVC8xXnulZipot74Ab2lc&override_syndication_group=override_all_synd_groups","encodingPriority":["hls","dash","webm","mp4","dash"],"platform":"html5"}]]></playerParameter>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=8h+npYn8aTusBeAUru7nrMPVC8xXnulZipot74Ab2lc&override_syndication_group=override_all_synd_groups","encodingPriority":["hls","dash","webm","mp4","dash"],"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
             <live>
                 <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
                 <provider>elemental</provider>
@@ -113,7 +216,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8abff377aec2400e9337fe9088e65d40" />
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=8h+npYn8aTusBeAUru7nrMPVC8xXnulZipot74Ab2lc&override_syndication_group=override_all_synd_groups","encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=8h+npYn8aTusBeAUru7nrMPVC8xXnulZipot74Ab2lc&override_syndication_group=override_all_synd_groups","encodingPriority":["hds","hls","webm","mp4","dash"],"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
             <live>
                 <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
                 <provider>elemental</provider>
@@ -127,7 +230,7 @@
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8abff377aec2400e9337fe9088e65d40"/>
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=xDF8lsLV7EPvOdD6XqO2jZrFQonCOP+bNdSfAewWC+w&override_syndication_group=override_all_synd_groups","encodingPriority":["hls","hds","webm","mp4"]}]]></playerParameter>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=xDF8lsLV7EPvOdD6XqO2jZrFQonCOP+bNdSfAewWC+w&override_syndication_group=override_all_synd_groups","encodingPriority":["hls","hds","webm","mp4"],"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
             <live>
                 <channelId>4e925289af57408384f58832323bfe51</channelId>
                 <provider>elemental</provider>
@@ -142,7 +245,7 @@
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <playerParameter><![CDATA[{"encodingPriority":["dash"],"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/ZkMTViNDE6ShDM36D5mW6L3gWP2Pu2GW?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2892594508&account_id=dulari_qa&&&signature=y3yxsLboa7T21w1wLxDPwh+zAiJCqDuvpIMBqxJBVKs","auth_ssl_server":"https://player-staging.ooyala.com/sas","auth_server":"http://player-staging.ooyala.com/sas"}]]></playerParameter>
+            <playerParameter><![CDATA[{"encodingPriority":["dash"],"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/ZkMTViNDE6ShDM36D5mW6L3gWP2Pu2GW?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2892594508&account_id=dulari_qa&&&signature=y3yxsLboa7T21w1wLxDPwh+zAiJCqDuvpIMBqxJBVKs","auth_ssl_server":"https://player-staging.ooyala.com/sas","auth_server":"http://player-staging.ooyala.com/sas","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>-->
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta eHLS Live"/>
@@ -152,7 +255,7 @@
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8abff377aec2400e9337fe9088e65d40"/>
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=8h+npYn8aTusBeAUru7nrMPVC8xXnulZipot74Ab2lc&override_syndication_group=override_all_synd_groups","platform":"html5"}]]></playerParameter>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=8h+npYn8aTusBeAUru7nrMPVC8xXnulZipot74Ab2lc&override_syndication_group=override_all_synd_groups","platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
             <live>
                 <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
                 <provider>elemental</provider>

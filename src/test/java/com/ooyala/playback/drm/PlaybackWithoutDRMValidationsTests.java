@@ -44,8 +44,6 @@ public class PlaybackWithoutDRMValidationsTests extends PlaybackWebTest {
                 result = result && stream.verifyStreamType(url.getStreamType());
             }
 
-            result = result && eventValidator.loadingSpinner();
-
             result = result && play.validate("playing_2", 60000);
 
             result = result && seek.validate("seeked_1",20000);
