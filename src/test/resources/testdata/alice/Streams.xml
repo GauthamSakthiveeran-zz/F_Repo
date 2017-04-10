@@ -12,6 +12,30 @@
             <streamType name="m3u8" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
+        
+         <url>
+            <description name="Streams:Bitmovin Elemental Delta HLS Remote Asset" />
+            <embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        
+        <url>
+            <description name="Streams:Main Elemental Delta HLS Remote Asset" />
+            <embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
 
         <!-- commented check the ticket number for more info PBW-6281 -->
         <url>
