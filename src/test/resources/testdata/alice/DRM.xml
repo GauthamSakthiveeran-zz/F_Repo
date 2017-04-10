@@ -52,7 +52,20 @@
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental HLS VOD" />
-            <embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
+            <embed_code name="RtaHNvYTE6issljHMtyQYvN3Htj6QSnG" />
+            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+            <browsersSupported name="safari" />
+            <streamType name="hls"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin FFMPEG HLS VOD" />
+            <embed_code name="YyYmFvYTE6je_KrhLjGDkVXHTGXJN3l7" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
@@ -93,7 +106,7 @@
         <!--  Getting playback stream error for IE for more info https://jira.corp.ooyala.com/browse/PBW-6084-->
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta eHLS VOD" />
-            <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
+            <embed_code name="c3b3NvYTE6gRRfWJdupyxGDYLiqEkl21" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
@@ -114,7 +127,59 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <streamType name="hls" />
             <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
+         <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS" />
+            <embed_code name="c3b3NvYTE6gRRfWJdupyxGDYLiqEkl21" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="hls" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
+        
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS Remote Asset" />
+            <embed_code name="s3dXNvYTE6q4vFYHG0EifD84pkDkrdwr" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="hls" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Main Azure eHLS" />
+            <embed_code name="R5dGFvYTE6LtPk9PvuatOLk_Y7gfC5dk" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <streamType name="hls" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Azure eHLS" />
+            <embed_code name="R5dGFvYTE6LtPk9PvuatOLk_Y7gfC5dk" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <streamType name="hls" />
+            <playerParameter><![CDATA[{"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
     </test>
 
