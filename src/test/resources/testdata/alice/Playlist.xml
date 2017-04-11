@@ -264,10 +264,10 @@
               <streamType name="mp4" />
           </url>
 
-        <!-- BITMOVIN Plugin -->
-        <!-- Commenting as default themebuilder setting is different for MAIN plugin, hence failing for BITMOVIN plugin, we are checking this test against hardcoded data-->
+         <!--BITMOVIN Plugin -->
+         <!--Commenting as default themebuilder setting is different for MAIN plugin, hence failing for BITMOVIN plugin, we are checking this test against hardcoded data-->
+
         <!--<url>
-        <url>
             <description name="Playlist:Default themebuilder parameters BITMOVIN" />
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -276,7 +276,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"]}}]]></playerParameter>
-        </url>-->
+        </url> -->
 
         <url>
             <description name="Playlist:Orientation-vertical BITMOVIN" />
@@ -378,6 +378,8 @@
             <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
             <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"false","playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"]}}]]></playerParameter>
         </url>
+
+        <!--  Commented this test case because of Issue PLAYER-448. Loop functionality is not working correctly-->
         <url>
             <description name="Playlist:Loop-true BITMOVIN" />
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
@@ -398,6 +400,7 @@
             <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"]},"autoplay":"true","loop":"false"}]]></playerParameter>
         </url>
+
         <url>
             <description name="Playlist:Thumbnailsize-100 BITMOVIN" />
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
@@ -408,6 +411,7 @@
             <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"ThumbnailsSize":"100"},"autoplay":"false","loop":"true"}]]></playerParameter>
         </url>
+
         <url>
             <description name="Playlist:Podtype-scrolling BITMOVIN" />
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
@@ -428,6 +432,7 @@
             <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"PodType":"paging"},"autoplay":"false","loop":"false"}]]></playerParameter>
         </url>
+
         <url>
             <description name="Playlist:ThumbnailSpace-100 BITMOVIN" />
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
@@ -436,18 +441,9 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"ThumbnailsSpacing":"100"},"autoplay":"false","loop":"false"}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"ThumbnailsSpacing":"100","Orientation":"vertical"},"autoplay":"false","loop":"false"}]]></playerParameter>
         </url>
-        <url>
-            <description name="Playlist:ThumbnailSpace-100 BITMOVIN" />
-            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"ThumbnailsSpacing":"100"},"autoplay":"false","loop":"false"}]]></playerParameter>
-        </url>
+
         <url>
             <description name="Playlist:WrapperFontSize-20 BITMOVIN" />
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
@@ -458,6 +454,7 @@
             <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"CaptionPosition":"inside","WrapperFontSize":20},"autoplay":"false","loop":"false"}]]></playerParameter>
         </url>
+
         <url>
             <description name="Playlist:CaptionPosition-inside BITMOVIN" />
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
@@ -478,237 +475,221 @@
             <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"CaptionPosition":"outside"},"autoplay":"false","loop":"false"}]]></playerParameter>
         </url>
-        <url>
-            <description name="Playlist:Platform-html5 BITMOVIN" />
-            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"CaptionPosition":"inside","WrapperFontSize":20},"autoplay":"false","loop":"false","platform":"html5"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Platform-flash BITMOVIN" />
-            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"CaptionPosition":"inside","WrapperFontSize":20},"autoplay":"false","loop":"false","platform":"flash"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Platform-flash BITMOVIN" />
-            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"CaptionPosition":"inside","WrapperFontSize":20},"autoplay":"false","loop":"false","platform":"flash"}]]></playerParameter>
-        </url>
 
-        <!-- BITMOVIN Plugin -->
-        <url>
+         <url>
+             <description name="Playlist:Platform-flash BITMOVIN" />
+             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
+             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+             <plugins name="BITMOVIN" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"CaptionPosition":"inside","WrapperFontSize":20},"autoplay":"false","loop":"false","platform":"flash"}]]></playerParameter>
+         </url>
+
+        <!-- OSMF Plugin in Progress-->
+        <!-- Commenting as default themebuilder setting is different for MAIN plugin, hence failing for BITMOVIN plugin, we are checking this test against hardcoded data-->
+        <!--<url>
             <description name="Playlist:Default themebuilder parameters OSMF" />
             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
+            <plugins name="OSMF,BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"]}}]]></playerParameter>
-        </url>
-        <url>
+        </url>-->
+
+        <!--<url>
             <description name="Playlist:Orientation-vertical OSMF" />
             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
+            <plugins name="OSMF,BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"Orientation":"vertical"}}]]></playerParameter>
         </url>
-        <url>
-            <description name="Playlist:Orientation-horizontal OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"Orientation":"horizontal"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Position-top OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"top"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Position-bottom OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Position-right OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"right"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Autoplay-true OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"true"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Autoplay-false OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"false"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:useFirstVideoFromPlaylist-true OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"true","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"false"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:useFirstVideoFromPlaylist-false OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"false","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"false"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:useFirstVideoFromPlaylist-false OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"false","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"false"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Loop-true OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"false","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"true","loop":"true"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Loop-false OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"false","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"true","loop":"false"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Thumbnailsize-200 OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","ThumbnailsSize":"200"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Podtype-scrolling OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"scrolling"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:Podtype-paging OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:ThumbnailSpace-200 OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging","ThumbnailsSpacing":"10"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:WrapperFontSize-15 OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging","ThumbnailsSpacing":"10","WrapperFontSize":15}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:CaptionPosition-inside OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging","ThumbnailsSpacing":"10","WrapperFontSize":15,"CaptionPosition":"inside"}}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Playlist:CaptionPosition-outside OSMF" />
-            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="PLAYLIST" />
-            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging","ThumbnailsSpacing":"10","WrapperFontSize":15,"CaptionPosition":"outside"}}]]></playerParameter>
-        </url>
+
+         <url>
+             <description name="Playlist:Orientation-horizontal OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"Orientation":"horizontal"}}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:Position-top OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"top"}}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:Position-bottom OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom"}}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:Position-right OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"right"}}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:Autoplay-true OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"true"}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:Autoplay-false OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"false"}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:useFirstVideoFromPlaylist-true OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"true","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"false"}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:useFirstVideoFromPlaylist-false OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"false","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"false"}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:useFirstVideoFromPlaylist-false OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"false","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"false"}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:Loop-true OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"false","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"true","loop":"true"}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:Loop-false OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"false","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"true","loop":"false"}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:Thumbnailsize-200 OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","ThumbnailsSize":"200"}}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:Podtype-scrolling OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"scrolling"}}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:Podtype-paging OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging"}}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:ThumbnailSpace-200 OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging","ThumbnailsSpacing":"10"}}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:WrapperFontSize-15 OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging","ThumbnailsSpacing":"10","WrapperFontSize":15}}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:CaptionPosition-inside OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging","ThumbnailsSpacing":"10","WrapperFontSize":15,"CaptionPosition":"inside"}}]]></playerParameter>
+         </url>
+         <url>
+             <description name="Playlist:CaptionPosition-outside OSMF" />
+             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+             <plugins name="OSMF" />
+             <adPlugins name="" />
+             <additionalPlugins name="PLAYLIST" />
+             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging","ThumbnailsSpacing":"10","WrapperFontSize":15,"CaptionPosition":"outside"}}]]></playerParameter>
+         </url>-->
     </test>
 </testdata>
