@@ -203,6 +203,12 @@ function subscribeToEvents() {
                 OO.$("#ooplayer").append("<p id=adPodStarted_"+adPodStartedEventOrder+">"+arguments[1]+"</p>");
                 adPodStartedEventOrder++;
             }
+
+            if (event.match(/videoPaused/) && arguments[1] == 'main') {
+                var time= pp.getPlayheadTime().toFixed()
+                OO.$('#ooplayer').append(
+                    '<p id=adStartTime>'+time+'</p>');
+            }
 			
 		};
 	}());
