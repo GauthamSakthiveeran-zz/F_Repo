@@ -28,11 +28,15 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
 
         int adTime = Integer.parseInt(adStartTime);
 
-        Double time = 0D;
+        waitOnElement(By.id("adStartTime"),40000);
 
-        while (time.intValue() <= adTime) {
-            time = Double.parseDouble(
-                    ((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime().toFixed();").toString());
+        int time = Integer.parseInt(driver.findElement(By.id("adStartTime")).getText());
+
+        logger.info("Ad start time is :"+time);
+
+        if (!(time>=adTime && time<=(adTime+3))){
+            logger.error("Ad is not starting at "+adTime+" instead it gets started at "+time);
+            return false;
         }
 
         if (!waitOnElement(By.id(adEventLocator),1000)){
