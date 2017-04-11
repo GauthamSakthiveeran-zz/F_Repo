@@ -35,5 +35,18 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
     	</url>
     	
+    	<url>
+			<description name="VAST:OSMF Vast3.0 Mp4 player switching support" />
+			<embed_code name="hscThxYTE6tXtyQm9mzMcDMIwXDeBkAU" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF,MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+			<browserSupportedVersion name="safari,9" />
+		</url>
+    	
     </test>
 </testdata>

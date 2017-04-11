@@ -40,6 +40,19 @@
     	</url>
     	
     	<url>
+	    	<description name="Pulse:OSMF Midroll with CC"/>
+	        <embed_code name="o3djdxYTE68uFENrYFfWjbxw-6--X7q_"/>
+	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+	        <plugins name="OSMF"/>
+	        <adPlugins name="PULSE"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+	        <browserSupportedVersion name="safari,9"/>
+    	</url>
+    	
+    	<url>
 	    	<description name="VAST:OSMF Vast2.0 CC enabled Midroll"/>
 	        <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -49,6 +62,19 @@
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
     	</url>
+    	
+    	<url>
+			<description name="VAST:OSMF Vast3.0 CC enabled Midroll" />
+			<embed_code name="g0MDlxYTE66Cn1zojxFBQZ8GxmEF5C93" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF,MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+			<browserSupportedVersion name="safari,9" />
+		</url>
     	
     </test>
     

@@ -25,6 +25,28 @@
     	</url>
     	
     	<url>
+	    	<description name="IMA:Bitmovin Postroll Podded"/>
+	        <embed_code name="5sMzlxYTE6U2glDxsbl5IAsuR7IWvjVX"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+			<description name="IMA:OSMF Postroll Podded" />
+			<embed_code name="g5aDlxYTE6hxOEfk0OHclDbUjObUKbL_" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF,MAIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+		</url>
+    	
+    	<url>
 	    	<description name="Freewheel:Main 3 Postroll Podded|VTC:SetEmbedCode"/>
 	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -68,5 +90,16 @@
 	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fqa2tmcjrWml7baw9R0-RD5aT-2ku-LJ","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
     	</url>
 
+		<url>
+			<description name="VAST:Main Vast3.0 3 Postroll Podded"/>
+			<embed_code name="B5YTlxYTE6TPinC5fnieUEWw2LoWZ_k6"/>
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+			<plugins name="MAIN"/>
+			<adPlugins name="VAST"/>
+			<additionalPlugins name=""/>
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+		
     </test>
 </testdata>

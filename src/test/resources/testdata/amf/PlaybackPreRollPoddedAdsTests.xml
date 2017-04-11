@@ -45,6 +45,28 @@
 			<pbid name="615dc8e909e941c280e12155df838355" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
 		</url>
+		
+		<url>
+			<description name="IMA:Bitmovin Preroll Podded" />
+			<embed_code name="hzdjhxYTE6N8BxmBKS3y2pBgGNYHi2Ig" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+		
+		<url>
+			<description name="IMA:OSMF Preroll Podded" />
+			<embed_code name="x1MjlxYTE6v9pJaLK_hFgurkxQo56QFY" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF,MAIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+		</url>
 
 		<url>
 			<description name="VAST:Main Vast2.0 3 Preroll Podded" />
