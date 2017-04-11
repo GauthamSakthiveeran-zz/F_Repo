@@ -210,7 +210,7 @@
             <playerParameter><![CDATA[]]></playerParameter>
             <streamType name="m3u8"></streamType>
         </url>
-        
+
         <url>
             <description name="Streams:Bitmovin Azure HLS VOD" />
             <embed_code name="RndDhvYTE6dmNoGfQcV4vTWIgiAA7NnS" />
@@ -222,7 +222,7 @@
             <playerParameter><![CDATA[]]></playerParameter>
             <streamType name="m3u8"></streamType>
         </url>
-        
+
          <url>
             <description name="Streams:Main Azure HLS VOD" />
             <embed_code name="RndDhvYTE6dmNoGfQcV4vTWIgiAA7NnS" />
@@ -235,7 +235,7 @@
             <browsersSupported name="safari" />
             <streamType name="m3u8"></streamType>
         </url>
-        
+
         <url>
             <description name="Streams:Bitmovin +Main plugin H.264 4K HLS" />
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
@@ -247,7 +247,7 @@
             <playerParameter><![CDATA[{"encodingPriority":["hls","dash"]}]]></playerParameter>
             <streamType name="m3u8"></streamType>
         </url>
-        
+
         <url>
             <description name="Streams:Bitmovin +Main plugin H.264 4K Dash" />
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
@@ -257,9 +257,9 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
-            <streamType name="m3u8"></streamType>
+            <streamType name="mpd"></streamType>
         </url>
-        
+
         <url>
             <description name="Streams:Bitmovin +Main plugin H.265 4K Dash Movie" />
             <embed_code name="JiNWh3NTE6mdX5DQOcJYRoa2owJKPq7a" />
@@ -271,5 +271,6 @@
             <playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
             <streamType name="mpd"></streamType>
         </url>
+
     </test>
 </testdata>
