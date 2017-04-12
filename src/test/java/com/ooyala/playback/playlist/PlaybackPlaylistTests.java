@@ -28,14 +28,18 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
 
 	@Test(groups = "playlist", dataProvider = "testUrls")
 	public void testPlaylistTests(String description, UrlObject url) throws OoyalaException {
-
+        //seperating the tab name from the test description
 		String[] parts = description.split(":")[1].trim().split("-");
+		//splitting the description using spaces
 		String[] descParts=description.split(" ");
+		//extracting the video plugin name from description
         String videoPluginName = descParts[descParts.length-1];
 		String tcName = parts[0].trim();
+		//removing the video plugin name from the test name
         if(tcName.contains(videoPluginName))
             tcName = tcName.replaceAll(videoPluginName,"").trim();
 		String tcValue = "";
+		//removing the video plugin name from the test value
 		if (parts.length > 1)
             tcValue = parts[1].replaceAll(videoPluginName,"").trim();
 
