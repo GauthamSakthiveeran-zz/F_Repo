@@ -2,29 +2,18 @@ package com.ooyala.playback.playerfeatures;
 
 import com.ooyala.playback.page.*;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.LoggingPreferences;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-
-import java.util.logging.Level;
-
 /**
  * Created by soundarya on 11/16/16.
  */
 public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger
-			.getLogger(PlayerMetadataStatesTests.class);
+	private static Logger logger = Logger.getLogger(PlayerMetadataStatesTests.class);
 	private PlayValidator play;
 	private SeekValidator seek;
 	private EventValidator eventValidator;
