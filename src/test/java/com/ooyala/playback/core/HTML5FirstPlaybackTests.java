@@ -26,7 +26,9 @@ public class HTML5FirstPlaybackTests extends PlaybackWebTest {
 
 		boolean result = true;
         String [] parameters = {"{\"platform\":\"html5\"}","{\"platform\":\"flash\"}"};
-		try {
+        String playerParameters = url.getPlayerParameter();
+
+        try {
 			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
@@ -43,25 +45,45 @@ public class HTML5FirstPlaybackTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("played_1", 120000);
 
-            //verifying html5 and flash platform
 
-            for (int i=0 ; i<parameters.length; i++) {
 
-                driver.get(encodingValidator.getNewUrl(parameters[i], browser));
+            if(testName.contains("Playlist")){
+                if (url.getPlayerParameter().contains("html5")){
+                    logger.info("verifying platform flash");
+                    playerParameters = playerParameters.replace("html5","flash");
+                    driver.get(encodingValidator.getNewUrl(playerParameters, browser));
+                    result = result && play.waitForPage();
 
-                result = result && play.waitForPage();
+                    injectScript();
 
-                injectScript();
+                    tech.getConsoleLogs();
 
-                tech.getConsoleLogs();
+                    result = result && play.validate("playing_1", 60000);
 
-                result = result && play.validate("playing_1", 60000);
+                    result = result && tech.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
+                }
 
-                result = result && tech.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
+            }
+            else {
+                //verifying html5 and flash platform
+                for (int i = 0; i < parameters.length; i++) {
 
-                result = result && seek.validate("seeked_1", 60000);
+                    driver.get(encodingValidator.getNewUrl(parameters[i], browser));
 
-                result = result && eventValidator.validate("played_1", 120000);
+                    result = result && play.waitForPage();
+
+                    injectScript();
+
+                    tech.getConsoleLogs();
+
+                    result = result && play.validate("playing_1", 60000);
+
+                    result = result && tech.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
+
+                    result = result && seek.validate("seeked_1", 60000);
+
+                    result = result && eventValidator.validate("played_1", 120000);
+                }
             }
 
 		} catch (Exception e) {
