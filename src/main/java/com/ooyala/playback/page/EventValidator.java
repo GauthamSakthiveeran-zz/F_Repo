@@ -40,6 +40,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		}
 		
 		if(waitOnElement(By.id(element), timeout)){
+			logger.info("element found : " + element);
 			extentTest.log(LogStatus.PASS, "Wait on element : " + element);
 			return true;
 		}
@@ -84,5 +85,24 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		}
 		return false;
 	}
-	
+	public boolean validatePlaybackReadyEvent(int timeout){
+		boolean result=false;
+		try {
+			logger.info("Inside validatePlaybackReadyEvent method");
+			Thread.sleep(timeout);
+			String consoleOutput = driver.executeScript("return OO.DEBUG.consoleOutput[0].toString()").toString();
+			logger.info(consoleOutput);
+			if (consoleOutput.contains("playbackReady")) {
+				logger.info("playbackReady event found in consoleOutput");
+				result = true;
+			}else {
+				logger.error("playbackReady event not found in consoleOutput");
+			}
+
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 }
