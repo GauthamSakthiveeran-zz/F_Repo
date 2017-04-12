@@ -446,12 +446,6 @@ public class PlayBackFactory {
 		return liveAction;
 	}
 
-	/*public static PlayBackFactory getInstance(WebDriver driver) {
-		if (playbackFactory == null || playbackFactory.getDriver() == null) {
-			playbackFactory = new PlayBackFactory(driver);
-		}
-		return playbackFactory;
-	}*/
 
 	public SaasPortValidator getSaasPortValidator() {
 		if (saasPortValidator == null){
@@ -508,8 +502,7 @@ public class PlayBackFactory {
         }
         return adStartTimeValidator;
     }
-
-    public void destroyInstance() {
+	public void destroyInstance() {
 		playbackFactory = null;
 	}
 

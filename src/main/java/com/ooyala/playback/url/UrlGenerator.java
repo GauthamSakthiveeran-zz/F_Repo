@@ -203,6 +203,10 @@ public class UrlGenerator {
 						urlObject.setProvider(url.getLive().getProvider());
 					}
 
+					if (url.getPlayerParameter() !=null){
+						urlObject.setPlayerParameter(url.getPlayerParameter());
+					}
+
 					if (url.getPlugins()!=null){
 					    urlObject.setVideoPlugins(url.getPlugins().getName());
                     }

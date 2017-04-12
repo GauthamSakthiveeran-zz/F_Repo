@@ -16,6 +16,11 @@ public class UrlObject {
     private String channelId;
     private String provider;
 	private String adStartTime;
+	private String playerParameter;
+
+	public String getPlayerParameter() {return playerParameter;}
+
+	public void setPlayerParameter(String playerParameter) {this.playerParameter = playerParameter;}
 
 	public String getUrl() {
 		return url;

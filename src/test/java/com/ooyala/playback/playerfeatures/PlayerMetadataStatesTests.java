@@ -1,27 +1,19 @@
 package com.ooyala.playback.playerfeatures;
 
+import com.ooyala.playback.page.*;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EndScreenValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PauseValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.StartScreenValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-
 /**
  * Created by soundarya on 11/16/16.
  */
 public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger
-			.getLogger(PlayerMetadataStatesTests.class);
+	private static Logger logger = Logger.getLogger(PlayerMetadataStatesTests.class);
 	private PlayValidator play;
 	private SeekValidator seek;
 	private EventValidator eventValidator;
