@@ -27,22 +27,23 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "playlist", dataProvider = "testUrls")
-	public void testPlaylistTests(String testName, UrlObject url) throws OoyalaException {
+	public void testPlaylistTests(String description, UrlObject url) throws OoyalaException {
 
-		String[] parts = testName.split(":")[1].trim().split("-");
-        String videoPlugin = url.getVideoPlugins();
+		String[] parts = description.split(":")[1].trim().split("-");
+		String[] descParts=description.split(" ");
+        String videoPluginName = descParts[descParts.length-1];
 		String tcName = parts[0].trim();
-        if(tcName.contains(videoPlugin))
-            tcName = tcName.replaceAll(videoPlugin,"").trim();
+        if(tcName.contains(videoPluginName))
+            tcName = tcName.replaceAll(videoPluginName,"").trim();
 		String tcValue = "";
 		if (parts.length > 1)
-            tcValue = parts[1].replaceAll(videoPlugin,"").trim();
+            tcValue = parts[1].replaceAll(videoPluginName,"").trim();
 
 		boolean result = true;
 		try {
 
 			driver.get(url.getUrl());
-			if (!(testName.contains("true") || testName.contains("Menustyle-tabs"))) {
+			if (!(description.contains("true") || description.contains("Menustyle-tabs"))) {
 				result = result && play.waitForPage();
 				injectScript();
 			} else {
@@ -50,10 +51,10 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
                 injectScript();
 			}
 
-			result = result && playlist.playlistValidator(tcName, tcValue);
+			result = result && playlist.playlistValidator(tcName, tcValue, videoPluginName);
 
             if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
-                if (testName.contains("Autoplay-false"))
+                if (description.contains("Autoplay-false"))
                     result = result && play.validate("playing_1",20000);
                 result = result && eventValidator.validate("videoPlayingurl", 40000);
                 result = result
@@ -65,6 +66,6 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
 			e.printStackTrace();
 			result = false;
 		}
-		Assert.assertTrue(result, "Playback Playlist tests failed" + testName);
+		Assert.assertTrue(result, "Playback Playlist tests failed" + description);
 	}
 }
