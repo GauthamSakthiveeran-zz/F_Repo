@@ -47,11 +47,16 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         }
     }
 
-    public boolean playlistValidator(String tcName, String value) throws InterruptedException {
+    public boolean playlistValidator(String tcName, String value, String videoPlugin) throws InterruptedException {
 
 		switch (tcName) {
 		case "Default themebuilder parameters" :
-			return scrollToEitherSide() && getOrientation("vertical") && getThumbnailSize("130") && getPosition("right");
+            if (videoPlugin.equalsIgnoreCase("MAIN"))
+                return scrollToEitherSide() && getOrientation("vertical") && getThumbnailSize("130") && getPosition("right");
+            if (videoPlugin.equalsIgnoreCase("BITMOVIN"))
+                return scrollToEitherSide() && getOrientation("horizontal") && getThumbnailSize("130") && getPosition("bottom");
+            if (videoPlugin.equalsIgnoreCase("OSMF"))
+                return scrollToEitherSide() && getOrientation("horizontal") && getThumbnailSize("150") && getPosition("top");
 		case "Orientation":
 			return scrollToEitherSide() && getOrientation(value);
 		case "Position":
