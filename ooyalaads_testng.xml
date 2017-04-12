@@ -2,23 +2,14 @@
 	<listeners>
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
-
 	<test name="Ooyala ads">
-
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="ooyalaads" />
-
 		<classes>
-			
 			<class name="com.ooyala.playback.ooyalaads.PlaybackOoyalaAdsTests"></class>
 			<class name="com.ooyala.playback.ooyalaads.PlaybackInitialTimeForOoyalaAdsTests"></class>
 			<class name="com.ooyala.playback.ooyalaads.PlaybackPlaylistDiscoveryTests"></class>
 			<class name="com.ooyala.playback.ooyalaads.PlaybackSkipOoyalaAdsTests"></class>
-			
 		</classes>
-		
-		
-		
 	</test>
-	
 </suite>
