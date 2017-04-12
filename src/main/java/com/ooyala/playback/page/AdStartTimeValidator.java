@@ -1,6 +1,7 @@
 package com.ooyala.playback.page;
 
 import com.ooyala.playback.url.StreamType;
+import com.ooyala.playback.url.UrlObject;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -86,5 +87,71 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
         logger.error("Overlay is not playing at expected position i.e : "+overlayPlayingAt);
         extentTest.log(LogStatus.FAIL,"Overlay is not playing at expected position i.e : "+overlayPlayingAt);
         return false;
+    }
+
+    public boolean validateMultipleMidrollAdStartTime(String adStartTime){
+
+        String [] midrollAdStartTimes = null;
+        int timeForFirstMidrollAd;
+        int timeForSecondMidrollAd;
+        int firstMidrollAdPlayingAt;
+        int secondMidrollAdPlayingAt;
+
+        if (!loadingSpinner()){
+            extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
+            return false;
+        }
+
+        if (!waitOnElement(By.id("MidRoll_willPlaySingleAd_1"),200000)){
+            logger.error("MidRoll_willPlaySingleAd_1 is not present");
+            extentTest.log(LogStatus.FAIL,"MidRoll_willPlaySingleAd_1 is not present");
+            return false;
+        }
+
+        if (!waitOnElement(By.id("MidRoll_willPlaySingleAd_2"),200000)){
+            logger.error("MidRoll_willPlaySingleAd_2 is not present");
+            extentTest.log(LogStatus.FAIL,"MidRoll_willPlaySingleAd_2 is not present");
+            return false;
+        }
+
+        if (adStartTime.contains(",")){
+            midrollAdStartTimes = adStartTime.split(",");
+        }
+
+        timeForFirstMidrollAd = Integer.parseInt(midrollAdStartTimes[0]);
+
+        timeForSecondMidrollAd = Integer.parseInt(midrollAdStartTimes[1]);
+
+        waitOnElement(By.id("adStartTime"),20000);
+
+        waitOnElement(By.id("multimidrollAdStartTime"),20000);
+
+        firstMidrollAdPlayingAt = Integer.parseInt(driver.findElement(By.id("adStartTime")).getText());
+
+        secondMidrollAdPlayingAt = Integer.parseInt(driver.findElement(By.id("multimidrollAdStartTime")).getText());
+
+        logger.info("Expected first ad time : "+timeForFirstMidrollAd);
+
+        logger.info("Expected second ad time : "+timeForSecondMidrollAd);
+
+        if (!(firstMidrollAdPlayingAt>=timeForFirstMidrollAd && firstMidrollAdPlayingAt<=(timeForFirstMidrollAd+3))){
+            logger.error("first midroll ad is not playing at "+firstMidrollAdPlayingAt);
+            extentTest.log(LogStatus.FAIL,"first midroll ad is not playing at "+firstMidrollAdPlayingAt);
+            return false;
+        }
+
+        logger.info("First midroll ad is playing at "+firstMidrollAdPlayingAt+"th second");
+        extentTest.log(LogStatus.PASS,"first midroll ad is playing at "+firstMidrollAdPlayingAt);
+
+        if (!(secondMidrollAdPlayingAt>=timeForSecondMidrollAd && secondMidrollAdPlayingAt<=(timeForSecondMidrollAd+3))){
+            logger.error("second midroll ad is not playing at "+secondMidrollAdPlayingAt);
+            extentTest.log(LogStatus.FAIL,"second midroll ad is not playing at "+secondMidrollAdPlayingAt);
+            return false;
+        }
+
+        logger.info("Second midroll ad is playing at "+secondMidrollAdPlayingAt+"th second");
+        extentTest.log(LogStatus.FAIL,"second midroll ad is playing at "+secondMidrollAdPlayingAt);
+
+        return true;
     }
 }
