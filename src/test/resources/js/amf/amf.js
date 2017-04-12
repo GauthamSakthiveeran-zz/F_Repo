@@ -25,6 +25,7 @@ function subscribeToEvents() {
 		var videoPlayingAdEventOrder = 1;
 		var adPodStartedEventOrder = 1;
         var playNonlinearAdEventOrder = 1;
+        var videoPausedEventOrder = 1;
 		
 		return function(event) {
 			
@@ -215,6 +216,14 @@ function subscribeToEvents() {
                 var time= pp.getPlayheadTime().toFixed()
                 OO.$('#ooplayer').append(
                     '<p id=adStartTime>'+time+'</p>');
+                videoPausedEventOrder++;
+            }
+
+            if (event.match(/videoPaused/) && arguments[1] == 'main' && videoPausedEventOrder > 2) {
+                var time= pp.getPlayheadTime().toFixed()
+                OO.$('#ooplayer').append(
+                    '<p id=multimidrollAdStartTime>'+time+'</p>');
+                videoPausedEventOrder++;
             }
 			
 		};
