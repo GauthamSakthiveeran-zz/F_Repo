@@ -1,5 +1,6 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.playback.url.StreamType;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -28,7 +29,7 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
 
         int adTime = Integer.parseInt(adStartTime);
 
-        waitOnElement(By.id("adStartTime"),40000);
+        waitOnElement(By.id("adStartTime"),200000);
 
         int time = Integer.parseInt(driver.findElement(By.id("adStartTime")).getText());
 
@@ -45,8 +46,45 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
             return false;
         }
 
-        logger.info(adEventLocator + "midroll ad played at "+time);
-        extentTest.log(LogStatus.FAIL,adEventLocator + "midroll ad played at "+time);
+        logger.info(adEventLocator + " is present and midroll ad played at "+time);
+        extentTest.log(LogStatus.PASS,adEventLocator + " is present and midroll ad played at "+time);
         return true;
+    }
+
+    public boolean validateNonLinearAdStartTime(String element){
+
+        if (!loadingSpinner()){
+            extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
+            return false;
+        }
+
+        if (!waitOnElement(By.id(element),20000)){
+            logger.error(element +"is not present");
+            extentTest.log(LogStatus.FAIL,element +"is not present");
+            return false;
+        }
+
+        waitOnElement(By.id("overlay-ad-position"),20000);
+
+        waitOnElement(By.id("play-overaly-ad"),20000);
+
+        int overlayPositionAt = Integer.parseInt(driver.findElement(By.id("overlay-ad-position")).getText());
+
+        logger.info("overlay position is at "+overlayPositionAt+"th second");
+
+        int overlayPlayingAt = Integer.parseInt(driver.findElement(By.id("play-overaly-ad")).getText());
+
+        logger.info("overlay is playing at "+overlayPlayingAt+"th second");
+
+        // if following if statement, we are giving offset of 3 sec so that test wonn't get failed
+        if (overlayPlayingAt>=overlayPositionAt && overlayPlayingAt<=(overlayPositionAt+3)){
+            logger.info("Overlay is playing at expected position i.e : "+overlayPlayingAt);
+            extentTest.log(LogStatus.PASS,"Overlay is playing at expected position i.e : "+overlayPlayingAt);
+            return true;
+        }
+
+        logger.error("Overlay is not playing at expected position i.e : "+overlayPlayingAt);
+        extentTest.log(LogStatus.FAIL,"Overlay is not playing at expected position i.e : "+overlayPlayingAt);
+        return false;
     }
 }
