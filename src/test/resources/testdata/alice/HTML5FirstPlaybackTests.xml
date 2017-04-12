@@ -13,7 +13,7 @@
 			<streamType name="hls"></streamType>
 		</url>
         <url>
-            <description name="Playlist:Platform-html5 BITMOVIN" />
+            <description name="Playlist:Platform-html5 BITMOVIN|Playlist:Platform-flash BITMOVIN" />
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
