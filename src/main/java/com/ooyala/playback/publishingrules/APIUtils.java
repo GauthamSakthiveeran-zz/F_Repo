@@ -1,27 +1,9 @@
 package com.ooyala.playback.publishingrules;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.codec.binary.Base64;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpDelete;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -31,8 +13,6 @@ import com.ooyala.qe.common.exception.OoyalaException;
 import com.ooyala.qe.common.http.Response;
 import com.ooyala.qe.common.util.PropertyReader;
 
-import net.lightbody.bmp.proxy.http.HttpDeleteWithBody;
-
 public class APIUtils {
 
 	private static Logger logger = Logger.getLogger(APIUtils.class);
@@ -41,7 +21,6 @@ public class APIUtils {
 	protected String backlot_api_endPoint;
 	protected String version;
 	protected String assets;
-	protected String epochTime;
 	protected String publishing_rules;
 	protected String publishing_rule;
 	protected String rl_api_endpoint;
@@ -53,7 +32,6 @@ public class APIUtils {
 	protected String accountId;
 	protected int httpStatus;
 	protected String api_key;
-	protected String expires;
 	protected String signature;
 	protected String internal;
 	protected String device_management;
@@ -69,7 +47,6 @@ public class APIUtils {
 			backlot_api_endPoint = properties.getProperty("backlot_api_endPoint");
 			version = properties.getProperty("version");
 			assets = properties.getProperty("assets");
-			epochTime = properties.getProperty("epochTime");
 			publishing_rules = properties.getProperty("publishing_rules");
 			publishing_rule = properties.getProperty("publishing_rule");
 			rl_api_endpoint = properties.getProperty("rl_api_endpoint");
@@ -80,7 +57,6 @@ public class APIUtils {
 			external_products = properties.getProperty("external_products");
 			accountId = properties.getProperty("accountId");
 			api_key = properties.getProperty("api_key");
-			expires = properties.getProperty("expires");
 			signature = properties.getProperty("signature");
 			internal = properties.getProperty("internal");
 			device_management = properties.getProperty("device_management");
@@ -267,7 +243,6 @@ public class APIUtils {
 
 		Map<String, String> queryString = new HashMap<>();
 		queryString.put("api_key", api_key);
-		queryString.put("expires", epochTime);
 
 		Response response = neoRequest.makeRequest(backlot_api_endPoint, "", api_key, "PUT", null, queryString, version,
 				assets, embedCode, publishing_rule, publishingRuleId);
@@ -282,7 +257,6 @@ public class APIUtils {
 
 		Map<String, String> queryString = new HashMap<>();
 		queryString.put("api_key", api_key);
-		queryString.put("expires", epochTime);
 
 		Response response = neoRequest.makeRequest(backlot_api_endPoint, "", api_key, "GET", null, queryString, version,
 				publishing_rules);

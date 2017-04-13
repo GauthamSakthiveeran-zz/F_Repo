@@ -1,7 +1,5 @@
 package com.ooyala.playback.live;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -11,7 +9,6 @@ import com.ooyala.qe.common.backjaxauth.Utils;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.ooyala.qe.common.http.HttpTestClient;
 import com.ooyala.qe.common.http.Response;
-import com.ooyala.qe.common.util.PropertyReader;
 
 /**
  * This class is responsible to make http request to any of neo api endpoint
@@ -31,7 +28,7 @@ public class NeoRequest {
 //			logger.info("API Key set to : " + API_KEY);
 //			HOST_ADDRESS = "https://live.ooyala.com";
 //			logger.info("Live URL set to : " + HOST_ADDRESS);
-		timeOut = System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(5);
+		timeOut = System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(30);
 
 	}
 
