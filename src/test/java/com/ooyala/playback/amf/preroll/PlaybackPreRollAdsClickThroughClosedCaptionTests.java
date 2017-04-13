@@ -47,6 +47,7 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 10000);
 			
 			if(result && click){
+                ((JavascriptExecutor) driver).executeScript("pp.pause()");
 				s_assert.assertTrue(clickThrough.validate("", 120000), "Clickthrough");
 				((JavascriptExecutor) driver).executeScript("pp.play()");
 			}
@@ -65,10 +66,13 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			}
 			
 			result = result && seekAction.seekTillEnd().startAction();
+			logger.info("seek completed");
 
 			result = result && event.validate("seeked_1", 120000);
+			logger.info("seek event validated");
 			
 			result = result && event.validate("played_1", 200000);
+			logger.info("played event validated");
 
 		} catch (Exception e) {
 			e.printStackTrace();
