@@ -39,7 +39,7 @@
     	
     	
     	<url>
-	    	<description name="IMA:Bitmovin Overlay"/>
+	    	<description name="IMA:Bitmovin Preroll Overlay"/>
 	        <embed_code name="w2bmFnMTE66yXj73IMWj_zcylLOnXpdR"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -47,6 +47,17 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="IMA:Bitmovin Overlay"/>
+	        <embed_code name="IzYTZnMTE6b6H6CSR_i8eX6yqm0Qy0MA"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
     	<url>
@@ -131,6 +142,41 @@
 	        <pbid name="615dc8e909e941c280e12155df838355"/>
 	        <playerParameter><![CDATA[{"showNonLinearCloseButton":true}]]></playerParameter>
     	</url>
+    	
+    	<url>
+	    	<description name="VAST:Bitmovin Vast3.0 Preroll Overlay"/>
+	        <embed_code name="RzajZxYTE6K5qx6adMhrfzX36jyTEV5b"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN,MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+			<description name="VAST:OSMF Vast3.0 Preroll Overlay" />
+			<embed_code name="0ydjhxYTE6tJUJC3n621PND8vPfXfszm" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF,MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+			<browserSupportedVersion name="safari,9" />
+		</url>
+		
+		<url>
+			<description name="VAST:Main Vast3.0 Overlay" />
+			<embed_code name="0yZDg4MTE6vq9XTeATXOBjO4Blr4a7fN" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
     	
     </test>
 </testdata>

@@ -49,7 +49,9 @@ public class PlaybackWithDRMLiveTests extends PlaybackWebTest {
 
             tech.getConsoleLogs();
 
-			result = result && drm.validate("drm_tag", 5000);
+            if(!url.getVideoPlugins().contains("OSMF")) {
+            	result = result && drm.validate("drm_tag", 5000);
+            }
 			
 			result = result && play.waitForPage();
 			

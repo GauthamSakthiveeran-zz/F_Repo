@@ -12,6 +12,17 @@
 	        <pbid name="615dc8e909e941c280e12155df838355"/>
 	        <playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":10}]]></playerParameter>
     	</url>
+    	
+    	<url>
+			<description name="VAST:Main Vast3.0 Preroll Overlay + Postroll" />
+			<embed_code name="5vajg4MTE6yw9AvmciefuFnFci9HgnuZ" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
     </test>
     
 </testdata>

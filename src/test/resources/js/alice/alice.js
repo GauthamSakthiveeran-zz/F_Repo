@@ -31,6 +31,8 @@ function subscribeToEvents() {
         var adPodEndedEventOrder = 1;
         var skipAdEventOrder = 1;
         var bufferingEventCount=1;
+        var savePlayerSettingsFalseEventCount = 1;
+        var savePlayerSettingsTrueEventCount = 1;
 
 
         return function(event) {
@@ -40,6 +42,17 @@ function subscribeToEvents() {
                 playingEventOrder + "</p>");
                 playingEventOrder++;
             }
+
+            if (event.match(/savePlayerSettings/) && arguments[1].closedCaptionOptions.enabled == false && savePlayerSettingsFalseEventCount<2) {
+                OO.$("#ooplayer").append("<p id=savePlayerSettings_off_"+savePlayerSettingsFalseEventCount+">"+savePlayerSettingsFalseEventCount+"</p>");
+                savePlayerSettingsFalseEventCount++;
+            }
+
+            if (event.match(/savePlayerSettings/) && arguments[1].closedCaptionOptions.enabled == true && savePlayerSettingsTrueEventCount<2) {
+                OO.$("#ooplayer").append("<p id=savePlayerSettings_on_"+savePlayerSettingsTrueEventCount+">"+savePlayerSettingsTrueEventCount+"</p>");
+                savePlayerSettingsTrueEventCount++;
+            }
+
             if (event.match(/played/)) {
                 OO.$("#ooplayer").append("<p id=played_" + playedEventOrder + ">played "+
                 playedEventOrder + "</p>");
@@ -196,6 +209,7 @@ function subscribeToEvents() {
             }
 
             if (event.match(/videoWillPlay/) && arguments[1] == "main") {
+<<<<<<< HEAD
                             OO.$("#ooplayer").append("<p id=videoPlayingurl"+">"+arguments[2]+"</p>");
                         }
 
@@ -204,6 +218,10 @@ function subscribeToEvents() {
                         bufferingEventCount++;
                         }
 
+=======
+                OO.$("#ooplayer").append("<p id=videoPlayingurl" + ">" + arguments[2] + "</p>");
+            }
+>>>>>>> a5e9c4dcda304ad9884e0c1b1324ae5f8d5c83e5
         };
     }());
 }

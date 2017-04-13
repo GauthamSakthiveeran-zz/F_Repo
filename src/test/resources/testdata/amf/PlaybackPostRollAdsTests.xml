@@ -40,6 +40,19 @@
     	</url>
     	
     	<url>
+	    	<description name="Pulse:OSMF Postroll"/>
+	        <embed_code name="ltdzdxYTE69lCGBuC0evsQK6LMVFsZiv"/>
+	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+	        <plugins name="OSMF"/>
+	        <adPlugins name="PULSE"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+	        <browserSupportedVersion name="safari,9"/>
+    	</url>
+    	
+    	<url>
 	    	<description name="Pulse:Main Postroll"/>
 	        <embed_code name="VjcGY5MzE6CLAiCSPoTztUc2yBXQZksS"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -230,6 +243,32 @@
 			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
 
 		</url>
+		
+		<url>
+	    	<description name="VAST:OSMF Vast3.0 Postroll"/>
+	        <embed_code name="hwcThxYTE6P5iQ6Cim85tKiJJiX_bwMZ"/>
+	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+	        <plugins name="OSMF,MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+	        <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+	        <browserSupportedVersion name="safari,9" />
+    	</url>
+    	
+    	<url>
+			<description name="VAST:Main Vast3.0 Postroll" />
+			<embed_code name="1jcGtuMjE60EQ3Q7nh3Z-kNicrrTZcVa" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+
+		</url>
+    	
     </test>
     
 </testdata>
