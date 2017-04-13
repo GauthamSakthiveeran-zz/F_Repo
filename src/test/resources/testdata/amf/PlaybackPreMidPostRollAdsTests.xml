@@ -158,7 +158,7 @@
 			<embed_code name="NndzVxYTE6z48GQ77OSiT8ODTV0jSnaj" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>

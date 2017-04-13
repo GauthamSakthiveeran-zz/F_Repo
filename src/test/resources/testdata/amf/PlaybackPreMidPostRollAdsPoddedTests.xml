@@ -145,7 +145,7 @@
 		</url>
 		
 		<url>
-			<description name="VAST:Bitmovin Vast2.0 DASH remote Asset "/>
+			<description name="VAST:Bitmovin Vast2.0 DASH remote Asset"/>
 			<embed_code name="tpbW1hMjE68h369O766N8QsKPdtp-6MI"/>
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 			<plugins name="BITMOVIN"/>
@@ -171,7 +171,7 @@
 			<embed_code name="RldzVxYTE6T9ccQetcORLCbev9EF7v-p"/>
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 			<plugins name="BITMOVIN,MAIN"/>
-			<adPlugins name="VAST"/>
+			<adPlugins name="VAST" adPlayTime="10"/>
 			<additionalPlugins name=""/>
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -182,7 +182,7 @@
 			<embed_code name="1ydThxYTE6n46pRMcmJSVyIk8flVZ089" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
@@ -195,7 +195,7 @@
 			<embed_code name="RkNTlxYTE60SHafDcCpBRdTBGNIt6Oj9"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="MAIN"/>
-			<adPlugins name="VAST"/>
+			<adPlugins name="VAST" adPlayTime="10"/>
 			<additionalPlugins name=""/>
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
