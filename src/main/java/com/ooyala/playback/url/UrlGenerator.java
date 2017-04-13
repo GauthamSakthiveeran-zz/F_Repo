@@ -167,11 +167,16 @@ public class UrlGenerator {
 
 					String adFirstPlay = url.getAdPlugins().getAdFirstPlay();
 					String adFrequency = url.getAdPlugins().getAdFrequency();
+					String adStartTime = url.getAdPlugins().getAdPlayTime();
 
 					if (adFirstPlay != null && !adFirstPlay.isEmpty() && adFrequency != null
 							&& !adFrequency.isEmpty()) {
 						urlObject.setAdFirstPlay(adFirstPlay);
 						urlObject.setAdFrequency(adFrequency);
+					}
+
+					if (adStartTime != null && !adStartTime.isEmpty()){
+						urlObject.setAdStartTime(url.getAdPlugins().getAdPlayTime());
 					}
 
 					if (url.getError() != null && url.getError().getCode() != null) {

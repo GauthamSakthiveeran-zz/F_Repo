@@ -1,13 +1,10 @@
 package com.ooyala.playback.amf;
 
-import com.ooyala.playback.page.SetEmbedCodeValidator;
+import com.ooyala.playback.page.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
@@ -25,6 +22,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 	private PoddedAdValidator poddedAdValidator;
 	private SeekAction seekAction;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
+	private AdStartTimeValidator adStartTimeValidator;
 
 	@Test(groups = {"amf","preroll","midroll","postroll","podded"}, dataProvider = "testUrls")
 	public void verifyPreMidPostrollPodded(String testName, UrlObject url) throws OoyalaException {
@@ -48,9 +46,15 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 			result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 60000);
 
 			result = result && event.validate("playing_1", 90000);
-			result = result && seekAction.setFactor(2).fromLast().setTime(10).startAction();
-			result = result && event.validate("MidRoll_willPlayAds", 200000);
+
+            if (url.getAdStartTime()!=null && !url.getAdStartTime().isEmpty()){
+                result = result && adStartTimeValidator.validateAdStartTime(url.getAdStartTime(),"MidRoll_willPlayAds");
+            }else
+			    result = result && event.validate("MidRoll_willPlayAds", 200000);
+
 			result = result && event.validate("adsPlayed_2", 600000);
+
+            result = result && seekAction.setFactor(2).fromLast().setTime(10).startAction();
 
 			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 600000);
 			
