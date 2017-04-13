@@ -1,11 +1,16 @@
 package com.ooyala.playback.streams;
 
-import com.ooyala.playback.page.*;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.ControlBarValidator;
+import com.ooyala.playback.page.ErrorDescriptionValidator;
+import com.ooyala.playback.page.FullScreenValidator;
+import com.ooyala.playback.page.LiveValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.LiveAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
@@ -73,6 +78,10 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 				liveChannel.stopChannels();
 
 				driver.get(url.getUrl());
+				
+				result = result && play.waitForPage();
+				
+				result = result && playAction.startAction();
 
 				result = result && error.expectedErrorCode("unplayable_content")
 						.expectedErrorDesc("Unplyable Content Error").validate("", 30000);

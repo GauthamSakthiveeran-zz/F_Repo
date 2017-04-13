@@ -60,7 +60,8 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 
 			result = result && syndicationRuleValidator.isDeviceRegistered(url.getPCode());
 
-			result = result && drm.opt().validate("drm_tag", 5000);
+			if(!url.getVideoPlugins().contains("OSMF"))
+				result = result && drm.opt().validate("drm_tag", 5000);
 
 			result = result && pause.validate("paused_1", 60000);
 

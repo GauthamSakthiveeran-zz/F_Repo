@@ -1,28 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 
-	<test name ="PlaybackMidrollAdAndMidrollOverlayAdsTests" >
-    	<url>
-	    	<description name="IMA:Main Midroll at 10 sec and overlay at 15"/>
-	        <embed_code name="VsMXV5eDp-uKDbBS2eZPv4G5hf7fbTYB"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="615dc8e909e941c280e12155df838355"/>
-	        <playerParameter><![CDATA[{"showNonLinearCloseButton":true}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="VAST:Main Vast2.0 Midroll at 10 sec and overlay at 15"/>
-	        <embed_code name="hkOGt4dDr71-6f0_aceyHIlanbjgeSZc"/>
+	<test name="PlaybackMidrollAdAndMidrollOverlayAdsTests">
+		<url>
+			<description name="IMA:Main Midroll at 10 sec and overlay at 15" />
+			<embed_code name="VsMXV5eDp-uKDbBS2eZPv4G5hf7fbTYB" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="" />
+			<pbid name="615dc8e909e941c280e12155df838355" />
+			<playerParameter><![CDATA[{"showNonLinearCloseButton":true}]]></playerParameter>
+		</url>
+
+		<url>
+			<description name="VAST:Main Vast2.0 Midroll at 10 sec and overlay at 15" />
+			<embed_code name="hkOGt4dDr71-6f0_aceyHIlanbjgeSZc" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showNonLinearCloseButton":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+
+		<url>
+			<description name="IMA:Main Midroll (10) and Overlay (15) with Discovery Up Next" />
+			<embed_code name="dibDlxYTE6z0u6Cm0qY6CbIagzuCcxoB" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="DISCOVERY" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+		
+		<url>
+			<description name="VAST:Main Vast3.0 Midroll at 10 sec and overlay at 15" />
+			<embed_code name="lybjlxYTE6n2LeYI6eK0LLaVrB_EO25R" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+		
+		<url>
+	    	<description name="VAST:Main Vast3.0 Discovery Postroll Up Next"/>
+	        <embed_code name="Q3bDlxYTE6DFxVIwmHpwlLsqj1m5UPi3"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
 	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"showNonLinearCloseButton":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
-    	
-    </test>
+
+	</test>
 </testdata>

@@ -25,7 +25,14 @@ public class BitmovinTechnologyValidator extends PlayBackPage implements Playbac
 	}
 
 	public BitmovinTechnologyValidator setStream(String streamType) {
-		this.streamType = streamType;
+		if (streamType.contains("m3u8"))
+			this.streamType = "hls";
+		else if (streamType.contains("mpd"))
+			this.streamType = "dash";
+		else if (streamType.contains("hds"))
+			this.streamType = "f4m";
+		else
+			this.streamType = streamType;
 		return this;
 	}
 

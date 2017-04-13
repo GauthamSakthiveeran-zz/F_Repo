@@ -39,6 +39,30 @@
     	</url>
     	
     	<url>
+			<description name="Pulse:OSMF Discovery Preroll" />
+			<embed_code name="kwNzhxYTE6yPnCLqZtTuNOzVVnueT8Bc" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF" />
+			<adPlugins name="PULSE" />
+			<additionalPlugins name="DISCOVERY" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+			<browserSupportedVersion name="safari,9" />
+		</url>
+		
+		<url>
+			<description name="Pulse:Main Discovery Preroll" />
+			<embed_code name="FzbDhxYTE6EICzM-0QW7mwedF5ZgJMot" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="PULSE" />
+			<additionalPlugins name="DISCOVERY" />
+			<pbid name="adbae45e51fd4686ac89e3939a13a02e" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+    	
+    	<url>
 	    	<description name="IMA:Main Discovery Preroll UP Next"/>
 	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -132,6 +156,41 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showInAdControlBar":true}]]></playerParameter>
 	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 	        <browserSupportedVersion name="safari,9"/>
+    	</url>
+    	
+    	<url>
+	    	<description name="VAST:Bitmovin Vast3.0 Discovery Preroll"/>
+	        <embed_code name="1oajdxYTE6Ky3HwWTCoTRW_wb_1hsp2P"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN,MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="f4264a0cd4fb4384878e085c30171a14"/>
+	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+			<description name="VAST:OSMF Vast3.0 Discovery Preroll" />
+			<embed_code name="M5eThxYTE6_h_AwrL4xP_bW3jV3zaQ3z" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF,MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="DISCOVERY" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+			<browserSupportedVersion name="safari,9" />
+		</url>
+		
+		<url>
+	    	<description name="VAST:Main Vast3.0 Discovery Preroll UP Next"/>
+	        <embed_code name="AxYjlxYTE6pu2e8xIqCSoOKsu8h0o3XC"/>
+	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	        <plugins name="MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
     </test>

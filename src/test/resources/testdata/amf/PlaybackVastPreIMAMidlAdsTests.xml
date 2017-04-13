@@ -12,6 +12,17 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 		</url>
+		
+		<url>
+			<description name="VAST:Bitmovin Vast3.0 VAST PreRoll + IMA MidRoll" />
+			<embed_code name="s2eTdxYTE6RULWNgcQNi2D2yuSK87p4j" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN,MAIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="VAST" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
 
 		<!-- <url>
 			<description name="VAST:VAST PreRoll + IMA MidRoll OSMF" />

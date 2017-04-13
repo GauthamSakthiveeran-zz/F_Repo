@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import com.ooyala.qe.common.exception.OoyalaException;
 import com.ooyala.qe.common.http.HttpTestClient;
 import com.ooyala.qe.common.http.Response;
 

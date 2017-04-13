@@ -26,6 +26,18 @@
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 
 		</url>
+		
+		<url>
+			<description name="Pulse:OSMF Midroll" />
+			<embed_code name="xvcTdxYTE6_dX9m_x0KxHNecJYRvAIef" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF" />
+			<adPlugins name="PULSE" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+
+		</url>
 
 		<url>
 			<description name="Pulse:Main Midroll" />
@@ -138,7 +150,7 @@
 
 
 		<url>
-			<description name="VAST:Midroll Vast 2.0 + Bitmovin" />
+			<description name="VAST:Bitmovin Vast2.0 Midroll" />
 			<embed_code name="VwYzdoMTE6MFmVcSNiwQyGpeSOuvGpcc" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -150,8 +162,20 @@
 		</url>
 		
 		<url>
-			<description name="VAST:Midroll OSMF" />
+			<description name="VAST:OSMF Vast2.0 Midroll" />
 			<embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF,MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+
+		</url>
+		
+		<url>
+			<description name="IMA:OSMF Midroll" />
+			<embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
 			<adPlugins name="VAST" adPlayTime=""/>
@@ -250,7 +274,7 @@
 		</url>
 
 		<url>
-			<description name="VPAID:Bitmovin Midroll" />
+			<description name="VPAID:Bitmovin Vast VPAID2.0 Midroll" />
 			<embed_code name="0wdnI4MjE68TtC2n_PMT4HwiyDJXYEGX" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="MAIN,BITMOVIN" />
@@ -273,7 +297,7 @@
 
 		</url>
 		<url>
-			<description name="VAST:Midroll|VTC:SetEmbedCode" />
+			<description name="VAST:Main Vast2.0 Midroll|VTC:SetEmbedCode" />
 			<embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -284,7 +308,7 @@
 
 		</url>
 		<url>
-			<description name="Freewheel:Midroll|VTC:SetEmbedCode" />
+			<description name="Freewheel:Main Midroll|VTC:SetEmbedCode" />
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -292,6 +316,32 @@
 			<additionalPlugins name="" />
 			<pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
 			<playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+		</url>
+		
+		<url>
+			<description name="VAST:OSMF Vast3.0 Midroll" />
+			<embed_code name="hucThxYTE6DeKlOdeAQS8bbGgIE5dDpX" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF,MAIN" />
+			<adPlugins name="VAST" adPlayTime="10"/>
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+			<browserSupportedVersion name="safari,9" />
+
+		</url>
+		
+		<url>
+			<description name="VAST:Main Vast3.0 Midroll" />
+			<embed_code name="F3bDhxYTE6_BXwKW6aljlWptl8jHx4sA" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="VAST" adPlayTime="10"/>
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+
 		</url>
 
 	</test>

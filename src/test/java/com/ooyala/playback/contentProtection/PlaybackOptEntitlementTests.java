@@ -65,21 +65,19 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-			result = result && drm.opt().validate("drm_tag", 5000);
+			if(!testName.contains("Core:") && !url.getVideoPlugins().contains("OSMF")) // Core has non drm assets
+				result = result && drm.opt().validate("drm_tag", 5000);
 
 			injectScript();
 
 			tech.getConsoleLogs();
 
 			result = result && play.validate("playing_1", 60000);
+			
+			result = result && streams.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 
 			if (eventValidator.isVideoPluginPresent("bit_wrapper")) {
-				result = result && streams.setStreamType("mpd").validate("videoPlayingurl", 1000);
-				result = result && tech.setStream("dash").validate("bitmovin_technology", 6000);
-			}
-
-			if (eventValidator.isVideoPluginPresent("osmf")) {
-				result = result && streams.setStreamType("f4m").validate("videoPlayingurl", 1000);
+				result = result && tech.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
 			}
 
 			result = result && pause.validate("paused_1", 60000);
