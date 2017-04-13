@@ -65,7 +65,8 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-			result = result && drm.opt().validate("drm_tag", 5000);
+			if(!testName.contains("Core:") && !url.getVideoPlugins().contains("OSMF")) // Core has non drm assets
+				result = result && drm.opt().validate("drm_tag", 5000);
 
 			injectScript();
 

@@ -60,6 +60,12 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest {
 			driver.get(url.getUrl());
 
 			result = result && event.isPageLoaded();
+			
+			Thread.sleep(10000);
+			
+			driver.get(url.getUrl());
+
+			result = result && event.isPageLoaded();
 
 			result = result && error.expectedErrorCode("past").expectedErrorDesc("This video is no longer available")
 					.validate("", 60000);

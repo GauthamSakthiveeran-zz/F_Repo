@@ -63,6 +63,8 @@ public class PlaybackGeoRestrictionTests extends PlaybackWebTest {
 			driver.get(url.getUrl());
 
 			result = result && event.isPageLoaded();
+			
+			Thread.sleep(10000);
 
 			result = result && geo.validate("", 60000);
 
