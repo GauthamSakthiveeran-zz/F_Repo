@@ -1,5 +1,6 @@
 package com.ooyala.playback.amf.midroll;
 
+import com.ooyala.playback.page.AdStartTimeValidator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,6 +20,7 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayValidator playValidator;
 	private SeekValidator seek;
+	private AdStartTimeValidator adStartTimeValidator;
 
 	@Test(groups = { "amf", "midroll" }, dataProvider = "testUrls")
 	public void verifyMultipleMidroll(String testName, UrlObject url) throws OoyalaException {
@@ -35,13 +37,17 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 
 			result = result && playValidator.validate("playing_1", 90000);
 
-			result = result && event.validate("MidRoll_willPlayAds", 200000);
-
-			result = result && event.validate("MidRoll_willPlaySingleAd_1", 200000);
-			result = result && event.validate("singleAdPlayed_1", 200000);
-
-			result = result && event.validate("MidRoll_willPlaySingleAd_2", 200000);
-			result = result && event.validate("singleAdPlayed_2", 200000);
+            if (url.getAdStartTime()!=null && !url.getAdStartTime().isEmpty()) {
+                result = result && adStartTimeValidator.validateMultipleMidrollAdStartTime(url.getAdStartTime());
+                result = result && event.validate("singleAdPlayed_1", 200000);
+                result = result && event.validate("singleAdPlayed_2", 200000);
+            } else {
+                result = result && event.validate("MidRoll_willPlayAds", 200000);
+                result = result && event.validate("MidRoll_willPlaySingleAd_1", 200000);
+                result = result && event.validate("singleAdPlayed_1", 200000);
+                result = result && event.validate("MidRoll_willPlaySingleAd_2", 200000);
+                result = result && event.validate("singleAdPlayed_2", 200000);
+            }
 
 			if (event.isAdPluginPresent("pulse")) {
 

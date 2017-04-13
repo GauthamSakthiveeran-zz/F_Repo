@@ -22,6 +22,7 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private PoddedAdValidator poddedAdValidator;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
+	private AdStartTimeValidator adStartTimeValidator;
 
 	@Test(groups = {"amf","podded","midroll"}, dataProvider = "testUrls")
 	public void verifyMidrollPodded(String testName, UrlObject url) throws OoyalaException {
@@ -37,9 +38,17 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
 
 			result = result && playValidator.validate("playing_1", 60000);
 
-			result = result && seek.fromLast().setTime(20).startAction();
-			
-			result = result && event.validate("MidRoll_willPlayAds", 60000);
+            if (event.isAdPluginPresent("ima") || event.isAdPluginPresent("vast")){
+                result = result && seek.seek("8");
+            }else
+                result = result && seek.seek("18");
+
+			if (url.getAdStartTime()!=null && !url.getAdStartTime().isEmpty()){
+                result = result && adStartTimeValidator.validateAdStartTime(url.getAdStartTime(),"MidRoll_willPlayAds");
+            }else
+                result = result && event.validate("MidRoll_willPlayAds", 60000);
+
+            result = result && seek.fromLast().setTime(20).startAction();
 
 			if(event.isAdPluginPresent("freewheel") || event.isAdPluginPresent("ima")){
 				result = result && event.validate("adsPlayed_2", 200000); // TODO

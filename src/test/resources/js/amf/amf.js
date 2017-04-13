@@ -24,6 +24,8 @@ function subscribeToEvents() {
 		var willPlayNonlinearAdEventOrder = 1;
 		var videoPlayingAdEventOrder = 1;
 		var adPodStartedEventOrder = 1;
+        var playNonlinearAdEventOrder = 1;
+        var videoPausedEventOrder = 1;
 		
 		return function(event) {
 			
@@ -36,6 +38,12 @@ function subscribeToEvents() {
 				OO.$('#ooplayer').append('<p id=willPlayNonlinearAd_'+willPlayNonlinearAdEventOrder+'> willPlayNonlinearAd '+willPlayNonlinearAdEventOrder+'</p>'); 
 				willPlayNonlinearAdEventOrder++;
 			}
+
+            if (event.match(/playNonlinearAd/)){
+                var time = pp.getPlayheadTime().toFixed();
+                OO.$('#ooplayer').append('<p id=play-overaly-ad>'+time+'</p>');
+                OO.$('#ooplayer').append('<p id=overlay-ad-position>'+arguments[1].ad.position+'</p>');
+            }
 			
 			if (event.match(/willPauseAds/)) {
 				OO.$('#ooplayer').append('<p id=willPauseAds_'+willPauseAdsEventOrder+'> willPauseAds '+willPauseAdsEventOrder+'</p>'); 
@@ -202,6 +210,20 @@ function subscribeToEvents() {
                 console.log("number of ads : "+adCount);
                 OO.$("#ooplayer").append("<p id=adPodStarted_"+adPodStartedEventOrder+">"+arguments[1]+"</p>");
                 adPodStartedEventOrder++;
+            }
+
+            if (event.match(/videoPaused/) && arguments[1] == 'main') {
+                var time= pp.getPlayheadTime().toFixed()
+                OO.$('#ooplayer').append(
+                    '<p id=adStartTime>'+time+'</p>');
+                videoPausedEventOrder++;
+            }
+
+            if (event.match(/videoPaused/) && arguments[1] == 'main' && videoPausedEventOrder > 2) {
+                var time= pp.getPlayheadTime().toFixed()
+                OO.$('#ooplayer').append(
+                    '<p id=multimidrollAdStartTime>'+time+'</p>');
+                videoPausedEventOrder++;
             }
 			
 		};

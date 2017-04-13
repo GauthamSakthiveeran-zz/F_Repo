@@ -1,14 +1,10 @@
 package com.ooyala.playback.amf.midroll;
 
+import com.ooyala.playback.page.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AdClickThroughValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.OverlayValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -23,6 +19,7 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private OverlayValidator overLayValidator;
 	private AdClickThroughValidator adClicks;
+	private AdStartTimeValidator adStartTimeValidator;
 
 	@Test(groups = {"amf","overlay","midroll","sequential"}, dataProvider = "testUrls")
 	public void verifyMidrollOverlay(String testName, UrlObject url)
@@ -41,11 +38,17 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
             result = result && playValidator.validate("playing_1", 60000);
             
             if(!event.isVideoPluginPresent("osmf")){
-            	result = result && event.validate("MidRoll_willPlaySingleAd_1", 160000);
+				if (url.getAdStartTime()!=null && !url.getAdStartTime().isEmpty()){
+					result = result && adStartTimeValidator.validateAdStartTime(url.getAdStartTime(),"MidRoll_willPlaySingleAd_1");
+				}else
+            		result = result && event.validate("MidRoll_willPlaySingleAd_1", 160000);
+
 				result = result && event.validate("singleAdPlayed_1", 160000);
             }
 			
             result = result && event.validate("showNonlinearAd_1", 160000);
+
+            result = result && adStartTimeValidator.validateNonLinearAdStartTime("showNonlinearAd_1");
             
             result = result && adClicks.overlay().validate("", 120000);
 
