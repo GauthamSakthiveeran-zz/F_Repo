@@ -23,11 +23,11 @@ public class GeoValidator extends PlayBackPage implements PlaybackValidator {
 		if (!loadingSpinner()) {
 			return false;
 		}
-		String errorCode = driver.executeScript("return pp.getErrorCode()").toString();
 		String country = driver.executeScript("return $.get(\"http://ipinfo.io\", function(response) {\n"
 				+ "   console.log(response.country);\n" + "}, \"jsonp\");").toString();
-		logger.info("Error code :" + errorCode + "\nContry :" + country);
+		logger.info("Contry :" + country);
 		if (country.equalsIgnoreCase("US")) {
+			String errorCode = driver.executeScript("return pp.getErrorCode()").toString();
 			if (errorCode != null) {
 				logger.error("Geo Syndication is not working");
 				extentTest.log(LogStatus.FAIL, "Geo Syndication is not working");
