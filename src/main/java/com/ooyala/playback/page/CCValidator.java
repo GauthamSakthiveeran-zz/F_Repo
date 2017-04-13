@@ -81,16 +81,19 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 				extentTest.log(LogStatus.FAIL, "CC_OFF is not present.");
 				return false;
 			}
-			if (!(clickOnIndependentElement("CC_SWITCH_CONTAINER") && isElementPresent("CC_ON"))) {
-				extentTest.log(LogStatus.FAIL, "CC_ON is not present");
-				return false;
-			}
-            if (!waitOnElement(By.id("savePlayerSettings_off_1"),20000)){
+			
+			if (!waitOnElement(By.id("savePlayerSettings_off_1"),20000)){
                 extentTest.log(LogStatus.FAIL, "savePlayerSettings event after making CC button off is not triggering");
                 return false;
             }
 
             logger.info("savePlayerSettings event after making CC button off is triggering");
+			
+            
+			if (!(clickOnIndependentElement("CC_SWITCH_CONTAINER") && isElementPresent("CC_ON"))) {
+				extentTest.log(LogStatus.FAIL, "CC_ON is not present");
+				return false;
+			}
 
             if (!waitOnElement(By.id("savePlayerSettings_on_1"),20000)){
                 extentTest.log(LogStatus.FAIL, "savePlayerSettings event after making CC button on is not triggering");
@@ -98,6 +101,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
             }
 
             logger.info("savePlayerSettings event after making CC button on is triggering");
+            
 
 		} else {
 			extentTest.log(LogStatus.FAIL, "click on CC_SWITCH_CONTAINER failed");
