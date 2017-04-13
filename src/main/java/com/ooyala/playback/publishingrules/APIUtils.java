@@ -71,71 +71,6 @@ public class APIUtils {
 		}
 	}
 
-	/*private String getSignature(String string) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-
-		MessageDigest md = MessageDigest.getInstance("SHA-256");
-		byte[] digest = md.digest(string.getBytes());
-		String b64url = Base64.encodeBase64String(digest);
-		b64url = b64url.substring(0, 43);
-		b64url = URLEncoder.encode(b64url, "UTF-8");
-		return b64url;
-	}
-*/
-	/*@SuppressWarnings("deprecation")
-	private String makeAPIcall(String urlString, String requestMethod, String requestBody) throws IOException {
-		HttpClient httpClient = HttpClientBuilder.create().build();
-
-		HttpRequestBase request = null;
-
-		if (requestMethod.equals("PUT")) {
-			request = new HttpPut(urlString);
-		} else if (requestMethod.equals("GET")) {
-			request = new HttpGet(urlString);
-		} else if (requestMethod.equals("POST")) {
-
-			HttpPost post = new HttpPost(urlString);
-			HttpEntity entity = new ByteArrayEntity(requestBody.getBytes("UTF-8"));
-			post.setEntity(entity);
-			HttpResponse response = httpClient.execute(post);
-			httpStatus = response.getStatusLine().getStatusCode();
-			return EntityUtils.toString(response.getEntity());
-
-		} else if (requestMethod.equals("DELETE")) {
-
-			if (requestBody == null || requestBody.isEmpty())
-				request = new HttpDelete(urlString);
-			else {
-				HttpDeleteWithBody httpDelete = new HttpDeleteWithBody(urlString);
-				StringEntity input = new StringEntity(requestBody, ContentType.APPLICATION_JSON);
-				httpDelete.setEntity(input);
-				HttpResponse response = httpClient.execute(httpDelete);
-				httpStatus = response.getStatusLine().getStatusCode();
-				return EntityUtils.toString(response.getEntity());
-			}
-
-		} else {
-			request = new HttpGet(urlString);
-		}
-
-		request.addHeader("accept", "application/json");
-
-		HttpResponse response = httpClient.execute(request);
-
-		httpStatus = response.getStatusLine().getStatusCode();
-
-		if (httpStatus == 200) {
-			String output = EntityUtils.toString(response.getEntity());
-			logger.info(output);
-			httpClient.getConnectionManager().shutdown();
-			return output;
-		}
-
-		logger.info(response.getStatusLine().getStatusCode());
-
-		return null;
-
-	}*/
-
 	public boolean isEntitlementAvailable(String pcode, String embedCode) throws Exception {
 
 		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "GET", null, null, version, entitlements,
@@ -149,8 +84,9 @@ public class APIUtils {
 
 	public boolean deleteEntitlement(String pcode, String embedCode) throws Exception {
 
-		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "DELETE", null, null, version, entitlements,
-				providers, pcode, accounts, accountId, content, assets, embedCode, external_products, "default");
+		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "DELETE", null, null, version,
+				entitlements, providers, pcode, accounts, accountId, content, assets, embedCode, external_products,
+				"default");
 
 		if (response.getResponseCode() == 200)
 			return true;
@@ -169,8 +105,8 @@ public class APIUtils {
 		JSONObject requestBody = new JSONObject();
 		requestBody.put("assets", jsonArray);
 
-		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "POST", requestBody.toString(), null, version,
-				entitlements, providers, pcode, accounts, accountId, content);
+		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "POST", requestBody.toString(), null,
+				version, entitlements, providers, pcode, accounts, accountId, content);
 
 		if (response.getResponseCode() == 200)
 			return true;
@@ -180,12 +116,12 @@ public class APIUtils {
 
 	public HashMap<String, String> getDevices(String pcode) throws IOException {
 
-		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "GET", null,null,  device_management,
+		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "GET", null, null, device_management,
 				this.pcode, pcode, account_id, accountId, devices);
 
 		if (response.getResponseCode() == 200) {
 			HashMap<String, String> devices = new HashMap<>();
-			JSONObject json = new JSONObject(response);
+			JSONObject json = new JSONObject(response.getResponse());
 			JSONArray jsonArray = json.getJSONArray("devices");
 			for (int i = 0; i < jsonArray.length(); i++) {
 				devices.put(jsonArray.getJSONObject(i).getString("user_agent"),
@@ -203,7 +139,7 @@ public class APIUtils {
 		json.put("actor", "sasport");
 		json.put("actor_type", "admin");
 
-		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "DELETE", json.toString(),null,
+		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "DELETE", json.toString(), null,
 				device_management, this.pcode, pcode, account_id, accountId, devices);
 
 		if (response.getResponseCode() == 200) {
@@ -224,7 +160,7 @@ public class APIUtils {
 		json.put("actor", "sasport");
 		json.put("actor_type", "admin");
 
-		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "DELETE", json.toString(),null,
+		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "DELETE", json.toString(), null,
 				device_management, this.pcode, pcode, account_id, accountId, devices, deviceId);
 
 		if (response.getResponseCode() == 200) {
