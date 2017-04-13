@@ -88,8 +88,9 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 
 				result = result && syndicationRuleValidator.deleteDevices(url.getPCode());
 
-				newDriver.close();
+				newDriver.quit();
 
+				driver.quit();
 			}
 
 		} catch (Exception e) {
