@@ -78,9 +78,18 @@ public class AdClickThroughValidator extends PlayBackPage implements
 			
 			boolean flag = true;
 
+            ((JavascriptExecutor) driver).executeScript("pp.play()");
+
 			if (isElementPresent("AD_SCREEN_PANEL")) {
 				if (!clickOnIndependentElement("AD_SCREEN_PANEL"))
 					return false;
+
+				if(waitOnElement(By.id("videoPausedAds_2"),5000)){
+				    log.info("video paused event verified");
+					return true;
+
+				}else return false;
+
 			} else if (isElementPresent("AD_PANEL_1")) {
 				if (!(clickOnIndependentElement("AD_PANEL_1") && waitOnElement(By.id("adsClickThroughOpened"), 10000))) {
 					return false;
@@ -99,10 +108,12 @@ public class AdClickThroughValidator extends PlayBackPage implements
 			}
 
 			if (getWindowHandleCount() <= 1) {
+				log.info("New tab did not open on ad click.");
 				extentTest.log(LogStatus.FAIL, "New tab did not open on ad click.");
 			}
 
 			extentTest.log(PASS, "AdsClicked by clicking on the ad screen");
+			log.info("AdsClicked by clicking on the ad screen");
 			
 			if (!value.contains("ima")) {
 				if (getBrowser().contains("internet explorer")) {
@@ -124,10 +135,12 @@ public class AdClickThroughValidator extends PlayBackPage implements
 				
 				if(getWindowHandleCount()<=1){
 					extentTest.log(LogStatus.FAIL, "New tab did not open on ad click.");
+					log.info("New tab did not open on ad click.");
 				}
 
 			}
 			extentTest.log(PASS, "AdsClicked by clicking on the learn more button");
+			log.info("AdsClicked by clicking on the learn more button");
 
 			closeOtherWindows(baseWindowHdl);
 
