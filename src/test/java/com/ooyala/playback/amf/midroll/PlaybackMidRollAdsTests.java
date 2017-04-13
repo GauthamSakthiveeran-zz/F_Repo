@@ -1,15 +1,12 @@
 package com.ooyala.playback.amf.midroll;
 
-import com.ooyala.playback.page.SetEmbedCodeValidator;
+import com.ooyala.playback.page.*;
 import com.ooyala.playback.url.UrlObject;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMidRollAdsTests extends PlaybackWebTest {
@@ -22,6 +19,7 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
+    private AdStartTimeValidator adStartTimeValidator;
 
 	@Test(groups = {"amf","midroll"}, dataProvider = "testUrls")
 	public void verifyMidRoll(String testName, UrlObject url) throws OoyalaException {
@@ -42,16 +40,26 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 			if (event.isVideoPluginPresent("akamai")) {
 				
 				if (event.isAdPluginPresent("freewheel")){
-					result = result && event.validate("MidRoll_willPlayAds_2", 120000);
+                    if (url.getAdStartTime() != null && !url.getAdStartTime().isEmpty()){
+                        result = result && adStartTimeValidator.validateAdStartTime(url.getAdStartTime(),"MidRoll_willPlaySingleAd_2");
+                    }else
+                        result = result && event.validate("MidRoll_willPlayAds_2", 120000);
+
 					result = result && event.validate("adsPlayed_2", 60000);
 				} else{
-					result = result && event.validate("MidRoll_willPlayAds_1", 120000);
+                    if (url.getAdStartTime() != null && !url.getAdStartTime().isEmpty()){
+                        result = result && adStartTimeValidator.validateAdStartTime(url.getAdStartTime(),"MidRoll_willPlaySingleAd_1");
+                    }else
+                        result = result && event.validate("MidRoll_willPlayAds_1", 120000);
 					result = result && event.validate("adsPlayed_1", 60000);
 				}
-				
+
 				
 			} else {
-				result = result && event.validate("MidRoll_willPlaySingleAd_1", 120000);
+                if (url.getAdStartTime() != null && !url.getAdStartTime().isEmpty()){
+                    result = result && adStartTimeValidator.validateAdStartTime(url.getAdStartTime(),"MidRoll_willPlaySingleAd_1");
+                }else
+                    result = result && event.validate("MidRoll_willPlayAds_1", 120000);
 				if (event.isAdPluginPresent("pulse"))
 					result = result && event.validate("singleAdPlayed_2", 60000);
 				else

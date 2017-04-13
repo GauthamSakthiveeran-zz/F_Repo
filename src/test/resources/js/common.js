@@ -19,7 +19,9 @@ function subscribeToCommonEvents() {
 		var adPodEndedEventOrder = 1;
 		var pausedEventOrder = 1;
 		var videoElementDisposedEventOrder = 1;
-		
+		var savePlayerSettingsFalseEventCount = 1;
+        var savePlayerSettingsTrueEventCount = 1;
+        
 		return function(event) {
 			if (event.match(/played/)) {
 				OO.$('#ooplayer').append('<p id=played_'+playedEventOrder+'>played '+playedEventOrder+'</p>'); 
@@ -123,6 +125,16 @@ function subscribeToCommonEvents() {
 			
 			if (event.match(/videoWillPlay/) && arguments[1] == "main") {
                 OO.$("#ooplayer").append("<p id=videoPlayingurl"+">Video URL "+arguments[2]+"</p>");
+            }
+			
+			if (event.match(/savePlayerSettings/) && arguments[1].closedCaptionOptions.enabled == false && savePlayerSettingsFalseEventCount<2) {
+                OO.$("#ooplayer").append("<p id=savePlayerSettings_off_"+savePlayerSettingsFalseEventCount+">"+savePlayerSettingsFalseEventCount+"</p>");
+                savePlayerSettingsFalseEventCount++;
+            }
+
+            if (event.match(/savePlayerSettings/) && arguments[1].closedCaptionOptions.enabled == true && savePlayerSettingsTrueEventCount<2) {
+                OO.$("#ooplayer").append("<p id=savePlayerSettings_on_"+savePlayerSettingsTrueEventCount+">"+savePlayerSettingsTrueEventCount+"</p>");
+                savePlayerSettingsTrueEventCount++;
             }
 			
 		};

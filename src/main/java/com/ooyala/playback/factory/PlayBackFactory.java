@@ -72,6 +72,7 @@ public class PlayBackFactory {
 	private BitmovinTechnologyValidator bitmovinTechnologyValidator;
 	private SyndicationRuleValidator syndicationRuleValidator;
 	private LiveValidator liveValidator;
+	private AdStartTimeValidator adStartTimeValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -494,7 +495,13 @@ public class PlayBackFactory {
 		return liveValidator;
 	}
 
-
+    public AdStartTimeValidator getAdStartTimeValidator() {
+        if (adStartTimeValidator == null){
+            adStartTimeValidator = new AdStartTimeValidator(driver);
+            adStartTimeValidator.setExtentTest(extentTest);
+        }
+        return adStartTimeValidator;
+    }
 	public void destroyInstance() {
 		playbackFactory = null;
 	}
