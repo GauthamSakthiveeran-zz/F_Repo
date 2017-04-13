@@ -29,10 +29,10 @@ public class SyndicationRuleValidator extends PlayBackPage implements PlaybackVa
 		return false;
 	}
 
-	public boolean updatePublishingRule(String embedCode, String api_key, String secret, boolean defaultGroup)
+	public boolean updatePublishingRule(String embedCode, String api_key, boolean defaultGroup)
 			throws Exception {
 
-		HashMap<String, String> rules = api.getPublishingRuleIds(api_key, secret);
+		HashMap<String, String> rules = api.getPublishingRuleIds(api_key);
 
 		if (rules == null) {
 			extentTest.log(LogStatus.FAIL, "Issue with getting the publishing rules");
@@ -52,7 +52,7 @@ public class SyndicationRuleValidator extends PlayBackPage implements PlaybackVa
 			return false;
 		}
 
-		if (api.updatePublishingRule(embedCode, publishingRuleId, api_key, secret)) {
+		if (api.updatePublishingRule(embedCode, publishingRuleId, api_key)) {
 			return true;
 		} else {
 			extentTest.log(LogStatus.FAIL, "Issue with updating publishing rule");

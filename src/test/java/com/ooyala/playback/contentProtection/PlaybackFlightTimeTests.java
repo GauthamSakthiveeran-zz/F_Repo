@@ -36,8 +36,7 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest {
 		boolean result = true;
 		try {
 
-			result = result && syndicationRuleValidator.updatePublishingRule(url.getEmbedCode(), url.getApiKey(),
-					url.getSecret(), true);
+			result = result && syndicationRuleValidator.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), true);
 
 			driver.get(url.getUrl());
 
@@ -51,8 +50,8 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest {
 
 			result = result && event.validate("played_1", 60000);
 
-			result = result && syndicationRuleValidator.updatePublishingRule(url.getEmbedCode(), url.getApiKey(),
-					url.getSecret(), false);
+			result = result
+					&& syndicationRuleValidator.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), false);
 
 			Thread.sleep(10000);
 

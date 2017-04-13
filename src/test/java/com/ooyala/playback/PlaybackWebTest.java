@@ -65,7 +65,6 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected ExtentTest extentTest;
     protected Testdata testData;
     protected String[] jsUrl;
-    protected NeoRequest neoRequest;
     protected LiveChannel liveChannel;
     protected RemoteWebDriver driver;
     protected static String v4Version;
@@ -76,7 +75,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     public PlaybackWebTest() throws OoyalaException {
 
-        neoRequest = NeoRequest.getInstance();
         liveChannel = new LiveChannel();
     }
 

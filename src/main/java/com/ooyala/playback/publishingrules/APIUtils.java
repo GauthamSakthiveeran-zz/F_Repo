@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpEntity;
@@ -25,6 +26,9 @@ import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.ooyala.playback.live.NeoRequest;
+import com.ooyala.qe.common.exception.OoyalaException;
+import com.ooyala.qe.common.http.Response;
 import com.ooyala.qe.common.util.PropertyReader;
 
 import net.lightbody.bmp.proxy.http.HttpDeleteWithBody;
@@ -56,9 +60,11 @@ public class APIUtils {
 	protected String pcode;
 	protected String account_id;
 	protected String devices;
-	
+	NeoRequest neoRequest;
+
 	public APIUtils() {
 		try {
+			neoRequest = new NeoRequest();
 			properties = PropertyReader.getInstance("api.properties");
 			backlot_api_endPoint = properties.getProperty("backlot_api_endPoint");
 			version = properties.getProperty("version");
@@ -84,10 +90,12 @@ public class APIUtils {
 
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (OoyalaException e) {
+			e.printStackTrace();
 		}
 	}
 
-	private String getSignature(String string) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	/*private String getSignature(String string) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
 		byte[] digest = md.digest(string.getBytes());
@@ -96,8 +104,8 @@ public class APIUtils {
 		b64url = URLEncoder.encode(b64url, "UTF-8");
 		return b64url;
 	}
-
-	@SuppressWarnings("deprecation")
+*/
+	/*@SuppressWarnings("deprecation")
 	private String makeAPIcall(String urlString, String requestMethod, String requestBody) throws IOException {
 		HttpClient httpClient = HttpClientBuilder.create().build();
 
@@ -117,18 +125,18 @@ public class APIUtils {
 			return EntityUtils.toString(response.getEntity());
 
 		} else if (requestMethod.equals("DELETE")) {
-			
-			if(requestBody==null || requestBody.isEmpty())
+
+			if (requestBody == null || requestBody.isEmpty())
 				request = new HttpDelete(urlString);
-			else{
+			else {
 				HttpDeleteWithBody httpDelete = new HttpDeleteWithBody(urlString);
-		        StringEntity input = new StringEntity(requestBody, ContentType.APPLICATION_JSON);
-		        httpDelete.setEntity(input); 
-		        HttpResponse response = httpClient.execute(httpDelete);
+				StringEntity input = new StringEntity(requestBody, ContentType.APPLICATION_JSON);
+				httpDelete.setEntity(input);
+				HttpResponse response = httpClient.execute(httpDelete);
 				httpStatus = response.getStatusLine().getStatusCode();
 				return EntityUtils.toString(response.getEntity());
 			}
-			
+
 		} else {
 			request = new HttpGet(urlString);
 		}
@@ -150,35 +158,31 @@ public class APIUtils {
 
 		return null;
 
-	}
-	
+	}*/
+
 	public boolean isEntitlementAvailable(String pcode, String embedCode) throws Exception {
-		String url = rl_api_endpoint + version + entitlements + providers + pcode + "/" + accounts + accountId + "/"
-				+ content + "/" + assets + embedCode + "/" + external_products + "default";
 
-		makeAPIcall(url, "GET", "");
+		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "GET", null, null, version, entitlements,
+				providers, pcode, accounts, accountId, content, assets, embedCode, external_products, "default");
 
-		if (httpStatus == 200)
+		if (response.getResponseCode() == 200)
 			return true;
 
 		return false;
 	}
 
 	public boolean deleteEntitlement(String pcode, String embedCode) throws Exception {
-		String url = rl_api_endpoint + version + entitlements + providers + pcode + "/" + accounts + accountId + "/"
-				+ content + "/" + assets + embedCode + "/" + external_products + "default";
 
-		makeAPIcall(url, "DELETE", "");
+		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "DELETE", null, null, version, entitlements,
+				providers, pcode, accounts, accountId, content, assets, embedCode, external_products, "default");
 
-		if (httpStatus == 200)
+		if (response.getResponseCode() == 200)
 			return true;
 
 		return false;
 	}
 
 	public boolean addEntitlement(String pcode, String embedCode, int deviceCount) throws Exception {
-		String url = rl_api_endpoint + version + entitlements + providers + pcode + "/" + accounts + accountId + "/"
-				+ content;
 
 		JSONObject json = new JSONObject();
 		json.put("content_id", embedCode);
@@ -189,9 +193,10 @@ public class APIUtils {
 		JSONObject requestBody = new JSONObject();
 		requestBody.put("assets", jsonArray);
 
-		makeAPIcall(url, "POST", requestBody.toString());
+		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "POST", requestBody.toString(), null, version,
+				entitlements, providers, pcode, accounts, accountId, content);
 
-		if (httpStatus == 200)
+		if (response.getResponseCode() == 200)
 			return true;
 
 		return false;
@@ -199,11 +204,10 @@ public class APIUtils {
 
 	public HashMap<String, String> getDevices(String pcode) throws IOException {
 
-		String url = rl_api_endpoint + device_management + this.pcode + pcode + "/" + account_id + accountId
-				+ "/" + devices;
-		String response = makeAPIcall(url, "GET", "");
+		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "GET", null,null,  device_management,
+				this.pcode, pcode, account_id, accountId, devices);
 
-		if (httpStatus == 200) {
+		if (response.getResponseCode() == 200) {
 			HashMap<String, String> devices = new HashMap<>();
 			JSONObject json = new JSONObject(response);
 			JSONArray jsonArray = json.getJSONArray("devices");
@@ -219,72 +223,72 @@ public class APIUtils {
 
 	public boolean deleteAllDevices(String pcode) throws IOException {
 
-		String url = rl_api_endpoint + device_management + this.pcode + pcode + "/" + account_id + accountId
-				+ "/" + devices;
 		JSONObject json = new JSONObject();
 		json.put("actor", "sasport");
 		json.put("actor_type", "admin");
 
-		String response = makeAPIcall(url, "DELETE", json.toString());
+		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "DELETE", json.toString(),null,
+				device_management, this.pcode, pcode, account_id, accountId, devices);
 
-		if (httpStatus == 200) {
+		if (response.getResponseCode() == 200) {
 			return true;
 		}
-		if (httpStatus == 404 && response.contains("device does not exist")) // device already deleted
+		if (response.getResponseCode() == 404 && response.getResponse().contains("device does not exist")) // device
+			// already
+			// deleted
 			return true;
 
 		return false;
 
 	}
-	
+
 	public boolean deleteDevice(String pcode, String deviceId) throws IOException {
 
-		String url = rl_api_endpoint + device_management + this.pcode + pcode + "/" + account_id + accountId
-				+ "/" + devices + "/" + deviceId;
 		JSONObject json = new JSONObject();
 		json.put("actor", "sasport");
 		json.put("actor_type", "admin");
 
-		String response = makeAPIcall(url, "DELETE", json.toString());
+		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "DELETE", json.toString(),null,
+				device_management, this.pcode, pcode, account_id, accountId, devices, deviceId);
 
-		if (httpStatus == 200) {
+		if (response.getResponseCode() == 200) {
 			return true;
 		}
-		if (httpStatus == 404 && response.contains("device does not exist")) // device already deleted
+		if (response.getResponseCode() == 404 && response.getResponse().contains("device does not exist")) // device
+			// already
+			// deleted
 			return true;
 
 		return false;
 
 	}
-	
-	public boolean updatePublishingRule(String embedCode, String publishingRuleId, String api_key, String secret)
-			throws Exception {
 
-		String toBeSigned = secret + "PUT/" + version + assets + embedCode + "/" + publishing_rule + publishingRuleId
-				+ this.api_key + "=" + api_key + expires + "=" + epochTime;
+	public boolean updatePublishingRule(String embedCode, String publishingRuleId, String api_key) throws Exception {
 
-		String url = backlot_api_endPoint + version + assets + embedCode + "/" + publishing_rule + publishingRuleId + "?"
-				+ this.api_key + "=" + api_key + "&" + expires + "=" + epochTime + "&" + signature + "="
-				+ getSignature(toBeSigned);
+		Map<String, String> queryString = new HashMap<>();
+		queryString.put("api_key", api_key);
+		queryString.put("expires", epochTime);
 
-		makeAPIcall(url, "PUT", "");
+		Response response = neoRequest.makeRequest(backlot_api_endPoint, "", api_key, "PUT", null, queryString, version,
+				assets, embedCode, publishing_rule, publishingRuleId);
 
-		if (httpStatus == 200) {
+		if (response.getResponseCode() == 200) {
 			return true;
 		}
 		return false;
 	}
 
-	public HashMap<String, String> getPublishingRuleIds(String api_key, String secret) throws Exception {
-		String toBeSigned = secret + "GET/" + version + publishing_rules + this.api_key + "=" + api_key + expires + "="
-				+ epochTime;
-		String url = backlot_api_endPoint + version + publishing_rules + "?" + this.api_key + "=" + api_key + "&"
-				+ expires + "=" + epochTime + "&" + signature + "=" + getSignature(toBeSigned);
+	public HashMap<String, String> getPublishingRuleIds(String api_key) throws Exception {
 
-		String output = makeAPIcall(url, "GET", "");
-		
-		if (output != null && !output.isEmpty()) {
-			JSONObject json = new JSONObject(output);
+		Map<String, String> queryString = new HashMap<>();
+		queryString.put("api_key", api_key);
+		queryString.put("expires", epochTime);
+
+		Response response = neoRequest.makeRequest(backlot_api_endPoint, "", api_key, "GET", null, queryString, version,
+				publishing_rules);
+
+		if (response.getResponse() != null && !response.getResponse().isEmpty()) {
+			JSONObject json = new JSONObject(response.getResponse());
 			HashMap<String, String> rules = new HashMap<>();
 
 			JSONArray items = json.getJSONArray("items");
@@ -305,24 +309,23 @@ public class APIUtils {
 
 	}
 
-	public String getPromoImageUrl(String embedCode, String pCode){
+	public String getPromoImageUrl(String embedCode, String pCode) {
 		logger.info("Inside getPromoImageUrl method");
 		String promoImageUrl = null;
-		String apiUrl="http://player.ooyala.com/player_api/v1/content_tree/embed_code/"+pCode+"/"+embedCode;
 		try {
-			String output=makeAPIcall(apiUrl,"GET","");
-			JSONObject json = new JSONObject(output);
-			promoImageUrl=json.getJSONObject("content_tree").getJSONObject(embedCode).getString("promo_image");
-			logger.info("Promo Image URL : "+promoImageUrl);
-		}catch (Exception e){
-			logger.error("Issue in getPromoImageUrl method : "+e.getMessage());
+			Response response = neoRequest.makeRequest("http://player.ooyala.com",
+					"/player_api/v1/content_tree/embed_code/", null, "GET", null, null, pCode, embedCode);
+			JSONObject json = new JSONObject(response.getResponse());
+			promoImageUrl = json.getJSONObject("content_tree").getJSONObject(embedCode).getString("promo_image");
+			logger.info("Promo Image URL : " + promoImageUrl);
+		} catch (Exception e) {
+			logger.error("Issue in getPromoImageUrl method : " + e.getMessage());
 		}
 		return promoImageUrl;
 	}
-	
+
 	public static void main(String... strings) throws Exception {
-		HashMap<String, String> rules = new APIUtils().getPublishingRuleIds("x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH",
-				"ZCMQt2CCVqlHWce6dG5w2WA6fkAM_JaWgoI_yzQp");
+		HashMap<String, String> rules = new APIUtils().getPublishingRuleIds("x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH");
 		System.out.println(rules.get("default"));
 		System.out.println(rules.get("specific"));
 	}

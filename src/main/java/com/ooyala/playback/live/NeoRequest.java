@@ -21,35 +21,26 @@ import com.ooyala.qe.common.util.PropertyReader;
  */
 public class NeoRequest {
 	private Logger logger = Logger.getLogger(NeoRequest.class);
-	private String HOST_ADDRESS;
-	private PropertyReader properties;
-	private String API_KEY;
 	private long timeOut;
-	private static NeoRequest neoRequest;
+//	private static NeoRequest neoRequest;
 
-	private NeoRequest() throws OoyalaException {
+	public NeoRequest() throws OoyalaException {
 
-		try {
-			properties = PropertyReader.getInstance("urlData.properties");
-			API_KEY = properties.getProperty("api_key");
-			logger.info("API Key set to : " + API_KEY);
-			HOST_ADDRESS = "https://live.ooyala.com";
-			logger.info("Live URL set to : " + HOST_ADDRESS);
-			timeOut = System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(5);
-		} catch (IOException e) {
-			e.printStackTrace();
-			logger.error("Not able to create NeoRequest instance");
-			throw new OoyalaException("Not able to create NeoRequest instance");
-		}
+		//			properties = PropertyReader.getInstance("urlData.properties");
+//			API_KEY = properties.getProperty("api_key");
+//			logger.info("API Key set to : " + API_KEY);
+//			HOST_ADDRESS = "https://live.ooyala.com";
+//			logger.info("Live URL set to : " + HOST_ADDRESS);
+		timeOut = System.currentTimeMillis() + TimeUnit.MINUTES.toMillis(5);
 
 	}
 
-	public static NeoRequest getInstance() throws OoyalaException {
+	/*public static NeoRequest getInstance() throws OoyalaException {
 		if (neoRequest == null)
 			neoRequest = new NeoRequest();
 		return neoRequest;
 
-	}
+	}*/
 
 	/***
 	 * Making http request,this method will automatically perform authentication
@@ -62,13 +53,12 @@ public class NeoRequest {
 	 *            payload need to sent in http request
 	 * @return HttpResponse for processed request
 	 */
-	public Response makeRequest(String httpMethod, String body,
+	public Response makeRequest(String hostAddress, String path, String apiKey, String httpMethod, String body, Map<String, String> queryString, 
 			String... addReqPath) {
 		HttpTestClient httpTestClient = new HttpTestClient();
 		// Getting signature for current processing request
-		Map<String, String> queryString = new HashMap<>();
 
-		String urlPath = "/v2/channels";
+		String urlPath = path;
 		logger.info("urlPath_1 is :" + urlPath);
 		logger.info("--------------------------------------------------------------------");
 		if (addReqPath != null && addReqPath.length > 0) {
@@ -78,15 +68,19 @@ public class NeoRequest {
 				logger.info("--------------------------------------------------------------------");
 			}
 		}
-
-		String encodedUrl = Utils.getSignatureKey(API_KEY, httpMethod, urlPath,
-				body, timeOut, queryString);
-		logger.info("encoded_url is :" + encodedUrl);
-		logger.info("--------------------------------------------------------------------");
-		logger.info(HOST_ADDRESS + "-------------HOST_Address");
-		String requestUrl = HOST_ADDRESS + urlPath + encodedUrl;
-		logger.info("--------------------------------------------------------------------");
-		logger.info("request_url is :" + requestUrl);
+		
+		String requestUrl = hostAddress + urlPath;
+		
+		if(apiKey!=null && !apiKey.isEmpty()) {
+			String encodedUrl = Utils.getSignatureKey(apiKey, httpMethod, urlPath,
+					body, timeOut, queryString);
+			logger.info("encoded_url is :" + encodedUrl);
+			logger.info("--------------------------------------------------------------------");
+			logger.info(hostAddress + "-------------HOST_Address");
+			requestUrl = hostAddress + urlPath + encodedUrl;
+			logger.info("--------------------------------------------------------------------");
+			logger.info("request_url is :" + requestUrl);
+		}
 
 		if (requestUrl.contains("&include=input")) {
 			requestUrl = requestUrl.substring(0, requestUrl.lastIndexOf("&"));
