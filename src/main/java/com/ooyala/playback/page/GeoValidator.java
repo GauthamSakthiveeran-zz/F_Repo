@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.publishingrules.APIUtils;
 import com.relevantcodes.extentreports.LogStatus;
 
 /**
@@ -23,15 +24,13 @@ public class GeoValidator extends PlayBackPage implements PlaybackValidator {
 		if (!loadingSpinner()) {
 			return false;
 		}
-		String country = driver.executeScript("return $.get(\"http://ipinfo.io\", function(response) {\n"
-				+ "   console.log(response.country);\n" + "}, \"jsonp\");").toString();
+		String country = new APIUtils().getCountry();
 		logger.info("Contry :" + country);
-		if (country.equalsIgnoreCase("US")) {
-			String errorCode = driver.executeScript("return pp.getErrorCode()").toString();
-			if (errorCode != null) {
-				logger.error("Geo Syndication is not working");
-				extentTest.log(LogStatus.FAIL, "Geo Syndication is not working");
-				return false;
+		if (country.contains("US")) {
+			if(new PlayBackFactory(driver, extentTest).getPlayValidator().waitForPage()){
+				return true;
+			} else{
+				extentTest.log(LogStatus.PASS, "Video should be playable in US");
 			}
 		} else {
 			return new PlayBackFactory(driver, extentTest).getErrorDescriptionValidator().expectedErrorCode("geo")

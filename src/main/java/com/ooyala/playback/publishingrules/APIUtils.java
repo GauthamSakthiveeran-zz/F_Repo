@@ -239,5 +239,10 @@ public class APIUtils {
 		System.out.println(rules.get("default"));
 		System.out.println(rules.get("specific"));
 	}
+	
+	public String getCountry() {
+		Response response = neoRequest.makeRequest("http://ip-api.com/json", "", null, "GET", null, null);
+		return response.getResponse();
+	}
 
 }
