@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.publishingrules.APIUtils;
+import com.ooyala.playback.utils.APIUtils;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class SyndicationRuleValidator extends PlayBackPage implements PlaybackValidator {

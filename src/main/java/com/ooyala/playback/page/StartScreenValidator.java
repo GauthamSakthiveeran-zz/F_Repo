@@ -1,8 +1,9 @@
 package com.ooyala.playback.page;
 
-import com.ooyala.playback.publishingrules.APIUtils;
 import com.ooyala.playback.url.Url;
 import com.ooyala.playback.url.UrlObject;
+import com.ooyala.playback.utils.APIUtils;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

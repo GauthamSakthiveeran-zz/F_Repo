@@ -1,4 +1,4 @@
-package com.ooyala.playback.publishingrules;
+package com.ooyala.playback.utils;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -8,7 +8,6 @@ import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.ooyala.playback.live.NeoRequest;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.ooyala.qe.common.http.Response;
 import com.ooyala.qe.common.util.PropertyReader;

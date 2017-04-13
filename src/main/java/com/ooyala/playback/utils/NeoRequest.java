@@ -1,4 +1,4 @@
-package com.ooyala.playback.live;
+package com.ooyala.playback.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

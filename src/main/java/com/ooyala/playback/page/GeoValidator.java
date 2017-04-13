@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.factory.PlayBackFactory;
-import com.ooyala.playback.publishingrules.APIUtils;
+import com.ooyala.playback.utils.APIUtils;
 import com.relevantcodes.extentreports.LogStatus;
 
 /**
