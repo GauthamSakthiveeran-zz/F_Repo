@@ -30,6 +30,8 @@ function subscribeToEvents() {
         var destroyEventOrder = 1;
         var adPodEndedEventOrder = 1;
         var skipAdEventOrder = 1;
+        var savePlayerSettingsFalseEventCount = 1;
+        var savePlayerSettingsTrueEventCount = 1;
 
 
 
@@ -40,6 +42,17 @@ function subscribeToEvents() {
                 playingEventOrder + "</p>");
                 playingEventOrder++;
             }
+
+            if (event.match(/savePlayerSettings/) && arguments[1].closedCaptionOptions.enabled == false && savePlayerSettingsFalseEventCount<2) {
+                OO.$("#ooplayer").append("<p id=savePlayerSettings_off_"+savePlayerSettingsFalseEventCount+">"+savePlayerSettingsFalseEventCount+"</p>");
+                savePlayerSettingsFalseEventCount++;
+            }
+
+            if (event.match(/savePlayerSettings/) && arguments[1].closedCaptionOptions.enabled == true && savePlayerSettingsTrueEventCount<2) {
+                OO.$("#ooplayer").append("<p id=savePlayerSettings_on_"+savePlayerSettingsTrueEventCount+">"+savePlayerSettingsTrueEventCount+"</p>");
+                savePlayerSettingsTrueEventCount++;
+            }
+
             if (event.match(/played/)) {
                 OO.$("#ooplayer").append("<p id=played_" + playedEventOrder + ">played "+
                 playedEventOrder + "</p>");
@@ -196,9 +209,8 @@ function subscribeToEvents() {
             }
 
             if (event.match(/videoWillPlay/) && arguments[1] == "main") {
-                            OO.$("#ooplayer").append("<p id=videoPlayingurl"+">"+arguments[2]+"</p>");
-                        }
-
+                OO.$("#ooplayer").append("<p id=videoPlayingurl" + ">" + arguments[2] + "</p>");
+            }
         };
     }());
 }

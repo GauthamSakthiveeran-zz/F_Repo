@@ -78,6 +78,10 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
             result = result && eventValidator.validate("played_1", 60000);
 
+            result = result && eventValidator.validate("savePlayerSettings_off_1",15000);
+
+            result = result && eventValidator.validate("savePlayerSettings_on_1",15000);
+
         } catch (Exception e) {
             logger.error(e);
             extentTest.log(LogStatus.FAIL, e.getMessage());
