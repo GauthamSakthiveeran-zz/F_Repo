@@ -12,5 +12,16 @@
 			<playerParameter></playerParameter>
 			<streamType name="hls"></streamType>
 		</url>
+        <url>
+            <description name="Playlist:Platform-html5 BITMOVIN|Playlist:Platform-flash BITMOVIN" />
+            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"CaptionPosition":"inside","WrapperFontSize":20},"autoplay":"false","loop":"false","platform":"html5"}]]></playerParameter>
+            <streamType name="hls"></streamType>
+        </url>
 	</test>
 </testdata>

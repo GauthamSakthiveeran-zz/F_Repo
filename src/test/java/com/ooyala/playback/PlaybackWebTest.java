@@ -112,7 +112,6 @@ public abstract class PlaybackWebTest extends FacileTest {
                     }
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
