@@ -33,15 +33,16 @@ public class EndScreenValidator extends PlayBackPage implements
 				By.tagName("span")).getAttribute("class");
 
 		if (!replaytxt.trim().equals("oo-icon oo-icon-system-replay")) {
+			logger.info("Replay button is not present on end screen");
 			extentTest.log(LogStatus.FAIL,
 					"Replay button is not present on end screen");
 			return false;
 		}
 
 		double currenttime = Double.parseDouble(((JavascriptExecutor) driver)
-				.executeScript("return pp.getPlayheadTime();").toString());
+				.executeScript("return pp.getPlayheadTime().toFixed();").toString());
 		double totaltime = Double.parseDouble(((JavascriptExecutor) driver)
-				.executeScript("return pp.getDuration();").toString());
+				.executeScript("return pp.getDuration().toFixed();").toString());
 		
 		if(!(getBrowser().equalsIgnoreCase("internet explorer") || getBrowser().equalsIgnoreCase("MicrosoftEdge") || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("windows")))){
 			if (currenttime != totaltime) {
