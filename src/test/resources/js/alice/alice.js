@@ -209,19 +209,13 @@ function subscribeToEvents() {
             }
 
             if (event.match(/videoWillPlay/) && arguments[1] == "main") {
-<<<<<<< HEAD
-                            OO.$("#ooplayer").append("<p id=videoPlayingurl"+">"+arguments[2]+"</p>");
-                        }
-
-                        if (event.match(/buffering/)) {
-                        OO.$('#ooplayer').append('<p id=buffering_' + bufferingEventCount + '>buffering_'+ bufferingEventCount + '</p>');
-                        bufferingEventCount++;
-                        }
-
-=======
-                OO.$("#ooplayer").append("<p id=videoPlayingurl" + ">" + arguments[2] + "</p>");
+                OO.$("#ooplayer").append("<p id=videoPlayingurl"+">"+arguments[2]+"</p>");
             }
->>>>>>> a5e9c4dcda304ad9884e0c1b1324ae5f8d5c83e5
+
+            if (event.match(/buffering/)) {
+                OO.$('#ooplayer').append('<p id=buffering_' + bufferingEventCount + '>buffering_'+ bufferingEventCount + '</p>');
+                      bufferingEventCount++;
+            }
         };
     }());
 }
