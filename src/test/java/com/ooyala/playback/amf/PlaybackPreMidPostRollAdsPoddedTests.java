@@ -47,8 +47,8 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 
 			result = result && event.validate("playing_1", 90000);
 
-            if (url.getAdStartTime()!=null && !url.getAdStartTime().isEmpty()){
-                result = result && adStartTimeValidator.validateAdStartTime(url.getAdStartTime(),"MidRoll_willPlayAds");
+            if (adStartTimeValidator.isAdPlayTimePresent(url)){
+                result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlayAds");
             }else
 			    result = result && event.validate("MidRoll_willPlayAds", 200000);
 

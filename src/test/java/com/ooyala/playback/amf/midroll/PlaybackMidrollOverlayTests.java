@@ -38,8 +38,8 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
             result = result && playValidator.validate("playing_1", 60000);
             
             if(!event.isVideoPluginPresent("osmf")){
-				if (url.getAdStartTime()!=null && !url.getAdStartTime().isEmpty()){
-					result = result && adStartTimeValidator.validateAdStartTime(url.getAdStartTime(),"MidRoll_willPlaySingleAd_1");
+				if (adStartTimeValidator.isAdPlayTimePresent(url)){
+					result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlaySingleAd_1");
 				}else
             		result = result && event.validate("MidRoll_willPlaySingleAd_1", 160000);
 
@@ -48,7 +48,9 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 			
             result = result && event.validate("showNonlinearAd_1", 160000);
 
-            result = result && adStartTimeValidator.validateNonLinearAdStartTime("showNonlinearAd_1");
+            if (adStartTimeValidator.isOverlayPlayTimePresent(url)) {
+                result = result && adStartTimeValidator.validateNonLinearAdStartTime("showNonlinearAd_1");
+            }
             
             result = result && adClicks.overlay().validate("", 120000);
 
