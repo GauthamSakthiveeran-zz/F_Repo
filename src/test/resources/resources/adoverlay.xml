@@ -8,4 +8,6 @@
 	
 	<element key="OVERLAY_IMAGE" findBy="class" class="oo-ad-overlay-image" />
 
+	<element  key="FW_OVERLAY_IMAGE" findBy="xPath" xPath="oo-player-skin-plugins oo-full oo-overlay-showing"/>
+
 </elements>
