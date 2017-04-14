@@ -7,7 +7,7 @@
 			<embed_code name="VsMXV5eDp-uKDbBS2eZPv4G5hf7fbTYB" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="IMA" />
+			<adPlugins name="IMA" adPlayTime="10" overlayPlayTime="15"/>
 			<additionalPlugins name="" />
 			<pbid name="615dc8e909e941c280e12155df838355" />
 			<playerParameter><![CDATA[{"showNonLinearCloseButton":true}]]></playerParameter>
@@ -18,7 +18,7 @@
 			<embed_code name="hkOGt4dDr71-6f0_aceyHIlanbjgeSZc" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" adPlayTime="10" overlayPlayTime="15"/>
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
 			<playerParameter><![CDATA[{"showNonLinearCloseButton":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -29,7 +29,7 @@
 			<embed_code name="dibDlxYTE6z0u6Cm0qY6CbIagzuCcxoB" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="IMA" />
+			<adPlugins name="IMA" adPlayTime="10" overlayPlayTime="15"/>
 			<additionalPlugins name="DISCOVERY" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
@@ -40,7 +40,7 @@
 			<embed_code name="lybjlxYTE6n2LeYI6eK0LLaVrB_EO25R" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" adPlayTime="10" overlayPlayTime="15"/>
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
 			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -51,7 +51,7 @@
 	        <embed_code name="Q3bDlxYTE6DFxVIwmHpwlLsqj1m5UPi3"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
-	        <adPlugins name="VAST"/>
+	        <adPlugins name="VAST" adPlayTime="10" overlayPlayTime="15"/>
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>

@@ -1,14 +1,11 @@
 package com.ooyala.playback.amf.midroll;
 
+import com.ooyala.playback.page.*;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.OverlayValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -22,6 +19,7 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 	private PlayValidator playValidator;
 	private OverlayValidator overLayValidator;
 	private SeekValidator seekValidator;
+	private AdStartTimeValidator adStartTimeValidator;
 
 	@Test(groups = { "amf", "midroll", "overlay", "sequential" }, dataProvider = "testUrls")
 	public void verifyMidRoll(String testName, UrlObject url) throws OoyalaException {
@@ -38,28 +36,18 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 			result = result && playValidator.validate("playing_1", 60000);
 
 			result = result && event.validate("videoPlaying_1", 90000);
-			
-			Double time = 0D;
-			
-			while (time.intValue() <= 10) {
-				logger.info(time.toString());
-				time = Double.parseDouble(
-						((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
-			}
 
-			result = result && event.validate("MidRoll_willPlayAds_1", 1000);
+			if (adStartTimeValidator.isAdPlayTimePresent(url)){
+				result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlayAds_1");
+			} else
+				result = result && event.validate("MidRoll_willPlayAds_1", 1000);
 			
 			result = result && event.validate("adsPlayed_1", 60000);
-			
-			time = 0D;
-			
-			while (time.intValue() <= 15) {
-				logger.info(time.toString());
-				time = Double.parseDouble(
-						((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
-			}
 
-			result = result && event.validate("showNonlinearAd_1", 1000);
+			if (adStartTimeValidator.isOverlayPlayTimePresent(url)){
+				result = result && adStartTimeValidator.validateNonLinearAdStartTime("showNonlinearAd_1");
+			}else
+				result = result && event.validate("showNonlinearAd_1", 1000);
 			
 			if(!event.isAdPluginPresent("ima")) // because google puts in an iframe that isnt reachable
 				result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
