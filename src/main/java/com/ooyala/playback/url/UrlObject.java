@@ -17,6 +17,7 @@ public class UrlObject {
     private String provider;
 	private String adStartTime;
 	private String playerParameter;
+	private String overlayPlayTime;
 
 	public String getPlayerParameter() {return playerParameter;}
 
@@ -107,4 +108,8 @@ public class UrlObject {
 	public String getAdStartTime() {return adStartTime;}
 
 	public void setAdStartTime(String adStartTime) {this.adStartTime = adStartTime;}
+
+	public String getOverlayPlayTime() {return overlayPlayTime;}
+
+	public void setOverlayPlayTime(String overlayPlayTime) {this.overlayPlayTime = overlayPlayTime;}
 }
