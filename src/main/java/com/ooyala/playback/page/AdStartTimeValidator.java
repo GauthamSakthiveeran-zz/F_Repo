@@ -21,14 +21,31 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
         PageFactory.initElements(webDriver, this);
     }
 
+    int adStartTime;
+    int overlayPlayTime;
+
+    public boolean isOverlayPlayTimePresent(UrlObject url){
+        if (url.getOverlayPlayTime() != null && !url.getOverlayPlayTime().isEmpty()){
+            overlayPlayTime = Integer.parseInt(url.getOverlayPlayTime());
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isAdPlayTimePresent(UrlObject url){
+        if (url.getAdStartTime() != null && !url.getAdStartTime().isEmpty()){
+            adStartTime = Integer.parseInt(url.getAdStartTime());
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean validate(String element, int timeout) throws Exception {
         return false;
     }
 
-    public boolean validateAdStartTime(String adStartTime,String adEventLocator){
-
-        int adTime = Integer.parseInt(adStartTime);
+    public boolean validateAdStartTime(String adEventLocator){
 
         waitOnElement(By.id("adStartTime"),200000);
 
@@ -36,8 +53,8 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
 
         logger.info("Ad start time is :"+time);
 
-        if (!(time>=adTime && time<=(adTime+3))){
-            logger.error("Ad is not starting at "+adTime+" instead it gets started at "+time);
+        if (!(time>=adStartTime && time<=(adStartTime+3))){
+            logger.error("Ad is not starting at "+adStartTime+" instead it gets started at "+time);
             return false;
         }
 
@@ -69,16 +86,14 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
 
         waitOnElement(By.id("play-overaly-ad"),20000);
 
-        int overlayPositionAt = Integer.parseInt(driver.findElement(By.id("overlay-ad-position")).getText());
-
-        logger.info("overlay position is at "+overlayPositionAt+"th second");
+        logger.info("overlay position is at "+overlayPlayTime+"th second");
 
         int overlayPlayingAt = Integer.parseInt(driver.findElement(By.id("play-overaly-ad")).getText());
 
         logger.info("overlay is playing at "+overlayPlayingAt+"th second");
 
         // if following if statement, we are giving offset of 3 sec so that test wonn't get failed
-        if (overlayPlayingAt>=overlayPositionAt && overlayPlayingAt<=(overlayPositionAt+3)){
+        if (overlayPlayingAt>=overlayPlayTime && overlayPlayingAt<=(overlayPlayTime+3)){
             logger.info("Overlay is playing at expected position i.e : "+overlayPlayingAt);
             extentTest.log(LogStatus.PASS,"Overlay is playing at expected position i.e : "+overlayPlayingAt);
             return true;
