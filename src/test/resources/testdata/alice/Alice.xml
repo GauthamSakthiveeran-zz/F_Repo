@@ -341,7 +341,7 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"showInAdControlBar":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
         </url>
-        <!--<url>
+        <url>
             <description name="Core:Player States and Metadata Bitmovin" />
             <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -360,7 +360,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"showInAdControlBar":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
-        </url>-->
+        </url>
     </test>
 
     <test name="PlaybackVerticalVideoTests">
