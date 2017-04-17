@@ -20,6 +20,7 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 	private OverlayValidator overLayValidator;
 	private AdClickThroughValidator adClicks;
 	private AdStartTimeValidator adStartTimeValidator;
+	private OverlayValidator overlayValidator;
 
 	@Test(groups = {"amf","overlay","midroll","sequential"}, dataProvider = "testUrls")
 	public void verifyMidrollOverlay(String testName, UrlObject url)
@@ -56,6 +57,7 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 
 			result = result
 					&& overLayValidator.validate("nonlinearAdPlayed_1", 160000);
+			result = result && overlayValidator.validateOverlayRenderingEvent(6000);
 
 			// TODO , seeked_1 is not showing up in IE 11
 			if (!(getBrowser().equalsIgnoreCase("internet explorer") && event.isVideoPluginPresent("osmf")
