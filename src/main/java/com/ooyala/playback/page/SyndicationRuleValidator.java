@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.utils.APIUtils;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -94,14 +93,26 @@ public class SyndicationRuleValidator extends PlayBackPage implements PlaybackVa
 		}
 		return true;
 	}
+	
+	public boolean updateUserDeviceLimit(String pcode, int limit) throws IOException {
+		if (!api.updateDeviceLimit(pcode, limit)) {
+			extentTest.log(LogStatus.FAIL, "Failed to update the device limit");
+			return false;
+		}
+		return true;
+	}
 
 	public boolean isDeviceRegistered(String pcode) throws IOException {
 		String userAgent = getUserAgent();
 		HashMap<String, String> devices = api.getDevices(pcode);
 
 		if (devices == null) {
-			extentTest.log(LogStatus.INFO, "No devices registered.");
-			return false;
+			logger.info("Retrying");
+			devices = api.getDevices(pcode);
+			if (devices == null) {
+				extentTest.log(LogStatus.INFO, "No devices registered.");
+				return false;
+			}
 		}
 
 		if (devices.containsKey(userAgent)) {

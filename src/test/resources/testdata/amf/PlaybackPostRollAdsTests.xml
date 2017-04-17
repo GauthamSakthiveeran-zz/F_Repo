@@ -26,6 +26,18 @@
 	        
     	</url>
     	
+    	<url>
+	    	<description name="VPAID:Bitmovin IMA VPAID2.0 Postroll"/>
+	        <embed_code name="Z4MW5xYTE6rBMaYSuF6TA2xDVC9uUQdj"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="MAIN,BITMOVIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
+	        
+    	</url>
+    	
     	
     	<url>
 	    	<description name="Pulse:Bitmovin Postroll"/>
@@ -241,7 +253,6 @@
 			<additionalPlugins name=""/>
 			<pbid name="615dc8e909e941c280e12155df838355"/>
 			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-
 		</url>
 		
 		<url>
@@ -266,8 +277,29 @@
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
 			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-
 		</url>
+		
+		<url>
+	    	<description name="VPAID:Bitmovin IMA VPAID1.0 Postroll"/>
+	        <embed_code name="hjMm5xYTE6AiEEWPUJLf5h4_tco8o_LI"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN,MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="VPAID:OSMF Vast VPAID2.0 Postroll"/>
+	        <embed_code name="ViMm9xYTE6bTC12TonUawyghP9jVLnJX"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="OSMF,MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
+    	</url>
     	
     </test>
     

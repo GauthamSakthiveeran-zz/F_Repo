@@ -175,5 +175,49 @@
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
+    	<url>
+	    	<description name="VPAID:Bitmovin Vast VPAID2.0 Discovery Postroll"/>
+	        <embed_code name="M1b2txYTE6kKkvbrUIlSoCFcoAWpmUhE"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="MAIN,BITMOVIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="VPAID:Bitmovin IMA VPAID2.0 Discovery Postroll"/>
+	        <embed_code name="g0Mm5xYTE6EyB-Fnqqqe5FK_xlksFm5Z"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="MAIN,BITMOVIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="934f268f2064494684c52029986b7496"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="VPAID:Bitmovin IMA VPAID1.0 Discovery Postroll"/>
+	        <embed_code name="AzZG5xYTE6AdhXw0w0CQDstKXQ9li9IQ"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN,MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="VPAID:OSMF Vast VPAID2.0 Discovery Postroll"/>
+	        <embed_code name="VoMm9xYTE6v9VSCIiFihgAEXleUzg6e3"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="OSMF,MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="178e642662fe4f60b6f973a985eb09ca"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
+    	</url>
+    	
     </test>
 </testdata>
