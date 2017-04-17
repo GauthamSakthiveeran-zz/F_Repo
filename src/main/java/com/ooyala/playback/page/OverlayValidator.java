@@ -3,9 +3,12 @@ package com.ooyala.playback.page;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import com.relevantcodes.extentreports.LogStatus;
+
+import java.util.Set;
 
 public class OverlayValidator extends PlayBackPage implements PlaybackValidator {
 
@@ -60,8 +63,6 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 
 	public boolean validate(String element, int timeout) throws Exception {
 		
-		validateOverlayCloseButton(element,timeout);
-		
 		if (!waitOnElement(By.id(element), timeout))
 			return false;
 		
@@ -77,6 +78,22 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 		return true;
 
 	}
+
+	public boolean validateClickThrough(String element, int timeout) throws Exception{
+	    if(element.contains("Freewheel")){
+            WebElement frame = driver.findElement(By.xpath("//iframe[contains(@id,'fw_ad_container')]"));
+            driver.switchTo().frame(frame);
+            WebElement element1 = driver.findElement(By.xpath("//*[local-name()='img']"));
+            element1.click();
+            driver.switchTo().defaultContent();
+            logger.info("Clicked on Freewheel Overlay");
+            return true;
+        }
+
+        if(!element.contains("Freewheel")){validateOverlayCloseButton(element,timeout);}
+
+        return false;
+    }
 
 	public boolean validateOverlayRenderingEvent(int timeout){
 		boolean result=false;
