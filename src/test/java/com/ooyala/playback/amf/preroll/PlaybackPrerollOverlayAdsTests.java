@@ -20,12 +20,13 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private OverlayValidator overlayValidator;
 	private SeekValidator seekValidator;
-	private AdClickThroughValidator adClickThroughValidator;
 
 	@Test(groups = {"amf","preroll","overlay"}, dataProvider = "testUrls")
-	public void verifyPrerollOverlay(String testName, UrlObject url) throws OoyalaException {
+	public void verifyPrerollOverlay(String testDescription, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
+
+		String adManager = testDescription.split(":")[0].split("-")[1].trim();
 
 		try {
 
@@ -38,11 +39,10 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 			
 			result = result && event.validate("willPlayNonlinearAd_1", 5000);
-
-			result = result && adClickThroughValidator.overlay().validate("",5000);
 			
 			if (!event.isAdPluginPresent("ima")){
-				result = result && overlayValidator.validate("nonlinearAdPlayed_1", 160000);
+				result = result && overlayValidator.validateClickThrough(adManager,7000);
+                result = result && overlayValidator.validate("nonlinearAdPlayed_1", 160000);
 				result = result && overlayValidator.validateOverlayRenderingEvent(6000);
 			}
 			
