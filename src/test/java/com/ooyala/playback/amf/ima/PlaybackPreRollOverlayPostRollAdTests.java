@@ -1,5 +1,6 @@
 package com.ooyala.playback.amf.ima;
 
+import com.ooyala.playback.page.OverlayValidator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -21,6 +22,7 @@ public class PlaybackPreRollOverlayPostRollAdTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
+	private OverlayValidator overlayValidator;
 
 	@Test(groups = { "amf", "preroll", "overlay", "postroll" }, dataProvider = "testUrls")
 	public void verifyPrerollOverlayPostrollAd(String testName, UrlObject url) throws OoyalaException {
@@ -39,6 +41,7 @@ public class PlaybackPreRollOverlayPostRollAdTests extends PlaybackWebTest {
 
 			if (!event.isAdPluginPresent("ima")) {
 				result = result && event.validate("willPlayNonlinearAd_1", 1000);
+				result = result && overlayValidator.validateOverlayRenderingEvent(6000);
 			}
 
 			result = result && event.validate("videoPlaying_1", 90000);
