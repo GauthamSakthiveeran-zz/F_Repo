@@ -10,7 +10,7 @@
 			<adPlugins name="IMA" adPlayTime="10" overlayPlayTime="15"/>
 			<additionalPlugins name="" />
 			<pbid name="615dc8e909e941c280e12155df838355" />
-			<playerParameter><![CDATA[{"showNonLinearCloseButton":true}]]></playerParameter>
+			<playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showNonLinearCloseButton":true}]]></playerParameter>
 		</url>
 
 		<url>
@@ -21,7 +21,7 @@
 			<adPlugins name="VAST" adPlayTime="10" overlayPlayTime="15"/>
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-			<playerParameter><![CDATA[{"showNonLinearCloseButton":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+			<playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showNonLinearCloseButton":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 		</url>
 
 		<url>
@@ -32,7 +32,7 @@
 			<adPlugins name="IMA" adPlayTime="10" overlayPlayTime="15"/>
 			<additionalPlugins name="DISCOVERY" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showInAdControlBar":true}]]></playerParameter>
 		</url>
 		
 		<url>
@@ -43,7 +43,7 @@
 			<adPlugins name="VAST" adPlayTime="10" overlayPlayTime="15"/>
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+			<playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 		</url>
 		
 		<url>
@@ -54,7 +54,7 @@
 	        <adPlugins name="VAST" adPlayTime="10" overlayPlayTime="15"/>
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+	        <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
 
 	</test>

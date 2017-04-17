@@ -17,7 +17,7 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 
 	private EventValidator event;
 	private PlayValidator playValidator;
-	private OverlayValidator overLayValidator;
+	private OverlayValidator overlayValidator;
 	private SeekValidator seekValidator;
 	private AdStartTimeValidator adStartTimeValidator;
 
@@ -50,7 +50,10 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 				result = result && event.validate("showNonlinearAd_1", 1000);
 			
 			if(!event.isAdPluginPresent("ima")) // because google puts in an iframe that isnt reachable
-				result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
+			{
+				result = result && overlayValidator.validate("nonlinearAdPlayed_1", 160000);
+				result = result && overlayValidator.validateOverlayRenderingEvent(6000);
+			}
 
 			result = result && seekValidator.validate("seeked_1", 160000);
 
