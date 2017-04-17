@@ -21,7 +21,7 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayAction playAction;
 	private PlayValidator playValidator;
-	private OverlayValidator overLayValidator;
+	private OverlayValidator overlayValidator;
 	private SeekValidator seekValidator;
 
 	@Test(groups = {"amf","preroll","overlay"}, dataProvider = "testUrls")
@@ -42,7 +42,8 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 			result = result && event.validate("willPlayNonlinearAd_1", 5000);
 			
 			if (!event.isAdPluginPresent("ima")){
-				result = result && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
+				result = result && overlayValidator.validate("nonlinearAdPlayed_1", 160000);
+				result = result && overlayValidator.validateOverlayRenderingEvent(6000);
 			}
 			
 			result = result && event.validate("videoPlaying_1", 90000);
