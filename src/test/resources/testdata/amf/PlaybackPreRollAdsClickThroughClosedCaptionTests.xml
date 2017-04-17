@@ -164,6 +164,17 @@
 	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"}]}}]]></playerParameter>
     	</url>
     	
+    	<url>
+	    	<description name="VPAID:Bitmovin IMA VPAID1.0 Preroll"/>
+	        <embed_code name="g2Mm5xYTE6hG_-Jc3jffJo9KxsB7ijEa"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN,MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
+    	</url>
+    	
     	<!-- <url>
 	    	<description name="VPAID:VPAID 2.0 Preroll over HDS"/>
 	        <embed_code name="Q5eTg4MTE6kYKa0pyPjXB3AYkpD6F_F0"/>
@@ -318,6 +329,17 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="VPAID:OSMF Vast VPAID2.0 Preroll"/>
+	        <embed_code name="01Mm9xYTE6IOQ7ZTt5a0gyKrwrK1fFDw"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="OSMF"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
     	</url>
     	
     	

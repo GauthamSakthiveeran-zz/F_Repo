@@ -329,7 +329,6 @@
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
-
 		</url>
 		
 		<url>
@@ -341,8 +340,30 @@
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
 			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-
 		</url>
+		
+		
+		<url>
+	    	<description name="VPAID:Bitmovin IMA VPAID1.0 Midroll"/>
+	        <embed_code name="hhMm5xYTE6yXVmLu5488ZRSv2FbnB3p-"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN,MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="VPAID:OSMF Vast VPAID2.0 Midroll"/>
+	        <embed_code name="03Mm9xYTE6iYdd2fDYNaOmvUxXXqaubL"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="OSMF,MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name=""/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
+    	</url>
 
 	</test>
 
