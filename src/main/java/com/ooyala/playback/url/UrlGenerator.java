@@ -216,6 +216,10 @@ public class UrlGenerator {
                         urlObject.setOverlayPlayTime(url.getAdPlugins().getOverlayPlayTime());
                     }
 
+                    if (url.getAdPlugins()!=null){
+						urlObject.setAdPlugins(url.getAdPlugins().getName());
+					}
+
 					urlsGenerated.put(desc, urlObject);
 
 				}
