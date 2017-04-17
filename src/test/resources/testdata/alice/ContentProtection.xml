@@ -28,14 +28,14 @@
 
         <url>
             <description name="Content Protection:OSMF Elemental Adobe Access DRM + Device Registration" />
-            <embed_code name="Uyd3lyNTE66XYHmqMh5JX331rjfZZ6Dv" />
+            <embed_code name="9wdG40MzE6qygZ4L0E90_kh-iSU94lDl" />
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
             <plugins name="OSMF" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/thaDgyOrzKRQV_Izdp2WmiX9kCWL/Uyd3lyNTE66XYHmqMh5JX331rjfZZ6Dv?api_key=thaDgyOrzKRQV_Izdp2WmiX9kCWL.tFkPz&expires=2899404809&account_id=dulari_qa&&&signature=xCTaPUlWo0OqnFcDFtVp81+JV3n8zG5QoXoHT9Tpp1c","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/thaDgyOrzKRQV_Izdp2WmiX9kCWL/9wdG40MzE6qygZ4L0E90_kh-iSU94lDl?api_key=thaDgyOrzKRQV_Izdp2WmiX9kCWL.tFkPz&expires=4392417684&account_id=dulari_qa&&&signature=AWtcmAfDSaABeqZR1rztJleDrJllhbR0NszOczdtaeY","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
     </test>
     <test name="PlaybackOptEntitlementTests">

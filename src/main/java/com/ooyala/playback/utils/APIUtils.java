@@ -37,6 +37,7 @@ public class APIUtils {
 	protected String pcode;
 	protected String account_id;
 	protected String devices;
+	protected String device_limit;
 	NeoRequest neoRequest;
 
 	public APIUtils() {
@@ -62,6 +63,7 @@ public class APIUtils {
 			pcode = properties.getProperty("pcode");
 			account_id = properties.getProperty("account_id");
 			devices = properties.getProperty("devices");
+			device_limit = properties.getProperty("device_limit");
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -173,6 +175,21 @@ public class APIUtils {
 		return false;
 
 	}
+	
+	public boolean updateDeviceLimit(String pcode, int count) {
+		JSONObject json = new JSONObject();
+		json.put("device_limit", count);
+		
+		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "PUT", json.toString(), null,
+				device_management, this.pcode, pcode, account_id, accountId, device_limit);
+		
+		if (response.getResponseCode() == 200) {
+			return true;
+		}
+		
+		return false;
+		
+	}
 
 	public boolean updatePublishingRule(String embedCode, String publishingRuleId, String api_key) throws Exception {
 
@@ -233,11 +250,6 @@ public class APIUtils {
 		return promoImageUrl;
 	}
 
-	public static void main(String... strings) throws Exception {
-		HashMap<String, String> rules = new APIUtils().getPublishingRuleIds("x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH");
-		System.out.println(rules.get("default"));
-		System.out.println(rules.get("specific"));
-	}
 	
 	public String getCountry() {
 		Response response = neoRequest.makeRequest("http://ip-api.com/json", "", null, "GET", null, null);

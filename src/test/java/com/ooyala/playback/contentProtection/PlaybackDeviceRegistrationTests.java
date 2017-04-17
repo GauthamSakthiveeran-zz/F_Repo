@@ -1,7 +1,6 @@
 package com.ooyala.playback.contentProtection;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -34,7 +33,8 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 	private BitmovinTechnologyValidator tech;
 	private PauseValidator pause;
 	private PlayAction playAction;
-
+//	private ErrorDescriptionValidator error;
+	
 	public PlaybackDeviceRegistrationTests() throws OoyalaException {
 		super();
 	}
@@ -45,18 +45,18 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 		try {
 
 			result = result && syndicationRuleValidator.deleteDevices(url.getPCode());
-
-			result = result && syndicationRuleValidator.deleteEntitlement(url.getEmbedCode(), url.getPCode());
-
-			result = result && syndicationRuleValidator.createEntitlement(url.getEmbedCode(), url.getPCode(), 1);
-
+			
 			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 
 			injectScript();
+			
+			tech.getConsoleLogs();
 
 			result = result && play.validate("playing_1", 60000);
+			
+			Thread.sleep(5000);
 
 			result = result && syndicationRuleValidator.isDeviceRegistered(url.getPCode());
 
@@ -80,18 +80,23 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("played_1", 60000);
 
-			if (!getBrowser().contains("safari")) {
-				WebDriver newDriver = getWebdriver(getNewBrowser());
+			result = result && syndicationRuleValidator.deleteDevices(url.getPCode());
+			
+			//TODO
 
-				result = result && syndicationRuleValidator.initializeNewDriverAndValidateError(url.getUrl(), newDriver,
-						"drm_server_error", "DRM server error", url.getPCode());
-
-				result = result && syndicationRuleValidator.deleteDevices(url.getPCode());
-
-				newDriver.quit();
-
-				driver.quit();
-			}
+			/*result = result && syndicationRuleValidator.updateUserDeviceLimit(url.getPCode(), 1);
+			
+			driver.get(url.getUrl());
+			
+			result = result && play.waitForPage();
+			
+			driver.navigate().refresh();
+			
+			result = result && play.waitForPage();
+			
+			result = result && playAction.startAction();
+			
+			result = result && error.expectedErrorCode("drm_server_error").expectedErrorDesc("DRM server error").validate("", 6000);*/
 
 		} catch (Exception e) {
 			logger.error("Error while checking device registration" + e);
@@ -102,7 +107,7 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 
 	}
 
-	private String getNewBrowser() { // TODO for safari
+	/*private String getNewBrowser() { 
 		switch (browser) {
 		case "chrome":
 			return "firefox";
@@ -115,5 +120,5 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 			return "chrome";
 		}
 		return "chrome";
-	}
+	}*/
 }
