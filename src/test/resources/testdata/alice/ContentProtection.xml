@@ -10,7 +10,6 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <browserSupportedVersion name="firefox,48"/>
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/ZoMmd3NTE6zAFEYbLkU5hKXp8zF2ctK0?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2900009470&account_id=dulari_qa&&&signature=zfMNjFdK8lRNZsTkSSHyrExtGD9aWxmCD/5znAReylY","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
 
@@ -28,15 +27,30 @@
 
         <url>
             <description name="Content Protection:OSMF Elemental Adobe Access DRM + Device Registration" />
-            <embed_code name="Uyd3lyNTE66XYHmqMh5JX331rjfZZ6Dv" />
+            <embed_code name="9wdG40MzE6qygZ4L0E90_kh-iSU94lDl" />
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
             <plugins name="OSMF" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/thaDgyOrzKRQV_Izdp2WmiX9kCWL/Uyd3lyNTE66XYHmqMh5JX331rjfZZ6Dv?api_key=thaDgyOrzKRQV_Izdp2WmiX9kCWL.tFkPz&expires=2899404809&account_id=dulari_qa&&&signature=xCTaPUlWo0OqnFcDFtVp81+JV3n8zG5QoXoHT9Tpp1c","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/thaDgyOrzKRQV_Izdp2WmiX9kCWL/9wdG40MzE6qygZ4L0E90_kh-iSU94lDl?api_key=thaDgyOrzKRQV_Izdp2WmiX9kCWL.tFkPz&expires=4392417684&account_id=dulari_qa&&&signature=AWtcmAfDSaABeqZR1rztJleDrJllhbR0NszOczdtaeY","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
+        
+        <url>
+            <description name="Content Protection:Bitmovin Azure dash + Device Registration" />
+            <embed_code name="F1cGR0YTE6UF35wd0tMH1sWOkoqBWWvW" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR/F1cGR0YTE6UF35wd0tMH1sWOkoqBWWvW?api_key=hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR.fLu2N&expires=4392423956&account_id=dulari_qa&&&signature=0+u5zixZi+4hSkF7yA4e/h2FQu3vYRDU+nEFGt1OUuU","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
+        
+        
     </test>
     <test name="PlaybackOptEntitlementTests">
         <url>
@@ -52,6 +66,34 @@
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2898213193&account_id=dulari_qa&&&signature=3ZIfOPsKS0AIvSSgUlNYUQq5blWfIT40vLlYl8nJqp8","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         	<streamType name="mpd" />
         </url>
+        
+        <url>
+            <description name="Content Protection:Bitmovin Azure dash + OPT + entitlement" />
+            <embed_code name="kzaWR0YTE6bmGJDdkC6z9jybYAiCElcd" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR/kzaWR0YTE6bmGJDdkC6z9jybYAiCElcd?api_key=hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR.fLu2N&expires=4392423097&account_id=dulari_qa&&&signature=d7FOJFoNxwA3gSh1e7Fz2DYMP4niftdAXqhYhwUhHdg","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        	<streamType name="mpd" />
+        </url>
+        
+        <url>
+            <description name="Content Protection:Bitmovin Azure(Over secure network) dash + OPT + entitlement" />
+            <embed_code name="kzaWR0YTE6bmGJDdkC6z9jybYAiCElcd" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <playerParameter><![CDATA[{"embedToken":"https://player.ooyala.com/embed_token/hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR/kzaWR0YTE6bmGJDdkC6z9jybYAiCElcd?api_key=hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR.fLu2N&expires=4392423097&account_id=dulari_qa&&&signature=d7FOJFoNxwA3gSh1e7Fz2DYMP4niftdAXqhYhwUhHdg","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        	<streamType name="mpd" />
+        	<sslEnabled name="https"/>
+        </url>
+        
         <url>
             <description name="Core:OPT + Entitlement Bitmovin" />
             <embed_code name="x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln" />
@@ -130,6 +172,20 @@
             <playerParameter><![CDATA[]]></playerParameter>
             <secret name="1ysC3V-g8m9V3QoGJwRa_fXcfi_G2ZV778m17pux"></secret>
 			<apiKey name="BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4"></apiKey>
+        </url>
+        
+        <url>
+            <description name="Content Protection:Bitmovin Azure dash + Geo Restriction" />
+            <embed_code name="tuY2Z0YTE6oCBM-2s4E0-affUHcG-iwy" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+            <playerParameter><![CDATA[]]></playerParameter>
+            <secret name="FsxClRCZhUWWzDZtfgns3z-s6ShbuSw17AgmdEEx"></secret>
+			<apiKey name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR.fLu2N"></apiKey>
         </url>
 
         <url>
