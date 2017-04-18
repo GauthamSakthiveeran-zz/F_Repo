@@ -59,7 +59,7 @@ public class ErrorDescriptionValidator extends PlayBackPage implements PlaybackV
 			return false;
 		}
 		
-		if (!waitOnElement("ERROR_DESCRIPTION", 20000)) {
+		if (!waitOnElement("ERROR_DESCRIPTION", 60000)) {
 			if(expectedErrorDesc.isEmpty())
 				return true;
 			logger.error("ERROR_DESCRIPTION is not showing");

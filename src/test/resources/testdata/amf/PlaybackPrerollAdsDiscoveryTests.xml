@@ -11,7 +11,28 @@
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-	        
+    	</url>
+    	
+    	<url>
+	    	<description name="VPAID:Bitmovin Vast VPAID2.0 Discovery Preroll"/>
+	        <embed_code name="F5bmtxYTE6rNUGGod4jLZa_r9ekJBZO8"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="MAIN,BITMOVIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="14a1b2eb21104617948405aeac11271b"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="VPAID:Bitmovin IMA VPAID2.0 Discovery Preroll"/>
+	        <embed_code name="gyMm5xYTE6dPCcaLAIzwA4tgm6yrJpUQ"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="MAIN,BITMOVIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="14a1b2eb21104617948405aeac11271b"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
     	</url>
     	
     	<url>
@@ -23,7 +44,6 @@
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-	        
     	</url>
     	
     	<url>
@@ -35,7 +55,6 @@
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
 	        <playerParameter><![CDATA[{"autoPlay":false,"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-	        
     	</url>
     	
     	<url>
@@ -191,6 +210,28 @@
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
 	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="VPAID:Bitmovin IMA VPAID1.0 Discovery Preroll"/>
+	        <embed_code name="hnMm5xYTE6qB6hPItGcFzFVcl0y66rN2"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="BITMOVIN,MAIN"/>
+	        <adPlugins name="IMA"/>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
+    	</url>
+    	
+    	<url>
+	    	<description name="VPAID:OSMF Vast VPAID2.0 Discovery Preroll"/>
+	        <embed_code name="VmMm9xYTE6ICbUwYH3HBpsSrWXVz1IEs"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="OSMF,MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="b8f0107b875e4c9ebd3e54f2d312deb6"/>
+	        <playerParameter><![CDATA[]]></playerParameter>
     	</url>
     	
     </test>
