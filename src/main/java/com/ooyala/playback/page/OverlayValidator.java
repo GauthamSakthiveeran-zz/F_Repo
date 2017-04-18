@@ -12,19 +12,19 @@ import java.util.Set;
 
 public class OverlayValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger logger = Logger.getLogger(OverlayValidator.class);
+    public static Logger logger = Logger.getLogger(OverlayValidator.class);
 
-	public OverlayValidator(WebDriver driver) {
-		super(driver);
-		PageFactory.initElements(driver, this);
-		addElementToPageElements("adoverlay");
-		addElementToPageElements("fullscreen");
-	}
-	
-	private boolean checkInFullScreen(String element, int timeout) throws Exception{
-		
+    public OverlayValidator(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+        addElementToPageElements("adoverlay");
+        addElementToPageElements("fullscreen");
+    }
+
+    private boolean checkInFullScreen(String element, int timeout) throws Exception {
+
 		/*logger.info("No close button for Overlay");
-		extentTest.log(LogStatus.INFO, "No close button seen in normal screen on Overlay....trying in Fullscreen.");
+        extentTest.log(LogStatus.INFO, "No close button seen in normal screen on Overlay....trying in Fullscreen.");
 		
 		FullScreenAction fullScreenAction = PlayBackFactory.getInstance(driver).getFullScreenAction();
 		
@@ -43,76 +43,102 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 		if (!waitOnElement(By.id(element), timeout))
 			return false;*/
 
-		return true;
-	}
-	
-	private boolean validateOverlayCloseButton(String element, int timeout) throws Exception{
-		if (!isElementPresent("OVERLAY_CLOSE_BTN")) {
-			return checkInFullScreen(element, timeout);
-		}
+        return true;
+    }
+
+    private boolean validateOverlayCloseButton(String element, int timeout) throws Exception {
+        if (!isElementPresent("OVERLAY_CLOSE_BTN")) {
+            return checkInFullScreen(element, timeout);
+        }
 
 //		if (!waitOnElement("OVERLAY_CLOSE_BTN", 20000))
 //			return false;
-		
-		if (!clickOnIndependentElement("OVERLAY_CLOSE_BTN"))
-			return false;
-		
-		return true;
-		
-	}
 
-	public boolean validate(String element, int timeout) throws Exception {
-		
-		if (!waitOnElement(By.id(element), timeout))
-			return false;
-		
-		if(isElementPresent("OVERLAY_RECALL_BTN")){
-			extentTest.log(LogStatus.PASS, "OVERLAY_RECALL_BTN present.");
-			if(clickOnIndependentElement("OVERLAY_RECALL_BTN")){
-				validateOverlayCloseButton(element,timeout);
-			}else{
-				extentTest.log(LogStatus.FAIL, "OVERLAY_RECALL_BTN is present but not clickable..");
-			}
-		}
-		
-		return true;
+        if (!clickOnIndependentElement("OVERLAY_CLOSE_BTN"))
+            return false;
 
-	}
+        return true;
 
-	public boolean validateClickThrough(String element, int timeout) throws Exception{
-	    if(element.contains("Freewheel")){
-            WebElement frame = driver.findElement(By.xpath("//iframe[contains(@id,'fw_ad_container')]"));
-            driver.switchTo().frame(frame);
-            WebElement element1 = driver.findElement(By.xpath("//*[local-name()='img']"));
-            element1.click();
-            driver.switchTo().defaultContent();
-            logger.info("Clicked on Freewheel Overlay");
-            return true;
+    }
+
+    public boolean validate(String element, int timeout) throws Exception {
+
+        if (!waitOnElement(By.id(element), timeout))
+            return false;
+
+        if (isElementPresent("OVERLAY_RECALL_BTN")) {
+            extentTest.log(LogStatus.PASS, "OVERLAY_RECALL_BTN present.");
+            if (clickOnIndependentElement("OVERLAY_RECALL_BTN")) {
+                validateOverlayCloseButton(element, timeout);
+            } else {
+                extentTest.log(LogStatus.FAIL, "OVERLAY_RECALL_BTN is present but not clickable..");
+            }
         }
 
-        if(!element.contains("Freewheel")){validateOverlayCloseButton(element,timeout);}
+        return true;
+
+    }
+
+    public boolean validateClickThrough(String element, int timeout, String adPlugin) throws Exception {
+
+        //check overlay clickthrough for Freewheel Plugin
+        if (adPlugin.contains("Freewheel")) {
+            //TODO verify after clickthrough video is getting paused. Issue opened PBI-2039
+            return verifyClickThrough("FW_OVERLAY_FRAME","FW_OVERLAY_IMAGE",element);
+        }
+        //check overlay clickthrough for IMA Plugin
+        if (adPlugin.contains("IMA")) {
+             return verifyClickThrough("IMA_OVERLAY_FRAME","IMA_OVERLAY_IMAGE",element);
+        }
+        //check overlay clickthrough for Vast Plugin
+        if (adPlugin.contains("VAST")) {
+            return verifyClickThrough("","VAST3.0_OVERLAY_IMAGE",element);
+        }
+        //Check the ad plugins and verify close overlay button
+        if (!adPlugin.contains("Freewheel") || !adPlugin.contains("VAST")) {
+            validateOverlayCloseButton(element, timeout);
+        }
 
         return false;
     }
 
-	public boolean validateOverlayRenderingEvent(int timeout){
-		boolean result=false;
-		try {
-			logger.info("Inside validateOverlayRenderingEvent method");
-			Thread.sleep(timeout);
-			String consoleOutput = driver.executeScript("return OO.DEBUG.consoleOutput[0].toString()").toString();
-			logger.info(consoleOutput);
-			if (consoleOutput.contains("overlayRendering")) {
-				logger.info("overlayRendering event found in consoleOutput");
-				result = true;
-			}else {
-				logger.error("overlayRendering event not found in consoleOutput");
-			}
+    public boolean validateOverlayRenderingEvent(int timeout) {
+        boolean result = false;
+        try {
+            logger.info("Inside validateOverlayRenderingEvent method");
+            Thread.sleep(timeout);
+            String consoleOutput = driver.executeScript("return OO.DEBUG.consoleOutput[0].toString()").toString();
+            logger.info(consoleOutput);
+            if (consoleOutput.contains("overlayRendering")) {
+                logger.info("overlayRendering event found in consoleOutput");
+                result = true;
+            } else {
+                logger.error("overlayRendering event not found in consoleOutput");
+            }
 
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		return result;
-	}
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public boolean verifyClickThrough(String frameLocator,String overlayLocator,String element){
+        boolean result;
+        //switch to frame
+        if (waitOnElement(frameLocator,5000)) {
+            driver.switchTo().frame(getWebElement(frameLocator));
+        }
+        //Click on Ovarlay
+        clickOnIndependentElement(overlayLocator);
+        logger.info("Clicked on  Overlay");
+        extentTest.log(LogStatus.PASS, "Clicked on Overlay");
+        //TODO verify after clickthrough video is getting paused. Issue opened PBI-2039
+        driver.switchTo().defaultContent();
+        //Verify pause event after clickthrough and click on play button.
+        if (waitOnElement(By.id(element), 15000))
+            driver.executeScript("pp.play();");
+        result=true;
+        return result;
+    }
 
 }
