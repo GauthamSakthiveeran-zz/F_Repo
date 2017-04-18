@@ -303,5 +303,38 @@
 	        <playerParameter><![CDATA[]]></playerParameter>
     	</url>
 
+		<url>
+			<description name="VPAID:OSMF IMA VPAID2.0 PreMidPost"/>
+			<embed_code name="VuMm9xYTE69UeMy_0pkVhDZPN5CT1dIV"/>
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+			<plugins name="OSMF,MAIN"/>
+			<adPlugins name="IMA"/>
+			<additionalPlugins name=""/>
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+		</url>
+
+        <url>
+            <description name="VPAID:OSMF IMA VPAID1.0 PreMidPost"/>
+            <embed_code name="ZvMnBxYTE6DH34HvYbSj_LOphEPt27mQ"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VPAID:Main IMA VPAID1.0 PreMidPost"/>
+            <embed_code name="43dm5xYTE6vxna_q1hqFyR4NR5F5OI0d"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="615dc8e909e941c280e12155df838355"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+
 	</test>
 </testdata>
