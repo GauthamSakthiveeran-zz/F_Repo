@@ -43,18 +43,16 @@ public class PlaybackMidrollOverlayUpNextTests extends PlaybackWebTest {
                 result = result && adStartTimeValidator.validateNonLinearAdStartTime("showNonlinearAd_1");
             }
 
-			result = result && overlayValidator.validate("nonlinearAdPlayed_1", 6000);
-
 			result = result && overlayValidator.validateOverlayRenderingEvent(6000);
+
+            result = result && overlayValidator.validate("nonlinearAdPlayed_1", 6000);
 
 			result = result && discoverValidator.validate("reportDiscoveryClick_1",60000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			result = false;
 		}
-
 		Assert.assertTrue(result, "test failed");
 	}
-
 }
