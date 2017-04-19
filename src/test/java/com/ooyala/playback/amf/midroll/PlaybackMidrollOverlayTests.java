@@ -41,10 +41,8 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
             if(!event.isVideoPluginPresent("osmf")){
 				if (adStartTimeValidator.isAdPlayTimePresent(url)){
 					result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlaySingleAd_1");
-				}else
-            		result = result && event.validate("MidRoll_willPlaySingleAd_1", 160000);
-
-				result = result && event.validate("singleAdPlayed_1", 160000);
+					result = result && event.validate("singleAdPlayed_1", 160000);
+				}
             }
 			
             result = result && event.validate("showNonlinearAd_1", 160000);
