@@ -174,8 +174,8 @@
 	        <playerParameter><![CDATA[]]></playerParameter>
     	</url>
     	
-    	<!-- <url>
-	    	<description name="VPAID:VPAID 2.0 Preroll over HDS"/>
+    	 <url>
+	    	<description name="VPAID:OSMF IMA VPAID2.0 Preroll"/>
 	        <embed_code name="Q5eTg4MTE6kYKa0pyPjXB3AYkpD6F_F0"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -183,7 +183,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-    	</url> -->
+    	</url>
     	
     	<url>
 	    	<description name="VPAID:Main IMA VPAID1.0 Preroll"/>
@@ -351,5 +351,17 @@
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[]]></playerParameter>
     	</url>
+
+		<url>
+			<description name="VPAID:OSMF IMA VPAID1.0 Preroll"/>
+			<embed_code name="ZlMnBxYTE6PyTgHGusf8ncigkwrArjif"/>
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+			<plugins name="OSMF,MAIN"/>
+			<adPlugins name="IMA"/>
+			<additionalPlugins name=""/>
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+		</url>
+    	
     </test>
 </testdata>
