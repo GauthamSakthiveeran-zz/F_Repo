@@ -73,6 +73,7 @@ public class PlayBackFactory {
 	private SyndicationRuleValidator syndicationRuleValidator;
 	private LiveValidator liveValidator;
 	private AdStartTimeValidator adStartTimeValidator;
+	private ConsoleLogValidator consoleLogValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -502,6 +503,15 @@ public class PlayBackFactory {
         }
         return adStartTimeValidator;
     }
+
+	public ConsoleLogValidator getConsoleLogValidator() {
+		if (consoleLogValidator == null){
+			consoleLogValidator = new ConsoleLogValidator(driver);
+			consoleLogValidator.setExtentTest(extentTest);
+		}
+		return consoleLogValidator;
+	}
+
 	public void destroyInstance() {
 		playbackFactory = null;
 	}
