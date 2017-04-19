@@ -15,36 +15,11 @@
     	</url>
     	
     	<url>
-	    	<description name="IMA:OSMF Midroll Overlay"/>
-	        <embed_code name="szcXRpMDE6nB2yfLRHK3Pzk0Nu6794Nm"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="IMA" adPlayTime="10" overlayPlayTime="15"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"encodingPriority":["hds","hls","webm","mp4","dash"],"showNonLinearCloseButton":true}]]></playerParameter>
-	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-	        <browserSupportedVersion name="safari,9"/>
-    	</url>
-
-    	<url>
-	    	<description name="IMA:Bitmovin Midroll Overlay"/>
-	        <embed_code name="9vNTRpMTE6vLNJsH3lx1bCT0SitTgeTJ"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="IMA" adPlayTime="10" overlayPlayTime="15"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-	        
-    	</url>
-    	
-    	<url>
 	    	<description name="VAST:OSMF Vast2.0 Midroll Overlay"/>
 	        <embed_code name="txbGVkMDE6vMUkpoiCMwjoGMROPeGVDv"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="VAST" adPlayTime="10" overlayPlayTime="15"/>
+	        <adPlugins name="VAST" overlayPlayTime="10"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 	        <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showNonLinearCloseButton":true,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
@@ -57,7 +32,7 @@
 	        <embed_code name="dxZTdxYTE6G9BvgD-STb01lIgPfhbctk"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
-	        <adPlugins name="VAST" adPlayTime="10" overlayPlayTime="15"/>
+	        <adPlugins name="VAST" overlayPlayTime="10"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -68,12 +43,37 @@
 			<embed_code name="M3eThxYTE6QPORiMcvj_0gBevr29nCgK" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
-			<adPlugins name="VAST" adPlayTime="10" overlayPlayTime="15"/>
+			<adPlugins name="VAST" overlayPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
 			<playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
+		</url>
+
+		<url>
+			<description name="IMA:OSMF Midroll Overlay"/>
+			<embed_code name="szcXRpMDE6nB2yfLRHK3Pzk0Nu6794Nm"/>
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+			<plugins name="OSMF,MAIN"/>
+			<adPlugins name="IMA" overlayPlayTime="10"/>
+			<additionalPlugins name=""/>
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+			<playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"encodingPriority":["hds","hls","webm","mp4","dash"],"showNonLinearCloseButton":true}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+			<browserSupportedVersion name="safari,9"/>
+		</url>
+
+		<url>
+			<description name="IMA:Bitmovin Midroll Overlay"/>
+			<embed_code name="9vNTRpMTE6vLNJsH3lx1bCT0SitTgeTJ"/>
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+			<plugins name="BITMOVIN"/>
+			<adPlugins name="IMA" adPlayTime="10" overlayPlayTime="15"/>
+			<additionalPlugins name=""/>
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+			<playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+
 		</url>
 		
     </test>
