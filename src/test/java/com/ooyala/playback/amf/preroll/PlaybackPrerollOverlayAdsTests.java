@@ -25,7 +25,6 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 	@Test(groups = {"amf","preroll","overlay"}, dataProvider = "testUrls")
 	public void verifyPrerollOverlay(String testDescription, UrlObject url) throws OoyalaException {
 		boolean result = true;
-		String adManager = testDescription.split(":")[0].split("-")[1].trim();
 		try {
 			driver.get(url.getUrl());
 
@@ -37,7 +36,7 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 			
 			result = result && event.validate("willPlayNonlinearAd_1", 5000);
 
-            result = result && overlayValidator.validateClickThrough("paused_1",7000,adManager);
+            result = result && overlayValidator.validateClickThrough("paused_1",7000,url.getAdPlugins());
 
             result = result && overlayValidator.validateOverlayRenderingEvent(6000);
 
