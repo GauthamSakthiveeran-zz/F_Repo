@@ -74,31 +74,22 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
                 extentTest.log(LogStatus.FAIL, "OVERLAY_RECALL_BTN is present but not clickable..");
             }
         }
-
         return true;
-
     }
 
     public boolean validateClickThrough(String element, int timeout, String adPlugin) throws Exception {
-
-        //check overlay clickthrough for Freewheel Plugin
-        if (adPlugin.contains("Freewheel")) {
-            //TODO verify after clickthrough video is getting paused. Issue opened PBI-2039
-            return verifyClickThrough("FW_OVERLAY_FRAME","FW_OVERLAY_IMAGE",element);
-        }
-        //check overlay clickthrough for IMA Plugin
-        if (adPlugin.contains("IMA")) {
-             return verifyClickThrough("IMA_OVERLAY_FRAME","IMA_OVERLAY_IMAGE",element);
-        }
-        //check overlay clickthrough for Vast Plugin
-        if (adPlugin.contains("VAST")) {
-            return verifyClickThrough("","VAST3.0_OVERLAY_IMAGE",element);
+        switch (adPlugin.toUpperCase()) {
+            case "FREEWHEEL":
+                return verifyClickThrough("FW_OVERLAY_FRAME", "FW_OVERLAY_IMAGE", element);
+            case "IMA":
+                return verifyClickThrough("IMA_OVERLAY_FRAME", "IMA_OVERLAY_IMAGE", element);
+            case "VAST":
+                return verifyClickThrough("", "VAST_OVERLAY_IMAGE", element);
         }
         //Check the ad plugins and verify close overlay button
-        if (!adPlugin.contains("Freewheel") || !adPlugin.contains("VAST")) {
+        if (!adPlugin.equalsIgnoreCase("FREEWHEEL") || !adPlugin.equalsIgnoreCase("VAST")) {
             validateOverlayCloseButton(element, timeout);
         }
-
         return false;
     }
 
@@ -122,22 +113,27 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
         return result;
     }
 
-    public boolean verifyClickThrough(String frameLocator,String overlayLocator,String element){
+    public boolean verifyClickThrough(String frameLocator, String overlayLocator, String element) {
         boolean result;
         //switch to frame
-        if (waitOnElement(frameLocator,5000)) {
+        if (waitOnElement(frameLocator, 5000)) {
             driver.switchTo().frame(getWebElement(frameLocator));
+        } else {
+            logger.info("Frame is not available for:" + overlayLocator);
+            extentTest.log(LogStatus.PASS, "Frame is not available for:" + overlayLocator);
         }
         //Click on Ovarlay
-        clickOnIndependentElement(overlayLocator);
-        logger.info("Clicked on  Overlay");
-        extentTest.log(LogStatus.PASS, "Clicked on Overlay");
+        if (!clickOnIndependentElement(overlayLocator)) {
+            logger.info("Failed to click on overlay");
+            extentTest.log(LogStatus.PASS, "Failed to click on overlay");
+            return false;
+        }
         //TODO verify after clickthrough video is getting paused. Issue opened PBI-2039
         driver.switchTo().defaultContent();
         //Verify pause event after clickthrough and click on play button.
         if (waitOnElement(By.id(element), 15000))
             driver.executeScript("pp.play();");
-        result=true;
+        result = true;
         return result;
     }
 
