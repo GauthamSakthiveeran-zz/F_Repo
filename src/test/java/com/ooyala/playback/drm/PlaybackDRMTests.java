@@ -21,7 +21,7 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private DRMValidator drm;
 	private BitmovinTechnologyValidator tech;
-    private StreamTypeValidator stream;
+    private StreamValidator stream;
 
 	public PlaybackDRMTests() throws OoyalaException {
 		super();

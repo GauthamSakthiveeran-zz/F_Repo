@@ -11,7 +11,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.StreamTypeValidator;
+import com.ooyala.playback.page.StreamValidator;
 import com.ooyala.playback.page.SyndicationRuleValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
@@ -29,7 +29,7 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 	private SeekValidator seek;
 	private SyndicationRuleValidator syndicationRuleValidator;
 	private DRMValidator drm;
-	private StreamTypeValidator streams;
+	private StreamValidator streams;
 	private BitmovinTechnologyValidator tech;
 	private PauseValidator pause;
 	private PlayAction playAction;
