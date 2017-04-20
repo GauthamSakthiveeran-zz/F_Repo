@@ -378,28 +378,32 @@ public abstract class PlayBackPage extends WebPage {
 		return (String) ((JavascriptExecutor) driver).executeScript("return navigator.userAgent;");
 	}
 
-	public void startRecordingConsoleLogs(String regx){
-		driver.executeScript("OO.DEBUG.startRecordingConsoleOutput("+regx+");");
+    // Use this method after page is loaded completely.
+	public boolean startRecordingConsoleLogsForAd(){
+        try {
+            logger.info("Started recording VC related events in console log for ads");
+            driver.executeScript("OO.DEBUG.startRecordingConsoleOutput(\"VC: For video 'ads'\");");
+            return true;
+        } catch (Exception e){
+            logger.error("Not able to record logs....");
+            return false;
+        }
 	}
 
+    // Use this method after ad played completely or video starts playing
 	public void stopRecordingConsoleLog(){
+        logger.info("Stopping recording console logs");
 		driver.executeScript(
-				"function stopRecording(){\n" +
-						"\twhile(true){\n" +
-						"\tvar len = OO.DEBUG.consoleOutput.length;\n" +
-						"\tif (len == 2) {\n" +
-						"\t\tconsole.log(\"in if loop\");\n" +
-						"\t\tOO.DEBUG.stopRecordingConsoleOutput();\n" +
-						"\t\tbreak;\n" +
-						"\t\t}\n" +
-						"\t}\n" +
-						"}\n" +
-						"stopRecording();"
+				"OO.DEBUG.stopRecordingConsoleOutput();"
 		);
+        logger.info("Stopped recording console logs");
 	}
 
-	public void getConsoleLogs(){
-		ArrayList<String> consoleoutput = (ArrayList<String>)driver.executeScript("return OO.DEBUG.consoleOutput");
+	public ArrayList<String> getLogsFromConsole(){
+		ArrayList<String> consoleOutput = (ArrayList<String>)driver.executeScript("return OO.DEBUG.consoleOutput");
+        if (consoleOutput.size() == 0){
+            logger.info("*** there no logs recorded ***");
+        }
+        return consoleOutput;
 	}
-
 }
