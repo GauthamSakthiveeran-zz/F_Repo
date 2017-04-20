@@ -10,8 +10,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter><![CDATA[]]>
-			</playerParameter>
+			<playerParameter></playerParameter>
 		</url>
 
 		<url>
@@ -22,8 +21,7 @@
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="615dc8e909e941c280e12155df838355" />
-			<playerParameter><![CDATA[]]>
-			</playerParameter>
+			<playerParameter></playerParameter>
 			<streamType name="mp4" />
 		</url>
 
@@ -37,8 +35,7 @@
 			<additionalPlugins name="" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
 			<streamType name="f4m" />
-			<playerParameter><![CDATA[]]>
-			</playerParameter>
+			<playerParameter></playerParameter>
 		</url>
 		<url>
 			<description name="Akamai HD Flash HD2 VOD" />
@@ -49,8 +46,7 @@
 			<additionalPlugins name="" />
 			<pbid name="9c7271095c6b49fcbe09025af1d66f53" />
 			<streamType name="f4m" />
-			<playerParameter><![CDATA[]]>
-			</playerParameter>
+			<playerParameter></playerParameter>
 		</url>
 		<url>
 			<description name="dash" />
@@ -61,8 +57,7 @@
 			<additionalPlugins name="" />
 			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
 			<streamType name="mpd" />
-			<playerParameter><![CDATA[]]>
-			</playerParameter>
+			<playerParameter></playerParameter>
 		</url>
 	</test>
 </testdata>
