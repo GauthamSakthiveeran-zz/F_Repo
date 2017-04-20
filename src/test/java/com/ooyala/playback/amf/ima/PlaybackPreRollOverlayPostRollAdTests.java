@@ -29,19 +29,20 @@ public class PlaybackPreRollOverlayPostRollAdTests extends PlaybackWebTest {
         boolean result = true;
         try {
             driver.get(url.getUrl());
-            Assert.assertEquals(playValidator.waitForPage(), true, "failed to load the page properly");
+            result = result && playValidator.waitForPage();
             injectScript();
-            Assert.assertEquals(playAction.startAction(), true, "failed to click on start button");
-            Assert.assertEquals(event.validate("willPlayNonlinearAd_1", 1000), true, "Failed to validate 'willPlayNonlinearAd_1' event");
-            Assert.assertEquals(overlayValidator.validateClickThrough("paused_1", 7000, url.getAdPlugins()), true, "Failed to validate 'paused_1' event");
-            Assert.assertEquals(overlayValidator.validateOverlayRenderingEvent(6000), true, "Failed to validate 'overlay rendering' event");
-            Assert.assertEquals(event.validate("videoPlaying_1", 90000), true, "Failed to validate 'videoPlaying_1' event");
+            result = result && playAction.startAction();
+            result = result && event.validate("willPlayNonlinearAd_1", 1000);
+            result = result && overlayValidator.validateClickThrough("paused_1", 7000, url.getAdPlugins());
+            result = result && overlayValidator.validateOverlayRenderingEvent(6000);
+            result = result && event.validate("videoPlaying_1", 90000);
             if (!getBrowser().equalsIgnoreCase("MicrosoftEdge"))
-                Assert.assertEquals(seekValidator.validate("seeked_1", 6000), true, "Failed to validate 'seeked_1' event");
-            Assert.assertEquals(event.validate("videoPlayed_1", 160000), true, "Failed to validate 'videoPlayed_1' event");
-            Assert.assertEquals(event.validate("PostRoll_willPlaySingleAd_1", 90000), true, "Failed to validate 'PostRoll_willPlaySingleAd_1' event");
-            Assert.assertEquals(event.validate("singleAdPlayed_1", 190000), true, "Failed to validate 'singleAdPlayed_1' event");
-            Assert.assertEquals(event.validate("played_1", 200000), true, "Failed to validate 'played_1' event");
+                result = result && seekValidator.validate("seeked_1", 6000);
+            result = result && event.validate("videoPlayed_1", 160000);
+            result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
+            result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
+            result = result && event.validate("singleAdPlayed_1", 190000);
+            result = result && event.validate("played_1", 200000);
         } catch (Exception e) {
             logger.error(e.getMessage());
             result = false;
