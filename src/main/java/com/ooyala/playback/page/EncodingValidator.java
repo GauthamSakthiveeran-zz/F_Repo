@@ -96,4 +96,14 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 		return driver.getCurrentUrl();
 	}
 
+	public boolean validateVCEventsFromConsole(){
+		if (!getLogsFromConsole().get(0).isEmpty() && getLogsFromConsole().get(0) != null
+				&& !getLogsFromConsole().get(1).isEmpty() && getLogsFromConsole().get(1) != null){
+            logger.info("console logs are : \n"+getLogsFromConsole());
+            return true;
+		}
+
+        return false;
+	}
+
 }
