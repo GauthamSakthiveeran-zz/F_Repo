@@ -4,6 +4,7 @@ import static java.lang.Thread.sleep;
 
 import java.net.URL;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -375,6 +376,30 @@ public abstract class PlayBackPage extends WebPage {
 	
 	public String getUserAgent() {
 		return (String) ((JavascriptExecutor) driver).executeScript("return navigator.userAgent;");
+	}
+
+	public void startRecordingConsoleLogs(String regx){
+		driver.executeScript("OO.DEBUG.startRecordingConsoleOutput("+regx+");");
+	}
+
+	public void stopRecordingConsoleLog(){
+		driver.executeScript(
+				"function stopRecording(){\n" +
+						"\twhile(true){\n" +
+						"\tvar len = OO.DEBUG.consoleOutput.length;\n" +
+						"\tif (len == 2) {\n" +
+						"\t\tconsole.log(\"in if loop\");\n" +
+						"\t\tOO.DEBUG.stopRecordingConsoleOutput();\n" +
+						"\t\tbreak;\n" +
+						"\t\t}\n" +
+						"\t}\n" +
+						"}\n" +
+						"stopRecording();"
+		);
+	}
+
+	public void getConsoleLogs(){
+		ArrayList<String> consoleoutput = (ArrayList<String>)driver.executeScript("return OO.DEBUG.consoleOutput");
 	}
 
 }
