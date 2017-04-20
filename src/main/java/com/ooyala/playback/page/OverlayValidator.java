@@ -25,12 +25,9 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 
 		/*logger.info("No close button for Overlay");
         extentTest.log(LogStatus.INFO, "No close button seen in normal screen on Overlay....trying in Fullscreen.");
-		
 		FullScreenAction fullScreenAction = PlayBackFactory.getInstance(driver).getFullScreenAction();
-		
 		if (!fullScreenAction.startAction())
 			return false;
-
 		if (!getBrowser().equalsIgnoreCase("safari") && !getPlatform().equalsIgnoreCase("Android")) {
 			if (!waitOnElement("OVERLAY_CLOSE_BTN", 40000))
 				return false;
@@ -39,10 +36,8 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 			logger.info("Clicked on overlay close button in fullscreen screen \n");
 			logger.info("Overlay gets closed");
 		}
-
 		if (!waitOnElement(By.id(element), timeout))
 			return false;*/
-
         return true;
     }
 
@@ -50,22 +45,16 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
         if (!isElementPresent("OVERLAY_CLOSE_BTN")) {
             return checkInFullScreen(element, timeout);
         }
-
 //		if (!waitOnElement("OVERLAY_CLOSE_BTN", 20000))
 //			return false;
-
         if (!clickOnIndependentElement("OVERLAY_CLOSE_BTN"))
             return false;
-
         return true;
-
     }
 
     public boolean validate(String element, int timeout) throws Exception {
-
         if (!waitOnElement(By.id(element), timeout))
             return false;
-
         if (isElementPresent("OVERLAY_RECALL_BTN")) {
             extentTest.log(LogStatus.PASS, "OVERLAY_RECALL_BTN present.");
             if (clickOnIndependentElement("OVERLAY_RECALL_BTN")) {
@@ -114,6 +103,7 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
     }
 
     public boolean verifyClickThrough(String frameLocator, String overlayLocator, String element) {
+        String baseWindowHdl = driver.getWindowHandle();
         boolean result;
         //switch to frame
         if (waitOnElement(frameLocator, 5000)) {
@@ -122,16 +112,32 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
             logger.info("Frame is not available for:" + overlayLocator);
             extentTest.log(LogStatus.PASS, "Frame is not available for:" + overlayLocator);
         }
+        //wait till 2 seconds after video starts to play
+        while (true) {
+            if (Integer.parseInt(driver.executeScript("return pp.getPlayheadTime().toFixed()").toString()) > 2) {
+                break;
+            }
+        }
         //Click on Ovarlay
         if (!clickOnIndependentElement(overlayLocator)) {
             logger.info("Failed to click on overlay");
             extentTest.log(LogStatus.PASS, "Failed to click on overlay");
             return false;
         }
-        //TODO verify after clickthrough video is getting paused. Issue opened PBI-2039
+        if (getWindowHandleCount() <= 1) {
+            logger.info("New tab did not open on ad click.");
+            extentTest.log(LogStatus.FAIL, "New tab did not open on ad click.");
+            return false;
+        }
+        //TODO verify after clickthrough video is getting paused. Issue opened PBI-2039 for freewheel
         driver.switchTo().defaultContent();
         //Verify pause event after clickthrough and click on play button.
-        if (waitOnElement(By.id(element), 15000))
+        try {
+            closeOtherWindows(baseWindowHdl);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+        if (waitOnElement(By.id(element), 10000))
             driver.executeScript("pp.play();");
         result = true;
         return result;
