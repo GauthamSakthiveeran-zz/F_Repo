@@ -28,10 +28,8 @@ public class PlaybackInitialTimeForOoyalaAdsTests extends PlaybackWebTest {
 
 	@Test(groups = { "ooyalads" }, dataProvider = "testUrls") 
 	public void testInitialTime(String testName, UrlObject url) throws OoyalaException {
-
 		boolean result = true;
 		try {
-
 			driver.get(url.getUrl());
 			result = result && play.waitForPage();
 
@@ -48,21 +46,18 @@ public class PlaybackInitialTimeForOoyalaAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("ooyalaAds", 160000);
 
-			result = result && event.validate("playing_2", 20000);
+			result = result && event.validate("playing_2", 90000);
 
 			result = result && api.validateInitailTime();
 			
-			Thread.sleep(10000); // play the video for sometime
+			result = result && seek.validate("seeked_1", 90000);
 			
-			result = result && seek.validate("seeked_1", 20000);
-			
-			result = result && event.validate("played_1", 20000);
+			result = result && event.validate("played_1", 90000);
 
 		} catch (Exception e) {
-			e.getMessage();
+			logger.error(e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "Playback Playlist tests failed" + testName);
 	}
-
 }
