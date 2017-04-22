@@ -114,7 +114,10 @@ function subscribeToCommonEvents() {
 				adPodEndedEventOrder++;
 				if (arguments[1]=='ooyala-ads-manager_0') {
 					OO.$('#ooplayer').append('<p id=ooyalaAds>ooyalaAds</p>'); 
-				}  
+				}
+				 if (arguments[1]=='ooyala-ads-manager_1') {
+                 					OO.$('#ooplayer').append('<p id=ooyalaAds>ooyalaAds</p>');
+                 				}
 			}
 
 			if (event.match(/videoControllerVideoElementDisposed/)) {
