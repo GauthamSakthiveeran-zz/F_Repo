@@ -46,7 +46,6 @@ import com.ooyala.playback.updateSpreadSheet.TestCaseSheet;
 import com.ooyala.playback.url.Testdata;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.playback.url.UrlObject;
-import com.ooyala.playback.utils.NeoRequest;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -337,13 +336,6 @@ public abstract class PlaybackWebTest extends FacileTest {
         logger.info("Assigning the neopagefactory instance to null");
     }
 
-    public void waitForSecond(int sec) {
-        try {
-            Thread.sleep(sec);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void parseXmlFileData(String xmlFile, String xmlFilePkg) {
 
@@ -521,6 +513,10 @@ public abstract class PlaybackWebTest extends FacileTest {
 			maximizeMe(driver);
 		}
 		return driver;
+	}
+	
+	protected String getUserAgent() {
+		return (String) ((JavascriptExecutor) driver).executeScript("return navigator.userAgent;");
 	}
 
 }

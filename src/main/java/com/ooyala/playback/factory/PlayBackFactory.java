@@ -47,7 +47,6 @@ public class PlayBackFactory {
 	private ThumbnailValidator thumbnailValidator;
 	private FullScreenAction fullScreenAction;
 	private SeekAction seekAction;
-	private SaasPortValidator saasPortValidator;
 	private StateScreenAction stateScreenAction;
 	private OverlayValidator overlayValidator;
 	private AdSkipButtonValidator adSkipButtonValidator;
@@ -67,25 +66,25 @@ public class PlayBackFactory {
     private ConcurrentStreamValidator concurrentStreamValidator;
 	private DRMValidator drmValidator;
 	private GeoValidator geoValidator;
-	private StreamTypeValidator streamTypeValidator;
+	private StreamValidator streamTypeValidator;
 	private ErrorDescriptionValidator errorDescriptionValidator;
 	private BitmovinTechnologyValidator bitmovinTechnologyValidator;
-	private SyndicationRuleValidator syndicationRuleValidator;
 	private LiveValidator liveValidator;
 	private AdStartTimeValidator adStartTimeValidator;
-
+	private VideoPluginValidator videoPluginValidator;
+	
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
 		this.extentTest = extentTest;
 	}
 	
-	public SyndicationRuleValidator getSyndicationRuleValidator() {
-        if (syndicationRuleValidator == null){
-        	syndicationRuleValidator = new SyndicationRuleValidator(driver);
-        	syndicationRuleValidator.setExtentTest(extentTest);
-        }
-        return syndicationRuleValidator;
-    }
+	public VideoPluginValidator getVideoPluginValidator() {
+		if(videoPluginValidator==null){
+			videoPluginValidator = new VideoPluginValidator(driver);
+			videoPluginValidator.setExtentTest(extentTest);
+		}
+		return videoPluginValidator;
+	}
 	
     public ConcurrentStreamValidator getConcurrentStreamValidator() {
         if (concurrentStreamValidator == null){
@@ -119,9 +118,9 @@ public class PlayBackFactory {
 		return initalTimeValidator;
 	}
 
-	public StreamTypeValidator getStreamTypeValidator() {
+	public StreamValidator getStreamTypeValidator() {
 		if (streamTypeValidator == null){
-			streamTypeValidator = new StreamTypeValidator(driver);
+			streamTypeValidator = new StreamValidator(driver);
 			streamTypeValidator.setExtentTest(extentTest);
 		}
 		return streamTypeValidator;
@@ -446,14 +445,6 @@ public class PlayBackFactory {
 		return liveAction;
 	}
 
-
-	public SaasPortValidator getSaasPortValidator() {
-		if (saasPortValidator == null){
-			saasPortValidator = new SaasPortValidator(driver);
-			saasPortValidator.setExtentTest(extentTest);
-		}
-		return saasPortValidator;
-	}
 
 	public DifferentElementValidator getDifferentElements() {
 		if (differentElement == null){

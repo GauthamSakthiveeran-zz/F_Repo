@@ -1,7 +1,7 @@
 package com.ooyala.playback.playlist;
 
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.StreamTypeValidator;
+import com.ooyala.playback.page.StreamValidator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,7 +19,7 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
 
 	private PlaylistValidator playlist;
 	private PlayValidator play;
-	private StreamTypeValidator streamTypeValidator;
+	private StreamValidator streamTypeValidator;
 	private EventValidator eventValidator;
 
 	public PlaybackPlaylistTests() throws OoyalaException {

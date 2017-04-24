@@ -1,0 +1,24 @@
+<suite name="Playback Web Regression Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    
+
+    <test name="Live Regression" parallel="classes" thread-count="1">
+        <groups>
+            <define name="live">
+                <include name="streams" />
+            </define>
+            <run>
+                <include name="live" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/Live.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.streams.PlaybackLiveTests" />
+        </classes>
+    </test>
+
+</suite>
+

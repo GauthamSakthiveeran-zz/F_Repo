@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.ControlBarValidator;
 import com.ooyala.playback.page.ErrorDescriptionValidator;
+import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.FullScreenValidator;
 import com.ooyala.playback.page.LiveValidator;
 import com.ooyala.playback.page.PauseValidator;
@@ -33,6 +34,7 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private LiveValidator live;
 	private ErrorDescriptionValidator error;
+	private EventValidator event;
 
 	public PlaybackLiveTests() throws OoyalaException {
 		super();
@@ -58,7 +60,7 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
-			Thread.sleep(3000);
+			result = result && event.playVideoForSometime(3);
 
 			result = result && pause.validate("paused_1", 60000);
 

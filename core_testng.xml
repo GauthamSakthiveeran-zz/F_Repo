@@ -1,0 +1,53 @@
+<suite name="Playback Web Regression Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    <test name="Player Features" parallel="classes" thread-count="5">
+        <classes>
+            <parameter name="testData" value="alice/Alice.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.playerfeatures.PlayerMetadataStatesTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackVolumeTest" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackReplayVideoTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackFullScreenTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackLocalizationTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackClosedCaptionTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackAspectRatioTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackVerticalVideoTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailCarouselTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackSocialMediaTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackAutoplayTests" />
+            <class name="com.ooyala.playback.playerfeatures.OoyalaAPITests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackBitrateTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackPlayerControlsTests" />
+            <class name="com.ooyala.playback.playerfeatures.DiscoveryUpNextTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryCustomizationTests" />
+            <class name="com.ooyala.playback.playerlifecycle.PlaybackPlayerDestroyTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
+            <class name="com.ooyala.playback.playerfeatures.PlaybackNewProcessingProfileTests" />
+            <class name="com.ooyala.playback.streams.BasicPlaybackTests"/>
+        </classes>
+    </test>
+
+    <test name="FCC Regression" parallel="classes" thread-count="2">
+        <classes>
+            <parameter name="testData" value="alice/FCC.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.FCC.PlaybackFCCDefaultSettingTests" />
+            <class name="com.ooyala.playback.FCC.PlaybackFCCBasicTests" />
+        </classes>
+    </test>
+    
+    <test name="HTML5 Playback first Regression" parallel="false" thread-count="1">
+        
+        <classes>
+            <parameter name="testData" value="alice/HTML5FirstPlaybackTests.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.core.HTML5FirstPlaybackTests"/>
+        </classes>
+    </test>
+    
+</suite>
+

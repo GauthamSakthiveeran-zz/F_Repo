@@ -42,7 +42,7 @@ public class PlaybackPreRollAdsSetEmbedCodeTests extends PlaybackWebTest {
 			
 			result = result && event.validate("playing_1", 20000);
 			
-			Thread.sleep(2000);
+			result = result && event.playVideoForSometime(3);
 			
 			result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);
 			

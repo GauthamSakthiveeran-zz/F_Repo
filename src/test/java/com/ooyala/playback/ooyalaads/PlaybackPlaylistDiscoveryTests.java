@@ -47,7 +47,7 @@ public class PlaybackPlaylistDiscoveryTests extends PlaybackWebTest {
 
 			result = result && event.validate("playing_2", 20000);
 			
-			Thread.sleep(10000);
+			result = result && event.playVideoForSometime(5);
 
 			if (testName.contains("playlist")) {
 				result = result && playlist.scrollToEitherSide();

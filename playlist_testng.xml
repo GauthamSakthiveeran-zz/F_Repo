@@ -2,11 +2,12 @@
     <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
-    <test name="Streams Regression" parallel="classes" thread-count="1">
+
+    <test name="Playlist Regression" parallel="classes" thread-count="1">
         <classes>
-            <parameter name="testData" value="alice/Streams.xml" />
+            <parameter name="testData" value="alice/Playlist.xml" />
             <parameter name="jsFile" value="alice/alice.js" />
-            <class name="com.ooyala.playback.streams.BasicPlaybackTests" />
+            <class name="com.ooyala.playback.playlist.PlaybackPlaylistTests" />
         </classes>
     </test>
 

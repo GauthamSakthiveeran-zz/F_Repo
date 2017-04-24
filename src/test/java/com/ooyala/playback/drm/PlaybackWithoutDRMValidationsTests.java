@@ -1,13 +1,16 @@
 package com.ooyala.playback.drm;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.url.UrlObject;
-import com.ooyala.qe.common.exception.OoyalaException;
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.StreamValidator;
+import com.ooyala.playback.url.UrlObject;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by suraj on 3/31/17.
@@ -18,7 +21,7 @@ public class PlaybackWithoutDRMValidationsTests extends PlaybackWebTest {
     private PlayValidator play;
     private PauseValidator pause;
     private SeekValidator seek;
-    private StreamTypeValidator stream;
+    private StreamValidator stream;
 
     public PlaybackWithoutDRMValidationsTests() throws OoyalaException{
         super();
