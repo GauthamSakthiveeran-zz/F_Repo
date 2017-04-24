@@ -220,6 +220,10 @@ public class UrlGenerator {
 						urlObject.setAdPlugins(url.getAdPlugins().getName());
 					}
 
+					if(url.getAdditionalPlugins()!=null){
+                    	urlObject.setAdditionalPlugins(url.getAdditionalPlugins().getName());
+					}
+
 					urlsGenerated.put(desc, urlObject);
 
 				}

@@ -110,5 +110,4 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 
         return result;
     }
-
 }
