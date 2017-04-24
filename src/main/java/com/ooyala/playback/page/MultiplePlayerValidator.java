@@ -1,7 +1,6 @@
 package com.ooyala.playback.page;
 
 import static java.lang.Double.parseDouble;
-import static java.lang.Thread.sleep;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -14,11 +13,10 @@ import com.relevantcodes.extentreports.LogStatus;
 /**
  * Created by jitendra on 28/11/16.
  */
-public class MultiplePlayerValidator extends PlayBackPage implements
-		PlaybackValidator {
+public class MultiplePlayerValidator extends PlayBackPage implements PlaybackValidator {
 
 	private static Logger logger = Logger.getLogger(MultiplePlayerValidator.class);
-	
+
 	public MultiplePlayerValidator(WebDriver driver) {
 		super(driver);
 		PageFactory.initElements(driver, this);
@@ -70,36 +68,30 @@ public class MultiplePlayerValidator extends PlayBackPage implements
 		}
 
 		if (element.contentEquals("seek1")) {
-			if ((Boolean) ((JavascriptExecutor) driver)
-					.executeScript("return pp1.isPlaying();")) {
-				((JavascriptExecutor) driver)
-						.executeScript("return pp1.seek(pp1.seek(pp1.getDuration()-1));");
+			if ((Boolean) ((JavascriptExecutor) driver).executeScript("return pp1.isPlaying();")) {
+				((JavascriptExecutor) driver).executeScript("return pp1.seek(pp1.seek(pp1.getDuration()-1));");
 				logger.info("Video 1 is Seeked");
 
 			} else {
 				clickOnHiddenElement("PLAYER1_START_SCREEN");
-				((JavascriptExecutor) driver)
-						.executeScript("return pp1.seek(pp1.seek(pp1.getDuration()-1));");
+				((JavascriptExecutor) driver).executeScript("return pp1.seek(pp1.seek(pp1.getDuration()-1));");
 				logger.info("Video 1 is Seeked");
 			}
 		}
 
 		if (element.contentEquals("seek2")) {
-			if ((Boolean) ((JavascriptExecutor) driver)
-					.executeScript("return pp2.isPlaying();")) {
-				((JavascriptExecutor) driver)
-						.executeScript("return pp1.seek(pp2.seek(pp2.getDuration()-1));");
+			if ((Boolean) ((JavascriptExecutor) driver).executeScript("return pp2.isPlaying();")) {
+				((JavascriptExecutor) driver).executeScript("return pp1.seek(pp2.seek(pp2.getDuration()-1));");
 				logger.info("Video 2 is Seeked");
 			} else {
 				clickOnHiddenElement("PLAYER2_START_SCREEN");
-				((JavascriptExecutor) driver)
-						.executeScript("return pp1.seek(pp2.seek(pp2.getDuration()-1));");
+				((JavascriptExecutor) driver).executeScript("return pp1.seek(pp2.seek(pp2.getDuration()-1));");
 				logger.info("Video 2 is Seeked");
 			}
 		}
 		return true;
 	}
-	
+
 	public boolean validateVolume() {
 
 		boolean flag = true;
@@ -155,35 +147,38 @@ public class MultiplePlayerValidator extends PlayBackPage implements
 
 		return flag;
 	}
-	
+
 	public boolean validateFullScreen() throws Exception {
 
 		if (!clickOnIndependentElement("PLAYER1_FULLSCREEN"))
 			return false;
 
-		sleep(1000);
+		if (!waitOnElement("PLAYER1_NORMALSCREEN", 10000))
+			return false;
 
 		if (!clickOnIndependentElement("PLAYER1_NORMALSCREEN"))
 			return false;
 
 		if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("firefox"))) {
-			if(!waitOnElement(By.id("player1_fullscreenChanged_true"), 20000)) return false;
-			if(!waitOnElement(By.id("player1_fullscreenChanged_false"), 20000)) return false;
+			if (!waitOnElement(By.id("player1_fullscreenChanged_true"), 20000))
+				return false;
+			if (!waitOnElement(By.id("player1_fullscreenChanged_false"), 20000))
+				return false;
 		}
-		
+
 		if (!clickOnIndependentElement("PLAYER2_FULLSCREEN"))
 			return false;
-
-		sleep(1000);
 
 		if (!clickOnIndependentElement("PLAYER2_NORMALSCREEN"))
 			return false;
 
 		if (!(getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("firefox"))) {
-			if(!waitOnElement(By.id("player2_fullscreenChanged_true"), 20000)) return false;
-			if(!waitOnElement(By.id("player2_fullscreenChanged_false"), 20000)) return false;
+			if (!waitOnElement(By.id("player2_fullscreenChanged_true"), 20000))
+				return false;
+			if (!waitOnElement(By.id("player2_fullscreenChanged_false"), 20000))
+				return false;
 		}
-		
+
 		return true;
 	}
 }

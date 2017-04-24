@@ -26,7 +26,6 @@ public class ShareTabValidator extends PlayBackPage implements
 				return false;
 			if (!clickOnIndependentElement("SHARE_BTN"))
 				return false;
-			Thread.sleep(5000);
 		} catch (Exception e) {
 			logger.info("exception \n" + e.getMessage());
 			if (!clickOnIndependentElement("MORE_OPTION_ITEM"))
@@ -46,11 +45,9 @@ public class ShareTabValidator extends PlayBackPage implements
 		if (!waitOnElement("CONTENT_SCREEN", 60000))
 			return false;
 
-		Thread.sleep(2000);
 
 		String shareTab = readTextFromElement("SHARE_TAB");
 		logger.info("Share Tab value " + shareTab);
-		Thread.sleep(1000);
 
 		String embedTab = readTextFromElement("EMBED_TAB");
 		logger.info("Text in Embed Tab  " + embedTab);

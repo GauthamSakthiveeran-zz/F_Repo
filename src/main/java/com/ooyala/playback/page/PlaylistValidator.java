@@ -33,7 +33,6 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     public boolean validate(String element, int timeout) {
         try {
             getWebElement("NEXT_ARROW").click();
-            Thread.sleep(2000);
             getWebElement("VIDEO").click();
         /*    getWebElement("PREVIOUS_ARROW").click();
             getWebElementsList("VIDEO_LIST").get(11).click();*/
@@ -109,10 +108,8 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 						getWebElement("SCROLL_DOWN").click();
 					}
 				}
-				Thread.sleep(2000);
 				if (driver.findElement(By.id(asset)).isDisplayed()) {
-					clickOnIndependentElement(By.id(asset));
-					Thread.sleep(2000);
+					result = result && clickOnIndependentElement(By.id(asset));
 					result = result && checkPlayback(count);
 					if (!result) {
 						extentTest.log(LogStatus.FAIL, "Failed to play video : " + count);
@@ -237,7 +234,6 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 									"return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i
 											+ "].getElementsByClassName('oo-thumbnail')[" + j + "].getAttribute('id')")
 									.toString();
-							Thread.sleep(3000);
 							driver.findElement(By.id(assetUnderPagingEmbedCode)).click();
 							result = result && checkPlayback(count);
 							if (!result) {

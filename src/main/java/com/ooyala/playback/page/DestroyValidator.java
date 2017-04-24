@@ -16,7 +16,6 @@ public class DestroyValidator extends PlayBackPage implements PlaybackValidator 
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		Thread.sleep(2000);
 		((JavascriptExecutor) driver).executeScript("pp.destroy()");
 
 		return waitOnElement(element, timeout)

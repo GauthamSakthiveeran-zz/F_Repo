@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<test name="PlaybackStreamsTests">
+		<url>
+			<description name="hls" />
+			<embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<streamType name="m3u8" />
+			<playerParameter></playerParameter>
+		</url>
+
+		<url>
+			<description name="mp4" />
+			<embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="615dc8e909e941c280e12155df838355" />
+			<playerParameter></playerParameter>
+			<streamType name="mp4" />
+		</url>
+
+
+		<url>
+			<description name="hds" />
+			<embed_code name="0zbm5kMDE6hbM_xDZmnsKUYqXs3N9JrL" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<streamType name="f4m" />
+			<playerParameter></playerParameter>
+		</url>
+		<url>
+			<description name="Akamai HD Flash HD2 VOD" />
+			<embed_code name="82eWJ2NDE6UWX__B6oTjtU1COh-gF3pP" />
+			<pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk" />
+			<plugins name="" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+			<streamType name="f4m" />
+			<playerParameter></playerParameter>
+		</url>
+		<url>
+			<description name="dash" />
+			<embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq" />
+			<pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+			<plugins name="" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+			<streamType name="mpd" />
+			<playerParameter></playerParameter>
+		</url>
+	</test>
+</testdata>

@@ -37,6 +37,9 @@ public class TestPageData {
 	private String otherPlugin;
 	private String discoveryApiPlugin;
 	private String playlistPlugin;
+	private String valhalla;
+	private String valhalla_build;
+	private String valhalla_build_id;
 	private PropertyReader properties;
 
 	/**
@@ -74,11 +77,37 @@ public class TestPageData {
 			discoveryApiPlugin = properties.getProperty("discovery_api_plugin");
 			otherPlugin = properties.getProperty("other_plugin");
 			playlistPlugin = properties.getProperty("playlist_plugin");
-
+			valhalla = properties.getProperty("valhalla");
+			valhalla_build = properties.getProperty("valhalla_build");
+			valhalla_build_id = properties.getProperty("valhalla_build_id");
 		} catch (Exception e) {
 			logger.error("Error while reading data from properties file :"
 					+ e.getMessage());
 		}
+	}
+	
+	public String getValhallaBuildId() {
+		return valhalla_build_id;
+	}
+	
+	public void setValhallaBuildId(String valhalla_build_id) {
+		this.valhalla_build_id = valhalla_build_id;
+	}
+	
+	public String getValhalla() {
+		return valhalla;
+	}
+	
+	public void setValhalla(String valhalla) {
+		this.valhalla = valhalla;
+	}
+	
+	public String getValhallaBuild() {
+		return valhalla_build;
+	}
+	
+	public void setValhallaBuild(String valhalla_build) {
+		this.valhalla_build = valhalla_build;
 	}
 
 	public String getBaseURL() {
@@ -390,6 +419,9 @@ public class TestPageData {
 	 */
 	public String getSkinConfigPlugin(String plugins, String adPlugin,
 			String additionalPlugin) {
+		
+		if(plugins.isEmpty())
+			return "";
 
 		
 		if (additionalPlugin.contains("DISCOVERY")) {

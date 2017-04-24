@@ -1,18 +1,15 @@
 package com.ooyala.playback.errorHandling;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.url.UrlObject;
-import com.ooyala.qe.common.exception.OoyalaException;
-import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriverException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class PlaybackErrorTests extends PlaybackWebTest {
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.ErrorDescriptionValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.url.UrlObject;
+import com.ooyala.qe.common.exception.OoyalaException;
 
-	private static Logger logger = Logger.getLogger(PlaybackErrorTests.class);
+public class PlaybackErrorTests extends PlaybackWebTest {
 
 	private PlayValidator play;
 	private ErrorDescriptionValidator errorDescriptionValidator;

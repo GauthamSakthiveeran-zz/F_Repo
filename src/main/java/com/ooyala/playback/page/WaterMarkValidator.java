@@ -13,7 +13,7 @@ import java.util.Set;
 public class WaterMarkValidator extends PlayBackPage implements
 		PlaybackValidator {
 
-	public static Logger Log = Logger.getLogger(WaterMarkValidator.class);
+	public static Logger logger = Logger.getLogger(WaterMarkValidator.class);
 
 	public WaterMarkValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -32,8 +32,7 @@ public class WaterMarkValidator extends PlayBackPage implements
 
 		if (!waitOnElement("WATERMARK_LOGO", 60000))
 			return false;
-		Log.info("Watermark Image is displayed");
-		Thread.sleep(5000);
+		logger.info("Watermark Image is displayed");
 
 		String img_url = getWebElement("WATERMARK_LOGO").getAttribute("src");
 
@@ -42,7 +41,6 @@ public class WaterMarkValidator extends PlayBackPage implements
 			flag = false;
 		}
 
-		Thread.sleep(10000);
 		//flag = validatelogoDimension(); - need to check with varying player size
 
 		// Checking height and width in fullscreen
@@ -75,7 +73,7 @@ public class WaterMarkValidator extends PlayBackPage implements
 		String width = getWebElement("WATERMARK_LOGO").getAttribute("width");
 		String height = getWebElement("WATERMARK_LOGO").getAttribute("height");
 
-		Log.info("Image width & height " + width + " " + height);
+		logger.info("Image width & height " + width + " " + height);
 		
 		if(!width.equals("65")){
 
@@ -105,18 +103,18 @@ public class WaterMarkValidator extends PlayBackPage implements
 			driver.switchTo().window(aWindow);
 			boolean isTitleContains = driver.getTitle().contains(
 					"Ooyala | Deliver Content that Connects");
-			Log.info("TitleContains :" + isTitleContains);
+			logger.info("TitleContains :" + isTitleContains);
 
 			if (driver.getTitle().contains(
 					"Ooyala | Deliver Content that Connects")) {
-				Log.info("We are on click through page");
+				logger.info("We are on click through page");
 				break;
 			}
 		}
 
 		Set<String> windowHandles = driver.getWindowHandles();
 		int count = windowHandles.size();
-		Log.info("Window opened :" + count);
+		logger.info("Window opened :" + count);
 
 		if (count > 1) {
 			for (String winHandle : driver.getWindowHandles()) {

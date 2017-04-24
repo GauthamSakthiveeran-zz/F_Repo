@@ -317,13 +317,6 @@ public abstract class PlaybackWebTest extends FacileTest {
         logger.info("Assigning the neopagefactory instance to null");
     }
 
-    public void waitForSecond(int sec) {
-        try {
-            Thread.sleep(sec);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void parseXmlFileData(String xmlFile, String xmlFilePkg) {
         try {
@@ -490,4 +483,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 		return driver;
 	}
+	
+	protected String getUserAgent() {
+		return (String) ((JavascriptExecutor) driver).executeScript("return navigator.userAgent;");
+	}
+
 }

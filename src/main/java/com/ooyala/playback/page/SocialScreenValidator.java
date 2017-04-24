@@ -143,7 +143,6 @@ public class SocialScreenValidator extends PlayBackPage implements
 						return false;
 					}
 					driver.close();
-					Thread.sleep(3000);
 					driver.switchTo().window(currentWindow);
 					return true;
 				} else {
@@ -177,7 +176,6 @@ public class SocialScreenValidator extends PlayBackPage implements
 					
 					clickOnIndependentElement("TWITTER_LOGIN_BUTTON");
 					
-					Thread.sleep(5000);
 					logger.info("browser name is :" + browserName);
 					/*if (browserName.equalsIgnoreCase("firefox")) {
 						driver.switchTo().window(windowId).close();
@@ -186,7 +184,6 @@ public class SocialScreenValidator extends PlayBackPage implements
 					try{
 						driver.switchTo().window(currentWindow);
 					}catch (Exception e){
-						Thread.sleep(10000);
 						driver.switchTo().window(currentWindow);
 					}
 
@@ -196,7 +193,6 @@ public class SocialScreenValidator extends PlayBackPage implements
 					driver.navigate().to("https://twitter.com");
 					driver.navigate().refresh();
 					String tweet_path="//*[normalize-space(text())="+"'"+nameForTweet+"'"+"]";
-					Thread.sleep(10000);
 					boolean isTweetPresent = driver.findElement(By.xpath(tweet_path)).isDisplayed();
 					if (!isTweetPresent){
 						extentTest.log(LogStatus.FAIL,"Tweet is not tweeted successfully");
@@ -258,7 +254,6 @@ public class SocialScreenValidator extends PlayBackPage implements
 				
 			}
 			
-			Thread.sleep(5000);
 			WebElement el = driver.findElement(By.cssSelector("body"));
 
 			el.sendKeys(Keys.TAB);
@@ -268,7 +263,6 @@ public class SocialScreenValidator extends PlayBackPage implements
 				return false;
 			}
 			String fbPost = "//p[text()=" + "'" + facebookShare + "'" + "]";
-			Thread.sleep(10000);
 			if (!(driver.findElement(By.xpath(fbPost)).isDisplayed())){
 				extentTest.log(LogStatus.FAIL, "Unable to find the facebook post.");
 				return false;
@@ -293,7 +287,6 @@ public class SocialScreenValidator extends PlayBackPage implements
 					+ random_number + "";
 			getWebElement("GPLUS_TEXTAREA").sendKeys(
 					title_for_sharing_asset);
-			Thread.sleep(5000);
 			//if (!clickOnIndependentElement("GPLUS_SHARE_BTN"))
 			if(isElementPresent("GPLUS_SHARE_BTN")){
 				clickOnIndependentElement("GPLUS_SHARE_BTN");
@@ -302,21 +295,16 @@ public class SocialScreenValidator extends PlayBackPage implements
 				clickOnIndependentElement("GPLUS_POST_BUTTON");
 			}
 
-			Thread.sleep(5000);
 			try{
 				driver.switchTo().window(currentWindow);
 			}catch (Exception e){
-				Thread.sleep(10000);
 				driver.switchTo().window(currentWindow);
 			}
-			Thread.sleep(5000);
 			openOnNewTab(getPlatform(),
 					"window.open('https://plus.google.com')", browserName);
 			driver.navigate().to("https://plus.google.com");
-			Thread.sleep(5000);
 			driver.navigate().refresh();
 			waitOnElement("GPLUS_POST_LIST");
-			Thread.sleep(10000);
 			logger.info("title_for_sharing_asset :"
 					+ title_for_sharing_asset);
 			List<WebElement> AllElements = getWebElementsList("GPLUS_POST_LIST");
@@ -349,15 +337,12 @@ public class SocialScreenValidator extends PlayBackPage implements
 			clickOnIndependentElement("SHARE_BTN");
 
 		} else {
-			Thread.sleep(5000);
 			((JavascriptExecutor) driver).executeScript(webSite);
-			Thread.sleep(2000);
 			ArrayList<String> multipleTabs = new ArrayList<String>(
 					driver.getWindowHandles());
 			logger.info("total tabs opened : " + multipleTabs.size());
 		}
 
-		Thread.sleep(5000);
 		ArrayList<String> tabs = new ArrayList<String>(
 				driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(1));
