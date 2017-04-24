@@ -67,16 +67,34 @@ public class PlayBackFactory {
     private ConcurrentStreamValidator concurrentStreamValidator;
 	private DRMValidator drmValidator;
 	private GeoValidator geoValidator;
-	private StreamTypeValidator streamTypeValidator;
+	private StreamValidator streamTypeValidator;
 	private ErrorDescriptionValidator errorDescriptionValidator;
 	private BitmovinTechnologyValidator bitmovinTechnologyValidator;
 	private SyndicationRuleValidator syndicationRuleValidator;
 	private LiveValidator liveValidator;
 	private AdStartTimeValidator adStartTimeValidator;
-
+	private PackagingValidator packagingValidator;
+	private VideoPluginValidator videoPluginValidator;
+	
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
 		this.extentTest = extentTest;
+	}
+	
+	public VideoPluginValidator getVideoPluginValidator() {
+		if(videoPluginValidator==null){
+			videoPluginValidator = new VideoPluginValidator(driver);
+			videoPluginValidator.setExtentTest(extentTest);
+		}
+		return videoPluginValidator;
+	}
+	
+	public PackagingValidator getPackagingValidator() {
+		if(packagingValidator==null){
+			packagingValidator = new PackagingValidator(driver);
+			packagingValidator.setExtentTest(extentTest);
+		}
+		return packagingValidator;
 	}
 	
 	public SyndicationRuleValidator getSyndicationRuleValidator() {
@@ -119,9 +137,9 @@ public class PlayBackFactory {
 		return initalTimeValidator;
 	}
 
-	public StreamTypeValidator getStreamTypeValidator() {
+	public StreamValidator getStreamTypeValidator() {
 		if (streamTypeValidator == null){
-			streamTypeValidator = new StreamTypeValidator(driver);
+			streamTypeValidator = new StreamValidator(driver);
 			streamTypeValidator.setExtentTest(extentTest);
 		}
 		return streamTypeValidator;

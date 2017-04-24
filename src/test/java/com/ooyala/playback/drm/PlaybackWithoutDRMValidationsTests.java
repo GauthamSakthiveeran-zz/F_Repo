@@ -18,7 +18,7 @@ public class PlaybackWithoutDRMValidationsTests extends PlaybackWebTest {
     private PlayValidator play;
     private PauseValidator pause;
     private SeekValidator seek;
-    private StreamTypeValidator stream;
+    private StreamValidator stream;
 
     public PlaybackWithoutDRMValidationsTests() throws OoyalaException{
         super();
