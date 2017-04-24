@@ -30,7 +30,7 @@ public class DRMValidator extends PlayBackPage implements PlaybackValidator {
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
 		
-		if(isVideoPluginPresent("OSMF")) {
+		if(isVideoPluginPresent("osmf")) {
 			extentTest.log(LogStatus.INFO, "Cannot validate DRM for Adobe access");
 			return true;
 		}

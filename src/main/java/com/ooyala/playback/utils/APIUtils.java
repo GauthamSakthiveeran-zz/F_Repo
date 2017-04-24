@@ -77,10 +77,7 @@ public class APIUtils {
 		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "GET", null, null, version, entitlements,
 				providers, pcode, accounts, accountId, content, assets, embedCode, external_products, "default");
 
-		if (response.getResponseCode() == 200)
-			return true;
-
-		return false;
+		return response.getResponseCode() == 200;
 	}
 
 	public boolean deleteEntitlement(String pcode, String embedCode) throws Exception {
@@ -89,10 +86,7 @@ public class APIUtils {
 				entitlements, providers, pcode, accounts, accountId, content, assets, embedCode, external_products,
 				"default");
 
-		if (response.getResponseCode() == 200)
-			return true;
-
-		return false;
+		return response.getResponseCode() == 200;
 	}
 
 	public boolean addEntitlement(String pcode, String embedCode, int deviceCount) throws Exception {
@@ -109,10 +103,7 @@ public class APIUtils {
 		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "POST", requestBody.toString(), null,
 				version, entitlements, providers, pcode, accounts, accountId, content);
 
-		if (response.getResponseCode() == 200)
-			return true;
-
-		return false;
+		return response.getResponseCode() == 200;
 	}
 
 	public HashMap<String, String> getDevices(String pcode) throws IOException {
@@ -143,15 +134,8 @@ public class APIUtils {
 		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "DELETE", json.toString(), null,
 				device_management, this.pcode, pcode, account_id, accountId, devices);
 
-		if (response.getResponseCode() == 200) {
-			return true;
-		}
-		if (response.getResponseCode() == 404 && response.getResponse().contains("device does not exist")) // device
-			// already
-			// deleted
-			return true;
-
-		return false;
+		return response.getResponseCode() == 200 ? true
+				: (response.getResponseCode() == 404 && response.getResponse().contains("device does not exist"));
 
 	}
 
@@ -164,31 +148,19 @@ public class APIUtils {
 		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "DELETE", json.toString(), null,
 				device_management, this.pcode, pcode, account_id, accountId, devices, deviceId);
 
-		if (response.getResponseCode() == 200) {
-			return true;
-		}
-		if (response.getResponseCode() == 404 && response.getResponse().contains("device does not exist")) // device
-			// already
-			// deleted
-			return true;
-
-		return false;
-
+		return response.getResponseCode() == 200 ? true
+				: (response.getResponseCode() == 404 && response.getResponse().contains("device does not exist"));
 	}
-	
+
 	public boolean updateDeviceLimit(String pcode, int count) {
 		JSONObject json = new JSONObject();
 		json.put("device_limit", count);
-		
+
 		Response response = neoRequest.makeRequest(rl_api_endpoint, "", null, "PUT", json.toString(), null,
 				device_management, this.pcode, pcode, account_id, accountId, device_limit);
-		
-		if (response.getResponseCode() == 200) {
-			return true;
-		}
-		
-		return false;
-		
+
+		return response.getResponseCode() == 200;
+
 	}
 
 	public boolean updatePublishingRule(String embedCode, String publishingRuleId, String api_key) throws Exception {
@@ -199,24 +171,18 @@ public class APIUtils {
 		Response response = neoRequest.makeRequest(backlot_api_endPoint, "", api_key, "PUT", null, queryString, version,
 				assets, embedCode, publishing_rule, publishingRuleId);
 
-		if (response.getResponseCode() == 200) {
-			return true;
-		}
-		return false;
+		return response.getResponseCode() == 200;
 	}
-	
+
 	public boolean getPublishingRule(String embedCode, String publishingRuleId, String api_key) throws Exception {
 
 		Map<String, String> queryString = new HashMap<>();
 		queryString.put("api_key", api_key);
 
 		Response response = neoRequest.makeRequest(backlot_api_endPoint, "", api_key, "GET", null, queryString, version,
-				assets, embedCode, publishing_rule, publishingRuleId);
+				assets, embedCode, publishing_rule);
 
-		if (response.getResponseCode() == 200) {
-			return true;
-		}
-		return false;
+		return response.getResponseCode() == 200 && response.getResponse().contains(publishingRuleId);
 	}
 
 	public HashMap<String, String> getPublishingRuleIds(String api_key) throws Exception {
@@ -264,7 +230,6 @@ public class APIUtils {
 		return promoImageUrl;
 	}
 
-	
 	public String getCountry() {
 		Response response = neoRequest.makeRequest("http://ip-api.com/json", "", null, "GET", null, null);
 		return response.getResponse();

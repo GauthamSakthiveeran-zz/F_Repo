@@ -26,8 +26,6 @@ import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import io.netty.util.internal.SystemPropertyUtil;
-
 public abstract class PlayBackPage extends WebPage {
 
 	private static Logger logger = Logger.getLogger(PlayBackPage.class);
@@ -376,7 +374,7 @@ public abstract class PlayBackPage extends WebPage {
 	public boolean isAdPluginPresent(String adPlugin) throws Exception {
 		Map<String, String> map = parseURL();
 		if (map != null && map.get("ad_plugin") != null
-				&& map.get("ad_plugin").contains(adPlugin)) {
+				&& map.get("ad_plugin").contains(adPlugin.toLowerCase())) {
 			return true;
 		}
 		return false;
@@ -385,7 +383,7 @@ public abstract class PlayBackPage extends WebPage {
 	public boolean isVideoPluginPresent(String videoPlugin) throws Exception {
 		Map<String, String> map = parseURL();
 		if (map != null && map.get("video_plugins") != null
-				&& map.get("video_plugins").contains(videoPlugin)) {
+				&& map.get("video_plugins").contains(videoPlugin.toLowerCase())) {
 			return true;
 		}
 		return false;
