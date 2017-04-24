@@ -66,7 +66,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		return false;
 	}
 
-	public boolean waitForVideoToPlay(int secs) {
+	public boolean playVideoForSometime(int secs) {
 		int count = 0;
 		double playTime = Double
 				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());

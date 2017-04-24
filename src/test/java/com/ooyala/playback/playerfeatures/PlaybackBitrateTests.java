@@ -11,7 +11,6 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/17/16.
@@ -53,8 +52,6 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
             result = result && pause.validate("paused_1", 60000);
 
             result = result && bitratevalidator.validate("", 60000);
-
-            sleep(1000);
 
             result = result && seek.validate("seeked_1", 60000);
 

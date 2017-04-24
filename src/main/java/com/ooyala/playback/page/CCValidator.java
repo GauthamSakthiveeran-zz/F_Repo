@@ -840,7 +840,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 			// CC Opacity Selection
 			result = result && verifyCCOpacityPanel("PlaybackFCCDefaultSettingTests");
-			Thread.sleep(2000);
 			if (!getBrowser().equalsIgnoreCase("safari")) {
 				result = result && setCCOpacity();
 			}
@@ -848,7 +847,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 			// CC Font Type Selection
 			result = result && verifyCCFonttypePanel();
-			Thread.sleep(2000);
 			result = result && setFontType();
 			ccFontTypeBefore = getFontType();
 

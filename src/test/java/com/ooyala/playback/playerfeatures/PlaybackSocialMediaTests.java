@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SocialScreenValidator;
 import com.ooyala.playback.url.UrlObject;
@@ -17,6 +18,7 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest {
 
     private PlayValidator play;
     private SocialScreenValidator social;
+    private EventValidator event;
 
     public PlaybackSocialMediaTests() throws OoyalaException {
         super();
@@ -32,13 +34,11 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest {
 
             result = result && play.waitForPage();
 
-            Thread.sleep(10000);
-
             injectScript();
 
             result = result && play.validate("playing_1", 60000);
 
-            Thread.sleep(2000);
+            result = result && event.playVideoForSometime(2);
 
             result = result && social.softAssert(s_assert).validate("", 60000);
 
