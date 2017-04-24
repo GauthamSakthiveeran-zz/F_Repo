@@ -1,19 +1,22 @@
 package com.ooyala.playback.drm;
 
-import com.ooyala.playback.page.*;
-import org.apache.log4j.Logger;
-import org.openqa.selenium.WebDriverException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.BitmovinTechnologyValidator;
+import com.ooyala.playback.page.DRMValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.StreamValidator;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackDRMTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackDRMTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private PauseValidator pause;
@@ -21,7 +24,7 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private DRMValidator drm;
 	private BitmovinTechnologyValidator tech;
-    private StreamTypeValidator stream;
+    private StreamValidator stream;
 
 	public PlaybackDRMTests() throws OoyalaException {
 		super();
@@ -32,9 +35,6 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 			throws OoyalaException {
 		boolean result = true;
 
-		logger.info("Test Description :\n"
-				+ testName.split("-")[1].toLowerCase());
-
 		try {
 			driver.get(url.getUrl());
 
@@ -44,9 +44,7 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 
             tech.getConsoleLogs();
 			
-            if(!url.getVideoPlugins().contains("OSMF")) {
-            	result = result && drm.validate("drm_tag", 5000);
-            }
+            result = result && drm.validate("drm_tag", 5000);
 			
 			result = result && play.waitForPage();
 			

@@ -1,6 +1,5 @@
 package com.ooyala.playback.page;
 
-import static java.lang.Thread.sleep;
 
 import java.util.List;
 
@@ -57,7 +56,6 @@ public class DiscoveryValidator extends PlayBackPage implements
 		if (count.size() > 3 && flagTrue) {
 			if (!clickOnIndependentElement("RIGHT_BTN"))
 				return false;
-			sleep(2000);
 			if (!clickOnIndependentElement("LEFT_BTN"))
 				return false;
 			extentTest.log(LogStatus.PASS,
@@ -80,8 +78,6 @@ public class DiscoveryValidator extends PlayBackPage implements
 			return false;
 		}
 		
-		Thread.sleep(5000);
-
 		if (validateDiscoveryToaster() && validateLeftRightButton()
 				&& validateImageStyle()) {
 			return waitOnElement(By.id("reportDiscoveryImpression_1"), 60000)

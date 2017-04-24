@@ -66,6 +66,19 @@ public class TestPage {
 				if(additionalPlugins.isEmpty())
 					additionalPlugins = testpagedata.getPluginForAd(additionalPlugin);
 			}
+			
+			String corePlayer = testpagedata.getCorePlayer();
+			String html5Skin = testpagedata.getHtml5Skin();
+			String skinAsset = testpagedata.getSkinAsset();
+			
+			if(plugins.isEmpty()) {
+				String buildId = System.getProperty("valhalla_build_id");
+				if(buildId==null || buildId.isEmpty()) {
+					buildId = testpagedata.getValhallaBuildId();
+				}
+				corePlayer = testpagedata.getValhalla() + pbid + testpagedata.getValhallaBuild() + buildId;
+				html5Skin = skinAsset = "";
+			}
 
 			url = testpagedata.getBaseURL()
 						+ "?ec="
@@ -75,22 +88,17 @@ public class TestPage {
 						+ "&pcode="
 						+ pCode
 						+ "&core_player="
-						+ URLEncoder.encode(testpagedata.getCorePlayer(),
-								"UTF8")
+						+ URLEncoder.encode(corePlayer, "UTF8")
 						+ "&video_plugins="
 						+ URLEncoder.encode(vplugin, "UTF8")
 						+ "&html5_skin="
-						+ URLEncoder
-								.encode(testpagedata.getHtml5Skin(), "UTF8")
+						+ URLEncoder.encode(html5Skin, "UTF8")
 						+ "&skin_asset="
-						+ URLEncoder
-								.encode(testpagedata.getSkinAsset(), "UTF8")
+						+ URLEncoder.encode(skinAsset, "UTF8")
 						+ "&skin_config="
-						+ URLEncoder.encode(testpagedata.getSkinConfigPlugin(
-								plugins, adPlugin, additionalPlugin), "UTF8")
+						+ URLEncoder.encode(testpagedata.getSkinConfigPlugin(plugins, adPlugin, additionalPlugin), "UTF8")
 						+ "&ad_plugin="
-						+ URLEncoder.encode(
-								testpagedata.getPluginForAd(adPlugin), "UTF8")
+						+ URLEncoder.encode(testpagedata.getPluginForAd(adPlugin), "UTF8")
 						+ "&additional_plugins="
 						+ URLEncoder.encode(additionalPlugins, "UTF8")
 						+ "&options="

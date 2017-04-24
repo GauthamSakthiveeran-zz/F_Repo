@@ -10,7 +10,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.FullScreenValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.StreamTypeValidator;
+import com.ooyala.playback.page.StreamValidator;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -26,7 +26,7 @@ public class PlaybackNewProcessingProfileTests extends PlaybackWebTest {
 	private ControlBarValidator control;
 	private FullScreenValidator fullScreen;
 	private EventValidator eventValidator;
-	private StreamTypeValidator streamTypeValidator;
+	private StreamValidator streamTypeValidator;
 
 	PlaybackNewProcessingProfileTests() throws OoyalaException {
 		super();

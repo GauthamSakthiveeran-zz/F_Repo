@@ -34,7 +34,6 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 
 			driver.get(url.getUrl());
 			result = result && playValidator.waitForPage();
-			Thread.sleep(2000);
 
 			injectScript();
 

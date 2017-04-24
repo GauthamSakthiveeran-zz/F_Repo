@@ -49,7 +49,7 @@ public class PlaybackAutoplayAutoloopPostrollPoddedAdTests extends PlaybackWebTe
 				result = false;
 			}
 			
-			Thread.sleep(6000);
+			result = result && eventValidator.playVideoForSometime(6);
 
 			result = result && seekValidator.validate("seeked_1", 60000);
 			

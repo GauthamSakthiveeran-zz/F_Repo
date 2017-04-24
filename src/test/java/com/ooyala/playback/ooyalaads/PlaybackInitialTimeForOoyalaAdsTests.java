@@ -52,7 +52,7 @@ public class PlaybackInitialTimeForOoyalaAdsTests extends PlaybackWebTest {
 
 			result = result && api.validateInitailTime();
 			
-			Thread.sleep(10000); // play the video for sometime
+			result = result && event.playVideoForSometime(5);
 			
 			result = result && seek.validate("seeked_1", 20000);
 			

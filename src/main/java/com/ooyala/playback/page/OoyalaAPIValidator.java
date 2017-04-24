@@ -91,7 +91,6 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
             logger.error("Total time must be greater thatn 0 but we are getting it as :"+totaltime);
             return false;
         }
-        Thread.sleep(3000);
 
         ((JavascriptExecutor) driver).executeScript("pp.seek(pp.getDuration()-10);");
 

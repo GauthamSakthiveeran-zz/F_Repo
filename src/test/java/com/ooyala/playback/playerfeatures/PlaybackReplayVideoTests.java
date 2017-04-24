@@ -40,7 +40,7 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
-			Thread.sleep(2000);
+			result = result && eventValidator.playVideoForSometime(2);
 
 			result = result && seek.validate("seeked_1", 60000);
 
