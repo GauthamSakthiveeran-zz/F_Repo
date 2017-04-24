@@ -9,8 +9,8 @@ import com.ooyala.playback.page.ErrorDescriptionValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.SyndicationRuleValidator;
 import com.ooyala.playback.url.UrlObject;
+import com.ooyala.playback.utils.SyndicationRules;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -25,7 +25,7 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayValidator play;
 	private SeekValidator seek;
-	private SyndicationRuleValidator syndicationRuleValidator;
+	SyndicationRules syndicationRules = new SyndicationRules(extentTest);
 
 	PlaybackFlightTimeTests() throws OoyalaException {
 		super();
@@ -36,7 +36,7 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest {
 		boolean result = true;
 		try {
 
-			result = result && syndicationRuleValidator.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), true);
+			result = result && syndicationRules.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), true);
 
 			driver.get(url.getUrl());
 
@@ -50,19 +50,10 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest {
 
 			result = result && event.validate("played_1", 60000);
 
-			result = result
-					&& syndicationRuleValidator.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), false);
-
-			Thread.sleep(10000);
+			result = result && syndicationRules.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), false);
 
 			extentTest.log(LogStatus.INFO, "Applied the publishing rule for flight time.");
 
-			driver.get(url.getUrl());
-
-			result = result && event.isPageLoaded();
-			
-			Thread.sleep(10000);
-			
 			driver.get(url.getUrl());
 
 			result = result && event.isPageLoaded();

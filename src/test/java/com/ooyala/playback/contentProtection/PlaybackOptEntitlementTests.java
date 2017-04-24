@@ -14,9 +14,9 @@ import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.StreamValidator;
-import com.ooyala.playback.page.SyndicationRuleValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
+import com.ooyala.playback.utils.SyndicationRules;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
@@ -29,7 +29,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 	private PlayValidator play;
 	private SeekValidator seek;
 	private ErrorDescriptionValidator error;
-	private SyndicationRuleValidator syndicationRuleValidator;
+	SyndicationRules syndicationRules = new SyndicationRules(extentTest);
 	private DRMValidator drm;
 	private StreamValidator streams;
 	private BitmovinTechnologyValidator tech;
@@ -45,10 +45,8 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 		boolean result = true;
 		try {
 
-			result = result && syndicationRuleValidator.deleteEntitlement(url.getEmbedCode(), url.getPCode());
-			result = result && syndicationRuleValidator.deleteDevices(url.getPCode());
-
-			Thread.sleep(5000);
+			result = result && syndicationRules.deleteEntitlement(url.getEmbedCode(), url.getPCode());
+			result = result && syndicationRules.deleteDevices(url.getPCode());
 
 			driver.get(url.getUrl());
 
@@ -57,9 +55,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 			result = result && error.expectedErrorCode("sas").expectedErrorDesc("Invalid Authorization Response")
 					.validate("", 1000);
 
-			result = result && syndicationRuleValidator.createEntitlement(url.getEmbedCode(), url.getPCode(), 2);
-
-			Thread.sleep(5000);
+			result = result && syndicationRules.createEntitlement(url.getEmbedCode(), url.getPCode(), 2);
 
 			driver.get(url.getUrl());
 
@@ -88,7 +84,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("played_1", 60000);
 			
-			result = result && syndicationRuleValidator.deleteDevices(url.getPCode());
+			result = result && syndicationRules.deleteDevices(url.getPCode());
 
 		} catch (Exception e) {
 			e.printStackTrace();

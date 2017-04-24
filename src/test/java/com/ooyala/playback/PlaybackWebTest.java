@@ -522,5 +522,9 @@ public abstract class PlaybackWebTest extends FacileTest {
 		}
 		return driver;
 	}
+	
+	protected String getUserAgent() {
+		return (String) ((JavascriptExecutor) driver).executeScript("return navigator.userAgent;");
+	}
 
 }

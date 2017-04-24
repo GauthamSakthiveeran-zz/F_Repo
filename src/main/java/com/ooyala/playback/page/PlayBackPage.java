@@ -373,8 +373,4 @@ public abstract class PlayBackPage extends WebPage {
 		return true;
 	}
 	
-	public String getUserAgent() {
-		return (String) ((JavascriptExecutor) driver).executeScript("return navigator.userAgent;");
-	}
-
 }

@@ -9,8 +9,8 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.GeoValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.SyndicationRuleValidator;
 import com.ooyala.playback.url.UrlObject;
+import com.ooyala.playback.utils.SyndicationRules;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -24,7 +24,7 @@ public class PlaybackGeoRestrictionTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayValidator play;
 	private SeekValidator seek;
-	private SyndicationRuleValidator syndicationRuleValidator;
+	SyndicationRules syndicationRules = new SyndicationRules(extentTest);
 
 	public PlaybackGeoRestrictionTests() throws OoyalaException {
 		super();
@@ -35,7 +35,7 @@ public class PlaybackGeoRestrictionTests extends PlaybackWebTest {
 		boolean result = true;
 		try {
 
-			result = result && syndicationRuleValidator.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), true);
+			result = result && syndicationRules.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), true);
 
 			driver.get(url.getUrl());
 
@@ -50,22 +50,14 @@ public class PlaybackGeoRestrictionTests extends PlaybackWebTest {
 			result = result && event.validate("played_1", 60000);
 
 			result = result
-					&& syndicationRuleValidator.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), false);
-
-			Thread.sleep(10000);
+					&& syndicationRules.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), false);
 
 			extentTest.log(LogStatus.INFO, "Applied the publishing rule for geo");
 
 			driver.get(url.getUrl());
 
-			Thread.sleep(5000);
-
-			driver.get(url.getUrl());
-
 			result = result && event.isPageLoaded();
 			
-			Thread.sleep(10000);
-
 			result = result && geo.validate("", 60000);
 
 		} catch (Exception e) {

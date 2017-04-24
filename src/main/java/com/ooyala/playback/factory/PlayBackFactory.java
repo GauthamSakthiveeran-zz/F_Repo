@@ -70,10 +70,8 @@ public class PlayBackFactory {
 	private StreamValidator streamTypeValidator;
 	private ErrorDescriptionValidator errorDescriptionValidator;
 	private BitmovinTechnologyValidator bitmovinTechnologyValidator;
-	private SyndicationRuleValidator syndicationRuleValidator;
 	private LiveValidator liveValidator;
 	private AdStartTimeValidator adStartTimeValidator;
-	private PackagingValidator packagingValidator;
 	private VideoPluginValidator videoPluginValidator;
 	
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
@@ -88,22 +86,6 @@ public class PlayBackFactory {
 		}
 		return videoPluginValidator;
 	}
-	
-	public PackagingValidator getPackagingValidator() {
-		if(packagingValidator==null){
-			packagingValidator = new PackagingValidator(driver);
-			packagingValidator.setExtentTest(extentTest);
-		}
-		return packagingValidator;
-	}
-	
-	public SyndicationRuleValidator getSyndicationRuleValidator() {
-        if (syndicationRuleValidator == null){
-        	syndicationRuleValidator = new SyndicationRuleValidator(driver);
-        	syndicationRuleValidator.setExtentTest(extentTest);
-        }
-        return syndicationRuleValidator;
-    }
 	
     public ConcurrentStreamValidator getConcurrentStreamValidator() {
         if (concurrentStreamValidator == null){

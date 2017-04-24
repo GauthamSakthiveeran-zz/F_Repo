@@ -22,7 +22,6 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 	private PauseValidator pause;
 	private SeekValidator seek;
 	private StreamValidator streamTypeValidator;
-	private PackagingValidator packaging;
 
 	public BasicPlaybackTests() throws OoyalaException {
 		super();
@@ -48,7 +47,6 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 				result = result && eventValidator.validate("videoPlayingurl", 40000);
 				result = result
 						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("", 1000);
-				result = result && packaging.setUrlObject(url).setTestName(testName).validate("", 600);
 			}
 
 			result = result && pause.validate("paused_1", 60000);

@@ -204,6 +204,20 @@ public class APIUtils {
 		}
 		return false;
 	}
+	
+	public boolean getPublishingRule(String embedCode, String publishingRuleId, String api_key) throws Exception {
+
+		Map<String, String> queryString = new HashMap<>();
+		queryString.put("api_key", api_key);
+
+		Response response = neoRequest.makeRequest(backlot_api_endPoint, "", api_key, "GET", null, queryString, version,
+				assets, embedCode, publishing_rule, publishingRuleId);
+
+		if (response.getResponseCode() == 200) {
+			return true;
+		}
+		return false;
+	}
 
 	public HashMap<String, String> getPublishingRuleIds(String api_key) throws Exception {
 
