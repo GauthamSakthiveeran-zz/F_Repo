@@ -47,7 +47,6 @@ public class PlayBackFactory {
 	private ThumbnailValidator thumbnailValidator;
 	private FullScreenAction fullScreenAction;
 	private SeekAction seekAction;
-	private SaasPortValidator saasPortValidator;
 	private StateScreenAction stateScreenAction;
 	private OverlayValidator overlayValidator;
 	private AdSkipButtonValidator adSkipButtonValidator;
@@ -446,14 +445,6 @@ public class PlayBackFactory {
 		return liveAction;
 	}
 
-
-	public SaasPortValidator getSaasPortValidator() {
-		if (saasPortValidator == null){
-			saasPortValidator = new SaasPortValidator(driver);
-			saasPortValidator.setExtentTest(extentTest);
-		}
-		return saasPortValidator;
-	}
 
 	public DifferentElementValidator getDifferentElements() {
 		if (differentElement == null){

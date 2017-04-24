@@ -80,20 +80,14 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
 
 	public boolean validateOverlayRenderingEvent(int timeout){
 		boolean result=false;
-		try {
-			logger.info("Inside validateOverlayRenderingEvent method");
-			Thread.sleep(timeout);
-			String consoleOutput = driver.executeScript("return OO.DEBUG.consoleOutput[0].toString()").toString();
-			logger.info(consoleOutput);
-			if (consoleOutput.contains("overlayRendering")) {
-				logger.info("overlayRendering event found in consoleOutput");
-				result = true;
-			}else {
-				logger.error("overlayRendering event not found in consoleOutput");
-			}
-
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		logger.info("Inside validateOverlayRenderingEvent method");
+		String consoleOutput = driver.executeScript("return OO.DEBUG.consoleOutput[0].toString()").toString();
+		logger.info(consoleOutput);
+		if (consoleOutput.contains("overlayRendering")) {
+			logger.info("overlayRendering event found in consoleOutput");
+			result = true;
+		}else {
+			logger.error("overlayRendering event not found in consoleOutput");
 		}
 		return result;
 	}

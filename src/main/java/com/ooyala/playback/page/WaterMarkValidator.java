@@ -33,7 +33,6 @@ public class WaterMarkValidator extends PlayBackPage implements
 		if (!waitOnElement("WATERMARK_LOGO", 60000))
 			return false;
 		Log.info("Watermark Image is displayed");
-		Thread.sleep(5000);
 
 		String img_url = getWebElement("WATERMARK_LOGO").getAttribute("src");
 
@@ -42,7 +41,6 @@ public class WaterMarkValidator extends PlayBackPage implements
 			flag = false;
 		}
 
-		Thread.sleep(10000);
 		//flag = validatelogoDimension(); - need to check with varying player size
 
 		// Checking height and width in fullscreen

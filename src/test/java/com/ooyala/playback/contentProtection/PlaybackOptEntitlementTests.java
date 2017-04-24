@@ -72,6 +72,8 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 			
+			result = result && eventValidator.waitForVideoToPlay(5);
+			
 			result = result && streams.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 
 			result = result && tech.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);

@@ -37,7 +37,6 @@ public class ThumbnailCarouselValidator extends PlayBackPage implements
             Actions action = new Actions(driver);
             action.clickAndHold(scrubberBarElement).moveToElement(shareButtonElement).build().perform(); // click and hold the element
         }
-        Thread.sleep(3000);
         if(!((driver.findElement(By.cssSelector("div.oo-thumbnail-carousel-image")).isDisplayed()) && (driver.findElement(By.cssSelector("div.oo-thumbnail-carousel-center-image")).isDisplayed()))){
             logger.error("Failed : Thumbnail corousel image is not showing");
             return false;

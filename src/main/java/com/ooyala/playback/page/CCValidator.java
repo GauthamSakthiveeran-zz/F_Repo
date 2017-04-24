@@ -39,7 +39,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean closeCCPanel() {
 		try {
-			Thread.sleep(2000);
 			if (!clickOnIndependentElement("CC_PANEL_CLOSE"))
 				return false;
 			return true;
@@ -114,7 +113,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		try {
 			if (isElementPresent("HIDDEN_CONTROL_BAR")) {
 				logger.info("hovering mouse over the player");
-				Thread.sleep(2000);
 				moveElement(getWebElement("HIDDEN_CONTROL_BAR"));
 			} else if (isElementPresent("CONTROL_BAR")) {
 				moveElement(getWebElement("CONTROL_BAR"));
@@ -219,7 +217,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 					clickOnIndependentElement("CC_LEFT_SCROLL_BTN");
 					logger.info("Left CC Scroll arrow is  present");
 				}
-				Thread.sleep(2000);
 				if (waitOnElement("CC_RIGHT_SCROLL_BTN", 10000)) {
 					clickOnIndependentElement("CC_RIGHT_SCROLL_BTN");
 					logger.info("Right CC Scroll arrow is present");
@@ -244,7 +241,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 					extentTest.log(LogStatus.FAIL, "Click on RIGHT_BTN failed");
 					return false;
 				}
-				Thread.sleep(1000);
 				if (!clickOnIndependentElement("LEFT_BTN")) {
 					extentTest.log(LogStatus.FAIL, "Click on LEFT_BTN failed");
 					return false;
@@ -304,7 +300,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 				}
 			} else {
 				for (int i = 0; i < lang.size(); i++) {
-					Thread.sleep(1000);
 					lang.get(i).click();
 
 					if (!getWebElement("oo-responsive").getAttribute("className")
@@ -351,7 +346,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			if (!clickOnIndependentElement("COLOR_SELECTION_PANEL"))
 				return false;
 			logger.info("\n*---------Verifying Color Selection Panel---------*\n");
-			Thread.sleep(2000);
 
 			// select text colors
 			textColor = getWebElementsList("CC_TEXT_COLOR_SELECTOR");
@@ -539,7 +533,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			if (!clickOnIndependentElement("CAPTION_OPACITY_PANEL"))
 				return false;
 			logger.info("\n*----------------------Verify Caption Opacity Panel--------------------*\n");
-			Thread.sleep(1000);
 
 			// select text Opacity
 			WebElement slider1 = getWebElement("CC_TEXT_OPACITY_SELECTOR");
@@ -562,9 +555,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			WebElement backgroundOpacity = getWebElement("BACKGROUND_OPACITY");
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", backgroundOpacity);
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", slider2);
-			Thread.sleep(1000);
 			slideSliderCaptionOpacity(slider2);
-			Thread.sleep(1000);
 			String ccBgOpacity = getWebElement("CC_BACKGROUND_OPACITY").getText();
 			logger.info("\t Background Opacity Selected :" + ccBgOpacity);
 			String ccPreviewBgOpacity = getWebElement("CC_PREVIEW_TEXT_BG").getCssValue("background-color");
@@ -607,7 +598,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			if (!clickOnIndependentElement("CC_FONT_TYPE_PANEL"))
 				return false;
 			logger.info("\n*--------------Verify Font Type Panel-------------------------*\n");
-			Thread.sleep(2000);
 
 			List<WebElement> ccFontType = getWebElementsList("CC_FONT_TYPE");
 			logger.info("\t Font Type Count Value :" + ccFontType.size());
@@ -618,7 +608,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 					ccFontType1.get(i).click();
 					String ccFontTypeSelected = ccFontType1.get(i).getText();
 					logger.info("\n Language Selected - " + ccFontTypeSelected);
-					Thread.sleep(1000);
 					String ccPreviewTextFont = getWebElement("CC_PREVIEW_TEXT").getCssValue("font-family");
 					logger.info("\t Font type selected for CC Preview Text :" + ccPreviewTextFont);
 				}
@@ -653,7 +642,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			if (!clickOnIndependentElement("CC_FONT_SIZE_PANEL"))
 				return false;
 			logger.info("\n*--------------Verify CC Font Size Panel---------------------*\n");
-			Thread.sleep(2000);
 			ccFontSize = getWebElementsList("CC_FONT_SIZE_SELECTOR");
 			logger.info("\t \t \t Font Size Count Value :" + ccFontSize.size());
 
@@ -662,7 +650,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 						.equalsIgnoreCase("oo-responsive oo-xsmall")) {
 					WebElement element = ccFontSize.get(i);
 					((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-					Thread.sleep(1000);
 					ccFontSize.get(i).click();
 				} else {
 					ccFontSize.get(i).click();
@@ -748,7 +735,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			if (!clickOnIndependentElement("CC_TEXT_ENHANCEMENT"))
 				return false;
 			logger.info("\n*---------------Verify CC Text Enhancement Panel--------------*\n");
-			Thread.sleep(2000);
 
 			ccTextEnhancement = getWebElementsList("CC_TEXT_ENHANCEMENT_SELECTOR");
 			logger.info("\t Text Enhancement Type Count Value :" + ccTextEnhancement.size());
@@ -758,7 +744,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 						.equalsIgnoreCase("oo-responsive oo-xsmall")) {
 					WebElement element = ccTextEnhancement.get(i);
 					((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-					Thread.sleep(1000);
 					ccTextEnhancement.get(i).click();
 				} else {
 					ccTextEnhancement.get(i).click();
@@ -829,7 +814,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	public boolean discoveryCheck() {
 		try {
 			if (isElementPresent("DISCOVERY_CLOSE")) {
-				Thread.sleep(5000);
 				clickOnIndependentElement("DISCOVERY_CLOSE");
 			}
 			return true;
@@ -842,14 +826,11 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	public boolean beforeRefreshCCSetting() {
 		boolean result = true;
 		try {
-			Thread.sleep(2000);
-
 			// CC Languages
 			result = result && verifyClosedCaptionLanguages();
 
 			result = result && setClosedCaptionLanguage(2);
 
-			Thread.sleep(2000);
 			previewTextSelected = getCCLanguagePreviewText();
 			logger.info("Preview Text Selected : " + previewTextSelected);
 			// CC Color Selection
@@ -873,13 +854,11 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 			// CC Font Size Selection
 			result = result && verifyCCFontSizePanel();
-			Thread.sleep(2000);
 			result = result && setFontSize();
 			ccFontSizeBefore = getCCFontSizePreviewText();
 
 			// CC Text Enhancement Selection
 			result = result && verifyCCTextEnhancementPanel();
-			Thread.sleep(2000);
 			result = result && setTextEnhancement();
 			ccTextEnhancementSelectedBefore = getTextEnhancement();
 
@@ -893,7 +872,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	private boolean setTextEnhancement() {
 		try {
-			Thread.sleep(2000);
 			ccTextEnhancement.get(1).click();
 			return true;
 		} catch (Exception e) {
@@ -905,7 +883,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	private String getCCFontSizePreviewText() throws Exception {
 		clickOnIndependentElement("CC_FONT_SIZE_PANEL");
-		Thread.sleep(2000);
 		String ccTextFontSize = getWebElement("CC_FONT_SIZE_SELECTED").getText();
 		logger.info("\t Text Font Size Selected :" + ccTextFontSize);
 		return ccTextFontSize;
@@ -924,7 +901,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	private String getTextEnhancement() throws Exception {
 		clickOnIndependentElement("CC_TEXT_ENHANCEMENT");
-		Thread.sleep(2000);
 		String ccPreviewTextEnh = getWebElement("CC_PREVIEW_TEXT").getCssValue("text-shadow");
 		logger.info("\t Text Enhancement Selected :" + ccPreviewTextEnh);
 		return ccPreviewTextEnh;
@@ -952,7 +928,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 	private boolean setFontType() {
 		List<WebElement> ccFontType = getWebElementsList("CC_FONT_TYPE");
 		try {
-			Thread.sleep(1000);
 			ccFontType.get(1).click();
 			return true;
 		} catch (IndexOutOfBoundsException e) {
@@ -967,7 +942,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
 	private String getFontType() throws Exception {
 		clickOnIndependentElement("CC_FONT_TYPE_PANEL");
-		Thread.sleep(2000);
 		String ccPreviewTextFont = getWebElement("CC_PREVIEW_TEXT").getCssValue("font-family");
 		return ccPreviewTextFont;
 	}
@@ -984,19 +958,16 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			Actions move = new Actions(driver);
 			slider = getWebElement("CC_TEXT_OPACITY_SELECTOR");
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", slider);
-			Thread.sleep(1000);
 			width = slider.getSize().getWidth();
 			move.dragAndDropBy(slider, (width * 20) / 100, 0).build().perform();
 
 			slider = getWebElement("CC_BACKGROUND_OPACITY_SELECTOR");
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", slider);
-			Thread.sleep(1000);
 			width = slider.getSize().getWidth();
 			move.dragAndDropBy(slider, (width * 20) / 100, 0).build().perform();
 
 			slider = getWebElement("CC_WINDOW_OPACITY_SELECTOR");
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", slider);
-			Thread.sleep(1000);
 			width = slider.getSize().getWidth();
 			move.dragAndDropBy(slider, (width * 20) / 100, 0).build().perform();
 			return true;
