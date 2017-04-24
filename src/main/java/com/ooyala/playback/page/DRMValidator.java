@@ -29,6 +29,12 @@ public class DRMValidator extends PlayBackPage implements PlaybackValidator {
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
+		
+		if(isVideoPluginPresent("OSMF")) {
+			extentTest.log(LogStatus.INFO, "Cannot validate DRM for Adobe access");
+			return true;
+		}
+		
 		String text = driver.executeScript("return OO.DEBUG.consoleOutput[0].toString().split(/2\":(.+)/)[1]").toString();
 		logger.info(text);
 

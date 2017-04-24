@@ -24,7 +24,6 @@ public class PlaybackGeoRestrictionTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayValidator play;
 	private SeekValidator seek;
-	SyndicationRules syndicationRules = new SyndicationRules(extentTest);
 
 	public PlaybackGeoRestrictionTests() throws OoyalaException {
 		super();
@@ -35,6 +34,8 @@ public class PlaybackGeoRestrictionTests extends PlaybackWebTest {
 		boolean result = true;
 		try {
 
+			SyndicationRules syndicationRules = new SyndicationRules(extentTest);
+			
 			result = result && syndicationRules.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), true);
 
 			driver.get(url.getUrl());

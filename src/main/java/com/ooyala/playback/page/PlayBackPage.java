@@ -373,4 +373,22 @@ public abstract class PlayBackPage extends WebPage {
 		return true;
 	}
 	
+	public boolean isAdPluginPresent(String adPlugin) throws Exception {
+		Map<String, String> map = parseURL();
+		if (map != null && map.get("ad_plugin") != null
+				&& map.get("ad_plugin").contains(adPlugin)) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isVideoPluginPresent(String videoPlugin) throws Exception {
+		Map<String, String> map = parseURL();
+		if (map != null && map.get("video_plugins") != null
+				&& map.get("video_plugins").contains(videoPlugin)) {
+			return true;
+		}
+		return false;
+	}
+	
 }

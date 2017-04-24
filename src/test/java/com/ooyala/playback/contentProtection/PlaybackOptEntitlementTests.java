@@ -29,7 +29,6 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 	private PlayValidator play;
 	private SeekValidator seek;
 	private ErrorDescriptionValidator error;
-	SyndicationRules syndicationRules = new SyndicationRules(extentTest);
 	private DRMValidator drm;
 	private StreamValidator streams;
 	private BitmovinTechnologyValidator tech;
@@ -38,12 +37,15 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
 	public PlaybackOptEntitlementTests() throws OoyalaException {
 		super();
+		
 	}
 
 	@Test(groups = "syndicationRules", dataProvider = "testUrls")
 	public void testOptEntitlement(String testName, UrlObject url) throws OoyalaException {
 		boolean result = true;
 		try {
+			
+			SyndicationRules syndicationRules = new SyndicationRules(extentTest);
 
 			result = result && syndicationRules.deleteEntitlement(url.getEmbedCode(), url.getPCode());
 			result = result && syndicationRules.deleteDevices(url.getPCode());
@@ -61,7 +63,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-			if(!testName.contains("Core:") && !url.getVideoPlugins().contains("OSMF")) // Core has non drm assets
+			if(!testName.contains("Core:")) // Core has non drm assets
 				result = result && drm.opt().validate("drm_tag", 5000);
 
 			injectScript();
@@ -72,9 +74,7 @@ public class PlaybackOptEntitlementTests extends PlaybackWebTest {
 			
 			result = result && streams.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 
-			if (eventValidator.isVideoPluginPresent("bit_wrapper")) {
-				result = result && tech.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
-			}
+			result = result && tech.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
 
 			result = result && pause.validate("paused_1", 60000);
 

@@ -25,7 +25,6 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayValidator play;
 	private SeekValidator seek;
-	SyndicationRules syndicationRules = new SyndicationRules(extentTest);
 
 	PlaybackFlightTimeTests() throws OoyalaException {
 		super();
@@ -35,6 +34,8 @@ public class PlaybackFlightTimeTests extends PlaybackWebTest {
 	public void testFlightTime(String testName, UrlObject url) {
 		boolean result = true;
 		try {
+			
+			SyndicationRules syndicationRules = new SyndicationRules(extentTest);
 
 			result = result && syndicationRules.updatePublishingRule(url.getEmbedCode(), url.getApiKey(), true);
 

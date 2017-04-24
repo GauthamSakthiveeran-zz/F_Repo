@@ -46,7 +46,6 @@ import com.ooyala.playback.updateSpreadSheet.TestCaseSheet;
 import com.ooyala.playback.url.Testdata;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.playback.url.UrlObject;
-import com.ooyala.playback.utils.NeoRequest;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
