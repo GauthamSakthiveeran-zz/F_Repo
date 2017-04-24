@@ -21,7 +21,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 	private PlayValidator play;
 	private PauseValidator pause;
 	private SeekValidator seek;
-	private StreamTypeValidator streamTypeValidator;
+	private StreamValidator streamTypeValidator;
 
 	public BasicPlaybackTests() throws OoyalaException {
 		super();
@@ -32,9 +32,6 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
 		boolean result = true;
 
-		if (!testName.contains("Streams:"))
-			return;
-
 		try {
 			driver.get(url.getUrl());
 
@@ -44,12 +41,12 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
-			Thread.sleep(5000);
+			result = result && eventValidator.playVideoForSometime(3);
 
 			if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
 				result = result && eventValidator.validate("videoPlayingurl", 40000);
 				result = result
-						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
+						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("", 1000);
 			}
 
 			result = result && pause.validate("paused_1", 60000);

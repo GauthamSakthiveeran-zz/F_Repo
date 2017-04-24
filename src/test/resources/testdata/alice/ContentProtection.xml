@@ -11,6 +11,7 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/ZoMmd3NTE6zAFEYbLkU5hKXp8zF2ctK0?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2900009470&account_id=dulari_qa&&&signature=zfMNjFdK8lRNZsTkSSHyrExtGD9aWxmCD/5znAReylY","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+       		<streamType name="mpd" />
         </url>
 
         <url>
@@ -23,6 +24,7 @@
             <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"encodingPriority":["hls_drm"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/o2djFsMzE6R-tb3pew2puwvQvAQWFRUo?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2900017190&account_id=dulari_qa&&&signature=7LgME591QFTnhOjF4x9p6GMxE0EDX72SUtRqVgwiy1s","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        	<streamType name="mpd" />
         </url>
 
         <url>
@@ -35,6 +37,7 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/thaDgyOrzKRQV_Izdp2WmiX9kCWL/9wdG40MzE6qygZ4L0E90_kh-iSU94lDl?api_key=thaDgyOrzKRQV_Izdp2WmiX9kCWL.tFkPz&expires=4392417684&account_id=dulari_qa&&&signature=AWtcmAfDSaABeqZR1rztJleDrJllhbR0NszOczdtaeY","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        	<streamType name="f4m" />
         </url>
         
         <url>
@@ -47,6 +50,7 @@
             <pbid name="c0adf6d2044f437080e005a69cba4880" />
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR/F1cGR0YTE6UF35wd0tMH1sWOkoqBWWvW?api_key=hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR.fLu2N&expires=4392423956&account_id=dulari_qa&&&signature=0+u5zixZi+4hSkF7yA4e/h2FQu3vYRDU+nEFGt1OUuU","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        	<streamType name="mpd" />
         </url>
         
         
