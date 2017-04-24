@@ -41,7 +41,7 @@ public class PlaybackStreamsTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
-			Thread.sleep(5000);
+			result = result && eventValidator.playVideoForSometime(3);
 
 			result = result && eventValidator.validate("videoPlayingurl", 40000);
 			

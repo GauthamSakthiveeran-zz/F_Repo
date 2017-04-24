@@ -11,7 +11,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.apache.log4j.Logger;
 
-import static java.lang.Thread.sleep;
 
 /**
  * Created by soundarya on 11/16/16.
@@ -47,7 +46,7 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
-			sleep(2000);
+			result = result && eventValidator.playVideoForSometime(2);
 
             if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
                 result = result && eventValidator.validate("videoPlayingurl", 40000);

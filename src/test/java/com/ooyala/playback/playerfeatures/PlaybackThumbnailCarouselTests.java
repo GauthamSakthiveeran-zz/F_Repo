@@ -46,8 +46,6 @@ public class PlaybackThumbnailCarouselTests extends PlaybackWebTest {
 
             result = result && thumbnailCarouselValidator.validate("", 60000);
 
-            Thread.sleep(3000);
-
             result = result && play.validate("playing_2", 60000);
 
             result = result && seek.validate("seeked_1", 60000);

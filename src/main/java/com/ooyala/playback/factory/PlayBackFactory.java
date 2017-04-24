@@ -47,7 +47,6 @@ public class PlayBackFactory {
 	private ThumbnailValidator thumbnailValidator;
 	private FullScreenAction fullScreenAction;
 	private SeekAction seekAction;
-	private SaasPortValidator saasPortValidator;
 	private StateScreenAction stateScreenAction;
 	private OverlayValidator overlayValidator;
 	private AdSkipButtonValidator adSkipButtonValidator;
@@ -70,10 +69,8 @@ public class PlayBackFactory {
 	private StreamValidator streamTypeValidator;
 	private ErrorDescriptionValidator errorDescriptionValidator;
 	private BitmovinTechnologyValidator bitmovinTechnologyValidator;
-	private SyndicationRuleValidator syndicationRuleValidator;
 	private LiveValidator liveValidator;
 	private AdStartTimeValidator adStartTimeValidator;
-	private PackagingValidator packagingValidator;
 	private VideoPluginValidator videoPluginValidator;
 	
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
@@ -88,22 +85,6 @@ public class PlayBackFactory {
 		}
 		return videoPluginValidator;
 	}
-	
-	public PackagingValidator getPackagingValidator() {
-		if(packagingValidator==null){
-			packagingValidator = new PackagingValidator(driver);
-			packagingValidator.setExtentTest(extentTest);
-		}
-		return packagingValidator;
-	}
-	
-	public SyndicationRuleValidator getSyndicationRuleValidator() {
-        if (syndicationRuleValidator == null){
-        	syndicationRuleValidator = new SyndicationRuleValidator(driver);
-        	syndicationRuleValidator.setExtentTest(extentTest);
-        }
-        return syndicationRuleValidator;
-    }
 	
     public ConcurrentStreamValidator getConcurrentStreamValidator() {
         if (concurrentStreamValidator == null){
@@ -464,14 +445,6 @@ public class PlayBackFactory {
 		return liveAction;
 	}
 
-
-	public SaasPortValidator getSaasPortValidator() {
-		if (saasPortValidator == null){
-			saasPortValidator = new SaasPortValidator(driver);
-			saasPortValidator.setExtentTest(extentTest);
-		}
-		return saasPortValidator;
-	}
 
 	public DifferentElementValidator getDifferentElements() {
 		if (differentElement == null){

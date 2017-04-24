@@ -54,11 +54,9 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
             result = result && eventValidator.validate("playing_1", 60000);
 
-			Thread.sleep(2000);
+            result = result && eventValidator.playVideoForSometime(3);
 
 			result = result && volumeValidator.validate("", 60000);
-
-			Thread.sleep(2000);
 
 			result = result && seek.validate("seeked_1", 60000);
 

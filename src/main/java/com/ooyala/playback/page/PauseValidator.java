@@ -30,14 +30,11 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 			logger.info("hovering mouse over the player");
 			moveElement(getWebElement("HIDDEN_CONTROL_BAR"));
 		}
-		Thread.sleep(1000);
 
 		if (!clickOnIndependentElement("PAUSE_BUTTON")){
 			extentTest.log(LogStatus.FAIL, "Failed to click on PAUSE_BUTTON");
 			return false;
 		}
-
-		Thread.sleep(1000);
 
 		// If discovery is enabled then we are not able to see pause screen and therefore handled that scenario
 		// for discovery

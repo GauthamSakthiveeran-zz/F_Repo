@@ -6,8 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import static java.lang.Thread.sleep;
-
 public class FullScreenValidator extends PlayBackPage implements
 		PlaybackValidator {
 
@@ -29,9 +27,7 @@ public class FullScreenValidator extends PlayBackPage implements
 		if (!(new PlayBackFactory(driver,extentTest)).getFullScreenAction().startAction())
 			return false;
 
-		Thread.sleep(3000);
 		// if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
-		sleep(2000);
 		if (!clickOnIndependentElement("NORMAL_SCREEN"))
 			return false;
 

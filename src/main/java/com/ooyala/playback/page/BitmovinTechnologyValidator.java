@@ -38,7 +38,11 @@ public class BitmovinTechnologyValidator extends PlayBackPage implements Playbac
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
-
+		
+		if(!isVideoPluginPresent("bit_wrapper")) {
+			return true;
+		}
+ 
 		String result = decode(driver.getCurrentUrl(), "UTF-8");
 		if (result == null)
 			return false;

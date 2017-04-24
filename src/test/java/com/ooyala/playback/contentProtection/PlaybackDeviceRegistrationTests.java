@@ -12,9 +12,9 @@ import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.StreamValidator;
-import com.ooyala.playback.page.SyndicationRuleValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
+import com.ooyala.playback.utils.SyndicationRules;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -27,7 +27,6 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private SeekValidator seek;
-	private SyndicationRuleValidator syndicationRuleValidator;
 	private DRMValidator drm;
 	private StreamValidator streams;
 	private BitmovinTechnologyValidator tech;
@@ -43,8 +42,9 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 	public void testDeviceRegistration(String testName, UrlObject url) {
 		boolean result = true;
 		try {
+			SyndicationRules syndicationRules = new SyndicationRules(extentTest);
 
-			result = result && syndicationRuleValidator.deleteDevices(url.getPCode());
+			result = result && syndicationRules.deleteDevices(url.getPCode());
 			
 			driver.get(url.getUrl());
 
@@ -56,12 +56,9 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 			
-			Thread.sleep(5000);
+			result = result && syndicationRules.isDeviceRegistered(url.getPCode(),getUserAgent());
 
-			result = result && syndicationRuleValidator.isDeviceRegistered(url.getPCode());
-
-			if(!url.getVideoPlugins().contains("OSMF"))
-				result = result && drm.opt().validate("drm_tag", 5000);
+			result = result && drm.opt().validate("drm_tag", 5000);
 
 			result = result && pause.validate("paused_1", 60000);
 
@@ -69,18 +66,12 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 
 			result = result && seek.validate("seeked_1", 60000);
 
-			if (eventValidator.isVideoPluginPresent("bit_wrapper")) {
-				result = result && streams.setStreamType("mpd").validate("videoPlayingurl", 1000);
-				result = result && tech.setStream("dash").validate("bitmovin_technology", 6000);
-			}
-
-			if (eventValidator.isVideoPluginPresent("osmf")) {
-				result = result && streams.setStreamType("f4m").validate("videoPlayingurl", 1000);
-			}
+			result = result && streams.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
+			result = result && tech.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
 
 			result = result && eventValidator.validate("played_1", 60000);
 
-			result = result && syndicationRuleValidator.deleteDevices(url.getPCode());
+			result = result && syndicationRules.deleteDevices(url.getPCode());
 			
 			//TODO
 
