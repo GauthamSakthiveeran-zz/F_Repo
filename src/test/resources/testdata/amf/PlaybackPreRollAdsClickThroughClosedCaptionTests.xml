@@ -1,312 +1,348 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-	<test name ="PlaybackPreRollAdsClickThroughClosedCaptionTests" >
-    	<url>
-	    	<description name="IMA:Main CC enabled preroll|IMA:Main Ad Rule Preroll|IMA:Main Clickthrough|VTC:Verify Preroll IMA with Video Plugin"/>
-	        <embed_code name="1hZHQ4YTE6-JSjQJuODqJkLoOC2IfXWr"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="615dc8e909e941c280e12155df838355"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="IMA:Bitmovin CC enabled preroll|IMA:Bitmovin Clickthrough|IMA:Bitmovin Preroll"/>
-	        <embed_code name="Y4amJoMTE6chANpFOodeYv5HACvMfIyc"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="Pulse:Bitmovin Preroll with CC|Pulse:Bitmovin Preroll"/>
-	        <embed_code name="9lNDNhMzE65U7FW_KR1bQm7m41SeT997"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="PULSE"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="Pulse:OSMF Preroll|Pulse:OSMF Preroll with CC"/>
-	        <embed_code name="lyMDZxYTE6qWdFxiGCqRekXMeAiszdE_"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF"/>
-	        <adPlugins name="PULSE"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<!-- <url>
-	    	<description name="Freewheel:Bitmovin CC enabled preroll"/>
-	        <embed_code name="RlNjhsMTE6stbukSNOqLTHUvxqyXX1W_"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN,MAIN"/>
-	        <adPlugins name="FREEWHEEL"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"Bitmovin Preroll-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
-    	</url> -->
-    	
-    	<url>
-	    	<description name="VAST:Bitmovin Vast2.0 CC enabled preroll"/>
-	        <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="Freewheel:OSMF CC enabled preroll|Freewheel:OSMF Preroll|Freewheel:OSMF Clickthrough"/>
-	        <embed_code name="JtcXM4YTE6-RdgfZM_X3oC9VHcbz5NuM"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="FREEWHEEL"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NocGg4bzoRJ1yu3JY3LP44tVlsC2E_gi","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-    		<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
-    	</url>
-    	
-    	<url>
-	    	<description name="VAST:Main Vast2.0 CC enabled preroll"/>
-	        <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	
-    	<url>
-<!--     		IMA:OSMF Clickthrough -->
-	    	<description name="IMA:OSMF CC enabled preroll|IMA:OSMF Preroll"/>
-	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-	        <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
-    	</url>
-    	
-    	
-    	<url>
-<!--     	VAST:OSMF Vast2.0 Clickthrough -->
-	    	<description name="VAST:OSMF Vast2.0 CC enabled preroll|VAST:OSMF Vast2.0 Preroll"/>
-	        <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
-    		<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
-    	</url>
-    	
-    	<url>
-	    	<description name="VAST:Main Vast3.0 Preroll|VAST:Main Vast3.0 Clickthrough|Main Vast3.0 CC enabled preroll"/>
-	        <embed_code name="A1YjlxYTE6hMmIA4oQgc8SJM6qJWev_J"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-      	<url>
-	    	<description name="VPAID:Main Vast VPAID2.0 Preroll"/>
-	        <embed_code name="BtOGxiMjE6V7y0GBfHGzwJHoXDplM9Gf"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="VPAID:Main IMA VPAID1.0 Preroll"/>
-	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="615dc8e909e941c280e12155df838355"/>
-	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
-    	</url>
-    	
-    	
-    	<url>
-	    	<description name="VPAID:Main IMA VPAID2.0 Preroll"/>
-	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="615dc8e909e941c280e12155df838355"/>
-	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"}]}}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="VPAID:Bitmovin IMA VPAID1.0 Preroll"/>
-	        <embed_code name="g2Mm5xYTE6hG_-Jc3jffJo9KxsB7ijEa"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN,MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[]]></playerParameter>
-    	</url>
-    	
-    	 <url>
-	    	<description name="VPAID:OSMF IMA VPAID2.0 Preroll"/>
-	        <embed_code name="Q5eTg4MTE6kYKa0pyPjXB3AYkpD6F_F0"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="VPAID:Main IMA VPAID1.0 Preroll"/>
-	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="615dc8e909e941c280e12155df838355"/>
-	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.56cae93fe8fe14.17121155;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="VPAID:Bitmovin Vast VPAID2.0 Preroll"/>
-	        <embed_code name="14dXI4MjE6AIfNrq5pmjv3TdOlA1XNnN"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="MAIN,BITMOVIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="Pulse:Main Preroll"/>
-	        <embed_code name="w3amU5MzE6NMd-4jMBxM0FNu4MzlIUGY"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="PULSE"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="IMA:OSMF Preroll with Google UI"/>
-	        <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"google-ima-ads-manager":{"useGoogleAdUI":true}}]]></playerParameter>
-	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-	        <browserSupportedVersion name="safari,9"/>
-    	</url>
-    	
-    	<url>
-	    	<description name="VAST:Bitmovin Vast2.0 Preroll"/>
-	        <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="VPAID:Bitmovin IMA VPAID2.0 Preroll"/>
-	        <embed_code name="ZvMXljMTE6FVtQnL5SJJlM4j06NY0fnV"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="MAIN,BITMOVIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://vp-validation.videoplaza.tv/proxy/distributor/v2?rt=vast_2.0&t=vpaid2-sizmek&s=validation&tt=p"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="IMA:Bitmovin Preroll with Google UI"/>
-	        <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"useGoogleAdUI":true},"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<!-- <url>
-	    	<description name="IMA:Bitmovin Clickthrough|IMA:Bitmovin Preroll"/>
-	        <embed_code name="Q2MHE4YTE6k5PBgjLoAdIYi-4F2NM8kV"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url> -->
-    	
-    	<url>
-	    	<description name="Freewheel:Main Clickthrough|Freewheel:Main Preroll|VTC:Verify Preroll Freewheel with Video Plugin"/>
-	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="FREEWHEEL"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
-	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="VAST:Main Vast2.0 Clickthrough|VAST:Main Vast2.0 Preroll|VTC:Verify Preroll Vast Ad with Video Plugin"/>
-	        <embed_code name="Bwd3A4YTE61jiXgzo3k5MkrFCnJrUw_4"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="VAST:Bitmovin Vast3.0 CC enabled preroll|VAST:Bitmovin Vast3.0 Preroll"/>
-	        <embed_code name="ZxczdxYTE6jX8OCESF66TX1BUO2D-Hki"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN,MAIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url> -->
+    <test name="PlaybackPreRollAdsClickThroughClosedCaptionTests">
+        <url>
+            <description
+                    name="IMA:Main CC enabled preroll|IMA:Main Ad Rule Preroll|IMA:Main Clickthrough|VTC:Verify Preroll IMA with Video Plugin"/>
+            <embed_code name="1hZHQ4YTE6-JSjQJuODqJkLoOC2IfXWr"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="615dc8e909e941c280e12155df838355"/>
+            <playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="IMA:Bitmovin CC enabled preroll"/>
+            <embed_code name="Y4amJoMTE6chANpFOodeYv5HACvMfIyc"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="IMA:Bitmovin Preroll"/>
+            <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="IMA:Bitmovin Preroll with Google UI"/>
+            <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"google-ima-ads-manager":{"useGoogleAdUI":true},"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="IMA:Bitmovin Clickthrough"/>
+            <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <!--     		IMA:OSMF Clickthrough -->
+            <description name="IMA:OSMF CC enabled preroll|IMA:OSMF Preroll"/>
+            <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
+        </url>
+        <url>
+            <description name="IMA:OSMF Preroll with Google UI"/>
+            <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"google-ima-ads-manager":{"useGoogleAdUI":true}}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge"/>
+            <browserSupportedVersion name="safari,9"/>
+        </url>
+
+        <url>
+            <description name="Pulse:Bitmovin Preroll with CC|Pulse:Bitmovin Preroll"/>
+            <embed_code name="9lNDNhMzE65U7FW_KR1bQm7m41SeT997"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="PULSE"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Pulse:OSMF Preroll|Pulse:OSMF Preroll with CC"/>
+            <embed_code name="lyMDZxYTE6qWdFxiGCqRekXMeAiszdE_"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF"/>
+            <adPlugins name="PULSE"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <!-- <url>
+            <description name="Freewheel:Bitmovin CC enabled preroll"/>
+            <embed_code name="RlNjhsMTE6stbukSNOqLTHUvxqyXX1W_"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,MAIN"/>
+            <adPlugins name="FREEWHEEL"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"Bitmovin Preroll-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+        </url> -->
+
+        <url>
+            <description name="VAST:Bitmovin Vast2.0 CC enabled preroll"/>
+            <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Freewheel:OSMF CC enabled preroll|Freewheel:OSMF Preroll|Freewheel:OSMF Clickthrough"/>
+            <embed_code name="JtcXM4YTE6-RdgfZM_X3oC9VHcbz5NuM"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="FREEWHEEL"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter>
+                <![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NocGg4bzoRJ1yu3JY3LP44tVlsC2E_gi","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
+        </url>
+
+        <url>
+            <description name="VAST:Main Vast2.0 CC enabled preroll"/>
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+
+        <url>
+            <!--     	VAST:OSMF Vast2.0 Clickthrough -->
+            <description name="VAST:OSMF Vast2.0 CC enabled preroll|VAST:OSMF Vast2.0 Preroll"/>
+            <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
+        </url>
+
+        <url>
+            <description
+                    name="VAST:Main Vast3.0 Preroll|VAST:Main Vast3.0 Clickthrough|Main Vast3.0 CC enabled preroll"/>
+            <embed_code name="A1YjlxYTE6hMmIA4oQgc8SJM6qJWev_J"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VPAID:Main Vast VPAID2.0 Preroll"/>
+            <embed_code name="BtOGxiMjE6V7y0GBfHGzwJHoXDplM9Gf"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name="DISCOVERY"/>
+            <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
+            <playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VPAID:Main IMA VPAID1.0 Preroll"/>
+            <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="615dc8e909e941c280e12155df838355"/>
+            <playerParameter>
+                <![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
+        </url>
+
+
+        <url>
+            <description name="VPAID:Main IMA VPAID2.0 Preroll"/>
+            <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="615dc8e909e941c280e12155df838355"/>
+            <playerParameter>
+                <![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"}]}}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VPAID:Bitmovin IMA VPAID1.0 Preroll"/>
+            <embed_code name="g2Mm5xYTE6hG_-Jc3jffJo9KxsB7ijEa"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VPAID:OSMF IMA VPAID2.0 Preroll"/>
+            <embed_code name="Q5eTg4MTE6kYKa0pyPjXB3AYkpD6F_F0"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VPAID:Main IMA VPAID1.0 Preroll"/>
+            <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="615dc8e909e941c280e12155df838355"/>
+            <playerParameter>
+                <![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.56cae93fe8fe14.17121155;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VPAID:Bitmovin Vast VPAID2.0 Preroll"/>
+            <embed_code name="14dXI4MjE6AIfNrq5pmjv3TdOlA1XNnN"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="MAIN,BITMOVIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Pulse:Main Preroll"/>
+            <embed_code name="w3amU5MzE6NMd-4jMBxM0FNu4MzlIUGY"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="PULSE"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VAST:Bitmovin Vast2.0 Preroll"/>
+            <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VPAID:Bitmovin IMA VPAID2.0 Preroll"/>
+            <embed_code name="ZvMXljMTE6FVtQnL5SJJlM4j06NY0fnV"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="MAIN,BITMOVIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://vp-validation.videoplaza.tv/proxy/distributor/v2?rt=vast_2.0&t=vpaid2-sizmek&s=validation&tt=p"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
+        </url>
+
+        <url>
+            <description
+                    name="Freewheel:Main Clickthrough|Freewheel:Main Preroll|VTC:Verify Preroll Freewheel with Video Plugin"/>
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="FREEWHEEL"/>
+            <additionalPlugins name=""/>
+            <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
+            <playerParameter>
+                <![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+        </url>
+
+        <url>
+            <description
+                    name="VAST:Main Vast2.0 Clickthrough|VAST:Main Vast2.0 Preroll|VTC:Verify Preroll Vast Ad with Video Plugin"/>
+            <embed_code name="Bwd3A4YTE61jiXgzo3k5MkrFCnJrUw_4"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VAST:Bitmovin Vast3.0 CC enabled preroll|VAST:Bitmovin Vast3.0 Preroll"/>
+            <embed_code name="ZxczdxYTE6jX8OCESF66TX1BUO2D-Hki"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,MAIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
 
         <url>
             <description name="Freewheel:Bitmovin CC enabled preroll"/>
@@ -316,7 +352,8 @@
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
         </url>
 
         <url>
@@ -327,41 +364,42 @@
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
         </url>
-    	
-    	<url>
-	    	<description name="VAST:OSMF Vast3.0 CC enabled preroll|VAST:OSMF Vast3.0 Preroll"/>
-	        <embed_code name="BkeThxYTE64w6Y7dN9NI5gAjFZ5lhzSf"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="VPAID:OSMF Vast VPAID2.0 Preroll"/>
-	        <embed_code name="01Mm9xYTE6IOQ7ZTt5a0gyKrwrK1fFDw"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="OSMF"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[]]></playerParameter>
-    	</url>
 
-		<url>
-			<description name="VPAID:OSMF IMA VPAID1.0 Preroll"/>
-			<embed_code name="ZlMnBxYTE6PyTgHGusf8ncigkwrArjif"/>
-			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-			<plugins name="OSMF,MAIN"/>
-			<adPlugins name="IMA"/>
-			<additionalPlugins name=""/>
-			<pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-		</url>
-    	
+        <url>
+            <description name="VAST:OSMF Vast3.0 CC enabled preroll|VAST:OSMF Vast3.0 Preroll"/>
+            <embed_code name="BkeThxYTE64w6Y7dN9NI5gAjFZ5lhzSf"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VPAID:OSMF Vast VPAID2.0 Preroll"/>
+            <embed_code name="01Mm9xYTE6IOQ7ZTt5a0gyKrwrK1fFDw"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="OSMF"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VPAID:OSMF IMA VPAID1.0 Preroll"/>
+            <embed_code name="ZlMnBxYTE6PyTgHGusf8ncigkwrArjif"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
     </test>
 </testdata>
