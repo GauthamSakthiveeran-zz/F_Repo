@@ -192,7 +192,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 		SimpleHttpServer.stopServer();
 	}
 
-    private void launchBrowser() throws Exception{
+    private void initializeWebdriver() throws Exception{
     	webDriverFacile = getDriver(browser);
 		driver = webDriverFacile.get();
         if (webDriverFacile.get() != null)
@@ -234,7 +234,7 @@ public abstract class PlaybackWebTest extends FacileTest {
             v4Version = "Candidate/latest";
         }
         parseXmlFileData(xmlFile,xmlFilePkg);
-        launchBrowser();
+        initializeWebdriver();
         getJSFile(jsFile);
     }
 
@@ -249,7 +249,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
 			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
 			pageFactory.destroyInstance();
-			launchBrowser();
+			initializeWebdriver();
 			driverNotNullFlag = false;
 
 		} else*/ if (!browser.equalsIgnoreCase("safari") && webDriverFacile.get() != null && (webDriverFacile.get().getSessionId() == null
@@ -257,7 +257,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
 			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
 			pageFactory.destroyInstance();
-			launchBrowser();
+			initializeWebdriver();
 			driverNotNullFlag = false;
 
 		} else if (webDriverFacile.get() == null) {
@@ -265,7 +265,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
 			pageFactory.destroyInstance();
 			driverNotNullFlag = false;
-			launchBrowser();
+			initializeWebdriver();
 		} else {
 			driverNotNullFlag = true;
 		}
