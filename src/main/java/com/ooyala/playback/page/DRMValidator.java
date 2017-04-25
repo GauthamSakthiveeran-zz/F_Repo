@@ -58,7 +58,7 @@ public class DRMValidator extends PlayBackPage implements PlaybackValidator {
 				return false;
 			}
 			certificate_url = drm.getJSONObject("fairplay").getString("la_url");
-			if (!certificate_url.startsWith("http://player.ooyala.com/sas/fps/")){
+			if (!certificate_url.contains("/sas/fps/")){
 				extentTest.log(LogStatus.FAIL, "la_url does not start with player.ooyala.com/sas/fps/");
 				return false;
 			}
@@ -78,7 +78,7 @@ public class DRMValidator extends PlayBackPage implements PlaybackValidator {
 				return false;
 			}
 			certificate_url = drm.getJSONObject("widevine").getString("la_url");
-			if (!certificate_url.startsWith("http://player.ooyala.com/sas/drm2/")){
+			if (!certificate_url.contains("/sas/drm2/")){
 				extentTest.log(LogStatus.FAIL, "certificate_url does not start with http://player.ooyala.com/sas/drm2/");
 				return false;
 			}
