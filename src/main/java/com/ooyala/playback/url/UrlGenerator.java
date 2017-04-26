@@ -245,7 +245,7 @@ public class UrlGenerator {
 		if (isSASStaging != null && isSASStaging.equalsIgnoreCase("true")) {
 			return true;
 		}
-		return true; // TODO
+		return false; // TODO
 	}
 
 	public static Map<String, String> getLiveChannelProviders() {
