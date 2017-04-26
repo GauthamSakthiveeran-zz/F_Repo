@@ -10,69 +10,54 @@ import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 
-	public PlaybackMidrollOverlayTests() throws OoyalaException {
-		super();
-	}
+    public PlaybackMidrollOverlayTests() throws OoyalaException {
+        super();
+    }
 
-	private EventValidator event;
-	private PlayValidator playValidator;
-	private SeekValidator seekValidator;
-	private OverlayValidator overLayValidator;
-	private AdClickThroughValidator adClicks;
-	private AdStartTimeValidator adStartTimeValidator;
-	private OverlayValidator overlayValidator;
+    private EventValidator event;
+    private PlayValidator playValidator;
+    private SeekValidator seekValidator;
+    private OverlayValidator overLayValidator;
+    private AdClickThroughValidator adClicks;
+    private AdStartTimeValidator adStartTimeValidator;
+    private OverlayValidator overlayValidator;
 
-	@Test(groups = {"amf","overlay","midroll","sequential"}, dataProvider = "testUrls")
-	public void verifyMidrollOverlay(String testName, UrlObject url)
-			throws OoyalaException {
-
-		boolean result = true;
-		
-		try {
-			
-			driver.get(url.getUrl());
-			
-			result = result && playValidator.waitForPage();
-
-			injectScript();
-
+    @Test(groups = {"amf", "overlay", "midroll", "sequential"}, dataProvider = "testUrls")
+    public void verifyMidrollOverlay(String testName, UrlObject url)
+            throws OoyalaException {
+        boolean result = true;
+        try {
+            driver.get(url.getUrl());
+            result = result && playValidator.waitForPage();
+            injectScript();
             result = result && playValidator.validate("playing_1", 60000);
-            
-            if(!event.isVideoPluginPresent("osmf")){
-				if (adStartTimeValidator.isAdPlayTimePresent(url)){
-					result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlaySingleAd_1");
-					result = result && event.validate("singleAdPlayed_1", 160000);
-				}
+            if (!event.isVideoPluginPresent("osmf")) {
+                if (adStartTimeValidator.isAdPlayTimePresent(url)) {
+                    result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlaySingleAd_1");
+                    result = result && event.validate("singleAdPlayed_1", 160000);
+                }
             }
-			
             result = result && event.validate("showNonlinearAd_1", 160000);
 
             if (adStartTimeValidator.isOverlayPlayTimePresent(url)) {
                 result = result && adStartTimeValidator.validateNonLinearAdStartTime("showNonlinearAd_1");
             }
-            
             result = result && adClicks.overlay().validate("", 120000);
+            result = result
+                    && overLayValidator.validate("nonlinearAdPlayed_1", 160000);
+            result = result && overlayValidator.validateOverlayRenderingEvent(6000);
+            // TODO , seeked_1 is not showing up in IE 11
+            if (!(getBrowser().equalsIgnoreCase("internet explorer") && event.isVideoPluginPresent("osmf")
+                    && event.isAdPluginPresent("vast"))) {
 
-			result = result
-					&& overLayValidator.validate("nonlinearAdPlayed_1", 160000);
-			result = result && overlayValidator.validateOverlayRenderingEvent(6000);
-
-			// TODO , seeked_1 is not showing up in IE 11
-			if (!(getBrowser().equalsIgnoreCase("internet explorer") && event.isVideoPluginPresent("osmf")
-					&& event.isAdPluginPresent("vast"))) {
-				
-				result = result && seekValidator.validate("seeked_1", 160000);
-
-				result = result && event.validate("videoPlayed_1", 160000);
-				result = result && event.validate("played_1", 160000);
-			}
-				
-		} catch (Exception e) {
-			e.printStackTrace();
-			result = false;
-		}
-
-		Assert.assertTrue(result, "Tests failed");
-	}
-
+                result = result && seekValidator.validate("seeked_1", 160000);
+                result = result && event.validate("videoPlayed_1", 160000);
+                result = result && event.validate("played_1", 160000);
+            }
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            result = false;
+        }
+        Assert.assertTrue(result, "Tests failed");
+    }
 }
