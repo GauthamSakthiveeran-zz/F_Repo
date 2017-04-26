@@ -1,13 +1,10 @@
 package com.ooyala.playback.amf.preroll;
 
+import com.ooyala.playback.page.*;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AdClickThroughValidator;
-import com.ooyala.playback.page.CCValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
