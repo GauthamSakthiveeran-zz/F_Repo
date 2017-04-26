@@ -36,7 +36,7 @@ public class PlaybackOoyalaAdsTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && event.validate("ooyalaAds", 20000);
+			result = result && event.validate("ooyalaAds", 120000);
 
 			result = result && event.validate("playing_2", 120000);
 
@@ -45,11 +45,9 @@ public class PlaybackOoyalaAdsTests extends PlaybackWebTest {
 			result = result && event.validate("played_1", 200000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			result = false;
 		}
-
 		Assert.assertTrue(result, "Test failed");
 	}
-
 }

@@ -18,6 +18,8 @@ public class UrlObject {
 	private String adStartTime;
 	private String playerParameter;
 	private String overlayPlayTime;
+	private String adPlugins;
+	private String additionalPlugins;
 
 	public String getPlayerParameter() {return playerParameter;}
 
@@ -112,4 +114,12 @@ public class UrlObject {
 	public String getOverlayPlayTime() {return overlayPlayTime;}
 
 	public void setOverlayPlayTime(String overlayPlayTime) {this.overlayPlayTime = overlayPlayTime;}
+
+	public String getAdPlugins() {return adPlugins;}
+
+	public void setAdPlugins(String adPlugins) {this.adPlugins = adPlugins;}
+
+	public String getAdditionalPlugins() {return additionalPlugins;}
+
+	public void setAdditionalPlugins(String additionalPlugins) {this.additionalPlugins = additionalPlugins;}
 }

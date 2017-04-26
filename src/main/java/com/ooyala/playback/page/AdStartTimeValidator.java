@@ -47,7 +47,11 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
 
     public boolean validateAdStartTime(String adEventLocator){
 
-        if (!waitOnElement(By.id("adStartTime"),200000)){
+        if (!loadingSpinner()){
+            return false;
+        }
+
+        if (!waitOnElement(By.id("adStartTime"),50000)){
             logger.error("adStartTime element id is not present");
             extentTest.log(LogStatus.FAIL,"adStartTime element id is not present");
             return false;

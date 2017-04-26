@@ -8,4 +8,13 @@
 	
 	<element key="OVERLAY_IMAGE" findBy="class" class="oo-ad-overlay-image" />
 
+    <element  key="FW_OVERLAY_IMAGE" findBy="xPath" xPath="//*[local-name()='img']"/>
+
+	<element  key="FW_OVERLAY_FRAME" findBy="xPath" xPath="//iframe[contains(@id,'fw_ad_container')]"/>
+
+    <element  key="IMA_OVERLAY_IMAGE" findBy="xPath" xPath="//div[@class='image-container']"/>
+
+    <element  key="IMA_OVERLAY_FRAME" findBy="xPath" xPath="//iframe[contains(@src,'http://imasdk.googleapis.com/js/core')]"/>
+
+    <element  key="VAST_OVERLAY_IMAGE" findBy="xPath" xPath="//div[@class='oo-ad-overlay']"/>
 </elements>

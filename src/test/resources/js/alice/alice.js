@@ -30,9 +30,9 @@ function subscribeToEvents() {
         var destroyEventOrder = 1;
         var adPodEndedEventOrder = 1;
         var skipAdEventOrder = 1;
+        var bufferingEventCount=1;
         var savePlayerSettingsFalseEventCount = 1;
         var savePlayerSettingsTrueEventCount = 1;
-
 
 
         return function(event) {
@@ -209,7 +209,12 @@ function subscribeToEvents() {
             }
 
             if (event.match(/videoWillPlay/) && arguments[1] == "main") {
-                OO.$("#ooplayer").append("<p id=videoPlayingurl" + ">" + arguments[2] + "</p>");
+                OO.$("#ooplayer").append("<p id=videoPlayingurl"+">"+arguments[2]+"</p>");
+            }
+
+            if (event.match(/buffering/)) {
+                OO.$('#ooplayer').append('<p id=buffering_' + bufferingEventCount + '>buffering_'+ bufferingEventCount + '</p>');
+                      bufferingEventCount++;
             }
         };
     }());

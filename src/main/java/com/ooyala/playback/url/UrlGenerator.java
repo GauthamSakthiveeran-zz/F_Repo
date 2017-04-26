@@ -216,6 +216,14 @@ public class UrlGenerator {
                         urlObject.setOverlayPlayTime(url.getAdPlugins().getOverlayPlayTime());
                     }
 
+                    if (url.getAdPlugins()!=null){
+						urlObject.setAdPlugins(url.getAdPlugins().getName());
+					}
+
+					if(url.getAdditionalPlugins()!=null){
+                    	urlObject.setAdditionalPlugins(url.getAdditionalPlugins().getName());
+					}
+
 					urlsGenerated.put(desc, urlObject);
 
 				}
@@ -250,7 +258,7 @@ public class UrlGenerator {
 		if (isSASStaging != null && isSASStaging.equalsIgnoreCase("true")) {
 			return true;
 		}
-		return false;
+		return false; // TODO
 	}
 
 	public static Map<String, String> getLiveChannelProviders() {
