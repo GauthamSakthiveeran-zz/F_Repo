@@ -12,6 +12,16 @@
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.56cae9d690c054.28077205;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
     	</url>
+		<url>
+			<description name="VPAID:Bitmovin IMA VPAID1.0 HLS Live stream"/>
+			<embed_code name="x0YWJ0MTE6QM3ql9iskB29rLHn63qqrx"/>
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+			<plugins name="MAIN,BITMOVIN"/>
+			<adPlugins name="IMA"/>
+			<additionalPlugins name=""/>
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid&correlator="}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
+		</url>
     </test>
     
 </testdata>

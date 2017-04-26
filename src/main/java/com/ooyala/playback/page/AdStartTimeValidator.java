@@ -21,23 +21,49 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
         PageFactory.initElements(webDriver, this);
     }
 
+    private int adStartTime;
+    private int overlayPlayTime;
+
+    public boolean isOverlayPlayTimePresent(UrlObject url){
+        if (url.getOverlayPlayTime() != null && !url.getOverlayPlayTime().isEmpty()){
+            overlayPlayTime = Integer.parseInt(url.getOverlayPlayTime());
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isAdPlayTimePresent(UrlObject url){
+        if (url.getAdStartTime() != null && !url.getAdStartTime().isEmpty()){
+            adStartTime = Integer.parseInt(url.getAdStartTime());
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public boolean validate(String element, int timeout) throws Exception {
         return false;
     }
 
-    public boolean validateAdStartTime(String adStartTime,String adEventLocator){
+    public boolean validateAdStartTime(String adEventLocator){
 
-        int adTime = Integer.parseInt(adStartTime);
+        if (!loadingSpinner()){
+            return false;
+        }
 
-        waitOnElement(By.id("adStartTime"),200000);
+        if (!waitOnElement(By.id("adStartTime"),50000)){
+            logger.error("adStartTime element id is not present");
+            extentTest.log(LogStatus.FAIL,"adStartTime element id is not present");
+            return false;
+        }
 
         int time = Integer.parseInt(driver.findElement(By.id("adStartTime")).getText());
 
         logger.info("Ad start time is :"+time);
 
-        if (!(time>=adTime && time<=(adTime+3))){
-            logger.error("Ad is not starting at "+adTime+" instead it gets started at "+time);
+        if (!(time>=adStartTime && time<=(adStartTime+3))){
+            logger.error("Ad is not starting at "+adStartTime+" instead it gets started at "+time);
+            extentTest.log(LogStatus.FAIL,"Ad is not starting at "+adStartTime+" instead it gets started at "+time);
             return false;
         }
 
@@ -65,20 +91,26 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
             return false;
         }
 
-        waitOnElement(By.id("overlay-ad-position"),20000);
+        if (!waitOnElement(By.id("overlay-ad-position"),20000)){
+            logger.error("overlay-ad-position element id is not present");
+            extentTest.log(LogStatus.FAIL,"overlay-ad-position element id is not present");
+            return false;
+        }
 
-        waitOnElement(By.id("play-overaly-ad"),20000);
+        if (!waitOnElement(By.id("play-overaly-ad"),20000)){
+            logger.error("play-overaly-ad element id is not present");
+            extentTest.log(LogStatus.FAIL,"play-overaly-ad element id is not present");
+            return false;
+        }
 
-        int overlayPositionAt = Integer.parseInt(driver.findElement(By.id("overlay-ad-position")).getText());
-
-        logger.info("overlay position is at "+overlayPositionAt+"th second");
+        logger.info("overlay position is at "+overlayPlayTime+"th second");
 
         int overlayPlayingAt = Integer.parseInt(driver.findElement(By.id("play-overaly-ad")).getText());
 
         logger.info("overlay is playing at "+overlayPlayingAt+"th second");
 
-        // if following if statement, we are giving offset of 3 sec so that test wonn't get failed
-        if (overlayPlayingAt>=overlayPositionAt && overlayPlayingAt<=(overlayPositionAt+3)){
+        // in following if statement, we are giving offset of 3 sec so that test won't get fail
+        if (overlayPlayingAt>=overlayPlayTime && overlayPlayingAt<=(overlayPlayTime+3)){
             logger.info("Overlay is playing at expected position i.e : "+overlayPlayingAt);
             extentTest.log(LogStatus.PASS,"Overlay is playing at expected position i.e : "+overlayPlayingAt);
             return true;
@@ -122,9 +154,17 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
 
         timeForSecondMidrollAd = Integer.parseInt(midrollAdStartTimes[1]);
 
-        waitOnElement(By.id("adStartTime"),20000);
+        if (!waitOnElement(By.id("adStartTime"),20000)){
+            logger.error("adStartTime element id is not present");
+            extentTest.log(LogStatus.FAIL,"adStartTime element id is not present");
+            return false;
+        }
 
-        waitOnElement(By.id("multimidrollAdStartTime"),20000);
+        if (!waitOnElement(By.id("multimidrollAdStartTime"),20000)){
+            logger.error("multimidrollAdStartTime element id is not present");
+            extentTest.log(LogStatus.FAIL,"multimidrollAdStartTime element id is not present");
+            return false;
+        }
 
         firstMidrollAdPlayingAt = Integer.parseInt(driver.findElement(By.id("adStartTime")).getText());
 

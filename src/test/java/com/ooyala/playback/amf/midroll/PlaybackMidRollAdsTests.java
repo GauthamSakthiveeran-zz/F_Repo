@@ -40,15 +40,15 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 			if (event.isVideoPluginPresent("akamai")) {
 				
 				if (event.isAdPluginPresent("freewheel")){
-                    if (url.getAdStartTime() != null && !url.getAdStartTime().isEmpty()){
-                        result = result && adStartTimeValidator.validateAdStartTime(url.getAdStartTime(),"MidRoll_willPlaySingleAd_2");
+                    if (adStartTimeValidator.isAdPlayTimePresent(url)){
+                        result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlaySingleAd_2");
                     }else
                         result = result && event.validate("MidRoll_willPlayAds_2", 120000);
 
 					result = result && event.validate("adsPlayed_2", 60000);
 				} else{
-                    if (url.getAdStartTime() != null && !url.getAdStartTime().isEmpty()){
-                        result = result && adStartTimeValidator.validateAdStartTime(url.getAdStartTime(),"MidRoll_willPlaySingleAd_1");
+                    if (adStartTimeValidator.isAdPlayTimePresent(url)){
+                        result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlaySingleAd_1");
                     }else
                         result = result && event.validate("MidRoll_willPlayAds_1", 120000);
 					result = result && event.validate("adsPlayed_1", 60000);
@@ -56,8 +56,8 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 
 				
 			} else {
-                if (url.getAdStartTime() != null && !url.getAdStartTime().isEmpty()){
-                    result = result && adStartTimeValidator.validateAdStartTime(url.getAdStartTime(),"MidRoll_willPlaySingleAd_1");
+                if (adStartTimeValidator.isAdPlayTimePresent(url)){
+                    result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlaySingleAd_1");
                 }else
                     result = result && event.validate("MidRoll_willPlayAds_1", 120000);
 				if (event.isAdPluginPresent("pulse"))

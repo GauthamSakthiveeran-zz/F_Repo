@@ -49,16 +49,16 @@ public class PlaybackPlaylistDiscoveryTests extends PlaybackWebTest {
 			
 			result = result && event.playVideoForSometime(5);
 
-			if (testName.contains("playlist")) {
+			if (url.getAdditionalPlugins().contains("PLAYLIST")) {
 				result = result && playlist.scrollToEitherSide();
 			}
 
-			if (testName.contains("discovery")) {
+			if (url.getAdditionalPlugins().contains("DISCOVERY")) {
 				result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 			}
 
 		} catch (Exception e) {
-			e.getMessage();
+			logger.error(e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "Test failed");

@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-
 	<test name ="PlaybackInitialTimeForOoyalaAdsTests" >
     	<url>
-	    	<description name="Ooyala Ads:Main Plugin with initial time"/>
-	        <embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	    	<description name="Ooyala Ads:Main initial time"/>
+	        <embed_code name="ozeTliOTE6lwwLh90E-rZLd3HHciipjy"/>
+	        <pcode name="Mzb2MyOvKd-cQftJhtK8s14RPmUs"/>
 	        <plugins name="MAIN"/>
 	        <adPlugins name=""/>
 	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"initialTime":10}]]></playerParameter>
+	        <pbid name="5e813457c731460f808f62d93d7e4ff3"/>
+	        <playerParameter><![CDATA[{"initialTime":14}]]></playerParameter>
     	</url>
     	
     	<url>
-	    	<description name="Ooyala Ads:Bitmovin(MP4)  with initial time"/>
-	        <embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+	    	<description name="Ooyala Ads:Bitmovin initial time"/>
+	        <embed_code name="ozeTliOTE6lwwLh90E-rZLd3HHciipjy"/>
+	        <pcode name="Mzb2MyOvKd-cQftJhtK8s14RPmUs"/>
 	        <plugins name="BITMOVIN,MAIN"/>
 	        <adPlugins name=""/>
 	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"initialTime":10}]]></playerParameter>
+	        <pbid name="5e813457c731460f808f62d93d7e4ff3"/>
+	        <playerParameter><![CDATA[{"initialTime":14,"showInAdControlBar":true}]]></playerParameter>
 	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
     	</url>
     	
     </test>
-    
 </testdata>

@@ -218,6 +218,39 @@
 	        <pbid name="178e642662fe4f60b6f973a985eb09ca"/>
 	        <playerParameter><![CDATA[]]></playerParameter>
     	</url>
+
+		<url>
+			<description name="VPAID:OSMF IMA VPAID2.0 Discovery Postroll"/>
+			<embed_code name="wzMXBxYTE6iQyrip2FSgtwNdBLoFIazT"/>
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+			<plugins name="OSMF,MAIN"/>
+			<adPlugins name="IMA"/>
+			<additionalPlugins name="DISCOVERY"/>
+			<pbid name="178e642662fe4f60b6f973a985eb09ca"/>
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+		</url>
+
+        <url>
+            <description name="VPAID:OSMF IMA VPAID1.0 Discovery Postroll"/>
+            <embed_code name="B1MnBxYTE6szONEyOSuE5i9kDvYAiUkB"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name="DISCOVERY"/>
+            <pbid name="178e642662fe4f60b6f973a985eb09ca"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VPAID:Main IMA VPAID1.0 Discovery Postroll"/>
+            <embed_code name="Jpd25xYTE6WBX2x2DY6-AQrC0Sj12L6y"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name="DISCOVERY"/>
+            <pbid name="294b0bd173974ddb8128a86db1029bd7"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
     	
     </test>
 </testdata>

@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <testdata>
 	<test name ="PlaybackSkipOoyalaAdsTests" >
-    	
     	<url>
-	    	<description name="Ooyala Ads:Main Plugin with skip ad button"/>
+	    	<description name="Ooyala Ads:Main skip ad button"/>
 	        <embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
 	        <adPlugins name=""/>
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true,"initialTime":10}]]></playerParameter>
+	        <playerParameter><![CDATA[{"linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true}]]></playerParameter>
     	</url>
-    	
     	<url>
-	    	<description name="Ooyala Ads:Bitmovin(MP4) with skip ad button"/>
+	    	<description name="Ooyala Ads:Bitmovin skip ad button"/>
 	        <embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="BITMOVIN"/>
 	        <adPlugins name=""/>
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true,"initialTime":10}]]></playerParameter>
+	        <playerParameter><![CDATA[{"linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true}]]></playerParameter>
 	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
     	</url>
-    	
     </test>
 </testdata>

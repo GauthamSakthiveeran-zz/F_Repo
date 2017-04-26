@@ -1,6 +1,7 @@
 package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
+import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -12,7 +13,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class AdFrequencyValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger log = Logger.getLogger(AdFrequencyValidator.class);
+	public static Logger logger = Logger.getLogger(AdFrequencyValidator.class);
 
 	public AdFrequencyValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -118,6 +119,65 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 		}
 
 		return true;
+	}
+
+	public boolean validateAdCapFrequency(String testDescription,String firstShown,String adFrequency,int timeout){
+		boolean result=false;
+		if (testDescription.contains("VAST"))
+			return validateForContentTreeFetchedEvent(firstShown,adFrequency,timeout);
+		if (testDescription.contains("IMA"))
+			return validateForMetadataFetchedEvent(firstShown,adFrequency,timeout);
+		logger.error("Please check the ad Manager");
+		return result;
+	}
+
+	private boolean validateForMetadataFetchedEvent(String firstShown,String adFrequency,int timeout){
+		boolean result=false;
+		try {
+			logger.info("Inside validateMetadataFetchedEvent method");
+			Thread.sleep(timeout);
+			String consoleOutput = driver.executeScript("return OO.DEBUG.consoleOutput[0].toString()").toString();
+			logger.info(consoleOutput);
+			if (consoleOutput.contains("metadataFetched")) {
+				logger.info("metadataFetched event found in consoleOutput");
+				JSONObject jsonObject1= new JSONObject(consoleOutput.split("Message Bus Event: metadataFetched ")[1]);
+				int firstShownValue = jsonObject1.getJSONObject("1").getJSONObject("modules").getJSONObject("google-ima-ads-manager").getJSONObject("metadata").getJSONArray("all_ads").getJSONObject(0).getInt("first_shown");
+				int frequencyValue = jsonObject1.getJSONObject("1").getJSONObject("modules").getJSONObject("google-ima-ads-manager").getJSONObject("metadata").getJSONArray("all_ads").getJSONObject(0).getInt("frequency");
+				logger.info("Retrieved the firstShown : "+firstShown+" and frequency : "+adFrequency+" values from metadataFetched event" );
+				if (Integer.parseInt(firstShown)==firstShownValue && Integer.parseInt(adFrequency)==frequencyValue)
+					result = true;
+			}else {
+				logger.error("metadataFetched event not found in consoleOutput");
+			}
+		} catch (InterruptedException e) {
+			logger.trace(e);
+		}
+		return result;
+	}
+
+	private boolean validateForContentTreeFetchedEvent(String firstShown,String adFrequency,int timeout){
+		boolean result=false;
+		try {
+			logger.info("Inside validateContentTreeFetchedEvent method");
+			Thread.sleep(timeout);
+			String consoleOutput = driver.executeScript("return OO.DEBUG.consoleOutput[0].toString()").toString();
+			logger.info(consoleOutput);
+			if (consoleOutput.contains("contentTreeFetched")) {
+				logger.info("contentTreeFetched event found in consoleOutput");
+				result = true;
+				JSONObject jsonObject1= new JSONObject(consoleOutput.split("Message Bus Event: contentTreeFetched ")[1]);
+				int firstShownValue = jsonObject1.getJSONObject("1").getJSONArray("ads").getJSONObject(0).getInt("first_shown");
+				int frequencyValue = jsonObject1.getJSONObject("1").getJSONArray("ads").getJSONObject(0).getInt("frequency");
+				logger.info("Retrieved the firstShown : "+firstShown+" and frequency : "+adFrequency+" values from contentTreeFetched event" );
+				if (Integer.parseInt(firstShown)==firstShownValue && Integer.parseInt(adFrequency)==frequencyValue)
+					result = true;
+			}else {
+				logger.error("contentTreeFetched event not found in consoleOutput");
+			}
+		} catch (InterruptedException e) {
+			logger.trace(e);
+		}
+		return result;
 	}
 
 }
