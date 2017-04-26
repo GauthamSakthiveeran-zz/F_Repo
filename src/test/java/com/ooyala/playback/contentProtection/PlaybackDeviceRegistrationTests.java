@@ -56,6 +56,8 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 			
+			result = result && eventValidator.playVideoForSometime(5);
+			
 			result = result && syndicationRules.isDeviceRegistered(url.getPCode(),getUserAgent());
 
 			result = result && drm.opt().validate("drm_tag", 5000);
