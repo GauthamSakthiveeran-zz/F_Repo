@@ -45,7 +45,7 @@ public class PlaybackStreamsTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("videoPlayingurl", 40000);
 			
-			result = result && streamTypeValidator.setStreamType(url.getStreamType()).validate("", 1000);
+			result = result && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 			
 			result = result && videoPluginValidator.setUrlObject(url).validate("", 1000);
 
