@@ -493,6 +493,7 @@ public class PlayBackFactory {
         }
         return adStartTimeValidator;
     }
+
 	public void destroyInstance() {
 		playbackFactory = null;
 	}

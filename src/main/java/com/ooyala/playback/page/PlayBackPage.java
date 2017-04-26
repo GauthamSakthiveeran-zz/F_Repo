@@ -4,6 +4,7 @@ import static java.lang.Thread.sleep;
 
 import java.net.URL;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -380,6 +381,35 @@ public abstract class PlayBackPage extends WebPage {
 		return false;
 	}
 
+    // Use this method after page is loaded completely.
+	public boolean startRecordingConsoleLogsForAd(){
+        try {
+            logger.info("Started recording VC related events in console log for ads");
+            driver.executeScript("OO.DEBUG.startRecordingConsoleOutput(\"VC: For video 'ads'\");");
+            return true;
+        } catch (Exception e){
+            logger.error("Not able to record logs....");
+            return false;
+        }
+	}
+
+    // Use this method after ad played completely or video starts playing
+	public void stopRecordingConsoleLog(){
+        logger.info("Stopping recording console logs");
+		driver.executeScript(
+				"OO.DEBUG.stopRecordingConsoleOutput();"
+		);
+        logger.info("Stopped recording console logs");
+	}
+
+	public ArrayList<String> getLogsFromConsole(){
+		ArrayList<String> consoleOutput = (ArrayList<String>)driver.executeScript("return OO.DEBUG.consoleOutput");
+        if (consoleOutput.size() == 0){
+            logger.info("*** there no logs recorded ***");
+        }
+        return consoleOutput;
+	}
+
 	public boolean isVideoPluginPresent(String videoPlugin) throws Exception {
 		Map<String, String> map = parseURL();
 		if (map != null && map.get("video_plugins") != null
@@ -388,5 +418,4 @@ public abstract class PlayBackPage extends WebPage {
 		}
 		return false;
 	}
-	
 }
