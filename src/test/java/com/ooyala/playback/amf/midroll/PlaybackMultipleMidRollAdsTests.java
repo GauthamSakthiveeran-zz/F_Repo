@@ -34,6 +34,10 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
                 result = result && adStartTimeValidator.validateMultipleMidrollAdStartTime(url.getAdStartTime());
                 result = result && event.validate("singleAdPlayed_1", 200000);
                 result = result && event.validate("singleAdPlayed_2", 200000);
+                if(testName.contains("Vast3.0")){
+                    result = result && event.validate("singleAdPlayed_3", 200000);
+                    result = result && event.validate("singleAdPlayed_4", 200000);
+                }
             } else {
                 result = result && event.validate("MidRoll_willPlayAds", 200000);
                 result = result && event.validate("MidRoll_willPlaySingleAd_1", 200000);
@@ -42,7 +46,6 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
                 result = result && event.validate("singleAdPlayed_2", 200000);
             }
             if (event.isAdPluginPresent("pulse")) {
-
                 result = result && event.validate("MidRoll_willPlaySingleAd_3", 200000);
                 result = result && event.validate("singleAdPlayed_3", 200000);
 

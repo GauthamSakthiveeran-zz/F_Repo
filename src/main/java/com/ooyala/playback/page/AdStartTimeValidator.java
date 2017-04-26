@@ -174,6 +174,10 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
 
         logger.info("Expected second ad time : " + timeForSecondMidrollAd);
 
+        logger.info("Expected first ad time : " + firstMidrollAdPlayingAt);
+
+        logger.info("Expected second ad time : " + secondMidrollAdPlayingAt);
+
         if (!(firstMidrollAdPlayingAt >= timeForFirstMidrollAd && firstMidrollAdPlayingAt <= (timeForFirstMidrollAd + 3))) {
             logger.error("first midroll ad is not playing at " + firstMidrollAdPlayingAt);
             extentTest.log(LogStatus.FAIL, "first midroll ad is not playing at " + firstMidrollAdPlayingAt);
@@ -183,7 +187,7 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
         logger.info("First midroll ad is playing at " + firstMidrollAdPlayingAt + "th second");
         extentTest.log(LogStatus.PASS, "first midroll ad is playing at " + firstMidrollAdPlayingAt);
 
-        if (!(secondMidrollAdPlayingAt >= timeForSecondMidrollAd && secondMidrollAdPlayingAt <= (timeForSecondMidrollAd + 3))) {
+        if (!(((timeForSecondMidrollAd-2) <= secondMidrollAdPlayingAt || secondMidrollAdPlayingAt >= timeForSecondMidrollAd) && secondMidrollAdPlayingAt <= (timeForSecondMidrollAd + 3))) {
             logger.error("second midroll ad is not playing at " + secondMidrollAdPlayingAt);
             extentTest.log(LogStatus.FAIL, "second midroll ad is not playing at " + secondMidrollAdPlayingAt);
             return false;
