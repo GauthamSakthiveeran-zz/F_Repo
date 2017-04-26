@@ -11,75 +11,68 @@ import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 
-	public PlaybackMidRollAdsTests() throws OoyalaException {
-		super();
-	}
+    public PlaybackMidRollAdsTests() throws OoyalaException {
+        super();
+    }
 
-	private EventValidator event;
-	private PlayValidator playValidator;
-	private SeekValidator seekValidator;
-	private SetEmbedCodeValidator setEmbedCodeValidator;
+    private EventValidator event;
+    private PlayValidator playValidator;
+    private SeekValidator seekValidator;
+    private SetEmbedCodeValidator setEmbedCodeValidator;
     private AdStartTimeValidator adStartTimeValidator;
 
-	@Test(groups = {"amf","midroll"}, dataProvider = "testUrls")
-	public void verifyMidRoll(String testName, UrlObject url) throws OoyalaException {
+    @Test(groups = {"amf", "midroll"}, dataProvider = "testUrls")
+    public void verifyMidRoll(String testName, UrlObject url) throws OoyalaException {
+        boolean result = true;
+        try {
+            driver.get(url.getUrl());
+            result = result && playValidator.waitForPage();
+            injectScript();
+            result = result && playValidator.validate("playing_1", 60000);
+            result = result && event.validate("videoPlaying_1", 90000);
 
-		boolean result = true;
-
-		try {
-			driver.get(url.getUrl());
-
-			result = result && playValidator.waitForPage();
-
-			injectScript();
-
-			result = result && playValidator.validate("playing_1", 60000);
-
-			result = result && event.validate("videoPlaying_1", 90000);
-
-			if (event.isVideoPluginPresent("akamai")) {
-				
-				if (event.isAdPluginPresent("freewheel")){
-                    if (adStartTimeValidator.isAdPlayTimePresent(url)){
+            if (event.isVideoPluginPresent("akamai")) {
+                if (event.isAdPluginPresent("freewheel")) {
+                    if (adStartTimeValidator.isAdPlayTimePresent(url)) {
                         result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlaySingleAd_2");
-                    }else
-                        result = result && event.validate("MidRoll_willPlayAds_2", 120000);
+                    } else
+                        result = result && event.validate("MidRoll_willPlayAds_2", 200000);
 
-					result = result && event.validate("adsPlayed_2", 60000);
-				} else{
-                    if (adStartTimeValidator.isAdPlayTimePresent(url)){
+                    result = result && event.validate("adsPlayed_2", 90000);
+                } else {
+                    if (adStartTimeValidator.isAdPlayTimePresent(url)) {
                         result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlaySingleAd_1");
-                    }else
-                        result = result && event.validate("MidRoll_willPlayAds_1", 120000);
-					result = result && event.validate("adsPlayed_1", 60000);
-				}
-
-				
-			} else {
-                if (adStartTimeValidator.isAdPlayTimePresent(url)){
+                    } else
+                        result = result && event.validate("MidRoll_willPlayAds_1", 200000);
+                    result = result && event.validate("adsPlayed_1", 90000);
+                }
+            } else {
+                if (adStartTimeValidator.isAdPlayTimePresent(url)) {
                     result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlaySingleAd_1");
-                }else
-                    result = result && event.validate("MidRoll_willPlayAds_1", 120000);
-				if (event.isAdPluginPresent("pulse"))
-					result = result && event.validate("singleAdPlayed_2", 60000);
-				else
-					result = result && event.validate("singleAdPlayed_1", 60000);
-			}
-			
-			result = result && event.validate("playing_2", 60000);
+                } else {
+                    if (url.getAdPlugins().contains("IMA")&&url.getVideoPlugins().contains("MAIN"))
+                        result = result && event.validate("MidRoll_willPlayAds_2", 200000);
+                    else
+                        result = result && event.validate("MidRoll_willPlayAds_1", 200000);
+                }
+                if (event.isAdPluginPresent("pulse"))
+                    result = result && event.validate("singleAdPlayed_2", 90000);
+                else
+                    result = result && event.validate("singleAdPlayed_1", 90000);
+            }
 
-			if(testName.contains("SetEmbedCode")){
-				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);
-			}else{
-				result = result && seekValidator.validate("seeked_1", 160000);
-				result = result && event.validate("played_1", 160000);
-			}
+            result = result && event.validate("playing_2", 90000);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			result = false;
-		}
-
-		Assert.assertTrue(result, "Verified");
-	}
+            if (testName.contains("SetEmbedCode")) {
+                result = result && setEmbedCodeValidator.validate("setEmbedmbedCode", 9000);
+            } else {
+                result = result && seekValidator.validate("seeked_1", 160000);
+                result = result && event.validate("played_1", 160000);
+            }
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            result = false;
+        }
+        Assert.assertTrue(result, "Verified");
+    }
 }
