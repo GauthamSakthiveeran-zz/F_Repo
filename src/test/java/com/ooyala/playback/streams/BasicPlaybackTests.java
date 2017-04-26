@@ -46,7 +46,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 			if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
 				result = result && eventValidator.validate("videoPlayingurl", 40000);
 				result = result
-						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("", 1000);
+						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 			}
 
 			result = result && pause.validate("paused_1", 60000);
