@@ -1,15 +1,19 @@
 package com.ooyala.playback.playerfeatures;
 
+import org.apache.log4j.Logger;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.AspectRatioValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-
-import org.testng.Assert;
-import org.testng.annotations.Test;
-import org.apache.log4j.Logger;
 
 
 /**
@@ -26,7 +30,6 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 	private SeekValidator seek;
 	private PlayAction playAction;
 	private AspectRatioValidator aspectRatioValidator;
-	private StreamValidator streamTypeValidator;
 
 	public PlaybackAspectRatioTests() throws OoyalaException {
 		super();
@@ -47,12 +50,6 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 			result = result && play.validate("playing_1", 60000);
 
 			result = result && eventValidator.playVideoForSometime(2);
-
-            if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
-                result = result && eventValidator.validate("videoPlayingurl", 40000);
-                result = result
-                        && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
-            }
 
     		result = result && pause.validate("paused_1", 60000);
 

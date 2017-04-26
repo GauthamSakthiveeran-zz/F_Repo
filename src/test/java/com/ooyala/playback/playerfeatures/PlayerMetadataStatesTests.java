@@ -41,6 +41,8 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
+			
+			result = result && eventValidator.playVideoForSometime(2);
 
 			result = result && pause.validate("paused_1", 60000);
 

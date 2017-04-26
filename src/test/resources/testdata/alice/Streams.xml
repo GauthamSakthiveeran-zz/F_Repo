@@ -37,7 +37,7 @@
 			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
 		</url>
 
-		<!-- commented check the ticket number for more info PBW-6281 -->
+<!-- 		commented check the ticket number for more info PBW-6281 -->
 		<url>
 			<description name="Streams:Bitmovin Elemental Delta DASH VOD (Clear Dash)" />
 			<embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
@@ -92,8 +92,7 @@
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-			<playerParameter><![CDATA[]]>
-			</playerParameter>
+			<playerParameter></playerParameter>
 			<sslEnabled name="https" />
 		</url>
 
@@ -173,8 +172,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<browsersSupported name="safari" />
-			<playerParameter><![CDATA[]]>
-			</playerParameter>
+			<playerParameter></playerParameter>
 			<streamType name="m3u8"></streamType>
 		</url>
 
@@ -213,8 +211,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<sslEnabled name="https" />
-			<playerParameter><![CDATA[]]>
-			</playerParameter>
+			<playerParameter></playerParameter>
 			<streamType name="m3u8"></streamType>
 		</url>
 
@@ -226,8 +223,7 @@
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="c0adf6d2044f437080e005a69cba4880" />
-			<playerParameter><![CDATA[]]>
-			</playerParameter>
+			<playerParameter></playerParameter>
 			<streamType name="m3u8"></streamType>
 		</url>
 
@@ -239,8 +235,7 @@
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="c0adf6d2044f437080e005a69cba4880" />
-			<playerParameter><![CDATA[]]>
-			</playerParameter>
+			<playerParameter></playerParameter>
 			<browsersSupported name="safari" />
 			<streamType name="m3u8"></streamType>
 		</url>

@@ -12,7 +12,7 @@ public class SyndicationRules {
 
 	private APIUtils api;
 	private ExtentTest extentTest;
-	private final int MAX_WAIT = 20;
+	private final int MAX_WAIT = 10;
 
 	public SyndicationRules(ExtentTest extentTest) {
 		this.extentTest = extentTest;
