@@ -41,7 +41,7 @@ public class StreamValidator extends PlayBackPage implements PlaybackValidator {
 			logger.info("navigated to new tab");
 
 			if (waitOnElement(By.xpath("//video"), 20000)) {
-				String isMp4 = driver.findElement(By.xpath("//video//source")).getAttribute("type");
+				String isMp4 = driver.findElement(By.tagName("source")).getAttribute("type");
 				driver.close();
 
 				driver.switchTo().window(tabs.get(0));
