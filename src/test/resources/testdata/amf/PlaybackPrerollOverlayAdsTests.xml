@@ -11,34 +11,57 @@
 	        <additionalPlugins name="MAIN"/>
 	        <pbid name="5e813457c731460f808f62d93d7e4ff3"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"freewheel-ads-manager":{"fw_video_asset_id":"NucGg4bzrVrilZrMdlSA9tyg6Vty46DN","html5_ad_server":"http://g1.v.fwmrm.net","fw_android_ad_server":"http://g1.v.fwmrm.net/","html5_player_profile":"90750:ooyala_html5","fw_android_player_profile":"90750:ooyala_android","fw_mrm_network_id":"380912"}}]]></playerParameter>
-    	</url>
-    	
-    	
-    	<url>
-	    	<description name="IMA:GoogleIMAPreroll OverlayAd__Akamai_HD"/>
-	        <embed_code name="dtdWNqdTrR0LLV5hMVDATrvedMIPafOW"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="AKAMAI"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="5e813457c731460f808f62d93d7e4ff3"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-	        <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
-    	</url> -->
-    	
-    	<url>
-	    	<description name="Freewheel:Bitmovin Preroll Overlay"/>
-	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN,MAIN"/>
-	        <adPlugins name="FREEWHEEL"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"NucGg4bzrVrilZrMdlSA9tyg6Vty46DN","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true},"initialTime":0,"autoplay":false}]]></playerParameter>
-    	</url>
-    	
-    	
-    	<url>
+    	</url>-->
+
+        <url>
+            <description name="Freewheel:Bitmovin Preroll Overlay"/>
+            <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,MAIN"/>
+            <adPlugins name="FREEWHEEL"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"NucGg4bzrVrilZrMdlSA9tyg6Vty46DN","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true},"initialTime":0,"autoplay":false,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"}}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Freewheel:Main Overlay"/>
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="FREEWHEEL"/>
+            <additionalPlugins name=""/>
+            <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"freewheel-ads-manager":{"fw_video_asset_id":"NucGg4bzrVrilZrMdlSA9tyg6Vty46DN","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Freewheel:OSMF Preroll Overlay"/>
+            <embed_code name="YzdWVmMDE6llN4HwBPzs9BkH9OG-_f7d"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="FREEWHEEL"/>
+            <additionalPlugins name=""/>
+            <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"freewheel-ads-manager":{"fw_video_asset_id":"NucGg4bzrVrilZrMdlSA9tyg6Vty46DN","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+            <browserSupportedVersion name="safari,9"/>
+        </url>
+
+        <!--<url>
+            <description name="IMA:GoogleIMAPreroll OverlayAd__Akamai_HD"/>
+            <embed_code name="dtdWNqdTrR0LLV5hMVDATrvedMIPafOW"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="AKAMAI"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="5e813457c731460f808f62d93d7e4ff3"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+        </url> -->
+
+        <!-- IMA Overaly not appearing intermittantly -->
+    	<!--<url>
 	    	<description name="IMA:Bitmovin Preroll Overlay"/>
 	        <embed_code name="w2bmFnMTE66yXj73IMWj_zcylLOnXpdR"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -46,8 +69,8 @@
 	        <adPlugins name="IMA"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
+	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"}}]]></playerParameter>
+    	</url>-->
     	
     	<url>
 	    	<description name="IMA:Bitmovin Overlay"/>
@@ -57,45 +80,11 @@
 	        <adPlugins name="IMA"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"}}]]></playerParameter>
     	</url>
-    	
-    	<url>
-	    	<description name="VAST:Bitmovin Vast2.0 Preroll Overlay"/>
-	        <embed_code name="JtajdoMTE6UWt0G0Gct5dyIabTclDsDy"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="14a1b2eb21104617948405aeac11271b"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showNonLinearCloseButton":true,"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="Freewheel:Main Overlay"/>
-	        <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="FREEWHEEL"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
-	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NucGg4bzrVrilZrMdlSA9tyg6Vty46DN","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="Freewheel:OSMF Preroll Overlay"/>
-	        <embed_code name="YzdWVmMDE6llN4HwBPzs9BkH9OG-_f7d"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="FREEWHEEL"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
-	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NucGg4bzrVrilZrMdlSA9tyg6Vty46DN","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-    		<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-	        <browserSupportedVersion name="safari,9"/>
-    	</url>
-    	
-    	<url>
+
+        <!-- IMA Overaly not appearing intermittantly -->
+    	<!--<url>
 	    	<description name="IMA:OSMF Preroll Overlay"/>
 	        <embed_code name="l2d2VmMDE6ia_EnlFS2hF6cV1Ezp_Isp"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -103,10 +92,22 @@
 	        <adPlugins name="IMA"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showNonLinearCloseButton":true}]]></playerParameter>
+	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showNonLinearCloseButton":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"}}]]></playerParameter>
 	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 	        <browserSupportedVersion name="safari,9"/>
-    	</url>
+    	</url>-->
+
+        <!-- IMA Overaly not appearing -->
+        <!--<url>
+            <description name="IMA:Main Overlay"/>
+            <embed_code name="FlOHg4MTE698_SqEgfRuJepp0rjzl9h9"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="615dc8e909e941c280e12155df838355"/>
+            <playerParameter><![CDATA[{"showNonLinearCloseButton":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"}}]]></playerParameter>
+        </url>-->
     	
     	<url>
 	    	<description name="VAST:OSMF Vast2.0 Preroll Overlay"/>
@@ -116,7 +117,7 @@
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"showNonLinearCloseButton":true,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+	        <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showNonLinearCloseButton":true,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 	        <browserSupportedVersion name="safari,9"/>
     	</url>
@@ -129,20 +130,20 @@
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"showNonLinearCloseButton":true}]]></playerParameter>
+	        <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showNonLinearCloseButton":true}]]></playerParameter>
     	</url>
-    	
-    	<url>
-	    	<description name="IMA:Main Overlay"/>
-	        <embed_code name="FlOHg4MTE698_SqEgfRuJepp0rjzl9h9"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="615dc8e909e941c280e12155df838355"/>
-	        <playerParameter><![CDATA[{"showNonLinearCloseButton":true}]]></playerParameter>
-    	</url>
-    	
+
+        <url>
+            <description name="VAST:Bitmovin Vast2.0 Preroll Overlay"/>
+            <embed_code name="JtajdoMTE6UWt0G0Gct5dyIabTclDsDy"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name="DISCOVERY"/>
+            <pbid name="14a1b2eb21104617948405aeac11271b"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"encodingPriority":["hls","dash","mp4"],"showNonLinearCloseButton":true,"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
     	<url>
 	    	<description name="VAST:Bitmovin Vast3.0 Preroll Overlay"/>
 	        <embed_code name="RzajZxYTE6K5qx6adMhrfzX36jyTEV5b"/>
@@ -151,7 +152,7 @@
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+	        <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
     	<url>
@@ -162,7 +163,7 @@
 			<adPlugins name="VAST" />
 			<additionalPlugins name="" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+			<playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
 		</url>
@@ -175,8 +176,7 @@
 			<adPlugins name="VAST" />
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+			<playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 		</url>
-    	
     </test>
 </testdata>

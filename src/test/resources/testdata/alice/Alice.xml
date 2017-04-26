@@ -339,7 +339,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <playerParameter><![CDATA[{"showInAdControlBar":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
         </url>
         <url>
             <description name="Core:Player States and Metadata Bitmovin" />
@@ -349,7 +349,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+            <playerParameter><![CDATA[{"showInAdControlBar":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
         </url>
         <url>
             <description name="Core:Player States and Metadata OSMF" />
@@ -359,7 +359,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter><![CDATA[{"showInAdControlBar":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
         </url>
     </test>
 

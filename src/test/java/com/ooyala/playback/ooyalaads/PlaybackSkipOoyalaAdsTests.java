@@ -51,7 +51,7 @@ public class PlaybackSkipOoyalaAdsTests extends PlaybackWebTest {
 			result = result && event.validate("played_1", 200000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			result = false;
 		}
 
