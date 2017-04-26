@@ -13,31 +13,24 @@ import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 
-	public PlaybackMultipleMidRollAdsTests() throws OoyalaException {
-		super();
-	}
+    public PlaybackMultipleMidRollAdsTests() throws OoyalaException {
+        super();
+    }
 
-	private EventValidator event;
-	private PlayValidator playValidator;
-	private SeekValidator seek;
-	private AdStartTimeValidator adStartTimeValidator;
+    private EventValidator event;
+    private PlayValidator playValidator;
+    private SeekValidator seek;
+    private AdStartTimeValidator adStartTimeValidator;
 
-	@Test(groups = { "amf", "midroll" }, dataProvider = "testUrls")
-	public void verifyMultipleMidroll(String testName, UrlObject url) throws OoyalaException {
-
-		boolean result = true;
-
-		try {
-			
-			driver.get(url.getUrl());
-
-			result = result && playValidator.waitForPage();
-
-			injectScript();
-
-			result = result && playValidator.validate("playing_1", 90000);
-
-            if (url.getAdStartTime()!=null && !url.getAdStartTime().isEmpty()) {
+    @Test(groups = {"amf", "midroll"}, dataProvider = "testUrls")
+    public void verifyMultipleMidroll(String testName, UrlObject url) throws OoyalaException {
+        boolean result = true;
+        try {
+            driver.get(url.getUrl());
+            result = result && playValidator.waitForPage();
+            injectScript();
+            result = result && playValidator.validate("playing_1", 90000);
+            if (url.getAdStartTime() != null && !url.getAdStartTime().isEmpty()) {
                 result = result && adStartTimeValidator.validateMultipleMidrollAdStartTime(url.getAdStartTime());
                 result = result && event.validate("singleAdPlayed_1", 200000);
                 result = result && event.validate("singleAdPlayed_2", 200000);
@@ -48,26 +41,20 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
                 result = result && event.validate("MidRoll_willPlaySingleAd_2", 200000);
                 result = result && event.validate("singleAdPlayed_2", 200000);
             }
+            if (event.isAdPluginPresent("pulse")) {
 
-			if (event.isAdPluginPresent("pulse")) {
+                result = result && event.validate("MidRoll_willPlaySingleAd_3", 200000);
+                result = result && event.validate("singleAdPlayed_3", 200000);
 
-				result = result && event.validate("MidRoll_willPlaySingleAd_3", 200000);
-				result = result && event.validate("singleAdPlayed_3", 200000);
-
-				result = result && event.validate("MidRoll_willPlaySingleAd_4", 200000);
-				result = result && event.validate("singleAdPlayed_4", 200000);
-			}
-
-			result = result && seek.validate("seeked_1", 10000);
-
-			result = result && event.validate("played_1", 200000);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			result = false;
-		}
-
-		Assert.assertTrue(result, "Verified Multiple MidRoll Ads");
-
-	}
+                result = result && event.validate("MidRoll_willPlaySingleAd_4", 200000);
+                result = result && event.validate("singleAdPlayed_4", 200000);
+            }
+            result = result && seek.validate("seeked_1", 10000);
+            result = result && event.validate("played_1", 200000);
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            result = false;
+        }
+        Assert.assertTrue(result, "Verified Multiple MidRoll Ads");
+    }
 }
