@@ -298,19 +298,6 @@
             <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 
         </url>
-        <url>
-            <description name="IMA:Midroll OSMF" />
-            <embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="OSMF,MAIN" />
-            <adPlugins name="IMA" adPlayTime=""/>
-            <additionalPlugins name="" />
-            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-            <browsersSupported
-                    name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-            <browserSupportedVersion name="safari,9" />
-        </url>
 
         <url>
             <description name="IMA:OSMF Midroll" />
@@ -390,6 +377,5 @@
             <pbid name="615dc8e909e941c280e12155df838355"/>
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
-
     </test>
 </testdata>
