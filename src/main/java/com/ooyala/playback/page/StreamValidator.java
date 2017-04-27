@@ -40,7 +40,9 @@ public class StreamValidator extends PlayBackPage implements PlaybackValidator {
 			driver.switchTo().window(tabs.get(1));
 			logger.info("navigated to new tab");
 
-			if (waitOnElement(By.xpath(".//*[@type='video/mp4']"), 20000)) {
+			Thread.sleep(5000);
+
+			if (driver.findElement(By.xpath(".//*[@type='video/mp4']")).isEnabled()) {
 				String isMp4 = driver.findElement(By.xpath(".//*[@type='video/mp4']")).getAttribute("type");
 				driver.close();
 
@@ -56,6 +58,7 @@ public class StreamValidator extends PlayBackPage implements PlaybackValidator {
 					return false;
 				}
 			} else {
+				logger.error("Issue with checking stream mp4.");
 				extentTest.log(LogStatus.FAIL, "Issue with checking stream mp4.");
 				return false;
 			}
