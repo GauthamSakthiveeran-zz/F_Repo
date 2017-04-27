@@ -35,6 +35,7 @@
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<browsersSupported name="safari" />
 		</url>
 
 <!-- 		commented check the ticket number for more info PBW-6281 -->

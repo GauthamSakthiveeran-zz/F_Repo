@@ -28,7 +28,8 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         addElementToPageElements("adclicks");
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public boolean validate(String element, int timeout) throws Exception {
 
         Boolean autoplay = (Boolean) (((JavascriptExecutor) driver).executeScript("return pp.parameters.autoplay"));

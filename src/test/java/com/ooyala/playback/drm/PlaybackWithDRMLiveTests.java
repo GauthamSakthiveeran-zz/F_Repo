@@ -59,12 +59,14 @@ public class PlaybackWithDRMLiveTests extends PlaybackWebTest {
 			result = result && play.waitForPage();
 			
 			result = result && play.validate("playing_1", 60000);
+			
+			result = result && eventValidator.playVideoForSometime(3);
 
 			result = result && pause.validate("paused_1", 60000);
 
 			result = result && play.validate("playing_2", 60000);
 
-			if (!(testName.split("-")[1].trim()
+			/*if (!(testName.split("-")[1].trim()
 					.equalsIgnoreCase("elemental fairplay fairplay hls + opt")))
 				result = result && seek.validate("seeked_1", 60000);
 			else{
@@ -72,7 +74,7 @@ public class PlaybackWithDRMLiveTests extends PlaybackWebTest {
 				result = result && eventValidator.validate("seeked_1", 60000);
 			}
 
-			result = result && eventValidator.validate("played_1", 60000);
+			result = result && eventValidator.validate("played_1", 60000);*/
 
             if (isChannelIdPresent) {
 
@@ -80,8 +82,8 @@ public class PlaybackWithDRMLiveTests extends PlaybackWebTest {
 
                 driver.get(url.getUrl());
 
-                result = result && error.expectedErrorCode("unplayable_content")
-                        .expectedErrorDesc("Unplayable Content Error").validate("", 30000);
+                result = result && error.expectedErrorCode("network_error")
+						.expectedErrorDesc("Network connection temporarily lost").validate("", 30000);
             }
 
 		} catch (Exception e) {

@@ -1,17 +1,18 @@
 package com.ooyala.playback.VTC;
 
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.url.UrlObject;
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.DiscoveryValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.UpNextValidator;
+import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by jitendra on 24/11/16.

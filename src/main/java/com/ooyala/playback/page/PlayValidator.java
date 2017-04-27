@@ -69,7 +69,6 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 		// if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction())
 		// return false;
-
 		if (!clickOnIndependentElement("PLAY_BUTTON")){
 			extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
 			return false;
