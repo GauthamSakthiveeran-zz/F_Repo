@@ -51,7 +51,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8abff377aec2400e9337fe9088e65d40" />
-            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","mp4"]}]]></playerParameter>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","mp4"],"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=4393292143&account_id=dulari_qa&&&signature=GPKWY58Ofu7eOCWr9KZgjJaZexq19LGzVD+Dcq6Qr/w"}]]></playerParameter>
             <live>
                 <channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
                 <provider>elemental</provider>
