@@ -18,7 +18,6 @@ import com.relevantcodes.extentreports.ExtentTest;
 
 public class PlayBackFactory {
 
-	private static PlayBackFactory playbackFactory;
 	private WebDriver driver;
 	private CCValidator ccValidator;
 	private DiscoveryValidator discoveryValidator;
@@ -494,14 +493,11 @@ public class PlayBackFactory {
         return adStartTimeValidator;
     }
 
-	public void destroyInstance() {
-		playbackFactory = null;
-	}
-
 	public WebDriver getDriver() {
 		return driver;
 	}
 
+	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> validator) throws Exception {
 
 		Field[] fs = this.getClass().getDeclaredFields();

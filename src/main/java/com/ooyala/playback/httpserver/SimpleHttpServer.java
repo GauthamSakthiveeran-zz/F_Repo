@@ -16,6 +16,7 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
+@SuppressWarnings("restriction")
 public class SimpleHttpServer {
 
 	public static Logger logger = Logger.getLogger(SimpleHttpServer.class);

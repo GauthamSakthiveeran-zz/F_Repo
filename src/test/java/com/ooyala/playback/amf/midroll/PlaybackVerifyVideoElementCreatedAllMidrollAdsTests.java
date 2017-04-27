@@ -35,7 +35,6 @@ public class PlaybackVerifyVideoElementCreatedAllMidrollAdsTests extends Playbac
             throws OoyalaException {
 
         boolean result = true;
-        int counter = 0;
         try {
             driver.get(url.getUrl());
 
