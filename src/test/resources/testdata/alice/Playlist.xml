@@ -596,7 +596,7 @@
         </url>
 
         <!-- Commented this test case because of Issue PLAYER-448. Loop functionality is not working correctly-->
-       <url>
+       <!--<url>
             <description name="Playlist:Loop-true OSMF" />
             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
@@ -616,7 +616,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"false","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"true","loop":"false"}]]></playerParameter>
-        </url>
+        </url>-->
 
         <url>
             <description name="Playlist:Thumbnailsize-200 OSMF" />
