@@ -42,14 +42,14 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 			result = result && play.validate("playing_1", 60000);
 
 			result = result && eventValidator.playVideoForSometime(3);
+			
+			result = result && pause.validate("paused_1", 60000);
 
 			if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
 				result = result && eventValidator.validate("videoPlayingurl", 40000);
 				result = result
 						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 			}
-
-			result = result && pause.validate("paused_1", 60000);
 
 			// because of https://jira.corp.ooyala.com:8443/browse/PBW-6281
 			if (!testName.contains("Streams:Bitmovin Elemental Delta DASH VOD (Clear Dash)")) {
