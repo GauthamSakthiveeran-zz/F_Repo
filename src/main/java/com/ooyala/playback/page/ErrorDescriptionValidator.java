@@ -48,12 +48,20 @@ public class ErrorDescriptionValidator extends PlayBackPage implements PlaybackV
 		}
 		return true;
 	}
+	
+	int count =3;
 
 	private boolean errorDescription() {
 
 		logger.info("Checking error description");
 
-		if (!waitOnElement("ERROR_SCREEN", 20000)) {
+		if (!waitOnElement("ERROR_SCREEN", 10000)) {
+			if(count>=0) {
+				driver.navigate().refresh();
+				isPageLoaded();
+				count--;
+				return errorDescription();
+			}
 			logger.error("Error screen is not showing");
 			extentTest.log(LogStatus.FAIL, "Error screen is not showing");
 			return false;
