@@ -50,7 +50,7 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
                 if (adStartTimeValidator.isAdPlayTimePresent(url)) {
                     result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlaySingleAd_1");
                 } else {
-                    if (url.getAdPlugins().contains("IMA")&&url.getVideoPlugins().contains("MAIN"))
+                    if (url.getAdPlugins().contains("IMA") && url.getVideoPlugins().contains("MAIN") && (!testName.contains("VPAID")))
                         result = result && event.validate("MidRoll_willPlayAds_2", 200000);
                     else
                         result = result && event.validate("MidRoll_willPlayAds_1", 200000);
