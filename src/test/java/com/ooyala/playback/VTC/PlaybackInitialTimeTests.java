@@ -32,7 +32,6 @@ public class PlaybackInitialTimeTests extends PlaybackWebTest{
     public void testInitialTime(String testName, UrlObject url)
             throws OoyalaException {
         String[] parts= testName.split("-")[1].trim().split(":");
-        String tcName = parts[0].trim();
         String tcValue = parts[1].trim();
 
         boolean result = true;

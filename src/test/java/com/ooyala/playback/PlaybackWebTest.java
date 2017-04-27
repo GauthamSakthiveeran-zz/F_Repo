@@ -256,14 +256,12 @@ public abstract class PlaybackWebTest extends FacileTest {
 				|| webDriverFacile.get().getSessionId().toString().isEmpty())) {
 			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
 			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
-			pageFactory.destroyInstance();
 			initializeWebdriver();
 			driverNotNullFlag = false;
 
 		} else if (webDriverFacile.get() == null) {
 			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
 			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
-			pageFactory.destroyInstance();
 			driverNotNullFlag = false;
 			initializeWebdriver();
 		} else {
@@ -366,7 +364,8 @@ public abstract class PlaybackWebTest extends FacileTest {
         }
     }
 
-    private void injectScript(String scriptURL) throws Exception {
+    @SuppressWarnings("unused")
+	private void injectScript(String scriptURL) throws Exception {
     	JavascriptExecutor js = (JavascriptExecutor) webDriverFacile.get();
         Object object = js.executeScript("function injectScript(url) {\n"
                 + "   var script = document.createElement ('script');\n"

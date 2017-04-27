@@ -29,6 +29,11 @@ public class StreamValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
+		
+		if(getBrowser().contains("firefox")) {
+			extentTest.log(LogStatus.INFO, "Cannot validate in firefox");
+			return true;
+		}
 
 		if (streamType.contains("mp4")) {
 			logger.info("checking mp4 stream type");
@@ -43,7 +48,6 @@ public class StreamValidator extends PlayBackPage implements PlaybackValidator {
 			if (waitOnElement(By.xpath("//video"), 20000)) {
 				String isMp4 = driver.findElement(By.tagName("source")).getAttribute("type");
 				driver.close();
-
 				driver.switchTo().window(tabs.get(0));
 
 				if (isMp4.contains("mp4")) {
@@ -57,6 +61,8 @@ public class StreamValidator extends PlayBackPage implements PlaybackValidator {
 				}
 			} else {
 				extentTest.log(LogStatus.FAIL, "Issue with checking stream mp4.");
+				driver.close();
+				driver.switchTo().window(tabs.get(0));
 				return false;
 			}
 

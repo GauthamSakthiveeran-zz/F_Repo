@@ -124,7 +124,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		}
 	}
 
-	private boolean validateClosedCaptionCloseButton() throws Exception {
+	/*private boolean validateClosedCaptionCloseButton() throws Exception {
 		switchToControlBar();
 		if (!isElementPresent("CC_CLOSE_BUTTON")) {
 			if (!clickOnIndependentElement("CC_BTN")) {
@@ -141,7 +141,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		extentTest.log(LogStatus.FAIL, "CC_CLOSE_BUTTON is not present");
 		return false;
 
-	}
+	}*/
 
 	public boolean closedCaptionMicroPanel() throws Exception {
 		try {
@@ -262,6 +262,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	protected boolean verifyClosedCaptionLanguages() {
 		try {
 			boolean flag = true;

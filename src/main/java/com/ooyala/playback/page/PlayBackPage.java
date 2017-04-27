@@ -403,6 +403,7 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	public ArrayList<String> getLogsFromConsole(){
+		@SuppressWarnings("unchecked")
 		ArrayList<String> consoleOutput = (ArrayList<String>)driver.executeScript("return OO.DEBUG.consoleOutput");
         if (consoleOutput.size() == 0){
             logger.info("*** there no logs recorded ***");
