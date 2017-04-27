@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 	<test name="BasicPlaybackTests">
-		<!-- <url>
+		<url>
 			<description name="Streams:Bitmovin Elemental Delta HLS VOD" />
 			<embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -38,7 +38,7 @@
 			<browsersSupported name="safari" />
 		</url>
 
-		commented check the ticket number for more info PBW-6281
+<!-- 		commented check the ticket number for more info PBW-6281 -->
 		<url>
 			<description name="Streams:Bitmovin Elemental Delta DASH VOD (Clear Dash)" />
 			<embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
@@ -48,7 +48,7 @@
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-		</url> -->
+		</url>
 		<url>
 			<description name="Streams:Bitmovin MP4" />
 			<embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
@@ -61,7 +61,7 @@
 			<streamType name="mp4" />
 		</url>
 
-		<!-- <url>
+		<url>
 			<description name="Streams:Main Elemental Delta HLS VOD" />
 			<embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -72,7 +72,7 @@
 			<streamType name="m3u8" />
 			<browsersSupported name="safari" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-		</url> -->
+		</url>
 		<url>
 			<description name="Streams:Main MP4" />
 			<embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
@@ -85,7 +85,7 @@
 			<streamType name="mp4" />
 		</url>
 
-		<!-- <url>
+		<url>
 			<description name="Streams:Bitmovin Elemental Delta DASH Remote Asset" />
 			<embed_code name="lzeDFyYTE6YWXYdTNHFJljUoCNv6OE93" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -95,9 +95,9 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter></playerParameter>
 			<sslEnabled name="https" />
-		</url> -->
+		</url>
 
-		<!-- <url>
+		<url>
 			<description name="Streams:OSMF Elemental Delta HDS VOD" />
 			<embed_code name="0zbm5kMDE6hbM_xDZmnsKUYqXs3N9JrL" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
@@ -275,7 +275,7 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
 			<streamType name="mpd"></streamType>
-		</url> -->
+		</url>
 
 	</test>
 </testdata>
