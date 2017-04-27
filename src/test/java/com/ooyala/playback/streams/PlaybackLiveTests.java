@@ -86,7 +86,7 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 				result = result && playAction.startAction();
 
 				result = result && error.expectedErrorCode("network_error")
-						.expectedErrorDesc("PLAYBACK NETWORK ERROR").validate("", 30000);
+						.expectedErrorDesc("Network connection temporarily lost").validate("", 30000);
 			}
 		} catch (Exception e) {
 			logger.error(e.getMessage());

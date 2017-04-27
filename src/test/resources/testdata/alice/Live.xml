@@ -36,7 +36,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8abff377aec2400e9337fe9088e65d40" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=4393292143&account_id=dulari_qa&&&signature=GPKWY58Ofu7eOCWr9KZgjJaZexq19LGzVD+Dcq6Qr/w"}]]></playerParameter>
             <live>
                 <channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
                 <provider>elemental</provider>
@@ -78,6 +78,7 @@
             <additionalPlugins name="" />
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <browsersSupported name="safari" />
         </url>
 
         <url>
@@ -90,6 +91,8 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
+        <!-- 
+        for what is this test
         <url>
             <description name="Core:SSAI Demo page" />
             <embed_code name="t4ODRzNTE6C3BGu13bE6y_fxxzEM9Fod" />
@@ -99,7 +102,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/hkN2YyOnWYuzHmiwc6gaXi9wPfwy/t4ODRzNTE6C3BGu13bE6y_fxxzEM9Fod?api_key=hkN2YyOnWYuzHmiwc6gaXi9wPfwy.7-2Sh&expires=1476304999752&signature=pt3uY/V1HX0IibQZBVFCwT3vxjgZ8hhBGgKVh1+ogJE"}]]></playerParameter>
-        </url>
+        </url> -->
         <url>
             <description name="Live Stream Testing(Without DRM):Live DVR Main" />
             <embed_code name="BsZjdieDrJdl9YjLBm1LVyl3FF0KdWtd" />
