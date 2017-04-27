@@ -46,6 +46,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 				errorDescription();
 				return false;
 			}
+			moveElement(getWebElement("PLAY_BUTTON"));
 			return true;
 			
 		} catch (Exception e) {
