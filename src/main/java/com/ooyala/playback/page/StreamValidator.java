@@ -30,8 +30,8 @@ public class StreamValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 		
-		if(getBrowser().contains("firefox")) {
-			extentTest.log(LogStatus.INFO, "Cannot validate in firefox");
+		if(!getBrowser().contains("chrome")) {
+			extentTest.log(LogStatus.INFO, "Cannot validate mp4");
 			return true;
 		}
 
