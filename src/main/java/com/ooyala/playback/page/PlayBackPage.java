@@ -87,6 +87,8 @@ public abstract class PlayBackPage extends WebPage {
 	protected boolean clickOnIndependentElement(String elementKey) {
 		try {
 			boolean flag = super.clickOnIndependentElement(elementKey);
+			if(getBrowser().contains("safari"))
+				flag = false;
 			if (!flag) {
 				flag = clickOnHiddenElement(elementKey);
 
