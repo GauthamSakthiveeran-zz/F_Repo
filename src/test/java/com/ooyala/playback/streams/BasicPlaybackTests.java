@@ -1,6 +1,7 @@
 package com.ooyala.playback.streams;
 
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 
 import org.apache.log4j.Logger;
@@ -22,6 +23,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 	private PauseValidator pause;
 	private SeekValidator seek;
 	private StreamValidator streamTypeValidator;
+	private SeekAction seekAction;
 
 	public BasicPlaybackTests() throws OoyalaException {
 		super();
@@ -52,11 +54,17 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 			}
 
 			// because of https://jira.corp.ooyala.com:8443/browse/PBW-6281
-			if (!testName.contains("Streams:Bitmovin Elemental Delta DASH VOD (Clear Dash)")) {
+			if (!testName.contains("Bitmovin Elemental Delta DASH VOD (Clear Dash)")) {
 				result = result && play.validate("playing_2", 60000);
-				result = result && seek.validate("seeked_1", 60000);
 				
-				if (!testName.contains("Streams:Main Akamai HLS Remote Asset") && !testName.contains("Streams:Bitmovin Akamai HLS Remote Asset")) // live video
+				if(testName.contains("Bitmovin Elemental Delta DASH Remote Asset")) {
+					result = result && seekAction.setTime(100).startAction();
+					result = result && eventValidator.validate("seeked_1", 60000);
+				}else{
+					result = result && seek.validate("seeked_1", 60000);
+				}
+				
+				if (!testName.contains("Main Akamai HLS Remote Asset") && !testName.contains("Bitmovin Akamai HLS Remote Asset")) // live video
 					result = result && eventValidator.validate("played_1", 120000);
 			}
 
