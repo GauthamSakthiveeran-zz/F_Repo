@@ -94,7 +94,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 		int count = 1;
 		eventCount = 0;
 		boolean result = true;
-		for (int i = 0; i < totalPlaylistVideo; i = i + 5) {
+		for (int i = 0; i < 3; i++) {
 			try {
 				String asset = ((JavascriptExecutor) driver)
 						.executeScript(
