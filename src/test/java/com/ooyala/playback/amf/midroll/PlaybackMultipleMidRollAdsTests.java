@@ -1,6 +1,6 @@
 package com.ooyala.playback.amf.midroll;
 
-import com.ooyala.playback.page.AdStartTimeValidator;
+import com.ooyala.playback.page.MidrollAdValidator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,7 +20,7 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayValidator playValidator;
 	private SeekValidator seek;
-	private AdStartTimeValidator adStartTimeValidator;
+	private MidrollAdValidator adStartTimeValidator;
 
 	@Test(groups = { "amf", "midroll" }, dataProvider = "testUrls")
 	public void verifyMultipleMidroll(String testName, UrlObject url) throws OoyalaException {

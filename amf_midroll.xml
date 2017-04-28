@@ -9,7 +9,7 @@
 		<parameter name="xmlFilePkg" value="amf" />
 
 		<classes>
-			<class name="com.ooyala.playback.amf.midroll.PlaybackAutoplayAutoloopMidrollPoddedAdTests"></class>
+<!-- 			<class name="com.ooyala.playback.amf.midroll.PlaybackAutoplayAutoloopMidrollPoddedAdTests"></class> -->
 			<class name="com.ooyala.playback.amf.midroll.PlaybackMidRollAdsTests"></class>
 			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollInitialVolumeTests"></class>
 			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollOverlayTests"></class>

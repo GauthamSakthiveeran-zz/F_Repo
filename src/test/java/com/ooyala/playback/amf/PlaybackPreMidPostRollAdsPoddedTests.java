@@ -22,7 +22,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 	private PoddedAdValidator poddedAdValidator;
 	private SeekAction seekAction;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
-	private AdStartTimeValidator adStartTimeValidator;
+	private MidrollAdValidator adStartTimeValidator;
 
 	@Test(groups = {"amf","preroll","midroll","postroll","podded"}, dataProvider = "testUrls")
 	public void verifyPreMidPostrollPodded(String testName, UrlObject url) throws OoyalaException {

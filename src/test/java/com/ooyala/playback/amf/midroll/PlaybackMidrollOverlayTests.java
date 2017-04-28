@@ -19,7 +19,7 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private OverlayValidator overLayValidator;
 	private AdClickThroughValidator adClicks;
-	private AdStartTimeValidator adStartTimeValidator;
+	private MidrollAdValidator midrollAdValidator;
 	private OverlayValidator overlayValidator;
 
 	@Test(groups = {"amf","overlay","midroll","sequential"}, dataProvider = "testUrls")
@@ -39,16 +39,16 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
             result = result && playValidator.validate("playing_1", 60000);
             
             if(!event.isVideoPluginPresent("osmf")){
-				if (adStartTimeValidator.isAdPlayTimePresent(url)){
-					result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlaySingleAd_1");
+				if (midrollAdValidator.isAdPlayTimePresent(url)){
+					result = result && midrollAdValidator.validateMidrollAd(url);
 					result = result && event.validate("singleAdPlayed_1", 160000);
 				}
             }
 			
             result = result && event.validate("showNonlinearAd_1", 160000);
 
-            if (adStartTimeValidator.isOverlayPlayTimePresent(url)) {
-                result = result && adStartTimeValidator.validateNonLinearAdStartTime("showNonlinearAd_1");
+            if (midrollAdValidator.isOverlayPlayTimePresent(url)) {
+                result = result && midrollAdValidator.validateNonLinearAdStartTime("showNonlinearAd_1");
             }
             
             result = result && adClicks.overlay().validate("", 120000);

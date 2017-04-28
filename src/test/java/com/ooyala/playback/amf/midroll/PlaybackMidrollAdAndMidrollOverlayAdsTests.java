@@ -4,7 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AdStartTimeValidator;
+import com.ooyala.playback.page.MidrollAdValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.OverlayValidator;
 import com.ooyala.playback.page.PlayValidator;
@@ -22,7 +22,7 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 	private PlayValidator playValidator;
 	private OverlayValidator overlayValidator;
 	private SeekValidator seekValidator;
-	private AdStartTimeValidator adStartTimeValidator;
+	 private MidrollAdValidator midrollAdValidator;
 
 	@Test(groups = { "amf", "midroll", "overlay", "sequential" }, dataProvider = "testUrls")
 	public void verifyMidRoll(String testName, UrlObject url) throws OoyalaException {
@@ -40,15 +40,17 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 
 			result = result && event.validate("videoPlaying_1", 90000);
 
-			if (adStartTimeValidator.isAdPlayTimePresent(url)){
-				result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlayAds_1");
+			/*if (adStartTimeValidator.isAdPlayTimePresent(url)){
+				result = result && adStartTimeValidator.validateMidrollAd("MidRoll_willPlayAds_1");
 			} else
-				result = result && event.validate("MidRoll_willPlayAds_1", 1000);
+				result = result && event.validate("MidRoll_willPlayAds_1", 1000);*/
 			
-			result = result && event.validate("adsPlayed_1", 60000);
+			result = result && midrollAdValidator.validateMidrollAd(url);
+			
+//			result = result && event.validate("adsPlayed_1", 60000);
 
-			if (adStartTimeValidator.isOverlayPlayTimePresent(url)){
-				result = result && adStartTimeValidator.validateNonLinearAdStartTime("showNonlinearAd_1");
+			if (midrollAdValidator.isOverlayPlayTimePresent(url)){
+				result = result && midrollAdValidator.validateNonLinearAdStartTime("showNonlinearAd_1");
 			}else
 				result = result && event.validate("showNonlinearAd_1", 1000);
 			
