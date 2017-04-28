@@ -286,7 +286,7 @@
 		</url>
 
 		<url>
-			<description name="IMA:Ad Rule Preroll Main|VTC:SetEmbedCode" />
+			<description name="IMA:Main Ad Rule Midroll|VTC:SetEmbedCode" />
 			<embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />

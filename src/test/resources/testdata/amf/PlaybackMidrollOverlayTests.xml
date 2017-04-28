@@ -29,7 +29,7 @@
     	
     	<url>
 	    	<description name="VAST:Bitmovin Vast3.0 Midroll Overlay"/>
-	        <embed_code name="dxZTdxYTE6G9BvgD-STb01lIgPfhbctk"/>
+	        <embed_code name="QzNTh2YTE6ABVu2-EtQeMXxfD8S_sSNs"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
 	        <adPlugins name="VAST" overlayPlayTime="10"/>

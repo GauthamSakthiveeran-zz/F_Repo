@@ -189,7 +189,7 @@ public class AdStartTimeValidator extends PlayBackPage implements PlaybackValida
         }
 
         logger.info("Second midroll ad is playing at "+secondMidrollAdPlayingAt+"th second");
-        extentTest.log(LogStatus.FAIL,"second midroll ad is playing at "+secondMidrollAdPlayingAt);
+        extentTest.log(LogStatus.PASS,"second midroll ad is playing at "+secondMidrollAdPlayingAt);
 
         return true;
     }
