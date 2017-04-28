@@ -52,7 +52,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 			if (!actualEncodings.equals(expectedEncodings))
 				return false;
 
-			StreamValidator streams = new PlayBackFactory(driver, extentTest).getStreamTypeValidator();
+			/*StreamValidator streams = new PlayBackFactory(driver, extentTest).getStreamTypeValidator();
 
 			org.json.simple.JSONArray json = (org.json.simple.JSONArray) obj.get("encodingPriority");
 
@@ -70,7 +70,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 				if (encoding.contains("hds")) {
 					return streams.setStreamType("f4m").validate("videoPlayingurl", 6000);
 				}
-			}
+			}*/
 
 		}
 
