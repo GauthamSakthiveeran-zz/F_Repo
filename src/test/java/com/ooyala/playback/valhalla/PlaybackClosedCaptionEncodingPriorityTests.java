@@ -37,9 +37,6 @@ public class PlaybackClosedCaptionEncodingPriorityTests extends PlaybackWebTest 
 
 		try {
 			driver.get(url.getUrl());
-			driver.navigate().refresh();
-			driver.navigate().refresh();
-			driver.navigate().refresh();
 
 			result = result && play.waitForPage();
 
