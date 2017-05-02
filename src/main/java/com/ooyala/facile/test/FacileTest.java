@@ -7,7 +7,6 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -25,7 +24,6 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Dimension;
@@ -107,7 +105,7 @@ public class FacileTest implements IHookable {
 	private static final String DRIVER_PHANTOMJS = "phantomjs";
 
 	/** The web driver facile. */
-	protected static InheritableThreadLocal<RemoteWebDriver> webDriverFacile = new InheritableThreadLocal<RemoteWebDriver>();
+	public static InheritableThreadLocal<RemoteWebDriver> webDriverFacile = new InheritableThreadLocal<RemoteWebDriver>();
 
 	/** The s caps. */
 	protected static DesiredCapabilities sCaps;
@@ -483,7 +481,7 @@ public class FacileTest implements IHookable {
 		return dr;
 	}
 
-	public RemoteWebDriver getRemoteDriver(String browser) {
+	public InheritableThreadLocal<RemoteWebDriver> getRemoteDriver(String browser) {
 
 		DesiredCapabilities desiredCapabilities = getDesiredCapabilities(browser);
 		String version = System.getProperty("version");
@@ -521,7 +519,8 @@ public class FacileTest implements IHookable {
 
 			}
 		}
-		return driver;
+		webDriverFacile.set(driver);
+		return webDriverFacile;
 
 	}
 
@@ -532,7 +531,7 @@ public class FacileTest implements IHookable {
 	 *            the browser name
 	 * @return the driver
 	 */
-	public RemoteWebDriver getDriver(String browserName) {
+	public InheritableThreadLocal<RemoteWebDriver> getDriver(String browserName) {
 
 		// Reading the Browser Type From sauce.properties file if running
 		// locally
@@ -552,8 +551,7 @@ public class FacileTest implements IHookable {
 		// Selenium Grid
 		String mode = System.getProperty("mode");
 		if (mode != null && mode.equalsIgnoreCase("remote")) {
-			driver = getRemoteDriver(browserName);
-			return driver;
+			return getRemoteDriver(browserName);
 		}
 
 		else {
@@ -584,8 +582,8 @@ public class FacileTest implements IHookable {
 					logger.debug("Launched Chrome Instance Successfully in local environment Sauce Grid is Set to : "
 							+ isSauceEnabled());
 				}
-				webDriverFacile.set(driver);
-				return maximizeMe(driver);
+				webDriverFacile.set(maximizeMe(driver));
+				return webDriverFacile;
 			}
 
 			// iPad
@@ -608,7 +606,8 @@ public class FacileTest implements IHookable {
 							"Could not create an instance driver for the device: "
 									+ browserName);
 				}
-				return (driver);
+				webDriverFacile.set(driver);
+				return webDriverFacile;
 			}
 
 			// PhantomJS
@@ -634,7 +633,8 @@ public class FacileTest implements IHookable {
 				 */
 
 				driver = new PhantomJSDriver(sCaps);
-				return (driver);
+				webDriverFacile.set(driver);
+				return webDriverFacile;
 			}
 
 			// iPhone
@@ -658,7 +658,8 @@ public class FacileTest implements IHookable {
 							"Could not create an instance driver for the device: "
 									+ browserName);
 				}
-				return (driver);
+				webDriverFacile.set(driver);
+				return webDriverFacile;
 			}
 
 			// Android
@@ -681,7 +682,8 @@ public class FacileTest implements IHookable {
 							"Could not create an instance driver for the device: "
 									+ browserName);
 				}
-				return (driver);
+				webDriverFacile.set(driver);
+				return webDriverFacile;
 			}
 
 			// Google Chrome
@@ -705,8 +707,8 @@ public class FacileTest implements IHookable {
 					logger.debug("Successfully Created " + browserName
 							+ " Instance on local instance.");
 				}
-				webDriverFacile.set(driver);
-				return maximizeMe(webDriverFacile.get());
+				webDriverFacile.set(maximizeMe(driver));
+				return webDriverFacile;
 			}
 
 			// Firefox
@@ -739,8 +741,8 @@ public class FacileTest implements IHookable {
 
 				}
 
-				webDriverFacile.set(driver);
-				return maximizeMe(webDriverFacile.get());
+				webDriverFacile.set(maximizeMe(driver));
+				return webDriverFacile;
 			}
 
 			// Safari
@@ -765,8 +767,8 @@ public class FacileTest implements IHookable {
 					logger.debug("Successfully Created " + browserName
 							+ " Instance on local instance.");
 				}
-				webDriverFacile.set(driver);
-				return maximizeMe(webDriverFacile.get());
+				webDriverFacile.set(maximizeMe(driver));
+				return webDriverFacile;
 			}
 		}
 
@@ -832,7 +834,7 @@ public class FacileTest implements IHookable {
 			}
 			return ffdriver;
 		}
-		return getDriver(browserName);
+		return getDriver(browserName).get();
 	}
 
 	/**
@@ -867,7 +869,7 @@ public class FacileTest implements IHookable {
 		} else {
 			// Other browser dont support non-native events. Return the normal
 			// driver in those instances.
-			return getDriver(browserName);
+			return getDriver(browserName).get();
 		}
 
 	}
@@ -1402,7 +1404,6 @@ public class FacileTest implements IHookable {
 
 	}
 
-	@SuppressWarnings("deprecation")
 	public void takeBrowserScreenshot(String fileName, String destinationDir) {
 		if (!(new File(destinationDir).isDirectory())) {
 			new File(destinationDir).mkdir();

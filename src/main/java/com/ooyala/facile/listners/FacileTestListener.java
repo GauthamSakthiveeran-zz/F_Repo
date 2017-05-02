@@ -184,20 +184,10 @@ public class FacileTestListener extends TestListenerAdapter implements
 		return fullTestName;
 	}
 
-	/***
-	 * getRetryCount based on command line properties, if not present look in facile.properties file found in src/test/resources/facile.properties of the project.
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * if NoRetry annotation is used for the test method, then retryCount is set to -1.
-	 * 
-	 * if retry is true, returns the value of retryCount
-	 * if retry is false, returns -1
-	 * default count is 3
-	 * 
-	 * Command line parameters - retry=(true/false) , retryCount=(>=1)
-	 * facile.properties - retry=(true/false) , retryCount=(>=1)
-	 * 
-	 * @param result
-	 * @return
+	 * @see org.testng.IRetryAnalyzer#retry(org.testng.ITestResult)
 	 */
 	
 	private int getRetryCount(ITestResult result) {
@@ -239,6 +229,7 @@ public class FacileTestListener extends TestListenerAdapter implements
 		return DEFAULT_MAX_RETRY;
 	}
 	
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -264,6 +255,7 @@ public class FacileTestListener extends TestListenerAdapter implements
 		Calendar cal = Calendar.getInstance();
 		return (new SimpleDateFormat(format)).format(cal.getTime());
 	}
+
 	/***
 	 * creating a hashcode to add it to the map to take care of retries. Needed this as testng's retry does not support data provider tests.
 	 * 
@@ -273,7 +265,10 @@ public class FacileTestListener extends TestListenerAdapter implements
 	private int getHashCode(ITestResult result){
 		String name = result.getTestName() + result.getMethod().getMethodName();
 		for(Object obj : result.getParameters()){
-			name = name + obj.toString();
+			if(obj.getClass()!=null && obj instanceof String)
+				name = name + obj.toString();
+			else if(obj.getClass()==null)
+				name = name + obj.toString();
 		}
 		return name.hashCode();
 	}
@@ -393,28 +388,5 @@ public class FacileTestListener extends TestListenerAdapter implements
 			annotation.setRetryAnalyzer(FacileTestListener.class);
 		}
 	}
-
-	/*@Override
-	public void onFinish(ITestContext context) {
-		Iterator<ITestResult> failedTestCases = context.getFailedTests()
-				.getAllResults().iterator();
-		while (failedTestCases.hasNext()) {
-			logger.info("failedTestCases");
-			ITestResult failedTestCase = failedTestCases.next();
-			ITestNGMethod method = failedTestCase.getMethod();
-			if (context.getFailedTests().getResults(method).size() > 1) {
-				logger.info("failed test case remove as dup:"
-						+ failedTestCase.getTestClass().toString());
-				failedTestCases.remove();
-			} else {
-
-				if (context.getPassedTests().getResults(method).size() > 0) {
-					logger.info("failed test case remove as pass retry:"
-							+ failedTestCase.getTestClass().toString());
-					failedTestCases.remove();
-				}
-			}
-		}
-	}*/
 
 }
