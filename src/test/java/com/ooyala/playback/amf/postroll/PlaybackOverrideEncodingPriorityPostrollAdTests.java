@@ -31,36 +31,32 @@ public class PlaybackOverrideEncodingPriorityPostrollAdTests extends PlaybackWeb
 
     @Test(groups = "EncodingPriority", dataProvider = "testUrls")
     public void testOverrideEncodingPriorities(String testName, UrlObject url) {
-
         boolean result = true;
         String param = "";
-
         try {
-
             driver.get(url.getUrl());
 
             result = result && play.waitForPage();
 
             injectScript();
 
-            result = result && encode.validate("validate_default_encoding", 20000);
-
             result = result && playAction.startAction();
 
-            result = result && seek.validate("seeked_1", 20000);
-            
-			if (event.isAdPluginPresent("freewheel"))
-				result = result && event.validate("adsPlayed_2", 60000);
-			else
-				result = result && event.validate("adsPlayed_1", 60000);
+            result = result && encode.validate("validate_default_encoding", 20000);
 
-           
+            result = result && seek.validate("seeked_1", 20000);
+
+            if (event.isAdPluginPresent("freewheel"))
+                result = result && event.validate("adsPlayed_2", 60000);
+            else
+                result = result && event.validate("adsPlayed_1", 60000);
+
 
             result = result && event.validate("videoPlayed_1", 20000);
 
 
             if (event.isAdPluginPresent("freewheel")) {
-                param = "{\"freewheel-ads-manager\":{\"fw_video_asset_id\":\"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v\",\"html5_ad_server\":\"http://g1.v.fwmrm.net\",\"html5_player_profile\":\"90750:ooyala_html5\",\"fw_mrm_network_id\":\"380912\",\"showInAdControlBar\":true},\"initialTime\":0,\"autoplay\":false,\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"]}";
+                param = "{\"freewheel-ads-manager\":{\"fw_video_asset_id\":\"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse\",\"html5_ad_server\":\"http://g1.v.fwmrm.net\",\"html5_player_profile\":\"90750:ooyala_html5\",\"fw_mrm_network_id\":\"380912\",\"showInAdControlBar\":true},\"initialTime\":0,\"autoplay\":false,\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"]}";
             } else {
                 param = "{\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"],\"showInAdControlBar\":true}";
             }
@@ -69,25 +65,24 @@ public class PlaybackOverrideEncodingPriorityPostrollAdTests extends PlaybackWeb
 
             injectScript();
 
-            result = result && encode.validate("Override", 60000);
-
             result = result && playAction.startAction();
+
+            if (url.getVideoPlugins().contains("MAIN") && System.getProperty("browser").equalsIgnoreCase("Safari"))
+                result = result && encode.validate("Override", 60000);
 
             result = result && seek.validate("seeked_1", 60000);
 
-			if (event.isAdPluginPresent("freewheel"))
-				result = result && event.validate("adsPlayed_2", 60000);
-			else
-				result = result && event.validate("adsPlayed_1", 60000);
+            if (event.isAdPluginPresent("freewheel"))
+                result = result && event.validate("adsPlayed_2", 60000);
+            else
+                result = result && event.validate("adsPlayed_1", 60000);
 
             result = result && event.validate("videoPlayed_1", 60000);
-
         } catch (Exception e) {
-            logger.error("Exception while checking OverrideEncoding Priority test  "+e.getMessage());
+            logger.error("Exception while checking OverrideEncoding Priority test  " + e.getMessage());
             extentTest.log(LogStatus.FAIL, e.getMessage());
             result = false;
         }
-
         Assert.assertTrue(result, "OverrideEncoding Priority test failed");
     }
 }

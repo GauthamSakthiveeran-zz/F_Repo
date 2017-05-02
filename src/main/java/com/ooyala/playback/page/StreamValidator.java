@@ -32,7 +32,7 @@ public class StreamValidator extends PlayBackPage implements PlaybackValidator {
 
         if (streamType.contains("mp4")) {
             logger.info("checking mp4 stream type");
-            String mp4Url = driver.findElementById(element).getText();
+            String mp4Url = driver.findElementById(element).getText().split(" ")[2];
             logger.info("opening a new tab");
             driver.executeScript("window.open('" + mp4Url + "')");
             ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
