@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
 
@@ -22,7 +23,7 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
     private SeekValidator seekValidator;
     private PoddedAdValidator poddedAdValidator;
     private SetEmbedCodeValidator setEmbedCodeValidator;
-    private AdStartTimeValidator adStartTimeValidator;
+    private MidrollAdValidator adStartTimeValidator;
 
     @Test(groups = {"amf", "podded", "midroll"}, dataProvider = "testUrls")
     public void verifyMidrollPodded(String testName, UrlObject url) throws OoyalaException {
@@ -41,7 +42,7 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
                 result = result && seek.seek("18");
 
             if (adStartTimeValidator.isAdPlayTimePresent(url)) {
-                result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlayAds");
+                result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlayAds");
             } else
                 result = result && event.validate("MidRoll_willPlayAds", 60000);
 
@@ -63,6 +64,7 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
             }
         } catch (Exception e) {
             logger.error(e.getMessage());
+            extentTest.log(LogStatus.FAIL, e);
             result = false;
         }
         Assert.assertTrue(result, "Tests failed");

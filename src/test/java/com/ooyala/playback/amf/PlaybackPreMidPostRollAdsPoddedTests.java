@@ -22,7 +22,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 	private PoddedAdValidator poddedAdValidator;
 	private SeekAction seekAction;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
-	private AdStartTimeValidator adStartTimeValidator;
+	private MidrollAdValidator adStartTimeValidator;
 
 	@Test(groups = {"amf","preroll","midroll","postroll","podded"}, dataProvider = "testUrls")
 	public void verifyPreMidPostrollPodded(String testName, UrlObject url) throws OoyalaException {
@@ -48,7 +48,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 			result = result && event.validate("playing_1", 90000);
 
             if (adStartTimeValidator.isAdPlayTimePresent(url)){
-                result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlayAds");
+                result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlayAds");
             }else
 			    result = result && event.validate("MidRoll_willPlayAds", 200000);
 

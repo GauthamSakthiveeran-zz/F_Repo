@@ -27,6 +27,7 @@ public class PlaybackCCenableMidRollAdsTests extends PlaybackWebTest {
 	@Test(groups = {"amf","cc","midroll","sequential"}, dataProvider = "testUrls")
 	public void verifyCCenableMidRoll(String testName, UrlObject url)
 			throws Exception {
+		
 		boolean result = true;
 
 		try {

@@ -69,12 +69,21 @@ public class PlayBackFactory {
 	private ErrorDescriptionValidator errorDescriptionValidator;
 	private BitmovinTechnologyValidator bitmovinTechnologyValidator;
 	private LiveValidator liveValidator;
-	private AdStartTimeValidator adStartTimeValidator;
+	private MidrollAdValidator adStartTimeValidator;
 	private VideoPluginValidator videoPluginValidator;
+	private AdPluginValidator adPluginValidator;
 	
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
 		this.extentTest = extentTest;
+	}
+	
+	public AdPluginValidator getAdPluginValidator() {
+		if(adPluginValidator==null){
+			adPluginValidator = new AdPluginValidator(driver);
+			adPluginValidator.setExtentTest(extentTest);
+		}
+		return adPluginValidator;
 	}
 	
 	public VideoPluginValidator getVideoPluginValidator() {
@@ -485,9 +494,9 @@ public class PlayBackFactory {
 		return liveValidator;
 	}
 
-    public AdStartTimeValidator getAdStartTimeValidator() {
+    public MidrollAdValidator getAdStartTimeValidator() {
         if (adStartTimeValidator == null){
-            adStartTimeValidator = new AdStartTimeValidator(driver);
+            adStartTimeValidator = new MidrollAdValidator(driver);
             adStartTimeValidator.setExtentTest(extentTest);
         }
         return adStartTimeValidator;

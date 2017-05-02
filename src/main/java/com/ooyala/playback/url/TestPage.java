@@ -76,7 +76,7 @@ public class TestPage {
 				if(buildId==null || buildId.isEmpty()) {
 					buildId = testpagedata.getValhallaBuildId();
 				}
-				corePlayer = testpagedata.getValhalla() + pbid + testpagedata.getValhallaBuild() + buildId;
+				corePlayer = testpagedata.getValhalla() + pbid;
 				html5Skin = skinAsset = "";
 			}
 

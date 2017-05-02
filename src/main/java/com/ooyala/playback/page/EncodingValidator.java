@@ -74,7 +74,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 
 		}
 
-		return false;
+		return true;
 
 	}
 

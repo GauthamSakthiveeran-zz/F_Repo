@@ -4,10 +4,10 @@
 	<test name ="PlaybackMidrollOverlayTests" > 
     	<url>
 	    	<description name="VAST:Bitmovin Vast2.0 Midroll Overlay"/>
-	        <embed_code name="dndzNpMTE65uSupyRMgLwsfrO5SMCWRD"/>
+	        <embed_code name="l4azMwYjE6V2uqd_7w1wRjH54bi8iUnJ"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="VAST" adPlayTime="10" overlayPlayTime="15"/>
+	        <adPlugins name="VAST" overlayPlayTime="15"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -29,7 +29,7 @@
     	<!-- Through automation video is not playing, black screen appears -->
     	<!--<url>
 	    	<description name="VAST:Bitmovin Vast3.0 Midroll Overlay"/>
-	        <embed_code name="dxZTdxYTE6G9BvgD-STb01lIgPfhbctk"/>
+	        <embed_code name="QzNTh2YTE6ABVu2-EtQeMXxfD8S_sSNs"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
 	        <adPlugins name="VAST" overlayPlayTime="10"/>
@@ -66,10 +66,10 @@
 
 		<url>
 			<description name="IMA:Bitmovin Midroll Overlay"/>
-			<embed_code name="9vNTRpMTE6vLNJsH3lx1bCT0SitTgeTJ"/>
+			<embed_code name="djZjMwYjE6_wkhQzqAEA8oNTgg6eG20F"/>
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 			<plugins name="BITMOVIN"/>
-			<adPlugins name="IMA" adPlayTime="10" overlayPlayTime="15"/>
+			<adPlugins name="IMA" overlayPlayTime="10"/>
 			<additionalPlugins name=""/>
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 			<playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
