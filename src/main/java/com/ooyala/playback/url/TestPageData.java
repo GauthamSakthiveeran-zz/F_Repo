@@ -349,6 +349,8 @@ public class TestPageData {
 			skinDiscovery = "" + envURL + otherPlugin + discoveryApiPlugin;
 			;
 			break;
+		default:
+			break;
 		}
 	}
 

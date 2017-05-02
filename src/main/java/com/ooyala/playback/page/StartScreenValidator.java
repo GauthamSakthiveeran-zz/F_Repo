@@ -1,14 +1,12 @@
 package com.ooyala.playback.page;
 
-import com.ooyala.playback.url.Url;
-import com.ooyala.playback.url.UrlObject;
-import com.ooyala.playback.utils.APIUtils;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.url.UrlObject;
+import com.ooyala.playback.utils.APIUtils;
 import com.relevantcodes.extentreports.LogStatus;
 
 /**

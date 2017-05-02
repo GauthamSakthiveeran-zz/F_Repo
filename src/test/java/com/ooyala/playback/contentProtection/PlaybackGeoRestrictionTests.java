@@ -45,6 +45,8 @@ public class PlaybackGeoRestrictionTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && play.validate("playing_1", 10000);
+			
+			result = result && event.playVideoForSometime(3);
 
 			result = result && seek.validate("seeked_1", 60000);
 

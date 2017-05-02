@@ -1,21 +1,22 @@
 package com.ooyala.playback.playerfeatures;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.ThumbnailCarouselValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-
-import org.apache.log4j.Logger;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 /**
  * Created by Snehal on 13/01/2017.
  */
 public class PlaybackThumbnailCarouselTests extends PlaybackWebTest {
-    private static Logger logger = Logger
-            .getLogger(PlaybackThumbnailCarouselTests.class);
     private EventValidator eventValidator;
     private PlayValidator play;
     private PauseValidator pause;

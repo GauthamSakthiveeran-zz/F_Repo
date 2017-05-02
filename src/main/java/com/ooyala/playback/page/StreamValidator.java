@@ -29,6 +29,11 @@ public class StreamValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
+		
+		if(!getBrowser().contains("chrome")) {
+			extentTest.log(LogStatus.INFO, "Cannot validate mp4");
+			return true;
+		}
 
 		if (streamType.contains("mp4")) {
 			String stream  = driver.executeScript("return OO.DEBUG.consoleOutput[0]").toString();
