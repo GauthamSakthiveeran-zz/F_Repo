@@ -102,6 +102,7 @@ function subscribeToEvents() {
 			}
 			if (event.match(/singleAdPlayed/)) {
 				OO.$('#ooplayer').append('<p id=singleAdPlayed_'+singleadsPlayedEventOrder+'>singleAdPlayed '+singleadsPlayedEventOrder+'</p>'); 
+				OO.$('#ooplayer').append('<p id=admanager>'+arguments[1]+'</p>'); 
 				singleadsPlayedEventOrder++;
 				showAdSkipButtonEventOrder = 1;
 			}

@@ -1,7 +1,7 @@
 package com.ooyala.playback.amf;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AdStartTimeValidator;
+import com.ooyala.playback.page.MidrollAdValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SetEmbedCodeValidator;
@@ -23,7 +23,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekAction seekAction;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
-    private AdStartTimeValidator adStartTimeValidator;
+    private MidrollAdValidator adStartTimeValidator;
 
 	@Test(groups = {"amf","preroll","midroll","postroll"}, dataProvider = "testUrls")
 	public void verifyPreMidPostroll(String testName, UrlObject url) throws OoyalaException {
@@ -55,7 +55,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 				result = result && seekAction.setTime(15).fromLast().startAction(); // TODO Pulse skips the ad if video seeked ahead of the ad playing time
 
             if (adStartTimeValidator.isAdPlayTimePresent(url)){
-                result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlayAds");
+                result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlayAds");
             }else
                 result = result && event.validate("MidRoll_willPlayAds", 150000);
 			

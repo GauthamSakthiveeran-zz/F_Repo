@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-	<test name="PlaybackStreamsTests">
+	<test name="PlaybackClosedCaptionEncodingPriorityTests">
 		<url>
 			<description name="Stream hls" />
-			<embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
+			<embed_code name="RlNjhsMTE6stbukSNOqLTHUvxqyXX1W_" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
 			<plugins name="" />
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
 			<streamType name="m3u8" />
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"]}]]></playerParameter>
 		</url>
 
 		<url>
 			<description name="Stream mp4" />
-			<embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
+			<embed_code name="RlNjhsMTE6stbukSNOqLTHUvxqyXX1W_" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="" />
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
 			<streamType name="mp4" />
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["mp4"]}]]></playerParameter>
 		</url>
 
 		<url>
 			<description name="Stream dash" />
-			<embed_code name="91OW95YTE6I0ppDOZrgSC6Tetxx74Rw_" />
+			<embed_code name="RlNjhsMTE6stbukSNOqLTHUvxqyXX1W_" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="" />
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
 			<streamType name="mpd" />
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"]}]]></playerParameter>
 		</url>
 	</test>
 </testdata>
