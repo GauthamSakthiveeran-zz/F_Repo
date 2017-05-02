@@ -34,6 +34,9 @@ public class PlaybackStreamsTests extends PlaybackWebTest {
 
 		try {
 			driver.get(url.getUrl());
+			driver.navigate().refresh();
+			driver.navigate().refresh();
+			driver.navigate().refresh();
 
 			result = result && play.waitForPage();
 
@@ -47,6 +50,7 @@ public class PlaybackStreamsTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("videoPlayingurl", 10000);
 			
+			if(!url.getStreamType().contains("mp4"))
 			result = result && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 			
 			result = result && videoPluginValidator.setUrlObject(url).validate("", 1000);
