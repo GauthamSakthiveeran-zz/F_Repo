@@ -1,12 +1,14 @@
-package com.ooyala.playback.amf.midroll;
-
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.url.UrlObject;
+package com.ooyala.playback.valhalla;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.AdPluginValidator;
+import com.ooyala.playback.page.MidrollAdValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -16,19 +18,21 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 		super();
 	}
 
-	private EventValidator event;
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
-	private SetEmbedCodeValidator setEmbedCodeValidator;
-    private MidrollAdValidator midrollAdValidator;
+	private MidrollAdValidator midrollAdValidator;
+	private AdPluginValidator adPluginValidator;
 
-	@Test(groups = {"amf","midroll"}, dataProvider = "testUrls")
+	@Test(groups = { "amf", "midroll" }, dataProvider = "testUrls")
 	public void verifyMidRoll(String testName, UrlObject url) throws OoyalaException {
-		
+
 		boolean result = true;
+		String adPlugin = testName.split(" - ")[1].split(" ")[0].toLowerCase();
 
 		try {
 			driver.get(url.getUrl());
+			
+			driver.navigate().refresh();
 
 			result = result && playValidator.waitForPage();
 
@@ -36,14 +40,13 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 
 			result = result && playValidator.validate("playing_1", 60000);
 
+			url.setAdPlugins(adPlugin);
+
 			result = result && midrollAdValidator.validateMidrollAd(url);
-			
-			if(testName.contains("SetEmbedCode")){
-//				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000); TODO: Resolve NPE
-			}else{
-				result = result && seekValidator.validate("seeked_1", 160000);
-				result = result && event.validate("played_1", 160000);
-			}
+
+			result = result && adPluginValidator.setAdPlugin(adPlugin).validate("admanager", 1000);
+
+			result = result && seekValidator.validate("seeked_1", 160000);
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -26,12 +26,12 @@
 
 		<url>
 			<description name="IMA:Main Midroll (10) and Overlay (15) with Discovery Up Next" />
-			<embed_code name="dibDlxYTE6z0u6Cm0qY6CbIagzuCcxoB" />
+			<embed_code name="Z1Z3R5YTE69a43VA6KZIaBsJfZ-XKy_b" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
 			<adPlugins name="IMA" adPlayTime="10" overlayPlayTime="15"/>
 			<additionalPlugins name="DISCOVERY" />
-			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<pbid name="421363178a5d493c9d4e74aadc1c2df9" />
 			<playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showInAdControlBar":true}]]></playerParameter>
 		</url>
 		
@@ -47,7 +47,7 @@
 		</url>
 		
 		<url>
-	    	<description name="VAST:Main Vast3.0 Discovery Postroll Up Next"/>
+	    	<description name="VAST:Main Vast3.0 Midroll (10) and Overlay (15) with Discovery Up Next"/>
 	        <embed_code name="Q3bDlxYTE6DFxVIwmHpwlLsqj1m5UPi3"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

@@ -55,7 +55,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 				result = result && seekAction.setTime(15).fromLast().startAction(); // TODO Pulse skips the ad if video seeked ahead of the ad playing time
 
             if (adStartTimeValidator.isAdPlayTimePresent(url)){
-                result = result && adStartTimeValidator.validateAdStartTime("MidRoll_willPlayAds");
+                result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlayAds");
             }else
                 result = result && event.validate("MidRoll_willPlayAds", 150000);
 			

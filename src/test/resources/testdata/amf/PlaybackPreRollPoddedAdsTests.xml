@@ -117,7 +117,7 @@
             <playerParameter>
                 <![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"},{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"},{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"}]}}]]></playerParameter>
         </url>
-        <url>
+        <!-- <url>
             <description name="Preroll_Podded_SetEmbedCode_Freewheel"/>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -149,6 +149,6 @@
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
+        </url> -->
     </test>
 </testdata>
