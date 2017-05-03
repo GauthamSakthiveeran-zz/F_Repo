@@ -51,14 +51,12 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
                 result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlayAds");
             }else
 			    result = result && event.validate("MidRoll_willPlayAds", 200000);
-
 			result = result && event.validate("adsPlayed_2", 600000);
-
-            result = result && seekAction.setFactor(2).fromLast().setTime(10).startAction();
 
 			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 600000);
 			
-			result = result && seekAction.seekTillEnd().startAction();
+    		result = result && seekAction.seekTillEnd().startAction();
+			
 			result = result && event.validate("PostRoll_willPlayAds", 200000);
 			result = result && event.validate("adsPlayed_3", 600000);
 
@@ -66,9 +64,9 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 
 			result = result && event.validate("played_1", 180000);
 
-			if(testName.contains("SetEmbedCode")){
+			/*if(testName.contains("SetEmbedCode")){
 				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000);
-			}
+			}*/
 
 		} catch (Exception e) {
 			e.printStackTrace();

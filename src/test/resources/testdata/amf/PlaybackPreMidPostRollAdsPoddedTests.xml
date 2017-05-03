@@ -138,7 +138,7 @@
 			<embed_code name="hlc2x4dDpQYlsGsvnipHmaIJge2aqtaP"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="MAIN"/>
-			<adPlugins name="VAST" adPlayTime="10"/>
+			<adPlugins name="VAST" adPlayTime="20"/>
 			<additionalPlugins name=""/>
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -175,6 +175,7 @@
 			<additionalPlugins name=""/>
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+			<sslEnabled name="https"/>
 		</url>
 		
 		<url>
