@@ -54,10 +54,13 @@ public class FullScreenValidator extends PlayBackPage implements
 	public boolean getNormalScreen() {
 	    boolean flag = false;
 	    try {
+	        Thread.sleep(3000);
             driver.findElement(By.className("oo-icon-system-fullscreen")).isDisplayed();
             flag = false;
         }catch (NoSuchElementException e){
 	        flag = true;
+        } catch (Exception ex){
+            logger.info(ex.getMessage());
         }
 
 		if (flag) {
