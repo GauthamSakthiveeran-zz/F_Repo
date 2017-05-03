@@ -16,11 +16,11 @@
     	<url>
 	    	<description name="Pulse:OSMF Discovery Postroll"/>
 	        <embed_code name="BzaDhxYTE6-eKkYNYAdQJCZnq0vRDhMQ"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
+	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+	        <plugins name="OSMF"/>
 	        <adPlugins name="PULSE"/>
 	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
+	        <pbid name="a40c3383eb1f4d31a48accc2f7e4e613"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
@@ -251,6 +251,5 @@
             <pbid name="294b0bd173974ddb8128a86db1029bd7"/>
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
-    	
     </test>
 </testdata>
