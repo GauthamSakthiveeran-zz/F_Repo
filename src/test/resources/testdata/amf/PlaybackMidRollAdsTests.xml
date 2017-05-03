@@ -5,7 +5,7 @@
 
         <url>
             <description name="VPAID:Bitmovin IMA VPAID2.0 Midroll" />
-            <embed_code name="0zdnZnMTE6_eSVEEE_C1X1tCmJE5GmDe" />
+            <embed_code name="MyNngxYjE6YLC9qiK0va9r0SaqN9L6mD" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN,MAIN" />
             <adPlugins name="IMA" adPlayTime="10"/>
@@ -307,7 +307,7 @@
 
         <url>
             <description name="VPAID:Bitmovin IMA VPAID1.0 Midroll"/>
-            <embed_code name="lyaW15YTE6-Ld3MmsX1h3hQ7jKGU-JH2"/>
+            <embed_code name="VlNngxYjE6Fxun-P1nj_6S1fZynIqXEp"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
             <adPlugins name="IMA" adPlayTime="10"/>
