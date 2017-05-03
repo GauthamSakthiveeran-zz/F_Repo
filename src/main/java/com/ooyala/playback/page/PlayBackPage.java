@@ -135,15 +135,33 @@ public abstract class PlayBackPage extends WebPage {
 
 	public boolean onmouseOver(WebElement element) {
 		boolean result = false;
+		boolean flag = false;
 		try {
 			Actions action = new Actions(driver);
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 			action.moveToElement(element).build().perform();
 			result = true;
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
 			result = false;
+			flag = true;
 		}
+
+		if (flag){
+			try {
+			    logger.info("trying to hover on "+element+" using javascript");
+				String mouseOverScript = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover',true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}";
+				driver.executeScript(mouseOverScript, element);
+				result = true;
+                logger.info("hovered on "+element+" using javascript");
+			}catch (Exception ex){
+				logger.info(ex.getMessage());
+				logger.error("Not able to hover on "+element+" using " +
+                        "javascript after trying to move on element using selenium moveOnElement method");
+				result = false;
+			}
+		}
+
 		return result;
 
 	}
