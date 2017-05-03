@@ -65,18 +65,16 @@ public abstract class PlayBackPage extends WebPage {
 
 		try {
 			if (super.waitOnElement(elementKey, timeout)) {
-				extentTest.log(LogStatus.PASS, "Wait on element : "
-						+ elementKey + "");
+				extentTest.log(LogStatus.PASS, "Wait on element : " + elementKey + "");
 				return true;
 			} else {
-				extentTest.log(LogStatus.INFO, "Wait on element : "
-						+ elementKey + ", failed after " + timeout + " ms");
+				extentTest.log(LogStatus.INFO, "Wait on element : " + elementKey + ", failed after " + timeout + " ms");
 				return false;
 			}
 
 		} catch (Exception ex) {
-			extentTest.log(LogStatus.INFO, "wait on element " + elementKey
-					+ "  failed with exception " + ex.getMessage());
+			extentTest.log(LogStatus.INFO,
+					"wait on element " + elementKey + "  failed with exception " + ex.getMessage());
 			ex.printStackTrace();
 		}
 		return false;
@@ -87,7 +85,7 @@ public abstract class PlayBackPage extends WebPage {
 	protected boolean clickOnIndependentElement(String elementKey) {
 		try {
 			boolean flag = super.clickOnIndependentElement(elementKey);
-			if(getBrowser().contains("safari"))
+			if (getBrowser().contains("safari"))
 				flag = false;
 			if (!flag) {
 				flag = clickOnHiddenElement(elementKey);
@@ -97,17 +95,10 @@ public abstract class PlayBackPage extends WebPage {
 
 			return flag;
 		} catch (Exception ex) {
-			logger.error("Exception occured while clicking on element "
-					+ elementKey);
-			extentTest
-					.log(LogStatus.INFO,
-							"Exception occured while clicking on element "
-									+ elementKey);
-			logger.info("Calling clickOnHiddenElement function on the element "
-					+ elementKey);
-			extentTest.log(LogStatus.INFO,
-					"Calling clickOnHiddenElement function on the element "
-							+ elementKey);
+			logger.error("Exception occured while clicking on element " + elementKey);
+			extentTest.log(LogStatus.INFO, "Exception occured while clicking on element " + elementKey);
+			logger.info("Calling clickOnHiddenElement function on the element " + elementKey);
+			extentTest.log(LogStatus.INFO, "Calling clickOnHiddenElement function on the element " + elementKey);
 			return clickOnHiddenElement(elementKey);
 		}
 
@@ -120,21 +111,15 @@ public abstract class PlayBackPage extends WebPage {
 			if (element != null)
 				js.executeScript("arguments[0].click()", element);
 			else {
-				extentTest.log(LogStatus.INFO, "Element not found : "
-						+ elementKey);
+				extentTest.log(LogStatus.INFO, "Element not found : " + elementKey);
 				return false;
 			}
-			extentTest.log(LogStatus.PASS, "Clicked on hidden element : "
-					+ elementKey);
+			extentTest.log(LogStatus.PASS, "Clicked on hidden element : " + elementKey);
 			return true;
 		} catch (Exception ex) {
 			ex.printStackTrace();
-			logger.error("Exception while clicking on hidden element "
-					+ ex.getLocalizedMessage());
-			extentTest.log(
-					LogStatus.INFO,
-					"Exception while clicking on hidden element "
-							+ ex.getLocalizedMessage());
+			logger.error("Exception while clicking on hidden element " + ex.getLocalizedMessage());
+			extentTest.log(LogStatus.INFO, "Exception while clicking on hidden element " + ex.getLocalizedMessage());
 			return false;
 		}
 	}
@@ -187,7 +172,6 @@ public abstract class PlayBackPage extends WebPage {
 	public void setExtentTest(ExtentTest extentTest) {
 		this.extentTest = extentTest;
 	}
-	
 
 	/**
 	 * checking to see if the protocol is hds or hls or any protocol
@@ -196,8 +180,7 @@ public abstract class PlayBackPage extends WebPage {
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean isStreamingProtocolPrioritized(String protocol)
-			throws Exception {
+	public boolean isStreamingProtocolPrioritized(String protocol) throws Exception {
 		Map<String, String> data = parseURL();
 		if (data == null) {
 			logger.error("url object is null");
@@ -225,8 +208,7 @@ public abstract class PlayBackPage extends WebPage {
 			String[] pairs = query.split("&");
 			for (String pair : pairs) {
 				int index = pair.indexOf("=");
-				query_pairs.put(
-						URLDecoder.decode(pair.substring(0, index), "UTF-8"),
+				query_pairs.put(URLDecoder.decode(pair.substring(0, index), "UTF-8"),
 						URLDecoder.decode(pair.substring(index + 1), "UTF-8"));
 
 			}
@@ -246,8 +228,7 @@ public abstract class PlayBackPage extends WebPage {
 			// spinner upto 2 min otherwise will break
 			if (time <= 120) {
 				try {
-					flag = driver.findElement(By.className("oo-spinner"))
-							.isDisplayed();
+					flag = driver.findElement(By.className("oo-spinner")).isDisplayed();
 					if (!flag) {
 						flag = true;
 						break;
@@ -268,19 +249,19 @@ public abstract class PlayBackPage extends WebPage {
 		return flag;
 
 	}
-	
-	protected int getWindowHandleCount(){
+
+	protected int getWindowHandleCount() {
 		Set<String> windowHandles = driver.getWindowHandles();
 		return windowHandles.size();
 	}
-	
-	protected void closeOtherWindows(String baseWindowHdl) throws Exception{
+
+	protected void closeOtherWindows(String baseWindowHdl) throws Exception {
 		sleep(2000);
-		
+
 		int count = getWindowHandleCount();
-		
+
 		logger.info("Window handles : " + count);
-		
+
 		for (String winHandle : driver.getWindowHandles()) {
 			if (!winHandle.equals(baseWindowHdl)) {
 				driver.switchTo().window(winHandle);
@@ -289,24 +270,25 @@ public abstract class PlayBackPage extends WebPage {
 			}
 		}
 	}
-    public boolean clearCache() throws Exception {
-        for (int i = 0; i < 20; i++) {
-            ((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
-        }
-        return true;
-    }
-    
-    public boolean adPlaying(boolean checkOnce) throws Exception {
+
+	public boolean clearCache() throws Exception {
+		for (int i = 0; i < 20; i++) {
+			((JavascriptExecutor) driver).executeScript(String.format("window.localStorage.clear();"));
+		}
+		return true;
+	}
+
+	public boolean adPlaying(boolean checkOnce) throws Exception {
 		int time = 0;
 		boolean flag;
 
-		IsAdPlayingValidator adPlaying = new PlayBackFactory(driver,extentTest).isAdPlaying();
+		IsAdPlayingValidator adPlaying = new PlayBackFactory(driver, extentTest).isAdPlaying();
 
-		if (checkOnce){
+		if (checkOnce) {
 			Thread.sleep(1000);
 			return adPlaying.validate("", 1000);
 		}
-		
+
 		while (true) {
 			if (time <= 120) {
 				try {
@@ -333,12 +315,12 @@ public abstract class PlayBackPage extends WebPage {
 		return flag;
 
 	}
-    
-    public boolean waitTillAdPlays(){
-    	IsAdPlayingValidator adPlaying = new PlayBackFactory(driver,extentTest).isAdPlaying();
-    	boolean flag = false;
-    	int time = 0;
-    	while (true) {
+
+	public boolean waitTillAdPlays() {
+		IsAdPlayingValidator adPlaying = new PlayBackFactory(driver, extentTest).isAdPlaying();
+		boolean flag = false;
+		int time = 0;
+		while (true) {
 			if (time <= 120) {
 				try {
 					flag = adPlaying.validate("", 1000);
@@ -349,16 +331,16 @@ public abstract class PlayBackPage extends WebPage {
 			} else {
 				break;
 			}
-			
-			if(flag){
+
+			if (flag) {
 				return true;
 			}
 
 		}
-    	extentTest.log(LogStatus.FAIL, "Ad is not playing after waiting for a long time.");
-    	return false;
-    }
-    
+		extentTest.log(LogStatus.FAIL, "Ad is not playing after waiting for a long time.");
+		return false;
+	}
+
 	public boolean isPageLoaded() {
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(new Predicate<WebDriver>() {
@@ -373,44 +355,41 @@ public abstract class PlayBackPage extends WebPage {
 		}
 		return true;
 	}
-	
+
 	public boolean isAdPluginPresent(String adPlugin) throws Exception {
 		Map<String, String> map = parseURL();
-		if (map != null && map.get("ad_plugin") != null
-				&& map.get("ad_plugin").contains(adPlugin.toLowerCase())) {
+		if (map != null && map.get("ad_plugin") != null && map.get("ad_plugin").contains(adPlugin.toLowerCase())) {
 			return true;
 		}
 		return false;
 	}
 
-    // Use this method after page is loaded completely.
-	public boolean startRecordingConsoleLogsForAd(){
-        try {
-            logger.info("Started recording VC related events in console log for ads");
-            driver.executeScript("OO.DEBUG.startRecordingConsoleOutput(\"VC: For video 'ads'\");");
-            return true;
-        } catch (Exception e){
-            logger.error("Not able to record logs....");
-            return false;
-        }
+	// Use this method after page is loaded completely.
+	public boolean startRecordingConsoleLogsForAd() {
+		try {
+			logger.info("Started recording VC related events in console log for ads");
+			driver.executeScript("OO.DEBUG.startRecordingConsoleOutput(\"VC: For video 'ads'\");");
+			return true;
+		} catch (Exception e) {
+			logger.error("Not able to record logs....");
+			return false;
+		}
 	}
 
-    // Use this method after ad played completely or video starts playing
-	public void stopRecordingConsoleLog(){
-        logger.info("Stopping recording console logs");
-		driver.executeScript(
-				"OO.DEBUG.stopRecordingConsoleOutput();"
-		);
-        logger.info("Stopped recording console logs");
+	// Use this method after ad played completely or video starts playing
+	public void stopRecordingConsoleLog() {
+		logger.info("Stopping recording console logs");
+		driver.executeScript("OO.DEBUG.stopRecordingConsoleOutput();");
+		logger.info("Stopped recording console logs");
 	}
 
-	public ArrayList<String> getLogsFromConsole(){
+	public ArrayList<String> getLogsFromConsole() {
 		@SuppressWarnings("unchecked")
-		ArrayList<String> consoleOutput = (ArrayList<String>)driver.executeScript("return OO.DEBUG.consoleOutput");
-        if (consoleOutput.size() == 0){
-            logger.info("*** there no logs recorded ***");
-        }
-        return consoleOutput;
+		ArrayList<String> consoleOutput = (ArrayList<String>) driver.executeScript("return OO.DEBUG.consoleOutput");
+		if (consoleOutput.size() == 0) {
+			logger.info("*** there no logs recorded ***");
+		}
+		return consoleOutput;
 	}
 
 	public boolean isVideoPluginPresent(String videoPlugin) throws Exception {
@@ -420,5 +399,10 @@ public abstract class PlayBackPage extends WebPage {
 			return true;
 		}
 		return false;
+	}
+
+	public double getPlayAheadTime() {
+		return Double
+				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
 	}
 }

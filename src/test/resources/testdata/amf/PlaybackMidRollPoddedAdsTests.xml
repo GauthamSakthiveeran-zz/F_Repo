@@ -26,7 +26,7 @@
 
         <url>
             <description name="IMA:Bitmovin Midroll Podded"/>
-            <embed_code name="RkeDZ2YTE65XY_HGOiX_osV18kMKFq5w"/>
+            <embed_code name="91OW95YTE6I0ppDOZrgSC6Tetxx74Rw_"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
             <adPlugins name="IMA" adPlayTime="10"/>
@@ -105,7 +105,7 @@
             <playerParameter>
                 <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
         </url>
-        <url>
+        <!-- <url>
             <description name="MidrollPodded_SetEmbedCode_IMA"/>
             <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -114,8 +114,8 @@
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
+        </url> -->
+        <!-- <url>
             <description name="MidrollPodded_SetEmbedCode_Freewheel"/>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -125,9 +125,9 @@
             <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
             <playerParameter>
                 <![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fsa2tmcjpvD21CN9WthbTbE4MIpWJoaK","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
-        </url>
+        </url> -->
 
-        <url>
+       <!--  <url>
             <description name="MidrollPodded_SetEmbedCode_Vast"/>
             <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -136,7 +136,7 @@
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
+        </url> -->
 
         <url>
             <description name="VAST:Main Vast3.0 3 Midroll Podded at 10 or 20 second"/>

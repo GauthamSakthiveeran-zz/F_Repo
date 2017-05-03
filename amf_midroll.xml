@@ -3,20 +3,21 @@
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
 
-	<test name="AMF Midroll" parallel="classes" thread-count="5">
+	<test name="AMF Midroll" parallel="classes" thread-count="7">
 
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
 
 		<classes>
-			<class name="com.ooyala.playback.amf.midroll.PlaybackAutoplayAutoloopMidrollPoddedAdTests"></class>
+<!-- 			<class name="com.ooyala.playback.amf.midroll.PlaybackAutoplayAutoloopMidrollPoddedAdTests"></class> -->
+<!-- 			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollInitialVolumeTests"></class> -->
+
 			<class name="com.ooyala.playback.amf.midroll.PlaybackMidRollAdsTests"></class>
-			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollInitialVolumeTests"></class>
 			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollOverlayTests"></class>
 			<class name="com.ooyala.playback.amf.midroll.PlaybackMidRollPoddedAdsTests"></class>
 			<class name="com.ooyala.playback.amf.midroll.PlaybackMultipleMidRollAdsTests"></class>
 			<class name="com.ooyala.playback.amf.midroll.vast.PlaybackMidrollOverlayUpNextTests"></class>
-			<class name="com.ooyala.playback.amf.midroll.PlaybackCCenableMidRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackCCenableMidRollAdsTests"></class> 
 			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollAdAndMidrollOverlayAdsTests"></class>
 		</classes>
 		
@@ -24,7 +25,7 @@
 		
 	</test>
 	
-	<test name="AMF Midroll VTC" parallel="classes" thread-count="5">
+	<!-- <test name="AMF Midroll VTC" parallel="classes" thread-count="5">
 
 		<parameter name="jsFile" value="vtc/vtc.js,amf/amf.js" />
 		<parameter name="testData" value="VTC.xml"/>
@@ -35,6 +36,6 @@
 			<class name="com.ooyala.playback.amf.midroll.PlaybackVerifyVideoElementCreatedAllMidrollAdsTests"></class>
 		</classes>
 		
-	</test>
+	</test> -->
 
 </suite>

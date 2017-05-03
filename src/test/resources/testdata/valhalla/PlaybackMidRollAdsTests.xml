@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<test name="PlaybackMidRollAdsTests">
+		<url>
+			<description name="Pulse Dash" />
+			<embed_code name="Blb2U5MzE6mLeSsYNyfqiDbsaYBODDka" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="" />
+			<adPlugins name="" adPlayTime=""/>
+			<additionalPlugins name="" />
+			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+		
+		<url>
+			<description name="Pulse hls" />
+			<embed_code name="Blb2U5MzE6mLeSsYNyfqiDbsaYBODDka" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="" />
+			<adPlugins name="" adPlayTime=""/>
+			<additionalPlugins name="" />
+			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<playerParameter><![CDATA[{"encodingPriority":["hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url> 
+		
+		<url>
+			<description name="Pulse mp4" />
+			<embed_code name="x0amU5MzE6igU92P3BOmuI8PjqRYz-LX" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="" />
+			<adPlugins name="" adPlayTime=""/>
+			<additionalPlugins name="" />
+			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<playerParameter><![CDATA[{"encodingPriority":["mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url> 
+
+		<url>
+			<description name="IMA mp4" />
+			<embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="" />
+			<adPlugins name="" adPlayTime="10"/>
+			<additionalPlugins name="" />
+			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+
+		<url>
+			<description name="IMA dash" />
+			<embed_code name="IxOTVnMTE6mwR52DOItZ1k1DioFcKQrk" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="" />
+			<adPlugins name="" adPlayTime="10"/>
+			<additionalPlugins name="" />
+			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+
+		</url>
+		
+		<url>
+			<description name="IMA hls" />
+			<embed_code name="IxOTVnMTE6mwR52DOItZ1k1DioFcKQrk" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="" />
+			<adPlugins name="" adPlayTime="10"/>
+			<additionalPlugins name="" />
+			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<playerParameter><![CDATA[{"encodingPriority":["hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+
+		<url>
+			<description name="Freewheel dash" />
+			<embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="" />
+			<adPlugins name="" adPlayTime="20"/>
+			<additionalPlugins name="" />
+			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash"],"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+		</url>
+		
+		<url>
+			<description name="Freewheel hls" />
+			<embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="" />
+			<adPlugins name="" adPlayTime="20"/>
+			<additionalPlugins name="" />
+			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<playerParameter><![CDATA[{"encodingPriority":["hls"],"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+			<browsersSupported name="safari"/>
+		</url>
+
+		<url>
+			<description name="Freewheel mp4" />
+			<embed_code name="Q5bHlycTpEywqcPbMxbCsU0O3DWV9Ryl" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="" />
+			<adPlugins name="" adPlayTime="20"/>
+			<additionalPlugins name="" />
+			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+		</url>
+		
+		<url>
+			<description name="Vast mp4" />
+			<embed_code name="A1bmxiMjE64igdFOvxveOJdKRC7tqQ2C" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="" />
+			<adPlugins name="" adPlayTime="10"/>
+			<additionalPlugins name="" />
+			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+		
+		<url>
+			<description name="Vast dash" />
+			<embed_code name="VwYzdoMTE6MFmVcSNiwQyGpeSOuvGpcc" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="" />
+			<adPlugins name="" adPlayTime="10"/>
+			<additionalPlugins name="" />
+			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+		
+		<url>
+			<description name="Vast hls" />
+			<embed_code name="VwYzdoMTE6MFmVcSNiwQyGpeSOuvGpcc" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="VAST" adPlayTime="10"/>
+			<additionalPlugins name="" />
+			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<playerParameter><![CDATA[{"encodingPriority":["hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+	</test>
+</testdata>

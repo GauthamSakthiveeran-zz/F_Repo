@@ -1,12 +1,14 @@
-<suite name="Playback Web Regression Suite" verbose="1">
+<suite name="Playback - Valhalla Stitching Automation" verbose="1">
     <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
-    <test name="Playback Web Regression Group" parallel="classes" thread-count="5">
+    <test name="Playback - Valhalla Stitching Automation" parallel="classes" thread-count="5">
         <classes>
             <parameter name="xmlFilePkg" value="valhalla" />
-            <parameter name="jsFile" value="alice/alice.js" />
+            <parameter name="jsFile" value="common.js,amf/amf.js"/>
             <class name="com.ooyala.playback.valhalla.PlaybackStreamsTests" />
+            <class name="com.ooyala.playback.valhalla.PlaybackClosedCaptionEncodingPriorityTests" />
+            <class name="com.ooyala.playback.valhalla.PlaybackMidRollAdsTests"/>
         </classes>
     </test>
 
