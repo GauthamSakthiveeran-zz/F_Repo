@@ -1,13 +1,11 @@
 package com.ooyala.playback.streams;
 
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.ControlBarValidator;
 import com.ooyala.playback.page.ErrorDescriptionValidator;
-import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.FullScreenValidator;
 import com.ooyala.playback.page.LiveValidator;
 import com.ooyala.playback.page.PauseValidator;
@@ -24,7 +22,6 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class PlaybackLiveTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackLiveTests.class);
 	private PlayValidator play;
 	private PauseValidator pause;
 	private ControlBarValidator controlBarValidator;
@@ -34,7 +31,6 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private LiveValidator live;
 	private ErrorDescriptionValidator error;
-	private EventValidator event;
 
 	public PlaybackLiveTests() throws OoyalaException {
 		super();
@@ -60,7 +56,6 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
-			result = result && event.playVideoForSometime(3);
 
 			result = result && pause.validate("paused_1", 60000);
 
@@ -73,8 +68,6 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 
 			result = result && liveAction.startAction();
 
-			result = result && playAction.startAction();
-
 			if (isChannelIdPresent) {
 
 				liveChannel.stopChannels();
@@ -85,11 +78,10 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 				
 				result = result && playAction.startAction();
 
-				result = result && error.expectedErrorCode("network_error")
-						.expectedErrorDesc("Network connection temporarily lost").validate("", 30000);
+				result = result && error.expectedErrorCode("stream")
+						.expectedErrorDesc("This video isn't encoded for your device").validate("", 30000);
 			}
 		} catch (Exception e) {
-			logger.error(e.getMessage());
 			extentTest.log(LogStatus.FAIL, e);
 			result = false;
 		}
