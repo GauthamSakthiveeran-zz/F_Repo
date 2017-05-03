@@ -111,13 +111,14 @@ function subscribeToCommonEvents() {
 			if (event.match(/adPodEnded/)) { 
 				OO.$('#ooplayer').append('<p id=adPodEnded_'+adPodEndedEventOrder+'>adPodEnded '+adPodEndedEventOrder+'</p>'); 
 				OO.$('#ooplayer').append('<p id=adPodEnd_'+arguments[1]+'_'+adPodEndedEventOrder+'>adPodPlayed '+arguments[1]+' '+adPodEndedEventOrder+'  </p>');
+				OO.$('#ooplayer').append('<p id=admanager_details_'+adPodEndedEventOrder+'>'+arguments[1]+'</p>');
 				adPodEndedEventOrder++;
 				if (arguments[1]=='ooyala-ads-manager_0') {
 					OO.$('#ooplayer').append('<p id=ooyalaAds>ooyalaAds</p>'); 
 				}
-				 if (arguments[1]=='ooyala-ads-manager_1') {
-                 					OO.$('#ooplayer').append('<p id=ooyalaAds>ooyalaAds</p>');
-                 				}
+				if (arguments[1]=='ooyala-ads-manager_1') {
+                 	OO.$('#ooplayer').append('<p id=ooyalaAds>ooyalaAds</p>');
+                }
 			}
 
 			if (event.match(/videoControllerVideoElementDisposed/)) {

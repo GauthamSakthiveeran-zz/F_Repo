@@ -64,7 +64,7 @@
 		
 		<url>
 			<description name="VPAID:Bitmovin IMA VPAID2.0 PreMidPost" />
-			<embed_code name="YwMm5xYTE65tx2fUvKA6OAuoooP6lS70" />
+			<embed_code name="d1aTAyYjE6gIKVSEFyzQrAi2uFwp84rO" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="MAIN,BITMOVIN" />
 			<adPlugins name="IMA" />
@@ -172,6 +172,7 @@
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+			<sslEnabled name="https"/>
 		</url>
 
 		<url>
@@ -215,7 +216,7 @@
 			<description name="IMA:Main IMA Countdown PreMidPost|VTC:SetEmbedCode" />
 			<embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-			<plugins name="BITMOVIN" />
+			<plugins name="MAIN" />
 			<adPlugins name="IMA" />
 			<additionalPlugins name="" />
 			<pbid name="615dc8e909e941c280e12155df838355" />
@@ -290,6 +291,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[]]></playerParameter>
+	        <sslEnabled name="https"/>
     	</url>
     	
     	<url>

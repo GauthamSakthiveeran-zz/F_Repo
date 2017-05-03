@@ -9,6 +9,8 @@ import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -85,6 +87,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
+			extentTest.log(LogStatus.FAIL, e);
 		}
 
 		Assert.assertTrue(result, "Pre Mid Post Roll Ads failed.");
