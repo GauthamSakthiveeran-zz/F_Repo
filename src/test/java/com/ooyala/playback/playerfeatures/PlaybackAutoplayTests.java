@@ -26,11 +26,13 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "playerFeatures", dataProvider = "testUrls")
+	@Test(groups = "playerFeatures", dataProvider = "testUrls",invocationCount = 5)
 	public void testAutoPlay(String testName, UrlObject url) throws OoyalaException {
 		boolean result = true;
 		try {
 			driver.get(url.getUrl());
+
+			result = result && eventValidator.isPageLoaded();
 
 			injectScript();
 
