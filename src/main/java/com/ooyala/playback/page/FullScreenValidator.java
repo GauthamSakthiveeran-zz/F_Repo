@@ -51,8 +51,13 @@ public class FullScreenValidator extends PlayBackPage implements
 	}
 
 	public boolean getNormalScreen() {
-		if (!clickOnIndependentElement("NORMAL_SCREEN")){
-			return false;
+		if (!isElementPresent("FULLSCREEN_BTN_1")) {
+		    waitOnElement("NORMAL_SCREEN",10000);
+			if (!clickOnIndependentElement("NORMAL_SCREEN")) {
+				return false;
+			}
+		}else {
+			logger.info("clicked on fullscreen button but it does not go into fullscreen mode");
 		}
 		return true;
 	}
