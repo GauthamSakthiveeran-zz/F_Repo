@@ -341,8 +341,7 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"showInAdControlBar":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
         </url>
-        <!-- As of now seek is not working through automation for Bitmovin asset -->
-        <!--<url>
+        <url>
             <description name="Core:Player States and Metadata Bitmovin" />
             <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -351,7 +350,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"showInAdControlBar":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
-        </url>-->
+        </url>
         <url>
             <description name="Core:Player States and Metadata OSMF" />
             <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf" />
@@ -375,8 +374,7 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
-        <!-- Aspect ratio is not matching as expected -->
-        <!--<url>
+        <url>
             <description name="Core:Vertical Video Bitmovin" />
             <embed_code name="9od3M3MDE6-WRg_DRbpCzRyjtK-NTLMp" />
             <pcode name="p5bGExOjp6PZ-dEUw_GRJqh2Qdaq" />
@@ -385,7 +383,7 @@
             <additionalPlugins name="" />
             <pbid name="26e2e3c1049c4e70ae08a242638b5c40" />
             <playerParameter><![CDATA[]]></playerParameter>
-        </url>-->
+        </url>
     </test>
 
     <test name="PlayerStatePauseScreenTests">
