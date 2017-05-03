@@ -62,12 +62,16 @@ public class MidrollAdValidator extends PlayBackPage implements PlaybackValidato
 
 				boolean flag = isAdPlayTimePresent(url) ? validateAdStartTime("MidRoll_willPlaySingleAd_2")
 						: waitOnElement(By.id("MidRoll_willPlayAds_2"), 120000);
+				if(!flag)
+					extentTest.log(LogStatus.FAIL, "Ad did not play");
 				return flag && waitOnElement(By.id("adsPlayed_2"), 60000);
 
 			} else {
 
 				boolean flag = isAdPlayTimePresent(url) ? validateAdStartTime("MidRoll_willPlaySingleAd_1")
 						: waitOnElement(By.id("MidRoll_willPlayAds_1"), 120000);
+				if(!flag)
+					extentTest.log(LogStatus.FAIL, "Ad did not play");
 				return flag && waitOnElement(By.id("adsPlayed_1"), 60000);
 			}
 
@@ -75,11 +79,14 @@ public class MidrollAdValidator extends PlayBackPage implements PlaybackValidato
 
 			boolean flag = isAdPlayTimePresent(url) ? validateAdStartTime("MidRoll_willPlaySingleAd_1")
 					: waitOnElement(By.id("MidRoll_willPlaySingleAd_1"), 120000);
+			
+			if(!flag)
+				extentTest.log(LogStatus.FAIL, "Ad did not play");
 
 			if (url.getAdPlugins().toLowerCase().contains("pulse"))
-				return flag && waitOnElement(By.id("singleAdPlayed_2"), 60000);
+				return flag && waitOnElement(By.id("singleAdPlayed_2"), 120000);
 			else
-				return flag && waitOnElement(By.id("singleAdPlayed_1"), 60000);
+				return flag && waitOnElement(By.id("singleAdPlayed_1"), 120000);
 		}
 
 	}
