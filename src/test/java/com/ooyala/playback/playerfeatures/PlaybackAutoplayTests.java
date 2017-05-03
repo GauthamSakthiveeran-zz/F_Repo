@@ -26,7 +26,7 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "playerFeatures", dataProvider = "testUrls",invocationCount = 5)
+	@Test(groups = "playerFeatures", dataProvider = "testUrls")
 	public void testAutoPlay(String testName, UrlObject url) throws OoyalaException {
 		boolean result = true;
 		try {
