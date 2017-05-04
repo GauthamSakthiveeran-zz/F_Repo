@@ -3,6 +3,7 @@ package com.ooyala.playback.page;
 import com.ooyala.playback.factory.PlayBackFactory;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -51,8 +52,24 @@ public class FullScreenValidator extends PlayBackPage implements
 	}
 
 	public boolean getNormalScreen() {
-		if (!clickOnIndependentElement("NORMAL_SCREEN")){
-			return false;
+	    boolean flag = false;
+	    try {
+	        Thread.sleep(3000);
+            driver.findElement(By.className("oo-icon-system-fullscreen")).isDisplayed();
+            flag = false;
+        }catch (NoSuchElementException e){
+	        flag = true;
+        } catch (Exception ex){
+            logger.info(ex.getMessage());
+        }
+
+		if (flag) {
+		    waitOnElement("NORMAL_SCREEN",10000);
+			if (!clickOnIndependentElement("NORMAL_SCREEN")) {
+				return false;
+			}
+		}else {
+			logger.info("clicked on fullscreen button but it does not go into fullscreen mode");
 		}
 		return true;
 	}

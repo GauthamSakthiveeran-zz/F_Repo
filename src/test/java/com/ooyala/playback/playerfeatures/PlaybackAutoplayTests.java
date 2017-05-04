@@ -32,6 +32,8 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 		try {
 			driver.get(url.getUrl());
 
+			result = result && eventValidator.isPageLoaded();
+
 			injectScript();
 
 			result = result && eventValidator.loadingSpinner();

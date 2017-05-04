@@ -1,8 +1,8 @@
 <elements area="fullscreen">
 	<element key="FULLSCREEN_BTN" findBy="class"
              class="oo-icon-system-fullscreen" />
-    <element key="NORMAL_SCREEN" findBy="class"
-             class="oo-icon-system-minimizescreen" />
+    <element key="NORMAL_SCREEN" findBy="xPath"
+             xPath=".//span[normalize-space(@class)='oo-icon oo-icon-system-minimizescreen']" />
     <element key="OOPLAYER" findBy="id"
              id="ooplayer" />
     <element key="FULLSCREEN_BTN_1" findBy="class"

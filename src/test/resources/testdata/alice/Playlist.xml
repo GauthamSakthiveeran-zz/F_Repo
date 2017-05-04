@@ -10,7 +10,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"]}}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"]},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
             <streamType name="mp4" />
         </url>
 
@@ -22,7 +22,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical"}}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
             <streamType name="mp4" />
         </url>
 
@@ -34,7 +34,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal"}}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
             <streamType name="mp4" />
         </url>
 
@@ -46,7 +46,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"top"}}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"top"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
             <streamType name="mp4" />
         </url>
 
@@ -58,7 +58,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"}}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
             <streamType name="mp4" />
         </url>
 
@@ -70,7 +70,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right"}}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
             <streamType name="mp4" />
         </url>
 
@@ -82,7 +82,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"left"}}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"left"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
             <streamType name="mp4" />
         </url>
 
@@ -94,7 +94,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"true"}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"true","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
             <streamType name="mp4" />
         </url>
 
@@ -106,7 +106,7 @@
             <adPlugins name="" />
             <additionalPlugins name="PLAYLIST" />
             <pbid name="896a567555d451d94dcf2849f075a4c" />
-            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false"}]]></playerParameter>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
             <streamType name="mp4" />
         </url>
 
@@ -118,7 +118,7 @@
              <adPlugins name="" />
              <additionalPlugins name="PLAYLIST" />
              <pbid name="896a567555d451d94dcf2849f075a4c" />
-             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false","useFirstVideoFromPlaylist":"true"}]]></playerParameter>
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false","useFirstVideoFromPlaylist":"true","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
              <streamType name="mp4" />
          </url>
 
@@ -130,7 +130,7 @@
              <adPlugins name="" />
              <additionalPlugins name="PLAYLIST" />
              <pbid name="896a567555d451d94dcf2849f075a4c" />
-             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false","useFirstVideoFromPlaylist":"false"}]]></playerParameter>
+             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false","useFirstVideoFromPlaylist":"false","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
              <streamType name="mp4" />
          </url>
 
@@ -164,7 +164,7 @@
               <adPlugins name="" />
               <additionalPlugins name="PLAYLIST" />
               <pbid name="896a567555d451d94dcf2849f075a4c" />
-              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom","ThumbnailsSize":"300"},"autoplay":"false"}]]></playerParameter>
+              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom","ThumbnailsSize":"300"},"autoplay":"false,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}"}]]></playerParameter>
               <streamType name="mp4" />
           </url>
 
@@ -176,7 +176,7 @@
               <adPlugins name="" />
               <additionalPlugins name="PLAYLIST" />
               <pbid name="896a567555d451d94dcf2849f075a4c" />
-              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right","PodType":"scrolling"},"autoplay":"false"}]]></playerParameter>
+              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right","PodType":"scrolling"},"autoplay":"false","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
               <streamType name="mp4" />
           </url>
 
@@ -188,7 +188,7 @@
               <adPlugins name="" />
               <additionalPlugins name="PLAYLIST" />
               <pbid name="896a567555d451d94dcf2849f075a4c" />
-              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","position":"bottom","PodType":"paging"},"autoplay":"false"}]]></playerParameter>
+              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","position":"bottom","PodType":"paging"},"autoplay":"false","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
               <streamType name="mp4" />
           </url>
 
@@ -200,7 +200,7 @@
               <adPlugins name="" />
               <additionalPlugins name="PLAYLIST" />
               <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
-              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c11522c3a2424709bc8b0829d0e4fbaa","87dc703bdd03450ba709dbfcaa752034"]},"autoPlay":false,"loop":false,"height":573,"width":800,"useFirstVideoFromPlaylist":true}]]></playerParameter>
+              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c11522c3a2424709bc8b0829d0e4fbaa","87dc703bdd03450ba709dbfcaa752034"]},"autoPlay":false,"loop":false,"height":573,"width":800,"useFirstVideoFromPlaylist":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
               <streamType name="mp4" />
           </url>
 
@@ -212,7 +212,7 @@
               <adPlugins name="" />
               <additionalPlugins name="PLAYLIST" />
               <pbid name="896a567555d451d94dcf2849f075a4c" />
-              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right","ThumbnailsSpacing":"100"},"autoplay":"false"}]]></playerParameter>
+              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right","ThumbnailsSpacing":"100"},"autoplay":"false","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
               <streamType name="mp4" />
           </url>
 
@@ -224,7 +224,7 @@
               <adPlugins name="" />
               <additionalPlugins name="PLAYLIST" />
               <pbid name="896a567555d451d94dcf2849f075a4c" />
-              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","WrapperFontSize":"20"},"autoplay":"false","CaptionPosition":"outside'","Menustyle":"tabs"}]]></playerParameter>
+              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","WrapperFontSize":"20"},"autoplay":"false","CaptionPosition":"outside'","Menustyle":"tabs","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
               <streamType name="mp4" />
           </url>
 
@@ -236,7 +236,7 @@
               <adPlugins name="" />
               <additionalPlugins name="PLAYLIST" />
               <pbid name="896a567555d451d94dcf2849f075a4c" />
-              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"inside"},"autoplay":"false","Menustyle":"tabs"}]]></playerParameter>
+              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"inside"},"autoplay":"false","Menustyle":"tabs","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
               <streamType name="mp4" />
           </url>
 
@@ -248,7 +248,7 @@
               <adPlugins name="" />
               <additionalPlugins name="PLAYLIST" />
               <pbid name="896a567555d451d94dcf2849f075a4c" />
-              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"outside"},"autoplay":"false","Menustyle":"tabs"}]]></playerParameter>
+              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"outside"},"autoplay":"false","Menustyle":"tabs","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
               <streamType name="mp4" />
           </url>
 
@@ -260,7 +260,7 @@
               <adPlugins name="" />
               <additionalPlugins name="PLAYLIST" />
               <pbid name="896a567555d451d94dcf2849f075a4c" />
-              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Caption":["description","duration"],"ThumbnailsSpacing":"30"}}]]></playerParameter>
+              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Caption":["description","duration"],"ThumbnailsSpacing":"30"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
               <streamType name="mp4" />
           </url>
 
