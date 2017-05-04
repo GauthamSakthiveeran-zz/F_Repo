@@ -46,13 +46,13 @@ public class VideoPluginValidator extends PlayBackPage implements PlaybackValida
 				}
 				extentTest.log(LogStatus.PASS, "Bitmovin plugin is loaded.");
 			}
-			else if(urlObject.getStreamType().equals("mp4")) { // mp4
+			/*else if(urlObject.getStreamType().equals("mp4")) { // mp4
 				if(waitOnElement(By.id("bitmovin"), 1000) || waitOnElement(By.id("osmf"), 1000) || waitOnElement(By.id("akamai"), 1000)) {
 					extentTest.log(LogStatus.FAIL, "Main plugin is not loaded.");
 					return false;
 				}
 				extentTest.log(LogStatus.PASS, "Main plugin is loaded.");
-			}
+			}*/
 			else if(urlObject.getStreamType().equals("f4m") || urlObject.getStreamType().equals("f4f")) {
 				if(!waitOnElement(By.id("osmf"), 1000)) { // can also be akamai, need to check for asset
 					extentTest.log(LogStatus.FAIL, "Bitmovin plugin is not loaded.");
