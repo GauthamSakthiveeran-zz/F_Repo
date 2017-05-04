@@ -44,6 +44,8 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("playing_1", 60000);
 
+			result = result && eventValidator.playVideoForSometime(6);
+
 			result = result && seekAction.seek(10, true);
 
 			result = result && eventValidator.validate("seeked_1", 20000);
