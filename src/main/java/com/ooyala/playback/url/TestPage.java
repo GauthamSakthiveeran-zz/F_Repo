@@ -79,8 +79,13 @@ public class TestPage {
 				corePlayer = testpagedata.getValhalla() + pbid;
 				html5Skin = skinAsset = "";
 			}
+			
+			if (sslEnabled == "" || sslEnabled == null) {
+				sslEnabled = "http";
+			} else
+				sslEnabled = "https";
 
-			url = testpagedata.getBaseURL()
+			url = testpagedata.getBaseURL().replaceFirst("http", sslEnabled)
 						+ "?ec="
 						+ embedCode
 						+ "&pbid="
