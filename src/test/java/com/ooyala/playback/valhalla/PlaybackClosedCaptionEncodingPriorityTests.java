@@ -53,7 +53,7 @@ public class PlaybackClosedCaptionEncodingPriorityTests extends PlaybackWebTest 
 			if(!url.getStreamType().contains("mp4"))
 			result = result && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 			
-			result = result && videoPluginValidator.setUrlObject(url).validate("", 1000);
+//			result = result && videoPluginValidator.setUrlObject(url).validate("", 1000);
 
 			result = result && pause.validate("paused_1", 60000);
 
