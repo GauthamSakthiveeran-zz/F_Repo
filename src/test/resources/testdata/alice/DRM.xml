@@ -86,6 +86,7 @@
             <streamType name="hds"/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
             <playerParameter><![CDATA[]]></playerParameter>
+            <browsersSupported name="chrome,firefox,safari,MicrosoftEdge" />
         </url>
         
         <url>
@@ -96,6 +97,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <streamType name="hds"/>
+            <browsersSupported name="chrome,firefox,safari,MicrosoftEdge" />
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
