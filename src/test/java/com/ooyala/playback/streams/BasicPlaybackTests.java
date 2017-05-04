@@ -57,15 +57,17 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 			if (!testName.contains("Bitmovin Elemental Delta DASH VOD (Clear Dash)")) {
 				result = result && play.validate("playing_2", 60000);
 				
-				if(testName.contains("Bitmovin Elemental Delta DASH Remote Asset")) {
-					result = result && seekAction.setTime(100).startAction();
-					result = result && eventValidator.validate("seeked_1", 60000);
-				}else{
-					result = result && seek.validate("seeked_1", 60000);
+				if (!testName.contains("Main Akamai HLS Remote Asset") && !testName.contains("Bitmovin Akamai HLS Remote Asset"))  {
+					// live video 
+					if(testName.contains("Bitmovin Elemental Delta DASH Remote Asset")) {
+						result = result && seekAction.setTime(100).startAction();
+						result = result && eventValidator.validate("seeked_1", 60000);
+					}else{
+						result = result && seek.validate("seeked_1", 60000);
+					}
+					result = result && eventValidator.validate("played_1", 120000);
 				}
 				
-				if (!testName.contains("Main Akamai HLS Remote Asset") && !testName.contains("Bitmovin Akamai HLS Remote Asset")) // live video
-					result = result && eventValidator.validate("played_1", 120000);
 			}
 
 		} catch (Exception e) {

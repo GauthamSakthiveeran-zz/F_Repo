@@ -79,7 +79,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		while (playTime <= secs) {
 			playTime = Double.parseDouble(
 					((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
-			if (count == 120 && playTime <= 0) {
+			if (count == 200 && playTime <= 0) {
 				extentTest.log(LogStatus.FAIL, "Looks like the video did not play.");
 				return false;
 			}
