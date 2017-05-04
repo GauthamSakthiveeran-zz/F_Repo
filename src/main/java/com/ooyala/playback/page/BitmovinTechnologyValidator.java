@@ -49,6 +49,8 @@ public class BitmovinTechnologyValidator extends PlayBackPage implements Playbac
 
 		String[] options = result.split("options=");
 		String expectedValue = "html5";
+		if(getBrowser().contains("safari"))
+			expectedValue = "native";
 		if (options != null && options.length >= 2) {
 			JSONParser parser = new JSONParser();
 			JSONObject json = (JSONObject) parser.parse(options[1]);
