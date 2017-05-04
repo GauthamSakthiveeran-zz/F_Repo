@@ -26,6 +26,7 @@ public class AdPluginValidator extends PlayBackPage implements PlaybackValidator
 				return true;
 			}
 		}
+		extentTest.log(LogStatus.FAIL, "Unable to verify ad plugin");
 		return false;
 	}
 
