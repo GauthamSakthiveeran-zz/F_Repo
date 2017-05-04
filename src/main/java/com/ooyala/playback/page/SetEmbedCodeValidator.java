@@ -36,6 +36,8 @@ public class SetEmbedCodeValidator extends PlayBackPage implements
 
         if(!waitOnElement(By.id("videoElementDisposed_1"), 60000)) return false;
 
+        //Adding sleep so that javascript executor has enough time to get embed code
+        Thread.sleep(3000);
         String newAssetEmbedCode = ((JavascriptExecutor) driver)
                 .executeScript("return pp.getEmbedCode()").toString();
 

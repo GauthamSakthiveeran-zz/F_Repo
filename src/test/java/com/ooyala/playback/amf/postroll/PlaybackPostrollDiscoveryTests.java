@@ -56,12 +56,9 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
             else
                 result = result && event.validate("singleAdPlayed_1", 90000);
 
-            if(!url.getAdPlugins().contains("FREEWHEEL"))
+
             ((JavascriptExecutor) driver).executeScript("pp.pause();");
-            else {
-                result = result && event.validate("playing_2", 90000);
-                ((JavascriptExecutor) driver).executeScript("pp.pause();");
-            }
+
             result = result && discoveryValidator.validateDiscoveryToaster();
 
             result = result && discoveryValidator.validateLeftRightButton();
