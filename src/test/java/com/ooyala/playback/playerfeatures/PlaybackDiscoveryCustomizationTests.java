@@ -1,14 +1,11 @@
 package com.ooyala.playback.playerfeatures;
 
+import com.ooyala.playback.page.*;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.DiscoveryValidator;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.UpNextValidator;
 import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.PlayPauseAction;
@@ -32,6 +29,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PlayPauseAction playPauseAction;
 	private SeekAction seekAction;
+	private FullScreenValidator fullScreenValidator;
 
 	public PlaybackDiscoveryCustomizationTests() throws OoyalaException {
 		super();
@@ -75,7 +73,7 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
 			result = result && eventValidator.eventAction("DISCOVERY_CLOSE_BTN");
 
-			result = result && eventValidator.eventAction("NORMAL_SCREEN");
+			result = result && fullScreenValidator.getNormalScreen();
 
 			result = result && playAction.startAction();
 

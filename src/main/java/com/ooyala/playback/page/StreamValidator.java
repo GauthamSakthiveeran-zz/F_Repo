@@ -36,33 +36,15 @@ public class StreamValidator extends PlayBackPage implements PlaybackValidator {
 		}
 
 		if (streamType.contains("mp4")) {
-			logger.info("checking mp4 stream type");
-			String mp4Url = driver.findElementById(element).getText();
-			logger.info("opening a new tab");
-			driver.executeScript("window.open('" + mp4Url + "')");
-			ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-
-			driver.switchTo().window(tabs.get(1));
-			logger.info("navigated to new tab");
-
-			if (waitOnElement(By.xpath("//video"), 20000)) {
-				String isMp4 = driver.findElement(By.tagName("source")).getAttribute("type");
-				driver.close();
-				driver.switchTo().window(tabs.get(0));
-
-				if (isMp4.contains("mp4")) {
-					logger.info("Stream is matching as per expected result " + streamType);
-					extentTest.log(LogStatus.PASS, "Stream is matching as per expected result " + streamType);
-					return true;
-				} else {
-					logger.info("Stream is not matching as per expected result " + streamType);
-					extentTest.log(LogStatus.FAIL, "Stream is not matching as per expected result " + streamType);
-					return false;
-				}
-			} else {
-				extentTest.log(LogStatus.FAIL, "Issue with checking stream mp4.");
-				driver.close();
-				driver.switchTo().window(tabs.get(0));
+			String stream  = driver.executeScript("return OO.DEBUG.consoleOutput[0]").toString();
+			if (stream.contains("mp4")){
+				logger.info("Stream is matching as per expected result " + streamType);
+				extentTest.log(LogStatus.PASS, "Stream is matching as per expected result " + streamType);
+				return true;
+			}
+			else {
+				logger.info("Stream is not matching as per expected result " + streamType);
+				extentTest.log(LogStatus.FAIL, "Stream is not matching as per expected result " + streamType);
 				return false;
 			}
 
