@@ -1,0 +1,16 @@
+<suite name="Playback Web Regression Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+
+    <test name="FCC Regression" parallel="classes" thread-count="2">
+        <classes>
+            <parameter name="testData" value="alice/FCC.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.FCC.PlaybackFCCDefaultSettingTests" />
+            <class name="com.ooyala.playback.FCC.PlaybackFCCBasicTests" />
+        </classes>
+    </test>
+    
+</suite>
+
