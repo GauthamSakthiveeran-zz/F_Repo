@@ -14,6 +14,7 @@ import com.relevantcodes.extentreports.LogStatus;
  * Created by suraj on 3/23/17.
  */
 public class StreamValidator extends PlayBackPage implements PlaybackValidator {
+
 	private static Logger logger = Logger.getLogger(StreamValidator.class);
 
 	public StreamValidator(WebDriver webDriver) {

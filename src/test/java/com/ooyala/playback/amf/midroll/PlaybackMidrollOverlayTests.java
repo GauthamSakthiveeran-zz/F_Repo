@@ -11,7 +11,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 
-	public PlaybackMidrollOverlayTests() throws OoyalaException {
+    public PlaybackMidrollOverlayTests() throws OoyalaException {
 		super();
 	}
 

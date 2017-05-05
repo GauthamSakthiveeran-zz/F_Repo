@@ -13,6 +13,7 @@ import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 
+
 	public PlaybackMultipleMidRollAdsTests() throws OoyalaException {
 		super();
 	}

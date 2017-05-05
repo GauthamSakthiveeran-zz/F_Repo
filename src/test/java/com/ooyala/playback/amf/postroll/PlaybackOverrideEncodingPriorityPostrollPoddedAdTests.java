@@ -43,9 +43,9 @@ public class PlaybackOverrideEncodingPriorityPostrollPoddedAdTests extends Playb
 
             injectScript();
 
-            result = result && encode.validate("validate_default_encoding", 20000);
-
             result = result && playAction.startAction();
+
+            result = result && encode.validate("validate_default_encoding", 20000);
 
             result = result && seek.validate("seeked_1", 20000);
 
@@ -64,9 +64,10 @@ public class PlaybackOverrideEncodingPriorityPostrollPoddedAdTests extends Playb
 
             injectScript();
 
-            result = result && encode.validate("Override", 60000);
-
             result = result && playAction.startAction();
+
+            if (url.getVideoPlugins().contains("MAIN") && System.getProperty("browser").equalsIgnoreCase("Safari"))
+                result = result && encode.validate("Override", 60000);
 
             result = result && seek.validate("seeked_1", 60000);
 
