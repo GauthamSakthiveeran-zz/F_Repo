@@ -70,7 +70,7 @@
 			<adPlugins name="IMA" adPlayTime="20"/>
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-			<playerParameter><![CDATA[]]></playerParameter>
+			<playerParameter></playerParameter>
 		</url>
 
 		<url>
@@ -289,7 +289,7 @@
 	        <adPlugins name="IMA" adPlayTime="20"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[]]></playerParameter>
+	        <playerParameter></playerParameter>
     	</url>
     	
     	<url>
@@ -300,7 +300,8 @@
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[]]></playerParameter>
+	        <playerParameter></playerParameter>
+	        <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
     	</url>
 
 		<url>
@@ -312,6 +313,7 @@
 			<additionalPlugins name=""/>
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
 		</url>
 
         <url>
@@ -323,6 +325,7 @@
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
         </url>
 
         <url>
