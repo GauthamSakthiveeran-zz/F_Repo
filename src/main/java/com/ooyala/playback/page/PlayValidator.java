@@ -20,14 +20,14 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		 */
 		addElementToPageElements("play");
 	}
-	
-	private void errorDescription(){
-		if(isElementPresent("ERROR_SCREEN")){
+
+	private void errorDescription() {
+		if (isElementPresent("ERROR_SCREEN")) {
 			String text = getWebElement("ERROR_DESCRIPTION").getText();
 			extentTest.log(LogStatus.FAIL, text);
 		}
-		
-		Assert.assertTrue(false,"Getting error like NETWORK ERROR or Play button is not present.");
+
+		Assert.assertTrue(false, "Getting error like NETWORK ERROR or Play button is not present.");
 	}
 
 	@Override
@@ -35,19 +35,19 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		boolean errorScreen = false;
 
 		try {
-			
-			if(!loadingSpinner()){
-				Assert.assertTrue(false,"In loading spinner for a very long time.");
+
+			if (!loadingSpinner()) {
+				Assert.assertTrue(false, "In loading spinner for a very long time.");
 				extentTest.log(LogStatus.FAIL, "In loading spinner for a very long time.");
 				return false;
 			}
-			
-			if(!waitOnElement("PLAY_BUTTON", 90000)){
+
+			if (!waitOnElement("PLAY_BUTTON", 90000)) {
 				errorDescription();
 				return false;
 			}
 			return true;
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			driver.navigate().refresh();
@@ -56,7 +56,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 			errorScreen = isElementPresent("ERROR_SCREEN");
 			if (errorScreen)
 				driver.navigate().refresh();
-			if (!waitOnElement("PLAY_BUTTON", 60000)){
+			if (!waitOnElement("PLAY_BUTTON", 60000)) {
 				errorDescription();
 				return false;
 			}
@@ -69,33 +69,41 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 		// if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction())
 		// return false;
-		if (!clickOnIndependentElement("PLAY_BUTTON")){
+		if (!clickOnIndependentElement("PLAY_BUTTON")) {
 			extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
 			return false;
 		}
 
-		if (!loadingSpinner()){
+		if (!loadingSpinner()) {
 			extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
 			return false;
 		}
 
-		if (!waitOnElement("PLAYING_SCREEN", 60000)){
-			if(getBrowser().contains("safari")) {
-				if (!clickOnIndependentElement("PLAY_BUTTON")){
-					extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
-					return false;
+		if (!waitOnElement("PLAYING_SCREEN", 60000)) {
+			if (getBrowser().contains("safari")) {
+				int count = 120;
+				while (count >= 0) {
+					if (!clickOnIndependentElement("PLAY_BUTTON")) {
+						extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
+						return false;
+					}
+					if (waitOnElement(By.id(element), 1000)) {
+						extentTest.log(LogStatus.PASS,
+								"Video Playing and validation of element " + element + " is successful");
+						return true;
+					}
+					count--;
 				}
-			} else{
+
+			} else {
 				return false;
 			}
-			
+
 		}
 
 		if (!waitOnElement(By.id(element), timeout))
 			return false;
-		extentTest.log(LogStatus.PASS,
-				"Video Playing and validation of element " + element
-						+ " is successful");
+		extentTest.log(LogStatus.PASS, "Video Playing and validation of element " + element + " is successful");
 		return true;
 	}
 }

@@ -190,7 +190,7 @@
 
         <url>
             <description
-                    name="VAST:Main Vast3.0 Preroll|VAST:Main Vast3.0 Clickthrough|Main Vast3.0 CC enabled preroll"/>
+                    name="VAST:Main Vast3.0 Preroll|VAST:Main Vast3.0 Clickthrough|VAST:Main Vast3.0 CC enabled preroll"/>
             <embed_code name="A1YjlxYTE6hMmIA4oQgc8SJM6qJWev_J"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>

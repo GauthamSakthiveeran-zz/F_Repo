@@ -76,6 +76,19 @@
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
         
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Azure HLS VOD" />
+            <embed_code name="cwbHN1YTE6dvbVjsKGZu_O4dNUkuuepR" />
+            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+            <browsersSupported name="safari" />
+            <streamType name="hls"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
        <url>
             <description name="DRM Testing(Live,VOD and Remote assets):OSMF Elemental Delta HDS VOD" />
             <embed_code name="5vYTJyYTE6C5GFB7AJpqutxLuWKTQ5QG" />
