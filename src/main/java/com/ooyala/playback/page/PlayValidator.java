@@ -79,7 +79,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 			return false;
 		}
 
-		if (!waitOnElement("PLAYING_SCREEN", 60000)) {
+		if (!waitOnElement("PLAYING_SCREEN", 10000)) {
 			if (getBrowser().contains("safari")) {
 				int count = 120;
 				while (count >= 0) {
