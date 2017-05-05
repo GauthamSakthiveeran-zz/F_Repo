@@ -16,11 +16,11 @@
     	<url>
 	    	<description name="Pulse:OSMF Discovery Postroll"/>
 	        <embed_code name="BzaDhxYTE6-eKkYNYAdQJCZnq0vRDhMQ"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
+	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+	        <plugins name="OSMF"/>
 	        <adPlugins name="PULSE"/>
 	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
+	        <pbid name="a40c3383eb1f4d31a48accc2f7e4e613"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
@@ -142,7 +142,7 @@
     	
     	<url>
 	    	<description name="VAST:Bitmovin Vast3.0 Discovery Postroll Up Next"/>
-	        <embed_code name="FhczdxYTE6noLbxAO-24AgwhOneLaI9e"/>
+	        <embed_code name="Q3NTh2YTE6T8HdJ6_8LR4pi1preyj9QK"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
 	        <adPlugins name="VAST"/>
@@ -177,7 +177,7 @@
     	
     	<url>
 	    	<description name="VPAID:Bitmovin Vast VPAID2.0 Discovery Postroll"/>
-	        <embed_code name="M1b2txYTE6kKkvbrUIlSoCFcoAWpmUhE"/>
+	        <embed_code name="N4NXgxYjE6DcHakmIDuoZn0aSELHzHYp"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="MAIN,BITMOVIN"/>
 	        <adPlugins name="VAST"/>
@@ -188,18 +188,18 @@
     	
     	<url>
 	    	<description name="VPAID:Bitmovin IMA VPAID2.0 Discovery Postroll"/>
-	        <embed_code name="g0Mm5xYTE6EyB-Fnqqqe5FK_xlksFm5Z"/>
+	        <embed_code name="VhNngxYjE6_s7lZkpp-GYGMk_7xNE_6X"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="MAIN,BITMOVIN"/>
 	        <adPlugins name="IMA"/>
 	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="934f268f2064494684c52029986b7496"/>
+	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
 	        <playerParameter><![CDATA[]]></playerParameter>
     	</url>
     	
     	<url>
 	    	<description name="VPAID:Bitmovin IMA VPAID1.0 Discovery Postroll"/>
-	        <embed_code name="AzZG5xYTE6AdhXw0w0CQDstKXQ9li9IQ"/>
+	        <embed_code name="Y4aXgxYjE6MvPpALdDDX8bHOxwiJx1G8"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
 	        <adPlugins name="IMA"/>
@@ -251,6 +251,6 @@
             <pbid name="294b0bd173974ddb8128a86db1029bd7"/>
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
-    	
+
     </test>
 </testdata>

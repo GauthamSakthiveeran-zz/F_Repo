@@ -64,7 +64,7 @@
 		
 		<url>
 			<description name="VPAID:Bitmovin IMA VPAID2.0 PreMidPost" />
-			<embed_code name="d1aTAyYjE6gIKVSEFyzQrAi2uFwp84rO" />
+			<embed_code name="M2NngxYjE6lR5ArZnZ_x5XV9N-4zbXih" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="MAIN,BITMOVIN" />
 			<adPlugins name="IMA" adPlayTime="20"/>
@@ -283,7 +283,7 @@
 		
 		<url>
 	    	<description name="VPAID:Bitmovin IMA VPAID1.0 PreMidPost"/>
-	        <embed_code name="hlMm5xYTE6o70Npqxy2Wl8De5P_Kqm7C"/>
+	        <embed_code name="hpNngxYjE626kPyLx7t4LHro-f0Iq0Pa"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
 	        <adPlugins name="IMA" adPlayTime="20"/>
