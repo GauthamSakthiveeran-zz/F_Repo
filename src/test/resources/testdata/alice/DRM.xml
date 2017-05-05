@@ -12,6 +12,7 @@
             <streamType name="dash"/>
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         
         <url>
@@ -25,6 +26,7 @@
             <streamType name="dash"/>
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash VOD" />
@@ -37,6 +39,7 @@
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <streamType name="dash"/>
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Azure Dash VOD" />
@@ -49,6 +52,7 @@
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <streamType name="dash"/>
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental HLS VOD" />
@@ -61,6 +65,7 @@
             <browsersSupported name="safari" />
             <streamType name="hls"/>
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         
         <url>
@@ -74,6 +79,7 @@
             <browsersSupported name="safari" />
             <streamType name="hls"/>
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         
         <url>
@@ -87,6 +93,7 @@
             <browsersSupported name="safari" />
             <streamType name="hls"/>
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         
        <url>
@@ -129,6 +136,7 @@
             <streamType name="hls" />
             <browsersSupported name="chrome,firefox,safari,MicrosoftEdge" />
             <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
 
         <url>
@@ -207,6 +215,7 @@
             <pbid name="c0adf6d2044f437080e005a69cba4880" />
             <streamType name="hls" />
             <playerParameter><![CDATA[{"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
     </test>
 
@@ -220,6 +229,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/5kaDBlODE6fqcosXyCQ9myvTxpObwIOw?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=vtyvjHItiFh3SclS0+CjIMsHDiPVOabRkN6GCdIKu6Q&override_syndication_group=override_all_synd_groups","encodingPriority":["dash_drm"],"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash Live Channel live" />
@@ -234,6 +244,7 @@
                 <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
                 <provider>elemental</provider>
             </live>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
 <!--         This is not hds asset -->
         <!-- <url>
@@ -263,6 +274,7 @@
                 <channelId>4e925289af57408384f58832323bfe51</channelId>
                 <provider>elemental</provider>
             </live>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         <!-- Not working at the momemnt Do not test -->
        <!-- <url>
@@ -288,6 +300,7 @@
                 <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
                 <provider>elemental</provider>
             </live>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
     </test>
 </testdata>
