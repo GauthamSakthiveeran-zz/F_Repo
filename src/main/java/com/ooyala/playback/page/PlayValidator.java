@@ -81,7 +81,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 		if (!waitOnElement("PLAYING_SCREEN", 10000)) {
 			if (getBrowser().contains("safari")) {
-				int count = 120;
+				int count = 10;
 				while (count >= 0) {
 					if (!clickOnIndependentElement("PLAY_BUTTON")) {
 						extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
@@ -94,6 +94,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 					}
 					count--;
 				}
+				clickOnHiddenElement("PLAY_BUTTON");
 
 			} else {
 				return false;
