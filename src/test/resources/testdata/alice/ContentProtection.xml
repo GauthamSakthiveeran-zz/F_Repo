@@ -24,7 +24,7 @@
             <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"encodingPriority":["hls_drm"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/o2djFsMzE6R-tb3pew2puwvQvAQWFRUo?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2900017190&account_id=dulari_qa&&&signature=7LgME591QFTnhOjF4x9p6GMxE0EDX72SUtRqVgwiy1s","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
-        	<streamType name="mpd" />
+        	<streamType name="m3u8" />
         </url>
 
         <url>
@@ -112,7 +112,7 @@
         	<streamType name="m3u8" />
         </url>
         <url>
-            <description name="Content Protection:Bitmovin Elemental Fairplay HLS + OPT" />
+            <description name="Content Protection:Bitmovin Elemental Fairplay HLS + OPT|Content Protection:Bitmovin Elemental Fairplay HLS + OPT + entitlement" />
             <embed_code name="E1eTJiNDE6JxNLNrM_CK-vicoKeZtW1e" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
@@ -122,18 +122,6 @@
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/E1eTJiNDE6JxNLNrM_CK-vicoKeZtW1e?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892590984&account_id=dulari_qa&&&signature=ihvzIhOpC8EKQIB4xMHDf/XoixnXodMD0HNGA3Vw4o4","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         	<streamType name="m3u8" />
-        </url>
-        <url>
-            <description name="Content Protection:Bitmovin Elemental Fairplay HLS + OPT + entitlement" />
-            <embed_code name="E1eTJiNDE6JxNLNrM_CK-vicoKeZtW1e" />
-            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/E1eTJiNDE6JxNLNrM_CK-vicoKeZtW1e?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892590984&account_id=dulari_qa&&&signature=ihvzIhOpC8EKQIB4xMHDf/XoixnXodMD0HNGA3Vw4o4","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
-       		<streamType name="m3u8" />
         </url>
         <url>
             <description name="Content Protection:Bitmovin Elemental(Over secure network) dash + OPT + entitlement" />

@@ -73,10 +73,10 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
                 return verifyClickThrough("", "VAST_OVERLAY_IMAGE", element);
         }*/
         //Check the ad plugins and verify close overlay button
-        if (!adPlugin.equalsIgnoreCase("FREEWHEEL") || !adPlugin.equalsIgnoreCase("VAST")) {
-            validateOverlayCloseButton(element, timeout);
+        if (!adPlugin.contains("FREEWHEEL") && !adPlugin.contains("VAST")) {
+            return validateOverlayCloseButton(element, timeout);
         }
-        return false;
+        return true;
     }
 
     public boolean validateOverlayRenderingEvent(int timeout) {

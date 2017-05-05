@@ -19,6 +19,14 @@
             <class name="com.ooyala.playback.streams.PlaybackLiveTests" />
         </classes>
     </test>
+    
+    <test name="DRM Regression" parallel="classes" thread-count="1">
+        <classes>
+            <parameter name="testData" value="alice/DRM.xml"/>
+            <parameter name="jsFile" value="alice/alice.js"/>
+            <class name="com.ooyala.playback.drm.PlaybackWithDRMLiveTests"/>
+        </classes>
+    </test>
 
 </suite>
 

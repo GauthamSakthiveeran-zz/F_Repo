@@ -28,6 +28,8 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 			driver.get(urlWithoutSkin);
 
 			result = result && event.isPageLoaded();
+			
+			injectScript();
 
 			Boolean autoplay = (Boolean) executeScript(
 					"function test() {var bool = pp.parameters.autoplay; return bool;} return test();");

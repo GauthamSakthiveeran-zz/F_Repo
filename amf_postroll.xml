@@ -8,11 +8,13 @@
 		<parameter name="xmlFilePkg" value="amf" />
 		<classes>
 			<!--<class name="com.ooyala.playback.amf.postroll.PlaybackAutoplayAutoloopPostrollAdTests"></class>
-			<class name="com.ooyala.playback.amf.postroll.PlaybackAutoplayAutoloopPostrollPoddedAdTests"></class>-->
-			<class name="com.ooyala.playback.amf.postroll.PlaybackPostrollInitialVolumeTests"></class>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackAutoplayAutoloopPostrollPoddedAdTests"></class>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackPostrollInitialVolumeTests"></class>-->
+			
 			<class name="com.ooyala.playback.amf.postroll.PlaybackPostRollPoddedAdsTests"></class>
 			<class name="com.ooyala.playback.amf.postroll.PlaybackPostRollAdsTests"></class>
 			<class name="com.ooyala.playback.amf.postroll.PlaybackPostrollDiscoveryTests"></class>
+			
 		</classes>
 	</test>
 	
