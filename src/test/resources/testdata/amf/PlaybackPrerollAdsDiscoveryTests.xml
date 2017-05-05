@@ -64,7 +64,7 @@
 			<plugins name="OSMF" />
 			<adPlugins name="PULSE" />
 			<additionalPlugins name="DISCOVERY" />
-			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<pbid name="a40c3383eb1f4d31a48accc2f7e4e613" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
@@ -188,18 +188,18 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
-    	<url>
-			<description name="VAST:OSMF Vast3.0 Discovery Preroll" />
-			<embed_code name="M5eThxYTE6_h_AwrL4xP_bW3jV3zaQ3z" />
-			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-			<plugins name="OSMF,MAIN" />
-			<adPlugins name="VAST" />
-			<additionalPlugins name="DISCOVERY" />
-			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
-			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-			<browserSupportedVersion name="safari,9" />
-		</url>
+    	 <url>
+            <description name="VAST:OSMF Vast3.0 Discovery Preroll" />
+            <embed_code name="M5eThxYTE6_h_AwrL4xP_bW3jV3zaQ3z" />
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+            <plugins name="OSMF,MAIN" />
+            <adPlugins name="VAST" />
+            <additionalPlugins name="DISCOVERY" />
+            <pbid name="250b58a014e6497ea5858c0a5c77e2c7" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+            <browserSupportedVersion name="safari,9" />
+        </url>
 		
 		<url>
 	    	<description name="VAST:Main Vast3.0 Discovery Preroll UP Next"/>
@@ -224,15 +224,15 @@
     	</url>
     	
     	<url>
-	    	<description name="VPAID:OSMF Vast VPAID2.0 Discovery Preroll"/>
-	        <embed_code name="VmMm9xYTE6ICbUwYH3HBpsSrWXVz1IEs"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="VAST"/>
-	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="b8f0107b875e4c9ebd3e54f2d312deb6"/>
-	        <playerParameter><![CDATA[]]></playerParameter>
-    	</url>
+            <description name="VPAID:OSMF Vast VPAID2.0 Discovery Preroll"/>
+            <embed_code name="VmMm9xYTE6ICbUwYH3HBpsSrWXVz1IEs"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name="DISCOVERY"/>
+            <pbid name="b8f0107b875e4c9ebd3e54f2d312deb6"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
 
 		<url>
 			<description name="VPAID:OSMF IMA VPAID2.0 Discovery Preroll"/>
@@ -266,6 +266,6 @@
 			<pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
 			<playerParameter><![CDATA[]]></playerParameter>
 		</url>
-    	
+
     </test>
 </testdata>
