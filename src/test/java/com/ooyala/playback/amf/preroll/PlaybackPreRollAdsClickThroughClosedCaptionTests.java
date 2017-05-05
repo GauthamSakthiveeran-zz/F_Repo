@@ -35,7 +35,7 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			result = result && playValidator.waitForPage();
 			injectScript();
 			result = result && playAction.startAction();
-			result = result && event.validate("PreRoll_willPlaySingleAd_1", 10000);
+			result = result && event.validate("PreRoll_willPlaySingleAd_1", 60000);
 			
 			if (result && click) {
 				((JavascriptExecutor) driver).executeScript("pp.pause()");

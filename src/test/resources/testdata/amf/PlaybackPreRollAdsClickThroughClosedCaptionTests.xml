@@ -89,8 +89,20 @@
         </url>
 
         <url>
-            <description name="Pulse:Bitmovin Preroll with CC|Pulse:Bitmovin Preroll"/>
+            <description name="Pulse:Bitmovin Preroll with CC"/>
             <embed_code name="9lNDNhMzE65U7FW_KR1bQm7m41SeT997"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="PULSE"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Pulse:Bitmovin Preroll"/>
+            <embed_code name="5kbmU5MzE6ivgWkobhscmQwGuD7fyNIa"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
             <adPlugins name="PULSE"/>
@@ -227,13 +239,13 @@
 
         <url>
             <description name="VPAID:Bitmovin IMA VPAID1.0 Preroll"/>
-            <embed_code name="g2Mm5xYTE6hG_-Jc3jffJo9KxsB7ijEa"/>
+            <embed_code name="VjNngxYjE6xYQ35M48WsDm-QGlYpw4-M"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN"/>
+            <plugins name="BITMOVIN, MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
         </url>
 
         <url>
@@ -297,7 +309,7 @@
 
         <url>
             <description name="VPAID:Bitmovin IMA VPAID2.0 Preroll"/>
-            <embed_code name="ZvMXljMTE6FVtQnL5SJJlM4j06NY0fnV"/>
+            <embed_code name="MwNngxYjE6KUtLEbt6_t2vqCpE2GESG2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="MAIN,BITMOVIN"/>
             <adPlugins name="IMA"/>

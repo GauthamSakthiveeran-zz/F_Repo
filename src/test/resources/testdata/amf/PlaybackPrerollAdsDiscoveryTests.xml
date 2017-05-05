@@ -15,23 +15,23 @@
     	
     	<url>
 	    	<description name="VPAID:Bitmovin Vast VPAID2.0 Discovery Preroll"/>
-	        <embed_code name="F5bmtxYTE6rNUGGod4jLZa_r9ekJBZO8"/>
+	        <embed_code name="N2NXgxYjE6iFcbfNsk7WHHETE80nVOnv"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="MAIN,BITMOVIN"/>
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="14a1b2eb21104617948405aeac11271b"/>
+	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
 	        <playerParameter><![CDATA[]]></playerParameter>
     	</url>
     	
     	<url>
 	    	<description name="VPAID:Bitmovin IMA VPAID2.0 Discovery Preroll"/>
-	        <embed_code name="gyMm5xYTE6dPCcaLAIzwA4tgm6yrJpUQ"/>
+	        <embed_code name="U4NngxYjE61RzVOAVOgbx8ckp2CB3gMM"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="MAIN,BITMOVIN"/>
 	        <adPlugins name="IMA"/>
 	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="14a1b2eb21104617948405aeac11271b"/>
+	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
 	        <playerParameter><![CDATA[]]></playerParameter>
     	</url>
     	
@@ -214,12 +214,12 @@
     	
     	<url>
 	    	<description name="VPAID:Bitmovin IMA VPAID1.0 Discovery Preroll"/>
-	        <embed_code name="hnMm5xYTE6qB6hPItGcFzFVcl0y66rN2"/>
+	        <embed_code name="RkN3gxYjE6hxEMuUCrMXbkQ7-xbjW6b8"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
 	        <adPlugins name="IMA"/>
 	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
 	        <playerParameter><![CDATA[]]></playerParameter>
     	</url>
     	

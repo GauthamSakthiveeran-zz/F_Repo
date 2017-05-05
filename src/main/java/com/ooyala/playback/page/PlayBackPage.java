@@ -75,7 +75,7 @@ public abstract class PlayBackPage extends WebPage {
 		} catch (Exception ex) {
 			extentTest.log(LogStatus.INFO,
 					"wait on element " + elementKey + "  failed with exception " + ex.getMessage());
-			ex.printStackTrace();
+			logger.error(ex.getMessage());
 		}
 		return false;
 
@@ -85,8 +85,6 @@ public abstract class PlayBackPage extends WebPage {
 	protected boolean clickOnIndependentElement(String elementKey) {
 		try {
 			boolean flag = super.clickOnIndependentElement(elementKey);
-			if (getBrowser().contains("safari"))
-				flag = false;
 			if (!flag) {
 				flag = clickOnHiddenElement(elementKey);
 

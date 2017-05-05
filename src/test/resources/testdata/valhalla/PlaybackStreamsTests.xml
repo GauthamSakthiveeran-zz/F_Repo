@@ -8,7 +8,7 @@
 			<plugins name="" />
 			<adPlugins name="" />
 			<additionalPlugins name="" />
-			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<pbid name="82ab589479404e4ab1dd87b49aaa0354" />
 			<streamType name="m3u8" />
 			<playerParameter></playerParameter>
 		</url>
@@ -20,7 +20,7 @@
 			<plugins name="" />
 			<adPlugins name="" />
 			<additionalPlugins name="" />
-			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<pbid name="82ab589479404e4ab1dd87b49aaa0354" />
 			<streamType name="mp4" />
 			<playerParameter></playerParameter>
 		</url>
@@ -32,7 +32,7 @@
 			<plugins name="" />
 			<adPlugins name="" />
 			<additionalPlugins name="" />
-			<pbid name="7c7e649584604bc9ac020ae2aeda8ebf" />
+			<pbid name="82ab589479404e4ab1dd87b49aaa0354" />
 			<streamType name="mpd" />
 			<playerParameter></playerParameter>
 		</url>

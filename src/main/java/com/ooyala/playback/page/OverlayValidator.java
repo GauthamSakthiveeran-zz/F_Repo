@@ -64,19 +64,19 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
     }
 
     public boolean validateClickThrough(String element, int timeout, String adPlugin) throws Exception {
-        switch (adPlugin.toUpperCase()) {
+        /*switch (adPlugin.toUpperCase()) {
             case "FREEWHEEL":
                 return verifyClickThrough("FW_OVERLAY_FRAME", "FW_OVERLAY_IMAGE", element);
             case "IMA":
                 return verifyClickThrough("IMA_OVERLAY_FRAME", "IMA_OVERLAY_IMAGE", element);
             case "VAST":
                 return verifyClickThrough("", "VAST_OVERLAY_IMAGE", element);
-        }
+        }*/
         //Check the ad plugins and verify close overlay button
-        if (!adPlugin.equalsIgnoreCase("FREEWHEEL") || !adPlugin.equalsIgnoreCase("VAST")) {
-            validateOverlayCloseButton(element, timeout);
+        if (!adPlugin.contains("FREEWHEEL") && !adPlugin.contains("VAST")) {
+            return validateOverlayCloseButton(element, timeout);
         }
-        return false;
+        return true;
     }
 
     public boolean validateOverlayRenderingEvent(int timeout) {

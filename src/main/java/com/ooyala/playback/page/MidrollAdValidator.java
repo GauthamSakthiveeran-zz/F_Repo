@@ -124,7 +124,7 @@ public class MidrollAdValidator extends PlayBackPage implements PlaybackValidato
 		return true;
 	}
 
-	public boolean validateNonLinearAdStartTime(String element) {
+	/*public boolean validateNonLinearAdStartTime(String element) {
 
 		if (!loadingSpinner()) {
 			extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
@@ -166,7 +166,7 @@ public class MidrollAdValidator extends PlayBackPage implements PlaybackValidato
 		logger.error("Overlay is not playing at expected position i.e : " + overlayPlayingAt);
 		extentTest.log(LogStatus.FAIL, "Overlay is not playing at expected position i.e : " + overlayPlayingAt);
 		return false;
-	}
+	}*/
 
 	public boolean validateMultipleMidrollAdStartTime(UrlObject url, String testName) throws Exception {
 		boolean result = true;

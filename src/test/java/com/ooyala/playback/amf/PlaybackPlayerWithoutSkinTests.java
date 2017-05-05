@@ -28,6 +28,8 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 			driver.get(urlWithoutSkin);
 
 			result = result && event.isPageLoaded();
+			
+			injectScript();
 
 			Boolean autoplay = (Boolean) executeScript(
 					"function test() {var bool = pp.parameters.autoplay; return bool;} return test();");
@@ -36,7 +38,7 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 
 			executeScript("pp.play();");
 
-			result = result && event.validate("PreRoll_willPlaySingleAd_1", 10000);
+			result = result && event.validate("PreRoll_willPlaySingleAd_1", 60000);
 
 			result = result && event.validate("adIsPlaying", 60000);
 

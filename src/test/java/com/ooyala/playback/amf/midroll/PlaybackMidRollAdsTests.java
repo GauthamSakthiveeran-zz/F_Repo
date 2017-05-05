@@ -12,45 +12,45 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 
-	public PlaybackMidRollAdsTests() throws OoyalaException {
-		super();
-	}
+    public PlaybackMidRollAdsTests() throws OoyalaException {
+        super();
+    }
 
-	private EventValidator event;
-	private PlayValidator playValidator;
-	private SeekValidator seekValidator;
-	private SetEmbedCodeValidator setEmbedCodeValidator;
+    private EventValidator event;
+    private PlayValidator playValidator;
+    private SeekValidator seekValidator;
+    private SetEmbedCodeValidator setEmbedCodeValidator;
     private MidrollAdValidator midrollAdValidator;
 
-	@Test(groups = {"amf","midroll"}, dataProvider = "testUrls")
-	public void verifyMidRoll(String testName, UrlObject url) throws OoyalaException {
-		
-		boolean result = true;
+    @Test(groups = {"amf", "midroll"}, dataProvider = "testUrls")
+    public void verifyMidRoll(String testName, UrlObject url) throws OoyalaException {
 
-		try {
-			driver.get(url.getUrl());
+        boolean result = true;
 
-			result = result && playValidator.waitForPage();
+        try {
+            driver.get(url.getUrl());
 
-			injectScript();
+            result = result && playValidator.waitForPage();
 
-			result = result && playValidator.validate("playing_1", 60000);
+            injectScript();
 
-			result = result && midrollAdValidator.validateMidrollAd(url);
-			
-			if(testName.contains("SetEmbedCode")){
+            result = result && playValidator.validate("playing_1", 60000);
+
+            result = result && midrollAdValidator.validateMidrollAd(url);
+
+            if (testName.contains("SetEmbedCode")) {
 //				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000); TODO: Resolve NPE
-			}else{
-				result = result && seekValidator.validate("seeked_1", 160000);
-				result = result && event.validate("played_1", 160000);
-			}
+            } else {
+                result = result && seekValidator.validate("seeked_1", 160000);
+                result = result && event.validate("played_1", 160000);
+            }
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			extentTest.log(LogStatus.FAIL, e);
-			result = false;
-		}
+        } catch (Exception e) {
+            e.printStackTrace();
+            extentTest.log(LogStatus.FAIL, e);
+            result = false;
+        }
 
-		Assert.assertTrue(result, "Verified");
-	}
+        Assert.assertTrue(result, "Verified");
+    }
 }

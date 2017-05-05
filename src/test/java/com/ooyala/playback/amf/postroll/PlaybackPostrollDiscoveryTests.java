@@ -15,62 +15,62 @@ import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 
-	public PlaybackPostrollDiscoveryTests() throws OoyalaException {
-		super();
-	}
+    public PlaybackPostrollDiscoveryTests() throws OoyalaException {
+        super();
+    }
 
-	private EventValidator event;
-	private PlayValidator playValidator;
-	private DiscoveryValidator discoveryValidator;
-	private SeekAction seekAction;
-	private UpNextValidator upNextValidator;
+    private EventValidator event;
+    private PlayValidator playValidator;
+    private DiscoveryValidator discoveryValidator;
+    private SeekAction seekAction;
+    private UpNextValidator upNextValidator;
 
-	@Test(groups = {"amf","postroll","discovery","upnext","sequential"}, dataProvider = "testUrls")
-	public void verifyPostrollDiscovery(String testName, UrlObject url) throws OoyalaException {
+    @Test(groups = {"amf", "postroll", "discovery", "upnext", "sequential"}, dataProvider = "testUrls")
+    public void verifyPostrollDiscovery(String testName, UrlObject url) throws OoyalaException {
 
-		boolean result = true;
+        boolean result = true;
 
-		try {
+        try {
 
-			driver.get(url.getUrl());
+            driver.get(url.getUrl());
 
-			result = result && playValidator.waitForPage();
+            result = result && playValidator.waitForPage();
 
-			injectScript();
+            injectScript();
 
-			result = result && playValidator.validate("playing_1", 150000);
-			
-			if (!event.isAdPluginPresent("pulse"))
-				result = result && seekAction.fromLast().setTime(30).startAction();
-			
-			result = result && event.loadingSpinner();
-			
-			result = result && upNextValidator.validate("", 60000);
-			
-			result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
+            result = result && playValidator.validate("playing_1", 150000);
 
-			if (event.isAdPluginPresent("pulse"))
-				result = result && event.validate("singleAdPlayed_2", 90000);
-			else
-				result = result && event.validate("singleAdPlayed_1", 90000);
-			
-			((JavascriptExecutor) driver).executeScript("pp.pause();");
-			
-			result = result && discoveryValidator.validateDiscoveryToaster();
+            if (!event.isAdPluginPresent("pulse")) {
+                result = result && event.loadingSpinner();
+                result = result && seekAction.fromLast().setTime(30).startAction();
+            }
 
-			result = result && discoveryValidator.validateLeftRightButton();
+            result = result && event.loadingSpinner();
 
-			result = result && discoveryValidator.clickOnDiscoveryCloseButton();
-			
-			result = result && discoveryValidator.clickOnDiscoveryButton();
+            result = result && upNextValidator.validate("", 300000);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			result = false;
-		}
+            result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
 
-		Assert.assertTrue(result, "Tests failed");
+            if (event.isAdPluginPresent("pulse"))
+                result = result && event.validate("singleAdPlayed_2", 90000);
+            else
+                result = result && event.validate("singleAdPlayed_1", 90000);
 
-	}
 
+            ((JavascriptExecutor) driver).executeScript("pp.pause();");
+
+            result = result && discoveryValidator.validateDiscoveryToaster();
+
+            result = result && discoveryValidator.validateLeftRightButton();
+
+            result = result && discoveryValidator.clickOnDiscoveryCloseButton();
+
+            result = result && discoveryValidator.clickOnDiscoveryButton();
+
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            result = false;
+        }
+        Assert.assertTrue(result, "Tests failed");
+    }
 }

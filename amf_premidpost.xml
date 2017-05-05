@@ -9,13 +9,13 @@
 		<parameter name="xmlFilePkg" value="amf" />
 
 		<classes>
-			<class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPreMidPostAdTests"></class>
+			<!-- <class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPreMidPostAdTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPreMidPostPoddedAdTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPrerollAndMidrollAdTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackBasicSeekAndReplayTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackIMAPreVastMidAdsTests"></class>
-			<class name="com.ooyala.playback.amf.PlayBackNoAdsTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPrerollAndMidrollAdTests"></class> 
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostInitialVolumeTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackBasicSeekAndReplayTests"></class>-->
+			
+			<class name="com.ooyala.playback.amf.PlaybackIMAPreVastMidAdsTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostReplayTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsPoddedTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"></class>
@@ -25,7 +25,7 @@
 		
 	</test>
 	
-	<test name="AMF VTC" parallel="classes" thread-count="5">
+	<!-- <test name="AMF VTC" parallel="classes" thread-count="5">
 
 		<parameter name="jsFile" value="vtc/vtc.js,amf/amf.js" />
 		<parameter name="testData" value="VTC.xml"/>
@@ -36,6 +36,6 @@
 			<class name="com.ooyala.playback.amf.PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests"></class>
 		</classes>
 		
-	</test>
+	</test> -->
 
 </suite>

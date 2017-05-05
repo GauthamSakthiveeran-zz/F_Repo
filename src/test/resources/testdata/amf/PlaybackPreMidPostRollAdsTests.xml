@@ -31,7 +31,7 @@
 			<embed_code name="kxYzZnMTE6ZCgrz07-3C3pMbCcqYySyZ" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
-			<adPlugins name="IMA" />
+			<adPlugins name="IMA" adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -43,7 +43,7 @@
 			<embed_code name="w0bjdoMTE6pvm5MjCey7t2WJavX08Ob1" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" adPlayTime="20"/>
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -56,7 +56,7 @@
 			<embed_code name="sydnI4MjE6Mupnaunbb8jtY1M49KsDPv" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="MAIN,BITMOVIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -64,10 +64,10 @@
 		
 		<url>
 			<description name="VPAID:Bitmovin IMA VPAID2.0 PreMidPost" />
-			<embed_code name="YwMm5xYTE65tx2fUvKA6OAuoooP6lS70" />
+			<embed_code name="M2NngxYjE6lR5ArZnZ_x5XV9N-4zbXih" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="MAIN,BITMOVIN" />
-			<adPlugins name="IMA" />
+			<adPlugins name="IMA" adPlayTime="20"/>
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[]]></playerParameter>
@@ -78,7 +78,7 @@
 			<embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="IMA" />
+			<adPlugins name="IMA" adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="615dc8e909e941c280e12155df838355" />
 			<playerParameter></playerParameter>
@@ -104,7 +104,7 @@
 			<embed_code name="I2eGVmMDE6S2TG0jsa7NNE3thejf21i3" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
-			<adPlugins name="IMA" />
+			<adPlugins name="IMA" adPlayTime="52"/>
 			<additionalPlugins name="" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
@@ -118,7 +118,7 @@
 			<embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
@@ -132,7 +132,7 @@
 			<embed_code name="VlZGY5MzE63yUh1dSJkD8P5r3QLN4krQ" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
-			<adPlugins name="PULSE" />
+			<adPlugins name="PULSE" adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -144,7 +144,7 @@
 			<embed_code name="s0eTdxYTE6CVt_744t-WYSQ6A_rx19Mb" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF" />
-			<adPlugins name="PULSE" />
+			<adPlugins name="PULSE" adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -157,7 +157,7 @@
 			<embed_code name="JjbmFuYTE60g0UVbvotO0aK6dnJvN3c7" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="PULSE" />
+			<adPlugins name="PULSE" adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -179,7 +179,7 @@
 			<embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="IMA" />
+			<adPlugins name="IMA" adPlayTime="5"/>
 			<additionalPlugins name="" />
 			<pbid name="615dc8e909e941c280e12155df838355" />
 			<playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"},{"position":"5000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"},{"position":"100000000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"}]}}]]></playerParameter>
@@ -191,7 +191,7 @@
 			<embed_code name="BnaG1iMjE6bQ3DQmsPTYyH_QiQ05Ggrj" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -203,7 +203,7 @@
 			<embed_code name="I2eGVmMDE6S2TG0jsa7NNE3thejf21i3" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
-			<adPlugins name="IMA" />
+			<adPlugins name="IMA" adPlayTime="52"/>
 			<additionalPlugins name="" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"google-ima-ads-manager":{"useGoogleCountdown":true}}]]></playerParameter>
@@ -215,8 +215,8 @@
 			<description name="IMA:Main IMA Countdown PreMidPost|VTC:SetEmbedCode" />
 			<embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-			<plugins name="BITMOVIN" />
-			<adPlugins name="IMA" />
+			<plugins name="MAIN" />
+			<adPlugins name="IMA" adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="615dc8e909e941c280e12155df838355" />
 			<playerParameter><![CDATA[{"google-ima-ads-manager":{"useGoogleCountdown":true}}]]></playerParameter>
@@ -227,7 +227,7 @@
 			<embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="BITMOVIN" />
-			<adPlugins name="IMA" />
+			<adPlugins name="IMA"  adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="615dc8e909e941c280e12155df838355" />
 			<playerParameter><![CDATA[{"google-ima-ads-manager":{"useGoogleCountdown":true}}]]></playerParameter>
@@ -239,7 +239,7 @@
 			<embed_code name="lzMGdpdDq6Dsvi-c32p6u7k46mbT_cxm" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" adPlayTime="20"/>
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
@@ -251,7 +251,7 @@
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="FREEWHEEL" />
+			<adPlugins name="FREEWHEEL" adPlayTime="20"/>
 			<additionalPlugins name="" />
 			<pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
 			<playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NqcGg4bzoOmMiV35ZttQDtBX1oNQBnT-","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
@@ -262,7 +262,7 @@
 			<embed_code name="FycThxYTE6OhsaYY_SpBCDaMhbWj2xEp" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
@@ -275,7 +275,7 @@
 			<embed_code name="psNTlxYTE6L7RGROCJdn0t6rgeGpyLmt" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" adPlayTime="10"/>
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
 			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -283,10 +283,10 @@
 		
 		<url>
 	    	<description name="VPAID:Bitmovin IMA VPAID1.0 PreMidPost"/>
-	        <embed_code name="hlMm5xYTE6o70Npqxy2Wl8De5P_Kqm7C"/>
+	        <embed_code name="hpNngxYjE626kPyLx7t4LHro-f0Iq0Pa"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
-	        <adPlugins name="IMA"/>
+	        <adPlugins name="IMA" adPlayTime="20"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[]]></playerParameter>
@@ -308,7 +308,7 @@
 			<embed_code name="VuMm9xYTE69UeMy_0pkVhDZPN5CT1dIV"/>
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 			<plugins name="OSMF,MAIN"/>
-			<adPlugins name="IMA"/>
+			<adPlugins name="IMA" adPlayTime="20"/>
 			<additionalPlugins name=""/>
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
@@ -319,7 +319,7 @@
             <embed_code name="ZvMnBxYTE6DH34HvYbSj_LOphEPt27mQ"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
-            <adPlugins name="IMA"/>
+            <adPlugins name="IMA" adPlayTime="10"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
