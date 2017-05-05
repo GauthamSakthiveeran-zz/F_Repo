@@ -454,6 +454,7 @@ public class FacileTest implements IHookable {
 		List<String> list = new ArrayList<String>();
 		list.add("disable-component-update");
 		options.setExperimentalOption("excludeSwitches", list);
+		options.addArguments("--allow-running-insecure-content");
 		return options;
 	}
 
@@ -465,7 +466,6 @@ public class FacileTest implements IHookable {
 		} else if (browser.equalsIgnoreCase("chrome")) {
 			dr = DesiredCapabilities.chrome();
 			dr.setBrowserName("chrome");
-			dr.setCapability("-allow-running-insecure-content", true);
 		} else if (browser.equalsIgnoreCase("internet explorer") || browser.equalsIgnoreCase("ie")) {
 			dr = DesiredCapabilities.internetExplorer();
 			dr.setBrowserName("internet explorer");
@@ -478,7 +478,6 @@ public class FacileTest implements IHookable {
 		} else {
 			dr = DesiredCapabilities.chrome();
 			dr.setBrowserName("chrome");
-			dr.setCapability("-allow-running-insecure-content", true);
 		}
 		return dr;
 	}
