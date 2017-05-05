@@ -64,14 +64,14 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
     }
 
     public boolean validateClickThrough(String element, int timeout, String adPlugin) throws Exception {
-        /*switch (adPlugin.toUpperCase()) {
+        switch (adPlugin.toUpperCase()) {
             case "FREEWHEEL":
                 return verifyClickThrough("FW_OVERLAY_FRAME", "FW_OVERLAY_IMAGE", element);
             case "IMA":
                 return verifyClickThrough("IMA_OVERLAY_FRAME", "IMA_OVERLAY_IMAGE", element);
             case "VAST":
                 return verifyClickThrough("", "VAST_OVERLAY_IMAGE", element);
-        }*/
+        }
         //Check the ad plugins and verify close overlay button
         if (!adPlugin.contains("FREEWHEEL") && !adPlugin.contains("VAST")) {
             return validateOverlayCloseButton(element, timeout);
@@ -110,11 +110,11 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
             extentTest.log(LogStatus.PASS, "Frame is not available for:" + overlayLocator);
         }
         //wait till 2 seconds after video starts to play
-        while (true) {
+        /*while (true) {
             if (Integer.parseInt(driver.executeScript("return pp.getPlayheadTime().toFixed()").toString()) > 2) {
                 break;
             }
-        }
+        }*/
         //Click on Ovarlay
         if (!clickOnIndependentElement(overlayLocator)) {
             logger.info("Failed to click on overlay");
