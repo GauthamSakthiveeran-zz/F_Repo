@@ -22,6 +22,7 @@
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="a40c3383eb1f4d31a48accc2f7e4e613"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+	        <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
     	</url>
     	
     	<url>
@@ -217,6 +218,7 @@
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="178e642662fe4f60b6f973a985eb09ca"/>
 	        <playerParameter><![CDATA[]]></playerParameter>
+	        <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
     	</url>
 
 		<url>
@@ -228,6 +230,7 @@
 			<additionalPlugins name="DISCOVERY"/>
 			<pbid name="178e642662fe4f60b6f973a985eb09ca"/>
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
 		</url>
 
         <url>
@@ -239,6 +242,7 @@
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="178e642662fe4f60b6f973a985eb09ca"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
         </url>
 
         <url>

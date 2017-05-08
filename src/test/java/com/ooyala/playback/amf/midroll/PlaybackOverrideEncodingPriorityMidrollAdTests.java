@@ -18,72 +18,69 @@ import org.testng.annotations.Test;
  */
 public class PlaybackOverrideEncodingPriorityMidrollAdTests extends PlaybackWebTest {
 
-    private static Logger logger = Logger.getLogger(PlaybackOverrideEncodingPriorityMidrollAdTests.class);
-    private PlayValidator play;
-    private PlayAction playAction;
-    private SeekValidator seek;
-    private EventValidator event;
-    private EncodingValidator encode;
+	private static Logger logger = Logger.getLogger(PlaybackOverrideEncodingPriorityMidrollAdTests.class);
+	private PlayValidator play;
+	private PlayAction playAction;
+	private SeekValidator seek;
+	private EventValidator event;
+	private EncodingValidator encode;
 
-    public PlaybackOverrideEncodingPriorityMidrollAdTests() throws OoyalaException {
-        super();
-    }
+	public PlaybackOverrideEncodingPriorityMidrollAdTests() throws OoyalaException {
+		super();
+	}
 
-    @Test(groups = "EncodingPriority", dataProvider = "testUrls")
-    public void testOverrideEncodingPriorities(String testName, UrlObject url) {
+	@Test(groups = "EncodingPriority", dataProvider = "testUrls")
+	public void testOverrideEncodingPriorities(String testName, UrlObject url) {
 
-        boolean result = true;
-        String param = "";
+		boolean result = true;
+		String param = "";
 
-        try {
+		try {
 
-            driver.get(url.getUrl());
+			driver.get(url.getUrl());
 
-            result = result && play.waitForPage();
+			result = result && play.waitForPage();
 
-            injectScript();
+			injectScript();
 
-            result = result && encode.validate("validate_default_encoding", 60000);
+			result = result && encode.validate("validate_default_encoding", 60000);
 
-            result = result && playAction.startAction();
-            
-            result = result && event.validate("playing_1", 10000);
+			result = result && playAction.startAction();
 
-            result = result && seek.validate("seeked_1", 60000);
+			result = result && event.validate("playing_1", 10000);
 
-            result = result && event.validate("adsPlayed_1", 60000);
+			result = result && seek.validate("seeked_1", 60000);
 
-            result = result && event.validate("videoPlayed_1", 60000);
+			result = result && event.validate("adsPlayed_1", 60000);
 
+			result = result && event.validate("videoPlayed_1", 60000);
 
-            if (event.isAdPluginPresent("freewheel")) {
-                param = "{\"freewheel-ads-manager\":{\"fw_video_asset_id\":\"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a\",\"html5_ad_server\":\"http://g1.v.fwmrm.net\",\"html5_player_profile\":\"90750:ooyala_html5\",\"fw_mrm_network_id\":\"380912\",\"showInAdControlBar\":true},\"initialTime\":0,\"autoplay\":false,\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"]}";
-            } else {
-                param = "{\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"],\"showInAdControlBar\":true}";
-            }
+			param = event.isAdPluginPresent("freewheel")
+					? "{\"freewheel-ads-manager\":{\"fw_video_asset_id\":\"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a\",\"html5_ad_server\":\"http://g1.v.fwmrm.net\",\"html5_player_profile\":\"90750:ooyala_html5\",\"fw_mrm_network_id\":\"380912\",\"showInAdControlBar\":true},\"initialTime\":0,\"autoplay\":false,\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"]}"
+					: "{\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"],\"showInAdControlBar\":true}";
 
-            encode.getNewUrl(param, browser);
+			encode.getNewUrl(param, browser);
 
-            injectScript();
+			injectScript();
 
-            result = result && encode.validate("Override", 60000);
+			result = result && encode.validate("Override", 60000);
 
-            result = result && playAction.startAction();
-            
-            result = result && event.validate("playing_1", 10000);
+			result = result && playAction.startAction();
 
-            result = result && seek.validate("seeked_1", 60000);
+			result = result && event.validate("playing_1", 10000);
 
-            result = result && event.validate("adsPlayed_1", 60000);
+			result = result && seek.validate("seeked_1", 60000);
 
-            result = result && event.validate("videoPlayed_1", 60000);
+			result = result && event.validate("adsPlayed_1", 60000);
 
-        } catch (Exception e) {
-            logger.error("Exception while checking OverrideEncoding Priority test  "+e.getMessage());
-            extentTest.log(LogStatus.FAIL, e.getMessage());
-            result = false;
-        }
+			result = result && event.validate("videoPlayed_1", 60000);
 
-        Assert.assertTrue(result, "OverrideEncoding Priority test failed");
-    }
+		} catch (Exception e) {
+			logger.error("Exception while checking OverrideEncoding Priority test  " + e.getMessage());
+			extentTest.log(LogStatus.FAIL, e);
+			result = false;
+		}
+
+		Assert.assertTrue(result, "OverrideEncoding Priority test failed");
+	}
 }

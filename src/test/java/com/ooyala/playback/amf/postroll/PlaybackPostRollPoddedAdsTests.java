@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 
@@ -38,6 +39,7 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
         } catch (Exception e) {
             logger.error(e.getMessage());
             result = false;
+            extentTest.log(LogStatus.FAIL, e);
         }
         Assert.assertTrue(result, "Tests failed");
     }

@@ -41,11 +41,8 @@ public class PlaybackEncodingPriorityTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 5000);
-
-			if (event.isAdPluginPresent("pulse"))
-				result = result && event.validate("singleAdPlayed_2", 120000);
-			else
-				result = result && event.validate("singleAdPlayed_1", 120000);
+			
+			result = result && (event.isAdPluginPresent("pulse") ? event.validate("singleAdPlayed_2", 120000) : event.validate("singleAdPlayed_1", 120000));
 
 			result = result && event.validate("playing_1", 60000);
 

@@ -10,6 +10,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackHLSLiveStreamTests extends PlaybackWebTest {
 
@@ -46,6 +47,7 @@ public class PlaybackHLSLiveStreamTests extends PlaybackWebTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
+			extentTest.log(LogStatus.FAIL, e);
 		}
 
 		Assert.assertTrue(result, "Test failed");

@@ -39,15 +39,9 @@ public class PlaybackAutoplayAutoloopPostrollPoddedAdTests extends PlaybackWebTe
 			
 			result = result && eventValidator.isPageLoaded();
 			
-			boolean autoplay = false;
-
-			autoplay = Boolean.parseBoolean(driver.executeScript(
-					"return pp.parameters.autoPlay").toString());
-
-			if(!autoplay){
-				extentTest.log(LogStatus.FAIL, "Autoplay not set for this video");
-				result = false;
-			}
+			injectScript();
+			
+			result = result && eventValidator.validateAutoPlay();
 			
 			result = result && eventValidator.playVideoForSometime(6);
 

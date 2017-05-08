@@ -9,6 +9,7 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 
@@ -75,7 +76,7 @@ public class PlaybackPlayerWithoutSkinTests extends PlaybackWebTest {
 			result = result && event.validate("videoPlaying_2", 190000);
 
 		} catch (Exception e) {
-
+			extentTest.log(LogStatus.FAIL, e);
 			e.printStackTrace();
 			result = false;
 		}

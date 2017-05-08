@@ -56,11 +56,8 @@ public class PlaybackMidrollInitialVolumeTests extends PlaybackWebTest {
 			for (int i = 1; i <= noOfAds; i++) {
 				Boolean isPreRollAdplaying = isAdPlayingValidator.validate("", 20000);
 				if (isPreRollAdplaying) {
-					logger.info("Checking initial volume for PrerollPodded Ad");
 					result = result && eventValidator.validate("willPlaySingleAd_" + i + "", 50000);
 					result = result && volumeValidator.checkInitialVolume("ad");
-				} else {
-					logger.error("PrerollPodded ad is not played");
 				}
 			}
 
@@ -70,7 +67,7 @@ public class PlaybackMidrollInitialVolumeTests extends PlaybackWebTest {
 
 		} catch (Exception e) {
 			logger.error("Exception while checking  initial Volume tests " + e.getMessage());
-			extentTest.log(LogStatus.FAIL, e.getMessage());
+			extentTest.log(LogStatus.FAIL, e);
 			result = false;
 		}
 		Assert.assertTrue(result, "Playback initial Volume tests failed");

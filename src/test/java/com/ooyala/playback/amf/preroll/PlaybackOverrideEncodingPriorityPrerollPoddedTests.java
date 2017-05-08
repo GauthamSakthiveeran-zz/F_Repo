@@ -29,7 +29,7 @@ public class PlaybackOverrideEncodingPriorityPrerollPoddedTests extends Playback
 		super();
 	}
 
-	@Test(groups = { "EncodingPriority", "preroll" }, dataProvider = "testUrls")
+	@Test(groups = { "encodingPriority", "preroll" }, dataProvider = "testUrls")
 	public void testOverrideEncodingPriorities(String testName, UrlObject url) {
 
 		boolean result = true;
@@ -45,7 +45,7 @@ public class PlaybackOverrideEncodingPriorityPrerollPoddedTests extends Playback
 
 			result = result && encode.validate("validate_default_encoding", 20000);
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
 			result = result && event.validate("adsPlayed_1", 50000);
 
@@ -53,11 +53,9 @@ public class PlaybackOverrideEncodingPriorityPrerollPoddedTests extends Playback
 
 			result = result && event.validate("videoPlayed_1", 60000);
 
-			if (event.isAdPluginPresent("freewheel")) {
-				param = "{\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"],\"freewheel-ads-manager\":{\"fw_video_asset_id\":\"Fua2tmcjqpz9g6tBUEHukAOLuXaVZ7Lw\",\"html5_ad_server\":\"http://g1.v.fwmrm.net\",\"html5_player_profile\":\"90750:ooyala_html5\",\"showInAdControlBar\":true},\"initialTime\":0,\"autoplay\":false}";
-			} else {
-				param = "{\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"],\"showInAdControlBar\":true}";
-			}
+			param = event.isAdPluginPresent("freewheel")
+					? "{\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"],\"freewheel-ads-manager\":{\"fw_video_asset_id\":\"Fua2tmcjqpz9g6tBUEHukAOLuXaVZ7Lw\",\"html5_ad_server\":\"http://g1.v.fwmrm.net\",\"html5_player_profile\":\"90750:ooyala_html5\",\"showInAdControlBar\":true},\"initialTime\":0,\"autoplay\":false}"
+					: "{\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"],\"showInAdControlBar\":true}";
 
 			encode.getNewUrl(param, browser);
 
@@ -74,8 +72,8 @@ public class PlaybackOverrideEncodingPriorityPrerollPoddedTests extends Playback
 			result = result && event.validate("videoPlayed_1", 60000);
 
 		} catch (Exception e) {
-			logger.error("Exception while checking OverrideEncoding Priority test  "+e.getMessage());
-			extentTest.log(LogStatus.FAIL, e.getMessage());
+			logger.error("Exception while checking OverrideEncoding Priority test  " + e.getMessage());
+			extentTest.log(LogStatus.FAIL, e);
 			result = false;
 		}
 

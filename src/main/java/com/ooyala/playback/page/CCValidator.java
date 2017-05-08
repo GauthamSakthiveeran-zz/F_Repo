@@ -124,24 +124,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		}
 	}
 
-	/*private boolean validateClosedCaptionCloseButton() throws Exception {
-		switchToControlBar();
-		if (!isElementPresent("CC_CLOSE_BUTTON")) {
-			if (!clickOnIndependentElement("CC_BTN")) {
-				return false;
-			}
-		}
-
-		if (isElementPresent("CC_CLOSE_BUTTON")) {
-			if (clickOnIndependentElement("CC_CLOSE_BUTTON")) {
-				extentTest.log(LogStatus.PASS, "Verified CC_CLOSE_BUTTON");
-				return true;
-			}
-		}
-		extentTest.log(LogStatus.FAIL, "CC_CLOSE_BUTTON is not present");
-		return false;
-
-	}*/
 
 	public boolean closedCaptionMicroPanel() throws Exception {
 		try {

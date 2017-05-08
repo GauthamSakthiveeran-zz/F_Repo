@@ -34,7 +34,7 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 	public void testPlaybackDRM(String testName, UrlObject url)
 			throws OoyalaException {
 		boolean result = true;
-
+		
 		try {
 			driver.get(url.getUrl());
 

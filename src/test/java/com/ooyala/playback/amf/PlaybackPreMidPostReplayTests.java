@@ -95,6 +95,7 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
+			extentTest.log(LogStatus.FAIL, e);
 		}
 
 		Assert.assertTrue(result, "Test failed");

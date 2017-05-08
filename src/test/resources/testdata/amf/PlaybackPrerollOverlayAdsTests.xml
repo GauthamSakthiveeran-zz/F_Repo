@@ -61,7 +61,7 @@
         </url> -->
 
         <!-- IMA Overaly not appearing intermittantly -->
-    	<!--<url>
+    	<url>
 	    	<description name="IMA:Bitmovin Preroll Overlay"/>
 	        <embed_code name="w2bmFnMTE66yXj73IMWj_zcylLOnXpdR"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -70,7 +70,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"}}]]></playerParameter>
-    	</url>-->
+    	</url>
     	
     	<url>
 	    	<description name="IMA:Bitmovin Overlay"/>
@@ -84,7 +84,7 @@
     	</url>
 
         <!-- IMA Overaly not appearing intermittantly -->
-    	<!--<url>
+    	<url>
 	    	<description name="IMA:OSMF Preroll Overlay"/>
 	        <embed_code name="l2d2VmMDE6ia_EnlFS2hF6cV1Ezp_Isp"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -95,10 +95,10 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showNonLinearCloseButton":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"}}]]></playerParameter>
 	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 	        <browserSupportedVersion name="safari,9"/>
-    	</url>-->
+    	</url>
 
         <!-- IMA Overaly not appearing -->
-        <!--<url>
+        <url>
             <description name="IMA:Main Overlay"/>
             <embed_code name="FlOHg4MTE698_SqEgfRuJepp0rjzl9h9"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -107,7 +107,7 @@
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
             <playerParameter><![CDATA[{"showNonLinearCloseButton":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"}}]]></playerParameter>
-        </url>-->
+        </url>
     	
     	<url>
 	    	<description name="VAST:OSMF Vast2.0 Preroll Overlay"/>

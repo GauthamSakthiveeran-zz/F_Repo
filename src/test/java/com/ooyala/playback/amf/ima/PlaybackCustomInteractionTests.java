@@ -1,5 +1,6 @@
 package com.ooyala.playback.amf.ima;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -26,40 +27,42 @@ public class PlaybackCustomInteractionTests extends PlaybackWebTest {
 	private VolumeValidator volumeValidator;
 	private AdSkipButtonValidator adSkipButtonValidator;
 
-	@Test(groups = {"amf","customInteraction"}, dataProvider = "testUrls")
-	public void verifyCustomeInteractionAd(String testName, UrlObject url)
-			throws Exception {
+	@Test(groups = { "amf", "customInteraction" }, dataProvider = "testUrls")
+	public void verifyCustomeInteractionAd(String testName, UrlObject url) throws Exception {
+		boolean result = true;
 
 		try {
 
 			driver.get(url.getUrl());
 
-			playValidator.waitForPage();
+			result = result && playValidator.waitForPage();
 
 			injectScript();
 
-			playAction.startAction();
+			result = result && playAction.startAction();
 
-			event.validate("willPlaySingleAd_1", 190000);
+			result = result && event.validate("willPlaySingleAd_1", 190000);
 
-			adSkipButtonValidator.validate("showAdSkipButton_1", 60000);
+			result = result && adSkipButtonValidator.validate("showAdSkipButton_1", 60000);
 
-			event.validate("singleAdPlayed_1", 190000);
+			result = result && event.validate("singleAdPlayed_1", 190000);
 
-			event.validate("playing_1", 60000);
+			result = result && event.validate("playing_1", 60000);
 
-			volumeValidator.validate("", 60000);
+			result = result && volumeValidator.validate("", 60000);
 
-			seekAction.seekTillEnd().startAction();
+			result = result && seekAction.seekTillEnd().startAction();
 
-			event.validate("seeked_1", 180000);
+			result = result && event.validate("seeked_1", 180000);
 
-			event.validate("played_1", 200000);
+			result = result && event.validate("played_1", 200000);
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			extentTest.log(LogStatus.ERROR, e.getMessage());
+			extentTest.log(LogStatus.FAIL, e);
+			result = false;
 		}
+		Assert.assertTrue(result, "PlaybackCustomInteractionTests failed.");
 
 	}
 

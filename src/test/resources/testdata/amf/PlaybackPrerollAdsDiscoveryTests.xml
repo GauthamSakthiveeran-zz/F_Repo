@@ -220,19 +220,20 @@
 	        <adPlugins name="IMA"/>
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
-	        <playerParameter><![CDATA[]]></playerParameter>
+	        <playerParameter></playerParameter>
     	</url>
     	
     	<url>
-            <description name="VPAID:OSMF Vast VPAID2.0 Discovery Preroll"/>
-            <embed_code name="VmMm9xYTE6ICbUwYH3HBpsSrWXVz1IEs"/>
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN"/>
-            <adPlugins name="VAST"/>
-            <additionalPlugins name="DISCOVERY"/>
-            <pbid name="b8f0107b875e4c9ebd3e54f2d312deb6"/>
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
+	    	<description name="VPAID:OSMF Vast VPAID2.0 Discovery Preroll"/>
+	        <embed_code name="VmMm9xYTE6ICbUwYH3HBpsSrWXVz1IEs"/>
+	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <plugins name="OSMF,MAIN"/>
+	        <adPlugins name="VAST"/>
+	        <additionalPlugins name="DISCOVERY"/>
+	        <pbid name="b8f0107b875e4c9ebd3e54f2d312deb6"/>
+	        <playerParameter></playerParameter>
+	        <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
+    	</url>
 
 		<url>
 			<description name="VPAID:OSMF IMA VPAID2.0 Discovery Preroll"/>
@@ -243,6 +244,7 @@
 			<additionalPlugins name="DISCOVERY"/>
 			<pbid name="178e642662fe4f60b6f973a985eb09ca"/>
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
 		</url>
 
 		<url>
@@ -254,6 +256,7 @@
 			<additionalPlugins name="DISCOVERY"/>
 			<pbid name="178e642662fe4f60b6f973a985eb09ca"/>
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
 		</url>
 
 		<url>

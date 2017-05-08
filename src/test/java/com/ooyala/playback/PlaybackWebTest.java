@@ -19,6 +19,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.UnreachableBrowserException;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
@@ -409,21 +410,29 @@ public abstract class PlaybackWebTest extends FacileTest {
         return v;
     }
 
-    public String takeScreenshot(String fileName) {
-        logger.info("Taking Screenshot");
-        File destDir = new File("images/");
-        if (!destDir.exists())
-            destDir.mkdir();
-        File scrFile = ((TakesScreenshot) webDriverFacile.get())
-                .getScreenshotAs(OutputType.FILE);
-        try {
-            FileUtils.copyFile(scrFile, new File("images/" + fileName));
-        } catch (IOException e) {
-            e.printStackTrace();
-            logger.error("Not able to take the screenshot");
-        }
-        return "images/" + fileName;
-    }
+	public String takeScreenshot(String fileName) {
+		try {
+			logger.info("Taking Screenshot");
+			File destDir = new File("images/");
+			if (!destDir.exists())
+				destDir.mkdir();
+			File scrFile = ((TakesScreenshot) webDriverFacile.get()).getScreenshotAs(OutputType.FILE);
+			try {
+				FileUtils.copyFile(scrFile, new File("images/" + fileName));
+			} catch (IOException e) {
+				e.printStackTrace();
+				logger.error("Not able to take the screenshot");
+			}
+		} catch (UnreachableBrowserException ex) {
+			logger.info(ex.getMessage());
+			try {
+				initializeWebdriver();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return "images/" + fileName;
+	}
 
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {

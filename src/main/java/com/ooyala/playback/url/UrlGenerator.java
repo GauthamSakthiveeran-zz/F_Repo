@@ -69,6 +69,7 @@ public class UrlGenerator {
 		liveChannelDetails = new HashMap<String, String>();
 		Map<String, UrlObject> urlsGenerated = new HashMap<String, UrlObject>();
 		String sslEnabled = null;
+		String sslEnabledBrowser  = "";
 		boolean browserExisted = false;
 		for (Test data : testData.getTest()) {
 			if (data.getName().equals(testName)) {
@@ -126,8 +127,13 @@ public class UrlGenerator {
 
 					try {
 						sslEnabled = url.getSslEnabled().getName();
+						sslEnabledBrowser = url.getSslEnabled().getBrowser();
+						if(!sslEnabledBrowser.contains(browserName)){
+							sslEnabled = "";
+						}
 					} catch (Exception e) {
 						sslEnabled = "";
+						sslEnabledBrowser = "";
 					}
 					// enabling sas staging - to run test in sas staging
 					// environment

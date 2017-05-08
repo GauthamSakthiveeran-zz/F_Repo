@@ -12,6 +12,7 @@
             <streamType name="dash"/>
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         
         <url>
@@ -25,6 +26,7 @@
             <streamType name="dash"/>
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash VOD" />
@@ -37,6 +39,7 @@
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <streamType name="dash"/>
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Azure Dash VOD" />
@@ -49,6 +52,7 @@
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <streamType name="dash"/>
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental HLS VOD" />
@@ -61,6 +65,7 @@
             <browsersSupported name="safari" />
             <streamType name="hls"/>
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         
         <url>
@@ -74,6 +79,21 @@
             <browsersSupported name="safari" />
             <streamType name="hls"/>
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
+        </url>
+        
+        <url>
+            <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Azure HLS VOD" />
+            <embed_code name="cwbHN1YTE6dvbVjsKGZu_O4dNUkuuepR" />
+            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+            <browsersSupported name="safari" />
+            <streamType name="hls"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         
        <url>
@@ -86,7 +106,7 @@
             <streamType name="hds"/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
             <playerParameter><![CDATA[]]></playerParameter>
-            <browsersSupported name="chrome,firefox,safari,MicrosoftEdge" />
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
         </url>
         
         <url>
@@ -97,9 +117,9 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <streamType name="hds"/>
-            <browsersSupported name="chrome,firefox,safari,MicrosoftEdge" />
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
     </test>
 
@@ -114,8 +134,9 @@
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <streamType name="hls" />
-            <browsersSupported name="chrome,firefox,safari,MicrosoftEdge" />
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
             <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
 
         <url>
@@ -127,11 +148,11 @@
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <streamType name="hls" />
-            <browsersSupported name="safari" />
+            <browsersSupported name="safari,MicrosoftEdge" />
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
         
-         <url>
+         <!-- <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS" />
             <embed_code name="c3b3NvYTE6gRRfWJdupyxGDYLiqEkl21" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -142,7 +163,7 @@
             <streamType name="hls" />
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
-        </url>
+        </url> -->
         
         
         <url>
@@ -194,6 +215,7 @@
             <pbid name="c0adf6d2044f437080e005a69cba4880" />
             <streamType name="hls" />
             <playerParameter><![CDATA[{"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
     </test>
 
@@ -207,6 +229,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/5kaDBlODE6fqcosXyCQ9myvTxpObwIOw?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=vtyvjHItiFh3SclS0+CjIMsHDiPVOabRkN6GCdIKu6Q&override_syndication_group=override_all_synd_groups","encodingPriority":["dash_drm"],"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash Live Channel live" />
@@ -221,9 +244,10 @@
                 <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
                 <provider>elemental</provider>
             </live>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
 <!--         This is not hds asset -->
-        <!-- <url>
+        <url>
             <description name="DRM Testing(Live,VOD and Remote assets):OSMF Elemental Delta HDS Live" />
             <embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL" />
             <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
@@ -236,7 +260,7 @@
                 <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
                 <provider>elemental</provider>
             </live>
-        </url> -->
+        </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental HLS Live"/>
             <embed_code name="8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB"/>
@@ -250,6 +274,7 @@
                 <channelId>4e925289af57408384f58832323bfe51</channelId>
                 <provider>elemental</provider>
             </live>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
         <!-- Not working at the momemnt Do not test -->
        <!-- <url>
@@ -275,6 +300,7 @@
                 <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
                 <provider>elemental</provider>
             </live>
+            <sslEnabled name="https" browser="chrome"/>
         </url>
     </test>
 </testdata>

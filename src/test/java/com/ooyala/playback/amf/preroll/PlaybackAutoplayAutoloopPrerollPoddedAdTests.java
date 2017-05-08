@@ -37,14 +37,7 @@ public class PlaybackAutoplayAutoloopPrerollPoddedAdTests extends PlaybackWebTes
 			
 			injectScript();
 
-			boolean autoplay = false;
-
-			autoplay = Boolean.parseBoolean(driver.executeScript("return pp.parameters.autoPlay").toString());
-
-			if (!autoplay) {
-				extentTest.log(LogStatus.FAIL, "Autoplay not set for this video");
-				result = false;
-			}
+			result = result && eventValidator.validateAutoPlay();
 
 			result = result && eventValidator.validate("adsPlayed_1", 180000);
 

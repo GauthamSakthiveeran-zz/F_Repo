@@ -198,7 +198,6 @@
 			<adPlugins name="IMA" />
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
-			<browsersSupported name="safari" />
 			<playerParameter><![CDATA[{"encodingPriority":["hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 			<streamType name="m3u8"></streamType>
 		</url>

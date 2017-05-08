@@ -19,64 +19,60 @@ import com.relevantcodes.extentreports.LogStatus;
  * Created by jitendra on 28/2/17.
  */
 public class PlaybackPostrollInitialVolumeTests extends PlaybackWebTest {
-    private static Logger logger = Logger.getLogger(PlaybackPostrollInitialVolumeTests.class);
-    private EventValidator eventValidator;
-    private PlayValidator play;
-    private VolumeValidator volumeValidator;
-    private PlayAction playAction;
-    private SeekValidator seekValidator;
-    private IsAdPlayingValidator isAdPlayingValidator;
+	private static Logger logger = Logger.getLogger(PlaybackPostrollInitialVolumeTests.class);
+	private EventValidator eventValidator;
+	private PlayValidator play;
+	private VolumeValidator volumeValidator;
+	private PlayAction playAction;
+	private SeekValidator seekValidator;
+	private IsAdPlayingValidator isAdPlayingValidator;
 
-    PlaybackPostrollInitialVolumeTests() throws OoyalaException {
-        super();
-    }
+	PlaybackPostrollInitialVolumeTests() throws OoyalaException {
+		super();
+	}
 
-    @Test(groups = "Playback", dataProvider = "testUrls")
-    public void testInitialVolumeVTC(String testName, UrlObject url)
-            throws OoyalaException {
+	@Test(groups = { "initialVolume", "amf", "vtc" }, dataProvider = "testUrls")
+	public void testInitialVolumeVTC(String testName, UrlObject url) throws OoyalaException {
 
-        boolean result = true;
-        try {
-            driver.get(url.getUrl());
+		boolean result = true;
+		try {
+			driver.get(url.getUrl());
 
-            result = result && play.waitForPage();
+			result = result && play.waitForPage();
 
-            injectScript();
+			injectScript();
 
-            result = result && playAction.startAction();
+			result = result && playAction.startAction();
 
-            result=result && eventValidator.validate("playing_1", 60000);
+			result = result && eventValidator.validate("playing_1", 60000);
 
-            result=result && volumeValidator.checkInitialVolume("video");
+			result = result && volumeValidator.checkInitialVolume("video");
 
-            result=result && seekValidator.validate("seeked_1", 30000);
+			result = result && seekValidator.validate("seeked_1", 30000);
 
-            result=result && eventValidator.validate("willPlaySingleAd_1", 60000);
+			result = result && eventValidator.validate("willPlaySingleAd_1", 60000);
 
-            result=result && eventValidator.validate("videoPlayingAd_1", 40000);
+			result = result && eventValidator.validate("videoPlayingAd_1", 40000);
 
-            result = result && eventValidator.validate("adPodStarted_2",10000);
+			result = result && eventValidator.validate("adPodStarted_2", 10000);
 
-            int noOfAds = Integer.parseInt(driver.executeScript("return adPodStarted_2.textContent").toString());
+			int noOfAds = Integer.parseInt(driver.executeScript("return adPodStarted_2.textContent").toString());
 
-            for (int i = 1 ; i <= noOfAds ; i++){
-                Boolean isPreRollAdplaying = isAdPlayingValidator.validate("", 20000);
-                if (isPreRollAdplaying) {
-                    logger.info("Checking initial volume for PrerollPodded Ad");
-                    result = result && eventValidator.validate("willPlaySingleAd_"+i+"",50000);
-                    result = result && volumeValidator.checkInitialVolume("ad");
-                }else{
-                    logger.error("PrerollPodded ad is not played");
-                }
-            }
+			for (int i = 1; i <= noOfAds; i++) {
+				Boolean isPreRollAdplaying = isAdPlayingValidator.validate("", 20000);
+				if (isPreRollAdplaying) {
+					result = result && eventValidator.validate("willPlaySingleAd_" + i + "", 50000);
+					result = result && volumeValidator.checkInitialVolume("ad");
+				}
+			}
 
-            result = result && eventValidator.validate("played_1", 60000);
+			result = result && eventValidator.validate("played_1", 60000);
 
-        } catch (Exception e) {
-            logger.error("Exception while checking  initial Volume tests "+ e.getMessage());
-            extentTest.log(LogStatus.FAIL, e.getMessage());
-            result = false;
-        }
-        Assert.assertTrue(result, "Playback initial Volume tests failed");
-    }
+		} catch (Exception e) {
+			logger.error("Exception while checking  initial Volume tests " + e.getMessage());
+			extentTest.log(LogStatus.FAIL, e);
+			result = false;
+		}
+		Assert.assertTrue(result, "Playback initial Volume tests failed");
+	}
 }

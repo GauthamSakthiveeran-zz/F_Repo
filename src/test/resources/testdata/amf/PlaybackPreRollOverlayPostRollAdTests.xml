@@ -2,7 +2,7 @@
 <testdata>
 	<test name ="PlaybackPreRollOverlayPostRollAdTests" >
 		<!-- IMA Overlay not appearing intermittantly-->
-    	<!--<url>
+    	<url>
 	    	<description name="IMA:Main Preroll Overlay + Postroll"/>
 	        <embed_code name="Rjc3RreTqghZLRq93GQ-Sl1OGVyJoK2d"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -11,7 +11,7 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="615dc8e909e941c280e12155df838355"/>
 	        <playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":10}]]></playerParameter>
-    	</url>-->
+    	</url>
     	
     	<url>
 			<description name="VAST:Main Vast3.0 Preroll Overlay + Postroll" />
