@@ -1,14 +1,18 @@
 package com.ooyala.playback.amf;
 
-import com.ooyala.playback.page.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.MidrollAdValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 
@@ -21,7 +25,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private PoddedAdValidator poddedAdValidator;
 	private SeekAction seekAction;
-	private SetEmbedCodeValidator setEmbedCodeValidator;
+//	private SetEmbedCodeValidator setEmbedCodeValidator;
 	private MidrollAdValidator adStartTimeValidator;
 
 	@Test(groups = {"amf","preroll","midroll","postroll","podded"}, dataProvider = "testUrls")
@@ -71,6 +75,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
+			extentTest.log(LogStatus.FAIL, e);
 		}
 
 		Assert.assertTrue(result, "Test failed");

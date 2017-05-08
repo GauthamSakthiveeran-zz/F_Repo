@@ -38,16 +38,8 @@ public class PlaybackAutoplayAutoloopMidrollPoddedAdTests extends PlaybackWebTes
 			
 			injectScript();
 
-			boolean autoplay = false;
-
-			autoplay = Boolean.parseBoolean(driver.executeScript(
-					"return pp.parameters.autoPlay").toString());
-
-			if(!autoplay){
-				extentTest.log(LogStatus.FAIL,"Autoplay not set for this video");
-				result = false;
-			}
-
+			result = result && eventValidator.validateAutoPlay();
+			
 			result = result && eventValidator.validate("playing_1", 60000);
 			
 			result = result && seek.seek(15,true);
@@ -83,7 +75,7 @@ public class PlaybackAutoplayAutoloopMidrollPoddedAdTests extends PlaybackWebTes
 		} catch (Exception e) {
 			logger.error(e);
 			result = false;
-			extentTest.log(LogStatus.FAIL, "Playback Autoplay Autoloop test failed for "+testName+"", e);
+			extentTest.log(LogStatus.FAIL, e);
 		}
 		Assert.assertTrue(result, "Playback Autoplay Autoloop test failed for "+testName+"");
 	}

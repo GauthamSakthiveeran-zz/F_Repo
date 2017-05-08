@@ -11,6 +11,7 @@ import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 
@@ -53,6 +54,7 @@ public class PlaybackMp4PlayerSwitchingSupportTests extends PlaybackWebTest {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+			extentTest.log(LogStatus.FAIL, e);
 			result = false;
 		}
 

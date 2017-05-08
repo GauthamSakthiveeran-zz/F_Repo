@@ -58,6 +58,7 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
+			extentTest.log(LogStatus.FAIL, e);
 		}
 
 		Assert.assertTrue(result, "Tests failed");

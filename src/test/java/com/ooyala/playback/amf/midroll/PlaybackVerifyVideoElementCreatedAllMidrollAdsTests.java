@@ -19,65 +19,51 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class PlaybackVerifyVideoElementCreatedAllMidrollAdsTests extends PlaybackWebTest {
 
-    private static Logger logger = Logger.getLogger(PlaybackVerifyVideoElementCreatedAllMidrollAdsTests.class);
-    private EventValidator eventValidator;
-    private PlayValidator play;
-    private PlayAction playAction;
-    private DifferentElementValidator differentElementValidator;
-    private SeekValidator seekValidator;
+	private static Logger logger = Logger.getLogger(PlaybackVerifyVideoElementCreatedAllMidrollAdsTests.class);
+	private EventValidator eventValidator;
+	private PlayValidator play;
+	private PlayAction playAction;
+	private DifferentElementValidator differentElementValidator;
+	private SeekValidator seekValidator;
 
-    PlaybackVerifyVideoElementCreatedAllMidrollAdsTests() throws OoyalaException {
-        super();
-    }
+	PlaybackVerifyVideoElementCreatedAllMidrollAdsTests() throws OoyalaException {
+		super();
+	}
 
-    @Test(groups = "VideoCreated", dataProvider = "testUrls")
-    public void testVideoElementCreated(String testName, UrlObject url)
-            throws OoyalaException {
+	@Test(groups = { "videoCreated", "amf" }, dataProvider = "testUrls")
+	public void testVideoElementCreated(String testName, UrlObject url) throws OoyalaException {
 
-        boolean result = true;
-        try {
-            driver.get(url.getUrl());
+		boolean result = true;
+		try {
+			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 
-            injectScript();
+			injectScript();
 
-            result=result && playAction.startAction();
+			result = result && playAction.startAction();
 
-            result = result && eventValidator.validate("playing_1", 5000);
+			result = result && eventValidator.validate("playing_1", 5000);
 
-            result = result && seekValidator.validate("seeked_1", 60000);
+			result = result && seekValidator.validate("seeked_1", 60000);
 
-            result = result && eventValidator.validate("MidRoll_willPlayAds", 60000);
+			result = result && eventValidator.validate("MidRoll_willPlayAds", 60000);
 
-            if(eventValidator.isAdPluginPresent("freewheel"))
-            	result = result && eventValidator.validate("adsPlayed_2", 40000); // TODO
-            else
-            	result = result && eventValidator.validate("adsPlayed_1", 40000);
-            
-            //TODO - need to get this clarified.
+			result = result && (eventValidator.isAdPluginPresent("freewheel")
+					? eventValidator.validate("adsPlayed_2", 40000) : eventValidator.validate("adsPlayed_1", 40000));
 
-/*            if (!eventValidator.isAdPluginPresent("ima")) {
-                int noOfPoddedAds = parseInt(
-                        (((JavascriptExecutor) driver).executeScript("return adPodStarted_1.textContent")).toString());
+			result = result && differentElementValidator.validateMainVideoElementId("VIDEO_ELEMENT", 20000);
 
-                for (int i = 1 + counter; i <= noOfPoddedAds; i++) {
-                    result = result && eventValidator.validate("videoCreatedForAds_" + i + "", 20000);
-                }
-            }*/
+			if (!eventValidator.isAdPluginPresent("ima")) {
+				result = result && differentElementValidator.validateAdElementId("AD_ELEMENT", 5000);
+			}
 
-            result = result && differentElementValidator.validateMainVideoElementId("VIDEO_ELEMENT",20000);
+		} catch (Exception e) {
+			logger.error("Exception while checking Video Element tests  " + e.getMessage());
+			extentTest.log(LogStatus.FAIL, e);
+			result = false;
+		}
+		Assert.assertTrue(result, "Playback Video Element test failed");
 
-            if (!eventValidator.isAdPluginPresent("ima") ){
-                result = result && differentElementValidator.validateAdElementId("AD_ELEMENT",5000);
-            }
-
-        } catch (Exception e) {
-            logger.error("Exception while checking Video Element tests  "+e.getMessage());
-            extentTest.log(LogStatus.FAIL, e.getMessage());
-            result = false;
-        }
-        Assert.assertTrue(result, "Playback Video Element test failed");
-
-    }
+	}
 }

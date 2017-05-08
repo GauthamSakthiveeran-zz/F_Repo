@@ -89,7 +89,7 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
         }catch (Exception e) {
             logger.error(e);
             result = false;
-            extentTest.log(LogStatus.FAIL, "Basic Playback Midroll test failed", e);
+            extentTest.log(LogStatus.FAIL, e);
         }
         Assert.assertTrue(result, "Basic Playback Midroll test failed");
 

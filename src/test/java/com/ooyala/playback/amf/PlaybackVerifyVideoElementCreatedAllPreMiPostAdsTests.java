@@ -118,7 +118,7 @@ public class PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests extends Playb
 
         } catch (Exception e) {
             logger.error("Exception while checking Video Element tests  "+e.getMessage());
-            extentTest.log(LogStatus.FAIL, e.getMessage());
+            extentTest.log(LogStatus.FAIL, e);
             result = false;
         }
         Assert.assertTrue(result, "Playback Video Element test failed");

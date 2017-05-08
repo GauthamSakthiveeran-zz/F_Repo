@@ -19,35 +19,27 @@ public class PlaybackAutoplayAutoloopPostrollAdTests extends PlaybackWebTest {
 
 	private static Logger logger = Logger.getLogger(PlaybackAutoplayAutoloopPostrollAdTests.class);
 	private EventValidator eventValidator;
-    private SeekValidator seek;
-    private SeekAction seekAction;
+	private SeekValidator seek;
+	private SeekAction seekAction;
 
 	public PlaybackAutoplayAutoloopPostrollAdTests() throws OoyalaException {
 		super();
 	}
 
-	@Test(groups = "amf,autoplay", dataProvider = "testUrls")
-	public void testAutoplayAutoloop(String testName, UrlObject url)
-			throws OoyalaException {
+	@Test(groups = { "amf", "autoplay" }, dataProvider = "testUrls")
+	public void testAutoplayAutoloop(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
 
 		try {
 
 			driver.get(url.getUrl());
+			
+			result = result && eventValidator.isPageLoaded();
 
 			injectScript();
-
-			boolean autoplay = false;
-
-			autoplay = Boolean.parseBoolean(driver.executeScript(
-					"return pp.parameters.autoPlay").toString());
-
-			if(!autoplay){
-				logger.error("Autoplay not set for this video");
-				result = false;
-			}
-
+			
+			result = result && eventValidator.validateAutoPlay();
 			result = result && eventValidator.validate("playing_1", 60000);
 			result = result && seek.validate("seeked_1", 60000);
 			result = result && eventValidator.validate("played_1", 60000);
@@ -63,8 +55,8 @@ public class PlaybackAutoplayAutoloopPostrollAdTests extends PlaybackWebTest {
 		} catch (Exception e) {
 			logger.error(e);
 			result = false;
-			extentTest.log(LogStatus.FAIL, "Playback Autoplay Autoloop test failed for "+testName+"", e);
+			extentTest.log(LogStatus.FAIL, "Playback Autoplay Autoloop test failed for " + testName + "", e);
 		}
-		Assert.assertTrue(result, "Playback Autoplay Autoloop test failed for "+testName+"");
+		Assert.assertTrue(result, "Playback Autoplay Autoloop test failed for " + testName + "");
 	}
 }

@@ -10,6 +10,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 
@@ -47,6 +48,7 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = false;
+			extentTest.log(LogStatus.FAIL, e);
 		}
 
 		Assert.assertTrue(result, "Verified Multiple MidRoll Ads");

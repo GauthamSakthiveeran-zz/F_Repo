@@ -24,7 +24,7 @@ public class PlaybackAutoplayAutoloopPreMidPostAdTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "amf,autoplay", dataProvider = "testUrls")
+	@Test(groups = {"amf","autoplay","vtc"}, dataProvider = "testUrls")
 	public void testAutoplayAutoloop(String testName, UrlObject url)
 			throws OoyalaException {
 
@@ -38,15 +38,7 @@ public class PlaybackAutoplayAutoloopPreMidPostAdTests extends PlaybackWebTest {
 			
 			injectScript();
 
-			boolean autoplay = false;
-
-			autoplay = Boolean.parseBoolean(driver.executeScript(
-					"return pp.parameters.autoPlay").toString());
-
-			if(!autoplay){
-				logger.error("Autoplay not set for this video");
-				result = false;
-			}
+			result = result && eventValidator.validateAutoPlay();
 
 			result = result && eventValidator.validate("adsPlayed_1", 45000);
 			result = result && eventValidator.validate("playing_1", 60000);
