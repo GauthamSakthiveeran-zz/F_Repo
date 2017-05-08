@@ -46,12 +46,9 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 			result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			result = false;
 		}
-
 		Assert.assertTrue(result, "Test failed");
-
 	}
-
 }

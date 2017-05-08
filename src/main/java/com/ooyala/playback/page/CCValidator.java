@@ -262,7 +262,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 			// select language and verify that Preview Text is shown
 			lang = getWebElementsList("LANG_LIST");
 			logger.info("language Count Value in Languages :" + lang.size());
-			String langpreview1[] = { "Sample Text", "Texto de muestra", "Sample Text", "Sample Text" };
+			String langpreview1[] = { "Sample Text", "Texto de muestra", "サンプル"};
 
 			// issue id
 			if (getWebElement("oo-responsive").getAttribute("className").equalsIgnoreCase("oo-responsive oo-xsmall")) {
