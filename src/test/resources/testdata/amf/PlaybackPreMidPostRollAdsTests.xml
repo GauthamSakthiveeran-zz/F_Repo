@@ -177,6 +177,7 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter>
                 <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>    
         </url>
 
         <url>
