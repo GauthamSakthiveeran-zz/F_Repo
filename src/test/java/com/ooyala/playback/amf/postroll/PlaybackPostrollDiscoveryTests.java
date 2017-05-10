@@ -40,10 +40,8 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 
             result = result && playValidator.validate("playing_1", 150000);
 
-            if (!event.isAdPluginPresent("pulse")) {
-                result = result && event.loadingSpinner();
-                result = result && seekAction.fromLast().setTime(30).startAction();
-            }
+            result = result && event.loadingSpinner();
+            result = result && seekAction.fromLast().setTime(20).startAction();
 
             result = result && event.loadingSpinner();
 
