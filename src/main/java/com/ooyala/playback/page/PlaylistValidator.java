@@ -100,14 +100,14 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 						.executeScript(
 								"return document.getElementsByClassName('oo-thumbnail')[" + i + "].getAttribute('id');")
 						.toString().trim();
-				driver.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.id(asset)));
+				/*driver.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.id(asset)));
 				if (i != 0) {
 					// scrolling to left as asset may get hide in right arrow
 					// button
 					if (isElementVisible("SCROLL_DOWN")) {
 						getWebElement("SCROLL_DOWN").click();
 					}
-				}
+				}*/
 				if (driver.findElement(By.id(asset)).isDisplayed()) {
 					result = result && clickOnIndependentElement(By.id(asset));
 					result = result && checkPlayback(count);
@@ -355,7 +355,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 				return false;
 			}
 			// select each playlist
-			WebElement playlist = driver.findElement(By.id(playlistId)).findElement(By.xpath("//a"));
+			WebElement playlist = driver.findElement(By.xpath(".//*[@id='"+playlistId+"']"));
 			
 			playlist.click();
 			
