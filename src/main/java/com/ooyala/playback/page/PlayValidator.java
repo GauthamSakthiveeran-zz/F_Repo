@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class PlayValidator extends PlayBackPage implements PlaybackValidator {
@@ -105,6 +106,11 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		if (!waitOnElement(By.id(element), timeout))
 			return false;
 		extentTest.log(LogStatus.PASS, "Video Playing and validation of element " + element + " is successful");
+
+		if (!new PlayBackFactory(driver, extentTest).getVideoValidator().getConsoleLogs().validate("", timeout)) {
+			return false;
+		}
+
 		return true;
 	}
 }
