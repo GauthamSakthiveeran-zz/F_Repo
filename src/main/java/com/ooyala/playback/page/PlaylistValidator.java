@@ -139,8 +139,8 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 			PlayBackFactory factory = new PlayBackFactory(driver, extentTest);
 			
 			loadingSpinner();
-			
-			if (!waitOnElement(By.id("playing_" + count), 5000)) {
+
+			if (!waitOnElement(By.id("playing_" + count), 10000)) {
 				if (!factory.getPlayValidator().validate("playing_" + count + "", 20000)) {
 					return false;
 				}
@@ -209,6 +209,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 				return false;
 			}
 			int totalPagingElement = getWebElementsList("PAGGING_ELEMENT").size();
+			logger.info("total pagging elements are "+totalPagingElement);
 			boolean result = true;
 			boolean isPagingElementActive;
 			int count = 1;
@@ -229,7 +230,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 												"return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')["
 														+ i + "].getElementsByClassName('oo-thumbnail').length")
 										.toString());
-						for (int j = 0; j < assetsUnderPagingElement; j++) {
+						for (int j = 0; j < assetsUnderPagingElement-2; j++) {
 							String assetUnderPagingEmbedCode = driver.executeScript(
 									"return document.getElementsByClassName('oo-thumbnail-paging-ooplayer')[" + i
 											+ "].getElementsByClassName('oo-thumbnail')[" + j + "].getAttribute('id')")
@@ -239,7 +240,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 							if (!result) {
 								extentTest.log(LogStatus.FAIL, "Issue with playback of video no " + count);
 							}
-							j = j + 2;
+							//j = j + 2;
 							count++;
 						}
 						if ((Boolean) driver.executeScript(
