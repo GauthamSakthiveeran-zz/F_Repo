@@ -6,7 +6,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
@@ -16,7 +15,11 @@ import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.*;
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.UnreachableBrowserException;
@@ -68,8 +71,8 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected RemoteWebDriver driver;
     protected static String v4Version;
     protected static String osNameAndOsVersion;
-    private static Map<String,ITestResult> testDetails = new HashMap<String,ITestResult>();
     public SoftAssert s_assert;
+    private TestCaseSheet testCaseSheet;
 
     public PlaybackWebTest() throws OoyalaException {
         liveChannel = new LiveChannel();
@@ -186,10 +189,6 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     @AfterSuite(alwaysRun = true)
     public void afterSuiteInPlaybackWeb() throws Exception {
-    	String updateSheet = System.getProperty("updateSheet");
-    	if(updateSheet != null && !updateSheet.isEmpty() && updateSheet.equalsIgnoreCase("true")){
-    		TestCaseSheet.update(testDetails, osNameAndOsVersion, browser, "", v4Version);
-    	}
 		SimpleHttpServer.stopServer();
 	}
 
@@ -295,14 +294,21 @@ public abstract class PlaybackWebTest extends FacileTest {
 			logger.error("**** Test " + extentTest.getTest().getName()
 					+ " failed ******");
         }
-        testDetails.put(extentTest.getTest().getName().split(" - ")[1],result);
+        
+        if(osNameAndOsVersion==null || osNameAndOsVersion.isEmpty()) {
+        	osNameAndOsVersion = getOsNameAndOsVersion();
+        }
+        
+        String updateSheet = System.getProperty("updateSheet");
+    	if(updateSheet != null && !updateSheet.isEmpty() && updateSheet.equalsIgnoreCase("true")){
+    		testCaseSheet.update(extentTest.getTest().getName().split(" - ")[1],result, osNameAndOsVersion, browser, "", v4Version);
+    	}
         ExtentManager.endTest(extentTest);
         ExtentManager.flush();
     }
 
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
-        osNameAndOsVersion = getOsNameAndOsVersion();
         logger.info("OS Name and Version is : "+osNameAndOsVersion);
         if (isBrowserMobProxyEnabled())
             BrowserMobProxyHelper.stopBrowserMobProxyServer();

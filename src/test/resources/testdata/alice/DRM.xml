@@ -275,6 +275,7 @@
                 <provider>elemental</provider>
             </live>
             <sslEnabled name="https" browser="chrome"/>
+            <browsersSupported name="safari" />
         </url>
         <!-- Not working at the momemnt Do not test -->
        <!-- <url>

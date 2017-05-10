@@ -72,10 +72,19 @@ public class PlayBackFactory {
 	private MidrollAdValidator adStartTimeValidator;
 	private VideoPluginValidator videoPluginValidator;
 	private AdPluginValidator adPluginValidator;
+	private VideoValidator videoValidator;
 	
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
 		this.extentTest = extentTest;
+	}
+	
+	public VideoValidator getVideoValidator() {
+		if(videoValidator==null){
+			videoValidator = new VideoValidator(driver);
+			videoValidator.setExtentTest(extentTest);
+		}
+		return videoValidator;
 	}
 	
 	public AdPluginValidator getAdPluginValidator() {
