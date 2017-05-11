@@ -1,6 +1,7 @@
 package com.ooyala.playback.amf.postroll;
 
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 
 import org.testng.Assert;
@@ -21,6 +22,7 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
     private SeekValidator seekValidator;
     private PoddedAdValidator poddedAdValidator;
     private SetEmbedCodeValidator setEmbedCodeValidator;
+    private PlayAction playAction;
 
     @Test(groups = {"amf", "postroll", "podded"}, dataProvider = "testUrls")
     public void verifyPostrollPodded(String testName, UrlObject url) throws OoyalaException {
@@ -29,7 +31,10 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
             driver.get(url.getUrl());
             result = result && playValidator.waitForPage();
             injectScript();
-            result = result && playValidator.validate("playing_1", 60000);
+            if (!getBrowser().equalsIgnoreCase("internet explorer"))
+                result = result && playValidator.validate("playing_1", 60000);
+            else
+                result = result && playAction.startAction();
             result = result && seekValidator.validate("seeked_1", 60000);
             result = result && event.validate("played_1", 60000);
             result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 10000);

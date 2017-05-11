@@ -1,5 +1,6 @@
 package com.ooyala.playback.amf.postroll;
 
+import com.ooyala.playback.page.action.PlayAction;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -21,6 +22,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private SeekValidator seekValidator;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
+	PlayAction playAction;
 
 	@Test(groups = { "amf", "postroll" }, dataProvider = "testUrls")
 	public void verifyPostroll(String testName, UrlObject url) {
@@ -35,7 +37,10 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 
 			injectScript();
 
-			result = result && playValidator.validate("playing_1", 90000);
+			if (!getBrowser().equalsIgnoreCase("internet explorer"))
+				result = result && playValidator.validate("playing_1", 60000);
+			else
+				result = result && playAction.startAction();
 			
 			result = result && seekValidator.validate("seeked_1", 10000);
 
