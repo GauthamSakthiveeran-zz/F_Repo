@@ -1,6 +1,7 @@
 package com.ooyala.playback.amf.midroll;
 
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 
@@ -24,6 +25,7 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
     private PoddedAdValidator poddedAdValidator;
     private SetEmbedCodeValidator setEmbedCodeValidator;
     private MidrollAdValidator adStartTimeValidator;
+    PlayAction playAction;
 
     @Test(groups = {"amf", "podded", "midroll"}, dataProvider = "testUrls")
     public void verifyMidrollPodded(String testName, UrlObject url) throws OoyalaException {
@@ -34,7 +36,11 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
             driver.get(url.getUrl());
             result = result && playValidator.waitForPage();
             injectScript();
-            result = result && playValidator.validate("playing_1", 60000);
+            /*result = result && playValidator.validate("playing_1", 60000);*/
+            if (!getBrowser().equalsIgnoreCase("internet explorer"))
+                result = result && playValidator.validate("playing_1", 60000);
+            else
+                result = result && playAction.startAction();
 
             if (event.isAdPluginPresent("ima") || event.isAdPluginPresent("vast")) {
                 result = result && seek.seek("8");
