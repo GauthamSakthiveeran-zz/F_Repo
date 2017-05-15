@@ -72,6 +72,8 @@ import com.ooyala.facile.util.ReadPropertyFile;
 import com.ooyala.facile.util.ReadTriggerFile;
 import com.ooyala.facile.util.TestWatchdog;
 
+import io.appium.java_client.remote.MobileCapabilityType;
+
 // TODO: Auto-generated Javadoc
 /**
  * A test utility class for WebDriver TestNG tests. The initial goal for this
@@ -454,17 +456,30 @@ public class FacileTest implements IHookable {
 		List<String> list = new ArrayList<String>();
 		list.add("disable-component-update");
 		options.setExperimentalOption("excludeSwitches", list);
+		if(System.getProperty("platform").equalsIgnoreCase("android")) {
+			options.addArguments("--start-maximized");
+		}
 		return options;
 	}
 
-	public static DesiredCapabilities getDesiredCapabilities(String browser) {
+	public static DesiredCapabilities getDesiredCapabilities(String browser, String platform) {
 		DesiredCapabilities dr = null;
 		if (browser.equalsIgnoreCase("firefox")) {
 			dr = DesiredCapabilities.firefox();
 			dr.setBrowserName("firefox");
 		} else if (browser.equalsIgnoreCase("chrome")) {
-			dr = DesiredCapabilities.chrome();
-			dr.setBrowserName("chrome");
+			if(platform.equalsIgnoreCase("android")) {
+				dr = DesiredCapabilities.android();
+				dr.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+			    dr.setCapability(MobileCapabilityType.PLATFORM_VERSION, System.getProperty("deviceVersion"));
+			    dr.setCapability(MobileCapabilityType.DEVICE_NAME, System.getProperty("deviceName"));
+			    dr.setCapability(MobileCapabilityType.BROWSER_NAME, "chrome");
+			    dr.setCapability(MobileCapabilityType.UDID, System.getProperty("udid"));
+			    dr.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "0");
+			} else {
+				dr = DesiredCapabilities.chrome();
+				dr.setBrowserName("chrome");
+			}
 		} else if (browser.equalsIgnoreCase("internet explorer") || browser.equalsIgnoreCase("ie")) {
 			dr = DesiredCapabilities.internetExplorer();
 			dr.setBrowserName("internet explorer");
@@ -483,12 +498,15 @@ public class FacileTest implements IHookable {
 
 	public InheritableThreadLocal<RemoteWebDriver> getRemoteDriver(String browser) {
 
-		DesiredCapabilities desiredCapabilities = getDesiredCapabilities(browser);
-		String version = System.getProperty("version");
-		if (version != null)
-			desiredCapabilities.setVersion(version);
 		String platform = System.getProperty("platform");
-		desiredCapabilities.setCapability(CapabilityType.PLATFORM, platform);
+		DesiredCapabilities desiredCapabilities = getDesiredCapabilities(browser,platform);
+		String version = System.getProperty("version");
+		
+		if(!platform.toLowerCase().contains("android")){
+			desiredCapabilities.setCapability(CapabilityType.PLATFORM, platform);
+			if (version != null)
+				desiredCapabilities.setVersion(version);
+		}
 
 		if (browser.equalsIgnoreCase("chrome")) {
 
@@ -791,11 +809,12 @@ public class FacileTest implements IHookable {
 	public RemoteWebDriver maximizeMe(RemoteWebDriver driver) {
 		logger.debug("Maximize the browser window...");
 
-		if (driver.getCapabilities().getBrowserName()
-				.equalsIgnoreCase("chrome")) {
+		if (driver.getCapabilities().getBrowserName().equalsIgnoreCase("chrome")) {
 			logger.info("Maximizing chrome driver..");
-			driver.manage().window().setSize(getWindowDimention());
-			driver.manage().window().setPosition(new Point(0, 0));
+			if (!System.getProperty("platform").equalsIgnoreCase("android")) {
+				driver.manage().window().setSize(getWindowDimention());
+				driver.manage().window().setPosition(new Point(0, 0));
+			}
 		} else {
 			driver.manage().window().maximize();
 			logger.debug("Successfully maximized the browser window...");
