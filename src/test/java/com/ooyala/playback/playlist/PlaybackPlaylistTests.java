@@ -65,6 +65,11 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
                         && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
             }
 
+            if (driver.executeScript("return pp.getErrorCode()") != null){
+				extentTest.log(LogStatus.SKIP,"Skipping test as video is in error state");
+				return;
+			}
+
 		} catch (Exception e) {
 			extentTest.log(LogStatus.FAIL, e.getMessage());
 			e.printStackTrace();
