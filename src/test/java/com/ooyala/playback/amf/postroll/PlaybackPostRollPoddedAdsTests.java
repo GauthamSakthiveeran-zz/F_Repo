@@ -1,12 +1,9 @@
 package com.ooyala.playback.amf.postroll;
 
 import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -22,7 +19,6 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
     private SeekValidator seekValidator;
     private PoddedAdValidator poddedAdValidator;
     private SetEmbedCodeValidator setEmbedCodeValidator;
-    private PlayAction playAction;
 
     @Test(groups = {"amf", "postroll", "podded"}, dataProvider = "testUrls")
     public void verifyPostrollPodded(String testName, UrlObject url) throws OoyalaException {
