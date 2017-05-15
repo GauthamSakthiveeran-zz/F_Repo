@@ -31,10 +31,7 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
             driver.get(url.getUrl());
             result = result && playValidator.waitForPage();
             injectScript();
-            if (!getBrowser().equalsIgnoreCase("internet explorer"))
-                result = result && playValidator.validate("playing_1", 60000);
-            else
-                result = result && playAction.startAction();
+            result = result && playValidator.validate("playing_1", 60000);
             result = result && seekValidator.validate("seeked_1", 60000);
             result = result && event.validate("played_1", 60000);
             result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 10000);

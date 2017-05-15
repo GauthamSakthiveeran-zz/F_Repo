@@ -103,8 +103,11 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 		}
 
-		if (!waitOnElement(By.id(element), timeout))
-			return false;
+		if (!getBrowser().equalsIgnoreCase("internet explorer")) {
+			if (!waitOnElement(By.id(element), timeout))
+				return false;
+		}else return true;
+
 		extentTest.log(LogStatus.PASS, "Video Playing and validation of element " + element + " is successful");
 
 		if (!new PlayBackFactory(driver, extentTest).getVideoValidator().getConsoleLogs().validate("", timeout)) {
