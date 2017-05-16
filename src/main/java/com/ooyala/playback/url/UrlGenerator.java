@@ -36,26 +36,22 @@ public class UrlGenerator {
 
 		String environment = System.getProperty(CommandLineParameters.environment);
 		String v4Version = "latest";
-		if ((environment == null || environment.equals(""))) {
-			
-			v4Version = System.getProperty(CommandLineParameters.v4Version);
-			if (v4Version == null || v4Version.equals("")) {
-				v4Version = "latest";
-			} 
-			
+		if (environment == null || environment.isEmpty()) {
 			playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.STAGING);
 		} else if (environment.equalsIgnoreCase("PRODUCTION")) {
-			v4Version = System.getProperty(CommandLineParameters.v4Version);
-			if (v4Version == null || v4Version.equals("") || v4Version.equals("candidate/latest")) {
-				v4Version = "latest";
-				logger.info("V4 Version is :: " + v4Version);
-				playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.PRODUCTION);
-			}
+			playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.PRODUCTION);
+		} else if (environment.equalsIgnoreCase("STAGING")) {
+			playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.STAGING);
+		}
+
+		v4Version = System.getProperty(CommandLineParameters.v4Version);
+		if (v4Version == null || v4Version.equals("")) {
+			v4Version = "latest";
 		}
 
 		test = new TestPage(playerProperties);
 		url = test.getURL(sslEnabled, embedcode, pcode, pbid, videoPlugin, adPlugin, additionalPlugin,
-				playerConfigParameter);
+				playerConfigParameter, v4Version);
 		return url;
 	}
 
@@ -75,7 +71,7 @@ public class UrlGenerator {
 		liveChannelDetails = new HashMap<String, String>();
 		Map<String, UrlObject> urlsGenerated = new HashMap<String, UrlObject>();
 		String sslEnabled = null;
-		String sslEnabledBrowser  = "";
+		String sslEnabledBrowser = "";
 		boolean browserExisted = false;
 		for (Test data : testData.getTest()) {
 			if (data.getName().equals(testName)) {
@@ -114,7 +110,7 @@ public class UrlGenerator {
 					// to run the tests for specific test based on description
 					if (applyDescriptionFilter() && url.getDescription().getName() != null
 							&& !url.getDescription().getName().isEmpty()
-							&& !url.getDescription().getName().equalsIgnoreCase(descriptionFilter)){
+							&& !url.getDescription().getName().equalsIgnoreCase(descriptionFilter)) {
 						continue;
 					}
 
@@ -141,7 +137,7 @@ public class UrlGenerator {
 					try {
 						sslEnabled = url.getSslEnabled().getName();
 						sslEnabledBrowser = url.getSslEnabled().getBrowser();
-						if(!sslEnabledBrowser.contains(browserName)){
+						if (!sslEnabledBrowser.contains(browserName)) {
 							sslEnabled = "";
 						}
 					} catch (Exception e) {
@@ -194,7 +190,7 @@ public class UrlGenerator {
 						urlObject.setAdFrequency(adFrequency);
 					}
 
-					if (adStartTime != null && !adStartTime.isEmpty()){
+					if (adStartTime != null && !adStartTime.isEmpty()) {
 						urlObject.setAdStartTime(url.getAdPlugins().getAdPlayTime());
 					}
 
@@ -222,25 +218,25 @@ public class UrlGenerator {
 						urlObject.setProvider(url.getLive().getProvider());
 					}
 
-					if (url.getPlayerParameter() !=null){
+					if (url.getPlayerParameter() != null) {
 						urlObject.setPlayerParameter(url.getPlayerParameter());
 					}
 
-					if (url.getPlugins()!=null){
-					    urlObject.setVideoPlugins(url.getPlugins().getName());
-                    }
+					if (url.getPlugins() != null) {
+						urlObject.setVideoPlugins(url.getPlugins().getName());
+					}
 
 					if (url.getAdPlugins().getOverlayPlayTime() != null
-                            && !url.getAdPlugins().getOverlayPlayTime().isEmpty()){
-                        urlObject.setOverlayPlayTime(url.getAdPlugins().getOverlayPlayTime());
-                    }
+							&& !url.getAdPlugins().getOverlayPlayTime().isEmpty()) {
+						urlObject.setOverlayPlayTime(url.getAdPlugins().getOverlayPlayTime());
+					}
 
-                    if (url.getAdPlugins()!=null){
+					if (url.getAdPlugins() != null) {
 						urlObject.setAdPlugins(url.getAdPlugins().getName());
 					}
 
-					if(url.getAdditionalPlugins()!=null){
-                    	urlObject.setAdditionalPlugins(url.getAdditionalPlugins().getName());
+					if (url.getAdditionalPlugins() != null) {
+						urlObject.setAdditionalPlugins(url.getAdditionalPlugins().getName());
 					}
 
 					urlsGenerated.put(desc, urlObject);
@@ -265,9 +261,9 @@ public class UrlGenerator {
 		return videoPluginFilter != null && !videoPluginFilter.isEmpty();
 	}
 
-	private static boolean applyDescriptionFilter(){
+	private static boolean applyDescriptionFilter() {
 		descriptionFilter = System.getProperty("description");
-		if (descriptionFilter !=null && !descriptionFilter.isEmpty()){
+		if (descriptionFilter != null && !descriptionFilter.isEmpty()) {
 			return true;
 		}
 		return false;

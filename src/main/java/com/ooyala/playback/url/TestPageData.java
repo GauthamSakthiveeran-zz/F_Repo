@@ -70,11 +70,9 @@ public class TestPageData {
 			adPluginVast = properties.getProperty("vast_ad_plugin");
 			adPluginPulse = properties.getProperty("pulse_ad_plugin");
 			defaultSkinConfig = properties.getProperty("defaultSkinConfig");
-			skinConfigForOSMF_IMA = properties
-					.getProperty("skinConfigForOSMF_IMA");
+			skinConfigForOSMF_IMA = properties.getProperty("skinConfigForOSMF_IMA");
 			player_Config_Param = properties.getProperty("player_Config_Param");
-			skinConfigForDiscovery = properties
-					.getProperty("skinConfigForDiscovery");
+			skinConfigForDiscovery = properties.getProperty("skinConfigForDiscovery");
 			discoveryApiPlugin = properties.getProperty("discovery_api_plugin");
 			otherPlugin = properties.getProperty("other_plugin");
 			playlistPlugin = properties.getProperty("playlist_plugin");
@@ -82,31 +80,30 @@ public class TestPageData {
 			valhalla_build = properties.getProperty("valhalla_build");
 			valhalla_build_id = properties.getProperty("valhalla_build_id");
 		} catch (Exception e) {
-			logger.error("Error while reading data from properties file :"
-					+ e.getMessage());
+			logger.error("Error while reading data from properties file :" + e.getMessage());
 		}
 	}
-	
+
 	public String getValhallaBuildId() {
 		return valhalla_build_id;
 	}
-	
+
 	public void setValhallaBuildId(String valhalla_build_id) {
 		this.valhalla_build_id = valhalla_build_id;
 	}
-	
+
 	public String getValhalla() {
 		return valhalla;
 	}
-	
+
 	public void setValhalla(String valhalla) {
 		this.valhalla = valhalla;
 	}
-	
+
 	public String getValhallaBuild() {
 		return valhalla_build;
 	}
-	
+
 	public void setValhallaBuild(String valhalla_build) {
 		this.valhalla_build = valhalla_build;
 	}
@@ -317,7 +314,7 @@ public class TestPageData {
 	 * 
 	 * @param envType
 	 */
-	public void initializeData(String sslEnabled, PlayerPropertyValue envType) {
+	public void initializeData(String sslEnabled, PlayerPropertyValue envType, String v4Version) {
 
 		if (sslEnabled == "" || sslEnabled == null) {
 			sslEnabled = "http";
@@ -327,10 +324,10 @@ public class TestPageData {
 		switch (envType) {
 
 		case STAGING:
-			envURL = sslEnabled + properties.getProperty("staging_env_url") + System.getProperty(CommandLineParameters.v4Version);
+			envURL = sslEnabled + properties.getProperty("staging_env_url") + v4Version;
 			String specificBranch = System.getProperty(CommandLineParameters.sandboxBranch);
-			if (!(specificBranch == null || specificBranch == "")){
-				envURL = envURL.replace("candidate/latest",specificBranch);
+			if (!(specificBranch == null || specificBranch == "")) {
+				envURL = envURL.replace("candidate/latest", specificBranch);
 			}
 			pluginURL = envURL + pluginURL;
 			corePlayer = envURL + corePlayer;
@@ -340,8 +337,7 @@ public class TestPageData {
 			skinDiscovery = envURL + otherPlugin + discoveryApiPlugin;
 			break;
 		case PRODUCTION:
-			envURL = sslEnabled + properties.getProperty("production_env_url")
-					+ System.getProperty(CommandLineParameters.v4Version);
+			envURL = sslEnabled + properties.getProperty("production_env_url") + v4Version;
 			pluginURL = envURL + "/video-plugin/";
 			corePlayer = envURL + corePlayer;
 			html5Skin = envURL + html5Skin;
@@ -405,8 +401,8 @@ public class TestPageData {
 		switch (additionalPluginType) {
 		case "DISCOVERY":
 			return envURL + otherPlugin + discoveryApiPlugin;
-			case "PLAYLIST" :
-				return envURL + otherPlugin + playlistPlugin;
+		case "PLAYLIST":
+			return envURL + otherPlugin + playlistPlugin;
 		}
 
 		return "";
@@ -420,42 +416,33 @@ public class TestPageData {
 	 *            ,adPlugin,additionalPlugin
 	 * @return returns skinConfig plugin url as per the Environment
 	 */
-	public String getSkinConfigPlugin(String plugins, String adPlugin,
-			String additionalPlugin) {
-		
-		if(plugins.isEmpty())
+	public String getSkinConfigPlugin(String plugins, String adPlugin, String additionalPlugin) {
+
+		if (plugins.isEmpty())
 			return "";
 
-		
 		if (additionalPlugin.contains("DISCOVERY")) {
 			return skinConf + skinConfigForDiscovery;
-		}else if(adPlugin.equals("IMA")){
-			if(plugins.equals("MAIN")){
+		} else if (adPlugin.equals("IMA")) {
+			if (plugins.equals("MAIN")) {
 				return skinConf + skinConfigForOSMF_IMA;
 			}
-			if(plugins.contains(",") && plugins.contains("OSMF")){
+			if (plugins.contains(",") && plugins.contains("OSMF")) {
 				return skinConf + skinConfigForOSMF_IMA;
 			}
 		}
-		
-		/*if (plugins.contains(",")) {
-			String str[] = plugins.split(",");
-			for (int i = 0; i < str.length; i++) {
-				if (additionalPlugin != "") {
-					return skinConf + skinConfigForDiscovery;
 
-				} else {
-					if (str[i].equals("OSMF") && adPlugin.equals("IMA")) {
-						return skinConf + skinConfigForOSMF_IMA;
-					}
-				}
-			}
-
-		} else {
-			if (additionalPlugin != "") {
-				return skinConf + skinConfigForDiscovery;
-			}
-		}*/
+		/*
+		 * if (plugins.contains(",")) { String str[] = plugins.split(","); for
+		 * (int i = 0; i < str.length; i++) { if (additionalPlugin != "") {
+		 * return skinConf + skinConfigForDiscovery;
+		 * 
+		 * } else { if (str[i].equals("OSMF") && adPlugin.equals("IMA")) {
+		 * return skinConf + skinConfigForOSMF_IMA; } } }
+		 * 
+		 * } else { if (additionalPlugin != "") { return skinConf +
+		 * skinConfigForDiscovery; } }
+		 */
 
 		return skinConf + defaultSkinConfig;
 
