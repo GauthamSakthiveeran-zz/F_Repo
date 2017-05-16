@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import com.ooyala.playback.utils.CommandLineParameters;
 import com.ooyala.qe.common.util.PropertyReader;
 
 /**
@@ -32,16 +33,20 @@ public class UrlGenerator {
 	public static String getURL(String sslEnabled, String embedcode, String pcode, String pbid, String videoPlugin,
 			String adPlugin, String additionalPlugin, String playerConfigParameter) {
 
-		String environment = System.getProperty("environment");
+		String environment = System.getProperty(CommandLineParameters.environment);
+		String v4Version = "latest";
 		if ((environment == null || environment.equals(""))) {
+			
+			v4Version = System.getProperty(CommandLineParameters.v4Version);
+			if (v4Version == null || v4Version.equals("")) {
+				v4Version = "latest";
+			} 
+			
 			playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.STAGING);
 		} else if (environment.equalsIgnoreCase("PRODUCTION")) {
-			String v4Version = System.getProperty("v4Version");
+			v4Version = System.getProperty(CommandLineParameters.v4Version);
 			if (v4Version == null || v4Version.equals("") || v4Version.equals("candidate/latest")) {
-				logger.error("Please Provide V4 Version of Production Instance");
-				logger.info("Running test on STAGING Environment as v4Version pointing to staging");
-				playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.STAGING);
-			} else {
+				v4Version = "latest";
 				logger.info("V4 Version is :: " + v4Version);
 				playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.PRODUCTION);
 			}
@@ -243,28 +248,19 @@ public class UrlGenerator {
 	}
 
 	private static boolean applyFilter() {
-		adPluginFilter = System.getProperty("adPlugin");
-		if (adPluginFilter != null && !adPluginFilter.isEmpty()) {
-			return true;
-		}
-		return false;
+		adPluginFilter = System.getProperty(CommandLineParameters.adPlugin);
+		return adPluginFilter != null && !adPluginFilter.isEmpty();
 	}
 
 	private static boolean applyVideoFilter() {
-		videoPluginFilter = System.getProperty("videoPlugin");
-		if (videoPluginFilter != null && !videoPluginFilter.isEmpty()) {
-			return true;
-		}
-		return false;
+		videoPluginFilter = System.getProperty(CommandLineParameters.videoPlugin);
+		return videoPluginFilter != null && !videoPluginFilter.isEmpty();
 	}
 
 	private static boolean enableSASstaging() {
 		String isSASStaging;
-		isSASStaging = System.getProperty("runSASStaging");
-		if (isSASStaging != null && isSASStaging.equalsIgnoreCase("true")) {
-			return true;
-		}
-		return false; // TODO
+		isSASStaging = System.getProperty(CommandLineParameters.runSASStaging);
+		return isSASStaging != null && isSASStaging.equalsIgnoreCase("true");
 	}
 
 	public static Map<String, String> getLiveChannelProviders() {

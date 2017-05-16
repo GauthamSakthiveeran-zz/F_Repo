@@ -2,6 +2,7 @@ package com.ooyala.playback.url;
 
 import org.apache.log4j.Logger;
 
+import com.ooyala.playback.utils.CommandLineParameters;
 import com.ooyala.qe.common.util.PropertyReader;
 
 /**
@@ -326,8 +327,8 @@ public class TestPageData {
 		switch (envType) {
 
 		case STAGING:
-			envURL = sslEnabled + properties.getProperty("staging_env_url");
-			String specificBranch = System.getProperty("sandboxBranch");
+			envURL = sslEnabled + properties.getProperty("staging_env_url") + System.getProperty(CommandLineParameters.v4Version);
+			String specificBranch = System.getProperty(CommandLineParameters.sandboxBranch);
 			if (!(specificBranch == null || specificBranch == "")){
 				envURL = envURL.replace("candidate/latest",specificBranch);
 			}
@@ -340,7 +341,7 @@ public class TestPageData {
 			break;
 		case PRODUCTION:
 			envURL = sslEnabled + properties.getProperty("production_env_url")
-					+ System.getProperty("v4Version");
+					+ System.getProperty(CommandLineParameters.v4Version);
 			pluginURL = envURL + "/video-plugin/";
 			corePlayer = envURL + corePlayer;
 			html5Skin = envURL + html5Skin;

@@ -12,14 +12,11 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger Log = Logger.getLogger(ReplayValidator.class);
+	public static Logger logger = Logger.getLogger(ReplayValidator.class);
 
 	public ReplayValidator(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(webDriver, this);
-		/**
-		 * Here we will tell Facile to add the page elements of our Login Page
-		 */
 		addElementToPageElements("replay");
 	}
 

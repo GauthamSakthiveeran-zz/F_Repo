@@ -3,6 +3,8 @@ package com.ooyala.playback.url;
 import java.net.URLEncoder;
 import java.util.Map;
 
+import com.ooyala.playback.utils.CommandLineParameters;
+
 /**
  * Created by jitendra
  */
@@ -72,7 +74,7 @@ public class TestPage {
 			String skinAsset = testpagedata.getSkinAsset();
 			
 			if(plugins.isEmpty()) {
-				String buildId = System.getProperty("valhalla_build_id");
+				String buildId = System.getProperty(CommandLineParameters.valhalla_build_id);
 				if(buildId==null || buildId.isEmpty()) {
 					buildId = testpagedata.getValhallaBuildId();
 				}

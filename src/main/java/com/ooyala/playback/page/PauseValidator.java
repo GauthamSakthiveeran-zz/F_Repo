@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 
 /**
@@ -50,6 +51,6 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 			extentTest.log(LogStatus.FAIL, element + " not found.");
 			return false;
 		}
-		return true;
+		return new PlayBackFactory(driver, extentTest).getScrubberValidator().validate("", 1000);
 	}
 }

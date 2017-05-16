@@ -27,7 +27,7 @@
 	        <browserSupportedVersion name="safari,9"/>
     	</url>
     	<!-- Through automation video is not playing, black screen appears -->
-    	<!--<url>
+    	<url>
 	    	<description name="VAST:Bitmovin Vast3.0 Midroll Overlay"/>
 	        <embed_code name="QzNTh2YTE6ABVu2-EtQeMXxfD8S_sSNs"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -36,7 +36,8 @@
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>-->
+    		<sslEnabled name="https" browser="chrome"/>
+    	</url>
     	
     	<url>
 			<description name="VAST:OSMF Vast3.0 Midroll Overlay" />

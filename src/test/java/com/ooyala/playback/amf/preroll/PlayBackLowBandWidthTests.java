@@ -10,6 +10,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
+import com.ooyala.playback.utils.CommandLineParameters;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -34,7 +35,7 @@ public class PlayBackLowBandWidthTests extends PlaybackWebTest {
 
 		try {
 
-			if (isBrowserMobProxyEnabled() && System.getProperty("mode").equalsIgnoreCase("local")) {
+			if (isBrowserMobProxyEnabled() && System.getProperty(CommandLineParameters.mode).equalsIgnoreCase("local")) {
 
 				ProxyServer proxy = BrowserMobProxyHelper.getBrowserMobProxyServer();
 				proxy.setDownstreamKbps(750);
