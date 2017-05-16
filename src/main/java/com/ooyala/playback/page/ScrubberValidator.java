@@ -87,7 +87,7 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 			extentTest.log(LogStatus.PASS, "Validated scrubber");
 		}
 
-		return flag;
+		return true;
 	}
 
 }
