@@ -20,6 +20,7 @@ public class UrlGenerator {
 	private static Logger logger = Logger.getLogger(UrlGenerator.class);
 	private static String adPluginFilter = new String();
 	private static String videoPluginFilter = new String();
+	private static String descriptionFilter = new String();
 	private static Map<String, String> liveChannelDetails = new HashMap<String, String>();
 	private static Map<String, String> liveChannelProviders = new HashMap<String, String>();
 	private static Map<String, String> streamTypeDetails = new HashMap<String, String>();
@@ -107,6 +108,13 @@ public class UrlGenerator {
 					// to run tests for specific ad plugins
 					if (applyFilter() && url.getAdPlugins().getName() != null && !url.getAdPlugins().getName().isEmpty()
 							&& !url.getAdPlugins().getName().equalsIgnoreCase(adPluginFilter)) {
+						continue;
+					}
+
+					// to run the tests for specific test based on description
+					if (applyDescriptionFilter() && url.getDescription().getName() != null
+							&& !url.getDescription().getName().isEmpty()
+							&& !url.getDescription().getName().equalsIgnoreCase(descriptionFilter)){
 						continue;
 					}
 
@@ -255,6 +263,14 @@ public class UrlGenerator {
 	private static boolean applyVideoFilter() {
 		videoPluginFilter = System.getProperty(CommandLineParameters.videoPlugin);
 		return videoPluginFilter != null && !videoPluginFilter.isEmpty();
+	}
+
+	private static boolean applyDescriptionFilter(){
+		descriptionFilter = System.getProperty("description");
+		if (descriptionFilter !=null && !descriptionFilter.isEmpty()){
+			return true;
+		}
+		return false;
 	}
 
 	private static boolean enableSASstaging() {

@@ -656,4 +656,16 @@
             <streamType name="m3u8" />
         </url>
     </test>
+    <test name="PlaybackThumbnailCarouselTests">
+        <url>
+            <description name="Core:Thumbnail Carasoul" />
+            <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+    </test>
 </testdata>
