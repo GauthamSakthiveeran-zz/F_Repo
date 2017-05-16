@@ -30,8 +30,6 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 
 		boolean result = true;
 		
-		if(!testName.contains("IMA:Bitmovin Discovery Postroll Up Next")) return;
-
 		try {
 
 			driver.get(url.getUrl());
