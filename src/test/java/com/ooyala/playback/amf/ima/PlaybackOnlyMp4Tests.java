@@ -30,10 +30,7 @@ public class PlaybackOnlyMp4Tests extends PlaybackWebTest {
             driver.get(url.getUrl());
             result = result && playValidator.waitForPage();
             injectScript();
-            if (!getBrowser().equalsIgnoreCase("internet explorer"))
-                result = result && playValidator.validate("playing_1", 60000);
-            else
-                result = result && playAction.startAction();
+            result = result && playValidator.validate("playing_1", 60000);
             result = result && event.validate("PreRoll_willPlaySingleAd_1", 6000);
             result = result && event.validate("singleAdPlayed_1", 20000);
             result = result && seek.validate("seeked_1", 1000);

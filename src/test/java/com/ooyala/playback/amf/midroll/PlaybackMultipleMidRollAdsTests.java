@@ -32,10 +32,7 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
             driver.get(url.getUrl());
             result = result && playValidator.waitForPage();
             injectScript();
-            if (!getBrowser().equalsIgnoreCase("internet explorer"))
-                result = result && playValidator.validate("playing_1", 60000);
-            else
-                result = result && playAction.startAction();
+            result = result && playValidator.validate("playing_1", 60000);
             result = result && midrollValidator.validateMultipleMidrollAdStartTime(url, testName);
             result = result && seek.validate("seeked_1", 10000);
             result = result && event.validate("played_1", 200000);

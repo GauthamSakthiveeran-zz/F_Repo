@@ -36,11 +36,8 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
             driver.get(url.getUrl());
             result = result && playValidator.waitForPage();
             injectScript();
-            /*result = result && playValidator.validate("playing_1", 60000);*/
-            if (!getBrowser().equalsIgnoreCase("internet explorer"))
-                result = result && playValidator.validate("playing_1", 60000);
-            else
-                result = result && playAction.startAction();
+
+            result = result && playValidator.validate("playing_1", 60000);
 
             if (event.isAdPluginPresent("ima") || event.isAdPluginPresent("vast")) {
                 result = result && seek.seek("8");

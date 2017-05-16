@@ -34,10 +34,7 @@ public class PlaybackMidrollOverlayTests extends PlaybackWebTest {
             driver.get(url.getUrl());
             result = result && playValidator.waitForPage();
             injectScript();
-            if (!getBrowser().equalsIgnoreCase("internet explorer"))
-                result = result && playValidator.validate("playing_1", 60000);
-            else
-                result = result && playAction.startAction();
+            result = result && playValidator.validate("playing_1", 60000);
 
             if (midrollAdValidator.isOverlayPlayTimePresent(url)) {
                 result = result && midrollAdValidator.setTime(url.getOverlayPlayTime())

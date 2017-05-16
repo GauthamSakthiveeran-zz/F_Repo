@@ -34,10 +34,7 @@ public class PlaybackMidrollOverlayUpNextTests extends PlaybackWebTest {
 
 			injectScript();
 
-			if (!getBrowser().equalsIgnoreCase("internet explorer"))
-				result = result && playValidator.validate("playing_1", 60000);
-			else
-				result = result && playAction.startAction();
+			result = result && playValidator.validate("playing_1", 60000);
 
             if (adStartTimeValidator.isAdPlayTimePresent(url)) {
                 result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlaySingleAd_1");
