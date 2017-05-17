@@ -35,6 +35,7 @@
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
             <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
+            <platformSupported platform="mac,windows"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
@@ -79,6 +80,7 @@
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
             <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
+            <platformSupported platform="mac,windows"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
@@ -124,6 +126,7 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
+            <platformSupported platform="mac,windows"/>
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
@@ -158,6 +161,7 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
+            <platformSupported platform="mac,windows"/>
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
 
@@ -221,6 +225,7 @@
             <adPlugins name="FREEWHEEL" />
             <additionalPlugins name="" />
             <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
+            <platformSupported platform="mac,windows"/>
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":true}]]></playerParameter>
         </url>
     </test>
@@ -254,6 +259,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+            <platformSupported platform="mac,windows"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
         </url>
     </test>
@@ -326,6 +332,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <platformSupported platform="mac,windows"/>
             <playerParameter><![CDATA[]]>{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}</playerParameter>
         </url>
     </test>
@@ -359,6 +366,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <platformSupported platform="mac,windows"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
         </url>
     </test>
@@ -422,6 +430,7 @@
             <additionalPlugins name="" />
             <pbid name="NzMyN2E4MzA4Y2ZiMzYwNjhiYzgzYzQ4" />
             <browsersSupported name="firefox,chrome,internet explorer" />
+            <platformSupported platform="mac,windows"/>
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/FoeG863GnBL4IhhlFC1Q2jqbkH9m/N3b2lhZzq_5Er-I09uWrmpwNUZZ_mEeX?api_key=FoeG863GnBL4IhhlFC1Q2jqbkH9m.-E1Kw&expires=2890068691&account_id=dulari_qa&&&signature=sCtNsIeb7XYqrdOdp0avqAjuFKvXansR+BWhAnJp5+A"}]]></playerParameter>
         </url>
         <url>
@@ -457,6 +466,7 @@
             <plugins name="OSMF" />
             <adPlugins name="" />
             <additionalPlugins name="" />
+            <platformSupported platform="mac,windows"/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
@@ -611,6 +621,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <platformSupported platform="mac,windows"/>
             <browsersSupported name="firefox,chrome,internet explorer" />
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
@@ -664,6 +675,7 @@
             <plugins name="OSMF" />
             <adPlugins name="" />
             <additionalPlugins name="" />
+            <platformSupported platform="mac,windows"/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
