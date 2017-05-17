@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlValue;
  * &lt;complexType>
  *   &lt;simpleContent>
  *     &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
- *       &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *       &lt;attribute name="platform" type="{http://www.w3.org/2001/XMLSchema}string" />
  *     &lt;/extension>
  *   &lt;/simpleContent>
  * &lt;/complexType>
@@ -36,12 +36,12 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlType(name = "", propOrder = {
     "value"
 })
-public class Pcode {
+public class PlatformSupported {
 
     @XmlValue
     protected String value;
-    @XmlAttribute(name = "name")
-    protected String name;
+    @XmlAttribute(name = "platform")
+    protected String platform;
 
     /**
      * Gets the value of the value property.
@@ -68,27 +68,27 @@ public class Pcode {
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the platform property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getName() {
-        return name;
+    public String getPlatform() {
+        return platform;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the platform property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setPlatform(String value) {
+        this.platform = value;
     }
 
 }
