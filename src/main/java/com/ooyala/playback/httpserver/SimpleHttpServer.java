@@ -69,7 +69,7 @@ public class SimpleHttpServer {
 				Headers h = t.getResponseHeaders();
 				h.add("Content-Type", "text/javascript");
 
-				File file = new File("./src/test/resources/js/" + fileName);
+				File file = new File("./src/main/resources/js/" + fileName);
 				byte[] bytearray = new byte[(int) file.length()];
 				FileInputStream fis = new FileInputStream(file);
 				BufferedInputStream bis = new BufferedInputStream(fis);
