@@ -28,11 +28,16 @@ public class ThumbnailValidator extends PlayBackPage implements
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-
-		WebElement element1 = getWebElement("SCRUBBER_BAR");
+		WebElement element1 = null;
+		element1 = getWebElement("SCRUBBER_BAR");
 		if (element1 == null)
 			return false;
-		moveElement(element1);
+
+		if (getPlatform().equalsIgnoreCase("android")){
+			element1 = getWebElement("QUE_POINT");
+			touchPress(element1);
+		}else
+			moveElement(element1);
 
 		return waitOnElement("THUMBNAIL_CONTAINER", 60000)
 				&& validateThumbNailImage();

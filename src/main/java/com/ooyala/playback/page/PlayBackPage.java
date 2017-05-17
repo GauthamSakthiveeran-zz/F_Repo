@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -129,6 +128,21 @@ public abstract class PlayBackPage extends WebPage {
 		} else {
 			return onmouseOver(element);
 		}
+	}
+
+	public boolean touchPress(WebElement element){
+	    logger.info("Pressing on "+element);
+	    try {
+            Actions a = new Actions(driver);
+            a.clickAndHold(element).build().perform();
+            logger.info("Pressed on "+element);
+            extentTest.log(LogStatus.INFO,"Pressed on "+element);
+            return true;
+        } catch (Exception ex){
+	        logger.error("Can not click and hold on "+element);
+	        extentTest.log(LogStatus.FAIL,"Can not click and hold on "+element);
+	        return false;
+        }
 	}
 
 	public boolean onmouseOver(WebElement element) {
