@@ -2,10 +2,8 @@ package com.ooyala.playback.amf.postroll;
 
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.url.UrlObject;
-
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;

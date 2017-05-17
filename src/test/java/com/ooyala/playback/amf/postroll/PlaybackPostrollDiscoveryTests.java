@@ -3,7 +3,6 @@ package com.ooyala.playback.amf.postroll;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
@@ -38,7 +37,7 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 
             injectScript();
 
-            result = result && playValidator.validate("playing_1", 150000);
+            result = result && playValidator.validate("playing_1", 60000);
 
             result = result && event.loadingSpinner();
             result = result && seekAction.fromLast().setTime(20).startAction();
