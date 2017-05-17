@@ -337,7 +337,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
                 logger.info("XML test data file:" + xmlFile);
             }
-            File file = new File("src/test/resources/testdata/" + xmlFile);
+            File file = new File("src/main/resources/testdata/" + xmlFile);
             JAXBContext jaxbContext = JAXBContext.newInstance(Testdata.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             testData = (Testdata) jaxbUnmarshaller.unmarshal(file);
