@@ -9,7 +9,6 @@ import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.UpNextValidator;
-import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -22,7 +21,6 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayValidator playValidator;
 	private DiscoveryValidator discoveryValidator;
-	private SeekAction seekAction;
 	private UpNextValidator upNextValidator;
 
 	@Test(groups = { "amf", "postroll", "discovery", "upnext", "sequential" }, dataProvider = "testUrls")
@@ -39,9 +37,6 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && playValidator.validate("playing_1", 150000);
-
-			result = result && event.loadingSpinner();
-			result = result && seekAction.fromLast().setTime(20).startAction();
 
 			result = result && event.validate("seeked_1", 60000);
 
