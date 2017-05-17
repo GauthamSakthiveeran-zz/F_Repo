@@ -1,5 +1,0 @@
-<elements area="scrubber">
-	<element key="PLAYED" findBy="class" class="oo-played-indicator" />
-	<element key="POINTER" findBy="class" class="oo-playhead-padding" />
-	<element key="SCRUBBER_BAR" findBy="class" class="oo-scrubber-bar"></element>
-</elements>
