@@ -269,6 +269,47 @@ public class FacileTest implements IHookable {
 	 * @return the remote web driver
 	 */
 	public RemoteWebDriver createFirefoxInstanceLocally() {
+		
+		String osName = System.getProperty("os.name").toLowerCase();
+		logger.debug("OS Name : " + osName);
+		String geckoDriverPath;
+		
+		if (osName.contains("mac")) {
+			logger.debug("OS type : MAC*");
+			geckoDriverPath = getDriverPath("geckodriver", "mac");
+			if (geckoDriverPath == "") {
+				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
+						+ DEFAULT_MAC_CHROMEDRIVER_PATH);
+				geckoDriverPath = DEFAULT_MAC_CHROMEDRIVER_PATH;
+			}
+
+		} else if (osName.contains("win")) {
+			logger.debug("OS type : Windows");
+			geckoDriverPath = getDriverPath("geckodriver.exe", "windows");
+			if (geckoDriverPath == "") {
+				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
+						+ DEFAULT_MAC_CHROMEDRIVER_PATH);
+				geckoDriverPath = DEFAULT_WIN_CHROMEDRIVER_PATH;
+			}
+
+		} else if (osName.contains("linux")) {
+			logger.debug("OS type : Linux*");
+			geckoDriverPath = getDriverPath("geckodriver", "linux");
+			if (geckoDriverPath == "") {
+				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
+						+ DEFAULT_LINUX_CHROMEDRIVER_PATH);
+				geckoDriverPath = DEFAULT_LINUX_CHROMEDRIVER_PATH;
+			}
+		} else {
+			logger.error("Could not create a driver for the OS : " + osName);
+			throw new UnsupportedOperationException(
+					"Could not create a driver for the os: " + osName);
+		}
+		
+		if(geckoDriverPath!=null && !geckoDriverPath.isEmpty()) {
+			System.setProperty("webdriver.gecko.driver", geckoDriverPath);
+		}
+		
 		logger.info("Creating Firefox Instance Locally...");
 		FirefoxProfile profile = new FirefoxProfile();
 
@@ -456,6 +497,7 @@ public class FacileTest implements IHookable {
 		List<String> list = new ArrayList<String>();
 		list.add("disable-component-update");
 		options.setExperimentalOption("excludeSwitches", list);
+		options.addArguments("--allow-running-insecure-content");
 		if(System.getProperty("platform").equalsIgnoreCase("android")) {
 			options.addArguments("--start-maximized");
 		}
