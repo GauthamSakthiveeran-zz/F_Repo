@@ -29,6 +29,10 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 			Thread.sleep(1000);
 		}
 		
+		if (!adPlaying(false)) {
+			return false;
+		}
+		
 		if(!isElementPresent("SCRUBBER_BAR")) {
 			extentTest.log(LogStatus.FAIL, "Scrubber bar is not present");
 			return false;

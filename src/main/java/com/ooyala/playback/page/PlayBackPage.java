@@ -304,7 +304,7 @@ public abstract class PlayBackPage extends WebPage {
 		}
 
 		while (true) {
-			if (time <= 120) {
+			if (time <= 150) {
 				try {
 					flag = adPlaying.validate("", 1000);
 					if (!flag) {

@@ -43,25 +43,18 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 			result = result && seekValidator.validate("seeked_1", 160000);
 			result = result && event.validate("played_1", 160000);
 			
-			extentTest.log(LogStatus.INFO, "Validating if ad plays when video is seeked post ad play time.");
+			if(result) {
+				extentTest.log(LogStatus.INFO, "Validating if ad plays when video is seeked post ad play time.");
+				driver.navigate().refresh();
+				result = result && playValidator.waitForPage();
+				injectScript();
+				result = result && playValidator.validate("playing_1", 60000);
+				result = result && seekValidator.validate("seeked_1", 60000);
+				url.setAdStartTime(null);
+				result = result && midrollAdValidator.validateMidrollAd(url);
+				result = result && event.validate("played_1", 160000);
+			}
 
-			driver.navigate().refresh();
-
-			result = result && playValidator.waitForPage();
-
-			injectScript();
-
-			result = result && playValidator.validate("playing_1", 60000);
-
-			result = result && seekValidator.validate("seeked_1", 60000);
-
-			url.setAdStartTime(null);
-
-			result = result && midrollAdValidator.validateMidrollAd(url);
-
-			result = result && event.validate("played_1", 160000);
-            
-            
             //TODO: Resolve NPE
             /*if (testName.contains("SetEmbedCode")) {
 				result = result && setEmbedCodeValidator.validate("setEmbedmbedCode",6000); 
