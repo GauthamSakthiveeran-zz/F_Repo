@@ -79,20 +79,22 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
         if (!waitOnElement("PLAYING_SCREEN", 5000)) {
             if (getBrowser().contains("safari")) {
                 int count = 5;
+                boolean flag = false;
                 while (count >= 0) {
+                	if (waitOnElement(By.id(element), 5000)) {
+                        extentTest.log(LogStatus.PASS,
+                                "Video Playing and validation of element " + element + " is successful");
+                        flag = true;
+                        break;
+                    }
                     if (!clickOnIndependentElement("PLAY_BUTTON")) {
                         extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
                         return false;
                     }
-                    if (waitOnElement(By.id(element), 1000)) {
-                        extentTest.log(LogStatus.PASS,
-                                "Video Playing and validation of element " + element + " is successful");
-                        return true;
-                    }
                     count--;
                 }
-                clickOnHiddenElement("PLAY_BUTTON");
-
+                if(!flag)
+                	clickOnHiddenElement("PLAY_BUTTON");
             } else {
                 return false;
             }

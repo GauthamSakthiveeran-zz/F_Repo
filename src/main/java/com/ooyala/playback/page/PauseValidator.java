@@ -44,14 +44,14 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 				if (getBrowser().contains("safari")) {
 					int count = 5;
 					while (count >= 0) {
-						if (!clickOnIndependentElement("PAUSE_BUTTON")) {
-							extentTest.log(LogStatus.FAIL, "FAILED to click on PAUSE_BUTTON.");
-							return false;
-						}
-						if (waitOnElement(By.id(element), 1000)) {
+						if (waitOnElement(By.id(element), 5000)) {
 							extentTest.log(LogStatus.PASS,
 									"video is paused and validation of " + element + " is successful");
 							return true;
+						}
+						if (!clickOnIndependentElement("PAUSE_BUTTON")) {
+							extentTest.log(LogStatus.FAIL, "FAILED to click on PAUSE_BUTTON.");
+							return false;
 						}
 						count--;
 					}
