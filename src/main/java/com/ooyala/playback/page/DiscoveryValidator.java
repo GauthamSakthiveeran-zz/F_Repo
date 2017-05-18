@@ -28,6 +28,10 @@ public class DiscoveryValidator extends PlayBackPage implements
 
 	}
 	
+	public boolean isDiscoveryToasterPresent() {
+		return isElementPresent("DISCOVERY_TOASTER");
+	}
+	
 	public boolean validateDiscoveryToaster() throws Exception{
 
 		if (isElementPresent("PAUSE_BUTTON")) {

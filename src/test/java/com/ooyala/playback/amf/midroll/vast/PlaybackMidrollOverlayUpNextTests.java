@@ -1,6 +1,7 @@
 package com.ooyala.playback.amf.midroll.vast;
 
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayAction;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,6 +21,7 @@ public class PlaybackMidrollOverlayUpNextTests extends PlaybackWebTest {
 	private OverlayValidator overlayValidator;
 	private DiscoveryValidator discoverValidator;
 	private MidrollAdValidator adStartTimeValidator;
+	PlayAction playAction;
 
 	@Test(groups = {"amf","overlay","midroll","upnext","sequential"}, dataProvider = "testUrls")
 	public void verifyMidrollOverlayUpNext(String testName, UrlObject url)throws OoyalaException {
@@ -32,7 +34,7 @@ public class PlaybackMidrollOverlayUpNextTests extends PlaybackWebTest {
 
 			injectScript();
 
-			result = result && playValidator.validate("playing_1", 1000);
+			result = result && playValidator.validate("playing_1", 60000);
 
             if (adStartTimeValidator.isAdPlayTimePresent(url)) {
                 result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlaySingleAd_1");

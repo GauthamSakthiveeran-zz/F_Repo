@@ -159,10 +159,9 @@
 			<plugins name="OSMF,MAIN" />
 			<adPlugins name="VAST" />
 			<additionalPlugins name="DISCOVERY" />
-			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<pbid name="d99dafe4535a4304948a7669e309ff9a" />
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-			<browserSupportedVersion name="safari,9" />
 		</url>
 		
 		<url>
@@ -184,7 +183,7 @@
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
-	        <playerParameter><![CDATA[]]></playerParameter>
+	        <playerParameter></playerParameter>
     	</url>
     	
     	<url>
@@ -195,7 +194,7 @@
 	        <adPlugins name="IMA"/>
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
-	        <playerParameter><![CDATA[]]></playerParameter>
+	        <playerParameter></playerParameter>
     	</url>
     	
     	<url>
@@ -206,18 +205,18 @@
 	        <adPlugins name="IMA"/>
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
-	        <playerParameter><![CDATA[]]></playerParameter>
+	        <playerParameter></playerParameter>
     	</url>
     	
     	<url>
 	    	<description name="VPAID:OSMF Vast VPAID2.0 Discovery Postroll"/>
 	        <embed_code name="VoMm9xYTE6v9VSCIiFihgAEXleUzg6e3"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="178e642662fe4f60b6f973a985eb09ca"/>
-	        <playerParameter><![CDATA[]]></playerParameter>
+	        <pbid name="d99dafe4535a4304948a7669e309ff9a"/>
+	        <playerParameter></playerParameter>
 	        <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
     	</url>
 
@@ -253,7 +252,7 @@
             <adPlugins name="IMA"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="294b0bd173974ddb8128a86db1029bd7"/>
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
 
     </test>

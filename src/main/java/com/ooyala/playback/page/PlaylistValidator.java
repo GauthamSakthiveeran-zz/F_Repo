@@ -117,7 +117,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 					count++;
 				}
 			} catch (Exception e) {
-				e.getMessage();
+				logger.error(e.getMessage());
 			}
 
 		}
@@ -154,7 +154,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 			count = count - eventCount;
 
 			if (getBrowser().equalsIgnoreCase("internet explorer")) {
-				factory.getSeekAction().fromLast().setTime(12).startAction();
+				factory.getSeekAction().fromLast().setTime(15).startAction();
 				if (!factory.getEventValidator().validate("seeked_" + count, 20000))
 					return false;
 			} else {

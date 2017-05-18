@@ -50,6 +50,7 @@ import com.ooyala.playback.updateSpreadSheet.TestCaseSheet;
 import com.ooyala.playback.url.Testdata;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.playback.url.UrlObject;
+import com.ooyala.playback.utils.CommandLineParameters;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -210,7 +211,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     
 	@BeforeTest(alwaysRun = true)
 	public void initializeThreads(ITestContext context) {
-		browser = System.getProperty("browser");
+		browser = System.getProperty(CommandLineParameters.browser);
 		if (browser == null || browser.equals(""))
 			browser = "firefox";
 		logger.info("browser is " + browser);
@@ -226,11 +227,11 @@ public abstract class PlaybackWebTest extends FacileTest {
     @Parameters({ "testData", "xmlFilePkg", "jsFile"})
     public void setUp(@Optional String xmlFile,@Optional String xmlFilePkg, String jsFile) throws Exception {
         logger.info("************Inside setup*************");
-        browser = System.getProperty("browser");
+        browser = System.getProperty(CommandLineParameters.browser);
         if (browser == null || browser.equals(""))
             browser = "firefox";
         logger.info("browser is " + browser);
-        v4Version = System.getProperty("v4Version");
+        v4Version = System.getProperty(CommandLineParameters.v4Version);
         if (v4Version == null || v4Version.equals("")){
             v4Version = "Candidate/latest";
         }
@@ -300,7 +301,7 @@ public abstract class PlaybackWebTest extends FacileTest {
         	osNameAndOsVersion = getOsNameAndOsVersion();
         }
         
-        String updateSheet = System.getProperty("updateSheet");
+        String updateSheet = System.getProperty(CommandLineParameters.updateSheet);
     	if(updateSheet != null && !updateSheet.isEmpty() && updateSheet.equalsIgnoreCase("true")){
     		testCaseSheet.update(extentTest.getTest().getName().split(" - ")[1],result, osNameAndOsVersion, browser, "", v4Version);
     	}
@@ -338,7 +339,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
                 logger.info("XML test data file:" + xmlFile);
             }
-            File file = new File("src/test/resources/testdata/" + xmlFile);
+            File file = new File("src/main/resources/testdata/" + xmlFile);
             JAXBContext jaxbContext = JAXBContext.newInstance(Testdata.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
             testData = (Testdata) jaxbUnmarshaller.unmarshal(file);
@@ -406,15 +407,6 @@ public abstract class PlaybackWebTest extends FacileTest {
     	Capabilities cap = ((RemoteWebDriver) webDriverFacile.get()).getCapabilities();
         String version = cap.getVersion().toString();
         return version;
-    }
-
-    public static String readPropertyOrEnv(String key, String defaultValue) {
-        String v = System.getProperty(key);
-        if (v == null)
-            v = System.getenv(key);
-        if (v == null)
-            v = defaultValue;
-        return v;
     }
 
 	public String takeScreenshot(String fileName) {

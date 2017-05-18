@@ -72,7 +72,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
 		} catch (Exception e) {
 			logger.error("Exception while checking basic playback " + e.getMessage());
-			extentTest.log(LogStatus.FAIL, "Exception while checking basic playback " + e.getMessage());
+			extentTest.log(LogStatus.FAIL,e);
 			result = false;
 		}
 		Assert.assertTrue(result, "Basic playback tests failed" + testName);

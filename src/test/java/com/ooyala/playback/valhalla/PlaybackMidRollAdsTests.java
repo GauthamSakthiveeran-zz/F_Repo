@@ -49,11 +49,10 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 			result = result && seekValidator.validate("seeked_1", 160000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			extentTest.log(LogStatus.FAIL, e);
 			result = false;
 		}
-
 		Assert.assertTrue(result, "Verified");
 	}
 }

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
+import com.ooyala.playback.utils.CommandLineParameters;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -22,7 +23,7 @@ public class ExtentManager {
 
 			extentReports.addSystemInfo("Host Name", "Jenkins-Dallas-Slave")
 					.addSystemInfo("Environment", "QA");
-			extentReports.addSystemInfo("browser", System.getProperty("browser"));
+			extentReports.addSystemInfo("browser", System.getProperty(CommandLineParameters.browser));
 
 		}
 	}

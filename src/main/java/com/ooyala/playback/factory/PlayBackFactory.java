@@ -62,7 +62,7 @@ public class PlayBackFactory {
 	private InitalTimeValidator initalTimeValidator;
 	private ExtentTest extentTest;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
-    private ConcurrentStreamValidator concurrentStreamValidator;
+	private ConcurrentStreamValidator concurrentStreamValidator;
 	private DRMValidator drmValidator;
 	private GeoValidator geoValidator;
 	private StreamValidator streamTypeValidator;
@@ -73,62 +73,71 @@ public class PlayBackFactory {
 	private VideoPluginValidator videoPluginValidator;
 	private AdPluginValidator adPluginValidator;
 	private VideoValidator videoValidator;
-	
+	private ScrubberValidator scrubberValidator;
+
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
 		this.extentTest = extentTest;
 	}
-	
+
+	public ScrubberValidator getScrubberValidator() {
+		if (scrubberValidator == null) {
+			scrubberValidator = new ScrubberValidator(driver);
+			scrubberValidator.setExtentTest(extentTest);
+		}
+		return scrubberValidator;
+	}
+
 	public VideoValidator getVideoValidator() {
-		if(videoValidator==null){
+		if (videoValidator == null) {
 			videoValidator = new VideoValidator(driver);
 			videoValidator.setExtentTest(extentTest);
 		}
 		return videoValidator;
 	}
-	
+
 	public AdPluginValidator getAdPluginValidator() {
-		if(adPluginValidator==null){
+		if (adPluginValidator == null) {
 			adPluginValidator = new AdPluginValidator(driver);
 			adPluginValidator.setExtentTest(extentTest);
 		}
 		return adPluginValidator;
 	}
-	
+
 	public VideoPluginValidator getVideoPluginValidator() {
-		if(videoPluginValidator==null){
+		if (videoPluginValidator == null) {
 			videoPluginValidator = new VideoPluginValidator(driver);
 			videoPluginValidator.setExtentTest(extentTest);
 		}
 		return videoPluginValidator;
 	}
-	
-    public ConcurrentStreamValidator getConcurrentStreamValidator() {
-        if (concurrentStreamValidator == null){
-            concurrentStreamValidator = new ConcurrentStreamValidator(driver);
-            concurrentStreamValidator.setExtentTest(extentTest);
-        }
-        return concurrentStreamValidator;
-    }
-    
-    public BitmovinTechnologyValidator getBitmovinTechnologyValidator() {
-        if (bitmovinTechnologyValidator == null){
-        	bitmovinTechnologyValidator = new BitmovinTechnologyValidator(driver);
-        	bitmovinTechnologyValidator.setExtentTest(extentTest);
-        }
-        return bitmovinTechnologyValidator;
-    }
-    
-    public ErrorDescriptionValidator getErrorDescriptionValidator() {
-        if (errorDescriptionValidator == null){
-        	errorDescriptionValidator = new ErrorDescriptionValidator(driver);
-        	errorDescriptionValidator.setExtentTest(extentTest);
-        }
-        return errorDescriptionValidator;
-    }
 
-	public InitalTimeValidator getInitalTimeValidator(){
-		if (initalTimeValidator == null){
+	public ConcurrentStreamValidator getConcurrentStreamValidator() {
+		if (concurrentStreamValidator == null) {
+			concurrentStreamValidator = new ConcurrentStreamValidator(driver);
+			concurrentStreamValidator.setExtentTest(extentTest);
+		}
+		return concurrentStreamValidator;
+	}
+
+	public BitmovinTechnologyValidator getBitmovinTechnologyValidator() {
+		if (bitmovinTechnologyValidator == null) {
+			bitmovinTechnologyValidator = new BitmovinTechnologyValidator(driver);
+			bitmovinTechnologyValidator.setExtentTest(extentTest);
+		}
+		return bitmovinTechnologyValidator;
+	}
+
+	public ErrorDescriptionValidator getErrorDescriptionValidator() {
+		if (errorDescriptionValidator == null) {
+			errorDescriptionValidator = new ErrorDescriptionValidator(driver);
+			errorDescriptionValidator.setExtentTest(extentTest);
+		}
+		return errorDescriptionValidator;
+	}
+
+	public InitalTimeValidator getInitalTimeValidator() {
+		if (initalTimeValidator == null) {
 			initalTimeValidator = new InitalTimeValidator(driver);
 			initalTimeValidator.setExtentTest(extentTest);
 		}
@@ -136,7 +145,7 @@ public class PlayBackFactory {
 	}
 
 	public StreamValidator getStreamTypeValidator() {
-		if (streamTypeValidator == null){
+		if (streamTypeValidator == null) {
 			streamTypeValidator = new StreamValidator(driver);
 			streamTypeValidator.setExtentTest(extentTest);
 		}
@@ -144,23 +153,23 @@ public class PlayBackFactory {
 	}
 
 	public GeoValidator getGeoValidator() {
-		if (geoValidator == null){
+		if (geoValidator == null) {
 			geoValidator = new GeoValidator(driver);
 			geoValidator.setExtentTest(extentTest);
 		}
 		return geoValidator;
 	}
-	
-	public DRMValidator getDRMValidator(){
-		if (drmValidator == null){
+
+	public DRMValidator getDRMValidator() {
+		if (drmValidator == null) {
 			drmValidator = new DRMValidator(driver);
 			drmValidator.setExtentTest(extentTest);
 		}
 		return drmValidator;
 	}
-	
+
 	public AdFrequencyValidator getAdFrequencyValidator() {
-		if (adFrequencyValidator == null){
+		if (adFrequencyValidator == null) {
 			adFrequencyValidator = new AdFrequencyValidator(driver);
 			adFrequencyValidator.setExtentTest(extentTest);
 		}
@@ -168,7 +177,7 @@ public class PlayBackFactory {
 	}
 
 	public OoyalaAPIValidator getOoyalaAPIValidator() {
-		if (ooyalaAPIValidator == null){
+		if (ooyalaAPIValidator == null) {
 			ooyalaAPIValidator = new OoyalaAPIValidator(driver);
 			ooyalaAPIValidator.setExtentTest(extentTest);
 		}
@@ -176,7 +185,7 @@ public class PlayBackFactory {
 	}
 
 	public ThumbnailCarouselValidator getThumbnailCarouselValidator() {
-		if (thumbnailCarouselValidator == null){
+		if (thumbnailCarouselValidator == null) {
 			thumbnailCarouselValidator = new ThumbnailCarouselValidator(driver);
 			thumbnailCarouselValidator.setExtentTest(extentTest);
 		}
@@ -185,7 +194,7 @@ public class PlayBackFactory {
 	}
 
 	public MultiplePlayerValidator getMultiplePlayerValidator() {
-		if (multiplePlayerValidator == null){
+		if (multiplePlayerValidator == null) {
 			multiplePlayerValidator = new MultiplePlayerValidator(driver);
 			multiplePlayerValidator.setExtentTest(extentTest);
 		}
@@ -194,7 +203,7 @@ public class PlayBackFactory {
 	}
 
 	public SeekAction getSeekAction() {
-		if (seekAction == null){
+		if (seekAction == null) {
 			seekAction = new SeekAction(driver);
 			seekAction.setExtentTest(extentTest);
 		}
@@ -203,7 +212,7 @@ public class PlayBackFactory {
 	}
 
 	public PoddedAdValidator getPoddedAdValidator() {
-		if (poddedAdValidator == null){
+		if (poddedAdValidator == null) {
 			poddedAdValidator = new PoddedAdValidator(driver);
 			poddedAdValidator.setExtentTest(extentTest);
 		}
@@ -211,7 +220,7 @@ public class PlayBackFactory {
 	}
 
 	public AdClickThroughValidator getAdClickThroughValidator() {
-		if (adClickThroughValidator == null){
+		if (adClickThroughValidator == null) {
 			adClickThroughValidator = new AdClickThroughValidator(driver);
 			adClickThroughValidator.setExtentTest(extentTest);
 		}
@@ -220,7 +229,7 @@ public class PlayBackFactory {
 	}
 
 	public EncodingValidator getEncodingValidator() {
-		if (encodingValidator == null){
+		if (encodingValidator == null) {
 			encodingValidator = new EncodingValidator(driver);
 			encodingValidator.setExtentTest(extentTest);
 		}
@@ -229,7 +238,7 @@ public class PlayBackFactory {
 	}
 
 	public AdSkipButtonValidator getAdSkipButtonValidator() {
-		if (adSkipButtonValidator == null){
+		if (adSkipButtonValidator == null) {
 			adSkipButtonValidator = new AdSkipButtonValidator(driver);
 			adSkipButtonValidator.setExtentTest(extentTest);
 		}
@@ -238,7 +247,7 @@ public class PlayBackFactory {
 	}
 
 	public OverlayValidator getOverlayValidator() {
-		if (overlayValidator == null){
+		if (overlayValidator == null) {
 			overlayValidator = new OverlayValidator(driver);
 			overlayValidator.setExtentTest(extentTest);
 		}
@@ -247,7 +256,7 @@ public class PlayBackFactory {
 	}
 
 	public StateScreenAction getStateScreenAction() {
-		if (stateScreenAction == null){
+		if (stateScreenAction == null) {
 			stateScreenAction = new StateScreenAction(driver);
 			stateScreenAction.setExtentTest(extentTest);
 		}
@@ -255,7 +264,7 @@ public class PlayBackFactory {
 	}
 
 	public FullScreenAction getFullScreenAction() {
-		if (fullScreenAction == null){
+		if (fullScreenAction == null) {
 			fullScreenAction = new FullScreenAction(driver);
 			fullScreenAction.setExtentTest(extentTest);
 		}
@@ -263,7 +272,7 @@ public class PlayBackFactory {
 	}
 
 	public PauseAction getPauseAction() {
-		if (pauseAction == null){
+		if (pauseAction == null) {
 			pauseAction = new PauseAction(driver);
 			pauseAction.setExtentTest(extentTest);
 		}
@@ -271,7 +280,7 @@ public class PlayBackFactory {
 	}
 
 	public PlayAction getPlayAction() {
-		if (playAction == null){
+		if (playAction == null) {
 			playAction = new PlayAction(driver);
 			playAction.setExtentTest(extentTest);
 		}
@@ -279,7 +288,7 @@ public class PlayBackFactory {
 	}
 
 	public CCValidator getCCValidator() {
-		if (ccValidator == null){
+		if (ccValidator == null) {
 			ccValidator = new CCValidator(driver);
 			ccValidator.setExtentTest(extentTest);
 		}
@@ -287,7 +296,7 @@ public class PlayBackFactory {
 	}
 
 	public UpNextValidator getUpNextValidator() {
-		if (upNextValidator == null){
+		if (upNextValidator == null) {
 			upNextValidator = new UpNextValidator(driver);
 			upNextValidator.setExtentTest(extentTest);
 		}
@@ -295,7 +304,7 @@ public class PlayBackFactory {
 	}
 
 	public SeekValidator getSeekValidator() {
-		if (seekValidator == null){
+		if (seekValidator == null) {
 			seekValidator = new SeekValidator(driver);
 			seekValidator.setExtentTest(extentTest);
 		}
@@ -303,7 +312,7 @@ public class PlayBackFactory {
 	}
 
 	public PlayValidator getPlayValidator() {
-		if (playValidator == null){
+		if (playValidator == null) {
 			playValidator = new PlayValidator(driver);
 			playValidator.setExtentTest(extentTest);
 		}
@@ -311,7 +320,7 @@ public class PlayBackFactory {
 	}
 
 	public PauseValidator getPauseValidator() {
-		if (pauseValidator == null){
+		if (pauseValidator == null) {
 			pauseValidator = new PauseValidator(driver);
 			pauseValidator.setExtentTest(extentTest);
 		}
@@ -319,7 +328,7 @@ public class PlayBackFactory {
 	}
 
 	public FullScreenValidator getFullScreenValidator() {
-		if (fullScreenValidator == null){
+		if (fullScreenValidator == null) {
 			fullScreenValidator = new FullScreenValidator(driver);
 			fullScreenValidator.setExtentTest(extentTest);
 		}
@@ -327,7 +336,7 @@ public class PlayBackFactory {
 	}
 
 	public DiscoveryValidator getDiscoveryValidator() {
-		if (discoveryValidator == null){
+		if (discoveryValidator == null) {
 			discoveryValidator = new DiscoveryValidator(driver);
 			discoveryValidator.setExtentTest(extentTest);
 		}
@@ -335,7 +344,7 @@ public class PlayBackFactory {
 	}
 
 	public EventValidator getEventValidator() {
-		if (eventValidator == null){
+		if (eventValidator == null) {
 			eventValidator = new EventValidator(driver);
 			eventValidator.setExtentTest(extentTest);
 		}
@@ -343,7 +352,7 @@ public class PlayBackFactory {
 	}
 
 	public AspectRatioValidator getAspectRatioValidator() {
-		if (aspectRatioValidator == null){
+		if (aspectRatioValidator == null) {
 			aspectRatioValidator = new AspectRatioValidator(driver);
 			aspectRatioValidator.setExtentTest(extentTest);
 		}
@@ -351,7 +360,7 @@ public class PlayBackFactory {
 	}
 
 	public ShareTabValidator getShareTabValidator() {
-		if (shareTabValidator == null){
+		if (shareTabValidator == null) {
 			shareTabValidator = new ShareTabValidator(driver);
 			shareTabValidator.setExtentTest(extentTest);
 		}
@@ -359,7 +368,7 @@ public class PlayBackFactory {
 	}
 
 	public VolumeValidator getVolumeValidator() {
-		if (volumeValidator == null){
+		if (volumeValidator == null) {
 			volumeValidator = new VolumeValidator(driver);
 			volumeValidator.setExtentTest(extentTest);
 		}
@@ -367,7 +376,7 @@ public class PlayBackFactory {
 	}
 
 	public WaterMarkValidator getWaterMarkValidator() {
-		if (waterMarkValidator == null){
+		if (waterMarkValidator == null) {
 			waterMarkValidator = new WaterMarkValidator(driver);
 			waterMarkValidator.setExtentTest(extentTest);
 		}
@@ -375,7 +384,7 @@ public class PlayBackFactory {
 	}
 
 	public ControlBarValidator getControlBarValidator() {
-		if (controlBarValidator == null){
+		if (controlBarValidator == null) {
 			controlBarValidator = new ControlBarValidator(driver);
 			controlBarValidator.setExtentTest(extentTest);
 		}
@@ -383,7 +392,7 @@ public class PlayBackFactory {
 	}
 
 	public StartScreenValidator getStartScreenValidator() {
-		if (startScreenValidator == null){
+		if (startScreenValidator == null) {
 			startScreenValidator = new StartScreenValidator(driver);
 			startScreenValidator.setExtentTest(extentTest);
 		}
@@ -391,7 +400,7 @@ public class PlayBackFactory {
 	}
 
 	public ClickDiscoveryButtonAction getClickDiscoveryButtonAction() {
-		if (clickDiscoveryButtonAction == null){
+		if (clickDiscoveryButtonAction == null) {
 			clickDiscoveryButtonAction = new ClickDiscoveryButtonAction(driver);
 			clickDiscoveryButtonAction.setExtentTest(extentTest);
 		}
@@ -399,7 +408,7 @@ public class PlayBackFactory {
 	}
 
 	public EndScreenValidator getEndScreenValidator() {
-		if (endScreenValidator == null){
+		if (endScreenValidator == null) {
 			endScreenValidator = new EndScreenValidator(driver);
 			endScreenValidator.setExtentTest(extentTest);
 		}
@@ -407,7 +416,7 @@ public class PlayBackFactory {
 	}
 
 	public ReplayValidator getReplayValidator() {
-		if (replayValidator == null){
+		if (replayValidator == null) {
 			replayValidator = new ReplayValidator(driver);
 			replayValidator.setExtentTest(extentTest);
 		}
@@ -415,7 +424,7 @@ public class PlayBackFactory {
 	}
 
 	public Bitratevalidator getBitratevalidator() {
-		if (bitratevalidator == null){
+		if (bitratevalidator == null) {
 			bitratevalidator = new Bitratevalidator(driver);
 			bitratevalidator.setExtentTest(extentTest);
 		}
@@ -423,7 +432,7 @@ public class PlayBackFactory {
 	}
 
 	public ThumbnailValidator getThumbnailValidator() {
-		if (thumbnailValidator == null){
+		if (thumbnailValidator == null) {
 			thumbnailValidator = new ThumbnailValidator(driver);
 			thumbnailValidator.setExtentTest(extentTest);
 		}
@@ -431,7 +440,7 @@ public class PlayBackFactory {
 	}
 
 	public SocialScreenValidator getSocailScreenValidator() {
-		if (socailScreenValidator == null){
+		if (socailScreenValidator == null) {
 			socailScreenValidator = new SocialScreenValidator(driver);
 			socailScreenValidator.setExtentTest(extentTest);
 		}
@@ -439,7 +448,7 @@ public class PlayBackFactory {
 	}
 
 	public PlayPauseAction getPlayPauseAction() {
-		if (playPauseAction == null){
+		if (playPauseAction == null) {
 			playPauseAction = new PlayPauseAction(driver);
 			playPauseAction.setExtentTest(extentTest);
 		}
@@ -447,7 +456,7 @@ public class PlayBackFactory {
 	}
 
 	public AutoplayAction getAutoplay() {
-		if (autoplay == null){
+		if (autoplay == null) {
 			autoplay = new AutoplayAction(driver);
 			autoplay.setExtentTest(extentTest);
 		}
@@ -455,16 +464,15 @@ public class PlayBackFactory {
 	}
 
 	public LiveAction getLiveAction() {
-		if (liveAction == null){
+		if (liveAction == null) {
 			liveAction = new LiveAction(driver);
 			liveAction.setExtentTest(extentTest);
 		}
 		return liveAction;
 	}
 
-
 	public DifferentElementValidator getDifferentElements() {
-		if (differentElement == null){
+		if (differentElement == null) {
 			differentElement = new DifferentElementValidator(driver);
 			differentElement.setExtentTest(extentTest);
 		}
@@ -472,7 +480,7 @@ public class PlayBackFactory {
 	}
 
 	public IsAdPlayingValidator isAdPlaying() {
-		if (isAdPlaying == null){
+		if (isAdPlaying == null) {
 			isAdPlaying = new IsAdPlayingValidator(driver);
 			isAdPlaying.setExtentTest(extentTest);
 		}
@@ -480,7 +488,7 @@ public class PlayBackFactory {
 	}
 
 	public SetEmbedCodeValidator getSetEmbedCodeValidator() {
-		if (setEmbedCodeValidator == null){
+		if (setEmbedCodeValidator == null) {
 			setEmbedCodeValidator = new SetEmbedCodeValidator(driver);
 			setEmbedCodeValidator.setExtentTest(extentTest);
 		}
@@ -488,7 +496,7 @@ public class PlayBackFactory {
 	}
 
 	public PlaylistValidator PlaylistValidator() {
-		if (playlistValidator == null){
+		if (playlistValidator == null) {
 			playlistValidator = new PlaylistValidator(driver);
 			playlistValidator.setExtentTest(extentTest);
 		}
@@ -496,20 +504,20 @@ public class PlayBackFactory {
 	}
 
 	public LiveValidator getLiveValidator() {
-		if (liveValidator == null){
+		if (liveValidator == null) {
 			liveValidator = new LiveValidator(driver);
 			liveValidator.setExtentTest(extentTest);
 		}
 		return liveValidator;
 	}
 
-    public MidrollAdValidator getAdStartTimeValidator() {
-        if (adStartTimeValidator == null){
-            adStartTimeValidator = new MidrollAdValidator(driver);
-            adStartTimeValidator.setExtentTest(extentTest);
-        }
-        return adStartTimeValidator;
-    }
+	public MidrollAdValidator getAdStartTimeValidator() {
+		if (adStartTimeValidator == null) {
+			adStartTimeValidator = new MidrollAdValidator(driver);
+			adStartTimeValidator.setExtentTest(extentTest);
+		}
+		return adStartTimeValidator;
+	}
 
 	public WebDriver getDriver() {
 		return driver;
@@ -523,16 +531,12 @@ public class PlayBackFactory {
 		for (Field property : fs) {
 			if (property.getType().isAssignableFrom(validator)) {
 				if (property.get(this) == null)
-					property.set(this, validator
-							.getConstructor(WebDriver.class)
-							.newInstance(driver));
+					property.set(this, validator.getConstructor(WebDriver.class).newInstance(driver));
 				return (T) property.get(this);
 			}
 
 		}
 		return null;
 	}
-
-
 
 }

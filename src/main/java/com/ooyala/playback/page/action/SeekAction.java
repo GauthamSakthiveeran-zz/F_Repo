@@ -1,5 +1,6 @@
 package com.ooyala.playback.page.action;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.page.PlayBackPage;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
@@ -63,17 +64,13 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	public boolean startAction() throws Exception {
 
 		if (time == 0 && seekTillEnd == false) {
-			throw new Exception(
-					"Time to seek needs to be set! or seekTillEnd should be set to true");
+			throw new Exception("Time to seek needs to be set! or seekTillEnd should be set to true");
 		}
 
 		if (!adPlugin.isEmpty()) {
 			Map<String, String> data = parseURL();
-			if (data.get("ad_plugin") != null
-					&& !data.get("ad_plugin").equals(adPlugin)) {
-				extentTest.log(LogStatus.INFO,
-						"This particular step is skipped as it is valid only for "
-								+ adPlugin);
+			if (data.get("ad_plugin") != null && !data.get("ad_plugin").equals(adPlugin)) {
+				extentTest.log(LogStatus.INFO, "This particular step is skipped as it is valid only for " + adPlugin);
 				return true;
 			}
 
@@ -82,7 +79,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		if (seekTillEnd && factor == 1) {
 			seekTillEnd = false;
 			return seekPlayback();
-			
+
 		} else {
 			if (fromLast) {
 				return seek(time, fromLast);
@@ -92,14 +89,14 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		}
 	}
 
-	public String getDuration() {
+	public String getDurationString() {
 		return "pp.getDuration()/" + factor;
 	}
 
 	public boolean seek(int time, boolean fromLast) throws Exception {
 		String seekduration;
 		if (fromLast) {
-			seekduration = getDuration();
+			seekduration = getDurationString();
 		} else {
 			seekduration = "";
 		}
@@ -108,10 +105,9 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	}
 
 	public boolean seek(String time) {
-		try{
-			((JavascriptExecutor) driver).executeScript("return pp.seek(" + time
-					+ ")" + "");
-		}catch(Exception ex){
+		try {
+			((JavascriptExecutor) driver).executeScript("return pp.seek(" + time + ")" + "");
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;
 		}
@@ -119,11 +115,10 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	}
 
 	private boolean seekPlayback() {
-		try{
+		try {
 			int count = 10;
 			while (true) {
-				double seekTime = Double.parseDouble(((JavascriptExecutor) driver)
-						.executeScript("return pp.getPlayheadTime();").toString());
+				double seekTime = getPlayAheadTime();
 				if (seekTime == -1) {
 					extentTest.log(LogStatus.INFO, "Video is in error mode");
 					logger.error("Video is in error mode");
@@ -131,30 +126,32 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 					break;
 				}
 				if (seekTime > 5) {
-					// Update after ticket is fixed pp.seek() api is not working if
+					// Update after ticket is fixed pp.seek() api is not working
+					// if
 					// we try to seek less than 31 seconds form end of video
 					if (getBrowser().equalsIgnoreCase("safari") || getBrowser().equalsIgnoreCase("internet explorer")) {
 						seek(31, true);
 					} else {
 						seek(7, true);
 					}
-//					((JavascriptExecutor) driver).executeScript("pp.pause();");
-//					Thread.sleep(2000);
-//					((JavascriptExecutor) driver).executeScript("pp.play();");
+					// ((JavascriptExecutor)
+					// driver).executeScript("pp.pause();");
+					// Thread.sleep(2000);
+					// ((JavascriptExecutor)
+					// driver).executeScript("pp.play();");
 					break;
-				} else{
+				} else {
 					seek(4, true);
 				}
-				if(!loadingSpinner()){
+				if (!loadingSpinner()) {
 					extentTest.log(LogStatus.FAIL, "In loading spinner for a really long time while seeking");
 					return false;
 				}
-				if(count<=0)
+				if (count <= 0)
 					return false;
 				count--;
 			}
-			Thread.sleep(10000);
-		}catch(Exception ex){
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;
 		}

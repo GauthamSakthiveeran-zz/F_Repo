@@ -10,7 +10,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<playerParameter></playerParameter>
 		</url>
 
 		<url>
@@ -22,7 +22,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<playerParameter></playerParameter>
 		</url>
 
 		<url>
@@ -34,7 +34,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<playerParameter></playerParameter>
 			<browsersSupported name="safari" />
 		</url>
 
@@ -47,7 +47,7 @@
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<playerParameter></playerParameter>
 		</url>
 		<url>
 			<description name="Streams:Bitmovin MP4" />
@@ -57,7 +57,7 @@
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="615dc8e909e941c280e12155df838355" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<playerParameter></playerParameter>
 			<streamType name="mp4" />
 		</url>
 
@@ -71,7 +71,7 @@
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
 			<browsersSupported name="safari" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<playerParameter></playerParameter>
 		</url>
 		<url>
 			<description name="Streams:Main MP4" />
@@ -81,7 +81,7 @@
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="615dc8e909e941c280e12155df838355" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<playerParameter></playerParameter>
 			<streamType name="mp4" />
 		</url>
 
@@ -136,7 +136,7 @@
 			<browsersSupported
 				name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+			<playerParameter></playerParameter>
 		</url>
 		<url>
 			<description name="Streams:Bitmovin Azure DASH VOD" />

@@ -22,8 +22,8 @@ public class VideoValidator extends PlayBackPage implements PlaybackValidator {
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
-
-		if (!isVideoPluginPresent("bit_wrapper")) {
+//TODO
+		/*if (!isVideoPluginPresent("bit_wrapper")) {
 			return true;
 		}
 
@@ -33,6 +33,10 @@ public class VideoValidator extends PlayBackPage implements PlaybackValidator {
 				return false;
 			}
 		}
+		if (!waitOnElement(By.id("video_mp4"), 20000)) {
+			extentTest.log(LogStatus.FAIL, "Black Screen");
+			return false;
+		}*/
 		return true;
 	}
 

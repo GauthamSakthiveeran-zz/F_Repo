@@ -61,7 +61,7 @@ public class PlaybackOverrideEncodingPriorityPostrollAdTests extends PlaybackWeb
 
 			result = result && playAction.startAction();
 
-			if (url.getVideoPlugins().contains("MAIN") && System.getProperty("browser").equalsIgnoreCase("safari"))
+			if (url.getVideoPlugins().contains("MAIN") && getBrowser().equalsIgnoreCase("safari"))
 				result = result && encode.validate("Override", 60000);
 
 			result = result && seek.validate("seeked_1", 60000);

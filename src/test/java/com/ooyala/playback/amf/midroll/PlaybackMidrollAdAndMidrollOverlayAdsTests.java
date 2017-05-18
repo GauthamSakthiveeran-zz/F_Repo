@@ -69,12 +69,10 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 			result = result && event.validate("played_1", 160000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			result = false;
 			extentTest.log(LogStatus.FAIL, e);
 		}
-
 		Assert.assertTrue(result, "Verified");
 	}
-
 }
