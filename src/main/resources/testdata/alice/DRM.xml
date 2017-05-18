@@ -127,7 +127,7 @@
         <!--  Getting playback stream error for IE for more info https://jira.corp.ooyala.com/browse/PBW-6084-->
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta eHLS VOD" />
-            <embed_code name="c3b3NvYTE6gRRfWJdupyxGDYLiqEkl21" />
+            <embed_code name="VybDU1YjE63OuPiuyjT25aOXGzBBg69O" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
@@ -136,7 +136,6 @@
             <streamType name="hls" />
             <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
             <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
-            <sslEnabled name="https" browser="chrome"/>
         </url>
 
         <url>

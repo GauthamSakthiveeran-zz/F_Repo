@@ -19,9 +19,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.google.common.base.Predicate;
 import com.ooyala.facile.page.WebPage;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -306,7 +304,7 @@ public abstract class PlayBackPage extends WebPage {
 		}
 
 		while (true) {
-			if (time <= 120) {
+			if (time <= 150) {
 				try {
 					flag = adPlaying.validate("", 1000);
 					if (!flag) {
@@ -358,7 +356,7 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	public boolean isPageLoaded() {
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		/*WebDriverWait wait = new WebDriverWait(driver, 30);
 		wait.until(new Predicate<WebDriver>() {
 			public boolean apply(WebDriver webDriver) {
 				return driver.executeScript("return typeof pp").toString().equals("object");
@@ -369,15 +367,15 @@ public abstract class PlayBackPage extends WebPage {
 			extentTest.log(LogStatus.FAIL, "pp object is not loaded");
 			return false;
 		}
-		return true;
-		/*int count = 120;
+		return true;*/
+		int count = 120;
 		while (count >= 0) {
 			if (driver.executeScript("return typeof pp").toString().equals("object")) {
 				return true;
 			}
 			count--;
 		}
-		return false;*/
+		return false;
 	}
 
 	public boolean isAdPluginPresent(String adPlugin) throws Exception {
@@ -428,5 +426,10 @@ public abstract class PlayBackPage extends WebPage {
 	public double getPlayAheadTime() {
 		return Double
 				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
+	}
+	
+	public double getDuration() {
+		return Double
+				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getDuration();").toString());
 	}
 }

@@ -29,8 +29,9 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
             injectScript();
             result = result && playValidator.validate("playing_1", 60000);
             result = result && seekValidator.validate("seeked_1", 60000);
+            result = result && seekValidator.validate("videoPlayed_1", 60000);
+            result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 120000);
             result = result && event.validate("played_1", 60000);
-            result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 10000);
             if (testName.contains("SetEmbedCode")) {
                 result = result && setEmbedCodeValidator.validate("", 6000);
             }
