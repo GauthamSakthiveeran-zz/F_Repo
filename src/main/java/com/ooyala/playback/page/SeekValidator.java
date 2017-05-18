@@ -32,7 +32,7 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 
 		if (waitOnElement(By.id(element), timeout)) {
 			extentTest.log(LogStatus.PASS, "Seek successful.");
-			return true;
+			return (new PlayBackFactory(driver, extentTest)).getScrubberValidator().validate("", timeout);
 		}
 		extentTest.log(LogStatus.INFO, "Wait on " + element + " failed after "+ timeout + " ms");
 		return false;

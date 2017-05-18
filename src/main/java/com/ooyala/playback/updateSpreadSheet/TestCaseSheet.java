@@ -44,6 +44,7 @@ import com.google.api.services.sheets.v4.model.Sheet;
 import com.google.api.services.sheets.v4.model.TextFormat;
 import com.google.api.services.sheets.v4.model.UpdateCellsRequest;
 import com.google.api.services.sheets.v4.model.ValueRange;
+import com.ooyala.playback.utils.CommandLineParameters;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class TestCaseSheet {
@@ -151,7 +152,7 @@ public class TestCaseSheet {
 	}
 
 	private static String getSpreadSheetId() {
-		String spreadsheetId = System.getProperty("spreadSheetId");
+		String spreadsheetId = System.getProperty(CommandLineParameters.spreadSheetId);
 		if (spreadsheetId != null && !spreadsheetId.isEmpty()) {
 			return spreadsheetId;
 		} else if (TestCaseSheetProperties.spreadSheetId != null) {
@@ -204,7 +205,7 @@ public class TestCaseSheet {
 		return TestResult.SKIPPED;
 	}
 
-	public static void update(String testName, ITestResult result, String platform, String browser, String browserVersion,
+	public void update(String testName, ITestResult result, String platform, String browser, String browserVersion,
 			String v4Version) throws Exception {
 		
 		sheets = service.spreadsheets().get(spreadsheetId).execute().getSheets();

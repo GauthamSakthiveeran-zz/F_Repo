@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 
 import java.util.Map;
@@ -45,6 +46,15 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 
 			if (waitOnElement(By.id(element), timeout)) {
 				extentTest.log(LogStatus.PASS, "Wait on element : " + element);
+				if (element.startsWith("played")) {
+					return new PlayBackFactory(driver, extentTest).getScrubberValidator().validate("", 1000);
+				}
+				if (element.startsWith("seeked")) {
+					((JavascriptExecutor) driver).executeScript("return pp.pause();");
+					boolean flag = new PlayBackFactory(driver, extentTest).getScrubberValidator().validate("", 1000);
+					((JavascriptExecutor) driver).executeScript("return pp.play();");
+					return flag;
+				}
 				return true;
 			}
 		}
@@ -126,7 +136,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 
 		autoplay = Boolean.parseBoolean(driver.executeScript("return pp.parameters.autoPlay").toString());
 
-		if(!autoplay){
+		if (!autoplay) {
 			extentTest.log(LogStatus.INFO, "Autoplay not set for this video");
 		}
 		return autoplay;
