@@ -46,13 +46,12 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("played_1", 20000);
 
-			result = result && replayValidator.validate("replay_1", 60000);
+			result = result && replayValidator.validate("replay_1", 30000);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             result =false;
         }
         Assert.assertTrue(result, "Playback Replay tests failed");
     }
-
 }

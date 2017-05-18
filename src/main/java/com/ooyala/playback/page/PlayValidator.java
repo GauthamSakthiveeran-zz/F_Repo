@@ -76,9 +76,9 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
             return false;
         }
 
-        if (!waitOnElement("PLAYING_SCREEN", 10000)) {
+        if (!waitOnElement("PLAYING_SCREEN", 5000)) {
             if (getBrowser().contains("safari")) {
-                int count = 10;
+                int count = 5;
                 while (count >= 0) {
                     if (!clickOnIndependentElement("PLAY_BUTTON")) {
                         extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");

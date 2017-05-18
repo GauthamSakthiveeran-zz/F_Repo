@@ -3,6 +3,7 @@ package com.ooyala.playback.page;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import com.relevantcodes.extentreports.LogStatus;
@@ -25,12 +26,16 @@ public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 
-		if (waitOnElement("END_SCREEN", 60000) && waitOnElement("REPLAY", 60000) && clickOnIndependentElement("REPLAY")
-				&& waitOnElement(By.id(element), timeout)) {
+		if (waitOnElement("END_SCREEN", 60000) && waitOnElement("REPLAY", 60000)
+				&& clickOnIndependentElement("REPLAY")) {
+			if (getBrowser().contains("safari")) {
+				WebElement element1 = getWebElement("REPLAY");
+				driver.executeScript("arguments[0].click()",element1);
+			}
+			waitOnElement(By.id(element), timeout);
 			extentTest.log(LogStatus.PASS, "Replay Successful");
 			return true;
 		}
 		return false;
-
 	}
 }
