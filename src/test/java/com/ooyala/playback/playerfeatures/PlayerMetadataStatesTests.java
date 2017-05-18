@@ -67,7 +67,7 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("buffering_1", 1000);
 
 		} catch (Exception e) {
-			logger.error(e);
+			logger.error(e.getMessage());
 			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
