@@ -42,9 +42,9 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 		if (!waitOnElement("CONTENT_SCREEN",3000)){
 			if (!waitOnElement("PAUSE_SCREEN", 3000)){
 				if (getBrowser().contains("safari")) {
-					int count = 5;
+					int count = 3;
 					while (count >= 0) {
-						if (waitOnElement(By.id(element), 5000)) {
+						if (waitOnElement(By.id(element), 4000)) {
 							extentTest.log(LogStatus.PASS,
 									"video is paused and validation of " + element + " is successful");
 							return true;

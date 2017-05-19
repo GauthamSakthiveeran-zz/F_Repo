@@ -63,7 +63,9 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean eventAction(String element) throws Exception {
-		return clickOnIndependentElement(element);
+	if(!getBrowser().equalsIgnoreCase("safari")) {
+			return clickOnIndependentElement(element);
+		}else return new PlayBackFactory(driver,extentTest).getSafariValidator().validate(element,10000);
 	}
 
 	public void validateElement(String element, int timeout) throws Exception {

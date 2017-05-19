@@ -24,6 +24,8 @@ public class SafariValidator extends PlayBackPage implements PlaybackValidator {
         addElementToPageElements("discovery");
         addElementToPageElements("play");
         addElementToPageElements("pause");
+        addElementToPageElements("sharetab");
+        addElementToPageElements("fullscreen");
     }
 
     public boolean validate(String element, int timeout) throws Exception {
@@ -31,7 +33,7 @@ public class SafariValidator extends PlayBackPage implements PlaybackValidator {
             WebElement element1 = getWebElement(element);
             driver.executeScript("arguments[0].click()", element1);
         } catch (Exception e) {
-            logger.error(e.getMessage());
+            logger.error("unable to click on the element using javascript"+e.getMessage());
             return false;
         }
         return true;

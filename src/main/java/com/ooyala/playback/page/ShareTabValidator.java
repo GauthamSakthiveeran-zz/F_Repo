@@ -1,5 +1,6 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,8 +30,7 @@ public class ShareTabValidator extends PlayBackPage implements
 				return false;
 			//If browser is Safari, then we have to click on element using javascript
 			if (getBrowser().contains("safari")) {
-				WebElement element1 = getWebElement("SHARE_BTN");
-				driver.executeScript("arguments[0].click()",element1);
+				return new PlayBackFactory(driver,extentTest).getSafariValidator().validate("SHARE_BTN",10000);
 			}
 		} catch (Exception e) {
 			logger.info("exception \n" + e.getMessage());
