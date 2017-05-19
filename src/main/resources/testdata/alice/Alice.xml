@@ -173,6 +173,8 @@
         </url>
 
     </test>
+
+    //IN Sasari browser Video does not switch to full screen, hence unable to verify the discovery in full screen, test case fails.
     <test name="PlaybackDiscoveryCustomizationTests">
         <url>
             <description name="Core:Discovery from specific label Main" />
