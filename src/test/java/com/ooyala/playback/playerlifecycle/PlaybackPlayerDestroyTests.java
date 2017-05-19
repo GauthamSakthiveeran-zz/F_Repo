@@ -39,6 +39,7 @@ public class PlaybackPlayerDestroyTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("destroy_1", 50000);
 
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
