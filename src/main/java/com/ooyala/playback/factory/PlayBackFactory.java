@@ -73,8 +73,6 @@ public class PlayBackFactory {
 	private VideoPluginValidator videoPluginValidator;
 	private AdPluginValidator adPluginValidator;
 	private VideoValidator videoValidator;
-	private SafariValidator safariValidator;
-	
 	private ScrubberValidator scrubberValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
@@ -519,14 +517,6 @@ public class PlayBackFactory {
 			adStartTimeValidator.setExtentTest(extentTest);
 		}
 		return adStartTimeValidator;
-	}
-
-    public SafariValidator getSafariValidator(){
-		if (safariValidator == null){
-			safariValidator = new SafariValidator(driver);
-			safariValidator.setExtentTest(extentTest);
-		}
-		return safariValidator;
 	}
 
 	public WebDriver getDriver() {
