@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.page.PlayBackPage;
 
@@ -13,7 +12,6 @@ import com.ooyala.playback.page.PlayBackPage;
  */
 public class AutoplayAction extends PlayBackPage implements PlayerAction {
 
-	
 	private static Logger logger = Logger.getLogger(AutoplayAction.class);
 	
 	public AutoplayAction(WebDriver webDriver) {
@@ -29,11 +27,15 @@ public class AutoplayAction extends PlayBackPage implements PlayerAction {
 	public boolean startAction() {
 		Boolean autoplay = false;
 		try {
+			//Adding below method specifically to handle safari failure,
+			//As immidiately after playing the video sometimes javascript executor won't work.
+			//For other browsers it won't affect.
+			waitOnElement("playing_1",10000);
 			autoplay = Boolean.parseBoolean(((JavascriptExecutor) driver)
 					.executeScript("return pp.parameters.autoplay").toString());
 			logger.info("auto-play is set for video");
 		} catch (Exception e) {
-			logger.error("Autoplay not set for this video");
+			logger.error("Autoplay not set for this video : " +e.getMessage());
 		}
 		if (!autoplay) {
 			
@@ -46,9 +48,7 @@ public class AutoplayAction extends PlayBackPage implements PlayerAction {
 				}
 			}
 			return false;
-
 		}
 		return autoplay;
 	}
-
 }

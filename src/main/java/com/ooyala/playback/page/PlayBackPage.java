@@ -1,14 +1,12 @@
 package com.ooyala.playback.page;
 
 import static java.lang.Thread.sleep;
-
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,7 +17,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import com.ooyala.facile.page.WebPage;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -91,6 +88,7 @@ public abstract class PlayBackPage extends WebPage {
 
 			return flag;
 		} catch (Exception ex) {
+			logger.error(ex.getMessage());
 			logger.error("Exception occured while clicking on element " + elementKey);
 			extentTest.log(LogStatus.INFO, "Exception occured while clicking on element " + elementKey);
 			logger.info("Calling clickOnHiddenElement function on the element " + elementKey);
@@ -113,7 +111,7 @@ public abstract class PlayBackPage extends WebPage {
 			extentTest.log(LogStatus.PASS, "Clicked on hidden element : " + elementKey);
 			return true;
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			logger.error(ex.getMessage());
 			logger.error("Exception while clicking on hidden element " + ex.getLocalizedMessage());
 			extentTest.log(LogStatus.INFO, "Exception while clicking on hidden element " + ex.getLocalizedMessage());
 			return false;
@@ -171,7 +169,7 @@ public abstract class PlayBackPage extends WebPage {
 			Thread.sleep(1000);
 			result = true;
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			result = false;
 		}
 		return result;
@@ -209,7 +207,6 @@ public abstract class PlayBackPage extends WebPage {
 				return array.get(0).equals(protocol);
 			}
 		}
-
 		return false;
 	}
 
@@ -251,6 +248,7 @@ public abstract class PlayBackPage extends WebPage {
 					time++;
 					logger.info("In loading spinner");
 				} catch (Exception e) {
+					logger.error(e.getMessage());
 					return true;
 				}
 			} else {
@@ -258,10 +256,8 @@ public abstract class PlayBackPage extends WebPage {
 				flag = false;
 				break;
 			}
-
 		}
 		return flag;
-
 	}
 
 	protected int getWindowHandleCount() {
@@ -320,14 +316,12 @@ public abstract class PlayBackPage extends WebPage {
 				flag = false;
 				break;
 			}
-
 		}
 		if (!flag) {
 			extentTest.log(LogStatus.FAIL, "Ad is playing for a really long time. Some issue.");
 			assert false;
 		}
 		return flag;
-
 	}
 
 	public boolean waitTillAdPlays() {
@@ -349,7 +343,6 @@ public abstract class PlayBackPage extends WebPage {
 			if (flag) {
 				return true;
 			}
-
 		}
 		extentTest.log(LogStatus.FAIL, "Ad is not playing after waiting for a long time.");
 		return false;

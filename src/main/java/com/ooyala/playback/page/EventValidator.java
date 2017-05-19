@@ -5,10 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
-
 import java.util.Map;
 
 /**
@@ -65,7 +63,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 	public boolean eventAction(String element) throws Exception {
 	if(!getBrowser().equalsIgnoreCase("safari")) {
 			return clickOnIndependentElement(element);
-		}else return new PlayBackFactory(driver,extentTest).getSafariValidator().validate(element,10000);
+		}else return clickOnHiddenElement(element);
 	}
 
 	public void validateElement(String element, int timeout) throws Exception {

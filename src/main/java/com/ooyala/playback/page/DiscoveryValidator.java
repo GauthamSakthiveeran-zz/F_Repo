@@ -2,14 +2,11 @@ package com.ooyala.playback.page;
 
 
 import java.util.List;
-
-import com.ooyala.playback.factory.PlayBackFactory;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-
 import com.relevantcodes.extentreports.LogStatus;
 
 public class DiscoveryValidator extends PlayBackPage implements
@@ -41,7 +38,7 @@ public class DiscoveryValidator extends PlayBackPage implements
 			}
 		}else {
 			//if browser is safari then click on element using javascript executor
-			return new PlayBackFactory(driver,extentTest).getSafariValidator().validate("PAUSE_BUTTON",10000);
+			return clickOnHiddenElement("PAUSE_BUTTON");
 		}
 		return waitOnElement("DISCOVERY_TOASTER", 10000);
 	}
@@ -80,7 +77,7 @@ public class DiscoveryValidator extends PlayBackPage implements
 			}
 		}else
 		{
-			return new PlayBackFactory(driver,extentTest).getSafariValidator().validate("IMAGE_STYLE",10000);
+			return clickOnHiddenElement("IMAGE_STYLE");
 		}
         if(!waitOnElement(By.id("reportDiscoveryClick_1"), 60000)) return false;
 		return true;
@@ -134,7 +131,7 @@ public class DiscoveryValidator extends PlayBackPage implements
 				return true;
 			}
 		}else {
-			if((new PlayBackFactory(driver,extentTest).getSafariValidator().validate("IMAGE_STYLE",10000))){
+			if((clickOnHiddenElement("DISCOVERY_BTN"))){
 				return validateDiscoveryToaster() && validateLeftRightButton();
 			}
 		}

@@ -2,9 +2,7 @@ package com.ooyala.playback.page.action;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-
 import com.ooyala.playback.page.PlayBackPage;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -43,8 +41,7 @@ public class PlayAction extends PlayBackPage implements PlayerAction {
                 return false;
             }
             if (getBrowser().contains("safari")) {
-                WebElement element1 = getWebElement("PLAY_BUTTON");
-                driver.executeScript("arguments[0].click()",element1);
+                clickOnHiddenElement("PLAY_BUTTON");
             }
         }
         return true;

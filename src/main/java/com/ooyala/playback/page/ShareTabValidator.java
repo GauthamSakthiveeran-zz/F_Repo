@@ -1,11 +1,8 @@
 package com.ooyala.playback.page;
 
-import com.ooyala.playback.factory.PlayBackFactory;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-
 import com.relevantcodes.extentreports.LogStatus;
 
 /**
@@ -30,10 +27,12 @@ public class ShareTabValidator extends PlayBackPage implements
 				return false;
 			//If browser is Safari, then we have to click on element using javascript
 			if (getBrowser().contains("safari")) {
-				return new PlayBackFactory(driver,extentTest).getSafariValidator().validate("SHARE_BTN",10000);
+				if(!clickOnHiddenElement("SHARE_BTN")){
+					return false;
+				}
 			}
 		} catch (Exception e) {
-			logger.info("exception \n" + e.getMessage());
+			logger.error("exception \n" + e.getMessage());
 			if (!clickOnIndependentElement("MORE_OPTION_ITEM"))
 				return false;
 			if (!waitOnElement("SHARE_BTN", 60000))
@@ -69,12 +68,7 @@ public class ShareTabValidator extends PlayBackPage implements
 		}
 		//If browser is Safari, then we have to click on element using javascript
 		if (getBrowser().contains("safari")) {
-			try {
-				WebElement element1 = getWebElement("SHARE_CLOSE");
-				driver.executeScript("arguments[0].click()", element1);
-			}catch(Exception e){
-				logger.error("unable to click on close button even eith javascript executor" +e.getMessage());
-			}
+			return clickOnHiddenElement("SHARE_CLOSE");
 		}
 
 		return true;
