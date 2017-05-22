@@ -25,8 +25,8 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
-		double expectedmutevol = 0.0;
-		double expectedmaxvol = 1.0;
+		double expectedMuteVol = 0.0;
+		double expectedMaxVol = 1.0;
 
 		((JavascriptExecutor) driver).executeScript("pp.pause()");
 
@@ -34,14 +34,14 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		logger.info("Current volume: " + currentVolume);
 
 		if (getPlatform().equalsIgnoreCase("android")){
-			return checkVolumeForAndroid(expectedmutevol,expectedmaxvol);
+			return checkVolumeForAndroid(expectedMuteVol,expectedMaxVol);
 		} else
-			return checkVolumeForBrowser(expectedmutevol,expectedmaxvol);
+			return checkVolumeForBrowser(expectedMuteVol,expectedMaxVol);
 	}
 
 	public boolean checkInitialVolume(String asset) throws Exception{
 		double initialVolume = 0.5;
-		logger.info("Intial Volume is set to "+initialVolume);
+		logger.info("Initial Volume is set to "+initialVolume);
         boolean isInitialTimeMatches = initialVolume == getVolume();
         if (isInitialTimeMatches) {
 			logger.info("initial time matched for " + asset);
@@ -49,6 +49,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		}
         else {
 			logger.error("initial time not matching for " + asset);
+			extentTest.log(LogStatus.FAIL,"initial time not matching for " + asset);
 		}
 		return isInitialTimeMatches;
 	}
@@ -57,11 +58,12 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		double volume = Double
 				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getVolume()").toString());
 		extentTest.log(LogStatus.INFO, "volume set to " + volume);
+		logger.info("volume set to " + volume);
 		return volume;
 
 	}
 
-	public boolean checkVolumeForBrowser(double expectedmutevol, double expectedmaxvol){
+	public boolean checkVolumeForBrowser(double expectedMuteVol, double expectedMaxVol){
 		try {
 
 			if (!(isElementPresent("CONTROL_BAR"))) {
@@ -69,36 +71,42 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			}
 
 			if (clickOnIndependentElement("VOLUME_MAX")) {
-				double getmutevol = getVolume();
-				if (getmutevol != expectedmutevol) {
-					extentTest.log(LogStatus.FAIL, "Mute volume is't matching");
+				double getMuteVol = getVolume();
+				if (getMuteVol != expectedMuteVol) {
+					extentTest.log(LogStatus.FAIL, "Mute volume isn't matching");
+					logger.error("Mute volume isn't matching");
 					return false;
 				} else {
 					extentTest.log(LogStatus.PASS, "Mute volume works");
+					logger.info("Mute volume works");
 				}
 
 			} else {
 				extentTest.log(LogStatus.FAIL, "Unable to click on Volume");
+				logger.error("Unable to click on Volume");
 				return false;
 			}
 
 			if (clickOnIndependentElement("VOLUME_MUTE")) {
 				double getMaxVol = getVolume();
 
-				if (getMaxVol != expectedmaxvol) {
+				if (getMaxVol != expectedMaxVol) {
 					extentTest.log(LogStatus.FAIL, "Max volume is not the same");
+					logger.error("Max volume is not the same");
 					return false;
 				} else {
 					extentTest.log(LogStatus.PASS, "Max volume works");
+					logger.info("Max volume works");
 				}
 			} else {
 				extentTest.log(LogStatus.FAIL, "Unable to click on Volume");
+				logger.error("Unable to click on Volume");
 				return false;
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
 			extentTest.log(LogStatus.FAIL, "Volume control is not working properly" + e.getMessage());
+			logger.error("Volume control is not working properly \n" + e.getMessage());
 			return false;
 		}
 
@@ -106,7 +114,8 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		return true;
 	}
 
-	public boolean checkVolumeForAndroid(double expectedmutevol, double expectedmaxvol){
+	public boolean checkVolumeForAndroid(double expectedMuteVol, double expectedMaxVol){
+		double getMuteVol;
 		try {
 
 			if (!(isElementPresent("CONTROL_BAR"))) {
@@ -114,42 +123,52 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			}
 
 			if (clickOnIndependentElement("VOLUME_MAX")) {
-				clickOnIndependentElement("VOLUME_MAX");
-				double getmutevol = getVolume();
-				if (getmutevol != expectedmutevol) {
+				if (!clickOnIndependentElement("VOLUME_MAX")){
+
+					return false;
+				}
+
+				getMuteVol = getVolume();
+				if (getMuteVol != expectedMuteVol) {
 					extentTest.log(LogStatus.FAIL, "Mute volume is't matching");
+					logger.error("Mute volume is't matching");
 					return false;
 				} else {
 					extentTest.log(LogStatus.PASS, "Mute volume works");
+					logger.info("Mute volume works");
 				}
 
 			} else {
 				extentTest.log(LogStatus.FAIL, "Unable to click on Volume");
+				logger.error("Unable to click on Volume");
 				return false;
 			}
 
 			if (clickOnIndependentElement("VOLUME_MUTE")) {
 				clickOnIndependentElement("VOLUME_MUTE");
 				double getMaxVol = getVolume();
-
-				if (getMaxVol != expectedmaxvol) {
+				if (getMaxVol != expectedMaxVol) {
 					extentTest.log(LogStatus.FAIL, "Max volume is not the same");
+					logger.error("Max volume is not the same");
 					return false;
 				} else {
 					extentTest.log(LogStatus.PASS, "Max volume works");
+					logger.info("Max volume works ");
 				}
 			} else {
 				extentTest.log(LogStatus.FAIL, "Unable to click on Volume");
+				logger.error("Unable to click on Volume");
 				return false;
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			extentTest.log(LogStatus.FAIL, "Volume control is not working properly" + e.getMessage());
+			logger.error("Volume control is not working properly \n" + e.getMessage());
 			return false;
 		}
 
-		((JavascriptExecutor) driver).executeScript("pp.play()");
+		driver.executeScript("pp.play()");
 		return true;
 	}
 }

@@ -43,6 +43,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
 
             if (!autoPlay) {
                 logger.error("Not able to Autoplay");
+                extentTest.log(LogStatus.FAIL,"Not able to Autoplay");
                 return false;
             }
         } else {
@@ -53,13 +54,16 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
 
         if(!waitOnElement("AD_PANEL",10000)){
             logger.error("ad is not playing");
+            extentTest.log(LogStatus.FAIL,"ad is not playing");
             return false;
         }
 
         boolean isAdPlaying = (Boolean) (driver.executeScript("return pp.isAdPlaying()"));
         logger.info("is Ad playing :"+isAdPlaying);
+        extentTest.log(LogStatus.INFO,"is Ad playing :"+isAdPlaying);
         if(!isAdPlaying){
             logger.error("Ad not playing");
+            extentTest.log(LogStatus.FAIL,"Ad not playing");
             return false;
         }
 
@@ -75,13 +79,18 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
 
         if(!waitOnElement(By.id("skipAd_1"), 5000)){
             logger.error("Not able to skip the ad");
+            extentTest.log(LogStatus.FAIL,"Not able to skip the ad");
             return false;
         }
 
-        loadingSpinner();
+        if(!loadingSpinner()){
+            extentTest.log(LogStatus.FAIL,"loading spinner is present for long time");
+            return false;
+        }
 
         if (!waitOnElement(By.id("videoPlaying_1"),10000)){
             logger.error("Video is not playing");
+            extentTest.log(LogStatus.FAIL,"Video is not playing");
             return false;
         }
 
@@ -94,6 +103,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
             double playHeadTime = parseDouble(driver.executeScript("return pp.getPlayheadTime()").toString());
             if (!(playHeadTime > initialTime)) {
                 logger.error("Video playback not started from initial time");
+                extentTest.log(LogStatus.FAIL,"Video playback not started from initial time");
                 return false;
             }
         }
@@ -102,21 +112,32 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         logger.info("Duration of video is : "+totalTime);
         if(!(totalTime > 0)){
             logger.error("Total time must be greater than 0 but we are getting it as :"+totalTime);
+            extentTest.log(LogStatus.FAIL,"Total time must be greater than 0 but we are getting it as :"+totalTime);
             return false;
         }
 
-        loadingSpinner();
+        if(!loadingSpinner()){
+            extentTest.log(LogStatus.FAIL,"loading spinner is present for long time");
+            return false;
+        }
 
         driver.executeScript("pp.seek(pp.getDuration()-10);");
-        loadingSpinner();
+
+        if(!loadingSpinner()){
+            extentTest.log(LogStatus.FAIL,"loading spinner is present for long time");
+            return false;
+        }
+
         if (!waitOnElement(By.id("seeked_1"),10000)){
             logger.error("Not able to seek the video...");
+            extentTest.log(LogStatus.FAIL,"Not able to seek the video...");
             return false;
         }
 
         String title = driver.executeScript("return pp.getTitle()").toString();
         if (title==null){
             logger.error("Not able to get title of the video");
+            extentTest.log(LogStatus.FAIL,"Not able to get title of the video");
             return false;
         }
 
@@ -124,12 +145,14 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         logger.info("Volume is : "+getVolume);
         if (getVolume==null){
             logger.error("Not able to get volume of the video");
+            extentTest.log(LogStatus.FAIL,"Not able to get volume of the video");
             return false;
         }
 
         String embedCode = driver.executeScript("return pp.getEmbedCode()").toString();
         if (embedCode==null){
             logger.error("Not able to get Embed code");
+            extentTest.log(LogStatus.FAIL,"Not able to get Embed code");
             return false;
         }
 
@@ -140,6 +163,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
             driver.executeScript("pp.setClosedCaptionsLanguage(\"" + langList.get(i) + "\")");
             if (!waitOnElement(By.id("cclanguage_"+langList.get(i)),10000)){
                 logger.error("Not able to get "+langList.get(i));
+                extentTest.log(LogStatus.FAIL,"Not able to get "+langList.get(i));
                 return false;
             }
         }
@@ -154,6 +178,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
 
         if(!(playHeadTime>initialTime)){
             extentTest.log(LogStatus.FAIL,"Video playback not started from initial time");
+            logger.error("Video playback not started from initial time");
             return false;
         }
         return true;

@@ -25,6 +25,7 @@ public class UpNextValidator extends PlayBackPage implements PlaybackValidator {
 	public boolean validate(String element, int timeout) throws Exception {
 
 		if (!loadingSpinner()){
+			extentTest.log(LogStatus.FAIL,"loading spinner appears for long time");
 			return false;
 		}
 

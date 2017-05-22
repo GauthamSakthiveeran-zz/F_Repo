@@ -30,8 +30,11 @@ public class ThumbnailValidator extends PlayBackPage implements
 	public boolean validate(String element, int timeout) throws Exception {
 		WebElement element1 = null;
 		element1 = getWebElement("SCRUBBER_BAR");
-		if (element1 == null)
+		if (element1 == null) {
+			logger.error(element1 +" is null");
+			extentTest.log(LogStatus.FAIL,element1 +" is null");
 			return false;
+		}
 
 		if (getPlatform().equalsIgnoreCase("android")){
 			element1 = getWebElement("QUE_POINT");
@@ -53,14 +56,17 @@ public class ThumbnailValidator extends PlayBackPage implements
 			String thumbnail_url = getWebElement("THUMBNAIL_IMAGE").getCssValue("background-image");
 
 			if ((thumbnail_url.toLowerCase()).contains(embed_code.toLowerCase())) {
+				logger.info("Thumbnail image verified.");
 				extentTest.log(LogStatus.PASS, "Thumbnail image verified.");
 				return true;
 			} else {
 				extentTest.log(LogStatus.FAIL,
 						"Embed code not found in thumbnail image url.");
+				logger.error("Embed code not found in thumbnail image url.");
 			}
 		}
 		extentTest.log(LogStatus.FAIL, "THUMBNAIL_IMAGE not found.");
+		logger.error("THUMBNAIL_IMAGE not found.");
 		return false;
 
 	}
