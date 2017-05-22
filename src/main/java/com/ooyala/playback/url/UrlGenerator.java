@@ -107,8 +107,8 @@ public class UrlGenerator {
                      * e.g OSMF does not get supported on Android Platform
 					 */
 
-					if (url.getPlatformSupported() != null && url.getPlatformSupported().getPlatform() !=null
-							&& !url.getPlatformSupported().getPlatform().contains(System.getProperty("platform").toLowerCase())){
+					if (url.getPlatformsSupported() != null && url.getPlatformsSupported().getName() !=null
+							&& !url.getPlatformsSupported().getName().contains(System.getProperty("platform").toLowerCase())){
                         continue;
 					}
 
