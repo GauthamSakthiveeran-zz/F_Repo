@@ -35,7 +35,7 @@
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
             <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
-            <platformSupported platform="mac,windows"/>
+            <platformsSupported name="mac,windows"/>
             <playerParameter></playerParameter>
         </url>
         <url>
@@ -81,7 +81,7 @@
             <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-            <platformSupported platform="mac,windows"/>
+            <platformsSupported name="mac,windows"/>
         </url>
         <url>
             <description name="VOD_MP4_MAIN_AZURE" />
@@ -126,7 +126,7 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
-            <platformSupported platform="mac,windows"/>
+            <platformsSupported name="mac,windows"/>
             <playerParameter></playerParameter>
         </url>
         <url>
@@ -161,7 +161,7 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9"/>
-            <platformSupported platform="mac,windows"/>
+            <platformsSupported name="mac,windows"/>
             <playerParameter></playerParameter>
         </url>
 
@@ -218,14 +218,14 @@
 
     <test name="PlaybackAutoplayTests">
         <url>
-            <description name="Playback_autoplayPreroll" />
+            <description name="Core:Check Autoplay" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
             <adPlugins name="FREEWHEEL" />
             <additionalPlugins name="" />
             <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
-            <platformSupported platform="mac,windows"/>
+            <platformsSupported name="mac,windows"/>
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":true}]]></playerParameter>
         </url>
     </test>
@@ -260,13 +260,13 @@
             <additionalPlugins name="" />
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
-            <platformSupported platform="mac,windows"/>
+            <platformsSupported name="mac,windows"/>
         </url>
     </test>
 
     <test name="PlaybackDiscoveryTests">
         <url>
-            <description name="Playback_Discovery" />
+            <description name="Core:Discovery " />
             <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -279,7 +279,7 @@
 
     <test name="PlaybackFullScreenTests">
         <url>
-            <description name="Playback_Fullscreen" />
+            <description name="Core:Fullscreen" />
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -292,7 +292,7 @@
 
     <test name="PlaybackReplayVideoTests">
         <url>
-            <description name="Playback_Replay" />
+            <description name="Core:Replay" />
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -333,7 +333,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[]]>{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}</playerParameter>
-            <platformSupported platform="mac,windows"/>
+            <platformsSupported name="mac,windows"/>
         </url>
     </test>
 
@@ -367,13 +367,13 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
-            <platformSupported platform="mac,windows"/>
+            <platformsSupported name="mac,windows"/>
         </url>
     </test>
 
     <test name="PlaybackVerticalVideoTests">
         <url>
-            <description name="Alice Core:Vertical Video Aspect Ration 16 as 9" />
+            <description name="Core:Vertical Video Aspect Ration 16 as 9" />
             <embed_code name="xnNncyYTE62vx3rHnwJwUtBbeBt4Y2pw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN,BITMOVIN" />
@@ -396,7 +396,7 @@
 
     <test name="PlayerStatePauseScreenTests">
         <url>
-            <description name="PauseScreen" />
+            <description name="Core:Pause screen" />
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -409,7 +409,7 @@
 
     <test name="PlaybackVolumeTest">
         <url>
-            <description name="volume_functionality" />
+            <description name="Core:Volume" />
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -431,7 +431,7 @@
             <pbid name="NzMyN2E4MzA4Y2ZiMzYwNjhiYzgzYzQ4" />
             <browsersSupported name="firefox,chrome,internet explorer" />
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/FoeG863GnBL4IhhlFC1Q2jqbkH9m/N3b2lhZzq_5Er-I09uWrmpwNUZZ_mEeX?api_key=FoeG863GnBL4IhhlFC1Q2jqbkH9m.-E1Kw&expires=2890068691&account_id=dulari_qa&&&signature=sCtNsIeb7XYqrdOdp0avqAjuFKvXansR+BWhAnJp5+A"}]]></playerParameter>
-            <platformSupported platform="mac,windows"/>
+            <platformsSupported name="mac,windows"/>
         </url>
         <url>
             <description name="Core:setTargetbitrate Bitmovin" />
@@ -468,7 +468,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter></playerParameter>
-            <platformSupported platform="mac,windows"/>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -498,7 +498,7 @@
 
     <test name="PlaybackWatermarkTests">
         <url>
-            <description name="SkinCustomization_WatermarkImage" />
+            <description name="Core:Watermark Image" />
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -511,7 +511,7 @@
     <!-- Added playercontrolTests for each stream format -->
     <test name="PlaybackPlayerControlsTests">
         <url>
-            <description name="Alice Core:eHLS Vod main//m3u8" />
+            <description name="Core:eHLS Vod main" />
             <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN" />
@@ -522,7 +522,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Alice Core:MP4 Only Asset with Main Plugin" />
+            <description name="Core:MP4 Only Asset" />
             <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -543,13 +543,14 @@
              <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
          </url>-->
         <url>
-            <description name="Alice Core:HLS Vod bitmovin//m3u8" />
+            <description name="Core:HLS Vod main" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <platformsSupported name="mac,windows"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
     </test>
@@ -623,12 +624,12 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer" />
             <playerParameter></playerParameter>
-            <platformSupported platform="mac,windows"/>
+            <platformsSupported name="mac,windows"/>
         </url>
     </test>
     <test name="PlaybackPlayerDestroyTests">
         <url>
-            <description name="Player_Destroy_Akamai_HD" />
+            <description name="Core:Destroy player" />
             <embed_code name="9qaHdodTqmllcEnthP1AgrCTjf19HD4i" />
             <pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk" />
             <plugins name="AKAMAI" />
@@ -637,13 +638,14 @@
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
             <browsersSupported name="firefox,chrome,internet explorer,safari" />
             <browserSupportedVersion name="safari,9"/>
+            <platformsSupported name="mac,windows"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
     </test>
 
     <test name="OoyalaAPITests">
         <url>
-            <description name="Api Test" />
+            <description name="Core:test API" />
             <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -677,7 +679,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter></playerParameter>
-            <platformSupported platform="mac,windows"/>
+            <platformsSupported name="mac,windows"/>
         </url>
     </test>
 </testdata>
