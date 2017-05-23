@@ -77,6 +77,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     public PlaybackWebTest() throws OoyalaException {
         liveChannel = new LiveChannel();
+        testCaseSheet = new TestCaseSheet();
     }
 
     @BeforeMethod(alwaysRun = true)
