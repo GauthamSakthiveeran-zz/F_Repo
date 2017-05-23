@@ -72,14 +72,15 @@ public class DiscoveryValidator extends PlayBackPage implements
 	
 	public boolean validateImageStyle() throws Exception{
 		if(!getBrowser().equalsIgnoreCase("safari")) {
-			if (!clickOnIndependentElement("IMAGE_STYLE")) {
+			/*if (!clickOnIndependentElement("IMAGE_STYLE")) {
 				return false;
-			}
+			}*/
+			clickOnIndependentElement("IMAGE_STYLE");
 		}else
-		{
-			return clickOnHiddenElement("IMAGE_STYLE");
-		}
+			clickOnHiddenElement("IMAGE_STYLE");
+
         if(!waitOnElement(By.id("reportDiscoveryClick_1"), 60000)) return false;
+
 		return true;
 	}
 

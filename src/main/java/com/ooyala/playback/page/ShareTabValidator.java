@@ -62,15 +62,14 @@ public class ShareTabValidator extends PlayBackPage implements
 			extentTest.log(LogStatus.FAIL, "Localization Failed.");
 			return false;
 		}
-
-		if(!clickOnIndependentElement("SHARE_CLOSE")) {
-			return false;
-		}
 		//If browser is Safari, then we have to click on element using javascript
 		if (getBrowser().contains("safari")) {
 			return clickOnHiddenElement("SHARE_CLOSE");
+		}else {
+			if(!clickOnIndependentElement("SHARE_CLOSE")) {
+				return false;
+			}
 		}
-
 		return true;
 	}
 }

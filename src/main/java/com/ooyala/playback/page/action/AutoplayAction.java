@@ -12,43 +12,44 @@ import com.ooyala.playback.page.PlayBackPage;
  */
 public class AutoplayAction extends PlayBackPage implements PlayerAction {
 
-	private static Logger logger = Logger.getLogger(AutoplayAction.class);
-	
-	public AutoplayAction(WebDriver webDriver) {
-		super(webDriver);
-		PageFactory.initElements(webDriver, this);
-		/**
-		 * Here we will tell Facile to add the page elements of our Login Page
-		 */
-		addElementToPageElements("play");
-	}
+    private static Logger logger = Logger.getLogger(AutoplayAction.class);
 
-	@Override
-	public boolean startAction() {
-		Boolean autoplay = false;
-		try {
-			//Adding below method specifically to handle safari failure,
-			//As immidiately after playing the video sometimes javascript executor won't work.
-			//For other browsers it won't affect.
-			waitOnElement("playing_1",10000);
-			autoplay = Boolean.parseBoolean(((JavascriptExecutor) driver)
-					.executeScript("return pp.parameters.autoplay").toString());
-			logger.info("auto-play is set for video");
-		} catch (Exception e) {
-			logger.error("Autoplay not set for this video : " +e.getMessage());
-		}
-		if (!autoplay) {
-			
-			if(!new PlayBackFactory(driver, extentTest).getPlayValidator().waitForPage())
-				return false;
-			
-			if (waitOnElement("PLAY_BUTTON", 60000)) {
-				if (clickOnIndependentElement("PLAY_BUTTON")) {
-					return true;
-				}
-			}
-			return false;
-		}
-		return autoplay;
-	}
+    public AutoplayAction(WebDriver webDriver) {
+        super(webDriver);
+        PageFactory.initElements(webDriver, this);
+        /**
+         * Here we will tell Facile to add the page elements of our Login Page
+         */
+        addElementToPageElements("play");
+    }
+
+    @Override
+    public boolean startAction() {
+        Boolean autoplay = false;
+        try {
+            //Adding below piece of code specifically to handle safari failure,
+            //As immidiately after playing the video sometimes javascript executor won't work.
+            if (getBrowser().equalsIgnoreCase("safari"))
+                waitOnElement("playing_1", 10000);
+
+            autoplay = Boolean.parseBoolean(((JavascriptExecutor) driver)
+                    .executeScript("return pp.parameters.autoplay").toString());
+            logger.info("auto-play is set for video");
+        } catch (Exception e) {
+            logger.error("Autoplay not set for this video : " + e.getMessage());
+        }
+        if (!autoplay) {
+
+            if (!new PlayBackFactory(driver, extentTest).getPlayValidator().waitForPage())
+                return false;
+
+            if (waitOnElement("PLAY_BUTTON", 60000)) {
+                if (clickOnIndependentElement("PLAY_BUTTON")) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return autoplay;
+    }
 }
