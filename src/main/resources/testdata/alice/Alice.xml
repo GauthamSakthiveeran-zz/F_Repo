@@ -1,184 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-    <test name="BasicPlaybackTests">
-
-        <!-- Adding mp4 hds and dash format embed codes for FFMPEG,AZURE and ELEMENTAL
-            transcodings -->
-        <url>
-            <description name="VOD_MP4_MAIN_FFMPEG" />
-            <embed_code name="F3eGQyODE6cWV2DIsAPMq-XmpCuyWXSc" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_BITMOVIN_FFMPEG" />
-            <embed_code name="F3eGQyODE6cWV2DIsAPMq-XmpCuyWXSc" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-
-        <url>
-            <description name="VOD_HDS_OSMF_ELEMENTAL" />
-            <embed_code name="F1a2UyODE60tUzqQkUYWd9iYuFFQy1iW" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
-            <browserSupportedVersion name="safari,9"/>
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_MAIN_ELEMENTAL" />
-            <embed_code name="g2a2UyODE6rh9tr1AULjclMW-NByWWCx" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_BITMOVIN_ELEMENTAL" />
-            <embed_code name="g2a2UyODE6rh9tr1AULjclMW-NByWWCx" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_DASH_BITMOVIN_ELEMENTAL" />
-            <embed_code name="xkbmUyODE6_0hxuUPp17kpvp_grSD3-2" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-
-        <url>
-            <description name="VOD_HDS_OSMF_AZURE" />
-            <embed_code name="QxcjUzODE6pNQG53uWzZbez69XwvL5BP" />
-            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
-            <browserSupportedVersion name="safari,9"/>
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_MAIN_AZURE" />
-            <embed_code name="RzbTMzODE6Sp5PGrC3bk5FYDouv4-8Vv" />
-            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_MP4_BITMOVIN_AZURE" />
-            <embed_code name="RzbTMzODE6Sp5PGrC3bk5FYDouv4-8Vv" />
-            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-
-        <!-- commented check the ticket number for more info PLAYER-595-->
-        <!--<url>
-            <description name="Alice Core:H.264 4K HLS / Dash Movie" />
-            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN,MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls","dash"]}]]></playerParameter>
-        </url>-->
-
-        <url>
-            <description name="VOD_HDS_ACCESS_OSMF_FFMPEG" />
-            <embed_code name="lqYmUyODE6H2HflPLwBNIEhLxreAsKWT" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
-            <browserSupportedVersion name="safari,9"/>
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HLS_AES_MAIN_ELEMENTAL" />
-            <embed_code name="o1N2JjOTE6kNGqukqJJcPwBIj0a7hWmL" />
-            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
-            <plugins name="MAIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HLS_AES_BITMOVIN_ELEMENTAL" />
-            <embed_code name="lpMWdlOTE6dNxa4hDAIosKY4taT-Bofx" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <sslEnabled name="https"/>
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-        <url>
-            <description name="VOD_HDS_ACCESS_OSMF_ELEMENTAL" />
-            <embed_code name="ltc2UyODE6XR8-kJ47Ioh0QNWsWpLsq9" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="OSMF" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
-            <browserSupportedVersion name="safari,9"/>
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-
-        <url>
-            <description name="Core:Device restriction Bitmovin" />
-            <embed_code name="A1bzhnMzE6f9bcHW6aT_KznQm5xyiTOi" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/A1bzhnMzE6f9bcHW6aT_KznQm5xyiTOi?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2889048378&account_id=dulari_qa&&&signature=6RhOTCO8W/jCQk+x6uR5Jg8OGQg56mRsn0mL3eEx7FE"}]]></playerParameter>
-        </url>
-
-    </test>
-    <test name="PlaybackDiscoveryCustomizationTests">
+	<test name="PlaybackDiscoveryCustomizationTests">
         <url>
             <description name="Core:Discovery from specific label Main" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="DISCOVERY" />
+            <pbid name="421363178a5d493c9d4e74aadc1c2df9" />
+            <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Discovery from specific label Bitmovin" />
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="BITMOVIN" />
             <adPlugins name="FREEWHEEL" />
             <additionalPlugins name="DISCOVERY" />
             <pbid name="421363178a5d493c9d4e74aadc1c2df9" />
@@ -326,7 +163,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[]]>{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}</playerParameter>
+            <playerParameter><![CDATA[{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}]]></playerParameter>
         </url>
     </test>
 
@@ -365,37 +202,24 @@
 
     <test name="PlaybackVerticalVideoTests">
         <url>
-            <description name="Alice Core:Vertical Video Aspect Ration 16 as 9" />
+            <description name="Core:Vertical Video Aspect Ration 16 as 9" />
             <embed_code name="xnNncyYTE62vx3rHnwJwUtBbeBt4Y2pw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="MAIN,BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>
-        <url>
-            <description name="Core:Vertical Video Bitmovin" />
-            <embed_code name="9od3M3MDE6-WRg_DRbpCzRyjtK-NTLMp" />
-            <pcode name="p5bGExOjp6PZ-dEUw_GRJqh2Qdaq" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="26e2e3c1049c4e70ae08a242638b5c40" />
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-    </test>
-
-    <test name="PlayerStatePauseScreenTests">
-        <url>
-            <description name="PauseScreen" />
-            <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
             <adPlugins name="" />
             <additionalPlugins name="" />
-            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <playerParameter></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Vertical Video Bitmovin" />
+            <embed_code name="xnNncyYTE62vx3rHnwJwUtBbeBt4Y2pw" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <playerParameter></playerParameter>
         </url>
     </test>
 
@@ -458,7 +282,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
 
         <url>
@@ -499,7 +323,7 @@
         </url>
     </test>
     <!-- Added playercontrolTests for each stream format -->
-    <test name="PlaybackPlayerControlsTests">
+   <!--  <test name="PlaybackPlayerControlsTests">
         <url>
             <description name="Alice Core:eHLS Vod main//m3u8" />
             <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
@@ -521,8 +345,8 @@
             <pbid name="615dc8e909e941c280e12155df838355" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
-        <!-- commented check the ticket number for more info PBW-6281 -->
-        <!-- <url>
+        commented check the ticket number for more info PBW-6281
+        <url>
              <description name="Alice Core:Clear Dash bitmovin" />
              <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
              <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -531,7 +355,7 @@
              <additionalPlugins name="" />
              <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
              <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-         </url>-->
+         </url>
         <url>
             <description name="Alice Core:HLS Vod bitmovin//m3u8" />
             <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
@@ -542,44 +366,8 @@
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
-    </test>
+    </test> -->
 
-    <test name="PlaybackDRMTests">
-        <url>
-            <description name="Alice Core:(Azure) Dash CENC Vod" />
-            <embed_code name="V1ZDVrNjE6LoqgO7tdNKb8Tcz85-QSLo" />
-            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[]]></playerParameter>
-        </url>
-
-        <url>
-            <description name="Content Protection:Fairplay HLS + OPT bitmovin" />
-            <embed_code name="c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu" />
-            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892591060&account_id=dulari_qa&&&signature=iVNk9dUp9ohR39ud/rsYjxdN3X4Kao6oV/LC8DuPObg"}]]></playerParameter>
-        </url>
-        <url>
-            <description name="DRM + Content Protection:Fairplay HLS + CC bitmovin" />
-            <embed_code name="4xMzQ1NTE62_5ckCOZ7kSCQ1jQ8ke_8v" />
-            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/c1cGpjMzE6-7Fi9nhZ01iK3Gfsyrddiu?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2892591060&account_id=dulari_qa&&&signature=iVNk9dUp9ohR39ud/rsYjxdN3X4Kao6oV/LC8DuPObg"}]]></playerParameter>
-        </url>
-
-    </test>
     <test name="PlaybackSocialMediaTests">
         <url>
             <description name="Core:Verify Facebook Share via Social Share Screen Bitmovin|Core:Verify Twitter  Share via Social Share Screen Bitmovin" />
@@ -590,7 +378,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Core:Verify Facebook Share via Social Share Screen Main|Core:Verify Twitter  Share via Social Share Screen Main" />
@@ -601,7 +389,7 @@
             <additionalPlugins name="" />
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <browsersSupported name="firefox,chrome,internet explorer" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Core:Verify Facebook Share via Social Share Screen OSMF|Core:Verify Twitter  Share via Social Share Screen OSMF" />
@@ -612,7 +400,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported name="firefox,chrome,internet explorer" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
     </test>
     <test name="PlaybackPlayerDestroyTests">
@@ -652,7 +440,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
             <streamType name="m3u8" />
         </url>
     </test>
@@ -665,7 +453,7 @@
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
     </test>
 </testdata>
