@@ -30,9 +30,6 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 
 		boolean result = true;
 		
-		if(!testName.contains("IMA:Main Midroll (10) and Overlay (15) with Discovery Up Next"))
-			return;
-
 		try {
 			driver.get(url.getUrl());
 
