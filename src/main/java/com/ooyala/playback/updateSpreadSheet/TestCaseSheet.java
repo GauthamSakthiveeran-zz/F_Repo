@@ -97,7 +97,7 @@ public class TestCaseSheet {
 	private static String date;
 	private static List<Sheet> sheets;
 
-	/*public TestCaseSheet() {
+	public TestCaseSheet() {
 		try {
 			service = getSheetsService();
 			spreadsheetId = getSpreadSheetId();
@@ -108,7 +108,7 @@ public class TestCaseSheet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 
 	/**
 	 * Creates an authorized Credential object.
