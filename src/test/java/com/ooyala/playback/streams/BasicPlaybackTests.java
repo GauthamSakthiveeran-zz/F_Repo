@@ -44,7 +44,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 			result = result && play.validate("playing_1", 60000);
 
 			result = result && eventValidator.playVideoForSometime(3);
-			
+
 			result = result && pause.validate("paused_1", 60000);
 
 			if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
@@ -53,26 +53,23 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 			}
 
-			// because of https://jira.corp.ooyala.com:8443/browse/PBW-6281
-			if (!testName.contains("Bitmovin Elemental Delta DASH VOD (Clear Dash)")) {
-				result = result && play.validate("playing_2", 60000);
-				
-				if (!testName.contains("Main Akamai HLS Remote Asset") && !testName.contains("Bitmovin Akamai HLS Remote Asset"))  {
-					// live video 
-					if(testName.contains("Bitmovin Elemental Delta DASH Remote Asset")) {
-						result = result && seekAction.setTime(100).startAction();
-						result = result && eventValidator.validate("seeked_1", 60000);
-					}else{
-						result = result && seek.validate("seeked_1", 60000);
-					}
-					result = result && eventValidator.validate("played_1", 120000);
+			result = result && play.validate("playing_2", 60000);
+
+			if (!testName.contains("Main Akamai HLS Remote Asset")
+					&& !testName.contains("Bitmovin Akamai HLS Remote Asset")) {
+				// live video
+				if (testName.contains("Bitmovin Elemental Delta DASH Remote Asset")) {
+					result = result && seekAction.setTime(100).startAction();
+					result = result && eventValidator.validate("seeked_1", 60000);
+				} else {
+					result = result && seek.validate("seeked_1", 60000);
 				}
-				
+				result = result && eventValidator.validate("played_1", 120000);
 			}
 
 		} catch (Exception e) {
 			logger.error("Exception while checking basic playback " + e.getMessage());
-			extentTest.log(LogStatus.FAIL,e);
+			extentTest.log(LogStatus.FAIL, e);
 			result = false;
 		}
 		Assert.assertTrue(result, "Basic playback tests failed" + testName);
