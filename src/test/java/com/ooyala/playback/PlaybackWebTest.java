@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
@@ -72,15 +73,11 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected RemoteWebDriver driver;
     protected static String v4Version;
     protected static String osNameAndOsVersion;
+    private static Map<String,ITestResult> testDetails = new HashMap<String,ITestResult>();
     public SoftAssert s_assert;
-    private TestCaseSheet testCaseSheet;
 
     public PlaybackWebTest() throws OoyalaException {
         liveChannel = new LiveChannel();
-        String updateSheet = System.getProperty(CommandLineParameters.updateSheet);
-        if(updateSheet != null && !updateSheet.isEmpty() && updateSheet.equalsIgnoreCase("true")){
-        	testCaseSheet = new TestCaseSheet();
-        }
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -194,6 +191,10 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     @AfterSuite(alwaysRun = true)
     public void afterSuiteInPlaybackWeb() throws Exception {
+    	String updateSheet = System.getProperty("updateSheet");
+    	if(updateSheet != null && !updateSheet.isEmpty() && updateSheet.equalsIgnoreCase("true")){
+    		TestCaseSheet.update(testDetails, osNameAndOsVersion, browser, "", v4Version);
+    	}
 		SimpleHttpServer.stopServer();
 	}
 
@@ -301,17 +302,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     					+ " failed ******");
             }
             
-            if(osNameAndOsVersion==null || osNameAndOsVersion.isEmpty()) {
-            	osNameAndOsVersion = getOsNameAndOsVersion();
-            }
-            
-            String updateSheet = System.getProperty(CommandLineParameters.updateSheet);
-        	if(updateSheet != null && !updateSheet.isEmpty() && updateSheet.equalsIgnoreCase("true")){
-        		if(testCaseSheet==null){
-        			testCaseSheet = new TestCaseSheet();
-        		}
-        		testCaseSheet.update(extentTest.getTest().getName().split(" - ")[1],result, osNameAndOsVersion, browser, "", v4Version);
-        	}
+            testDetails.put(extentTest.getTest().getName().split(" - ")[1],result);
             
         } catch(Exception ex) {
         	extentTest.log(LogStatus.INFO, ex);
