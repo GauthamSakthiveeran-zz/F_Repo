@@ -9,6 +9,7 @@ import com.relevantcodes.extentreports.LogStatus;
 public class PlayAction extends PlayBackPage implements PlayerAction {
 
     public static Logger logger = Logger.getLogger(PlayAction.class);
+
     public PlayAction(WebDriver webDriver) {
         super(webDriver);
         PageFactory.initElements(webDriver, this);
@@ -35,14 +36,13 @@ public class PlayAction extends PlayBackPage implements PlayerAction {
             extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
             return false;
         }
-        if (clickOnIndependentElement("PLAY_BUTTON")) {
-            if (!loadingSpinner()) {
-                extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
+
+        if (!getBrowser().equalsIgnoreCase("safari")) {
+            if (!clickOnIndependentElement("PLAY_BUTTON"))
                 return false;
-            }
-            if (getBrowser().contains("safari")) {
-                clickOnHiddenElement("PLAY_BUTTON");
-            }
+        } else {
+            if (!clickOnHiddenElement("PLAY_BUTTON"))
+                return false;
         }
         return true;
     }
