@@ -212,6 +212,8 @@ public abstract class PlaybackWebTest extends FacileTest {
         if (!getPlatform().equalsIgnoreCase("android")) {
         	maximizeMe(webDriverFacile.get());
         }
+        if(osNameAndOsVersion==null || osNameAndOsVersion.isEmpty())
+        	osNameAndOsVersion = getOsNameAndOsVersion();
     }
     
 	@BeforeTest(alwaysRun = true)
@@ -314,7 +316,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
-        logger.info("OS Name and Version is : "+osNameAndOsVersion);
+        logger.info("OS Name and Version is : "+getOsNameAndOsVersion());
         if (isBrowserMobProxyEnabled())
             BrowserMobProxyHelper.stopBrowserMobProxyServer();
 
