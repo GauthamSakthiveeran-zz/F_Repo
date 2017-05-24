@@ -30,7 +30,7 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 		}
 		
 		if (!adPlaying(false)) {
-			return false;
+			return true;
 		}
 		
 		if(!isElementPresent("SCRUBBER_BAR")) {
