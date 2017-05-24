@@ -108,7 +108,7 @@ public class UrlGenerator {
 					 */
 
 					if (url.getPlatformsSupported() != null && url.getPlatformsSupported().getName() !=null
-							&& !url.getPlatformsSupported().getName().contains(System.getProperty(CommandLineParameters.platform).toLowerCase())){
+							&& !url.getPlatformsSupported().getName().toLowerCase().contains(System.getProperty(CommandLineParameters.platform).toLowerCase())){
                         continue;
 					}
 

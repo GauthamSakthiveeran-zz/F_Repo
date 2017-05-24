@@ -217,7 +217,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 			browser = "firefox";
 		logger.info("browser is " + browser);
 		if (browser.equalsIgnoreCase("safari") || browser.toLowerCase().contains("edge") || browser.toLowerCase().contains("internet") || browser.equalsIgnoreCase("ie")
-                || System.getProperty("platform").equalsIgnoreCase("android")) {
+                || System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("android")) {
 			// safari driver does not allow parallel execution of tests
 			// ie because the browser hangs - this is a temp soln.
 			context.getCurrentXmlTest().setParallel("false");
