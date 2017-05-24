@@ -5,10 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
-
 import java.util.Map;
 
 /**
@@ -72,7 +70,6 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		} else {
 			extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");
 		}
-
 	}
 
 	public boolean validateElementPresence(String element) throws Exception {
@@ -101,7 +98,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 		}
 		return true;
@@ -127,7 +124,6 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		} else {
 			logger.error("playbackReady event not found in consoleOutput");
 		}
-
 		return result;
 	}
 	
