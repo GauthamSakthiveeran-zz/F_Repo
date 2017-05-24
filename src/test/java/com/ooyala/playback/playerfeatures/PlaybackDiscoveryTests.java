@@ -48,8 +48,10 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
 			result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 
 			// uncommenting the playAction as video is playing automatically.
-			//result = result && playAction.startAction();
-
+			//For safari we need to click on play button
+			if(getBrowser().equalsIgnoreCase("safari")) {
+				result = result && playAction.startAction();
+			}
 
 			result = result && discoveryValidator.clickOnDiscoveryButton();
 

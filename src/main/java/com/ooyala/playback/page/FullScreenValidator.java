@@ -60,7 +60,7 @@ public class FullScreenValidator extends PlayBackPage implements
         }catch (NoSuchElementException e){
 	        flag = true;
         } catch (Exception ex){
-            logger.info(ex.getMessage());
+            logger.error(ex.getMessage());
         }
 
 		if (flag) {

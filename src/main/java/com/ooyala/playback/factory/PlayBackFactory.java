@@ -1,10 +1,8 @@
 package com.ooyala.playback.factory;
 
 import java.lang.reflect.Field;
-
 import com.ooyala.playback.page.*;
 import org.openqa.selenium.WebDriver;
-
 import com.ooyala.playback.page.action.AutoplayAction;
 import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
 import com.ooyala.playback.page.action.FullScreenAction;

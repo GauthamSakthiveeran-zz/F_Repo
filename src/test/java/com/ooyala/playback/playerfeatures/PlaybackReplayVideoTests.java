@@ -1,5 +1,6 @@
 package com.ooyala.playback.playerfeatures;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -50,6 +51,7 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
         } catch (Exception e) {
             logger.error(e.getMessage());
+			extentTest.log(LogStatus.FAIL, e.getMessage());
             result =false;
         }
         Assert.assertTrue(result, "Playback Replay tests failed");

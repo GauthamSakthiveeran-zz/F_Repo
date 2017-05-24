@@ -2,13 +2,11 @@ package com.ooyala.playback.page;
 
 
 import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-
 import com.relevantcodes.extentreports.LogStatus;
 
 public class DiscoveryValidator extends PlayBackPage implements
@@ -34,11 +32,15 @@ public class DiscoveryValidator extends PlayBackPage implements
 	
 	public boolean validateDiscoveryToaster() throws Exception{
 
-		if (isElementPresent("PAUSE_BUTTON")) {
-			clickOnIndependentElement("PAUSE_BUTTON");
+		if(!getBrowser().equalsIgnoreCase("safari")) {
+			if (isElementPresent("PAUSE_BUTTON")) {
+				clickOnIndependentElement("PAUSE_BUTTON");
+			}
+		}else {
+			//if browser is safari then click on element using javascript executor
+			return clickOnHiddenElement("PAUSE_BUTTON");
 		}
 		return waitOnElement("DISCOVERY_TOASTER", 10000);
-		
 	}
 	
 	public boolean validateLeftRightButton() throws Exception{
@@ -68,9 +70,17 @@ public class DiscoveryValidator extends PlayBackPage implements
 		return true;
 	}
 	
-	public boolean validateImageStyle(){
-		if(!clickOnIndependentElement("IMAGE_STYLE")) return false;
+	public boolean validateImageStyle() throws Exception{
+		if(!getBrowser().equalsIgnoreCase("safari")) {
+			/*if (!clickOnIndependentElement("IMAGE_STYLE")) {
+				return false;
+			}*/
+			clickOnIndependentElement("IMAGE_STYLE");
+		}else
+			clickOnHiddenElement("IMAGE_STYLE");
+
         if(!waitOnElement(By.id("reportDiscoveryClick_1"), 60000)) return false;
+
 		return true;
 	}
 
@@ -117,6 +127,15 @@ public class DiscoveryValidator extends PlayBackPage implements
 			extentTest.log(LogStatus.FAIL, "Loading spinner is persistent!");
 			return false;
 		}
-		return clickOnIndependentElement("DISCOVERY_BTN") && validateDiscoveryToaster() && validateLeftRightButton();
+		if(!getBrowser().equalsIgnoreCase("safari")) {
+			if ((clickOnIndependentElement("DISCOVERY_BTN") && validateDiscoveryToaster() && validateLeftRightButton())) {
+				return true;
+			}
+		}else {
+			if((clickOnHiddenElement("DISCOVERY_BTN"))){
+				return validateDiscoveryToaster() && validateLeftRightButton();
+			}
+		}
+		return false;
 	}
 }

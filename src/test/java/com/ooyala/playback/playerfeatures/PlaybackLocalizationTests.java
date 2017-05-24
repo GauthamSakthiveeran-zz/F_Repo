@@ -15,8 +15,7 @@ import org.testng.annotations.Test;
  */
 public class PlaybackLocalizationTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger
-			.getLogger(PlaybackLocalizationTests.class);
+	private static Logger logger = Logger.getLogger(PlaybackLocalizationTests.class);
 
 	private PlayValidator play;
 	private PauseValidator pause;
@@ -49,7 +48,9 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 
 			result = result && shareTabValidator.validate("", 60000);
 
-			if (!(getBrowser().equalsIgnoreCase("safari") || getPlatform().equalsIgnoreCase("Android") || getBrowser().equalsIgnoreCase("MicrosoftEdge"))) {
+			if (!(getBrowser().equalsIgnoreCase("safari")
+					|| getPlatform().equalsIgnoreCase("Android")
+					|| getBrowser().equalsIgnoreCase("MicrosoftEdge"))) {
 				result = result && fullScreenValidator.getFullScreen();
 
 				result = result && shareTabValidator.validate("", 60000);
@@ -64,7 +65,7 @@ public class PlaybackLocalizationTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("played_1", 60000);
 
 		} catch (Exception e) {
-			logger.error(e);
+			logger.error(e.getMessage());
 			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
