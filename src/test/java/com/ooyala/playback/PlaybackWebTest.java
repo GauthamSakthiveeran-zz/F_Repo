@@ -245,72 +245,78 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     @AfterMethod(alwaysRun = true)
     protected void afterMethod(ITestResult result) throws Exception {
-        boolean driverNotNullFlag = false;
-        logger.info("****** Inside @AfterMethod*****");
-        logger.info(webDriverFacile.get());
-        
-		/*if (browser.equalsIgnoreCase("safari") && webDriverFacile.get().toString().contains("(null)")) {
+        try{
+        	boolean driverNotNullFlag = false;
+            logger.info("****** Inside @AfterMethod*****");
+            logger.info(webDriverFacile.get());
+            
+    		/*if (browser.equalsIgnoreCase("safari") && webDriverFacile.get().toString().contains("(null)")) {
 
-			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
-			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
-			pageFactory.destroyInstance();
-			initializeWebdriver();
-			driverNotNullFlag = false;
+    			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
+    			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
+    			pageFactory.destroyInstance();
+    			initializeWebdriver();
+    			driverNotNullFlag = false;
 
-		} else*/ if (!browser.equalsIgnoreCase("safari") && webDriverFacile.get() != null && (webDriverFacile.get().getSessionId() == null
-				|| webDriverFacile.get().getSessionId().toString().isEmpty())) {
-			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
-			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
-			initializeWebdriver();
-			driverNotNullFlag = false;
+    		} else*/ if (!browser.equalsIgnoreCase("safari") && webDriverFacile.get() != null && (webDriverFacile.get().getSessionId() == null
+    				|| webDriverFacile.get().getSessionId().toString().isEmpty())) {
+    			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
+    			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
+    			initializeWebdriver();
+    			driverNotNullFlag = false;
 
-		} else if (webDriverFacile.get() == null) {
-			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
-			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
-			driverNotNullFlag = false;
-			initializeWebdriver();
-		} else {
-			driverNotNullFlag = true;
-		}
-		
-        if (result.getStatus() == ITestResult.FAILURE) {
-            if (driverNotNullFlag) {
-                String fileName = takeScreenshot(extentTest.getTest().getName());
-                extentTest.log(LogStatus.INFO,
-                        "Snapshot is " + extentTest.addScreenCapture(fileName));
-            }
-
-            extentTest.log(LogStatus.FAIL, result.getThrowable().getMessage());
-            logger.error("**** Test " + extentTest.getTest().getName()
-                    + " failed ******");
-        } else if (result.getStatus() == ITestResult.SKIP) {
-            extentTest.log(LogStatus.SKIP, extentTest.getTest().getName()
-                    + " Test skipped " + result.getThrowable());
-            logger.info("**** Test" + extentTest.getTest().getName()
-                    + " Skipped ******");
-        } else if (result.getStatus() == ITestResult.SUCCESS) {
-
-			/*extentTest.log(LogStatus.PASS, extentTest.getTest().getName()
-					+ " Test passed");*/
-            logger.info("**** Test" + extentTest.getTest().getName()
-                    + " passed ******");
-        } else {
-        	extentTest.log(LogStatus.FAIL, result.getThrowable());
-			logger.error("**** Test " + extentTest.getTest().getName()
-					+ " failed ******");
-        }
-        
-        if(osNameAndOsVersion==null || osNameAndOsVersion.isEmpty()) {
-        	osNameAndOsVersion = getOsNameAndOsVersion();
-        }
-        
-        String updateSheet = System.getProperty(CommandLineParameters.updateSheet);
-    	if(updateSheet != null && !updateSheet.isEmpty() && updateSheet.equalsIgnoreCase("true")){
-    		if(testCaseSheet==null){
-    			testCaseSheet = new TestCaseSheet();
+    		} else if (webDriverFacile.get() == null) {
+    			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
+    			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
+    			driverNotNullFlag = false;
+    			initializeWebdriver();
+    		} else {
+    			driverNotNullFlag = true;
     		}
-    		testCaseSheet.update(extentTest.getTest().getName().split(" - ")[1],result, osNameAndOsVersion, browser, "", v4Version);
-    	}
+    		
+            if (result.getStatus() == ITestResult.FAILURE) {
+                if (driverNotNullFlag) {
+                    String fileName = takeScreenshot(extentTest.getTest().getName());
+                    extentTest.log(LogStatus.INFO,
+                            "Snapshot is " + extentTest.addScreenCapture(fileName));
+                }
+
+                extentTest.log(LogStatus.FAIL, result.getThrowable().getMessage());
+                logger.error("**** Test " + extentTest.getTest().getName()
+                        + " failed ******");
+            } else if (result.getStatus() == ITestResult.SKIP) {
+                extentTest.log(LogStatus.SKIP, extentTest.getTest().getName()
+                        + " Test skipped " + result.getThrowable());
+                logger.info("**** Test" + extentTest.getTest().getName()
+                        + " Skipped ******");
+            } else if (result.getStatus() == ITestResult.SUCCESS) {
+
+    			/*extentTest.log(LogStatus.PASS, extentTest.getTest().getName()
+    					+ " Test passed");*/
+                logger.info("**** Test" + extentTest.getTest().getName()
+                        + " passed ******");
+            } else {
+            	extentTest.log(LogStatus.FAIL, result.getThrowable());
+    			logger.error("**** Test " + extentTest.getTest().getName()
+    					+ " failed ******");
+            }
+            
+            if(osNameAndOsVersion==null || osNameAndOsVersion.isEmpty()) {
+            	osNameAndOsVersion = getOsNameAndOsVersion();
+            }
+            
+            String updateSheet = System.getProperty(CommandLineParameters.updateSheet);
+        	if(updateSheet != null && !updateSheet.isEmpty() && updateSheet.equalsIgnoreCase("true")){
+        		if(testCaseSheet==null){
+        			testCaseSheet = new TestCaseSheet();
+        		}
+        		testCaseSheet.update(extentTest.getTest().getName().split(" - ")[1],result, osNameAndOsVersion, browser, "", v4Version);
+        	}
+            
+        } catch(Exception ex) {
+        	extentTest.log(LogStatus.INFO, ex);
+        	initializeWebdriver();
+        }
         ExtentManager.endTest(extentTest);
         ExtentManager.flush();
     }
