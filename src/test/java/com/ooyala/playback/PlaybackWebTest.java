@@ -77,7 +77,10 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     public PlaybackWebTest() throws OoyalaException {
         liveChannel = new LiveChannel();
-        testCaseSheet = new TestCaseSheet();
+        String updateSheet = System.getProperty(CommandLineParameters.updateSheet);
+        if(updateSheet != null && !updateSheet.isEmpty() && updateSheet.equalsIgnoreCase("true")){
+        	testCaseSheet = new TestCaseSheet();
+        }
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -303,6 +306,9 @@ public abstract class PlaybackWebTest extends FacileTest {
         
         String updateSheet = System.getProperty(CommandLineParameters.updateSheet);
     	if(updateSheet != null && !updateSheet.isEmpty() && updateSheet.equalsIgnoreCase("true")){
+    		if(testCaseSheet==null){
+    			testCaseSheet = new TestCaseSheet();
+    		}
     		testCaseSheet.update(extentTest.getTest().getName().split(" - ")[1],result, osNameAndOsVersion, browser, "", v4Version);
     	}
         ExtentManager.endTest(extentTest);
