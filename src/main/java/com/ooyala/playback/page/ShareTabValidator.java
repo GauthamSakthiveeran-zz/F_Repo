@@ -3,7 +3,6 @@ package com.ooyala.playback.page;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
 import com.relevantcodes.extentreports.LogStatus;
 
 /**
@@ -26,8 +25,14 @@ public class ShareTabValidator extends PlayBackPage implements
 				return false;
 			if (!clickOnIndependentElement("SHARE_BTN"))
 				return false;
+			//If browser is Safari, then we have to click on element using javascript
+			if (getBrowser().contains("safari")) {
+				if(!clickOnHiddenElement("SHARE_BTN")){
+					return false;
+				}
+			}
 		} catch (Exception e) {
-			logger.info("exception \n" + e.getMessage());
+			logger.error("exception \n" + e.getMessage());
 			if (!clickOnIndependentElement("MORE_OPTION_ITEM"))
 				return false;
 			if (!waitOnElement("SHARE_BTN", 60000))
@@ -57,9 +62,14 @@ public class ShareTabValidator extends PlayBackPage implements
 			extentTest.log(LogStatus.FAIL, "Localization Failed.");
 			return false;
 		}
-
-		return clickOnIndependentElement("SHARE_CLOSE");
-
+		//If browser is Safari, then we have to click on element using javascript
+		if (getBrowser().contains("safari")) {
+			return clickOnHiddenElement("SHARE_CLOSE");
+		}else {
+			if(!clickOnIndependentElement("SHARE_CLOSE")) {
+				return false;
+			}
+		}
+		return true;
 	}
-
 }

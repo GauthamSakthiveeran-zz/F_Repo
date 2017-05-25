@@ -11,6 +11,4 @@
             <class name="com.ooyala.playback.FCC.PlaybackFCCBasicTests" />
         </classes>
     </test>
-    
 </suite>
-

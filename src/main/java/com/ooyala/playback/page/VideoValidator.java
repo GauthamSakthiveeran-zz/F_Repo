@@ -1,10 +1,7 @@
 package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import com.relevantcodes.extentreports.LogStatus;
 
 public class VideoValidator extends PlayBackPage implements PlaybackValidator {
 

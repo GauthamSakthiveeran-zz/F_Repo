@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
@@ -72,12 +73,11 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected RemoteWebDriver driver;
     protected static String v4Version;
     protected static String osNameAndOsVersion;
+    private static Map<String,ITestResult> testDetails = new HashMap<String,ITestResult>();
     public SoftAssert s_assert;
-    private TestCaseSheet testCaseSheet;
 
     public PlaybackWebTest() throws OoyalaException {
         liveChannel = new LiveChannel();
-        testCaseSheet = new TestCaseSheet();
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -191,6 +191,10 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     @AfterSuite(alwaysRun = true)
     public void afterSuiteInPlaybackWeb() throws Exception {
+    	String updateSheet = System.getProperty("updateSheet");
+    	if(updateSheet != null && !updateSheet.isEmpty() && updateSheet.equalsIgnoreCase("true")){
+    		TestCaseSheet.update(testDetails, osNameAndOsVersion, browser, "", v4Version);
+    	}
 		SimpleHttpServer.stopServer();
 	}
 
@@ -208,6 +212,8 @@ public abstract class PlaybackWebTest extends FacileTest {
         if (!getPlatform().equalsIgnoreCase("android")) {
         	maximizeMe(webDriverFacile.get());
         }
+        if(osNameAndOsVersion==null || osNameAndOsVersion.isEmpty())
+        	osNameAndOsVersion = getOsNameAndOsVersion();
     }
     
 	@BeforeTest(alwaysRun = true)
@@ -243,76 +249,75 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     @AfterMethod(alwaysRun = true)
     protected void afterMethod(ITestResult result) throws Exception {
-        boolean driverNotNullFlag = false;
-        logger.info("****** Inside @AfterMethod*****");
-        logger.info(webDriverFacile.get());
-        
-		/*if (browser.equalsIgnoreCase("safari") && webDriverFacile.get().toString().contains("(null)")) {
+        try{
+        	boolean driverNotNullFlag = false;
+            logger.info("****** Inside @AfterMethod*****");
+            logger.info(webDriverFacile.get());
+            
+    		/*if (browser.equalsIgnoreCase("safari") && webDriverFacile.get().toString().contains("(null)")) {
 
-			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
-			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
-			pageFactory.destroyInstance();
-			initializeWebdriver();
-			driverNotNullFlag = false;
+    			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
+    			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
+    			pageFactory.destroyInstance();
+    			initializeWebdriver();
+    			driverNotNullFlag = false;
 
-		} else*/ if (!browser.equalsIgnoreCase("safari") && webDriverFacile.get() != null && (webDriverFacile.get().getSessionId() == null
-				|| webDriverFacile.get().getSessionId().toString().isEmpty())) {
-			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
-			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
-			initializeWebdriver();
-			driverNotNullFlag = false;
+    		} else*/ if (!browser.equalsIgnoreCase("safari") && webDriverFacile.get() != null && (webDriverFacile.get().getSessionId() == null
+    				|| webDriverFacile.get().getSessionId().toString().isEmpty())) {
+    			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
+    			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
+    			initializeWebdriver();
+    			driverNotNullFlag = false;
 
-		} else if (webDriverFacile.get() == null) {
-			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
-			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
-			driverNotNullFlag = false;
-			initializeWebdriver();
-		} else {
-			driverNotNullFlag = true;
-		}
-		
-        if (result.getStatus() == ITestResult.FAILURE) {
-            if (driverNotNullFlag) {
-                String fileName = takeScreenshot(extentTest.getTest().getName());
-                extentTest.log(LogStatus.INFO,
-                        "Snapshot is " + extentTest.addScreenCapture(fileName));
+    		} else if (webDriverFacile.get() == null) {
+    			logger.error("Browser closed during the test run. Renitializing the driver as the test failed during the test");
+    			extentTest.log(LogStatus.INFO, "Browser closed during the test.");
+    			driverNotNullFlag = false;
+    			initializeWebdriver();
+    		} else {
+    			driverNotNullFlag = true;
+    		}
+    		
+            if (result.getStatus() == ITestResult.FAILURE) {
+                if (driverNotNullFlag) {
+                    String fileName = takeScreenshot(extentTest.getTest().getName());
+                    extentTest.log(LogStatus.INFO,
+                            "Snapshot is " + extentTest.addScreenCapture(fileName));
+                }
+
+                extentTest.log(LogStatus.FAIL, result.getThrowable().getMessage());
+                logger.error("**** Test " + extentTest.getTest().getName()
+                        + " failed ******");
+            } else if (result.getStatus() == ITestResult.SKIP) {
+                extentTest.log(LogStatus.SKIP, extentTest.getTest().getName()
+                        + " Test skipped " + result.getThrowable());
+                logger.info("**** Test" + extentTest.getTest().getName()
+                        + " Skipped ******");
+            } else if (result.getStatus() == ITestResult.SUCCESS) {
+
+    			/*extentTest.log(LogStatus.PASS, extentTest.getTest().getName()
+    					+ " Test passed");*/
+                logger.info("**** Test" + extentTest.getTest().getName()
+                        + " passed ******");
+            } else {
+            	extentTest.log(LogStatus.FAIL, result.getThrowable());
+    			logger.error("**** Test " + extentTest.getTest().getName()
+    					+ " failed ******");
             }
-
-            extentTest.log(LogStatus.FAIL, result.getThrowable().getMessage());
-            logger.error("**** Test " + extentTest.getTest().getName()
-                    + " failed ******");
-        } else if (result.getStatus() == ITestResult.SKIP) {
-            extentTest.log(LogStatus.SKIP, extentTest.getTest().getName()
-                    + " Test skipped " + result.getThrowable());
-            logger.info("**** Test" + extentTest.getTest().getName()
-                    + " Skipped ******");
-        } else if (result.getStatus() == ITestResult.SUCCESS) {
-
-			/*extentTest.log(LogStatus.PASS, extentTest.getTest().getName()
-					+ " Test passed");*/
-            logger.info("**** Test" + extentTest.getTest().getName()
-                    + " passed ******");
-        } else {
-        	extentTest.log(LogStatus.FAIL, result.getThrowable());
-			logger.error("**** Test " + extentTest.getTest().getName()
-					+ " failed ******");
+            
+            testDetails.put(extentTest.getTest().getName().split(" - ")[1],result);
+            
+        } catch(Exception ex) {
+        	extentTest.log(LogStatus.INFO, ex);
+        	initializeWebdriver();
         }
-        
-        if(osNameAndOsVersion==null || osNameAndOsVersion.isEmpty()) {
-        	osNameAndOsVersion = getOsNameAndOsVersion();
-        }
-        
-        String updateSheet = System.getProperty(CommandLineParameters.updateSheet);
-    	if(updateSheet != null && !updateSheet.isEmpty() && updateSheet.equalsIgnoreCase("true")){
-    		testCaseSheet.update(extentTest.getTest().getName().split(" - ")[1],result, osNameAndOsVersion, browser, "", v4Version);
-    	}
         ExtentManager.endTest(extentTest);
         ExtentManager.flush();
     }
 
     @AfterClass(alwaysRun = true)
     public void tearDown() throws Exception {
-        logger.info("OS Name and Version is : "+osNameAndOsVersion);
+        logger.info("OS Name and Version is : "+getOsNameAndOsVersion());
         if (isBrowserMobProxyEnabled())
             BrowserMobProxyHelper.stopBrowserMobProxyServer();
 

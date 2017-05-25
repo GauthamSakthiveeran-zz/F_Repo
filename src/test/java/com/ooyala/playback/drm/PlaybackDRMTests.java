@@ -39,14 +39,14 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 			driver.get(url.getUrl());
 
             result = result && drm.isPageLoaded();
+            
+            tech.getConsoleLogs();
+            
+			result = result && play.waitForPage();
 
             injectScript();
 
-            tech.getConsoleLogs();
-			
             result = result && drm.validate("drm_tag", 5000);
-			
-			result = result && play.waitForPage();
 			
 			result = result && play.validate("playing_1", 60000);
 			

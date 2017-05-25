@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.testng.ITestResult;
@@ -33,7 +34,6 @@ import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.BatchUpdateSpreadsheetRequest;
 import com.google.api.services.sheets.v4.model.CellData;
 import com.google.api.services.sheets.v4.model.CellFormat;
-import com.google.api.services.sheets.v4.model.Color;
 import com.google.api.services.sheets.v4.model.DimensionRange;
 import com.google.api.services.sheets.v4.model.ExtendedValue;
 import com.google.api.services.sheets.v4.model.GridCoordinate;
@@ -75,38 +75,12 @@ public class TestCaseSheet {
 	 */
 	private static final List<String> SCOPES = Arrays.asList(SheetsScopes.SPREADSHEETS);
 
-	private static HashMap<String, TestCaseData> sheetNameList = new HashMap<>();
-
 	static {
 		try {
 			HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
 			DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
-			service = getSheetsService();
-			spreadsheetId = getSpreadSheetId();
-			String pattern = TestCaseSheetProperties.dateFormat;
-			SimpleDateFormat format = new SimpleDateFormat(pattern);
-			date = format.format(new Date());
-			
 		} catch (Throwable t) {
 			t.printStackTrace();
-		}
-	}
-
-	private static Sheets service;
-	private static String spreadsheetId;
-	private static String date;
-	private static List<Sheet> sheets;
-
-	public TestCaseSheet() {
-		try {
-			service = getSheetsService();
-			spreadsheetId = getSpreadSheetId();
-			String pattern = TestCaseSheetProperties.dateFormat;
-			SimpleDateFormat format = new SimpleDateFormat(pattern);
-			date = format.format(new Date());
-			sheets = service.spreadsheets().get(spreadsheetId).execute().getSheets();
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -205,170 +179,182 @@ public class TestCaseSheet {
 		return TestResult.SKIPPED;
 	}
 
-	public void update(String testName, ITestResult result, String platform, String browser, String browserVersion,
-			String v4Version) throws Exception {
-		
-		sheets = service.spreadsheets().get(spreadsheetId).execute().getSheets();
+	public static void update(Map<String, ITestResult> testDetails, String platform, String browser,
+			String browserVersion, String v4Version) throws Exception {
 
-		if (testName == null || testName.isEmpty())
+		if (testDetails == null || testDetails.isEmpty())
 			return;
 
-		if (result == null)
-			return;
+		Sheets service = getSheetsService();
+		String spreadsheetId = getSpreadSheetId();
+		HashMap<String, TestCaseData> sheetNameList = new HashMap<>();
 
-		String[] singleTests = testName.split(TestCaseSheetProperties.delimiterForDifferentTests);
+		String pattern = TestCaseSheetProperties.dateFormat;
 
-		if (singleTests == null || singleTests.length <= 0) {
-			singleTests = new String[1];
-			singleTests[0] = testName;
-		}
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		String date = format.format(new Date());
 
-		for (String singleTest : singleTests) {
+		List<Sheet> sheets = service.spreadsheets().get(spreadsheetId).execute().getSheets();
 
-			List<Request> requests = new ArrayList<>();
+		for (Map.Entry<String, ITestResult> entry : testDetails.entrySet()) {
 
-			String sheetName = "";
-			String testCaseName = "";
-			TestResult testResult = TestResult.SKIPPED;
+			String[] singleTests = entry.getKey().split(TestCaseSheetProperties.delimiterForDifferentTests);
 
-			if (singleTest.contains(TestCaseSheetProperties.delimiterForTabAndTest)) {
-				sheetName = singleTest.split(TestCaseSheetProperties.delimiterForTabAndTest)[0];
-				testCaseName = singleTest.split(TestCaseSheetProperties.delimiterForTabAndTest)[1];
-				testResult = getTestResult(result, testCaseName);
-
-			} else {
-				testCaseName = testName;
-				logger.error("No matching data found in excel for " + testCaseName);
-				sheetName = null;
-				testResult = TestResult.UNKOWN;
-				continue;
+			if (singleTests == null || singleTests.length <= 0) {
+				singleTests = new String[1];
+				singleTests[0] = entry.getKey();
 			}
 
-			testCaseName = testCaseName.trim();
+			for (String singleTest : singleTests) {
 
-			TestCaseData testCaseData = null;
+				List<Request> requests = new ArrayList<>();
 
-			if (!sheetNameList.containsKey(sheetName)) {
+				String sheetName = "";
+				String testCaseName = "";
+				TestResult testResult = TestResult.SKIPPED;
 
-				String range = sheetName + TestCaseSheetProperties.sheetRangeForInitialReading;
-				ValueRange response;
-				try {
-					response = service.spreadsheets().values().get(spreadsheetId, range).execute();
+				if (singleTest.contains(TestCaseSheetProperties.delimiterForTabAndTest)) {
+					sheetName = singleTest.split(TestCaseSheetProperties.delimiterForTabAndTest)[0];
+					testCaseName = singleTest.split(TestCaseSheetProperties.delimiterForTabAndTest)[1];
+					ITestResult result = entry.getValue();
+					testResult = getTestResult(result, testCaseName);
 
-					int sheetId = getSheetId(sheets, spreadsheetId, sheetName);
+				} else {
+					testCaseName = entry.getKey();
+					logger.error("No matching data found in excel for " + testCaseName);
+					sheetName = null;
+					testResult = TestResult.UNKOWN;
+					continue;
+				}
+				
+				testCaseName = testCaseName.trim();
 
-					List<List<Object>> values = response.getValues();
+				TestCaseData testCaseData = null;
 
-					String resultColumnTitle = platform + "\n" + browser + " " + browserVersion + "\n"
-							+ getV4Version(v4Version) + "\n" + date;
+				if (!sheetNameList.containsKey(sheetName)) {
 
-					testCaseData = parseData(service, spreadsheetId, values, resultColumnTitle, sheetId);
+					String range = sheetName + TestCaseSheetProperties.sheetRangeForInitialReading;
+					ValueRange response;
+					try {
+						response = service.spreadsheets().values().get(spreadsheetId, range).execute();
 
-					requests = new ArrayList<>();
+						int sheetId = getSheetId(sheets, spreadsheetId, sheetName);
 
-					String columnLetter = toName(testCaseData.getHeaderColumnNumber() + 1);
-					String rowNumber = testCaseData.getHeaderRowNumber() + 1 + "";
+						List<List<Object>> values = response.getValues();
 
-					List<CellData> cellformulaPassed = new ArrayList<>();
-					cellformulaPassed.add(new CellData().setUserEnteredValue(new ExtendedValue().setFormulaValue(
-							"=COUNTIF(" + columnLetter + rowNumber + ":" + columnLetter + "500,\"=Passed\")")));
-					List<CellData> cellFormulaFailed = new ArrayList<>();
-					cellFormulaFailed.add(new CellData().setUserEnteredValue(new ExtendedValue().setFormulaValue(
-							"=COUNTIF(" + columnLetter + rowNumber + ":" + columnLetter + "500,\"=Failed\")")));
+						String resultColumnTitle = platform + "\n" + browser + " " + browserVersion + "\n"
+								+ getV4Version(v4Version) + "\n" + date;
 
-					requests.add(
-							new Request()
-									.setUpdateCells(
-											new UpdateCellsRequest()
-													.setStart(new GridCoordinate().setSheetId(sheetId)
-															.setRowIndex(testCaseData.getHeaderRowNumber() - 2)
-															.setColumnIndex(testCaseData.getHeaderColumnNumber()))
-													.setRows(Arrays.asList(new RowData().setValues(cellformulaPassed)))
-													.setFields("userEnteredValue")));
+						testCaseData = parseData(service, spreadsheetId, values, resultColumnTitle, sheetId);
 
-					requests.add(
-							new Request()
-									.setUpdateCells(
-											new UpdateCellsRequest()
-													.setStart(new GridCoordinate().setSheetId(sheetId)
-															.setRowIndex(testCaseData.getHeaderRowNumber() - 1)
-															.setColumnIndex(testCaseData.getHeaderColumnNumber()))
-													.setRows(Arrays.asList(new RowData().setValues(cellFormulaFailed)))
-													.setFields("userEnteredValue")));
+						requests = new ArrayList<>();
 
-					if (testCaseData.getHeaderRowNumber() == -1 || testCaseData.getHeaderColumnNumber() == -1
-							|| testCaseData.getTestCaseColumnNumber() == -1) {
-						throw new OoyalaException("Error while formatting the excel sheet");
+						String columnLetter = toName(testCaseData.getHeaderColumnNumber() + 1);
+						String rowNumber = testCaseData.getHeaderRowNumber() + 1 + "";
+
+						List<CellData> cellformulaPassed = new ArrayList<>();
+						cellformulaPassed.add(new CellData().setUserEnteredValue(new ExtendedValue().setFormulaValue(
+								"=COUNTIF(" + columnLetter + rowNumber + ":" + columnLetter + "500,\"=Passed\")")));
+						List<CellData> cellFormulaFailed = new ArrayList<>();
+						cellFormulaFailed.add(new CellData().setUserEnteredValue(new ExtendedValue().setFormulaValue(
+								"=COUNTIF(" + columnLetter + rowNumber + ":" + columnLetter + "500,\"=Failed\")")));
+
+						requests.add(
+								new Request()
+										.setUpdateCells(
+												new UpdateCellsRequest()
+														.setStart(new GridCoordinate().setSheetId(sheetId)
+																.setRowIndex(testCaseData.getHeaderRowNumber() - 2)
+																.setColumnIndex(testCaseData.getHeaderColumnNumber()))
+														.setRows(Arrays
+																.asList(new RowData().setValues(cellformulaPassed)))
+														.setFields("userEnteredValue")));
+
+						requests.add(
+								new Request()
+										.setUpdateCells(
+												new UpdateCellsRequest()
+														.setStart(new GridCoordinate().setSheetId(sheetId)
+																.setRowIndex(testCaseData.getHeaderRowNumber() - 1)
+																.setColumnIndex(testCaseData.getHeaderColumnNumber()))
+														.setRows(Arrays
+																.asList(new RowData().setValues(cellFormulaFailed)))
+														.setFields("userEnteredValue")));
+
+						if (testCaseData.getHeaderRowNumber() == -1 || testCaseData.getHeaderColumnNumber() == -1
+								|| testCaseData.getTestCaseColumnNumber() == -1) {
+							throw new OoyalaException("Error while formatting the excel sheet");
+						}
+
+						sheetNameList.put(sheetName, testCaseData);
+
+						List<CellData> cellData = new ArrayList<>();
+						cellData.add(new CellData()
+								.setUserEnteredValue(new ExtendedValue().setStringValue(resultColumnTitle))
+								.setUserEnteredFormat(new CellFormat().setTextFormat(new TextFormat().setBold(true))
+										.setWrapStrategy("WRAP")));
+
+						requests.add(
+								new Request()
+										.setUpdateCells(
+												new UpdateCellsRequest()
+														.setStart(new GridCoordinate().setSheetId(sheetId)
+																.setRowIndex(testCaseData.getHeaderRowNumber())
+																.setColumnIndex(testCaseData.getHeaderColumnNumber()))
+														.setRows(Arrays.asList(new RowData().setValues(cellData)))
+														.setFields("userEnteredValue,userEnteredFormat.textFormat")));
+
+					} catch (GoogleJsonResponseException ex) {
+						if (ex.getMessage().toLowerCase().contains("unable to parse range")) {
+							logger.error("Unable to parse range");
+						} else {
+							logger.error(ex.getMessage());
+							return;
+						}
 					}
 
-					sheetNameList.put(sheetName, testCaseData);
-
-					List<CellData> cellData = new ArrayList<>();
-					cellData.add(
-							new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(resultColumnTitle))
-									.setUserEnteredFormat(new CellFormat().setTextFormat(new TextFormat().setBold(true))
-											.setWrapStrategy("WRAP")));
-
-					requests.add(
-							new Request()
-									.setUpdateCells(
-											new UpdateCellsRequest()
-													.setStart(new GridCoordinate().setSheetId(sheetId)
-															.setRowIndex(testCaseData.getHeaderRowNumber())
-															.setColumnIndex(testCaseData.getHeaderColumnNumber()))
-													.setRows(Arrays.asList(new RowData().setValues(cellData)))
-													.setFields("userEnteredValue,userEnteredFormat.textFormat")));
-
-				} catch (GoogleJsonResponseException ex) {
-					if (ex.getMessage().toLowerCase().contains("unable to parse range")) {
-						logger.error("Unable to parse range");
-					} else {
-						logger.error(ex.getMessage());
-						return;
-					}
 				}
 
-			}
+				if (testCaseData == null) {
+					testCaseData = new TestCaseData();
+					testCaseData = sheetNameList.get(sheetName);
+				}
 
-			if (testCaseData == null) {
-				testCaseData = new TestCaseData();
-				testCaseData = sheetNameList.get(sheetName);
-			}
+				if (testCaseData != null && testCaseData.getTestCaseMap().get(testCaseName) != null) {
 
-			if (testCaseData != null && testCaseData.getTestCaseMap().get(testCaseName) != null) {
+					int rowNumber = testCaseData.getTestCaseMap().get(testCaseName);
 
-				int rowNumber = testCaseData.getTestCaseMap().get(testCaseName);
+					List<CellData> cellData = new ArrayList<>();
+					cellData.add(new CellData()
+							.setUserEnteredValue(new ExtendedValue().setStringValue(testResult.getValue()))
+							.setUserEnteredFormat(new CellFormat().setBackgroundColor(testResult.getColor())));
+					requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
+							.setStart(new GridCoordinate().setSheetId(testCaseData.getSheetId()).setRowIndex(rowNumber)
+									.setColumnIndex(testCaseData.getHeaderColumnNumber()))
+							.setRows(Arrays.asList(new RowData().setValues(cellData)))
+							.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
 
-				List<CellData> cellData = new ArrayList<>();
-				cellData.add(
-						new CellData().setUserEnteredValue(new ExtendedValue().setStringValue(testResult.getValue()))
-								.setUserEnteredFormat(new CellFormat().setBackgroundColor(testResult.getColor())
-										.setTextFormat(new TextFormat().setForegroundColor(new Color().setRed(0F)))));
-				requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
-						.setStart(new GridCoordinate().setSheetId(testCaseData.getSheetId()).setRowIndex(rowNumber)
-								.setColumnIndex(testCaseData.getHeaderColumnNumber()))
-						.setRows(Arrays.asList(new RowData().setValues(cellData)))
-						.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
+					logger.info("Row Details " + testCaseName);
+				} else {
+					logger.error("No Row Details for" + testCaseName);
+				}
 
-				logger.info("Row Details " + testCaseName);
-			} else {
-				logger.error("No Row Details for" + testCaseName);
-			}
+				if (requests.isEmpty()) {
+					logger.error("Nothing to update for " + singleTest);
+					continue;
+				}
 
-			if (requests.isEmpty()) {
-				logger.error("Nothing to update for " + singleTest);
-				continue;
-			}
+				try {
 
-			try {
+					BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()
+							.setRequests(requests);
+					service.spreadsheets().batchUpdate(spreadsheetId, batchUpdateRequest).execute();
 
-				BatchUpdateSpreadsheetRequest batchUpdateRequest = new BatchUpdateSpreadsheetRequest()
-						.setRequests(requests);
-				service.spreadsheets().batchUpdate(spreadsheetId, batchUpdateRequest).execute();
+				} catch (GoogleJsonResponseException ex) {
+					logger.error(ex.getMessage());
+					return;
+				}
 
-			} catch (GoogleJsonResponseException ex) {
-				logger.error(ex.getMessage());
-				return;
 			}
 
 		}

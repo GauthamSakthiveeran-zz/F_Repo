@@ -1,14 +1,14 @@
 package com.ooyala.playback.page.action;
 
-import com.ooyala.playback.factory.PlayBackFactory;
-import com.ooyala.playback.page.PlayBackPage;
-import com.relevantcodes.extentreports.LogStatus;
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.Map;
+import com.ooyala.playback.page.PlayBackPage;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * 

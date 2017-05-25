@@ -61,7 +61,9 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean eventAction(String element) throws Exception {
-		return clickOnIndependentElement(element);
+	if(!getBrowser().equalsIgnoreCase("safari")) {
+			return clickOnIndependentElement(element);
+		}else return clickOnHiddenElement(element);
 	}
 
 	public void validateElement(String element, int timeout) throws Exception {
@@ -87,7 +89,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 			playTime = Double.parseDouble(
 					((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
 			if (count == 120) {
-				extentTest.log(LogStatus.FAIL, "Looks like the video did not play.");
+				extentTest.log(LogStatus.FAIL, "Looks like the video did not play after waiting for 2 mins.");
 				return false;
 			}
 			if (!loadingSpinner()) {
