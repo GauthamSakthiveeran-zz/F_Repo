@@ -263,7 +263,6 @@ public abstract class PlayBackPage extends WebPage {
 					time++;
 					logger.info("In loading spinner");
 				} catch (Exception e) {
-					logger.error(e.getMessage());
 					return true;
 				}
 			} else {
