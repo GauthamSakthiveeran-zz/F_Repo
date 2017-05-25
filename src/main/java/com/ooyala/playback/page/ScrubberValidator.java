@@ -33,6 +33,11 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 			return true;
 		}
 		
+		if(new PlayBackFactory(driver, extentTest).getLiveValidator().validate(element, timeout)) {
+			extentTest.log(LogStatus.INFO, "Not validating Scrubber for Live assets");
+			return true;
+		}
+		
 		if(!isElementPresent("SCRUBBER_BAR")) {
 			extentTest.log(LogStatus.FAIL, "Scrubber bar is not present");
 			return false;
@@ -72,7 +77,7 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 
 		boolean flag = true;
 
-		if (scrubberDiff > 1) {
+		if (scrubberDiff > 5) {
 			extentTest.log(LogStatus.FAIL, "Scrubber bar for completion is incorrect - Actual : "
 					+ percentagePlayedFromUI + " Expected : " + percentagePlayed);
 			flag = false;

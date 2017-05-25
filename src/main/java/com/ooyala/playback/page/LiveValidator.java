@@ -11,14 +11,12 @@ public class LiveValidator extends PlayBackPage implements PlaybackValidator {
 	public LiveValidator(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(webDriver, this);
-		/**
-		 * Here we will tell Facile to add the page elements of our Login Page
-		 */
+		addElementToPageElements("live");
 	}
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
-		return true;
+		return isElementPresent("LIVE");
 	}
 
     /*
