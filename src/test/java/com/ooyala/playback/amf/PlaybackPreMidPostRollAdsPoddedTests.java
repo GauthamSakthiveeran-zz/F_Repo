@@ -73,12 +73,10 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 			}*/
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 			result = false;
 			extentTest.log(LogStatus.FAIL, e);
 		}
-
 		Assert.assertTrue(result, "Test failed");
-
 	}
 }

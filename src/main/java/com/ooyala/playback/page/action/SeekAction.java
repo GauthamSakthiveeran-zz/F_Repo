@@ -152,7 +152,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 				count--;
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			logger.error(ex.getMessage());
 			return false;
 		}
 		return true;
