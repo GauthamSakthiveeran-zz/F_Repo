@@ -24,6 +24,11 @@ public class UpNextValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 
+		if (!loadingSpinner()){
+			extentTest.log(LogStatus.FAIL,"loading spinner appears for long time");
+			return false;
+		}
+
 		try {
 			// inc the timeout because of pulse ads.
 			return waitOnElement("UPNEXT_CONTENT", 250000) && waitOnElement("CONTENT_METADATA", 2000)

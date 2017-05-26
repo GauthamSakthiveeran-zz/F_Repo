@@ -13,5 +13,6 @@ public class CommandLineParameters {
 	public static final String environment = "environment";
 	public static final String mode  = "mode";
 	public static final String updateSheet = "updateSheet";
+	public static final String platform ="platform";
 	
 }

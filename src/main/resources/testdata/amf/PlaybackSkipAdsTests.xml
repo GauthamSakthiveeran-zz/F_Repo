@@ -89,6 +89,7 @@
 			<adPlugins name="FREEWHEEL" />
 			<additionalPlugins name="DISCOVERY" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<platformsSupported name="mac,windows"/>
 			<playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NocGg4bzoRJ1yu3JY3LP44tVlsC2E_gi","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 			<browsersSupported
 				name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
@@ -103,6 +104,7 @@
 			<adPlugins name="IMA" />
 			<additionalPlugins name="" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<platformsSupported name="mac,windows"/>
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":10}]]></playerParameter>
 			<browsersSupported
 				name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
@@ -122,6 +124,7 @@
 			<browsersSupported
 				name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
+			<platformsSupported name="mac,windows"/>
 		</url>
 
 		<url>
@@ -158,6 +161,7 @@
 			<browsersSupported
 				name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
+			<platformsSupported name="mac,windows"/>
 		</url>
 
 		<url>
@@ -197,6 +201,7 @@
 			<browsersSupported
 				name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
+			<platformsSupported name="mac,windows"/>
 		</url>
 
 		<url>

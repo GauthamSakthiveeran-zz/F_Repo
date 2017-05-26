@@ -5,6 +5,7 @@ import static java.lang.Integer.parseInt;
 
 import java.util.ArrayList;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -32,34 +33,45 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
 	@Override
     public boolean validate(String element, int timeout) throws Exception {
 
-        Boolean autoplay = (Boolean) (((JavascriptExecutor) driver).executeScript("return pp.parameters.autoplay"));
+        /***
+         * For android autoPlay does not work and therefore we are not checking autoplay in following
+         * if statement
+         * Therefore we are playing video explicitly in following else statement....
+         */
+        if (!getPlatform().equalsIgnoreCase("android")) {
+            Boolean autoPlay = (Boolean) (driver.executeScript("return pp.parameters.autoplay"));
 
-        if (!autoplay){
-            logger.error("Not able to Autoplay");
-            return false;
+            if (!autoPlay) {
+                logger.error("Not able to Autoplay");
+                extentTest.log(LogStatus.FAIL,"Not able to Autoplay");
+                return false;
+            }
+        } else {
+            PlayBackFactory factory = new PlayBackFactory(driver,extentTest);
+            factory.getPlayValidator().waitForPage();
+            factory.getPlayAction().startAction();
         }
 
         if(!waitOnElement("AD_PANEL",10000)){
             logger.error("ad is not playing");
+            extentTest.log(LogStatus.FAIL,"ad is not playing");
             return false;
         }
 
-        boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
-                .executeScript("return pp.isAdPlaying()"));
-
-        logger.info("isAdplaying :"+isAdplaying);
-
-        if(!isAdplaying){
+        boolean isAdPlaying = (Boolean) (driver.executeScript("return pp.isAdPlaying()"));
+        logger.info("is Ad playing :"+isAdPlaying);
+        extentTest.log(LogStatus.INFO,"is Ad playing :"+isAdPlaying);
+        if(!isAdPlaying){
             logger.error("Ad not playing");
+            extentTest.log(LogStatus.FAIL,"Ad not playing");
             return false;
         }
 
-        int ShowSkipAdbtnTime = parseInt((((JavascriptExecutor) driver).executeScript("return pp.parameters.linearAdSkipButtonStartTime")).toString());
-
+        int showAdSkipBtnTime = parseInt((driver.executeScript("return pp.parameters.linearAdSkipButtonStartTime")).toString());
         while (true) {
-            double adPlayheadTime = parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime()").toString());
-            if (adPlayheadTime > (double) ShowSkipAdbtnTime) {
-                ((JavascriptExecutor) driver).executeScript("pp.skipAd();");
+            double adPlayHeadTime = parseDouble(driver.executeScript("return pp.getPlayheadTime()").toString());
+            if (adPlayHeadTime > (double) showAdSkipBtnTime) {
+                driver.executeScript("pp.skipAd();");
                 break;
             }
 
@@ -67,71 +79,91 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
 
         if(!waitOnElement(By.id("skipAd_1"), 5000)){
             logger.error("Not able to skip the ad");
+            extentTest.log(LogStatus.FAIL,"Not able to skip the ad");
             return false;
         }
 
-        loadingSpinner();
+        if(!loadingSpinner()){
+            extentTest.log(LogStatus.FAIL,"loading spinner is present for long time");
+            return false;
+        }
 
         if (!waitOnElement(By.id("videoPlaying_1"),10000)){
             logger.error("Video is not playing");
+            extentTest.log(LogStatus.FAIL,"Video is not playing");
             return false;
         }
 
-        double initialtime = parseDouble(((JavascriptExecutor) driver).executeScript("return pp.parameters.initialTime").toString());
+        /***
+         * As for Android initialTime parameter not working, we are not checking condition
+         * in following if statement for android platform
+         */
+        if (!getPlatform().equalsIgnoreCase("android")) {
+            double initialTime = parseDouble(driver.executeScript("return pp.parameters.initialTime").toString());
+            double playHeadTime = parseDouble(driver.executeScript("return pp.getPlayheadTime()").toString());
+            if (!(playHeadTime > initialTime)) {
+                logger.error("Video playback not started from initial time");
+                extentTest.log(LogStatus.FAIL,"Video playback not started from initial time");
+                return false;
+            }
+        }
 
-        double playaheadTime = parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime()").toString());
-
-        if(!(playaheadTime>initialtime)){
-            logger.error("Video playback not started from initial time");
+        double totalTime = parseDouble(driver.executeScript("return pp.getDuration()").toString());
+        logger.info("Duration of video is : "+totalTime);
+        if(!(totalTime > 0)){
+            logger.error("Total time must be greater than 0 but we are getting it as :"+totalTime);
+            extentTest.log(LogStatus.FAIL,"Total time must be greater than 0 but we are getting it as :"+totalTime);
             return false;
         }
 
-        double totaltime = parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getDuration()").toString());
-
-        if(!(totaltime > 0)){
-            logger.error("Total time must be greater thatn 0 but we are getting it as :"+totaltime);
+        if(!loadingSpinner()){
+            extentTest.log(LogStatus.FAIL,"loading spinner is present for long time");
             return false;
         }
 
-        ((JavascriptExecutor) driver).executeScript("pp.seek(pp.getDuration()-10);");
+        driver.executeScript("pp.seek(pp.getDuration()-10);");
+
+        if(!loadingSpinner()){
+            extentTest.log(LogStatus.FAIL,"loading spinner is present for long time");
+            return false;
+        }
 
         if (!waitOnElement(By.id("seeked_1"),10000)){
             logger.error("Not able to seek the video...");
+            extentTest.log(LogStatus.FAIL,"Not able to seek the video...");
             return false;
         }
 
-        String title = ((JavascriptExecutor) driver).executeScript("return pp.getTitle()").toString();
-
+        String title = driver.executeScript("return pp.getTitle()").toString();
         if (title==null){
             logger.error("Not able to get title of the video");
+            extentTest.log(LogStatus.FAIL,"Not able to get title of the video");
             return false;
         }
 
-        String getvolume = (((JavascriptExecutor) driver).executeScript("return pp.getVolume()").toString());
-
-        logger.info("Volume is : "+getvolume);
-
-        if (getvolume==null){
+        String getVolume = driver.executeScript("return pp.getVolume()").toString();
+        logger.info("Volume is : "+getVolume);
+        if (getVolume==null){
             logger.error("Not able to get volume of the video");
+            extentTest.log(LogStatus.FAIL,"Not able to get volume of the video");
             return false;
         }
 
-        String embedCode = ((JavascriptExecutor) driver).executeScript("return pp.getEmbedCode()").toString();
-
+        String embedCode = driver.executeScript("return pp.getEmbedCode()").toString();
         if (embedCode==null){
             logger.error("Not able to get Embed code");
+            extentTest.log(LogStatus.FAIL,"Not able to get Embed code");
             return false;
         }
 
 
-        ArrayList<String> langlist = ((ArrayList<String>) ((JavascriptExecutor) driver)
+        ArrayList<String> langList = ((ArrayList<String>)driver
                 .executeScript("return pp.getCurrentItemClosedCaptionsLanguages().languages;"));
-
-
-        for (int i = 0; i < langlist.size(); i++) {
-            ((JavascriptExecutor) driver).executeScript("pp.setClosedCaptionsLanguage(\"" + langlist.get(i) + "\")");
-            if (!waitOnElement(By.id("cclanguage_"+langlist.get(i)),10000)){
-                logger.error("Not able to get "+langlist.get(i));
+        for (int i = 0; i < langList.size(); i++) {
+            driver.executeScript("pp.setClosedCaptionsLanguage(\"" + langList.get(i) + "\")");
+            if (!waitOnElement(By.id("cclanguage_"+langList.get(i)),10000)){
+                logger.error("Not able to get "+langList.get(i));
+                extentTest.log(LogStatus.FAIL,"Not able to get "+langList.get(i));
                 return false;
             }
         }
@@ -140,12 +172,13 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
     }
     
     public boolean validateInitailTime(){
-    	double initialtime = parseDouble(((JavascriptExecutor) driver).executeScript("return pp.parameters.initialTime").toString());
+    	double initialTime = parseDouble(driver.executeScript("return pp.parameters.initialTime").toString());
 
-        double playaheadTime = parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime()").toString());
+        double playHeadTime = parseDouble(driver.executeScript("return pp.getPlayheadTime()").toString());
 
-        if(!(playaheadTime>initialtime)){
+        if(!(playHeadTime>initialTime)){
             extentTest.log(LogStatus.FAIL,"Video playback not started from initial time");
+            logger.error("Video playback not started from initial time");
             return false;
         }
         return true;

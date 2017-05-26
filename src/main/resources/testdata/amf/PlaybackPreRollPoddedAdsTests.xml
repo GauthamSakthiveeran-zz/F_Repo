@@ -33,6 +33,7 @@
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
             <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
+            <platformsSupported name="mac,windows"/>
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fua2tmcjqpz9g6tBUEHukAOLuXaVZ7Lw","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
         </url>
@@ -68,6 +69,7 @@
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <platformsSupported name="mac,windows"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
         </url>
