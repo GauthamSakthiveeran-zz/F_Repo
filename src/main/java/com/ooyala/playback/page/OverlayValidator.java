@@ -50,14 +50,24 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
     }
 
     public boolean validate(String element, int timeout) throws Exception {
-        if (!waitOnElement(By.id(element), timeout))
+
+        validateOverlayCloseButton(element,timeout);
+
+        if (!waitOnElement(By.id(element), timeout)) {
+            logger.error(element + " is not present");
+            extentTest.log(LogStatus.FAIL,element + " is not present");
             return false;
+        }
+
         if (isElementPresent("OVERLAY_RECALL_BTN")) {
             extentTest.log(LogStatus.PASS, "OVERLAY_RECALL_BTN present.");
+            logger.info("OVERLAY_RECALL_BTN present.");
             if (clickOnIndependentElement("OVERLAY_RECALL_BTN")) {
+                logger.error("OVERLAY_RECALL_BTN is present and clickable..");
                 validateOverlayCloseButton(element, timeout);
             } else {
                 extentTest.log(LogStatus.FAIL, "OVERLAY_RECALL_BTN is present but not clickable..");
+                logger.error("OVERLAY_RECALL_BTN is present but not clickable..");
             }
         }
         return true;
