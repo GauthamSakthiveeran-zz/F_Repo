@@ -1,14 +1,11 @@
 package com.ooyala.playback.amf.midroll;
 
-import com.ooyala.playback.page.MidrollAdValidator;
+import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.PlayAction;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -34,6 +31,8 @@ public class PlaybackMultipleMidRollAdsTests extends PlaybackWebTest {
             injectScript();
             result = result && playValidator.validate("playing_1", 60000);
             result = result && midrollValidator.validateMultipleMidrollAdStartTime(url, testName);
+            result = result && event.loadingSpinner();
+            Thread.sleep(3000);
             result = result && seek.validate("seeked_1", 10000);
             result = result && event.validate("played_1", 200000);
         } catch (Exception e) {

@@ -283,11 +283,13 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 					if (!getWebElement("oo-responsive").getAttribute("className")
 							.equalsIgnoreCase("oo-responsive oo-small")) {
 						if (isElementPresent(By.id("fullscreenChanged_true"))) {
-							if (!waitOnElement("CC_PREVIEW_TEXT", 30000)) {
-								return false;
+							if (!getPlatform().equalsIgnoreCase("android")) {  // preview test is not showing on android in full-screen
+								if (!waitOnElement("CC_PREVIEW_TEXT", 30000)) {
+									return false;
+								}
+								String engPreviewText = getWebElement("CC_PREVIEW_TEXT").getText();
+								flag = flag && langpreview1[i].equalsIgnoreCase(engPreviewText);
 							}
-							String engPreviewText = getWebElement("CC_PREVIEW_TEXT").getText();
-							flag = flag && langpreview1[i].equalsIgnoreCase(engPreviewText);
 						}
 					}
 				}
