@@ -43,4 +43,6 @@
 
     <element key="THUMBNAIL_CAROUSEL_CENTER_IMAGE" findBy="class"
              class="oo-thumbnail-carousel-center-image" />
+    <element key="QUE_POINT" findBy="class"
+             class="oo-playhead-padding"/>
 </elements>

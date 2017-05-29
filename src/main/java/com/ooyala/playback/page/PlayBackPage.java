@@ -127,6 +127,21 @@ public abstract class PlayBackPage extends WebPage {
 		}
 	}
 
+	public boolean touchPress(WebElement element){
+	    logger.info("Pressing on "+element);
+	    try {
+            Actions a = new Actions(driver);
+            a.clickAndHold(element).build().perform();
+            logger.info("Pressed on "+element);
+            extentTest.log(LogStatus.INFO,"Pressed on "+element);
+            return true;
+        } catch (Exception ex){
+	        logger.error("Can not click and hold on "+element);
+	        extentTest.log(LogStatus.FAIL,"Can not click and hold on "+element);
+	        return false;
+        }
+	}
+
 	public boolean onmouseOver(WebElement element) {
 		boolean result = false;
 		boolean flag = false;
@@ -248,7 +263,6 @@ public abstract class PlayBackPage extends WebPage {
 					time++;
 					logger.info("In loading spinner");
 				} catch (Exception e) {
-					logger.error(e.getMessage());
 					return true;
 				}
 			} else {

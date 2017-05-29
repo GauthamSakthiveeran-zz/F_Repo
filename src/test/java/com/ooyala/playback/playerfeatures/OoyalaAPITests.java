@@ -30,7 +30,7 @@ public class OoyalaAPITests extends PlaybackWebTest {
 
         try {
             driver.get(url.getUrl());
-            result = result && eventValidator.loadingSpinner();
+            result = result && eventValidator.isPageLoaded();
             injectScript();
             result = result && ooyalaAPIValidator.validate("", 30000);
             result = result && eventValidator.validate("played_1",60000);

@@ -1,5 +1,6 @@
 package com.ooyala.playback.amf.postroll;
 
+import com.ooyala.playback.page.action.SeekAction;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -22,6 +23,7 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 	private PlayValidator playValidator;
 	private DiscoveryValidator discoveryValidator;
 	private UpNextValidator upNextValidator;
+	private SeekAction seekAction;
 
 	@Test(groups = { "amf", "postroll", "discovery", "upnext", "sequential" }, dataProvider = "testUrls")
 	public void verifyPostrollDiscovery(String testName, UrlObject url) throws OoyalaException {
@@ -37,6 +39,8 @@ public class PlaybackPostrollDiscoveryTests extends PlaybackWebTest {
 			injectScript();
 
 			result = result && playValidator.validate("playing_1", 150000);
+
+			result = result && seekAction.fromLast().setTime(30).startAction();
 
 			result = result && event.validate("seeked_1", 60000);
 

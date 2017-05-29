@@ -11,8 +11,9 @@ public class CommandLineParameters {
 	public static final String valhalla_build_id = "valhalla_build_id";
 	public static final String sandboxBranch = "sandboxBranch";
 	public static final String environment = "environment";
-	public static final String mode  = "mode";
+	public static final String mode = "mode";
 	public static final String updateSheet = "updateSheet";
 	public static final String ipaddress = "ipaddress";
 	public static final String platform = "platform";
+
 }

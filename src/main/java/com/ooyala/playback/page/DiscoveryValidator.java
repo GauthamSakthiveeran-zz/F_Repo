@@ -104,6 +104,11 @@ public class DiscoveryValidator extends PlayBackPage implements
 	}
 
 	public boolean verifyDiscoveryEnabled(String Onevent,boolean isPresent) {
+
+		if (!loadingSpinner()){
+			return false;
+		}
+
 		boolean discoverytray = isElementPresent("DISCOVERY_STYLE");
 		boolean discoveryscreen = isElementPresent("CONTENT_SCREEN");
 		logger.info("discovery screen is enabled " + Onevent + ": "
@@ -118,6 +123,11 @@ public class DiscoveryValidator extends PlayBackPage implements
 	}
 
 	public boolean clickOnDiscoveryCloseButton() {
+
+		if (!loadingSpinner()){
+			return false;
+		}
+
 		return waitOnElement("DISCOVERY_CLOSE_BTN", 20000)
 				&& clickOnIndependentElement("DISCOVERY_CLOSE_BTN");
 	}

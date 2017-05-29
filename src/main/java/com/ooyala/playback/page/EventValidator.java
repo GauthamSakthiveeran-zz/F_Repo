@@ -72,7 +72,6 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		} else {
 			extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");
 		}
-
 	}
 
 	public boolean validateElementPresence(String element) throws Exception {
@@ -101,7 +100,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 		}
 		return true;
@@ -127,7 +126,6 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		} else {
 			logger.error("playbackReady event not found in consoleOutput");
 		}
-
 		return result;
 	}
 	

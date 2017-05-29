@@ -49,6 +49,8 @@ public class PlaybackDiscoveryCustomizationTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
+			result = result && eventValidator.playVideoForSometime(5);
+
 			result = result && clickDiscoveryButtonAction.startAction();
 
 			result = result && discoveryValidator.verifyDiscoveryEnabled("On_discovery_click",true); // verify discovery is disabled on discovery

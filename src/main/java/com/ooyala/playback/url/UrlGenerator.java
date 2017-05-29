@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ooyala.playback.page.PlayBackPage;
 import org.apache.log4j.Logger;
 
 import com.ooyala.playback.utils.CommandLineParameters;
@@ -99,6 +100,16 @@ public class UrlGenerator {
 								continue;
 						}
 
+					}
+
+					/***
+					 * TestData url can not be return if platform does not get supported for particular video plugin...
+                     * e.g OSMF does not get supported on Android Platform
+					 */
+
+					if (url.getPlatformsSupported() != null && url.getPlatformsSupported().getName() !=null
+							&& !url.getPlatformsSupported().getName().toLowerCase().contains(System.getProperty(CommandLineParameters.platform).toLowerCase())){
+                        continue;
 					}
 
 					// to run tests for specific ad plugins

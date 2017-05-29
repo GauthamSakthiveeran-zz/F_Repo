@@ -45,6 +45,8 @@ public class PlaybackDiscoveryTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
+			result = result && eventValidator.playVideoForSometime(5);
+
 			result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
 
 			// uncommenting the playAction as video is playing automatically.
