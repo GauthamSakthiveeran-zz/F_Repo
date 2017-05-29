@@ -183,7 +183,6 @@
             <pbid name="615dc8e909e941c280e12155df838355"/>
             <playerParameter>
                 <![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"},{"position":"5000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"},{"position":"100000000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"}]}}]]></playerParameter>
-
         </url>
 
         <url>
@@ -196,7 +195,6 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter>
                 <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-
         </url>
 
         <url>
