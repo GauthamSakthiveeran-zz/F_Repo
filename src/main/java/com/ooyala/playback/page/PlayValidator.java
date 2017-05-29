@@ -26,8 +26,12 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
         if (isElementPresent("ERROR_SCREEN")) {
             String text = getWebElement("ERROR_DESCRIPTION").getText();
             extentTest.log(LogStatus.FAIL, text);
+            Assert.assertTrue(false, "Playback Error : " + text);
+        } else{
+        	extentTest.log(LogStatus.FAIL, "Player did not load.");
+        	Assert.assertTrue(false, "Playback Error : Player did not load.");
         }
-        Assert.assertTrue(false, "Getting error like NETWORK ERROR or Play button is not present.");
+        
     }
 
     @Override
