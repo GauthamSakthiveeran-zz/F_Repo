@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
@@ -26,10 +25,8 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
         if (isElementPresent("ERROR_SCREEN")) {
             String text = getWebElement("ERROR_DESCRIPTION").getText();
             extentTest.log(LogStatus.FAIL, text);
-            Assert.assertTrue(false, "Playback Error : " + text);
         } else{
         	extentTest.log(LogStatus.FAIL, "Player did not load.");
-        	Assert.assertTrue(false, "Playback Error : Player did not load.");
         }
         
     }
@@ -40,7 +37,6 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
         try {
 
             if (!loadingSpinner()) {
-                Assert.assertTrue(false, "In loading spinner for a very long time.");
                 extentTest.log(LogStatus.FAIL, "In loading spinner for a very long time.");
                 return false;
             }

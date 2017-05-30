@@ -43,8 +43,8 @@ public class ExtentManager {
 
 	}
 	
-	public synchronized static List<Log> getLogList() {
-		return extentReports.getLogList();
+	public synchronized static List<Log> getLogList(String desc) {
+		return extentReports.getLogList(desc);
 	}
 
 	public static synchronized ExtentTest startTest(String testName) {

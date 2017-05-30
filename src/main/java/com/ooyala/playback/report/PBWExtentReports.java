@@ -22,8 +22,14 @@ public class PBWExtentReports extends ExtentReports{
 		return testList.remove(extentTest);
 	}
 	
-	public List<Log> getLogList() {
-        return testList.get(0).getTest().getLogList();
+	public List<Log> getLogList(String testName) {
+		
+		for(ExtentTest test : getTestList()) {
+			if(testName.contains(test.getDescription())) {
+				return test.getTest().getLogList();
+			}
+		}
+		return null;
     } 
 	
 }
