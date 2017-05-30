@@ -346,6 +346,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"]},"autoPlay":"true"}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
         <url>
             <description name="Playlist:Autoplay-false BITMOVIN" />
@@ -486,6 +487,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"]}}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -497,6 +499,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"Orientation":"vertical"}}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -508,6 +511,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"Orientation":"horizontal"}}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
         <url>
             <description name="Playlist:Position-top OSMF" />
@@ -518,6 +522,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"top"}}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
 
        <url>
@@ -529,6 +534,7 @@
            <additionalPlugins name="PLAYLIST" />
            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom"}}]]></playerParameter>
+           <platformsSupported name="mac,windows"/>
        </url>
 
        <url>
@@ -540,6 +546,7 @@
            <additionalPlugins name="PLAYLIST" />
            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"right"}}]]></playerParameter>
+           <platformsSupported name="mac,windows"/>
        </url>
 
         <url>
@@ -551,6 +558,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"}}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -562,6 +570,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"true"}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -573,6 +582,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"false"}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -584,7 +594,9 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"true","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"false"}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
+
         <url>
             <description name="Playlist:useFirstVideoFromPlaylist-false OSMF" />
             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
@@ -594,6 +606,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"false","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"false"}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <!-- Commented this test case because of Issue PLAYER-448. Loop functionality is not working correctly-->
@@ -606,6 +619,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"false","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"true","loop":"true"}]]></playerParameter>
+        <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -617,6 +631,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"useFirstVideoFromPlaylist":"false","playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"left"},"autoPlay":"true","loop":"false"}]]></playerParameter>
+        <platformsSupported name="mac,windows"/>
         </url>-->
 
         <url>
@@ -628,6 +643,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","ThumbnailsSize":"200"}}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
         <url>
             <description name="Playlist:Podtype-scrolling OSMF" />
@@ -638,6 +654,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"scrolling"}}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
         <url>
             <description name="Playlist:Podtype-paging OSMF" />
@@ -648,6 +665,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging"}}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
 
          <url>
@@ -659,7 +677,8 @@
            <additionalPlugins name="PLAYLIST" />
            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging","ThumbnailsSpacing":"100","Orientation":"vertical"}}]]></playerParameter>
-       </url>
+             <platformsSupported name="mac,windows"/>
+         </url>
        <url>
            <description name="Playlist:WrapperFontSize-15 OSMF" />
            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
@@ -669,6 +688,7 @@
            <additionalPlugins name="PLAYLIST" />
            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging","ThumbnailsSpacing":"10","WrapperFontSize":15}}]]></playerParameter>
+           <platformsSupported name="mac,windows"/>
        </url>
 
       <url>
@@ -680,7 +700,9 @@
            <additionalPlugins name="PLAYLIST" />
            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging","ThumbnailsSpacing":"10","WrapperFontSize":15,"CaptionPosition":"inside"}}]]></playerParameter>
-       </url>
+          <platformsSupported name="mac,windows"/>
+      </url>
+
        <url>
            <description name="Playlist:CaptionPosition-outside OSMF" />
            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
@@ -690,7 +712,9 @@
            <additionalPlugins name="PLAYLIST" />
            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging","ThumbnailsSpacing":"10","WrapperFontSize":15,"CaptionPosition":"outside"}}]]></playerParameter>
+           <platformsSupported name="mac,windows"/>
        </url>
+
         <url>
             <description name="Playlist:Menustyle-tabs OSMF" />
             <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
@@ -700,6 +724,7 @@
             <additionalPlugins name="PLAYLIST" />
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging"}}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
     </test>
 </testdata>
