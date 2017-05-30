@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.ooyala.playback.page.PlayBackPage;
 import org.apache.log4j.Logger;
 
 import com.ooyala.playback.utils.CommandLineParameters;
@@ -53,6 +52,7 @@ public class UrlGenerator {
 		test = new TestPage(playerProperties);
 		url = test.getURL(sslEnabled, embedcode, pcode, pbid, videoPlugin, adPlugin, additionalPlugin,
 				playerConfigParameter, v4Version);
+		logger.info(url);
 		return url;
 	}
 

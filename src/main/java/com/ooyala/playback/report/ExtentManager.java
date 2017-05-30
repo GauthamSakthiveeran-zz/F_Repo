@@ -1,6 +1,7 @@
 package com.ooyala.playback.report;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -8,6 +9,7 @@ import org.apache.log4j.Logger;
 import com.ooyala.playback.utils.CommandLineParameters;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+import com.relevantcodes.extentreports.model.Log;
 
 public class ExtentManager {
 
@@ -39,6 +41,10 @@ public class ExtentManager {
 	public static synchronized void endTest(ExtentTest test) {
 		extentReports.endTest(test);
 
+	}
+	
+	public synchronized static List<Log> getLogList() {
+		return extentReports.getLogList();
 	}
 
 	public static synchronized ExtentTest startTest(String testName) {
