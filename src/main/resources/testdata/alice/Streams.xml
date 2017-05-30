@@ -10,6 +10,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
+            <platformsSupported name="mac,windows"/>
 			<playerParameter></playerParameter>
 		</url>
 
@@ -22,6 +23,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
+            <platformsSupported name="mac,windows"/>
 			<playerParameter></playerParameter>
 		</url>
 
@@ -110,6 +112,7 @@
 				name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+			<platformsSupported name="mac,windows"/>
 		</url>
 		<url>
 			<description name="Streams:Akamai HD Flash HD2 VOD" />
@@ -124,6 +127,7 @@
 				name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
 		</url>
 		<url>
 			<description name="Streams:OSMF FFMPEG HDS VOD" />
@@ -136,6 +140,7 @@
 			<browsersSupported
 				name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
+			<platformsSupported name="mac,windows"/>
 			<playerParameter></playerParameter>
 		</url>
 		<url>
@@ -200,6 +205,7 @@
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<playerParameter><![CDATA[{"encodingPriority":["hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 			<streamType name="m3u8"></streamType>
+            <platformsSupported name="mac,windows"/>
 		</url>
 
 		<url>
@@ -213,6 +219,7 @@
 			<sslEnabled name="https" />
 			<playerParameter></playerParameter>
 			<streamType name="m3u8"></streamType>
+            <platformsSupported name="mac,windows"/>
 		</url>
 
 		<url>
@@ -225,6 +232,7 @@
 			<pbid name="c0adf6d2044f437080e005a69cba4880" />
 			<playerParameter></playerParameter>
 			<streamType name="m3u8"></streamType>
+            <platformsSupported name="mac,windows"/>
 		</url>
 
 		<url>
