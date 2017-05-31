@@ -23,6 +23,18 @@
 	        <playerParameter><![CDATA[{"initialTime":14,"showInAdControlBar":true}]]></playerParameter>
 	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
     	</url>
+
+		<url>
+			<description name="Ooyala Ads:ADOBETVSDK initial time"/>
+			<embed_code name="ozeTliOTE6lwwLh90E-rZLd3HHciipjy"/>
+			<pcode name="Mzb2MyOvKd-cQftJhtK8s14RPmUs"/>
+			<plugins name="ADOBETVSDK"/>
+			<adPlugins name=""/>
+			<additionalPlugins name=""/>
+			<pbid name="5e813457c731460f808f62d93d7e4ff3"/>
+			<playerParameter><![CDATA[{"initialTime":14,"showInAdControlBar":true}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+		</url>
     	
     </test>
 </testdata>
