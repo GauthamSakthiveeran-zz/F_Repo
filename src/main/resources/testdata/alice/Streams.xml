@@ -284,5 +284,147 @@
 			<streamType name="mpd"></streamType>
 		</url>
 
+        <!-- Adding data for AdobeSDKPlugin-->
+        <url>
+            <description name="Streams:AdobeTVSDK Elemental Delta HLS VOD" />
+            <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
+            <platformsSupported name="mac,windows"/>
+            <playerParameter></playerParameter>
+        </url>
+        <url>
+            <description name="Streams:AdobeTVSDK FFMPEG HLS VOD" />
+            <embed_code name="lpMWdlOTE6dNxa4hDAIosKY4taT-Bofx" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <sslEnabled name="https" />
+            <playerParameter></playerParameter>
+            <streamType name="m3u8"></streamType>
+            <platformsSupported name="mac,windows"/>
+        </url>
+        <url>
+            <description name="Streams:AdobeTVSDK Azure HLS VOD" />
+            <embed_code name="RndDhvYTE6dmNoGfQcV4vTWIgiAA7NnS" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <playerParameter></playerParameter>
+            <streamType name="m3u8"></streamType>
+            <platformsSupported name="mac,windows"/>
+        </url>
+        <url>
+            <description name="Streams:AdobeTVSDK Elemental Delta HLS Remote Asset" />
+            <embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="m3u8" />
+            <platformsSupported name="mac,windows"/>
+            <playerParameter></playerParameter>
+        </url>
+        <url>
+            <description name="Streams:AdobeTVSDK Akamai HLS Remote Asset" />
+            <embed_code name="44ZTlxNTE6qlSijlH3j2_dDZbXgPcEXv" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="IMA" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+            <streamType name="m3u8"></streamType>
+        </url>
+        <url>
+            <description name="Streams:AdobeTVSDK +Main plugin H.264 4K HLS" />
+            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls","dash"]}]]></playerParameter>
+            <streamType name="m3u8"></streamType>
+        </url>
+        <url>
+            <description name="Streams:AdobeTVSDK Elemental Delta DASH VOD (Clear Dash)" />
+            <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter></playerParameter>
+        </url>
+        <url>
+            <description name="Streams:AdobeTVSDK Azure DASH VOD" />
+            <embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
+            <browsersSupported
+                    name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
+            <browserSupportedVersion name="safari,9" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash"]}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Streams:AdobeTVSDK Elemental Delta DASH Remote Asset" />
+            <embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter></playerParameter>
+            <sslEnabled name="https" />
+        </url>
+        <url>
+            <description name="Streams:H.264 4K Dash" />
+            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <browsersSupported
+                    name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
+            <browserSupportedVersion name="safari,9" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Streams:AdobeTVSDK +Main plugin H.265 4K Dash Movie" />
+            <embed_code name="JiNWh3NTE6mdX5DQOcJYRoa2owJKPq7a" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
+            <streamType name="mpd"></streamType>
+        </url>
+        <url>
+            <description name="Streams:AdobeTVSDK MP4" />
+            <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="615dc8e909e941c280e12155df838355" />
+            <playerParameter></playerParameter>
+            <streamType name="mp4" />
+        </url>
 	</test>
 </testdata>
