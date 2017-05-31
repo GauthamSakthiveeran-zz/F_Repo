@@ -25,6 +25,15 @@
             <pbid name="421363178a5d493c9d4e74aadc1c2df9" />
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
         </url>
+        <url>
+            <description name="Core:Discovery from specific label AdobeTVSDK" />
+            <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="ADOBETVSDK" />
+            <additionalPlugins name="DISCOVERY" />
+            <pbid name="354f13b5b4d45a08bb0f3317c51e0ef" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
     </test>
 
     <test name="DiscoveryUpNextTests">
@@ -38,7 +47,18 @@
             <pbid name="421363178a5d493c9d4e74aadc1c2df9" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
+        <url>
+            <description name="Core:Discovery upnext AdobeTVSDK" />
+            <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="DISCOVERY" />
+            <pbid name="421363178a5d493c9d4e74aadc1c2df9" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
     </test>
+
     <test name="PlaybackAspectRatioTests">
         <url>
             <description name="Core:4 as 3 Aspect Ratio main" />
@@ -172,6 +192,17 @@
             <platformsSupported name="mac,windows"/>
             <playerParameter><![CDATA[{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}]]></playerParameter>
         </url>
+        <url>
+            <description name="Core:Localization ADOBETVSDK" />
+            <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <platformsSupported name="mac,windows"/>
+            <playerParameter><![CDATA[{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}]]></playerParameter>
+        </url>
     </test>
 
     <test name="PlayerMetadataStatesTests">
@@ -206,6 +237,17 @@
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
         </url>
+        <url>
+            <description name="Core:Player States and Metadata ADOBETVSDK" />
+            <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
+        </url>
     </test>
 
     <test name="PlaybackVerticalVideoTests">
@@ -224,6 +266,16 @@
             <embed_code name="xnNncyYTE62vx3rHnwJwUtBbeBt4Y2pw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="26e2e3c1049c4e70ae08a242638b5c40" />
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Vertical Video ADOBETVSDK" />
+            <embed_code name="9od3M3MDE6-WRg_DRbpCzRyjtK-NTLMp" />
+            <pcode name="p5bGExOjp6PZ-dEUw_GRJqh2Qdaq" />
+            <plugins name="ADOBETVSDK" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="26e2e3c1049c4e70ae08a242638b5c40" />
@@ -314,6 +366,17 @@
             <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
             <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Core:Thumbnail Based Seeking ADOBETVSDK" />
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="ADOBETVSDK" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
@@ -477,6 +540,17 @@
             <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf" />
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
             <plugins name="OSMF" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter></playerParameter>
+            <platformsSupported name="mac,windows"/>
+        </url>
+        <url>
+            <description name="Core:Thumbnail Carasoul ADOBETVSDK" />
+            <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf" />
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
+            <plugins name="ADOBETVSDK" />
             <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
