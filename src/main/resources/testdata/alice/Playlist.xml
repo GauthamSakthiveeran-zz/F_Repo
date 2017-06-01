@@ -195,13 +195,13 @@
 
           <url>
               <description name="Playlist:Menustyle-tabs MAIN" />
-              <embed_code name="5zMjRmNzE6NGf3VY_OI-70YeS7Tr4poC" />
-              <pcode name="BueGIyOpngHS8pplQ1AW4Ssf89ms" />
+              <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+              <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
               <plugins name="MAIN" />
               <adPlugins name="" />
               <additionalPlugins name="PLAYLIST" />
-              <pbid name="9c7271095c6b49fcbe09025af1d66f53" />
-              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c11522c3a2424709bc8b0829d0e4fbaa","87dc703bdd03450ba709dbfcaa752034"]},"autoPlay":false,"loop":false,"height":573,"width":800,"useFirstVideoFromPlaylist":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+              <pbid name="896a567555d451d94dcf2849f075a4c" />
+              <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e","600fb331dc8a4eac969d1503babe7bca"],"Menustyle":"tabs","Orientation":"horizontal","position":"bottom","PodType":"paging"},"autoplay":"false"}]]></playerParameter>
               <streamType name="mp4" />
           </url>
 
@@ -725,6 +725,271 @@
             <pbid name="bb0061a6593d41df924403ef7c72bf23" />
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging"}}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
+        </url>
+
+
+        <!-- AdobeTVSDK Plugin -->
+        <url>
+            <description name="Playlist:Default themebuilder parameters AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"]},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:Orientation-vertical AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:Orientation-horizontal AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:Position-top AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"top"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:Position-bottom AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:Position-right AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:Position-left AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"left"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:Autoplay-true AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"true","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+            <platformsSupported name="mac,windows"/>
+        </url>
+
+        <url>
+            <description name="Playlist:Autoplay-false AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:useFirstVideoFromPlaylist-true AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false","useFirstVideoFromPlaylist":"true","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:useFirstVideoFromPlaylist-false AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"false","useFirstVideoFromPlaylist":"false","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <!--    Commented this test case because of Issue PLAYER-448. Loop functionality is not working correctly
+                <url>
+                    <description name="Playlist:Loop-true AdobeTVSDK" />
+                    <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+                    <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+                    <plugins name="ADOBETVSDK" />
+                    <adPlugins name="" />
+                    <additionalPlugins name="PLAYLIST" />
+                    <pbid name="896a567555d451d94dcf2849f075a4c" />
+                    <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"true","loop":"true"}]]></playerParameter>
+                </url>
+                <url>
+                    <description name="Playlist:Loop-false AdobeTVSDK" />
+                    <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+                    <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+                    <plugins name="ADOBETVSDK" />
+                    <adPlugins name="" />
+                    <additionalPlugins name="PLAYLIST" />
+                    <pbid name="896a567555d451d94dcf2849f075a4c" />
+                    <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom"},"autoplay":"true","loop":"false"}]]></playerParameter>
+                </url>-->
+
+        <url>
+            <description name="Playlist:Thumbnailsize-300 AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"bottom","ThumbnailsSize":"300"},"autoplay":"false","useFirstVideoFromPlaylist":"false","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:Podtype-scrolling AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right","PodType":"scrolling"},"autoplay":"false","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:Podtype-paging AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","position":"bottom","PodType":"paging"},"autoplay":"false","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:Menustyle-tabs AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e","600fb331dc8a4eac969d1503babe7bca"],"Menustyle":"tabs","Orientation":"horizontal","position":"bottom","PodType":"paging"},"autoplay":"false"}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:ThumbnailSpace-100 AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"vertical","position":"right","ThumbnailsSpacing":"100"},"autoplay":"false","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:WrapperFontSize-20 AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","WrapperFontSize":"20"},"autoplay":"false","CaptionPosition":"outside'","Menustyle":"tabs","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:CaptionPosition-inside AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"inside"},"autoplay":"false","Menustyle":"tabs","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:CaptionPosition-outside AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Orientation":"horizontal","CaptionPosition":"outside"},"autoplay":"false","Menustyle":"tabs","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+
+        <url>
+            <description name="Playlist:Caption-title,description,duration AdobeTVSDK" />
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Caption":["description","duration"],"ThumbnailsSpacing":"30"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
         </url>
     </test>
 </testdata>
