@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -21,6 +22,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
@@ -72,6 +74,8 @@ import com.ooyala.facile.util.ReadPropertyFile;
 import com.ooyala.facile.util.ReadTriggerFile;
 import com.ooyala.facile.util.TestWatchdog;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 
 // TODO: Auto-generated Javadoc
@@ -86,8 +90,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
  * @author pkumar
  * 
  */
-@Listeners({ FacileTestListener.class, RetrySuiteHTMLReporter.class,
-		RetryXmlReporter.class, EmailableReporter.class,
+@Listeners({ FacileTestListener.class, RetrySuiteHTMLReporter.class, RetryXmlReporter.class, EmailableReporter.class,
 		RetryTestHtmlReporter.class, RetryMainHtmlReporter.class })
 public class FacileTest implements IHookable {
 
@@ -122,8 +125,7 @@ public class FacileTest implements IHookable {
 	public static final String DEFAULT_MAC_SCREENSHOT_PATH = "/Users/Shared/screenshots/";
 
 	/** The screenshot path. */
-	public String screenshotPath = ((System.getProperty("os.name")
-			.startsWith("Windows")) ? DEFAULT_WIN_SCREENSHOT_PATH
+	public String screenshotPath = ((System.getProperty("os.name").startsWith("Windows")) ? DEFAULT_WIN_SCREENSHOT_PATH
 			: DEFAULT_MAC_SCREENSHOT_PATH);
 
 	/** The Constant DEFAULT_WIN_CHROMEDRIVER_PATH. */
@@ -162,13 +164,11 @@ public class FacileTest implements IHookable {
 
 		if (System.getProperty("USE_SAUCELAB_GRID") == null) {
 			logger.debug("USE_SAUCELAB_GRID is not set in Maven Cmd Agrs...");
-			InputStream in = FacileTest.class
-					.getResourceAsStream(SAUCE_CONFIG_PATH);
+			InputStream in = FacileTest.class.getResourceAsStream(SAUCE_CONFIG_PATH);
 			if (!(in == null)) {
 				logger.debug("Sauce.properties Config File Exists...");
-				String isSauceEnabled = ReadPropertyFile
-						.getConfigurationParameter(SAUCE_CONFIG_PATH,
-								"USE_SAUCELAB_GRID");
+				String isSauceEnabled = ReadPropertyFile.getConfigurationParameter(SAUCE_CONFIG_PATH,
+						"USE_SAUCELAB_GRID");
 				if (isSauceEnabled.equalsIgnoreCase("true")) {
 					logger.debug("Saucelabs Option Set to True...");
 					return true;
@@ -181,14 +181,11 @@ public class FacileTest implements IHookable {
 				return false;
 			}
 		} else {
-			if (System.getProperty("USE_SAUCELAB_GRID")
-					.equalsIgnoreCase("true")) {
-				logger.debug("USE_SAUCELAB_GRID from Cmd Args : "
-						+ System.getProperty("USE_SAUCELAB_GRID"));
+			if (System.getProperty("USE_SAUCELAB_GRID").equalsIgnoreCase("true")) {
+				logger.debug("USE_SAUCELAB_GRID from Cmd Args : " + System.getProperty("USE_SAUCELAB_GRID"));
 				return true;
 			} else {
-				logger.debug("USE_SAUCELAB_GRID from Cmd Args : "
-						+ System.getProperty("USE_SAUCELAB_GRID"));
+				logger.debug("USE_SAUCELAB_GRID from Cmd Args : " + System.getProperty("USE_SAUCELAB_GRID"));
 				return false;
 			}
 		}
@@ -218,32 +215,27 @@ public class FacileTest implements IHookable {
 	public RemoteWebDriver createIEInstanceLocally() {
 		logger.debug("Creating an Internet Explorer Instance Locally...");
 
-		DesiredCapabilities ieCapabilities = DesiredCapabilities
-				.internetExplorer();
+		DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
 
 		// Checking if the OS is MAC. Since MAC + IE is not a valid combination.
 		if (CommonUtils.getOSName().contains("Mac")) {
-			logger.error("Could not create an IE driver for the os: "
-					+ CommonUtils.getOSName());
+			logger.error("Could not create an IE driver for the os: " + CommonUtils.getOSName());
 			throw new UnsupportedOperationException(
-					"Could not create an IE driver for the os: "
-							+ CommonUtils.getOSName());
+					"Could not create an IE driver for the os: " + CommonUtils.getOSName());
 		} else {
 			logger.debug("Creating an IE Instance...");
 			try {
 				String ieDriverPath = null;
 
-				ieDriverPath = getDriverPath("IEDriverServer.exe",
-						CommonUtils.getOSName());
+				ieDriverPath = getDriverPath("IEDriverServer.exe", CommonUtils.getOSName());
 				if (ieDriverPath == "") {
-					logger.info("There is some problem with copying ie driver to the temp directory so using default path "
-							+ DEFAULT_WIN_IEDRIVER_PATH);
+					logger.info(
+							"There is some problem with copying ie driver to the temp directory so using default path "
+									+ DEFAULT_WIN_IEDRIVER_PATH);
 					ieDriverPath = DEFAULT_WIN_IEDRIVER_PATH;
 				}
-				ieServer = new InternetExplorerDriverService.Builder()
-						.usingDriverExecutable(new File(ieDriverPath))
-						.withLogLevel(InternetExplorerDriverLogLevel.TRACE)
-						.usingAnyFreePort().build();
+				ieServer = new InternetExplorerDriverService.Builder().usingDriverExecutable(new File(ieDriverPath))
+						.withLogLevel(InternetExplorerDriverLogLevel.TRACE).usingAnyFreePort().build();
 				if (ieServer != null) {
 					logger.debug("Starting up the IE service...");
 					ieServer.start();
@@ -252,13 +244,8 @@ public class FacileTest implements IHookable {
 			} catch (IOException ex) {
 				logger.error("Unable to startup the IE Server");
 			}
-			ieCapabilities
-					.setCapability(
-							InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
-							true);
-			ieCapabilities.setCapability(
-					CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION,
-					true);
+			ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+			ieCapabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
 			return new RemoteWebDriver(ieServer.getUrl(), ieCapabilities);
 		}
 	}
@@ -269,68 +256,18 @@ public class FacileTest implements IHookable {
 	 * @return the remote web driver
 	 */
 	public RemoteWebDriver createFirefoxInstanceLocally() {
-		
-		String osName = System.getProperty("os.name").toLowerCase();
-		logger.debug("OS Name : " + osName);
-		String geckoDriverPath;
-		
-		if (osName.contains("mac")) {
-			logger.debug("OS type : MAC*");
-			geckoDriverPath = getDriverPath("geckodriver", "mac");
-			if (geckoDriverPath == "") {
-				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
-						+ DEFAULT_MAC_CHROMEDRIVER_PATH);
-				geckoDriverPath = DEFAULT_MAC_CHROMEDRIVER_PATH;
-			}
-
-		} else if (osName.contains("win")) {
-			logger.debug("OS type : Windows");
-			geckoDriverPath = getDriverPath("geckodriver.exe", "windows");
-			if (geckoDriverPath == "") {
-				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
-						+ DEFAULT_MAC_CHROMEDRIVER_PATH);
-				geckoDriverPath = DEFAULT_WIN_CHROMEDRIVER_PATH;
-			}
-
-		} else if (osName.contains("linux")) {
-			logger.debug("OS type : Linux*");
-			geckoDriverPath = getDriverPath("geckodriver", "linux");
-			if (geckoDriverPath == "") {
-				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
-						+ DEFAULT_LINUX_CHROMEDRIVER_PATH);
-				geckoDriverPath = DEFAULT_LINUX_CHROMEDRIVER_PATH;
-			}
-		} else {
-			logger.error("Could not create a driver for the OS : " + osName);
-			throw new UnsupportedOperationException(
-					"Could not create a driver for the os: " + osName);
-		}
-		
-		if(geckoDriverPath!=null && !geckoDriverPath.isEmpty()) {
-			System.setProperty("webdriver.gecko.driver", geckoDriverPath);
-		}
-		
 		logger.info("Creating Firefox Instance Locally...");
 		FirefoxProfile profile = new FirefoxProfile();
 
 		// Allows for accessing iFrames that originate in the different
 		// domain. Per request from QBO4A
-		profile.setPreference(
-				"capability.policy.default.HTMLIFrameElement.name.get",
-				"allAccess");
-		profile.setPreference(
-				"capability.policy.default.HTMLDocument.compatMode",
-				"allAccess");
-		profile.setPreference("capability.policy.default.Window.pageXOffset",
-				"allAccess");
-		profile.setPreference("capability.policy.default.Window.pageYOffset",
-				"allAccess");
-		profile.setPreference(
-				"capability.policy.default.Window.mozInnerScreenY", "allAccess");
-		profile.setPreference(
-				"capability.policy.default.Window.mozInnerScreenX", "allAccess");
-		profile.setPreference("capability.policy.default.Window.frameElement",
-				"allAccess");
+		profile.setPreference("capability.policy.default.HTMLIFrameElement.name.get", "allAccess");
+		profile.setPreference("capability.policy.default.HTMLDocument.compatMode", "allAccess");
+		profile.setPreference("capability.policy.default.Window.pageXOffset", "allAccess");
+		profile.setPreference("capability.policy.default.Window.pageYOffset", "allAccess");
+		profile.setPreference("capability.policy.default.Window.mozInnerScreenY", "allAccess");
+		profile.setPreference("capability.policy.default.Window.mozInnerScreenX", "allAccess");
+		profile.setPreference("capability.policy.default.Window.frameElement", "allAccess");
 		profile.setPreference("dom.max_script_run_time", 0);
 		profile.setPreference("dom.max_chrome_script_run_time", 0);
 
@@ -352,8 +289,7 @@ public class FacileTest implements IHookable {
 			if (nonproxy_hosts != null) {
 				String[] nonproxy = nonproxy_hosts.split("\\|");
 
-				profile.setPreference("network.proxy.no_proxies_on",
-						StringUtils.join(nonproxy, ","));
+				profile.setPreference("network.proxy.no_proxies_on", StringUtils.join(nonproxy, ","));
 			}
 
 			if (proxy_port != null) {
@@ -361,8 +297,7 @@ public class FacileTest implements IHookable {
 					int port = Integer.parseInt(proxy_port);
 					profile.setPreference("network.proxy.http_port", port);
 					profile.setPreference("network.proxy.ssl_port", port);
-					logger.debug("Setting network.proxy.http_port and network.proxy.ssl_port to : "
-							+ port);
+					logger.debug("Setting network.proxy.http_port and network.proxy.ssl_port to : " + port);
 				} catch (Exception ex) {
 					logger.error("Error while setting preferences..", ex);
 					// Do nothing but log the exception
@@ -379,8 +314,7 @@ public class FacileTest implements IHookable {
 			Proxy browserMobProxy = null;
 			try {
 				BrowserMobProxyHelper.startBrowserMobProxyServer();
-				browserMobProxy = BrowserMobProxyHelper
-						.getBrowserMobProxyServer().seleniumProxy();
+				browserMobProxy = BrowserMobProxyHelper.getBrowserMobProxyServer().seleniumProxy();
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -409,10 +343,8 @@ public class FacileTest implements IHookable {
 		boolean isProxyEnabled = false;
 		File confFile = new File("src/test/resources/facile.properties");
 		if (confFile.exists()) {
-			ReadTriggerFile propertiesFile = new ReadTriggerFile(
-					"src/test/resources/facile.properties");
-			String isSiteCatelystEnabled = propertiesFile.getParameter(
-					"browser_mob_proxy", "");
+			ReadTriggerFile propertiesFile = new ReadTriggerFile("src/test/resources/facile.properties");
+			String isSiteCatelystEnabled = propertiesFile.getParameter("browser_mob_proxy", "");
 			if (isSiteCatelystEnabled != null) {
 				if (isSiteCatelystEnabled.equalsIgnoreCase("true")) {
 					isProxyEnabled = true;
@@ -437,16 +369,16 @@ public class FacileTest implements IHookable {
 		String chromeDriverPath;
 
 		DesiredCapabilities dc = DesiredCapabilities.chrome();
-		String[] switches = { "--ignore-certificate-errors",
-				"--disable-popup-blocking" };
+		String[] switches = { "--ignore-certificate-errors", "--disable-popup-blocking" };
 		dc.setCapability("chrome.switches", Arrays.asList(switches));
 
 		if (osName.contains("mac")) {
 			logger.debug("OS type : MAC*");
 			chromeDriverPath = getDriverPath("chromedriver", "mac");
 			if (chromeDriverPath == "") {
-				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
-						+ DEFAULT_MAC_CHROMEDRIVER_PATH);
+				logger.info(
+						"There is some problem with copying chromedriver to the temp directory so using default path "
+								+ DEFAULT_MAC_CHROMEDRIVER_PATH);
 				chromeDriverPath = DEFAULT_MAC_CHROMEDRIVER_PATH;
 			}
 
@@ -454,8 +386,9 @@ public class FacileTest implements IHookable {
 			logger.debug("OS type : Windows");
 			chromeDriverPath = getDriverPath("chromedriver.exe", "windows");
 			if (chromeDriverPath == "") {
-				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
-						+ DEFAULT_MAC_CHROMEDRIVER_PATH);
+				logger.info(
+						"There is some problem with copying chromedriver to the temp directory so using default path "
+								+ DEFAULT_MAC_CHROMEDRIVER_PATH);
 				chromeDriverPath = DEFAULT_WIN_CHROMEDRIVER_PATH;
 			}
 
@@ -463,19 +396,18 @@ public class FacileTest implements IHookable {
 			logger.debug("OS type : Linux*");
 			chromeDriverPath = getDriverPath("chromedriver", "linux");
 			if (chromeDriverPath == "") {
-				logger.info("There is some problem with copying chromedriver to the temp directory so using default path "
-						+ DEFAULT_LINUX_CHROMEDRIVER_PATH);
+				logger.info(
+						"There is some problem with copying chromedriver to the temp directory so using default path "
+								+ DEFAULT_LINUX_CHROMEDRIVER_PATH);
 				chromeDriverPath = DEFAULT_LINUX_CHROMEDRIVER_PATH;
 			}
 		} else {
 			logger.error("Could not create a driver for the OS : " + osName);
-			throw new UnsupportedOperationException(
-					"Could not create a driver for the os: " + osName);
+			throw new UnsupportedOperationException("Could not create a driver for the os: " + osName);
 		}
 
 		try {
-			chromeServer = new ChromeDriverService.Builder()
-					.usingDriverExecutable(new File(chromeDriverPath))
+			chromeServer = new ChromeDriverService.Builder().usingDriverExecutable(new File(chromeDriverPath))
 					.usingAnyFreePort().build();
 			if (chromeServer != null) {
 				logger.debug("Starting up the chrome service.");
@@ -498,7 +430,7 @@ public class FacileTest implements IHookable {
 		list.add("disable-component-update");
 		options.setExperimentalOption("excludeSwitches", list);
 		options.addArguments("--allow-running-insecure-content");
-		if(System.getProperty("platform").equalsIgnoreCase("android")) {
+		if (System.getProperty("platform").equalsIgnoreCase("android")) {
 			options.addArguments("--start-maximized");
 		}
 		return options;
@@ -510,14 +442,14 @@ public class FacileTest implements IHookable {
 			dr = DesiredCapabilities.firefox();
 			dr.setBrowserName("firefox");
 		} else if (browser.equalsIgnoreCase("chrome")) {
-			if(platform.equalsIgnoreCase("android")) {
+			if (platform.equalsIgnoreCase("android")) {
 				dr = DesiredCapabilities.android();
 				dr.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-			    dr.setCapability(MobileCapabilityType.PLATFORM_VERSION, System.getProperty("deviceVersion"));
-			    dr.setCapability(MobileCapabilityType.DEVICE_NAME, System.getProperty("deviceName"));
-			    dr.setCapability(MobileCapabilityType.BROWSER_NAME, "chrome");
-			    dr.setCapability(MobileCapabilityType.UDID, System.getProperty("udid"));
-			    dr.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "0");
+				dr.setCapability(MobileCapabilityType.PLATFORM_VERSION, System.getProperty("deviceVersion"));
+				dr.setCapability(MobileCapabilityType.DEVICE_NAME, System.getProperty("deviceName"));
+				dr.setCapability(MobileCapabilityType.BROWSER_NAME, "chrome");
+				dr.setCapability(MobileCapabilityType.UDID, System.getProperty("udid"));
+				dr.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "0");
 			} else {
 				dr = DesiredCapabilities.chrome();
 				dr.setBrowserName("chrome");
@@ -526,11 +458,24 @@ public class FacileTest implements IHookable {
 			dr = DesiredCapabilities.internetExplorer();
 			dr.setBrowserName("internet explorer");
 		} else if (browser.equalsIgnoreCase("safari")) {
-			dr = DesiredCapabilities.safari();
-			dr.setBrowserName("safari");
-		} else if (browser.equalsIgnoreCase("MicrosoftEdge")){
-			dr=DesiredCapabilities.edge();;
-            dr.setBrowserName("MicrosoftEdge");
+
+			if (platform.equalsIgnoreCase("ios")) {
+				dr = new DesiredCapabilities();
+				dr.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
+				dr.setCapability(MobileCapabilityType.DEVICE_NAME, System.getProperty("deviceName"));
+				dr.setCapability(MobileCapabilityType.PLATFORM_VERSION, System.getProperty("deviceVersion"));
+				dr.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
+				dr.setCapability(MobileCapabilityType.UDID, System.getProperty("udid"));
+				dr.setCapability(MobileCapabilityType.AUTOMATION_NAME, System.getProperty("automationName"));
+			} else {
+				dr = DesiredCapabilities.safari();
+				dr.setBrowserName("safari");
+			}
+
+		} else if (browser.equalsIgnoreCase("MicrosoftEdge")) {
+			dr = DesiredCapabilities.edge();
+			;
+			dr.setBrowserName("MicrosoftEdge");
 		} else {
 			dr = DesiredCapabilities.chrome();
 			dr.setBrowserName("chrome");
@@ -538,13 +483,31 @@ public class FacileTest implements IHookable {
 		return dr;
 	}
 
+	protected String getGridIPAddress() {
+		String ipAddress = System.getProperty("ipaddress");
+		if (ipAddress == null || ipAddress.equals(""))
+			ipAddress = "10.40.100.94:4444";
+
+		String serverUrl = "http://" + ipAddress + "/wd/hub";
+		return serverUrl;
+	}
+
+	public AppiumDriver getIOSDriver(String browser) throws MalformedURLException {
+		String platform = System.getProperty("platform");
+		AppiumDriver driver;
+		DesiredCapabilities desiredCapabilities = getDesiredCapabilities(browser, platform);
+		driver = new IOSDriver(new URL(getGridIPAddress()), desiredCapabilities);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		return driver;
+	}
+
 	public InheritableThreadLocal<RemoteWebDriver> getRemoteDriver(String browser) {
 
 		String platform = System.getProperty("platform");
-		DesiredCapabilities desiredCapabilities = getDesiredCapabilities(browser,platform);
+		DesiredCapabilities desiredCapabilities = getDesiredCapabilities(browser, platform);
 		String version = System.getProperty("version");
-		
-		if(!platform.toLowerCase().contains("android")){
+
+		if (!platform.toLowerCase().contains("android")) {
 			desiredCapabilities.setCapability(CapabilityType.PLATFORM, platform);
 			if (version != null)
 				desiredCapabilities.setVersion(version);
@@ -553,28 +516,21 @@ public class FacileTest implements IHookable {
 		if (browser.equalsIgnoreCase("chrome")) {
 
 			ChromeOptions options = getChromeOptions();
-			desiredCapabilities
-					.setCapability(ChromeOptions.CAPABILITY, options);
+			desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		}
 
-		String ipAddress = System.getProperty("ipaddress");
-		if (ipAddress == null || ipAddress.equals(""))
-			ipAddress = "10.11.69.126:5555";
-
-		String serverUrl = "http://" + ipAddress + "/wd/hub";
+		String serverUrl = getGridIPAddress();
 
 		try {
-			driver = new RemoteWebDriver(new URL(serverUrl),
-					desiredCapabilities);// Start
+			driver = new RemoteWebDriver(new URL(serverUrl), desiredCapabilities);// Start
 		} catch (Exception e) {
 			logger.info("relauch browser");
 			try {
-				driver = new RemoteWebDriver(new URL(serverUrl),
-						desiredCapabilities); // retry
+				driver = new RemoteWebDriver(new URL(serverUrl), desiredCapabilities); // retry
 			} catch (Exception e1) {
 				logger.info("\n\nGot Exception : " + e.getMessage() + "\n\n");
-				logger.info("\nNo Configuration Found platform:" + platform
-						+ " browser:" + browser + " version:" + version);
+				logger.info("\nNo Configuration Found platform:" + platform + " browser:" + browser + " version:"
+						+ version);
 				logger.info("\n\n");
 
 			}
@@ -596,8 +552,7 @@ public class FacileTest implements IHookable {
 		// Reading the Browser Type From sauce.properties file if running
 		// locally
 		if (browserName == null) {
-			browserName = ReadPropertyFile.getConfigurationParameter(
-					SAUCE_CONFIG_PATH, "SELENIUM_BROWSER");
+			browserName = ReadPropertyFile.getConfigurationParameter(SAUCE_CONFIG_PATH, "SELENIUM_BROWSER");
 		}
 
 		if (isSauceEnabled()) {
@@ -617,27 +572,21 @@ public class FacileTest implements IHookable {
 		else {
 
 			// Internet Explorer
-			if (browserName.contains("internet") || browserName.equals("ie")
-					|| browserName.equalsIgnoreCase("8A")
-					|| browserName.equalsIgnoreCase("9A")
-					|| browserName.equalsIgnoreCase("10A")) {
+			if (browserName.contains("internet") || browserName.equals("ie") || browserName.equalsIgnoreCase("8A")
+					|| browserName.equalsIgnoreCase("9A") || browserName.equalsIgnoreCase("10A")) {
 				logger.debug("Browser Type : " + browserName);
 
 				if (isSauceEnabled()) {
 					// Spin and return an IE instance on Sauce cloud
-					logger.debug("Enable Sauce Grid is Set to : "
-							+ isSauceEnabled());
-					logger.debug("Creating " + browserName
-							+ "Instance on Saucelabs Grid");
+					logger.debug("Enable Sauce Grid is Set to : " + isSauceEnabled());
+					logger.debug("Creating " + browserName + "Instance on Saucelabs Grid");
 					SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
-					logger.debug("Successfully Created " + browserName
-							+ " Instance on Saucelabs Grid");
+					logger.debug("Successfully Created " + browserName + " Instance on Saucelabs Grid");
 					driver = saucelabsSessionManager.createIEInstanceOnSauce();
 
 				} else {
 					// Spin and return an IE instance locally
-					logger.debug("Enable Sauce Grid is Set to : "
-							+ isSauceEnabled());
+					logger.debug("Enable Sauce Grid is Set to : " + isSauceEnabled());
 					driver = createIEInstanceLocally();
 					logger.debug("Launched Chrome Instance Successfully in local environment Sauce Grid is Set to : "
 							+ isSauceEnabled());
@@ -650,21 +599,16 @@ public class FacileTest implements IHookable {
 			if (browserName.contains("ipad")) {
 				logger.debug("Browser Type : " + browserName);
 				if (isSauceEnabled()) {
-					logger.debug("Enable Sauce Grid is Set to : "
-							+ isSauceEnabled());
+					logger.debug("Enable Sauce Grid is Set to : " + isSauceEnabled());
 					// Spin and return an IE instance on Sauce cloud
-					logger.debug("Creating " + browserName
-							+ "Instance on Saucelabs Grid");
+					logger.debug("Creating " + browserName + "Instance on Saucelabs Grid");
 					SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
-					logger.debug("Successfully Created " + browserName
-							+ " Instance on Saucelabs Grid");
-					driver = saucelabsSessionManager
-							.createiPadInstanceonSauce();
+					logger.debug("Successfully Created " + browserName + " Instance on Saucelabs Grid");
+					driver = saucelabsSessionManager.createiPadInstanceonSauce();
 				} else {
 					logger.error("Unable to startup " + browserName + "Server");
 					throw new UnsupportedOperationException(
-							"Could not create an instance driver for the device: "
-									+ browserName);
+							"Could not create an instance driver for the device: " + browserName);
 				}
 				webDriverFacile.set(driver);
 				return webDriverFacile;
@@ -677,11 +621,8 @@ public class FacileTest implements IHookable {
 				sCaps.setJavascriptEnabled(true);
 				sCaps.setCapability("takesScreenshot", true);
 
-				String phantomjsPath = getDriverPath("phantomjs",
-						CommonUtils.getOSName());
-				sCaps.setCapability(
-						PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
-						phantomjsPath);
+				String phantomjsPath = getDriverPath("phantomjs", CommonUtils.getOSName());
+				sCaps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, phantomjsPath);
 
 				/*
 				 * ArrayList<String> cliArgsCap = new ArrayList<String>();
@@ -701,22 +642,17 @@ public class FacileTest implements IHookable {
 			if (browserName.contains("iphone")) {
 				logger.debug("Browser Type : " + browserName);
 				if (isSauceEnabled()) {
-					logger.debug("Enable Sauce Grid is Set to : "
-							+ isSauceEnabled());
+					logger.debug("Enable Sauce Grid is Set to : " + isSauceEnabled());
 
-					logger.debug("Creating " + browserName
-							+ "Instance on Saucelabs Grid");
+					logger.debug("Creating " + browserName + "Instance on Saucelabs Grid");
 					SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
-					logger.debug("Successfully Created " + browserName
-							+ " Instance on Saucelabs Grid");
-					driver = saucelabsSessionManager
-							.createiPhoneInstanceonSauce();
+					logger.debug("Successfully Created " + browserName + " Instance on Saucelabs Grid");
+					driver = saucelabsSessionManager.createiPhoneInstanceonSauce();
 
 				} else {
 					logger.error("Unable to startup " + browserName + "Server");
 					throw new UnsupportedOperationException(
-							"Could not create an instance driver for the device: "
-									+ browserName);
+							"Could not create an instance driver for the device: " + browserName);
 				}
 				webDriverFacile.set(driver);
 				return webDriverFacile;
@@ -726,21 +662,16 @@ public class FacileTest implements IHookable {
 			if (browserName.contains("android")) {
 				logger.debug("Browser Type : " + browserName);
 				if (isSauceEnabled()) {
-					logger.debug("Enable Sauce Grid is Set to : "
-							+ isSauceEnabled());
+					logger.debug("Enable Sauce Grid is Set to : " + isSauceEnabled());
 
-					logger.debug("Creating " + browserName
-							+ "Instance on Saucelabs Grid");
+					logger.debug("Creating " + browserName + "Instance on Saucelabs Grid");
 					SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
-					logger.debug("Successfully Created " + browserName
-							+ " Instance on Saucelabs Grid");
-					driver = saucelabsSessionManager
-							.createandroidInstanceonSauce();
+					logger.debug("Successfully Created " + browserName + " Instance on Saucelabs Grid");
+					driver = saucelabsSessionManager.createandroidInstanceonSauce();
 				} else {
 					logger.error("Unable to startup " + browserName + "Server");
 					throw new UnsupportedOperationException(
-							"Could not create an instance driver for the device: "
-									+ browserName);
+							"Could not create an instance driver for the device: " + browserName);
 				}
 				webDriverFacile.set(driver);
 				return webDriverFacile;
@@ -750,22 +681,16 @@ public class FacileTest implements IHookable {
 			if (browserName.contains("chrome")) {
 				logger.debug("Browser Type : " + browserName);
 				if (isSauceEnabled()) {
-					logger.debug("Enable Sauce Grid is Set to : "
-							+ isSauceEnabled());
+					logger.debug("Enable Sauce Grid is Set to : " + isSauceEnabled());
 
-					logger.debug("Creating " + browserName
-							+ "Instance on Saucelabs Grid");
+					logger.debug("Creating " + browserName + "Instance on Saucelabs Grid");
 					SaucelabsSessionManager saucelabsSessionManager = new SaucelabsSessionManager();
-					logger.debug("Successfully Created " + browserName
-							+ " Instance on Saucelabs Grid");
-					driver = saucelabsSessionManager
-							.createChromeInstanceOnSauce();
+					logger.debug("Successfully Created " + browserName + " Instance on Saucelabs Grid");
+					driver = saucelabsSessionManager.createChromeInstanceOnSauce();
 				} else {
-					logger.debug("Creating " + browserName
-							+ "Instance on local instance");
+					logger.debug("Creating " + browserName + "Instance on local instance");
 					driver = createChromeInstanceLocally();
-					logger.debug("Successfully Created " + browserName
-							+ " Instance on local instance.");
+					logger.debug("Successfully Created " + browserName + " Instance on local instance.");
 				}
 				webDriverFacile.set(maximizeMe(driver));
 				return webDriverFacile;
@@ -779,25 +704,19 @@ public class FacileTest implements IHookable {
 
 				if (isSauceEnabled()) {
 
-					logger.debug("...Enable Sauce Grid is Set to : "
-							+ isSauceEnabled());
+					logger.debug("...Enable Sauce Grid is Set to : " + isSauceEnabled());
 
-					logger.debug("...Creating " + browserName
-							+ "Instance on Saucelabs Grid");
+					logger.debug("...Creating " + browserName + "Instance on Saucelabs Grid");
 					SaucelabsSessionManager sauceLabsSessionManager = new SaucelabsSessionManager();
 
-					logger.debug("...Successfully Created " + browserName
-							+ " Instance on Saucelabs Grid");
-					driver = sauceLabsSessionManager
-							.createFirefoxInstanceonSauce();
+					logger.debug("...Successfully Created " + browserName + " Instance on Saucelabs Grid");
+					driver = sauceLabsSessionManager.createFirefoxInstanceonSauce();
 
 				} else {
-					logger.debug("Creating " + browserName
-							+ "Instance on local instance");
+					logger.debug("Creating " + browserName + "Instance on local instance");
 					driver = createFirefoxInstanceLocally();
 
-					logger.debug("Successfully Created " + browserName
-							+ " Instance on local instance.");
+					logger.debug("Successfully Created " + browserName + " Instance on local instance.");
 
 				}
 
@@ -810,32 +729,24 @@ public class FacileTest implements IHookable {
 				logger.debug("Browser Type : " + browserName);
 
 				if (isSauceEnabled()) {
-					logger.debug("Enable Sauce Grid is Set to : "
-							+ isSauceEnabled());
+					logger.debug("Enable Sauce Grid is Set to : " + isSauceEnabled());
 
-					logger.debug("Creating " + browserName
-							+ "Instance on Saucelabs Grid");
+					logger.debug("Creating " + browserName + "Instance on Saucelabs Grid");
 					SaucelabsSessionManager sauceLabsSessionManager = new SaucelabsSessionManager();
-					driver = sauceLabsSessionManager
-							.createFirefoxInstanceonSauce();
-					logger.debug("Successfully Created " + browserName
-							+ " Instance on Saucelabs Grid");
+					driver = sauceLabsSessionManager.createFirefoxInstanceonSauce();
+					logger.debug("Successfully Created " + browserName + " Instance on Saucelabs Grid");
 				} else {
-					logger.debug("Creating " + browserName
-							+ "Instance on local instance");
+					logger.debug("Creating " + browserName + "Instance on local instance");
 					driver = new SafariDriver();
-					logger.debug("Successfully Created " + browserName
-							+ " Instance on local instance.");
+					logger.debug("Successfully Created " + browserName + " Instance on local instance.");
 				}
 				webDriverFacile.set(maximizeMe(driver));
 				return webDriverFacile;
 			}
 		}
 
-		logger.error("Could not create a driver for the browser: "
-				+ browserName);
-		throw new UnsupportedOperationException(
-				"Could not create a driver for the browser: " + browserName);
+		logger.error("Could not create a driver for the browser: " + browserName);
+		throw new UnsupportedOperationException("Could not create a driver for the browser: " + browserName);
 	}
 
 	/*
@@ -881,15 +792,13 @@ public class FacileTest implements IHookable {
 			try { // attempt to get the profile specified, else return a regular
 					// FF driver
 				logger.debug("Attempting to load the specified Profile for Firefox...");
-				FirefoxProfile profile = new FirefoxProfile(new File(
-						profileName));
+				FirefoxProfile profile = new FirefoxProfile(new File(profileName));
 				ffdriver = new ContextAwareFirefoxDriver(profile);
 				logger.debug("Successfully created the firefox instance with specified Profile.");
 			} catch (NullPointerException ex) {
 				logger.error("No Firefox profile with name '" + profileName
 						+ "' exists.  Using default WebDriver-made profile", ex);
-				System.err.println("No Firefox profile with name '"
-						+ profileName
+				System.err.println("No Firefox profile with name '" + profileName
 						+ "' exists.  Using default WebDriver-made profile");
 				return new ContextAwareFirefoxDriver();
 			}
@@ -948,8 +857,7 @@ public class FacileTest implements IHookable {
 	public void beforeSuite() {
 		ReporterPrintStream reporterPrintStream = null;
 		try {
-			reporterPrintStream = new ReporterPrintStream(File.createTempFile(
-					"wdv", null));
+			reporterPrintStream = new ReporterPrintStream(File.createTempFile("wdv", null));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -1035,11 +943,9 @@ public class FacileTest implements IHookable {
 		// Each of our tests will be retried by the same IRetryAnalyzer object.
 		// result.getMethod().setRetryAnalyzer(RETRIER);
 
-		String fullTestName = getSuiteTestName(result.getName().toString(),
-				result.getParameters());
+		String fullTestName = getSuiteTestName(result.getName().toString(), result.getParameters());
 
-		boolean noWatchdog = result.getMethod().getMethod()
-				.isAnnotationPresent(NoWatchdog.class);
+		boolean noWatchdog = result.getMethod().getMethod().isAnnotationPresent(NoWatchdog.class);
 
 		// Initialize and start the watchdog timer.
 		if (!noWatchdog) {
@@ -1049,19 +955,14 @@ public class FacileTest implements IHookable {
 		logger.info("Webdriver Session :" + webDriverFacile.toString());
 		try {
 			if (webDriverFacile.get().getSessionId() != null) {
-				String jobID = (webDriverFacile.get()).getSessionId()
-						.toString();
+				String jobID = (webDriverFacile.get()).getSessionId().toString();
 				logger.info("Setting jobId " + jobID);
-				logger.info("SauceOnDemandSessionID=" + jobID + " "
-						+ "job-name=" + result.getMethod().getMethodName());
+				logger.info("SauceOnDemandSessionID=" + jobID + " " + "job-name=" + result.getMethod().getMethodName());
 				result.setAttribute("jobId", jobID);
 				if (isSauceEnabled()) {
-					String sauceUserName = ReadPropertyFile
-							.getConfigurationParameter(SAUCE_CONFIG_PATH,
-									"SAUCE_USERNAME");
-					String sauceAPiKey = ReadPropertyFile
-							.getConfigurationParameter(SAUCE_CONFIG_PATH,
-									"SAUCE_API_KEY");
+					String sauceUserName = ReadPropertyFile.getConfigurationParameter(SAUCE_CONFIG_PATH,
+							"SAUCE_USERNAME");
+					String sauceAPiKey = ReadPropertyFile.getConfigurationParameter(SAUCE_CONFIG_PATH, "SAUCE_API_KEY");
 
 					SauceREST client = new SauceREST(sauceUserName, sauceAPiKey);
 					Map<String, Object> updates = new HashMap<String, Object>();
@@ -1102,8 +1003,8 @@ public class FacileTest implements IHookable {
 		 * Exception("Watchdog timer killed the browser after " +
 		 * TestWatchdog.DEFAULT_TIMEOUT + " milliseconds.");
 		 * 
-		 * watchdogException.setStackTrace(targetException.getCause().getStackTrace
-		 * ());
+		 * watchdogException.setStackTrace(targetException.getCause().
+		 * getStackTrace ());
 		 * 
 		 * result.setThrowable(watchdogException); } } }
 		 */
@@ -1202,20 +1103,16 @@ public class FacileTest implements IHookable {
 	 *            the pass
 	 * @return the string
 	 */
-	public String takeScreenshot(String testName, String destinationDir,
-			boolean pass) {
+	public String takeScreenshot(String testName, String destinationDir, boolean pass) {
 
 		// Adding a quick fix to resolve a failure on saving SS when running
 		// from jenkins
-		if (System.getProperty("os.name").startsWith("Windows")
-				|| System.getProperty("os.name").startsWith("Mac")) {
+		if (System.getProperty("os.name").startsWith("Windows") || System.getProperty("os.name").startsWith("Mac")) {
 			if (!(new File(destinationDir).exists())) {
-				logger.error("The destination directory: "
-						+ destinationDir
+				logger.error("The destination directory: " + destinationDir
 						+ " does not exist, attempting to write to another directory (C:/ on windows /tmp on other)");
 				if (new File(destinationDir).mkdirs())
-					logger.debug("Directory created at Path : "
-							+ destinationDir);
+					logger.debug("Directory created at Path : " + destinationDir);
 				else {
 					if (System.getProperty("os.name").startsWith("Windows"))
 						destinationDir = "C:\\";
@@ -1228,8 +1125,7 @@ public class FacileTest implements IHookable {
 
 		// If destinationDir still does not exist, then don't take screen shot.
 		if (!(new File(destinationDir).exists())) {
-			logger.debug("screen shot won't be captured as " + destinationDir
-					+ " does not exist..");
+			logger.debug("screen shot won't be captured as " + destinationDir + " does not exist..");
 			return "";
 		}
 
@@ -1257,38 +1153,25 @@ public class FacileTest implements IHookable {
 
 			DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
 			Date date = new Date();
-			currentImageFilePath = currentImageFilePath + "_"
-					+ dateFormat.format(date) + ".png";
+			currentImageFilePath = currentImageFilePath + "_" + dateFormat.format(date) + ".png";
 			ImageIO.write(image, "png", new File(currentImageFilePath));
-			logger.debug("Saved screenshot titled " + currentImageFilePath
-					+ " to: " + imageFileName);
+			logger.debug("Saved screenshot titled " + currentImageFilePath + " to: " + imageFileName);
 
 			// Log the location of the screenshot in order to x-reference it
 			// with the
 			// actual test results. Must take into account the two locations
 			// where
 			// these results would be viewed: locally and through autolab
-			Reporter.log("Final Screenshot:<br> <a href='file:///"
-					+ currentImageFilePath
-					+ "' target='new'> <img src='file:///"
-					+ currentImageFilePath
-					+ "' width='300px' height='200px' /></a> <br> "
-					+ "<a href='../../../screenshots/"
-					+ currentImageFilePath.substring(currentImageFilePath
-							.lastIndexOf("/") + 1)
-					+ "' target='new'>"
+			Reporter.log("Final Screenshot:<br> <a href='file:///" + currentImageFilePath
+					+ "' target='new'> <img src='file:///" + currentImageFilePath
+					+ "' width='300px' height='200px' /></a> <br> " + "<a href='../../../screenshots/"
+					+ currentImageFilePath.substring(currentImageFilePath.lastIndexOf("/") + 1) + "' target='new'>"
 					+ "<img src='../../../screenshots/"
-					+ currentImageFilePath.substring(currentImageFilePath
-							.lastIndexOf("/") + 1)
-					+ "' width='300px' height='200px'/>"
-					+ " </a>"
-					+ "<a href='../screenshots/"
-					+ currentImageFilePath.substring(currentImageFilePath
-							.lastIndexOf("/") + 1)
-					+ "' target='new'>"
+					+ currentImageFilePath.substring(currentImageFilePath.lastIndexOf("/") + 1)
+					+ "' width='300px' height='200px'/>" + " </a>" + "<a href='../screenshots/"
+					+ currentImageFilePath.substring(currentImageFilePath.lastIndexOf("/") + 1) + "' target='new'>"
 					+ "<img src='../screenshots/"
-					+ currentImageFilePath.substring(currentImageFilePath
-							.lastIndexOf("/") + 1)
+					+ currentImageFilePath.substring(currentImageFilePath.lastIndexOf("/") + 1)
 					+ "' width='300px' height='200px'/>" + " </a>");
 
 			return currentImageFilePath;
@@ -1329,8 +1212,7 @@ public class FacileTest implements IHookable {
 		 * getCurrentMethodNameFromThread 3 - callingMethod => method calling
 		 * thisMethod 4 - method calling callingMethod
 		 */
-		StackTraceElement stackTraceElement = Thread.currentThread()
-				.getStackTrace()[3 + stackLevel];
+		StackTraceElement stackTraceElement = Thread.currentThread().getStackTrace()[3 + stackLevel];
 
 		String className = stackTraceElement.getClassName();
 		String methodName = stackTraceElement.getMethodName();
@@ -1387,8 +1269,7 @@ public class FacileTest implements IHookable {
 		for (Method method : methods) {
 			Annotation annotations[] = method.getAnnotations();
 			for (Annotation annotation : annotations) {
-				if (annotation.annotationType().getSimpleName()
-						.equals("SauceConnect")) {
+				if (annotation.annotationType().getSimpleName().equals("SauceConnect")) {
 					isSauceConnectPresent = true;
 				}
 			}
@@ -1405,10 +1286,8 @@ public class FacileTest implements IHookable {
 	 */
 	private Dimension getWindowDimention() {
 		JavascriptExecutor jsExecute = (JavascriptExecutor) driver;
-		Long screenWidth = (Long) jsExecute
-				.executeScript("return screen.width");
-		Long screenHeight = (Long) jsExecute
-				.executeScript("return screen.width");
+		Long screenWidth = (Long) jsExecute.executeScript("return screen.width");
+		Long screenHeight = (Long) jsExecute.executeScript("return screen.width");
 		return new Dimension(screenWidth.intValue(), screenHeight.intValue());
 	}
 
@@ -1458,8 +1337,7 @@ public class FacileTest implements IHookable {
 
 			temporaryFilePath = driverFile.getAbsolutePath();
 		} else {
-			logger.error("Driver does not exist in the path  "
-					+ driverFile.getAbsolutePath());
+			logger.error("Driver does not exist in the path  " + driverFile.getAbsolutePath());
 		}
 		return temporaryFilePath;
 
@@ -1480,8 +1358,7 @@ public class FacileTest implements IHookable {
 			File ss = ((FirefoxDriver) driver).getScreenshotAs(OutputType.FILE);
 			ss.renameTo(new File(currentImageFilePath));
 		}
-		logger.info("Saved screenshot titled " + fileName + " to: "
-				+ imageFileName);
+		logger.info("Saved screenshot titled " + fileName + " to: " + imageFileName);
 
 	}
 
