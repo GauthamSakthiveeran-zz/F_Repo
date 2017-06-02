@@ -372,20 +372,6 @@
         </url>
 
         <url>
-            <description name="VAST:AdobeTVSDK Vast3.0 Midroll" />
-            <embed_code name="hucThxYTE6DeKlOdeAQS8bbGgIE5dDpX" />
-            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-            <plugins name="ADOBETVSDK,MAIN" />
-            <adPlugins name="VAST" adPlayTime="10"/>
-            <additionalPlugins name="" />
-            <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
-            <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-            <browserSupportedVersion name="safari,9" />
-            <platformsSupported name="mac,windows"/>
-        </url>
-
-        <url>
             <description name="VAST:Main Vast3.0 Midroll" />
             <embed_code name="F3bDhxYTE6_BXwKW6aljlWptl8jHx4sA" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
