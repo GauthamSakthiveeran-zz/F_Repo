@@ -61,11 +61,10 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
             }*/
 
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             extentTest.log(LogStatus.FAIL, e);
             result = false;
         }
-
         Assert.assertTrue(result, "Verified");
     }
 }
