@@ -42,6 +42,7 @@ public class TestPageData {
     private String valhalla_build;
     private String valhalla_build_id;
     private String adobeTVSDK;
+    private String adobePluginURL;
     private PropertyReader properties;
 
     /**
@@ -332,21 +333,15 @@ public class TestPageData {
                     envURL = envURL.replace("candidate/latest", specificBranch);
                 }
                 String adobeTVSDK = System.getProperty("adobeTVSDK");
-                if (adobeTVSDK != null || adobeTVSDK == ""){
-                    pluginURL = adobeTVSDK + pluginURL;
-                    corePlayer = envURL + corePlayer;
-                    html5Skin = envURL + html5Skin;
-                    skinAsset = envURL + skinAsset;
-                    skinConf = "" + skinConf;
-                    skinDiscovery = envURL + otherPlugin + discoveryApiPlugin;
-                }else {
+                if (adobeTVSDK != null || adobeTVSDK == "") {
+                    adobePluginURL = adobeTVSDK + pluginURL;
+                }
                     pluginURL = envURL + pluginURL;
                     corePlayer = envURL + corePlayer;
                     html5Skin = envURL + html5Skin;
                     skinAsset = envURL + skinAsset;
                     skinConf = "" + skinConf;
                     skinDiscovery = envURL + otherPlugin + discoveryApiPlugin;
-                }
                 break;
             case PRODUCTION:
                 envURL = sslEnabled + properties.getProperty("production_env_url") + v4Version;
@@ -380,7 +375,11 @@ public class TestPageData {
             case "AKAMAI":
                 return pluginURL + akamaiPlugin;
             case "ADOBETVSDK":
-                return pluginURL + adobeTVSDK;
+                String adobeTVSDKFlag = System.getProperty("adobeTVSDK");
+                if (adobeTVSDKFlag != null || adobeTVSDKFlag == ""){
+                    return adobePluginURL + adobeTVSDK;
+                } else
+                    return pluginURL + adobeTVSDK;
         }
         return "";
     }
@@ -461,4 +460,5 @@ public class TestPageData {
         return skinConf + defaultSkinConfig;
 
     }
+
 }
