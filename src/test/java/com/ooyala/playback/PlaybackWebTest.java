@@ -155,38 +155,8 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     @BeforeSuite(alwaysRun = true)
     public void beforeSuiteInPlaybackWeb() throws OoyalaException {
-        int portNumber = getRandomOpenPort();
+        int portNumber = SimpleHttpServer.getRandomOpenPort();
         SimpleHttpServer.startServer(portNumber);
-    }
-
-    public int getRandomOpenPort() {
-        int retry = 4;
-        int index = 1;
-        while (index < retry) {
-            int min = 10000;
-            int max = 50000;
-            Random rand = new Random();
-            int randomPort = min + rand.nextInt((max - min) + 1);
-            boolean isPortOpen = checkPort(randomPort);
-            if (isPortOpen)
-                return randomPort;
-            index++;
-        }
-        return -1;
-    }
-
-    public boolean checkPort(int portNumber) {
-        try {
-            logger.info("Checking if port open by trying to connect as a client");
-            Socket socket = new Socket("localhost", portNumber);
-            socket.close();
-            logger.info("Port looks like is not open " + portNumber);
-        } catch (Exception e) {
-            if (e.getMessage().contains("refused")) {
-                return true;
-            }
-        }
-        return false;
     }
 
     @AfterSuite(alwaysRun = true)

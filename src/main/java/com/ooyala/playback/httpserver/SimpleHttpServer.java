@@ -5,8 +5,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.apache.log4j.Logger;
 
@@ -108,5 +110,35 @@ public class SimpleHttpServer {
 		}
 		return result;
 	}
+	
+	public static int getRandomOpenPort() {
+        int retry = 4;
+        int index = 1;
+        while (index < retry) {
+            int min = 10000;
+            int max = 50000;
+            Random rand = new Random();
+            int randomPort = min + rand.nextInt((max - min) + 1);
+            boolean isPortOpen = checkPort(randomPort);
+            if (isPortOpen)
+                return randomPort;
+            index++;
+        }
+        return -1;
+    }
+
+    private static boolean checkPort(int portNumber) {
+        try {
+            logger.info("Checking if port open by trying to connect as a client");
+            Socket socket = new Socket("localhost", portNumber);
+            socket.close();
+            logger.info("Port looks like is not open " + portNumber);
+        } catch (Exception e) {
+            if (e.getMessage().contains("refused")) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
