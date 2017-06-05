@@ -46,6 +46,7 @@
 	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 	        <browserSupportedVersion name="safari,9"/>
+			<platformsSupported name="mac,windows"/>
     	</url>
     	
     	<url>

@@ -32,6 +32,12 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 		if (!adPlaying(false)) {
 			return true;
 		}
+
+		Thread.sleep(3000);
+
+		if (!loadingSpinner()){
+		    return false;
+        }
 		
 		if(new PlayBackFactory(driver, extentTest).getLiveValidator().validate(element, timeout)) {
 			extentTest.log(LogStatus.INFO, "Not validating Scrubber for Live assets");
@@ -47,7 +53,6 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 			extentTest.log(LogStatus.FAIL, "Scrubber pointer is not present");
 			return false;
 		}
-		
 		
 		double duration = getDuration();
 		double played = getPlayAheadTime();

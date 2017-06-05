@@ -64,17 +64,6 @@
 		</url>
 
         <url>
-            <description name="VPAID:Bitmovin IMA VPAID2.0 PreMidPost"/>
-            <embed_code name="M2NngxYjE6lR5ArZnZ_x5XV9N-4zbXih"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="MAIN,BITMOVIN"/>
-            <adPlugins name="IMA" adPlayTime="20"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <playerParameter></playerParameter>
-        </url>
-
-        <url>
             <description name="IMA:Main PreMidPost"/>
             <embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -98,6 +87,7 @@
                 <![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NqcGg4bzoOmMiV35ZttQDtBX1oNQBnT-","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <browsersSupported  name="chrome,firefox,internet explorer,safari,MicrosoftEdge"/>
             <browserSupportedVersion name="safari,9"/>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -112,6 +102,7 @@
             <browsersSupported
                     name="chrome,firefox,internet explorer,safari,MicrosoftEdge"/>
             <browserSupportedVersion name="safari,9"/>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -126,6 +117,7 @@
             <browsersSupported
                     name="chrome,firefox,internet explorer,safari,MicrosoftEdge"/>
             <browserSupportedVersion name="safari,9"/>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -153,6 +145,7 @@
                 <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
             <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge"/>
             <browserSupportedVersion name="safari,9"/>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -190,7 +183,6 @@
             <pbid name="615dc8e909e941c280e12155df838355"/>
             <playerParameter>
                 <![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"},{"position":"5000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"},{"position":"100000000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"}]}}]]></playerParameter>
-
         </url>
 
         <url>
@@ -203,7 +195,6 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter>
                 <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-
         </url>
 
         <url>
@@ -218,6 +209,7 @@
                 <![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"google-ima-ads-manager":{"useGoogleCountdown":true}}]]></playerParameter>
             <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge"/>
             <browserSupportedVersion name="safari,9"/>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -264,6 +256,7 @@
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
+            <platformsSupported name="mac,windows"/>
 		</url>
 		
 		<url>
@@ -298,6 +291,7 @@
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
 	        <playerParameter></playerParameter>
 	        <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+            <platformsSupported name="mac,windows"/>
     	</url>
 
 		<url>
@@ -310,6 +304,7 @@
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+            <platformsSupported name="mac,windows"/>
 		</url>
         <url>
             <description name="VAST:Main Vast2.0 PreMidPost|VTC:SetEmbedCode"/>
@@ -347,6 +342,7 @@
                 <![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
             <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge"/>
             <browserSupportedVersion name="safari,9"/>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -381,6 +377,7 @@
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter><![CDATA[]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -392,6 +389,7 @@
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -404,6 +402,7 @@
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
