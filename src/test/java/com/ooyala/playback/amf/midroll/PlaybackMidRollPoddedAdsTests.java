@@ -5,6 +5,7 @@ import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 
+import com.ooyala.playback.utils.CommandLineParameters;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -51,7 +52,9 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
 
             result = result && seek.fromLast().setTime(20).startAction();
 
-            if (event.isAdPluginPresent("freewheel") || (event.isAdPluginPresent("ima") && testName.contains("MAIN"))) {
+            if (event.isAdPluginPresent("freewheel") || (event.isAdPluginPresent("ima") && testName.contains("MAIN") &&
+            System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("android"))
+                    || (event.isAdPluginPresent("ima") && testName.contains("MAIN"))) {
                 result = result && event.validate("adsPlayed_2", 200000); // TODO
                 result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 120000);
             } else {

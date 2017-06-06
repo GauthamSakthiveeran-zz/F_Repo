@@ -37,6 +37,7 @@
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
             <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -171,6 +172,7 @@
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -183,6 +185,7 @@
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -209,6 +212,9 @@
             <browsersSupported
                     name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9" />
+            <platformsSupported name="mac,windows"/>
+
+
         </url>
 
         <url>
@@ -223,6 +229,7 @@
             <browsersSupported
                     name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9" />
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -291,6 +298,7 @@
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
             <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9" />
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -326,6 +334,7 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter></playerParameter>
             <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -338,6 +347,7 @@
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+            <plaformsSupported name="mac,windows"/>
         </url>
 
         <url>
@@ -350,6 +360,7 @@
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+            <platformsSupported name="mac,windows"/>
         </url>
 
         <url>
