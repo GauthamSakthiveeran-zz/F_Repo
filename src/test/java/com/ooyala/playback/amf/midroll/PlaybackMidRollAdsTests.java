@@ -40,7 +40,7 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
             result = result && seekValidator.validate("seeked_1", 160000);
 			result = result && event.validate("played_1", 160000);
 			
-			if(result) {
+			if(result && (!url.getAdPlugins().equalsIgnoreCase("pulse"))) {
 				extentTest.log(LogStatus.INFO, "Validating if ad plays when video is seeked post ad play time.");
 				driver.navigate().refresh();
 				result = result && playValidator.waitForPage();
