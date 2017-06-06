@@ -1,6 +1,5 @@
 package com.ooyala.playback.page;
 
-
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -9,8 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class DiscoveryValidator extends PlayBackPage implements
-		PlaybackValidator {
+public class DiscoveryValidator extends PlayBackPage implements PlaybackValidator {
 
 	public static Logger logger = Logger.getLogger(DiscoveryValidator.class);
 
@@ -25,25 +23,26 @@ public class DiscoveryValidator extends PlayBackPage implements
 		addElementToPageElements("pause");
 
 	}
-	
+
 	public boolean isDiscoveryToasterPresent() {
 		return isElementPresent("DISCOVERY_TOASTER");
 	}
-	
-	public boolean validateDiscoveryToaster() throws Exception{
 
-		if(!getBrowser().equalsIgnoreCase("safari")) {
+	public boolean validateDiscoveryToaster() throws Exception {
+
+		if (!getBrowser().equalsIgnoreCase("safari")) {
 			if (isElementPresent("PAUSE_BUTTON")) {
 				clickOnIndependentElement("PAUSE_BUTTON");
 			}
-		}else {
-			//if browser is safari then click on element using javascript executor
+		} else {
+			// if browser is safari then click on element using javascript
+			// executor
 			return clickOnHiddenElement("PAUSE_BUTTON");
 		}
 		return waitOnElement("DISCOVERY_TOASTER", 10000);
 	}
-	
-	public boolean validateLeftRightButton() throws Exception{
+
+	public boolean validateLeftRightButton() throws Exception {
 
 		List<WebElement> count = getWebElementsList("DISCOVERY_IMG_WRAPPER");
 
@@ -53,8 +52,7 @@ public class DiscoveryValidator extends PlayBackPage implements
 		boolean flagTrue = false;
 		try {
 			flagTrue = isElementVisible("RIGHT_BTN");
-			logger.info("Is right button showing on Discovery Screen  "
-					+ flagTrue);
+			logger.info("Is right button showing on Discovery Screen  " + flagTrue);
 		} catch (Exception e) {
 			logger.info("Max videos are showing on Discovery screen");
 			return false;
@@ -64,85 +62,83 @@ public class DiscoveryValidator extends PlayBackPage implements
 				return false;
 			if (!clickOnIndependentElement("LEFT_BTN"))
 				return false;
-			extentTest.log(LogStatus.PASS,
-					"verified discovery left right button");
+			extentTest.log(LogStatus.PASS, "verified discovery left right button");
 		}
 		return true;
 	}
-	
-	public boolean validateImageStyle() throws Exception{
-		if(!getBrowser().equalsIgnoreCase("safari")) {
-			/*if (!clickOnIndependentElement("IMAGE_STYLE")) {
-				return false;
-			}*/
+
+	public boolean validateImageStyle() throws Exception {
+		if (!getBrowser().equalsIgnoreCase("safari")) {
+			/*
+			 * if (!clickOnIndependentElement("IMAGE_STYLE")) { return false; }
+			 */
 			clickOnIndependentElement("IMAGE_STYLE");
-		}else
+		} else
 			clickOnHiddenElement("IMAGE_STYLE");
 
-        if(!waitOnElement(By.id("reportDiscoveryClick_1"), 60000)) return false;
+		if (!waitOnElement(By.id("reportDiscoveryClick_1"), 60000))
+			return false;
 
 		return true;
 	}
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
-		
-		if(!loadingSpinner()){
+
+		if (!loadingSpinner()) {
 			extentTest.log(LogStatus.FAIL, "Loading spinner is persistent!");
 			return false;
 		}
-		
-		if (validateDiscoveryToaster() && validateLeftRightButton()
-				&& validateImageStyle()) {
+
+		if (validateDiscoveryToaster() && validateLeftRightButton() && validateImageStyle()) {
 			return waitOnElement(By.id("reportDiscoveryImpression_1"), 60000)
-					&& waitOnElement(By.id("setEmbedCode_1"), 60000)
-					&& waitOnElement(By.id("playbackReady_1"), 60000)
+					&& waitOnElement(By.id("setEmbedCode_1"), 60000) && waitOnElement(By.id("playbackReady_1"), 60000)
 					&& waitOnElement(By.id("videoPreload_1"), 60000);
 		}
 
+		extentTest.log(LogStatus.FAIL, "Discovery validation failed.");
 		return false;
 	}
 
-	public boolean verifyDiscoveryEnabled(String Onevent,boolean isPresent) {
+	public boolean verifyDiscoveryEnabled(String Onevent, boolean isPresent) {
 
-		if (!loadingSpinner()){
+		if (!loadingSpinner()) {
+			extentTest.log(LogStatus.FAIL, "Loading spinner is persistent!");
 			return false;
 		}
 
 		boolean discoverytray = isElementPresent("DISCOVERY_STYLE");
 		boolean discoveryscreen = isElementPresent("CONTENT_SCREEN");
-		logger.info("discovery screen is enabled " + Onevent + ": "
-				+ discoveryscreen);
-		logger.info("discovery Toaster is Shown " + Onevent + ": "
-				+ discoverytray);
-        if (isPresent)
-		    return discoverytray && discoveryscreen;
-        else
-            return !discoverytray && !discoveryscreen;
+		logger.info("discovery screen is enabled " + Onevent + ": " + discoveryscreen);
+		logger.info("discovery Toaster is Shown " + Onevent + ": " + discoverytray);
+		if (isPresent)
+			return discoverytray && discoveryscreen;
+		else
+			return !discoverytray && !discoveryscreen;
 
 	}
 
 	public boolean clickOnDiscoveryCloseButton() {
 
-		if (!loadingSpinner()){
+		if (!loadingSpinner()) {
 			return false;
 		}
 
-		return waitOnElement("DISCOVERY_CLOSE_BTN", 20000)
-				&& clickOnIndependentElement("DISCOVERY_CLOSE_BTN");
+		return waitOnElement("DISCOVERY_CLOSE_BTN", 20000) && clickOnIndependentElement("DISCOVERY_CLOSE_BTN");
 	}
-	
+
 	public boolean clickOnDiscoveryButton() throws Exception {
-		if(!loadingSpinner()){
+		if (!loadingSpinner()) {
 			extentTest.log(LogStatus.FAIL, "Loading spinner is persistent!");
 			return false;
 		}
-		if(!getBrowser().equalsIgnoreCase("safari")) {
-			if ((clickOnIndependentElement("DISCOVERY_BTN") && validateDiscoveryToaster() && validateLeftRightButton())) {
+		if (!getBrowser().equalsIgnoreCase("safari")) {
+			if ((clickOnIndependentElement("DISCOVERY_BTN") && validateDiscoveryToaster()
+					&& validateLeftRightButton())) {
 				return true;
 			}
-		}else {
-			if((clickOnHiddenElement("DISCOVERY_BTN"))){
+		} else {
+			if ((clickOnHiddenElement("DISCOVERY_BTN"))) {
 				return validateDiscoveryToaster() && validateLeftRightButton();
 			}
 		}

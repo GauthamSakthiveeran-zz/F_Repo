@@ -5,11 +5,9 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
-import java.net.Socket;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Random;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
@@ -52,6 +50,7 @@ import com.ooyala.playback.url.Testdata;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.playback.utils.CommandLineParameters;
+import com.ooyala.playback.utils.JSScriptInjection;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -332,39 +331,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     }
     
     public void injectScript() throws Exception {
-        if (jsUrl != null && jsUrl.length > 0) {
-            for (String url : jsUrl) {
-                try {
-                    logger.info("JS - " + url);
-                    injectScript(url);
-                } catch (Exception e) {
-                    // e.printStackTrace();
-                    logger.error(e.getMessage());
-                    logger.info("Retrying...");
-                    injectScript(url);
-                }
-            }
-            extentTest
-                    .log(LogStatus.PASS, "Javascript injection is successful");
-        }
-    }
-
-    @SuppressWarnings("unused")
-	private void injectScript(String scriptURL) throws Exception {
-    	JavascriptExecutor js = (JavascriptExecutor) webDriverFacile.get();
-        Object object = js.executeScript("function injectScript(url) {\n"
-                + "   var script = document.createElement ('script');\n"
-                + "   script.src = url;\n"
-                + "   var head = document.getElementsByTagName( 'head')[0];\n"
-                + "   head.appendChild(script);\n" + "}\n" + "\n"
-                + "var scriptURL = arguments[0];\n"
-                + "injectScript(scriptURL);", scriptURL);
-        Thread.sleep(1000); // to avoid js failures
-        
-        if (scriptURL.contains("common"))
-            object = js.executeScript("subscribeToCommonEvents();");
-        else
-            object = js.executeScript("subscribeToEvents();");
+        new JSScriptInjection(jsUrl, extentTest, webDriverFacile.get()).injectScript();
     }
 
     public String getPlatform() {
