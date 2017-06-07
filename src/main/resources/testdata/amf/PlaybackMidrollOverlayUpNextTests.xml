@@ -11,5 +11,16 @@
 	        <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
 			<playerParameter><![CDATA[{"showNonLinearCloseButton":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"}}]]></playerParameter>
     	</url>
+
+		<url>
+			<description name="VAST:AdobeTVSDK Vast2.0 Midroll (10) and Overlay (15) with Discovery Up Next"/>
+			<embed_code name="hkOGt4dDr71-6f0_aceyHIlanbjgeSZc"/>
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+			<plugins name="ADOBETVSDK,MAIN"/>
+			<adPlugins name="VAST" adPlayTime="10" overlayPlayTime="15"/>
+			<additionalPlugins name="DISCOVERY"/>
+			<pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
+			<playerParameter><![CDATA[{"showNonLinearCloseButton":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"}}]]></playerParameter>
+		</url>
     </test>
 </testdata>

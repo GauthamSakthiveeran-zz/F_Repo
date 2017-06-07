@@ -47,10 +47,12 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
 			result = result && pause.validate("paused_1", 60000);
 
-			if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
-				result = result && eventValidator.validate("videoPlayingurl", 40000);
-				result = result
-						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
+			if(!url.getVideoPlugins().equalsIgnoreCase("ADOBETVSDK")) {
+				if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
+					result = result && eventValidator.validate("videoPlayingurl", 40000);
+					result = result
+							&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
+				}
 			}
 
 			result = result && play.validate("playing_2", 60000);

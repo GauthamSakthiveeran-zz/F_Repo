@@ -17,64 +17,66 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class PlaybackPlaylistTests extends PlaybackWebTest {
 
-	private PlaylistValidator playlist;
-	private PlayValidator play;
-	private StreamValidator streamTypeValidator;
-	private EventValidator eventValidator;
+    private PlaylistValidator playlist;
+    private PlayValidator play;
+    private StreamValidator streamTypeValidator;
+    private EventValidator eventValidator;
 
-	public PlaybackPlaylistTests() throws OoyalaException {
-		super();
-	}
+    public PlaybackPlaylistTests() throws OoyalaException {
+        super();
+    }
 
-	@Test(groups = "playlist", dataProvider = "testUrls")
-	public void testPlaylistTests(String description, UrlObject url) throws OoyalaException {
+    @Test(groups = "playlist", dataProvider = "testUrls")
+    public void testPlaylistTests(String description, UrlObject url) throws OoyalaException {
         //seperating the tab name from the test description
-		String[] parts = description.split(":")[1].trim().split("-");
-		//splitting the description using spaces
-		String[] descParts=description.split(" ");
-		//extracting the video plugin name from description
-        String videoPluginName = descParts[descParts.length-1];
-		String tcName = parts[0].trim();
-		//removing the video plugin name from the test name
-        if(tcName.contains(videoPluginName))
-            tcName = tcName.replaceAll(videoPluginName,"").trim();
-		String tcValue = "";
-		//removing the video plugin name from the test value
-		if (parts.length > 1)
-            tcValue = parts[1].replaceAll(videoPluginName,"").trim();
+        String[] parts = description.split(":")[1].trim().split("-");
+        //splitting the description using spaces
+        String[] descParts = description.split(" ");
+        //extracting the video plugin name from description
+        String videoPluginName = descParts[descParts.length - 1];
+        String tcName = parts[0].trim();
+        //removing the video plugin name from the test name
+        if (tcName.contains(videoPluginName))
+            tcName = tcName.replaceAll(videoPluginName, "").trim();
+        String tcValue = "";
+        //removing the video plugin name from the test value
+        if (parts.length > 1)
+            tcValue = parts[1].replaceAll(videoPluginName, "").trim();
 
-		boolean result = true;
-		try {
+        boolean result = true;
+        try {
 
-			driver.get(url.getUrl());
-			if (!(description.contains("true") || description.contains("Menustyle-tabs"))) {
-				result = result && play.waitForPage();
-				injectScript();
-			} else {
-				result = result && playlist.isPageLoaded();
+            driver.get(url.getUrl());
+            if (!(description.contains("true") || description.contains("Menustyle-tabs"))) {
+                result = result && play.waitForPage();
                 injectScript();
-			}
+            } else {
+                result = result && playlist.isPageLoaded();
+                injectScript();
+            }
 
-			result = result && playlist.playlistValidator(tcName, tcValue, videoPluginName);
+            result = result && playlist.playlistValidator(tcName, tcValue, videoPluginName);
 
             if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
                 if (description.contains("Autoplay-false"))
-                    result = result && play.validate("playing_1",20000);
+                    result = result && play.validate("playing_1", 20000);
                 result = result && eventValidator.validate("videoPlayingurl", 40000);
-                result = result
-                        && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
+                if (!url.getVideoPlugins().equalsIgnoreCase("adobetvsdk")) {
+                    result = result
+                            && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
+                }
             }
 
-            if (driver.executeScript("return pp.getErrorCode()") != null){
-				extentTest.log(LogStatus.SKIP,"Skipping test as video is in error state");
-				return;
-			}
+            if (driver.executeScript("return pp.getErrorCode()") != null) {
+                extentTest.log(LogStatus.SKIP, "Skipping test as video is in error state");
+                return;
+            }
 
-		} catch (Exception e) {
-			extentTest.log(LogStatus.FAIL, e.getMessage());
-			e.printStackTrace();
-			result = false;
-		}
-		Assert.assertTrue(result, "Playback Playlist tests failed" + description);
-	}
+        } catch (Exception e) {
+            extentTest.log(LogStatus.FAIL, e.getMessage());
+            logger.error(e.getMessage());
+            result = false;
+        }
+        Assert.assertTrue(result, "Playback Playlist tests failed" + description);
+    }
 }
