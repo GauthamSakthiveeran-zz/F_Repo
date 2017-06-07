@@ -11,6 +11,7 @@
 	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
 	        <playerParameter><![CDATA[{"linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true}]]></playerParameter>
     	</url>
+
     	<url>
 	    	<description name="Ooyala Ads:Bitmovin skip ad button"/>
 	        <embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j"/>
@@ -22,5 +23,17 @@
 	        <playerParameter><![CDATA[{"linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true}]]></playerParameter>
 	        <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
     	</url>
+
+		<url>
+			<description name="Ooyala Ads:AdobeTVSDK skip ad button"/>
+			<embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j"/>
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+			<plugins name="ADOBETVSDK"/>
+			<adPlugins name=""/>
+			<additionalPlugins name=""/>
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+			<playerParameter><![CDATA[{"linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true}]]></playerParameter>
+			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+		</url>
     </test>
 </testdata>

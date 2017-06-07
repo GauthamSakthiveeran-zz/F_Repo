@@ -11,11 +11,34 @@
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
 			<playerParameter><![CDATA[{"playlistsPlugin":{"data":["12d77969a77432787608dc12f3f469a"]},"showInAdControlBar":true}]]></playerParameter>
 		</url>
+
+		<url>
+			<description name="Ooyala Ads:AdobeTVSDK Playlist" />
+			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="ADOBETVSDK" />
+			<adPlugins name="" />
+			<additionalPlugins name="PLAYLIST" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"playlistsPlugin":{"data":["12d77969a77432787608dc12f3f469a"]},"showInAdControlBar":true}]]></playerParameter>
+		</url>
+
 		<url>
 			<description name="Ooyala Ads:Main Discovery" />
 			<embed_code name="s5czdxODE6wRK7f5QQ5DXIGvFYbCUSYY" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="DISCOVERY" />
+			<pbid name="fb4f6cd2b4ae4ad68cc5c2d2cb981a18" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+		</url>
+
+		<url>
+			<description name="Ooyala Ads:AdobeTVSDK Discovery" />
+			<embed_code name="s5czdxODE6wRK7f5QQ5DXIGvFYbCUSYY" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="ADOBETVSDK" />
 			<adPlugins name="" />
 			<additionalPlugins name="DISCOVERY" />
 			<pbid name="fb4f6cd2b4ae4ad68cc5c2d2cb981a18" />
@@ -41,6 +64,18 @@
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
 			<playerParameter><![CDATA[{"playlistsPlugin":{"data":["12d77969a77432787608dc12f3f469a"]},"showInAdControlBar":true}]]></playerParameter>
 		</url>
+
+		<url>
+			<description name="Ooyala Ads:AdobeTVSDK Discovery and Playlist" />
+			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="ADOBETVSDK" />
+			<adPlugins name="" />
+			<additionalPlugins name="PLAYLIST,DISCOVERY" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"playlistsPlugin":{"data":["12d77969a77432787608dc12f3f469a"]},"showInAdControlBar":true}]]></playerParameter>
+		</url>
+
 		<url>
 			<description name="Ooyala Ads:Bitmovin Playlist" />
 			<embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j" />

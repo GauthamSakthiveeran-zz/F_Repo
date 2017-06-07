@@ -148,7 +148,7 @@ public class UrlGenerator {
 					try {
 						sslEnabled = url.getSslEnabled().getName();
 						sslEnabledBrowser = url.getSslEnabled().getBrowser();
-						if (!sslEnabledBrowser.contains(browserName)) {
+						if (sslEnabledBrowser !=null && !sslEnabledBrowser.contains(browserName)) {
 							sslEnabled = "";
 						}
 					} catch (Exception e) {
