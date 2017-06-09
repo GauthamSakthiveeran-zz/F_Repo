@@ -26,8 +26,12 @@ function subscribeToEvents() {
 		var adPodStartedEventOrder = 1;
         var playNonlinearAdEventOrder = 1;
         var videoPausedEventOrder = 1;
+        
+        var logger = '';
 		
 		return function(event) {
+			
+			logger = 'QE Preformance log: event: ' + event;
 			
 			if (event.match(/showNonlinearAd/)) {
 				OO.$('#ooplayer').append('<p id=showNonlinearAd_'+willShowNonlinearAdEventOrder+'> showNonlinearAd '+willShowNonlinearAdEventOrder+'</p>'); 
@@ -226,6 +230,8 @@ function subscribeToEvents() {
                     '<p id=multimidrollAdStartTime>'+time+'</p>');
                 videoPausedEventOrder++;
             }
+            
+            OO.log(logger);
 			
 		};
 	}());

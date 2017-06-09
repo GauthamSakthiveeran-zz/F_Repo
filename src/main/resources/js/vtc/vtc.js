@@ -50,8 +50,12 @@ function subscribeToEvents() {
         var willPlayAdOnReplayEventOrder = 1;
         var videoInFocusOrder = 1;
         var videoLostFocusEventOrder = 1;
+        
+        var logger = '';
 
         return function(event) {
+        	
+        	logger = 'QE Preformance log: event: ' + event;
 
             if (event.match(/showNonlinearAd/)) {
                 OO.$('#ooplayer').append('<p id=showNonlinearAd_'+willShowNonlinearAdEventOrder+'> showNonlinearAd '+willShowNonlinearAdEventOrder+'</p>');
@@ -435,6 +439,8 @@ function subscribeToEvents() {
                 OO.$("#ooplayer").append("<p id=adPodStarted_"+adPodStartedEventOrder+">"+arguments[1]+"</p>");
                 adPodStartedEventOrder++;
             }
+            
+            OO.log(logger);
         };
     }());
 }

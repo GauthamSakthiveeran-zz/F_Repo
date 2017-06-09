@@ -33,10 +33,14 @@ function subscribeToEvents() {
         var bufferingEventCount=1;
         var savePlayerSettingsFalseEventCount = 1;
         var savePlayerSettingsTrueEventCount = 1;
+        
+        var logger = "";
 
 
         return function(event) {
-
+        	
+        	logger = "QE Preformance log: event: " + event;
+        	
             if (event.match(/playing/)) {
                 OO.$("#ooplayer").append("<p id=playing_" + playingEventOrder + ">playing "+
                 playingEventOrder + "</p>");
@@ -216,6 +220,7 @@ function subscribeToEvents() {
                 OO.$('#ooplayer').append('<p id=buffering_' + bufferingEventCount + '>buffering_'+ bufferingEventCount + '</p>');
                       bufferingEventCount++;
             }
+            OO.log(logger);
         };
     }());
 }
