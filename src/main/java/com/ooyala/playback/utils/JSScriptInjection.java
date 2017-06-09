@@ -3,6 +3,7 @@ package com.ooyala.playback.utils;
 import com.ooyala.playback.httpserver.SimpleHttpServer;
 import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.playback.url.UrlObject;
+import io.netty.handler.timeout.ReadTimeoutException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -26,6 +27,10 @@ public class JSScriptInjection {
         this.extentTest = extentTest;
         this.driver = driver;
         this.urlObject = urlObject;
+    }
+
+    public JSScriptInjection(WebDriver driver){
+        this.driver = driver;
     }
 
     public void injectScript() throws Exception {
@@ -63,7 +68,7 @@ public class JSScriptInjection {
             js.executeScript("subscribeToEvents();");
     }
 
-    private void scriptToInjectJS(String scriptURL){
+    public void scriptToInjectJS(String scriptURL){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("function injectScript(url) {\n"
                 + "   var script = document.createElement ('script');\n" + "   script.src = url;\n"
