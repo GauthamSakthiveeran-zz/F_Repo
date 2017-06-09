@@ -22,7 +22,12 @@ function subscribeToCommonEvents() {
 		var savePlayerSettingsFalseEventCount = 1;
         var savePlayerSettingsTrueEventCount = 1;
         
+        var logger = '';
+        
 		return function(event) {
+			
+			logger = 'QE Preformance log: event: ' + event;
+			
 			if (event.match(/played/)) {
 				OO.$('#ooplayer').append('<p id=played_'+playedEventOrder+'>played '+playedEventOrder+'</p>'); 
 				playedEventOrder++;
@@ -140,6 +145,8 @@ function subscribeToCommonEvents() {
                 OO.$("#ooplayer").append("<p id=savePlayerSettings_on_"+savePlayerSettingsTrueEventCount+">"+savePlayerSettingsTrueEventCount+"</p>");
                 savePlayerSettingsTrueEventCount++;
             }
+            
+            OO.log(logger);
 			
 		};
 	}());
