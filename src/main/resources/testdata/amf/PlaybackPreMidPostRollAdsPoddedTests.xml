@@ -1,265 +1,280 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
+    <test name="PlaybackPreMidPostRollAdsPoddedTests">
 
-	<test name ="PlaybackPreMidPostRollAdsPoddedTests" >
-	
-    	<url>
-	    	<description name="VPAID:Main Vast VPAID2.0 PreMidPost Podded"/>
-	        <embed_code name="dzMm5iMjE6rPdV3p7yklZPdz85kWGNSj"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="VAST" adPlayTime="10"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-	        <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
+        <url>
+            <description name="VPAID:Main Vast VPAID2.0 PreMidPost Podded"/>
+            <embed_code name="dzMm5iMjE6rPdV3p7yklZPdz85kWGNSj"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN,ANALYTICS"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
 
-		<url>
-			<description name="VPAID:AdobeTVSDK Vast VPAID2.0 PreMidPost Podded"/>
-			<embed_code name="dzMm5iMjE6rPdV3p7yklZPdz85kWGNSj"/>
-			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-			<plugins name="ADOBETVSDK,MAIN"/>
-			<adPlugins name="VAST" adPlayTime="10"/>
-			<additionalPlugins name=""/>
-			<pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-		</url>
+        <url>
+            <description name="VPAID:AdobeTVSDK Vast VPAID2.0 PreMidPost Podded"/>
+            <embed_code name="dzMm5iMjE6rPdV3p7yklZPdz85kWGNSj"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="ADOBETVSDK,MAIN,ANALYTICS"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
 
-    	<!-- <url>
-	    	<description name="FreewheelPreMidPostPoddedAd_Akamai_HD"/>
-	        <embed_code name="J3bjBrdTpfYoHzD6XFfCuuyS-u5raRqa"/>
-	        <pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk"/>
-	        <plugins name="AKAMAI"/>
-	        <adPlugins name="FREEWHEEL"/>
-	        <additionalPlugins name="MAIN"/>
-	        <pbid name="fb08f383acf74dfd857b20764073fd16"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","fw_android_ad_server":"http://g1.v.fwmrm.net/","html5_player_profile":"90750:ooyala_html5","fw_android_player_profile":"90750:ooyala_android","fw_mrm_network_id":"380912"}}]]></playerParameter>
-    	</url>
-    	
-    	<url>
-	    	<description name="Google_IMA_PreMidPostPoddedAd_Akamai_HD"/>
-	        <embed_code name="plZ2NqdTqyOLb-ynaU5arPFBqk3p_F36"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="AKAMAI"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="5e813457c731460f808f62d93d7e4ff3"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-    		<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-	        <browserSupportedVersion name="safari,9"/>
-    	</url> -->
-    	
-    	<!-- <url>
-	    	<description name="VPAID:Main IMA VPAID2.0 PreMidPost Podded"/>
-	        <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
-	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-	        <plugins name="MAIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="615dc8e909e941c280e12155df838355"/>
-	        <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"},{"position":"5000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"},{"position":"100000000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"}]}}]]></playerParameter>
-    	</url> -->
-    	
-    	<url>
-	    	<description name="Freewheel:Bitmovin PreMidPost Podded"/>
-	        <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN,MAIN"/>
-	        <adPlugins name="FREEWHEEL" adPlayTime="20"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
-    	</url>
+        <!-- <url>
+            <description name="FreewheelPreMidPostPoddedAd_Akamai_HD"/>
+            <embed_code name="J3bjBrdTpfYoHzD6XFfCuuyS-u5raRqa"/>
+            <pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk"/>
+            <plugins name="AKAMAI"/>
+            <adPlugins name="FREEWHEEL"/>
+            <additionalPlugins name="MAIN"/>
+            <pbid name="fb08f383acf74dfd857b20764073fd16"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","fw_android_ad_server":"http://g1.v.fwmrm.net/","html5_player_profile":"90750:ooyala_html5","fw_android_player_profile":"90750:ooyala_android","fw_mrm_network_id":"380912"}}]]></playerParameter>
+        </url>
 
-		<url>
-			<description name="Freewheel:AdobeTVSDK PreMidPost Podded"/>
-			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
-			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-			<plugins name="ADOBETVSDK,MAIN"/>
-			<adPlugins name="FREEWHEEL" adPlayTime="20"/>
-			<additionalPlugins name=""/>
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
-		</url>
-    	
-    	<url>
-	    	<description name="VAST:Bitmovin Vast2.0 PreMidPost Podded"/>
-	        <embed_code name="liNThoMTE6sIORN8TVQ0b0Z-xzMDlCQT"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="VAST" adPlayTime="10"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
+        <url>
+            <description name="Google_IMA_PreMidPostPoddedAd_Akamai_HD"/>
+            <embed_code name="plZ2NqdTqyOLb-ynaU5arPFBqk3p_F36"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="AKAMAI"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="5e813457c731460f808f62d93d7e4ff3"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
+            <browserSupportedVersion name="safari,9"/>
+        </url> -->
 
-		<url>
-			<description name="VAST:AdobeTVSDK Vast2.0 PreMidPost Podded"/>
-			<embed_code name="liNThoMTE6sIORN8TVQ0b0Z-xzMDlCQT"/>
-			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-			<plugins name="ADOBETVSDK"/>
-			<adPlugins name="VAST" adPlayTime="10"/>
-			<additionalPlugins name=""/>
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-		</url>
+        <!-- <url>
+            <description name="VPAID:Main IMA VPAID2.0 PreMidPost Podded"/>
+            <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN,ANALYTICS"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="615dc8e909e941c280e12155df838355"/>
+            <playerParameter><![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"},{"position":"5000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"},{"position":"100000000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"}]}}]]></playerParameter>
+        </url> -->
 
-    	<url>
-	    	<description name="Freewheel:OSMF PreMidPost Podded"/>
-	        <embed_code name="ZidWVmMDE6g8lYaFhhF-O0WiDn-kteDu"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="FREEWHEEL" adPlayTime="20"/>
-	        <additionalPlugins name="DISCOVERY"/>
-	        <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
-	        <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-    		<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-	        <browserSupportedVersion name="safari,9"/>
-			<platformsSupported name="mac,windows"/>
-    	</url>
-    	
-    	<url>
-	    	<description name="VAST:OSMF Vast2.0 PreMidPost Podded"/>
-	        <embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="VAST" adPlayTime="10"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-    		<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-	        <browserSupportedVersion name="safari,9"/>
-			<platformsSupported name="mac,windows"/>
-    	</url>
-    	
-    	<url>
-	    	<description name="IMA:OSMF PreMidPost Podded"/>
-	        <embed_code name="YweGVmMDE6saN_0epjxkepYlC6m7hXe7"/>
-	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-	        <plugins name="OSMF,MAIN"/>
-	        <adPlugins name="IMA" adPlayTime="10"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-    		<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-	        <browserSupportedVersion name="safari,9"/>
-			<platformsSupported name="mac,windows"/>
-    	</url>
-    	
-    	
-    	<url>
-	    	<description name="IMA:Bitmovin PreMidPost Podded"/>
-	        <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="IMA" adPlayTime="10"/>
-	        <additionalPlugins name=""/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position_type":"r","tag_url":"http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/7521029/pb_pod_ad_unit&ciu_szs&impl=s&cmsid=949&vid=FjbGRjbzp0DV_5-NtXBVo5Rgp3Sj0R5C&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]"}]}}]]></playerParameter>
-    	</url>
+        <url>
+            <description name="Freewheel:Bitmovin PreMidPost Podded"/>
+            <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,MAIN,ANALYTICS"/>
+            <adPlugins name="FREEWHEEL" adPlayTime="20"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+        </url>
 
-		<url>
-			<description name="IMA:AdobeTVSDK PreMidPost Podded"/>
-			<embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
-			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-			<plugins name="ADOBETVSDK"/>
-			<adPlugins name="IMA" adPlayTime="10"/>
-			<additionalPlugins name=""/>
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-			<playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position_type":"r","tag_url":"http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/7521029/pb_pod_ad_unit&ciu_szs&impl=s&cmsid=949&vid=FjbGRjbzp0DV_5-NtXBVo5Rgp3Sj0R5C&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]"}]}}]]></playerParameter>
-		</url>
+        <url>
+            <description name="Freewheel:AdobeTVSDK PreMidPost Podded"/>
+            <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK,MAIN,ANALYTICS"/>
+            <adPlugins name="FREEWHEEL" adPlayTime="20"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+        </url>
 
-		<url>
-			<description name="IMA:Main PreMidPost Podded|VTC:SetEmbedCode"/>
-			<embed_code name="g4OGxjczqVk87w_P2z291ahvIR4RYrHT"/>
-			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-			<plugins name="MAIN"/>
-			<adPlugins name="IMA" adPlayTime="10"/>
-			<additionalPlugins name=""/>
-			<pbid name="615dc8e909e941c280e12155df838355"/>
-			<playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-		</url>
+        <url>
+            <description name="VAST:Bitmovin Vast2.0 PreMidPost Podded"/>
+            <embed_code name="liNThoMTE6sIORN8TVQ0b0Z-xzMDlCQT"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,ANALYTICS"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
 
-		<url>
-			<description name="VAST:Main Vast2.0 PreMidPost Podded|VTC:SetEmbedCode"/>
-			<embed_code name="hlc2x4dDpQYlsGsvnipHmaIJge2aqtaP"/>
-			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-			<plugins name="MAIN"/>
-			<adPlugins name="VAST" adPlayTime="20"/>
-			<additionalPlugins name=""/>
-			<pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-		</url>
-		
-		<url>
-			<description name="VAST:Bitmovin Vast2.0 DASH remote Asset"/>
-			<embed_code name="tpbW1hMjE68h369O766N8QsKPdtp-6MI"/>
-			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-			<plugins name="BITMOVIN"/>
-			<adPlugins name="VAST"/>
-			<additionalPlugins name=""/>
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-		</url>
+        <url>
+            <description name="VAST:AdobeTVSDK Vast2.0 PreMidPost Podded"/>
+            <embed_code name="liNThoMTE6sIORN8TVQ0b0Z-xzMDlCQT"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
 
-		<url>
-			<description name="Freewheel:Main PreMidPost Podded|VTC:SetEmbedCode"/>
-			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
-			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-			<plugins name="MAIN"/>
-			<adPlugins name="FREEWHEEL" adPlayTime="20"/>
-			<additionalPlugins name=""/>
-			<pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
-			<playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
-		</url>
-		
-		<url>
-			<description name="VAST:Bitmovin Vast3.0 PreMidPost Podded"/>
-			<embed_code name="R5NDh2YTE6qFcIIZLF6Rm9B-arQZCDC-"/>
-			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-			<plugins name="BITMOVIN,MAIN"/>
-			<adPlugins name="VAST" adPlayTime="10"/>
-			<additionalPlugins name=""/>
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-			<sslEnabled name="https" browser="chrome"/>    
-		</url>
-		
-		<url>
-			<description name="VAST:OSMF Vast3.0 PreMidPost Podded" />
-			<embed_code name="1ydThxYTE6n46pRMcmJSVyIk8flVZ089" />
-			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-			<plugins name="OSMF,MAIN" />
-			<adPlugins name="VAST" adPlayTime="10"/>
-			<additionalPlugins name="" />
-			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
-			<browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge" />
-			<browserSupportedVersion name="safari,9" />
-			<platformsSupported name="mac,windows"/>
-		</url>
-		
-		<url>
-			<description name="VAST:Main Vast3.0 PreMidPost Podded"/>
-			<embed_code name="RkNTlxYTE60SHafDcCpBRdTBGNIt6Oj9"/>
-			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-			<plugins name="MAIN"/>
-			<adPlugins name="VAST" adPlayTime="10"/>
-			<additionalPlugins name=""/>
-			<pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-		</url>
+        <url>
+            <description name="Freewheel:OSMF PreMidPost Podded"/>
+            <embed_code name="ZidWVmMDE6g8lYaFhhF-O0WiDn-kteDu"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <adPlugins name="FREEWHEEL" adPlayTime="20"/>
+            <additionalPlugins name="DISCOVERY"/>
+            <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
+            <playerParameter>
+                <![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge"/>
+            <browserSupportedVersion name="safari,9"/>
+            <platformsSupported name="mac,windows"/>
+        </url>
 
-		<url>
-			<description name="VAST:AdobeTVSDK Vast3.0 PreMidPost Podded"/>
-			<embed_code name="RkNTlxYTE60SHafDcCpBRdTBGNIt6Oj9"/>
-			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-			<plugins name="ADOBETVSDK,MAIN"/>
-			<adPlugins name="VAST" adPlayTime="10"/>
-			<additionalPlugins name=""/>
-			<pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-			<playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-		</url>
+        <url>
+            <description name="VAST:OSMF Vast2.0 PreMidPost Podded"/>
+            <embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge"/>
+            <browserSupportedVersion name="safari,9"/>
+            <platformsSupported name="mac,windows"/>
+        </url>
 
-	</test>
+        <url>
+            <description name="IMA:OSMF PreMidPost Podded"/>
+            <embed_code name="YweGVmMDE6saN_0epjxkepYlC6m7hXe7"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <adPlugins name="IMA" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge"/>
+            <browserSupportedVersion name="safari,9"/>
+            <platformsSupported name="mac,windows"/>
+        </url>
+
+
+        <url>
+            <description name="IMA:Bitmovin PreMidPost Podded"/>
+            <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,ANALYTICS"/>
+            <adPlugins name="IMA" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position_type":"r","tag_url":"http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/7521029/pb_pod_ad_unit&ciu_szs&impl=s&cmsid=949&vid=FjbGRjbzp0DV_5-NtXBVo5Rgp3Sj0R5C&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]"}]}}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="IMA:AdobeTVSDK PreMidPost Podded"/>
+            <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <adPlugins name="IMA" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position_type":"r","tag_url":"http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/7521029/pb_pod_ad_unit&ciu_szs&impl=s&cmsid=949&vid=FjbGRjbzp0DV_5-NtXBVo5Rgp3Sj0R5C&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]"}]}}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="IMA:Main PreMidPost Podded|VTC:SetEmbedCode"/>
+            <embed_code name="g4OGxjczqVk87w_P2z291ahvIR4RYrHT"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN,ANALYTICS"/>
+            <adPlugins name="IMA" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="615dc8e909e941c280e12155df838355"/>
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VAST:Main Vast2.0 PreMidPost Podded|VTC:SetEmbedCode"/>
+            <embed_code name="hlc2x4dDpQYlsGsvnipHmaIJge2aqtaP"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN,ANALYTICS"/>
+            <adPlugins name="VAST" adPlayTime="20"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VAST:Bitmovin Vast2.0 DASH remote Asset"/>
+            <embed_code name="tpbW1hMjE68h369O766N8QsKPdtp-6MI"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,ANALYTICS"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Freewheel:Main PreMidPost Podded|VTC:SetEmbedCode"/>
+            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN,ANALYTICS"/>
+            <adPlugins name="FREEWHEEL" adPlayTime="20"/>
+            <additionalPlugins name=""/>
+            <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
+            <playerParameter>
+                <![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VAST:Bitmovin Vast3.0 PreMidPost Podded"/>
+            <embed_code name="R5NDh2YTE6qFcIIZLF6Rm9B-arQZCDC-"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,MAIN,ANALYTICS"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
+        </url>
+
+        <url>
+            <description name="VAST:OSMF Vast3.0 PreMidPost Podded"/>
+            <embed_code name="1ydThxYTE6n46pRMcmJSVyIk8flVZ089"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge"/>
+            <browserSupportedVersion name="safari,9"/>
+            <platformsSupported name="mac,windows"/>
+        </url>
+
+        <url>
+            <description name="VAST:Main Vast3.0 PreMidPost Podded"/>
+            <embed_code name="RkNTlxYTE60SHafDcCpBRdTBGNIt6Oj9"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN,ANALYTICS"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter>
+                <![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VAST:AdobeTVSDK Vast3.0 PreMidPost Podded"/>
+            <embed_code name="RkNTlxYTE60SHafDcCpBRdTBGNIt6Oj9"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="ADOBETVSDK,MAIN,ANALYTICS"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter>
+                <![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+    </test>
 </testdata>
