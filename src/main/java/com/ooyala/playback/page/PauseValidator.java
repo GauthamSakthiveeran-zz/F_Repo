@@ -1,5 +1,7 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.playback.url.UrlObject;
+import com.ooyala.playback.utils.GetUrlObject;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -48,10 +50,19 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 				}
 			}
 		}
+
 		if (!waitOnElement(By.id(element), timeout)){
 			extentTest.log(LogStatus.FAIL, element + " not found.");
 			return false;
 		}
+
+        if (UrlObject.getUrlObject().getVideoPlugins().contains("ANALYTICS")){
+            if(!(isAnalyticsElementPreset("analytics_video_"+element)
+                    &&isAnalyticsElementPreset("analytics_video_requested_"+element))){
+                return false;
+            }
+        }
+
 		return new PlayBackFactory(driver, extentTest).getScrubberValidator().validate("", 1000);
 	}
 }
