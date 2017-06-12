@@ -35,9 +35,6 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-			if (url.getVideoPlugins().contains("ANALYTICS"))
-				analyticsValidator.getConsoleLogForAnalytics();
-
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
@@ -49,9 +46,6 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("played_1", 20000);
 
 			result = result && replayValidator.validate("replay_1", 30000);
-
-			if (url.getVideoPlugins().contains("ANALYTICS"))
-				result = result && analyticsValidator.validate("analytics_video_replay_requested_1", 5000);
 
         } catch (Exception e) {
             logger.error(e.getMessage());

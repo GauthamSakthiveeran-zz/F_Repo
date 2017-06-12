@@ -12,7 +12,6 @@ import java.util.Map;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
-import com.ooyala.playback.utils.GetUrlObject;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;

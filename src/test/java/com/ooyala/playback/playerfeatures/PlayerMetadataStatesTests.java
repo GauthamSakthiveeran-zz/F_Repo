@@ -39,9 +39,6 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 
 			result = result && startScreenValidator.validateMetadata(url);
 
-			if (url.getVideoPlugins().contains("ANALYTICS"))
-				analyticsValidator.getConsoleLogForAnalytics();
-
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
@@ -69,16 +66,6 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 			result = result && eventValidator.validatePlaybackReadyEvent(2000);
 
 			result = result && eventValidator.validate("buffering_1", 1000);
-
-			if (url.getVideoPlugins().contains("ANALYTICS")) {
-				result = result && analyticsValidator.validate("analytics_video_playing_1", 5000);
-				result = result && analyticsValidator.validate("analytics_video_paused_1", 5000);
-				result = result && analyticsValidator.validate("analytics_video_playing_2", 5000);
-				result = result && analyticsValidator.validate("analytics_video_seek_requested_1", 5000);
-				result = result && analyticsValidator.validate("analytics_video_seek_completed_1", 5000);
-				result = result && analyticsValidator.validate("analytics_fullscreen_changed_1", 5000);
-				result = result && analyticsValidator.validate("analytics_playback_completed_1", 5000);
-			}
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());

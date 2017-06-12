@@ -73,9 +73,6 @@ public class BasicPlaybackTests extends PlaybackWebTest {
                 result = result && eventValidator.validate("played_1", 120000);
             }
 
-            if (url.getVideoPlugins().contains("ANALYTICS"))
-                result = result && analyticsValidator.validate("analytics_stream_type_updated_1", 5000);
-
         } catch (Exception e) {
             logger.error("Exception while checking basic playback " + e.getMessage());
             extentTest.log(LogStatus.FAIL, e);
