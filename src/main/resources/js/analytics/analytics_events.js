@@ -18,11 +18,11 @@
         if(arguments[0].includes('Analytics Template: PluginID')){
             var s = arguments[0];
             if(s.includes('video_pause_requested')){
-                OO.$("#ooplayer").append("<p id=analytics_video_pause_requested_"+videoPausedReq+">" + arguments[0] + "</p>");
+                OO.$("#ooplayer").append("<p id=analytics_video_requested_paused_"+videoPausedReq+">" + arguments[0] + "</p>");
                 videoPaused;
             }
             if(s.includes('video_play_requested')){
-                OO.$("#ooplayer").append("<p id=analytics_video_play_requested_"+videoPlayReq+">" + arguments[0] + "</p>");
+                OO.$("#ooplayer").append("<p id=analytics_video_requested_playing_"+videoPlayReq+">" + arguments[0] + "</p>");
                 videoPlayReq++;
             }
             if(s.includes('video_paused')){
@@ -42,11 +42,11 @@
                 streamTypeUpdated++;
             }
             if(s.includes('video_seek_requested')){
-                OO.$("#ooplayer").append("<p id=analytics_video_seek_requested_"+videoSeekReq+">" + arguments[0] + "</p>");
+                OO.$("#ooplayer").append("<p id=analytics_video_requested_seeked_"+videoSeekReq+">" + arguments[0] + "</p>");
                 videoSeekReq++;
             }
             if(s.includes('video_seek_completed')){
-                OO.$("#ooplayer").append("<p id=analytics_video_seek_completed_"+videoSeekCompleted+">" + arguments[0] + "</p>");
+                OO.$("#ooplayer").append("<p id=analytics_video_seeked_"+videoSeekCompleted+">" + arguments[0] + "</p>");
                 videoSeekCompleted++;
             }
             if(s.includes('ad_break_started')){
