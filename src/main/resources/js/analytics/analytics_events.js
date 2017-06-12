@@ -39,7 +39,7 @@
                 videoPlaying++;
             }
             if(s.includes('video_replay_requested')){
-                OO.$("#ooplayer").append("<p id=analytics_video_replay_requested_"+videoReplayReq+">" + arguments[0] + "</p>");
+                OO.$("#ooplayer").append("<p id=analytics_video_requested_replay_"+videoReplayReq+">" + arguments[0] + "</p>");
                 videoReplayReq++;
             }
             if(s.includes('stream_type_updated')){
