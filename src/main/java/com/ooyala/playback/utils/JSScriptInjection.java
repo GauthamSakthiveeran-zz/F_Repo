@@ -36,10 +36,13 @@ public class JSScriptInjection {
     public void injectScript() throws Exception {
         if (urlObject.getVideoPlugins().contains("ANALYTICS")){
             InetAddress inetAdd = InetAddress.getLocalHost();
-            String url = "http://" + inetAdd.getHostAddress() + ":"
-                    + SimpleHttpServer.portNumber + "/js?fileName=analytics/AnalyticsQEPlugin.js";
-            logger.info("JS - "+url);
-            scriptToInjectJS(url);
+            String hostUrl[] = {"AnalyticsQEPlugin.js","analytics_events.js"};
+            for(int i=0;i<hostUrl.length;i++) {
+                String url = "http://" + inetAdd.getHostAddress() + ":"
+                        + SimpleHttpServer.portNumber + "/js?fileName=analytics/"+hostUrl[i]+"";
+                logger.info("JS - " + url);
+                scriptToInjectJS(url);
+            }
         }
         if (jsUrl != null && jsUrl.length > 0) {
             for (String url : jsUrl) {
