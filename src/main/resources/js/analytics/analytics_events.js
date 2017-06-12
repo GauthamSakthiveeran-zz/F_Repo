@@ -1,3 +1,4 @@
+
 (function() {var oldf = console.log;
     var videoPlaying=1;
     var videoPausedReq=1;
@@ -13,6 +14,10 @@
     var adPodStarted=1;
     var adStarted=1;
     var adEnded=1;
+    var fullscreenChanged=1;
+    var playbackCompleted=1;
+    var volumeChanged=1;
+
     console.log = function() {
         oldf.apply(console, arguments);
         if(arguments[0].includes('Analytics Template: PluginID')){
@@ -68,6 +73,18 @@
             if(s.includes('ad_ended')){
                 OO.$("#ooplayer").append("<p id=analytics_ad_ended_"+adEnded+">" + arguments[0] + "</p>");
                 adEnded++;
+            }
+            if(s.includes('fullscreen_changed')){
+                OO.$("#ooplayer").append("<p id=analytics_fullscreen_changed_"+fullscreenChanged+">" + arguments[0] + "</p>");
+                fullscreenChanged++;
+            }
+            if(s.includes('playback_completed')){
+                OO.$("#ooplayer").append("<p id=analytics_playback_completed_"+playbackCompleted+">" + arguments[0] + "</p>");
+                playbackCompleted++;
+            }
+            if(s.includes('volume_changed')){
+                OO.$("#ooplayer").append("<p id=analytics_volume_changed_"+volumeChanged+">" + arguments[0] + "</p>");
+                volumeChanged++;
             }
         }
     }

@@ -20,6 +20,7 @@ public class PlayerMetadataStatesTests extends PlaybackWebTest {
 	private PauseValidator pause;
 	private EndScreenValidator endScreenValidator;
 	private StartScreenValidator startScreenValidator;
+	private AnalyticsValidator analyticsValidator;
 
 	public PlayerMetadataStatesTests() throws OoyalaException {
 		super();

@@ -1,14 +1,11 @@
 package com.ooyala.playback.playerfeatures;
 
+import com.ooyala.playback.page.*;
 import com.relevantcodes.extentreports.LogStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.FullScreenValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -23,6 +20,7 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 	private EventValidator eventValidator;
 	private FullScreenValidator fullScreenValidator;
 	private PlayAction playAction;
+	private AnalyticsValidator analyticsValidator;
 
 	public PlaybackFullScreenTests() throws OoyalaException {
 		super();
@@ -39,6 +37,9 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
+			if (url.getVideoPlugins().contains("ANALYTICS"))
+				analyticsValidator.getConsoleLogForAnalytics();
+
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
@@ -52,6 +53,9 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 			result = result && seek.validate("seeked_1", 60000);
 
 			result = result && eventValidator.validate("played_1", 60000);
+
+			if (url.getVideoPlugins().contains("ANALYTICS"))
+				result = result && analyticsValidator.validate("analytics_fullscreen_changed_1", 5000);
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());

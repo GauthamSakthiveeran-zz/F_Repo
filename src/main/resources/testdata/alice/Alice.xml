@@ -66,7 +66,7 @@
             <description name="Core:4 as 3 Aspect Ratio main"/>
             <embed_code name="FwaXZjcjrkydIftLal2cq9ymQMuvjvD8"/>
             <pcode name="c0cTkxOqALQviQIGAHWY5hP0q9gU"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="378512f55dd44fc287d0fa609353c268"/>
@@ -80,7 +80,7 @@
             <description name="Core:Check Autoplay"/>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
             <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
@@ -95,7 +95,7 @@
             <description name="Core:Closed Caption Main"/>
             <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -105,7 +105,7 @@
             <description name="Core:Closed Caption Bitmovin"/>
             <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -116,7 +116,7 @@
             <description name="Core:Closed Caption OSMF"/>
             <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,ANALYTICS"/>
+            <plugins name="OSMF"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
@@ -131,7 +131,7 @@
             <description name="Core:Discovery "/>
             <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
@@ -170,7 +170,7 @@
             <description name="Core:Localization Main"/>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -180,7 +180,7 @@
             <description name="Core:Localization Bitmovin"/>
             <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -191,7 +191,7 @@
             <description name="Core:Localization OSMF"/>
             <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf"/>
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
-            <plugins name="OSMF,ANALYTICS"/>
+            <plugins name="OSMF"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -202,7 +202,7 @@
             <description name="Core:Localization ADOBETVSDK"/>
             <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf"/>
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -265,7 +265,7 @@
             <description name="Core:Vertical Video Aspect Ration 16 as 9"/>
             <embed_code name="xnNncyYTE62vx3rHnwJwUtBbeBt4Y2pw"/>
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="378512f55dd44fc287d0fa609353c268"/>
@@ -275,7 +275,7 @@
             <description name="Core:Vertical Video Bitmovin"/>
             <embed_code name="xnNncyYTE62vx3rHnwJwUtBbeBt4Y2pw"/>
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="26e2e3c1049c4e70ae08a242638b5c40"/>
@@ -285,7 +285,7 @@
             <description name="Core:Vertical Video ADOBETVSDK"/>
             <embed_code name="9od3M3MDE6-WRg_DRbpCzRyjtK-NTLMp"/>
             <pcode name="p5bGExOjp6PZ-dEUw_GRJqh2Qdaq"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="26e2e3c1049c4e70ae08a242638b5c40"/>
@@ -326,7 +326,7 @@
             <description name="Core:setTargetbitrate OSMF"/>
             <embed_code name="E2aHd3MTE6Yr3iJRbXWUDe_0g2H0flmU"/>
             <pcode name="5zb2wxOlZcNCe_HVT3a6cawW298X"/>
-            <plugins name="OSMF"/>
+            <plugins name="OSMF,"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="NzMyN2E4MzA4Y2ZiMzYwNjhiYzgzYzQ4"/>
@@ -353,7 +353,7 @@
             <description name="Core:Thumbnail Based Seeking Main"/>
             <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF"/>
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="9c7271095c6b49fcbe09025af1d66f53"/>
@@ -364,7 +364,7 @@
             <description name="Core:Thumbnail Based Seeking OSMF"/>
             <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf"/>
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
-            <plugins name="OSMF,ANALYTICS"/>
+            <plugins name="OSMF"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -376,7 +376,7 @@
             <description name="Core:Thumbnail Based Seeking Bitmovin"/>
             <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF"/>
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="9c7271095c6b49fcbe09025af1d66f53"/>
@@ -387,7 +387,7 @@
             <description name="Core:Thumbnail Based Seeking ADOBETVSDK"/>
             <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF"/>
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="9c7271095c6b49fcbe09025af1d66f53"/>
@@ -475,7 +475,7 @@
                     name="Core:Verify Facebook Share via Social Share Screen Bitmovin|Core:Verify Twitter  Share via Social Share Screen Bitmovin"/>
             <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -487,7 +487,7 @@
                     name="Core:Verify Facebook Share via Social Share Screen Main|Core:Verify Twitter  Share via Social Share Screen Main"/>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -499,7 +499,7 @@
                     name="Core:Verify Facebook Share via Social Share Screen OSMF|Core:Verify Twitter  Share via Social Share Screen OSMF"/>
             <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf"/>
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
-            <plugins name="OSMF,ANALYTICS"/>
+            <plugins name="OSMF"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>

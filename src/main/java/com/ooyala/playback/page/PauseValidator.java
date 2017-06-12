@@ -1,7 +1,6 @@
 package com.ooyala.playback.page;
 
 import com.ooyala.playback.url.UrlObject;
-import com.ooyala.playback.utils.GetUrlObject;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

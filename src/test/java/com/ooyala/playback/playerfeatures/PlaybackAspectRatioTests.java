@@ -3,7 +3,6 @@ package com.ooyala.playback.playerfeatures;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.AspectRatioValidator;
 import com.ooyala.playback.page.EventValidator;
@@ -14,7 +13,6 @@ import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-
 
 /**
  * Created by soundarya on 11/16/16.
@@ -61,14 +59,11 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("played_1", 60000);
 
-
 		} catch (Exception e) {
-			logger.error(e);
+			logger.error(e.getMessage());
 			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "Aspect ratio tests failed");
-
 	}
-
 }
