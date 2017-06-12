@@ -226,10 +226,13 @@ public class TestCaseSheet {
 					testResult = TestResult.UNKOWN;
 					continue;
 				}
-				
+
 				testCaseName = testCaseName.trim();
 
 				TestCaseData testCaseData = null;
+
+				String resultColumnTitle = platform + "\n" + browser + " " + browserVersion + "\n"
+						+ getV4Version(v4Version) + "\n" + date;
 
 				if (!sheetNameList.containsKey(sheetName)) {
 
@@ -242,10 +245,8 @@ public class TestCaseSheet {
 
 						List<List<Object>> values = response.getValues();
 
-						String resultColumnTitle = platform + "\n" + browser + " " + browserVersion + "\n"
-								+ getV4Version(v4Version) + "\n" + date;
-
 						testCaseData = parseData(service, spreadsheetId, values, resultColumnTitle, sheetId);
+						testCaseData.setValues(values);
 
 						requests = new ArrayList<>();
 
@@ -323,6 +324,10 @@ public class TestCaseSheet {
 				if (testCaseData != null && testCaseData.getTestCaseMap().get(testCaseName) != null) {
 
 					int rowNumber = testCaseData.getTestCaseMap().get(testCaseName);
+					int columnToUpdate = getColumnToUpdate(testCaseData.getValues(), resultColumnTitle,
+							testCaseData.getHeaderRowNumber(), testCaseData.getLastColumnForTestCase());
+					if(columnToUpdate<=0)
+						columnToUpdate = testCaseData.getHeaderColumnNumber();
 
 					List<CellData> cellData = new ArrayList<>();
 					cellData.add(new CellData()
@@ -330,7 +335,7 @@ public class TestCaseSheet {
 							.setUserEnteredFormat(new CellFormat().setBackgroundColor(testResult.getColor())));
 					requests.add(new Request().setUpdateCells(new UpdateCellsRequest()
 							.setStart(new GridCoordinate().setSheetId(testCaseData.getSheetId()).setRowIndex(rowNumber)
-									.setColumnIndex(testCaseData.getHeaderColumnNumber()))
+									.setColumnIndex(columnToUpdate))
 							.setRows(Arrays.asList(new RowData().setValues(cellData)))
 							.setFields("userEnteredValue,userEnteredFormat.backgroundColor")));
 
@@ -392,6 +397,24 @@ public class TestCaseSheet {
 		return v4Version;
 	}
 
+	private static int getColumnToUpdate(List<List<Object>> values, String text, int currentRow, int testCaseColumn) {
+
+		logger.info("Check for column : " + text);
+
+		List<Object> row = values.get(currentRow);
+		if (row != null) {
+			for (int i = testCaseColumn; i < row.size(); i++) {
+				logger.info(row.get(i).toString());
+				if (row.get(i).toString().toLowerCase().contains(text.toLowerCase())) {
+					logger.info(text + " at " + i);
+					return i;
+				}
+			}
+		}
+		logger.error("No column found for " + text);
+		return 0;
+	}
+
 	private static TestCaseData parseData(Sheets service, String spreadsheetId, List<List<Object>> values,
 			String resultColumnTitle, int sheetId) throws IOException {
 
@@ -428,6 +451,7 @@ public class TestCaseSheet {
 						if (row.get(i).toString().toLowerCase()
 								.contains(TestCaseSheetProperties.lastColumnForTestCase.toLowerCase())) {
 							lastColumnForTestCase = i + 2;
+							testCaseData.setLastColumnForTestCase(lastColumnForTestCase);
 						}
 						if (row.get(i).toString().toLowerCase().contains(resultColumnTitle.toLowerCase())) {
 							testCaseData.setHeaderColumnNumber(i);
