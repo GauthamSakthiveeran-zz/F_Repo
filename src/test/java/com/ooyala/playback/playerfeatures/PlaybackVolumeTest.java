@@ -1,15 +1,11 @@
 package com.ooyala.playback.playerfeatures;
 
+import com.ooyala.playback.page.*;
 import com.relevantcodes.extentreports.LogStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.IsAdPlayingValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -25,6 +21,7 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 	private EventValidator eventValidator;
 	private VolumeValidator volumeValidator;
 	private IsAdPlayingValidator isAdPlayingValidator;
+	private AnalyticsValidator analyticsValidator;
 
 	public PlaybackVolumeTest() throws OoyalaException {
 		super();
@@ -39,6 +36,9 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
+
+			if (url.getVideoPlugins().contains("ANALYTICS"))
+				analyticsValidator.getConsoleLogForAnalytics();
 
 			injectScript();
 
@@ -62,6 +62,9 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 			result = result && seek.validate("seeked_1", 60000);
 
 			result = result && eventValidator.validate("played_1", 60000);
+
+			if (url.getVideoPlugins().contains("ANALYTICS"))
+				result = result && analyticsValidator.validate("analytics_volume_changed_1", 5000);
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());
