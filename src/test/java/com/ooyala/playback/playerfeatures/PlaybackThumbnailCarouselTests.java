@@ -54,13 +54,14 @@ public class PlaybackThumbnailCarouselTests extends PlaybackWebTest {
             result = result && eventValidator.validate("played_1", 60000);
 
         } catch (InterruptedException e) {
+            logger.error(e.getMessage());
             extentTest.log(LogStatus.FAIL,"Thread interruption for wait method");
             result = false;
         } catch (Exception ex){
+            logger.error(ex.getMessage());
         	extentTest.log(LogStatus.FAIL,"**** Failed ***** : Thumbnail Carousel is failing");
             result = false;
         }
-
         Assert.assertTrue(result, "Thumbnail Carousel test failed");
     }
 }

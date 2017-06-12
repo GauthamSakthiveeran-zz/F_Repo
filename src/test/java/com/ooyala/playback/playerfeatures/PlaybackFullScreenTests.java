@@ -37,9 +37,6 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 
 			result = result && play.waitForPage();
 
-			if (url.getVideoPlugins().contains("ANALYTICS"))
-				analyticsValidator.getConsoleLogForAnalytics();
-
 			injectScript();
 
 			result = result && play.validate("playing_1", 60000);
@@ -53,9 +50,6 @@ public class PlaybackFullScreenTests extends PlaybackWebTest {
 			result = result && seek.validate("seeked_1", 60000);
 
 			result = result && eventValidator.validate("played_1", 60000);
-
-			if (url.getVideoPlugins().contains("ANALYTICS"))
-				result = result && analyticsValidator.validate("analytics_fullscreen_changed_1", 5000);
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());

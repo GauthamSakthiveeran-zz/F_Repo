@@ -57,13 +57,12 @@ public class PlaybackBitrateTests extends PlaybackWebTest {
 
             result = result && eventValidator.validate("videoPlayed_1", 60000);
 
-        } catch (Exception e){
+        } catch (Exception e) {
             logger.error(e.getMessage());
             extentTest.log(LogStatus.FAIL, e.getMessage());
             result = false;
-
         }
-        Assert.assertTrue(result, "Playback bitrate/Quality tests failed"+testName);
+        Assert.assertTrue(result, "Playback bitrate/Quality tests failed" + testName);
 
     }
 
