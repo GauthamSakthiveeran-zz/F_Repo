@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
+import com.ooyala.playback.utils.GetUrlObject;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
@@ -114,6 +115,7 @@ public abstract class PlaybackWebTest extends FacileTest {
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
+        new UrlObject(urlObject);
     }
 
     public void getJSFile(String jsFile) throws Exception {
@@ -438,5 +440,4 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected String getUserAgent() {
         return (String) ((JavascriptExecutor) driver).executeScript("return navigator.userAgent;");
     }
-
 }

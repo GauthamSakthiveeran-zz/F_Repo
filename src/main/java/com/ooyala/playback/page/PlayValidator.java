@@ -1,5 +1,7 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.playback.url.UrlObject;
+import com.ooyala.playback.utils.GetUrlObject;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -103,6 +105,13 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
         if (!getBrowser().equalsIgnoreCase("internet explorer")) {
             if (!waitOnElement(By.id(element), timeout))
                 return false;
+        }
+
+        if (UrlObject.getUrlObject().getVideoPlugins().contains("ANALYTICS")){
+            if(!(isAnalyticsElementPreset("analytics_video_"+element)
+                    && isAnalyticsElementPreset("analytics_video_requested_"+element))){
+                return false;
+            }
         }
 
         extentTest.log(LogStatus.PASS, "Video Playing and validation of element " + element + " is successful");
