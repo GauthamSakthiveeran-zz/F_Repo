@@ -40,9 +40,6 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
             result = result && play.waitForPage();
 
-            if (url.getVideoPlugins().contains("ANALYTICS"))
-                analyticsValidator.getConsoleLogForAnalytics();
-
             injectScript();
 
             result = result && play.validate("playing_1", 60000);
