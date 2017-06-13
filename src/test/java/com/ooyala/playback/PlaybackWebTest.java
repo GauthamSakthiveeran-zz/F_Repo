@@ -114,7 +114,6 @@ public abstract class PlaybackWebTest extends FacileTest {
         } catch (Exception e) {
             logger.error(e.getMessage());
         }
-        new UrlObject(urlObject);
     }
 
     public void getJSFile(String jsFile) throws Exception {
