@@ -2,6 +2,7 @@ package com.ooyala.playback.page;
 
 import static java.lang.Integer.parseInt;
 
+import com.ooyala.playback.url.UrlObject;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -38,8 +39,31 @@ public class PoddedAdValidator extends PlayBackPage implements PlaybackValidator
 
 			for (int i = 1 + counter; i <= result; i++) {
 				boolean willPlaySingleAd = waitOnElement(By.id(position + "_willPlaySingleAd_" + i), 10000);
+				if (UrlObject.getUrlObject().getVideoPlugins().contains("ANALYTICS")){
+                    // As analytics_ad_break_started_1 event gets triggered only once
+				    if (i == 1){
+				        if (!isAnalyticsElementPreset("analytics_ad_break_started_"+i)){
+				            return false;
+                        }
+                    }
+					if (!isAnalyticsElementPreset("analytics_ad_started_"+i)){
+					    return false;
+                    }
+				}
 
 				boolean singleAdPlayed = waitOnElement(By.id("singleAdPlayed_" + i), 16000);
+
+                if (UrlObject.getUrlObject().getVideoPlugins().contains("ANALYTICS")){
+                    // As analytics_ad_break_ended_1 event gets triggered only once
+                    if (i == 1){
+                        if (!isAnalyticsElementPreset("analytics_ad_break_ended_"+i)){
+                            return false;
+                        }
+                    }
+                    if (!isAnalyticsElementPreset("analytics_ad_ended_"+i)){
+                        return false;
+                    }
+                }
 
 				if (!(willPlaySingleAd && singleAdPlayed)) {
 					extentTest.log(LogStatus.FAIL, "Ad started elements from injected scripts are not found");
