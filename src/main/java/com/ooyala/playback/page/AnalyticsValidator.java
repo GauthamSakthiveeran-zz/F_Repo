@@ -35,13 +35,4 @@ public class AnalyticsValidator extends PlayBackPage implements PlaybackValidato
         logger.error("Event verified :" + element);
         return true;
     }
-
-    public void getConsoleLogForAnalytics() throws UnknownHostException {
-        JSScriptInjection js = new JSScriptInjection(driver);
-        InetAddress inetAdd = InetAddress.getLocalHost();
-        String url = "http://" + inetAdd.getHostAddress() + ":"
-                + SimpleHttpServer.portNumber + "/js?fileName=analytics/analytics_events.js";
-        logger.info("JS - " + url);
-        js.scriptToInjectJS(url);
-    }
 }
