@@ -20,17 +20,6 @@ public class UrlObject {
 	private String overlayPlayTime;
 	private String adPlugins;
 	private String additionalPlugins;
-	private static UrlObject urlObject;
-
-	public static UrlObject getUrlObject() {
-		return urlObject;
-	}
-
-	public UrlObject(){};
-
-	public UrlObject(UrlObject urlObject){
-	    this.urlObject = urlObject;
-    }
 
 	public String getPlayerParameter() {return playerParameter;}
 
