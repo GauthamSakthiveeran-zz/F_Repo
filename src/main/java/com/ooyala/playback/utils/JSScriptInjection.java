@@ -1,17 +1,14 @@
 package com.ooyala.playback.utils;
 
 import com.ooyala.playback.httpserver.SimpleHttpServer;
-import com.ooyala.playback.url.UrlGenerator;
 import com.ooyala.playback.url.UrlObject;
-import io.netty.handler.timeout.ReadTimeoutException;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class JSScriptInjection {
 
@@ -35,14 +32,8 @@ public class JSScriptInjection {
 
     public void injectScript() throws Exception {
         if (urlObject.getVideoPlugins().contains("ANALYTICS")){
-            InetAddress inetAdd = InetAddress.getLocalHost();
-            String hostUrl[] = {"AnalyticsQEPlugin.js","analytics_events.js"};
-            for(int i=0;i<hostUrl.length;i++) {
-                String url = "http://" + inetAdd.getHostAddress() + ":"
-                        + SimpleHttpServer.portNumber + "/js?fileName=analytics/"+hostUrl[i]+"";
-                logger.info("JS - " + url);
-                scriptToInjectJS(url);
-            }
+            String hostUrl = getJsUrl("analytics/analytics_events.js");
+            scriptToInjectJS(hostUrl);
         }
         if (jsUrl != null && jsUrl.length > 0) {
             for (String url : jsUrl) {
@@ -77,5 +68,13 @@ public class JSScriptInjection {
                 + "   var script = document.createElement ('script');\n" + "   script.src = url;\n"
                 + "   var head = document.getElementsByTagName( 'head')[0];\n" + "   head.appendChild(script);\n"
                 + "}\n" + "\n" + "var scriptURL = arguments[0];\n" + "injectScript(scriptURL);", scriptURL);
+    }
+
+    public String getJsUrl(String jsName) throws UnknownHostException {
+        InetAddress inetAdd = InetAddress.getLocalHost();
+        String hostUrl = "http://" + inetAdd.getHostAddress() + ":"
+                + SimpleHttpServer.portNumber + "/js?fileName="+jsName+"";
+        logger.info("JS - " + hostUrl);
+        return hostUrl;
     }
 }
