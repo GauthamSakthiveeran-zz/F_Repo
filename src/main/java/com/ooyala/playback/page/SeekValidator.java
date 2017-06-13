@@ -24,6 +24,8 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 
+        EventValidator event = new PlayBackFactory(driver,extentTest).getEventValidator();
+
 		(new PlayBackFactory(driver, extentTest)).getSeekAction().seekTillEnd().startAction();
 		
 		if (!loadingSpinner()){
@@ -31,9 +33,9 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 			return false;
 		}
 
-        if (UrlObject.getUrlObject().getVideoPlugins().contains("ANALYTICS")){
-            if (!(isAnalyticsElementPreset("analytics_video_"+element)
-                    && isAnalyticsElementPreset("analytics_video_requested_"+element))){
+        if (isVideoPluginPresent("ANALYTICS")){
+            if (!(event.validate("analytics_video_"+element,10000)
+                    && event.validate("analytics_video_requested_"+element,10000))){
                 return false;
             }
         }

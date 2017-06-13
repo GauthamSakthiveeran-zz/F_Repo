@@ -2,6 +2,7 @@ package com.ooyala.playback.page;
 
 import static java.lang.Integer.parseInt;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.url.UrlObject;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -28,6 +29,9 @@ public class PoddedAdValidator extends PlayBackPage implements PlaybackValidator
 	private int counter = 0;
 
 	public boolean validate(String element, int timeout) throws Exception {
+
+        EventValidator event = new PlayBackFactory(driver,extentTest).getEventValidator();
+
 		try {
 			if (!waitOnElement(By.id(element), timeout)) {
 				extentTest.log(LogStatus.FAIL, element + " not found after " + timeout + " ms");
@@ -39,28 +43,28 @@ public class PoddedAdValidator extends PlayBackPage implements PlaybackValidator
 
 			for (int i = 1 + counter; i <= result; i++) {
 				boolean willPlaySingleAd = waitOnElement(By.id(position + "_willPlaySingleAd_" + i), 10000);
-				if (UrlObject.getUrlObject().getVideoPlugins().contains("ANALYTICS")){
+				if (isVideoPluginPresent("ANALYTICS")){
                     // As analytics_ad_break_started_1 event gets triggered only once
 				    if (i == 1){
-				        if (!isAnalyticsElementPreset("analytics_ad_break_started_"+i)){
+				        if (!event.validate("analytics_ad_break_started_"+i,10000)){
 				            return false;
                         }
                     }
-					if (!isAnalyticsElementPreset("analytics_ad_started_"+i)){
+					if (!event.validate("analytics_ad_started_"+i,10000)){
 					    return false;
                     }
 				}
 
 				boolean singleAdPlayed = waitOnElement(By.id("singleAdPlayed_" + i), 16000);
 
-                if (UrlObject.getUrlObject().getVideoPlugins().contains("ANALYTICS")){
+                if (isVideoPluginPresent("ANALYTICS")){
                     // As analytics_ad_break_ended_1 event gets triggered only once
                     if (i == 1){
-                        if (!isAnalyticsElementPreset("analytics_ad_break_ended_"+i)){
+                        if (!event.validate("analytics_ad_break_ended_"+i,10000)){
                             return false;
                         }
                     }
-                    if (!isAnalyticsElementPreset("analytics_ad_ended_"+i)){
+                    if (!event.validate("analytics_ad_ended_"+i,10000)){
                         return false;
                     }
                 }

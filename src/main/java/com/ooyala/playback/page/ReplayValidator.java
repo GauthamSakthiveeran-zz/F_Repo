@@ -1,6 +1,6 @@
 package com.ooyala.playback.page;
 
-import com.ooyala.playback.url.UrlObject;
+import com.ooyala.playback.factory.PlayBackFactory;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -22,6 +22,8 @@ public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 
+        EventValidator event = new PlayBackFactory(driver,extentTest).getEventValidator();
+
 		if (waitOnElement("END_SCREEN", 60000) && waitOnElement("REPLAY", 60000)
 				&& clickOnIndependentElement("REPLAY")) {
 			if (getBrowser().contains("safari")) {
@@ -34,8 +36,8 @@ public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 				return false;
 			}
 
-			if (UrlObject.getUrlObject().getVideoPlugins().contains("ANALYTICS")){
-				if (!isAnalyticsElementPreset("analytics_video_requested_"+element)){
+			if (isVideoPluginPresent("ANALYTICS")){
+				if (!event.validate("analytics_video_requested_"+element,10000)){
 					return false;
 				}
 			}
