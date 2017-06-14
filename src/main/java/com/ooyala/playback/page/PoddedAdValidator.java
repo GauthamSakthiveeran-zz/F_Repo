@@ -43,28 +43,28 @@ public class PoddedAdValidator extends PlayBackPage implements PlaybackValidator
 
 			for (int i = 1 + counter; i <= result; i++) {
 				boolean willPlaySingleAd = waitOnElement(By.id(position + "_willPlaySingleAd_" + i), 10000);
-				if (isVideoPluginPresent("ANALYTICS")){
+				if (driver.getCurrentUrl().contains("AnalyticsQEPlugin")){
                     // As analytics_ad_break_started_1 event gets triggered only once
 				    if (i == 1){
-				        if (!event.validate("analytics_ad_break_started_"+i,10000)){
+				        if (!isAnalyticsElementPreset("analytics_ad_break_started_"+i)){
 				            return false;
                         }
                     }
-					if (!event.validate("analytics_ad_started_"+i,10000)){
+					if (!isAnalyticsElementPreset("analytics_ad_started_"+i)){
 					    return false;
                     }
 				}
 
 				boolean singleAdPlayed = waitOnElement(By.id("singleAdPlayed_" + i), 16000);
 
-                if (isVideoPluginPresent("ANALYTICS")){
+                if (driver.getCurrentUrl().contains("AnalyticsQEPlugin")){
                     // As analytics_ad_break_ended_1 event gets triggered only once
                     if (i == 1){
-                        if (!event.validate("analytics_ad_break_ended_"+i,10000)){
+                        if (!isAnalyticsElementPreset("analytics_ad_break_ended_"+i)){
                             return false;
                         }
                     }
-                    if (!event.validate("analytics_ad_ended_"+i,10000)){
+                    if (!isAnalyticsElementPreset("analytics_ad_ended_"+i)){
                         return false;
                     }
                 }
