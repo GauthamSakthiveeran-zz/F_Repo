@@ -71,7 +71,7 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
-
+		
         <url>
             <description name="Pulse:OSMF Multimidroll"/>
             <embed_code name="g5MjhxYTE64qOEFUKrqbuxuvlBq3GTju"/>
@@ -82,8 +82,6 @@
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter>
                 <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-            <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge"/>
-            <browserSupportedVersion name="safari,9"/>
             <platformsSupported name="mac,windows"/>
         </url>
 

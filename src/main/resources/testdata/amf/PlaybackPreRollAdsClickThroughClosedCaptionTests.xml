@@ -73,7 +73,6 @@
             <platformsSupported name="mac,windows"/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
         </url>
         <url>
             <description name="IMA:OSMF Preroll with Google UI"/>
@@ -86,8 +85,6 @@
             <platformsSupported name="mac,windows"/>
             <playerParameter>
                 <![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"google-ima-ads-manager":{"useGoogleAdUI":true}}]]></playerParameter>
-            <browsersSupported name="chrome,firefox,internet explorer,safari,MicrosoftEdge"/>
-            <browserSupportedVersion name="safari,9"/>
         </url>
 
         <url>
@@ -125,7 +122,6 @@
             <platformsSupported name="mac,windows"/>
             <playerParameter>
                 <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-        	<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
         </url>
 
         <!-- <url>
@@ -161,7 +157,6 @@
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter>
                 <![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NocGg4bzoRJ1yu3JY3LP44tVlsC2E_gi","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
             <platformsSupported name="mac,windows"/>
         </url>
 
@@ -189,7 +184,6 @@
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter>
                 <![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
-            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
             <platformsSupported name="mac,windows"/>
         </url>
 
@@ -263,7 +257,6 @@
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
             <platformsSupported name="mac,windows"/>
         </url>
 
@@ -397,7 +390,6 @@
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
-            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
             <platformsSupported name="mac,windows"/>
         </url>
 
@@ -410,7 +402,6 @@
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter></playerParameter>
-            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
             <platformsSupported name="mac,windows"/>
         </url>
 
@@ -423,7 +414,6 @@
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
-            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
             <platformsSupported name="mac,windows"/>
         </url>
     </test>
