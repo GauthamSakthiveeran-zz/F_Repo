@@ -312,7 +312,7 @@
             <description name="Core:Volume"/>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
