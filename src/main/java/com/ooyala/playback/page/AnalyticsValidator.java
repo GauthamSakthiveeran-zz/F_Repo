@@ -1,17 +1,11 @@
 package com.ooyala.playback.page;
 
-import com.ooyala.playback.httpserver.SimpleHttpServer;
-import com.ooyala.playback.utils.JSScriptInjection;
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-
-import static java.lang.Thread.sleep;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by jitendra on 08/05/17.

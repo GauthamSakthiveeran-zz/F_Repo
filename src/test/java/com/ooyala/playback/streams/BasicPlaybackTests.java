@@ -1,14 +1,17 @@
 package com.ooyala.playback.streams;
 
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.url.UrlObject;
-
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.StreamValidator;
+import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -24,7 +27,6 @@ public class BasicPlaybackTests extends PlaybackWebTest {
     private SeekValidator seek;
     private StreamValidator streamTypeValidator;
     private SeekAction seekAction;
-    private AnalyticsValidator analyticsValidator;
 
     public BasicPlaybackTests() throws OoyalaException {
         super();

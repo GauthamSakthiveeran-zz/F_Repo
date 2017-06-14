@@ -40,30 +40,29 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		}
 
 		if (waitOnElement(By.id(element), timeout)) {
+			ScrubberValidator scrubberValidator = new PlayBackFactory(driver, extentTest).getScrubberValidator();
 			logger.info("element found : " + element);
-
-			if (waitOnElement(By.id(element), timeout)) {
-				extentTest.log(LogStatus.PASS, "Wait on element : " + element);
-				if (element.startsWith("played")) {
-					return new PlayBackFactory(driver, extentTest).getScrubberValidator().validate("", 1000);
-				}
-				if (element.startsWith("seeked")) {
-					((JavascriptExecutor) driver).executeScript("return pp.pause();");
-					boolean flag = new PlayBackFactory(driver, extentTest).getScrubberValidator().validate("", 1000);
-					((JavascriptExecutor) driver).executeScript("return pp.play();");
-					return flag;
-				}
-				return true;
+			extentTest.log(LogStatus.PASS, "Wait on element : " + element);
+			if (element.startsWith("played")) {
+				return scrubberValidator.validate("", 1000);
 			}
+			if (element.startsWith("seeked")) {
+				((JavascriptExecutor) driver).executeScript("return pp.pause();");
+				boolean flag = scrubberValidator.validate("", 1000);
+				((JavascriptExecutor) driver).executeScript("return pp.play();");
+				return flag;
+			}
+			return true;
 		}
 		extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");
 		return false;
 	}
 
 	public boolean eventAction(String element) throws Exception {
-	if(!getBrowser().equalsIgnoreCase("safari")) {
+		if (!getBrowser().equalsIgnoreCase("safari")) {
 			return clickOnIndependentElement(element);
-		}else return clickOnHiddenElement(element);
+		} else
+			return clickOnHiddenElement(element);
 	}
 
 	public void validateElement(String element, int timeout) throws Exception {
@@ -128,7 +127,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		}
 		return result;
 	}
-	
+
 	public boolean validateAutoPlay() {
 		boolean autoplay = false;
 
