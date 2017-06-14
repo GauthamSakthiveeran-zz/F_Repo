@@ -12,6 +12,7 @@ import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 
@@ -56,6 +57,8 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 			result = result && upNextValidator.validate("", 300000);
 			
 			result = result && event.validate("played_1", 10000);
+			
+			extentTest.log(LogStatus.INFO, "Validating discovery at the end of the video.");
 			
 			result = result && discoveryValidator.validateDiscoveryToaster();
 
