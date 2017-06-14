@@ -39,6 +39,31 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 			return false;
 		}
 
+        if (driver.getCurrentUrl().contains("AnalyticsQEPlugin")){
+		    if (element.toLowerCase().contains("ad") && !element.toLowerCase().contains("nonlinear")) {
+                if (element.toLowerCase().contains("willplay")) {
+                    if (!(waitOnElement(By.id("analytics_ad_break_started_1"), timeout)
+                            && waitOnElement(By.id("analytics_ad_started_1"), timeout))) {
+                        logger.error("analytics_ad_started_1 or analytics_ad_break_started_1 analytics element is not present for ad start");
+                        extentTest.log(LogStatus.FAIL, "analytics_ad_started_1 or analytics_ad_break_started_1 analytics element is not present for ad start");
+                        return false;
+                    }
+                    logger.info("analytics_ad_started_1 and analytics_ad_break_started_1 analytics elements are present for ad start");
+                    extentTest.log(LogStatus.PASS, "analytics_ad_started_1 and analytics_ad_break_started_1 analytics elements are present for ad start");
+                }
+                if (element.toLowerCase().contains("played")){
+                    if (!(waitOnElement(By.id("analytics_ad_break_ended_1"), timeout)
+                            && waitOnElement(By.id("analytics_ad_ended_1"), timeout))) {
+                        logger.error("analytics_ad_ended_1 or analytics_ad_break_ended_1 analytics element is not present for ad start");
+                        extentTest.log(LogStatus.FAIL, "analytics_ad_ended_1 or analytics_ad_break_ended_1 analytics element is not present for ad start");
+                        return false;
+                    }
+                    logger.info("analytics_ad_ended_1 and analytics_ad_break_ended_1 analytics elements are present for ad start");
+                    extentTest.log(LogStatus.PASS, "analytics_ad_ended_1 and analytics_ad_break_ended_1 analytics elements are present for ad start");
+                }
+            }
+        }
+
 		if (waitOnElement(By.id(element), timeout)) {
 			ScrubberValidator scrubberValidator = new PlayBackFactory(driver, extentTest).getScrubberValidator();
 			logger.info("element found : " + element);

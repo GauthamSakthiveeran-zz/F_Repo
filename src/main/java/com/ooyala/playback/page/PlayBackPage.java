@@ -440,4 +440,15 @@ public abstract class PlayBackPage extends WebPage {
 		return Double
 				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getDuration();").toString());
 	}
+
+    public boolean isAnalyticsElementPreset(String element){
+        if (!waitOnElement(By.id(element),100000)){
+            extentTest.log(LogStatus.FAIL,element+" element is not present");
+            logger.error(element+" element is not present");
+            return false;
+        }
+        extentTest.log(LogStatus.PASS,element+" element is present");
+        logger.info(element+" element is present");
+        return true;
+    }
 }

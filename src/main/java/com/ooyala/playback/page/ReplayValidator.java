@@ -36,11 +36,11 @@ public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 				return false;
 			}
 
-			if (isVideoPluginPresent("ANALYTICS")){
-				if (!event.validate("analytics_video_requested_"+element,10000)){
-					return false;
-				}
-			}
+            if (isVideoPluginPresent("ANALYTICS")){
+                if(!isAnalyticsElementPreset("analytics_video_requested_"+element)){
+                    return false;
+                }
+            }
 		}
 		extentTest.log(LogStatus.PASS, "Replay Successful");
 		logger.info("Replay Successful");
