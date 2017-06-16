@@ -7,9 +7,12 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.UpNextValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 
@@ -21,6 +24,8 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private PlayValidator playValidator;
 	private DiscoveryValidator discoveryValidator;
+	private UpNextValidator upNextValidator;
+	private SeekAction seekAction;
 
 	@Test(groups = { "amf", "preroll", "discovery", "sequential" }, dataProvider = "testUrls")
 	public void verifyPrerollDiscovery(String testName, UrlObject url) throws OoyalaException {
@@ -44,6 +49,18 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 			result = result && event.validate("playing_1", 150000);
 
 			result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
+			
+			result = result && seekAction.fromLast().setTime(30).startAction();
+
+			result = result && event.validate("seeked_1", 60000);
+
+			result = result && upNextValidator.validate("", 300000);
+			
+			result = result && event.validate("played_1", 10000);
+			
+			extentTest.log(LogStatus.INFO, "Validating discovery at the end of the video.");
+			
+			result = result && discoveryValidator.validateDiscoveryToaster();
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());

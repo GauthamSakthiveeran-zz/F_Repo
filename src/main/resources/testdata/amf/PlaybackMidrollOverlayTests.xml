@@ -4,7 +4,7 @@
 	<test name ="PlaybackMidrollOverlayTests" > 
     	<url>
 	    	<description name="VAST:Bitmovin Vast2.0 Midroll Overlay"/>
-	        <embed_code name="l4azMwYjE6V2uqd_7w1wRjH54bi8iUnJ"/>
+	        <embed_code name="AxZWVlOTE69sXjpQ_uZyM7sf6aqBl8N0"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
 	        <adPlugins name="VAST" overlayPlayTime="15"/>

@@ -29,7 +29,7 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 			Thread.sleep(1000);
 		}
 		
-		if (!adPlaying(false)) {
+		if (adPlaying(true)) {
 			return true;
 		}
 

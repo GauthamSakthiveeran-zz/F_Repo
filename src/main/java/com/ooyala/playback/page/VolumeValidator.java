@@ -39,6 +39,11 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			if (!(isElementPresent("CONTROL_BAR"))) {
 				moveElement(getWebElement("CONTROL_BAR"));
 			}
+			
+			if(!isElementPresent("VOLUME_MAX")){
+				extentTest.log(LogStatus.FAIL, "Volume icon not found.");
+				return false;
+			}
 
 			if (clickOnIndependentElement("VOLUME_MAX")) {
 			    if (getPlatform().equalsIgnoreCase("android")) {

@@ -62,7 +62,7 @@ public class MidrollAdValidator extends PlayBackPage implements PlaybackValidato
 
 				boolean flag = isAdPlayTimePresent(url) ? validateAdStartTime("MidRoll_willPlaySingleAd_2")
 						: waitOnElement(By.id("MidRoll_willPlayAds_2"), 120000);
-				if(!flag)
+				if (!flag)
 					extentTest.log(LogStatus.FAIL, "Ad did not play");
 				return flag && waitOnElement(By.id("adsPlayed_2"), 60000);
 
@@ -70,7 +70,7 @@ public class MidrollAdValidator extends PlayBackPage implements PlaybackValidato
 
 				boolean flag = isAdPlayTimePresent(url) ? validateAdStartTime("MidRoll_willPlaySingleAd_1")
 						: waitOnElement(By.id("MidRoll_willPlayAds_1"), 120000);
-				if(!flag)
+				if (!flag)
 					extentTest.log(LogStatus.FAIL, "Ad did not play");
 				return flag && waitOnElement(By.id("adsPlayed_1"), 60000);
 			}
@@ -79,8 +79,8 @@ public class MidrollAdValidator extends PlayBackPage implements PlaybackValidato
 
 			boolean flag = isAdPlayTimePresent(url) ? validateAdStartTime("MidRoll_willPlaySingleAd_1")
 					: waitOnElement(By.id("MidRoll_willPlaySingleAd_1"), 120000);
-			
-			if(!flag)
+
+			if (!flag)
 				extentTest.log(LogStatus.FAIL, "Ad did not play");
 
 			if (url.getAdPlugins().toLowerCase().contains("pulse"))
@@ -124,49 +124,6 @@ public class MidrollAdValidator extends PlayBackPage implements PlaybackValidato
 		return true;
 	}
 
-	/*public boolean validateNonLinearAdStartTime(String element) {
-
-		if (!loadingSpinner()) {
-			extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
-			return false;
-		}
-
-		if (!waitOnElement(By.id(element), 20000)) {
-			logger.error(element + "is not present");
-			extentTest.log(LogStatus.FAIL, element + "is not present");
-			return false;
-		}
-
-		if (!waitOnElement(By.id("overlay-ad-position"), 20000)) {
-			logger.error("overlay-ad-position element id is not present");
-			extentTest.log(LogStatus.FAIL, "overlay-ad-position element id is not present");
-			return false;
-		}
-
-		if (!waitOnElement(By.id("play-overaly-ad"), 20000)) {
-			logger.error("play-overaly-ad element id is not present");
-			extentTest.log(LogStatus.FAIL, "play-overaly-ad element id is not present");
-			return false;
-		}
-
-		logger.info("overlay position is at " + time + "th second");
-
-		int overlayPlayingAt = Integer.parseInt(driver.findElement(By.id("play-overaly-ad")).getText());
-
-		logger.info("overlay is playing at " + overlayPlayingAt + "th second");
-
-		// in following if statement, we are giving offset of 3 sec so that test
-		// won't get fail
-		if (overlayPlayingAt >= time && overlayPlayingAt <= (time + 3)) {
-			logger.info("Overlay is playing at expected position i.e : " + overlayPlayingAt);
-			extentTest.log(LogStatus.PASS, "Overlay is playing at expected position i.e : " + overlayPlayingAt);
-			return true;
-		}
-
-		logger.error("Overlay is not playing at expected position i.e : " + overlayPlayingAt);
-		extentTest.log(LogStatus.FAIL, "Overlay is not playing at expected position i.e : " + overlayPlayingAt);
-		return false;
-	}*/
 
 	public boolean validateMultipleMidrollAdStartTime(UrlObject url, String testName) throws Exception {
 		boolean result = true;
@@ -182,19 +139,19 @@ public class MidrollAdValidator extends PlayBackPage implements PlaybackValidato
 
 			timeForFirstMidrollAd = Integer.parseInt(midrollAdStartTimes[0]);
 			timeForSecondMidrollAd = Integer.parseInt(midrollAdStartTimes[1]);
-			
-			if(testName.contains("VAST:Main Vast3.0 Multimidroll")){
+
+			if (testName.contains("VAST:Main Vast3.0 Multimidroll")) {
 				result = result && setTime(timeForFirstMidrollAd).validateAdStartTime("MidRoll_willPlaySingleAd_1")
 						&& waitOnElement(By.id("singleAdPlayed_2"), 200000);
 				result = result && setTime(timeForSecondMidrollAd).validateAdStartTime("MidRoll_willPlaySingleAd_3")
 						&& waitOnElement(By.id("singleAdPlayed_4"), 200000);
-			} else{
+			} else {
 				result = result && setTime(timeForFirstMidrollAd).validateAdStartTime("MidRoll_willPlaySingleAd_1")
 						&& waitOnElement(By.id("singleAdPlayed_1"), 200000);
 				result = result && setTime(timeForSecondMidrollAd).validateAdStartTime("MidRoll_willPlaySingleAd_2")
 						&& waitOnElement(By.id("singleAdPlayed_2"), 200000);
 			}
-			
+
 		} else {
 			result = result && waitOnElement(By.id("MidRoll_willPlayAds"), 200000)
 					&& waitOnElement(By.id("MidRoll_willPlaySingleAd_1"), 200000)
@@ -211,5 +168,19 @@ public class MidrollAdValidator extends PlayBackPage implements PlaybackValidato
 					&& waitOnElement(By.id("singleAdPlayed_4"), 200000);
 		}
 		return result;
+	}
+
+	public boolean validateMainVideoPlayResumeTime(double timeSwitch) {
+		extentTest.log(LogStatus.INFO, "Validating video resume time");
+		logger.info(timeSwitch);
+		double playaheadTime = getPlayAheadTime();
+		logger.info(playaheadTime);
+		return Math.abs(timeSwitch - playaheadTime) < 2;
+	}
+
+	public boolean validateMainVideoPlayResumeTime(String timeSwitch) {
+		if (timeSwitch == null || timeSwitch.isEmpty())
+			return true;
+		return validateMainVideoPlayResumeTime(Double.parseDouble(timeSwitch));
 	}
 }
