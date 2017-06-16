@@ -262,12 +262,12 @@ public abstract class PlayBackPage extends WebPage {
 					}
 					Thread.sleep(1000);
 					time++;
-					logger.info("In loading spinner");
+					logger.info("Video Buffering...");
 				} catch (Exception e) {
 					return true;
 				}
 			} else {
-				logger.info("Loading spinner is not vanishing i.e it occured more that 2 minutes");
+				logger.info("Video has been buffering for a really long time i.e it occured more that 2 minutes");
 				flag = false;
 				break;
 			}

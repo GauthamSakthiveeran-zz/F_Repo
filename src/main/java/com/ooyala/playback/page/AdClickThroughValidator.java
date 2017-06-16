@@ -103,11 +103,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
                 if (!waitOnElement(By.id("adsClicked_videoWindow"), 10000))
                     return false;
             }
-
-            if (getWindowHandleCount() <= 1) {
-                log.info("New tab did not open on ad click.");
-                extentTest.log(LogStatus.FAIL, "New tab did not open on ad click.");
-            }
+            
+            validateNoOfTabsOpened();
 
             extentTest.log(PASS, "AdsClicked by clicking on the ad screen");
             log.info("AdsClicked by clicking on the ad screen");
@@ -136,10 +133,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
                     return false;
                 }
 
-                if (getWindowHandleCount() <= 1) {
-                    extentTest.log(LogStatus.FAIL, "New tab did not open on ad click.");
-                    log.info("New tab did not open on ad click.");
-                }
+                validateNoOfTabsOpened();
 
             }
             extentTest.log(PASS, "AdsClicked by clicking on the learn more button");
@@ -154,6 +148,20 @@ public class AdClickThroughValidator extends PlayBackPage implements
             throw new Exception("Ad plugin not present in test url");
         }
 
+    }
+    
+    private void validateNoOfTabsOpened() {
+    	int windowHandleCount = getWindowHandleCount();
+
+        if (windowHandleCount <= 1) {
+            log.info("New tab did not open on ad click.");
+            extentTest.log(LogStatus.FAIL, "New tab did not open on ad click.");
+        }
+        
+        if (windowHandleCount > 1) {
+            log.info("No of tabs opened - " + windowHandleCount);
+            extentTest.log(LogStatus.FAIL, "Too many tabs opened - No of tabs : " + windowHandleCount);
+        }
     }
 
     public boolean isAdPlaying() {

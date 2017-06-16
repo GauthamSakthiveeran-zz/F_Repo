@@ -44,13 +44,13 @@
 <!-- 		commented check the ticket number for more info PBW-6281 -->
 		<url>
 			<description name="Streams:Bitmovin Elemental Delta DASH VOD (Clear Dash)" />
-			<embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
+			<embed_code name="AxZWVlOTE69sXjpQ_uZyM7sf6aqBl8N0" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,ANALYTICS" />
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
 		</url>
 		<url>
 			<description name="Streams:Bitmovin MP4" />
