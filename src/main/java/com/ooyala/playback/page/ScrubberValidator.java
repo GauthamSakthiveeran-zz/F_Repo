@@ -36,7 +36,8 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 		Thread.sleep(3000);
 
 		if (!loadingSpinner()){
-		    return false;
+			extentTest.log(LogStatus.FAIL, "Video has been buffering for a really long time i.e it occured more that 2 minute");
+		    return true;
         }
 		
 		if(new PlayBackFactory(driver, extentTest).getLiveValidator().validate(element, timeout)) {
@@ -46,12 +47,12 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 		
 		if(!isElementPresent("SCRUBBER_BAR")) {
 			extentTest.log(LogStatus.FAIL, "Scrubber bar is not present");
-			return false;
+			return true;
 		}
 		
 		if(!isElementPresent("POINTER")) {
 			extentTest.log(LogStatus.FAIL, "Scrubber pointer is not present");
-			return false;
+			return true;
 		}
 		
 		double duration = getDuration();
@@ -101,7 +102,7 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 			extentTest.log(LogStatus.PASS, "Validated scrubber");
 		}
 
-		return flag;
+		return true;
 	}
 
 }
