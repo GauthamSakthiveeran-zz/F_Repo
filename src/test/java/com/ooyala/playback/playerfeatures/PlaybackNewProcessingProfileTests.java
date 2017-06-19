@@ -18,60 +18,59 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackNewProcessingProfileTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackNewProcessingProfileTests.class);
+    private static Logger logger = Logger.getLogger(PlaybackNewProcessingProfileTests.class);
 
-	private PlayValidator play;
-	private SeekAction seekAction;
-	private PauseValidator pause;
-	private ControlBarValidator control;
-	private FullScreenValidator fullScreen;
-	private EventValidator eventValidator;
-	private StreamValidator streamTypeValidator;
+    private PlayValidator play;
+    private SeekAction seekAction;
+    private PauseValidator pause;
+    private ControlBarValidator control;
+    private FullScreenValidator fullScreen;
+    private EventValidator eventValidator;
+    private StreamValidator streamTypeValidator;
 
-	PlaybackNewProcessingProfileTests() throws OoyalaException {
-		super();
-	}
+    PlaybackNewProcessingProfileTests() throws OoyalaException {
+        super();
+    }
 
-	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testNewProcessingProfile(String testName, UrlObject url) {
+    @Test(groups = "playerFeatures", dataProvider = "testUrls")
+    public void testNewProcessingProfile(String testName, UrlObject url) {
 
-		boolean result = true;
+        boolean result = true;
 
-		try {
-			driver.get(url.getUrl());
+        try {
+            driver.get(url.getUrl());
 
-			result = result && play.waitForPage();
+            result = result && play.waitForPage();
 
-			injectScript();
+            injectScript();
 
-			result = result && play.validate("playing_1", 30000);
+            result = result && play.validate("playing_1", 30000);
 
-			if (url.getStreamType()!=null && !url.getStreamType().isEmpty()) {
+            if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
 
-				result = result && eventValidator.validate("videoPlayingurl", 40000);
+                result = result && eventValidator.validate("videoPlayingurl", 40000);
 
-				result = result && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
-			}
+                result = result && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
+            }
 
-			result = result && pause.validate("paused_1", 30000);
+            result = result && pause.validate("paused_1", 30000);
 
-			result = result && control.validate("", 60000);
+            result = result && control.validate("", 60000);
 
-			result = result && play.validate("playing_2", 30000);
+            result = result && play.validate("playing_2", 30000);
 
-			result = result && fullScreen.getFullScreen();
+            result = result && fullScreen.getFullScreen();
 
-			result = result && fullScreen.getNormalScreen();
+            result = result && fullScreen.getNormalScreen();
 
-			result = result && seekAction.seek(10, true);
+            result = result && seekAction.seek(10, true);
 
-		} catch (Exception e) {
-			logger.error(e);
-			extentTest.log(LogStatus.FAIL, e.getMessage());
-			result = false;
-		}
-
-		Assert.assertTrue(result, "New Processing Profile Playback Tests failed" + testName);
-	}
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            extentTest.log(LogStatus.FAIL, e.getMessage());
+            result = false;
+        }
+        Assert.assertTrue(result, "New Processing Profile Playback Tests failed" + testName);
+    }
 
 }

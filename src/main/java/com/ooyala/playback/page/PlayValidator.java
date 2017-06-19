@@ -1,5 +1,6 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.playback.url.UrlObject;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -66,6 +67,9 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
     public boolean validate(String element, int timeout) throws Exception {
         // if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction())
         // return false;
+
+        EventValidator event = new PlayBackFactory(driver,extentTest).getEventValidator();
+
         if (!clickOnIndependentElement("PLAY_BUTTON")) {
             extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
             return false;
@@ -104,6 +108,14 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
             if (!waitOnElement(By.id(element), timeout))
                 return false;
         }
+
+        if (isVideoPluginPresent("ANALYTICS")){
+            if(!(isAnalyticsElementPreset("analytics_video_"+element)
+                    && isAnalyticsElementPreset("analytics_video_requested_"+element))){
+                return false;
+            }
+        }
+
 
         extentTest.log(LogStatus.PASS, "Video Playing and validation of element " + element + " is successful");
 

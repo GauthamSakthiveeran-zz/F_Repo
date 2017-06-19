@@ -72,6 +72,7 @@ public class PlayBackFactory {
 	private AdPluginValidator adPluginValidator;
 	private VideoValidator videoValidator;
 	private ScrubberValidator scrubberValidator;
+	private AnalyticsValidator analyticsValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -515,6 +516,18 @@ public class PlayBackFactory {
 			adStartTimeValidator.setExtentTest(extentTest);
 		}
 		return adStartTimeValidator;
+	}
+
+	public AnalyticsValidator getAnalyticsValidator() {
+		if (analyticsValidator == null){
+			analyticsValidator = new AnalyticsValidator(driver);
+			analyticsValidator.setExtentTest(extentTest);
+		}
+		return analyticsValidator;
+	}
+
+	public void setAnalyticsValidator(AnalyticsValidator analyticsValidator) {
+		this.analyticsValidator = analyticsValidator;
 	}
 
 	public WebDriver getDriver() {

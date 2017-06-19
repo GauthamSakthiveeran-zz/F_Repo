@@ -33,10 +33,11 @@ public class OoyalaAPITests extends PlaybackWebTest {
             result = result && eventValidator.isPageLoaded();
             injectScript();
             result = result && ooyalaAPIValidator.validate("", 30000);
-            result = result && eventValidator.validate("played_1",60000);
+            result = result && eventValidator.validate("played_1", 60000);
 
         } catch (Exception e) {
-        	extentTest.log(LogStatus.FAIL, e.getMessage());
+            logger.error(e.getMessage());
+            extentTest.log(LogStatus.FAIL, e.getMessage());
             result = false;
         }
         Assert.assertTrue(result, "Ooyala API test failed");

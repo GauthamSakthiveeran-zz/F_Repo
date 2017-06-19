@@ -17,47 +17,46 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackThumbnailTests extends PlaybackWebTest {
 
-	private EventValidator eventValidator;
-	private PlayValidator play;
-	private PauseValidator pause;
-	private SeekValidator seek;
-	private ThumbnailValidator thumbnailValidator;
+    private EventValidator eventValidator;
+    private PlayValidator play;
+    private PauseValidator pause;
+    private SeekValidator seek;
+    private ThumbnailValidator thumbnailValidator;
 
-	public PlaybackThumbnailTests() throws OoyalaException {
-		super();
-	}
+    public PlaybackThumbnailTests() throws OoyalaException {
+        super();
+    }
 
-	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testThumbnail(String testName, UrlObject url)
-			throws OoyalaException {
+    @Test(groups = "playerFeatures", dataProvider = "testUrls")
+    public void testThumbnail(String testName, UrlObject url)
+            throws OoyalaException {
 
-		boolean result = true;
+        boolean result = true;
 
-			try {
+        try {
 
-				driver.get(url.getUrl());
+            driver.get(url.getUrl());
 
-				result = result && play.waitForPage();
+            result = result && play.waitForPage();
 
-				injectScript();
+            injectScript();
 
-				result = result && play.validate("playing_1", 60000);
+            result = result && play.validate("playing_1", 60000);
 
-				result = result && pause.validate("paused_1", 60000);
+            result = result && pause.validate("paused_1", 60000);
 
-				result = result && thumbnailValidator.validate("", 60000);
+            result = result && thumbnailValidator.validate("", 60000);
 
-				result = result && play.validate("playing_2", 60000);
+            result = result && play.validate("playing_2", 60000);
 
-				result = result && seek.validate("seeked_1", 60000);
+            result = result && seek.validate("seeked_1", 60000);
 
-				result = result && eventValidator.validate("played_1", 60000);
+            result = result && eventValidator.validate("played_1", 60000);
 
-			} catch (Exception e) {
-				e.printStackTrace();
-				result = false;
-			}
-
-			Assert.assertTrue(result, "Thumbnail test failed");
-	   }
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            result = false;
+        }
+        Assert.assertTrue(result, "Thumbnail test failed");
+    }
 }
