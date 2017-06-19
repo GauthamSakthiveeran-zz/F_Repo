@@ -43,7 +43,8 @@ public class PlaybackSocialMediaTests extends PlaybackWebTest {
             result = result && social.softAssert(s_assert).validate("", 60000);
 
         } catch (Exception e) {
-            extentTest.log(LogStatus.FAIL, "Error in Social Media Test"+e.getMessage());
+            logger.error(e.getMessage());
+            extentTest.log(LogStatus.FAIL, "Error in Social Media Test" + e.getMessage());
             result = false;
         }
         s_assert.assertAll();

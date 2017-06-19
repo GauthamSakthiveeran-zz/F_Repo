@@ -39,31 +39,55 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 			return false;
 		}
 
-		if (waitOnElement(By.id(element), timeout)) {
-			logger.info("element found : " + element);
+        if (driver.getCurrentUrl().contains("AnalyticsQEPlugin")){
+		    if (element.toLowerCase().contains("ad") && !element.toLowerCase().contains("nonlinear")) {
+                if (element.toLowerCase().contains("willplay")) {
+                    if (!(waitOnElement(By.id("analytics_ad_break_started_1"), timeout)
+                            && waitOnElement(By.id("analytics_ad_started_1"), timeout))) {
+                        logger.error("analytics_ad_started_1 or analytics_ad_break_started_1 analytics element is not present for ad start");
+                        extentTest.log(LogStatus.FAIL, "analytics_ad_started_1 or analytics_ad_break_started_1 analytics element is not present for ad start");
+                        return false;
+                    }
+                    logger.info("analytics_ad_started_1 and analytics_ad_break_started_1 analytics elements are present for ad start");
+                    extentTest.log(LogStatus.PASS, "analytics_ad_started_1 and analytics_ad_break_started_1 analytics elements are present for ad start");
+                }
+                if (element.toLowerCase().contains("played")){
+                    if (!(waitOnElement(By.id("analytics_ad_break_ended_1"), timeout)
+                            && waitOnElement(By.id("analytics_ad_ended_1"), timeout))) {
+                        logger.error("analytics_ad_ended_1 or analytics_ad_break_ended_1 analytics element is not present for ad start");
+                        extentTest.log(LogStatus.FAIL, "analytics_ad_ended_1 or analytics_ad_break_ended_1 analytics element is not present for ad start");
+                        return false;
+                    }
+                    logger.info("analytics_ad_ended_1 and analytics_ad_break_ended_1 analytics elements are present for ad start");
+                    extentTest.log(LogStatus.PASS, "analytics_ad_ended_1 and analytics_ad_break_ended_1 analytics elements are present for ad start");
+                }
+            }
+        }
 
-			if (waitOnElement(By.id(element), timeout)) {
-				extentTest.log(LogStatus.PASS, "Wait on element : " + element);
-				if (element.startsWith("played")) {
-					return new PlayBackFactory(driver, extentTest).getScrubberValidator().validate("", 1000);
-				}
-				if (element.startsWith("seeked")) {
-					((JavascriptExecutor) driver).executeScript("return pp.pause();");
-					boolean flag = new PlayBackFactory(driver, extentTest).getScrubberValidator().validate("", 1000);
-					((JavascriptExecutor) driver).executeScript("return pp.play();");
-					return flag;
-				}
-				return true;
+		if (waitOnElement(By.id(element), timeout)) {
+			ScrubberValidator scrubberValidator = new PlayBackFactory(driver, extentTest).getScrubberValidator();
+			logger.info("element found : " + element);
+			extentTest.log(LogStatus.PASS, "Wait on element : " + element);
+			if (element.startsWith("played")) {
+				return scrubberValidator.validate("", 1000);
 			}
+			if (element.startsWith("seeked")) {
+				((JavascriptExecutor) driver).executeScript("return pp.pause();");
+				boolean flag = scrubberValidator.validate("", 1000);
+				((JavascriptExecutor) driver).executeScript("return pp.play();");
+				return flag;
+			}
+			return true;
 		}
 		extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");
 		return false;
 	}
 
 	public boolean eventAction(String element) throws Exception {
-	if(!getBrowser().equalsIgnoreCase("safari")) {
+		if (!getBrowser().equalsIgnoreCase("safari")) {
 			return clickOnIndependentElement(element);
-		}else return clickOnHiddenElement(element);
+		} else
+			return clickOnHiddenElement(element);
 	}
 
 	public void validateElement(String element, int timeout) throws Exception {
@@ -128,7 +152,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		}
 		return result;
 	}
-	
+
 	public boolean validateAutoPlay() {
 		boolean autoplay = false;
 

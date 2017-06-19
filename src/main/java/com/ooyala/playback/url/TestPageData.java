@@ -1,9 +1,12 @@
 package com.ooyala.playback.url;
 
+import com.ooyala.playback.httpserver.SimpleHttpServer;
 import org.apache.log4j.Logger;
 
 import com.ooyala.playback.utils.CommandLineParameters;
 import com.ooyala.qe.common.util.PropertyReader;
+
+import java.net.InetAddress;
 
 /**
  * Created by jitendra
@@ -44,6 +47,7 @@ public class TestPageData {
     private String adobeTVSDK;
     private String adobePluginURL;
     private PropertyReader properties;
+    private InetAddress inetAddress;
 
     /**
      * Initialize all the variable with respective value. Read the data from
@@ -82,6 +86,7 @@ public class TestPageData {
             valhalla_build = properties.getProperty("valhalla_build");
             valhalla_build_id = properties.getProperty("valhalla_build_id");
             adobeTVSDK = properties.getProperty("adobeTVSDK_plugin");
+            inetAddress = InetAddress.getLocalHost();
         } catch (Exception e) {
             logger.error("Error while reading data from properties file :" + e.getMessage());
         }
@@ -351,7 +356,6 @@ public class TestPageData {
                 skinAsset = envURL + skinAsset;
                 skinConf = "" + skinConf;
                 skinDiscovery = "" + envURL + otherPlugin + discoveryApiPlugin;
-                ;
                 break;
             default:
                 break;
@@ -380,6 +384,9 @@ public class TestPageData {
                     return adobePluginURL + adobeTVSDK;
                 } else
                     return pluginURL + adobeTVSDK;
+            case "ANALYTICS":
+                return "http://" + inetAddress.getHostAddress() + ":"
+                        + SimpleHttpServer.portNumber + "/js?fileName=analytics/AnalyticsQEPlugin.js";
         }
         return "";
     }

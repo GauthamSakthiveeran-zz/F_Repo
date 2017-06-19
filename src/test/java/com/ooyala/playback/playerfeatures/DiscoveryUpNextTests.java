@@ -18,40 +18,41 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class DiscoveryUpNextTests extends PlaybackWebTest {
 
-	private EventValidator eventValidator;
-	private PlayValidator play;
-	private UpNextValidator discoveryUpNext;
-	private SeekAction seek;
+    private EventValidator eventValidator;
+    private PlayValidator play;
+    private UpNextValidator discoveryUpNext;
+    private SeekAction seek;
 
-	public DiscoveryUpNextTests() throws OoyalaException {
-		super();
-	}
+    public DiscoveryUpNextTests() throws OoyalaException {
+        super();
+    }
 
-	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testDiscoveryUpNext(String testName, UrlObject url)
-			throws OoyalaException {
-		boolean result = true;
+    @Test(groups = "playerFeatures", dataProvider = "testUrls")
+    public void testDiscoveryUpNext(String testName, UrlObject url)
+            throws OoyalaException {
+        boolean result = true;
 
-		try {
-			driver.get(url.getUrl());
+        try {
+            driver.get(url.getUrl());
 
-			result = result && play.waitForPage();
+            result = result && play.waitForPage();
 
-			injectScript();
+            injectScript();
 
-			result = result && play.validate("playing_1", 60000);
+            result = result && play.validate("playing_1", 60000);
 
-			result = result && seek.setTime(31).fromLast().startAction();
+            result = result && seek.setTime(31).fromLast().startAction();
 
-			result = result && discoveryUpNext.validate("", 60000);
+            result = result && discoveryUpNext.validate("", 60000);
 
-			result = result && eventValidator.validate("played_1", 60000);
+            result = result && eventValidator.validate("played_1", 60000);
 
-		} catch (Exception e) {
-			extentTest.log(LogStatus.FAIL, e.getMessage());
-			result = false;
-		}
-		Assert.assertTrue(result, "Discovery up next tests failed");
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            extentTest.log(LogStatus.FAIL, e.getMessage());
+            result = false;
+        }
+        Assert.assertTrue(result, "Discovery up next tests failed");
 
-	}
+    }
 }

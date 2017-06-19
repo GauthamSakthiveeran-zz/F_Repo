@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
+    <test name="PlaybackIMAPreVastMidAdsTests">
 
-	<test name ="PlaybackIMAPreVastMidAdsTests" >
-    	<url>
-	    	<description name="IMA:Bitmovin IMA PreRoll + VAST MidRoll"/>
-	        <embed_code name="J1ODhoMTE6psbYgbXq5pT8-wuHwRb1lr"/>
-	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-	        <plugins name="BITMOVIN"/>
-	        <adPlugins name="IMA"/>
-	        <additionalPlugins name="VAST"/>
-	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-    	</url>
-		<url>
-			<description name="IMA:AdobeTVSDK IMA PreRoll + VAST MidRoll"/>
-			<embed_code name="J1ODhoMTE6psbYgbXq5pT8-wuHwRb1lr"/>
-			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-			<plugins name="ADOBETVSDK"/>
-			<adPlugins name="IMA"/>
-			<additionalPlugins name="VAST"/>
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-		</url>
+        <url>
+            <description name="IMA:Bitmovin IMA PreRoll + VAST MidRoll"/>
+            <embed_code name="J1ODhoMTE6psbYgbXq5pT8-wuHwRb1lr"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,ANALYTICS"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name="VAST"/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="IMA:AdobeTVSDK IMA PreRoll + VAST MidRoll"/>
+            <embed_code name="J1ODhoMTE6psbYgbXq5pT8-wuHwRb1lr"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name="VAST"/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
     </test>
 </testdata>    	

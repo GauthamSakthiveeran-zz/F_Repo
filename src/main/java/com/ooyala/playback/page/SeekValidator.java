@@ -1,5 +1,6 @@
 package com.ooyala.playback.page;
 
+import com.ooyala.playback.url.UrlObject;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -30,6 +31,13 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 			return false;
 		}
 
+        if (driver.getCurrentUrl().contains("AnalyticsQEPlugin")){
+            if(!(isAnalyticsElementPreset("analytics_video_"+element)
+                    && isAnalyticsElementPreset("analytics_video_requested_"+element))){
+                return false;
+            }
+        }
+
 		if (waitOnElement(By.id(element), timeout)) {
 			extentTest.log(LogStatus.PASS, "Seek successful.");
 			if (!loadingSpinner()){
@@ -37,6 +45,7 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
             }
 			return (new PlayBackFactory(driver, extentTest)).getScrubberValidator().validate("", timeout);
 		}
+
 		extentTest.log(LogStatus.INFO, "Wait on " + element + " failed after "+ timeout + " ms");
 		return false;
 	}

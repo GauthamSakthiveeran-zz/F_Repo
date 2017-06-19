@@ -27,6 +27,8 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 
+	    EventValidator event = new PlayBackFactory(driver,extentTest).getEventValidator();
+
 		if (isElementPresent("HIDDEN_CONTROL_BAR")) {
 			logger.info("hovering mouse over the player");
 			moveElement(getWebElement("HIDDEN_CONTROL_BAR"));
@@ -48,10 +50,19 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 				}
 			}
 		}
+
 		if (!waitOnElement(By.id(element), timeout)){
 			extentTest.log(LogStatus.FAIL, element + " not found.");
 			return false;
 		}
+
+        if (isVideoPluginPresent("ANALYTICS")){
+            if(!(isAnalyticsElementPreset("analytics_video_"+element)
+                    && isAnalyticsElementPreset("analytics_video_requested_"+element))){
+                return false;
+            }
+        }
+
 		return new PlayBackFactory(driver, extentTest).getScrubberValidator().validate("", 1000);
 	}
 }
