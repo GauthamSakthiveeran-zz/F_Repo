@@ -337,16 +337,12 @@ public class TestPageData {
                 if (!(specificBranch == null || specificBranch == "")) {
                     envURL = envURL.replace("candidate/latest", specificBranch);
                 }
-                String adobeTVSDK = System.getProperty("adobeTVSDK");
-                if (adobeTVSDK != null || adobeTVSDK == "") {
-                    adobePluginURL = adobeTVSDK + pluginURL;
-                }
-                    pluginURL = envURL + pluginURL;
-                    corePlayer = envURL + corePlayer;
-                    html5Skin = envURL + html5Skin;
-                    skinAsset = envURL + skinAsset;
-                    skinConf = "" + skinConf;
-                    skinDiscovery = envURL + otherPlugin + discoveryApiPlugin;
+                pluginURL = envURL + pluginURL;
+                corePlayer = envURL + corePlayer;
+                html5Skin = envURL + html5Skin;
+                skinAsset = envURL + skinAsset;
+                skinConf = "" + skinConf;
+                skinDiscovery = envURL + otherPlugin + discoveryApiPlugin;
                 break;
             case PRODUCTION:
                 envURL = sslEnabled + properties.getProperty("production_env_url") + v4Version;
@@ -379,11 +375,7 @@ public class TestPageData {
             case "AKAMAI":
                 return pluginURL + akamaiPlugin;
             case "ADOBETVSDK":
-                String adobeTVSDKFlag = System.getProperty("adobeTVSDK");
-                if (adobeTVSDKFlag != null || adobeTVSDKFlag == ""){
-                    return adobePluginURL + adobeTVSDK;
-                } else
-                    return pluginURL + adobeTVSDK;
+                return pluginURL + adobeTVSDK;
             case "ANALYTICS":
                 return "http://" + inetAddress.getHostAddress() + ":"
                         + SimpleHttpServer.portNumber + "/js?fileName=analytics/AnalyticsQEPlugin.js";
