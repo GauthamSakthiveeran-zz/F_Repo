@@ -3,6 +3,7 @@ package com.ooyala.playback.page;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
@@ -13,63 +14,85 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 
 public class AspectRatioValidator extends PlayBackPage implements
-		PlaybackValidator {
+        PlaybackValidator {
 
-	public static Logger Log = Logger.getLogger(AspectRatioValidator.class);
+    public static Logger logger = Logger.getLogger(AspectRatioValidator.class);
 
-	private boolean verticalVideo = false;
+    private boolean verticalVideo = false;
 
-	public AspectRatioValidator(WebDriver webDriver) {
-		super(webDriver);
-		PageFactory.initElements(webDriver, this);
-		addElementToPageElements("aspectratio");
-	}
+    public AspectRatioValidator(WebDriver webDriver) {
+        super(webDriver);
+        PageFactory.initElements(webDriver, this);
+        addElementToPageElements("aspectratio");
+    }
 
-	public AspectRatioValidator setVerticalVideo() {
-		this.verticalVideo = true;
-		return this;
-	}
+    public AspectRatioValidator setVerticalVideo() {
+        this.verticalVideo = true;
+        return this;
+    }
 
-	public boolean validate(String element, int timeout) throws Exception {
+    public boolean validate(String element, int timeout) throws Exception {
 
-		waitOnElement(By.id(element),40000);
+        waitOnElement(By.id(element), 40000);
 
-		if (isElementPresent(By.id(element))) {
+        if (isElementPresent(By.id(element))) {
 
-			int width = Integer.parseInt(getWebElement(element).getAttribute(
-					"width"));
-			int height = Integer.parseInt(getWebElement(element).getAttribute(
-					"height"));
+            int width = Integer.parseInt(getWebElement(element).getAttribute(
+                    "width"));
+            int height = Integer.parseInt(getWebElement(element).getAttribute(
+                    "height"));
 
-			Log.info("Width : "+width+" Height : "+height);
+            logger.info("Width : " + width + " Height : " + height);
 
-			int factor = greatestCommonFactor(width, height);
-			int widthRatio = width / factor;
-			int heightRatio = height / factor;
+            int factor = greatestCommonFactor(width, height);
+            int widthRatio = width / factor;
+            int heightRatio = height / factor;
 
-			Log.info("Resolution: " + width + "x" + height);
-			Log.info("Aspect Ratio: " + widthRatio + ":" + heightRatio);
-			Log.info("Decimal Equivalent: " + widthRatio / heightRatio);
+            logger.info("Resolution: " + width + "x" + height);
+            logger.info("Aspect Ratio: " + widthRatio + ":" + heightRatio);
+            logger.info("Decimal Equivalent: " + widthRatio / heightRatio);
 
-			if (verticalVideo){
-				Assert.assertEquals(widthRatio, 9, "Width Matches");
-				Assert.assertEquals(heightRatio, 16, "Heigth Matches");
-				extentTest.log(LogStatus.PASS, " Verified Vertical Video");
-			} else {
-				Assert.assertEquals(widthRatio, 4, "Width Matches");
-				Assert.assertEquals(heightRatio, 3, "Heigth Matches");
-				extentTest.log(LogStatus.PASS, "Verified Aspect Ratio Video");
-			}
-			return true;
-		} else {
-			Log.error(element+" is not found.");
-			extentTest.log(LogStatus.FAIL, "Aspect ratio element not present");
-			return false;
-		}
-	}
+            if (verticalVideo) {
+                Assert.assertEquals(widthRatio, 9, "Width Matches");
+                Assert.assertEquals(heightRatio, 16, "Heigth Matches");
+                extentTest.log(LogStatus.PASS, " Verified Vertical Video");
+            } else {
+                Assert.assertEquals(widthRatio, 4, "Width Matches");
+                Assert.assertEquals(heightRatio, 3, "Heigth Matches");
+                extentTest.log(LogStatus.PASS, "Verified Aspect Ratio Video");
+            }
+            return true;
+        } else {
+            logger.error(element + " is not found.");
+            extentTest.log(LogStatus.FAIL, "Aspect ratio element not present");
+            return false;
+        }
+    }
 
-	public int greatestCommonFactor(int width, int height) {
-		return (height == 0) ? width : greatestCommonFactor(height, width % height);
-	}
+    String sizeBeforePlayerLoading;
+    String sizeAfterPlayerLoading;
 
+    public void getDimensions() {
+        WebElement element = getWebElement("playerScreen");
+        sizeBeforePlayerLoading = element.getSize().toString();
+        logger.info(sizeBeforePlayerLoading);
+    }
+
+    public boolean validateDimensions() {
+        WebElement element = getWebElement("playerScreen");
+        sizeAfterPlayerLoading = element.getSize().toString();
+        logger.info(sizeAfterPlayerLoading);
+        if (!sizeAfterPlayerLoading.equals(sizeBeforePlayerLoading)) {
+            logger.error("Player dimensions did not match");
+            extentTest.log(LogStatus.FAIL, "Player dimensions did not match");
+            return false;
+        }
+        logger.info("Player dimensions matched");
+        extentTest.log(LogStatus.PASS, "Player dimensions matched");
+        return true;
+    }
+
+    public int greatestCommonFactor(int width, int height) {
+        return (height == 0) ? width : greatestCommonFactor(height, width % height);
+    }
 }
