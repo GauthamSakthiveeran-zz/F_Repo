@@ -1,4 +1,6 @@
 <elements area="aspectratio">
     <element key="assetDimension_1" findBy="id"
              id="assetDimension_1" />
+    <element key="playerScreen" findBy="xPath"
+             xPath="//a[@class='oo-state-screen-selectable']" />
 </elements>
