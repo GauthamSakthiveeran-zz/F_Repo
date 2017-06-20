@@ -105,21 +105,6 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 		return true;
 	}
 
-	public boolean switchToControlBar() {
-		try {
-			if (isElementPresent("HIDDEN_CONTROL_BAR")) {
-				logger.info("hovering mouse over the player");
-				moveElement(getWebElement("HIDDEN_CONTROL_BAR"));
-			} else if (isElementPresent("CONTROL_BAR")) {
-				moveElement(getWebElement("CONTROL_BAR"));
-			}
-			return true;
-		} catch (Exception e) {
-			extentTest.log(LogStatus.FAIL, "Error while switching to control bar.", e);
-			return false;
-		}
-	}
-
 	public boolean closedCaptionMicroPanel() throws Exception {
 		try {
 			switchToControlBar();

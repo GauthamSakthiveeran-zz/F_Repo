@@ -1,6 +1,8 @@
 package com.ooyala.playback.page;
 
 import com.ooyala.playback.factory.PlayBackFactory;
+import com.relevantcodes.extentreports.LogStatus;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -31,7 +33,7 @@ public class FullScreenValidator extends PlayBackPage implements
 		// if(!clickOnIndependentElement("PAUSE_BUTTON")) return false;
 		if (!clickOnIndependentElement("NORMAL_SCREEN"))
 			return false;
-
+		
 		// PBW-5165 we are not verifying fullscreen change event for safari and
 		// firefox browser as fullscreen is not working in safari in automation
 		if (!(getBrowser().equalsIgnoreCase("safari")
