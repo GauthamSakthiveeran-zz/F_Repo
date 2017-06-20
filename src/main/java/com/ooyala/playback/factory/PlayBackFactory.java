@@ -78,6 +78,10 @@ public class PlayBackFactory {
 		this.driver = driver;
 		this.extentTest = extentTest;
 	}
+	
+	public ExtentTest getExtentTest() {
+		return extentTest;
+	}
 
 	public ScrubberValidator getScrubberValidator() {
 		if (scrubberValidator == null) {

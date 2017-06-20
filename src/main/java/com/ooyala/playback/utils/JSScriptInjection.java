@@ -25,13 +25,20 @@ public class JSScriptInjection {
         this.driver = driver;
         this.urlObject = urlObject;
     }
+    
+    public JSScriptInjection(String[] jsUrl, ExtentTest extentTest, WebDriver driver) {
+        this.jsUrl = jsUrl;
+        this.extentTest = extentTest;
+        this.driver = driver;
+        urlObject = null;
+    }
 
     public JSScriptInjection(WebDriver driver){
         this.driver = driver;
     }
 
     public void injectScript() throws Exception {
-        if (urlObject.getVideoPlugins().contains("ANALYTICS")){
+        if (urlObject!=null && urlObject.getVideoPlugins().contains("ANALYTICS")){
             String hostUrl = getJsUrl("analytics/analytics_events.js");
             scriptToInjectJS(hostUrl);
         }
@@ -51,7 +58,6 @@ public class JSScriptInjection {
         }
     }
 
-    @SuppressWarnings("unused")
     private void injectScript(String scriptURL) throws Exception {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         scriptToInjectJS(scriptURL);

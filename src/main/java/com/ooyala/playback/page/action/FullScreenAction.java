@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.page.PlayBackPage;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class FullScreenAction extends PlayBackPage implements PlayerAction {
 
@@ -18,6 +19,7 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
 		addElementToPageElements("fullscreen");
 		addElementToPageElements("pause");
 		addElementToPageElements("play");
+		addElementToPageElements("controlbar");
 	}
 
 	@Override
@@ -27,13 +29,16 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
 		if (player == null) {
 			return false;
 		}
-		moveElement(player);
+		if(!switchToControlBar()) {
+			extentTest.log(LogStatus.FAIL, "Unable to switch to control bar");
+			return false;
+		}
 
-		try{
+		/*try{
 			clickOnIndependentElement("STATE_SCREEN_SELECTABLE");
 		}catch (Exception e){
 			logger.info("error in click on state screen");
-		}
+		}*/
 		// if(!clickOnIndependentElement("FULLSCREEN_BTN")) {
 
 		if (!clickOnIndependentElement("FULLSCREEN_BTN_1")) {
@@ -52,8 +57,10 @@ public class FullScreenAction extends PlayBackPage implements PlayerAction {
 			}
 
 			logger.info("Changed into Fullscreen");
+			extentTest.log(LogStatus.INFO, "Changed into Fullscreen");
 
 		}
+		extentTest.log(LogStatus.PASS, "Clicked on Full Screen button");
 		return true;
 
 	}

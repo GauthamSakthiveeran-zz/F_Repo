@@ -1,10 +1,10 @@
 package com.ooyala.playback.page;
 
-import com.ooyala.playback.factory.PlayBackFactory;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+
 import com.relevantcodes.extentreports.LogStatus;
 
 /**
@@ -21,8 +21,6 @@ public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-
-        EventValidator event = new PlayBackFactory(driver,extentTest).getEventValidator();
 
 		if (waitOnElement("END_SCREEN", 60000) && waitOnElement("REPLAY", 60000)
 				&& clickOnIndependentElement("REPLAY")) {
