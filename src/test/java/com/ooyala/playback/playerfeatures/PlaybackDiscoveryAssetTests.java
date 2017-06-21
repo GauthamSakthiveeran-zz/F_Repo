@@ -26,7 +26,7 @@ public class PlaybackDiscoveryAssetTests extends PlaybackWebTest {
     private EventValidator eventValidator;
 
     @Test(groups = "playerFeatures", dataProvider = "testUrls")
-    public void testDiscoveryUpNext(String testName, UrlObject url)
+    public void testPlaybackOfDiscoveryAssets(String testName, UrlObject url)
             throws OoyalaException {
         boolean result = true;
 
