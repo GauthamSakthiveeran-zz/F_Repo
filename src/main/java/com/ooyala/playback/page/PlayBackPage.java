@@ -492,7 +492,16 @@ public abstract class PlayBackPage extends WebPage {
 		logger.info(timeSwitch);
 		double playaheadTime = getPlayAheadTime();
 		logger.info(playaheadTime);
-		return Math.abs(timeSwitch - playaheadTime) < 1;
+		
+		double diff = Math.abs(timeSwitch - playaheadTime);
+		
+		if(diff < 1) {
+			extentTest.log(LogStatus.PASS, "Video started to play from the expected time.");
+			return true;
+		} else{
+			extentTest.log(LogStatus.FAIL, "Video did not play from the expected time. Difference : "+diff);
+			return false;
+		}
 	}
 
 	public boolean validateMainVideoPlayResumeTime(String timeSwitch) {

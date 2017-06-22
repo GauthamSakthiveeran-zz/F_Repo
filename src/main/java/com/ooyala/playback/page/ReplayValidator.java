@@ -22,10 +22,16 @@ public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 
 	public boolean validate(String element, int timeout) throws Exception {
 
-		if (waitOnElement("END_SCREEN", 60000) && waitOnElement("REPLAY", 60000)
-				&& clickOnIndependentElement("REPLAY")) {
+		if (waitOnElement("END_SCREEN", 60000) && waitOnElement("REPLAY", 60000)) {
+			
 			if (getBrowser().contains("safari")) {
-				return clickOnHiddenElement("REPLAY");
+				if(!clickOnHiddenElement("REPLAY"))
+					return false;
+			}else {
+				if(!clickOnIndependentElement("REPLAY")) {
+					extentTest.log(LogStatus.FAIL, "Could not click on replay button");
+					return false;
+				}
 			}
 
 			if(!waitOnElement(By.id(element), timeout)){
