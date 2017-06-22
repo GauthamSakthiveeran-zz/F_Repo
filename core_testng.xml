@@ -30,6 +30,7 @@
             <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailCarouselTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlayerDimensionTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryAssetTests"/>
+            <class name="com.ooyala.playback.playerfeatures.PlaybackUIControlOptionsTests"/>
         </classes>
     </test>
 
