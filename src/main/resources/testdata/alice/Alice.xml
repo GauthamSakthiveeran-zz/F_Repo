@@ -325,7 +325,7 @@
             <description name="Player States and Metadata Bitmovin"/>
             <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -336,7 +336,7 @@
             <description name="Player States and Metadata OSMF"/>
             <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf"/>
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
-            <plugins name="OSMF,ANALYTICS"/>
+            <plugins name="OSMF"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -348,7 +348,7 @@
             <description name="Player States and Metadata ADOBETVSDK"/>
             <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
