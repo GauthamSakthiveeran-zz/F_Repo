@@ -148,12 +148,12 @@ public class DiscoveryValidator extends PlayBackPage implements PlaybackValidato
 	public boolean verifyPlayingAssetEmbedCode(String embedCode){
 		String currentEmbedCode = driver.executeScript("return pp.getEmbedCode();").toString();
 		if(embedCode.equals(currentEmbedCode)){
-			logger.info("Current Embed code :" +currentEmbedCode +" is not matching with previous embed code :"+embedCode);
-			extentTest.log(LogStatus.PASS,"Current Embed code :" +currentEmbedCode +" is not matching with previous embed code :"+embedCode);
+			logger.info("Current Embed code :" +currentEmbedCode +" is matching with previous embed code :"+embedCode);
+			extentTest.log(LogStatus.FAIL,"Current Embed code :" +currentEmbedCode +" is matching with previous embed code :"+embedCode);
 			return false;
 		}
-		logger.info("Current Embed code :" +currentEmbedCode +" is matching with previous embed code :"+embedCode);
-		extentTest.log(LogStatus.FAIL,"Current Embed code :" +currentEmbedCode +" is matching with previous embed code :"+embedCode);
+		logger.info("Current Embed code :" +currentEmbedCode +" is not matching with previous embed code :"+embedCode);
+		extentTest.log(LogStatus.PASS,"Current Embed code :" +currentEmbedCode +" is not matching with previous embed code :"+embedCode);
 		return true;
 	}
 }
