@@ -309,6 +309,55 @@
         </url>
     </test>
 
+    <test name="PlaybackUIControlOptionsTests">
+        <url>
+            <description name="Player States and Metadata Main"/>
+            <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter>
+                <![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Player States and Metadata Bitmovin"/>
+            <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,ANALYTICS"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Player States and Metadata OSMF"/>
+            <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf"/>
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
+            <plugins name="OSMF,ANALYTICS"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
+        </url>
+        <url>
+            <description name="Player States and Metadata ADOBETVSDK"/>
+            <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
+        </url>
+    </test>
+
     <test name="PlaybackVerticalVideoTests">
         <url>
             <description name="Core:Vertical Video Aspect Ration 16 as 9"/>
