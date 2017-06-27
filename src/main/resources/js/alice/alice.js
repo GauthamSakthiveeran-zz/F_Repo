@@ -33,7 +33,7 @@ function subscribeToEvents() {
         var bufferingEventCount=1;
         var savePlayerSettingsFalseEventCount = 1;
         var savePlayerSettingsTrueEventCount = 1;
-        
+        var volumeChanged=1;
         var logger = "";
 
 
@@ -219,6 +219,10 @@ function subscribeToEvents() {
             if (event.match(/buffering/)) {
                 OO.$('#ooplayer').append('<p id=buffering_' + bufferingEventCount + '>buffering_'+ bufferingEventCount + '</p>');
                       bufferingEventCount++;
+            }
+            if (event.match(/volumeChanged/)) {
+                 OO.$('#ooplayer').append('<p id=volumeChanged_' + volumeChanged + '>volumeChanged_'+ volumeChanged + '</p>');
+                 volumeChanged++;
             }
             OO.log(logger);
         };
