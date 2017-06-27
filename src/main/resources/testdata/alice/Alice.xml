@@ -170,7 +170,7 @@
             <description name="Core:Fullscreen"/>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -183,7 +183,7 @@
             <description name="Core:Replay"/>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -265,7 +265,7 @@
             <description name="Core:Player States and Metadata Main"/>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -276,7 +276,7 @@
             <description name="Core:Player States and Metadata Bitmovin"/>
             <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -287,7 +287,7 @@
             <description name="Core:Player States and Metadata OSMF"/>
             <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf"/>
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
-            <plugins name="OSMF,ANALYTICS"/>
+            <plugins name="OSMF"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -299,7 +299,7 @@
             <description name="Core:Player States and Metadata ADOBETVSDK"/>
             <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -396,7 +396,7 @@
             <description name="Core:Pause screen"/>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>

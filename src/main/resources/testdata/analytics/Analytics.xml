@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <test name="PlaybackAnalyticsBasicTests">
+        <url>
+            <description name="Analytics:Load AutoPlay Pause Seek Played for VOD"/>
+            <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7"/>
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
+            <plugins name="BITMOVIN,ANALYTICS"/>
+            <adPlugins name="" />
+            <additionalPlugins name=""/>
+            <pbid name="378512f55dd44fc287d0fa609353c268"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Analytics:Load Play Pause Seek Played for Remote Asset"/>
+            <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7"/>
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
+            <plugins name="BITMOVIN,ANALYTICS"/>
+            <adPlugins name="" />
+            <additionalPlugins name=""/>
+            <pbid name="378512f55dd44fc287d0fa609353c268"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+    </test>
+</testdata>
