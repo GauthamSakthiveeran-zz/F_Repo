@@ -8,6 +8,7 @@
         <parameter name="testData" value="analytics/Analytics.xml" />
         <parameter name="jsFile" value="alice/alice.js" />
             <class name="com.ooyala.playback.analytics.PlaybackAnalyticsBasicTests"/>
+            <class name="com.ooyala.playback.analytics.PlaybackAutoplayAnalyticsTests"/>
         </classes>
     </test>
 
