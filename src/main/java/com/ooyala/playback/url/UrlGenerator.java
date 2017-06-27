@@ -215,8 +215,11 @@ public class UrlGenerator {
 
 					String desc = url.getDescription().getName();
 
-					if (url.getStreamType() != null && !url.getStreamType().getName().isEmpty()) {
+					if (url.getStreamType() != null && url.getStreamType().getName()!=null && !url.getStreamType().getName().isEmpty()) {
 						urlObject.setStreamType(url.getStreamType().getName());
+					}
+					if (url.getStreamType() != null && !url.getStreamType().getSupportedMuxFormat().isEmpty()){
+						urlObject.setSupportedMuxFormat(url.getStreamType().getSupportedMuxFormat());
 					}
 
 					if (url.getLive() != null && url.getLive().getChannelId() != null
