@@ -31,16 +31,17 @@ public class PlaybackUIControlOptionsTests extends PlaybackWebTest {
             driver.get(url.getUrl());
             result = result && play.waitForPage();
             injectScript();
-            result = result && uicontroller.playAction("playing_1",20000);
+            result = result && uicontroller.playAction("playing_1",30000);
+            result = result && eventValidator.playVideoForSometime(3);
+            result = result && uicontroller.pauseAction("paused_1",30000);
             result = result && uicontroller.validateVolumeMute(0);
             result = result && uicontroller.validateVolumeMax(1);
-            result = result && uicontroller.pauseAction("paused_1",20000);
+            result = result && uicontroller.validateSeek("seeked_1",30000);
+            result = result && uicontroller.playAction("playing_2",30000);
             result = result && uicontroller.validateVolumeMute(0);
             result = result && uicontroller.validateVolumeMax(1);
-            result = result && uicontroller.validateSeek("seeked_1",20000);
-            result = result && uicontroller.playAction("playing_2",20000);
-            result = result && eventValidator.validate("played_1",40000);
-            result = result && uicontroller.validateReplay("playing_3",5000);
+            result = result && eventValidator.validate("played_1",50000);
+            result = result && uicontroller.validateReplay("playing_3",10000);
         }catch (Exception e) {
             logger.error(e.getMessage());
             extentTest.log(LogStatus.FAIL, e.getMessage());
