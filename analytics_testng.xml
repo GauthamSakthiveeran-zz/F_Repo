@@ -6,9 +6,12 @@
     <test name="Analytics" parallel="classes" thread-count="1">
         <classes>
         <parameter name="testData" value="analytics/Analytics.xml" />
-        <parameter name="jsFile" value="alice/alice.js" />
-            <class name="com.ooyala.playback.analytics.PlaybackAnalyticsBasicTests"/>
-            <class name="com.ooyala.playback.analytics.PlaybackAutoplayAnalyticsTests"/>
+        <parameter name="jsFile" value="alice/alice.js,amf/amf.js" />
+            <class name="com.ooyala.playback.analytics.AnalyticsBasicTests"/>
+            <class name="com.ooyala.playback.analytics.AnalyticsAutoplayTests"/>
+            <class name="com.ooyala.playback.analytics.AnalyticsReplayTests"/>
+            <class name="com.ooyala.playback.analytics.AnalyticsPrerollAdsTests"/>
+            <class name="com.ooyala.playback.analytics.AnalyticsSkipAdsTests"/>
         </classes>
     </test>
 

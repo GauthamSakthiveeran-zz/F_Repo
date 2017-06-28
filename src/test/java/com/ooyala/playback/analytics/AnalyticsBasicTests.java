@@ -30,6 +30,7 @@ public class PlaybackAnalyticsBasicTests extends PlaybackWebTest {
     public PlaybackAnalyticsBasicTests() throws OoyalaException {
         super();
     }
+
     @Test(groups = "analytics", dataProvider = "testUrls")
     public void testAnalyticsBasic(String testName, UrlObject url)
             throws OoyalaException {
