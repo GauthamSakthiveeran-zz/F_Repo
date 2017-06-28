@@ -20,7 +20,9 @@
     var bufferingStarted=1;
     var seekCompleted=1;
     var volumeChanged=1;
-    var fullscreenChanged;
+    var fullscreenChanged=1;
+    var intitalPlayback = 1;
+    var adSkipped = 1;
 
     console.log = function() {
         oldf.apply(console, arguments);
@@ -105,6 +107,14 @@
             if(s.includes('fullscreen_changed')){
                 OO.$("#ooplayer").append("<p id=analytics_fullscreen_changed_"+fullscreenChanged+">" + arguments[0] + "</p>");
                 fullscreenChanged++;
+            }
+            if(s.includes('initial_playback_requested')){
+                OO.$("#ooplayer").append("<p id=analytics_initial_playback_requested_"+intitalPlayback+">" + arguments[0] + "</p>");
+                intitalPlayback++;
+            }
+            if(s.includes('ad_skipped')){
+                 OO.$("#ooplayer").append("<p id=analytics_ad_skipped_"+adSkipped+">" + arguments[0] + "</p>");
+                 adSkipped++;
             }
         }
     }
