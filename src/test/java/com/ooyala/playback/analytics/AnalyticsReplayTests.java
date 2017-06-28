@@ -10,9 +10,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
- * Created by suraj on 6/26/17.
+ * Created by suraj on 6/28/17.
  */
-public class AnalyticsBasicTests extends PlaybackWebTest {
+public class AnalyticsReplayTests extends PlaybackWebTest{
+
+    public AnalyticsReplayTests() throws OoyalaException {
+        super();
+    }
 
     private static Logger logger = Logger.getLogger(AnalyticsBasicTests.class);
     private PlayValidator play;
@@ -24,10 +28,7 @@ public class AnalyticsBasicTests extends PlaybackWebTest {
     private AnalyticsValidator analyticsValidator;
     private VolumeValidator volumeValidator;
     private FullScreenValidator fullScreenValidator;
-
-    public AnalyticsBasicTests() throws OoyalaException {
-        super();
-    }
+    private ReplayValidator replayValidator;
 
     @Test(groups = "analytics", dataProvider = "testUrls")
     public void testAnalyticsBasic(String testName, UrlObject url)
@@ -45,6 +46,8 @@ public class AnalyticsBasicTests extends PlaybackWebTest {
             injectScript();
 
             result = result && play.validate("playing_1", 60000);
+
+            result = result && analyticsValidator.validate("analytics_initial_playback_requested_1",10000);
 
             result = result && eventValidator.validate("buffering_1",10000);
 
@@ -68,11 +71,13 @@ public class AnalyticsBasicTests extends PlaybackWebTest {
 
             result = result && eventValidator.validate("played_1", 60000);
 
+            result = result && replayValidator.validate("replay_1", 30000);
+
         } catch (Exception e) {
             logger.error(e.getMessage());
             extentTest.log(LogStatus.FAIL, e.getMessage());
             result = false;
         }
-        Assert.assertTrue(result, "analytics basic tests failed");
+        Assert.assertTrue(result, "Playback analytics basic tests failed");
     }
 }

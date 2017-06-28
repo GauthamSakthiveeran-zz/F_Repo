@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-    <test name="PlaybackAnalyticsBasicTests">
+    <test name="AnalyticsBasicTests">
         <url>
             <description name="Analytics:Load Play Pause Seek Played for VOD"/>
             <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7"/>
@@ -22,7 +22,7 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
     </test>
-    <test name="PlaybackAutoplayAnalyticsTests">
+    <test name="AutoplayAnalyticsTests">
         <url>
             <description name="Analytics:Load AutoPlay Pause Seek Played for VOD"/>
             <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7"/>
@@ -34,7 +34,7 @@
             <playerParameter><![CDATA[{"autoplay":true}]]></playerParameter>
         </url>
     </test>
-    <test name="PlaybackAnalyticsReplayTests">
+    <test name="AnalyticsReplayTests">
         <url>
             <description name="Analytics:Load Play Replay for VOD"/>
             <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7"/>
