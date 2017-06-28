@@ -2,8 +2,6 @@ package com.ooyala.playback.analytics;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.FullScreenAction;
-import com.ooyala.playback.playerfeatures.PlayerMetadataStatesTests;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -14,9 +12,9 @@ import org.testng.annotations.Test;
 /**
  * Created by suraj on 6/26/17.
  */
-public class PlaybackAnalyticsBasicTests extends PlaybackWebTest {
+public class AnalyticsBasicTests extends PlaybackWebTest {
 
-    private static Logger logger = Logger.getLogger(PlaybackAnalyticsBasicTests.class);
+    private static Logger logger = Logger.getLogger(AnalyticsBasicTests.class);
     private PlayValidator play;
     private SeekValidator seek;
     private EventValidator eventValidator;
@@ -27,7 +25,7 @@ public class PlaybackAnalyticsBasicTests extends PlaybackWebTest {
     private VolumeValidator volumeValidator;
     private FullScreenValidator fullScreenValidator;
 
-    public PlaybackAnalyticsBasicTests() throws OoyalaException {
+    public AnalyticsBasicTests() throws OoyalaException {
         super();
     }
 

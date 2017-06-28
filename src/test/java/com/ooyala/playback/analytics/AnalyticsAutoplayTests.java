@@ -13,11 +13,11 @@ import org.testng.annotations.Test;
 /**
  * Created by suraj on 6/27/17.
  */
-public class PlaybackAutoplayAnalyticsTests extends PlaybackWebTest {
-    public PlaybackAutoplayAnalyticsTests() throws OoyalaException {
+public class AnalyticsAutoplayTests extends PlaybackWebTest {
+    public AnalyticsAutoplayTests() throws OoyalaException {
         super();
     }
-    private static Logger logger = Logger.getLogger(PlaybackAnalyticsBasicTests.class);
+    private static Logger logger = Logger.getLogger(AnalyticsBasicTests.class);
     private PlayValidator play;
     private SeekValidator seek;
     private EventValidator eventValidator;
