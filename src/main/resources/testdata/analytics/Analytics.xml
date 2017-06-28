@@ -34,4 +34,41 @@
             <playerParameter><![CDATA[{"autoplay":true}]]></playerParameter>
         </url>
     </test>
+    <test name="PlaybackAnalyticsReplayTests">
+        <url>
+            <description name="Analytics:Load Play Replay for VOD"/>
+            <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7"/>
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
+            <plugins name="BITMOVIN,ANALYTICS"/>
+            <adPlugins name="" />
+            <additionalPlugins name=""/>
+            <pbid name="378512f55dd44fc287d0fa609353c268"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+    </test>
+    <test name="AnalyticsPrerollAdsTests">
+        <url>
+            <description name="IMA:Bitmovin Preroll"/>
+            <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,ANALYTICS"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+    </test>
+    <test name="AnalyticsSkipAdsTests">
+        <url>
+            <description name="Freewheel:Bitmovin Skippable Ads [ skip button after 10 seconds ]" />
+            <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN,MAIN,ANALYTICS" />
+            <adPlugins name="FREEWHEEL" />
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"NocGg4bzoRJ1yu3JY3LP44tVlsC2E_gi","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","linearAdSkipButtonStartTime":5,"showLinearAdSkipButton":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+        </url>
+    </test>
 </testdata>
