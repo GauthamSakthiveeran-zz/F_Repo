@@ -18,6 +18,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.factory.PlayBackFactory;
 
+import java.util.*;
+
 /**
  *
  * @author dmanohar
@@ -41,10 +43,19 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
     WebElement streamElement = null;
     String [] supportedMuxFormats = null;
     String[] videoPlugins = null;
+    UrlObject url = null;
+    List<String> supportedMuxFormatList;
+    List<String> dashHls ;
+    List<String> dashHlsHdsMp4 ;
+    List<String> hlsMp4 ;
+    List<String> dashMp4 ;
 
     public EncodingValidator getStreamType(UrlObject url){
         supportedMuxFormat = url.getSupportedMuxFormat();
         videoPlugin = url.getVideoPlugins();
+        supportedMuxFormats = null;
+        videoPlugins = null;
+        this.url = url;
         return this;
     }
 
@@ -126,6 +137,12 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 
     public boolean verifyEncodingPriority(UrlObject url){
 
+        supportedMuxFormatList = null;
+        dashHls = new ArrayList<>(Arrays.asList("dash","hls"));
+        dashHlsHdsMp4 = new ArrayList<>(Arrays.asList("dash","hls","hds","mp4"));
+        hlsMp4 = new ArrayList<>(Arrays.asList("hls","mp4"));
+        dashMp4 = new ArrayList<>(Arrays.asList("dash","mp4"));
+
         if(!waitOnElement(By.id("videoPlayingurl"),30000)){
             logger.error("streamElement is not embedded in DOM Something is wrong...");
             return false;
@@ -136,6 +153,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 
         if (supportedMuxFormat.contains(",")){
             supportedMuxFormats = supportedMuxFormat.split(",");
+            supportedMuxFormatList = new ArrayList<>(Arrays.asList(supportedMuxFormats));
         }
 
         if (videoPlugin.contains(",")){
@@ -144,7 +162,9 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 
         isEncodingPriorityNotSet = driver.executeScript("return typeof pp.parameters.encodingPriority").toString().equals("undefined");
 
-        // Verify default encoding priority when priority is not passed from playerParameter
+        /**
+         * Verify default encoding priority when priority is not passed from playerParameter
+         */
         if (isEncodingPriorityNotSet){
             if(!checkStreamTypeForDefaultEncodingPriority()){
                 return false;
@@ -152,14 +172,31 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
         }
 
         if (!isEncodingPriorityNotSet){
-            // Verify default encoding priority when priority is passed from playerParameter
+            String encodingPrioritySet = driver.executeScript("return pp.parameters.encodingPriority[0]").toString();
+
+            /**
+             * Verify default encoding priority when priority is passed from playerParameter
+             */
             if (supportedMuxFormats == null){
+                logger.info("Checking default encoding priority when encoding priority is set through player parameters");
                 if (!checkStreamTypeForDefaultEncodingPriority()){
                     return false;
                 }
             }
+
             if (supportedMuxFormats != null && videoPlugins == null){
 
+                if (equalLists(dashHls,supportedMuxFormatList)){
+                    return dashHlsPriority(encodingPrioritySet);
+                }
+
+                if (equalLists(hlsMp4,supportedMuxFormatList)){
+                    return hlsMp4Priority(encodingPrioritySet);
+                }
+
+                if (equalLists(dashHlsHdsMp4,supportedMuxFormatList)){
+                    return dashHlsHdsMp4Priority(encodingPrioritySet);
+                }
             }
         }
 
@@ -177,6 +214,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
                     return false;
                 }
                 logger.info("video is playing with streaming type as m3u8");
+                extentTest.log(LogStatus.PASS, "video is playing with default encoding priority... i.e m3u8 having muxing format as only hls.");
             }
 
             if (supportedMuxFormat.equals("dash")) {
@@ -186,6 +224,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
                     return false;
                 }
                 logger.info("video is playing with streaming type as mpd");
+                extentTest.log(LogStatus.PASS, "video is playing with default encoding priority... i.e mpd having muxing format as only dash.");
             }
 
             if (supportedMuxFormat.equals("hds")) {
@@ -195,9 +234,311 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
                     return false;
                 }
                 logger.info("video is playing with streaming type as f4m");
+                extentTest.log(LogStatus.PASS, "video is playing with default encoding priority... i.e mpd having muxing format as only dash.");
             }
             logger.info("*************************************************************************************");
         }
+
+        /***
+         * Checking default encoding priority for video having single video plugin and more that one supported muxing format.
+         */
+        if (supportedMuxFormats != null && videoPlugins == null){
+            // Checking default streaming type for bitmovin when encoding priority is not set from player parameter..
+            if (supportedMuxFormats != null && url.getVideoPlugins().toLowerCase().equals("bitmovin")){
+                if (!streamElement.getText().contains("m3u8")){
+                    logger.error("video is not playing with encoding priority as m3u8 for video plugin bitmovin with supported muxing format ["+supportedMuxFormat+"]");
+                    extentTest.log(LogStatus.FAIL,"video is not playing with encoding priority as m3u8 for video plugin bitmovin with supported muxing format ["+supportedMuxFormat+"]");
+                    return false;
+                }
+                logger.info("video is playing with encoding priority as m3u8 for video plugin bitmovin with supported muxing format ["+supportedMuxFormat+"]");
+                extentTest.log(LogStatus.PASS,"video is playing with encoding priority as m3u8 for video plugin bitmovin with supported muxing format ["+supportedMuxFormat+"]");
+            }
+
+            //TODO test will get failed if videoWillPlay does not contain url having mp4 as a part e.g ["dash","mp4"]
+            // Checking default streaming type for main when encoding priority is not set from player parameter..
+            if (supportedMuxFormats != null && url.getVideoPlugins().toLowerCase().equals("main")){
+                logger.info("************************** Checking default encoding priority for "+browser+" browser having supported muxing format as ["+supportedMuxFormat+"] for video Plugin MAIN ***********************************");
+                if (browser.equals("safari")){
+                    if (!streamElement.getText().contains("m3u8")){
+                        logger.error("video is not getting served with default encoding priority i.e hls on safari having muxing format as ["+supportedMuxFormat+"]");
+                        extentTest.log(LogStatus.FAIL,"video is not getting served with default encoding priority i.e hls on safari having muxing format as ["+supportedMuxFormat+"]");
+                        return false;
+                    }
+                    logger.info("video is getting served with default encoding priority i.e hls on safari having muxing format as ["+supportedMuxFormat+"]");
+                    extentTest.log(LogStatus.PASS,"video is getting served with default encoding priority i.e hls on safari having muxing format as ["+supportedMuxFormat+"]");
+                }else {
+                    if (streamElement.getText().contains("m3u8")
+                            || streamElement.getText().contains("mpd")
+                            || streamElement.getText().contains("f4m")){
+                        logger.error("video is not getting served with default encoding priority i.e mp4 on "+browser+" having muxing format as ["+supportedMuxFormat+"]");
+                        extentTest.log(LogStatus.FAIL,"video is not getting served with default encoding priority i.e MP4 on "+browser+" having muxing format as ["+supportedMuxFormat+"]");
+                        return false;
+                    }
+                    logger.info("video is getting served with default encoding priority i.e mp4 on "+browser+" having muxing format as ["+supportedMuxFormat+"]");
+                    extentTest.log(LogStatus.PASS,"video is getting served with default encoding priority i.e MP4 on "+browser+" having muxing format as ["+supportedMuxFormat+"]");
+                }
+                return true;
+            }
+
+            // Checking default streaming type for main when encoding priority is not set from player parameter..
+            if (getPlatform().toLowerCase().equals("android")
+                    && url.getVideoPlugins().toLowerCase().equals("bitmovin")
+                    && supportedMuxFormats != null){
+                if (!streamElement.getText().contains("mpd")){
+                    return false;
+                }
+            }
+        }
+
+        /***
+         * Checking default encoding priority when there are more that one video plugin and muxing fromat supported ....
+         */
+        if (supportedMuxFormats != null && videoPlugins != null){
+            logger.info("************************** Checking default encoding priority for "+browser+" browser having supported muxing format as ["+supportedMuxFormat+"] for video Plugins "+videoPlugins+"**********************************");
+            // TODO
+            if (equalLists(supportedMuxFormatList,hlsMp4)){
+                if (!streamElement.getText().contains("m3u8")){
+                    logger.error("video is not getting served through hls for encoding priority : "+hlsMp4.toString());
+                    extentTest.log(LogStatus.FAIL,"video is not getting served through hls for encoding priority : "+hlsMp4.toString());
+                    return false;
+                }
+                logger.info("video is getting served through hls for encoding priority : "+hlsMp4.toString());
+                extentTest.log(LogStatus.PASS,"video is getting served through hls for encoding priority : "+hlsMp4.toString());
+            }
+
+            if (equalLists(supportedMuxFormatList,dashMp4)){
+                if (!streamElement.getText().contains("mpd")){
+                    logger.error("video is not getting served through dash for encoding priority : "+dashMp4.toString());
+                    extentTest.log(LogStatus.FAIL,"video is not getting served through dash for encoding priority : "+dashMp4.toString());
+                    return false;
+                }
+                logger.info("video is getting served through dash for encoding priority : "+dashMp4.toString());
+                extentTest.log(LogStatus.PASS,"video is getting served through dash for encoding priority : "+dashMp4.toString());
+            }
+
+            if (equalLists(supportedMuxFormatList,dashHlsHdsMp4)) {
+                if (url.getVideoPlugins().toLowerCase().contains("bitmovin")) {
+                    if (!streamElement.getText().contains("m3u8")) {
+                        logger.error("video is not getting served through hls for encoding priority : " + dashHlsHdsMp4.toString());
+                        extentTest.log(LogStatus.FAIL, "video is not getting served through hls for encoding priority : " + dashHlsHdsMp4.toString());
+                        return false;
+                    }
+                    logger.info("video is getting served through hls for encoding priority : " + dashHlsHdsMp4.toString());
+                    extentTest.log(LogStatus.PASS, "video is getting served through hls for encoding priority : " + dashHlsHdsMp4.toString());
+                }
+            }
+        }
         return true;
+    }
+
+    public boolean dashHlsPriority(String encodingPrioritySet){
+        if (url.getVideoPlugins().toLowerCase().equals("bitmovin")){
+            if (encodingPrioritySet.equals("hls")){
+                if (!streamElement.getText().contains("m3u8")){
+                    logger.error("video is not getting served through encoding priority hls.");
+                    extentTest.log(LogStatus.FAIL,"video is not getting served through encoding priority hls.");
+                    return false;
+                }
+                logger.info("video is getting served through encoding priority hls.");
+                extentTest.log(LogStatus.PASS,"video is getting served through encoding priority hls.");
+            }
+
+            if (encodingPrioritySet.equals("dash")){
+                if (!streamElement.getText().contains("mpd")){
+                    logger.error("video is not getting served through encoding priority dash.");
+                    extentTest.log(LogStatus.FAIL,"video is not getting served through encoding priority dash.");
+                    return false;
+                }
+                logger.info("video is getting served through encoding priority dash.");
+                extentTest.log(LogStatus.PASS,"video is getting served through encoding priority dash.");
+            }
+
+            /**
+             * hds encoding priority is not supported for video having muxing format as hls+dash
+             * therefore if hds encoding priority is set through player parameter then video should get served from second mentioned
+             * encoding priority in player parameter.
+             * e.g if encoding priority is set as ["hds","hls"] then video should get served via hls and similarly for dash.
+             */
+            if (encodingPrioritySet.equals("hds")){
+                logger.info("checking encoding priority for video ");
+                String secondEncoPriority = driver.executeScript("return pp.parameters.encodingPriority[1]").toString();
+                if (!streamElement.getText().contains("f4m")){
+                    if (secondEncoPriority.equals("dash")){
+                        if (!streamElement.getText().contains("mpd")){
+                            logger.error("video is not playing with dash second encoding priority when first encoding priority is set to non supported muxing format");
+                            extentTest.log(LogStatus.FAIL, "video is not playing with dash second encoding priority when first encoding priority is set to non supported muxing format");
+                            return false;
+                        }
+                        logger.info("video is playing with streaming type as dash which is set as 2nd encoding priority when first encoding priority is not supported for muxing format hls+dash");
+                        extentTest.log(LogStatus.PASS,"video is playing with streaming type as dash which is set as 2nd encoding priority when first encoding priority is not supported for muxing format hls+dash");
+                    }
+                    if (secondEncoPriority.equals("hls")){
+                        if (!streamElement.getText().contains("m3u8")){
+                            logger.error("video is not playing with hls second encoding priority when first encoding priority is set to non supported muxing format");
+                            extentTest.log(LogStatus.FAIL, "video is not playing with hls second encoding priority when first encoding priority is set to non supported muxing format");
+                            return false;
+                        }
+                        logger.info("video is playing with streaming type as hls which is set as 2nd encoding priority when first encoding priority is not supported for muxing format hls+dash");
+                        extentTest.log(LogStatus.PASS,"video is playing with streaming type as hls which is set as 2nd encoding priority when first encoding priority is not supported for muxing format hls+dash");
+                    }
+                }
+            }
+        }
+
+        if (url.getVideoPlugins().toLowerCase().equals("osmf")){
+            logger.info("OSMF only supports for hds so please remove the video plugin as OSMF and try using BITMOVIN or MAIN");
+            extentTest.log(LogStatus.WARNING,"OSMF only supports for hds so please remove the video plugin as OSMF and try using BITMOVIN or MAIN");
+            return false;
+        }
+
+        if (url.getVideoPlugins().toLowerCase().equals("main")){
+            if (browser.toLowerCase().equals("safari")){
+                if (!streamElement.getText().contains("m3u8")){
+                    logger.error("video is not getting served through hls on safari for MAIN video plugin");
+                    extentTest.log(LogStatus.FAIL,"video is not getting served through hls on safari for MAIN video plugin");
+                    return false;
+                }
+                logger.info("video is getting served through hls on safari for MAIN video plugin");
+                extentTest.log(LogStatus.PASS,"video is getting served through hls on safari for MAIN video plugin");
+            }
+        }
+        return true;
+    }
+
+    public boolean hlsMp4Priority(String encodingPrioritySet){
+
+        if (url.getVideoPlugins().toLowerCase().equals("main")){
+
+            if (browser.toLowerCase().equals("safari")){
+
+                if (encodingPrioritySet.equals("hls")) {
+                    if (!streamElement.getText().contains("m3u8")) {
+                        logger.error("video is not getting served through hls on safari for MAIN video plugin");
+                        extentTest.log(LogStatus.FAIL, "video is not getting served through hls on safari for MAIN video plugin");
+                        return false;
+                    }
+                    logger.info("video is getting served through hls on safari for MAIN video plugin");
+                    extentTest.log(LogStatus.PASS, "video is getting served through hls on safari for MAIN video plugin");
+                }
+
+                if (encodingPrioritySet.equals("mp4")){
+                    if (streamElement.getText().contains("m3u8")
+                            || streamElement.getText().contains("mpd")
+                            || streamElement.getText().contains("f4m")) {
+                        logger.error("video is not getting served through mp4 on "+browser+" for MAIN video plugin");
+                        extentTest.log(LogStatus.FAIL, "video is not getting served through mp4 on "+browser+" for MAIN video plugin");
+                        return false;
+                    }
+                    logger.info("video is getting served through mp4 on "+browser+" for MAIN video plugin");
+                    extentTest.log(LogStatus.PASS, "video is getting served through mp4 on "+browser+" for MAIN video plugin");
+                }
+            }else {
+                if (streamElement.getText().contains("m3u8")
+                        || streamElement.getText().contains("mpd")
+                        || streamElement.getText().contains("f4m")){
+                    logger.error("video is not getting served through mp4 on "+browser+" for MAIN video plugin");
+                    extentTest.log(LogStatus.FAIL, "video is not getting served through mp4 on "+browser+" for MAIN video plugin");
+                    return false;
+                }
+                logger.info("video is getting served through mp4 on "+browser+" for MAIN video plugin");
+                extentTest.log(LogStatus.PASS, "video is getting served through mp4 on "+browser+" for MAIN video plugin");
+            }
+        }
+        return true;
+    }
+
+    public boolean dashHlsHdsMp4Priority(String encodingPrioritySet){
+
+        if (url.getVideoPlugins().toLowerCase().equals("bitmovin")){
+
+            if (encodingPrioritySet.equals("hls")){
+                if (!streamElement.getText().contains("m3u8")){
+                    logger.error("video is not getting served through encoding priority hls.");
+                    extentTest.log(LogStatus.FAIL,"video is not getting served through encoding priority hls.");
+                    return false;
+                }
+                logger.info("video is getting served through encoding priority hls.");
+                extentTest.log(LogStatus.PASS,"video is getting served through encoding priority hls.");
+            }
+
+            if (encodingPrioritySet.equals("dash")){
+                if (!streamElement.getText().contains("mpd")){
+                    logger.error("video is not getting served through encoding priority dash.");
+                    extentTest.log(LogStatus.FAIL,"video is not getting served through encoding priority dash.");
+                    return false;
+                }
+                logger.info("video is getting served through encoding priority dash.");
+                extentTest.log(LogStatus.PASS,"video is getting served through encoding priority dash.");
+            }
+
+            if (encodingPrioritySet.equals("hds")){
+                if (!streamElement.getText().contains("f4m")){
+                    logger.error("video is not getting served through encoding priority hds.");
+                    extentTest.log(LogStatus.FAIL,"video is not getting served through encoding priority hds.");
+                    return false;
+                }
+                logger.info("video is getting served through encoding priority hds.");
+                extentTest.log(LogStatus.PASS,"video is getting served through encoding priority hds.");
+            }
+
+            if (encodingPrioritySet.equals("mp4")){
+                if (streamElement.getText().contains("f4m")
+                        ||streamElement.getText().contains("mpd")
+                        || streamElement.getText().contains("m3u8")){
+                    logger.error("video is not getting served through encoding priority mp4.");
+                    extentTest.log(LogStatus.FAIL,"video is not getting served through encoding priority mp4.");
+                    return false;
+                }
+                logger.info("video is getting served through encoding priority mp4.");
+                extentTest.log(LogStatus.PASS,"video is getting served through encoding priority mp4.");
+            }
+
+        }
+
+        if (url.getVideoPlugins().toLowerCase().equals("osmf")){
+            logger.info("************************** Checking encoding priority for "+browser+" browser having supported muxing format as ["+supportedMuxFormat+"] for video Plugin "+url.getVideoPlugins()+" ***********************************");
+            if (!streamElement.getText().contains("f4m")){
+                logger.error("video is not playing with encoding priority mpd for OSMF video plugin having supported muxing format "+Arrays.asList(supportedMuxFormats));
+                extentTest.log(LogStatus.FAIL,"video is not playing with encoding priority mpd for OSMF video plugin having supported muxing format "+Arrays.asList(supportedMuxFormats));
+                return false;
+            }
+            logger.error("video is playing with encoding priority mpd for OSMF video plugin having supported muxing format "+Arrays.asList(supportedMuxFormats));
+            extentTest.log(LogStatus.PASS,"video is playing with encoding priority mpd for OSMF video plugin having supported muxing format "+Arrays.asList(supportedMuxFormats));
+        }
+
+        if (url.getVideoPlugins().toLowerCase().equals("main")) {
+            if (encodingPrioritySet.equals("dash") || encodingPrioritySet.equals("hds")) {
+                String secondEncoPriority = driver.executeScript("return pp.parameters.encodingPriority[1]").toString();
+                if (secondEncoPriority.equals("dash") || secondEncoPriority.equals("hds")){
+                    String thirdEncoPriority = driver.executeScript("return pp.parameters.encodingPriority[2]").toString();
+                    if (!hlsMp4Priority(thirdEncoPriority)){
+                        return false;
+                    }
+                }else {
+                    if (!hlsMp4Priority(secondEncoPriority)){
+                        return false;
+                    }
+                }
+            }else {
+                if (!hlsMp4Priority(encodingPrioritySet)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public  boolean equalLists(List<String> a, List<String> b){
+        // Check for sizes and nulls
+        if ((a.size() != b.size()) || (a == null && b!= null) || (a != null && b== null)){
+            return false;
+        }
+
+        if (a == null && b == null) return true;
+
+        // Sort and compare the two lists
+        Collections.sort(a);
+        Collections.sort(b);
+        return a.equals(b);
     }
 }
