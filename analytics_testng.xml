@@ -10,6 +10,7 @@
             <class name="com.ooyala.playback.analytics.AnalyticsBasicTests"/>
             <class name="com.ooyala.playback.analytics.AnalyticsAutoplayTests"/>
             <class name="com.ooyala.playback.analytics.AnalyticsReplayTests"/>
+            <class name="com.ooyala.playback.analytics.AnalyticsPlayerDestroyTests"/>
         </classes>
     </test>
 
@@ -19,6 +20,7 @@
             <parameter name="jsFile" value="alice/alice.js,amf/amf.js" />
             <class name="com.ooyala.playback.analytics.AnalyticsPrerollAdsTests"/>
             <class name="com.ooyala.playback.analytics.AnalyticsSkipAdsTests"/>
+            <class name="com.ooyala.playback.analytics.AnalyticsPrerollAdsClickthroughTests"/>
         </classes>
     </test>
 
