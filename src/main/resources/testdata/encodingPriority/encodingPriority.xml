@@ -146,7 +146,7 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
-            <description name="Encoding Priority:MAIN with encoding priority set to hls,mp4"/>
+            <description name="Encoding Priority:MAIN, BITMOVIN No encoding priority set for an asset with hls+mp4"/>
             <embed_code name="ExZW5vYjE69p-qA3n_xZJ76Zbb4EwZfT"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -155,6 +155,94 @@
             <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
             <streamType supportedMuxFormat="hls,mp4"></streamType>
             <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Encoding Priority:MAIN No encoding priority set for asset with dash,mp4"/>
+            <embed_code name="hxaG5vYjE6YtOkCZzkqLi-kRn-en2lTD"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
+            <streamType supportedMuxFormat="dash,mp4"></streamType>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Encoding Priority:BITMOVIN, MAIN without encoding priority for an asset with all formats"/>
+            <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
+            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
+            <plugins name="BITMOVIN,MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Encoding Priority:BITMOVIN dash + hls + hds + mp4 without encoding priority"/>
+            <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
+            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Encoding Priority:MAIN dash + hls + hds + mp4"/>
+            <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
+            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Encoding Priority:MAIN dash + hls + hds + mp4 set encoding priority to mp4, dash, hls, hds"/>
+            <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
+            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
+            <playerParameter><![CDATA[{"encodingPriority":["mp4","hls","dash","hds"]}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Encoding Priority:OSMF dash + hls + hds + mp4"/>
+            <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
+            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
+            <plugins name="OSMF"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
+            <playerParameter><![CDATA[{"encodingPriority":["mp4","hls","dash","hds"]}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Encoding Priority:BITMOVIN dash + hls + hds + mp4 set encoding priority to dash, hls, mp4"/>
+            <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
+            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
+            <playerParameter><![CDATA[{"encodingPriority":["dash","mp4","hls"]}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Encoding Priority:BITMOVIN dash + hls + hds + mp4 set encoding priority to mp4, dash, hls, hds"/>
+            <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
+            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
+            <playerParameter><![CDATA[{"encodingPriority":["mp4","dash","hls"]}]]></playerParameter>
         </url>
     </test>
 </testdata>
