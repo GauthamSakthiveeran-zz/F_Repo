@@ -23,6 +23,8 @@
     var fullscreenChanged=1;
     var intitalPlayback = 1;
     var adSkipped = 1;
+    var adClickthrough = 1;
+    var destroy = 1;
 
     console.log = function() {
         oldf.apply(console, arguments);
@@ -115,6 +117,13 @@
             if(s.includes('ad_skipped')){
                  OO.$("#ooplayer").append("<p id=analytics_ad_skipped_"+adSkipped+">" + arguments[0] + "</p>");
                  adSkipped++;
+            }
+            if(s.includes('ad_clickthrough_opened')){
+                 OO.$("#ooplayer").append("<p id=analytics_ad_clickthrough_opened_"+adClickthrough+">" + arguments[0] + "</p>");
+                 adClickthrough++;
+            }
+            if(s.includes('destroy')){
+                 OO.$("#companion").append("<p id=destroy>" + arguments[0] + "</p>");
             }
         }
     }
