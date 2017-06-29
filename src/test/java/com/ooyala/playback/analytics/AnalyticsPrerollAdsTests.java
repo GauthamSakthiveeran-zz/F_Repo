@@ -8,6 +8,7 @@ import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
+import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
 /**
@@ -19,6 +20,7 @@ public class AnalyticsPrerollAdsTests extends PlaybackWebTest {
         super();
     }
 
+    protected Logger logger = Logger.getLogger(AnalyticsPrerollAdsTests.class);
     private EventValidator event;
     private PlayAction playAction;
     private PlayValidator playValidator;

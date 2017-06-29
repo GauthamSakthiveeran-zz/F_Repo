@@ -18,7 +18,7 @@ public class AnalyticsReplayTests extends PlaybackWebTest{
         super();
     }
 
-    private static Logger logger = Logger.getLogger(AnalyticsBasicTests.class);
+    private static Logger logger = Logger.getLogger(AnalyticsReplayTests.class);
     private PlayValidator play;
     private SeekValidator seek;
     private EventValidator eventValidator;
