@@ -6,7 +6,7 @@
             <description name="Freewheel:Main 3 Preroll Podded"/>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
             <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
@@ -18,7 +18,7 @@
             <description name="Freewheel:Bitmovin 3 Preroll Podded"/>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN,ANALYTICS"/>
+            <plugins name="BITMOVIN,MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -30,7 +30,7 @@
             <description name="Freewheel:OSMF 3 Preroll Podded"/>
             <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
             <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
@@ -44,7 +44,7 @@
             <description name="IMA:Main 3 Preroll Podded"/>
             <embed_code name="htYWxjczousVmIKvp56u7Cb9btEnyJK9"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
@@ -55,7 +55,7 @@
             <description name="IMA:Bitmovin Preroll Podded"/>
             <embed_code name="0wdTZ2YTE6inA1_u6ssfa1HAhN0KpDER"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -67,7 +67,7 @@
             <description name="IMA:OSMF Preroll Podded"/>
             <embed_code name="x1MjlxYTE6v9pJaLK_hFgurkxQo56QFY"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
@@ -80,7 +80,7 @@
             <description name="VAST:Main Vast2.0 3 Preroll Podded"/>
             <embed_code name="xxbDB4dDovMCDiqvo2DSqON3lIGSM5N5"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -91,7 +91,7 @@
             <description name="VAST:Main Vast3.0 3 Preroll Podded"/>
             <embed_code name="1nMmM1MTE6yZTv1GDLrMl-Cg0lfZtta6"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -103,7 +103,7 @@
             <description name="VPAID:Main Vast VPAID2.0 3 Preroll Podded"/>
             <embed_code name="B1ZmgzMTE6qeXMfeqJTw3IoqZXvKGrDw"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -115,7 +115,7 @@
             <description name="VPAID:Main IMA VPAID2.0 Preroll Podded Ad"/>
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
@@ -128,7 +128,7 @@
             <description name="Freewheel:Bitmovin Preroll Podded"/>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN,ANALYTICS"/>
+            <plugins name="BITMOVIN,MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>

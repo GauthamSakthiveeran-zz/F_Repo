@@ -6,7 +6,7 @@
             <description name="VAST:Bitmovin Vast3.0 Postroll"/>
             <embed_code name="w0cDZnMTE6lsFVFkP2qVcLOLOLVjY4r0"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN,ANALYTICS"/>
+            <plugins name="BITMOVIN,MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -18,7 +18,7 @@
             <description name="VAST:AdobeTVSDK Vast3.0 Postroll"/>
             <embed_code name="w0cDZnMTE6lsFVFkP2qVcLOLOLVjY4r0"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -30,7 +30,7 @@
             <description name="VPAID:Bitmovin Vast VPAID2.0 Postroll"/>
             <embed_code name="93anI4MjE6qgS_sr2KepPHDWNfJb9au2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="MAIN,BITMOVIN,ANALYTICS"/>
+            <plugins name="MAIN,BITMOVIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -42,7 +42,7 @@
             <description name="VPAID:AdobeTVSDK Vast VPAID2.0 Postroll"/>
             <embed_code name="93anI4MjE6qgS_sr2KepPHDWNfJb9au2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -54,7 +54,7 @@
             <description name="VPAID:Bitmovin IMA VPAID2.0 Postroll"/>
             <embed_code name="M0NngxYjE6oPnwud4hdLF4hMTrSdZgp2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="MAIN,BITMOVIN,ANALYTICS"/>
+            <plugins name="MAIN,BITMOVIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -66,7 +66,7 @@
             <description name="VPAID:AdobeTVSDK IMA VPAID2.0 Postroll"/>
             <embed_code name="M0NngxYjE6oPnwud4hdLF4hMTrSdZgp2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -78,7 +78,7 @@
             <description name="Pulse:Bitmovin Postroll"/>
             <embed_code name="A3Y2Y5MzE6vyMaoirADDRV6bpmtIDHH2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name="PULSE"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -90,7 +90,7 @@
             <description name="Pulse:AdobeTVSDK Postroll"/>
             <embed_code name="A3Y2Y5MzE6vyMaoirADDRV6bpmtIDHH2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name="PULSE"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -102,7 +102,7 @@
             <description name="Pulse:OSMF Postroll"/>
             <embed_code name="ltdzdxYTE69lCGBuC0evsQK6LMVFsZiv"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,ANALYTICS"/>
+            <plugins name="OSMF"/>
             <adPlugins name="PULSE"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
@@ -116,7 +116,7 @@
             <description name="Pulse:Main Postroll"/>
             <embed_code name="VjcGY5MzE6CLAiCSPoTztUc2yBXQZksS"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="PULSE"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -128,7 +128,7 @@
             <description name="VPAID:Main IMA VPAID2.0 Postroll"/>
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
@@ -174,7 +174,7 @@
             <description name="VPAID:Main Vast VPAID2.0 Postroll"/>
             <embed_code name="tmbmxiMjE6M_3i7Eg6sVc8-6zp4vXQgw"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -186,7 +186,7 @@
             <description name="IMA:Bitmovin Postroll"/>
             <embed_code name="h0ODZnMTE6FB_Hfx1D4CUKXmzWyQUbXC"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -198,7 +198,7 @@
             <description name="IMA:AdobeTVSDK Postroll"/>
             <embed_code name="h0ODZnMTE6FB_Hfx1D4CUKXmzWyQUbXC"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -210,7 +210,7 @@
             <description name="Freewheel:Bitmovin Postroll"/>
             <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN,ANALYTICS"/>
+            <plugins name="BITMOVIN,MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -222,7 +222,7 @@
             <description name="Freewheel:AdobeTVSDK Postroll"/>
             <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -245,7 +245,7 @@
             <description name="Freewheel:OSMF Postroll"/>
             <embed_code name="lkdWVmMDE6cWNTORjWAURSZanDLpVGP7"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
@@ -258,7 +258,7 @@
             <description name="IMA:OSMF Postroll"/>
             <embed_code name="Z4d2VmMDE67NI7nxP_RQ6EBEhnkBMmAP"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
@@ -282,7 +282,7 @@
             <description name="VAST:OSMF Vast2.0 Postroll"/>
             <embed_code name="85bm5kMDE6uYN7kMcTPz72AYcRuJLlgz"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
@@ -294,7 +294,7 @@
             <description name="VAST:AdobeTVSDK Vast2.0 Postroll"/>
             <embed_code name="85bm5kMDE6uYN7kMcTPz72AYcRuJLlgz"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
@@ -306,7 +306,7 @@
             <description name="VAST:Main Vast2.0 Postroll|VTC:SetEmbedCode"/>
             <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -317,7 +317,7 @@
             <description name="Freewheel:Main Postroll|VTC:SetEmbedCode"/>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
             <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
@@ -329,7 +329,7 @@
             <description name="IMA:Main Ad Rule Postroll|VTC:SetEmbedCode"/>
             <embed_code name="5sbHlycTqQ5dqQoCVcY3Rpe78TVvJKjg"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
@@ -340,7 +340,7 @@
             <description name="VAST:OSMF Vast3.0 Postroll"/>
             <embed_code name="hwcThxYTE6P5iQ6Cim85tKiJJiX_bwMZ"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
@@ -353,7 +353,7 @@
             <description name="VAST:Main Vast3.0 Postroll"/>
             <embed_code name="1jcGtuMjE60EQ3Q7nh3Z-kNicrrTZcVa"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -365,7 +365,7 @@
             <description name="VAST:AdobeTVSDK Vast3.0 Postroll"/>
             <embed_code name="1jcGtuMjE60EQ3Q7nh3Z-kNicrrTZcVa"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -377,7 +377,7 @@
             <description name="VPAID:Bitmovin IMA VPAID1.0 Postroll"/>
             <embed_code name="VnNngxYjE6lZso1lkPh8X_gTK1IC3wKA"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN,ANALYTICS"/>
+            <plugins name="BITMOVIN,MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -388,7 +388,7 @@
             <description name="VPAID:AdobeTVSDK IMA VPAID1.0 Postroll"/>
             <embed_code name="VnNngxYjE6lZso1lkPh8X_gTK1IC3wKA"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -399,7 +399,7 @@
             <description name="VPAID:OSMF Vast VPAID2.0 Postroll"/>
             <embed_code name="ViMm9xYTE6bTC12TonUawyghP9jVLnJX"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -412,7 +412,7 @@
             <description name="VPAID:OSMF IMA VPAID2.0 Postroll"/>
             <embed_code name="VsMm9xYTE6yAvCNBjXJT0Ed4KhNHaBXe"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
@@ -424,7 +424,7 @@
             <description name="VPAID:OSMF IMA VPAID1.0 Postroll"/>
             <embed_code name="ZrMnBxYTE6kCtZRWQzDlAzJwa1uk4Fl9"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
@@ -436,7 +436,7 @@
             <description name="VPAID:Main IMA VPAID1.0 Postroll"/>
             <embed_code name="41dm5xYTE6HaWYfZZTrjVSGhLjCiewjE"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
