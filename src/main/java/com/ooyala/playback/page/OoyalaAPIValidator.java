@@ -28,8 +28,13 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         addElementToPageElements("adclicks");
     }
 
+
+    String description = null;
+    String embedCode = null;
+    String title = null;
+
     @SuppressWarnings("unchecked")
-	@Override
+    @Override
     public boolean validate(String element, int timeout) throws Exception {
 
         /***
@@ -169,9 +174,15 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
 
         return true;
     }
-    
+
+    public boolean validateApi(){
+        validateGetItem();
+        return validateDescription() && validateEmbedCode() && validateTitle() && validatePlay() && validateVolume() && validatePause()
+                && validateSeek() && validateDestroy();
+    }
+
     public boolean validateInitailTime(){
-    	double initialTime = parseDouble(driver.executeScript("return pp.parameters.initialTime").toString());
+        double initialTime = parseDouble(driver.executeScript("return pp.parameters.initialTime").toString());
 
         double playHeadTime = parseDouble(driver.executeScript("return pp.getPlayheadTime()").toString());
 
@@ -180,6 +191,243 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
             logger.error("Video playback not started from initial time");
             return false;
         }
+        return true;
+    }
+
+    public void validateGetItem(){
+        description = driver.executeScript("return pp.getItem().description").toString();
+        embedCode = driver.executeScript("return pp.getItem().embed_code").toString();
+        title = driver.executeScript("return pp.getItem().title").toString();
+    }
+
+    public boolean validateDescription(){
+        logger.info("************************************** validating description ******************************************************");
+        String expectedDesciption = driver.executeScript("return pp.getDescription()").toString();
+        if (!description.equals(expectedDesciption)){
+            logger.error("Description is not matching ... Expected : "+description +"\n Actual :"+expectedDesciption);
+            extentTest.log(LogStatus.FAIL,"Description is not matching ... Expected : "+description +"\n Actual :"+expectedDesciption);
+            return false;
+        }
+        logger.info("Description is matching ... Expected : "+description +"\n Actual :"+expectedDesciption);
+        extentTest.log(LogStatus.PASS,"Description is matching ... Expected : "+description +"\n Actual :"+expectedDesciption);
+        return true;
+    }
+
+    public boolean validateEmbedCode(){
+        logger.info("******************************************* validating embed code ********************************************************");
+        String expectedEmbedCode = driver.executeScript("return pp.getEmbedCode()").toString();
+        if (!embedCode.equals(expectedEmbedCode)){
+            logger.error("Embed Code is not matching ... Expected : "+embedCode +"\n Actual :"+expectedEmbedCode);
+            extentTest.log(LogStatus.FAIL,"Embed Code is not matching ... Expected : "+embedCode +"\n Actual :"+expectedEmbedCode);
+            return false;
+        }
+        logger.info("Embed Code is matching ... Expected : "+embedCode +"\n Actual :"+expectedEmbedCode);
+        extentTest.log(LogStatus.PASS,"Embed Code is matching ... Expected : "+embedCode +"\n Actual :"+expectedEmbedCode);
+        return true;
+    }
+
+    public boolean validateTitle(){
+        logger.info("*********************************** validating title ************************************************************");
+        String expectedTitle = driver.executeScript("return pp.getTitle()").toString();
+        if (!title.equals(expectedTitle)){
+            logger.error("Title is not matching ... Expected : "+title +"\n Actual :"+expectedTitle);
+            extentTest.log(LogStatus.FAIL,"Title is not matching ... Expected : "+title +"\n Actual :"+expectedTitle);
+            return false;
+        }
+        logger.info("Title is matching ... Expected : "+title +"\n Actual :"+expectedTitle);
+        extentTest.log(LogStatus.PASS,"Title is matching ... Expected : "+title +"\n Actual :"+expectedTitle);
+        return true;
+    }
+
+    public boolean validatePlay(){
+        logger.info("******************************************* validating play ****************************************************");
+        try {
+            // Start playback
+            driver.executeScript("pp.play()");
+        } catch (Exception ex){
+            logger.error("getting exception while playing video using pp.play() API");
+            return false;
+        }
+
+        //Check playing event
+        if(!waitOnElement(By.id("playing_1"),20000)){
+            logger.error("playing event is not getting triggered");
+            extentTest.log(LogStatus.FAIL,"playing event is not getting triggered");
+            return false;
+        }
+        logger.info("playing event gets triggered");
+        extentTest.log(LogStatus.PASS,"playing event gets triggered");
+
+        //Check isPlaying api return true or false
+        boolean isPlaying = Boolean.parseBoolean(driver.executeScript("return pp.isPlaying()").toString());
+        if (!isPlaying){
+            logger.error("isPlaying() API returns "+isPlaying+" while video is playing");
+            extentTest.log(LogStatus.FAIL,"isPlaying() API returns "+isPlaying+" while video is playing");
+            return false;
+        }
+        logger.info("isPlaying() API returns "+isPlaying+" while video is playing");
+        extentTest.log(LogStatus.PASS,"isPlaying() API returns "+isPlaying+" while video is playing");
+
+        // Validate playing State
+        String playingState = driver.executeScript("return pp.getState()").toString();
+        if (!playingState.equalsIgnoreCase("playing")){
+            logger.error("Not getting playing State for pp.getState() API.\n Getting State while video is Playing :"+playingState);
+            extentTest.log(LogStatus.FAIL,"Not getting playing State for pp.getState() API.\n Getting State while video is Playing :"+playingState);
+            return false;
+        }
+        logger.info("Getting playing State for pp.getState() API as "+playingState);
+        extentTest.log(LogStatus.PASS,"Getting playing State for pp.getState() API as "+playingState);
+
+        new PlayBackFactory(driver,extentTest).getEventValidator().playVideoForSometime(3);
+
+        return true;
+    }
+
+    public boolean validatePause(){
+        logger.info("********************************************* validating pause *****************************************");
+        try {
+            // Pause video
+            driver.executeScript("pp.pause()");
+        } catch (Exception ex){
+            logger.error("getting exception while pausing the video using pp.pause() API");
+            return false;
+        }
+
+        //Check playing event
+        if(!waitOnElement(By.id("paused_1"),20000)){
+            logger.error("pause event is not getting triggered");
+            extentTest.log(LogStatus.FAIL,"pause event is not getting triggered");
+            return false;
+        }
+        logger.info("pause event gets triggered");
+        extentTest.log(LogStatus.PASS,"pause event gets triggered");
+
+        //Check isPlaying api return true or false
+        boolean isPause = Boolean.parseBoolean(driver.executeScript("return pp.isPlaying()").toString());
+        if (isPause){
+            logger.error("isPlaying() API returns "+isPause+" while video is pause");
+            extentTest.log(LogStatus.FAIL,"isPlaying() API returns "+isPause+" while video is pause");
+            return false;
+        }
+        logger.info("isPlaying() API returns "+isPause+" while video is pause");
+        extentTest.log(LogStatus.PASS,"isPlaying() API returns "+isPause+" while video is pause");
+
+        // Validate pause State
+        String pauseState = driver.executeScript("return pp.getState()").toString();
+        if (!pauseState.equalsIgnoreCase("paused")){
+            logger.error("Not getting paused State for pp.getState() API.\n Getting State while video is paused :"+pauseState);
+            extentTest.log(LogStatus.FAIL,"Not getting paused State for pp.getState() API.\n Getting State while video is paused :"+pauseState);
+            return false;
+        }
+        logger.info("Getting paused State for pp.getState() API as "+pauseState);
+        extentTest.log(LogStatus.PASS,"Getting paused State for pp.getState() API as "+pauseState);
+
+        return true;
+    }
+
+    public boolean validateSeek(){
+        logger.info("*************************************** validating seek *****************************************************");
+        boolean isAdPlaying = Boolean.parseBoolean(driver.executeScript("return pp.isAdPlaying()").toString());
+        logger.info("isAdPlaying :"+isAdPlaying);
+        if (!isAdPlaying){
+            boolean isVideoPlaying = Boolean.parseBoolean(driver.executeScript("return pp.isPlaying()").toString());
+            logger.info("isVideoPlaying :"+isVideoPlaying);
+            if (isVideoPlaying) {
+                if (!validatePause()) {
+                    return false;
+                }
+            }
+            int seekTime = Integer.parseInt(driver.executeScript("return (pp.getDuration()-10).toFixed()").toString());
+            logger.info("seekTime :"+seekTime);
+            try{
+                driver.executeScript("pp.seek("+seekTime+")");
+                logger.info("No issue while seeking video using pp.seek() API");
+            }catch (Exception ex){
+                logger.error("getting exception while seeking the video");
+                extentTest.log(LogStatus.FAIL,"getting exception while seeking the video");
+                return false;
+            }
+            if (!waitOnElement(By.id("seeked_1"),20000)){
+                logger.error("Seek event is not triggering");
+                return false;
+            }
+            logger.info("Seek event is triggered");
+            int currentPlayHeadTime = Integer.parseInt(driver.executeScript("return pp.getPlayheadTime().toFixed()").toString());
+            logger.info("currentPlayHeadTime = "+currentPlayHeadTime);
+            if (currentPlayHeadTime!=seekTime){
+                logger.error("current playhead time and seek Time is not matching after seeking the video..");
+                return false;
+            }
+            logger.info("current playhead time and seek Time is matching after seeking the video..");
+        }
+        return true;
+    }
+
+    public boolean validateVolume(){
+        logger.info("**************************** Checking Volume *******************************************************");
+        // Set volume to mute
+        driver.executeScript("pp.setVolume(0)");
+        int muteVol = Integer.parseInt(driver.executeScript("return pp.getVolume()").toString());
+        if (muteVol != 0){
+            logger.error("volume is not getting mute");
+            return false;
+        }
+        if (!waitOnElement(By.id("volumeChanged_1"),10000) && !waitOnElement(By.id("changeVolume_1"),10000)){
+            return false;
+        }
+        logger.info("verified mute volume");
+
+        // Set volume to 0.4
+        driver.executeScript("pp.setVolume(0.4)");
+        float intMidVol = Float.parseFloat(driver.executeScript("return pp.getVolume()").toString());
+        if (intMidVol != 0.4f){
+            logger.error("volume is not getting set to 0.4");
+            return false;
+        }
+        if (!waitOnElement(By.id("volumeChanged_2"),10000) && !waitOnElement(By.id("changeVolume_2"),10000)){
+            return false;
+        }
+        logger.info("verified intermediate volume");
+
+        //Set volume to 1
+        driver.executeScript("pp.setVolume(1)");
+        int highVol = Integer.parseInt(driver.executeScript("return pp.getVolume()").toString());
+        if (highVol != 1){
+            logger.error("volume is not set to high i.e 1");
+            return false;
+        }
+        if (!waitOnElement(By.id("volumeChanged_3"),10000) && !waitOnElement(By.id("changeVolume_3"),10000)){
+            return false;
+        }
+        logger.info("verified high volume");
+        return true;
+    }
+
+    public boolean validateDestroy(){
+
+        logger.info("******************************** validating Destroy API **********************************************");
+
+        try{
+            driver.executeScript("pp.destroy()");
+        } catch (Exception ex){
+            return false;
+        }
+
+        //Validate Destroy event ...
+        if (!waitOnElement(By.id("destroy_1"),20000)
+                && !waitOnElement(By.id("videoElementDisposed_1"),20000)
+                && !waitOnElement(By.id("videoElementLostFocus_1"),20000)){
+            return false;
+        }
+        // Validate destroy State
+        String destroyState = driver.executeScript("return pp.getState()").toString();
+        if (!destroyState.equalsIgnoreCase("destroyed")){
+            logger.error("Not getting destroyed State for pp.getState() API.\n Getting State while video is paused :"+destroyState);
+            extentTest.log(LogStatus.FAIL,"Not getting destroyed State for pp.getState() API.\n Getting State while video is paused :"+destroyState);
+            return false;
+        }
+        logger.info("Getting destroyed State for pp.getState() API as "+destroyState);
+        extentTest.log(LogStatus.PASS,"Getting destroyed State for pp.getState() API as "+destroyState);
         return true;
     }
 
