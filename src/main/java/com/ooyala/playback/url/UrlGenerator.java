@@ -257,7 +257,7 @@ public class UrlGenerator {
 				}
 			}
 		} catch (Exception ex) {
-			logger.error(ex.getMessage());
+			ex.printStackTrace();
 		}
 		return urlsGenerated;
 	}

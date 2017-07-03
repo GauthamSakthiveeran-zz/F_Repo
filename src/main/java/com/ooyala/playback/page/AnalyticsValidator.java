@@ -20,7 +20,7 @@ public class AnalyticsValidator extends PlayBackPage implements PlaybackValidato
     }
 
     public boolean validate(String element, int timeout) throws Exception {
-        if (!waitOnElement(By.id(element), 5000)) {
+        if (!waitOnElement(By.id(element), timeout)) {
             extentTest.log(LogStatus.FAIL, "Event not verified : " + element);
             logger.error("Event not verified : " + element);
             return false;
