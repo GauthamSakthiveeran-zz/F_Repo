@@ -39,62 +39,66 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
             return false;
         }
 
-        if (driver.getCurrentUrl().contains("AnalyticsQEPlugin")) {
-            if (element.toLowerCase().contains("ad") && !element.toLowerCase().contains("nonlinear")) {
-                if (element.toLowerCase().contains("willplay")) {
-                    if (!(waitOnElement(By.id("analytics_ad_break_started_1"), timeout)
-                            && waitOnElement(By.id("analytics_ad_started_1"), timeout))) {
-                        logger.error("analytics_ad_started_1 or analytics_ad_break_started_1 analytics element is not present for ad start");
-                        extentTest.log(LogStatus.FAIL, "analytics_ad_started_1 or analytics_ad_break_started_1 analytics element is not present for ad start");
-                        return false;
+        try {
+            if (driver.getCurrentUrl().contains("AnalyticsQEPlugin")) {
+                if (element.toLowerCase().contains("ad") && !element.toLowerCase().contains("nonlinear")) {
+                    if (element.toLowerCase().contains("willplay")) {
+                        if (!(waitOnElement(By.id("analytics_ad_break_started_1"), timeout)
+                                && waitOnElement(By.id("analytics_ad_started_1"), timeout))) {
+                            logger.error("analytics_ad_started_1 or analytics_ad_break_started_1 analytics element is not present for ad start");
+                            extentTest.log(LogStatus.FAIL, "analytics_ad_started_1 or analytics_ad_break_started_1 analytics element is not present for ad start");
+                            return false;
+                        }
+                        logger.info("analytics_ad_started_1 and analytics_ad_break_started_1 analytics elements are present for ad start");
+                        extentTest.log(LogStatus.PASS, "analytics_ad_started_1 and analytics_ad_break_started_1 analytics elements are present for ad start");
                     }
-                    logger.info("analytics_ad_started_1 and analytics_ad_break_started_1 analytics elements are present for ad start");
-                    extentTest.log(LogStatus.PASS, "analytics_ad_started_1 and analytics_ad_break_started_1 analytics elements are present for ad start");
-                }
-                if (element.toLowerCase().contains("played")) {
-                    if (!(waitOnElement(By.id("analytics_ad_break_ended_1"), timeout)
-                            && waitOnElement(By.id("analytics_ad_ended_1"), timeout))) {
-                        logger.error("analytics_ad_ended_1 or analytics_ad_break_ended_1 analytics element is not present for ad start");
-                        extentTest.log(LogStatus.FAIL, "analytics_ad_ended_1 or analytics_ad_break_ended_1 analytics element is not present for ad start");
-                        return false;
+                    if (element.toLowerCase().contains("played")) {
+                        if (!(waitOnElement(By.id("analytics_ad_break_ended_1"), timeout)
+                                && waitOnElement(By.id("analytics_ad_ended_1"), timeout))) {
+                            logger.error("analytics_ad_ended_1 or analytics_ad_break_ended_1 analytics element is not present for ad start");
+                            extentTest.log(LogStatus.FAIL, "analytics_ad_ended_1 or analytics_ad_break_ended_1 analytics element is not present for ad start");
+                            return false;
+                        }
+                        logger.info("analytics_ad_ended_1 and analytics_ad_break_ended_1 analytics elements are present for ad start");
+                        extentTest.log(LogStatus.PASS, "analytics_ad_ended_1 and analytics_ad_break_ended_1 analytics elements are present for ad start");
                     }
-                    logger.info("analytics_ad_ended_1 and analytics_ad_break_ended_1 analytics elements are present for ad start");
-                    extentTest.log(LogStatus.PASS, "analytics_ad_ended_1 and analytics_ad_break_ended_1 analytics elements are present for ad start");
+                }
+                if (element.toLowerCase().contains("buffering")) {
+                    if (!waitOnElement(By.id("analytics_video_buffering_started_1"), timeout)) {
+                        logger.error("analytics_video_buffering_started_1 element is not presesnt");
+                        extentTest.log(LogStatus.FAIL, "analytics_video_buffering_started_1 element is not presesnt");
+                        return false;
+                    } else {
+                        logger.info("analytics_video_buffering_started_1 element is presesnt");
+                        extentTest.log(LogStatus.PASS, "analytics_video_buffering_started_1 element is presesnt");
+                        return true;
+                    }
+                }
+                if (element.toLowerCase().contains("seek")) {
+                    if (!waitOnElement(By.id("analytics_video_seek_completed_1"), timeout)) {
+                        logger.error("analytics_video_seek_completed_1 element is not presesnt");
+                        extentTest.log(LogStatus.FAIL, "analytics_video_seek_completed_1 element is not presesnt");
+                        return false;
+                    } else {
+                        logger.info("analytics_video_seek_completed_1 element is presesnt");
+                        extentTest.log(LogStatus.PASS, "analytics_video_seek_completed_1 element is presesnt");
+                        return true;
+                    }
+                }
+                if (element.toLowerCase().contains("volume")) {
+                    if (!waitOnElement(By.id("analytics_volume_changed_2"), timeout)) {
+                        logger.error("analytics_volume_changed_2 element is not presesnt");
+                        extentTest.log(LogStatus.FAIL, "analytics_volume_changed_2 element is not presesnt");
+                        return false;
+                    } else {
+                        logger.info("analytics_volume_changed_2 element is presesnt");
+                        extentTest.log(LogStatus.PASS, "analytics_volume_changed_2 element is presesnt");
+                        return true;
+                    }
                 }
             }
-            if (element.toLowerCase().contains("buffering")) {
-                if (!waitOnElement(By.id("analytics_video_buffering_started_1"), timeout)) {
-                    logger.error("analytics_video_buffering_started_1 element is not presesnt");
-                    extentTest.log(LogStatus.FAIL, "analytics_video_buffering_started_1 element is not presesnt");
-                    return false;
-                } else {
-                    logger.info("analytics_video_buffering_started_1 element is presesnt");
-                    extentTest.log(LogStatus.PASS, "analytics_video_buffering_started_1 element is presesnt");
-                    return true;
-                }
-            }
-            if (element.toLowerCase().contains("seek")) {
-                if (!waitOnElement(By.id("analytics_video_seek_completed_1"), timeout)) {
-                    logger.error("analytics_video_seek_completed_1 element is not presesnt");
-                    extentTest.log(LogStatus.FAIL, "analytics_video_seek_completed_1 element is not presesnt");
-                    return false;
-                } else {
-                    logger.info("analytics_video_seek_completed_1 element is presesnt");
-                    extentTest.log(LogStatus.PASS, "analytics_video_seek_completed_1 element is presesnt");
-                    return true;
-                }
-            }
-            if (element.toLowerCase().contains("volume")) {
-                if (!waitOnElement(By.id("analytics_volume_changed_2"), timeout)) {
-                    logger.error("analytics_volume_changed_2 element is not presesnt");
-                    extentTest.log(LogStatus.FAIL, "analytics_volume_changed_2 element is not presesnt");
-                    return false;
-                } else {
-                    logger.info("analytics_volume_changed_2 element is presesnt");
-                    extentTest.log(LogStatus.PASS, "analytics_volume_changed_2 element is presesnt");
-                    return true;
-                }
-            }
+        }catch(Exception ex){
+            ex.printStackTrace();
         }
 
         if (waitOnElement(By.id(element), timeout)) {

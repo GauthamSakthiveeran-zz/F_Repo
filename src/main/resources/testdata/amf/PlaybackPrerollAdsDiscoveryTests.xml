@@ -6,7 +6,7 @@
             <description name="VPAID:Main Vast VPAID2.0 Discovery Preroll UP Next"/>
             <embed_code name="BtOGxiMjE6V7y0GBfHGzwJHoXDplM9Gf"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
@@ -18,7 +18,7 @@
             <description name="VPAID:Bitmovin Vast VPAID2.0 Discovery Preroll"/>
             <embed_code name="N2NXgxYjE6iFcbfNsk7WHHETE80nVOnv"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="MAIN,BITMOVIN,ANALYTICS"/>
+            <plugins name="MAIN,BITMOVIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
@@ -29,7 +29,7 @@
             <description name="VPAID:Bitmovin IMA VPAID2.0 Discovery Preroll"/>
             <embed_code name="U4NngxYjE61RzVOAVOgbx8ckp2CB3gMM"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="MAIN,BITMOVIN,ANALYTICS"/>
+            <plugins name="MAIN,BITMOVIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
@@ -40,7 +40,7 @@
             <description name="IMA:Bitmovin Discovery Preroll"/>
             <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
@@ -52,7 +52,7 @@
             <description name="Pulse:Bitmovin Discovery Preroll"/>
             <embed_code name="5kbmU5MzE6ivgWkobhscmQwGuD7fyNIa"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name="PULSE"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
@@ -64,7 +64,7 @@
             <description name="Pulse:OSMF Discovery Preroll"/>
             <embed_code name="kwNzhxYTE6yPnCLqZtTuNOzVVnueT8Bc"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,ANALYTICS"/>
+            <plugins name="OSMF"/>
             <adPlugins name="PULSE"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="a40c3383eb1f4d31a48accc2f7e4e613"/>
@@ -78,7 +78,7 @@
             <description name="Pulse:Main Discovery Preroll"/>
             <embed_code name="FzbDhxYTE6EICzM-0QW7mwedF5ZgJMot"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="PULSE"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="adbae45e51fd4686ac89e3939a13a02e"/>
@@ -90,7 +90,7 @@
             <description name="IMA:Main Discovery Preroll UP Next"/>
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="de3ae3ab35304ee5b4d2fff1cbd247fb"/>
@@ -101,7 +101,7 @@
             <description name="Freewheel:Bitmovin Discovery Preroll"/>
             <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN,ANALYTICS"/>
+            <plugins name="BITMOVIN,MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
@@ -113,7 +113,7 @@
             <description name="VAST:Bitmovin Vast2.0 Discovery Preroll"/>
             <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
@@ -125,7 +125,7 @@
             <description name="Freewheel:Main Discovery Preroll UP Next"/>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
@@ -137,7 +137,7 @@
             <description name="Freewheel:OSMF Discovery Preroll"/>
             <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="d99dafe4535a4304948a7669e309ff9a"/>
@@ -151,7 +151,7 @@
             <description name="VAST:Main Vast2.0 Discovery Preroll UP Next"/>
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
@@ -163,7 +163,7 @@
             <description name="IMA:OSMF Discovery Preroll"/>
             <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="d99dafe4535a4304948a7669e309ff9a"/>
@@ -178,7 +178,7 @@
             <description name="VAST:OSMF Vast2.0 Discovery Preroll"/>
             <embed_code name="NwaWVmMDE6G5leqg5q9q-D9MsWt6k1ta"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="d99dafe4535a4304948a7669e309ff9a"/>
@@ -192,7 +192,7 @@
             <description name="VAST:Bitmovin Vast3.0 Discovery Preroll"/>
             <embed_code name="1oajdxYTE6Ky3HwWTCoTRW_wb_1hsp2P"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN,ANALYTICS"/>
+            <plugins name="BITMOVIN,MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="f4264a0cd4fb4384878e085c30171a14"/>
@@ -204,7 +204,7 @@
             <description name="VAST:OSMF Vast3.0 Discovery Preroll"/>
             <embed_code name="M5eThxYTE6_h_AwrL4xP_bW3jV3zaQ3z"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="250b58a014e6497ea5858c0a5c77e2c7"/>
@@ -218,7 +218,7 @@
             <description name="VAST:Main Vast3.0 Discovery Preroll UP Next"/>
             <embed_code name="AxYjlxYTE6pu2e8xIqCSoOKsu8h0o3XC"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
@@ -230,7 +230,7 @@
             <description name="VPAID:Bitmovin IMA VPAID1.0 Discovery Preroll"/>
             <embed_code name="RkN3gxYjE6hxEMuUCrMXbkQ7-xbjW6b8"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN,ANALYTICS"/>
+            <plugins name="BITMOVIN,MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
@@ -241,7 +241,7 @@
             <description name="VPAID:OSMF Vast VPAID2.0 Discovery Preroll"/>
             <embed_code name="VmMm9xYTE6ICbUwYH3HBpsSrWXVz1IEs"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="b8f0107b875e4c9ebd3e54f2d312deb6"/>
@@ -253,7 +253,7 @@
             <description name="VPAID:OSMF IMA VPAID2.0 Discovery Preroll"/>
             <embed_code name="sxMXBxYTE6jmGZcY0R4A8pbNot_SuA6t"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="178e642662fe4f60b6f973a985eb09ca"/>
@@ -265,7 +265,7 @@
             <description name="VPAID:OSMF IMA VPAID1.0 Discovery Preroll"/>
             <embed_code name="BzMnBxYTE6Lp5nTpRB8gbflKjWInoi_v"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="178e642662fe4f60b6f973a985eb09ca"/>
@@ -277,7 +277,7 @@
             <description name="VPAID:Main IMA VPAID1.0 Discovery Preroll"/>
             <embed_code name="45dm5xYTE67cN-qtdwEVso2Qejwu5sP9"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="IMA"/>
             <additionalPlugins name="DISCOVERY"/>
             <platformsSupported name="mac,windows"/>

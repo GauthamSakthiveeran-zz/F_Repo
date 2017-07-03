@@ -6,7 +6,7 @@
             <description name="Pulse:Bitmovin Multimidroll"/>
             <embed_code name="dvbGY5MzE6EAI-FdPyCbG7u5Vr6lZ_oY"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name="PULSE"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -18,7 +18,7 @@
             <description name="Pulse:AdobeTVSDK Multimidroll"/>
             <embed_code name="dvbGY5MzE6EAI-FdPyCbG7u5Vr6lZ_oY"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name="PULSE"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -30,7 +30,7 @@
             <description name="Freewheel:Main Multimidroll"/>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="FREEWHEEL" adPlayTime="10,30"/>
             <additionalPlugins name=""/>
             <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
@@ -42,7 +42,7 @@
             <description name="Freewheel:Adobe Multimidroll"/>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="ADOBETVSDK,MAIN,ANALYTICS"/>
+            <plugins name="ADOBETVSDK,MAIN"/>
             <adPlugins name="FREEWHEEL" adPlayTime="10,30"/>
             <additionalPlugins name=""/>
             <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
@@ -54,7 +54,7 @@
             <description name="VAST:Main Vast2.0 Multimidroll"/>
             <embed_code name="lzajlndDoOfESs3VQahCNG5k3iPus3SI"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST" adPlayTime="10,20"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -65,7 +65,7 @@
             <description name="VAST:AdobeTVSDK Vast2.0 Multimidroll"/>
             <embed_code name="lzajlndDoOfESs3VQahCNG5k3iPus3SI"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="ADOBETVSDK,MAIN,ANALYTICS"/>
+            <plugins name="ADOBETVSDK,MAIN"/>
             <adPlugins name="VAST" adPlayTime="10,20"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -76,7 +76,7 @@
             <description name="Pulse:OSMF Multimidroll"/>
             <embed_code name="g5MjhxYTE64qOEFUKrqbuxuvlBq3GTju"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,ANALYTICS"/>
+            <plugins name="OSMF"/>
             <adPlugins name="PULSE"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
@@ -89,7 +89,7 @@
             <description name="Pulse:Main Multimidroll"/>
             <embed_code name="FxbDhxYTE61cTZdMTG68ZjZhQgTxrNM0"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="PULSE"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -101,7 +101,7 @@
             <description name="VAST:Main Vast3.0 Multimidroll"/>
             <embed_code name="JuNTlxYTE6uCXf4cJD2GhePHId_MO8OM"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST" adPlayTime="7,12"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -113,7 +113,7 @@
             <description name="VAST:AdobeTVSDK Vast3.0 Multimidroll"/>
             <embed_code name="JuNTlxYTE6uCXf4cJD2GhePHId_MO8OM"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="ADOBETVSDK,ANALYTICS"/>
+            <plugins name="ADOBETVSDK"/>
             <adPlugins name="VAST" adPlayTime="7,12"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>

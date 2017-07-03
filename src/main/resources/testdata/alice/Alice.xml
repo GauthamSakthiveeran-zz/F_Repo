@@ -610,15 +610,12 @@
     <test name="PlaybackPlayerDestroyTests">
         <url>
             <description name="Core:Destroy player"/>
-            <embed_code name="9qaHdodTqmllcEnthP1AgrCTjf19HD4i"/>
-            <pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk"/>
-            <plugins name="AKAMAI"/>
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF"/>
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
+            <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="9c7271095c6b49fcbe09025af1d66f53"/>
-            <browsersSupported name="firefox,chrome,internet explorer,safari"/>
-            <browserSupportedVersion name="safari,9"/>
-            <platformsSupported name="mac,windows"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
     </test>
