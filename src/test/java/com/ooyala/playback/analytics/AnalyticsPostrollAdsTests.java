@@ -49,9 +49,6 @@ public class AnalyticsPostrollAdsTests extends PlaybackWebTest{
 
             result = result && event.validate("singleAdPlayed_1", 190000);
 
-            if (testName.contains("SetEmbedCode")) {
-                result = result && setEmbedCodeValidator.validate("setEmbedmbedCode", 6000);
-            }
         } catch (Exception e) {
             logger.error(e.getMessage());
             extentTest.log(LogStatus.FAIL,e.getMessage());
