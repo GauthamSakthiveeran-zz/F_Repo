@@ -21,6 +21,7 @@ function subscribeToCommonEvents() {
 		var videoElementDisposedEventOrder = 1;
 		var savePlayerSettingsFalseEventCount = 1;
         var savePlayerSettingsTrueEventCount = 1;
+        var videoElementLostFocusEventOrder = 1;
         
         var logger = '';
         
@@ -131,6 +132,12 @@ function subscribeToCommonEvents() {
                 +'>videoElementDisposed '+videoElementDisposedEventOrder+'</p>');
                 videoElementDisposedEventOrder++;
             }
+
+            if (event.match(/videoControllerVideoElementLostFocus/)) {
+                            OO.$('#ooplayer').append('<p id=videoElementLostFocus_'+videoElementLostFocusEventOrder
+                            +'>videoElementDisposed '+videoElementLostFocusEventOrder+'</p>');
+                            videoElementLostFocusEventOrder++;
+                        }
 			
 			if (event.match(/videoWillPlay/) && arguments[1] == "main") {
                 OO.$("#ooplayer").append("<p id=videoPlayingurl"+">Video URL "+arguments[2]+"</p>");
