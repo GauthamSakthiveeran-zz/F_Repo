@@ -48,7 +48,7 @@ public class PlaybackInitialTimeForOoyalaAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("playing_2", 90000);
 
-			result = result && api.validateInitailTime();
+			result = result && api.validateInitialTime();
 			
 			result = result && seek.validate("seeked_1", 90000);
 			
