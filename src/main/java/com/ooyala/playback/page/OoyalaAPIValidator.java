@@ -26,6 +26,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         addElementToPageElements("play");
         addElementToPageElements("pause");
         addElementToPageElements("adclicks");
+        addElementToPageElements("fullscreen");
     }
 
 
@@ -178,10 +179,10 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
     public boolean validateApi(){
         validateGetItem();
         return validateDescription() && validateEmbedCode() && validateTitle() && validatePlay() && validateVolume() && validatePause()
-                && validateSeek() && validateDestroy();
+                && validateSeek() && validateFullScreen() && validateDestroy();
     }
 
-    public boolean validateInitailTime(){
+    public boolean validateInitialTime(){
         double initialTime = parseDouble(driver.executeScript("return pp.parameters.initialTime").toString());
 
         double playHeadTime = parseDouble(driver.executeScript("return pp.getPlayheadTime()").toString());
@@ -201,7 +202,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
     }
 
     public boolean validateDescription(){
-        logger.info("************************************** validating description ******************************************************");
+        logger.info("************************************** validating description API ******************************************************");
         String expectedDesciption = driver.executeScript("return pp.getDescription()").toString();
         if (!description.equals(expectedDesciption)){
             logger.error("Description is not matching ... Expected : "+description +"\n Actual :"+expectedDesciption);
@@ -214,7 +215,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
     }
 
     public boolean validateEmbedCode(){
-        logger.info("******************************************* validating embed code ********************************************************");
+        logger.info("******************************************* validating embed code API ********************************************************");
         String expectedEmbedCode = driver.executeScript("return pp.getEmbedCode()").toString();
         if (!embedCode.equals(expectedEmbedCode)){
             logger.error("Embed Code is not matching ... Expected : "+embedCode +"\n Actual :"+expectedEmbedCode);
@@ -240,7 +241,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
     }
 
     public boolean validatePlay(){
-        logger.info("******************************************* validating play ****************************************************");
+        logger.info("******************************************* validating play API ****************************************************");
         try {
             // Start playback
             driver.executeScript("pp.play()");
@@ -284,7 +285,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
     }
 
     public boolean validatePause(){
-        logger.info("********************************************* validating pause *****************************************");
+        logger.info("********************************************* validating pause API *****************************************");
         try {
             // Pause video
             driver.executeScript("pp.pause()");
@@ -326,19 +327,25 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
     }
 
     public boolean validateSeek(){
-        logger.info("*************************************** validating seek *****************************************************");
+        logger.info("*************************************** validating seek API *****************************************************");
         boolean isAdPlaying = Boolean.parseBoolean(driver.executeScript("return pp.isAdPlaying()").toString());
         logger.info("isAdPlaying :"+isAdPlaying);
         if (!isAdPlaying){
             boolean isVideoPlaying = Boolean.parseBoolean(driver.executeScript("return pp.isPlaying()").toString());
             logger.info("isVideoPlaying :"+isVideoPlaying);
+            extentTest.log(LogStatus.INFO,"isVideoPlaying :"+isVideoPlaying);
             if (isVideoPlaying) {
                 if (!validatePause()) {
+                    logger.error("Not able to pause before seeking the video");
+                    extentTest.log(LogStatus.FAIL,"Not able to pause before seeking the video");
                     return false;
                 }
+                logger.info("video paused before seeking the video");
+                extentTest.log(LogStatus.PASS,"video paused before seeking the video");
             }
             int seekTime = Integer.parseInt(driver.executeScript("return (pp.getDuration()-10).toFixed()").toString());
             logger.info("seekTime :"+seekTime);
+            extentTest.log(LogStatus.INFO,"seekTime :"+seekTime);
             try{
                 driver.executeScript("pp.seek("+seekTime+")");
                 logger.info("No issue while seeking video using pp.seek() API");
@@ -349,45 +356,61 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
             }
             if (!waitOnElement(By.id("seeked_1"),20000)){
                 logger.error("Seek event is not triggering");
+                extentTest.log(LogStatus.FAIL,"Seek event is not triggering");
                 return false;
             }
             logger.info("Seek event is triggered");
+            extentTest.log(LogStatus.PASS,"Seek event is triggered");
+
             int currentPlayHeadTime = Integer.parseInt(driver.executeScript("return pp.getPlayheadTime().toFixed()").toString());
             logger.info("currentPlayHeadTime = "+currentPlayHeadTime);
+            extentTest.log(LogStatus.INFO,"currentPlayHeadTime = "+currentPlayHeadTime);
             if (currentPlayHeadTime!=seekTime){
                 logger.error("current playhead time and seek Time is not matching after seeking the video..");
+                extentTest.log(LogStatus.FAIL,"current playhead time and seek Time is not matching after seeking the video..");
                 return false;
             }
             logger.info("current playhead time and seek Time is matching after seeking the video..");
+            extentTest.log(LogStatus.PASS,"current playhead time and seek Time is matching after seeking the video..");
         }
         return true;
     }
 
     public boolean validateVolume(){
-        logger.info("**************************** Checking Volume *******************************************************");
+        logger.info("**************************** Validating Volume API *******************************************************");
         // Set volume to mute
         driver.executeScript("pp.setVolume(0)");
         int muteVol = Integer.parseInt(driver.executeScript("return pp.getVolume()").toString());
         if (muteVol != 0){
             logger.error("volume is not getting mute");
+            extentTest.log(LogStatus.FAIL,"volume is not getting mute");
             return false;
         }
-        if (!waitOnElement(By.id("volumeChanged_1"),10000) && !waitOnElement(By.id("changeVolume_1"),10000)){
+        if (!waitOnElement(By.id("volumeChanged_1"),10000)
+                || !waitOnElement(By.id("changeVolume_1"),10000)){
+            logger.error("Either of the following events didn't gets triggered when volume is set to MUTE: \n 1--> volumeChanged \n 2--> changeVolume");
+            extentTest.log(LogStatus.FAIL,"Either of the following events didn't gets triggered when volume is set to MUTE: \n 1--> volumeChanged \n 2--> changeVolume");
             return false;
         }
         logger.info("verified mute volume");
+        extentTest.log(LogStatus.PASS,"verified mute volume");
 
         // Set volume to 0.4
         driver.executeScript("pp.setVolume(0.4)");
         float intMidVol = Float.parseFloat(driver.executeScript("return pp.getVolume()").toString());
         if (intMidVol != 0.4f){
             logger.error("volume is not getting set to 0.4");
+            extentTest.log(LogStatus.FAIL,"volume is not getting set to 0.4");
             return false;
         }
-        if (!waitOnElement(By.id("volumeChanged_2"),10000) && !waitOnElement(By.id("changeVolume_2"),10000)){
+        if (!waitOnElement(By.id("volumeChanged_2"),10000)
+                || !waitOnElement(By.id("changeVolume_2"),10000)){
+            logger.error("Either of the following events didn't gets triggered when volume is set to intermediate volume level: \n 1--> volumeChanged \n 2--> changeVolume");
+            extentTest.log(LogStatus.FAIL,"Either of the following events didn't gets triggered when volume is set to intermediate volume level: \n 1--> volumeChanged \n 2--> changeVolume");
             return false;
         }
         logger.info("verified intermediate volume");
+        extentTest.log(LogStatus.PASS,"verified intermediate volume");
 
         //Set volume to 1
         driver.executeScript("pp.setVolume(1)");
@@ -396,10 +419,14 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
             logger.error("volume is not set to high i.e 1");
             return false;
         }
-        if (!waitOnElement(By.id("volumeChanged_3"),10000) && !waitOnElement(By.id("changeVolume_3"),10000)){
+        if (!waitOnElement(By.id("volumeChanged_3"),10000)
+                || !waitOnElement(By.id("changeVolume_3"),10000)){
+            logger.error("Either of the following events didn't gets triggered when volume is set to HIGH level: \n 1--> volumeChanged \n 2--> changeVolume");
+            extentTest.log(LogStatus.FAIL,"Either of the following events didn't gets triggered when volume is set to HIGH level: \n 1--> volumeChanged \n 2--> changeVolume");
             return false;
         }
         logger.info("verified high volume");
+        extentTest.log(LogStatus.PASS,"verified high volume");
         return true;
     }
 
@@ -410,15 +437,22 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         try{
             driver.executeScript("pp.destroy()");
         } catch (Exception ex){
+            logger.error(ex.getMessage());
+            extentTest.log(LogStatus.FAIL,ex.getMessage());
             return false;
         }
 
         //Validate Destroy event ...
         if (!waitOnElement(By.id("destroy_1"),20000)
-                && !waitOnElement(By.id("videoElementDisposed_1"),20000)
-                && !waitOnElement(By.id("videoElementLostFocus_1"),20000)){
+                || !waitOnElement(By.id("videoElementDisposed_1"),20000)
+                || !waitOnElement(By.id("videoElementLostFocus_1"),20000)){
+            logger.error("either of the following event not triggered : \n 1--> Destroy \n 2--> videoElementDisposed_1 \n 3--> videoElementLostFocus");
+            extentTest.log(LogStatus.FAIL,"either of the following event not triggered : \n 1--> Destroy \n 2--> videoElementDisposed_1 \n 3--> videoElementLostFocus");
             return false;
         }
+        logger.info("Following events gets triggered : \n 1--> Destroy \n 2--> videoElementDisposed_1 \n 3--> videoElementLostFocus");
+        extentTest.log(LogStatus.PASS,"Following event gets triggered : \n 1--> Destroy \n 2--> videoElementDisposed_1 \n 3--> videoElementLostFocus");
+
         // Validate destroy State
         String destroyState = driver.executeScript("return pp.getState()").toString();
         if (!destroyState.equalsIgnoreCase("destroyed")){
@@ -431,4 +465,61 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         return true;
     }
 
+    public boolean validateFullScreen(){
+        logger.info("***************************** Validate FullScreen API ****************************************************");
+        boolean isNormalScreen = false;
+        boolean isFullScreen = false;
+        isNormalScreen = Boolean.parseBoolean(driver.executeScript("return pp.isFullscreen()").toString());
+        logger.info("isNormalScreen : "+isNormalScreen);
+        extentTest.log(LogStatus.INFO,"isNormalScreen : "+isNormalScreen);
+        if (!isNormalScreen){
+            if (!clickOnIndependentElement("FULLSCREEN_BTN_1")){
+                logger.error("Not able to click on fullscreen button");
+                extentTest.log(LogStatus.FAIL,"Not able to click on fullscreen button");
+                return false;
+            }
+            isFullScreen = Boolean.parseBoolean(driver.executeScript("return pp.isFullscreen()").toString());
+            logger.info("isFullScreen :"+isFullScreen);
+            extentTest.log(LogStatus.INFO,"isFullScreen :"+isFullScreen);
+            if (!isFullScreen){
+                logger.error("pp.isFullscreen() API does not return true when video is playing in fullscreen mode");
+                extentTest.log(LogStatus.FAIL,"pp.isFullscreen() API does not return true when video is playing in fullscreen");
+                return false;
+            }
+            logger.info("pp.isFullscreen() API does returns true when video is playing in fullscreen mode");
+            extentTest.log(LogStatus.PASS,"pp.isFullscreen() API does returns true when video is playing in fullscreen");
+            if (!clickOnIndependentElement("NORMAL_SCREEN")){
+                logger.error("Not able to click on normalscreen button");
+                extentTest.log(LogStatus.FAIL,"Not able to click on normalscreen button");
+                return false;
+            }
+            isNormalScreen = Boolean.parseBoolean(driver.executeScript("return pp.isFullscreen()").toString());
+            if (isNormalScreen){
+                logger.info("pp.isFullscreen() API does not return false when video is playing in normalscreen mode");
+                extentTest.log(LogStatus.PASS,"pp.isFullscreen() API does not return false when video is playing in normalscreen");
+                return false;
+            }
+            logger.info("pp.isFullscreen() API does returns false when video is playing in normalscreen mode");
+            extentTest.log(LogStatus.PASS,"pp.isFullscreen() API does returns false when video is playing in normalscreen");
+        }
+        return true;
+    }
+
+    public boolean validateDurationForLive(){
+        logger.info("********************** Validating Duration for Live VIDEO ************************************");
+
+        /***
+         * Here expected duration for Live video is Infinity
+         */
+        String liveDuration = null;
+        liveDuration = (driver.executeScript("return pp.getDuration().toString()")).toString();
+        if (!liveDuration.equalsIgnoreCase("infinity")){
+            logger.error("Total duration for Live video is not Infinity");
+            extentTest.log(LogStatus.FAIL,"Total duration for Live video is not Infinity");
+            return false;
+        }
+        logger.info("Total duration for Live video is Infinity");
+        extentTest.log(LogStatus.PASS,"Total duration for Live video is Infinity");
+        return true;
+    }
 }
