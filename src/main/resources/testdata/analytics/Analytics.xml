@@ -96,4 +96,43 @@
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
     </test>
+    <test name="AnalyticsMidrollAdsTests">
+        <url>
+            <description name="IMA:Main Ad Rule Midroll"/>
+            <embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN,ANALYTICS"/>
+            <adPlugins name="IMA" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="615dc8e909e941c280e12155df838355"/>
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+    </test>
+
+    <test name="AnalyticsPostrollAdsTests">
+        <url>
+            <description name="VAST:Main Vast3.0 Postroll"/>
+            <embed_code name="1jcGtuMjE60EQ3Q7nh3Z-kNicrrTZcVa"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN,ANALYTICS"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter>
+                <![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+    </test>
+    <test name="AnalyticsPreMidPostRollAdsTests">
+        <url>
+            <description name="Pulse:Main PreMidPost"/>
+            <embed_code name="JjbmFuYTE60g0UVbvotO0aK6dnJvN3c7"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN,ANALYTICS"/>
+            <adPlugins name="PULSE"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+    </test>
 </testdata>
