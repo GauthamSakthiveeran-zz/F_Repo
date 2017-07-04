@@ -10,6 +10,10 @@
 			<class name="com.ooyala.playback.ooyalaads.PlaybackInitialTimeForOoyalaAdsTests"></class>
 			<class name="com.ooyala.playback.ooyalaads.PlaybackPlaylistDiscoveryTests"></class>
 			<class name="com.ooyala.playback.ooyalaads.PlaybackSkipOoyalaAdsTests"></class>
+			<class name="com.ooyala.playback.ooyalaads.MovingFromNonOoyalaAdsToOoyalaAdsViaDiscoveryTests"/>
+			<class name="com.ooyala.playback.ooyalaads.MovingFromOoyalaAdsToNonOoyalaAdsViaDiscoveryTests"/>
+			<class name="com.ooyala.playback.ooyalaads.MovingFromNonOoyalaAdsToOyalaAdsViaPlaylistTests"/>
+			<class name="com.ooyala.playback.ooyalaads.MovingFromOoyalaAdsToNonOoyalaAdsPlaylistTests"/>
 		</classes>
 	</test>
 </suite>
