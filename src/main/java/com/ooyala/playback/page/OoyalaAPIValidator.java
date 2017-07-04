@@ -12,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.relevantcodes.extentreports.LogStatus;
+import org.testng.asserts.SoftAssert;
 
 /**
  * Created by jitendra on 29/12/16.
@@ -176,10 +177,10 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         return true;
     }
 
-    public boolean validateApi(){
+    public boolean validatePlayPauseSeekAPI(){
         validateGetItemAPI();
-        return validateDescriptionAPI() && validateEmbedCodeAPI() && validateTitleAPI() && validatePlayAPI() && validateVolumeAPI() && validatePauseAPI()
-                && validateSeekAPI() && validateFullScreenAPI() && validateDestroyAPI();
+        return validateDescriptionAPI() && validateEmbedCodeAPI() && validateTitleAPI() && validatePlayAPI() && validatePauseAPI()
+                && validateSeekAPI();
     }
 
     public boolean validateInitialTime(){
@@ -433,6 +434,12 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
     public boolean validateDestroyAPI(){
 
         logger.info("******************************** validating Destroy API **********************************************");
+        boolean isPlaying = Boolean.parseBoolean(driver.executeScript("return pp.isPlaying").toString());
+
+        if (!isPlaying){
+            driver.executeScript("pp.play()");
+            loadingSpinner();
+        }
 
         try{
             driver.executeScript("pp.destroy()");
@@ -520,6 +527,53 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         }
         logger.info("Total duration for Live video is Infinity");
         extentTest.log(LogStatus.PASS,"Total duration for Live video is Infinity");
+        return true;
+    }
+
+    public boolean validateDurationAtEndScreen(){
+        logger.info("***************************** Validating Duration at end Screen **************************************");
+        boolean isPlaying = false;
+        String duration = null;
+        String playHeadTime = null;
+        duration = driver.executeScript("return pp.getDuration().toFixed").toString();
+        isPlaying = Boolean.parseBoolean((driver.executeScript("return pp.isPlaying")).toString());
+        if (!isPlaying){
+            if (!validatePlayAPI()){
+                return false;
+            }
+        }
+        driver.executeScript("pp.seek(pp.getDuration())");
+        playHeadTime = driver.executeScript("return pp.getPlayheadTime().toFixed").toString();
+        if (duration != playHeadTime){
+            logger.error("playhead time and total duration is not matching at End Screen");
+            extentTest.log(LogStatus.FAIL,"playhead time and total duration is not matching at End Screen");
+            return false;
+        }
+        logger.info("playhead time and total duration is matching at End Screen");
+        extentTest.log(LogStatus.PASS,"playhead time and total duration is matching at End Screen");
+        return true;
+    }
+
+    public boolean validateCloseCaptionAPI(){
+        logger.info("***************************** Validating Close Caption CC API *********************************************");
+
+        boolean isPlaying = Boolean.parseBoolean(driver.executeScript("return pp.isPlaying").toString());
+        if (!isPlaying){
+            driver.executeScript("pp.play()");
+            loadingSpinner();
+        }
+        ArrayList<String> langList = ((ArrayList<String>)driver
+                .executeScript("return pp.getCurrentItemClosedCaptionsLanguages().languages;"));
+        for (int i = 0; i < langList.size(); i++) {
+            driver.executeScript("pp.setClosedCaptionsLanguage(\"" + langList.get(i) + "\")");
+            if (!waitOnElement(By.id("cclanguage_"+langList.get(i)),10000)){
+                logger.error("Not able to get "+langList.get(i));
+                extentTest.log(LogStatus.FAIL,"Not able to get "+langList.get(i));
+                return false;
+            }
+            logger.info("close caption is set to language : "+langList.get(i));
+            extentTest.log(LogStatus.PASS,"close caption is set to language : "+langList.get(i));
+        }
         return true;
     }
 }
