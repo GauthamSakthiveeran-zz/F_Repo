@@ -478,5 +478,9 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
     public String getEmbedCode(){
         return ((JavascriptExecutor) driver).executeScript("return pp.getEmbedCode()").toString();
     }
+
+    public boolean selectAndClickonAssetFromPlaylist(String assetName){
+    	return clickOnIndependentElement("SELECT_ASSET",assetName);
+	}
 }
 
