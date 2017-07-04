@@ -177,9 +177,9 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
     }
 
     public boolean validateApi(){
-        validateGetItem();
-        return validateDescription() && validateEmbedCode() && validateTitle() && validatePlay() && validateVolume() && validatePause()
-                && validateSeek() && validateFullScreen() && validateDestroy();
+        validateGetItemAPI();
+        return validateDescriptionAPI() && validateEmbedCodeAPI() && validateTitleAPI() && validatePlayAPI() && validateVolumeAPI() && validatePauseAPI()
+                && validateSeekAPI() && validateFullScreenAPI() && validateDestroyAPI();
     }
 
     public boolean validateInitialTime(){
@@ -195,13 +195,13 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         return true;
     }
 
-    public void validateGetItem(){
+    public void validateGetItemAPI(){
         description = driver.executeScript("return pp.getItem().description").toString();
         embedCode = driver.executeScript("return pp.getItem().embed_code").toString();
         title = driver.executeScript("return pp.getItem().title").toString();
     }
 
-    public boolean validateDescription(){
+    public boolean validateDescriptionAPI(){
         logger.info("************************************** validating description API ******************************************************");
         String expectedDesciption = driver.executeScript("return pp.getDescription()").toString();
         if (!description.equals(expectedDesciption)){
@@ -214,7 +214,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         return true;
     }
 
-    public boolean validateEmbedCode(){
+    public boolean validateEmbedCodeAPI(){
         logger.info("******************************************* validating embed code API ********************************************************");
         String expectedEmbedCode = driver.executeScript("return pp.getEmbedCode()").toString();
         if (!embedCode.equals(expectedEmbedCode)){
@@ -227,7 +227,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         return true;
     }
 
-    public boolean validateTitle(){
+    public boolean validateTitleAPI(){
         logger.info("*********************************** validating title ************************************************************");
         String expectedTitle = driver.executeScript("return pp.getTitle()").toString();
         if (!title.equals(expectedTitle)){
@@ -240,7 +240,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         return true;
     }
 
-    public boolean validatePlay(){
+    public boolean validatePlayAPI(){
         logger.info("******************************************* validating play API ****************************************************");
         try {
             // Start playback
@@ -284,7 +284,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         return true;
     }
 
-    public boolean validatePause(){
+    public boolean validatePauseAPI(){
         logger.info("********************************************* validating pause API *****************************************");
         try {
             // Pause video
@@ -326,7 +326,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         return true;
     }
 
-    public boolean validateSeek(){
+    public boolean validateSeekAPI(){
         logger.info("*************************************** validating seek API *****************************************************");
         boolean isAdPlaying = Boolean.parseBoolean(driver.executeScript("return pp.isAdPlaying()").toString());
         logger.info("isAdPlaying :"+isAdPlaying);
@@ -335,7 +335,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
             logger.info("isVideoPlaying :"+isVideoPlaying);
             extentTest.log(LogStatus.INFO,"isVideoPlaying :"+isVideoPlaying);
             if (isVideoPlaying) {
-                if (!validatePause()) {
+                if (!validatePauseAPI()) {
                     logger.error("Not able to pause before seeking the video");
                     extentTest.log(LogStatus.FAIL,"Not able to pause before seeking the video");
                     return false;
@@ -376,7 +376,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         return true;
     }
 
-    public boolean validateVolume(){
+    public boolean validateVolumeAPI(){
         logger.info("**************************** Validating Volume API *******************************************************");
         // Set volume to mute
         driver.executeScript("pp.setVolume(0)");
@@ -430,7 +430,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         return true;
     }
 
-    public boolean validateDestroy(){
+    public boolean validateDestroyAPI(){
 
         logger.info("******************************** validating Destroy API **********************************************");
 
@@ -465,7 +465,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
         return true;
     }
 
-    public boolean validateFullScreen(){
+    public boolean validateFullScreenAPI(){
         logger.info("***************************** Validate FullScreen API ****************************************************");
         boolean isNormalScreen = false;
         boolean isFullScreen = false;
