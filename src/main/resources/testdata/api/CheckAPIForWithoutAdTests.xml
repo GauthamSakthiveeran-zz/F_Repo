@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <test name="CheckAPIForWithoutAdTests">
+        <url>
+            <description name="Player API:Bitmovin Play Pause Seek|Player API:Bitmovin Volume|Player API:Bitmovin DurationAtEnd|Player API:Bitmovin FullScreen|Player API:Bitmovin Destroy"/>
+            <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Player API:MAIN Play Pause Seek|Player API:MAIN Volume|Player API:MAIN DurationAtEnd|Player API:MAIN FullScreen|Player API:MAIN Destroy"/>
+            <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF"/>
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="9c7271095c6b49fcbe09025af1d66f53"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Player API:OSMF Play Pause Seek|Player API:OSMF Volume|Player API:OSMF DurationAtEnd|Player API:OSMF FullScreen|Player API:OSMF Destroy"/>
+            <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf"/>
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
+            <plugins name="OSMF"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Player API:MAIN CC"/>
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter><![CDATA[{"showLinearAdSkipButton":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Player API:Bitmovin CC"/>
+            <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Player API:OSMF CC"/>
+            <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+        </url>
+        <!--<url>
+            <description name="Player API:Bitmovin Volume"/>
+            <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+        </url>-->
+    </test>
+</testdata>
