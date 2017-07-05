@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
+
 import java.util.Map;
 
 /**
@@ -97,7 +98,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
                     }
                 }
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
 
@@ -199,5 +200,14 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
             extentTest.log(LogStatus.INFO, "Autoplay not set for this video");
         }
         return autoplay;
+    }
+
+    public boolean checkIsAdPlaying() {
+        boolean isAdPlaying = false;
+        for (int i = 0; i < 5; i++) {
+            isAdPlaying = Boolean.parseBoolean(driver.executeScript("return pp.isAdPlaying()").toString());
+            logger.info("isAdPlaying : "+isAdPlaying);
+        }
+        return isAdPlaying;
     }
 }
