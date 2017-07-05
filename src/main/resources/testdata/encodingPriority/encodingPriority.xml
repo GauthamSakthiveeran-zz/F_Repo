@@ -32,6 +32,7 @@
             <additionalPlugins name=""/>
             <pbid name="378512f55dd44fc287d0fa609353c268"/>
             <streamType supportedMuxFormat="dash"></streamType>
+            <browsersSupported name="chrome,firefox,ie,edge"/>
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
@@ -43,6 +44,7 @@
             <additionalPlugins name=""/>
             <pbid name="378512f55dd44fc287d0fa609353c268"/>
             <streamType supportedMuxFormat="dash"></streamType>
+            <browsersSupported name="chrome,firefox,ie,edge"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","mp4"]}]]></playerParameter>
         </url>
         <url>

@@ -298,13 +298,25 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
             }
 
             if (equalLists(supportedMuxFormatList,dashMp4)){
-                if (!streamElement.getText().contains("mpd")){
-                    logger.error("video is not getting served through dash for encoding priority : "+dashMp4.toString());
-                    extentTest.log(LogStatus.FAIL,"video is not getting served through dash for encoding priority : "+dashMp4.toString());
-                    return false;
+                if (getBrowser().equalsIgnoreCase("safari")){
+                    if (streamElement.getText().contains("f4m")
+                            ||streamElement.getText().contains("mpd")
+                            || streamElement.getText().contains("m3u8")){
+                        logger.error("video is not getting served through encoding priority mp4.");
+                        extentTest.log(LogStatus.FAIL,"video is not getting served through encoding priority mp4.");
+                        return false;
+                    }
+                    logger.info("video is getting served through encoding priority mp4.");
+                    extentTest.log(LogStatus.PASS,"video is getting served through encoding priority mp4.");
+                } else {
+                    if (!streamElement.getText().contains("mpd")) {
+                        logger.error("video is not getting served through dash for encoding priority : " + dashMp4.toString());
+                        extentTest.log(LogStatus.FAIL, "video is not getting served through dash for encoding priority : " + dashMp4.toString());
+                        return false;
+                    }
+                    logger.info("video is getting served through dash for encoding priority : " + dashMp4.toString());
+                    extentTest.log(LogStatus.PASS, "video is getting served through dash for encoding priority : " + dashMp4.toString());
                 }
-                logger.info("video is getting served through dash for encoding priority : "+dashMp4.toString());
-                extentTest.log(LogStatus.PASS,"video is getting served through dash for encoding priority : "+dashMp4.toString());
             }
 
             if (equalLists(supportedMuxFormatList,dashHlsHdsMp4)) {
@@ -335,7 +347,16 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
             }
 
             if (encodingPrioritySet.equals("dash")){
-                if (!streamElement.getText().contains("mpd")){
+                if (getBrowser().equalsIgnoreCase("safari")){
+                    if (!streamElement.getText().contains("m3u8")){
+                        logger.error("video is not getting served through encoding priority hls.");
+                        extentTest.log(LogStatus.FAIL,"video is not getting served through encoding priority hls.");
+                        return false;
+                    }
+                    logger.info("video is getting served through encoding priority hls.");
+                    extentTest.log(LogStatus.PASS,"video is getting served through encoding priority hls.");
+                }else
+                    if (!streamElement.getText().contains("mpd")){
                     logger.error("video is not getting served through encoding priority dash.");
                     extentTest.log(LogStatus.FAIL,"video is not getting served through encoding priority dash.");
                     return false;
@@ -449,13 +470,36 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
             }
 
             if (encodingPrioritySet.equals("dash")){
-                if (!streamElement.getText().contains("mpd")){
-                    logger.error("video is not getting served through encoding priority dash.");
-                    extentTest.log(LogStatus.FAIL,"video is not getting served through encoding priority dash.");
-                    return false;
+                if (getBrowser().equalsIgnoreCase("safari")){
+                    String secondEncoPriority = driver.executeScript("return pp.parameters.encodingPriority[1]").toString();
+                    if (secondEncoPriority.equals("mp4")){
+                        if (streamElement.getText().contains("f4m")
+                                ||streamElement.getText().contains("mpd")
+                                || streamElement.getText().contains("m3u8")){
+                            logger.error("video is not getting served through encoding priority mp4.");
+                            extentTest.log(LogStatus.FAIL,"video is not getting served through encoding priority mp4.");
+                            return false;
+                        }
+                        logger.info("video is getting served through encoding priority mp4.");
+                        extentTest.log(LogStatus.PASS,"video is getting served through encoding priority mp4.");
+                    }else {
+                        if (!streamElement.getText().contains(secondEncoPriority)) {
+                            logger.error("video is not getting served through encoding priority " + secondEncoPriority);
+                            extentTest.log(LogStatus.FAIL, "video is getting served through encoding priority " + secondEncoPriority);
+                            return false;
+                        }
+                        logger.info("video is getting served through encoding priority " + secondEncoPriority);
+                        extentTest.log(LogStatus.PASS, "video is not getting served through encoding priority " + secondEncoPriority);
+                    }
+                }else {
+                    if (!streamElement.getText().contains("mpd")) {
+                        logger.error("video is not getting served through encoding priority dash.");
+                        extentTest.log(LogStatus.FAIL, "video is not getting served through encoding priority dash.");
+                        return false;
+                    }
+                    logger.info("video is getting served through encoding priority dash.");
+                    extentTest.log(LogStatus.PASS, "video is getting served through encoding priority dash.");
                 }
-                logger.info("video is getting served through encoding priority dash.");
-                extentTest.log(LogStatus.PASS,"video is getting served through encoding priority dash.");
             }
 
             if (encodingPrioritySet.equals("hds")){
