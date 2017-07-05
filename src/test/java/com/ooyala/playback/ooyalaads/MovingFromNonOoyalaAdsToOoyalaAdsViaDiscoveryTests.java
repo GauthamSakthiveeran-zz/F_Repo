@@ -42,6 +42,7 @@ public class MovingFromNonOoyalaAdsToOoyalaAdsViaDiscoveryTests extends Playback
 
             result = result && playAction.startAction();
 
+            //Ooyala ad should not play
             if (eventValidator.checkIsAdPlaying())
                 result = false;
 
@@ -49,11 +50,24 @@ public class MovingFromNonOoyalaAdsToOoyalaAdsViaDiscoveryTests extends Playback
 
             result = result && discoveryValidator.clickOnDiscoveryButton();
 
+            //Give the name of the asset which you want to select and play
             result = result && discoveryValidator.selectAssetFormDiscoveryTray("Ooyala Ads asset with Disocvery.mp4");
 
+            //Ooyala Ad should play
             result = result && eventValidator.validate("ooyalaAds",60000);
 
             result = result && eventValidator.validate("playing_2",10000);
+
+            result = result && discoveryValidator.clickOnDiscoveryButton();
+
+            //Give the name of the asset which you want to select and play
+            result = result && discoveryValidator.selectAssetFormDiscoveryTray("Non Ooyala Ad asset with discovery.mp4");
+
+            //Ooyala ad should not play
+            if (eventValidator.checkIsAdPlaying())
+                result = false;
+
+            result = result && eventValidator.validate("playing_3",10000);
         } catch (Exception e) {
             logger.error(e.getMessage());
             extentTest.log(LogStatus.FAIL,e.getMessage());

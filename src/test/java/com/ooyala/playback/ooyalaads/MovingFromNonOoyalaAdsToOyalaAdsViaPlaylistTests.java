@@ -41,6 +41,7 @@ public class MovingFromNonOoyalaAdsToOyalaAdsViaPlaylistTests extends PlaybackWe
 
             result = result && playAction.startAction();
 
+            //Ooyala Ad should not play
             if (eventValidator.checkIsAdPlaying())
                 result = false;
 
@@ -54,6 +55,15 @@ public class MovingFromNonOoyalaAdsToOyalaAdsViaPlaylistTests extends PlaybackWe
             result = result && eventValidator.validate("ooyalaAds",60000);
 
             result = result && eventValidator.validate("playing_2",10000);
+
+            //Give the name of the asset which you want to select and play
+            result = result && playlist.selectAndClickonAssetFromPlaylist("Baby");
+
+            //Ooyala Ad should not play
+            if (eventValidator.checkIsAdPlaying())
+                result = false;
+
+            result = result && eventValidator.validate("playing_3",10000);
         } catch (Exception e) {
             logger.error(e.getMessage());
             extentTest.log(LogStatus.FAIL,e.getMessage());
