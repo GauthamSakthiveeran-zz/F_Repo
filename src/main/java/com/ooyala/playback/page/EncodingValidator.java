@@ -8,16 +8,13 @@ import static org.testng.Assert.assertEquals;
 import com.ooyala.playback.url.UrlObject;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-
 import com.ooyala.playback.factory.PlayBackFactory;
-
 import java.util.*;
 
 /**
@@ -61,7 +58,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 
     public boolean validate(String element, int timeout) throws Exception {
 
-        String result = decode(driver.getCurrentUrl(), "UTF-8");
+        /*String result = decode(driver.getCurrentUrl(), "UTF-8");
         if (result == null)
             return false;
 
@@ -102,7 +99,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
             }
 
         }
-
+*/
         return true;
 
     }
@@ -174,9 +171,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
         if (!isEncodingPriorityNotSet){
             String encodingPrioritySet = driver.executeScript("return pp.parameters.encodingPriority[0]").toString();
 
-            /**
-             * Verify default encoding priority when priority is passed from playerParameter
-             */
+             //verify default encoding priority when priority is passed from playerParameter
             if (supportedMuxFormats == null){
                 logger.info("Checking default encoding priority when encoding priority is set through player parameters");
                 if (!checkStreamTypeForDefaultEncodingPriority()){
@@ -185,21 +180,17 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
             }
 
             if (supportedMuxFormats != null && videoPlugins == null){
-
                 if (equalLists(dashHls,supportedMuxFormatList)){
                     return dashHlsPriority(encodingPrioritySet);
                 }
-
                 if (equalLists(hlsMp4,supportedMuxFormatList)){
                     return hlsMp4Priority(encodingPrioritySet);
                 }
-
                 if (equalLists(dashHlsHdsMp4,supportedMuxFormatList)){
                     return dashHlsHdsMp4Priority(encodingPrioritySet);
                 }
             }
         }
-
         return true;
     }
 
@@ -408,9 +399,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
     public boolean hlsMp4Priority(String encodingPrioritySet){
 
         if (url.getVideoPlugins().toLowerCase().equals("main")){
-
             if (browser.toLowerCase().equals("safari")){
-
                 if (encodingPrioritySet.equals("hls")) {
                     if (!streamElement.getText().contains("m3u8")) {
                         logger.error("video is not getting served through hls on safari for MAIN video plugin");
@@ -448,9 +437,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public boolean dashHlsHdsMp4Priority(String encodingPrioritySet){
-
         if (url.getVideoPlugins().toLowerCase().equals("bitmovin")){
-
             if (encodingPrioritySet.equals("hls")){
                 if (!streamElement.getText().contains("m3u8")){
                     logger.error("video is not getting served through encoding priority hls.");
@@ -540,5 +527,68 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
         Collections.sort(a);
         Collections.sort(b);
         return a.equals(b);
+    }
+
+    public boolean validateDRM(){
+        try {
+            if (isVideoPluginPresent("osmf")) {
+                extentTest.log(LogStatus.INFO, "Cannot validate DRM for Adobe access");
+                return true;
+            }
+        }catch (Exception ex){
+            ex.getStackTrace();
+        }
+        String text = driver.executeScript("return OO.DEBUG.consoleOutput[0].toString().split(/2\":(.+)/)[1]").toString();
+        JSONObject json = new JSONObject(text);
+        String certificate_url = "";
+        if (getBrowser().equalsIgnoreCase("safari")) {
+            if (!json.has("hls_drm")) {
+                extentTest.log(LogStatus.FAIL, "hls_drm not found.");
+                return false;
+            }
+            JSONObject hls_drm = json.getJSONObject("hls_drm");
+            if (!hls_drm.has("drm")) {
+                extentTest.log(LogStatus.FAIL, "drm not found.");
+                return false;
+            }
+            JSONObject drm = hls_drm.getJSONObject("drm");
+            if (!drm.has("fairplay")) {
+                extentTest.log(LogStatus.FAIL, "fairplay not found.");
+                return false;
+            }
+            certificate_url = drm.getJSONObject("fairplay").getString("la_url");
+            if (!certificate_url.contains("/sas/fps/")) {
+                extentTest.log(LogStatus.FAIL, "la_url does not start with player.ooyala.com/sas/fps/");
+                return false;
+            }
+        }
+
+        if (getBrowser().equalsIgnoreCase("chrome") || getBrowser().equalsIgnoreCase("firefox")){
+            if (!json.has("dash_drm")) {
+                extentTest.log(LogStatus.FAIL, "dash_drm not found.");
+                return false;
+            }
+            JSONObject dash_drm = json.getJSONObject("dash_drm");
+            if (!dash_drm.has("drm")) {
+                extentTest.log(LogStatus.FAIL, "drm not found.");
+                return false;
+            }
+            JSONObject drm = dash_drm.getJSONObject("drm");
+            if (!drm.has("widevine")) {
+                extentTest.log(LogStatus.FAIL, "widevine not found.");
+                return false;
+            }
+            certificate_url = drm.getJSONObject("widevine").getString("la_url");
+            if (!certificate_url.contains("/sas/drm2/")) {
+                extentTest.log(LogStatus.FAIL,
+                        "certificate_url does not start with http://player.ooyala.com/sas/drm2/");
+                return false;
+            }
+        }
+
+        if (getBrowser().equalsIgnoreCase("internet explorer") || getBrowser().equalsIgnoreCase("microsoftedge")){
+            //TODO playready -as of now playready is found emplty
+        }
+        return true;
     }
 }

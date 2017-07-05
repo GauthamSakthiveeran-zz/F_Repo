@@ -244,5 +244,25 @@
             <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
             <playerParameter><![CDATA[{"encodingPriority":["mp4","dash","hls"]}]]></playerParameter>
         </url>
+        <url>
+            <description name="Encoding Priority:all drms OSMF"/>
+            <embed_code name="F0c2htYjE6whZVFBkuLTN71PO3Rs0Rxz"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="OSMF"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Encoding Priority:all drms BITMOVIN"/>
+            <embed_code name="F0c2htYjE6whZVFBkuLTN71PO3Rs0Rxz"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
     </test>
 </testdata>
