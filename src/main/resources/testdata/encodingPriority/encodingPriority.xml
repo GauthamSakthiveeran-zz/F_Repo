@@ -266,5 +266,16 @@
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
+        <url>
+            <description name="Encoding Priority:MAIN with encoding priority set to mp4"/>
+            <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
+            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
+            <playerParameter><![CDATA[{"encodingPriority":["mp4"]}]]></playerParameter>
+        </url>
     </test>
 </testdata>
