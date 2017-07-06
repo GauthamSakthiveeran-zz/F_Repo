@@ -39,7 +39,9 @@ public class PlaybackOoyalaAdsTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && event.validate("ooyalaAds", 120000);
+			result = result && event.validate("singleAdPlayed_1",90000);
+
+			result = result && event.validate("ooyalaAds_1", 160000);
 
 			result = result && event.validate("playing_2", 120000);
 

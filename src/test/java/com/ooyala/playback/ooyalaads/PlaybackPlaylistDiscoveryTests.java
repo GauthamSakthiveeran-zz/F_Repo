@@ -42,7 +42,7 @@ public class PlaybackPlaylistDiscoveryTests extends PlaybackWebTest {
 			result = result && event.validate("adsPlayed_1", 160000);
 
 			if (testName.contains("Ooyala Ads")) {
-				result = result && event.validate("ooyalaAds", 160000);
+				result = result && event.validate("ooyalaAds_1", 160000);
 			}
 
 			result = result && event.validate("playing_2", 20000);

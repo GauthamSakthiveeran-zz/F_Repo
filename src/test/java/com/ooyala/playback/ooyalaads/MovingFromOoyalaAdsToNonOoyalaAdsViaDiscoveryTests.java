@@ -41,7 +41,8 @@ public class MovingFromOoyalaAdsToNonOoyalaAdsViaDiscoveryTests extends Playback
             result = result && playAction.startAction();
 
             //Ooyala Ad should play
-            result = result && eventValidator.validate("ooyalaAds",60000);
+            result = result && eventValidator.validate("singleAdPlayed_1",90000);
+            result = result && eventValidator.validate("ooyalaAds_1",60000);
 
             result = result && eventValidator.validate("playing_1",10000);
 
@@ -62,7 +63,8 @@ public class MovingFromOoyalaAdsToNonOoyalaAdsViaDiscoveryTests extends Playback
             result = result && discoveryValidator.selectAssetFormDiscoveryTray("Ooyala Ads asset with Disocvery.mp4");
 
             //Ooyala Ad should play
-            result = result && eventValidator.validate("ooyalaAds",60000);
+            result = result && eventValidator.validate("singleAdPlayed_2",90000);
+            result = result && eventValidator.validate("ooyalaAds_2",60000);
 
             result = result && eventValidator.validate("playing_3",10000);
 

@@ -52,7 +52,9 @@ public class MovingFromNonOoyalaAdsToOyalaAdsViaPlaylistTests extends PlaybackWe
             //Give the name of the asset which you want to select and play
             result = result && playlist.selectAndClickonAssetFromPlaylist("Pulsar");
 
-            result = result && eventValidator.validate("ooyalaAds",60000);
+            //Ooyala Ad should play
+            result = result && eventValidator.validate("singleAdPlayed_1",90000);
+            result = result && eventValidator.validate("ooyalaAds_1",60000);
 
             result = result && eventValidator.validate("playing_2",10000);
 
