@@ -51,32 +51,31 @@ public class PlatformParameterLiveTest extends PlaybackWebTest {
 		try {
 
 			isChannelIdPresent = live.isChannelIdPresent(url);
-			
+
 			System.out.println("Channel ID : " + url.getChannelId());
 
-
-		if (isChannelIdPresent) {
+			if (isChannelIdPresent) {
 				liveChannel.startChannel(url.getChannelId(), url.getProvider());
-		}
+			}
 			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
 
 			injectScript();
-			
+
 			bitmovinvalidator.getConsoleLogs();
 
 			result = result && play.validate("playing_1", 60000);
 
 			result = result && pause.validate("paused_1", 60000);
-			
+
 			result = result && bitmovinvalidator.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
-			
 
 			if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
-                result = result && event.validate("videoPlayingurl", 40000);
-                result = result && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
-            }
+				result = result && event.validate("videoPlayingurl", 40000);
+				result = result
+						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
+			}
 
 			result = result && controlBarValidator.validate("", 60000);
 			// to-do add ooyala logo to the test page
@@ -87,7 +86,7 @@ public class PlatformParameterLiveTest extends PlaybackWebTest {
 
 			result = result && liveAction.startAction();
 
-			if (isChannelIdPresent) 
+			if (isChannelIdPresent)
 				liveChannel.stopChannels();
 
 		} catch (Exception e) {

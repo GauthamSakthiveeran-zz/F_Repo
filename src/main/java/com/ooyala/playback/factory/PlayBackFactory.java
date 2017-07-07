@@ -80,7 +80,7 @@ public class PlayBackFactory {
 		this.driver = driver;
 		this.extentTest = extentTest;
 	}
-	
+
 	public ExtentTest getExtentTest() {
 		return extentTest;
 	}
@@ -525,7 +525,7 @@ public class PlayBackFactory {
 	}
 
 	public AnalyticsValidator getAnalyticsValidator() {
-		if (analyticsValidator == null){
+		if (analyticsValidator == null) {
 			analyticsValidator = new AnalyticsValidator(driver);
 			analyticsValidator.setExtentTest(extentTest);
 		}
@@ -538,8 +538,10 @@ public class PlayBackFactory {
 			chromeValidator.setExtentTest(extentTest);
 		}
 		return chromeValidator;
-	public UIControlValidator getUiControlValidator(){
-		if(uiControlValidator == null){
+	}
+
+	public UIControlValidator getUiControlValidator() {
+		if (uiControlValidator == null) {
 			uiControlValidator = new UIControlValidator(driver);
 			uiControlValidator.setExtentTest(extentTest);
 		}

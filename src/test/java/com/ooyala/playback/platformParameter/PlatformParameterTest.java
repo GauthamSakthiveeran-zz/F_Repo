@@ -21,63 +21,61 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class PlatformParameterTest extends PlaybackWebTest {
 
-    private static Logger logger = Logger.getLogger(PlatformParameterTest.class);
-    private EventValidator eventValidator;
-    private PlayValidator play;
-    private PauseValidator pause;
-    private SeekValidator seek;
-    private StreamValidator streamTypeValidator;
-    private SeekAction seekAction;
+	private static Logger logger = Logger.getLogger(PlatformParameterTest.class);
+	private EventValidator eventValidator;
+	private PlayValidator play;
+	private PauseValidator pause;
+	private SeekValidator seek;
+	private StreamValidator streamTypeValidator;
+	private SeekAction seekAction;
 	private BitmovinTechnologyValidator bitmovinvalidator;
 
-    public PlatformParameterTest() throws OoyalaException {
-        super();
-    }
+	public PlatformParameterTest() throws OoyalaException {
+		super();
+	}
 
-    @Test(groups = "platformParameterTests", dataProvider = "testUrls")
-    public void testPlatformbStreams(String testName, UrlObject url) throws OoyalaException {
+	@Test(groups = "platformParameterTests", dataProvider = "testUrls")
+	public void testPlatformbStreams(String testName, UrlObject url) throws OoyalaException {
 
-        boolean result = true;
+		boolean result = true;
 
-        try {
-            driver.get(url.getUrl());
+		try {
+			driver.get(url.getUrl());
 
-            result = result && play.waitForPage();
+			result = result && play.waitForPage();
 
-            injectScript();
-            bitmovinvalidator.getConsoleLogs();
+			injectScript();
+			bitmovinvalidator.getConsoleLogs();
 
-            result = result && play.validate("playing_1", 60000);
+			result = result && play.validate("playing_1", 60000);
 
-            result = result && eventValidator.playVideoForSometime(3);
+			result = result && eventValidator.playVideoForSometime(3);
 
-            result = result && pause.validate("paused_1", 60000);
-            
+			result = result && pause.validate("paused_1", 60000);
 
-            if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
-                    result = result && eventValidator.validate("videoPlayingurl", 40000);
-                    result = result && streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
-                }
-            else
-            	{
-            		result = false;
-            		
-            	}
-            
-            result = result && bitmovinvalidator.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
+			if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
+				result = result && eventValidator.validate("videoPlayingurl", 40000);
+				result = result
+						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
+			} else {
+				result = false;
 
-            result = result && play.validate("playing_2", 60000);
+			}
 
-            if (!testName.contains("Live")) {
-                    result = result && seekAction.setTime(100).startAction();
-                    result = result && eventValidator.validate("seeked_1", 60000);
-            		} 
+			result = result && bitmovinvalidator.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
 
-        } catch (Exception e) {
-            logger.error("Exception while checking Platform Parameters " + e.getMessage());
-            extentTest.log(LogStatus.FAIL, e);
-            result = false;
-        }
-        Assert.assertTrue(result, "Platform Tests failed" + testName);
-    }
+			result = result && play.validate("playing_2", 60000);
+
+			if (!testName.contains("Live")) {
+				result = result && seekAction.setTime(100).startAction();
+				result = result && eventValidator.validate("seeked_1", 60000);
+			}
+
+		} catch (Exception e) {
+			logger.error("Exception while checking Platform Parameters " + e.getMessage());
+			extentTest.log(LogStatus.FAIL, e);
+			result = false;
+		}
+		Assert.assertTrue(result, "Platform Tests failed" + testName);
+	}
 }
