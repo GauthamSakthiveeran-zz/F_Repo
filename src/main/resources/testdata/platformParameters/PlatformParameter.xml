@@ -1,120 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 
-  
-  
-	<test name="PlatformParameterTest">
-	
-		   
- 
-	  	<url>
-			<description name="Platform Parameter:Bitmovin(Platform with HTML5) HLS Vod" />
-			<embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
-			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-			<plugins name="BITMOVIN" />
-			<adPlugins name="" />
-			<additionalPlugins name="" />
-			<pbid name="378512f55dd44fc287d0fa609353c268" />
-			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
-			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"html5"}]]></playerParameter>
-		</url> 
 
- 
-		 
-        <url>
-            <description name="Platform Parameter:Bitmovin(Platform with HTML5) HLS Remote Asset" />
-            <embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
-            <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
-        </url>  
-        
-       
-        <url>
-            <description name="Platform Parameter:Bitmovin(Platform with HTML5) Dash Vod" />
-            <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
-        </url> 
-        
-        
-       <url>
-            <description name="Platform Parameter:Bitmovin(Platform with HTML5) DASH Remote Asset" /> 
-            <embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
-            <sslEnabled name="https" />  
-        </url> 
-       
-		 
-		<url>   
-			<description name="Platform Parameter:Bitmovin(Platform with HTML5) eHLS Vod" /> 
-			<embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
-			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-			<plugins name="BITMOVIN" />
-			<adPlugins name="" />
-			<additionalPlugins name="" />
-			<pbid name="378512f55dd44fc287d0fa609353c268" />
-			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
-			<playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
-		</url> 
-        
-      
-         <url>   
-			<description name="Platform Parameter:Bitmovin(Platform with HTML5) DRM HLS Vod" /> 
-			<embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
-			<pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
-			<plugins name="BITMOVIN" />
-			<adPlugins name="" />
-			<additionalPlugins name="" />
-			<pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
-			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="safari" />
-			<playerParameter><![CDATA[{"encodingPriority":["hls"],"platform":"html5"}]]></playerParameter>
-		</url> 
-        
- 		
-		
-         <url>   
-			<description name="Platform Parameter:Bitmovin(Platform with HTML5) DRM DASH Vod" />
-			<embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
-			<pcode name="FoeG863GnBL4IhhlFC1Q2jqbkH9m" />
-			<plugins name="BITMOVIN" />
-			<adPlugins name="" />
-			<additionalPlugins name="" />
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-			<streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="safari" />
-			<playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
-			<sslEnabled name="https" /> 
-		</url> 
-		
-		 
-         <url>
-			<description name="Platform Parameter:Bitmovin (Platform with Flash) HLS Vod" />
+
+	<test name="PlatformParameterTest">
+
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) HLS Vod" />
 			<embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
 			<plugins name="BITMOVIN" />
@@ -122,61 +17,63 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
-			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"flash"}]]></playerParameter>
-		</url> 
-		
-		 
-	   <url>
-            <description name="Platform Parameter:Bitmovin (Platform with Flash) HLS Remote asset" />
-            <embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
-            <playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
-        </url>
-          
-       
-		
+			<platformsSupported name="mac,windows" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"html5"}]]></playerParameter>
+		</url>
+
+
+
 		<url>
-            <description name="Platform Parameter:Bitmovin (Platform with Flash) Dash Vod" />
-            <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
-        </url> 
-        
-         
-       <url>
-            <description name="Platform Parameter:Bitmovin (Platform with Flash) DASH Remote Asset" />  
-            <embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
-             
-        </url> 
-        
-        
-		
-		 
-		<url>   
-			<description name="Platform Parameter:Bitmovin (Platform with Flash) eHLS Vod" />
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) HLS Remote Asset" />
+			<embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<streamType name="m3u8" />
+			<platformsSupported name="mac,windows" />
+			<playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+		</url>
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) Dash Vod" />
+			<embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+		</url>
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) DASH Remote Asset" />
+			<embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
+			<sslEnabled name="https" />
+		</url>
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) eHLS Vod" />
 			<embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
 			<plugins name="BITMOVIN" />
@@ -184,27 +81,14 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
-			<playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
-		</url> 
-			
-         <url>   
-			<description name="Platform Parameter:Bitmovin (Platform with Flash) DRM-DASH VOD" /> 
-			<embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
-			<pcode name="FoeG863GnBL4IhhlFC1Q2jqbkH9m" />
-			<plugins name="BITMOVIN" />
-			<adPlugins name="" />
-			<additionalPlugins name="" />
-			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-			<streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
-            <sslEnabled name="https" />
-			<playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
-		</url> 
-		
-		
-          <url>   
-			<description name="Platform Parameter:Bitmovin (Platform with Flash) DRM-HLS" /> 
+			<platformsSupported name="mac,windows" />
+			<playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+		</url>
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) DRM HLS Vod" />
 			<embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
 			<pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
 			<plugins name="BITMOVIN" />
@@ -212,15 +96,145 @@
 			<additionalPlugins name="" />
 			<pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="safari" />
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="safari" />
+			<playerParameter><![CDATA[{"encodingPriority":["hls"],"platform":"html5"}]]></playerParameter>
+		</url>
+
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) DRM DASH Vod" />
+			<embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
+			<pcode name="FoeG863GnBL4IhhlFC1Q2jqbkH9m" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="safari" />
+			<playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+			<sslEnabled name="https" />
+		</url>
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin (Platform with Flash) HLS Vod" />
+			<embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<streamType name="m3u8" />
+			<platformsSupported name="mac,windows" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"flash"}]]></playerParameter>
+		</url>
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin (Platform with Flash) HLS Remote asset" />
+			<embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<streamType name="m3u8" />
+			<platformsSupported name="mac,windows" />
+			<playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
+		</url>
+
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin (Platform with Flash) Dash Vod" />
+			<embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
+		</url>
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin (Platform with Flash) DASH Remote Asset" />
+			<embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
+
+		</url>
+
+
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin (Platform with Flash) eHLS Vod" />
+			<embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<streamType name="m3u8" />
+			<platformsSupported name="mac,windows" />
+			<playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
+		</url>
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin (Platform with Flash) DRM-DASH VOD" />
+			<embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
+			<pcode name="FoeG863GnBL4IhhlFC1Q2jqbkH9m" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<platformsSupported name="mac,windows" />
+			<sslEnabled name="https" />
+			<playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
+		</url>
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin (Platform with Flash) DRM-HLS" />
+			<embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
+			<pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+			<streamType name="m3u8" />
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="safari" />
 			<playerParameter><![CDATA[{"encodingPriority":["hls"],"platform":"flash"}]]></playerParameter>
-		</url> 
-        
-		
-       
-        
-      	  <url>
+		</url>
+
+
+
+
+		<url>
 			<description name="Platform Parameter:Bitmovin(Default) HLS Vod" />
 			<embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -229,39 +243,39 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter></playerParameter>
-		</url> 
-		
-		 <url>
-            <description name="Platform Parameter:Bitmovin(Default) HLS Remote Asset" />
-            <embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
-            <playerParameter></playerParameter>
-        </url>  
-        
-       
-        <url>
-            <description name="Platform Parameter:Bitmovin(Default) Dash Vod" />
-            <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter></playerParameter>
-        </url> 
-        
-        <url>   
+		</url>
+
+		<url>
+			<description name="Platform Parameter:Bitmovin(Default) HLS Remote Asset" />
+			<embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<streamType name="m3u8" />
+			<platformsSupported name="mac,windows" />
+			<playerParameter></playerParameter>
+		</url>
+
+
+		<url>
+			<description name="Platform Parameter:Bitmovin(Default) Dash Vod" />
+			<embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter></playerParameter>
+		</url>
+
+		<url>
 			<description name="Platform Parameter:Bitmovin(Default) eHLS Vod" />
 			<embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -270,13 +284,13 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter></playerParameter>
-		</url> 
-		
-        
-		<url>   
-			<description name="Platform Parameter:Bitmovin(Default) DRM DASH Vod" /> 
+		</url>
+
+
+		<url>
+			<description name="Platform Parameter:Bitmovin(Default) DRM DASH Vod" />
 			<embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
 			<pcode name="FoeG863GnBL4IhhlFC1Q2jqbkH9m" />
 			<plugins name="BITMOVIN" />
@@ -284,13 +298,13 @@
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
-            <sslEnabled name="https" /> 
-			<playerParameter></playerParameter>	
-		</url> 
-		
-		   
-		  
+			<platformsSupported name="mac,windows" />
+			<sslEnabled name="https" />
+			<playerParameter></playerParameter>
+		</url>
+
+
+
 		<url>
 			<description name="Platform Parameter:Bitmovin with html5 for mp4" />
 			<embed_code name="xteTJxYjE6bs6G5ev7hWUOwCFe75j-YA" />
@@ -302,7 +316,7 @@
 			<playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
 			<streamType name="mp4" />
 		</url>
-		  
+
 		<url>
 			<description name="Platform Parameter:Bitmovin with flash for mp4" />
 			<embed_code name="xteTJxYjE6bs6G5ev7hWUOwCFe75j-YA" />
@@ -314,7 +328,7 @@
 			<playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
 			<streamType name="mp4" />
 		</url>
-		
+
 		<url>
 			<description name="Platform Parameter:Bitmovin with default for mp4" />
 			<embed_code name="xteTJxYjE6bs6G5ev7hWUOwCFe75j-YA" />
@@ -326,278 +340,292 @@
 			<playerParameter></playerParameter>
 			<streamType name="mp4" />
 		</url>
-		
-         
-   		<url>
-            <description name="Platform Parameter:Bitmovin(Default) DASH Remote Asset" />
-            <embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-        </url>
-        
-        <url>
-            <description name="Platform Parameter:Bitmovin(Default) DRM HLS Vod" />
-            <embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
-            <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
-            <plugins name="BITMOVIN" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
-            <streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
-        </url>
-       
-        
+
+
+		<url>
+			<description name="Platform Parameter:Bitmovin(Default) DASH Remote Asset" />
+			<embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+
+		<url>
+			<description name="Platform Parameter:Bitmovin(Default) DRM HLS Vod" />
+			<embed_code name="41dzJiNDE6Pvxr4aAg6ugrn_hBpqA1KS" />
+			<pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="37a1e965d02c4708a80ef71ada2bda6b" />
+			<streamType name="m3u8" />
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="safari" />
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
+		</url>
+
+
 
 	</test>
- 
-	
-	   
-	  
+
+
+
+
 	<test name="PlatformParameterPreAdTest">
-	 
-	 <url>
-            <description name="Platform Parameter:Bitmovin(Platform with HTML5) Freewheel(Preroll)"/>
-            <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN"/>
-            <adPlugins name="FREEWHEEL"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <playerParameter>
-                <![CDATA[{"platform":"html5","encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-        </url>
-        
-     
 
 		<url>
-            <description name="Platform Parameter:Bitmovin(Platform with Flash) Freewheel(Preroll)"/>
-            <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN"/>
-            <adPlugins name="FREEWHEEL"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) Freewheel(Preroll)" />
+			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN,MAIN" />
+			<adPlugins name="FREEWHEEL" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<playerParameter>
+                <![CDATA[{"platform":"html5","encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+		</url>
+
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with Flash) Freewheel(Preroll)" />
+			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN,MAIN" />
+			<adPlugins name="FREEWHEEL" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter>
                 <![CDATA[{"platform":"flash","encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
-            <platformsSupported name="mac,windows"/>
-        </url>
-        
-        
-        <url>
-            <description name="Platform Parameter:Bitmovin(Default) Freewheel(Preroll)"/>
-            <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN"/>
-            <adPlugins name="FREEWHEEL"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <playerParameter>
+			<platformsSupported name="mac,windows" />
+		</url>
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Default) Freewheel(Preroll)" />
+			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN,MAIN" />
+			<adPlugins name="FREEWHEEL" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<playerParameter>
                 <![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-        </url>
-	
- 		
- 		
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+		</url>
+
+
+
 	</test>
-	
-		
-  
-	  
-	
+
+
+
+
+
 	<test name="PlatformParameterPostAdTest">
-	
+
 		<url>
-            <description name="Platform Parameter:Bitmovin(Platform with HTML5) Vast(Postroll)"/>
-            <embed_code name="5pZjdoMTE6ABVRm7f8R4poI7AK2PRd1I"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN"/>
-            <adPlugins name="VAST"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
-        </url>
-        
- 
-	
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) Vast(Postroll)" />
+			<embed_code name="5pZjdoMTE6ABVRm7f8R4poI7AK2PRd1I" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
+		</url>
+
+
+
 		<url>
-            <description name="Platform Parameter:Bitmovin(Platform with Flash) Vast(Postroll)"/>
-            <embed_code name="5pZjdoMTE6ABVRm7f8R4poI7AK2PRd1I"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN"/>
-            <adPlugins name="VAST"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
-        </url>
-        
-        <url>
-            <description name="Platform Parameter:Bitmovin(Default) Vast(Postroll)"/>
-            <embed_code name="5pZjdoMTE6ABVRm7f8R4poI7AK2PRd1I"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN"/>
-            <adPlugins name="VAST"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-        </url>
-        
-    </test>
-    
- 
-    	<test name="PlatformParameterPreMidPostAdTest">
-	
+			<description
+				name="Platform Parameter:Bitmovin(Platform with Flash) Vast(Postroll)" />
+			<embed_code name="5pZjdoMTE6ABVRm7f8R4poI7AK2PRd1I" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
+		</url>
+
 		<url>
-            <description name="Platform Parameter:Bitmovin(Platform with HTML5) VPAID(Pre-Mid-Post)"/>
-            <embed_code name="sydnI4MjE6Mupnaunbb8jtY1M49KsDPv"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN"/>
-            <adPlugins name="VAST"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
-        </url>
-        
-        <url>
-            <description name="Platform Parameter:Bitmovin(Platform with HTML5) VPAID(Pre-Mid-Post)"/>
-            <embed_code name="sydnI4MjE6Mupnaunbb8jtY1M49KsDPv"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN"/>
-            <adPlugins name="VAST"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
-        </url>
-        
-        <url>
-            <description name="Platform Parameter:Bitmovin(Default) VPAID(Pre-Mid-Post)"/>
-            <embed_code name="sydnI4MjE6Mupnaunbb8jtY1M49KsDPv"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN"/>
-            <adPlugins name="VAST"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-        </url>
-    </test>
-     
-     
-     <test name="PlatformParameterMidAdTest">
-	  
+			<description name="Platform Parameter:Bitmovin(Default) Vast(Postroll)" />
+			<embed_code name="5pZjdoMTE6ABVRm7f8R4poI7AK2PRd1I" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+
+	</test>
+
+
+	<test name="PlatformParameterPreMidPostAdTest">
+
 		<url>
-            <description name="Platform Parameter:Bitmovin(Platform with HTML5) IMA(Midroll)"/>
-            <embed_code name="IxOTVnMTE6mwR52DOItZ1k1DioFcKQrk"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN"/>
-            <adPlugins name="IMA"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
-        </url>
-        
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) VPAID(Pre-Mid-Post)" />
+			<embed_code name="sydnI4MjE6Mupnaunbb8jtY1M49KsDPv" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN,MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
+		</url>
+
 		<url>
-            <description name="Platform Parameter:Bitmovin(Platform with Flash) IMA(Midroll)"/>
-            <embed_code name="IxOTVnMTE6mwR52DOItZ1k1DioFcKQrk"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN"/>
-            <adPlugins name="IMA"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
-        </url>
-        
-        <url>
-            <description name="Platform Parameter:Bitmovin(Default) IMA(Midroll)"/>
-            <embed_code name="IxOTVnMTE6mwR52DOItZ1k1DioFcKQrk"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN"/>
-            <adPlugins name="IMA"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-        </url>
-        
-        <url>
-            <description name="Platform Parameter:Bitmovin(Platform with HTML5) Pulse(MultiMidroll)"/>
-            <embed_code name="dvbGY5MzE6EAI-FdPyCbG7u5Vr6lZ_oY"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN"/>
-            <adPlugins name="PULSE"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
-        </url>
-        
-        <url>
-            <description name="Platform Parameter:Bitmovin(Platform with Flash) Pulse(MultiMidroll)"/>
-            <embed_code name="dvbGY5MzE6EAI-FdPyCbG7u5Vr6lZ_oY"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN"/>
-            <adPlugins name="PULSE"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
-        </url>
-        
-        <url>
-            <description name="Platform Parameter:Bitmovin(Default) Pulse(MultiMidroll)"/>
-            <embed_code name="dvbGY5MzE6EAI-FdPyCbG7u5Vr6lZ_oY"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN"/>
-            <adPlugins name="PULSE"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <streamType name="mpd" />
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-        </url>
-    </test>
-     
-    
-       
-     <test name="PlatformParameterLiveTest">
-     
-  
-   	   <url>
-			<description name="Platform Parameter:Bitmovin(Platform with HTML5) HLS Live" />
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) VPAID(Pre-Mid-Post)" />
+			<embed_code name="sydnI4MjE6Mupnaunbb8jtY1M49KsDPv" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN,MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
+		</url>
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Default) VPAID(Pre-Mid-Post)" />
+			<embed_code name="sydnI4MjE6Mupnaunbb8jtY1M49KsDPv" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN,MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+	</test>
+
+
+	<test name="PlatformParameterMidAdTest">
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) IMA(Midroll)" />
+			<embed_code name="IxOTVnMTE6mwR52DOItZ1k1DioFcKQrk" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
+		</url>
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with Flash) IMA(Midroll)" />
+			<embed_code name="IxOTVnMTE6mwR52DOItZ1k1DioFcKQrk" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
+		</url>
+
+		<url>
+			<description name="Platform Parameter:Bitmovin(Default) IMA(Midroll)" />
+			<embed_code name="IxOTVnMTE6mwR52DOItZ1k1DioFcKQrk" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) Pulse(MultiMidroll)" />
+			<embed_code name="dvbGY5MzE6EAI-FdPyCbG7u5Vr6lZ_oY" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="PULSE" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
+		</url>
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with Flash) Pulse(MultiMidroll)" />
+			<embed_code name="dvbGY5MzE6EAI-FdPyCbG7u5Vr6lZ_oY" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="PULSE" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
+		</url>
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Default) Pulse(MultiMidroll)" />
+			<embed_code name="dvbGY5MzE6EAI-FdPyCbG7u5Vr6lZ_oY" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="PULSE" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+	</test>
+
+
+
+	<test name="PlatformParameterLiveTest">
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) HLS Live" />
 			<embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
 			<plugins name="BITMOVIN" />
@@ -605,14 +633,15 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"html5"}]]></playerParameter>
 		</url>
-		
-		  
-		 
-		<url> 
-			<description name="Platform Parameter:Bitmovin(Platform with HTML5) DASH Live" />
+
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) DASH Live" />
 			<embed_code name="tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE" />
 			<pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
 			<plugins name="BITMOVIN" />
@@ -620,16 +649,16 @@
 			<additionalPlugins name="" />
 			<pbid name="8abff377aec2400e9337fe9088e65d40" />
 			<streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
 			<playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=3091792228&&&&signature=kNNqwGpCD1xP22KAljIV3KMvWepT4rvQeCkmePVWKhU","encodingPriority":["dash","hls","mp4"],"platform":"html5"}]]></playerParameter>
 			<live>
-                <channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
-                <provider>elemental</provider>
-            </live>
-		</url>  
-		
-		<url> 
+				<channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
+				<provider>elemental</provider>
+			</live>
+		</url>
+
+		<url>
 			<description name="Platform Parameter:Bitmovin(Default) DASH Live" />
 			<embed_code name="tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE" />
 			<pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
@@ -638,18 +667,19 @@
 			<additionalPlugins name="" />
 			<pbid name="8abff377aec2400e9337fe9088e65d40" />
 			<streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
-            <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
 			<playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=3091792228&&&&signature=kNNqwGpCD1xP22KAljIV3KMvWepT4rvQeCkmePVWKhU","encodingPriority":["dash","hls","mp4"]}]]></playerParameter>
 			<live>
-                <channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
-                <provider>elemental</provider>
-            </live>
-		</url> 
-		
-		        
-  	 	<url> 
-			<description name="Platform Parameter:Bitmovin(Platform with HTML5) eHLS Live" />
+				<channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
+				<provider>elemental</provider>
+			</live>
+		</url>
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) eHLS Live" />
 			<embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL" />
 			<pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
 			<plugins name="BITMOVIN" />
@@ -657,18 +687,19 @@
 			<additionalPlugins name="" />
 			<pbid name="8abff377aec2400e9337fe9088e65d40" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=3091794884&&&&signature=z5hd5X1qbXMAqKmIfmUlY0qsBFwkY0c/qh3gbgBxV+c","encodingPriority":["hls","dash","webm","mp4"],"platform":"html5"}]]></playerParameter>
 			<live>
-                <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
-                <provider>elemental</provider>
-            </live>
-			
-		</url> 
-		
-		         
-        <url>   
-			<description name="Platform Parameter:Bitmovin(Platform with HTML5) DRM HLS Live" />
+				<channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
+				<provider>elemental</provider>
+			</live>
+
+		</url>
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) DRM HLS Live" />
 			<embed_code name="8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB" />
 			<pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
 			<plugins name="BITMOVIN" />
@@ -676,16 +707,16 @@
 			<additionalPlugins name="" />
 			<pbid name="8abff377aec2400e9337fe9088e65d40" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=3091796457&&&&signature=31sQL3cVCmFlOnSI0Iw+X+thwjhmtpYGXeoRfXb61fE","encodingPriority":["hls","hds","webm","mp4"],"platform":"html5"}]]></playerParameter>
 			<live>
-                <channelId>4e925289af57408384f58832323bfe51</channelId>
-                <provider>elemental</provider>
-            </live>
-			
-		</url> 
-		
-		<url>   
+				<channelId>4e925289af57408384f58832323bfe51</channelId>
+				<provider>elemental</provider>
+			</live>
+
+		</url>
+
+		<url>
 			<description name="Platform Parameter:Bitmovin(Default) DRM HLS Live" />
 			<embed_code name="8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB" />
 			<pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
@@ -694,19 +725,20 @@
 			<additionalPlugins name="" />
 			<pbid name="8abff377aec2400e9337fe9088e65d40" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=3091796457&&&&signature=31sQL3cVCmFlOnSI0Iw+X+thwjhmtpYGXeoRfXb61fE","encodingPriority":["hls","hds","webm","mp4"]}]]></playerParameter>
 			<live>
-                <channelId>4e925289af57408384f58832323bfe51</channelId>
-                <provider>elemental</provider>
-            </live>
-			
-		</url> 
-		
-		
-						
-         <url>   
-			<description name="Platform Parameter:Bitmovin (Platform with HTML5) DRM Dash Live" />
+				<channelId>4e925289af57408384f58832323bfe51</channelId>
+				<provider>elemental</provider>
+			</live>
+
+		</url>
+
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin (Platform with HTML5) DRM Dash Live" />
 			<embed_code name="5kaDBlODE6fqcosXyCQ9myvTxpObwIOw" />
 			<pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
 			<plugins name="BITMOVIN" />
@@ -714,15 +746,15 @@
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/5kaDBlODE6fqcosXyCQ9myvTxpObwIOw?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=3091797269&&&&signature=GGVq6pZfzDE9okxH9DRX+I301vRRCliyO1p3BPmrDVs","encodingPriority":["dash_drm"],"platform":"html5"}]]></playerParameter>
 			<live>
-                <channelId>f6078952bbb4bd3a3cc804c1c826f2d</channelId>
-                <provider>elemental</provider>
-            </live>
-		</url> 
-		
-		<url>   
+				<channelId>f6078952bbb4bd3a3cc804c1c826f2d</channelId>
+				<provider>elemental</provider>
+			</live>
+		</url>
+
+		<url>
 			<description name="Platform Parameter:Bitmovin(Default) DRM Dash Live" />
 			<embed_code name="5kaDBlODE6fqcosXyCQ9myvTxpObwIOw" />
 			<pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
@@ -731,17 +763,18 @@
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/5kaDBlODE6fqcosXyCQ9myvTxpObwIOw?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=3091797269&&&&signature=GGVq6pZfzDE9okxH9DRX+I301vRRCliyO1p3BPmrDVs","encodingPriority":["dash_drm"]}]]></playerParameter>
 			<live>
-                <channelId>f6078952bbb4bd3a3cc804c1c826f2d</channelId>
-                <provider>elemental</provider>
-            </live>
-		</url> 
-		
-		
-		 <url>
-			<description name="Platform Parameter:Bitmovin (Platform with Flash) HLS Live" />
+				<channelId>f6078952bbb4bd3a3cc804c1c826f2d</channelId>
+				<provider>elemental</provider>
+			</live>
+		</url>
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin (Platform with Flash) HLS Live" />
 			<embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
 			<plugins name="BITMOVIN" />
@@ -749,11 +782,11 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"flash"}]]></playerParameter>
-		</url>        
-      
-      		 <url>
+		</url>
+
+		<url>
 			<description name="Platform Parameter:Bitmovin(Default) HLS Live" />
 			<embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
@@ -762,12 +795,13 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter></playerParameter>
-		</url> 
-                
-      	<url> 
-			<description name="Platform Parameter:Bitmovin (Platform with Flash) DASH Live" />
+		</url>
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin (Platform with Flash) DASH Live" />
 			<embed_code name="tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE" />
 			<pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
 			<plugins name="BITMOVIN" />
@@ -775,19 +809,20 @@
 			<additionalPlugins name="" />
 			<pbid name="8abff377aec2400e9337fe9088e65d40" />
 			<streamType name="mpd" />
-            <platformsSupported name="mac,windows"/>
-             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<platformsSupported name="mac,windows" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
 			<playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=3091792228&&&&signature=kNNqwGpCD1xP22KAljIV3KMvWepT4rvQeCkmePVWKhU","encodingPriority":["dash","hls","mp4"],"platform":"flash"}]]></playerParameter>
 			<live>
-                <channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
-                <provider>elemental</provider>
-            </live>
-		</url> 
-		
-	
-		        
-  	 	<url> 
-			<description name="Platform Parameter:Bitmovin (Platform with Flash) eHLS Live" />
+				<channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
+				<provider>elemental</provider>
+			</live>
+		</url>
+
+
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin (Platform with Flash) eHLS Live" />
 			<embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL" />
 			<pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
 			<plugins name="BITMOVIN" />
@@ -795,17 +830,17 @@
 			<additionalPlugins name="" />
 			<pbid name="8abff377aec2400e9337fe9088e65d40" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=3091794884&&&&signature=z5hd5X1qbXMAqKmIfmUlY0qsBFwkY0c/qh3gbgBxV+c","encodingPriority":["hls","dash","webm","mp4"],"platform":"flash"}]]></playerParameter>
 			<live>
-                <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
-                <provider>elemental</provider>
-            </live>
-			
-		</url> 
-		
-				        
-  	 	<url> 
+				<channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
+				<provider>elemental</provider>
+			</live>
+
+		</url>
+
+
+		<url>
 			<description name="Platform Parameter:Bitmovin(Default) eHLS Live" />
 			<embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL" />
 			<pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
@@ -814,17 +849,18 @@
 			<additionalPlugins name="" />
 			<pbid name="8abff377aec2400e9337fe9088e65d40" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=3091794884&&&&signature=z5hd5X1qbXMAqKmIfmUlY0qsBFwkY0c/qh3gbgBxV+c","encodingPriority":["hls","dash","webm","mp4"]}]]></playerParameter>
 			<live>
-                <channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
-                <provider>elemental</provider>
-            </live>
-			
-		</url> 
-		
-		 <url>   
-			<description name="Platform Parameter:Bitmovin (Platform with Flash) DVR-HLS " /> 
+				<channelId>36f1dc0b5cc544f6bf7bc31c8bd71de1</channelId>
+				<provider>elemental</provider>
+			</live>
+
+		</url>
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin (Platform with Flash) DVR-HLS " />
 			<embed_code name="Bob2V0MjE6S3P5Zs-5GbDs7J9lzBFxVc" />
 			<pcode name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<plugins name="BITMOVIN" />
@@ -832,12 +868,13 @@
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
-		</url> 
-		
-		<url>   
-			<description name="Platform Parameter:Bitmovin(Platform with HTML5) DVR-HLS " /> 
+		</url>
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) DVR-HLS " />
 			<embed_code name="Bob2V0MjE6S3P5Zs-5GbDs7J9lzBFxVc" />
 			<pcode name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<plugins name="BITMOVIN" />
@@ -845,14 +882,14 @@
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
+			<platformsSupported name="mac,windows" />
 			<playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
-		</url> 
-		
-		
-		 
-      </test>   
-     
-       
+		</url>
+
+
+
+	</test>
+
+
 
 </testdata>
