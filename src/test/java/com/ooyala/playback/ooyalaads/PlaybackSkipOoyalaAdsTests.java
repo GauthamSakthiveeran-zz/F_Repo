@@ -44,7 +44,7 @@ public class PlaybackSkipOoyalaAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("singleAdPlayed_1", 150000);
 
-			result = result && event.validate("ooyalaAds", 1000);
+			result = result && event.validate("ooyalaAds_1", 1000);
 			result = result && event.validate("playing_2", 150000);
 
 			result = result && seekValidator.validate("seeked_1", 150000);
