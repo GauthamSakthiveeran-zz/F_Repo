@@ -2,7 +2,7 @@
     <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
-      <!--   
+        
    <test name="Platform - html5 and Flash" parallel="classes" thread-count="1">
         <classes>
             <parameter name="testData" value="platformParameters/PlatformParameter.xml" />
@@ -49,7 +49,7 @@
         </classes>
     </test>
    
- --> 
+
        
       
     <test name="Platform - LiveTest" parallel="classes" thread-count="1">

@@ -5,7 +5,7 @@
   
 	<test name="PlatformParameterTest">
 	
-		<!--   
+		   
  
 	  	<url>
 			<description name="Platform Parameter:Bitmovin(Platform with HTML5) HLS Vod" />
@@ -274,7 +274,7 @@
 			<playerParameter></playerParameter>
 		</url> 
 		
-       --> 
+        
 		<url>   
 			<description name="Platform Parameter:Bitmovin(Default) DRM DASH Vod" /> 
 			<embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
@@ -289,7 +289,7 @@
 			<playerParameter></playerParameter>	
 		</url> 
 		
-		<!--   
+		   
 		  
 		<url>
 			<description name="Platform Parameter:Bitmovin with html5 for mp4" />
@@ -355,13 +355,13 @@
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
         </url>
-       -->
+       
         
 
 	</test>
  
 	
-	 <!--  
+	   
 	  
 	<test name="PlatformParameterPreAdTest">
 	 
@@ -591,11 +591,11 @@
         </url>
     </test>
      
-     -->
+    
        
      <test name="PlatformParameterLiveTest">
      
-  <!-- 
+  
    	   <url>
 			<description name="Platform Parameter:Bitmovin(Platform with HTML5) HLS Live" />
 			<embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv" />
@@ -646,8 +646,7 @@
                 <provider>elemental</provider>
             </live>
 		</url> 
-		 -->
-		 <!-- 
+		
 		        
   	 	<url> 
 			<description name="Platform Parameter:Bitmovin(Platform with HTML5) eHLS Live" />
@@ -850,7 +849,7 @@
 			<playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
 		</url> 
 		
-		-->
+		
 		 
       </test>   
      
