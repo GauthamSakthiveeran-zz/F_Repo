@@ -147,6 +147,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 
         if(!waitOnElement(By.id("videoPlayingurl"),30000)){
             logger.error("streamElement is not embedded in DOM Something is wrong...");
+            extentTest.log(LogStatus.FAIL,"streamElement is not embedded in DOM Something is wrong...");
             return false;
         }
 
