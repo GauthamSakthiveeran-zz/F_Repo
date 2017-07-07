@@ -14,4 +14,5 @@
     <element key="ASSET_TITLE" findBy="class" class="oo-caption-title" />
     <element key="ASSET_DESCRIPTION" findBy="class" class="oo-caption-description" />
     <element key="ASSET_DURATION" findBy="class" class="oo-caption-duration" />
+    <element key="SELECT_ASSET" findBy="xPath" xPath="//div/div/h3/span[contains(text(),'%')]/ancestor::li"/>
 </elements>

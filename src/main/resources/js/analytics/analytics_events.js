@@ -17,6 +17,14 @@
     var fullscreenChanged=1;
     var playbackCompleted=1;
     var volumeChanged=1;
+    var bufferingStarted=1;
+    var seekCompleted=1;
+    var volumeChanged=1;
+    var fullscreenChanged=1;
+    var intitalPlayback = 1;
+    var adSkipped = 1;
+    var adClickthrough = 1;
+    var destroy = 1;
 
     console.log = function() {
         oldf.apply(console, arguments);
@@ -85,6 +93,37 @@
             if(s.includes('volume_changed')){
                 OO.$("#ooplayer").append("<p id=analytics_volume_changed_"+volumeChanged+">" + arguments[0] + "</p>");
                 volumeChanged++;
+            }
+            if(s.includes('video_buffering_started')){
+                OO.$("#ooplayer").append("<p id=analytics_video_buffering_started_"+bufferingStarted+">" + arguments[0] + "</p>");
+                bufferingStarted++;
+            }
+            if(s.includes('video_seek_completed')){
+                OO.$("#ooplayer").append("<p id=analytics_video_seek_completed_"+seekCompleted+">" + arguments[0] + "</p>");
+                seekCompleted++;
+            }
+            if(s.includes('volume_changed')){
+                OO.$("#ooplayer").append("<p id=analytics_volume_changed_"+volumeChanged+">" + arguments[0] + "</p>");
+                volumeChanged++;
+            }
+            if(s.includes('fullscreen_changed')){
+                OO.$("#ooplayer").append("<p id=analytics_fullscreen_changed_"+fullscreenChanged+">" + arguments[0] + "</p>");
+                fullscreenChanged++;
+            }
+            if(s.includes('initial_playback_requested')){
+                OO.$("#ooplayer").append("<p id=analytics_initial_playback_requested_"+intitalPlayback+">" + arguments[0] + "</p>");
+                intitalPlayback++;
+            }
+            if(s.includes('ad_skipped')){
+                 OO.$("#ooplayer").append("<p id=analytics_ad_skipped_"+adSkipped+">" + arguments[0] + "</p>");
+                 adSkipped++;
+            }
+            if(s.includes('ad_clickthrough_opened')){
+                 OO.$("#ooplayer").append("<p id=analytics_ad_clickthrough_opened_"+adClickthrough+">" + arguments[0] + "</p>");
+                 adClickthrough++;
+            }
+            if(s.includes('destroy')){
+                 OO.$("#companion").append("<p id=destroy>" + arguments[0] + "</p>");
             }
         }
     }

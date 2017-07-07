@@ -20,6 +20,7 @@ public class UrlObject {
 	private String overlayPlayTime;
 	private String adPlugins;
 	private String additionalPlugins;
+	private String supportedMuxFormat;
 
 	public String getPlayerParameter() {return playerParameter;}
 
@@ -122,4 +123,12 @@ public class UrlObject {
 	public String getAdditionalPlugins() {return additionalPlugins;}
 
 	public void setAdditionalPlugins(String additionalPlugins) {this.additionalPlugins = additionalPlugins;}
+
+	public String getSupportedMuxFormat() {
+		return supportedMuxFormat;
+	}
+
+	public void setSupportedMuxFormat(String supportedMuxFormat) {
+		this.supportedMuxFormat = supportedMuxFormat;
+	}
 }

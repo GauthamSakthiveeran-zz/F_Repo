@@ -74,6 +74,7 @@ public class PlayBackFactory {
 	private ScrubberValidator scrubberValidator;
 	private AnalyticsValidator analyticsValidator;
 	private ChromeComponentValidator chromeValidator;
+	private UIControlValidator uiControlValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -537,6 +538,12 @@ public class PlayBackFactory {
 			chromeValidator.setExtentTest(extentTest);
 		}
 		return chromeValidator;
+	public UIControlValidator getUiControlValidator(){
+		if(uiControlValidator == null){
+			uiControlValidator = new UIControlValidator(driver);
+			uiControlValidator.setExtentTest(extentTest);
+		}
+		return uiControlValidator;
 	}
 
 	public void setAnalyticsValidator(AnalyticsValidator analyticsValidator) {

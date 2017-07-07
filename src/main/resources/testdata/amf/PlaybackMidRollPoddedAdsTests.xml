@@ -6,7 +6,7 @@
             <description name="VPAID:Main Vast VPAID2.0 3 Midroll Podded at 10 or 20 second"/>
             <embed_code name="t4cmxiMjE6jsw26kuwwYIPBPG15jy2hO"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST" adPlayTime=""/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -18,7 +18,7 @@
             <description name="VPAID:AdobeTVSDK Vast VPAID2.0 3 Midroll Podded at 10 or 20 second"/>
             <embed_code name="t4cmxiMjE6jsw26kuwwYIPBPG15jy2hO"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="ADOBETVSDK,MAIN,ANALYTICS"/>
+            <plugins name="ADOBETVSDK,MAIN"/>
             <adPlugins name="VAST" adPlayTime=""/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -30,7 +30,7 @@
             <description name="IMA:Main 3 Midroll Podded at 10 or 20 second"/>
             <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="IMA" adPlayTime="10"/>
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
@@ -41,7 +41,7 @@
             <description name="IMA:AdobeTVSDK 3 Midroll Podded at 10 or 20 second"/>
             <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="ADOBETVSDK,MAIN,ANALYTICS"/>
+            <plugins name="ADOBETVSDK,MAIN"/>
             <adPlugins name="IMA" adPlayTime="10"/>
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
@@ -52,7 +52,7 @@
             <description name="IMA:Bitmovin Midroll Podded"/>
             <embed_code name="RkeDZ2YTE65XY_HGOiX_osV18kMKFq5w"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,ANALYTICS"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name="IMA" adPlayTime="10"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -64,7 +64,7 @@
             <description name="IMA:OSMF Midroll Podded"/>
             <embed_code name="xuNzlxYTE6IVSEnyBo3mtqvA1Xj_M32U"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="IMA" adPlayTime="10"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
@@ -76,7 +76,7 @@
             <description name="Freewheel:Main 3 Midroll Podded at 10 or 20 second"/>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="FREEWHEEL" adPlayTime="20"/>
             <additionalPlugins name=""/>
             <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
@@ -88,7 +88,7 @@
             <description name="Freewheel:Bitmovin Midroll Podded"/>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN,ANALYTICS"/>
+            <plugins name="BITMOVIN,MAIN"/>
             <adPlugins name="FREEWHEEL" adPlayTime="20"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -100,7 +100,7 @@
             <description name="Freewheel:AdobeTVSDK Midroll Podded"/>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="ADOBETVSDK,MAIN,ANALYTICS"/>
+            <plugins name="ADOBETVSDK,MAIN"/>
             <adPlugins name="FREEWHEEL" adPlayTime="20"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -112,7 +112,7 @@
             <description name="Freewheel:OSMF Midroll Podded"/>
             <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
-            <plugins name="OSMF,MAIN,ANALYTICS"/>
+            <plugins name="OSMF,MAIN"/>
             <adPlugins name="FREEWHEEL" adPlayTime="20"/>
             <additionalPlugins name=""/>
             <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
@@ -125,7 +125,7 @@
             <description name="VAST:Main Vast2.0 3 Midroll Podded at 10 or 20 second"/>
             <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST" adPlayTime="10"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -136,7 +136,7 @@
             <description name="VAST:AdobeTVSDK Vast2.0 3 Midroll Podded at 10 or 20 second"/>
             <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="ADOBETVSDK,MAIN,ANALYTICS"/>
+            <plugins name="ADOBETVSDK,MAIN"/>
             <adPlugins name="VAST" adPlayTime="10"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -147,7 +147,7 @@
             <description name="VAST:Bitmovin Vast3.0 Midroll"/>
             <embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN,ANALYTICS"/>
+            <plugins name="BITMOVIN,MAIN"/>
             <adPlugins name="VAST" adPlayTime="10"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -159,7 +159,7 @@
             <description name="VAST:AdobeTVSDK Vast3.0 Midroll"/>
             <embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="ADOBETVSDK,MAIN,ANALYTICS"/>
+            <plugins name="ADOBETVSDK,MAIN"/>
             <adPlugins name="VAST" adPlayTime="10"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
@@ -204,7 +204,7 @@
             <description name="VAST:Main Vast3.0 3 Midroll Podded at 10 or 20 second"/>
             <embed_code name="1nNm4zMjE6jBMo9jhSYJOCMf9gPhON38"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN,ANALYTICS"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST" adPlayTime=""/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>

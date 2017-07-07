@@ -59,6 +59,8 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
         if (isVideoPluginPresent("ANALYTICS")){
             if(!(isAnalyticsElementPreset("analytics_video_"+element)
                     && isAnalyticsElementPreset("analytics_video_requested_"+element))){
+            	logger.error("analytics_video_requested_"+element +" not found");
+            	extentTest.log(LogStatus.FAIL,"analytics_video_requested_"+element +" not found");
                 return false;
             }
         }
