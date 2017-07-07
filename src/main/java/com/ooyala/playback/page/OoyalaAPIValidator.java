@@ -10,9 +10,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
 import com.relevantcodes.extentreports.LogStatus;
-import org.testng.asserts.SoftAssert;
 
 /**
  * Created by jitendra on 29/12/16.
@@ -197,14 +195,23 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
     }
 
     public void validateGetItemAPI(){
-        description = driver.executeScript("return pp.getItem().description").toString();
+        description = driver.executeScript(
+                "if((typeof pp.getItem().description)==='object'){" +
+                "return 'null'" +
+                "}else{" +
+                "return pp.getItem().description;" +
+                "}").toString();
         embedCode = driver.executeScript("return pp.getItem().embed_code").toString();
         title = driver.executeScript("return pp.getItem().title").toString();
     }
 
     public boolean validateDescriptionAPI(){
         logger.info("************************************** validating description API ******************************************************");
-        String expectedDesciption = driver.executeScript("return pp.getDescription()").toString();
+        String expectedDesciption = driver.executeScript("if((typeof pp.getDescription())==='object'){" +
+                "return 'null'" +
+                "}else{" +
+                "return pp.getItem().description;" +
+                "}").toString();
         if (!description.equals(expectedDesciption)){
             logger.error("Description is not matching ... Expected : "+description +"\n Actual :"+expectedDesciption);
             extentTest.log(LogStatus.FAIL,"Description is not matching ... Expected : "+description +"\n Actual :"+expectedDesciption);
@@ -573,6 +580,236 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
             }
             logger.info("close caption is set to language : "+langList.get(i));
             extentTest.log(LogStatus.PASS,"close caption is set to language : "+langList.get(i));
+        }
+        return true;
+    }
+
+    public boolean valdidateAPIForPreroll() {
+        logger.info("*************************** Validate All API's for Preroll Ad *********************************");
+        validateGetItemAPI();
+        if (!(validateDescriptionAPI() && validateEmbedCodeAPI() && validateTitleAPI())){
+            return false;
+        }
+
+        driver.executeScript("pp.play()");
+        if (!loadingSpinner()){
+            logger.error("Loading spinner is present for long time after playing the video");
+            extentTest.log(LogStatus.FAIL,"Loading spinner is present for long time after playing the video");
+            return false;
+        }
+
+        if (!waitOnElement(By.id("PreRoll_willPlaySingleAd_1"),10000)){
+            logger.error("preroll ad is not playing or present for this asset");
+            extentTest.log(LogStatus.FAIL,"preroll ad is not playing or present for this asset");
+            return false;
+        }
+
+        boolean isAdPlaying = (Boolean) executeJsScript("pp.isAdPlaying()","boolean");
+        if (!isAdPlaying){
+            logger.error("isAdPlaying() API does not return true when ad is playing");
+            extentTest.log(LogStatus.FAIL,"isAdPlaying() API does not return true when ad is playing");
+        }
+        logger.info("isAdPlaying() API does return true when ad is playing");
+        extentTest.log(LogStatus.PASS,"isAdPlaying() API does return true when ad is playing");
+
+        if (isAdPlaying){
+            driver.executeScript("pp.pause()");
+            if (!waitOnElement(By.id("videoPausedAds_1"),10000)){
+                logger.error("Does not found videoPausedAds event after video gets paused");
+                extentTest.log(LogStatus.FAIL,"Does not found videoPausedAds event after video gets paused");
+                return false;
+            }
+            logger.info("Found videoPausedAds event after video gets paused");
+            extentTest.log(LogStatus.FAIL,"Found videoPausedAds event after video gets paused");
+
+            driver.executeScript("pp.skipAd()");
+            if (!waitOnElement(By.id("skipAd_1"),10000)){
+                logger.error("Does not found skipAd event after ad gets skipped");
+                extentTest.log(LogStatus.FAIL,"Does not found skipAd event after ad gets skipped");
+                return false;
+            }
+            logger.info("Found skipAd event after ad gets skipped");
+            extentTest.log(LogStatus.PASS,"Found skipAd event after ad gets skipped");
+
+            if (!loadingSpinner()){
+                logger.error("Loading spinner is present for long time after skipping the ad");
+                extentTest.log(LogStatus.FAIL,"Loading spinner is present for long time after skipping the ad");
+                return false;
+            }
+
+            if (!waitOnElement(By.id("playing_1"),10000)){
+                logger.error("Does not found Playing event after ad gets skipped");
+                extentTest.log(LogStatus.FAIL,"Does not found Playing event after ad gets skipped");
+                return false;
+            }
+            logger.info("Found Playing event after ad gets skipped");
+            extentTest.log(LogStatus.PASS,"Found Playing event after ad gets skipped");
+
+            boolean isPlaying = (Boolean) executeJsScript("pp.isPlaying()","boolean");
+            if (!isPlaying){
+                logger.error("isPlaying() API returns "+isAdPlaying+" while video is playing");
+                extentTest.log(LogStatus.FAIL,"isPlaying() API returns "+isAdPlaying+" while video is playing");
+                return false;
+            }
+            logger.info("isPlaying() API returns "+isAdPlaying+" while video is playing");
+            extentTest.log(LogStatus.PASS,"isPlaying() API returns "+isAdPlaying+" while video is playing");
+        }
+        return true;
+    }
+
+    public boolean validateAPIForMidroll(){
+        logger.info("*************************** Validate All API's for Midroll Ad *********************************");
+        validateGetItemAPI();
+        if (!(validateDescriptionAPI() && validateEmbedCodeAPI() && validateTitleAPI())){
+            return false;
+        }
+
+        driver.executeScript("pp.play()");
+        if (!loadingSpinner()){
+            logger.error("Loading spinner is present for long time after playing the video");
+            extentTest.log(LogStatus.FAIL,"Loading spinner is present for long time after playing the video");
+            return false;
+        }
+
+        if (!waitOnElement(By.id("MidRoll_willPlaySingleAd_1"),30000)){
+            logger.error("Midroll ad is not playing or present for this asset");
+            extentTest.log(LogStatus.FAIL,"Midroll ad is not playing or present for this asset");
+            return false;
+        }
+
+        boolean isAdPlaying = (Boolean) executeJsScript("pp.isAdPlaying()","boolean");
+        if (!isAdPlaying){
+            logger.error("isAdPlaying() API does not return true when ad is playing");
+            extentTest.log(LogStatus.FAIL,"isAdPlaying() API does not return true when ad is playing");
+        }
+        logger.info("isAdPlaying() API does return true when ad is playing");
+        extentTest.log(LogStatus.PASS,"isAdPlaying() API does return true when ad is playing");
+
+        if (isAdPlaying){
+            driver.executeScript("pp.pause()");
+            if (!waitOnElement(By.id("videoPausedAds_1"),10000)){
+                logger.error("Does not found videoPausedAds event after video gets paused");
+                extentTest.log(LogStatus.FAIL,"Does not found videoPausedAds event after video gets paused");
+                return false;
+            }
+            logger.info("Found videoPausedAds event after video gets paused");
+            extentTest.log(LogStatus.FAIL,"Found videoPausedAds event after video gets paused");
+
+            driver.executeScript("pp.skipAd()");
+            if (!waitOnElement(By.id("skipAd_1"),10000)){
+                logger.error("Does not found skipAd event after ad gets skipped");
+                extentTest.log(LogStatus.FAIL,"Does not found skipAd event after ad gets skipped");
+                return false;
+            }
+            logger.info("Found skipAd event after ad gets skipped");
+            extentTest.log(LogStatus.PASS,"Found skipAd event after ad gets skipped");
+
+            if (!loadingSpinner()){
+                logger.error("Loading spinner is present for long time after skipping the ad");
+                extentTest.log(LogStatus.FAIL,"Loading spinner is present for long time after skipping the ad");
+                return false;
+            }
+
+            if (!waitOnElement(By.id("playing_2"),10000)){
+                logger.error("Does not found Playing event after ad gets skipped");
+                extentTest.log(LogStatus.FAIL,"Does not found Playing event after ad gets skipped");
+                return false;
+            }
+            logger.info("Found Playing event after ad gets skipped");
+            extentTest.log(LogStatus.PASS,"Found Playing event after ad gets skipped");
+
+            boolean isPlaying = (Boolean) executeJsScript("pp.isPlaying()","boolean");
+            if (!isPlaying){
+                logger.error("isPlaying() API returns "+isAdPlaying+" while video is playing");
+                extentTest.log(LogStatus.FAIL,"isPlaying() API returns "+isAdPlaying+" while video is playing");
+                return false;
+            }
+            logger.info("isPlaying() API returns "+isAdPlaying+" while video is playing");
+            extentTest.log(LogStatus.PASS,"isPlaying() API returns "+isAdPlaying+" while video is playing");
+        }
+        return true;
+    }
+
+    public Object executeJsScript(String command, String returnType){
+
+        switch (returnType){
+            case "boolean":
+                return Boolean.parseBoolean(driver.executeScript("return "+command+"").toString());
+            case "string":
+                driver.executeScript("return "+command+"").toString();
+            case "int":
+                return Boolean.parseBoolean(driver.executeScript("return "+command+"").toString());
+        }
+        return null;
+    }
+
+    public boolean validateAPIForPostroll() {
+        logger.info("*************************** Validate All API's for Postroll Ad *********************************");
+        validateGetItemAPI();
+        if (!(validateDescriptionAPI() && validateEmbedCodeAPI() && validateTitleAPI())){
+            return false;
+        }
+
+        driver.executeScript("pp.play()");
+        if (!loadingSpinner()){
+            logger.error("Loading spinner is present for long time after playing the video");
+            extentTest.log(LogStatus.FAIL,"Loading spinner is present for long time after playing the video");
+            return false;
+        }
+
+        new PlayBackFactory(driver,extentTest).getEventValidator().playVideoForSometime(4);
+        driver.executeScript("pp.seek(pp.getDuration()-10)");
+
+        if (!loadingSpinner()){
+            return false;
+        }
+
+        if (!waitOnElement(By.id("PostRoll_willPlaySingleAd_1"),30000)){
+            logger.error("Postroll ad is not playing or present for this asset");
+            extentTest.log(LogStatus.FAIL,"Postroll ad is not playing or present for this asset");
+            return false;
+        }
+
+        boolean isAdPlaying = (Boolean) executeJsScript("pp.isAdPlaying()","boolean");
+        if (!isAdPlaying){
+            logger.error("isAdPlaying() API does not return true when ad is playing");
+            extentTest.log(LogStatus.FAIL,"isAdPlaying() API does not return true when ad is playing");
+        }
+        logger.info("isAdPlaying() API does return true when ad is playing");
+        extentTest.log(LogStatus.PASS,"isAdPlaying() API does return true when ad is playing");
+
+        if (isAdPlaying){
+            driver.executeScript("pp.pause()");
+            if (!waitOnElement(By.id("videoPausedAds_1"),10000)){
+                logger.error("Does not found videoPausedAds event after video gets paused");
+                extentTest.log(LogStatus.FAIL,"Does not found videoPausedAds event after video gets paused");
+                return false;
+            }
+            logger.info("Found videoPausedAds event after video gets paused");
+            extentTest.log(LogStatus.FAIL,"Found videoPausedAds event after video gets paused");
+
+            driver.executeScript("pp.skipAd()");
+            if (!waitOnElement(By.id("skipAd_1"),10000)){
+                logger.error("Does not found skipAd event after ad gets skipped");
+                extentTest.log(LogStatus.FAIL,"Does not found skipAd event after ad gets skipped");
+                return false;
+            }
+            logger.info("Found skipAd event after ad gets skipped");
+            extentTest.log(LogStatus.PASS,"Found skipAd event after ad gets skipped");
+
+            if (!loadingSpinner()){
+                logger.error("Loading spinner is present for long time after skipping the ad");
+                extentTest.log(LogStatus.FAIL,"Loading spinner is present for long time after skipping the ad");
+                return false;
+            }
+
+            if (!waitOnElement(By.id("played_1"),10000)){
+                logger.error("Does not found Played event after ad gets skipped");
+                extentTest.log(LogStatus.FAIL,"Does not found Played event after ad gets skipped");
+                return false;
+            }
+            logger.info("Found Played event after ad gets skipped");
+            extentTest.log(LogStatus.PASS,"Found Played event after ad gets skipped");
         }
         return true;
     }
