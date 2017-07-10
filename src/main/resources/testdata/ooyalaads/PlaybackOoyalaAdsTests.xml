@@ -5,7 +5,7 @@
 			<description name="Ooyala Ads:Main Without discovery and playlist" />
 			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-			<plugins name="MAIN,ANALYTICS" />
+			<plugins name="MAIN" />
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
@@ -16,7 +16,7 @@
 			<description name="Ooyala Ads:Bitmovin without discovery and playlist" />
 			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-			<plugins name="BITMOVIN,ANALYTICS" />
+			<plugins name="BITMOVIN" />
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
@@ -27,7 +27,7 @@
 			<description name="Ooyala Ads:AdobeTVSDK without discovery and playlist" />
 			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-			<plugins name="ADOBETVSDK,ANALYTICS" />
+			<plugins name="ADOBETVSDK" />
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
