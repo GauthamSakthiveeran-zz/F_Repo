@@ -213,11 +213,16 @@ public class UrlGenerator {
 
 						String desc = url.getDescription().getName();
 
+						boolean flag = true;
 						if (url.getStreamType() != null && url.getStreamType().getName() != null && !url.getStreamType().getName().isEmpty()) {
 							urlObject.setStreamType(url.getStreamType().getName());
+							flag = false;
 						}
-						if (url.getStreamType() != null && !url.getStreamType().getSupportedMuxFormat().isEmpty()) {
-							urlObject.setSupportedMuxFormat(url.getStreamType().getSupportedMuxFormat());
+
+						if (flag) {
+							if (url.getStreamType() != null && !url.getStreamType().getSupportedMuxFormat().isEmpty()) {
+								urlObject.setSupportedMuxFormat(url.getStreamType().getSupportedMuxFormat());
+							}
 						}
 
 						if (url.getLive() != null && url.getLive().getChannelId() != null
@@ -257,7 +262,7 @@ public class UrlGenerator {
 				}
 			}
 		} catch (Exception ex) {
-			logger.error(ex.getMessage());
+			ex.printStackTrace();
 		}
 		return urlsGenerated;
 	}
