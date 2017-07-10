@@ -203,10 +203,14 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
     }
 
     public boolean checkIsAdPlaying() {
-        boolean isAdPlaying = false;
+        IsAdPlayingValidator adPlaying = new PlayBackFactory(driver, extentTest).isAdPlaying();
+        boolean isAdPlaying=false;
         for (int i = 0; i < 5; i++) {
-            isAdPlaying = Boolean.parseBoolean(driver.executeScript("return pp.isAdPlaying()").toString());
-            logger.info("isAdPlaying : "+isAdPlaying);
+            try {
+                isAdPlaying = adPlaying.validate("", 1000);
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
         }
         return isAdPlaying;
     }

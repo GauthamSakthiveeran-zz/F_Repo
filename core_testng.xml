@@ -27,7 +27,6 @@
             <class name="com.ooyala.playback.playerlifecycle.PlaybackPlayerDestroyTests" />
             <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackNewProcessingProfileTests" />
-            <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailCarouselTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlayerDimensionTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryAssetTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackUIControlOptionsTests"/>

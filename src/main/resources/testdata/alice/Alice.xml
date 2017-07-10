@@ -238,7 +238,7 @@
     </test>
 
     <test name="PlayerDimensionTests">
-        <!--<url>
+            <url>
             <description name="Core:Player Dimension Bitmovin" />
             <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -247,7 +247,7 @@
             <additionalPlugins name="" />
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
-        </url>-->
+        </url>
         <url>
             <description name="Core:Player Dimension Main" />
             <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
@@ -311,8 +311,8 @@
 
     <test name="PlaybackUIControlOptionsTests">
         <url>
-            <description name="Player States and Metadata Main"/>
-            <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
+            <description name="Core:Playback UI Control Options Main"/>
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
             <adPlugins name=""/>
@@ -321,7 +321,7 @@
             <playerParameter>
                 <![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
         </url>
-        <url>
+        <!--<url>
             <description name="Player States and Metadata Bitmovin"/>
             <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -355,7 +355,7 @@
             <playerParameter>
                 <![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: playbackReady"}}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
-        </url>
+        </url>-->
     </test>
 
     <test name="PlaybackVerticalVideoTests">
