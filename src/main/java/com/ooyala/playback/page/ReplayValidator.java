@@ -44,4 +44,19 @@ public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 		logger.info("Replay Successful");
 		return true;
 	}
+
+	//After replay the video should start to play from the begining
+	public boolean validatePlayHeadTime(){
+		Double playHeadTime = getPlayAheadTime();
+		if(playHeadTime>3.0){
+			extentTest.log(LogStatus.FAIL, "Video does not start from begining");
+			logger.error("Video does not start from begining");
+			logger.info("Playhead time is :"+playHeadTime);
+			return false;
+		}
+		extentTest.log(LogStatus.PASS, "Video does start from begining");
+		logger.error("Video does start from begining");
+		logger.info("Playhead time is :"+playHeadTime);
+		return true;
+	}
 }
