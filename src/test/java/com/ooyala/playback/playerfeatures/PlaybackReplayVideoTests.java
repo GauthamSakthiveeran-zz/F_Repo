@@ -14,43 +14,47 @@ import com.ooyala.qe.common.exception.OoyalaException;
  */
 public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
-	private PlayValidator play;
-	private SeekValidator seek;
-	private EventValidator eventValidator;
-	private ReplayValidator replayValidator;
-	private AnalyticsValidator analyticsValidator;
+    private PlayValidator play;
+    private SeekValidator seek;
+    private EventValidator eventValidator;
+    private ReplayValidator replayValidator;
+    private AnalyticsValidator analyticsValidator;
 
-	public PlaybackReplayVideoTests() throws OoyalaException {
-		super();
-	}
+    public PlaybackReplayVideoTests() throws OoyalaException {
+        super();
+    }
 
-	@Test(groups = "playerFeatures", dataProvider = "testUrls")
-	public void testVideoReplay(String testName, UrlObject url)
-			throws OoyalaException {
+    @Test(groups = "playerFeatures", dataProvider = "testUrls")
+    public void testVideoReplay(String testName, UrlObject url)
+            throws OoyalaException {
 
-		boolean result = true;
+        boolean result = true;
 
-		try {
-			driver.get(url.getUrl());
+        try {
+            driver.get(url.getUrl());
 
-			result = result && play.waitForPage();
+            result = result && play.waitForPage();
 
-			injectScript();
+            injectScript();
 
-			result = result && play.validate("playing_1", 60000);
+            result = result && play.validate("playing_1", 60000);
 
-			result = result && eventValidator.playVideoForSometime(2);
+            result = result && eventValidator.playVideoForSometime(2);
 
-			result = result && seek.validate("seeked_1", 60000);
+            result = result && seek.validate("seeked_1", 60000);
 
-			result = result && eventValidator.validate("played_1", 20000);
+            result = result && eventValidator.validate("played_1", 20000);
 
-			result = result && replayValidator.validate("replay_1", 30000);
+            result = result && replayValidator.validate("replay_1", 30000);
+
+            result = result && eventValidator.validate("playing_2", 20000);
+
+            result = result && replayValidator.validatePlayHeadTime();
 
         } catch (Exception e) {
             logger.error(e.getMessage());
-			extentTest.log(LogStatus.FAIL, e.getMessage());
-            result =false;
+            extentTest.log(LogStatus.FAIL, e.getMessage());
+            result = false;
         }
         Assert.assertTrue(result, "Playback Replay tests failed");
     }
