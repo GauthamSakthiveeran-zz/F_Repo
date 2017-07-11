@@ -14,4 +14,6 @@
 		xPath=".//*[normalize-space(@class)='oo-icon oo-icon-system-close']" />
 	<element key="DISCOVERY_BTN" findBy="class"
 		class="oo-icon-discovery-binoculars" />
+	<element key="CLICK_ON_ASSET" findBy="xPath"
+			 xPath="//div[text()='%']//preceding-sibling::div//div"/>
 </elements>
