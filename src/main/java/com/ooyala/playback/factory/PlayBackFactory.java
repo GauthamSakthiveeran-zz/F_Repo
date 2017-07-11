@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import com.ooyala.playback.page.*;
 import org.openqa.selenium.WebDriver;
 import com.ooyala.playback.page.action.AutoplayAction;
+import com.ooyala.playback.page.action.ChromeFlashUpdateAction;
 import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
 import com.ooyala.playback.page.action.FullScreenAction;
 import com.ooyala.playback.page.action.LiveAction;
@@ -73,7 +74,7 @@ public class PlayBackFactory {
 	private VideoValidator videoValidator;
 	private ScrubberValidator scrubberValidator;
 	private AnalyticsValidator analyticsValidator;
-	private ChromeComponentValidator chromeValidator;
+	private ChromeFlashUpdateAction chromeValidator;
 	private UIControlValidator uiControlValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
@@ -532,9 +533,9 @@ public class PlayBackFactory {
 		return analyticsValidator;
 	}
 
-	public ChromeComponentValidator getChromeComponentValidator() {
+	public ChromeFlashUpdateAction getChromeComponentValidator() {
 		if (chromeValidator == null) {
-			chromeValidator = new ChromeComponentValidator(driver);
+			chromeValidator = new ChromeFlashUpdateAction(driver);
 			chromeValidator.setExtentTest(extentTest);
 		}
 		return chromeValidator;

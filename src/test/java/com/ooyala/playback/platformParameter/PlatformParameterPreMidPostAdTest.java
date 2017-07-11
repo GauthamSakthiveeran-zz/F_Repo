@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.action.ChromeFlashUpdateAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
@@ -29,7 +30,7 @@ public class PlatformParameterPreMidPostAdTest extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private StreamValidator streamTypeValidator;
 	private BitmovinTechnologyValidator bitmovinvalidator;
-	private ChromeComponentValidator chromeValidator;
+	private ChromeFlashUpdateAction chromeValidator;
 
 	@Test(groups = { "premidpostroll" }, dataProvider = "testUrls")
 	public void verifyPreroll(String testName, UrlObject url) throws Exception {
@@ -41,7 +42,7 @@ public class PlatformParameterPreMidPostAdTest extends PlaybackWebTest {
 
 				driver.get("chrome://components/");
 
-				chromeValidator.isFlashPluginUpdated();
+				result = result && chromeValidator.isFlashPluginUpdated();
 
 			}
 

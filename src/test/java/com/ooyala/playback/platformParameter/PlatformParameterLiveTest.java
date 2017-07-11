@@ -52,8 +52,6 @@ public class PlatformParameterLiveTest extends PlaybackWebTest {
 
 			isChannelIdPresent = live.isChannelIdPresent(url);
 
-			System.out.println("Channel ID : " + url.getChannelId());
-
 			if (isChannelIdPresent) {
 				liveChannel.startChannel(url.getChannelId(), url.getProvider());
 			}

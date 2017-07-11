@@ -1,5 +1,5 @@
 <elements area="chromeComponents">
-	<element key="FlashButton" findBy="id" id="mimojjlkmoijpicakmndhoigimigcmbb" />
-	<element key="FlashVersion" findBy="id" id="version-mimojjlkmoijpicakmndhoigimigcmbb" />
-	<element key="FlashStatus" findBy="id" id="status-mimojjlkmoijpicakmndhoigimigcmbb" />
+	<element key="FLASH_BUTTON" findBy="id" id="mimojjlkmoijpicakmndhoigimigcmbb" />
+	<element key="FLASH_VERSION" findBy="id" id="version-mimojjlkmoijpicakmndhoigimigcmbb" />
+	<element key="FLASH_STATUS" findBy="id" id="status-mimojjlkmoijpicakmndhoigimigcmbb" />
 </elements>

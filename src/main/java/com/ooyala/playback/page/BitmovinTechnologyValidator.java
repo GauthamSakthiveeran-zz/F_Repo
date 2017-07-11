@@ -69,7 +69,6 @@ public class BitmovinTechnologyValidator extends PlayBackPage implements Playbac
 
 		expectedValue = "html5";
 
-		System.out.println("Length===" + options.length);
 		if (options != null && options.length >= 2) {
 			JSONParser parser = new JSONParser();
 			JSONObject json = (JSONObject) parser.parse(options[1]);
