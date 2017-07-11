@@ -49,17 +49,18 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 			result = result && event.validate("playing_1", 150000);
 
 			result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
-			
+
 			result = result && seekAction.fromLast().setTime(30).startAction();
 
 			result = result && event.validate("seeked_1", 60000);
 
 			result = result && upNextValidator.validate("", 300000);
-			
+
 			result = result && event.validate("played_1", 10000);
-			
-			extentTest.log(LogStatus.INFO, "Validating discovery at the end of the video.");
-			
+
+			if (result)
+				extentTest.log(LogStatus.INFO, "Validating discovery at the end of the video.");
+
 			result = result && discoveryValidator.validateDiscoveryToaster();
 
 		} catch (Exception e) {

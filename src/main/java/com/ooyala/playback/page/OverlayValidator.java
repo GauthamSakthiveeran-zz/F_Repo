@@ -110,6 +110,9 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
     }
 
     public boolean verifyClickThrough(String frameLocator, String overlayLocator, String element) {
+    	
+    	if(getBrowser().equalsIgnoreCase("safari")) return true;
+    	
         String baseWindowHdl = driver.getWindowHandle();
         boolean result;
         //switch to frame

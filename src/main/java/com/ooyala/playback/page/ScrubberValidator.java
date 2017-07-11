@@ -24,6 +24,7 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 		DiscoveryValidator discovery = new PlayBackFactory(driver, extentTest).getDiscoveryValidator();
 		if(discovery.isDiscoveryToasterPresent()) {
 			Thread.sleep(1000);
+			if(getBrowser().equalsIgnoreCase("safari")) Thread.sleep(10000);
 			discovery.clickOnDiscoveryCloseButton();
 			logger.info("Closed the discovery button");
 			Thread.sleep(1000);
@@ -47,11 +48,17 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 		
 		if(!isElementPresent("SCRUBBER_BAR")) {
 			extentTest.log(LogStatus.FAIL, "Scrubber bar is not present");
+			String fileName = takeScreenshot(extentTest.getTest().getName());
+            extentTest.log(LogStatus.INFO,
+                    "Snapshot is " + extentTest.addScreenCapture(fileName));
 			return true;
 		}
 		
 		if(!isElementPresent("POINTER")) {
 			extentTest.log(LogStatus.FAIL, "Scrubber pointer is not present");
+			String fileName = takeScreenshot(extentTest.getTest().getName());
+            extentTest.log(LogStatus.INFO,
+                    "Snapshot is " + extentTest.addScreenCapture(fileName));
 			return true;
 		}
 		
@@ -86,6 +93,9 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 		if (scrubberDiff > 5) {
 			extentTest.log(LogStatus.FAIL, "Scrubber bar for completion is incorrect - Actual : "
 					+ percentagePlayedFromUI + " Expected : " + percentagePlayed);
+			String fileName = takeScreenshot(extentTest.getTest().getName());
+            extentTest.log(LogStatus.INFO,
+                    "Snapshot is " + extentTest.addScreenCapture(fileName));
 			flag = false;
 		}
 
