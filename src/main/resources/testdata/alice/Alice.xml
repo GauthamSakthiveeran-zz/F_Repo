@@ -126,6 +126,29 @@
         </url>
     </test>
 
+    <test name="PlaybackClosedCaptionPilingUpTests">
+        <url>
+            <description name="Core:Closed Caption Piling Up Main"/>
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Live Closed Caption Piling Up Main"/>
+            <embed_code name="Ztb2l1ZzravsTPzgVqX0taL-bvO-sLRD"/>
+            <pcode name="pzMW46NMqRipYKP6zejxIjdrEp_c"/>
+            <plugins name="MAIN,BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="ab46ae555d05485e9742859d08d4489e"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+    </test>
+
     <test name="PlaybackDiscoveryTests">
         <url>
             <description name="Core:Discovery "/>
