@@ -74,7 +74,6 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected static String osNameAndOsVersion;
     private static Map<String,ITestResult> testDetails = new HashMap<String,ITestResult>();
     public SoftAssert s_assert;
-    public UrlObject urlObject;
 
     public PlaybackWebTest() throws OoyalaException {
         liveChannel = new LiveChannel();
@@ -86,9 +85,9 @@ public abstract class PlaybackWebTest extends FacileTest {
         if(testData!=null && testData.length>=1){
             logger.info("*** Test " + testData[0].toString() + " started *********");
             extentTest = ExtentManager.startTest(testData[0].toString());
-            urlObject = (UrlObject) testData[1];
-            logger.info("*** URL " + urlObject.getUrl() + " *********");
-            extentTest.log(LogStatus.INFO, "URL : " +  urlObject.getUrl() );
+            UrlObject url = (UrlObject) testData[1];
+            logger.info("*** URL " + url.getUrl() + " *********");
+            extentTest.log(LogStatus.INFO, "URL : " +  url.getUrl() );
         } else{
             logger.info("*** Test " + getClass().getSimpleName() + " started *********");
             extentTest = ExtentManager.startTest(getClass().getSimpleName());
@@ -332,7 +331,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     }
 
     public void injectScript() throws Exception {
-        new JSScriptInjection(jsUrl, extentTest, webDriverFacile.get(),urlObject).injectScript();
+        new JSScriptInjection(jsUrl, extentTest, webDriverFacile.get()).injectScript();
     }
 
     public String getPlatform() {
@@ -385,7 +384,7 @@ public abstract class PlaybackWebTest extends FacileTest {
         } else {
             version = "";
         }
-        Map<String, UrlObject> urls = UrlGenerator.parseXmlDataProvider(getClass().getSimpleName(), testData, browser, version);
+        Map<String, UrlObject> urls = new UrlGenerator().parseXmlDataProvider(getClass().getSimpleName(), testData, browser, version);
         String testName = getClass().getSimpleName();
         Object[][] output = new Object[urls.size()][2];
         Iterator<Map.Entry<String, UrlObject>> entries = urls.entrySet().iterator();

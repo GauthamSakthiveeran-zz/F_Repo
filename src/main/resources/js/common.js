@@ -22,6 +22,7 @@ function subscribeToCommonEvents() {
 		var savePlayerSettingsFalseEventCount = 1;
         var savePlayerSettingsTrueEventCount = 1;
         var videoElementLostFocusEventOrder = 1;
+        var ooyalaAdsEventOrder = 1;
         
         var logger = '';
         
@@ -120,10 +121,16 @@ function subscribeToCommonEvents() {
 				OO.$('#ooplayer').append('<p id=admanager_details_'+adPodEndedEventOrder+'>'+arguments[1]+'</p>');
 				adPodEndedEventOrder++;
 				if (arguments[1]=='ooyala-ads-manager_0') {
-					OO.$('#ooplayer').append('<p id=ooyalaAds>ooyalaAds</p>'); 
+					OO.$('#ooplayer').append('<p id=ooyalaAds_'+ooyalaAdsEventOrder+'>ooyalaAds '+ooyalaAdsEventOrder+'</p>');
+					ooyalaAdsEventOrder++;
 				}
 				if (arguments[1]=='ooyala-ads-manager_1') {
-                 	OO.$('#ooplayer').append('<p id=ooyalaAds>ooyalaAds</p>');
+                 	OO.$('#ooplayer').append('<p id=ooyalaAds_'+ooyalaAdsEventOrder+'>ooyalaAds '+ooyalaAdsEventOrder+'</p>');
+                 	ooyalaAdsEventOrder++;
+                }
+                if (arguments[1]=='ooyala-ads-manager_2') {
+                    OO.$('#ooplayer').append('<p id=ooyalaAds_'+ooyalaAdsEventOrder+'>ooyalaAds '+ooyalaAdsEventOrder+'</p>');
+                    ooyalaAdsEventOrder++;
                 }
 			}
 

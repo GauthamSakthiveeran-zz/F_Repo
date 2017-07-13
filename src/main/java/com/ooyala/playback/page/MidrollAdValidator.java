@@ -170,17 +170,4 @@ public class MidrollAdValidator extends PlayBackPage implements PlaybackValidato
 		return result;
 	}
 
-	public boolean validateMainVideoPlayResumeTime(double timeSwitch) {
-		extentTest.log(LogStatus.INFO, "Validating video resume time");
-		logger.info(timeSwitch);
-		double playaheadTime = getPlayAheadTime();
-		logger.info(playaheadTime);
-		return Math.abs(timeSwitch - playaheadTime) < 2;
-	}
-
-	public boolean validateMainVideoPlayResumeTime(String timeSwitch) {
-		if (timeSwitch == null || timeSwitch.isEmpty())
-			return true;
-		return validateMainVideoPlayResumeTime(Double.parseDouble(timeSwitch));
-	}
 }

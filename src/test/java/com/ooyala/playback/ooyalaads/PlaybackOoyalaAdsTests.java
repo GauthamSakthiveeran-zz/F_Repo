@@ -1,5 +1,7 @@
 package com.ooyala.playback.ooyalaads;
 
+import com.ooyala.playback.report.ExtentManager;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,6 +19,7 @@ public class PlaybackOoyalaAdsTests extends PlaybackWebTest {
 		super();
 	}
 
+	private static Logger logger = Logger.getLogger(PlaybackOoyalaAdsTests.class);
 	private EventValidator event;
 	private PlayAction playAction;
 	private PlayValidator playValidator;
@@ -36,7 +39,9 @@ public class PlaybackOoyalaAdsTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && event.validate("ooyalaAds", 120000);
+			result = result && event.validate("singleAdPlayed_1",90000);
+
+			result = result && event.validate("ooyalaAds_1", 160000);
 
 			result = result && event.validate("playing_2", 120000);
 

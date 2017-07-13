@@ -156,4 +156,8 @@ public class DiscoveryValidator extends PlayBackPage implements PlaybackValidato
 		extentTest.log(LogStatus.PASS,"Current Embed code :" +currentEmbedCode +" is not matching with previous embed code :"+embedCode);
 		return true;
 	}
+
+	public boolean selectAssetFormDiscoveryTray(String assetName){
+		return  clickOnIndependentElement("CLICK_ON_ASSET",assetName);
+	}
 }
