@@ -32,6 +32,7 @@
             <additionalPlugins name=""/>
             <pbid name="378512f55dd44fc287d0fa609353c268"/>
             <streamType supportedMuxFormat="dash"></streamType>
+            <browsersSupported name="chrome,firefox,ie,edge"/>
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
         <url>
@@ -43,6 +44,7 @@
             <additionalPlugins name=""/>
             <pbid name="378512f55dd44fc287d0fa609353c268"/>
             <streamType supportedMuxFormat="dash"></streamType>
+            <browsersSupported name="chrome,firefox,ie,edge"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","mp4"]}]]></playerParameter>
         </url>
         <url>
@@ -243,6 +245,37 @@
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
             <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
             <playerParameter><![CDATA[{"encodingPriority":["mp4","dash","hls"]}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Encoding Priority:all drms OSMF"/>
+            <embed_code name="F0c2htYjE6whZVFBkuLTN71PO3Rs0Rxz"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="OSMF"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Encoding Priority:all drms BITMOVIN"/>
+            <embed_code name="F0c2htYjE6whZVFBkuLTN71PO3Rs0Rxz"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Encoding Priority:MAIN with encoding priority set to mp4"/>
+            <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
+            <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
+            <playerParameter><![CDATA[{"encodingPriority":["mp4"]}]]></playerParameter>
         </url>
     </test>
 </testdata>

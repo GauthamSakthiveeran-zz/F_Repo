@@ -26,22 +26,19 @@ public class PlaybackEncodingPriorityTests extends PlaybackWebTest {
 
 	@Test(groups = "amf", dataProvider = "testUrls")
 	public void verifyEncodingPriority(String testName, UrlObject url) throws OoyalaException {
-
-		boolean result = true;
+        boolean result = true;
+		boolean isDRM = testName.toLowerCase().contains("drm");
 
 		try {
-
-			driver.get(url.getUrl());
-
-			result = result && playValidator.waitForPage();
-
-			injectScript();
-
-			result = result && playAction.startAction();
-
-			result = result && event.loadingSpinner();
-
-			result = result && encode.getStreamType(url).verifyEncodingPriority(url);
+            driver.get(url.getUrl());
+            result = result && playValidator.waitForPage();
+            injectScript();
+            result = result && playAction.startAction();
+            result = result && event.loadingSpinner();
+            if (result && isDRM){
+				result = result && encode.validateDRM();
+			}else
+                result = result && encode.getStreamType(url).verifyEncodingPriority(url);
 
 		} catch (Exception e) {
 			e.printStackTrace();

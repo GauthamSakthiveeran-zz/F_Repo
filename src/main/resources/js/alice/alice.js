@@ -130,6 +130,7 @@ function subscribeToEvents() {
 
             if (event.match(/closedCaptionCueChanged/)) {
                 OO.$("#ooplayer").append("<p id=ccshowing_"+closedCaptionOrder+">ccshown "+closedCaptionOrder+"</p>");
+                OO.$("#ooplayer").append("<p id=ccShowingText_"+closedCaptionOrder+">" + arguments[1] + "</p>");
                 closedCaptionOrder++;
             }
 
