@@ -12,36 +12,51 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger logger = Logger.getLogger(ReplayValidator.class);
+    public static Logger logger = Logger.getLogger(ReplayValidator.class);
 
-	public ReplayValidator(WebDriver webDriver) {
-		super(webDriver);
-		PageFactory.initElements(webDriver, this);
-		addElementToPageElements("replay");
-	}
+    public ReplayValidator(WebDriver webDriver) {
+        super(webDriver);
+        PageFactory.initElements(webDriver, this);
+        addElementToPageElements("replay");
+    }
 
-	public boolean validate(String element, int timeout) throws Exception {
+    public boolean validate(String element, int timeout) throws Exception {
 
-		if (waitOnElement("END_SCREEN", 60000) && waitOnElement("REPLAY", 60000)
-				&& clickOnIndependentElement("REPLAY")) {
-			if (getBrowser().contains("safari")) {
-				return clickOnHiddenElement("REPLAY");
-			}
+        if (waitOnElement("END_SCREEN", 60000) && waitOnElement("REPLAY", 60000)
+                && clickOnIndependentElement("REPLAY")) {
+            if (getBrowser().contains("safari")) {
+                return clickOnHiddenElement("REPLAY");
+            }
 
-			if(!waitOnElement(By.id(element), timeout)){
-				extentTest.log(LogStatus.FAIL, element + " not found hence replay failed");
-				logger.error(element + " not found hence replay failed");
-				return false;
-			}
+            if (!waitOnElement(By.id(element), timeout)) {
+                extentTest.log(LogStatus.FAIL, element + " not found hence replay failed");
+                logger.error(element + " not found hence replay failed");
+                return false;
+            }
 
-            if (isVideoPluginPresent("ANALYTICS")){
-                if(!isAnalyticsElementPreset("analytics_video_requested_"+element)){
+            if (isVideoPluginPresent("ANALYTICS")) {
+                if (!isAnalyticsElementPreset("analytics_video_requested_" + element)) {
                     return false;
                 }
             }
-		}
-		extentTest.log(LogStatus.PASS, "Replay Successful");
-		logger.info("Replay Successful");
-		return true;
-	}
+        }
+        extentTest.log(LogStatus.PASS, "Replay Successful");
+        logger.info("Replay Successful");
+        return true;
+    }
+
+    //After replay the video should start to play from the begining
+    public boolean validatePlayHeadTime() {
+        Double playHeadTime = getPlayAheadTime();
+        if (playHeadTime > 3.0) {
+            extentTest.log(LogStatus.FAIL, "Video does not start from begining");
+            logger.error("Video does not start from begining");
+            logger.info("Playhead time is :" + playHeadTime);
+            return false;
+        }
+        extentTest.log(LogStatus.PASS, "Video does start from begining");
+        logger.error("Video does start from begining");
+        logger.info("Playhead time is :" + playHeadTime);
+        return true;
+    }
 }
