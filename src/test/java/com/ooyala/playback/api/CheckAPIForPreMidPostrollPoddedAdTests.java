@@ -12,30 +12,29 @@ import org.testng.annotations.Test;
 /**
  * Created by jitendra on 7/7/17.
  */
-public class CheckAPIForPrerollAdTests extends PlaybackWebTest {
+public class CheckAPIForPreMidPostrollPoddedAdTests extends PlaybackWebTest {
 
     private PlayValidator play;
     private PlayAction playAction;
     private OoyalaAPIValidator api;
 
-    public CheckAPIForPrerollAdTests() throws OoyalaException {
+    public CheckAPIForPreMidPostrollPoddedAdTests() throws OoyalaException {
         super();
     }
 
     @Test(groups = "api",dataProvider = "testUrls")
-    public void testApiForPrerollAd(String testName, UrlObject url){
+    public void testApiForPreMidPostrollPoddedAd(String testName, UrlObject url){
         boolean result = true;
         try {
             driver.get(url.getUrl());
             result = result && play.waitForPage();
             injectScript();
-            result = result && api.validateAPIForPreroll();
+            result = result && api.validateAPIForPreMidPostPodded();
 
         }catch (Exception ex){
             ex.getStackTrace();
             result = false;
         }
-
         Assert.assertTrue(result);
     }
 }
