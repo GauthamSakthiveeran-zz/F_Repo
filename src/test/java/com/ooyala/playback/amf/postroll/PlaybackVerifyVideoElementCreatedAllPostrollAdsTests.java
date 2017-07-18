@@ -2,7 +2,9 @@ package com.ooyala.playback.amf.postroll;
 
 import static java.lang.Integer.parseInt;
 
+import com.ooyala.playback.page.action.SeekAction;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -30,6 +32,7 @@ public class PlaybackVerifyVideoElementCreatedAllPostrollAdsTests extends Playba
 	private DifferentElementValidator differentElementValidator;
 	private SeekValidator seekValidator;
 	private PoddedAdValidator poddedAdValidator;
+	private SeekAction seekAction;
 
 	PlaybackVerifyVideoElementCreatedAllPostrollAdsTests() throws OoyalaException {
 		super();
@@ -51,9 +54,11 @@ public class PlaybackVerifyVideoElementCreatedAllPostrollAdsTests extends Playba
 
 			result = result && eventValidator.validate("playing_1", 60000);
 
-			result = result && seekValidator.validate("seeked_1", 60000);
+			result = result && seekAction.seek(15,true);
 
-			result = result && eventValidator.validate("played_1", 60000);
+			result = result && eventValidator.waitOnElement(By.id("seeked_1"),20000);
+
+			result = result && eventValidator.waitOnElement(By.id("played_1"), 20000);
 
 			result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 10000);
 
@@ -61,7 +66,7 @@ public class PlaybackVerifyVideoElementCreatedAllPostrollAdsTests extends Playba
 			// triggering
 			if (!eventValidator.isAdPluginPresent("ima")) {
 				int noOfPoddedAds = parseInt(
-						(((JavascriptExecutor) driver).executeScript("return adPodStarted_1.textContent")).toString());
+						(((JavascriptExecutor) driver).executeScript("return document.getElementById('adPodStarted_1').textContent")).toString());
 
 				for (int i = 1 + counter; i <= noOfPoddedAds; i++) {
 					result = result && eventValidator.validate("videoCreatedForAds_" + i + "", 20000);
@@ -76,10 +81,9 @@ public class PlaybackVerifyVideoElementCreatedAllPostrollAdsTests extends Playba
 
 		} catch (Exception e) {
 			logger.error("Exception while checking Video Element tests  " + e.getMessage());
-			extentTest.log(LogStatus.FAIL, e);
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "Playback Video Element test failed");
-
 	}
 }
