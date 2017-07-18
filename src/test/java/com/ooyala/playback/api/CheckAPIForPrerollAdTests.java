@@ -6,7 +6,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
-import org.junit.Assert;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -35,7 +35,6 @@ public class CheckAPIForPrerollAdTests extends PlaybackWebTest {
             ex.getStackTrace();
             result = false;
         }
-
         Assert.assertTrue(result);
     }
 }
