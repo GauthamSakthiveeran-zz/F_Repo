@@ -23,6 +23,8 @@ function subscribeToCommonEvents() {
         var savePlayerSettingsTrueEventCount = 1;
         var videoElementLostFocusEventOrder = 1;
         var ooyalaAdsEventOrder = 1;
+        var volumeChanged=1;
+        var changeVolume=1;
         
         var logger = '';
         
@@ -158,6 +160,16 @@ function subscribeToCommonEvents() {
             if (event.match(/savePlayerSettings/) && arguments[1].closedCaptionOptions.enabled == true && savePlayerSettingsTrueEventCount<2) {
                 OO.$("#ooplayer").append("<p id=savePlayerSettings_on_"+savePlayerSettingsTrueEventCount+">"+savePlayerSettingsTrueEventCount+"</p>");
                 savePlayerSettingsTrueEventCount++;
+            }
+
+            if (event.match(/volumeChanged/)) {
+                 OO.$('#ooplayer').append('<p id=volumeChanged_' + volumeChanged + '>volumeChanged_'+ volumeChanged + '</p>');
+                 volumeChanged++;
+            }
+
+            if (event.match(/changeVolume/)) {
+                  OO.$('#ooplayer').append('<p id=changeVolume_' + changeVolume + '>changeVolume_'+ changeVolume + '</p>');
+                  changeVolume++;
             }
             
             OO.log(logger);
