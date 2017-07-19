@@ -4,17 +4,14 @@
 	</listeners>
 
 	<test name="AMF" parallel="classes" thread-count="5">
-
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
-
 		<classes>
 			<!-- <class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPreMidPostAdTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPreMidPostPoddedAdTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPrerollAndMidrollAdTests"></class> 
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostInitialVolumeTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackBasicSeekAndReplayTests"></class>-->
-			
 			<class name="com.ooyala.playback.amf.PlaybackIMAPreVastMidAdsTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostReplayTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsPoddedTests"></class>
@@ -22,20 +19,6 @@
 			<class name="com.ooyala.playback.amf.PlaybackVastPreIMAMidlAdsTests"></class>
 			<class name="com.ooyala.playback.amf.ima.PlaybackPreRollOverlayPostRollAdTests"></class>
 		</classes>
-		
 	</test>
-	
-	<!-- <test name="AMF VTC" parallel="classes" thread-count="5">
-
-		<parameter name="jsFile" value="vtc/vtc.js,amf/amf.js" />
-		<parameter name="testData" value="VTC.xml"/>
-
-		<classes>
-			<class name="com.ooyala.playback.amf.PlaybackOverrideEncodingPriorityPreMidPostAdTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackOverrideEncodingPriorityPreMidPostPoddedAdTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests"></class>
-		</classes>
-		
-	</test> -->
 
 </suite>

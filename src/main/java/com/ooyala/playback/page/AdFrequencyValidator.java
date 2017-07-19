@@ -30,6 +30,7 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 			firstAdPlay = Integer.parseInt(url.getAdFirstPlay());
 			adFrequency = Integer.parseInt(url.getAdFrequency());
 		} else {
+			logger.error("Insufficient data");
 			extentTest.log(LogStatus.FAIL, "Insufficient data");
 			assert false;
 		}
@@ -54,17 +55,21 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 		play.startAction();
 		while (i < firstAdPlay) {
 			event.validate("playing_1", 10000);
+			logger.info("Play #" + i);
 			extentTest.log(LogStatus.INFO, "Play #" + i);
 			if (adPlaying(true)) {
+				logger.error("Ad should not be playing right now.");
 				extentTest.log(LogStatus.FAIL, "Ad should not be playing right now.");
 				return false;
 			}
 			if (!seek.seekTillEnd().startAction()) {
+				logger.error(i + " Seek failed.");
 				extentTest.log(LogStatus.FAIL, i + " Seek failed.");
 				return false;
 			}
 
 			if (!replay.validate("replay_" + i, 5000)) {
+				logger.error(i + " Replay failed.");
 				extentTest.log(LogStatus.FAIL, i + " Replay failed.");
 				return false;
 			}
@@ -72,45 +77,54 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 		}
 
 		if (!adPlaying(true)) {
+			logger.error("Ad should be playing right now.");
 			extentTest.log(LogStatus.FAIL, "Ad should be playing right now.");
 			return false;
 		}
 
 		adPlaying(false);
-
+		logger.info("Validated if ad played.");
 		extentTest.log(LogStatus.PASS, "Validated if ad played.");
 		
 		if (!seek.seekTillEnd().startAction()) {
+			logger.error(i + " Seek failed.");
 			extentTest.log(LogStatus.FAIL, i + " Seek failed.");
 			return false;
 		}
 		if (!replay.validate("replay_" + i, 5000)) {
+			logger.error(i + " Replay failed.");
 			extentTest.log(LogStatus.FAIL, i + " Replay failed.");
 			return false;
 		}
 
+		logger.info("Ad played for the first time");
 		extentTest.log(LogStatus.PASS, "Ad played for the first time");
 
 		int j = 1;
 		while (j < adFrequency * 2) {
+			logger.info("Play #" + i);
 			extentTest.log(LogStatus.INFO, "Play #" + i);
 			if (j % adFrequency == 0) {
 				if (!adPlaying(true)) {
+					logger.error("Ad should be playing right now.");
 					extentTest.log(LogStatus.FAIL, "Ad should be playing right now.");
 					return false;
 				}
 				adPlaying(false);
 			} else{
 				if (adPlaying(true)) {
+					logger.error("Ad should not be playing right now.");
 					extentTest.log(LogStatus.FAIL, "Ad should not be playing right now.");
 					return false;
 				}
 			}
 			if (!seek.seekTillEnd().startAction()) {
+				logger.error(i + " Seek failed.");
 				extentTest.log(LogStatus.FAIL, i + " Seek failed.");
 				return false;
 			}
 			if (!replay.validate("replay_" + i, 5000)) {
+				logger.error(i + " Replay failed.");
 				extentTest.log(LogStatus.FAIL, i + " Replay failed.");
 				return false;
 			}
@@ -151,6 +165,7 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 			}
 		} catch (InterruptedException e) {
 			logger.trace(e);
+			Thread.currentThread().interrupt();
 		}
 		return result;
 	}
@@ -176,6 +191,7 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 			}
 		} catch (InterruptedException e) {
 			logger.trace(e);
+			Thread.currentThread().interrupt();
 		}
 		return result;
 	}
