@@ -13,14 +13,14 @@ import org.testng.annotations.Test;
 /**
  * Created by jitendra on 29/12/16.
  */
-public class CheckAPIForWithoutAdTests extends PlaybackWebTest {
+public class ValidateAPIForWithoutAdTests extends PlaybackWebTest {
 
     private EventValidator eventValidator;
     private OoyalaAPIValidator ooyalaAPIValidator;
     private PlayValidator playValidator;
 
 
-    public CheckAPIForWithoutAdTests() throws OoyalaException {
+    public ValidateAPIForWithoutAdTests() throws OoyalaException {
         super();
     }
 

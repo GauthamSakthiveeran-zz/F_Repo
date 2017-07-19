@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-    <test name="CheckAPIForPostrollPoddedAdTests">
+    <test name="ValidateAPIForMidrollAdTests">
         <url>
-            <description name="Player API:Bitmovin Postroll Ad Podded"/>
+            <description name="Player API:Bitmovin Midroll Ad"/>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Fqa2tmcjrWml7baw9R0-RD5aT-2ku-LJ","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
         </url>
         <url>
-            <description name="Player API:MAIN Postroll Ad Podded"/>
-            <embed_code name="94ajI4MjE67rcugQEGwylcOLG9Ggbads"/>
+            <description name="Player API:MAIN Midroll Ad"/>
+            <embed_code name="A1bmxiMjE64igdFOvxveOJdKRC7tqQ2C"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
             <adPlugins name="VAST"/>
@@ -22,8 +22,8 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
         </url>
         <url>
-            <description name="Player API:OSMF Postroll Ad Podded"/>
-            <embed_code name="g5aDlxYTE6hxOEfk0OHclDbUjObUKbL_"/>
+            <description name="Player API:OSMF Midroll Ad"/>
+            <embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
             <adPlugins name="IMA"/>

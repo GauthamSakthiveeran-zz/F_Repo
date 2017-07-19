@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-    <test name="CheckAPIForPrerollAdTests">
+    <test name="ValidateAPIForPrerollAdTests">
         <url>
             <description name="Player API:Bitmovin Preroll Ad"/>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>

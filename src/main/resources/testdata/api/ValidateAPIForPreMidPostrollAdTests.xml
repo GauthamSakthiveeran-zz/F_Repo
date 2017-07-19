@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-    <test name="CheckAPIForPreMidPostrollAdTests">
+    <test name="ValidateAPIForPreMidPostrollAdTests">
         <url>
             <description name="Player API:Bitmovin Pre Mid Post"/>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>

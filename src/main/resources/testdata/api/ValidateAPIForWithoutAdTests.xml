@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-    <test name="CheckAPIForWithoutAdTests">
+    <test name="ValidateAPIForWithoutAdTests">
         <url>
             <description name="Player API:Bitmovin Play Pause Seek|Player API:Bitmovin Volume|Player API:Bitmovin DurationAtEnd|Player API:Bitmovin FullScreen|Player API:Bitmovin Destroy"/>
             <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn"/>

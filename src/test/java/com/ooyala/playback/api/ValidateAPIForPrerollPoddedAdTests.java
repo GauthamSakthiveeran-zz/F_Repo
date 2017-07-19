@@ -12,13 +12,13 @@ import org.testng.annotations.Test;
 /**
  * Created by jitendra on 7/7/17.
  */
-public class CheckAPIForPrerollPoddedAdTests extends PlaybackWebTest {
+public class ValidateAPIForPrerollPoddedAdTests extends PlaybackWebTest {
 
     private PlayValidator play;
     private PlayAction playAction;
     private OoyalaAPIValidator api;
 
-    public CheckAPIForPrerollPoddedAdTests() throws OoyalaException {
+    public ValidateAPIForPrerollPoddedAdTests() throws OoyalaException {
         super();
     }
 
