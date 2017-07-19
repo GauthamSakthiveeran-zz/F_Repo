@@ -46,7 +46,7 @@
     </test>
 
      <test name="AMF Preroll VTC">
-        <parameter name="jsFile" value="vtc/vtc.js,amf/amf.js"/>
+        <parameter name="jsFile" value="vtc/vtc.js,common.js,amf/amf.js"/>
         <parameter name="testData" value="VTC.xml"/>
         <classes>
             <class name="com.ooyala.playback.amf.preroll.PlaybackOverrideEncodingPriorityPrerollPoddedTests"></class>
@@ -54,8 +54,8 @@
         </classes>
     </test>
 
-     <test name="AMF Midroll VTC" parallel="classes" thread-count="5">
-		<parameter name="jsFile" value="vtc/vtc.js,amf/amf.js" />
+    <test name="AMF Midroll VTC" parallel="classes" thread-count="5">
+		<parameter name="jsFile" value="vtc/vtc.js,common.js,amf/amf.js" />
 		<parameter name="testData" value="VTC.xml"/>
 		<classes>
 			<class name="com.ooyala.playback.amf.midroll.PlaybackOverrideEncodingPriorityMidrollAdTests"></class>
@@ -64,24 +64,24 @@
 		</classes>
 	</test>
 
-	<test name="AMF Postroll VTC" parallel="classes" thread-count="5">
-		<parameter name="jsFile" value="common.js,vtc/vtc.js,amf/amf.js" />
-		<parameter name="testData" value="VTC.xml"/>
-		<classes>
-			<class name="com.ooyala.playback.amf.postroll.PlaybackOverrideEncodingPriorityPostrollAdTests"></class>
-			<class name="com.ooyala.playback.amf.postroll.PlaybackOverrideEncodingPriorityPostrollPoddedAdTests"></class>
-			<class name="com.ooyala.playback.amf.postroll.PlaybackVerifyVideoElementCreatedAllPostrollAdsTests"></class>
-		</classes>
-	</test>
+     <test name="AMF Postroll VTC" parallel="classes" thread-count="5">
+        <parameter name="jsFile" value="common.js,vtc/vtc.js,common.js,amf/amf.js" />
+        <parameter name="testData" value="VTC.xml"/>
+        <classes>
+            <class name="com.ooyala.playback.amf.postroll.PlaybackOverrideEncodingPriorityPostrollAdTests"></class>
+            <class name="com.ooyala.playback.amf.postroll.PlaybackOverrideEncodingPriorityPostrollPoddedAdTests"></class>
+            <class name="com.ooyala.playback.amf.postroll.PlaybackVerifyVideoElementCreatedAllPostrollAdsTests"></class>
+        </classes>
+    </test>
 
-	 <test name="AMF PreMidPost Roll VTC" parallel="classes" thread-count="5">
-		<parameter name="jsFile" value="vtc/vtc.js,amf/amf.js" />
-		<parameter name="testData" value="VTC.xml"/>
-		<classes>
-			<class name="com.ooyala.playback.amf.PlaybackOverrideEncodingPriorityPreMidPostAdTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackOverrideEncodingPriorityPreMidPostPoddedAdTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests"></class>
-		</classes>
-	</test>
+     <test name="AMF PreMidPost Roll VTC" parallel="classes" thread-count="5">
+        <parameter name="jsFile" value="vtc/vtc.js,common.js,amf/amf.js" />
+        <parameter name="testData" value="VTC.xml"/>
+        <classes>
+            <class name="com.ooyala.playback.amf.PlaybackOverrideEncodingPriorityPreMidPostAdTests"></class>
+            <class name="com.ooyala.playback.amf.PlaybackOverrideEncodingPriorityPreMidPostPoddedAdTests"></class>
+            <class name="com.ooyala.playback.amf.PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests"></class>
+        </classes>
+    </test>
 
 </suite>
