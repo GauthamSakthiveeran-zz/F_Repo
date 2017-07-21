@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
+    <test name="PlaybackSetEmbedCodeTests">
+        <url>
+            <description name="VTC:Main Ad Rule Midroll SetEmbedCode" />
+            <embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="IMA" adPlayTime=""/>
+            <additionalPlugins name="" />
+            <pbid name="615dc8e909e941c280e12155df838355" />
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+    </test>
     <test name="PlaybackNewStreamTests">
         <url>
-            <description name="Playback_NewStream" />
+            <description name="VTC:Playback_NewStream" />
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -14,7 +26,7 @@
     </test>
     <test name="PlaybackClosedCaptionTests">
         <url>
-            <description name="Playback_ClosedCaption" />
+            <description name="VTC:Playback_ClosedCaption" />
             <embed_code name="FkdmRmeDrJcchSTpHR1SVkkHO2PN7XsX" />
             <pcode name="N1aWw6aHnsVDr5vDoQnY2gBMOnEV" />
             <plugins name="MAIN" />
@@ -26,7 +38,7 @@
     </test>
     <test name="PlaybackDiscoverTests">
         <url>
-            <description name="Playback_Discovery" />
+            <description name="VTC:Playback_Discovery" />
             <embed_code name="Vmd2VmeDq6-92C-kPkkZGoOkTCeSZq4e" />
             <pcode name="N1aWw6aHnsVDr5vDoQnY2gBMOnEV" />
             <plugins name="MAIN" />
@@ -39,7 +51,7 @@
 
     <test name="PlaybackVideoControllerEventTests">
         <url>
-            <description name="Playback_Video_Control_Events" />
+            <description name="VTC:Playback_Video_Control_Events" />
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -62,7 +74,7 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"initialVolume":0,"autoplay":false,"skin":{"inline":{"adScreen":{"showAdMarquee":true,"showControlBar":true}}}}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Events_VAST_Preroll" />
+            <description name="VTC:Playback_Events_VAST_Preroll" />
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -72,7 +84,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Events_IMA_Preroll" />
+            <description name="VTC:Playback_Events_IMA_Preroll" />
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -92,7 +104,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialTime":0}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Events_FW_Midroll" />
+            <description name="VTC:Playback_Events_FW_Midroll" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -102,7 +114,7 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Events_Midroll" />
+            <description name="VTC:Playback_Events_Midroll" />
             <embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -123,7 +135,7 @@
                <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"initialVolume":0.1}]]></playerParameter>
           </url>
         <url>
-            <description name="Playback_Events_IMA:Postroll" />
+            <description name="VTC:Playback_Events_IMA:Postroll" />
             <embed_code name="5sbHlycTqQ5dqQoCVcY3Rpe78TVvJKjg" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -133,7 +145,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0.1}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Events_Vast:Postroll" />
+            <description name="VTC:Playback_Events_Vast:Postroll" />
             <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -154,7 +166,7 @@
         </url>
 
         <url>
-            <description name="Playback_Events_IMA_PreMidPost" />
+            <description name="VTC:Playback_Events_IMA_PreMidPost" />
             <embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -165,7 +177,7 @@
         </url>
 
         <url>
-            <description name="Playback_Events_FW_PreMidPost" />
+            <description name="VTC:Playback_Events_FW_PreMidPost" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -187,7 +199,7 @@
         </url>
 
         <url>
-            <description name="Playback_Events_IMA_PrePodded" />
+            <description name="VTC:Playback_Events_IMA_PrePodded" />
             <embed_code name="htYWxjczousVmIKvp56u7Cb9btEnyJK9" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -198,7 +210,7 @@
         </url>
 
         <url>
-            <description name="Playback_Events_FW_PrePodded" />
+            <description name="VTC:Playback_Events_FW_PrePodded" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -220,7 +232,7 @@
         </url>
 
         <url>
-            <description name="Playback_Events_IMA_MidPodded" />
+            <description name="VTC:Playback_Events_IMA_MidPodded" />
             <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -231,7 +243,7 @@
         </url>
 
         <url>
-            <description name="Playback_Events_FW_MidPodded" />
+            <description name="VTC:Playback_Events_FW_MidPodded" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -251,7 +263,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Events_FW_PostPodded" />
+            <description name="VTC:Playback_Events_FW_PostPodded" />
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -261,7 +273,7 @@
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fqa2tmcjrWml7baw9R0-RD5aT-2ku-LJ","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Events_IMA_PostPodded" />
+            <description name="VTC:Playback_Events_IMA_PostPodded" />
             <embed_code name="gzYmxjczrvM0qh0gPqKy6QFSKSr2t3FC" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -282,7 +294,7 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
         <url>
-            <description name="Playback_Events_IMA_PreMidPosPodded" />
+            <description name="VTC:Playback_Events_IMA_PreMidPosPodded" />
             <embed_code name="g4OGxjczqVk87w_P2z291ahvIR4RYrHT" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -293,7 +305,7 @@
         </url>
 
          <url>
-             <description name="Playback_Events_FW_PreMidPosPodded" />
+             <description name="VTC:Playback_Events_FW_PreMidPosPodded" />
              <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
              <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
              <plugins name="MAIN" />
@@ -378,7 +390,7 @@
 
     <test name="PlaybackMultipleV4PlayerTests">
         <url>
-            <description name="" />
+            <description name="VTC:PlaybackMultipleV4PlayerTests" />
             <embed_code name="" />
             <pcode name="" />
             <plugins name="" />
