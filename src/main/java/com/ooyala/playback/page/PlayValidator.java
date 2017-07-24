@@ -10,103 +10,127 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
-    private static Logger logger = Logger.getLogger(PlayValidator.class);
+	private static Logger logger = Logger.getLogger(PlayValidator.class);
 
-    public PlayValidator(WebDriver webDriver) {
-        super(webDriver);
-        PageFactory.initElements(webDriver, this);
-        /**
-         * Here we will tell Facile to add the page elements of our Login Page
-         */
-        addElementToPageElements("play");
-    }
+	public PlayValidator(WebDriver webDriver) {
+		super(webDriver);
+		PageFactory.initElements(webDriver, this);
+		/**
+		 * Here we will tell Facile to add the page elements of our Login Page
+		 */
+		addElementToPageElements("play");
+		addElementToPageElements("controlbar");
+		addElementToPageElements("live");
+	}
 
-    private void errorDescription() {
-        if (isElementPresent("ERROR_SCREEN")) {
-            String text = getWebElement("ERROR_DESCRIPTION").getText();
-            extentTest.log(LogStatus.FAIL, text);
-        } else{
-        	extentTest.log(LogStatus.FAIL, "Player did not load.");
-        }
-        
-    }
+	private void errorDescription() {
+		if (isElementPresent("ERROR_SCREEN")) {
+			String text = getWebElement("ERROR_DESCRIPTION").getText();
+			extentTest.log(LogStatus.FAIL, text);
+		} else {
+			extentTest.log(LogStatus.FAIL, "Player did not load.");
+		}
 
-    @Override
-    public boolean waitForPage() {
-        boolean errorScreen = false;
-        try {
+	}
 
-            if (!loadingSpinner()) {
-                extentTest.log(LogStatus.FAIL, "In loading spinner for a very long time.");
-                return false;
-            }
+	@Override
+	public boolean waitForPage() {
+		boolean errorScreen = false;
+		try {
 
-            if (!waitOnElement("PLAY_BUTTON", 90000)) {
-                errorDescription();
-                return false;
-            }
-            return true;
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            driver.navigate().refresh();
-            if (!waitOnElement("INNER_WRAPPER", 60000))
-                return false;
-            errorScreen = isElementPresent("ERROR_SCREEN");
-            if (errorScreen)
-                driver.navigate().refresh();
-            if (!waitOnElement("PLAY_BUTTON", 60000)) {
-                errorDescription();
-                return false;
-            }
-        }
-        logger.info("Page is loaded completely");
-        return true;
-    }
+			if (!loadingSpinner()) {
+				extentTest.log(LogStatus.FAIL, "In loading spinner for a very long time.");
+				return false;
+			}
 
-    public boolean validate(String element, int timeout) throws Exception {
-        // if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction())
-        // return false;
+			if (!waitOnElement("PLAY_BUTTON", 90000)) {
+				errorDescription();
+				return false;
+			}
+			return true;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			driver.navigate().refresh();
+			if (!waitOnElement("INNER_WRAPPER", 60000))
+				return false;
+			errorScreen = isElementPresent("ERROR_SCREEN");
+			if (errorScreen)
+				driver.navigate().refresh();
+			if (!waitOnElement("PLAY_BUTTON", 60000)) {
+				errorDescription();
+				return false;
+			}
+		}
+		logger.info("Page is loaded completely");
+		return true;
+	}
 
-        if (!clickOnIndependentElement("PLAY_BUTTON")) {
-            extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
-            return false;
-        }
+	public boolean validate(String element, int timeout) throws Exception {
+		// if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction())
+		// return false;
 
-        if (!loadingSpinner()) {
-            extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
-            return false;
-        }
+		if (!clickOnIndependentElement("PLAY_BUTTON")) {
+			extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
+			return false;
+		}
 
-        if (!waitOnElement("PLAYING_SCREEN", 4000)) {
-            if (getBrowser().contains("safari")) {
-                Thread.sleep(30000);
-                if (!clickOnIndependentElement("PLAY_BUTTON")) {
-                    extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        }
+		if (!loadingSpinner()) {
+			extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
+			return false;
+		}
+		
+		
 
-        if (!getBrowser().equalsIgnoreCase("internet explorer")) {
-            if (!waitOnElement(By.id(element), timeout))
-                return false;
-        }
+		if (!waitOnElement("PLAYING_SCREEN", 4000)) {
+			if (getBrowser().contains("safari")) {
+				Thread.sleep(30000);
+				if (!clickOnIndependentElement("PLAY_BUTTON")) {
+					extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
+					return false;
+				}
+			} else {
+				return false;
+			}
+		}
 
-        if (isVideoPluginPresent("ANALYTICS")){
-            if(!(isAnalyticsElementPreset("analytics_video_"+element)
-                    && isAnalyticsElementPreset("analytics_video_requested_"+element))){
-                return false;
-            }
-        }
+		if (!getBrowser().equalsIgnoreCase("internet explorer")) {
+			if (!waitOnElement(By.id(element), timeout))
+				return false;
+		}
+		
+		if (!isElementPresent("LIVE")) {
+			
+			if(waitOnElement(By.id("playTime"), 1000)) {
+				Double playHeadTime = Double.parseDouble(driver.findElementById("playTime").getText());
+				if (playHeadTime > 1.0) {
+					extentTest.log(LogStatus.FAIL, "Video does not start from begining");
+					logger.error("Video does not start from begining");
+					logger.info("Playhead time is :" + playHeadTime);
+					return false;
+				}
+				extentTest.log(LogStatus.PASS, "Video does start from begining");
+				logger.info("Video does start from begining");
+				logger.info("Playhead time is :" + playHeadTime);
+			} else {
+				extentTest.log(LogStatus.FAIL, "Unable to validate start time of video.");
+			}
+			
+		}
 
+		if (isVideoPluginPresent("ANALYTICS")) {
+			if (!(isAnalyticsElementPreset("analytics_video_" + element)
+					&& isAnalyticsElementPreset("analytics_video_requested_" + element))) {
+				return false;
+			}
+		}
 
-        extentTest.log(LogStatus.PASS, "Video Playing and validation of element " + element + " is successful");
+		extentTest.log(LogStatus.PASS, "Video Playing and validation of element " + element + " is successful");
 
-        if (!new PlayBackFactory(driver, extentTest).getVideoValidator().getConsoleLogs().validate("", timeout)) {
-            return false;
-        }
-        return true;
-    }
+		if (!new PlayBackFactory(driver, extentTest).getVideoValidator().getConsoleLogs().validate("", timeout)) {
+			return false;
+		}
+
+		return true;
+
+	}
 }
