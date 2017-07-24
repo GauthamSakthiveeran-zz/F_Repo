@@ -74,6 +74,7 @@ public class PlayBackFactory {
 	private ScrubberValidator scrubberValidator;
 	private AnalyticsValidator analyticsValidator;
 	private UIControlValidator uiControlValidator;
+	private DVRLiveValidator dvrLiveValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -541,6 +542,14 @@ public class PlayBackFactory {
 
 	public void setAnalyticsValidator(AnalyticsValidator analyticsValidator) {
 		this.analyticsValidator = analyticsValidator;
+	}
+
+	public DVRLiveValidator getDvrLiveValidator() {
+        if (dvrLiveValidator == null){
+            dvrLiveValidator = new DVRLiveValidator(driver);
+            dvrLiveValidator.setExtentTest(extentTest);
+        }
+        return dvrLiveValidator;
 	}
 
 	public WebDriver getDriver() {
