@@ -10,7 +10,6 @@ import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -51,11 +50,11 @@ public class PlaybackOverrideEncodingPriorityPostrollPoddedAdTests extends Playb
 
             result = result && seekAction.seek(15, true);
 
-            result = result && event.waitOnElement(By.id("seeked_1"), 20000);
+            result = result && event.validateElement("seeked_1", 20000);
 
             result = result && event.validate("adsPlayed_1", 60000);
 
-            result = result && event.waitOnElement(By.id("played_1"), 20000);
+            result = result && event.validateElement("played_1", 20000);
 
             if (result && isDRM) {
                 result = result && encode.validateDRM();
@@ -76,11 +75,11 @@ public class PlaybackOverrideEncodingPriorityPostrollPoddedAdTests extends Playb
 
             result = result && seekAction.seek(15, true);
 
-            result = result && event.waitOnElement(By.id("seeked_1"), 20000);
+            result = result && event.validateElement("seeked_1", 20000);
 
             result = result && event.validate("adsPlayed_1", 60000);
 
-            result = result && event.waitOnElement(By.id("played_1"), 20000);
+            result = result && event.validateElement("played_1", 20000);
 
             if (result && isDRM) {
                 result = result && encode.validateDRM();

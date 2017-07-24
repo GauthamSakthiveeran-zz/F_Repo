@@ -1,11 +1,7 @@
 package com.ooyala.playback.amf.postroll;
 
-import static java.lang.Integer.parseInt;
-
 import com.ooyala.playback.page.action.SeekAction;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
@@ -41,7 +37,6 @@ public class PlaybackVerifyVideoElementCreatedAllPostrollAdsTests extends Playba
     public void testVideoElementCreated(String testName, UrlObject url) throws OoyalaException {
 
         boolean result = true;
-        int counter = 0;
         try {
             driver.get(url.getUrl());
 
@@ -55,26 +50,17 @@ public class PlaybackVerifyVideoElementCreatedAllPostrollAdsTests extends Playba
 
             result = result && seekAction.seek(15, true);
 
-            result = result && eventValidator.waitOnElement(By.id("seeked_1"), 20000);
+            result = result && eventValidator.validateElement("seeked_1", 20000);
 
-            result = result && eventValidator.waitOnElement(By.id("played_1"), 20000);
+            result = result && eventValidator.validateElement("played_1", 20000);
 
             result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 10000);
 
-            // for IMA ad videoControllerVideoElementCreated event is not
-            // triggering
-            if (!eventValidator.isAdPluginPresent("ima")) {
-                int noOfPoddedAds = parseInt(
-                        (((JavascriptExecutor) driver).executeScript("return document.getElementById('adPodStarted_1').textContent")).toString());
-
-                for (int i = 1 + counter; i <= noOfPoddedAds; i++) {
-                    result = result && eventValidator.validate("videoCreatedForAds_" + i + "", 20000);
-                }
-            }
-
             result = result && differentElementValidator.validateMainVideoElementId("VIDEO_ELEMENT", 20000);
 
+            // for IMA ad videoControllerVideoElementCreated event is not triggering
             if (!eventValidator.isAdPluginPresent("ima")) {
+                result = result && eventValidator.validateVideoElementOccuredCount(40000);
                 result = result && differentElementValidator.validateAdElementId("AD_ELEMENT", 5000);
             }
 

@@ -54,13 +54,13 @@ public class PlaybackOverrideEncodingPriorityPreMidPostAdTests extends PlaybackW
 
 			result = result && seekAction.seek(15,true);
 
-			result = result && event.waitOnElement(By.id("seeked_1"),20000);
+			result = result && event.validateElement("seeked_1",20000);
 
 			result = result && event.validate("adsPlayed_2", 60000);
 
 			result = result && event.validate("adsPlayed_3", 60000);
 
-			result = result && event.waitOnElement(By.id("played_1"), 20000);
+			result = result && event.validateElement("played_1", 20000);
 
 			if (result && isDRM) {
 				result = result && encode.validateDRM();
@@ -83,13 +83,13 @@ public class PlaybackOverrideEncodingPriorityPreMidPostAdTests extends PlaybackW
 
 			result = result && seekAction.seek(15,true);
 
-			result = result && event.waitOnElement(By.id("seeked_1"),20000);
+			result = result && event.validateElement("seeked_1",20000);
 
 			result = result && event.validate("adsPlayed_2", 60000);
 
 			result = result && event.validate("adsPlayed_3", 60000);
 
-			result = result && event.waitOnElement(By.id("played_1"), 20000);
+			result = result && event.validateElement("played_1", 20000);
 
 			if (result && isDRM) {
 				result = result && encode.validateDRM();

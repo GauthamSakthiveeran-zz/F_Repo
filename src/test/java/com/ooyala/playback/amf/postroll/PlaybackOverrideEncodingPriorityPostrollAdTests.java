@@ -48,12 +48,12 @@ public class PlaybackOverrideEncodingPriorityPostrollAdTests extends PlaybackWeb
 
 			result = result && seekAction.seek(15,true);
 
-			result = result && event.waitOnElement(By.id("seeked_1"),20000);
+			result = result && event.validateElement("seeked_1",20000);
 
 			result = result && (event.isAdPluginPresent("freewheel") ? event.validate("adsPlayed_2", 60000)
 					: event.validate("adsPlayed_1", 60000));
 
-			result = result && event.waitOnElement(By.id("played_1"), 20000);
+			result = result && event.validateElement("played_1", 20000);
 
 			if (result && isDRM){
 				result = result && encode.validateDRM();
@@ -74,12 +74,12 @@ public class PlaybackOverrideEncodingPriorityPostrollAdTests extends PlaybackWeb
 
 			result = result && seekAction.seek(15,true);
 
-			result = result && event.waitOnElement(By.id("seeked_1"),20000);
+			result = result && event.validateElement("seeked_1",20000);
 
 			result = result && (event.isAdPluginPresent("freewheel") ? event.validate("adsPlayed_2", 60000)
 					: event.validate("adsPlayed_1", 60000));
 
-			result = result && event.waitOnElement(By.id("played_1"), 20000);
+			result = result && event.validateElement("played_1", 20000);
 
 			if (result && isDRM){
 				result = result && encode.validateDRM();

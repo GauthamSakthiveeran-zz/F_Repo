@@ -230,10 +230,10 @@ public abstract class PlaybackWebTest extends FacileTest {
     @Parameters({"testData", "xmlFilePkg", "jsFile"})
     public void setUp(@Optional String xmlFile, @Optional String xmlFilePkg, String jsFile) throws Exception {
         logger.info("************Inside setup*************");
-        /*browser = System.getProperty(CommandLineParameters.browser);
+        browser = System.getProperty(CommandLineParameters.browser);
         if (browser == null || browser.equals(""))
             browser = "firefox";
-        logger.info("browser is " + browser);*/
+        logger.info("browser is " + browser);
         try {
             v4Version = System.getProperty(CommandLineParameters.v4Version);
             if (v4Version == null || v4Version.equals("")) {
