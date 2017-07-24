@@ -491,6 +491,7 @@ public class TestCaseSheet {
 					}
 
 				} else {
+					logger.info("Number : " + j + " Name : "+row.get(testCaseData.getTestCaseColumnNumber()).toString());
 					String testCaseName = row.get(testCaseData.getTestCaseColumnNumber()).toString();
 					map.put(testCaseName.trim(), j);
 					testCaseData.setTestCaseMap(map);

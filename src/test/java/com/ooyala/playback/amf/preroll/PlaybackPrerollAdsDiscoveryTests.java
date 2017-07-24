@@ -1,5 +1,6 @@
 package com.ooyala.playback.amf.preroll;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -49,23 +50,26 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 			result = result && event.validate("playing_1", 150000);
 
 			result = result && discoveryValidator.validate("reportDiscoveryClick_1", 60000);
-			
-			result = result && seekAction.fromLast().setTime(30).startAction();
 
-			result = result && event.validate("seeked_1", 60000);
+			result = result && event.playVideoForSometime(3);
 
-			result = result && upNextValidator.validate("", 300000);
-			
-			result = result && event.validate("played_1", 10000);
-			
-			extentTest.log(LogStatus.INFO, "Validating discovery at the end of the video.");
-			
+			result = result && seekAction.seek(15,true);
+
+			result = result && event.waitOnElement(By.id("seeked_1"),20000);
+
+			result = result && upNextValidator.validate("", 30000);
+
+			result = result && event.waitOnElement(By.id("played_1"), 10000);
+
+			if (result)
+				extentTest.log(LogStatus.INFO, "Validating discovery at the end of the video.");
+
 			result = result && discoveryValidator.validateDiscoveryToaster();
-
 		} catch (Exception e) {
 			logger.error(e.getMessage());
+            extentTest.log(LogStatus.FAIL,e.getMessage());
 			result = false;
 		}
-		Assert.assertTrue(result, "Test failed");
+		Assert.assertTrue(result, "Playback Pre Roll Ads Discovery Test failed");
 	}
 }

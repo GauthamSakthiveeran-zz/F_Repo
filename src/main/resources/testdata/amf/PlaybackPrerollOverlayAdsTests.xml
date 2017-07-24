@@ -48,6 +48,7 @@
             <playerParameter>
                 <![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"freewheel-ads-manager":{"fw_video_asset_id":"NucGg4bzrVrilZrMdlSA9tyg6Vty46DN","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
         </url>
 
         <!--<url>
@@ -99,6 +100,7 @@
             <playerParameter>
                 <![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showNonLinearCloseButton":true,"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"}}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
         </url>
 
         <!-- IMA Overaly not appearing -->
@@ -125,6 +127,8 @@
             <playerParameter>
                 <![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showNonLinearCloseButton":true,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+            
         </url>
 
         <url>
@@ -145,7 +149,7 @@
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
             <adPlugins name="VAST"/>
-            <additionalPlugins name="DISCOVERY"/>
+            <additionalPlugins name=""/>
             <pbid name="14a1b2eb21104617948405aeac11271b"/>
             <playerParameter>
                 <![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"encodingPriority":["hls","dash","mp4"],"showNonLinearCloseButton":true,"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
@@ -161,6 +165,7 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter>
                 <![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
         </url>
 
         <url>
@@ -174,6 +179,7 @@
             <playerParameter>
                 <![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: overlayRendering"},"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
         </url>
 
         <url>

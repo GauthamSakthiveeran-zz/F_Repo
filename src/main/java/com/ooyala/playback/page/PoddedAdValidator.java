@@ -34,11 +34,13 @@ public class PoddedAdValidator extends PlayBackPage implements PlaybackValidator
 
 		try {
 			if (!waitOnElement(By.id(element), timeout)) {
+				logger.error(element + " not found after " + timeout + " ms");
 				extentTest.log(LogStatus.FAIL, element + " not found after " + timeout + " ms");
 				return false;
 			}
 
-			int result = parseInt(driver.executeScript("return " + element + ".textContent").toString());
+			int result = parseInt(driver.executeScript("return document.getElementById('"+element+"').textContent").toString());
+			logger.info("No of ads " + result);
 			extentTest.log(LogStatus.INFO, "No of ads " + result);
 
 			for (int i = 1 + counter; i <= result; i++) {
@@ -70,13 +72,16 @@ public class PoddedAdValidator extends PlayBackPage implements PlaybackValidator
                 }
 
 				if (!(willPlaySingleAd && singleAdPlayed)) {
+                	logger.error("Ad started elements from injected scripts are not found");
 					extentTest.log(LogStatus.FAIL, "Ad started elements from injected scripts are not found");
 					return false;
 				} else {
+                	logger.info("Found " + position + "_willPlaySingleAd_" + i + " and " + "singleAdPlayed_" + i);
 					extentTest.log(LogStatus.PASS,
 							"Found " + position + "_willPlaySingleAd_" + i + " and " + "singleAdPlayed_" + i);
 				}
 			}
+			logger.info("Podded Ad Completed");
 			extentTest.log(LogStatus.PASS, "Podded Ad Completed");
 			counter += result;
 			return true;

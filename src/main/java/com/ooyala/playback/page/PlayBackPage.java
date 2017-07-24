@@ -1,6 +1,9 @@
 package com.ooyala.playback.page;
 
 import static java.lang.Thread.sleep;
+
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -8,17 +11,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.ooyala.playback.url.UrlObject;
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
 import com.ooyala.facile.page.WebPage;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -33,6 +39,7 @@ public abstract class PlayBackPage extends WebPage {
 	public PlayBackPage(WebDriver webDriver) {
 		super(webDriver);
 	}
+
 	@Override
 	protected String getIndexFileName() {
 		return "resources/appElementsIndex.xml";
@@ -61,9 +68,11 @@ public abstract class PlayBackPage extends WebPage {
 
 		try {
 			if (super.waitOnElement(elementKey, timeout)) {
+				logger.info("Wait on element : " + elementKey + "");
 				extentTest.log(LogStatus.PASS, "Wait on element : " + elementKey + "");
 				return true;
 			} else {
+				logger.info("Wait on element : " + elementKey + ", failed after " + timeout + " ms");
 				extentTest.log(LogStatus.INFO, "Wait on element : " + elementKey + ", failed after " + timeout + " ms");
 				return false;
 			}
@@ -106,9 +115,11 @@ public abstract class PlayBackPage extends WebPage {
 			if (element != null)
 				js.executeScript("arguments[0].click()", element);
 			else {
+			    logger.info("Element not found : " + elementKey);
 				extentTest.log(LogStatus.INFO, "Element not found : " + elementKey);
 				return false;
 			}
+			logger.info("Clicked on hidden element : " + elementKey);
 			extentTest.log(LogStatus.PASS, "Clicked on hidden element : " + elementKey);
 			return true;
 		} catch (Exception ex) {
@@ -128,19 +139,19 @@ public abstract class PlayBackPage extends WebPage {
 		}
 	}
 
-	public boolean touchPress(WebElement element){
-	    logger.info("Pressing on "+element);
-	    try {
-            Actions a = new Actions(driver);
-            a.clickAndHold(element).build().perform();
-            logger.info("Pressed on "+element);
-            extentTest.log(LogStatus.INFO,"Pressed on "+element);
-            return true;
-        } catch (Exception ex){
-	        logger.error("Can not click and hold on "+element);
-	        extentTest.log(LogStatus.FAIL,"Can not click and hold on "+element);
-	        return false;
-        }
+	public boolean touchPress(WebElement element) {
+		logger.info("Pressing on " + element);
+		try {
+			Actions a = new Actions(driver);
+			a.clickAndHold(element).build().perform();
+			logger.info("Pressed on " + element);
+			extentTest.log(LogStatus.INFO, "Pressed on " + element);
+			return true;
+		} catch (Exception ex) {
+			logger.error("Can not click and hold on " + element);
+			extentTest.log(LogStatus.FAIL, "Can not click and hold on " + element);
+			return false;
+		}
 	}
 
 	public boolean onmouseOver(WebElement element) {
@@ -157,17 +168,17 @@ public abstract class PlayBackPage extends WebPage {
 			flag = true;
 		}
 
-		if (flag){
+		if (flag) {
 			try {
-			    logger.info("trying to hover on "+element+" using javascript");
+				logger.info("trying to hover on " + element + " using javascript");
 				String mouseOverScript = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover',true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}";
 				driver.executeScript(mouseOverScript, element);
 				result = true;
-                logger.info("hovered on "+element+" using javascript");
-			}catch (Exception ex){
+				logger.info("hovered on " + element + " using javascript");
+			} catch (Exception ex) {
 				logger.info(ex.getMessage());
-				logger.error("Not able to hover on "+element+" using " +
-                        "javascript after trying to move on element using selenium moveOnElement method");
+				logger.error("Not able to hover on " + element + " using "
+						+ "javascript after trying to move on element using selenium moveOnElement method");
 				result = false;
 			}
 		}
@@ -364,18 +375,17 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	public boolean isPageLoaded() {
-		/*WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(new Predicate<WebDriver>() {
-			public boolean apply(WebDriver webDriver) {
-				return driver.executeScript("return typeof pp").toString().equals("object");
-			}
-		});
-		if (!driver.executeScript("return typeof pp").toString().equals("object")) {
-			logger.error("pp object is not loaded");
-			extentTest.log(LogStatus.FAIL, "pp object is not loaded");
-			return false;
-		}
-		return true;*/
+		/*
+		 * WebDriverWait wait = new WebDriverWait(driver, 30); wait.until(new
+		 * Predicate<WebDriver>() { public boolean apply(WebDriver webDriver) {
+		 * return
+		 * driver.executeScript("return typeof pp").toString().equals("object");
+		 * } }); if
+		 * (!driver.executeScript("return typeof pp").toString().equals("object"
+		 * )) { logger.error("pp object is not loaded");
+		 * extentTest.log(LogStatus.FAIL, "pp object is not loaded"); return
+		 * false; } return true;
+		 */
 		int count = 120;
 		while (count >= 0) {
 			if (driver.executeScript("return typeof pp").toString().equals("object")) {
@@ -435,24 +445,23 @@ public abstract class PlayBackPage extends WebPage {
 		return Double
 				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
 	}
-	
+
 	public double getDuration() {
-		return Double
-				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getDuration();").toString());
+		return Double.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getDuration();").toString());
 	}
 
-    public boolean isAnalyticsElementPreset(String element){
-        if (!waitOnElement(By.id(element),100000)){
-            extentTest.log(LogStatus.FAIL,element+" element is not present");
-            logger.error(element+" element is not present");
-            return false;
-        }
-        extentTest.log(LogStatus.PASS,element+" element is present");
-        logger.info(element+" element is present");
-        return true;
-    }
-    
-    public boolean switchToControlBar() {
+	public boolean isAnalyticsElementPreset(String element) {
+		if (!waitOnElement(By.id(element), 100000)) {
+			extentTest.log(LogStatus.FAIL, element + " element is not present");
+			logger.error(element + " element is not present");
+			return false;
+		}
+		extentTest.log(LogStatus.PASS, element + " element is present");
+		logger.info(element + " element is present");
+		return true;
+	}
+
+	public boolean switchToControlBar() {
 		try {
 			if (isElementPresent("HIDDEN_CONTROL_BAR")) {
 				logger.info("hovering mouse over the player");
@@ -465,5 +474,45 @@ public abstract class PlayBackPage extends WebPage {
 			extentTest.log(LogStatus.FAIL, "Error while switching to control bar.", e);
 			return false;
 		}
+	}
+
+	public String takeScreenshot(String fileName) {
+		logger.info("Taking Screenshot");
+		File destDir = new File("images/");
+		if (!destDir.exists())
+			destDir.mkdir();
+		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(scrFile, new File("images/" + fileName));
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.error("Not able to take the screenshot");
+		}
+		return "images/" + fileName;
+	}
+	
+	public boolean validateMainVideoPlayResumeTime(double timeSwitch) {
+		extentTest.log(LogStatus.INFO, "Validating video resume time");
+		logger.info(timeSwitch);
+		double playaheadTime = getPlayAheadTime();
+		logger.info(playaheadTime);
+		
+		double diff = Math.abs(timeSwitch - playaheadTime);
+		
+		if(diff < 3) {
+		    logger.info("Video started to play from the expected time.");
+			extentTest.log(LogStatus.PASS, "Video started to play from the expected time.");
+			return true;
+		} else{
+		    logger.info("Video did not play from the expected time. Difference : "+diff);
+			extentTest.log(LogStatus.FAIL, "Video did not play from the expected time. Difference : "+diff);
+			return false;
+		}
+	}
+
+	public boolean validateMainVideoPlayResumeTime(String timeSwitch) {
+		if (timeSwitch == null || timeSwitch.isEmpty())
+			return true;
+		return validateMainVideoPlayResumeTime(Double.parseDouble(timeSwitch));
 	}
 }

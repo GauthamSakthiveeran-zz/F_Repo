@@ -31,8 +31,9 @@ public class AdClickThroughValidator extends PlayBackPage implements
         return this;
     }
 
-    private boolean validateOverlayClickThrough() {
+	private boolean validateOverlayClickThrough() {
         if (isElementPresent("OVERLAY_IMAGE")) {
+        	if(!getBrowser().equalsIgnoreCase("safari"))
             if (clickOnIndependentElement("OVERLAY_IMAGE")) {
                 if (!waitOnElement(By.id("adsClickThroughOpened"), 10000)) {
                     extentTest.log(LogStatus.FAIL, "adsClickThroughOpened not found.");
@@ -49,6 +50,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
     }
 
     public boolean validate(String element, int timeout) throws Exception {
+    	
+    	if(getBrowser().equalsIgnoreCase("safari")) return true;
 
         if (!loadingSpinner()) {
             extentTest.log(LogStatus.FAIL, "In Loading spinner for a really long time.");
@@ -88,7 +91,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
                 }
 
             } else if (isElementPresent("AD_PANEL_1")) {
-                if (!(clickOnIndependentElement("AD_PANEL_1") && waitOnElement(By.id("adsClickThroughOpened"), 10000))) {
+                if (!(clickOnIndependentElement("AD_PANEL_1") && waitOnElement(By.id("adsClickThroughOpened"), 2000))) {
                     return false;
                 }
                 flag = false;
@@ -98,9 +101,9 @@ public class AdClickThroughValidator extends PlayBackPage implements
             }
 
             if (flag) {
-                if (!waitOnElement(By.id("adsClicked_1"), 10000))
+                if (!waitOnElement(By.id("adsClicked_1"), 2000))
                     return false;
-                if (!waitOnElement(By.id("adsClicked_videoWindow"), 10000))
+                if (!waitOnElement(By.id("adsClicked_videoWindow"), 2000))
                     return false;
             }
             
@@ -124,7 +127,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
                     if (!(waitOnElement("LEARN_MORE", 10000) && clickOnIndependentElement("LEARN_MORE")))
                         return false;
                 }
-                if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 10000))
+                if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 2000))
                     return false;
 
                 if (!waitOnElement(By.id("videoPausedAds_2"), 5000)) {
@@ -160,7 +163,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
         
         if (windowHandleCount > 1) {
             log.info("No of tabs opened - " + windowHandleCount);
-            extentTest.log(LogStatus.FAIL, "Too many tabs opened - No of tabs : " + windowHandleCount);
+//            extentTest.log(LogStatus.FAIL, "Too many tabs opened - No of tabs : " + windowHandleCount);
         }
     }
 

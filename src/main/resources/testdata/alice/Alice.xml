@@ -126,6 +126,29 @@
         </url>
     </test>
 
+    <test name="PlaybackClosedCaptionPilingUpTests">
+        <url>
+            <description name="Core:Closed Caption Piling Up Main"/>
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Live Closed Caption Piling Up Main"/>
+            <embed_code name="Ztb2l1ZzravsTPzgVqX0taL-bvO-sLRD"/>
+            <pcode name="pzMW46NMqRipYKP6zejxIjdrEp_c"/>
+            <plugins name="MAIN,BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="ab46ae555d05485e9742859d08d4489e"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+    </test>
+
     <test name="PlaybackDiscoveryTests">
         <url>
             <description name="Core:Discovery "/>
@@ -189,6 +212,30 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
+        
+        <url>
+            <description name="Core: Replay Bitmovin"/>
+            <embed_code name="Y4amJoMTE6chANpFOodeYv5HACvMfIyc"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"]}]]></playerParameter>
+        </url>
+        
+        <url>
+             <description name="Core: Replay OSMF"/>
+            <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <platformsSupported name="mac,windows"/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+        </url>
+        
     </test>
 
     <test name="PlaybackLocalizationTests">
