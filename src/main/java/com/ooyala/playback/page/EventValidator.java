@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
-
 import java.util.Map;
+import static java.lang.Integer.parseInt;
 
 /**
  * Created by soundarya on 11/14/16.
@@ -117,6 +117,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
             }
             return true;
         }
+        logger.error("Wait on element : " + element + " failed after " + timeout + " ms");
         extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");
         return false;
     }
@@ -128,12 +129,15 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
             return clickOnHiddenElement(element);
     }
 
-    public void validateElement(String element, int timeout) throws Exception {
-        if (waitOnElement(element, timeout)) {
-            extentTest.log(LogStatus.PASS, "Wait on element : " + element);
-        } else {
-            extentTest.log(LogStatus.FAIL, "Wait on element : " + element + " failed after " + timeout + " ms");
+    public boolean validateElement(String element, int timeout) throws Exception {
+        if (!waitOnElement(By.id(element), timeout)) {
+            logger.error("Wait on element failed : " + element);
+            extentTest.log(LogStatus.FAIL, "Wait on element : " + element);
+            return false;
         }
+        logger.info("Wait on element Success : " + element);
+        extentTest.log(LogStatus.PASS, "Wait on element : " + element);
+        return true;
     }
 
     public boolean validateElementPresence(String element) throws Exception {
@@ -151,10 +155,12 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
             playTime = Double.parseDouble(
                     ((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
             if (count == 120) {
+                logger.error("Looks like the video did not play after waiting for 2 mins.");
                 extentTest.log(LogStatus.FAIL, "Looks like the video did not play after waiting for 2 mins.");
                 return false;
             }
             if (!loadingSpinner()) {
+                logger.error("Loading spinner seems to be there for a really long time.");
                 extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
                 return false;
             }
@@ -186,6 +192,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
             extentTest.log(LogStatus.PASS, "playbackReady event found in consoleOutput");
             result = true;
         } else {
+            extentTest.log(LogStatus.FAIL, "playbackReady event not found in consoleOutput");
             logger.error("playbackReady event not found in consoleOutput");
         }
         return result;
@@ -197,6 +204,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
         autoplay = Boolean.parseBoolean(driver.executeScript("return pp.parameters.autoPlay").toString());
 
         if (!autoplay) {
+            logger.info("Autoplay not set for this video");
             extentTest.log(LogStatus.INFO, "Autoplay not set for this video");
         }
         return autoplay;
@@ -213,5 +221,21 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
             }
         }
         return isAdPlaying;
+    }
+
+    public boolean validateVideoElementOccuredCount(int timeout){
+        int counter = 0;
+        boolean result = true;
+        try {
+            int noOfPoddedAds = parseInt(
+                    (((JavascriptExecutor) driver).executeScript("return document.getElementById('adPodStarted_1').textContent")).toString());
+
+        for (int i = 1 + counter; i <= noOfPoddedAds; i++) {
+                result = result && validate("videoCreatedForAds_" + i + "", 20000);
+            }
+            }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return result;
     }
 }
