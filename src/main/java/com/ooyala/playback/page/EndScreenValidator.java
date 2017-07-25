@@ -14,7 +14,7 @@ import com.relevantcodes.extentreports.LogStatus;
 public class EndScreenValidator extends PlayBackPage implements
 		PlaybackValidator {
 
-	public static Logger logger = Logger.getLogger(EndScreenValidator.class);
+	public static final Logger logger = Logger.getLogger(EndScreenValidator.class);
 
 	public EndScreenValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -32,7 +32,14 @@ public class EndScreenValidator extends PlayBackPage implements
 		String replaytxt = getWebElement("PLAY_PAUSE").findElement(
 				By.tagName("span")).getAttribute("class");
 
-		if (!replaytxt.trim().equals("oo-icon oo-icon-system-replay")) {
+		/*if (!replaytxt.trim().equals("oo-icon oo-icon-system-replay")) {
+			logger.info("Replay button is not present on end screen");
+			extentTest.log(LogStatus.FAIL,
+					"Replay button is not present on end screen");
+			return false;
+		}*/
+
+		if(!("oo-icon oo-icon-system-replay").equals(replaytxt.trim())){
 			logger.info("Replay button is not present on end screen");
 			extentTest.log(LogStatus.FAIL,
 					"Replay button is not present on end screen");
