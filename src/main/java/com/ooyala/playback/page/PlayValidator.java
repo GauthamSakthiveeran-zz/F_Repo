@@ -100,19 +100,8 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		
 		if (!isElementPresent("LIVE")) {
 			
-			if(waitOnElement(By.id("playTime"), 1000)) {
-				Double playHeadTime = Double.parseDouble(driver.findElementById("playTime").getText());
-				if (playHeadTime > 1.0) {
-					extentTest.log(LogStatus.FAIL, "Video does not start from begining");
-					logger.error("Video does not start from begining");
-					logger.info("Playhead time is :" + playHeadTime);
-					return false;
-				}
-				extentTest.log(LogStatus.PASS, "Video does start from begining");
-				logger.info("Video does start from begining");
-				logger.info("Playhead time is :" + playHeadTime);
-			} else {
-				extentTest.log(LogStatus.FAIL, "Unable to validate start time of video.");
+			if(!validatePlayStartTimeFromBeginningofVideo()) {
+				return false;
 			}
 			
 		}

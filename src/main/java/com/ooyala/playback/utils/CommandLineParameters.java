@@ -15,5 +15,6 @@ public class CommandLineParameters {
 	public static final String updateSheet = "updateSheet";
 	public static final String ipaddress = "ipaddress";
 	public static final String platform = "platform";
+	public static final String adobeTVSDK = "adobeTVSDK";
 
 }

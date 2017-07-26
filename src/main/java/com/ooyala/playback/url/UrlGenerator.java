@@ -14,24 +14,25 @@ import com.ooyala.qe.common.util.PropertyReader;
  */
 public class UrlGenerator {
 
-	private  TestPage test = null;
-	private  String url;
-	private  Map<PlayerPropertyKey, PlayerPropertyValue> playerProperties = new HashMap<PlayerPropertyKey, PlayerPropertyValue>();
-	private  Logger logger = Logger.getLogger(UrlGenerator.class);
-	private  String adPluginFilter = new String();
-	private  String videoPluginFilter = new String();
-	private  String descriptionFilter = new String();
-	private  Map<String, String> liveChannelDetails = new HashMap<String, String>();
-	private  Map<String, String> liveChannelProviders = new HashMap<String, String>();
-	private  Map<String, String> streamTypeDetails = new HashMap<String, String>();
+	private TestPage test = null;
+	private String url;
+	private Map<PlayerPropertyKey, PlayerPropertyValue> playerProperties = new HashMap<PlayerPropertyKey, PlayerPropertyValue>();
+	private Logger logger = Logger.getLogger(UrlGenerator.class);
+	private String adPluginFilter = new String();
+	private String videoPluginFilter = new String();
+	private String descriptionFilter = new String();
+	private Map<String, String> liveChannelDetails = new HashMap<String, String>();
+	private Map<String, String> liveChannelProviders = new HashMap<String, String>();
+	private Map<String, String> streamTypeDetails = new HashMap<String, String>();
 
 	/**
-	 * @param embedcode ,pcode,videoPlugin,adPlugin,additionalPlugin,
-	 *                  playerConfigParameter
+	 * @param embedcode
+	 *            ,pcode,videoPlugin,adPlugin,additionalPlugin,
+	 *            playerConfigParameter
 	 * @return returns dynamically created link from above parameters
 	 */
 	public String getURL(String sslEnabled, String embedcode, String pcode, String pbid, String videoPlugin,
-								String adPlugin, String additionalPlugin, String playerConfigParameter) {
+			String adPlugin, String additionalPlugin, String playerConfigParameter) {
 
 		String environment = System.getProperty(CommandLineParameters.environment);
 		String v4Version = "latest";
@@ -57,13 +58,14 @@ public class UrlGenerator {
 
 	/**
 	 * @param testName
-	 * @param testData Passing node list so that we can have access to the nodes data
-	 *                 from xml file
+	 * @param testData
+	 *            Passing node list so that we can have access to the nodes data
+	 *            from xml file
 	 * @return output : output contains two dimensional Object in which test
-	 * name and url is returned
+	 *         name and url is returned
 	 */
 	public Map<String, UrlObject> parseXmlDataProvider(String testName, Testdata testData, String browserName,
-															  String browserVersion) {
+			String browserVersion) {
 		logger.info("Getting test url and test name from property file");
 
 		liveChannelDetails = new HashMap<String, String>();
@@ -76,7 +78,8 @@ public class UrlGenerator {
 				if (data.getName().equals(testName)) {
 					List<Url> urls = data.getUrl();
 					for (Url url : urls) {
-						// Adding browser support here.The data provider will not
+						// Adding browser support here.The data provider will
+						// not
 						// even give that data if we do not support for that
 						// browser.
 						if (url.getBrowsersSupported() != null && url.getBrowsersSupported().getName() != null
@@ -101,22 +104,36 @@ public class UrlGenerator {
 						}
 
 						/***
-						 * TestData url can not be return if platform does not get supported for particular video plugin...
-						 * e.g OSMF does not get supported on Android Platform
+						 * TestData url can not be return if platform does not
+						 * get supported for particular video plugin... e.g OSMF
+						 * does not get supported on Android Platform
 						 */
 
+						if (System.getProperty(CommandLineParameters.adobeTVSDK) != null
+								&& !System.getProperty(CommandLineParameters.adobeTVSDK).isEmpty()
+								&& System.getProperty(CommandLineParameters.adobeTVSDK).toLowerCase()
+										.contains("false")) {
+							if (url.getPlugins().getName() != null && !url.getPlugins().getName().isEmpty()
+									&& url.getPlugins().getName().toUpperCase().contains("ADOBETVSDK")) {
+								continue;
+							}
+						}
+
 						if (url.getPlatformsSupported() != null && url.getPlatformsSupported().getName() != null
-								&& !url.getPlatformsSupported().getName().toLowerCase().contains(System.getProperty(CommandLineParameters.platform).toLowerCase())) {
+								&& !url.getPlatformsSupported().getName().toLowerCase()
+										.contains(System.getProperty(CommandLineParameters.platform).toLowerCase())) {
 							continue;
 						}
 
 						// to run tests for specific ad plugins
-						if (applyFilter() && url.getAdPlugins().getName() != null && !url.getAdPlugins().getName().isEmpty()
+						if (applyFilter() && url.getAdPlugins().getName() != null
+								&& !url.getAdPlugins().getName().isEmpty()
 								&& !url.getAdPlugins().getName().equalsIgnoreCase(adPluginFilter)) {
 							continue;
 						}
 
-						// to run the tests for specific test based on description
+						// to run the tests for specific test based on
+						// description
 						if (applyDescriptionFilter() && url.getDescription().getName() != null
 								&& !url.getDescription().getName().isEmpty()
 								&& !url.getDescription().getName().equalsIgnoreCase(descriptionFilter)) {
@@ -125,8 +142,8 @@ public class UrlGenerator {
 
 						// to run tests for specific video plugins
 						if (applyVideoFilter() && url.getPlugins().getName() != null
-								&& !url.getPlugins().getName().isEmpty()
-								&& !url.getPlugins().getName().toUpperCase().contains(videoPluginFilter.toUpperCase())) {
+								&& !url.getPlugins().getName().isEmpty() && !url.getPlugins().getName().toUpperCase()
+										.contains(videoPluginFilter.toUpperCase())) {
 							continue;
 						}
 
@@ -214,7 +231,8 @@ public class UrlGenerator {
 						String desc = url.getDescription().getName();
 
 						boolean flag = true;
-						if (url.getStreamType() != null && url.getStreamType().getName() != null && !url.getStreamType().getName().isEmpty()) {
+						if (url.getStreamType() != null && url.getStreamType().getName() != null
+								&& !url.getStreamType().getName().isEmpty()) {
 							urlObject.setStreamType(url.getStreamType().getName());
 							flag = false;
 						}
