@@ -105,7 +105,7 @@ public class UrlGenerator {
 						 * e.g OSMF does not get supported on Android Platform
 						 */
 						
-						if(System.getProperty(CommandLineParameters.adobeTVSDK).toLowerCase().contains("true")){
+						if(System.getProperty(CommandLineParameters.adobeTVSDK).toLowerCase().contains("false")){
 							if(url.getPlugins().getName() != null
 								&& !url.getPlugins().getName().isEmpty()
 								&& url.getPlugins().getName().toUpperCase().contains("ADOBETVSDK")) {
