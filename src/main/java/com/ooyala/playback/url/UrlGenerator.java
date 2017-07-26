@@ -132,7 +132,7 @@ public class UrlGenerator {
                                 && !url.getPlugins().getName().toUpperCase().contains(videoPluginFilter.toUpperCase())) {
                             if (!testDataValidator.validateVideoPlugin(videoPluginFilter))
                                 break;
-                                continue;
+                            continue;
                         }
 
                         if (url.getLive() != null && url.getLive().getChannelId() != null) {

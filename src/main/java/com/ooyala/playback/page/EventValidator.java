@@ -100,7 +100,10 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
+            extentTest.log(LogStatus.FAIL, ex);
+            return false;
         }
+        
 
         if (waitOnElement(By.id(element), timeout)) {
             ScrubberValidator scrubberValidator = new PlayBackFactory(driver, extentTest).getScrubberValidator();
