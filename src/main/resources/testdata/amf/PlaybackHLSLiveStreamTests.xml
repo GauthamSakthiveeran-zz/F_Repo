@@ -10,7 +10,7 @@
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name=""/>
 	        <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.56cae9d690c054.28077205;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
+	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"vast":{"vpaidTimeout":{"iframe":20},"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.56cae9d690c054.28077205;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
     	</url>
 		<url>
 			<description name="VPAID:Bitmovin IMA VPAID1.0 HLS Live stream"/>
