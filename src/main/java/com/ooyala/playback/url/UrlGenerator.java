@@ -102,9 +102,20 @@ public class UrlGenerator {
                         }
 
                         /***
-                         * TestData url can not be return if platform does not get supported for particular video plugin...
-                         * e.g OSMF does not get supported on Android Platform
+                         * TestData url can not be return if platform does not
+                         * get supported for particular video plugin... e.g OSMF
+                         * does not get supported on Android Platform
                          */
+
+                        if (System.getProperty(CommandLineParameters.adobeTVSDK) != null
+                                && !System.getProperty(CommandLineParameters.adobeTVSDK).isEmpty()
+                                && System.getProperty(CommandLineParameters.adobeTVSDK).toLowerCase()
+                                .contains("false")) {
+                            if (url.getPlugins().getName() != null && !url.getPlugins().getName().isEmpty()
+                                    && url.getPlugins().getName().toUpperCase().contains("ADOBETVSDK")) {
+                                continue;
+                            }
+                        }
 
                         if (url.getPlatformsSupported() != null && url.getPlatformsSupported().getName() != null
                                 && !url.getPlatformsSupported().getName().toLowerCase().contains(System.getProperty(CommandLineParameters.platform).toLowerCase())) {

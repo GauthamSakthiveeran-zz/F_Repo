@@ -1,6 +1,8 @@
 package com.ooyala.playback.url;
 
 
+import com.ooyala.playback.enums.VideoPlugins;
+import com.ooyala.playback.enums.AdPlugins;
 import org.apache.log4j.Logger;
 
 public class TestDataValidator {
@@ -9,20 +11,22 @@ public class TestDataValidator {
 
     public boolean validateVideoPlugin(String videoPlugin) throws Exception{
         boolean result=false;
-        switch (videoPlugin){
-            case "MAIN" :
+        VideoPlugins videoPlugins;
+        videoPlugins=VideoPlugins.valueOf(videoPlugin);
+        switch (videoPlugins){
+            case MAIN:
                 return true;
 
-            case "BITMOVIN" :
+            case BITMOVIN :
                 return true;
 
-            case "OSMF" :
+            case OSMF :
                 return true;
 
-            case "ADOBETVSDK" :
+            case ADOBETVSDK :
                 return true;
 
-            case "ANALYTICS" :
+            case ANALYTICS :
                 return true;
 
             default :
@@ -32,20 +36,22 @@ public class TestDataValidator {
     }
     public boolean validateAdPlugin(String adPlugin) throws Exception{
         boolean result=false;
-        switch (adPlugin){
-            case "IMA" :
+        AdPlugins adPlugins;
+        adPlugins = AdPlugins.valueOf(adPlugin);
+        switch (adPlugins){
+            case IMA :
                 return true;
 
-            case "FREEWHEEL" :
+            case FREEWHEEL :
                 return true;
 
-            case "VAST" :
+            case VAST :
                 return true;
 
-            case "VPAID" :
+            case VPAID :
                 return true;
 
-            case "PULSE" :
+            case PULSE :
                 return true;
 
             default :
