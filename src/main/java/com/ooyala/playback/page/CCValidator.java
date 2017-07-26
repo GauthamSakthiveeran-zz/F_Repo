@@ -315,7 +315,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
             // select text colors
             textColor = getWebElementsList("CC_TEXT_COLOR_SELECTOR");
 
-            if (textColor == null || textColor.size() == 0) {
+            if (textColor.isEmpty()) {
                 extentTest.log(LogStatus.FAIL, "CC_TEXT_COLOR_SELECTOR not found");
             }
 
@@ -760,11 +760,15 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
         }
 
         boolean flag = switchToControlBar() && closedCaptionMicroPanel() && validateClosedCaptionPanel()
-                && validateSwitchContainer() && checkClosedCaptionLanguages() && closeCCPanel();
+                && validateSwitchContainer();
+
+        if(flag){
+            flag= checkClosedCaptionLanguages() && closeCCPanel();
+        }
 
         if (flag) {
             if (clickOnIndependentElement("PAUSE_BUTTON")) {
-                flag = flag && waitOnElement(By.id("ccmode_disabled"), 20000);
+                flag = waitOnElement(By.id("ccmode_disabled"), 20000);
             } else {
                 flag = false;
             }
@@ -792,7 +796,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
         boolean result = true;
         try {
             // CC Languages
-            result = result && verifyClosedCaptionLanguages();
+            result = verifyClosedCaptionLanguages();
 
             result = result && setClosedCaptionLanguage(2);
 

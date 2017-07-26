@@ -46,9 +46,9 @@ public class EndScreenValidator extends PlayBackPage implements
 			return false;
 		}
 
-		double currenttime = Double.parseDouble(((JavascriptExecutor) driver)
+		int currenttime = Integer.parseInt(((JavascriptExecutor) driver)
 				.executeScript("return pp.getPlayheadTime().toFixed();").toString());
-		double totaltime = Double.parseDouble(((JavascriptExecutor) driver)
+		int totaltime = Integer.parseInt(((JavascriptExecutor) driver)
 				.executeScript("return pp.getDuration().toFixed();").toString());
 		
 		if(!(getBrowser().equalsIgnoreCase("internet explorer") || getBrowser().equalsIgnoreCase("MicrosoftEdge") || (getBrowser().equalsIgnoreCase("firefox") && getPlatform().equalsIgnoreCase("windows")))){
