@@ -1,4 +1,4 @@
-<suite name="Playback Web Regression Suite for AMF" parallel="classes" thread-count="5">
+<suite name="Playback Web Regression Suite for AMF" parallel="classes" thread-count="10">
     <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener"/>
     </listeners>

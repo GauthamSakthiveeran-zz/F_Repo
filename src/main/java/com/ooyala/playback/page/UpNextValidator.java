@@ -31,8 +31,20 @@ public class UpNextValidator extends PlayBackPage implements PlaybackValidator {
 
 		try {
 			// inc the timeout because of pulse ads.
-			return waitOnElement("UPNEXT_CONTENT", 250000) && waitOnElement("CONTENT_METADATA", 2000)
-					&& clickOnIndependentElement("UPNEXT_CLOSE_BTN");
+			logger.info("checking up next");
+			if (!waitOnElement("UPNEXT_CONTENT", 20000)){
+				logger.error("upnext is not visible");
+				extentTest.log(LogStatus.FAIL,"upnext is not visible");
+				return false;
+			}
+
+			if (!waitOnElement("CONTENT_METADATA", 10000)){
+				logger.error("content metadata is not visible");
+				extentTest.log(LogStatus.FAIL,"content metadata is not visible");
+				return false;
+			}
+
+			return clickOnIndependentElement("UPNEXT_CLOSE_BTN");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			logger.error("UpNext is not showing");

@@ -34,6 +34,7 @@ function subscribeToEvents() {
         var savePlayerSettingsFalseEventCount = 1;
         var savePlayerSettingsTrueEventCount = 1;
         var volumeChanged=1;
+        var changeVolume=1;
         var logger = "";
 
 
@@ -42,6 +43,12 @@ function subscribeToEvents() {
         	logger = "QE Preformance log: event: " + event;
         	
             if (event.match(/playing/)) {
+            	
+            	if(playingEventOrder==1) {
+					var time = pp.getPlayheadTime();
+					OO.$('#ooplayer').append('<p id=playTime>'+time+'</p>');
+				}
+            	
                 OO.$("#ooplayer").append("<p id=playing_" + playingEventOrder + ">playing "+
                 playingEventOrder + "</p>");
                 playingEventOrder++;
@@ -129,6 +136,7 @@ function subscribeToEvents() {
 
             if (event.match(/closedCaptionCueChanged/)) {
                 OO.$("#ooplayer").append("<p id=ccshowing_"+closedCaptionOrder+">ccshown "+closedCaptionOrder+"</p>");
+                OO.$("#ooplayer").append("<p id=ccShowingText_"+closedCaptionOrder+">" + arguments[1] + "</p>");
                 closedCaptionOrder++;
             }
 
@@ -224,6 +232,10 @@ function subscribeToEvents() {
                  OO.$('#ooplayer').append('<p id=volumeChanged_' + volumeChanged + '>volumeChanged_'+ volumeChanged + '</p>');
                  volumeChanged++;
             }
+            if (event.match(/changeVolume/)) {
+                             OO.$('#ooplayer').append('<p id=changeVolume_' + changeVolume + '>changeVolume_'+ changeVolume + '</p>');
+                             changeVolume++;
+                        }
             OO.log(logger);
         };
     }());

@@ -14,23 +14,23 @@ import com.ooyala.qe.common.util.PropertyReader;
  */
 public class UrlGenerator {
 
-	private static TestPage test = null;
-	private static String url;
-	private static Map<PlayerPropertyKey, PlayerPropertyValue> playerProperties = new HashMap<PlayerPropertyKey, PlayerPropertyValue>();
-	private static Logger logger = Logger.getLogger(UrlGenerator.class);
-	private static String adPluginFilter = new String();
-	private static String videoPluginFilter = new String();
-	private static String descriptionFilter = new String();
-	private static Map<String, String> liveChannelDetails = new HashMap<String, String>();
-	private static Map<String, String> liveChannelProviders = new HashMap<String, String>();
-	private static Map<String, String> streamTypeDetails = new HashMap<String, String>();
+	private  TestPage test = null;
+	private  String url;
+	private  Map<PlayerPropertyKey, PlayerPropertyValue> playerProperties = new HashMap<PlayerPropertyKey, PlayerPropertyValue>();
+	private  Logger logger = Logger.getLogger(UrlGenerator.class);
+	private  String adPluginFilter = new String();
+	private  String videoPluginFilter = new String();
+	private  String descriptionFilter = new String();
+	private  Map<String, String> liveChannelDetails = new HashMap<String, String>();
+	private  Map<String, String> liveChannelProviders = new HashMap<String, String>();
+	private  Map<String, String> streamTypeDetails = new HashMap<String, String>();
 
 	/**
 	 * @param embedcode ,pcode,videoPlugin,adPlugin,additionalPlugin,
 	 *                  playerConfigParameter
 	 * @return returns dynamically created link from above parameters
 	 */
-	public static String getURL(String sslEnabled, String embedcode, String pcode, String pbid, String videoPlugin,
+	public String getURL(String sslEnabled, String embedcode, String pcode, String pbid, String videoPlugin,
 								String adPlugin, String additionalPlugin, String playerConfigParameter) {
 
 		String environment = System.getProperty(CommandLineParameters.environment);
@@ -62,7 +62,7 @@ public class UrlGenerator {
 	 * @return output : output contains two dimensional Object in which test
 	 * name and url is returned
 	 */
-	public static Map<String, UrlObject> parseXmlDataProvider(String testName, Testdata testData, String browserName,
+	public Map<String, UrlObject> parseXmlDataProvider(String testName, Testdata testData, String browserName,
 															  String browserVersion) {
 		logger.info("Getting test url and test name from property file");
 
@@ -104,6 +104,14 @@ public class UrlGenerator {
 						 * TestData url can not be return if platform does not get supported for particular video plugin...
 						 * e.g OSMF does not get supported on Android Platform
 						 */
+						
+						if(System.getProperty(CommandLineParameters.adobeTVSDK).toLowerCase().contains("false")){
+							if(url.getPlugins().getName() != null
+								&& !url.getPlugins().getName().isEmpty()
+								&& url.getPlugins().getName().toUpperCase().contains("ADOBETVSDK")) {
+								continue;
+							}
+						}
 
 						if (url.getPlatformsSupported() != null && url.getPlatformsSupported().getName() != null
 								&& !url.getPlatformsSupported().getName().toLowerCase().contains(System.getProperty(CommandLineParameters.platform).toLowerCase())) {
@@ -171,7 +179,7 @@ public class UrlGenerator {
 							}
 						}
 
-						String urlGenerated = UrlGenerator.getURL(sslEnabled, embedCode, pCode, pbid, videoPlugin, adPlugin,
+						String urlGenerated = getURL(sslEnabled, embedCode, pCode, pbid, videoPlugin, adPlugin,
 								additionalPlugin, playerParameter);
 
 						UrlObject urlObject = new UrlObject();
@@ -267,21 +275,21 @@ public class UrlGenerator {
 		return urlsGenerated;
 	}
 
-	public static Map<String, String> getLiveChannelDetails() {
+	public Map<String, String> getLiveChannelDetails() {
 		return liveChannelDetails;
 	}
 
-	private static boolean applyFilter() {
+	private boolean applyFilter() {
 		adPluginFilter = System.getProperty(CommandLineParameters.adPlugin);
 		return adPluginFilter != null && !adPluginFilter.isEmpty();
 	}
 
-	private static boolean applyVideoFilter() {
+	private boolean applyVideoFilter() {
 		videoPluginFilter = System.getProperty(CommandLineParameters.videoPlugin);
 		return videoPluginFilter != null && !videoPluginFilter.isEmpty();
 	}
 
-	private static boolean applyDescriptionFilter() {
+	private boolean applyDescriptionFilter() {
 		descriptionFilter = System.getProperty("description");
 		if (descriptionFilter != null && !descriptionFilter.isEmpty()) {
 			return true;
@@ -289,17 +297,17 @@ public class UrlGenerator {
 		return false;
 	}
 
-	private static boolean enableSASstaging() {
+	private boolean enableSASstaging() {
 		String isSASStaging;
 		isSASStaging = System.getProperty(CommandLineParameters.runSASStaging);
 		return isSASStaging != null && isSASStaging.equalsIgnoreCase("true");
 	}
 
-	public static Map<String, String> getLiveChannelProviders() {
+	public Map<String, String> getLiveChannelProviders() {
 		return liveChannelProviders;
 	}
 
-	public static Map<String, String> getStreamTypeDetails() {
+	public Map<String, String> getStreamTypeDetails() {
 		return streamTypeDetails;
 	}
 }
