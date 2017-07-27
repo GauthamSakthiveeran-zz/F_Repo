@@ -171,7 +171,7 @@
         </url>
 
         <url>
-            <description name="IMA:Main PreMidPost Podded|VTC:SetEmbedCode"/>
+            <description name="IMA:Main PreMidPost Podded"/>
             <embed_code name="g4OGxjczqVk87w_P2z291ahvIR4RYrHT"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -182,7 +182,7 @@
         </url>
 
         <url>
-            <description name="VAST:Main Vast2.0 PreMidPost Podded|VTC:SetEmbedCode"/>
+            <description name="VAST:Main Vast2.0 PreMidPost Podded"/>
             <embed_code name="hlc2x4dDpQYlsGsvnipHmaIJge2aqtaP"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -206,7 +206,7 @@
         </url>
 
         <url>
-            <description name="Freewheel:Main PreMidPost Podded|VTC:SetEmbedCode"/>
+            <description name="Freewheel:Main PreMidPost Podded"/>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
