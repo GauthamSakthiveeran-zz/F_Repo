@@ -315,7 +315,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
             // select text colors
             textColor = getWebElementsList("CC_TEXT_COLOR_SELECTOR");
 
-            if (textColor.isEmpty()) {
+            if (textColor.isEmpty() || textColor==null) {
                 extentTest.log(LogStatus.FAIL, "CC_TEXT_COLOR_SELECTOR not found");
             }
 
@@ -770,6 +770,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
             if (clickOnIndependentElement("PAUSE_BUTTON")) {
                 flag = waitOnElement(By.id("ccmode_disabled"), 20000);
             } else {
+                extentTest.log(LogStatus.FAIL,"Failed to click on PAUSE_BUTTON");
                 flag = false;
             }
         }

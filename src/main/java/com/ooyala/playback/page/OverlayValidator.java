@@ -104,7 +104,8 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
             }
 
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error(e);
+            Thread.currentThread().interrupt();
         }
         return result;
     }

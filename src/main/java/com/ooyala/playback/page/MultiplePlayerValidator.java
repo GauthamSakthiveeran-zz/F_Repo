@@ -30,40 +30,44 @@ public class MultiplePlayerValidator extends PlayBackPage implements PlaybackVal
 		if (element.equalsIgnoreCase("player1_play")) {
 			waitOnElement("PLAYER1_START_SCREEN", timeout);
 			if (!clickOnHiddenElement("PLAYER1_START_SCREEN")) {
+				extentTest.log(LogStatus.FAIL,"PLAYER1_START_SCREEN locator is not present");
 				logger.error("PLAYER1_START_SCREEN locator is not present");
 				return false;
 			}
-			;
+			extentTest.log(LogStatus.PASS,"Player 1 playing");
 			logger.info("Player 1 playing");
 		}
 
 		if (element.contains("player1_pause")) {
 			waitOnElement("PLAYER1_PAUSE", timeout);
 			if (!clickOnHiddenElement("PLAYER1_PAUSE")) {
+				extentTest.log(LogStatus.FAIL,"PLAYER1_PAUSE locator is not present");
 				logger.error("PLAYER1_PAUSE locator is not present");
 				return false;
 			}
-			;
+			extentTest.log(LogStatus.PASS,"Player 1 paused");
 			logger.info("Player 1 paused");
 		}
 
 		if (element.equalsIgnoreCase("player2_play")) {
 			waitOnElement("PLAYER2_START_SCREEN", timeout);
 			if (!clickOnHiddenElement("PLAYER2_START_SCREEN")) {
+				extentTest.log(LogStatus.FAIL,"PLAYER2_START_SCREEN locator is not present");
 				logger.error("PLAYER2_START_SCREEN locator is not present");
 				return false;
 			}
-			;
+			extentTest.log(LogStatus.PASS,"Player 2 playing");
 			logger.info("Player 2 playing");
 		}
 
 		if (element.contains("player2_pause")) {
 			waitOnElement("PLAYER2_PAUSE", timeout);
 			if (!clickOnHiddenElement("PLAYER2_PAUSE")) {
+				extentTest.log(LogStatus.FAIL,"PLAYER2_PAUSE locator is not present");
 				logger.error("PLAYER2_PAUSE locator is not present");
 				return false;
 			}
-			;
+			extentTest.log(LogStatus.PASS,"Player 2 paused");
 			logger.info("Player 2 paused");
 		}
 

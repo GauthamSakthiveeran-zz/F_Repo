@@ -4,8 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ooyala.playback.enums.PlayerPropertyKey;
+import com.ooyala.playback.enums.PlayerPropertyValue;
 import org.apache.log4j.Logger;
-
 import com.ooyala.playback.utils.CommandLineParameters;
 import com.ooyala.qe.common.util.PropertyReader;
 
@@ -178,12 +179,17 @@ public class UrlGenerator {
                             } catch (Exception e) {
                                 e.getMessage();
                             }
+                            try{
                             int index = playerParameter.lastIndexOf("}");
                             if (index == -1) {
                                 playerParameter = "{" + properties.getProperty("sas_staging_url") + "}";
                             } else {
                                 playerParameter = playerParameter.substring(0, index) + ","
                                         + properties.getProperty("sas_staging_url") + playerParameter.substring(index);
+                            }
+                            }catch(Exception ex){
+                                logger.info(ex);
+                                throw new IndexOutOfBoundsException("Index Out of bound exception");
                             }
                         }
 

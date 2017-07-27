@@ -32,13 +32,6 @@ public class EndScreenValidator extends PlayBackPage implements
 		String replaytxt = getWebElement("PLAY_PAUSE").findElement(
 				By.tagName("span")).getAttribute("class");
 
-		/*if (!replaytxt.trim().equals("oo-icon oo-icon-system-replay")) {
-			logger.info("Replay button is not present on end screen");
-			extentTest.log(LogStatus.FAIL,
-					"Replay button is not present on end screen");
-			return false;
-		}*/
-
 		if(!("oo-icon oo-icon-system-replay").equals(replaytxt.trim())){
 			logger.info("Replay button is not present on end screen");
 			extentTest.log(LogStatus.FAIL,
