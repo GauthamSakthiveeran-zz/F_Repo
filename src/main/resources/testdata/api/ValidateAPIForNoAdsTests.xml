@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-    <test name="ValidateAPIForWithoutAdTests">
+    <test name="ValidateAPIForNoAdsTests">
         <url>
             <description name="Player API:Bitmovin Play Pause Seek|Player API:Bitmovin Volume|Player API:Bitmovin DurationAtEnd|Player API:Bitmovin FullScreen|Player API:Bitmovin Destroy"/>
             <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn"/>
@@ -9,6 +9,7 @@
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <browsersSupported name="firefox,chrome,internet explorer,microsoft edge"/>
             <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
         </url>
         <url>
