@@ -303,7 +303,7 @@
         </url>
 
         <url>
-            <description name="VAST:Main Vast2.0 Postroll|VTC:SetEmbedCode"/>
+            <description name="VAST:Main Vast2.0 Postroll"/>
             <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -314,7 +314,7 @@
         </url>
 
         <url>
-            <description name="Freewheel:Main Postroll|VTC:SetEmbedCode"/>
+            <description name="Freewheel:Main Postroll"/>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -326,7 +326,7 @@
         </url>
 
         <url>
-            <description name="IMA:Main Ad Rule Postroll|VTC:SetEmbedCode"/>
+            <description name="IMA:Main Ad Rule Postroll"/>
             <embed_code name="5sbHlycTqQ5dqQoCVcY3Rpe78TVvJKjg"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>

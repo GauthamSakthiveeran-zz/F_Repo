@@ -43,6 +43,12 @@ function subscribeToEvents() {
         	logger = "QE Preformance log: event: " + event;
         	
             if (event.match(/playing/)) {
+            	
+            	if(playingEventOrder==1) {
+					var time = pp.getPlayheadTime();
+					OO.$('#ooplayer').append('<p id=playTime>'+time+'</p>');
+				}
+            	
                 OO.$("#ooplayer").append("<p id=playing_" + playingEventOrder + ">playing "+
                 playingEventOrder + "</p>");
                 playingEventOrder++;

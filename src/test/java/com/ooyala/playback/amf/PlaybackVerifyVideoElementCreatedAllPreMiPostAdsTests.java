@@ -1,12 +1,8 @@
 package com.ooyala.playback.amf;
 
-import static java.lang.Integer.parseInt;
-
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.DifferentElementValidator;
 import com.ooyala.playback.page.EventValidator;
@@ -38,10 +34,6 @@ public class PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests extends Playb
             throws OoyalaException {
 
         boolean result = true;
-        int counter = 0 ;
-        int noOfPoddedAdsMid = 0;
-        int noOfPoddedAdsPre = 0;
-        int noOfPoddedAdsPost =0;
         try {
             driver.get(url.getUrl());
 
@@ -51,26 +43,19 @@ public class PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests extends Playb
 
 			result = result && playAction.startAction();
 
-            result = result && eventValidator.validate("PreRoll_willPlayAds", 60000);
+            result = result && eventValidator.validate("PreRoll_willPlayAds", 30000);
 
-            result = result && eventValidator.validate("adsPlayed_1", 600000);
-
-//            result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 60000);
+            result = result && eventValidator.validate("adsPlayed_1", 300000);
 
             // for IMA ad videoControllerVideoElementCreated event is not triggering
             if (!eventValidator.isAdPluginPresent("ima")) {
-                noOfPoddedAdsPre = parseInt(
-                        (((JavascriptExecutor) driver).executeScript("return countPoddedAds_1.textContent")).toString());
-
-                for (int i = 1 + counter; i <= noOfPoddedAdsPre; i++) {
-                    result = result && eventValidator.validate("videoCreatedForAds_" + i + "", 20000);
-                }
+                result = result && eventValidator.validateVideoElementOccuredCount(40000);
             }
 
             result = result && eventValidator.validate("playing_1", 90000);
 
 
-            if (!eventValidator.validate("MidRoll_willPlayAds", 5000)) {
+            if (!eventValidator.validate("MidRoll_willPlayAds", 10000)) {
                 result = result && seekAction.setFactor(2).fromLast().setTime(10).startAction();
             }
 
@@ -78,35 +63,21 @@ public class PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests extends Playb
 
             result = result && eventValidator.validate("adsPlayed_2", 600000);
 
-//            result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 600000);
-
             // for IMA ad videoControllerVideoElementCreated event is not triggering
             if (!eventValidator.isAdPluginPresent("ima")) {
-                noOfPoddedAdsMid = parseInt(
-                        (((JavascriptExecutor) driver).executeScript("return countPoddedAds_2.textContent")).toString())-noOfPoddedAdsPre;
-
-                for (int i = 1 + counter; i <= noOfPoddedAdsMid; i++) {
-                    result = result && eventValidator.validate("videoCreatedForAds_" + i + "", 20000);
-                }
+                result = result && eventValidator.validateVideoElementOccuredCount(40000);
             }
 
-            if (!eventValidator.validate("played_1", 4000)) {
+            /*if (!eventValidator.validate("played_1", 4000)) {
                 result = result && seekAction.seekTillEnd().startAction();
-            }
+            }*/
 
             result = result && eventValidator.validate("PostRoll_willPlayAds", 200000);
             result = result && eventValidator.validate("adsPlayed_3", 600000);
 
-//            result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds_3", 600000);
-
             // for IMA ad videoControllerVideoElementCreated event is not triggering
             if (!eventValidator.isAdPluginPresent("ima")) {
-                noOfPoddedAdsPost = parseInt(
-                        (((JavascriptExecutor) driver).executeScript("return countPoddedAds_3.textContent")).toString())-noOfPoddedAdsPre-noOfPoddedAdsMid;
-
-                for (int i = 1 + counter; i <= noOfPoddedAdsPost; i++) {
-                    result = result && eventValidator.validate("videoCreatedForAds_" + i + "", 20000);
-                }
+                result = result && eventValidator.validateVideoElementOccuredCount(40000);
             }
 
             result = result && eventValidator.validate("played_1", 180000);
@@ -118,7 +89,7 @@ public class PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests extends Playb
 
         } catch (Exception e) {
             logger.error("Exception while checking Video Element tests  "+e.getMessage());
-            extentTest.log(LogStatus.FAIL, e);
+            extentTest.log(LogStatus.FAIL, e.getMessage());
             result = false;
         }
         Assert.assertTrue(result, "Playback Video Element test failed");

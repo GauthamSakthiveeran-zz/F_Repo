@@ -368,7 +368,13 @@ public class TestCaseSheet {
 	}
 
 	private static String getV4Version(String branch) {
-		String v4Version = "";
+		
+		String v4Version = System.getProperty(CommandLineParameters.v4Version);
+
+		if(v4Version!=null && !v4Version.isEmpty() && !v4Version.contains("latest")) {
+			return v4Version;
+		}
+		
 		String link = "http://player.ooyala.com/static/v4/candidate/latest/version.txt";
 
 		if (branch.equalsIgnoreCase("candidate")) {
@@ -491,6 +497,7 @@ public class TestCaseSheet {
 					}
 
 				} else {
+					logger.info("Number : " + j + " Name : "+row.get(testCaseData.getTestCaseColumnNumber()).toString());
 					String testCaseName = row.get(testCaseData.getTestCaseColumnNumber()).toString();
 					map.put(testCaseName.trim(), j);
 					testCaseData.setTestCaseMap(map);

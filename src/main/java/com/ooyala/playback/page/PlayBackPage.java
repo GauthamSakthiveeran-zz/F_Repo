@@ -68,9 +68,11 @@ public abstract class PlayBackPage extends WebPage {
 
 		try {
 			if (super.waitOnElement(elementKey, timeout)) {
+				logger.info("Wait on element : " + elementKey + "");
 				extentTest.log(LogStatus.PASS, "Wait on element : " + elementKey + "");
 				return true;
 			} else {
+				logger.info("Wait on element : " + elementKey + ", failed after " + timeout + " ms");
 				extentTest.log(LogStatus.INFO, "Wait on element : " + elementKey + ", failed after " + timeout + " ms");
 				return false;
 			}
@@ -113,9 +115,11 @@ public abstract class PlayBackPage extends WebPage {
 			if (element != null)
 				js.executeScript("arguments[0].click()", element);
 			else {
+			    logger.info("Element not found : " + elementKey);
 				extentTest.log(LogStatus.INFO, "Element not found : " + elementKey);
 				return false;
 			}
+			logger.info("Clicked on hidden element : " + elementKey);
 			extentTest.log(LogStatus.PASS, "Clicked on hidden element : " + elementKey);
 			return true;
 		} catch (Exception ex) {
@@ -495,10 +499,12 @@ public abstract class PlayBackPage extends WebPage {
 		
 		double diff = Math.abs(timeSwitch - playaheadTime);
 		
-		if(diff < 1) {
+		if(diff < 3) {
+		    logger.info("Video started to play from the expected time.");
 			extentTest.log(LogStatus.PASS, "Video started to play from the expected time.");
 			return true;
 		} else{
+		    logger.info("Video did not play from the expected time. Difference : "+diff);
 			extentTest.log(LogStatus.FAIL, "Video did not play from the expected time. Difference : "+diff);
 			return false;
 		}
@@ -508,5 +514,23 @@ public abstract class PlayBackPage extends WebPage {
 		if (timeSwitch == null || timeSwitch.isEmpty())
 			return true;
 		return validateMainVideoPlayResumeTime(Double.parseDouble(timeSwitch));
+	}
+	
+	public boolean validatePlayStartTimeFromBeginningofVideo() {
+		if(waitOnElement(By.id("playTime"), 1000)) {
+			Double playHeadTime = Double.parseDouble(driver.findElementById("playTime").getText());
+			if (playHeadTime > 1.0) {
+				extentTest.log(LogStatus.FAIL, "Video does not start from begining");
+				logger.error("Video does not start from begining");
+				logger.info("Playhead time is :" + playHeadTime);
+				return false;
+			}
+			extentTest.log(LogStatus.PASS, "Video does start from begining");
+			logger.info("Video does start from begining");
+			logger.info("Playhead time is :" + playHeadTime);
+		} else {
+			extentTest.log(LogStatus.FAIL, "Unable to validate start time of video.");
+		}
+		return true;
 	}
 }

@@ -60,7 +60,7 @@ public class PlaybackVerifyVideoElementCreatedAllMidrollAdsTests extends Playbac
 
 		} catch (Exception e) {
 			logger.error("Exception while checking Video Element tests  " + e.getMessage());
-			extentTest.log(LogStatus.FAIL, e);
+			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "Playback Video Element test failed");
