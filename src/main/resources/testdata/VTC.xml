@@ -212,7 +212,7 @@
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
-            <adPlugins name="VAST" />
+            <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
@@ -494,7 +494,7 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"skin":{"inline":{"adScreen":{"showAdMarquee":true,"showControlBar":true}}}}]]></playerParameter>
         </url>
-        <!--<url>
+        <url>
             <description name="VTC:Verify Volume Change(IMA Ads)" />
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
@@ -503,7 +503,7 @@
             <additionalPlugins name="" />
             <pbid name="615dc8e909e941c280e12155df838355" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>-->
+        </url>
     </test>
 
     <test name="PlaybackPreAdMultipleVpluginTests">
