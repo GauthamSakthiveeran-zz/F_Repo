@@ -564,22 +564,29 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
     public boolean validateCloseCaptionAPI(){
         logger.info("***************************** Validating Close Caption CC API *********************************************");
 
-        boolean isPlaying = Boolean.parseBoolean(driver.executeScript("return pp.isPlaying").toString());
-        if (!isPlaying){
-            playByApi();
-            loadingSpinner();
-        }
-        ArrayList<String> langList = ((ArrayList<String>)driver
-                .executeScript("return pp.getCurrentItemClosedCaptionsLanguages().languages;"));
-        for (int i = 0; i < langList.size(); i++) {
-            driver.executeScript("pp.setClosedCaptionsLanguage(\"" + langList.get(i) + "\")");
-            if (!waitOnElement(By.id("cclanguage_"+langList.get(i)),10000)){
-                logger.error("Not able to get "+langList.get(i));
-                extentTest.log(LogStatus.FAIL,"Not able to get "+langList.get(i));
-                return false;
+        try {
+            boolean isPlaying = Boolean.parseBoolean(driver.executeScript("return pp.isPlaying()").toString());
+            if (!isPlaying) {
+                playByApi();
+                loadingSpinner();
+                 boolean isPlayingAfterPlayByApi = Boolean.parseBoolean(driver.executeScript("return pp.isPlaying()").toString());
+                 logger.warn("isPlayingAfterPlayByApi :" +isPlayingAfterPlayByApi);
             }
-            logger.info("close caption is set to language : "+langList.get(i));
-            extentTest.log(LogStatus.PASS,"close caption is set to language : "+langList.get(i));
+            ArrayList<String> langList = ((ArrayList<String>) driver
+                    .executeScript("return pp.getCurrentItemClosedCaptionsLanguages().languages;"));
+            for (int i = 0; i < langList.size(); i++) {
+                driver.executeScript("pp.setClosedCaptionsLanguage(\"" + langList.get(i) + "\")");
+                if (!waitOnElement(By.id("cclanguage_" + langList.get(i)), 10000)) {
+                    logger.error("Not able to get " + langList.get(i));
+                    extentTest.log(LogStatus.FAIL, "Not able to get " + langList.get(i));
+                    return false;
+                }
+                logger.info("close caption is set to language : " + langList.get(i));
+                extentTest.log(LogStatus.PASS, "close caption is set to language : " + langList.get(i));
+            }
+        }catch (Exception ex){
+            logger.error(ex);
+            extentTest.log(LogStatus.FAIL,ex.getMessage());
         }
         return true;
     }
@@ -624,7 +631,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
                 return false;
             }
             logger.info("Found videoPausedAds event after video gets paused");
-            extentTest.log(LogStatus.FAIL,"Found videoPausedAds event after video gets paused");
+            extentTest.log(LogStatus.PASS,"Found videoPausedAds event after video gets paused");
 
             driver.executeScript("pp.skipAd()");
             if (!waitOnElement(By.id("skipAd_1"),10000)){
@@ -714,7 +721,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
                     return false;
                 }
                 logger.info("Found videoPausedAds event after video gets paused");
-                extentTest.log(LogStatus.FAIL, "Found videoPausedAds event after video gets paused");
+                extentTest.log(LogStatus.PASS, "Found videoPausedAds event after video gets paused");
 
                 driver.executeScript("pp.skipAd()");
                 if (!waitOnElement(By.id("skipAd_1"), 10000)) {
@@ -738,7 +745,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
                 }
                 logger.info("Found Playing event after ad gets skipped");
                 extentTest.log(LogStatus.PASS, "Found Playing event after ad gets skipped");
-
+                Thread.sleep(1000);
                 boolean isPlaying = (Boolean) executeJsScript("pp.isPlaying()", "boolean");
                 if (!isPlaying) {
                     logger.error("isPlaying() API returns " + isAdPlaying + " while video is playing");
@@ -816,7 +823,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
                 return false;
             }
             logger.info("Found videoPausedAds event after video gets paused");
-            extentTest.log(LogStatus.FAIL,"Found videoPausedAds event after video gets paused");
+            extentTest.log(LogStatus.PASS,"Found videoPausedAds event after video gets paused");
 
             driver.executeScript("pp.skipAd()");
             if (!waitOnElement(By.id("skipAd_1"),10000)){
@@ -1091,7 +1098,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
                 }
             }
         }
-        if (!waitOnElement(By.id("played_1"),20000)){
+        if (!waitOnElement(By.id("played_1"),30000)){
             logger.error("Does not found Played event after ad gets skipped");
             extentTest.log(LogStatus.FAIL,"Does not found Played event after ad gets skipped");
             return false;
