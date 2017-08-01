@@ -1,13 +1,10 @@
 package com.ooyala.playback.amf;
 
+import com.ooyala.playback.page.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.MidrollAdValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SetEmbedCodeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
@@ -26,9 +23,12 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
     private MidrollAdValidator adStartTimeValidator;
+    private AdClickThroughValidator adClickThroughValidator;
 
 	@Test(groups = {"amf","preroll","midroll","postroll"}, dataProvider = "testUrls")
 	public void verifyPreMidPostroll(String testName, UrlObject url) throws OoyalaException {
+
+		boolean click = testName.contains("Clickthrough");
 
 		boolean result = true;
 
@@ -45,6 +45,11 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 
 			result = result && event.validate("PreRoll_willPlayAds", 150000);
+
+			if (result && click){
+				driver.executeScript("pp.pause()");
+				s_assert.assertTrue(adClickThroughValidator.validate("videoPausedAds_2",20000),"Clickthrough");
+			}
 			
 			executeScript("pp.skipAd()");
 
@@ -53,9 +58,21 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 			result = result && event.validate("playing_1", 150000);
 
             if (adStartTimeValidator.isAdPlayTimePresent(url)){
-                result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlayAds");
+                if (result && !click) {
+                    result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlayAds");
+                }else {
+                    result = result && event.validate("MidRoll_willPlayAds", 200000);
+                    if (result && click){
+                        driver.executeScript("pp.pause()");
+                        s_assert.assertTrue(adClickThroughValidator.validate("videoPausedAds_4",20000),"Clickthrough");
+                    }
+                }
             }else{
             	result = result && event.validate("MidRoll_willPlayAds", 200000);
+            	if (result && click){
+					driver.executeScript("pp.pause()");
+					s_assert.assertTrue(adClickThroughValidator.validate("videoPausedAds_4",20000),"Clickthrough");
+				}
             }
 			
             executeScript("pp.skipAd()");
@@ -65,6 +82,10 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
     		result = result && seekAction.seekTillEnd().startAction();
 
 			result = result && event.validate("PostRoll_willPlayAds", 900000);
+			if (result && click){
+				driver.executeScript("pp.pause()");
+				s_assert.assertTrue(adClickThroughValidator.validate("videoPausedAds_6",20000),"Clickthrough");
+			}
 			
 			executeScript("pp.skipAd()");
 
@@ -84,6 +105,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 			result = false;
 			extentTest.log(LogStatus.FAIL, e);
 		}
-		Assert.assertTrue(result, "Pre Mid Post Roll Ads failed.");
+		s_assert.assertTrue(result, "Pre Mid Post Roll Ads failed.");
+		s_assert.assertAll();
 	}
 }
