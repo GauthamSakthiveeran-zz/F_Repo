@@ -1,5 +1,6 @@
 package com.ooyala.playback.page;
 
+import static com.relevantcodes.extentreports.LogStatus.FAIL;
 import static com.relevantcodes.extentreports.LogStatus.PASS;
 
 import java.util.Map;
@@ -84,7 +85,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
                 if (!clickOnIndependentElement("AD_SCREEN_PANEL"))
                     return false;
 
-                if (!waitOnElement(By.id("videoPausedAds_2"), 5000)) {
+                if (!waitOnElement(By.id(element), 10000)) {
                     log.info("unable to verify event videoPaused");
                     extentTest.log(LogStatus.FAIL, "unable to verify event videoPaused");
                     return false;
@@ -101,10 +102,14 @@ public class AdClickThroughValidator extends PlayBackPage implements
             }
 
             if (flag) {
-                if (!waitOnElement(By.id("adsClicked_1"), 2000))
+                if (!waitOnElement(By.id("adsClicked_1"), 2000)) {
+                    extentTest.log(FAIL,"adsClicked_1 event not found");
                     return false;
-                if (!waitOnElement(By.id("adsClicked_videoWindow"), 2000))
+                }
+                if (!waitOnElement(By.id("adsClicked_videoWindow"), 2000)) {
+                    extentTest.log(FAIL,"adsClicked_videoWindow event not found");
                     return false;
+                }
             }
             
             validateNoOfTabsOpened();
@@ -130,7 +135,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
                 if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 2000))
                     return false;
 
-                if (!waitOnElement(By.id("videoPausedAds_2"), 5000)) {
+                if (!waitOnElement(By.id("videoPausedAds_1"), 5000)) {
                     log.info("unable to verify event videoPaused");
                     extentTest.log(LogStatus.FAIL, "unable to verify event videoPaused");
                     return false;
@@ -172,4 +177,5 @@ public class AdClickThroughValidator extends PlayBackPage implements
                 .executeScript("return pp.isAdPlaying()"));
         return isAdplaying;
     }
+
 }
