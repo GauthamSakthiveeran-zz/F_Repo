@@ -26,6 +26,10 @@ function subscribeToEvents() {
 		var adPodStartedEventOrder = 1;
         var playNonlinearAdEventOrder = 1;
         var videoPausedEventOrder = 1;
+        var willPlayMidrollAdEvent = 1;
+        var willPlayPostrollAd = 1;
+        var skipMidrollAdEvent = 1;
+        var skipPostrollAdEvent = 1;
         
         var logger = '';
 		
@@ -115,6 +119,28 @@ function subscribeToEvents() {
 				singleadsPlayedEventOrder++;
 				showAdSkipButtonEventOrder = 1;
 			}
+
+			if(event.match(/willPlaySingleAd/)){
+			    if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
+            		OO.$('#ooplayer').append('<p id=willPlayMidrollAd_'+willPlayMidrollAdEvent+'>willPlayMidrollAd '+willPlayMidrollAdEvent+'</p>')
+            		willPlayMidrollAdEvent++;
+            	}
+            	if(videoPlayedEventOrder == 2){
+                		OO.$('#ooplayer').append('<p id=willPlayPostrollAd_'+willPlayPostrollAd+'>willPlayPostrollAd '+willPlayPostrollAd+'</p>');
+                		willPlayPostrollAd++;
+                }
+			}
+
+			if (event.match(/skipAd/)) {
+            	if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
+                       OO.$('#ooplayer').append('<p id=skipMidrollAd_'+skipMidrollAdEvent+'>skipMidrollAd_ '+skipMidrollAdEvent+'</p>')
+                       skipMidrollAdEvent++;
+                }
+                if(videoPlayedEventOrder == 2){
+                    OO.$('#ooplayer').append('<p id=skipPostrollAd_'+skipPostrollAdEvent+'>willPlayPostrollAd '+skipPostrollAdEvent+'</p>');
+                    skipPostrollAdEvent++;
+                }
+            }
 			
 			
 			if (event.match(/videoWillPlay/) && arguments[1] == 'ads') {
