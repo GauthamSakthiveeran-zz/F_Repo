@@ -452,13 +452,15 @@ public class TestCaseSheet {
 			if (row != null) {
 				if (testCaseData.getHeaderColumnNumber() == -1) {
 					testCaseData.setHeaderRowNumber(j);
+					lastColumnForTestCase = row.size();
+					testCaseData.setLastColumnForTestCase(lastColumnForTestCase);
 					for (int i = 1; i < row.size(); i++) {
 						logger.info(row.get(i).toString().toLowerCase());
-						if (row.get(i).toString().toLowerCase()
+						/*if (row.get(i).toString().toLowerCase()
 								.contains(TestCaseSheetProperties.lastColumnForTestCase.toLowerCase())) {
 							lastColumnForTestCase = i + 2;
 							testCaseData.setLastColumnForTestCase(lastColumnForTestCase);
-						}
+						}*/
 						if (row.get(i).toString().toLowerCase().contains(resultColumnTitle.toLowerCase())) {
 							testCaseData.setHeaderColumnNumber(i);
 							break;
