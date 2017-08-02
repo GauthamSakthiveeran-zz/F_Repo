@@ -17,7 +17,7 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidator {
 
-    public static Logger logger = Logger.getLogger(OoyalaAPIValidator.class);
+    private static final Logger logger = Logger.getLogger(OoyalaAPIValidator.class);
 
     public OoyalaAPIValidator(WebDriver webDriver) {
         super(webDriver);
@@ -688,7 +688,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
             }
 
             new PlayBackFactory(driver, extentTest).getEventValidator().playVideoForSometime(2);
-            driver.executeScript("pp.seek(pp.getDuration()-10)");
+            driver.executeScript("pp.seek(pp.getDuration()-15)");
 
             if (!loadingSpinner()) {
                 logger.error("Loading spinner is present for long time after playing the video");
@@ -697,12 +697,11 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
             }
 
             if (!waitOnElement(By.id("MidRoll_willPlayAds"), 30000)) {
-                logger.error("Midroll ad is not playing or present for this asset");
-                extentTest.log(LogStatus.FAIL, "Midroll ad is not playing or present for this asset");
+                logger.error("Midroll ad is not playing or not present for this asset");
+                extentTest.log(LogStatus.FAIL, "Midroll ad is not playing or not present for this asset");
                 return false;
             }
 
-            //Thread.sleep(2000);
             new PlayBackFactory(driver, extentTest).getEventValidator().playVideoForSometime(2);
 
             boolean isAdPlaying = (Boolean) executeJsScript("pp.isAdPlaying()", "boolean");
@@ -715,7 +714,7 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
 
             if (isAdPlaying) {
                 pauseByApi();
-                if (!waitOnElement(By.id("videoPausedAds_1"), 10000)) {
+                if (!waitOnElement(By.id("videoPausedAds_1"), 30000)) {
                     logger.error("Does not found videoPausedAds event after ad gets paused");
                     extentTest.log(LogStatus.FAIL, "Does not found videoPausedAds event after ad gets paused");
                     return false;
@@ -745,17 +744,18 @@ public class OoyalaAPIValidator extends PlayBackPage implements PlaybackValidato
                 }
                 logger.info("Found Playing event after ad gets skipped");
                 extentTest.log(LogStatus.PASS, "Found Playing event after ad gets skipped");
-                Thread.sleep(1000);
+                //Thread.sleep(2000);
                 boolean isPlaying = (Boolean) executeJsScript("pp.isPlaying()", "boolean");
                 if (!isPlaying) {
-                    logger.error("isPlaying() API returns " + isAdPlaying + " while video is playing");
-                    extentTest.log(LogStatus.FAIL, "isPlaying() API returns " + isAdPlaying + " while video is playing");
+                    logger.error("isPlaying() API returns " + isPlaying + " while video is playing");
+                    extentTest.log(LogStatus.FAIL, "isPlaying() API returns " + isPlaying + " while video is playing");
                     return false;
                 }
-                logger.info("isPlaying() API returns " + isAdPlaying + " while video is playing");
-                extentTest.log(LogStatus.PASS, "isPlaying() API returns " + isAdPlaying + " while video is playing");
+                logger.info("isPlaying() API returns " + isPlaying + " while video is playing");
+                extentTest.log(LogStatus.PASS, "isPlaying() API returns " + isPlaying + " while video is playing");
             }
         }catch (Exception ex){
+            logger.error(ex);
             extentTest.log(LogStatus.FAIL,ex.getMessage());
             return false;
         }
