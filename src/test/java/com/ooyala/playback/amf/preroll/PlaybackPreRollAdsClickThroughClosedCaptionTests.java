@@ -51,7 +51,7 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 				result = result && event.validate("singleAdPlayed_1", 120000);
 
 			result = result && event.validate("playing_1", 35000);
-			result = result && event.validateMainVideoPlayResumeTime(0D);
+			result = result && event.validatePlayStartTimeFromBeginningofVideo();
 			result = result && event.loadingSpinner();
 			if (result && cc) {
 				s_assert.assertTrue(ccValidator.validate("cclanguage", 60000), "CC");

@@ -41,21 +41,21 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest {
 
 			executeScript("pp.play();");
 
-			result = result && eventValidator.validate("playing_1",120000);
+			result = result && eventValidator.validate("playing_1",20000);
 
 			result = result
-					&& eventValidator.validate("videoSetInitialTime_1", 60000);
+					&& eventValidator.validate("videoSetInitialTime_1", 10000);
 
-			result = result && eventValidator.validate("videoPlay_1", 60000);
+			result = result && eventValidator.validate("videoPlay_1", 10000);
 
 			result = result
-					&& eventValidator.validate("videoWillPlay_1", 60000);
+					&& eventValidator.validate("videoWillPlay_1", 10000);
 
-			result = result && eventValidator.validate("videoPlaying_1", 60000);
+			result = result && eventValidator.validate("videoPlaying_1", 20000);
 
 			executeScript("pp.pause();");
 
-			result = result && eventValidator.validate("videoPause_1",40000);
+			result = result && eventValidator.validate("videoPause_1",10000);
 
             executeScript("pp.play();");
 
@@ -63,7 +63,7 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("videoPaused_1", 60000);
 
-            result = result && eventValidator.validate("videoPlayed_1",240000);
+            result = result && eventValidator.validate("videoPlayed_1",60000);
 
 		} catch (Exception e) {
 			logger.error("Exception while checking Controller Event test  "+e.getMessage());

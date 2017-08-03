@@ -368,7 +368,13 @@ public class TestCaseSheet {
 	}
 
 	private static String getV4Version(String branch) {
-		String v4Version = "";
+		
+		String v4Version = System.getProperty(CommandLineParameters.v4Version);
+
+		if(v4Version!=null && !v4Version.isEmpty() && !v4Version.contains("latest")) {
+			return v4Version;
+		}
+		
 		String link = "http://player.ooyala.com/static/v4/candidate/latest/version.txt";
 
 		if (branch.equalsIgnoreCase("candidate")) {
@@ -446,13 +452,15 @@ public class TestCaseSheet {
 			if (row != null) {
 				if (testCaseData.getHeaderColumnNumber() == -1) {
 					testCaseData.setHeaderRowNumber(j);
+					lastColumnForTestCase = row.size();
+					testCaseData.setLastColumnForTestCase(lastColumnForTestCase);
 					for (int i = 1; i < row.size(); i++) {
 						logger.info(row.get(i).toString().toLowerCase());
-						if (row.get(i).toString().toLowerCase()
+						/*if (row.get(i).toString().toLowerCase()
 								.contains(TestCaseSheetProperties.lastColumnForTestCase.toLowerCase())) {
 							lastColumnForTestCase = i + 2;
 							testCaseData.setLastColumnForTestCase(lastColumnForTestCase);
-						}
+						}*/
 						if (row.get(i).toString().toLowerCase().contains(resultColumnTitle.toLowerCase())) {
 							testCaseData.setHeaderColumnNumber(i);
 							break;

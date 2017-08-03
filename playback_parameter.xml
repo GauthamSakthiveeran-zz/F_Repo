@@ -1,0 +1,72 @@
+<suite name="Playback Platform Parameter" verbose="1">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+
+  
+	<test name="Platform - html5 and Flash" parallel="classes"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="platformParameters/PlatformParameter.xml" />
+			<parameter name="jsFile" value="alice/alice.js" />
+			<class name="com.ooyala.playback.platformParameter.PlatformParameterTest" />
+		</classes>
+	</test>
+
+
+
+	<test name="Platform - PreAd" parallel="classes" thread-count="1">
+		<classes>
+			<parameter name="testData" value="platformParameters/PlatformParameter.xml" />
+			<parameter name="jsFile" value="common.js,amf/amf.js" />
+			<class
+				name="com.ooyala.playback.platformParameter.PlatformParameterPreAdTest" />
+		</classes>
+	</test>
+
+	<test name="Platform - PostAd" parallel="classes" thread-count="1">
+		<classes>
+			<parameter name="testData" value="platformParameters/PlatformParameter.xml" />
+			<parameter name="jsFile" value="common.js,amf/amf.js" />
+			<class
+				name="com.ooyala.playback.platformParameter.PlatformParameterPostAdTest" />
+		</classes>
+	</test>
+
+
+	<test name="Platform - PreMidPostRollAd" parallel="classes"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="platformParameters/PlatformParameter.xml" />
+			<parameter name="jsFile" value="common.js,amf/amf.js" />
+			<class
+				name="com.ooyala.playback.platformParameter.PlatformParameterPreMidPostAdTest" />
+		</classes>
+	</test>
+
+
+
+
+	<test name="Platform - MidRollAd" parallel="classes" thread-count="1">
+		<classes>
+			<parameter name="testData" value="platformParameters/PlatformParameter.xml" />
+			<parameter name="jsFile" value="common.js,amf/amf.js" />
+			<class
+				name="com.ooyala.playback.platformParameter.PlatformParameterMidAdTest" />
+		</classes>
+	</test>
+
+
+
+
+	<test name="Platform - LiveTest" parallel="classes" thread-count="1">
+		<classes>
+			<parameter name="testData" value="platformParameters/PlatformParameter.xml" />
+			<parameter name="jsFile" value="alice/alice.js" />
+			<class
+				name="com.ooyala.playback.platformParameter.PlatformParameterLiveTest" />
+		</classes>
+	</test>
+
+</suite>
+

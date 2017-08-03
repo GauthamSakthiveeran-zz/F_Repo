@@ -79,6 +79,11 @@ function subscribeToEvents() {
 			}
 				
 			if (event.match(/playing/)) {
+				if(playingEventOrder==1) {
+					var time = pp.getPlayheadTime();
+					OO.$('#ooplayer').append('<p id=playTime>'+time+'</p>');
+				}
+				
 				if(replayEventOrder == 2){
 					OO.$('#ooplayer').append('<p id=playing_'+playing[1]+'>playing '+playing[1]+'</p>');c
 				}else{

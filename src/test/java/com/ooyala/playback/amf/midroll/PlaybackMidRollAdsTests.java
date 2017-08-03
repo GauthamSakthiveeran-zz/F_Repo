@@ -57,14 +57,6 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 				result = result && event.validate("played_1", 160000);
 			}
 
-			// TODO: Resolve NPE
-			/*
-			 * if (testName.contains("SetEmbedCode")) { result = result &&
-			 * setEmbedCodeValidator.validate("setEmbedmbedCode",6000); } else {
-			 * 
-			 * }
-			 */
-
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			extentTest.log(LogStatus.FAIL, e);
