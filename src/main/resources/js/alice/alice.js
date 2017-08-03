@@ -49,6 +49,11 @@ function subscribeToEvents() {
 					OO.$('#ooplayer').append('<p id=playTime>'+time+'</p>');
 				}
             	
+            	if(playingEventOrder==2) {
+					var time = pp.getPlayheadTime();
+					OO.$('#ooplayer').append('<p id=midroll_playTime>'+time+'</p>');
+				}
+            	
                 OO.$("#ooplayer").append("<p id=playing_" + playingEventOrder + ">playing "+
                 playingEventOrder + "</p>");
                 playingEventOrder++;

@@ -80,6 +80,11 @@ function subscribeToEvents() {
 					OO.$('#ooplayer').append('<p id=playTime>'+time+'</p>');
 				}
 				
+				if(playingEventOrder==2) {
+					var time = pp.getPlayheadTime();
+					OO.$('#ooplayer').append('<p id=midroll_playTime>'+time+'</p>');
+				}
+				
 				if(replayEventOrder == 2){
 					OO.$('#ooplayer').append('<p id=playing_'+playing[1]+'>playing '+playing[1]+'</p>');c
 				}else{
