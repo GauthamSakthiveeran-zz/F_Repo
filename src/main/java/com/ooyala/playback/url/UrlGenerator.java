@@ -106,10 +106,6 @@ public class UrlGenerator {
 
 						if (applyPriorityFilter()) {
 							
-							if(url.getPriority()!=null) {
-								logger.info(url.getPriority().getName());
-							}
-							
 							if (!(url.getPriority() != null && url.getPriority().getName() != null
 									&& !url.getPriority().getName().isEmpty()
 									&& url.getPriority().getName().toLowerCase().contains(priority.toLowerCase()))) {
