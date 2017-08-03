@@ -533,4 +533,17 @@ public abstract class PlayBackPage extends WebPage {
 		}
 		return true;
 	}
+
+	public Object executeJsScript(String command, String returnType){
+
+		switch (returnType){
+			case "boolean":
+				return Boolean.parseBoolean(driver.executeScript("return "+command+"").toString());
+			case "string":
+				driver.executeScript("return "+command+"").toString();
+			case "int":
+				return Boolean.parseBoolean(driver.executeScript("return "+command+"").toString());
+		}
+		return null;
+	}
 }
