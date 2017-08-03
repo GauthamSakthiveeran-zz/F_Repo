@@ -31,6 +31,8 @@ public class BitmovinTechnologyValidator extends PlayBackPage implements Playbac
 			this.streamType = "dash";
 		else if (streamType.contains("hds"))
 			this.streamType = "f4m";
+		else if(streamType.contains("mp4"))
+			this.streamType = "progressive";
 		else
 			this.streamType = streamType;
 		return this;
@@ -42,15 +44,31 @@ public class BitmovinTechnologyValidator extends PlayBackPage implements Playbac
 		if(!isVideoPluginPresent("bit_wrapper")) {
 			return true;
 		}
- 
+		String expectedValue;
+		
+		String isDRMVideo;
+		if(streamType.equalsIgnoreCase("progressive"))
+		{
+			expectedValue = "native" + "." +  streamType;
+	
+		}
+		else if(getBrowser().contains("safari"))
+		{
+			
+			expectedValue = "native" +  "." +  streamType;
+		}
+			
+		else
+			
+		{	
+		
 		String result = decode(driver.getCurrentUrl(), "UTF-8");
 		if (result == null)
 			return false;
-
 		String[] options = result.split("options=");
-		String expectedValue = "html5";
-		if(getBrowser().contains("safari"))
-			expectedValue = "native";
+
+		expectedValue = "html5";
+
 		if (options != null && options.length >= 2) {
 			JSONParser parser = new JSONParser();
 			JSONObject json = (JSONObject) parser.parse(options[1]);
@@ -58,14 +76,22 @@ public class BitmovinTechnologyValidator extends PlayBackPage implements Playbac
 				expectedValue = (String) json.get("platform");
 			}
 		}
-
+		
+		isDRMVideo = driver.findElementById("bitmovin_technology").getText().trim().split("DRM:")[1].trim();
+		
+		if(!isDRMVideo.contains("none"))
+			expectedValue = "html5";
+			
 		expectedValue = expectedValue + "." + streamType;
+		
+		}
 
 		String techString = driver.findElementById("bitmovin_technology").getText();
 
 		String actualValue = techString.trim().split("Bitmovin player is using technology:")[1].trim().split(",")[0]
 				.trim();
-
+		
+		
 		if (!actualValue.equals(expectedValue)) {
 			logger.error("Expected to find " + expectedValue + " in " + techString);
 			extentTest.log(LogStatus.FAIL, "Expected to find " + expectedValue + " in " + techString);

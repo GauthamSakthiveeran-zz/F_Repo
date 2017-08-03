@@ -32,4 +32,5 @@
     <entry key="fcc">resources/fcc.xml</entry>
     <entry key="playlist">resources/playlist.xml</entry>
     <entry key="scrubber">resources/scrubber.xml</entry>
+    <entry key="chromeComponents">resources/chromeComponents.xml</entry>
 </properties>

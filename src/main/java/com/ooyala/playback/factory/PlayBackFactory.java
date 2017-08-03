@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 import com.ooyala.playback.page.*;
 import org.openqa.selenium.WebDriver;
 import com.ooyala.playback.page.action.AutoplayAction;
+import com.ooyala.playback.page.action.ChromeFlashUpdateAction;
 import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
 import com.ooyala.playback.page.action.FullScreenAction;
 import com.ooyala.playback.page.action.LiveAction;
@@ -73,13 +74,14 @@ public class PlayBackFactory {
 	private VideoValidator videoValidator;
 	private ScrubberValidator scrubberValidator;
 	private AnalyticsValidator analyticsValidator;
+	private ChromeFlashUpdateAction chromeValidator;
 	private UIControlValidator uiControlValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
 		this.extentTest = extentTest;
 	}
-	
+
 	public ExtentTest getExtentTest() {
 		return extentTest;
 	}
@@ -524,15 +526,23 @@ public class PlayBackFactory {
 	}
 
 	public AnalyticsValidator getAnalyticsValidator() {
-		if (analyticsValidator == null){
+		if (analyticsValidator == null) {
 			analyticsValidator = new AnalyticsValidator(driver);
 			analyticsValidator.setExtentTest(extentTest);
 		}
 		return analyticsValidator;
 	}
 
-	public UIControlValidator getUiControlValidator(){
-		if(uiControlValidator == null){
+	public ChromeFlashUpdateAction getChromeComponentValidator() {
+		if (chromeValidator == null) {
+			chromeValidator = new ChromeFlashUpdateAction(driver);
+			chromeValidator.setExtentTest(extentTest);
+		}
+		return chromeValidator;
+	}
+
+	public UIControlValidator getUiControlValidator() {
+		if (uiControlValidator == null) {
 			uiControlValidator = new UIControlValidator(driver);
 			uiControlValidator.setExtentTest(extentTest);
 		}
