@@ -32,18 +32,18 @@ public class AdClickThroughValidator extends PlayBackPage implements
         return this;
     }
 
-	private boolean validateOverlayClickThrough() {
+    private boolean validateOverlayClickThrough() {
         if (isElementPresent("OVERLAY_IMAGE")) {
-        	if(!getBrowser().equalsIgnoreCase("safari"))
-            if (clickOnIndependentElement("OVERLAY_IMAGE")) {
-                if (!waitOnElement(By.id("adsClickThroughOpened"), 10000)) {
-                    extentTest.log(LogStatus.FAIL, "adsClickThroughOpened not found.");
+            if(!getBrowser().equalsIgnoreCase("safari"))
+                if (clickOnIndependentElement("OVERLAY_IMAGE")) {
+                    if (!waitOnElement(By.id("adsClickThroughOpened"), 10000)) {
+                        extentTest.log(LogStatus.FAIL, "adsClickThroughOpened not found.");
+                    } else {
+                        extentTest.log(LogStatus.PASS, "adsClickThroughOpened found.");
+                    }
                 } else {
-                    extentTest.log(LogStatus.PASS, "adsClickThroughOpened found.");
+                    extentTest.log(LogStatus.FAIL, "OVERLAY_IMAGE not clickable.");
                 }
-            } else {
-                extentTest.log(LogStatus.FAIL, "OVERLAY_IMAGE not clickable.");
-            }
         } else {
             extentTest.log(LogStatus.FAIL, "OVERLAY_IMAGE not found.");
         }
@@ -51,8 +51,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
     }
 
     public boolean validate(String element, int timeout) throws Exception {
-    	
-    	if(getBrowser().equalsIgnoreCase("safari")) return true;
+
+        if(getBrowser().equalsIgnoreCase("safari")) return true;
 
         if (!loadingSpinner()) {
             extentTest.log(LogStatus.FAIL, "In Loading spinner for a really long time.");
@@ -111,7 +111,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
                     return false;
                 }
             }
-            
+
             validateNoOfTabsOpened();
 
             extentTest.log(PASS, "AdsClicked by clicking on the ad screen");
@@ -157,15 +157,15 @@ public class AdClickThroughValidator extends PlayBackPage implements
         }
 
     }
-    
+
     private void validateNoOfTabsOpened() {
-    	int windowHandleCount = getWindowHandleCount();
+        int windowHandleCount = getWindowHandleCount();
 
         if (windowHandleCount <= 1) {
             log.info("New tab did not open on ad click.");
             extentTest.log(LogStatus.FAIL, "New tab did not open on ad click.");
         }
-        
+
         if (windowHandleCount > 1) {
             log.info("No of tabs opened - " + windowHandleCount);
 //            extentTest.log(LogStatus.FAIL, "Too many tabs opened - No of tabs : " + windowHandleCount);
@@ -176,6 +176,175 @@ public class AdClickThroughValidator extends PlayBackPage implements
         Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver)
                 .executeScript("return pp.isAdPlaying()"));
         return isAdplaying;
+    }
+
+    public boolean clickThroughOnAd(int counter) throws Exception {
+        String baseWindowHdl = driver.getWindowHandle();
+        Map<String, String> data = parseURL();
+        boolean flag = true;
+        if (data == null) {
+            throw new Exception("Map is null");
+        }
+
+        String value = data.get("ad_plugin");
+        String video_plugin = data.get("video_plugins");
+        boolean isAdPlaying = isAdPlaying();
+        if (isAdPlaying) {
+            if (isElementPresent("AD_SCREEN_PANEL")) {
+                if (!clickOnIndependentElement("AD_SCREEN_PANEL"))
+                    return false;
+
+                if (!waitOnElement(By.id("videoPausedAds_"+counter+""), 10000)) {
+                    log.info("unable to verify event videoPaused");
+                    extentTest.log(LogStatus.FAIL, "unable to verify event videoPaused");
+                    return false;
+                }
+
+            } else if (isElementPresent("AD_PANEL_1")) {
+                if (!(clickOnIndependentElement("AD_PANEL_1") && waitOnElement(By.id("adsClickThroughOpened"), 2000))) {
+                    return false;
+                }
+                flag = false;
+            } else {
+                if (!clickOnIndependentElement("AD_PANEL"))
+                    return false;
+            }
+
+            if (flag) {
+                if (!waitOnElement(By.id("adsClicked_"+counter+""), 2000)) {
+                    extentTest.log(FAIL,"adsClicked_"+counter+" event not found");
+                    return false;
+                }
+                if (!waitOnElement(By.id("adsClicked_videoWindow"), 2000)) {
+                    extentTest.log(FAIL,"adsClicked_videoWindow event not found");
+                    return false;
+                }
+            }
+
+            validateNoOfTabsOpened();
+
+            extentTest.log(PASS, "AdsClicked by clicking on the ad screen");
+            log.info("AdsClicked by clicking on the ad screen");
+            if (!value.contains("ima")) {
+                if (getBrowser().contains("internet explorer")) {
+                    if (value.contains("freewheel") && video_plugin.contains("main") && !video_plugin.contains("osmf")
+                            && !video_plugin.contains("bit")) {
+                        if (!(waitOnElement("LEARN_MORE_IE", 10000) && clickOnIndependentElement("LEARN_MORE_IE")))
+                            return false;
+                    } else {
+                        if (!(waitOnElement("LEARN_MORE", 10000) && clickOnHiddenElement("LEARN_MORE")))
+                            return false;
+                    }
+
+                } else {
+                    if (!(waitOnElement("LEARN_MORE", 10000) && clickOnIndependentElement("LEARN_MORE")))
+                        return false;
+                }
+                if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 2000))
+                    return false;
+
+                if (!waitOnElement(By.id("videoPausedAds_1"), 5000)) {
+                    log.info("unable to verify event videoPaused");
+                    extentTest.log(LogStatus.FAIL, "unable to verify event videoPaused");
+                    return false;
+                }
+
+                validateNoOfTabsOpened();
+
+            }
+            extentTest.log(PASS, "AdsClicked by clicking on the learn more button");
+            log.info("AdsClicked by clicking on the learn more button");
+
+            closeOtherWindows(baseWindowHdl);
+
+            ((JavascriptExecutor) driver).executeScript("pp.play()");
+            return true;
+        }else
+            return false;
+    }
+
+    public boolean clickThroughOnOverlay() throws Exception{
+        Map<String, String> data = parseURL();
+
+        if (data == null) {
+            throw new Exception("Map is null");
+        }
+
+        String value = data.get("ad_plugin");
+        String video_plugin = data.get("video_plugins");
+
+        if (!value.contains("ima")) {
+            if (getBrowser().contains("internet explorer")) {
+                if (value.contains("freewheel") && video_plugin.contains("main") && !video_plugin.contains("osmf")
+                        && !video_plugin.contains("bit")) {
+                    if (!(waitOnElement("LEARN_MORE_IE", 10000) && clickOnIndependentElement("LEARN_MORE_IE")))
+                        return false;
+                } else {
+                    if (!(waitOnElement("LEARN_MORE", 10000) && clickOnHiddenElement("LEARN_MORE")))
+                        return false;
+                }
+
+            } else {
+
+                if (!(waitOnElement("LEARN_MORE", 10000) && clickOnIndependentElement("LEARN_MORE")))
+                    return false;
+            }
+
+            if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 2000))
+                return false;
+
+            if (!waitOnElement(By.id("videoPausedAds_1"), 5000)) {
+                log.info("unable to verify event videoPaused");
+                extentTest.log(LogStatus.FAIL, "unable to verify event videoPaused");
+                return false;
+            }
+
+            validateNoOfTabsOpened();
+        }
+        extentTest.log(PASS, "AdsClicked by clicking on the learn more button");
+        log.info("AdsClicked by clicking on the learn more button");
+        return true;
+    }
+
+    public boolean validateClickThroughForPoddedAds(String adType) throws Exception{
+        int counter = 1;
+        while (isAdPlaying()) {
+            if (adType.equalsIgnoreCase("preroll")) {
+                if (!waitOnElement(By.id("PreRoll_willPlaySingleAd_" + counter + ""), 10000)) {
+                    extentTest.log(FAIL, "PreRoll_willPlaySingleAd_" + counter + " element not found");
+                    return false;
+                }
+            }else if (adType.equalsIgnoreCase("midroll")){
+                if (!waitOnElement(By.id("willPlayMidrollAd_" + counter + ""), 10000)) {
+                    extentTest.log(FAIL, "willPlayMidrollAd_" + counter + " element not found");
+                    return false;
+                }
+            }else if (adType.equalsIgnoreCase("postroll")){
+                if (!waitOnElement(By.id("willPlayPostrollAd_" + counter + ""), 10000)) {
+                    extentTest.log(FAIL, "willPlayPostrollAd_" + counter + " element not found");
+                    return false;
+                }
+            }
+
+            if (!clickThroughOnAd(counter)) {
+                extentTest.log(FAIL,"Clickthrough is not working");
+                return false;
+            }
+
+            if (!waitOnElement(By.id("singleAdPlayed_" + counter + ""), 50000)) {
+                extentTest.log(FAIL,"singleAdPlayed_" + counter + "element not found");
+                return false;
+            }
+
+            if (!loadingSpinner()){
+                return false;
+            }
+
+            if (!Boolean.parseBoolean(driver.executeScript("return pp.isPlaying()").toString())){
+                counter++;
+            }
+        }
+        return true;
     }
 
 }

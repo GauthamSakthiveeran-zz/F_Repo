@@ -44,7 +44,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			result = result && event.validate("PreRoll_willPlayAds", 150000);
+			result = result && event.validate("PreRoll_willPlaySingleAd_1", 30000);
 
 			if (result && click){
 				driver.executeScript("pp.pause()");
@@ -61,14 +61,14 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
                 if (result && !click) {
                     result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlayAds");
                 }else {
-                    result = result && event.validate("MidRoll_willPlayAds", 200000);
+                    result = result && event.validate("willPlayMidrollAd_1", 200000);
                     if (result && click){
                         driver.executeScript("pp.pause()");
                         s_assert.assertTrue(adClickThroughValidator.validate("videoPausedAds_4",20000),"Clickthrough");
                     }
                 }
             }else{
-            	result = result && event.validate("MidRoll_willPlayAds", 200000);
+            	result = result && event.validate("willPlayMidrollAd_1", 200000);
             	if (result && click){
 					driver.executeScript("pp.pause()");
 					s_assert.assertTrue(adClickThroughValidator.validate("videoPausedAds_4",20000),"Clickthrough");
@@ -81,7 +81,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
     		result = result && seekAction.seekTillEnd().startAction();
 
-			result = result && event.validate("PostRoll_willPlayAds", 900000);
+			result = result && event.validate("willPlayPostrollAd_1", 900000);
 			if (result && click){
 				driver.executeScript("pp.pause()");
 				s_assert.assertTrue(adClickThroughValidator.validate("videoPausedAds_6",20000),"Clickthrough");
