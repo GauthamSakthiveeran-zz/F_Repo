@@ -19,7 +19,7 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
-    public static Logger logger = Logger.getLogger(CCValidator.class);
+    private static final Logger logger = Logger.getLogger(CCValidator.class);
 
     List<WebElement> lang, textColor, bgColor, ccWinColor, ccFontSize, ccTextEnhancement;
     String previewTextSelected, textSelected, ccFontSizeBefore, ccFontSizeAfter, ccFontTypeBefore, ccFontTypeAfter,
@@ -43,6 +43,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                 return false;
             return true;
         } catch (Exception e) {
+            logger.error(e);
             extentTest.log(LogStatus.FAIL, "Error while closing cc panel.", e);
             return false;
         }
@@ -57,9 +58,11 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
         }
 
         if (isElementPresent("CLOSED_CAPTION_PANEL")) {
+            logger.info("Verified closed caption panel");
             extentTest.log(LogStatus.PASS, "Verified closed caption panel");
             return true;
         }
+        logger.error("CLOSED_CAPTION_PANEL is not present");
         extentTest.log(LogStatus.FAIL, "CLOSED_CAPTION_PANEL is not present");
         return false;
 
@@ -73,32 +76,34 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
             }
         } catch (Exception e) {
             logger.error("Error in focus on element cc switch");
+            extentTest.log(LogStatus.FAIL, "Error in focus on element cc switch");
         }
 
         if (clickOnIndependentElement("CC_SWITCH_CONTAINER")) {
             if (!isElementPresent("CC_OFF")) {
+                logger.error("CC_OFF is not present.");
                 extentTest.log(LogStatus.FAIL, "CC_OFF is not present.");
                 return false;
             }
 
             if (!waitOnElement(By.id("savePlayerSettings_off_1"), 20000)) {
-                extentTest.log(LogStatus.INFO, "savePlayerSettings event after making CC button off is not triggering");
+                logger.error("savePlayerSettings event after making CC button off is not triggering");
+                extentTest.log(LogStatus.FAIL, "savePlayerSettings event after making CC button off is not triggering");
             }
 
-            logger.info("savePlayerSettings event after making CC button off is triggering");
-
             if (!(clickOnIndependentElement("CC_SWITCH_CONTAINER") && isElementPresent("CC_ON"))) {
+                logger.error("CC_ON is not present");
                 extentTest.log(LogStatus.FAIL, "CC_ON is not present");
                 return false;
             }
 
             if (!waitOnElement(By.id("savePlayerSettings_on_1"), 20000)) {
-                extentTest.log(LogStatus.INFO, "savePlayerSettings event after making CC button on is not triggering");
+                logger.error("savePlayerSettings event after making CC button on is not triggering");
+                extentTest.log(LogStatus.FAIL, "savePlayerSettings event after making CC button on is not triggering");
             }
 
-            logger.info("savePlayerSettings event after making CC button on is triggering");
-
         } else {
+            logger.error("click on CC_SWITCH_CONTAINER failed");
             extentTest.log(LogStatus.FAIL, "click on CC_SWITCH_CONTAINER failed");
             return false;
         }
@@ -135,11 +140,12 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
             } else {
                 return true;
             }
+            logger.error("CC_POPHOVER_HORIZONTAL is not present!");
             extentTest.log(LogStatus.FAIL, "CC_POPHOVER_HORIZONTAL is not present!");
             return false;
         } catch (Exception e) {
+            logger.error(e);
             extentTest.log(LogStatus.FAIL, "Horizontal cc option is not present");
-            ;
         }
         return false;
 
@@ -151,6 +157,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                 "var attrb = pp.getCurrentItemClosedCaptionsLanguages().languages;" + "{return attrb;}")));
         boolean flag = true;
         if (langlist == null || langlist.size() == 0) {
+            logger.error("langList is null");
             extentTest.log(LogStatus.FAIL, "langList is null");
             return false;
         }
@@ -160,14 +167,19 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
             flag = flag && waitOnElement(By.id("cclanguage_" + langlist.get(i)), 10000);
 
-            if (!flag)
+            if (!flag) {
+                logger.error("Wait on element cclanguage_" + langlist.get(i) + " failed.");
                 extentTest.log(LogStatus.FAIL, "Wait on element cclanguage_" + langlist.get(i) + " failed.");
+            }
 
         }
-        if (flag)
+        if (flag) {
+            logger.info("Verified closed caption panel languages");
             extentTest.log(LogStatus.PASS, "Verified closed caption panel languages");
-        else
+        } else {
+            logger.error("Closed caption panel languages Failed.");
             extentTest.log(LogStatus.FAIL, "Closed caption panel languages Failed.");
+        }
         return flag;
     }
 
@@ -200,16 +212,19 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
             if (isLeftRightBtn) {
                 logger.info("verifying the scrolling for langauges");
                 if (!clickOnIndependentElement("RIGHT_BTN")) {
+                    logger.error("Click on RIGHT_BTN failed");
                     extentTest.log(LogStatus.FAIL, "Click on RIGHT_BTN failed");
                     return false;
                 }
                 if (!clickOnIndependentElement("LEFT_BTN")) {
+                    logger.error("Click on LEFT_BTN failed");
                     extentTest.log(LogStatus.FAIL, "Click on LEFT_BTN failed");
                     return false;
                 }
             }
 
             if (!isElementPresent("CC_PREVIEW_CAPTION")) {
+                logger.error("CC_PREVIEW_CAPTION is not present.");
                 extentTest.log(LogStatus.FAIL, "CC_PREVIEW_CAPTION is not present.");
             }
 
@@ -315,7 +330,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
             // select text colors
             textColor = getWebElementsList("CC_TEXT_COLOR_SELECTOR");
 
-            if (textColor.isEmpty() || textColor==null) {
+            if (textColor.isEmpty() || textColor == null) {
                 extentTest.log(LogStatus.FAIL, "CC_TEXT_COLOR_SELECTOR not found");
             }
 
@@ -324,28 +339,28 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
             for (int i = 0; i < textColor.size(); i++) {
                 textColor.get(i).click();
-                String ccTextColor = getWebElement("CC_TEXT_COLOR").getText(); // e.g.
-                // Text
-                // color:
-                // White
+                String ccTextColor = getWebElement("CC_TEXT_COLOR").getText();
+                // e.g. Text color:White
                 logger.info("\t Text Color Selected :" + ccTextColor);
 
                 if (!colorsName[i + 1].equalsIgnoreCase(ccTextColor)) {
+                    logger.error("Color mismatch : Expected - " + colorsName[i + 1] + " Actual : " + ccTextColor);
                     extentTest.log(LogStatus.FAIL,
                             "Color mismatch : Expected - " + colorsName[i + 1] + " Actual : " + ccTextColor);
                 }
 
-                // verify color selected
-                // issue id
+                // verify color selected issue id
                 if (getWebElement("oo-responsive").getAttribute("className")
                         .equalsIgnoreCase("oo-responsive oo-large")) {
                     String ccPreviewTextColor = getWebElement("CC_PREVIEW_TEXT").getCssValue("color");
                     logger.info("\t Preview Text Color Selected :" + ccPreviewTextColor);
 
                     if (colorsCode[i].equalsIgnoreCase(ccPreviewTextColor)) {
+                        logger.info("Color mismatch : Expected - " + colorsCode[i] + " Actual : " + ccPreviewTextColor);
                         extentTest.log(LogStatus.PASS,
                                 "Color mismatch : Expected - " + colorsCode[i] + " Actual : " + ccPreviewTextColor);
                     } else if (!colorsCode1[i].equalsIgnoreCase(ccPreviewTextColor)) {
+                        logger.error("Color mismatch : Expected - " + colorsCode1[i] + " Actual : " + ccPreviewTextColor);
                         extentTest.log(LogStatus.FAIL,
                                 "Color mismatch : Expected - " + colorsCode1[i] + " Actual : " + ccPreviewTextColor);
                     }
@@ -359,6 +374,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\n*---------Verify Background color Selection Panel---------*\n");
 
             if (bgColor == null || bgColor.size() == 0) {
+                logger.error("CC_BACKGROUND_COLOR_SELECTOR not found");
                 extentTest.log(LogStatus.FAIL, "CC_BACKGROUND_COLOR_SELECTOR not found");
             }
 
@@ -372,14 +388,13 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                     bgColor.get(i).click();
                 }
 
-                String ccBgColor = getWebElement("CC_BACKGROUND_COLOR").getText(); // e.g
-                // Background
-                // color:
-                // Black
+                String ccBgColor = getWebElement("CC_BACKGROUND_COLOR").getText();
+                // e.g Background color: Black
                 logger.info("\t Background Color Selected :" + ccBgColor);
                 flag = flag && colorsName[i].equalsIgnoreCase(ccBgColor);
 
                 if (!colorsName[i].equalsIgnoreCase(ccBgColor)) {
+                    logger.error("Bg Color mismatch : Expected - " + colorsName[i] + " Actual : " + ccBgColor);
                     extentTest.log(LogStatus.FAIL,
                             "Bg Color mismatch : Expected - " + colorsName[i] + " Actual : " + ccBgColor);
                 }
@@ -392,11 +407,15 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                         logger.info("\t Background color of Preview Text Selected :" + ccPreviewBgColor);
                         if (ccPreviewBgColor.contains("transparent")) {
                             if (!bgColorsCode1[i].equalsIgnoreCase(ccPreviewBgColor)) {
+                                logger.error("Bg Color mismatch : Expected - " + bgColorsCode1[i]
+                                        + " Actual : " + ccPreviewBgColor);
                                 extentTest.log(LogStatus.FAIL, "Bg Color mismatch : Expected - " + bgColorsCode1[i]
                                         + " Actual : " + ccPreviewBgColor);
                             }
                         } else {
                             if (!bgColorsCode[i].equalsIgnoreCase(ccPreviewBgColor)) {
+                                logger.error("Bg Color mismatch : Expected - " + bgColorsCode[i]
+                                        + " Actual : " + ccPreviewBgColor);
                                 extentTest.log(LogStatus.FAIL, "Bg Color mismatch : Expected - " + bgColorsCode[i]
                                         + " Actual : " + ccPreviewBgColor);
                             }
@@ -413,6 +432,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\n*---------Verify Window Color Selection Panel---------*\n");
 
             if (ccWinColor == null || ccWinColor.size() == 0) {
+                logger.error("CC_WINDOW_COLOR_SELECTOR not found");
                 extentTest.log(LogStatus.FAIL, "CC_WINDOW_COLOR_SELECTOR not found");
             }
 
@@ -429,6 +449,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                 logger.info("\t Window Color Selected :" + ccWindowColor);
 
                 if (!colorsName[i].equalsIgnoreCase(ccWindowColor)) {
+                    logger.error("Window Color mismatch : Expected - " + colorsName[i] + " Actual : " + ccWindowColor);
                     extentTest.log(LogStatus.FAIL,
                             "Window Color mismatch : Expected - " + colorsName[i] + " Actual : " + ccWindowColor);
                 }
@@ -441,11 +462,15 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                         logger.info("\t Window color of Preview Text Selected :" + ccPreviewWinColor);
                         if (ccPreviewWinColor.contains("transparent")) {
                             if (bgColorsCode1[i].equalsIgnoreCase(ccPreviewWinColor)) {
+                                logger.error("Window Color mismatch : Expected - " + bgColorsCode1[i]
+                                        + " Actual : " + ccPreviewWinColor);
                                 extentTest.log(LogStatus.FAIL, "Window Color mismatch : Expected - " + bgColorsCode1[i]
                                         + " Actual : " + ccPreviewWinColor);
                             }
                         } else {
                             if (bgColorsCode[i].equalsIgnoreCase(ccPreviewWinColor)) {
+                                logger.error("Window Color mismatch : Expected - " + bgColorsCode[i]
+                                        + " Actual : " + ccPreviewWinColor);
                                 extentTest.log(LogStatus.FAIL, "Window Color mismatch : Expected - " + bgColorsCode[i]
                                         + " Actual : " + ccPreviewWinColor);
                             }
@@ -477,10 +502,11 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
     private boolean validateCaptionOpacity(String opacityValue) {
         if (!getBrowser().equalsIgnoreCase("safari")) {
-            if (opacityValue.equals("rgba(0, 0, 0, 0.8)")) {
+            if (opacityValue.equals("rgba(0, 0, 0, 0.5)")) {
                 return true;
             } else {
-                logger.error(opacityValue + "is not matching with rgba(0, 0, 0, 0.8)");
+                logger.error(opacityValue + "is not matching with rgba(0, 0, 0, 0.5)");
+                extentTest.log(LogStatus.FAIL, opacityValue + "is not matching with rgba(0, 0, 0, 0.5)");
                 return false;
             }
         } else {
@@ -488,6 +514,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                 return true;
             }
         }
+        extentTest.log(LogStatus.FAIL, "value is not matching with rgba(0, 0, 0, 0)");
         logger.error(opacityValue + "value is not matching with rgba(0, 0, 0, 0)");
         return false;
     }
@@ -720,6 +747,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                 logger.info("\t Text Enhancement for CC Preview Text :" + ccPreviewTextEnh);
                 if (!(textEnName[i].equals(ccTextEnh))) {
                     logger.error("Preview Text enhancement is not matching");
+                    extentTest.log(LogStatus.FAIL, "Preview Text enhancement is not matching");
                     return false;
                 }
                 // verify text enhancement selected
@@ -727,10 +755,12 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                         || getBrowser().equalsIgnoreCase("MicrosoftEdge")) {
                     if (!(textEnCodeForIE[i].equals(ccPreviewTextEnh))) {
                         logger.error("Preview Text enhancement is not matching for internet explorer browser");
+                        extentTest.log(LogStatus.FAIL, "Preview Text enhancement is not matching for internet explorer browser");
                         return false;
                     }
                 } else if (!(textEnCode[i].equals(ccPreviewTextEnh))) {
                     logger.error("Preview Text enhancement is not matching for " + getBrowser() + "browser");
+                    extentTest.log(LogStatus.FAIL, "Preview Text enhancement is not matching for " + getBrowser() + "browser");
                     return false;
                 }
             }
@@ -762,20 +792,22 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
         boolean flag = switchToControlBar() && closedCaptionMicroPanel() && validateClosedCaptionPanel()
                 && validateSwitchContainer();
 
-        if(flag){
-            flag= checkClosedCaptionLanguages() && closeCCPanel();
+        if (flag) {
+            flag = checkClosedCaptionLanguages() && closeCCPanel();
         }
 
         if (flag) {
             if (clickOnIndependentElement("PAUSE_BUTTON")) {
                 flag = waitOnElement(By.id("ccmode_disabled"), 20000);
             } else {
-                extentTest.log(LogStatus.FAIL,"Failed to click on PAUSE_BUTTON");
+                extentTest.log(LogStatus.FAIL, "Failed to click on PAUSE_BUTTON");
+                logger.error("Failed to click on PAUSE_BUTTON");
                 flag = false;
             }
         }
         if (!flag) {
             extentTest.log(LogStatus.FAIL, "closed caption validation failed.");
+            logger.error("closed caption validation failed.");
         }
         return flag;
 
@@ -789,6 +821,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
             return true;
         } catch (Exception e) {
             extentTest.log(LogStatus.FAIL, "Error while closing discovery window.", e);
+            logger.error("Error while closing discovery window.", e);
             return false;
         }
     }
@@ -1036,6 +1069,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
             return result;
         } catch (Exception e) {
+            extentTest.log(LogStatus.FAIL, "Error while comparing values after refresh " + e);
             logger.error("Error while comparing values after refresh " + e);
             return false;
         }
@@ -1046,6 +1080,8 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
         for (final String key : afterRefreshValuesMap.keySet()) {
             if (afterRefreshValuesMap.containsKey(key) && beforeRefreshPageMap.containsKey(key)) {
                 if (!afterRefreshValuesMap.get(key).equals(beforeRefreshPageMap.get(key))) {
+                    logger.error("Issue with ccOpacity Values for :" + key + " : Before Refresh"
+                            + beforeRefreshPageMap.get(key) + " After Refresh : " + afterRefreshValuesMap.get(key));
                     extentTest.log(LogStatus.FAIL, "Issue with ccOpacity Values for :" + key + " : Before Refresh"
                             + beforeRefreshPageMap.get(key) + " After Refresh : " + afterRefreshValuesMap.get(key));
                     return false;
@@ -1085,5 +1121,4 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
         extentTest.log(LogStatus.FAIL, "CC's are cleared and not piling up");
         return true;
     }
-
 }
