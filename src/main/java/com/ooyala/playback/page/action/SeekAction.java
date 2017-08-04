@@ -23,6 +23,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	private String adPlugin;
 	private int factor;
 	private boolean seekTillEnd;
+	private boolean seekToMid;
 
 	public SeekAction(WebDriver webDriver) {
 		super(webDriver);
@@ -33,10 +34,16 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		adPlugin = "";
 		factor = 1;
 		seekTillEnd = false;
+		seekToMid = false;
 	}
 
 	public SeekAction seekTillEnd() {
 		seekTillEnd = true;
+		return this;
+	}
+	
+	public SeekAction seekToMid() {
+		seekToMid = true;
 		return this;
 	}
 
@@ -63,8 +70,9 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	@Override
 	public boolean startAction() throws Exception {
 
-		if (time == 0 && seekTillEnd == false) {
-			throw new Exception("Time to seek needs to be set! or seekTillEnd should be set to true");
+		if (time == 0 && !seekTillEnd) {
+			if(!seekToMid)
+				throw new Exception("Time to seek needs to be set! or seekTillEnd should be set to true");
 		}
 
 		if (!adPlugin.isEmpty()) {
@@ -95,10 +103,19 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 
 	public boolean seek(int time, boolean fromLast) throws Exception {
 		String seekduration;
+		
+		if(seekToMid) {
+			seekToMid = false;
+			factor = 1;
+			return seek("pp.getDuration()/2");
+		}
+		
 		if (fromLast) {
 			seekduration = getDurationString();
+			this.fromLast = false;
 		} else {
 			seekduration = "";
+			return seek(time + "");
 		}
 		factor = 1;
 		return seek(seekduration + "-" + time + "");
@@ -107,6 +124,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	public boolean seek(String time) {
 		try {
 			((JavascriptExecutor) driver).executeScript("return pp.seek(" + time + ")" + "");
+			this.time = 0;
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;

@@ -7,6 +7,7 @@ import java.util.Map;
 import com.ooyala.playback.enums.PlayerPropertyKey;
 import com.ooyala.playback.enums.PlayerPropertyValue;
 import org.apache.log4j.Logger;
+
 import com.ooyala.playback.utils.CommandLineParameters;
 import com.ooyala.qe.common.util.PropertyReader;
 
@@ -18,10 +19,11 @@ public class UrlGenerator {
     private TestPage test = null;
     private String url;
     private Map<PlayerPropertyKey, PlayerPropertyValue> playerProperties = new HashMap<PlayerPropertyKey, PlayerPropertyValue>();
-    private static final Logger logger = Logger.getLogger(UrlGenerator.class);
+    private Logger logger = Logger.getLogger(UrlGenerator.class);
     private String adPluginFilter = new String();
     private String videoPluginFilter = new String();
     private String descriptionFilter = new String();
+    private String priority = new String();
     private Map<String, String> liveChannelDetails = new HashMap<String, String>();
     private Map<String, String> liveChannelProviders = new HashMap<String, String>();
     private Map<String, String> streamTypeDetails = new HashMap<String, String>();
@@ -78,7 +80,8 @@ public class UrlGenerator {
                 if (data.getName().equals(testName)) {
                     List<Url> urls = data.getUrl();
                     for (Url url : urls) {
-                        // Adding browser support here.The data provider will not
+                        // Adding browser support here.The data provider will
+                        // not
                         // even give that data if we do not support for that
                         // browser.
                         if (url.getBrowsersSupported() != null && url.getBrowsersSupported().getName() != null
@@ -102,11 +105,14 @@ public class UrlGenerator {
 
                         }
 
-                        /***
-                         * TestData url can not be return if platform does not
-                         * get supported for particular video plugin... e.g OSMF
-                         * does not get supported on Android Platform
-                         */
+                        if (applyPriorityFilter()) {
+
+                            if (!(url.getPriority() != null && url.getPriority().getName() != null
+                                    && !url.getPriority().getName().isEmpty()
+                                    && url.getPriority().getName().toLowerCase().contains(priority.toLowerCase()))) {
+                                continue;
+                            }
+                        }
 
                         if (System.getProperty(CommandLineParameters.adobeTVSDK) != null
                                 && !System.getProperty(CommandLineParameters.adobeTVSDK).isEmpty()
@@ -119,12 +125,14 @@ public class UrlGenerator {
                         }
 
                         if (url.getPlatformsSupported() != null && url.getPlatformsSupported().getName() != null
-                                && !url.getPlatformsSupported().getName().toLowerCase().contains(System.getProperty(CommandLineParameters.platform).toLowerCase())) {
+                                && !url.getPlatformsSupported().getName().toLowerCase()
+                                .contains(System.getProperty(CommandLineParameters.platform).toLowerCase())) {
                             continue;
                         }
 
                         // to run tests for specific ad plugins
-                        if (applyFilter() && url.getAdPlugins().getName() != null && !url.getAdPlugins().getName().isEmpty()
+                        if (applyFilter() && url.getAdPlugins().getName() != null
+                                && !url.getAdPlugins().getName().isEmpty()
                                 && !url.getAdPlugins().getName().equalsIgnoreCase(adPluginFilter)) {
                             if (!testDataValidator.validateAdPlugin(adPluginFilter))
                                 break;
@@ -140,8 +148,8 @@ public class UrlGenerator {
 
                         // to run tests for specific video plugins
                         if (applyVideoFilter() && url.getPlugins().getName() != null
-                                && !url.getPlugins().getName().isEmpty()
-                                && !url.getPlugins().getName().toUpperCase().contains(videoPluginFilter.toUpperCase())) {
+                                && !url.getPlugins().getName().isEmpty() && !url.getPlugins().getName().toUpperCase()
+                                .contains(videoPluginFilter.toUpperCase())) {
                             if (!testDataValidator.validateVideoPlugin(videoPluginFilter))
                                 break;
                             continue;
@@ -179,17 +187,12 @@ public class UrlGenerator {
                             } catch (Exception e) {
                                 e.getMessage();
                             }
-                            try{
                             int index = playerParameter.lastIndexOf("}");
                             if (index == -1) {
                                 playerParameter = "{" + properties.getProperty("sas_staging_url") + "}";
                             } else {
                                 playerParameter = playerParameter.substring(0, index) + ","
                                         + properties.getProperty("sas_staging_url") + playerParameter.substring(index);
-                            }
-                            }catch(Exception ex){
-                                logger.info(ex);
-                                throw new IndexOutOfBoundsException("Index Out of bound exception");
                             }
                         }
 
@@ -236,7 +239,8 @@ public class UrlGenerator {
                         String desc = url.getDescription().getName();
 
                         boolean flag = true;
-                        if (url.getStreamType() != null && url.getStreamType().getName() != null && !url.getStreamType().getName().isEmpty()) {
+                        if (url.getStreamType() != null && url.getStreamType().getName() != null
+                                && !url.getStreamType().getName().isEmpty()) {
                             urlObject.setStreamType(url.getStreamType().getName());
                             flag = false;
                         }
@@ -301,6 +305,11 @@ public class UrlGenerator {
     private boolean applyVideoFilter() {
         videoPluginFilter = System.getProperty(CommandLineParameters.videoPlugin);
         return videoPluginFilter != null && !videoPluginFilter.isEmpty();
+    }
+
+    private boolean applyPriorityFilter() {
+        priority = System.getProperty(CommandLineParameters.priority);
+        return priority != null && !priority.isEmpty();
     }
 
     private boolean applyDescriptionFilter() {

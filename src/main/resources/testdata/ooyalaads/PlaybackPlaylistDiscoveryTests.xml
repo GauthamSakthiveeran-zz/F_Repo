@@ -3,6 +3,7 @@
 	<test name="PlaybackPlaylistDiscoveryTests">
 		<url>
 			<description name="Ooyala Ads:Main Playlist" />
+			<priority name="P2"></priority>
 			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -14,6 +15,7 @@
 
 		<url>
 			<description name="Ooyala Ads:AdobeTVSDK Playlist" />
+			<priority name="P2"></priority>
 			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="ADOBETVSDK" />
@@ -25,6 +27,7 @@
 
 		<url>
 			<description name="Ooyala Ads:Main Discovery" />
+			<priority name="P2"></priority>
 			<embed_code name="s5czdxODE6wRK7f5QQ5DXIGvFYbCUSYY" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -36,6 +39,7 @@
 
 		<url>
 			<description name="Ooyala Ads:AdobeTVSDK Discovery" />
+			<priority name="P2"></priority>
 			<embed_code name="s5czdxODE6wRK7f5QQ5DXIGvFYbCUSYY" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="ADOBETVSDK" />
@@ -46,6 +50,7 @@
 		</url>
 		<url>
 			<description name="Ooyala Ads:Main Discovery and Playlist" />
+			<priority name="P2"></priority>
 			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -56,6 +61,7 @@
 		</url>
 		<url>
 			<description name="Ooyala Ads:Bitmovin Discovery and Playlist" />
+			<priority name="P2"></priority>
 			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="BITMOVIN" />
@@ -67,6 +73,7 @@
 
 		<url>
 			<description name="Ooyala Ads:AdobeTVSDK Discovery and Playlist" />
+			<priority name="P2"></priority>
 			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="ADOBETVSDK" />
@@ -78,6 +85,7 @@
 
 		<url>
 			<description name="Ooyala Ads:Bitmovin Playlist" />
+			<priority name="P2"></priority>
 			<embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="BITMOVIN" />
@@ -88,6 +96,7 @@
 		</url>
 		<url>
 			<description name="Ooyala Ads:Bitmovin Discovery" />
+			<priority name="P2"></priority>
 			<embed_code name="s5czdxODE6wRK7f5QQ5DXIGvFYbCUSYY" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="BITMOVIN" />

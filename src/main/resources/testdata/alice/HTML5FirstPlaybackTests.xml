@@ -3,6 +3,7 @@
 	<test name="HTML5FirstPlaybackTests">
 		<url>
 			<description name="Core:Set Platform to Flash/HTML5/Default" />
+			<priority name="P1"></priority>
 			<embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="BITMOVIN" />
@@ -14,6 +15,7 @@
 		</url>
         <url>
             <description name="Playlist:Platform-html5 BITMOVIN|Playlist:Platform-flash BITMOVIN" />
+            <priority name="P1"></priority>
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
