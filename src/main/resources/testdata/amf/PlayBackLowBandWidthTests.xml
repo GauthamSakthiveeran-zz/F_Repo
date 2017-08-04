@@ -4,6 +4,7 @@
 	<test name="PlayBackLowBandWidthTests">
 		<url>
 			<description name="IMA:Main Lower Bandwidth" />
+			<priority name="P2"></priority>
 			<embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -16,6 +17,7 @@
 
 		<url>
 			<description name="IMA:Bitmovin Lower Bandwidth" />
+			<priority name="P2"></priority>
 			<embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -28,6 +30,7 @@
 
 		<url>
 			<description name="IMA:OSMF Lower Bandwidth" />
+			<priority name="P2"></priority>
 			<embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -40,6 +43,7 @@
 
 		<url>
 			<description name="Freewheel:Main Lower Bandwidth" />
+			<priority name="P2"></priority>
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -52,6 +56,7 @@
 
 		<url>
 			<description name="Freewheel:Bitmovin Lower Bandwidth" />
+			<priority name="P2"></priority>
 			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
@@ -64,6 +69,7 @@
 
 		<url>
 			<description name="Freewheel:OSMF Lower Bandwidth" />
+			<priority name="P2"></priority>
 			<embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -76,6 +82,7 @@
 
 		<url>
 			<description name="VAST:Main Vast2.0 Lower Bandwidth" />
+			<priority name="P2"></priority>
 			<embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -88,6 +95,7 @@
 
 		<url>
 			<description name="VAST:Bitmovin Vast2.0 Lower Bandwidth" />
+			<priority name="P2"></priority>
 			<embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -101,6 +109,7 @@
 
 		<url>
 			<description name="VAST:OSMF Vast2.0 Lower Bandwidth" />
+			<priority name="P2"></priority>
 			<embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -113,6 +122,7 @@
 		
 		<url>
 			<description name="VAST:Bitmovin Vast3.0 Lower Bandwidth" />
+			<priority name="P2"></priority>
 			<embed_code name="F3ZDZnMTE6wRhTx8jtsvskI76Gx1RbZG" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
@@ -125,6 +135,7 @@
 		
 		<url>
 			<description name="VAST:OSMF Vast3.0 Lower Bandwidth" />
+			<priority name="P2"></priority>
 			<embed_code name="FycThxYTE6OhsaYY_SpBCDaMhbWj2xEp" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -137,6 +148,7 @@
 		
 		<url>
 			<description name="VAST:Main Vast3.0 Lower Bandwidth" />
+			<priority name="P2"></priority>
 			<embed_code name="tycXgxMTE6O8YBBBInYkwaKF0mNSqln9" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />

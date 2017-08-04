@@ -21,6 +21,7 @@ public class UrlGenerator {
 	private String adPluginFilter = new String();
 	private String videoPluginFilter = new String();
 	private String descriptionFilter = new String();
+	private String priority = new String();
 	private Map<String, String> liveChannelDetails = new HashMap<String, String>();
 	private Map<String, String> liveChannelProviders = new HashMap<String, String>();
 	private Map<String, String> streamTypeDetails = new HashMap<String, String>();
@@ -103,12 +104,15 @@ public class UrlGenerator {
 
 						}
 
-						/***
-						 * TestData url can not be return if platform does not
-						 * get supported for particular video plugin... e.g OSMF
-						 * does not get supported on Android Platform
-						 */
-
+						if (applyPriorityFilter()) {
+							
+							if (!(url.getPriority() != null && url.getPriority().getName() != null
+									&& !url.getPriority().getName().isEmpty()
+									&& url.getPriority().getName().toLowerCase().contains(priority.toLowerCase()))) {
+								continue;
+							}
+						}
+						
 						if (System.getProperty(CommandLineParameters.adobeTVSDK) != null
 								&& !System.getProperty(CommandLineParameters.adobeTVSDK).isEmpty()
 								&& System.getProperty(CommandLineParameters.adobeTVSDK).toLowerCase()
@@ -298,7 +302,12 @@ public class UrlGenerator {
 		videoPluginFilter = System.getProperty(CommandLineParameters.videoPlugin);
 		return videoPluginFilter != null && !videoPluginFilter.isEmpty();
 	}
-
+	
+	private boolean applyPriorityFilter() {
+		priority = System.getProperty(CommandLineParameters.priority);
+		return priority != null && !priority.isEmpty();
+	}
+	
 	private boolean applyDescriptionFilter() {
 		descriptionFilter = System.getProperty("description");
 		if (descriptionFilter != null && !descriptionFilter.isEmpty()) {

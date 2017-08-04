@@ -3,6 +3,7 @@
 	<test name ="PlaybackSkipOoyalaAdsTests" >
     	<url>
 	    	<description name="Ooyala Ads:Main skip ad button"/>
+	    	<priority name="P2"></priority>
 	        <embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -14,6 +15,7 @@
 
     	<url>
 	    	<description name="Ooyala Ads:Bitmovin skip ad button"/>
+	    	<priority name="P2"></priority>
 	        <embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="BITMOVIN"/>
@@ -26,6 +28,7 @@
 
 		<url>
 			<description name="Ooyala Ads:AdobeTVSDK skip ad button"/>
+			<priority name="P2"></priority>
 			<embed_code name="JidTVxODE64OyqoN567grnBVG-rdJJ5j"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="ADOBETVSDK"/>

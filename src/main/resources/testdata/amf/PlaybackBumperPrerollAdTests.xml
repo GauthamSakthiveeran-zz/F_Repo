@@ -4,6 +4,7 @@
 	<test name ="PlaybackBumperPrerollAdTests" > 
     	<url>
 	    	<description name="Freewheel:Main Bumper Preroll Ad"/>
+	    	<priority name="P2"></priority>
 	        <embed_code name="xreGtubzqLjtffYbWdoWuEs-Hd2LyTCV"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>

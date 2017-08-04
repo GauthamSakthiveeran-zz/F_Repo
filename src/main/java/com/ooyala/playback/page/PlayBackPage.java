@@ -517,16 +517,38 @@ public abstract class PlayBackPage extends WebPage {
 	}
 	
 	public boolean validatePlayStartTimeFromBeginningofVideo() {
-		if(waitOnElement(By.id("playTime"), 1000)) {
+		if (waitOnElement(By.id("playTime"), 1000)) {
 			Double playHeadTime = Double.parseDouble(driver.findElementById("playTime").getText());
+			extentTest.log(LogStatus.INFO, "Playhead time is :" + playHeadTime);
 			if (playHeadTime > 1.0) {
 				extentTest.log(LogStatus.FAIL, "Video does not start from begining");
 				logger.error("Video does not start from begining");
-				logger.info("Playhead time is :" + playHeadTime);
 				return false;
 			}
 			extentTest.log(LogStatus.PASS, "Video does start from begining");
 			logger.info("Video does start from begining");
+			logger.info("Playhead time is :" + playHeadTime);
+		} else {
+			extentTest.log(LogStatus.FAIL, "Unable to validate start time of video.");
+		}
+		return true;
+	}
+
+	public boolean validateMainVideoPlaybackStartTimeAfterMidrollAd(String timeString) {
+		if(timeString==null || timeString.isEmpty())
+			return true;
+		double time = Double.parseDouble(timeString);
+		if (waitOnElement(By.id("midroll_playTime"), 1000)) {
+			Double playHeadTime = Double.parseDouble(driver.findElementById("midroll_playTime").getText());
+			extentTest.log(LogStatus.INFO, "Playhead time is :" + playHeadTime);
+			if (playHeadTime > time) {
+				extentTest.log(LogStatus.FAIL, "Video does not start from " + time);
+				logger.error("Video does not start from " + time);
+
+				return false;
+			}
+			extentTest.log(LogStatus.PASS, "Video does start from " + time);
+			logger.info("Video does start from " + time);
 			logger.info("Playhead time is :" + playHeadTime);
 		} else {
 			extentTest.log(LogStatus.FAIL, "Unable to validate start time of video.");

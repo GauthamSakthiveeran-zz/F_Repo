@@ -4,6 +4,7 @@
 	<test name ="PlaybackCCenableMidRollAdsTests" >
     	<url>
 	    	<description name="Pulse:Bitmovin Midroll with CC"/>
+	    	<priority name="P3"></priority>
 	        <embed_code name="pqZDNhMzE66W7eS-Mvy4iyTP3nrbh_tK"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -15,6 +16,7 @@
     	
     	<url>
 	    	<description name="Freewheel:OSMF CC enabled Midroll"/>
+	    	<priority name="P3"></priority>
 	        <embed_code name="Y5dWVmMDE6lIE-PNSXHfsuTNPmeWbjC4"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN,OSMF"/>
@@ -27,6 +29,7 @@
     	
     	<url>
 	    	<description name="IMA:OSMF CC enabled Midroll"/>
+	    	<priority name="P3"></priority>
 	        <embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -39,6 +42,7 @@
     	
     	<url>
 	    	<description name="Pulse:OSMF Midroll with CC"/>
+	    	<priority name="P3"></priority>
 	        <embed_code name="o3djdxYTE68uFENrYFfWjbxw-6--X7q_"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF"/>
@@ -51,6 +55,7 @@
     	
     	<url>
 	    	<description name="VAST:OSMF Vast2.0 CC enabled Midroll"/>
+	    	<priority name="P3"></priority>
 	        <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -63,6 +68,7 @@
     	
     	<url>
 			<description name="VAST:OSMF Vast3.0 CC enabled Midroll" />
+			<priority name="P3"></priority>
 			<embed_code name="g0MDlxYTE66Cn1zojxFBQZ8GxmEF5C93" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />

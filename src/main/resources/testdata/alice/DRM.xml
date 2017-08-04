@@ -3,6 +3,7 @@
     <test name="PlaybackDRMTests">
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental H.264 4K Dash Cenc VOD" />
+            <priority name="P2"></priority>
             <embed_code name="hsM2h3NTE6oVIIGFqk1fERPOXv-2Myr0" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN,MAIN" />
@@ -17,6 +18,7 @@
 
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Azure H.264 4K Dash Cenc VOD" />
+            <priority name="P2"></priority>
             <embed_code name="p5czlvYTE6DunKQ3il63PH5T7G5pG0Md" />
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="BITMOVIN,MAIN" />
@@ -30,6 +32,7 @@
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash VOD" />
+            <priority name="P1"></priority>
             <embed_code name="Q1cG85NTE6Df3A95XMMbKGsPg6yaEZGm" />
             <pcode name="FoeG863GnBL4IhhlFC1Q2jqbkH9m" />
             <plugins name="BITMOVIN" />
@@ -43,6 +46,7 @@
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Azure Dash VOD" />
+            <priority name="P1"></priority>
             <embed_code name="91bTlvYTE6OOI_wKMsLdn4_suUEvZjJ4" />
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="BITMOVIN" />
@@ -56,6 +60,7 @@
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental HLS VOD" />
+            <priority name="P1"></priority>
             <embed_code name="t0MTJyYTE6eebDsFwc2XJ09zeEOlT63X" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
@@ -70,6 +75,7 @@
 
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin FFMPEG HLS VOD" />
+            <priority name="P1"></priority>
             <embed_code name="YyYmFvYTE6je_KrhLjGDkVXHTGXJN3l7" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
@@ -84,6 +90,7 @@
 
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Azure HLS VOD" />
+            <priority name="P1"></priority>
             <embed_code name="cwbHN1YTE6dvbVjsKGZu_O4dNUkuuepR" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
@@ -98,6 +105,7 @@
 
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):OSMF Elemental Delta HDS VOD" />
+            <priority name="P3"></priority>
             <embed_code name="5vYTJyYTE6C5GFB7AJpqutxLuWKTQ5QG" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
             <plugins name="OSMF" />
@@ -112,6 +120,7 @@
 
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):OSMF FFMPEG HDS VOD" />
+            <priority name="P3"></priority>
             <embed_code name="lyazNyYTE611yBGWdSdM61eQn7XaKgMG" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
             <plugins name="OSMF" />
@@ -129,6 +138,7 @@
         <!--  Getting playback stream error for IE for more info https://jira.corp.ooyala.com/browse/PBW-6084-->
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta eHLS VOD" />
+            <priority name="P1"></priority>
             <embed_code name="VybDU1YjE63OuPiuyjT25aOXGzBBg69O" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="BITMOVIN" />
@@ -143,6 +153,7 @@
 
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS" />
+            <priority name="P1"></priority>
             <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN" />
@@ -171,6 +182,7 @@
 
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS Remote Asset" />
+            <priority name="P1"></priority>
             <embed_code name="s3dXNvYTE6q4vFYHG0EifD84pkDkrdwr" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="MAIN" />
@@ -184,6 +196,7 @@
 
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Main Azure eHLS" />
+            <priority name="P1"></priority>
             <embed_code name="R5dGFvYTE6LtPk9PvuatOLk_Y7gfC5dk" />
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="MAIN" />
@@ -197,6 +210,7 @@
 
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS Remote Asset" />
+            <priority name="P2"></priority>
             <embed_code name="p3NjJyYTE69VPfb3X7fMDXBDa2Gq2sKO" />
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="MAIN" />
@@ -210,6 +224,7 @@
 
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Azure eHLS" />
+            <priority name="P1"></priority>
             <embed_code name="R5dGFvYTE6LtPk9PvuatOLk_Y7gfC5dk" />
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="BITMOVIN" />
@@ -226,6 +241,7 @@
     <test name="PlaybackWithDRMLiveTests">
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash Live" />
+            <priority name="P1"></priority>
             <embed_code name="5kaDBlODE6fqcosXyCQ9myvTxpObwIOw" />
             <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
             <plugins name="BITMOVIN" />
@@ -237,6 +253,7 @@
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Dash Live Channel live" />
+            <priority name="P1"></priority>
             <embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL" />
             <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
             <plugins name="BITMOVIN" />
@@ -253,6 +270,7 @@
         <!--         This is not hds asset -->
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):OSMF Elemental Delta HDS Live" />
+            <priority name="P3"></priority>
             <embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL" />
             <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx" />
             <plugins name="OSMF" />
@@ -267,6 +285,7 @@
         </url>
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental HLS Live"/>
+            <priority name="P1"></priority>
             <embed_code name="8ycHc3YTE6VJiwsuFEH6x4mvfEzNBAnB"/>
             <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
             <plugins name="BITMOVIN"/>
@@ -294,6 +313,7 @@
          </url>-->
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Elemental Delta eHLS Live"/>
+            <priority name="P1"></priority>
             <embed_code name="tjbnc3YTE6Lrh7VWVWo1pffK5Kb1mkIL"/>
             <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
             <plugins name="BITMOVIN"/>
