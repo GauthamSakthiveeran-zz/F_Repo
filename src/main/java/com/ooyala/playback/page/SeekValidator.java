@@ -8,9 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 
-/**
- * Created by soundarya on 10/27/16.
- */
 public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 
 	public static Logger logger = Logger.getLogger(SeekValidator.class);
