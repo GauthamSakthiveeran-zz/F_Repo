@@ -52,8 +52,12 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 				url.setAdStartTime(null);
 				result = result && midrollAdValidator.validateMidrollAd(url);
 				result = result && event.validate("playing_3", 160000);
-				result = result && event.validate("seeked_1", 20000);
-				result = result && event.validate("played_1", 160000);
+				result = result && seekAction.setTime(1).startAction();
+				result = result && event.validate("playing_4", 160000);
+				result = result && !event.checkIsAdPlaying();
+				result = result && seekAction.fromLast().setTime(2).startAction();
+				result = result && !event.checkIsAdPlaying();
+				result = result && event.validate("played_1", 10000);
 			}
 
 		} catch (Exception e) {
