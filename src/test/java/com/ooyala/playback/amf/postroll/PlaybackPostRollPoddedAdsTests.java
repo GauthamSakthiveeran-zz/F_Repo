@@ -31,6 +31,7 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
             injectScript();
             result = result && playValidator.validate("playing_1", 60000);
             result = result && seekValidator.validate("seeked_1", 60000);
+            result = result && event.validate("willPlayPostrollAd_1",25000);
             if (result && click){
                 s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("postroll"),"Clickthrough");
             }

@@ -190,6 +190,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
         String video_plugin = data.get("video_plugins");
         boolean isAdPlaying = isAdPlaying();
         if (isAdPlaying) {
+
+            // check ad clickthrough
             if (isElementPresent("AD_SCREEN_PANEL")) {
                 if (!clickOnIndependentElement("AD_SCREEN_PANEL"))
                     return false;
@@ -225,6 +227,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
             extentTest.log(PASS, "AdsClicked by clicking on the ad screen");
             log.info("AdsClicked by clicking on the ad screen");
+
+            // check lean more clikcthrough
             if (!value.contains("ima")) {
                 if (getBrowser().contains("internet explorer")) {
                     if (value.contains("freewheel") && video_plugin.contains("main") && !video_plugin.contains("osmf")
@@ -263,52 +267,12 @@ public class AdClickThroughValidator extends PlayBackPage implements
             return false;
     }
 
-    public boolean clickThroughOnOverlay() throws Exception{
-        Map<String, String> data = parseURL();
-
-        if (data == null) {
-            throw new Exception("Map is null");
-        }
-
-        String value = data.get("ad_plugin");
-        String video_plugin = data.get("video_plugins");
-
-        if (!value.contains("ima")) {
-            if (getBrowser().contains("internet explorer")) {
-                if (value.contains("freewheel") && video_plugin.contains("main") && !video_plugin.contains("osmf")
-                        && !video_plugin.contains("bit")) {
-                    if (!(waitOnElement("LEARN_MORE_IE", 10000) && clickOnIndependentElement("LEARN_MORE_IE")))
-                        return false;
-                } else {
-                    if (!(waitOnElement("LEARN_MORE", 10000) && clickOnHiddenElement("LEARN_MORE")))
-                        return false;
-                }
-
-            } else {
-
-                if (!(waitOnElement("LEARN_MORE", 10000) && clickOnIndependentElement("LEARN_MORE")))
-                    return false;
-            }
-
-            if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 2000))
-                return false;
-
-            if (!waitOnElement(By.id("videoPausedAds_1"), 5000)) {
-                log.info("unable to verify event videoPaused");
-                extentTest.log(LogStatus.FAIL, "unable to verify event videoPaused");
-                return false;
-            }
-
-            validateNoOfTabsOpened();
-        }
-        extentTest.log(PASS, "AdsClicked by clicking on the learn more button");
-        log.info("AdsClicked by clicking on the learn more button");
-        return true;
-    }
-
     public boolean validateClickThroughForPoddedAds(String adType) throws Exception{
         int counter = 1;
+
         while (isAdPlaying()) {
+
+            // verify if ad is playing or not based on ad type
             if (adType.equalsIgnoreCase("preroll")) {
                 if (!waitOnElement(By.id("PreRoll_willPlaySingleAd_" + counter + ""), 10000)) {
                     extentTest.log(FAIL, "PreRoll_willPlaySingleAd_" + counter + " element not found");
@@ -326,25 +290,47 @@ public class AdClickThroughValidator extends PlayBackPage implements
                 }
             }
 
+
+            // verify clickthrough for ad and learn more if applicable
             if (!clickThroughOnAd(counter)) {
                 extentTest.log(FAIL,"Clickthrough is not working");
                 return false;
             }
 
-            if (!waitOnElement(By.id("singleAdPlayed_" + counter + ""), 50000)) {
+            // wait for ad to play completely
+            /*if (!waitOnElement(By.id("singleAdPlayed_" + counter + ""), 50000)) {
                 extentTest.log(FAIL,"singleAdPlayed_" + counter + "element not found");
                 return false;
+            }*/
+
+            if (adType.equalsIgnoreCase("preroll")){
+                if (!waitOnElement(By.id("prerollAdPlayed_" + counter + ""), 10000)) {
+                    extentTest.log(FAIL, "prerollAdPlayed_" + counter + " element not found");
+                    return false;
+                }
+            }else if (adType.equalsIgnoreCase("midroll")){
+                if (!waitOnElement(By.id("midrollAdPlayed_" + counter + ""), 10000)) {
+                    extentTest.log(FAIL, "midrollAdPlayed_" + counter + " element not found");
+                    return false;
+                }
+            }else if (adType.equalsIgnoreCase("postroll")){
+                if (!waitOnElement(By.id("postrollAdPlayed_" + counter + ""), 10000)) {
+                    extentTest.log(FAIL, "postrollAdPlayed_" + counter + " element not found");
+                    return false;
+                }
             }
 
             if (!loadingSpinner()){
                 return false;
             }
 
-            if (!Boolean.parseBoolean(driver.executeScript("return pp.isPlaying()").toString())){
+            // Increase counter by 1 if next ad is playing
+            if (isAdPlaying()){
                 counter++;
             }
         }
         return true;
     }
+
 
 }

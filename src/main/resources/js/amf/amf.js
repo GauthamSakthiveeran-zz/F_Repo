@@ -30,6 +30,9 @@ function subscribeToEvents() {
         var willPlayPostrollAd = 1;
         var skipMidrollAdEvent = 1;
         var skipPostrollAdEvent = 1;
+        var prerollAdPlayed = 1;
+        var midrollAdPlayed = 1;
+        var postrollAdPlayed = 1;
         
         var logger = '';
 		
@@ -113,11 +116,27 @@ function subscribeToEvents() {
 				OO.$('#ooplayer').append('<p id=willPlayPrerollAd'+'>willPlayPrerollAd</p>');
 				OO.$('#ooplayer').append('<p id=adIsPlaying'+'>adIsPlaying</p>');
 			}
+
+
 			if (event.match(/singleAdPlayed/)) {
 				OO.$('#ooplayer').append('<p id=singleAdPlayed_'+singleadsPlayedEventOrder+'>singleAdPlayed '+singleadsPlayedEventOrder+'</p>'); 
 				OO.$('#ooplayer').append('<p id=admanager>'+arguments[1]+'</p>'); 
 				singleadsPlayedEventOrder++;
 				showAdSkipButtonEventOrder = 1;
+
+                if(videoPlayingEventOrder == 1){
+                    OO.$('#ooplayer').append('<p id=prerollAdPlayed_'+prerollAdPlayed+'>prerollAdPlayed '+prerollAdPlayed+'</p>');
+                    prerollAdPlayed++;
+                }
+                if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
+                    OO.$('#ooplayer').append('<p id=midrollAdPlayed_'+midrollAdPlayed+'>midrollAdPlayed '+midrollAdPlayed+'</p>');
+                    midrollAdPlayed++;
+                }
+                if(videoPlayedEventOrder == 2){
+                    OO.$('#ooplayer').append('<p id=postrollAdPlayed_'+postrollAdPlayed+'>postrollAdPlayed '+postrollAdPlayed+'</p>');
+                    postrollAdPlayed++
+                }
+
 			}
 
 			if(event.match(/willPlaySingleAd/)){
