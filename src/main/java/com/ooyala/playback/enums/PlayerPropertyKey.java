@@ -1,4 +1,4 @@
-package com.ooyala.playback.url;
+package com.ooyala.playback.enums;
 
 /**
  * Created by jitendra

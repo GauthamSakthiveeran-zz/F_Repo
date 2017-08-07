@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ooyala.playback.enums.TestResult;
 import org.apache.log4j.Logger;
 import org.testng.ITestResult;
 

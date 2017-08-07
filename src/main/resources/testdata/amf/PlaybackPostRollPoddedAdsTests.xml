@@ -29,7 +29,7 @@
         </url>
 
         <url>
-            <description name="IMA:Main 3 Postroll Podded"/>
+            <description name="IMA:Main 3 Postroll Podded|IMA:Clickthrough Main 3 Postroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="gzYmxjczrvM0qh0gPqKy6QFSKSr2t3FC"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -53,7 +53,7 @@
         </url>
 
         <url>
-            <description name="IMA:Bitmovin Postroll Podded"/>
+            <description name="IMA:Bitmovin Postroll Podded|IMA:Clickthrough Bitmovin Postroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="RmeDZ2YTE6mgSBCym_UGRQ8gxz334Jrp"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -66,7 +66,7 @@
         </url>
 
         <url>
-            <description name="IMA:OSMF Postroll Podded"/>
+            <description name="IMA:OSMF Postroll Podded|IMA:Clickthrough OSMF Postroll Podded"/>
             <priority name="P3"></priority>
             <embed_code name="g5aDlxYTE6hxOEfk0OHclDbUjObUKbL_"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -79,7 +79,7 @@
         </url>
 
         <url>
-            <description name="Freewheel:Main 3 Postroll Podded"/>
+            <description name="Freewheel:Main 3 Postroll Podded|Freewheel:Clickthrough Main 3 Postroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -92,7 +92,7 @@
         </url>
 
         <url>
-            <description name="Freewheel:Bitmovin Postroll Podded"/>
+            <description name="Freewheel:Bitmovin Postroll Podded|Freewheel:Clickthrough Bitmovin Postroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -118,7 +118,7 @@
         </url>
 
         <url>
-            <description name="VAST:Main Vast2.0 3 Postroll Podded"/>
+            <description name="VAST:Main Vast2.0 3 Postroll Podded|VAST:Clickthrough Main Vast2.0 3 Postroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="Rna2x4dDrdRWdZnUS4lxeLR6sZWhdpZD"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -142,7 +142,7 @@
         </url>
 
         <url>
-            <description name="Freewheel:OSMF Postroll Podded"/>
+            <description name="Freewheel:OSMF Postroll Podded|Freewheel:Clickthrough OSMF Postroll Podded"/>
             <priority name="P3"></priority>
             <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -155,7 +155,7 @@
         </url>
 
         <url>
-            <description name="VAST:Main Vast3.0 3 Postroll Podded"/>
+            <description name="VAST:Main Vast3.0 3 Postroll Podded|VAST:Clickthrough Main Vast3.0 3 Postroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="B5YTlxYTE6TPinC5fnieUEWw2LoWZ_k6"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>

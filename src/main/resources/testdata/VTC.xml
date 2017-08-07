@@ -232,7 +232,7 @@
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
-            <adPlugins name="VAST" />
+            <adPlugins name="" />
             <additionalPlugins name="" />
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
@@ -318,6 +318,7 @@
                <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
                <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"initialVolume":0.1}]]></playerParameter>
           </url>
+
         <url>
             <description name="VTC:Playback_Events_IMA:Postroll" />
             <priority name="P3"></priority>
@@ -329,6 +330,7 @@
             <pbid name="615dc8e909e941c280e12155df838355" />
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0.1}]]></playerParameter>
         </url>
+
         <url>
             <description name="VTC:Playback_Events_Vast:Postroll" />
             <priority name="P3"></priority>
@@ -340,6 +342,7 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0.1}]]></playerParameter>
         </url>
+
         <url>
             <description name="VTC:Verify Playback events PreMidPost" />
             <priority name="P3"></priority>
@@ -540,7 +543,7 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
             <playerParameter><![CDATA[{"skin":{"inline":{"adScreen":{"showAdMarquee":true,"showControlBar":true}}}}]]></playerParameter>
         </url>
-        <!--<url>
+        <url>
             <description name="VTC:Verify Volume Change(IMA Ads)" />
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
@@ -549,7 +552,7 @@
             <additionalPlugins name="" />
             <pbid name="615dc8e909e941c280e12155df838355" />
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url>-->
+        </url>
     </test>
 
     <test name="PlaybackPreAdMultipleVpluginTests">

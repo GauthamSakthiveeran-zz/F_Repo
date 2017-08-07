@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<testdata>
+    <test name="PlaybackDVRLiveTests">
+        <url>
+            <description name="Live DVR:Bitmovin DVR Seek|Live DVR:Bitmovin DVR Player Control|Live DVR:Bitmovin DVR Volume|Live DVR:Bitmovin DVR Bitrate|Live DVR:Bitmovin DVR Player Time"/>
+            <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT"/>
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8abff377aec2400e9337fe9088e65d40"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+    </test>
+</testdata>

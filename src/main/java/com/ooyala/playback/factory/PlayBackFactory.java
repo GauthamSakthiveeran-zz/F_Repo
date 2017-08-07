@@ -54,7 +54,7 @@ public class PlayBackFactory {
 	private MultiplePlayerValidator multiplePlayerValidator;
 	private AdClickThroughValidator adClickThroughValidator;
 	private PoddedAdValidator poddedAdValidator;
-	private OoyalaAPIValidator ooyalaAPIValidator;
+	private PlayerAPIValidator playerAPIValidator;
 	private PlaylistValidator playlistValidator;
 	private AdFrequencyValidator adFrequencyValidator;
 	private ThumbnailCarouselValidator thumbnailCarouselValidator;
@@ -76,6 +76,7 @@ public class PlayBackFactory {
 	private AnalyticsValidator analyticsValidator;
 	private ChromeFlashUpdateAction chromeValidator;
 	private UIControlValidator uiControlValidator;
+	private DVRLiveValidator dvrLiveValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -182,12 +183,12 @@ public class PlayBackFactory {
 		return adFrequencyValidator;
 	}
 
-	public OoyalaAPIValidator getOoyalaAPIValidator() {
-		if (ooyalaAPIValidator == null) {
-			ooyalaAPIValidator = new OoyalaAPIValidator(driver);
-			ooyalaAPIValidator.setExtentTest(extentTest);
+	public PlayerAPIValidator getPlayerAPIValidator() {
+		if (playerAPIValidator == null) {
+			playerAPIValidator = new PlayerAPIValidator(driver);
+			playerAPIValidator.setExtentTest(extentTest);
 		}
-		return ooyalaAPIValidator;
+		return playerAPIValidator;
 	}
 
 	public ThumbnailCarouselValidator getThumbnailCarouselValidator() {
@@ -551,6 +552,14 @@ public class PlayBackFactory {
 
 	public void setAnalyticsValidator(AnalyticsValidator analyticsValidator) {
 		this.analyticsValidator = analyticsValidator;
+	}
+
+	public DVRLiveValidator getDvrLiveValidator() {
+        if (dvrLiveValidator == null){
+            dvrLiveValidator = new DVRLiveValidator(driver);
+            dvrLiveValidator.setExtentTest(extentTest);
+        }
+        return dvrLiveValidator;
 	}
 
 	public WebDriver getDriver() {
