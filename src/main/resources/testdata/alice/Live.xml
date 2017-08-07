@@ -4,6 +4,7 @@
 
         <url>
             <description name="Live Stream Testing(Without DRM):Elemental Delta HLS Bitmovin No Channel"/>
+            <priority name="P1"></priority>
             <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv"/>
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
             <plugins name="BITMOVIN,ANALYTICS"/>
@@ -15,6 +16,7 @@
 
         <url>
             <description name="Live Stream Testing(Without DRM):Live Bitmovin Dash"/>
+            <priority name="P1"></priority>
             <embed_code name="tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE"/>
             <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
             <plugins name="BITMOVIN,ANALYTICS"/>
@@ -31,6 +33,7 @@
 
         <url>
             <description name="Live Stream Testing(Without DRM):Elemental Delta HLS Bitmovin Channel"/>
+            <priority name="P1"></priority>
             <embed_code name="tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE"/>
             <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
             <plugins name="BITMOVIN,ANALYTICS"/>
@@ -47,6 +50,7 @@
 
         <url>
             <description name="Live Stream Testing(Without DRM):Elemental Delta Live OSMF HDS"/>
+            <priority name="P3"></priority>
             <embed_code name="tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE"/>
             <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
             <plugins name="OSMF,ANALYTICS"/>
@@ -63,6 +67,7 @@
 
         <url>
             <description name="Live Stream Testing(Without DRM):Elemental Delta Live DVR HLS Bitmovin"/>
+            <priority name="P1"></priority>
             <embed_code name="Bob2V0MjE6S3P5Zs-5GbDs7J9lzBFxVc"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,ANALYTICS"/>
@@ -75,6 +80,7 @@
 
         <url>
             <description name="Live Stream Testing(Without DRM):Akamai HD Live HDS"/>
+            <priority name="P3"></priority>
             <embed_code name="ZzYjl0MTE6q67pMzfDHLjHsh5ZPR7rMO"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="AKAMAI,ANALYTICS"/>
@@ -87,6 +93,7 @@
 
         <url>
             <description name="Live Stream Testing(Without DRM):Akamai Live HLS Bitmovin"/>
+            <priority name="P2"></priority>
             <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,ANALYTICS"/>
@@ -109,6 +116,7 @@
         </url> -->
         <url>
             <description name="Live Stream Testing(Without DRM):Live DVR Main"/>
+            <priority name="P1"></priority>
             <embed_code name="BsZjdieDrJdl9YjLBm1LVyl3FF0KdWtd"/>
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
             <plugins name="MAIN,ANALYTICS"/>
@@ -120,6 +128,7 @@
         </url>
         <url>
             <description name="Live Stream Testing(Without DRM):Elemental Delta Live HLS Main"/>
+            <priority name="P1"></priority>
             <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv"/>
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
             <plugins name="MAIN,ANALYTICS"/>
@@ -132,6 +141,7 @@
 
         <url>
             <description name="Live Stream Testing(Without DRM):Akamai Live HLS Main"/>
+            <priority name="P2"></priority>
             <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv"/>
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
             <plugins name="MAIN,ANALYTICS"/>

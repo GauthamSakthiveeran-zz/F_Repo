@@ -15,6 +15,7 @@
 
         <url>
             <description name="Freewheel:Bitmovin Preroll Overlay"/>
+            <priority name="P2"></priority>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -27,6 +28,7 @@
 
         <url>
             <description name="Freewheel:Main Overlay"/>
+            <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -39,6 +41,7 @@
 
         <url>
             <description name="Freewheel:OSMF Preroll Overlay"/>
+            <priority name="P3"></priority>
             <embed_code name="YzdWVmMDE6llN4HwBPzs9BkH9OG-_f7d"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -66,6 +69,7 @@
         <!-- IMA Overaly not appearing intermittantly -->
         <url>
             <description name="IMA:Bitmovin Preroll Overlay"/>
+            <priority name="P2"></priority>
             <embed_code name="w2bmFnMTE66yXj73IMWj_zcylLOnXpdR"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
@@ -78,6 +82,7 @@
 
         <url>
             <description name="IMA:Bitmovin Overlay"/>
+            <priority name="P2"></priority>
             <embed_code name="IzYTZnMTE6b6H6CSR_i8eX6yqm0Qy0MA"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
@@ -91,6 +96,7 @@
         <!-- IMA Overaly not appearing intermittantly -->
         <url>
             <description name="IMA:OSMF Preroll Overlay"/>
+            <priority name="P3"></priority>
             <embed_code name="l2d2VmMDE6ia_EnlFS2hF6cV1Ezp_Isp"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -106,6 +112,7 @@
         <!-- IMA Overaly not appearing -->
         <url>
             <description name="IMA:Main Overlay"/>
+            <priority name="P2"></priority>
             <embed_code name="FlOHg4MTE698_SqEgfRuJepp0rjzl9h9"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -118,6 +125,7 @@
 
         <url>
             <description name="VAST:OSMF Vast2.0 Preroll Overlay"/>
+            <priority name="P3"></priority>
             <embed_code name="01bm5kMDE6iV10Jrf5Lngdx2B6bd0lxR"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -133,6 +141,7 @@
 
         <url>
             <description name="VAST:Main Vast2.0 Overlay"/>
+            <priority name="P2"></priority>
             <embed_code name="gwbjJqdDobn3Ky6rNnwPzeA2tVVfQ8YJ"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -145,6 +154,7 @@
 
         <url>
             <description name="VAST:Bitmovin Vast2.0 Preroll Overlay"/>
+            <priority name="P2"></priority>
             <embed_code name="JtajdoMTE6UWt0G0Gct5dyIabTclDsDy"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
@@ -157,6 +167,7 @@
 
         <url>
             <description name="VAST:Bitmovin Vast3.0 Preroll Overlay"/>
+            <priority name="P2"></priority>
             <embed_code name="QxNTh2YTE6XixCIquwCSRi6LfxxUOB-s"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -170,6 +181,7 @@
 
         <url>
             <description name="VAST:OSMF Vast3.0 Preroll Overlay"/>
+            <priority name="P3"></priority>
             <embed_code name="0ydjhxYTE6tJUJC3n621PND8vPfXfszm"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -184,6 +196,7 @@
 
         <url>
             <description name="VAST:Main Vast3.0 Overlay"/>
+            <priority name="P2"></priority>
             <embed_code name="0yZDg4MTE6vq9XTeATXOBjO4Blr4a7fN"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>

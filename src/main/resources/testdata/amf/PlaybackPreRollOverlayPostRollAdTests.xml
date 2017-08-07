@@ -4,6 +4,7 @@
 		<!-- IMA Overlay not appearing intermittantly-->
     	<url>
 	    	<description name="IMA:Main Preroll Overlay + Postroll"/>
+	    	<priority name="P2"></priority>
 	        <embed_code name="Rjc3RreTqghZLRq93GQ-Sl1OGVyJoK2d"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -15,6 +16,7 @@
 
 		<url>
 			<description name="IMA:AdobeTVSDK Preroll Overlay + Postroll"/>
+			<priority name="P2"></priority>
 			<embed_code name="Rjc3RreTqghZLRq93GQ-Sl1OGVyJoK2d"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="ADOBETVSDK"/>
@@ -26,6 +28,7 @@
     	
     	<url>
 			<description name="VAST:Main Vast3.0 Preroll Overlay + Postroll" />
+			<priority name="P2"></priority>
 			<embed_code name="5vajg4MTE6yw9AvmciefuFnFci9HgnuZ" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -37,6 +40,7 @@
 
 		<url>
 			<description name="VAST:AdobeTVSDK Vast3.0 Preroll Overlay + Postroll" />
+			<priority name="P2"></priority>
 			<embed_code name="5vajg4MTE6yw9AvmciefuFnFci9HgnuZ" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="ADOBETVSDK,MAIN" />

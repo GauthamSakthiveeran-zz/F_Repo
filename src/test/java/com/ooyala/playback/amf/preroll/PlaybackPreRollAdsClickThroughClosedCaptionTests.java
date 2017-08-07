@@ -39,7 +39,7 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			injectScript();
 			result = result && playAction.startAction();
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 60000);
-			
+
 			if (result && click) {
 				((JavascriptExecutor) driver).executeScript("pp.pause()");
 				s_assert.assertTrue(clickThrough.validate("", 120000), "Clickthrough");
@@ -51,7 +51,8 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 				result = result && event.validate("singleAdPlayed_1", 120000);
 
 			result = result && event.validate("playing_1", 35000);
-			result = result && event.validatePlayStartTimeFromBeginningofVideo();
+			if (result)
+				event.validatePlayStartTimeFromBeginningofVideo();
 			result = result && event.loadingSpinner();
 			if (result && cc) {
 				s_assert.assertTrue(ccValidator.validate("cclanguage", 60000), "CC");

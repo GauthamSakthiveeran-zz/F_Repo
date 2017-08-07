@@ -4,6 +4,7 @@
 
         <url>
             <description name="Pulse:Bitmovin Multimidroll"/>
+            <priority name="P2"></priority>
             <embed_code name="dvbGY5MzE6EAI-FdPyCbG7u5Vr6lZ_oY"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
@@ -16,6 +17,7 @@
 
         <url>
             <description name="Pulse:AdobeTVSDK Multimidroll"/>
+            <priority name="P2"></priority>
             <embed_code name="dvbGY5MzE6EAI-FdPyCbG7u5Vr6lZ_oY"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="ADOBETVSDK"/>
@@ -28,6 +30,7 @@
 
         <url>
             <description name="Freewheel:Main Multimidroll"/>
+            <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -40,6 +43,7 @@
 
         <url>
             <description name="Freewheel:Adobe Multimidroll"/>
+            <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="ADOBETVSDK,MAIN"/>
@@ -52,6 +56,7 @@
 
         <url>
             <description name="VAST:Main Vast2.0 Multimidroll"/>
+            <priority name="P2"></priority>
             <embed_code name="lzajlndDoOfESs3VQahCNG5k3iPus3SI"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -63,6 +68,7 @@
 
         <url>
             <description name="VAST:AdobeTVSDK Vast2.0 Multimidroll"/>
+            <priority name="P2"></priority>
             <embed_code name="lzajlndDoOfESs3VQahCNG5k3iPus3SI"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="ADOBETVSDK,MAIN"/>
@@ -74,6 +80,7 @@
 		
         <url>
             <description name="Pulse:OSMF Multimidroll"/>
+            <priority name="P3"></priority>
             <embed_code name="g5MjhxYTE64qOEFUKrqbuxuvlBq3GTju"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF"/>
@@ -87,6 +94,7 @@
 
         <url>
             <description name="Pulse:Main Multimidroll"/>
+            <priority name="P2"></priority>
             <embed_code name="FxbDhxYTE61cTZdMTG68ZjZhQgTxrNM0"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -99,6 +107,7 @@
 
         <url>
             <description name="VAST:Main Vast3.0 Multimidroll"/>
+            <priority name="P2"></priority>
             <embed_code name="JuNTlxYTE6uCXf4cJD2GhePHId_MO8OM"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -111,6 +120,7 @@
 
         <url>
             <description name="VAST:AdobeTVSDK Vast3.0 Multimidroll"/>
+            <priority name="P2"></priority>
             <embed_code name="JuNTlxYTE6uCXf4cJD2GhePHId_MO8OM"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="ADOBETVSDK"/>

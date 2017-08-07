@@ -3,6 +3,7 @@
 	<test name ="PlaybackInitialTimeForOoyalaAdsTests" >
     	<url>
 	    	<description name="Ooyala Ads:Main initial time"/>
+	    	<priority name="P2"></priority>
 	        <embed_code name="ozeTliOTE6lwwLh90E-rZLd3HHciipjy"/>
 	        <pcode name="Mzb2MyOvKd-cQftJhtK8s14RPmUs"/>
 	        <plugins name="MAIN"/>
@@ -14,6 +15,7 @@
     	
     	<url>
 	    	<description name="Ooyala Ads:Bitmovin initial time"/>
+	    	<priority name="P2"></priority>
 	        <embed_code name="ozeTliOTE6lwwLh90E-rZLd3HHciipjy"/>
 	        <pcode name="Mzb2MyOvKd-cQftJhtK8s14RPmUs"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -26,6 +28,7 @@
 
 		<url>
 			<description name="Ooyala Ads:ADOBETVSDK initial time"/>
+			<priority name="P2"></priority>
 			<embed_code name="ozeTliOTE6lwwLh90E-rZLd3HHciipjy"/>
 			<pcode name="Mzb2MyOvKd-cQftJhtK8s14RPmUs"/>
 			<plugins name="ADOBETVSDK"/>

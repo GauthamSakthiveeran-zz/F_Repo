@@ -4,6 +4,7 @@
 	<test name ="PlaybackMidrollOverlayTests" > 
     	<url>
 	    	<description name="VAST:Bitmovin Vast2.0 Midroll Overlay"/>
+	    	<priority name="P2"></priority>
 	        <embed_code name="AxZWVlOTE69sXjpQ_uZyM7sf6aqBl8N0"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN"/>
@@ -16,6 +17,7 @@
 
 		<url>
 			<description name="VAST:AdobeTVSDK Vast2.0 Midroll Overlay"/>
+			<priority name="P2"></priority>
 			<embed_code name="l4azMwYjE6V2uqd_7w1wRjH54bi8iUnJ"/>
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 			<plugins name="ADOBETVSDK"/>
@@ -28,6 +30,7 @@
     	
     	<url>
 	    	<description name="VAST:OSMF Vast2.0 Midroll Overlay"/>
+	    	<priority name="P3"></priority>
 	        <embed_code name="txbGVkMDE6vMUkpoiCMwjoGMROPeGVDv"/>
 	        <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 	        <plugins name="OSMF,MAIN"/>
@@ -40,6 +43,7 @@
     	<!-- Through automation video is not playing, black screen appears -->
     	<url>
 	    	<description name="VAST:Bitmovin Vast3.0 Midroll Overlay"/>
+	    	<priority name="P2"></priority>
 	        <embed_code name="QzNTh2YTE6ABVu2-EtQeMXxfD8S_sSNs"/>
 	        <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 	        <plugins name="BITMOVIN,MAIN"/>
@@ -52,6 +56,7 @@
 
 		<url>
 			<description name="VAST:AdobeTVSDK Vast3.0 Midroll Overlay"/>
+			<priority name="P2"></priority>
 			<embed_code name="QzNTh2YTE6ABVu2-EtQeMXxfD8S_sSNs"/>
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 			<plugins name="ADOBETVSDK,MAIN"/>
@@ -64,6 +69,7 @@
     	
     	<url>
 			<description name="VAST:OSMF Vast3.0 Midroll Overlay" />
+			<priority name="P3"></priority>
 			<embed_code name="M3eThxYTE6QPORiMcvj_0gBevr29nCgK" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF,MAIN" />
@@ -76,6 +82,7 @@
 
 		<url>
 			<description name="IMA:OSMF Midroll Overlay"/>
+			<priority name="P3"></priority>
 			<embed_code name="szcXRpMDE6nB2yfLRHK3Pzk0Nu6794Nm"/>
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
 			<plugins name="OSMF,MAIN"/>
@@ -88,6 +95,7 @@
 
 		<url>
 			<description name="IMA:Bitmovin Midroll Overlay"/>
+			<priority name="P2"></priority>
 			<embed_code name="djZjMwYjE6_wkhQzqAEA8oNTgg6eG20F"/>
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 			<plugins name="BITMOVIN"/>
@@ -100,6 +108,7 @@
 
 		<url>
 			<description name="IMA:AdobeTVSDK Midroll Overlay"/>
+			<priority name="P2"></priority>
 			<embed_code name="djZjMwYjE6_wkhQzqAEA8oNTgg6eG20F"/>
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
 			<plugins name="ADOBETVSDK"/>

@@ -3,23 +3,25 @@
     <test name="MovingFromNonOoyalaAdsToOoyalaAdsViaDiscoveryTests">
         <url>
             <description name="Ooyala Ads:Bitmovin Moving from content with no ads to a content with an Ooyala ad via discovery" />
+            <priority name="P2"></priority>
             <embed_code name="xteTJxYjE6bs6G5ev7hWUOwCFe75j-YA" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="BITMOVIN" />
             <adPlugins name="" />
             <additionalPlugins name="DISCOVERY" />
             <pbid name="1871d0b998c34b0aa2fd40cc17bb4d08" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Ooyala Ads:Main Moving from content with no ads to a content with an Ooyala ad via discovery" />
+            <priority name="P2"></priority>
             <embed_code name="xteTJxYjE6bs6G5ev7hWUOwCFe75j-YA" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
             <adPlugins name="" />
             <additionalPlugins name="DISCOVERY" />
             <pbid name="1871d0b998c34b0aa2fd40cc17bb4d08" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
     </test>
 </testdata>

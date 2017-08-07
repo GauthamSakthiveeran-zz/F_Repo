@@ -3,6 +3,7 @@
     <test name="PlaybackFCCBasicTests">
         <url>
             <description name="FCC:Preroll IMA Main" />
+            <priority name="P2"></priority>
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -14,6 +15,7 @@
         <!--Bitmovin required-->
         <url>
             <description name="FCC:Preroll IMA Bitmovin" />
+            <priority name="P2"></priority>
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -24,6 +26,7 @@
         </url>
         <url>
             <description name="FCC:Preroll IMA OSMF" />
+            <priority name="P3"></priority>
             <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
             <plugins name="MAIN,OSMF" />
@@ -35,6 +38,7 @@
         </url>
         <url>
             <description name="FCC:Midroll IMA OSMF" />
+            <priority name="P3"></priority>
             <embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
             <plugins name="MAIN,OSMF" />
@@ -46,6 +50,7 @@
         </url>
         <url>
             <description name="FCC:Preroll Vast2.0 Main" />
+            <priority name="P2"></priority>
             <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -57,6 +62,7 @@
         <!--Bitmovin required-->
         <url>
             <description name="FCC:Preroll Vast2.0 Bitmovin" />
+            <priority name="P2"></priority>
             <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -67,6 +73,7 @@
         </url>
         <url>
             <description name="FCC:Preroll Vast2.0 OSMF" />
+            <priority name="P3"></priority>
             <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
             <plugins name="MAIN,OSMF" />
@@ -78,6 +85,7 @@
         </url>
         <url>
             <description name="FCC:Midroll Vast2.0 OSMF" />
+            <priority name="P3"></priority>
             <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
             <plugins name="MAIN,OSMF" />
@@ -90,6 +98,7 @@
         <!--Freewheel plugin required-->
         <url>
             <description name="FCC:Preroll Freewheel Main" />
+            <priority name="P2"></priority>
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -100,6 +109,7 @@
         </url>
         <url>
             <description name="FCC:Midroll Freewheel OSMF" />
+            <priority name="P3"></priority>
             <embed_code name="Y5dWVmMDE6lIE-PNSXHfsuTNPmeWbjC4" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN,OSMF" />
@@ -111,6 +121,7 @@
         </url>
         <url>
             <description name="FCC:Preroll IMA Ad manager Main" />
+            <priority name="P2"></priority>
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -121,6 +132,7 @@
         </url>
         <url>
             <description name="FCC:PreMidPost Mp4 Main" />
+            <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -131,6 +143,7 @@
         </url>
         <url>
             <description name="FCC:4 as 3 Video Main" />
+            <priority name="P2"></priority>
             <embed_code name="U5ZTFhNDE6xdu2sEldjX3WRLhSAb1Ql2" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -141,6 +154,7 @@
         </url>
         <url>
             <description name="FCC:Postroll Vast Main" />
+            <priority name="P2"></priority>
             <embed_code name="tmbmxiMjE6M_3i7Eg6sVc8-6zp4vXQgw" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -151,6 +165,7 @@
         </url>
         <url>
             <description name="FCC:Preroll Freewheel OSMF" />
+            <priority name="P3"></priority>
             <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
             <plugins name="MAIN,OSMF" />
@@ -164,6 +179,7 @@
     <test name="PlaybackFCCDefaultSettingTests">
         <url>
             <description name="FCC:Default Setting After Refresh check" />
+            <priority name="P1"></priority>
             <embed_code name="Y5dWVmMDE6lIE-PNSXHfsuTNPmeWbjC4" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN,OSMF" />
