@@ -3,6 +3,7 @@
     <test name="MovingFromOoyalaAdsToNonOoyalaAdsViaDiscoveryTests">
         <url>
             <description name="Ooyala Ads:Bitmovin Moving from content with an Ooyala ad to a content with no ads to a content with an Ooyala ad via discovery" />
+            <priority name="P2"></priority>
             <embed_code name="9pMTNxYjE69GOAZNQDLsClksxUZr8wfZ" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="BITMOVIN" />
@@ -13,6 +14,7 @@
         </url>
         <url>
             <description name="Ooyala Ads:Main Moving from content with an Ooyala ad to a content with no ads to a content with an Ooyala ad via discovery" />
+            <priority name="P2"></priority>
             <embed_code name="9pMTNxYjE69GOAZNQDLsClksxUZr8wfZ" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />

@@ -4,6 +4,7 @@
 	<test name="PlaybackPlayerWithoutSkinTests">
 		<url>
 			<description name="Freewheel:Main Player without Skin file" />
+			<priority name="P3"></priority>
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -15,6 +16,7 @@
 
 		<url>
 			<description name="IMA:Main Player without Skin file" />
+			<priority name="P3"></priority>
 			 <embed_code name="1hZHQ4YTE6-JSjQJuODqJkLoOC2IfXWr"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -26,6 +28,7 @@
 
 		<url>
 			<description name="VAST:Main Vast2.0 Player without Skin file" />
+			<priority name="P3"></priority>
 			<embed_code name="lzMGdpdDq6Dsvi-c32p6u7k46mbT_cxm" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />

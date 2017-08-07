@@ -1,5 +1,6 @@
 package com.ooyala.playback.url;
 
+import com.ooyala.playback.enums.PlayerPropertyValue;
 import com.ooyala.playback.httpserver.SimpleHttpServer;
 import org.apache.log4j.Logger;
 

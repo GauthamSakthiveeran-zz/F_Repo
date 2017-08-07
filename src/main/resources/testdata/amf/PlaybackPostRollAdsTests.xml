@@ -4,6 +4,7 @@
     <test name="PlaybackPostRollAdsTests">
         <url>
             <description name="VAST:Bitmovin Vast3.0 Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="w0cDZnMTE6lsFVFkP2qVcLOLOLVjY4r0"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -28,6 +29,7 @@
 
         <url>
             <description name="VPAID:Bitmovin Vast VPAID2.0 Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="93anI4MjE6qgS_sr2KepPHDWNfJb9au2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="MAIN,BITMOVIN"/>
@@ -40,6 +42,7 @@
 
         <url>
             <description name="VPAID:AdobeTVSDK Vast VPAID2.0 Postroll"/>
+            <priority name="P2"></priority>
             <embed_code name="93anI4MjE6qgS_sr2KepPHDWNfJb9au2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="ADOBETVSDK"/>
@@ -52,6 +55,7 @@
 
         <url>
             <description name="VPAID:Bitmovin IMA VPAID2.0 Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="M0NngxYjE6oPnwud4hdLF4hMTrSdZgp2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="MAIN,BITMOVIN"/>
@@ -64,6 +68,7 @@
 
         <url>
             <description name="VPAID:AdobeTVSDK IMA VPAID2.0 Postroll"/>
+            <priority name="P2"></priority>
             <embed_code name="M0NngxYjE6oPnwud4hdLF4hMTrSdZgp2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="ADOBETVSDK"/>
@@ -76,6 +81,7 @@
 
         <url>
             <description name="Pulse:Bitmovin Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="A3Y2Y5MzE6vyMaoirADDRV6bpmtIDHH2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
@@ -88,6 +94,7 @@
 
         <url>
             <description name="Pulse:AdobeTVSDK Postroll"/>
+            <priority name="P2"></priority>
             <embed_code name="A3Y2Y5MzE6vyMaoirADDRV6bpmtIDHH2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="ADOBETVSDK"/>
@@ -100,6 +107,7 @@
 
         <url>
             <description name="Pulse:OSMF Postroll"/>
+            <priority name="P3"></priority>
             <embed_code name="ltdzdxYTE69lCGBuC0evsQK6LMVFsZiv"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF"/>
@@ -114,6 +122,7 @@
 
         <url>
             <description name="Pulse:Main Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="VjcGY5MzE6CLAiCSPoTztUc2yBXQZksS"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -126,6 +135,7 @@
 
         <url>
             <description name="VPAID:Main IMA VPAID2.0 Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -172,6 +182,7 @@
 
         <url>
             <description name="VPAID:Main Vast VPAID2.0 Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="tmbmxiMjE6M_3i7Eg6sVc8-6zp4vXQgw"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -184,6 +195,7 @@
 
         <url>
             <description name="IMA:Bitmovin Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="h0ODZnMTE6FB_Hfx1D4CUKXmzWyQUbXC"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
@@ -196,6 +208,7 @@
 
         <url>
             <description name="IMA:AdobeTVSDK Postroll"/>
+            <priority name="P2"></priority>
             <embed_code name="h0ODZnMTE6FB_Hfx1D4CUKXmzWyQUbXC"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="ADOBETVSDK"/>
@@ -208,6 +221,7 @@
 
         <url>
             <description name="Freewheel:Bitmovin Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -220,6 +234,7 @@
 
         <url>
             <description name="Freewheel:AdobeTVSDK Postroll"/>
+            <priority name="P2"></priority>
             <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="ADOBETVSDK"/>
@@ -243,6 +258,7 @@
 
         <url>
             <description name="Freewheel:OSMF Postroll"/>
+            <priority name="P3"></priority>
             <embed_code name="lkdWVmMDE6cWNTORjWAURSZanDLpVGP7"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -256,6 +272,7 @@
 
         <url>
             <description name="IMA:OSMF Postroll"/>
+            <priority name="P3"></priority>
             <embed_code name="Z4d2VmMDE67NI7nxP_RQ6EBEhnkBMmAP"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -280,6 +297,7 @@
         
         <url>
             <description name="VAST:OSMF Vast2.0 Postroll"/>
+            <priority name="P3"></priority>
             <embed_code name="85bm5kMDE6uYN7kMcTPz72AYcRuJLlgz"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -292,6 +310,7 @@
 
         <url>
             <description name="VAST:AdobeTVSDK Vast2.0 Postroll"/>
+            <priority name="P2"></priority>
             <embed_code name="85bm5kMDE6uYN7kMcTPz72AYcRuJLlgz"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="ADOBETVSDK"/>
@@ -304,6 +323,7 @@
 
         <url>
             <description name="VAST:Main Vast2.0 Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -315,6 +335,7 @@
 
         <url>
             <description name="Freewheel:Main Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -327,6 +348,7 @@
 
         <url>
             <description name="IMA:Main Ad Rule Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="5sbHlycTqQ5dqQoCVcY3Rpe78TVvJKjg"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -338,6 +360,7 @@
 
         <url>
             <description name="VAST:OSMF Vast3.0 Postroll"/>
+            <priority name="P3"></priority>
             <embed_code name="hwcThxYTE6P5iQ6Cim85tKiJJiX_bwMZ"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -351,6 +374,7 @@
 
         <url>
             <description name="VAST:Main Vast3.0 Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="1jcGtuMjE60EQ3Q7nh3Z-kNicrrTZcVa"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -363,6 +387,7 @@
 
         <url>
             <description name="VAST:AdobeTVSDK Vast3.0 Postroll"/>
+            <priority name="P2"></priority>
             <embed_code name="1jcGtuMjE60EQ3Q7nh3Z-kNicrrTZcVa"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="ADOBETVSDK"/>
@@ -375,6 +400,7 @@
 
         <url>
             <description name="VPAID:Bitmovin IMA VPAID1.0 Postroll"/>
+            <priority name="P1"></priority>
             <embed_code name="VnNngxYjE6lZso1lkPh8X_gTK1IC3wKA"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -386,6 +412,7 @@
 
         <url>
             <description name="VPAID:AdobeTVSDK IMA VPAID1.0 Postroll"/>
+            <priority name="P2"></priority>
             <embed_code name="VnNngxYjE6lZso1lkPh8X_gTK1IC3wKA"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="ADOBETVSDK"/>
@@ -397,6 +424,7 @@
 
         <url>
             <description name="VPAID:OSMF Vast VPAID2.0 Postroll"/>
+            <priority name="P3"></priority>
             <embed_code name="ViMm9xYTE6bTC12TonUawyghP9jVLnJX"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="OSMF,MAIN"/>
@@ -410,6 +438,7 @@
 
         <url>
             <description name="VPAID:OSMF IMA VPAID2.0 Postroll"/>
+            <priority name="P3"></priority>
             <embed_code name="VsMm9xYTE6yAvCNBjXJT0Ed4KhNHaBXe"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -422,6 +451,7 @@
 
         <url>
             <description name="VPAID:OSMF IMA VPAID1.0 Postroll"/>
+            <priority name="P3"></priority>
             <embed_code name="ZrMnBxYTE6kCtZRWQzDlAzJwa1uk4Fl9"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -434,6 +464,7 @@
 
         <url>
             <description name="VPAID:Main IMA VPAID1.0 Postroll"/>
+            <priority name="P2"></priority>
             <embed_code name="41dm5xYTE6HaWYfZZTrjVSGhLjCiewjE"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>

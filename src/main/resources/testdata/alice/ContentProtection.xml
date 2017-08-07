@@ -13,6 +13,7 @@
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/ZoMmd3NTE6zAFEYbLkU5hKXp8zF2ctK0?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2900009470&account_id=dulari_qa&&&signature=zfMNjFdK8lRNZsTkSSHyrExtGD9aWxmCD/5znAReylY","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
        		<streamType name="mpd" />
        		<sslEnabled name="https" browser="chrome"/>
+       		<priority name="P1"></priority>
         </url>
 
         <url>
@@ -27,10 +28,12 @@
             <playerParameter><![CDATA[{"encodingPriority":["hls_drm"],"embedToken":"http://player.ooyala.com/embed_token/x0b2cyOupu0FFK5hCr4zXg8KKcrm/o2djFsMzE6R-tb3pew2puwvQvAQWFRUo?api_key=x0b2cyOupu0FFK5hCr4zXg8KKcrm.-s6jH&expires=2900017190&account_id=dulari_qa&&&signature=7LgME591QFTnhOjF4x9p6GMxE0EDX72SUtRqVgwiy1s","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         	<streamType name="m3u8" />
         	<sslEnabled name="https" browser="chrome"/>
+        	<priority name="P1"></priority>
         </url>
 
         <url>
             <description name="Content Protection:OSMF Elemental Adobe Access DRM + Device Registration" />
+            <priority name="P3"></priority>
             <embed_code name="9wdG40MzE6qygZ4L0E90_kh-iSU94lDl" />
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
             <plugins name="OSMF" />
@@ -45,6 +48,7 @@
         
         <url>
             <description name="Content Protection:Bitmovin Azure dash + Device Registration" />
+            <priority name="P1"></priority>
             <embed_code name="F1cGR0YTE6UF35wd0tMH1sWOkoqBWWvW" />
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="BITMOVIN" />
@@ -63,6 +67,7 @@
     <test name="PlaybackOptEntitlementTests">
         <url>
             <description name="Content Protection:Bitmovin Elemental dash + OPT + entitlement" />
+            <priority name="P1"></priority>
             <embed_code name="1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
@@ -78,6 +83,7 @@
         
         <url>
             <description name="Content Protection:Bitmovin Azure dash + OPT + entitlement" />
+            <priority name="P1"></priority>
             <embed_code name="kzaWR0YTE6bmGJDdkC6z9jybYAiCElcd" />
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="BITMOVIN" />
@@ -92,6 +98,7 @@
         
         <url>
             <description name="Content Protection:Bitmovin Azure(Over secure network) dash + OPT + entitlement" />
+            <priority name="P1"></priority>
             <embed_code name="kzaWR0YTE6bmGJDdkC6z9jybYAiCElcd" />
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="BITMOVIN" />
@@ -106,6 +113,7 @@
         
         <url>
             <description name="Core:OPT + Entitlement Bitmovin" />
+            <priority name="P1"></priority>
             <embed_code name="x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
@@ -120,6 +128,7 @@
         </url>
         <url>
             <description name="Content Protection:Bitmovin Elemental Fairplay HLS + OPT|Content Protection:Bitmovin Elemental Fairplay HLS + OPT + entitlement" />
+            <priority name="P1"></priority>
             <embed_code name="E1eTJiNDE6JxNLNrM_CK-vicoKeZtW1e" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
@@ -133,6 +142,7 @@
         </url>
         <url>
             <description name="Content Protection:Bitmovin Elemental(Over secure network) dash + OPT + entitlement" />
+            <priority name="P1"></priority>
             <embed_code name="1yaWhqNTE6CSaJZIt8uf8hPqNKGqxdJa" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
@@ -148,6 +158,7 @@
 
         <url>
             <description name="Content Protection:OSMF Elemental OPT+Adobe Access DRM" />
+            <priority name="P3"></priority>
             <embed_code name="t1MXVnMzE6RtM-VN_Y99PQ67OQbLKcUf" />
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
             <plugins name="OSMF" />
@@ -164,6 +175,7 @@
     <test name="PlaybackGeoRestrictionTests">
         <url>
             <description name="Content Protection:Bitmovin Elemental dash + Geo Restriction" />
+            <priority name="P1"></priority>
             <embed_code name="tua2hqNTE61OtT9uCWV6IKb3s4dDd7DT" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
@@ -179,6 +191,7 @@
         
         <url>
             <description name="Content Protection:Bitmovin Azure dash + Geo Restriction" />
+            <priority name="P1"></priority>
             <embed_code name="tuY2Z0YTE6oCBM-2s4E0-affUHcG-iwy" />
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="BITMOVIN" />
@@ -194,6 +207,7 @@
 
         <url>
             <description name="Content Protection:Bitmovin Elemental Fairplay HLS + Geo Restriction" />
+            <priority name="P1"></priority>
             <embed_code name="U0NDNiNDE6CaJv41fU4QpRFS4FDUGX4x" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
@@ -210,6 +224,7 @@
     <test name="PlaybackConcurrentStreamTests">
         <url>
             <description name="Content Protection:Bitmovin Elemental Dash Encrypted + OPT +Concurrent Streams" />
+            <priority name="P1"></priority>
             <embed_code name="kza2hqNTE6SjwZYCVNlKtMp2QdU3IRNc" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
@@ -222,6 +237,7 @@
 
         <url>
             <description name="Content Protection:Bitmovin Elemental Fairplay HLS + Concurrent streams" />
+            <priority name="P1"></priority>
             <embed_code name="9oOGhqNTE6Be1ZsAU_zQp3_3YkFADnuz" />
             <pcode name="x0b2cyOupu0FFK5hCr4zXg8KKcrm" />
             <plugins name="BITMOVIN" />
@@ -235,6 +251,7 @@
     <test name="PlaybackFlightTimeTests">
         <url>
             <description name="Core:Flight Time Main" />
+            <priority name="P1"></priority>
             <embed_code name="R5ZmlqYTE6Ia0Z0J1YyQ8tRHhoPmBFOF" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
