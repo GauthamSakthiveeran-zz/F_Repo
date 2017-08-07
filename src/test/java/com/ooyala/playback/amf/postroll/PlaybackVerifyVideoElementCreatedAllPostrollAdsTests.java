@@ -52,7 +52,7 @@ public class PlaybackVerifyVideoElementCreatedAllPostrollAdsTests extends Playba
 
             result = result && eventValidator.validateElement("seeked_1", 20000);
 
-            result = result && eventValidator.validateElement("played_1", 20000);
+            result = result && eventValidator.validateElement("played_1", 30000);
 
             result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 10000);
 

@@ -89,7 +89,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 						return false;
 					}
 				} else {
-					return false;
+					extentTest.log(LogStatus.FAIL, "PLAYING_SCREEN not found.");
 				}
 			}
 

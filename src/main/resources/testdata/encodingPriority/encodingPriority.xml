@@ -3,6 +3,7 @@
     <test name ="PlaybackEncodingPriorityTests" >
         <url>
             <description name="Encoding Priority:BITMOVIN HLS only with encoding priority set to dash, hls, mp4"/>
+            <priority name="P1"></priority>
             <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7"/>
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
             <plugins name="BITMOVIN"/>
@@ -14,6 +15,7 @@
         </url>
         <url>
             <description name="Encoding Priority:BITMOVIN HLS only encoding priority set to hds, mp4"/>
+            <priority name="P1"></priority>
             <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7"/>
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
             <plugins name="BITMOVIN"/>
@@ -25,6 +27,7 @@
         </url>
         <url>
             <description name="Encoding Priority:BITMOVIN Dash only encoding priority to hls, dash, mp4"/>
+            <priority name="P1"></priority>
             <embed_code name="AxZWVlOTE69sXjpQ_uZyM7sf6aqBl8N0"/>
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
             <plugins name="BITMOVIN"/>
@@ -33,10 +36,11 @@
             <pbid name="378512f55dd44fc287d0fa609353c268"/>
             <streamType supportedMuxFormat="dash"></streamType>
             <browsersSupported name="chrome,firefox,ie,edge"/>
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Encoding Priority:BITMOVIN Dash only encoding priority to  hds, mp4"/>
+            <priority name="P1"></priority>
             <embed_code name="AxZWVlOTE69sXjpQ_uZyM7sf6aqBl8N0"/>
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
             <plugins name="BITMOVIN"/>
@@ -49,6 +53,7 @@
         </url>
         <url>
             <description name="Encoding Priority:OSMF HDS only set encoding priority to dash, hls, hds"/>
+            <priority name="P3"></priority>
             <embed_code name="syMGUyODE60uVae2GkFJovDNcN_W5TGE"/>
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
             <plugins name="OSMF"/>
@@ -60,6 +65,7 @@
         </url>
         <url>
             <description name="Encoding Priority:OSMF HDS only set encoding priority to  hls, mp4"/>
+            <priority name="P3"></priority>
             <embed_code name="syMGUyODE60uVae2GkFJovDNcN_W5TGE"/>
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
             <plugins name="OSMF"/>
@@ -71,6 +77,7 @@
         </url>
         <url>
             <description name="Encoding Priority:BITMOVIN Dash + HLS set encoding priority to dash, hls"/>
+            <priority name="P1"></priority>
             <embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq"/>
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
             <plugins name="BITMOVIN"/>
@@ -82,6 +89,7 @@
         </url>
         <url>
             <description name="Encoding Priority:BITMOVIN Dash + HLS no encoding priority"/>
+            <priority name="P1"></priority>
             <embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq"/>
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
             <plugins name="BITMOVIN"/>
@@ -89,10 +97,11 @@
             <additionalPlugins name=""/>
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
             <streamType supportedMuxFormat="hls,dash"></streamType>
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Encoding Priority:MAIN Dash + HLS set encoding priority to dash, hls"/>
+            <priority name="P2"></priority>
             <embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq"/>
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
             <plugins name="MAIN"/>
@@ -105,6 +114,7 @@
         </url>
         <url>
             <description name="Encoding Priority:MAIN No encoding priority set for asset with hls,mp4"/>
+            <priority name="P2"></priority>
             <embed_code name="ExZW5vYjE69p-qA3n_xZJ76Zbb4EwZfT"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -112,10 +122,11 @@
             <additionalPlugins name=""/>
             <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
             <streamType supportedMuxFormat="hls,mp4"></streamType>
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Encoding Priority:MAIN with encoding priority set to mp4, hls"/>
+            <priority name="P2"></priority>
             <embed_code name="ExZW5vYjE69p-qA3n_xZJ76Zbb4EwZfT"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -127,6 +138,7 @@
         </url>
         <url>
             <description name="Encoding Priority:MAIN with encoding priority set to hls,mp4"/>
+            <priority name="P2"></priority>
             <embed_code name="ExZW5vYjE69p-qA3n_xZJ76Zbb4EwZfT"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -138,6 +150,7 @@
         </url>
         <url>
             <description name="Encoding Priority:MAIN, BITMOVIN No encoding priority set for an asset with dash+mp4"/>
+            <priority name="P1"></priority>
             <embed_code name="hxaG5vYjE6YtOkCZzkqLi-kRn-en2lTD"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -145,10 +158,11 @@
             <additionalPlugins name=""/>
             <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
             <streamType supportedMuxFormat="dash,mp4"></streamType>
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Encoding Priority:MAIN, BITMOVIN No encoding priority set for an asset with hls+mp4"/>
+            <priority name="P1"></priority>
             <embed_code name="ExZW5vYjE69p-qA3n_xZJ76Zbb4EwZfT"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -156,10 +170,11 @@
             <additionalPlugins name=""/>
             <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
             <streamType supportedMuxFormat="hls,mp4"></streamType>
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Encoding Priority:MAIN No encoding priority set for asset with dash,mp4"/>
+            <priority name="P2"></priority>
             <embed_code name="hxaG5vYjE6YtOkCZzkqLi-kRn-en2lTD"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -167,10 +182,11 @@
             <additionalPlugins name=""/>
             <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
             <streamType supportedMuxFormat="dash,mp4"></streamType>
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Encoding Priority:BITMOVIN, MAIN without encoding priority for an asset with all formats"/>
+            <priority name="P1"></priority>
             <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -178,10 +194,11 @@
             <additionalPlugins name=""/>
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
             <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Encoding Priority:BITMOVIN dash + hls + hds + mp4 without encoding priority"/>
+            <priority name="P1"></priority>
             <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
             <plugins name="BITMOVIN"/>
@@ -189,10 +206,11 @@
             <additionalPlugins name=""/>
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
             <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Encoding Priority:MAIN dash + hls + hds + mp4"/>
+            <priority name="P2"></priority>
             <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
             <plugins name="MAIN"/>
@@ -200,10 +218,11 @@
             <additionalPlugins name=""/>
             <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
             <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Encoding Priority:MAIN dash + hls + hds + mp4 set encoding priority to mp4, dash, hls, hds"/>
+            <priority name="P2"></priority>
             <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
             <plugins name="MAIN"/>
@@ -215,6 +234,7 @@
         </url>
         <url>
             <description name="Encoding Priority:OSMF dash + hls + hds + mp4"/>
+            <priority name="P3"></priority>
             <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
             <plugins name="OSMF"/>
@@ -226,6 +246,7 @@
         </url>
         <url>
             <description name="Encoding Priority:BITMOVIN dash + hls + hds + mp4 set encoding priority to dash, hls, mp4"/>
+            <priority name="P1"></priority>
             <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
             <plugins name="BITMOVIN"/>
@@ -237,6 +258,7 @@
         </url>
         <url>
             <description name="Encoding Priority:BITMOVIN dash + hls + hds + mp4 set encoding priority to mp4, dash, hls, hds"/>
+            <priority name="P1"></priority>
             <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
             <plugins name="BITMOVIN"/>
@@ -248,6 +270,7 @@
         </url>
         <url>
             <description name="Encoding Priority:all drms OSMF"/>
+            <priority name="P3"></priority>
             <embed_code name="F0c2htYjE6whZVFBkuLTN71PO3Rs0Rxz"/>
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
             <plugins name="OSMF"/>
@@ -258,6 +281,7 @@
         </url>
         <url>
             <description name="Encoding Priority:all drms BITMOVIN"/>
+            <priority name="P1"></priority>
             <embed_code name="F0c2htYjE6whZVFBkuLTN71PO3Rs0Rxz"/>
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
             <plugins name="BITMOVIN"/>
@@ -268,6 +292,7 @@
         </url>
         <url>
             <description name="Encoding Priority:MAIN with encoding priority set to mp4"/>
+            <priority name="P2"></priority>
             <embed_code name="Nka2ZtYjE6uyHb3HfNTekA2NpGqlW-mN"/>
             <pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-"/>
             <plugins name="MAIN"/>

@@ -6,6 +6,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -41,7 +42,7 @@ public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
 
             result = result && eventValidator.validate("videoInFocus_1", 20000);
 
-            result = result && seekValidator.validate("seeked_1", 60);
+            result = result && seekValidator.validate("seeked_1", 10000);
 
             result = result && eventValidator.validate("videoLostFocus_1", 60000);
 
@@ -58,10 +59,9 @@ public class PlaybackVideoControllerEventTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("setVideoStream_1",20000);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(e);
+			extentTest.log(LogStatus.FAIL,e);
 		}
-
 		Assert.assertTrue(result, "Playback Video Controller Event test failed");
-
 	}
 }

@@ -6,7 +6,7 @@
         <classes>
             <parameter name="xmlFilePkg" value="api"/>
             <parameter name="jsFile" value="common.js,amf/amf.js"/>
-            <class name ="com.ooyala.playback.api.ValidateAPIForWithoutAdTests"/>
+            <class name ="com.ooyala.playback.api.ValidateAPITests"/>
             <class name ="com.ooyala.playback.api.ValidateAPIForPrerollAdTests"/>
             <class name ="com.ooyala.playback.api.ValidateAPIForMidrollAdTests"/>
             <class name ="com.ooyala.playback.api.ValidateAPIForPostrollAdTests"/>

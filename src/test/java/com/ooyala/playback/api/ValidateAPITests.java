@@ -1,26 +1,24 @@
 package com.ooyala.playback.api;
 
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.OoyalaAPIValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.PlayerAPIValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 /**
  * Created by jitendra on 29/12/16.
  */
-public class ValidateAPIForWithoutAdTests extends PlaybackWebTest {
+public class ValidateAPITests extends PlaybackWebTest {
 
-    private EventValidator eventValidator;
-    private OoyalaAPIValidator ooyalaAPIValidator;
+    private PlayerAPIValidator ooyalaAPIValidator;
     private PlayValidator playValidator;
 
 
-    public ValidateAPIForWithoutAdTests() throws OoyalaException {
+    public ValidateAPITests() throws OoyalaException {
         super();
     }
 
