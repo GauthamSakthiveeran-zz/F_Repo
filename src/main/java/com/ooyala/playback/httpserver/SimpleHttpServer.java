@@ -39,7 +39,7 @@ public class SimpleHttpServer {
 		} catch (Exception ex) {
 			logger.info("Not able to start the http server: "
 					+ ex.getLocalizedMessage());
-			new OoyalaException("Not able to start the httpserver:"
+			throw new OoyalaException("Not able to start the httpserver:"
 					+ ex.getMessage());
 		}
 	}
@@ -51,7 +51,7 @@ public class SimpleHttpServer {
 		} catch (Exception ex) {
 			logger.info("Not able to stop the http server:"
 					+ ex.getLocalizedMessage());
-			new OoyalaException("Not able to stop the httpserver:"
+			throw new OoyalaException("Not able to stop the httpserver:"
 					+ ex.getMessage());
 		}
 	}

@@ -1,4 +1,4 @@
-package com.ooyala.playback.updateSpreadSheet;
+package com.ooyala.playback.enums;
 
 import com.google.api.services.sheets.v4.model.Color;
 
