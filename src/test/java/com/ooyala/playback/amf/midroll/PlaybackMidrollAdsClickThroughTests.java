@@ -1,18 +1,16 @@
 package com.ooyala.playback.amf.midroll;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.AdClickThroughValidator;
-import com.ooyala.playback.page.CCValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-import org.openqa.selenium.JavascriptExecutor;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 public class PlaybackMidrollAdsClickThroughTests extends PlaybackWebTest {
 
@@ -23,8 +21,6 @@ public class PlaybackMidrollAdsClickThroughTests extends PlaybackWebTest {
 	private EventValidator event;
 	private PlayAction playAction;
 	private PlayValidator playValidator;
-	private SeekAction seekAction;
-	private CCValidator ccValidator;
 	private AdClickThroughValidator clickThrough;
 
 	@Test(groups = { "amf", "midroll", "sequential", "clickThrough" }, dataProvider = "testUrls")

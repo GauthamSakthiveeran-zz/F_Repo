@@ -3,6 +3,7 @@
     <test name="PlaybackMidrollAdsClickThroughTests">
         <url>
             <description name="VPAID:Bitmovin IMA VPAID2.0 Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="MyNngxYjE6YLC9qiK0va9r0SaqN9L6mD"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -17,6 +18,7 @@
 
         <url>
             <description name="Pulse:Bitmovin Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="Blb2U5MzE6mLeSsYNyfqiDbsaYBODDka"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
@@ -30,6 +32,7 @@
 
         <url>
             <description name="Pulse:OSMF Midroll" />
+            <priority name="P3"></priority>
             <embed_code name="o3dXF5YTE6bLKdGNXy-dVEqkNt9Hrh3c" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
             <plugins name="OSMF" />
@@ -42,6 +45,7 @@
 
         <url>
             <description name="Pulse:Main Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="x0amU5MzE6igU92P3BOmuI8PjqRYz-LX"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -55,6 +59,7 @@
 
         <url>
             <description name="IMA:Main Ad Rule Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -67,6 +72,7 @@
 
         <url>
             <description name="IMA:Bitmovin Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="IxOTVnMTE6mwR52DOItZ1k1DioFcKQrk"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
@@ -80,6 +86,7 @@
 
         <url>
             <description name="Freewheel:Bitmovin Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -94,6 +101,7 @@
 
         <url>
             <description name="VAST:Bitmovin Vast2.0 Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="VwYzdoMTE6MFmVcSNiwQyGpeSOuvGpcc"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
@@ -107,6 +115,7 @@
 
         <url>
             <description name="VAST:OSMF Vast2.0 Midroll"/>
+            <priority name="P3"></priority>
             <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -119,6 +128,7 @@
 
         <url>
             <description name="IMA:OSMF Midroll"/>
+            <priority name="P3"></priority>
             <embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -131,6 +141,7 @@
 
         <url>
             <description name="Freewheel:Midroll Main"/>
+            <priority name="P2"></priority>
             <embed_code name="Q5bHlycTpEywqcPbMxbCsU0O3DWV9Ryl"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -143,6 +154,7 @@
 
         <url>
             <description name="Freewheel:OSMF Midroll"/>
+            <priority name="P3"></priority>
             <embed_code name="Y5dWVmMDE6lIE-PNSXHfsuTNPmeWbjC4"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN,OSMF"/>
@@ -155,6 +167,7 @@
 
         <url>
             <description name="IMA:Midroll OSMF"/>
+            <priority name="P3"></priority>
             <embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -167,6 +180,7 @@
 
         <url>
             <description name="VAST:Midroll Main"/>
+            <priority name="P2"></priority>
             <embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -178,6 +192,7 @@
 
         <url>
             <description name="VAST:Main Vast2.0 Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -189,6 +204,7 @@
         </url>
         <url>
             <description name="Freewheel:Main Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -201,6 +217,7 @@
 
         <url>
             <description name="VAST:OSMF Vast3.0 Midroll"/>
+            <priority name="P3"></priority>
             <embed_code name="hucThxYTE6DeKlOdeAQS8bbGgIE5dDpX"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -213,6 +230,7 @@
 
         <url>
             <description name="VAST:Main Vast3.0 Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="F3bDhxYTE6_BXwKW6aljlWptl8jHx4sA"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -226,6 +244,7 @@
 
         <url>
             <description name="VPAID:Bitmovin IMA VPAID1.0 Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="VlNngxYjE6Fxun-P1nj_6S1fZynIqXEp"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -237,6 +256,7 @@
 
         <url>
             <description name="VPAID:OSMF IMA VPAID1.0 Midroll"/>
+            <priority name="P3"></priority>
             <embed_code name="QxaXF5YTE6uF6wAkOtQSsMtjs8EWuRY0"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -249,6 +269,7 @@
 
         <url>
             <description name="VPAID:Main IMA VPAID1.0 Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="4zdm5xYTE6kinDj0VQ5a3Qlq6PAaRguK"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>

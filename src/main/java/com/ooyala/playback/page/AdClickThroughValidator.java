@@ -178,7 +178,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
         return isAdplaying;
     }
 
-    public boolean clickThroughOnAd(int counter) throws Exception {
+    private boolean clickThroughOnAd(int counter) throws Exception {
         String baseWindowHdl = driver.getWindowHandle();
         Map<String, String> data = parseURL();
         boolean flag = true;
