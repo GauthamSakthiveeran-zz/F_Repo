@@ -3,6 +3,7 @@
     <test name="ValidateAPIForMidrollAdTests">
         <url>
             <description name="Player API:Bitmovin Midroll Ad"/>
+            <priority name="P3"></priority>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -13,6 +14,7 @@
         </url>
         <url>
             <description name="Player API:MAIN Midroll Ad"/>
+            <priority name="P3"></priority>
             <embed_code name="A1bmxiMjE64igdFOvxveOJdKRC7tqQ2C"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -23,6 +25,7 @@
         </url>
         <url>
             <description name="Player API:OSMF Midroll Ad"/>
+            <priority name="P4"></priority>
             <embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>

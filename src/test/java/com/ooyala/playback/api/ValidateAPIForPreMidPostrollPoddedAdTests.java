@@ -1,7 +1,7 @@
 package com.ooyala.playback.api;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.OoyalaAPIValidator;
+import com.ooyala.playback.page.PlayerAPIValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
@@ -16,7 +16,7 @@ public class ValidateAPIForPreMidPostrollPoddedAdTests extends PlaybackWebTest {
 
     private PlayValidator play;
     private PlayAction playAction;
-    private OoyalaAPIValidator api;
+    private PlayerAPIValidator api;
 
     public ValidateAPIForPreMidPostrollPoddedAdTests() throws OoyalaException {
         super();

@@ -3,6 +3,7 @@
     <test name="ValidateAPIForPrerollPoddedAdTests">
         <url>
             <description name="Player API:Bitmovin Preroll Podded"/>
+            <priority name="P3"></priority>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -13,6 +14,7 @@
         </url>
         <url>
             <description name="Player API:MAIN Preroll Podded"/>
+            <priority name="P3"></priority>
             <embed_code name="B1ZmgzMTE6qeXMfeqJTw3IoqZXvKGrDw"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -23,6 +25,7 @@
         </url>
         <url>
             <description name="Player API:OSMF Preroll Podded"/>
+            <priority name="P4"></priority>
             <embed_code name="x1MjlxYTE6v9pJaLK_hFgurkxQo56QFY"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>

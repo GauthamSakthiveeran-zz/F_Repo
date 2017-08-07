@@ -54,7 +54,7 @@ public class PlayBackFactory {
 	private MultiplePlayerValidator multiplePlayerValidator;
 	private AdClickThroughValidator adClickThroughValidator;
 	private PoddedAdValidator poddedAdValidator;
-	private OoyalaAPIValidator ooyalaAPIValidator;
+	private PlayerAPIValidator playerAPIValidator;
 	private PlaylistValidator playlistValidator;
 	private AdFrequencyValidator adFrequencyValidator;
 	private ThumbnailCarouselValidator thumbnailCarouselValidator;
@@ -182,12 +182,12 @@ public class PlayBackFactory {
 		return adFrequencyValidator;
 	}
 
-	public OoyalaAPIValidator getOoyalaAPIValidator() {
-		if (ooyalaAPIValidator == null) {
-			ooyalaAPIValidator = new OoyalaAPIValidator(driver);
-			ooyalaAPIValidator.setExtentTest(extentTest);
+	public PlayerAPIValidator getPlayerAPIValidator() {
+		if (playerAPIValidator == null) {
+			playerAPIValidator = new PlayerAPIValidator(driver);
+			playerAPIValidator.setExtentTest(extentTest);
 		}
-		return ooyalaAPIValidator;
+		return playerAPIValidator;
 	}
 
 	public ThumbnailCarouselValidator getThumbnailCarouselValidator() {

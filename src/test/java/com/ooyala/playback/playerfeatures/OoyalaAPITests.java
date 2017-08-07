@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.OoyalaAPIValidator;
+import com.ooyala.playback.page.PlayerAPIValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -16,7 +16,7 @@ import com.relevantcodes.extentreports.LogStatus;
 public class OoyalaAPITests extends PlaybackWebTest {
 
     private EventValidator eventValidator;
-    private OoyalaAPIValidator ooyalaAPIValidator;
+    private PlayerAPIValidator ooyalaAPIValidator;
 
 
     public OoyalaAPITests() throws OoyalaException {
