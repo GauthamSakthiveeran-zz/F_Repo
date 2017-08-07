@@ -516,19 +516,6 @@ public abstract class PlayBackPage extends WebPage {
 		return validateMainVideoPlayResumeTime(Double.parseDouble(timeSwitch));
 	}
 
-	public Object executeJsScript(String command, String returnType){
-
-		switch (returnType){
-			case "boolean":
-				return Boolean.parseBoolean(driver.executeScript("return "+command+"").toString());
-			case "string":
-				return driver.executeScript("return "+command+"").toString();
-			case "int":
-				return Integer.parseInt(driver.executeScript("return "+command+"").toString());
-		}
-		return null;
-	}
-
 	public boolean performActionByJs(String command) {
 		try {
 			driver.executeScript(command);
