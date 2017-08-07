@@ -26,12 +26,14 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
     private PoddedAdValidator poddedAdValidator;
     private SetEmbedCodeValidator setEmbedCodeValidator;
     private MidrollAdValidator adStartTimeValidator;
-    PlayAction playAction;
+    private PlayAction playAction;
+    private AdClickThroughValidator clickthrough;
 
     @Test(groups = {"amf", "podded", "midroll"}, dataProvider = "testUrls")
     public void verifyMidrollPodded(String testName, UrlObject url) throws OoyalaException {
 
         boolean result = true;
+        boolean click = testName.contains("Clickthrough");
 
         try {
             driver.get(url.getUrl());
@@ -46,9 +48,18 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
                 result = result && seek.seek("18");
 
             if (adStartTimeValidator.isAdPlayTimePresent(url)) {
-                result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlayAds");
-            } else
-                result = result && event.validate("MidRoll_willPlayAds", 60000);
+                if(result && !click) {
+                    result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlayAds");
+                } else {
+                    result = result && event.validate("willPlayMidrollAd_1", 60000);
+                    s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("midroll"),"Clickthrough");
+                }
+            } else {
+                result = result && event.validate("willPlayMidrollAd_1", 60000);
+                if (result && click){
+                    s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("midroll"),"Clickthrough");
+                }
+            }
 
             result = result && seek.fromLast().setTime(20).startAction();
 
@@ -73,6 +84,7 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
             extentTest.log(LogStatus.FAIL, e);
             result = false;
         }
-        Assert.assertTrue(result, "Tests failed");
+        s_assert.assertTrue(result, "Tests failed");
+        s_assert.assertAll();
     }
 }

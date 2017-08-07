@@ -16,6 +16,7 @@
 			<class name="com.ooyala.playback.amf.midroll.vast.PlaybackMidrollOverlayUpNextTests"></class>
 			<class name="com.ooyala.playback.amf.midroll.PlaybackCCenableMidRollAdsTests"></class>
 			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollAdAndMidrollOverlayAdsTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollAdsClickThroughTests"></class>
 		</classes>
 	</test>
 
