@@ -276,7 +276,7 @@
             <adPlugins name="IMA"/>
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
     </test>
 </testdata>
