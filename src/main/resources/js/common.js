@@ -3,8 +3,7 @@ function subscribeToCommonEvents() {
 		var playedEventOrder = 1;
 		var fullscreenChangedEventOrder = 1;
 		var seekingEventOrder = 1;
-        
-		var playbackReadyEventOrder = 1;
+        var playbackReadyEventOrder = 1;
 		var adsclickedEventOrder = 1;
 		var closedCaptionOrder = 1;
 		var closedCaptionLang = 1;
@@ -25,6 +24,7 @@ function subscribeToCommonEvents() {
         var ooyalaAdsEventOrder = 1;
         var volumeChanged=1;
         var changeVolume=1;
+        var videoSeekEventOrder = 1;
         
         var logger = '';
         
@@ -118,6 +118,11 @@ function subscribeToCommonEvents() {
 			if (event.match(/skipAd/)) {
 				OO.$('#ooplayer').append('<p id=skipAd_'+skipAdEventOrder+'>skipAd '+skipAdEventOrder+'</p>'); 
 				skipAdEventOrder++;
+			}
+
+			if (event.match(/videoSeek/)){
+			    OO.$('#ooplayer').append('<p id=videoSeek_'+videoSeekEventOrder+'> videoSeek_'+videoSeekEventOrder+'</p>');
+			    videoSeekEventOrder++;
 			}
 			
 			
