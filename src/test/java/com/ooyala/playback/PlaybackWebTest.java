@@ -434,21 +434,28 @@ public abstract class PlaybackWebTest extends FacileTest {
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
         String version;
-        if (!browser.equalsIgnoreCase("MicrosoftEdge")) {
-            version = getBrowserVersion();
-        } else {
-            version = "";
-        }
-        Map<String, UrlObject> urls = new UrlGenerator().parseXmlDataProvider(getClass().getSimpleName(), testData, browser, version);
-        String testName = getClass().getSimpleName();
-        Object[][] output = new Object[urls.size()][2];
-        Iterator<Map.Entry<String, UrlObject>> entries = urls.entrySet().iterator();
-        int i = 0;
-        while (entries.hasNext()) {
-            Map.Entry<String, UrlObject> entry = entries.next();
-            output[i][0] = testName + " - " + entry.getKey();
-            output[i][1] = entry.getValue();
-            i++;
+        Map<String, UrlObject> urls;
+        Object[][] output = null;
+        logger.info("inside data provider method");
+        try {
+            if (!browser.equalsIgnoreCase("MicrosoftEdge")) {
+                version = getBrowserVersion();
+            } else {
+                version = "";
+            }
+            urls = new UrlGenerator().parseXmlDataProvider(getClass().getSimpleName(), testData, browser, version);
+            String testName = getClass().getSimpleName();
+            output = new Object[urls.size()][2];
+            Iterator<Map.Entry<String, UrlObject>> entries = urls.entrySet().iterator();
+            int i = 0;
+            while (entries.hasNext()) {
+                Map.Entry<String, UrlObject> entry = entries.next();
+                output[i][0] = testName + " - " + entry.getKey();
+                output[i][1] = entry.getValue();
+                i++;
+            }
+        }catch (Exception ex){
+            logger.error("Error in data provider method"+ex);
         }
         return output;
     }
