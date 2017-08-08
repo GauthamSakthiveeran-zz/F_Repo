@@ -3,7 +3,7 @@
     <test name="PlaybackPreMidPostRollAdsTests">
 
         <url>
-            <description name="Freewheel:Bitmovin PreMidPost"/>
+            <description name="Freewheel:Bitmovin PreMidPost|Freewheel:Clickthrough Bitmovin PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -31,7 +31,7 @@
         </url>
 
         <url>
-            <description name="IMA:Bitmovin PreMidPost"/>
+            <description name="IMA:Bitmovin PreMidPost|IMA:Clickthrough Bitmovin PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="kxYzZnMTE6ZCgrz07-3C3pMbCcqYySyZ"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -59,7 +59,7 @@
         </url>
 
         <url>
-            <description name="VAST:Bitmovin Vast2.0 PreMidPost"/>
+            <description name="VAST:Bitmovin Vast2.0 PreMidPost|VAST:Clickthrough Bitmovin Vast2.0 PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="w0bjdoMTE6pvm5MjCey7t2WJavX08Ob1"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -137,7 +137,7 @@
         </url>
 
         <url>
-            <description name="IMA:Main PreMidPost"/>
+            <description name="IMA:Main PreMidPost|IMA:Clickthrough Main PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -150,7 +150,7 @@
         </url>
 
         <url>
-            <description name="Freewheel:OSMF PreMidPost"/>
+            <description name="Freewheel:OSMF PreMidPost|Freewheel:Clickthrough OSMF PreMidPost"/>
             <priority name="P3"></priority>
             <embed_code name="lmdWVmMDE6z-KeydAAXsjREkZOApmA8y"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -165,7 +165,7 @@
         </url>
 
         <url>
-            <description name="IMA:OSMF PreMidPost"/>
+            <description name="IMA:OSMF PreMidPost|IMA:Clickthrough OSMF PreMidPost"/>
             <priority name="P3"></priority>
             <embed_code name="I2eGVmMDE6S2TG0jsa7NNE3thejf21i3"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -178,7 +178,7 @@
         </url>
 
         <url>
-            <description name="VAST:OSMF Vast2.0 PreMidPost"/>
+            <description name="VAST:OSMF Vast2.0 PreMidPost|VAST:Clickthrough OSMF Vast2.0 PreMidPost"/>
             <priority name="P3"></priority>
             <embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -192,7 +192,7 @@
         </url>
 
         <url>
-            <description name="Pulse:Bitmovin PreMidPost"/>
+            <description name="Pulse:Bitmovin PreMidPost|Pulse:Clickthrough Bitmovin PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="VlZGY5MzE63yUh1dSJkD8P5r3QLN4krQ"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -220,7 +220,7 @@
         </url>
 
         <url>
-            <description name="Pulse:OSMF PreMidPost"/>
+            <description name="Pulse:OSMF PreMidPost|Pulse:Clickthrough OSMF PreMidPost"/>
             <priority name="P3"></priority>
             <embed_code name="s0eTdxYTE6CVt_744t-WYSQ6A_rx19Mb"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -234,7 +234,7 @@
         </url>
 
         <url>
-            <description name="Pulse:Main PreMidPost"/>
+            <description name="Pulse:Main PreMidPost|Pulse:Clickthrough Main PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="JjbmFuYTE60g0UVbvotO0aK6dnJvN3c7"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -247,7 +247,7 @@
         </url>
 
         <url>
-            <description name="VAST:Bitmovin Vast3.0 PreMidPost"/>
+            <description name="VAST:Bitmovin Vast3.0 PreMidPost|VAST:Clickthrough Bitmovin Vast3.0 PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="R3NDh2YTE6OGykeMgB2QCZb63Z_YhLna"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -314,7 +314,7 @@
         </url>
 
         <url>
-            <description name="IMA:OSMF IMA Countdown PreMidPost"/>
+            <description name="IMA:OSMF IMA Countdown PreMidPost|IMA:Clickthrough OSMF IMA Countdown PreMidPost"/>
             <priority name="P3"></priority>
             <embed_code name="I2eGVmMDE6S2TG0jsa7NNE3thejf21i3"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -329,7 +329,7 @@
         </url>
 
         <url>
-            <description name="IMA:Main IMA Countdown PreMidPost"/>
+            <description name="IMA:Main IMA Countdown PreMidPost|IMA:Clickthrough Main IMA Countdown PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -341,7 +341,7 @@
         </url>
 
         <url>
-            <description name="IMA:Bitmovin IMA Countdown PreMidPost"/>
+            <description name="IMA:Bitmovin IMA Countdown PreMidPost|IMA:Clickthrough Bitmovin IMA Countdown PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="0yMndiczrvRhLydvZp1w_6D8fw4TfHs0"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -365,7 +365,7 @@
         </url>
 
         <url>
-            <description name="Freewheel:Main PreMidPost"/>
+            <description name="Freewheel:Main PreMidPost|Freewheel:Clickthrough Main PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -378,7 +378,7 @@
         </url>
 
         <url>
-            <description name="VAST:OSMF Vast3.0 PreMidPost"/>
+            <description name="VAST:OSMF Vast3.0 PreMidPost|VAST:Clickthrough OSMF Vast3.0 PreMidPost"/>
             <priority name="P3"></priority>
             <embed_code name="FycThxYTE6OhsaYY_SpBCDaMhbWj2xEp"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -393,7 +393,7 @@
         </url>
 
         <url>
-            <description name="VAST:Main Vast3.0 PreMidPost"/>
+            <description name="VAST:Main Vast3.0 PreMidPost|VAST:Clickthrough Main Vast3.0 PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="psNTlxYTE6L7RGROCJdn0t6rgeGpyLmt"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -456,7 +456,7 @@
         </url>
 
         <url>
-            <description name="VPAID:OSMF IMA VPAID2.0 PreMidPost"/>
+            <description name="VPAID:OSMF IMA VPAID2.0 PreMidPost|VPAID:Clickthrough OSMF IMA VPAID2.0 PreMidPost"/>
             <priority name="P3"></priority>
             <embed_code name="VuMm9xYTE69UeMy_0pkVhDZPN5CT1dIV"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -468,7 +468,7 @@
             <platformsSupported name="mac,windows"/>
         </url>
         <url>
-            <description name="VAST:Main Vast2.0 PreMidPost"/>
+            <description name="VAST:Main Vast2.0 PreMidPost|VAST:Clickthrough Main Vast2.0 PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="lzMGdpdDq6Dsvi-c32p6u7k46mbT_cxm"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -481,7 +481,7 @@
         </url>
 
         <url>
-            <description name="Freewheel:Main PreMidPost"/>
+            <description name="Freewheel:Main PreMidPost|Freewheel:Clickthrough Main PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -494,7 +494,7 @@
         </url>
 
         <url>
-            <description name="VAST:OSMF Vast3.0 PreMidPost"/>
+            <description name="VAST:OSMF Vast3.0 PreMidPost|VAST:Clickthrough OSMF Vast3.0 PreMidPost"/>
             <priority name="P3"></priority>
             <embed_code name="FycThxYTE6OhsaYY_SpBCDaMhbWj2xEp"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -509,7 +509,7 @@
         </url>
 
         <url>
-            <description name="VAST:Main Vast3.0 PreMidPost"/>
+            <description name="VAST:Main Vast3.0 PreMidPost|VAST:Clickthrough Main Vast3.0 PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="psNTlxYTE6L7RGROCJdn0t6rgeGpyLmt"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -522,7 +522,7 @@
         </url>
 
         <url>
-            <description name="VPAID:Bitmovin IMA VPAID1.0 PreMidPost"/>
+            <description name="VPAID:Bitmovin IMA VPAID1.0 PreMidPost|VPAID:Clickthrough Bitmovin IMA VPAID1.0 PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="hpNngxYjE626kPyLx7t4LHro-f0Iq0Pa"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -560,7 +560,7 @@
         </url>
 
         <url>
-            <description name="VPAID:OSMF IMA VPAID1.0 PreMidPost"/>
+            <description name="VPAID:OSMF IMA VPAID1.0 PreMidPost|VPAID:Clickthrough OSMF IMA VPAID1.0 PreMidPost"/>
             <priority name="P3"></priority>
             <embed_code name="ZvMnBxYTE6DH34HvYbSj_LOphEPt27mQ"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>

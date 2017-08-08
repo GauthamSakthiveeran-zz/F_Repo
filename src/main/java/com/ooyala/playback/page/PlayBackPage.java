@@ -515,6 +515,16 @@ public abstract class PlayBackPage extends WebPage {
 			return true;
 		return validateMainVideoPlayResumeTime(Double.parseDouble(timeSwitch));
 	}
+
+	public boolean performActionByJs(String command) {
+		try {
+			driver.executeScript(command);
+		} catch (Exception ex) {
+			extentTest.log(LogStatus.FAIL, ex.getMessage());
+			return false;
+		}
+		return true;
+	}
 	
 	public boolean validatePlayStartTimeFromBeginningofVideo() {
 		if (waitOnElement(By.id("playTime"), 1000)) {
@@ -532,6 +542,19 @@ public abstract class PlayBackPage extends WebPage {
 			extentTest.log(LogStatus.FAIL, "Unable to validate start time of video.");
 		}
 		return true;
+	}
+
+	public Object executeJsScript(String command, String returnType) {
+
+		switch (returnType) {
+			case "boolean":
+				return Boolean.parseBoolean(driver.executeScript("return " + command + "").toString());
+			case "string":
+				driver.executeScript("return " + command + "").toString();
+			case "int":
+				return Boolean.parseBoolean(driver.executeScript("return " + command + "").toString());
+		}
+		return null;
 	}
 
 	public boolean validateMainVideoPlaybackStartTimeAfterMidrollAd(String timeString) {

@@ -38,6 +38,7 @@
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackVastPreIMAMidlAdsTests"></class>
 			<class name="com.ooyala.playback.amf.ima.PlaybackPreRollOverlayPostRollAdTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollAdsClickThroughTests"></class>
         </classes>
     </test>
 
