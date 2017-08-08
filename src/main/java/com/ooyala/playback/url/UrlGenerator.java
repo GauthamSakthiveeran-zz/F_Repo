@@ -203,6 +203,7 @@ public class UrlGenerator {
                         urlObject.setUrl(urlGenerated);
                         urlObject.setEmbedCode(embedCode);
                         urlObject.setPCode(pCode);
+                        urlObject.setPlayerId(pbid);
 
                         if (url.getSecret() != null && url.getSecret().getName() != null
                                 && !url.getSecret().getName().isEmpty()) {
