@@ -38,6 +38,17 @@
             <pbid name="354f13b5b4d45a08bb0f3317c51e0ef"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
         </url>
+        
+        <url>
+            <description name="Core:Discovery from specific label OSMF"/>
+            <priority name="P3"></priority>
+            <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF"/>
+            <additionalPlugins name="DISCOVERY"/>
+            <pbid name="d99dafe4535a4304948a7669e309ff9a"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showInAdControlBar":true}]]></playerParameter>
+        </url>
     </test>
 
     <test name="DiscoveryUpNextTests">
@@ -50,7 +61,18 @@
             <adPlugins name=""/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <playerParameter></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Discovery upnext Bitmovin"/>
+            <priority name="P1"></priority>
+            <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name="DISCOVERY"/>
+            <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Core:Discovery upnext AdobeTVSDK"/>
@@ -61,7 +83,7 @@
             <adPlugins name=""/>
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
     </test>
 
@@ -138,7 +160,7 @@
     <test name="PlaybackClosedCaptionPilingUpTests">
         <url>
             <description name="Core:Closed Caption Piling Up Main"/>
-            <priority name="P1"></priority>
+            <priority name="P3"></priority>
             <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -149,7 +171,7 @@
         </url>
         <url>
             <description name="Core:Live Closed Caption Piling Up Main"/>
-            <priority name="P1"></priority>
+            <priority name="P3"></priority>
             <embed_code name="Ztb2l1ZzravsTPzgVqX0taL-bvO-sLRD"/>
             <pcode name="pzMW46NMqRipYKP6zejxIjdrEp_c"/>
             <plugins name="MAIN,BITMOVIN"/>
@@ -162,7 +184,7 @@
 
     <test name="PlaybackDiscoveryTests">
         <url>
-            <description name="Core:Discovery "/>
+            <description name="Core:Discovery Main"/>
             <priority name="P1"></priority>
             <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -176,7 +198,7 @@
 
     <test name="PlaybackDiscoveryAssetTests">
         <url>
-            <description name="Core:Discovery "/>
+            <description name="Core:Discovery"/>
             <priority name="P1"></priority>
             <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -205,20 +227,20 @@
     <test name="PlaybackFullScreenTests">
         <url>
             <description name="Core:Fullscreen"/>
-            <priority name="P1"></priority>
+            <priority name="P2"></priority>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
     </test>
 
     <test name="PlaybackReplayVideoTests">
         <url>
-            <description name="Core:Replay"/>
+            <description name="Core:Replay Main"/>
             <priority name="P1"></priority>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -230,7 +252,7 @@
         </url>
         
         <url>
-            <description name="Core: Replay Bitmovin"/>
+            <description name="Core:Replay Bitmovin"/>
             <priority name="P1"></priority>
             <embed_code name="Y4amJoMTE6chANpFOodeYv5HACvMfIyc"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -242,7 +264,7 @@
         </url>
         
         <url>
-             <description name="Core: Replay OSMF"/>
+             <description name="Core:Replay OSMF"/>
              <priority name="P3"></priority>
             <embed_code name="YyeGVmMDE6GxMJOnof3QMuRX0sEwwe6F"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -254,12 +276,24 @@
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
         </url>
         
+        <url>
+             <description name="Core:Replay AdobeTVSDK"/>
+             <priority name="P2"></priority>
+            <embed_code name="Y4amJoMTE6chANpFOodeYv5HACvMfIyc"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter></playerParameter>
+        </url>
+        
     </test>
 
     <test name="PlaybackLocalizationTests">
         <url>
             <description name="Core:Localization Main"/>
-            <priority name="P1"></priority>
+            <priority name="P3"></priority>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -294,7 +328,7 @@
         </url>
         <url>
             <description name="Core:Localization ADOBETVSDK"/>
-            <priority name="P2"></priority>
+            <priority name="P3"></priority>
             <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf"/>
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
             <plugins name="ADOBETVSDK"/>
@@ -309,7 +343,7 @@
     <test name="PlayerDimensionTests">
             <url>
             <description name="Core:Player Dimension Bitmovin" />
-            <priority name="P1"></priority>
+            <priority name="P3"></priority>
             <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="BITMOVIN" />
@@ -321,7 +355,7 @@
         <url>
             <description name="Core:Player Dimension Main" />
             <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF" />
-            <priority name="P1"></priority>
+            <priority name="P3"></priority>
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL" />
             <plugins name="MAIN" />
             <adPlugins name="" />
@@ -436,7 +470,7 @@
 
     <test name="PlaybackVerticalVideoTests">
         <url>
-            <description name="Core:Vertical Video Aspect Ration 16 as 9"/>
+            <description name="Core:Vertical Video Aspect Ratio 16 as 9"/>
             <priority name="P1"></priority>
             <embed_code name="xnNncyYTE62vx3rHnwJwUtBbeBt4Y2pw"/>
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
@@ -455,11 +489,22 @@
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="26e2e3c1049c4e70ae08a242638b5c40"/>
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Vertical Video OSMF"/>
+            <priority name="P3"></priority>
+            <embed_code name="xnNncyYTE62vx3rHnwJwUtBbeBt4Y2pw"/>
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
+            <plugins name="OSMF"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="26e2e3c1049c4e70ae08a242638b5c40"/>
+            <playerParameter></playerParameter>
         </url>
         <url>
             <description name="Core:Vertical Video ADOBETVSDK"/>
-            <priority name="P2"></priority>
+            <priority name="P1"></priority>
             <embed_code name="9od3M3MDE6-WRg_DRbpCzRyjtK-NTLMp"/>
             <pcode name="p5bGExOjp6PZ-dEUw_GRJqh2Qdaq"/>
             <plugins name="ADOBETVSDK"/>
@@ -473,7 +518,7 @@
     <test name="PlayerStatePauseScreenTests">
         <url>
             <description name="Core:Pause screen"/>
-            <priority name="P1"></priority>
+            <priority name="P2"></priority>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -488,7 +533,7 @@
     <test name="PlaybackVolumeTest">
         <url>
             <description name="Core:Volume"/>
-            <priority name="P1"></priority>
+            <priority name="P2"></priority>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -597,7 +642,7 @@
     <test name="PlaybackWatermarkTests">
         <url>
             <description name="Core:Watermark Image"/>
-            <priority name="P1"></priority>
+            <priority name="P2"></priority>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -609,10 +654,10 @@
         </url>
     </test>
 
-    <!-- Added playercontrolTests for each stream format -->
-    <!--  <test name="PlaybackPlayerControlsTests">
+     <test name="PlaybackPlayerControlsTests">
          <url>
              <description name="Core:eHLS Vod main" />
+             <priority name="P1"></priority>
              <embed_code name="hneHVnMzE6sEsCT9DE1v_yWi0o-9aCTw" />
              <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
              <plugins name="MAIN" />
@@ -620,31 +665,34 @@
              <additionalPlugins name="" />
              <pbid name="378512f55dd44fc287d0fa609353c268" />
              <browsersSupported name="safari" />
-             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+             <playerParameter></playerParameter>
          </url>
          <url>
              <description name="Core:MP4 Only Asset" />
+             <priority name="P1"></priority>
              <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
              <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
              <plugins name="MAIN" />
              <adPlugins name="" />
              <additionalPlugins name="" />
              <pbid name="615dc8e909e941c280e12155df838355" />
-             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+             <playerParameter></playerParameter>
          </url>
-         commented check the ticket number for more info PBW-6281
+
          <url>
-              <description name="Alice Core:Clear Dash bitmovin" />
+              <description name="Core:Clear Dash bitmovin" />
+              <priority name="P1"></priority>
               <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
               <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
               <plugins name="BITMOVIN" />
               <adPlugins name="" />
               <additionalPlugins name="" />
               <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-              <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+              <playerParameter></playerParameter>
           </url>
          <url>
              <description name="Core:HLS Vod main" />
+             <priority name="P1"></priority>
              <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6" />
              <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
              <plugins name="BITMOVIN" />
@@ -652,9 +700,9 @@
              <additionalPlugins name="" />
              <pbid name="378512f55dd44fc287d0fa609353c268" />
              <platformsSupported name="mac,windows"/>
-             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+             <playerParameter></playerParameter>
          </url>
-     </test> -->
+     </test>
 
     <test name="PlaybackSocialMediaTests">
         <url>
@@ -697,12 +745,73 @@
             <playerParameter></playerParameter>
             <platformsSupported name="mac,windows"/>
         </url>
+        
+        <url>
+            <description
+                    name="Core:Verify Facebook Share via Social Share Screen ADOBETVSDK|Core:Verify Twitter  Share via Social Share Screen ADOBETVSDK"/>
+            <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
+            <priority name="P3"></priority>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <browsersSupported name="firefox,chrome,internet explorer"/>
+            <playerParameter></playerParameter>
+        </url>
+    </test>
+    
+    <test name="PlaybackEmbedTabTests">
+    	<url>
+            <description name="Core:Embed Tab Main"/>
+            <priority name="P3"></priority>
+            <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Embed Tab Bitmovin"/>
+            <priority name="P3"></priority>
+            <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Embed Tab OSMF"/>
+            <priority name="P3"></priority>
+            <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf"/>
+            <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
+            <plugins name="OSMF"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Embed Tab ADOBETVSDK"/>
+            <priority name="P3"></priority>
+            <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
     </test>
 
     <test name="PlaybackPlayerDestroyTests">
         <url>
             <description name="Core:Destroy player"/>
-            <priority name="P2"></priority>
+            <priority name="P3"></priority>
             <embed_code name="lrd2g2MzE67ql3Id-hnIfXBxbJ4VahUF"/>
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
             <plugins name="MAIN"/>
@@ -745,8 +854,8 @@
 
     <test name="PlaybackThumbnailCarouselTests">
         <url>
-            <description name="Core:Thumbnail Carasoul"/>
-            <priority name="P2"></priority>
+            <description name="Core:Thumbnail Carasoul OSMF"/>
+            <priority name="P3"></priority>
             <embed_code name="1hNXVnMzE6nQjIGHwCYMLajm26cN1VVf"/>
             <pcode name="thaDgyOrzKRQV_Izdp2WmiX9kCWL"/>
             <plugins name="OSMF"/>
@@ -768,6 +877,44 @@
             <playerParameter></playerParameter>
             <platformsSupported name="mac,windows"/>
         </url>
+        
 
     </test>
+    
+    <test name="PlaybackPlayerWithoutSkinTests">
+    	<url>
+            <description name="Core:Player without Skin File Main"/>
+            <priority name="P3"></priority>
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Player without Skin File Bitmovin"/>
+            <priority name="P3"></priority>
+            <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter></playerParameter>
+        </url>
+        <url>
+            <description name="Core:Player without Skin File OSMF"/>
+            <priority name="P3"></priority>
+            <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2}]]></playerParameter>
+        </url>
+    </test>
+    
 </testdata>

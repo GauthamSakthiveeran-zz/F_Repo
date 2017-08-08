@@ -77,6 +77,8 @@ public class PlayBackFactory {
 	private ChromeFlashUpdateAction chromeValidator;
 	private UIControlValidator uiControlValidator;
 	private DVRLiveValidator dvrLiveValidator;
+	private EmbedTabValidator embedTabValidator;
+	private StateScreenValidator stateScreenValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -85,6 +87,22 @@ public class PlayBackFactory {
 
 	public ExtentTest getExtentTest() {
 		return extentTest;
+	}
+	
+	public StateScreenValidator getStateScreenValidator() {
+		if(stateScreenValidator == null) {
+			stateScreenValidator = new StateScreenValidator(driver);
+			stateScreenValidator.setExtentTest(extentTest);
+		}
+		return stateScreenValidator;
+	}
+	
+	public EmbedTabValidator getEmbedTabValidator() {
+		if(embedTabValidator == null) {
+			embedTabValidator =  new EmbedTabValidator(driver);
+			embedTabValidator.setExtentTest(extentTest);
+		}
+		return embedTabValidator;
 	}
 
 	public ScrubberValidator getScrubberValidator() {
