@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+
+    <test name="PlaybackZoomInZoomOutTests">
+        <url>
+            <description name="Adhoc:Zoom-In Zoom-out Main"/>
+            <priority name="P3"></priority>
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Adhoc:Zoom-In Zoom-out Bitmovin"/>
+            <priority name="P3"></priority>
+            <embed_code name="9od3M3MDE6-WRg_DRbpCzRyjtK-NTLMp"/>
+            <pcode name="p5bGExOjp6PZ-dEUw_GRJqh2Qdaq"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="26e2e3c1049c4e70ae08a242638b5c40"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        <url>
+            <description name="Adhoc:Zoom-In Zoom-out OSMF"/>
+            <priority name="P3"></priority>
+            <embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter>
+                <![CDATA[]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
+        </url>
+    </test>
+
+    <test name="SeekBackFromEndAndCheckPlayback">
+        <url>
+            <description name="Adhoc:Seekback From End and playback Main"/>
+            <priority name="P3"></priority>
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+    </test>
+</testdata>
