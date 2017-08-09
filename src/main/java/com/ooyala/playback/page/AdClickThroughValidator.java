@@ -52,7 +52,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
     public boolean validate(String element, int timeout) throws Exception {
 
-        if(getBrowser().equalsIgnoreCase("safari")) return true;
+		if (getBrowser().equalsIgnoreCase("safari"))
+			return true;
 
         if (!loadingSpinner()) {
             extentTest.log(LogStatus.FAIL, "In Loading spinner for a really long time.");

@@ -28,7 +28,7 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 	private UpNextValidator upNextValidator;
 	private SeekAction seekAction;
 
-	@Test(groups = { "amf", "preroll", "discovery", "sequential" }, dataProvider = "testUrls", enabled=false)
+	@Test(groups = { "amf", "preroll", "discovery", "sequential" }, dataProvider = "testUrls")
 	public void verifyPrerollDiscovery(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;

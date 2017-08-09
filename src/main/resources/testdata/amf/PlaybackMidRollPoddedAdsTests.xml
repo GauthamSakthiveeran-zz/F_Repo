@@ -29,7 +29,7 @@
         </url>
 
         <url>
-            <description name="IMA:Main 3 Midroll Podded at 10 or 20 second|IMA:Clickthrough Main 3 Midroll Podded at 10 or 20 second"/>
+            <description name="IMA:Main 3 Midroll Podded at 10 or 20 second"/>
             <priority name="P2"></priority>
             <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -41,7 +41,7 @@
         </url>
 
         <url>
-            <description name="IMA:AdobeTVSDK 3 Midroll Podded at 10 or 20 second"/>
+            <description name="IMA:AdobeTVSDK Midroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -53,7 +53,7 @@
         </url>
 
         <url>
-            <description name="IMA:Bitmovin Midroll Podded|IMA:Clickthrough Bitmovin Midroll Podded"/>
+            <description name="IMA:Bitmovin Midroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="RkeDZ2YTE65XY_HGOiX_osV18kMKFq5w"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -66,7 +66,7 @@
         </url>
 
         <url>
-            <description name="IMA:OSMF Midroll Podded|IMA:Clickthrough OSMF Midroll Podded"/>
+            <description name="IMA:OSMF Midroll Podded"/>
             <priority name="P3"></priority>
             <embed_code name="xuNzlxYTE6IVSEnyBo3mtqvA1Xj_M32U"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -79,7 +79,7 @@
         </url>
 
         <url>
-            <description name="Freewheel:Main 3 Midroll Podded at 10 or 20 second|Freewheel:Clickthrough Main 3 Midroll Podded at 10 or 20 second"/>
+            <description name="Freewheel:Main 3 Midroll Podded at 10 or 20 second"/>
             <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -92,7 +92,7 @@
         </url>
 
         <url>
-            <description name="Freewheel:Bitmovin Midroll Podded|Freewheel:Clickthrough Bitmovin Midroll Podded"/>
+            <description name="Freewheel:Bitmovin Midroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -118,7 +118,7 @@
         </url>
 
         <url>
-            <description name="Freewheel:OSMF Midroll Podded|Freewheel:Clickthrough OSMF Midroll Podded"/>
+            <description name="Freewheel:OSMF Midroll Podded"/>
             <priority name="P3"></priority>
             <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -132,7 +132,7 @@
         </url>
 
         <url>
-            <description name="VAST:Main Vast2.0 3 Midroll Podded at 10 or 20 second|VAST:Clickthrough Main Vast2.0 3 Midroll Podded at 10 or 20 second"/>
+            <description name="VAST:Main Vast2.0 3 Midroll Podded at 10 or 20 second"/>
             <priority name="P2"></priority>
             <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -156,7 +156,7 @@
         </url>
 
         <url>
-            <description name="VAST:Bitmovin Vast3.0 Midroll|VAST:Clickthrough Bitmovin Vast3.0 Midroll"/>
+            <description name="VAST:Bitmovin Vast3.0 Midroll"/>
             <priority name="P2"></priority>
             <embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -215,7 +215,7 @@
          </url> -->
 
         <url>
-            <description name="VAST:Main Vast3.0 3 Midroll Podded at 10 or 20 second|VAST:Clickthrough Main Vast3.0 3 Midroll Podded at 10 or 20 second"/>
+            <description name="VAST:Main Vast3.0 3 Midroll Podded at 10 or 20 second"/>
             <priority name="P2"></priority>
             <embed_code name="1nNm4zMjE6jBMo9jhSYJOCMf9gPhON38"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
