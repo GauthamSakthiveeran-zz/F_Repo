@@ -3,28 +3,41 @@ package com.ooyala.playback.url;
 public class UrlObject {
 
 	private String url;
-    private String videoPlugins;
-    private String adFirstPlay;
-    private String adFrequency;
-    private String streamType;
-    private String pcode;
-    private String embedCode;
-    private String apiKey;
-    private String secret;
-    private String errorCode;
-    private String errorDescription;
-    private String channelId;
-    private String provider;
+	private String videoPlugins;
+	private String adFirstPlay;
+	private String adFrequency;
+	private String streamType;
+	private String pcode;
+	private String embedCode;
+	private String apiKey;
+	private String secret;
+	private String errorCode;
+	private String errorDescription;
+	private String channelId;
+	private String provider;
 	private String adStartTime;
 	private String playerParameter;
 	private String overlayPlayTime;
 	private String adPlugins;
 	private String additionalPlugins;
 	private String supportedMuxFormat;
+	private String playerId;
+	
+	public void setPlayerId(String playerId) {
+		this.playerId = playerId;
+	}
+	
+	public String getPlayerId() {
+		return playerId;
+	}
 
-	public String getPlayerParameter() {return playerParameter;}
+	public String getPlayerParameter() {
+		return playerParameter;
+	}
 
-	public void setPlayerParameter(String playerParameter) {this.playerParameter = playerParameter;}
+	public void setPlayerParameter(String playerParameter) {
+		this.playerParameter = playerParameter;
+	}
 
 	public String getUrl() {
 		return url;
@@ -70,7 +83,9 @@ public class UrlObject {
 		return embedCode;
 	}
 
-	public void setEmbedCode(String embedCode) {this.embedCode = embedCode;}
+	public void setEmbedCode(String embedCode) {
+		this.embedCode = embedCode;
+	}
 
 	public String getApiKey() {
 		return apiKey;
@@ -88,41 +103,77 @@ public class UrlObject {
 		this.secret = secret;
 	}
 
-	public String getErrorCode() {return errorCode;}
+	public String getErrorCode() {
+		return errorCode;
+	}
 
-	public void setErrorCode(String errorCode) {this.errorCode = errorCode;}
+	public void setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
+	}
 
-	public String getErrorDescription() {return errorDescription;}
+	public String getErrorDescription() {
+		return errorDescription;
+	}
 
-	public void setErrorDescription(String errorDescription) {this.errorDescription = errorDescription;}
+	public void setErrorDescription(String errorDescription) {
+		this.errorDescription = errorDescription;
+	}
 
-    public void setChannelId(String channelId) {this.channelId = channelId;}
+	public void setChannelId(String channelId) {
+		this.channelId = channelId;
+	}
 
-    public String getChannelId() {return channelId;}
+	public String getChannelId() {
+		return channelId;
+	}
 
-    public String getProvider() {return provider;}
+	public String getProvider() {
+		return provider;
+	}
 
-    public void setProvider(String provider) {this.provider = provider;}
+	public void setProvider(String provider) {
+		this.provider = provider;
+	}
 
-	public String getVideoPlugins() {return videoPlugins;}
+	public String getVideoPlugins() {
+		return videoPlugins;
+	}
 
-	public void setVideoPlugins(String plugins) {this.videoPlugins = plugins;}
+	public void setVideoPlugins(String plugins) {
+		this.videoPlugins = plugins;
+	}
 
-	public String getAdStartTime() {return adStartTime;}
+	public String getAdStartTime() {
+		return adStartTime;
+	}
 
-	public void setAdStartTime(String adStartTime) {this.adStartTime = adStartTime;}
+	public void setAdStartTime(String adStartTime) {
+		this.adStartTime = adStartTime;
+	}
 
-	public String getOverlayPlayTime() {return overlayPlayTime;}
+	public String getOverlayPlayTime() {
+		return overlayPlayTime;
+	}
 
-	public void setOverlayPlayTime(String overlayPlayTime) {this.overlayPlayTime = overlayPlayTime;}
+	public void setOverlayPlayTime(String overlayPlayTime) {
+		this.overlayPlayTime = overlayPlayTime;
+	}
 
-	public String getAdPlugins() {return adPlugins;}
+	public String getAdPlugins() {
+		return adPlugins;
+	}
 
-	public void setAdPlugins(String adPlugins) {this.adPlugins = adPlugins;}
+	public void setAdPlugins(String adPlugins) {
+		this.adPlugins = adPlugins;
+	}
 
-	public String getAdditionalPlugins() {return additionalPlugins;}
+	public String getAdditionalPlugins() {
+		return additionalPlugins;
+	}
 
-	public void setAdditionalPlugins(String additionalPlugins) {this.additionalPlugins = additionalPlugins;}
+	public void setAdditionalPlugins(String additionalPlugins) {
+		this.additionalPlugins = additionalPlugins;
+	}
 
 	public String getSupportedMuxFormat() {
 		return supportedMuxFormat;

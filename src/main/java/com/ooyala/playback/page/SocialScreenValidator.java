@@ -24,7 +24,7 @@ import com.relevantcodes.extentreports.LogStatus;
 public class SocialScreenValidator extends PlayBackPage implements
 		PlaybackValidator {
 
-	public static Logger logger = Logger.getLogger(ControlBarValidator.class);
+	private static Logger logger = Logger.getLogger(ControlBarValidator.class);
 
 	public SocialScreenValidator(WebDriver webDriver) {
 		super(webDriver);

@@ -72,4 +72,65 @@ public class ShareTabValidator extends PlayBackPage implements
 		}
 		return true;
 	}
+
+	public boolean clickOnShareButton(){
+		try {
+			if (!waitOnElement("SHARE_BTN", 30000))
+				return false;
+			if (!clickOnIndependentElement("SHARE_BTN"))
+				return false;
+			//If browser is Safari, then we have to click on element using javascript
+			if (getBrowser().contains("safari")) {
+				if(!clickOnHiddenElement("SHARE_BTN")){
+					return false;
+				}
+			}
+		} catch (Exception e) {
+			logger.error("exception \n" + e.getMessage());
+			if (!clickOnIndependentElement("MORE_OPTION_ITEM"))
+				return false;
+			if (!waitOnElement("SHARE_BTN", 60000))
+				return false;
+			if (!clickOnIndependentElement("SHARE_BTN"))
+				return false;
+			if (!isElementPresent("SHARE_TAB"))
+				if (!clickOnIndependentElement("SHARE_BTN"))
+					return false;
+		}
+		return true;
+	}
+
+	public boolean validateOnlySocialShareTab(){
+		if(waitOnElement("SHARE_TAB",30000)){
+			logger.info("validated Social share tab screen, now checking embed option is not present" );
+			extentTest.log(LogStatus.PASS,"validated Social share tab screen, now checking embed option is not present");
+			if(waitOnElement("EMBED_TAB",30000)){
+				logger.error("embed tab option is present, which is not expected");
+				extentTest.log(LogStatus.FAIL,"embed tab option is present, which is not expected");
+				return false;
+			}
+		}
+		logger.info("embed tab option is not present, which is expected");
+		extentTest.log(LogStatus.FAIL,"embed tab option is not present, which is expected");
+		return true;
+	}
+
+	public boolean validateOnlyEmbedOption(){
+		return true;
+	}
+
+	public boolean validateBothShareTabAndEmbedTab(){
+		if(waitOnElement("SHARE_TAB",30000)){
+			logger.info("validated Social share tab screen, now checking embed option is not present" );
+			extentTest.log(LogStatus.PASS,"validated Social share tab screen, now checking embed option is not present");
+			if(waitOnElement("EMBED_TAB",30000)){
+				logger.error("embed tab option is present, which is expected");
+				extentTest.log(LogStatus.FAIL,"embed tab option is present, which is expected");
+				return true;
+			}
+		}
+		logger.info("embed tab or share tab option is not present, which is not expected");
+		extentTest.log(LogStatus.FAIL,"embed tab or share tab option is not present, which is not expected");
+		return false;
+	}
 }

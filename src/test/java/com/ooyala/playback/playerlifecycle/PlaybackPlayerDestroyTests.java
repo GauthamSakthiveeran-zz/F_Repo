@@ -19,7 +19,7 @@ public class PlaybackPlayerDestroyTests extends PlaybackWebTest {
 		super();
 	}
 
-	@Test(groups = "playerLifecycle", dataProvider = "testUrls")
+	@Test(groups = "playerLifecycle", dataProvider = "testUrls", enabled = false)
 	public void testPlayerDestroy(String testName, UrlObject url)
 			throws OoyalaException {
 
