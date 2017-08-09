@@ -1,0 +1,5 @@
+<elements area="embedtab">
+	<element key="EMBED_TAB" findBy="class" class="oo-embed-tab" />
+	<element key="EMBED_FORM" findBy="class" class="oo-embed-form" />
+	<element key="EMBED_CLOSE" findBy="class" class="oo-close-button" />
+</elements>             
