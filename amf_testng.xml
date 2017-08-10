@@ -7,7 +7,7 @@
         <parameter name="jsFile" value="common.js,amf/amf.js"/>
         <parameter name="xmlFilePkg" value="amf"/>
         <classes>
-			<class name="com.ooyala.playback.amf.preroll.PlayBackLowBandWidthTests"></class>
+			<!-- <class name="com.ooyala.playback.amf.preroll.PlayBackLowBandWidthTests"></class>
             <class name="com.ooyala.playback.amf.preroll.PlaybackPreRollAdsClickThroughClosedCaptionTests"></class>
             <class name="com.ooyala.playback.amf.preroll.PlaybackPrerollOverlayAdsTests"></class>
             <class name="com.ooyala.playback.amf.preroll.PlaybackPreRollPoddedAdsTests"></class>
@@ -38,7 +38,8 @@
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackVastPreIMAMidlAdsTests"></class>
 			<class name="com.ooyala.playback.amf.ima.PlaybackPreRollOverlayPostRollAdTests"></class>
-			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollAdsClickThroughTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollAdsClickThroughTests"></class> -->
+			<class name="com.ooyala.playback.amf.PlaybackPrePostRollAdsPoddedTests"></class>
         </classes>
     </test>
 

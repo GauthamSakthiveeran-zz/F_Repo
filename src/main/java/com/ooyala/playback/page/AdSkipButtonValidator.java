@@ -32,20 +32,7 @@ public class AdSkipButtonValidator extends PlayBackPage implements PlaybackValid
 					 extentTest.log(LogStatus.FAIL, "Couldn't click on Ad Skip Button.");
 					 return false;
 				 }
-			}/*else{
-				driver.switchTo().frame(0);
-				if (waitOnElement("VIDEO_AD_UI_PRE_SKIP_BUTTON")
-						&& clickOnIndependentElement("VIDEO_AD_UI_PRE_SKIP_BUTTON")
-						&& waitOnElement("skipAd_1", 60000)) {
-					extentTest.log(LogStatus.PASS, "Clicked on Ad Skip Button.");
-					driver.switchTo().defaultContent();
-					return true;
-				} else {
-					extentTest.log(LogStatus.FAIL, "Couldn't click on Ad Skip Button.");
-					driver.switchTo().defaultContent();
-					return false;
-				}
-			}*/
+			}
 				 
 			return true;
 
