@@ -2,8 +2,7 @@
 <testdata>
 	<test name="PlaybackPreRollAdsClickThroughClosedCaptionTests">
 		<url>
-			<description
-				name="IMA:Main CC enabled preroll|IMA:Main Ad Rule Preroll|VTC:Verify Preroll IMA with Video Plugin" />
+			<description name="IMA:Main CC enabled preroll|IMA:Main Ad Rule Preroll" />
 			<priority name="P1"></priority>
 			<embed_code name="1hZHQ4YTE6-JSjQJuODqJkLoOC2IfXWr" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
@@ -325,8 +324,7 @@
 		</url>
 
 		<url>
-			<description
-				name="Freewheel:Freewheel:Main Preroll|VTC:Verify Preroll Freewheel with Video Plugin" />
+			<description name="Freewheel:Main Preroll" />
 			<priority name="P1"></priority>
 			<embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
@@ -339,8 +337,7 @@
 		</url>
 
 		<url>
-			<description
-				name="VAST:VAST:Main Vast2.0 Preroll|VTC:Verify Preroll Vast Ad with Video Plugin" />
+			<description name="VAST:VAST:Main Vast2.0 Preroll" />
 			<priority name="P1"></priority>
 			<embed_code name="Bwd3A4YTE61jiXgzo3k5MkrFCnJrUw_4" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
@@ -449,7 +446,7 @@
 			</playerParameter>
 
 		</url>
-		
+
 		<url>
 			<description name="IMA:AdobeTVSDK Preroll" />
 			<priority name="P2"></priority>
@@ -464,7 +461,7 @@
 			</playerParameter>
 
 		</url>
-		
+
 		<url>
 			<description name="Pulse:AdobeTVSDK Preroll" />
 			<priority name="P2"></priority>
@@ -478,6 +475,48 @@
                 <![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]>
 			</playerParameter>
 
+		</url>
+
+		<url>
+			<description name="VAST:AdobeTVSDK Vast2.0 Preroll" />
+			<priority name="P2"></priority>
+			<embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="ADOBETVSDK,MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]>
+			</playerParameter>
+
+		</url>
+
+		<url>
+			<description name="VAST:AdobeTVSDK Vast3.0 Preroll" />
+			<priority name="P2"></priority>
+			<embed_code name="tycXgxMTE6O8YBBBInYkwaKF0mNSqln9" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="ADOBETVSDK,MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter>
+                <![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]>
+			</playerParameter>
+
+		</url>
+
+		<url>
+			<description name="VAST:AdobeTVSDK Main Vast3.0 CC enabled preroll" />
+			<priority name="P4"></priority>
+			<embed_code name="A1YjlxYTE6hMmIA4oQgc8SJM6qJWev_J" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="ADOBETVSDK,MAIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 		</url>
 
 	</test>

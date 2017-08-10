@@ -100,7 +100,7 @@
 
 
         <url>
-            <description name="VAST:Bitmovin Vast2.0 Midroll"/>
+            <description name="VAST:Bitmovin Vast2.0 Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="VwYzdoMTE6MFmVcSNiwQyGpeSOuvGpcc"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -291,6 +291,31 @@
             <playerParameter>
                 <![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"NwcGg4bzrwxc6rqAZbYij4pWivBsX57a","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
 
+        </url>
+        
+        <url>
+            <description name="VAST:AdobeTVSDK Vast2.0 Midroll Clickthrough"/>
+            <priority name="P2"></priority>
+            <embed_code name="VwYzdoMTE6MFmVcSNiwQyGpeSOuvGpcc"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="MAIN,ADOBETVSDK"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter></playerParameter>
+        </url>
+        
+        <url>
+            <description name="VAST:AdobeTVSDK Vast3.0 Midroll Clickthrough"/>
+            <priority name="P2"></priority>
+            <embed_code name="F3bDhxYTE6_BXwKW6aljlWptl8jHx4sA"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
         </url>
     </test>
 </testdata>

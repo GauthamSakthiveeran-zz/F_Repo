@@ -71,11 +71,11 @@ public class PlaybackPrePostRollAdsPoddedTests extends PlaybackWebTest {
 			result = result && event.validate("PostRoll_willPlaySingleAd_6", 10000);
 			result = result && skipButtonValidator.validate("", 120000);
 
-			result = result && event.validate("adsPlayed_3", 600000);
+			result = result && event.validate("adsPlayed_2", 10000);
 
-			result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds_3", 600000);
+			result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds_2", 10000);
 
-			result = result && event.validate("played_1", 180000);
+			result = result && event.validate("played_1", 10000);
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());

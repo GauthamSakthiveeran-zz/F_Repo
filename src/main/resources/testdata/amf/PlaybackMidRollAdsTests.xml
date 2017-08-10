@@ -385,7 +385,7 @@
 
         <url>
             <description name="VAST:OSMF Vast3.0 Midroll"/>
-            <priority name="P1"></priority>
+            <priority name="P3"></priority>
             <embed_code name="hucThxYTE6DeKlOdeAQS8bbGgIE5dDpX"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -397,16 +397,16 @@
         </url>
 
         <url>
-            <description name="VAST:Main Vast3.0 Midroll"/>
+            <description name="VAST:Bitmovin Vast3.0 Midroll"/>
             <priority name="P1"></priority>
-            <embed_code name="F3bDhxYTE6_BXwKW6aljlWptl8jHx4sA"/>
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN"/>
+            <embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
             <adPlugins name="VAST" adPlayTime="10"/>
             <additionalPlugins name=""/>
-            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter>
-                <![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
         </url>
 
 
@@ -484,6 +484,20 @@
             <pbid name="615dc8e909e941c280e12155df838355"/>
             <playerParameter></playerParameter>
         </url>
+        
+        <url>
+            <description name="VAST:AdobeTVSDK Vast3.0 Midroll"/>
+            <priority name="P2"></priority>
+            <embed_code name="F3bDhxYTE6_BXwKW6aljlWptl8jHx4sA"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+        
 
     </test>
 </testdata>

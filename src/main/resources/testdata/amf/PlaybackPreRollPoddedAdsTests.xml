@@ -161,6 +161,19 @@
             <playerParameter>
                 <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
         </url>
+        
+        <url>
+            <description name="VAST:AdobeTVSDK Vast3.0 3 Preroll Podded"/>
+            <priority name="P2"></priority>
+            <embed_code name="1nMmM1MTE6yZTv1GDLrMl-Cg0lfZtta6"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK,MAIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
 
     </test>
 </testdata>

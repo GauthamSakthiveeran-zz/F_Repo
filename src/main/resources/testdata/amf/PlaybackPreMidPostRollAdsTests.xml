@@ -260,7 +260,7 @@
             <sslEnabled name="https" browser="chrome"/>
         </url>
 
-        <url>
+        <!-- <url>
             <description name="VAST:AdobeTVSDK Vast3.0 PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="R3NDh2YTE6OGykeMgB2QCZb63Z_YhLna"/>
@@ -272,7 +272,7 @@
             <playerParameter>
                 <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
             <sslEnabled name="https" browser="chrome"/>
-        </url>
+        </url> -->
 
         <url>
             <description name="VPAID:Main IMA VPAID2.0 PreMidPost"/>

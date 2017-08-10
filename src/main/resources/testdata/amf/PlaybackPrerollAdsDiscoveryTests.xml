@@ -334,6 +334,19 @@
                 <![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
         </url>
         
+        <url>
+            <description name="VAST:AdobeTVSDK Vast3.0 Discovery Preroll UP Next"/>
+            <priority name="P4"></priority>
+            <embed_code name="AxYjlxYTE6pu2e8xIqCSoOKsu8h0o3XC"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK,MAIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name="DISCOVERY"/>
+            <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
+            <playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+        
 
     </test>
 </testdata>

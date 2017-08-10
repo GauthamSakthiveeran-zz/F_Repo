@@ -39,7 +39,7 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			result = result && playAction.startAction();
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 60000);
 
-			result = result &&  clickThrough.validate("", 120000);
+			result = result &&  clickThrough.validate("videoPausedAds_1", 120000);
 			
 			if (event.isAdPluginPresent("pulse"))
 				result = result && event.validate("singleAdPlayed_2", 120000);
