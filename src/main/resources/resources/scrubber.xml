@@ -1,5 +1,7 @@
 <elements area="scrubber">
 	<element key="PLAYED" findBy="class" class="oo-played-indicator" />
 	<element key="POINTER" findBy="class" class="oo-playhead-padding" />
+	<element key="BUFFERED" findBy="class" class="oo-buffered-indicator" />
+	<element key="AD_COUNTDOWN" findBy="class" class="oo-ad-playback-info" />
 	<element key="SCRUBBER_BAR" findBy="class" class="oo-scrubber-bar"></element>
 </elements>

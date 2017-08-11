@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
+import java.net.URLEncoder;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -52,6 +54,7 @@ import com.ooyala.playback.url.UrlObject;
 import com.ooyala.playback.utils.CommandLineParameters;
 import com.ooyala.playback.utils.JSScriptInjection;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.ooyala.qe.common.util.PropertyReader;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -459,6 +462,77 @@ public abstract class PlaybackWebTest extends FacileTest {
                         "http%3A%2F%2Fplayer.ooyala.com%2Fstatic%2Fv4%2Fcandidate%2Flatest%2Fskin-plugin%2Fhtml5-skin.min.js",
                         "");
     }
+    
+    //Created to replace our customized hosted js and json files in Debug Url
+    protected String replaceSkin(String url) throws IOException {
+    	
+    	PropertyReader properties = null;
+    	String customizedSkinUrl,customizedjsonUrl;
+    	String testName = getClass().getSimpleName();
+    	
+        InetAddress inetAddress = null;
+       try {
+    	   properties = PropertyReader.getInstance("urlData.properties");
+           inetAddress = InetAddress.getLocalHost();
+           
+           customizedSkinUrl = "http://" + inetAddress.getHostAddress() + ":" + SimpleHttpServer.portNumber + "/js?fileName=";
+       	   customizedjsonUrl = "http://" + inetAddress.getHostAddress() + ":" + SimpleHttpServer.portNumber + "/js?fileName=";
+       	   
+           if(testName.contains("Captions"))
+           {
+        	   customizedSkinUrl = customizedSkinUrl + properties.getProperty("Captions_js");
+           	   customizedjsonUrl = customizedjsonUrl + properties.getProperty("Captions_json");
+           	   
+           }
+           else if(testName.contains("Localization"))
+           {
+        	   customizedSkinUrl = customizedSkinUrl + properties.getProperty("Localization_js");
+           	   customizedjsonUrl = customizedjsonUrl + properties.getProperty("Localization_json");
+        	   
+           }
+           else if(testName.contains("Screen"))
+           {
+        	   customizedSkinUrl = customizedSkinUrl + properties.getProperty("Screen_js");
+           	   customizedjsonUrl = customizedjsonUrl + properties.getProperty("Screen_json");
+        	   
+           }
+           else if(testName.contains("Share"))
+           {
+        	   customizedSkinUrl = customizedSkinUrl + properties.getProperty("Share_js");
+           	   customizedjsonUrl = customizedjsonUrl + properties.getProperty("Share_json");
+        	   
+           }
+           else if(testName.contains("Ad"))
+           {
+        	   customizedSkinUrl = customizedSkinUrl + properties.getProperty("ad_js");
+           	   customizedjsonUrl = customizedjsonUrl + properties.getProperty("ad_json");
+        	   
+           }
+           else
+              return url;
+           
+           url = url
+                   .replace(
+                           "http%3A%2F%2Fplayer.ooyala.com%2Fstatic%2Fv4%2Fcandidate%2Flatest%2Fskin-plugin%2Fhtml5-skin.min.js",URLEncoder.encode(customizedSkinUrl)
+                           );
+           
+           if(url.contains("discovery.json"))
+        	   return url.replace("https%3A%2F%2Fraw.githubusercontent.com%2Farchieb87%2Fpbq%2Fmaster%2Fqa%2Fskin-discovery.json", URLEncoder.encode(customizedjsonUrl));
+           else
+        	   return url.replace("https%3A%2F%2Fraw.githubusercontent.com%2Farchieb87%2Fpbq%2Fmaster%2Fqa%2Fskin-default.json", URLEncoder.encode(customizedjsonUrl));
+           
+           
+       } catch (UnknownHostException e) {
+           // TODO Auto-generated catch block
+           e.printStackTrace();
+           
+           return url;
+           
+       }
+           
+   }
+    
+    
 
     protected Object executeScript(String script) {
         return ((JavascriptExecutor) webDriverFacile.get()).executeScript(script);

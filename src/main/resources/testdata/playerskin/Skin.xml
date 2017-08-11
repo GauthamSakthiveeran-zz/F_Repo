@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<test name="PlaybackPlayerSkinShare">
+
+        <url>
+            <description
+                    name="Core:Verify Facebook Share via Social Share Screen Main|Core:Verify Twitter  Share via Social Share Screen Main"/>
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <browsersSupported name="firefox,chrome,internet explorer"/>
+            <playerParameter></playerParameter>
+        </url>
+		
+	</test>
+	
+	
+	  <test name="PlaybackPlayerSkinClosedCaptions">
+        <url>
+            <description name="Core:Closed Caption Piling Up Main"/>
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+        </test>
+        
+     <test name="PlaybackPlayerSkinScreen">
+
+		<url>
+			<description name="Streams:Bitmovin Elemental Delta HLS VOD" />
+			<embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="62d1c4c6b33346c99bced5ff817122a9" />
+			<streamType name="m3u8" />
+            <platformsSupported name="mac,windows"/>
+			<playerParameter></playerParameter>
+			
+		</url>
+		
+	</test>
+	
+	
+	<test name="PlaybackPlayerSkinLocalizationTest">
+  
+        <url>
+            <description
+                    name="Core:Verify Facebook Share via Social Share Screen Main|Core:Verify Twitter  Share via Social Share Screen Main"/>
+            <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <browsersSupported name="firefox,chrome,internet explorer"/>
+            <playerParameter></playerParameter>
+        </url>
+
+		
+	</test>
+	
+	
+	<test name="PlaybackPlayerSkinAdTest">
+
+		<url>
+			<description
+				name="Platform Parameter:Bitmovin(Platform with HTML5) Freewheel(Preroll)" />
+			<embed_code name="5xOThnMTE6MeBGaWHEW5dMVOFnMuFqMy" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN,MAIN" />
+			<adPlugins name="FREEWHEEL" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<streamType name="mpd" />
+			<playerParameter>
+                <![CDATA[{"platform":"html5","encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+		</url>
+		
+	</test>
+
+</testdata>

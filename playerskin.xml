@@ -1,0 +1,59 @@
+<suite name="Playback Platform Parameter" verbose="1">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+
+  
+	<test name="PlaybackPlayerSkinScreen" parallel="classes"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="playerskin/Skin.xml" />
+			<parameter name="jsFile" value="alice/alice.js,playerskin/html5-skin.min_screens_scrubbers.js,playerskin/skin_screens_scrubbers.json" />
+			<class name="com.ooyala.playback.playerSkin.PlaybackPlayerSkinScreen" />
+		</classes>
+	</test>
+	
+	 
+
+		<test name="PlaybackPlayerSkinShare" parallel="classes"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="playerskin/Skin.xml" />
+			<parameter name="jsFile" value="alice/alice.js,playerskin/html5-skin.min_share.js,playerskin/skin_share.json,playerskin/html5-skin.min_share.css" />
+			<class name="com.ooyala.playback.playerSkin.PlaybackPlayerSkinShare" />
+		</classes>
+	</test>
+	
+	<test name="PlaybackPlayerSkinClosedCaptions" parallel="classes"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="playerskin/Skin.xml" />
+			<parameter name="jsFile" value="alice/alice.js,playerskin/html5-skin.min_ClosedCaptions.js,playerskin/html5-skin.min_ClosedCaptions.json" />
+			<class name="com.ooyala.playback.playerSkin.PlaybackPlayerSkinClosedCaptions" />
+		</classes>
+	</test>
+	
+	 
+		<test name="PlaybackPlayerSkinLocalizationTest" parallel="classes"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="playerskin/Skin.xml" />
+			<parameter name="jsFile" value="alice/alice.js,playerskin/html5-skin.min_Localization.js,playerskin/html5-skin.min_Localization.json"/>
+			<class name="com.ooyala.playback.playerSkin.PlaybackPlayerSkinLocalizationTest" />
+		</classes>
+	</test>
+	
+
+	
+	<test name="PlaybackPlayerSkinAdTest" parallel="classes"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="playerskin/Skin.xml" />
+			<parameter name="jsFile" value="alice/alice.js,playerskin/html5-skin.min_ads.js,playerskin/skin_ads.json"/>
+			<class name="com.ooyala.playback.playerSkin.PlaybackPlayerSkinAdTest" />
+		</classes>
+	</test>
+
+
+</suite>
+

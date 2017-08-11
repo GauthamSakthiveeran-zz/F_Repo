@@ -76,6 +76,10 @@ public class PlayBackFactory {
 	private AnalyticsValidator analyticsValidator;
 	private ChromeFlashUpdateAction chromeValidator;
 	private UIControlValidator uiControlValidator;
+	private PlayerSkinLocalizationValidator localizationValidator;
+	private PlayerSkinScrubberValidator skinScrubberValidator;
+	private PlayerSkinCaptionsValidator skinCaptionsValidator;
+	private PlayerSkinShareValidator skinShareValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -549,6 +553,40 @@ public class PlayBackFactory {
 		return uiControlValidator;
 	}
 
+	public PlayerSkinShareValidator getPlayerSkinShareValidator() {
+		if (skinShareValidator == null) {
+			skinShareValidator = new PlayerSkinShareValidator(driver);
+			skinShareValidator.setExtentTest(extentTest);
+		}
+		return skinShareValidator;
+	}
+	
+	public PlayerSkinLocalizationValidator getPlayerSkinLocalizationValidator() {
+		if (localizationValidator == null) {
+			localizationValidator = new PlayerSkinLocalizationValidator(driver);
+			localizationValidator.setExtentTest(extentTest);
+		}
+		return localizationValidator;
+	}
+	
+	public PlayerSkinScrubberValidator getPlayerSkinScrubberValidator() {
+		if (skinScrubberValidator == null) {
+			skinScrubberValidator = new PlayerSkinScrubberValidator(driver);
+			skinScrubberValidator.setExtentTest(extentTest);
+		}
+		return skinScrubberValidator;
+	}
+	
+	public PlayerSkinCaptionsValidator getPlayerSkinCaptionsValidator() {
+		if (skinCaptionsValidator == null) {
+			skinCaptionsValidator = new PlayerSkinCaptionsValidator(driver);
+			skinCaptionsValidator.setExtentTest(extentTest);
+		}
+		return skinCaptionsValidator;
+	}
+	
+	
+	
 	public void setAnalyticsValidator(AnalyticsValidator analyticsValidator) {
 		this.analyticsValidator = analyticsValidator;
 	}

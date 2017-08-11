@@ -60,7 +60,15 @@ public class JSScriptInjection {
 
     private void injectScript(String scriptURL) throws Exception {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        scriptToInjectJS(scriptURL);
+        if(scriptURL.contains(".css")) {
+            System.out.println("Injecting Css");
+               scriptToInjectCSS(scriptURL);
+        }
+        else
+        {
+            
+           scriptToInjectJS(scriptURL);
+        }
         Thread.sleep(1000); // to avoid js failures
         if (scriptURL.contains("common"))
             js.executeScript("subscribeToCommonEvents();");
@@ -75,6 +83,17 @@ public class JSScriptInjection {
                 + "   var head = document.getElementsByTagName( 'head')[0];\n" + "   head.appendChild(script);\n"
                 + "}\n" + "\n" + "var scriptURL = arguments[0];\n" + "injectScript(scriptURL);", scriptURL);
     }
+    //
+	private void scriptToInjectCSS(String scriptURL) throws Exception {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("function injectScript(url) {\n"
+                + "   var fileref = document.createElement(\"link\");\n" + "   fileref.setAttribute(\"rel\", \"stylesheet\")\n"
+                + "   fileref.setAttribute(\"type\", \"text/css\");\n" + "   fileref.setAttribute(\"href\", url);\n" +"var head = document.getElementsByTagName( 'head')[0];\n"+
+                 "head.appendChild(fileref);\n"+"}\n" + "\n" + "var scriptURL = arguments[0];\n" + "injectScript(scriptURL);", scriptURL);
+    
+
+
+ }
 
     public String getJsUrl(String jsName) throws UnknownHostException {
         InetAddress inetAdd = InetAddress.getLocalHost();
