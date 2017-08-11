@@ -133,13 +133,6 @@ public class UrlGenerator {
                         }
 
                         // to run tests for specific ad plugins
-                        if (applyFilter() && url.getAdPlugins().getName() != null
-                                && !url.getAdPlugins().getName().isEmpty()
-                                && !url.getAdPlugins().getName().equalsIgnoreCase(adPluginFilter)) {
-                            if (!testDataValidator.validateAdPlugin(adPluginFilter))
-                                break;
-                            continue;
-                        }
                         
                         if (applyFilter() && url.getAdPlugins().getName() != null
                                 && !url.getAdPlugins().getName().isEmpty()) {
@@ -147,8 +140,13 @@ public class UrlGenerator {
                         		if(!url.getDescription().getName().startsWith("VPAID")) {
                         			continue;
                         		}
+                        	} else {
+                        		if(!url.getAdPlugins().getName().equalsIgnoreCase(adPluginFilter)) {
+                        			continue;
+                        		}
                         	}
                         }
+                        
                         
                         // to run the tests for specific test based on description
                         if (applyDescriptionFilter() && url.getDescription().getName() != null

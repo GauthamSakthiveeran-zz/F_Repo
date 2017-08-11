@@ -113,7 +113,7 @@
 			<priority name="P3"></priority>
 			<embed_code name="lyMDZxYTE6qWdFxiGCqRekXMeAiszdE_" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-			<plugins name="OSMF" />
+			<plugins name="OSMF,MAIN" />
 			<adPlugins name="PULSE" />
 			<additionalPlugins name="" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
@@ -406,10 +406,10 @@
 
 		<url>
 			<description name="VPAID:OSMF Vast VPAID2.0 Preroll" />
-			<priority name="P1"></priority>
+			<priority name="P3"></priority>
 			<embed_code name="01Mm9xYTE6IOQ7ZTt5a0gyKrwrK1fFDw" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-			<plugins name="OSMF" />
+			<plugins name="OSMF,MAIN" />
 			<adPlugins name="VAST" />
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
