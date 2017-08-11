@@ -45,6 +45,8 @@ public class UrlGenerator {
             playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.PRODUCTION);
         } else if (environment.equalsIgnoreCase("STAGING")) {
             playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.STAGING);
+        } else if (environment.equalsIgnoreCase("STABLE")) {
+            playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.STABLE);
         }
 
         v4Version = System.getProperty(CommandLineParameters.v4Version);
