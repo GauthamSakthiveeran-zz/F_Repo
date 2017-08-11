@@ -52,6 +52,8 @@ public class MidrollAdValidator extends PlayBackPage implements PlaybackValidato
 	}
 
 	public boolean validateMidrollAd(UrlObject url) throws Exception {
+		
+		boolean flag = true;
 
 		if (isAdPlayTimePresent(url)) {
 			time = Integer.parseInt(url.getAdStartTime());
@@ -60,34 +62,42 @@ public class MidrollAdValidator extends PlayBackPage implements PlaybackValidato
 
 			if (url.getAdPlugins().toLowerCase().contains("freewheel")) {
 
-				boolean flag = isAdPlayTimePresent(url) ? validateAdStartTime("MidRoll_willPlaySingleAd_2")
+				flag = isAdPlayTimePresent(url) ? validateAdStartTime("MidRoll_willPlaySingleAd_2")
 						: waitOnElement(By.id("MidRoll_willPlayAds_2"), 120000);
 				if (!flag)
 					extentTest.log(LogStatus.FAIL, "Ad did not play");
-				return flag && waitOnElement(By.id("adsPlayed_2"), 60000);
+				flag =  flag && waitOnElement(By.id("adsPlayed_2"), 60000);
 
 			} else {
 
-				boolean flag = isAdPlayTimePresent(url) ? validateAdStartTime("MidRoll_willPlaySingleAd_1")
+				flag = isAdPlayTimePresent(url) ? validateAdStartTime("MidRoll_willPlaySingleAd_1")
 						: waitOnElement(By.id("MidRoll_willPlayAds_1"), 120000);
 				if (!flag)
 					extentTest.log(LogStatus.FAIL, "Ad did not play");
-				return flag && waitOnElement(By.id("adsPlayed_1"), 60000);
+				flag =  flag && waitOnElement(By.id("adsPlayed_1"), 60000);
 			}
 
 		} else {
 
-			boolean flag = isAdPlayTimePresent(url) ? validateAdStartTime("MidRoll_willPlaySingleAd_1")
+			flag = isAdPlayTimePresent(url) ? validateAdStartTime("MidRoll_willPlaySingleAd_1")
 					: waitOnElement(By.id("MidRoll_willPlaySingleAd_1"), 120000);
 
 			if (!flag)
 				extentTest.log(LogStatus.FAIL, "Ad did not play");
 
 			if (url.getAdPlugins().toLowerCase().contains("pulse"))
-				return flag && waitOnElement(By.id("singleAdPlayed_2"), 120000);
+				flag = flag && waitOnElement(By.id("singleAdPlayed_2"), 120000);
 			else
-				return flag && waitOnElement(By.id("singleAdPlayed_1"), 120000);
+				flag = flag && waitOnElement(By.id("singleAdPlayed_1"), 120000);
 		}
+		
+		if(flag) {
+			extentTest.log(LogStatus.PASS, "Midroll ads validations passed");
+		} else {
+			extentTest.log(LogStatus.FAIL, "Midroll ads validations failed");
+		}
+		
+		return flag;
 
 	}
 

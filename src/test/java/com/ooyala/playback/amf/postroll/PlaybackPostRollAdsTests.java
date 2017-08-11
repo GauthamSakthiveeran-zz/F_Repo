@@ -41,7 +41,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
             result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
 
             if (result){
-                s_assert.assertTrue(clickThroughValidator.validate("videoPausedAds_2", 120000), "Postroll");
+                s_assert.assertTrue(clickThroughValidator.validate("videoPausedAds_1", 120000), "Postroll");
             }
 
             result = result && event.validate("singleAdPlayed_1", 190000);

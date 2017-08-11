@@ -138,7 +138,16 @@ public class UrlGenerator {
                                 break;
                             continue;
                         }
-
+                        
+                        if (applyFilter() && url.getAdPlugins().getName() != null
+                                && !url.getAdPlugins().getName().isEmpty()) {
+                        	if(adPluginFilter.equalsIgnoreCase("VPAID")) {
+                        		if(!url.getDescription().getName().startsWith("VPAID")) {
+                        			continue;
+                        		}
+                        	}
+                        }
+                        
                         // to run the tests for specific test based on description
                         if (applyDescriptionFilter() && url.getDescription().getName() != null
                                 && !url.getDescription().getName().isEmpty()
