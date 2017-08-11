@@ -1,6 +1,5 @@
 package com.ooyala.playback.amf.preroll;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
@@ -33,18 +32,15 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 
 		try {
 			boolean cc = testName.contains("CC");
-			boolean click = testName.contains("Clickthrough");
+
 			driver.get(url.getUrl());
 			result = result && playValidator.waitForPage();
 			injectScript();
 			result = result && playAction.startAction();
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 60000);
 
-			if (result && click) {
-				((JavascriptExecutor) driver).executeScript("pp.pause()");
-				s_assert.assertTrue(clickThrough.validate("", 120000), "Clickthrough");
-				((JavascriptExecutor) driver).executeScript("pp.play()");
-			}
+			result = result &&  clickThrough.validate("videoPausedAds_1", 120000);
+			
 			if (event.isAdPluginPresent("pulse"))
 				result = result && event.validate("singleAdPlayed_2", 120000);
 			else

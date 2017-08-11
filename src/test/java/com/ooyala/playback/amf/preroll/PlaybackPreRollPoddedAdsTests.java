@@ -1,10 +1,14 @@
 package com.ooyala.playback.amf.preroll;
 
-import com.ooyala.playback.page.*;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.AdClickThroughValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.PoddedAdValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.SetEmbedCodeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -27,7 +31,6 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 	public void verifyPrerollPodded(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
-		boolean click = testName.contains("Clickthrough");
 
 		try {
 
@@ -39,8 +42,8 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 			
 			result = result && event.validate("PreRoll_willPlayAds", 5000);
-			if (result && click) {
-                s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("preroll"),"Clickthrough");
+			if (result) {
+                s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("preroll"),"Preroll Podded");
             }
 			result = result && event.validate("adsPlayed_1", 180000);
 

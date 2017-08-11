@@ -2,8 +2,6 @@ package com.ooyala.playback.page;
 
 import static java.lang.Integer.parseInt;
 
-import com.ooyala.playback.factory.PlayBackFactory;
-import com.ooyala.playback.url.UrlObject;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -27,10 +25,8 @@ public class PoddedAdValidator extends PlayBackPage implements PlaybackValidator
 	}
 
 	private int counter = 0;
-
+	
 	public boolean validate(String element, int timeout) throws Exception {
-
-        EventValidator event = new PlayBackFactory(driver,extentTest).getEventValidator();
 
 		try {
 			if (!waitOnElement(By.id(element), timeout)) {

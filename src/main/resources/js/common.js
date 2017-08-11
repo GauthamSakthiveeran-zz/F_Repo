@@ -67,19 +67,6 @@ function subscribeToCommonEvents() {
 				closedCaptionOrder++;
 			}
 			
-			if (event.match(/setClosedCaptionsLanguage/)) {
-				OO.$('#ooplayer').append('<p id=cclanguage_'+ arguments[1]+'>cclanguage_'+ arguments[1]+'</p>');
-				OO.$('#ooplayer').append('<p id=ccmode_'+ arguments[2].mode+'>ccmode_'+ arguments[2].mode+'</p>');
-				if(playingEventOrder==2) {
-					var time = pp.getPlayheadTime();
-					OO.$('#ooplayer').append('<p id=playTime>'+time+'</p>');
-				}
-				
-				if(playingEventOrder==3) {
-					var time = pp.getPlayheadTime();
-					OO.$('#ooplayer').append('<p id=midroll_playTime>'+time+'</p>');
-				}
-			}
 			if (event.match(/reportDiscoveryImpression/)) {
 				OO.$('#ooplayer').append('<p id=reportDiscoveryImpression_'+reportDiscoveryImpressionOrder+'>reportDiscoveryImpression '+reportDiscoveryImpressionOrder+'</p>'); 
 				reportDiscoveryImpressionOrder++;

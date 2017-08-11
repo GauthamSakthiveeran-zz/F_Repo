@@ -45,6 +45,8 @@ public class UrlGenerator {
             playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.PRODUCTION);
         } else if (environment.equalsIgnoreCase("STAGING")) {
             playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.STAGING);
+        } else if (environment.equalsIgnoreCase("STABLE")) {
+            playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.STABLE);
         }
 
         v4Version = System.getProperty(CommandLineParameters.v4Version);
@@ -131,14 +133,21 @@ public class UrlGenerator {
                         }
 
                         // to run tests for specific ad plugins
+                        
                         if (applyFilter() && url.getAdPlugins().getName() != null
-                                && !url.getAdPlugins().getName().isEmpty()
-                                && !url.getAdPlugins().getName().equalsIgnoreCase(adPluginFilter)) {
-                            if (!testDataValidator.validateAdPlugin(adPluginFilter))
-                                break;
-                            continue;
+                                && !url.getAdPlugins().getName().isEmpty()) {
+                        	if(adPluginFilter.equalsIgnoreCase("VPAID")) {
+                        		if(!url.getDescription().getName().startsWith("VPAID")) {
+                        			continue;
+                        		}
+                        	} else {
+                        		if(!url.getAdPlugins().getName().equalsIgnoreCase(adPluginFilter)) {
+                        			continue;
+                        		}
+                        	}
                         }
-
+                        
+                        
                         // to run the tests for specific test based on description
                         if (applyDescriptionFilter() && url.getDescription().getName() != null
                                 && !url.getDescription().getName().isEmpty()

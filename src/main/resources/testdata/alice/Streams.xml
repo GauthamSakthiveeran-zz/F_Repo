@@ -310,7 +310,6 @@
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
 		</url>
 
-        Adding data for AdobeSDKPlugin
         <url>
             <description name="Streams:AdobeTVSDK Elemental Delta HLS VOD" />
             <priority name="P2"></priority>
@@ -378,7 +377,7 @@
             <streamType name="m3u8"></streamType>
         </url>
         <url>
-            <description name="Streams:AdobeTVSDK +Main plugin H.264 4K HLS" />
+            <description name="Streams:AdobeTVSDK H.264 4K HLS" />
             <priority name="P3"></priority>
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -432,7 +431,7 @@
 			<streamType name="mpd"></streamType>
         </url>
         <url>
-            <description name="Streams:H.264 4K Dash" />
+            <description name="Streams:AdobeTVSDK H.264 4K Dash" />
             <priority name="P3"></priority>
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />

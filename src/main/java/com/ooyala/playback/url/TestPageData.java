@@ -338,7 +338,7 @@ public class TestPageData {
                 if (!(specificBranch == null || specificBranch == "")) {
                     envURL = envURL.replace("candidate/latest", specificBranch);
                 }
-                pluginURL = envURL + pluginURL;
+                pluginURL = envURL + "/video-plugin/";
                 corePlayer = envURL + corePlayer;
                 html5Skin = envURL + html5Skin;
                 skinAsset = envURL + skinAsset;
@@ -354,6 +354,16 @@ public class TestPageData {
                 skinConf = "" + skinConf;
                 skinDiscovery = "" + envURL + otherPlugin + discoveryApiPlugin;
                 break;
+            case STABLE:
+            	envURL = sslEnabled + properties.getProperty("stable_env_url") + v4Version;
+                pluginURL = envURL + "/video-plugin/";
+                corePlayer = envURL + corePlayer;
+                html5Skin = envURL + html5Skin;
+                skinAsset = envURL + skinAsset;
+                skinConf = "" + skinConf;
+                skinDiscovery = "" + envURL + otherPlugin + discoveryApiPlugin;
+                break;
+                
             default:
                 break;
         }

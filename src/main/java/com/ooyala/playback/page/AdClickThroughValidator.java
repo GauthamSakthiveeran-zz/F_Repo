@@ -52,7 +52,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
     public boolean validate(String element, int timeout) throws Exception {
 
-        if(getBrowser().equalsIgnoreCase("safari")) return true;
+		if (getBrowser().equalsIgnoreCase("safari"))
+			return true;
 
         if (!loadingSpinner()) {
             extentTest.log(LogStatus.FAIL, "In Loading spinner for a really long time.");
@@ -86,8 +87,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
                     return false;
 
                 if (!waitOnElement(By.id(element), 10000)) {
-                    log.info("unable to verify event videoPaused");
-                    extentTest.log(LogStatus.FAIL, "unable to verify event videoPaused");
+                    log.info("unable to verify event "+element);
+                    extentTest.log(LogStatus.FAIL, "unable to verify event "+element);
                     return false;
                 }
 
@@ -135,8 +136,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
                 if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 2000))
                     return false;
 
-                if (!waitOnElement(By.id("videoPausedAds_1"), 5000)) {
-                    log.info("unable to verify event videoPaused");
+                if (!waitOnElement(By.id("videoPausedAds_1"), 20000)) {
+                    log.info("unable to verify event videoPausedAds_1");
                     extentTest.log(LogStatus.FAIL, "unable to verify event videoPaused");
                     return false;
                 }
@@ -197,8 +198,8 @@ public class AdClickThroughValidator extends PlayBackPage implements
                     return false;
 
                 if (!waitOnElement(By.id("videoPausedAds_"+counter+""), 10000)) {
-                    log.info("unable to verify event videoPaused");
-                    extentTest.log(LogStatus.FAIL, "unable to verify event videoPaused");
+                    log.info("unable to verify event videoPausedAds_"+counter);
+                    extentTest.log(LogStatus.FAIL, "unable to verify event videoPausedAds_"+counter);
                     return false;
                 }
 
@@ -247,9 +248,9 @@ public class AdClickThroughValidator extends PlayBackPage implements
                 if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 2000))
                     return false;
 
-                if (!waitOnElement(By.id("videoPausedAds_1"), 5000)) {
-                    log.info("unable to verify event videoPaused");
-                    extentTest.log(LogStatus.FAIL, "unable to verify event videoPaused");
+                if (!waitOnElement(By.id("videoPausedAds_1"), 20000)) {
+                    log.info("unable to verify event videoPausedAds_1");
+                    extentTest.log(LogStatus.FAIL, "unable to verify event videoPausedAds_1");
                     return false;
                 }
 
