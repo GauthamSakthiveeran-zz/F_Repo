@@ -3,7 +3,7 @@
     <test name="PlaybackPreRollPoddedAdsTests">
 
         <url>
-            <description name="Freewheel:Main 3 Preroll Podded|Freewheel:Clickthrough Main 3 Preroll Podded"/>
+            <description name="Freewheel:Main 3 Preroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -16,20 +16,7 @@
         </url>
 
         <url>
-            <description name="Freewheel:Bitmovin 3 Preroll Podded|Freewheel:Clickthrough Bitmovin 3 Preroll Podded"/>
-            <priority name="P2"></priority>
-            <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN"/>
-            <adPlugins name="FREEWHEEL"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <playerParameter>
-                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Fua2tmcjqpz9g6tBUEHukAOLuXaVZ7Lw","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
-        </url>
-
-        <url>
-            <description name="Freewheel:OSMF 3 Preroll Podded|Freewheel:Clickthrough OSMF 3 Preroll Podded"/>
+            <description name="Freewheel:OSMF Preroll Podded"/>
             <priority name="P3"></priority>
             <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -45,7 +32,7 @@
         </url>
 
         <url>
-            <description name="IMA:Main 3 Preroll Podded|IMA:Clickthrough Main 3 Preroll Podded"/>
+            <description name="IMA:Main 3 Preroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="htYWxjczousVmIKvp56u7Cb9btEnyJK9"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -57,7 +44,7 @@
         </url>
 
         <url>
-            <description name="IMA:Bitmovin Preroll Podded|IMA:Clickthrough Bitmovin Preroll Podded"/>
+            <description name="IMA:Bitmovin Preroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="0wdTZ2YTE6inA1_u6ssfa1HAhN0KpDER"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -70,7 +57,7 @@
         </url>
 
         <url>
-            <description name="IMA:OSMF Preroll Podded|IMA:Clickthrough OSMF Preroll Podded"/>
+            <description name="IMA:OSMF Preroll Podded"/>
             <priority name="P3"></priority>
             <embed_code name="x1MjlxYTE6v9pJaLK_hFgurkxQo56QFY"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -85,7 +72,7 @@
         </url>
 
         <url>
-            <description name="VAST:Main Vast2.0 3 Preroll Podded|VAST:Clickthrough Main Vast2.0 3 Preroll Podded"/>
+            <description name="VAST:Main Vast2.0 3 Preroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="xxbDB4dDovMCDiqvo2DSqON3lIGSM5N5"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -97,7 +84,7 @@
         </url>
 
         <url>
-            <description name="VAST:Main Vast3.0 3 Preroll Podded|VAST:Clickthrough Main Vast3.0 3 Preroll Podded"/>
+            <description name="VAST:Main Vast3.0 3 Preroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="1nMmM1MTE6yZTv1GDLrMl-Cg0lfZtta6"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -137,7 +124,7 @@
 
 
         <url>
-            <description name="Freewheel:Bitmovin Preroll Podded|Freewheel:Clickthrough Bitmovin Preroll Podded"/>
+            <description name="Freewheel:Bitmovin Preroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -148,40 +135,45 @@
             <playerParameter>
                 <![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Fua2tmcjqpz9g6tBUEHukAOLuXaVZ7Lw","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
         </url>
-
-        <!-- <url>
-            <description name="Preroll_Podded_SetEmbedCode_Freewheel"/>
-            <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN"/>
+        
+        <url>
+            <description name="Freewheel:AdobeTVSDK Preroll Podded"/>
+            <priority name="P2"></priority>
+            <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK,MAIN"/>
             <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
-            <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter>
-                <![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Fua2tmcjqpz9g6tBUEHukAOLuXaVZ7Lw","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialTime":0,"autoplay":false}]]></playerParameter>
+                <![CDATA[{"encodingPriority":["hls","dash","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Fua2tmcjqpz9g6tBUEHukAOLuXaVZ7Lw","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
         </url>
-
+        
         <url>
-            <description name="Preroll_Podded_SetEmbedCode_IMA"/>
-            <embed_code name="htYWxjczousVmIKvp56u7Cb9btEnyJK9"/>
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN"/>
-            <adPlugins name="IMA"/>
+            <description name="IMA:AdobeTVSDK Preroll Podded"/>
+            <priority name="P2"></priority>
+            <embed_code name="0wdTZ2YTE6inA1_u6ssfa1HAhN0KpDER"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name="FREEWHEEL"/>
             <additionalPlugins name=""/>
-            <pbid name="615dc8e909e941c280e12155df838355"/>
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
         </url>
-
+        
         <url>
-            <description name="Preroll_Podded_SetEmbedCode_Vast"/>
-            <embed_code name="xxbDB4dDovMCDiqvo2DSqON3lIGSM5N5"/>
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="MAIN"/>
+            <description name="VAST:AdobeTVSDK Vast3.0 3 Preroll Podded"/>
+            <priority name="P2"></priority>
+            <embed_code name="1nMmM1MTE6yZTv1GDLrMl-Cg0lfZtta6"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK,MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
-            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
-            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
-        </url> -->
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
 
     </test>
 </testdata>
