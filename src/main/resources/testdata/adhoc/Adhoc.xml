@@ -126,4 +126,32 @@
             <browsersSupported name="safari"/>
         </url>
     </test>
+
+    <test name="ReplayAfterSeekBackTests">
+        <url>
+            <description name="Adhoc:Seekback From End and playback Main"/>
+            <priority name="P3"></priority>
+            <embed_code name="Rjc3RreTqghZLRq93GQ-Sl1OGVyJoK2d"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="615dc8e909e941c280e12155df838355"/>
+            <playerParameter><![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":10}]]></playerParameter>
+        </url>
+    </test>
+
+    <test name="BitrateOptionsBeforeAndAfterMidrollTests">
+        <url>
+            <description name="Adhoc:Seekback From End and playback Main"/>
+            <priority name="P3"></priority>
+            <embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,MAIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
+        </url>
+    </test>
 </testdata>
