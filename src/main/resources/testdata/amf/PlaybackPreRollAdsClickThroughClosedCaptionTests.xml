@@ -518,6 +518,18 @@
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
 			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 		</url>
+		
+		<url>
+			<description name="VPAID:Bitmovin VAST VPAID2.0 DASH remote Asset" />
+			<priority name="P3"></priority>
+			<embed_code name="B0Ym1hMjE6nNwoIODvGNrLBrVAXJtDh0" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="MAIN,BITMOVIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"vast":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.56cae9d690c054.28077205;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
+		</url>
 
 	</test>
 </testdata>

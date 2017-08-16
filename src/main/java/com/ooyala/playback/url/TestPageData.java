@@ -364,6 +364,16 @@ public class TestPageData {
                 skinDiscovery = "" + envURL + otherPlugin + discoveryApiPlugin;
                 break;
                 
+            case SANDBOX:
+            	envURL = sslEnabled + properties.getProperty("sandbox_env_url") + v4Version;
+                pluginURL = envURL + "/video-plugin/";
+                corePlayer = envURL + corePlayer;
+                html5Skin = envURL + html5Skin;
+                skinAsset = envURL + skinAsset;
+                skinConf = "" + skinConf;
+                skinDiscovery = "" + envURL + otherPlugin + discoveryApiPlugin;
+                break;    
+                
             default:
                 break;
         }

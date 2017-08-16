@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testdata>
     <test name="PlaybackMidrollAdsClickThroughTests">
-        <url>
-            <description name="VPAID:Bitmovin IMA VPAID2.0 Midroll"/>
-            <priority name="P2"></priority>
-            <embed_code name="MyNngxYjE6YLC9qiK0va9r0SaqN9L6mD"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN"/>
-            <adPlugins name="IMA" adPlayTime="10"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <playerParameter>
-                <![CDATA[{"encodingPriority":["dash","hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":3,"google-ima-ads-manager":{"all_ads":[{"position":"10000","position_type":"t","tag_url":"http://vp-validation.videoplaza.tv/proxy/distributor/v2?rt=vast_2.0&t=vpaid2-sizmek&s=validation&tt=p"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
-
-        </url>
-
 
         <url>
-            <description name="Pulse:Bitmovin Midroll"/>
+            <description name="Pulse:Bitmovin Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="Blb2U5MzE6mLeSsYNyfqiDbsaYBODDka"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -31,7 +17,7 @@
         </url>
 
         <url>
-            <description name="Pulse:OSMF Midroll" />
+            <description name="Pulse:OSMF Midroll Clickthrough" />
             <priority name="P3"></priority>
             <embed_code name="o3dXF5YTE6bLKdGNXy-dVEqkNt9Hrh3c" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
@@ -44,7 +30,7 @@
         </url>
 
         <url>
-            <description name="Pulse:Main Midroll"/>
+            <description name="Pulse:Main Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="x0amU5MzE6igU92P3BOmuI8PjqRYz-LX"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -58,7 +44,7 @@
         </url>
 
         <url>
-            <description name="IMA:Main Ad Rule Midroll"/>
+            <description name="IMA:Main Ad Rule Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -71,7 +57,7 @@
         </url>
 
         <url>
-            <description name="IMA:Bitmovin Midroll"/>
+            <description name="IMA:Bitmovin Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="IxOTVnMTE6mwR52DOItZ1k1DioFcKQrk"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -114,7 +100,7 @@
 
 
         <url>
-            <description name="VAST:OSMF Vast2.0 Midroll"/>
+            <description name="VAST:OSMF Vast2.0 Midroll Clickthrough"/>
             <priority name="P3"></priority>
             <embed_code name="15bW5kMDE6iNkSDrnuxQ5Im38y6q68XF"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -127,7 +113,7 @@
         </url>
 
         <url>
-            <description name="IMA:OSMF Midroll"/>
+            <description name="IMA:OSMF Midroll Clickthrough"/>
             <priority name="P3"></priority>
             <embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -166,7 +152,7 @@
         </url>
 
         <url>
-            <description name="IMA:Midroll OSMF"/>
+            <description name="IMA:Midroll OSMF Clickthrough"/>
             <priority name="P3"></priority>
             <embed_code name="l0d2VmMDE691JTYVBVp0h7MLEgl8Kv9z"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -179,7 +165,7 @@
         </url>
 
         <url>
-            <description name="VAST:Midroll Main"/>
+            <description name="VAST:Midroll Main Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -191,7 +177,7 @@
         </url>
 
         <url>
-            <description name="VAST:Main Vast2.0 Midroll"/>
+            <description name="VAST:Main Vast2.0 Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -203,7 +189,7 @@
 
         </url>
         <url>
-            <description name="Freewheel:Main Midroll"/>
+            <description name="Freewheel:Main Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -216,7 +202,7 @@
         </url>
 
         <url>
-            <description name="VAST:OSMF Vast3.0 Midroll"/>
+            <description name="VAST:OSMF Vast3.0 Midroll Clickthrough"/>
             <priority name="P3"></priority>
             <embed_code name="hucThxYTE6DeKlOdeAQS8bbGgIE5dDpX"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -229,7 +215,7 @@
         </url>
 
         <url>
-            <description name="VAST:Main Vast3.0 Midroll"/>
+            <description name="VAST:Main Vast3.0 Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="F3bDhxYTE6_BXwKW6aljlWptl8jHx4sA"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -243,19 +229,7 @@
 
 
         <url>
-            <description name="VPAID:Bitmovin IMA VPAID1.0 Midroll"/>
-            <priority name="P2"></priority>
-            <embed_code name="VlNngxYjE6Fxun-P1nj_6S1fZynIqXEp"/>
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
-            <plugins name="BITMOVIN,MAIN"/>
-            <adPlugins name="IMA" adPlayTime="10"/>
-            <additionalPlugins name=""/>
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
-            <playerParameter></playerParameter>
-        </url>
-
-        <url>
-            <description name="VPAID:OSMF IMA VPAID1.0 Midroll"/>
+            <description name="VPAID:OSMF IMA VPAID1.0 Midroll Clickthrough"/>
             <priority name="P3"></priority>
             <embed_code name="QxaXF5YTE6uF6wAkOtQSsMtjs8EWuRY0"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
@@ -268,7 +242,7 @@
         </url>
 
         <url>
-            <description name="VPAID:Main IMA VPAID1.0 Midroll"/>
+            <description name="VPAID:Main IMA VPAID1.0 Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="4zdm5xYTE6kinDj0VQ5a3Qlq6PAaRguK"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -317,5 +291,99 @@
             <playerParameter>
                 <![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
         </url>
+        
+        <url>
+            <description name="VPAID:Bitmovin Vast VPAID2.0 Midroll Clickthrough"/>
+            <priority name="P2"></priority>
+            <embed_code name="0wdnI4MjE68TtC2n_PMT4HwiyDJXYEGX"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="MAIN,BITMOVIN"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+        
+        <url>
+            <description name="VPAID:Bitmovin IMA VPAID2.0 Midroll Clickthrough"/>
+            <embed_code name="MyNngxYjE6YLC9qiK0va9r0SaqN9L6mD"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,MAIN"/>
+            <adPlugins name="IMA" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":3,"google-ima-ads-manager":{"all_ads":[{"position":"10000","position_type":"t","tag_url":"http://vp-validation.videoplaza.tv/proxy/distributor/v2?rt=vast_2.0&t=vpaid2-sizmek&s=validation&tt=p"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
+			<priority name="P2"></priority>
+        </url>
+        
+        <url>
+            <description name="VPAID:Bitmovin IMA VPAID1.0 Midroll Clickthrough"/>
+            <priority name="P2"></priority>
+            <embed_code name="VlNngxYjE6Fxun-P1nj_6S1fZynIqXEp"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,MAIN"/>
+            <adPlugins name="IMA" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter></playerParameter>
+        </url>
+        
+         <url>
+            <description name="VPAID:OSMF Vast VPAID2.0 Midroll Clickthrough"/>
+            <priority name="P3"></priority>
+            <embed_code name="03Mm9xYTE6iYdd2fDYNaOmvUxXXqaubL"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="VAST" adPlayTime="20"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter></playerParameter>
+            <platformsSupported name="mac,windows"/>
+        </url>
+        
+        <url>
+            <description name="VPAID:OSMF IMA VPAID2.0 Midroll Clickthrough"/>
+            <priority name="P3"></priority>
+            <embed_code name="VqMm9xYTE6ilA-3mcU7AHHcJVSezReCA"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <plaformsSupported name="mac,windows"/>
+        </url>
+        
+         <url>
+            <description name="VPAID:Main Vast VPAID2.0 Midroll Clickthrough"/>
+            <priority name="P2"></priority>
+            <embed_code name="A1bmxiMjE64igdFOvxveOJdKRC7tqQ2C"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+
+        </url>
+        
+        <url>
+            <description name="VPAID:Main IMA VPAID2.0 Midroll Clickthrough"/>
+            <priority name="P2"></priority>
+            <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="IMA" adPlayTime="20"/>
+            <additionalPlugins name=""/>
+            <pbid name="615dc8e909e941c280e12155df838355"/>
+            <playerParameter>
+                <![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"20000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
+
+        </url>
+        
+        
     </test>
 </testdata>
