@@ -2,6 +2,7 @@ package com.ooyala.playback.playlist;
 
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.StreamValidator;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -21,6 +22,7 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
     private PlayValidator play;
     private StreamValidator streamTypeValidator;
     private EventValidator eventValidator;
+    private static final Logger logger = Logger.getLogger(PlaybackPlaylistTests.class);
 
     public PlaybackPlaylistTests() throws OoyalaException {
         super();
