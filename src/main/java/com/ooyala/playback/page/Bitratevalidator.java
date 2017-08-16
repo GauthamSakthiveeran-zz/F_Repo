@@ -1,5 +1,6 @@
 package com.ooyala.playback.page;
 
+import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -92,5 +93,65 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
             return true;
         }
 
+    }
+
+    int beforeAdPlay;
+    int afterAdPlay;
+    public boolean totalBitrateCountBeforeAdPlayback(){
+
+        try {
+            if (!isElementPresent("BITRATE"))
+                return false;
+        } catch (Exception e) {
+            if (!clickOnIndependentElement("MORE_OPTION_ITEM"))
+                return false;
+            if (!isElementPresent("BITRATE"))
+                return false;
+        }
+
+        if (!clickOnIndependentElement("BITRATE"))
+            return false;
+        try {
+            beforeAdPlay = driver.findElements(By.xpath(".//a[@class='oo-quality-btn']")).size();
+            logger.info("beforeAdPlay :"+beforeAdPlay);
+            extentTest.log(LogStatus.INFO,"beforeAdPlay :"+beforeAdPlay);
+            return true;
+        } catch (Exception e){
+            extentTest.log(LogStatus.FAIL,e.getMessage());
+            return false;
+        }
+    }
+
+    public boolean totalBitrateCountAfterAdPlayback(){
+
+        try {
+            if (!isElementPresent("BITRATE"))
+                return false;
+        } catch (Exception e) {
+            if (!clickOnIndependentElement("MORE_OPTION_ITEM"))
+                return false;
+            if (!isElementPresent("BITRATE"))
+                return false;
+        }
+
+        if (!clickOnIndependentElement("BITRATE"))
+            return false;
+        try {
+            afterAdPlay = driver.findElements(By.xpath(".//a[@class='oo-quality-btn']")).size();
+            logger.info("afterAdPlay :"+afterAdPlay);
+            extentTest.log(LogStatus.INFO,"afterAdPlay :"+afterAdPlay);
+            return true;
+        } catch (Exception ex){
+            extentTest.log(LogStatus.FAIL,ex.getMessage());
+            return false;
+        }
+    }
+
+    public boolean isBirateOptionsVarying(){
+        if (afterAdPlay != beforeAdPlay){
+            extentTest.log(LogStatus.FAIL,"Bitrate Options are not matching ...");
+            return false;
+        }
+        return true;
     }
 }

@@ -4,6 +4,7 @@
 
 		<url>
 			<description name="Streams:Bitmovin Elemental Delta HLS VOD" />
+			<priority name="P1"></priority>
 			<embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
 			<plugins name="BITMOVIN" />
@@ -17,6 +18,7 @@
 
 		<url>
 			<description name="Streams:Bitmovin Elemental Delta HLS Remote Asset" />
+			<priority name="P3"></priority>
 			<embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
 			<plugins name="BITMOVIN" />
@@ -30,6 +32,7 @@
 
 		<url>
 			<description name="Streams:Main Elemental Delta HLS Remote Asset" />
+			<priority name="P3"></priority>
 			<embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
 			<plugins name="MAIN" />
@@ -41,9 +44,9 @@
 			<browsersSupported name="safari" />
 		</url>
 
-<!-- 		commented check the ticket number for more info PBW-6281 -->
 		<url>
 			<description name="Streams:Bitmovin Elemental Delta DASH VOD (Clear Dash)" />
+			<priority name="P1"></priority>
 			<embed_code name="AxZWVlOTE69sXjpQ_uZyM7sf6aqBl8N0" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -52,9 +55,11 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+			<streamType name="mpd" />
 		</url>
 		<url>
 			<description name="Streams:Bitmovin MP4" />
+			<priority name="P1"></priority>
 			<embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="BITMOVIN" />
@@ -67,6 +72,7 @@
 
 		<url>
 			<description name="Streams:Main Elemental Delta HLS VOD" />
+			<priority name="P1"></priority>
 			<embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
 			<plugins name="MAIN" />
@@ -79,6 +85,7 @@
 		</url>
 		<url>
 			<description name="Streams:Main MP4" />
+			<priority name="P1"></priority>
 			<embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -91,6 +98,7 @@
 
 		<url>
 			<description name="Streams:Bitmovin Elemental Delta DASH Remote Asset" />
+			<priority name="P3"></priority>
 			<embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
@@ -100,10 +108,12 @@
 			<playerParameter></playerParameter>
 			<sslEnabled name="https" />
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+			<streamType name="mpd" />
 		</url>
 
 		<url>
 			<description name="Streams:OSMF Elemental Delta HDS VOD" />
+			<priority name="P3"></priority>
 			<embed_code name="0zbm5kMDE6hbM_xDZmnsKUYqXs3N9JrL" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="OSMF" />
@@ -119,6 +129,7 @@
 		</url>
 		<url>
 			<description name="Streams:Akamai HD Flash HD2 VOD" />
+			<priority name="P3"></priority>
 			<embed_code name="82eWJ2NDE6UWX__B6oTjtU1COh-gF3pP" />
 			<pcode name="dseGIyOo4xvzZFFu2AMwh7NtrwAk" />
 			<plugins name="AKAMAI" />
@@ -134,46 +145,48 @@
 		</url>
 		<url>
 			<description name="Streams:OSMF FFMPEG HDS VOD" />
+			<priority name="P3"></priority>
 			<embed_code name="syMGUyODE60uVae2GkFJovDNcN_W5TGE" />
 			<pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z-" />
 			<plugins name="OSMF" />
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-			<browsersSupported
-				name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
+			<browsersSupported name="firefox,chrome,internet explorer,safari,MicrosoftEdge" />
 			<browserSupportedVersion name="safari,9" />
 			<platformsSupported name="mac,windows"/>
 			<playerParameter></playerParameter>
+			<streamType name="f4m" />
 		</url>
 		<url>
 			<description name="Streams:Bitmovin Azure DASH VOD" />
+			<priority name="P1"></priority>
 			<embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq" />
 			<pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
 			<plugins name="BITMOVIN" />
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
-			<browsersSupported
-				name="firefox,chrome,internet explorer,MicrosoftEdge" />
-			<browserSupportedVersion name="safari,9" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash"]}]]></playerParameter>
+			<streamType name="mpd" />
 		</url>
 		<url>
 			<description name="Streams:H.264 4K Dash" />
+			<priority name="P3"></priority>
 			<embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-			<browsersSupported
-				name="firefox,chrome,internet explorer,MicrosoftEdge" />
-			<browserSupportedVersion name="safari,9" />
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
+			<streamType name="mpd" />
 		</url>
 		<url>
 			<description name="Streams:Main FFMPEG HLS VOD" />
+			<priority name="P1"></priority>
 			<embed_code name="U1NWUyODE6YkV9__uBMv0fuhK20u-cTv" />
 			<pcode name="h2YmIyOiv9fzbdB3aUGdSG72G0z" />
 			<plugins name="MAIN" />
@@ -187,6 +200,7 @@
 
 		<url>
 			<description name="Streams:Main Akamai HLS Remote Asset" />
+			<priority name="P3"></priority>
 			<embed_code name="44ZTlxNTE6qlSijlH3j2_dDZbXgPcEXv" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
 			<plugins name="MAIN" />
@@ -200,6 +214,7 @@
 
 		<url>
 			<description name="Streams:Bitmovin Akamai HLS Remote Asset" />
+			<priority name="P3"></priority>
 			<embed_code name="44ZTlxNTE6qlSijlH3j2_dDZbXgPcEXv" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
 			<plugins name="BITMOVIN" />
@@ -213,6 +228,7 @@
 
 		<url>
 			<description name="Streams:Bitmovin FFMPEG HLS VOD" />
+			<priority name="P1"></priority>
 			<embed_code name="lpMWdlOTE6dNxa4hDAIosKY4taT-Bofx" />
 			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
 			<plugins name="BITMOVIN" />
@@ -227,6 +243,7 @@
 
 		<url>
 			<description name="Streams:Bitmovin Azure HLS VOD" />
+			<priority name="P1"></priority>
 			<embed_code name="RndDhvYTE6dmNoGfQcV4vTWIgiAA7NnS" />
 			<pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
 			<plugins name="BITMOVIN" />
@@ -240,6 +257,7 @@
 
 		<url>
 			<description name="Streams:Main Azure HLS VOD" />
+			<priority name="P1"></priority>
 			<embed_code name="RndDhvYTE6dmNoGfQcV4vTWIgiAA7NnS" />
 			<pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
 			<plugins name="MAIN" />
@@ -253,6 +271,7 @@
 
 		<url>
 			<description name="Streams:Bitmovin +Main plugin H.264 4K HLS" />
+			<priority name="P3"></priority>
 			<embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
@@ -265,6 +284,7 @@
 
 		<url>
 			<description name="Streams:Bitmovin +Main plugin H.264 4K Dash" />
+			<priority name="P3"></priority>
 			<embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
@@ -278,6 +298,7 @@
 
 		<url>
 			<description name="Streams:Bitmovin +Main plugin H.265 4K Dash Movie" />
+			<priority name="P3"></priority>
 			<embed_code name="JiNWh3NTE6mdX5DQOcJYRoa2owJKPq7a" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
@@ -289,9 +310,9 @@
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
 		</url>
 
-        <!-- Adding data for AdobeSDKPlugin-->
         <url>
             <description name="Streams:AdobeTVSDK Elemental Delta HLS VOD" />
+            <priority name="P2"></priority>
             <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="ADOBETVSDK" />
@@ -304,6 +325,7 @@
         </url>
         <url>
             <description name="Streams:AdobeTVSDK FFMPEG HLS VOD" />
+            <priority name="P2"></priority>
             <embed_code name="lpMWdlOTE6dNxa4hDAIosKY4taT-Bofx" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="ADOBETVSDK" />
@@ -317,6 +339,7 @@
         </url>
         <url>
             <description name="Streams:AdobeTVSDK Azure HLS VOD" />
+            <priority name="P2"></priority>
             <embed_code name="RndDhvYTE6dmNoGfQcV4vTWIgiAA7NnS" />
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="ADOBETVSDK" />
@@ -329,6 +352,7 @@
         </url>
         <url>
             <description name="Streams:AdobeTVSDK Elemental Delta HLS Remote Asset" />
+            <priority name="P3"></priority>
             <embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="ADOBETVSDK" />
@@ -341,6 +365,7 @@
         </url>
         <url>
             <description name="Streams:AdobeTVSDK Akamai HLS Remote Asset" />
+            <priority name="P3"></priority>
             <embed_code name="44ZTlxNTE6qlSijlH3j2_dDZbXgPcEXv" />
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
             <plugins name="ADOBETVSDK" />
@@ -352,7 +377,8 @@
             <streamType name="m3u8"></streamType>
         </url>
         <url>
-            <description name="Streams:AdobeTVSDK +Main plugin H.264 4K HLS" />
+            <description name="Streams:AdobeTVSDK H.264 4K HLS" />
+            <priority name="P3"></priority>
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="ADOBETVSDK" />
@@ -364,6 +390,7 @@
         </url>
         <url>
             <description name="Streams:AdobeTVSDK Elemental Delta DASH VOD (Clear Dash)" />
+            <priority name="P2"></priority>
             <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="ADOBETVSDK" />
@@ -372,9 +399,11 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <playerParameter></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+			<streamType name="mpd"></streamType>
         </url>
         <url>
             <description name="Streams:AdobeTVSDK Azure DASH VOD" />
+            <priority name="P2"></priority>
             <embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq" />
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
             <plugins name="ADOBETVSDK" />
@@ -385,9 +414,11 @@
                     name="firefox,chrome,internet explorer,MicrosoftEdge" />
             <browserSupportedVersion name="safari,9" />
             <playerParameter><![CDATA[{"encodingPriority":["dash"]}]]></playerParameter>
+            <streamType name="mpd"></streamType>
         </url>
         <url>
             <description name="Streams:AdobeTVSDK Elemental Delta DASH Remote Asset" />
+            <priority name="P3"></priority>
             <embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="ADOBETVSDK" />
@@ -397,9 +428,11 @@
             <playerParameter></playerParameter>
             <sslEnabled name="https" />
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
+			<streamType name="mpd"></streamType>
         </url>
         <url>
-            <description name="Streams:H.264 4K Dash" />
+            <description name="Streams:AdobeTVSDK H.264 4K Dash" />
+            <priority name="P3"></priority>
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="ADOBETVSDK" />
@@ -408,11 +441,12 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
             <browsersSupported
                     name="firefox,chrome,internet explorer,MicrosoftEdge" />
-            <browserSupportedVersion name="safari,9" />
             <playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
+            <streamType name="mpd"></streamType>
         </url>
         <url>
             <description name="Streams:AdobeTVSDK +Main plugin H.265 4K Dash Movie" />
+            <priority name="P3"></priority>
             <embed_code name="JiNWh3NTE6mdX5DQOcJYRoa2owJKPq7a" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
             <plugins name="ADOBETVSDK" />
@@ -425,6 +459,7 @@
         </url>
         <url>
             <description name="Streams:AdobeTVSDK MP4" />
+            <priority name="P2"></priority>
             <embed_code name="9vdWg1NDE6f8EqLGWa4mR0rIgNqyxuUF" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="ADOBETVSDK," />

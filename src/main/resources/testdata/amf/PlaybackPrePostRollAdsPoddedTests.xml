@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<test name="PlaybackPrePostRollAdsPoddedTests">
+
+		<url>
+			<description name="VAST:Bitmovin Vast2.0 DASH remote Asset " />
+			<priority name="P3"></priority>
+			<embed_code name="tpbW1hMjE68h369O766N8QsKPdtp-6MI" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="VAST" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter>
+                <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+		</url>
+	</test>
+</testdata>  

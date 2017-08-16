@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.ooyala.playback.enums.TestResult;
 import org.apache.log4j.Logger;
 import org.testng.ITestResult;
 
@@ -452,13 +453,15 @@ public class TestCaseSheet {
 			if (row != null) {
 				if (testCaseData.getHeaderColumnNumber() == -1) {
 					testCaseData.setHeaderRowNumber(j);
+					lastColumnForTestCase = row.size();
+					testCaseData.setLastColumnForTestCase(lastColumnForTestCase);
 					for (int i = 1; i < row.size(); i++) {
 						logger.info(row.get(i).toString().toLowerCase());
-						if (row.get(i).toString().toLowerCase()
+						/*if (row.get(i).toString().toLowerCase()
 								.contains(TestCaseSheetProperties.lastColumnForTestCase.toLowerCase())) {
 							lastColumnForTestCase = i + 2;
 							testCaseData.setLastColumnForTestCase(lastColumnForTestCase);
-						}
+						}*/
 						if (row.get(i).toString().toLowerCase().contains(resultColumnTitle.toLowerCase())) {
 							testCaseData.setHeaderColumnNumber(i);
 							break;

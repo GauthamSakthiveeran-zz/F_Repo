@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.AdSkipButtonValidator;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.OoyalaAPIValidator;
+import com.ooyala.playback.page.PlayerAPIValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
@@ -18,7 +18,7 @@ public class PlaybackInitialTimeForOoyalaAdsTests extends PlaybackWebTest {
 	private PlayValidator play;
 	private PlayAction playAction;
 	private EventValidator event;
-	private OoyalaAPIValidator api;
+	private PlayerAPIValidator api;
 	private AdSkipButtonValidator skip;
 	private SeekValidator seek;
 
@@ -48,7 +48,7 @@ public class PlaybackInitialTimeForOoyalaAdsTests extends PlaybackWebTest {
 
 			result = result && event.validate("playing_2", 90000);
 
-			result = result && api.validateInitailTime();
+			result = result && api.validateInitialTime();
 			
 			result = result && seek.validate("seeked_1", 90000);
 			

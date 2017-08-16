@@ -10,10 +10,7 @@ import org.json.simple.parser.JSONParser;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import com.ooyala.playback.factory.PlayBackFactory;
 import java.util.*;
@@ -106,19 +103,24 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
     }
 
     public String getNewUrl(String parameter, String browser) {
-        clickOnIndependentElement("OPTIONAL");
-        waitOnElement("PLAYER_PARAMETER_INPUT", 20000);
+        try {
+            clickOnIndependentElement("OPTIONAL");
+            waitOnElement("PLAYER_PARAMETER_INPUT", 20000);
 
-        if (browser.equalsIgnoreCase("internet explorer")) {
-            WebElement playerParameter = getWebElement("PLAYER_PARAMETER_INPUT");
-            playerParameter.sendKeys(CONTROL + "a");
-            playerParameter.sendKeys(DELETE);
-        } else
-            clearTextFromElement("PLAYER_PARAMETER_INPUT");
+            if (browser.equalsIgnoreCase("internet explorer")) {
+                WebElement playerParameter = getWebElement("PLAYER_PARAMETER_INPUT");
+                playerParameter.sendKeys(CONTROL + "a");
+                playerParameter.sendKeys(DELETE);
+            } else
+                clearTextFromElement("PLAYER_PARAMETER_INPUT");
 
-        writeTextIntoTextBox("PLAYER_PARAMETER_INPUT", parameter);
-        clickOnIndependentElement("TEST_VIDEO");
-        waitForPage();
+            writeTextIntoTextBox("PLAYER_PARAMETER_INPUT", parameter);
+            clickOnIndependentElement("TEST_VIDEO");
+            waitForPage();
+        }catch(Exception ex){
+            logger.error(ex);
+            throw new WebDriverException();
+        }
 
         return driver.getCurrentUrl();
     }

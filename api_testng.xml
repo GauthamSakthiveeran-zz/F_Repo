@@ -1,0 +1,20 @@
+<suite name="Playback Web Regression Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    <test name="api" parallel="classes" thread-count="1">
+        <classes>
+            <parameter name="xmlFilePkg" value="api"/>
+            <parameter name="jsFile" value="common.js,amf/amf.js"/>
+            <class name ="com.ooyala.playback.api.ValidateAPITests"/>
+            <class name ="com.ooyala.playback.api.ValidateAPIForPrerollAdTests"/>
+            <class name ="com.ooyala.playback.api.ValidateAPIForMidrollAdTests"/>
+            <class name ="com.ooyala.playback.api.ValidateAPIForPostrollAdTests"/>
+            <class name ="com.ooyala.playback.api.ValidateAPIForPrerollPoddedAdTests"/>
+            <class name ="com.ooyala.playback.api.ValidateAPIForMidrollPoddedAdTests"/>
+            <class name ="com.ooyala.playback.api.ValidateAPIForPostrollPoddedAdTests"/>
+            <class name ="com.ooyala.playback.api.ValidateAPIForPreMidPostrollAdTests"/>
+        </classes>
+    </test>
+</suite>
+

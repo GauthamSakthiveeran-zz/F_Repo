@@ -3,6 +3,8 @@ package com.ooyala.playback.url;
 import java.net.URLEncoder;
 import java.util.Map;
 
+import com.ooyala.playback.enums.PlayerPropertyKey;
+import com.ooyala.playback.enums.PlayerPropertyValue;
 import com.ooyala.playback.utils.CommandLineParameters;
 
 /**

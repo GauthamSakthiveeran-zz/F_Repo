@@ -1,9 +1,9 @@
 package com.ooyala.playback.amf.preroll;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.AdClickThroughValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.PoddedAdValidator;
@@ -25,6 +25,7 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 	private SeekValidator seekValidator;
 	private PoddedAdValidator poddedAdValidator;
 	private SetEmbedCodeValidator setEmbedCodeValidator;
+	private AdClickThroughValidator clickthrough;
 
 	@Test(groups = {"amf","preroll","podded"}, dataProvider = "testUrls")
 	public void verifyPrerollPodded(String testName, UrlObject url) throws OoyalaException {
@@ -41,6 +42,9 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 			
 			result = result && event.validate("PreRoll_willPlayAds", 5000);
+			if (result) {
+                s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("preroll"),"Preroll Podded");
+            }
 			result = result && event.validate("adsPlayed_1", 180000);
 
 			result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 120000);
@@ -60,7 +64,8 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 			result = false;
 		}
 
-		Assert.assertTrue(result, "Test failed");
+		s_assert.assertTrue(result, "Test failed");
+		s_assert.assertAll();
 
 	}
 

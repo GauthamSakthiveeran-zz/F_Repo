@@ -26,6 +26,13 @@ function subscribeToEvents() {
 		var adPodStartedEventOrder = 1;
         var playNonlinearAdEventOrder = 1;
         var videoPausedEventOrder = 1;
+        var willPlayMidrollAdEvent = 1;
+        var willPlayPostrollAd = 1;
+        var skipMidrollAdEvent = 1;
+        var skipPostrollAdEvent = 1;
+        var prerollAdPlayed = 1;
+        var midrollAdPlayed = 1;
+        var postrollAdPlayed = 1;
         
         var logger = '';
 		
@@ -75,10 +82,6 @@ function subscribeToEvents() {
 			}
 				
 			if (event.match(/playing/)) {
-				if(playingEventOrder==1) {
-					var time = pp.getPlayheadTime();
-					OO.$('#ooplayer').append('<p id=playTime>'+time+'</p>');
-				}
 				
 				if(replayEventOrder == 2){
 					OO.$('#ooplayer').append('<p id=playing_'+playing[1]+'>playing '+playing[1]+'</p>');c
@@ -109,12 +112,50 @@ function subscribeToEvents() {
 				OO.$('#ooplayer').append('<p id=willPlayPrerollAd'+'>willPlayPrerollAd</p>');
 				OO.$('#ooplayer').append('<p id=adIsPlaying'+'>adIsPlaying</p>');
 			}
+
+
 			if (event.match(/singleAdPlayed/)) {
 				OO.$('#ooplayer').append('<p id=singleAdPlayed_'+singleadsPlayedEventOrder+'>singleAdPlayed '+singleadsPlayedEventOrder+'</p>'); 
 				OO.$('#ooplayer').append('<p id=admanager>'+arguments[1]+'</p>'); 
 				singleadsPlayedEventOrder++;
 				showAdSkipButtonEventOrder = 1;
+
+                if(videoPlayingEventOrder == 1){
+                    OO.$('#ooplayer').append('<p id=prerollAdPlayed_'+prerollAdPlayed+'>prerollAdPlayed '+prerollAdPlayed+'</p>');
+                    prerollAdPlayed++;
+                }
+                if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
+                    OO.$('#ooplayer').append('<p id=midrollAdPlayed_'+midrollAdPlayed+'>midrollAdPlayed '+midrollAdPlayed+'</p>');
+                    midrollAdPlayed++;
+                }
+                if(videoPlayedEventOrder == 2){
+                    OO.$('#ooplayer').append('<p id=postrollAdPlayed_'+postrollAdPlayed+'>postrollAdPlayed '+postrollAdPlayed+'</p>');
+                    postrollAdPlayed++
+                }
+
 			}
+
+			if(event.match(/willPlaySingleAd/)){
+			    if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
+            		OO.$('#ooplayer').append('<p id=willPlayMidrollAd_'+willPlayMidrollAdEvent+'>willPlayMidrollAd '+willPlayMidrollAdEvent+'</p>')
+            		willPlayMidrollAdEvent++;
+            	}
+            	if(videoPlayedEventOrder == 2){
+                		OO.$('#ooplayer').append('<p id=willPlayPostrollAd_'+willPlayPostrollAd+'>willPlayPostrollAd '+willPlayPostrollAd+'</p>');
+                		willPlayPostrollAd++;
+                }
+			}
+
+			if (event.match(/skipAd/)) {
+            	if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
+                       OO.$('#ooplayer').append('<p id=skipMidrollAd_'+skipMidrollAdEvent+'>skipMidrollAd_ '+skipMidrollAdEvent+'</p>')
+                       skipMidrollAdEvent++;
+                }
+                if(videoPlayedEventOrder == 2){
+                    OO.$('#ooplayer').append('<p id=skipPostrollAd_'+skipPostrollAdEvent+'>willPlayPostrollAd '+skipPostrollAdEvent+'</p>');
+                    skipPostrollAdEvent++;
+                }
+            }
 			
 			
 			if (event.match(/videoWillPlay/) && arguments[1] == 'ads') {
@@ -172,6 +213,20 @@ function subscribeToEvents() {
 			if (event.match(/destroy/)) {
 				OO.$('#ooplayer').append('<p id=destroy_'+destroyEventOrder+'>destroy '+destroyEventOrder+'</p>'); 
 				destroyEventOrder++;
+			}
+			
+			if (event.match(/setClosedCaptionsLanguage/)) {
+				OO.$('#ooplayer').append('<p id=cclanguage_'+ arguments[1]+'>cclanguage_'+ arguments[1]+'</p>');
+				OO.$('#ooplayer').append('<p id=ccmode_'+ arguments[2].mode+'>ccmode_'+ arguments[2].mode+'</p>');
+				if(playingEventOrder==2) {
+					var time = pp.getPlayheadTime();
+					OO.$('#ooplayer').append('<p id=playTime>'+time+'</p>');
+				}
+				
+				if(playingEventOrder==3) {
+					var time = pp.getPlayheadTime();
+					OO.$('#ooplayer').append('<p id=midroll_playTime>'+time+'</p>');
+				}
 			}
 			
 			
