@@ -13,7 +13,7 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger logger = Logger.getLogger(PauseValidator.class);
+	private static Logger logger = Logger.getLogger(PauseValidator.class);
 
 	public PauseValidator(WebDriver webDriver) {
 		super(webDriver);

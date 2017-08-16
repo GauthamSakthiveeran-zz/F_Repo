@@ -4,6 +4,7 @@
 
         <url>
             <description name="VPAID:Main Vast VPAID2.0 3 Midroll Podded at 10 or 20 second"/>
+            <priority name="P2"></priority>
             <embed_code name="t4cmxiMjE6jsw26kuwwYIPBPG15jy2hO"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -16,6 +17,7 @@
 
         <url>
             <description name="VPAID:AdobeTVSDK Vast VPAID2.0 3 Midroll Podded at 10 or 20 second"/>
+            <priority name="P2"></priority>
             <embed_code name="t4cmxiMjE6jsw26kuwwYIPBPG15jy2hO"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="ADOBETVSDK,MAIN"/>
@@ -28,6 +30,7 @@
 
         <url>
             <description name="IMA:Main 3 Midroll Podded at 10 or 20 second"/>
+            <priority name="P2"></priority>
             <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -38,7 +41,8 @@
         </url>
 
         <url>
-            <description name="IMA:AdobeTVSDK 3 Midroll Podded at 10 or 20 second"/>
+            <description name="IMA:AdobeTVSDK Midroll Podded"/>
+            <priority name="P2"></priority>
             <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="ADOBETVSDK,MAIN"/>
@@ -50,6 +54,7 @@
 
         <url>
             <description name="IMA:Bitmovin Midroll Podded"/>
+            <priority name="P2"></priority>
             <embed_code name="RkeDZ2YTE65XY_HGOiX_osV18kMKFq5w"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
@@ -62,6 +67,7 @@
 
         <url>
             <description name="IMA:OSMF Midroll Podded"/>
+            <priority name="P3"></priority>
             <embed_code name="xuNzlxYTE6IVSEnyBo3mtqvA1Xj_M32U"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -74,6 +80,7 @@
 
         <url>
             <description name="Freewheel:Main 3 Midroll Podded at 10 or 20 second"/>
+            <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -86,6 +93,7 @@
 
         <url>
             <description name="Freewheel:Bitmovin Midroll Podded"/>
+            <priority name="P2"></priority>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -98,6 +106,7 @@
 
         <url>
             <description name="Freewheel:AdobeTVSDK Midroll Podded"/>
+            <priority name="P2"></priority>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="ADOBETVSDK,MAIN"/>
@@ -110,6 +119,7 @@
 
         <url>
             <description name="Freewheel:OSMF Midroll Podded"/>
+            <priority name="P3"></priority>
             <embed_code name="lodWVmMDE6q3l8IaPQEUcE9gp7-ILLOi"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
@@ -123,6 +133,7 @@
 
         <url>
             <description name="VAST:Main Vast2.0 3 Midroll Podded at 10 or 20 second"/>
+            <priority name="P2"></priority>
             <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -134,6 +145,7 @@
 
         <url>
             <description name="VAST:AdobeTVSDK Vast2.0 3 Midroll Podded at 10 or 20 second"/>
+            <priority name="P2"></priority>
             <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="ADOBETVSDK,MAIN"/>
@@ -145,6 +157,7 @@
 
         <url>
             <description name="VAST:Bitmovin Vast3.0 Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN,MAIN"/>
@@ -157,6 +170,7 @@
 
         <url>
             <description name="VAST:AdobeTVSDK Vast3.0 Midroll"/>
+            <priority name="P2"></priority>
             <embed_code name="RwZzZnMTE69yk-6xG5y6KYq9-tpdhm82"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="ADOBETVSDK,MAIN"/>
@@ -202,6 +216,7 @@
 
         <url>
             <description name="VAST:Main Vast3.0 3 Midroll Podded at 10 or 20 second"/>
+            <priority name="P2"></priority>
             <embed_code name="1nNm4zMjE6jBMo9jhSYJOCMf9gPhON38"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>

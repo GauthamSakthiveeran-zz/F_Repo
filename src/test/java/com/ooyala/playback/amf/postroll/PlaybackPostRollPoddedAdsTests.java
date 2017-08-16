@@ -1,10 +1,15 @@
 package com.ooyala.playback.amf.postroll;
 
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.url.UrlObject;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.AdClickThroughValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.PoddedAdValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.SetEmbedCodeValidator;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -19,6 +24,7 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
     private SeekValidator seekValidator;
     private PoddedAdValidator poddedAdValidator;
     private SetEmbedCodeValidator setEmbedCodeValidator;
+    private AdClickThroughValidator clickthrough;
 
     @Test(groups = {"amf", "postroll", "podded"}, dataProvider = "testUrls")
     public void verifyPostrollPodded(String testName, UrlObject url) throws OoyalaException {
@@ -29,6 +35,10 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
             injectScript();
             result = result && playValidator.validate("playing_1", 60000);
             result = result && seekValidator.validate("seeked_1", 60000);
+            result = result && event.validate("willPlayPostrollAd_1",25000);
+            if (result){
+                s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("postroll"),"Postroll Podded");
+            }
             result = result && seekValidator.validate("videoPlayed_1", 60000);
             result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 120000);
             result = result && event.validate("played_1", 60000);
@@ -40,6 +50,7 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
             result = false;
             extentTest.log(LogStatus.FAIL, e);
         }
-        Assert.assertTrue(result, "Tests failed");
+        s_assert.assertTrue(result, "Tests failed");
+        s_assert.assertAll();
     }
 }

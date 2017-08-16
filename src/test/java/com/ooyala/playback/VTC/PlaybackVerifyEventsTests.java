@@ -41,7 +41,7 @@ public class PlaybackVerifyEventsTests extends PlaybackWebTest {
 
 			executeScript("pp.play();");
 
-			result = result && eventValidator.validate("playing_1",20000);
+			result = result && eventValidator.validate("playing_1",30000);
 
 			result = result
 					&& eventValidator.validate("videoSetInitialTime_1", 10000);

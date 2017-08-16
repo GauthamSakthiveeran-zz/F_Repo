@@ -54,7 +54,7 @@ public class PlayBackFactory {
 	private MultiplePlayerValidator multiplePlayerValidator;
 	private AdClickThroughValidator adClickThroughValidator;
 	private PoddedAdValidator poddedAdValidator;
-	private OoyalaAPIValidator ooyalaAPIValidator;
+	private PlayerAPIValidator playerAPIValidator;
 	private PlaylistValidator playlistValidator;
 	private AdFrequencyValidator adFrequencyValidator;
 	private ThumbnailCarouselValidator thumbnailCarouselValidator;
@@ -80,6 +80,9 @@ public class PlayBackFactory {
 	private PlayerSkinScrubberValidator skinScrubberValidator;
 	private PlayerSkinCaptionsValidator skinCaptionsValidator;
 	private PlayerSkinShareValidator skinShareValidator;
+	private DVRLiveValidator dvrLiveValidator;
+	private EmbedTabValidator embedTabValidator;
+	private StateScreenValidator stateScreenValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -88,6 +91,22 @@ public class PlayBackFactory {
 
 	public ExtentTest getExtentTest() {
 		return extentTest;
+	}
+	
+	public StateScreenValidator getStateScreenValidator() {
+		if(stateScreenValidator == null) {
+			stateScreenValidator = new StateScreenValidator(driver);
+			stateScreenValidator.setExtentTest(extentTest);
+		}
+		return stateScreenValidator;
+	}
+	
+	public EmbedTabValidator getEmbedTabValidator() {
+		if(embedTabValidator == null) {
+			embedTabValidator =  new EmbedTabValidator(driver);
+			embedTabValidator.setExtentTest(extentTest);
+		}
+		return embedTabValidator;
 	}
 
 	public ScrubberValidator getScrubberValidator() {
@@ -186,12 +205,12 @@ public class PlayBackFactory {
 		return adFrequencyValidator;
 	}
 
-	public OoyalaAPIValidator getOoyalaAPIValidator() {
-		if (ooyalaAPIValidator == null) {
-			ooyalaAPIValidator = new OoyalaAPIValidator(driver);
-			ooyalaAPIValidator.setExtentTest(extentTest);
+	public PlayerAPIValidator getPlayerAPIValidator() {
+		if (playerAPIValidator == null) {
+			playerAPIValidator = new PlayerAPIValidator(driver);
+			playerAPIValidator.setExtentTest(extentTest);
 		}
-		return ooyalaAPIValidator;
+		return playerAPIValidator;
 	}
 
 	public ThumbnailCarouselValidator getThumbnailCarouselValidator() {
@@ -589,6 +608,14 @@ public class PlayBackFactory {
 	
 	public void setAnalyticsValidator(AnalyticsValidator analyticsValidator) {
 		this.analyticsValidator = analyticsValidator;
+	}
+
+	public DVRLiveValidator getDvrLiveValidator() {
+        if (dvrLiveValidator == null){
+            dvrLiveValidator = new DVRLiveValidator(driver);
+            dvrLiveValidator.setExtentTest(extentTest);
+        }
+        return dvrLiveValidator;
 	}
 
 	public WebDriver getDriver() {

@@ -3,6 +3,7 @@
 	<test name="PlaybackOoyalaAdsTests">
 		<url>
 			<description name="Ooyala Ads:Main Without discovery and playlist" />
+			<priority name="P2"></priority>
 			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
@@ -14,6 +15,7 @@
 
 		<url>
 			<description name="Ooyala Ads:Bitmovin without discovery and playlist" />
+			<priority name="P2"></priority>
 			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="BITMOVIN" />
@@ -25,6 +27,7 @@
 
 		<url>
 			<description name="Ooyala Ads:AdobeTVSDK without discovery and playlist" />
+			<priority name="P2"></priority>
 			<embed_code name="RwYzdxODE6HknIdCZpPV5rSnugTlrfH8" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="ADOBETVSDK" />

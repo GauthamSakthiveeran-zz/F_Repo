@@ -3,8 +3,7 @@ function subscribeToCommonEvents() {
 		var playedEventOrder = 1;
 		var fullscreenChangedEventOrder = 1;
 		var seekingEventOrder = 1;
-        
-		var playbackReadyEventOrder = 1;
+        var playbackReadyEventOrder = 1;
 		var adsclickedEventOrder = 1;
 		var closedCaptionOrder = 1;
 		var closedCaptionLang = 1;
@@ -23,6 +22,9 @@ function subscribeToCommonEvents() {
         var savePlayerSettingsTrueEventCount = 1;
         var videoElementLostFocusEventOrder = 1;
         var ooyalaAdsEventOrder = 1;
+        var volumeChanged=1;
+        var changeVolume=1;
+        var videoSeekEventOrder = 1;
         
         var logger = '';
         
@@ -65,10 +67,6 @@ function subscribeToCommonEvents() {
 				closedCaptionOrder++;
 			}
 			
-			if (event.match(/setClosedCaptionsLanguage/)) {
-				OO.$('#ooplayer').append('<p id=cclanguage_'+ arguments[1]+'>cclanguage_'+ arguments[1]+'</p>');
-				OO.$('#ooplayer').append('<p id=ccmode_'+ arguments[2].mode+'>ccmode_'+ arguments[2].mode+'</p>');
-			}
 			if (event.match(/reportDiscoveryImpression/)) {
 				OO.$('#ooplayer').append('<p id=reportDiscoveryImpression_'+reportDiscoveryImpressionOrder+'>reportDiscoveryImpression '+reportDiscoveryImpressionOrder+'</p>'); 
 				reportDiscoveryImpressionOrder++;
@@ -107,6 +105,11 @@ function subscribeToCommonEvents() {
 			if (event.match(/skipAd/)) {
 				OO.$('#ooplayer').append('<p id=skipAd_'+skipAdEventOrder+'>skipAd '+skipAdEventOrder+'</p>'); 
 				skipAdEventOrder++;
+			}
+
+			if (event.match(/videoSeek/)){
+			    OO.$('#ooplayer').append('<p id=videoSeek_'+videoSeekEventOrder+'> videoSeek_'+videoSeekEventOrder+'</p>');
+			    videoSeekEventOrder++;
 			}
 			
 			
@@ -158,6 +161,16 @@ function subscribeToCommonEvents() {
             if (event.match(/savePlayerSettings/) && arguments[1].closedCaptionOptions.enabled == true && savePlayerSettingsTrueEventCount<2) {
                 OO.$("#ooplayer").append("<p id=savePlayerSettings_on_"+savePlayerSettingsTrueEventCount+">"+savePlayerSettingsTrueEventCount+"</p>");
                 savePlayerSettingsTrueEventCount++;
+            }
+
+            if (event.match(/volumeChanged/)) {
+                 OO.$('#ooplayer').append('<p id=volumeChanged_' + volumeChanged + '>volumeChanged_'+ volumeChanged + '</p>');
+                 volumeChanged++;
+            }
+
+            if (event.match(/changeVolume/)) {
+                  OO.$('#ooplayer').append('<p id=changeVolume_' + changeVolume + '>changeVolume_'+ changeVolume + '</p>');
+                  changeVolume++;
             }
             
             OO.log(logger);

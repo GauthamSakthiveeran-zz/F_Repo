@@ -3,6 +3,7 @@
 	<test name ="PlaybackMidrollOverlayUpNextTests" > 
     	<url>
 	    	<description name="VAST:Main Vast2.0 Midroll (10) and Overlay (15) with Discovery Up Next"/>
+	    	<priority name="P2"></priority>
 	        <embed_code name="hkOGt4dDr71-6f0_aceyHIlanbjgeSZc"/>
 	        <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 	        <plugins name="MAIN"/>
@@ -14,6 +15,7 @@
 
 		<url>
 			<description name="VAST:AdobeTVSDK Vast2.0 Midroll (10) and Overlay (15) with Discovery Up Next"/>
+			<priority name="P2"></priority>
 			<embed_code name="hkOGt4dDr71-6f0_aceyHIlanbjgeSZc"/>
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
 			<plugins name="ADOBETVSDK,MAIN"/>
