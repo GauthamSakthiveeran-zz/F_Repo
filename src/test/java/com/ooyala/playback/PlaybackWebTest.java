@@ -490,7 +490,7 @@ public abstract class PlaybackWebTest extends FacileTest {
            	   customizedjsonUrl = customizedjsonUrl + properties.getProperty("Localization_json");
         	   
            }
-           else if(testName.contains("Screen"))
+           else if(testName.contains("Screen") && !testName.contains("InlineParameters"))
            {
         	   customizedSkinUrl = customizedSkinUrl + properties.getProperty("Screen_js");
            	   customizedjsonUrl = customizedjsonUrl + properties.getProperty("Screen_json");
@@ -502,10 +502,16 @@ public abstract class PlaybackWebTest extends FacileTest {
            	   customizedjsonUrl = customizedjsonUrl + properties.getProperty("Share_json");
         	   
            }
-           else if(testName.contains("Ad"))
+           else if(testName.contains("Ad") && !testName.contains("InlineParameters"))
            {
         	   customizedSkinUrl = customizedSkinUrl + properties.getProperty("ad_js");
            	   customizedjsonUrl = customizedjsonUrl + properties.getProperty("ad_json");
+        	   
+           }
+           else if(testName.contains("Watermark") && !testName.contains("InlineParameters"))
+           {
+        	   customizedSkinUrl = customizedSkinUrl + properties.getProperty("watermark_js");
+           	   customizedjsonUrl = customizedjsonUrl + properties.getProperty("watermark_json");
         	   
            }
            else

@@ -2,8 +2,8 @@
 	<listeners>
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
-
-  
+ 
+    
 	<test name="PlaybackPlayerSkinScreen" parallel="classes"
 		thread-count="1">
 		<classes>
@@ -23,7 +23,7 @@
 			<class name="com.ooyala.playback.playerSkin.PlaybackPlayerSkinShare" />
 		</classes>
 	</test>
-	
+	  
 	<test name="PlaybackPlayerSkinClosedCaptions" parallel="classes"
 		thread-count="1">
 		<classes>
@@ -54,6 +54,35 @@
 		</classes>
 	</test>
 
+
+	<test name="PlaybackPlayerSkinInlineParametersTest" parallel="classes"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="playerskin/Skin.xml" />
+			<parameter name="jsFile" value="alice/alice.js,amf/amf.js"/>
+			<class name="com.ooyala.playback.playerSkin.PlaybackPlayerSkinInlineParametersTest" />
+		</classes>
+	</test>
+	
+		<test name="PlaybackPlayerSkinInlineParametersAdScreenTest" parallel="classes"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="playerskin/Skin.xml" />
+			<parameter name="jsFile" value="alice/alice.js,amf/amf.js"/>
+			<class name="com.ooyala.playback.playerSkin.PlaybackPlayerSkinInlineParametersAdScreenTest" />
+		</classes>
+	</test>
+	
+
+	<test name="PlaybackPlayerSkinWatermark" parallel="classes"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="playerskin/Skin.xml" />
+			<parameter name="jsFile" value="alice/alice.js,amf/amf.js"/>
+			<class name="com.ooyala.playback.playerSkin.PlaybackPlayerSkinWatermark" />
+		</classes>
+	</test>
+	-->
 
 </suite>
 

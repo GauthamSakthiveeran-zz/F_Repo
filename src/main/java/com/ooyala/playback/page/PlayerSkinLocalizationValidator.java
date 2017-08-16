@@ -33,6 +33,8 @@ public class PlayerSkinLocalizationValidator extends PlayBackPage{
 
 		addElementToPageElements("sharetab");
 		addElementToPageElements("controlbar");
+		addElementToPageElements("scrubber");
+		
 
 	}
 
@@ -81,6 +83,30 @@ public class PlayerSkinLocalizationValidator extends PlayBackPage{
 	
 	}
 	
+	//Function to Check the Ad Screen Localization 
+	public boolean 	skinAdScreenLocalizationValidate()
 	
+	{
+		try {
+				if(getWebElement("AD_COUNTDOWN").getText().contains("広告"))
+				{
+				logger.info("AdScreen is Localized ");
+				return true;
+				}
+				else
+				{
+				logger.info("AdScreen is not Localized ");
+				return false;
+				}
+			
+			
+			}
+			catch(Exception e)
+			{
+				return false;
+				
+			}
+
+	}
 	
 }

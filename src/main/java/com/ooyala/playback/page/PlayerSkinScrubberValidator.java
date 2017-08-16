@@ -106,16 +106,38 @@ public class PlayerSkinScrubberValidator extends PlayBackPage{
 	}
 
 
-	public boolean verifyCountdownPresent() {
+	public boolean isCountdownPresent() {
 		if(waitOnElement("AD_COUNTDOWN", 10000) ) {
+			if(getWebElement("AD_COUNTDOWN").getText().contains("00:"))
+			{
 			logger.info("AdCountDown is found ");
 			extentTest.log(LogStatus.FAIL, "AdCountDown is found ");
 			return false;
+			}
+			else
+			{	
+				logger.info("AdCountDown not  found ");
+				return true;
+			}
 		}
 		else
-		return true;
+			return true;
 	}
+	
+	public boolean isElementPresentinAdScreen() {
+		if(waitOnElement("AD_MARQUEE", 3000) ) {
 
+			logger.info("AdMarque found ");
+			extentTest.log(LogStatus.FAIL, "AdMArque found ");
+			return false;
+			}
+			else
+			{	
+				logger.info("AdMarque not  found ");
+				return true;
+			}
+
+		}
 	
 	
 	

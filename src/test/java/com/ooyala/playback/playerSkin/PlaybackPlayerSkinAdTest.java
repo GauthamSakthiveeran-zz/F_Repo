@@ -62,7 +62,7 @@ public class PlaybackPlayerSkinAdTest extends PlaybackWebTest {
             
             s_assert.assertTrue(adScrubberValidator.verifyWebElementCSSColor("BUFFERED","background-color","green"), "cssProperty Check Failed For Buffered SCRUBBER_BAR background color ");
             
-            s_assert.assertTrue(adScrubberValidator.verifyCountdownPresent(),"Count Down is Present");
+            s_assert.assertTrue(adScrubberValidator.isCountdownPresent(),"Count Down is Present");
             
             s_assert.assertAll();
 

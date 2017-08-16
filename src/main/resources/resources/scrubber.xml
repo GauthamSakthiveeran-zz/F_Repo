@@ -3,5 +3,6 @@
 	<element key="POINTER" findBy="class" class="oo-playhead-padding" />
 	<element key="BUFFERED" findBy="class" class="oo-buffered-indicator" />
 	<element key="AD_COUNTDOWN" findBy="class" class="oo-ad-playback-info" />
+	<element key="AD_MARQUEE" findBy="class" class="oo-ad-top-bar" />
 	<element key="SCRUBBER_BAR" findBy="class" class="oo-scrubber-bar"></element>
 </elements>

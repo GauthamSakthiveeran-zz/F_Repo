@@ -66,7 +66,6 @@ public class JSScriptInjection {
         }
         else
         {
-            
            scriptToInjectJS(scriptURL);
         }
         Thread.sleep(1000); // to avoid js failures
