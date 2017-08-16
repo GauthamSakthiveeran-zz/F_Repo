@@ -1,13 +1,12 @@
 package com.ooyala.playback.url;
 
-import com.ooyala.playback.enums.PlayerPropertyValue;
-import com.ooyala.playback.httpserver.SimpleHttpServer;
+import java.net.InetAddress;
+
 import org.apache.log4j.Logger;
 
-import com.ooyala.playback.utils.CommandLineParameters;
+import com.ooyala.playback.enums.PlayerPropertyValue;
+import com.ooyala.playback.httpserver.SimpleHttpServer;
 import com.ooyala.qe.common.util.PropertyReader;
-
-import java.net.InetAddress;
 
 /**
  * Created by jitendra
@@ -46,7 +45,6 @@ public class TestPageData {
     private String valhalla_build;
     private String valhalla_build_id;
     private String adobeTVSDK;
-    private String adobePluginURL;
     private PropertyReader properties;
     private InetAddress inetAddress;
 
@@ -334,49 +332,28 @@ public class TestPageData {
 
             case STAGING:
                 envURL = sslEnabled + properties.getProperty("staging_env_url") + v4Version;
-                String specificBranch = System.getProperty(CommandLineParameters.sandboxBranch);
-                if (!(specificBranch == null || specificBranch == "")) {
-                    envURL = envURL.replace("candidate/latest", specificBranch);
-                }
-                pluginURL = envURL + "/video-plugin/";
-                corePlayer = envURL + corePlayer;
-                html5Skin = envURL + html5Skin;
-                skinAsset = envURL + skinAsset;
-                skinConf = "" + skinConf;
-                skinDiscovery = envURL + otherPlugin + discoveryApiPlugin;
                 break;
             case PRODUCTION:
                 envURL = sslEnabled + properties.getProperty("production_env_url") + v4Version;
-                pluginURL = envURL + "/video-plugin/";
-                corePlayer = envURL + corePlayer;
-                html5Skin = envURL + html5Skin;
-                skinAsset = envURL + skinAsset;
-                skinConf = "" + skinConf;
-                skinDiscovery = "" + envURL + otherPlugin + discoveryApiPlugin;
                 break;
             case STABLE:
             	envURL = sslEnabled + properties.getProperty("stable_env_url") + v4Version;
-                pluginURL = envURL + "/video-plugin/";
-                corePlayer = envURL + corePlayer;
-                html5Skin = envURL + html5Skin;
-                skinAsset = envURL + skinAsset;
-                skinConf = "" + skinConf;
-                skinDiscovery = "" + envURL + otherPlugin + discoveryApiPlugin;
                 break;
                 
             case SANDBOX:
             	envURL = sslEnabled + properties.getProperty("sandbox_env_url") + v4Version;
-                pluginURL = envURL + "/video-plugin/";
-                corePlayer = envURL + corePlayer;
-                html5Skin = envURL + html5Skin;
-                skinAsset = envURL + skinAsset;
-                skinConf = "" + skinConf;
-                skinDiscovery = "" + envURL + otherPlugin + discoveryApiPlugin;
                 break;    
                 
             default:
                 break;
         }
+        
+        pluginURL = envURL + "/video-plugin/";
+        corePlayer = envURL + corePlayer;
+        html5Skin = envURL + html5Skin;
+        skinAsset = envURL + skinAsset;
+        skinConf = "" + skinConf;
+        skinDiscovery = "" + envURL + otherPlugin + discoveryApiPlugin;
     }
 
     /**
