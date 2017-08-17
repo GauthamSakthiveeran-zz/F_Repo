@@ -35,7 +35,7 @@ public class UrlGenerator {
      * @return returns dynamically created link from above parameters
      */
     public String getURL(String sslEnabled, String embedcode, String pcode, String pbid, String videoPlugin,
-                         String adPlugin, String additionalPlugin, String playerConfigParameter) {
+                         String adPlugin, String additionalPlugin, String playerConfigParameter,String skinJson) {
 
         String environment = System.getProperty(CommandLineParameters.environment);
         String v4Version = "latest";
@@ -58,7 +58,7 @@ public class UrlGenerator {
 
         test = new TestPage(playerProperties);
         url = test.getURL(sslEnabled, embedcode, pcode, pbid, videoPlugin, adPlugin, additionalPlugin,
-                playerConfigParameter, v4Version);
+                playerConfigParameter, v4Version,skinJson);
         logger.info(url);
         return url;
     }
@@ -176,6 +176,7 @@ public class UrlGenerator {
                         String additionalPlugin = url.getAdditionalPlugins().getName();
                         String playerParameter = new String(url.getPlayerParameter().getBytes());
                         String pbid = url.getPbid().getName();
+                        String skinJson = url.getSkinJson().getName();
 
                         try {
                             sslEnabled = url.getSslEnabled().getName();
@@ -205,7 +206,7 @@ public class UrlGenerator {
                         }
 
                         String urlGenerated = getURL(sslEnabled, embedCode, pCode, pbid, videoPlugin, adPlugin,
-                                additionalPlugin, playerParameter);
+                                additionalPlugin, playerParameter,skinJson);
 
                         UrlObject urlObject = new UrlObject();
                         urlObject.setUrl(urlGenerated);

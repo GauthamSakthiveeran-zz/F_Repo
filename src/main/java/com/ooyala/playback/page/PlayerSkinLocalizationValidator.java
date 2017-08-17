@@ -39,7 +39,7 @@ public class PlayerSkinLocalizationValidator extends PlayBackPage{
 	}
 
 	//Function to Check the Localization 
-	public boolean 	skinLocalizationValidate()
+	public boolean 	validateSkinLocalization()
 	
 	{
 		
@@ -75,8 +75,8 @@ public class PlayerSkinLocalizationValidator extends PlayBackPage{
 		}
 	else
 		{
-		extentTest.log(LogStatus.PASS, "Localization Test Passed");
-		logger.info("Localization Test Passed");
+		extentTest.log(LogStatus.FAIL, "Localization Test Failed");
+		logger.info("Localization Test Failed");
 		return false;
 		}
 
@@ -84,17 +84,19 @@ public class PlayerSkinLocalizationValidator extends PlayBackPage{
 	}
 	
 	//Function to Check the Ad Screen Localization 
-	public boolean 	skinAdScreenLocalizationValidate()
+	public boolean 	validateSkinAdScreenLocalization()
 	
 	{
 		try {
 				if(getWebElement("AD_COUNTDOWN").getText().contains("広告"))
 				{
+				extentTest.log(LogStatus.PASS, "Localization Test Passed");
 				logger.info("AdScreen is Localized ");
 				return true;
 				}
 				else
 				{
+				extentTest.log(LogStatus.FAIL, "Localization Test Failed");	
 				logger.info("AdScreen is not Localized ");
 				return false;
 				}
@@ -103,6 +105,7 @@ public class PlayerSkinLocalizationValidator extends PlayBackPage{
 			}
 			catch(Exception e)
 			{
+				extentTest.log(LogStatus.FAIL, "Ad-Countdown text verification failed");
 				return false;
 				
 			}

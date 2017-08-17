@@ -28,7 +28,7 @@ public class PlayerSkinShareValidator extends PlayBackPage{
 	}
 
 	//Function to verify if the  Social Media Buttons mentioned in the Json file are properly reflected.
-	public boolean shareScreenValidate()
+	public boolean validateShareScreen()
 	{
 		Boolean flag = true;
 	

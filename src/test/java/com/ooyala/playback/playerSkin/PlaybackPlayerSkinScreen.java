@@ -36,8 +36,6 @@ public class PlaybackPlayerSkinScreen extends PlaybackWebTest {
         try {
         	
         	String urlLink = url.getUrl();
-        	
-        	urlLink = replaceSkin(urlLink);
 
             driver.get(urlLink);
             

@@ -69,44 +69,20 @@ public class PlayerSkinScrubberValidator extends PlayBackPage{
 	//Function to Mouseover and verify the CSS Properties
 	public boolean moveToWebElementCSSColor(String element, String cssStyleProperty , String color)
 	{
-		PropertyReader properties = null;
+	
+		Boolean result = false;
 		
 		moveElement(getWebElement(element));
 		
+		result = verifyWebElementCSSColor( element,  cssStyleProperty ,  color);
 		
-		
-		try
-		{
-			Thread.sleep(5000);
-			System.out.println("====>" + (getWebElement(element).getCssValue(cssStyleProperty)));
-			properties = PropertyReader.getInstance("cssProperty.properties");
-			if((getWebElement(element).getCssValue(cssStyleProperty)).equalsIgnoreCase(properties.getProperty(color)))
-				{
-				logger.info("css Property Check Passed");
-				extentTest.log(LogStatus.INFO, "Color of Element matched." + element + "-" + color);
-				return true;
-				}
-			else
-			{
-				logger.info("css Property Check Failed");
-				extentTest.log(LogStatus.INFO, "Color of Element not matched." + element + "-" + color);
-				return false;
-				
-			}
-				
-			
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			return false;
-		}
+		return result;
 		
 
 	}
 
 
-	public boolean isCountdownPresent() {
+	public boolean isCountdownNotPresent() {
 		if(waitOnElement("AD_COUNTDOWN", 10000) ) {
 			if(getWebElement("AD_COUNTDOWN").getText().contains("00:"))
 			{
@@ -117,6 +93,7 @@ public class PlayerSkinScrubberValidator extends PlayBackPage{
 			else
 			{	
 				logger.info("AdCountDown not  found ");
+				extentTest.log(LogStatus.PASS, "AdCountDown is found ");
 				return true;
 			}
 		}
@@ -124,7 +101,7 @@ public class PlayerSkinScrubberValidator extends PlayBackPage{
 			return true;
 	}
 	
-	public boolean isElementPresentinAdScreen() {
+	public boolean isElementNotPresentinAdScreen() {
 		if(waitOnElement("AD_MARQUEE", 3000) ) {
 
 			logger.info("AdMarque found ");
@@ -134,6 +111,7 @@ public class PlayerSkinScrubberValidator extends PlayBackPage{
 			else
 			{	
 				logger.info("AdMarque not  found ");
+				extentTest.log(LogStatus.PASS, "AdMArque found ");
 				return true;
 			}
 

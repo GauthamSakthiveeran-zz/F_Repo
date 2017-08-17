@@ -20,7 +20,6 @@ import org.testng.annotations.Test;
  */
 public class PlaybackPlayerSkinWatermark extends PlaybackWebTest {
 	private PlayValidator play;
-	private PlayerSkinLocalizationValidator skinLocalizationValidator;
 	private WaterMarkValidator watermarkValidator;
 
     private static Logger logger = Logger
@@ -40,14 +39,11 @@ public class PlaybackPlayerSkinWatermark extends PlaybackWebTest {
         	
         	String urlLink = url.getUrl();
         	
-        	urlLink = replaceSkin(urlLink);
-
-            driver.get(urlLink);    
+        	driver.get(urlLink);    
             
             result = result && play.waitForPage();
             
             injectScript();
-            
     
             result = result && play.validate("playing_1", 60000);
             

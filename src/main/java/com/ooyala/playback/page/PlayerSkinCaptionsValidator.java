@@ -49,13 +49,13 @@ public class PlayerSkinCaptionsValidator extends PlayBackPage{
 			if((getWebElement(element).getCssValue(cssStyleProperty)).equalsIgnoreCase(properties.getProperty(value)))
 				{
 				logger.info("css Property Check Passed");
-				extentTest.log(LogStatus.INFO, "Color of Element matched." + element + "-" + value);
+				extentTest.log(LogStatus.PASS, "Color of Element matched." + element + "-" + value);
 				return true;
 				}
 			else
 			{
 				logger.info("css Property Check Failed");
-				extentTest.log(LogStatus.INFO, "Color of Element not matched." + element + "-" + value);
+				extentTest.log(LogStatus.FAIL, "Color of Element not matched." + element + "-" + value);
 				return false;
 				
 			}

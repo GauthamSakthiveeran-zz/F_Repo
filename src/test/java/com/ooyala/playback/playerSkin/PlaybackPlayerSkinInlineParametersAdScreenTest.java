@@ -43,8 +43,6 @@ public class PlaybackPlayerSkinInlineParametersAdScreenTest extends PlaybackWebT
         try {
         	
         	String urlLink = url.getUrl();
-        	
-        	urlLink = replaceSkin(urlLink);
 
             driver.get(urlLink);    
             
@@ -57,7 +55,7 @@ public class PlaybackPlayerSkinInlineParametersAdScreenTest extends PlaybackWebT
 			
 			Thread.sleep(4000);
 			
-			result = result && adScrubberValidator.isElementPresentinAdScreen();
+			result = result && adScrubberValidator.isElementNotPresentinAdScreen();
 
 			result = result && event.validate("singleAdPlayed_1", 60000);
 

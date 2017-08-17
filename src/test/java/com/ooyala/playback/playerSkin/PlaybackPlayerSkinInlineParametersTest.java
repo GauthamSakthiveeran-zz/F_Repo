@@ -43,23 +43,20 @@ public class PlaybackPlayerSkinInlineParametersTest extends PlaybackWebTest {
         try {
         	
         	String urlLink = url.getUrl();
-        	
-        	urlLink = replaceSkin(urlLink);
 
             driver.get(urlLink);    
             
             injectScript();
             
             result = result && play.waitForPage();
-            
 
 			result = result && playAction.startAction();
 			
 			Thread.sleep(4000);
 			
-			result = result && adScrubberValidator.isCountdownPresent();
+			result = result && adScrubberValidator.isCountdownNotPresent();
 			
-			result = result && skinLocalizationValidator.skinAdScreenLocalizationValidate();
+			result = result && skinLocalizationValidator.validateSkinAdScreenLocalization();
 
 			result = result && event.validate("singleAdPlayed_1", 60000);
 
@@ -69,7 +66,7 @@ public class PlaybackPlayerSkinInlineParametersTest extends PlaybackWebTest {
     
 			result = result && event.validate("playing_1", 60000);
 
-            result = result && skinLocalizationValidator.skinLocalizationValidate();
+            result = result && skinLocalizationValidator.validateSkinLocalization();
             
             
             

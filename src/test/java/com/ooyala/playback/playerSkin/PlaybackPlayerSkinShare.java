@@ -39,8 +39,6 @@ public class PlaybackPlayerSkinShare extends PlaybackWebTest {
         try {
         	
         	String urlLink = url.getUrl();
-        	
-        	urlLink = replaceSkin(urlLink);
 
             driver.get(urlLink);   
             
@@ -50,7 +48,7 @@ public class PlaybackPlayerSkinShare extends PlaybackWebTest {
 
             result = result && play.validate("playing_1", 60000);
             
-            result = result && skinShareValidator.shareScreenValidate();
+            result = result && skinShareValidator.validateShareScreen();
             
 
         } catch (Exception e) {

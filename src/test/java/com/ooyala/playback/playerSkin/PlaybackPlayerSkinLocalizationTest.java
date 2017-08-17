@@ -32,14 +32,12 @@ public class PlaybackPlayerSkinLocalizationTest extends PlaybackWebTest {
 
  
     @Test(groups = "PlayerSkin", dataProvider = "testUrls")
-    public void testFCCClosedcaption(String testName, UrlObject url) throws OoyalaException {
+    public void testLocalization(String testName, UrlObject url) throws OoyalaException {
 
         boolean result = true;
         try {
         	
         	String urlLink = url.getUrl();
-        	
-        	urlLink = replaceSkin(urlLink);
 
             driver.get(urlLink);    
             
@@ -50,7 +48,7 @@ public class PlaybackPlayerSkinLocalizationTest extends PlaybackWebTest {
     
             result = result && play.validate("playing_1", 60000);
             
-            result = result && skinLocalizationValidator.skinLocalizationValidate();
+            result = result && skinLocalizationValidator.validateSkinLocalization();
             
 
         } catch (Exception e) {
