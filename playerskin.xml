@@ -4,13 +4,28 @@
     </listeners>
     <test name="Player skin tests for controlbar buttons" parallel="classes" thread-count="1">
         <classes>
-            <parameter name="testData" value="playerskin/skin.xml" />
-            <parameter name="jsFile" value="alice/alice.js,playerskin/html5_buttonsDisabled.js,playerskin/skin_buttonsDisabled.json,playerskin/html5_buttonsDisabled.css"/>
+            <parameter name="testData" value="playerskin/Skin.xml" />
+            <parameter name="jsFile" value="alice/alice.js"/>
             <class name="com.ooyala.playback.playerskin.PlayerSkinControlbar" />
-        </classes>
+        </classes> 
     </test> 
     
-     <!--   <test name="PlayerSkinLiveTest" parallel="classes" thread-count="1">
+    <test name="Player skin tests for buttons in more options" parallel="classes" thread-count="1">
+        <classes>
+            <parameter name="testData" value="playerskin/Skin.xml" />
+            <parameter name="jsFile" value="alice/alice.js"/>
+            <class name="com.ooyala.playback.playerskin.PlayerSkinMoreOptions" />
+        </classes>
+    </test>   
+    
+     <test name="Player skin tests for discovery button" parallel="classes" thread-count="1">
+        <classes>
+            <parameter name="testData" value="playerskin/Skin.xml" />
+            <parameter name="jsFile" value="alice/alice.js"/>
+            <class name="com.ooyala.playback.playerskin.PlayerSkinDiscoveryTest" />
+        </classes>
+    </test>  
+  <!--   <test name="PlayerSkinLiveTest" parallel="classes" thread-count="1">
         <groups>
             <define name="live">
                 <include name="streams" />
@@ -20,11 +35,12 @@
             </run>
         </groups>
         <classes>
-            <parameter name="testData" value="playerskin/skin.xml" />
-            <parameter name="jsFile" value="alice/alice.js,playerskin/html5_buttonsDisabled.js,playerskin/skin_buttonsDisabled.json,playerskin/html5_buttonsDisabled.css" />
-            <class name="com.ooyala.playback.playerSkin.PlayerSkinLiveTest" />
+            <parameter name="testData" value="playerskin/Skin.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.playerskin.PlayerSkinLiveTest" />
         </classes>
-    </test> -->
+    </test> --> 
+    
     
   
 

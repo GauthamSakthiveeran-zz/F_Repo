@@ -20,7 +20,7 @@ import com.ooyala.qe.common.util.PropertyReader;
 import com.relevantcodes.extentreports.LogStatus;
 
 
-public class PlayerSkinControlbar extends PlaybackWebTest {
+public class PlayerSkinDiscoveryTest extends PlaybackWebTest {
 
     private static Logger logger = Logger.getLogger(PlayerSkinControlbar.class);
     private EventValidator eventValidator;
@@ -31,7 +31,7 @@ public class PlayerSkinControlbar extends PlaybackWebTest {
     private SeekAction seekAction;
     private PlayerSkinButtonsValidator skinValidator;
 
-    public PlayerSkinControlbar() throws OoyalaException {
+    public PlayerSkinDiscoveryTest() throws OoyalaException {
         super();
     }
 
@@ -41,27 +41,26 @@ public class PlayerSkinControlbar extends PlaybackWebTest {
         boolean result = true;
 
         try {
-        	
+
             driver.get(url.getUrl());
             
            	injectScript();
-            s_assert.assertFalse(skinValidator.playButtonVisibleOnStartScreen(), "Play button is visible on start screen");
-    
-            result = result && play.clickOnHiddenElement("PLAY_BUTTON");
-            s_assert.assertTrue(skinValidator.validateControlbarButtonsNotPresent(), "controlbar buttons present");
-            s_assert.assertFalse(skinValidator.pauseButtonVisibleOnPauseScreen(), "Pause button is visible on screen");         
-            result = result && eventValidator.validate("played_1", 120000);
-            s_assert.assertFalse(skinValidator.replayButtonVisibleOnEndScreen(), "Replay button is visible on End screen");
-        
+           	result = result && play.waitForPage();
+           	result = result && play.clickOnHiddenElement("PLAY_BUTTON");
+           	
+           	s_assert.assertTrue(skinValidator.clickButtonInMoreOptions("DISCOVERY_BTN"),"Discovery button"
+           			+ " is not visible in more options screen");
+           	
+           //call function to verify the color of discovery button
             s_assert.assertAll();
             
             
 
         } catch (Exception e) {
-            logger.error("Exception while checking buttons visibility in control bar " + e.getMessage());
+            logger.error("Exception while checking for discovery button" + e.getMessage());
             extentTest.log(LogStatus.FAIL, e);
             result = false;
         }
-        Assert.assertTrue(result, "skin button visibility tests failed" + testName);
+        Assert.assertTrue(result, "discovery button tests failed" + testName);
     }
 }

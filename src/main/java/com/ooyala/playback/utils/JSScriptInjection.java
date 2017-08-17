@@ -60,26 +60,12 @@ public class JSScriptInjection {
 
     private void injectScript(String scriptURL) throws Exception {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-       	if(scriptURL.endsWith(".css")) {
-       		scriptToInjectCSS(scriptURL);
-       	}
-       	else {
-        scriptToInjectJS(scriptURL);
-       	}
-    
+        scriptToInjectJS(scriptURL);    	
         Thread.sleep(1000); // to avoid js failures
         if (scriptURL.contains("common"))
             js.executeScript("subscribeToCommonEvents();");
         else
             js.executeScript("subscribeToEvents();");
-    }
-
-    private void scriptToInjectCSS(String scriptURL) throws Exception {
-  	  JavascriptExecutor js = (JavascriptExecutor) driver;
-  	  js.executeScript("function injectScript(url) {\n"
-                + "   var fileref = document.createElement(\"link\");\n" + "   fileref.setAttribute(\"rel\", \"stylesheet\");\n" 
-                +"   fileref.setAttribute(\"type\", \"text/css\");\n" + " fileref.setAttribute(\"id\",\"asset_css\");\n"+   "fileref.setAttribute(\"href\", url);\n" +"var head = document.getElementsByTagName( 'head')[0];\n"+
-                 "head.appendChild(fileref);\n"+"}\n" + "\n" + "var scriptURL = arguments[0];\n" + "injectScript(scriptURL);", scriptURL);
     }
     
     public void scriptToInjectJS(String scriptURL){

@@ -20,7 +20,7 @@ import com.ooyala.qe.common.util.PropertyReader;
 import com.relevantcodes.extentreports.LogStatus;
 
 
-public class PlayerSkinControlbar extends PlaybackWebTest {
+public class PlayerSkinMoreOptions extends PlaybackWebTest {
 
     private static Logger logger = Logger.getLogger(PlayerSkinControlbar.class);
     private EventValidator eventValidator;
@@ -31,37 +31,39 @@ public class PlayerSkinControlbar extends PlaybackWebTest {
     private SeekAction seekAction;
     private PlayerSkinButtonsValidator skinValidator;
 
-    public PlayerSkinControlbar() throws OoyalaException {
+    public PlayerSkinMoreOptions() throws OoyalaException {
         super();
     }
 
     @Test(groups = "playerskin", dataProvider = "testUrls")
     public void testBasicPlaybackStreams(String testName, UrlObject url) throws OoyalaException {
 
-        boolean result = true;
+        //boolean result = true;
 
         try {
         	
             driver.get(url.getUrl());
             
            	injectScript();
-            s_assert.assertFalse(skinValidator.playButtonVisibleOnStartScreen(), "Play button is visible on start screen");
-    
-            result = result && play.clickOnHiddenElement("PLAY_BUTTON");
-            s_assert.assertTrue(skinValidator.validateControlbarButtonsNotPresent(), "controlbar buttons present");
-            s_assert.assertFalse(skinValidator.pauseButtonVisibleOnPauseScreen(), "Pause button is visible on screen");         
-            result = result && eventValidator.validate("played_1", 120000);
-            s_assert.assertFalse(skinValidator.replayButtonVisibleOnEndScreen(), "Replay button is visible on End screen");
-        
+           	
+           	play.waitForPage();
+           	play.clickOnHiddenElement("PLAY_BUTTON");
+           	
+           	s_assert.assertTrue(skinValidator.verifyButtonVisibleInMoreOptions("SHARE_BTN"),"Share button"
+           			+ " is not visible in more options screen");
+           	s_assert.assertTrue(skinValidator.verifyButtonVisibleInMoreOptions("CC_BTN"), "CC button is "
+           			+ "not visible in more options screen");
+           	s_assert.assertTrue(skinValidator.verifyButtonVisibleInMoreOptions("QUALITY_BTN_MOREOPTIONS"), 
+           			"Quality button is not visible in more options screen");
+            
             s_assert.assertAll();
-            
-            
-
+           	
         } catch (Exception e) {
-            logger.error("Exception while checking buttons visibility in control bar " + e.getMessage());
+            logger.error("Exception while checking button visibility in more options" + e.getMessage());
             extentTest.log(LogStatus.FAIL, e);
-            result = false;
+            //result = false;
         }
-        Assert.assertTrue(result, "skin button visibility tests failed" + testName);
+        //s_assert.assertAll();
+        //Assert.assertTrue(result, "Basic playback tests failed" + testName);
     }
 }
