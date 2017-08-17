@@ -79,6 +79,7 @@ public class PlayBackFactory {
 	private DVRLiveValidator dvrLiveValidator;
 	private EmbedTabValidator embedTabValidator;
 	private StateScreenValidator stateScreenValidator;
+	private PlayerSkinButtonsValidator skinValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -119,6 +120,14 @@ public class PlayBackFactory {
 			videoValidator.setExtentTest(extentTest);
 		}
 		return videoValidator;
+	}
+	
+	public PlayerSkinButtonsValidator getPlayerSkinValidator() {
+		if (skinValidator == null) {
+			skinValidator = new PlayerSkinButtonsValidator(driver);
+			skinValidator.setExtentTest(extentTest);
+		}
+		return skinValidator;
 	}
 
 	public AdPluginValidator getAdPluginValidator() {

@@ -1,0 +1,31 @@
+<suite name="Player skin tests" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    <test name="Player skin tests for controlbar buttons" parallel="classes" thread-count="1">
+        <classes>
+            <parameter name="testData" value="playerskin/skin.xml" />
+            <parameter name="jsFile" value="alice/alice.js,playerskin/html5_buttonsDisabled.js,playerskin/skin_buttonsDisabled.json,playerskin/html5_buttonsDisabled.css"/>
+            <class name="com.ooyala.playback.playerskin.PlayerSkinControlbar" />
+        </classes>
+    </test> 
+    
+     <!--   <test name="PlayerSkinLiveTest" parallel="classes" thread-count="1">
+        <groups>
+            <define name="live">
+                <include name="streams" />
+            </define>
+            <run>
+                <include name="live" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="playerskin/skin.xml" />
+            <parameter name="jsFile" value="alice/alice.js,playerskin/html5_buttonsDisabled.js,playerskin/skin_buttonsDisabled.json,playerskin/html5_buttonsDisabled.css" />
+            <class name="com.ooyala.playback.playerSkin.PlayerSkinLiveTest" />
+        </classes>
+    </test> -->
+    
+  
+
+</suite>

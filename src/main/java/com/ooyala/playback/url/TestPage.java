@@ -2,7 +2,9 @@ package com.ooyala.playback.url;
 
 import java.net.URLEncoder;
 import java.util.Map;
-
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.httpserver.SimpleHttpServer;
+import java.net.InetAddress;
 import com.ooyala.playback.enums.PlayerPropertyKey;
 import com.ooyala.playback.enums.PlayerPropertyValue;
 import com.ooyala.playback.utils.CommandLineParameters;
@@ -68,9 +70,27 @@ public class TestPage {
 					additionalPlugins = testpagedata.getPluginForAd(additionalPlugin);
 			}
 
+			
 			String corePlayer = testpagedata.getCorePlayer();
+			InetAddress inetAddress = null;
+			inetAddress = InetAddress.getLocalHost();
+			
 			String html5Skin = testpagedata.getHtml5Skin();
 			String skinAsset = testpagedata.getSkinAsset();
+			String skinConfig = testpagedata.getSkinConfigPlugin(plugins, adPlugin, additionalPlugin);
+			String testName = PlaybackWebTest.tName;
+			
+			if(testName.contains("PlayerSkinControlbar") || testName.contains("LiveTest")) {
+				skinConfig = "http://" + inetAddress.getHostAddress() + ":" + SimpleHttpServer.portNumber + "/js?fileName=playerskin/skin_buttonsDisabled.json";
+				html5Skin = "http://" + inetAddress.getHostAddress() + ":" + SimpleHttpServer.portNumber + "/js?fileName=playerskin/html5_buttonsDisabled.js";
+			}
+			else if(testName.contains("Screens")) {
+				skinConfig = "http://" + inetAddress.getHostAddress() + ":" + SimpleHttpServer.portNumber + "/js?fileName=skin_Screens.js";
+				html5Skin = "http://" + inetAddress.getHostAddress() + ":" + SimpleHttpServer.portNumber + "/js?fileName=html5_Screens.js";
+			}
+			
+			
+			
 
 			if (plugins.isEmpty()) {
 				String buildId = System.getProperty(CommandLineParameters.valhalla_build_id);
@@ -90,7 +110,7 @@ public class TestPage {
 					+ "&pcode=" + pCode + "&core_player=" + URLEncoder.encode(corePlayer, "UTF8") + "&video_plugins="
 					+ URLEncoder.encode(vplugin, "UTF8") + "&html5_skin=" + URLEncoder.encode(html5Skin, "UTF8")
 					+ "&skin_asset=" + URLEncoder.encode(skinAsset, "UTF8") + "&skin_config="
-					+ URLEncoder.encode(testpagedata.getSkinConfigPlugin(plugins, adPlugin, additionalPlugin), "UTF8")
+					+ URLEncoder.encode(skinConfig, "UTF8")
 					+ "&ad_plugin=" + URLEncoder.encode(testpagedata.getPluginForAd(adPlugin), "UTF8")
 					+ "&additional_plugins=" + URLEncoder.encode(additionalPlugins, "UTF8") + "&options="
 					+ URLEncoder.encode(playerParameter, "UTF8").replace("+", "%20");

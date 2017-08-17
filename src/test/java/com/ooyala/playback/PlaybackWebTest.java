@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
+import java.net.URLEncoder;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -72,6 +74,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected RemoteWebDriver driver;
     protected static String v4Version;
     protected static String osNameAndOsVersion;
+    public  static String tName;
     private static Map<String, ITestResult> testDetails = new HashMap<String, ITestResult>();
     public SoftAssert s_assert;
 
@@ -231,6 +234,8 @@ public abstract class PlaybackWebTest extends FacileTest {
     public void setUp(@Optional String xmlFile, @Optional String xmlFilePkg, String jsFile) throws Exception {
         logger.info("************Inside setup*************");
         browser = System.getProperty(CommandLineParameters.browser);
+        String testName = getClass().getSimpleName();
+        tName=testName;
         if (browser == null || browser.equals(""))
             browser = "firefox";
         logger.info("browser is " + browser);
