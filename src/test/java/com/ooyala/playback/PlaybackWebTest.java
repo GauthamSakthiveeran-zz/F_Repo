@@ -8,10 +8,8 @@ import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
@@ -36,7 +34,6 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
-
 import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
 import com.ooyala.facile.test.FacileTest;
@@ -54,7 +51,6 @@ import com.ooyala.playback.utils.JSScriptInjection;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-
 import net.sf.uadetector.ReadableUserAgent;
 import net.sf.uadetector.UserAgentStringParser;
 import net.sf.uadetector.service.UADetectorServiceFactory;
@@ -116,6 +112,7 @@ public abstract class PlaybackWebTest extends FacileTest {
             }
         } catch (Exception e) {
             logger.error(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -432,21 +429,28 @@ public abstract class PlaybackWebTest extends FacileTest {
     @DataProvider(name = "testUrls")
     public Object[][] getTestData() {
         String version;
-        if (!browser.equalsIgnoreCase("MicrosoftEdge")) {
-            version = getBrowserVersion();
-        } else {
-            version = "";
-        }
-        Map<String, UrlObject> urls = new UrlGenerator().parseXmlDataProvider(getClass().getSimpleName(), testData, browser, version);
-        String testName = getClass().getSimpleName();
-        Object[][] output = new Object[urls.size()][2];
-        Iterator<Map.Entry<String, UrlObject>> entries = urls.entrySet().iterator();
-        int i = 0;
-        while (entries.hasNext()) {
-            Map.Entry<String, UrlObject> entry = entries.next();
-            output[i][0] = testName + " - " + entry.getKey();
-            output[i][1] = entry.getValue();
-            i++;
+        Map<String, UrlObject> urls;
+        Object[][] output = null;
+        logger.info("inside data provider method");
+        try {
+            if (!browser.equalsIgnoreCase("MicrosoftEdge")) {
+                version = getBrowserVersion();
+            } else {
+                version = "";
+            }
+            urls = new UrlGenerator().parseXmlDataProvider(getClass().getSimpleName(), testData, browser, version);
+            String testName = getClass().getSimpleName();
+            output = new Object[urls.size()][2];
+            Iterator<Map.Entry<String, UrlObject>> entries = urls.entrySet().iterator();
+            int i = 0;
+            while (entries.hasNext()) {
+                Map.Entry<String, UrlObject> entry = entries.next();
+                output[i][0] = testName + " - " + entry.getKey();
+                output[i][1] = entry.getValue();
+                i++;
+            }
+        }catch (Exception ex){
+            logger.error("Error in data provider method"+ex);
         }
         return output;
     }

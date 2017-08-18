@@ -7,7 +7,8 @@
              class="oo-share-tab" />
     <element key="CONTENT_SCREEN" findBy="class"
              class="oo-content-screen" />
-    <element key="EMBED_TAB" findBy="class"  class="oo-embed-tab" />
+    <element key="EMBED_TAB" findBy="class"
+             class="oo-embed-tab" />
     <element key="SHARE_CLOSE" findBy="class"
              class="oo-close-button" />
     <element key="SHARE_PANEL" findBy="class"

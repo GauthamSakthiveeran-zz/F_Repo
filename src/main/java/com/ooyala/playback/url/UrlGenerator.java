@@ -84,10 +84,8 @@ public class UrlGenerator {
                 if (data.getName().equals(testName)) {
                     List<Url> urls = data.getUrl();
                     for (Url url : urls) {
-                        // Adding browser support here.The data provider will
-                        // not
-                        // even give that data if we do not support for that
-                        // browser.
+                        // Adding browser support here.
+                        // The data provider will not even give that data if we do not support for that browser.
                         if (url.getBrowsersSupported() != null && url.getBrowsersSupported().getName() != null
                                 && !url.getBrowsersSupported().getName().contains(browserName))
                             continue;
@@ -189,8 +187,7 @@ public class UrlGenerator {
                             sslEnabled = "";
                             sslEnabledBrowser = "";
                         }
-                        // enabling sas staging - to run test in sas staging
-                        // environment
+                        // enabling sas staging - to run test in sas staging environment
                         if (enableSASstaging()) {
                             PropertyReader properties = null;
                             try {
@@ -293,10 +290,10 @@ public class UrlGenerator {
                         if (url.getAdditionalPlugins() != null) {
                             urlObject.setAdditionalPlugins(url.getAdditionalPlugins().getName());
                         }
-
                         urlsGenerated.put(desc, urlObject);
-
                     }
+                }else {
+                    logger.error("test name from xml file : "+data.getName() +" and Actal test name: " +testName+ "are not matching");
                 }
             }
         } catch (Exception ex) {
