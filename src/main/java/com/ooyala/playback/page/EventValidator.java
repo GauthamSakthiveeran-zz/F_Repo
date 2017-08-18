@@ -150,33 +150,6 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
         return false;
     }
 
-    public boolean playVideoForSometime(int secs) {
-        int count = 0;
-        double playTime = Double
-                .parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
-        while (playTime <= secs) {
-            playTime = Double.parseDouble(
-                    ((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
-            if (count == 120) {
-                logger.error("Looks like the video did not play after waiting for 2 mins.");
-                extentTest.log(LogStatus.FAIL, "Looks like the video did not play after waiting for 2 mins.");
-                return false;
-            }
-            if (!loadingSpinner()) {
-                logger.error("Loading spinner seems to be there for a really long time.");
-                extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
-                return false;
-            }
-            count++;
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                logger.error(e.getMessage());
-            }
-        }
-        return true;
-    }
-
     public boolean isVideoPluginPresent(String videoPlugin) throws Exception {
         Map<String, String> map = parseURL();
         if (map != null && map.get("video_plugins") != null && map.get("video_plugins").contains(videoPlugin)) {

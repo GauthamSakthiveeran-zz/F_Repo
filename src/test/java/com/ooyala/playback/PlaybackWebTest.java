@@ -279,7 +279,7 @@ public abstract class PlaybackWebTest extends FacileTest {
                 driverNotNullFlag = true;
             }
 
-            if (result.getStatus() == ITestResult.FAILURE || extentTest.getRunStatus()==LogStatus.FAIL) {
+            if (result.getStatus() == ITestResult.FAILURE) {
                 if (driverNotNullFlag) {
                     String fileName = takeScreenshot(extentTest.getTest().getName());
                     extentTest.log(LogStatus.INFO,
