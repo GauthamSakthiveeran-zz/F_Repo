@@ -32,7 +32,7 @@ public class UpNextValidator extends PlayBackPage implements PlaybackValidator {
 		try {
 			// inc the timeout because of pulse ads.
 			logger.info("checking up next");
-			if (!waitOnElement("UPNEXT_CONTENT", 20000)){
+			if (!waitOnElement("UPNEXT_CONTENT", 60000)){
 				logger.error("upnext is not visible");
 				extentTest.log(LogStatus.FAIL,"upnext is not visible");
 				return false;

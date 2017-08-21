@@ -69,93 +69,7 @@ public class AdClickThroughValidator extends PlayBackPage implements
             return true;
         }
 
-        Map<String, String> data = parseURL();
-
-        if (data == null) {
-            throw new Exception("Map is null");
-        }
-
-        String value = data.get("ad_plugin");
-        String video_plugin = data.get("video_plugins");
-
-        if (value != null) {
-            boolean flag = true;
-            ((JavascriptExecutor) driver).executeScript("pp.play()");
-
-            if (isElementPresent("AD_SCREEN_PANEL")) {
-                if (!clickOnIndependentElement("AD_SCREEN_PANEL"))
-                    return false;
-
-                if (!waitOnElement(By.id(element), 10000)) {
-                    log.info("unable to verify event "+element);
-                    extentTest.log(LogStatus.FAIL, "unable to verify event "+element);
-                    return false;
-                }
-
-            } else if (isElementPresent("AD_PANEL_1")) {
-                if (!(clickOnIndependentElement("AD_PANEL_1") && waitOnElement(By.id("adsClickThroughOpened"), 2000))) {
-                    return false;
-                }
-                flag = false;
-            } else {
-                if (!clickOnIndependentElement("AD_PANEL"))
-                    return false;
-            }
-
-            if (flag) {
-                if (!waitOnElement(By.id("adsClicked_1"), 2000)) {
-                    extentTest.log(FAIL,"adsClicked_1 event not found");
-                    return false;
-                }
-                if (!waitOnElement(By.id("adsClicked_videoWindow"), 2000)) {
-                    extentTest.log(FAIL,"adsClicked_videoWindow event not found");
-                    return false;
-                }
-            }
-
-            validateNoOfTabsOpened();
-
-            extentTest.log(PASS, "AdsClicked by clicking on the ad screen");
-            log.info("AdsClicked by clicking on the ad screen");
-
-            if (!value.contains("ima")) {
-                if (getBrowser().contains("internet explorer")) {
-                    if (value.contains("freewheel") && video_plugin.contains("main") && !video_plugin.contains("osmf")
-                            && !video_plugin.contains("bit")) {
-                        if (!(waitOnElement("LEARN_MORE_IE", 10000) && clickOnIndependentElement("LEARN_MORE_IE")))
-                            return false;
-                    } else {
-                        if (!(waitOnElement("LEARN_MORE", 10000) && clickOnHiddenElement("LEARN_MORE")))
-                            return false;
-                    }
-
-                } else {
-                    if (!(waitOnElement("LEARN_MORE", 10000) && clickOnIndependentElement("LEARN_MORE")))
-                        return false;
-                }
-                if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 2000))
-                    return false;
-
-                if (!waitOnElement(By.id("videoPausedAds_1"), 20000)) {
-                    log.info("unable to verify event videoPausedAds_1");
-                    extentTest.log(LogStatus.FAIL, "unable to verify event videoPaused");
-                    return false;
-                }
-
-                validateNoOfTabsOpened();
-
-            }
-            extentTest.log(PASS, "AdsClicked by clicking on the learn more button");
-            log.info("AdsClicked by clicking on the learn more button");
-
-            closeOtherWindows(baseWindowHdl);
-
-            ((JavascriptExecutor) driver).executeScript("pp.play()");
-            return true;
-
-        } else {
-            throw new Exception("Ad plugin not present in test url");
-        }
+        return clickThroughOnAd(1);
 
     }
 
@@ -194,8 +108,10 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
             // check ad clickthrough
             if (isElementPresent("AD_SCREEN_PANEL")) {
-                if (!clickOnIndependentElement("AD_SCREEN_PANEL"))
-                    return false;
+                if (!clickOnIndependentElement("AD_SCREEN_PANEL")){
+                	extentTest.log(LogStatus.FAIL, "Click on AD_SCREEN_PANEL failed.");
+                	return false;
+                }
 
                 if (!waitOnElement(By.id("videoPausedAds_"+counter+""), 10000)) {
                     log.info("unable to verify event videoPausedAds_"+counter);
@@ -205,12 +121,15 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
             } else if (isElementPresent("AD_PANEL_1")) {
                 if (!(clickOnIndependentElement("AD_PANEL_1") && waitOnElement(By.id("adsClickThroughOpened"), 2000))) {
+                	extentTest.log(LogStatus.FAIL, "Click on AD_PANEL_1 failed or wait on adsClickThroughOpened failed.");
                     return false;
                 }
                 flag = false;
             } else {
-                if (!clickOnIndependentElement("AD_PANEL"))
-                    return false;
+                if (!clickOnIndependentElement("AD_PANEL")){
+                	extentTest.log(LogStatus.FAIL, "Click on AD_PANEL failed.");
+                	return false;
+                }
             }
 
             if (flag) {
@@ -234,19 +153,27 @@ public class AdClickThroughValidator extends PlayBackPage implements
                 if (getBrowser().contains("internet explorer")) {
                     if (value.contains("freewheel") && video_plugin.contains("main") && !video_plugin.contains("osmf")
                             && !video_plugin.contains("bit")) {
-                        if (!(waitOnElement("LEARN_MORE_IE", 10000) && clickOnIndependentElement("LEARN_MORE_IE")))
-                            return false;
+                        if (!(waitOnElement("LEARN_MORE_IE", 10000) && clickOnIndependentElement("LEARN_MORE_IE"))) {
+                        	extentTest.log(FAIL, "Issue with LEARN_MORE_IE");
+                        	return false;
+                        }
                     } else {
-                        if (!(waitOnElement("LEARN_MORE", 10000) && clickOnHiddenElement("LEARN_MORE")))
-                            return false;
+                        if (!(waitOnElement("LEARN_MORE", 10000) && clickOnHiddenElement("LEARN_MORE"))){
+                        	extentTest.log(FAIL, "Issue with LEARN_MORE");
+                        	return false;
+                        }
                     }
 
                 } else {
-                    if (!(waitOnElement("LEARN_MORE", 10000) && clickOnIndependentElement("LEARN_MORE")))
-                        return false;
+                    if (!(waitOnElement("LEARN_MORE", 10000) && clickOnIndependentElement("LEARN_MORE"))){
+                    	extentTest.log(FAIL, "Issue with LEARN_MORE");
+                    	return false;
+                    }
                 }
-                if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 2000))
-                    return false;
+                if (!waitOnElement(By.id("adsClicked_learnMoreButton"), 2000)){
+                	extentTest.log(FAIL, "Wait on adsClicked_learnMoreButton failed.");
+                	return false;
+                }
 
                 if (!waitOnElement(By.id("videoPausedAds_1"), 20000)) {
                     log.info("unable to verify event videoPausedAds_1");
@@ -264,8 +191,10 @@ public class AdClickThroughValidator extends PlayBackPage implements
 
             ((JavascriptExecutor) driver).executeScript("pp.play()");
             return true;
-        }else
-            return false;
+        }else{
+        	extentTest.log(FAIL, "Ad is not playing");
+        	return false;
+        }
     }
 
     public boolean validateClickThroughForPoddedAds(String adType) throws Exception{

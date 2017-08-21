@@ -534,7 +534,7 @@ public abstract class PlayBackPage extends WebPage {
 			logger.error("Video does not start from begining");
 			return false;
 		}
-		extentTest.log(LogStatus.PASS, "Video does start from begining");
+		extentTest.log(LogStatus.PASS, "Video starts from begining");
 		logger.info("Video does start from begining");
 		logger.info("Playhead time is :" + playHeadTime);
 		return true;

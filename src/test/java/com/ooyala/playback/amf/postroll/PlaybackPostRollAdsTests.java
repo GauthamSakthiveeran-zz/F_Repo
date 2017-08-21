@@ -6,7 +6,7 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.AdClickThroughValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
@@ -18,13 +18,14 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 
     private EventValidator event;
     private PlayValidator playValidator;
-    private SeekValidator seekValidator;
     private AdClickThroughValidator clickThroughValidator;
+    private SeekAction seek;
 
     @Test(groups = {"amf", "postroll"}, dataProvider = "testUrls")
     public void verifyPostroll(String testName, UrlObject url) {
 
         boolean result = true;
+        boolean clickthrough = validateClickThrough(testName);
 
         try {
 
@@ -35,12 +36,14 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
             injectScript();
 
             result = result && playValidator.validate("playing_1", 60000);
+            
+            result = result && seek.fromLast().setTime(2).startAction();
 
-            result = result && seekValidator.validate("seeked_1", 10000);
+            result = result && event.validate("seeked_1", 10000);
 
             result = result && event.validate("PostRoll_willPlaySingleAd_1", 90000);
 
-            if (result){
+            if (result && clickthrough){
                 s_assert.assertTrue(clickThroughValidator.validate("videoPausedAds_1", 120000), "Postroll");
             }
 
@@ -55,4 +58,16 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
         s_assert.assertTrue(result, "Postroll");
         s_assert.assertAll();
     }
+    
+    private boolean validateClickThrough(String testName) {
+		return testName.equals(" VPAID:AdobeTVSDK Vast VPAID2.0 Postroll")
+				|| testName.equals("VPAID:Bitmovin IMA VPAID2.0 Postroll")
+				|| testName.equals("VPAID:Main Vast VPAID2.0 Postroll")
+				|| testName.equals("VPAID:AdobeTVSDK IMA VPAID2.0 Postroll")
+				|| testName.equals("VPAID:Bitmovin Vast VPAID2.0 Postroll")
+				|| testName.equals("VPAID:OSMF Vast VPAID2.0 Postroll")
+				|| testName.equals("VPAID:OSMF IMA VPAID2.0 Postroll")
+				|| testName.equals("VPAID:Main IMA VPAID2.0 Postroll")
+				;
+	}
 }

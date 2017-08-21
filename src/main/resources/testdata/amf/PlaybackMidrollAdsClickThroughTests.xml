@@ -292,7 +292,7 @@
                 <![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
         </url>
         
-        <url>
+        <!-- <url>
             <description name="VPAID:Bitmovin Vast VPAID2.0 Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="0wdnI4MjE68TtC2n_PMT4HwiyDJXYEGX"/>
@@ -303,7 +303,7 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter>
                 <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-        </url>
+        </url> -->
         
         <url>
             <description name="VPAID:Bitmovin IMA VPAID2.0 Midroll Clickthrough"/>
@@ -330,7 +330,7 @@
             <playerParameter></playerParameter>
         </url>
         
-         <url>
+         <!-- <url>
             <description name="VPAID:OSMF Vast VPAID2.0 Midroll Clickthrough"/>
             <priority name="P3"></priority>
             <embed_code name="03Mm9xYTE6iYdd2fDYNaOmvUxXXqaubL"/>
@@ -341,9 +341,9 @@
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter></playerParameter>
             <platformsSupported name="mac,windows"/>
-        </url>
+        </url> -->
         
-        <url>
+        <!-- <url>
             <description name="VPAID:OSMF IMA VPAID2.0 Midroll Clickthrough"/>
             <priority name="P3"></priority>
             <embed_code name="VqMm9xYTE6ilA-3mcU7AHHcJVSezReCA"/>
@@ -354,9 +354,9 @@
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <plaformsSupported name="mac,windows"/>
-        </url>
+        </url> -->
         
-         <url>
+         <!-- <url>
             <description name="VPAID:Main Vast VPAID2.0 Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="A1bmxiMjE64igdFOvxveOJdKRC7tqQ2C"/>
@@ -368,9 +368,9 @@
             <playerParameter>
                 <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 
-        </url>
+        </url> -->
         
-        <url>
+        <!-- <url>
             <description name="VPAID:Main IMA VPAID2.0 Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
@@ -382,7 +382,7 @@
             <playerParameter>
                 <![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"20000","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
 
-        </url>
+        </url> -->
         
         
     </test>

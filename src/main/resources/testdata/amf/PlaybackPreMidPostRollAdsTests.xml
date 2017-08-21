@@ -260,7 +260,7 @@
             <sslEnabled name="https" browser="chrome"/>
         </url>
 
-        <!-- <url>
+        <url>
             <description name="VAST:AdobeTVSDK Vast3.0 PreMidPost"/>
             <priority name="P2"></priority>
             <embed_code name="R3NDh2YTE6OGykeMgB2QCZb63Z_YhLna"/>
@@ -272,7 +272,7 @@
             <playerParameter>
                 <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
             <sslEnabled name="https" browser="chrome"/>
-        </url> -->
+        </url>
 
         <url>
             <description name="VPAID:Main IMA VPAID2.0 PreMidPost"/>
@@ -448,7 +448,7 @@
             <embed_code name="VkMm9xYTE6ok0MU18tMW9UnwHjLcEc14"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="OSMF,MAIN"/>
-            <adPlugins name="VAST"/>
+            <adPlugins name="VAST" adPlayTime="20"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter></playerParameter>
