@@ -30,7 +30,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 	public void verifyPreMidPostroll(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
-		boolean clickThrough = validateClickThrough(testName);
+		boolean clickThrough = adClickThroughValidator.ignoreClickThrough(url);
 
 		try {
 
@@ -97,16 +97,5 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 		}
 		s_assert.assertTrue(result, "Pre Mid Post Roll Ads failed.");
 		s_assert.assertAll();
-	}
-	
-	private boolean validateClickThrough(String testName) {
-		return testName.equals("VPAID:Bitmovin Vast VPAID2.0 PreMidPost")
-				|| testName.equals("VPAID:Bitmovin IMA VPAID2.0 PreMidPost")
-				|| testName.equals("VPAID:AdobeTVSDK IMA VPAID2.0 PreMidPost")
-				|| testName.equals("VPAID:Main Vast VPAID2.0 PreMidPost")
-				|| testName.equals("VPAID:OSMF Vast VPAID2.0 PreMidPost")
-				|| testName.equals("VPAID:Main IMA VPAID2.0 PreMidPost")
-				|| testName.equals("VPAID:AdobeTVSDK Vast VPAID2.0 PreMidPost")
-				|| testName.equals("VPAID:OSMF IMA VPAID2.0 PreMidPost");
 	}
 }

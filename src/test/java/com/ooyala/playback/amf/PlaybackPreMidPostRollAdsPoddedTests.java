@@ -32,7 +32,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 	public void verifyPreMidPostrollPodded(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
-		boolean clickThrough = validateClickThrough(testName);
+		boolean clickThrough = clickthrough.ignoreClickThrough(url);
 
 		try {
 
@@ -91,10 +91,4 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 		s_assert.assertAll();
 	}
 	
-	private boolean validateClickThrough(String testName) {
-		return testName.equals("VPAID:Main Vast VPAID2.0 PreMidPost Podded")
-				|| testName.equals("VPAID:AdobeTVSDK Vast VPAID2.0 PreMidPost Podded")
-				|| testName.equals("VAST:Bitmovin Vast2.0 DASH remote Asset")
-				;
-	}
 }

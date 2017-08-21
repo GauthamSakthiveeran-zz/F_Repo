@@ -92,7 +92,7 @@
             <embed_code name="sydnI4MjE6Mupnaunbb8jtY1M49KsDPv"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="MAIN,BITMOVIN"/>
-            <adPlugins name="VAST" adPlayTime="10"/>
+            <adPlugins name="VAST" adPlayTime="10" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter>
@@ -118,7 +118,7 @@
             <embed_code name="M2NngxYjE6lR5ArZnZ_x5XV9N-4zbXih"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="MAIN,BITMOVIN"/>
-            <adPlugins name="IMA" adPlayTime="20"/>
+            <adPlugins name="IMA" adPlayTime="20" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter></playerParameter>
@@ -130,7 +130,7 @@
             <embed_code name="M2NngxYjE6lR5ArZnZ_x5XV9N-4zbXih"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="ADOBETVSDK,BITMOVIN"/>
-            <adPlugins name="IMA" adPlayTime="20"/>
+            <adPlugins name="IMA" adPlayTime="20" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter></playerParameter>
@@ -280,7 +280,7 @@
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
-            <adPlugins name="IMA" adPlayTime="5"/>
+            <adPlugins name="IMA" adPlayTime="5" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
             <playerParameter>
@@ -293,7 +293,7 @@
             <embed_code name="BnaG1iMjE6bQ3DQmsPTYyH_QiQ05Ggrj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
-            <adPlugins name="VAST" adPlayTime="10"/>
+            <adPlugins name="VAST" adPlayTime="10" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter>
@@ -306,7 +306,7 @@
             <embed_code name="BnaG1iMjE6bQ3DQmsPTYyH_QiQ05Ggrj"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="ADOBETVSDK,MAIN"/>
-            <adPlugins name="VAST" adPlayTime="10"/>
+            <adPlugins name="VAST" adPlayTime="10" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter>
@@ -448,7 +448,7 @@
             <embed_code name="VkMm9xYTE6ok0MU18tMW9UnwHjLcEc14"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="OSMF,MAIN"/>
-            <adPlugins name="VAST" adPlayTime="20"/>
+            <adPlugins name="VAST" adPlayTime="20" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter></playerParameter>
@@ -461,7 +461,7 @@
             <embed_code name="VuMm9xYTE69UeMy_0pkVhDZPN5CT1dIV"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
-            <adPlugins name="IMA" adPlayTime="20"/>
+            <adPlugins name="IMA" adPlayTime="20" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
