@@ -25,7 +25,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
     public void verifyPostroll(String testName, UrlObject url) {
 
         boolean result = true;
-        boolean clickthrough = validateClickThrough(testName);
+        boolean clickthrough = clickThroughValidator.ignoreClickThrough(url);
 
         try {
 
@@ -59,15 +59,4 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
         s_assert.assertAll();
     }
     
-    private boolean validateClickThrough(String testName) {
-		return testName.equals(" VPAID:AdobeTVSDK Vast VPAID2.0 Postroll")
-				|| testName.equals("VPAID:Bitmovin IMA VPAID2.0 Postroll")
-				|| testName.equals("VPAID:Main Vast VPAID2.0 Postroll")
-				|| testName.equals("VPAID:AdobeTVSDK IMA VPAID2.0 Postroll")
-				|| testName.equals("VPAID:Bitmovin Vast VPAID2.0 Postroll")
-				|| testName.equals("VPAID:OSMF Vast VPAID2.0 Postroll")
-				|| testName.equals("VPAID:OSMF IMA VPAID2.0 Postroll")
-				|| testName.equals("VPAID:Main IMA VPAID2.0 Postroll")
-				;
-	}
 }
