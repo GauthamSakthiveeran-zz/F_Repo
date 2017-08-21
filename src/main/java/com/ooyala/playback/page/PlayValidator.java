@@ -97,10 +97,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		
 		if (!isElementPresent("LIVE")) {
 			playVideoForSometime(0.2);
-			if (!validatePlayStartTimeFromBeginningofVideo()) {
-				return false;
-			}
-			
+			validatePlayStartTimeFromBeginningofVideo();
 		}
 
 		if (isVideoPluginPresent("ANALYTICS")) {
