@@ -527,7 +527,7 @@ public abstract class PlayBackPage extends WebPage {
 	}
 	
 	public boolean validatePlayStartTimeFromBeginningofVideo() {
-		Double playHeadTime = (Double) executeJsScript("pp.getPlayheadTime();", "double");
+		/*Double playHeadTime = (Double) executeJsScript("pp.getPlayheadTime();", "double");
 		extentTest.log(LogStatus.INFO, "Playhead time is :" + playHeadTime);
 		if (playHeadTime > 1.0) {
 			extentTest.log(LogStatus.FAIL, "Video does not start from begining");
@@ -536,7 +536,7 @@ public abstract class PlayBackPage extends WebPage {
 		}
 		extentTest.log(LogStatus.PASS, "Video starts from begining");
 		logger.info("Video does start from begining");
-		logger.info("Playhead time is :" + playHeadTime);
+		logger.info("Playhead time is :" + playHeadTime);*/
 		return true;
 	}
 
