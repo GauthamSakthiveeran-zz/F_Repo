@@ -27,7 +27,7 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 	@Test(groups = { "amf", "postroll", "podded" }, dataProvider = "testUrls")
 	public void verifyPostrollPodded(String testName, UrlObject url) throws OoyalaException {
 		boolean result = true;
-		boolean clickthrough = clickthroughValidator.ignoreClickThrough(url);
+		boolean clickthrough = !clickthroughValidator.ignoreClickThrough(url);
 		try {
 			driver.get(url.getUrl());
 			result = result && playValidator.waitForPage();

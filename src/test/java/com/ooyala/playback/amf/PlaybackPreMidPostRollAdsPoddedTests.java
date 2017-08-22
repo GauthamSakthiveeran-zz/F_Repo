@@ -32,7 +32,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 	public void verifyPreMidPostrollPodded(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
-		boolean clickThrough = clickthrough.ignoreClickThrough(url);
+		boolean clickThrough = !clickthrough.ignoreClickThrough(url);
 
 		try {
 
