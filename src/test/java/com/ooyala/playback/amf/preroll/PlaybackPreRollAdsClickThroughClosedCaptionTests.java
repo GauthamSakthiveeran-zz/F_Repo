@@ -47,7 +47,7 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 				result = result && event.validate("singleAdPlayed_1", 120000);
 
 			result = result && event.validate("playing_1", 35000);
-			result = result && event.playVideoForSometime(0.5);
+			result = result && event.playVideoForSometime(0.01);
 			if (result)
 				event.validatePlayStartTimeFromBeginningofVideo();
 			result = result && event.loadingSpinner();
