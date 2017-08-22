@@ -113,6 +113,8 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
                 return scrubberValidator.validate("", 1000);
             }
             if (element.startsWith("seeked")) {
+            	if(getBrowser().equalsIgnoreCase("internet explorer"))
+            		return true;
                 ((JavascriptExecutor) driver).executeScript("return pp.pause();");
                 boolean flag = scrubberValidator.validate("", 1000);
                 ((JavascriptExecutor) driver).executeScript("return pp.play();");
