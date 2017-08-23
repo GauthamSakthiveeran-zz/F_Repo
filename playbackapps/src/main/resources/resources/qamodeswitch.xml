@@ -1,0 +1,3 @@
+<elements area="qamodeswitch">
+	<element key="QA_MODE_SWITCH" findBy="xPath" xPath="//XCUIElementTypeSwitch[1]" />
+</elements>

@@ -1,0 +1,4 @@
+<elements area="selectvideo">
+	<element key="PLUGIN_PLAYER" findBy="name" name="Plugin Player" />
+	<element key="CHANGE_VIDEO_PROGRAMMATICALLY" findBy="name" name="Change Video Programmatically" />
+</elements>

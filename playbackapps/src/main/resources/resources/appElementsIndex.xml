@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<!-- Document : appElementIndex.xml Description: Contains a reference to 
+	each of xml files that map elements on a given webpage to keys that can be 
+	used within page objects. Use /src/main/java as the root of the path to the 
+	file so if we had a file at src/main/java/com/intuit/qbo/qboareas/invoices/invoiceElements.xml 
+	the associated entry would be: <entry key="invoices">/com/intuit/qbo/qboareas/invoices/invoiceElements.xml</entry> -->
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="selectvideo">resources/selectvideo.xml</entry>
+    <entry key="event">resources/event.xml</entry>
+    <entry key="playpause">resources/playpause.xml</entry>
+</properties>

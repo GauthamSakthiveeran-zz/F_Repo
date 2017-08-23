@@ -1,0 +1,3 @@
+<elements area="event">
+	<element key="NOTIFICATION_AREA" findBy="xPath" xPath="//XCUIElementTypeTextView[1]" />
+</elements>
