@@ -23,6 +23,7 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 		(new PlayBackFactory(driver, extentTest)).getSeekAction().seekTillEnd().startAction();
 		
 		if (!loadingSpinner()){
+			logger.error("Loading spinner seems to be there for a really long time.");
 			extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
 			return false;
 		}
@@ -33,17 +34,24 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
                 return false;
             }
         }
+        
+        if(getBrowser().equalsIgnoreCase("internet explorer")) {
+        	return true;
+        }
 
 		if (waitOnElement(By.id(element), timeout)) {
 			extentTest.log(LogStatus.PASS, "Seek successful.");
+			logger.info("Seek successful.");
 			if (!loadingSpinner()){
+				logger.error("Loading spinner seems to be there for a really long time.");
+				extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
 			    return false;
             }
 			return (new PlayBackFactory(driver, extentTest)).getScrubberValidator().validate("", timeout);
 		}
 
-		extentTest.log(LogStatus.INFO, "Wait on " + element + " failed after "+ timeout + " ms");
+		extentTest.log(LogStatus.FAIL, "Wait on " + element + " failed after "+ timeout + " ms");
+        logger.error("Wait on " + element + " failed after "+ timeout + " ms");
 		return false;
 	}
-
 }

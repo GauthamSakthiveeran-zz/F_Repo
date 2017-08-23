@@ -23,7 +23,7 @@
 			<adPlugins name="PULSE"/>
 			<additionalPlugins name="DISCOVERY"/>
 			<pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
-			<playerParameter><![CDATA[{"autoPlay":false,"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+			<playerParameter><![CDATA[{"autoPlay":false,"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 		</url>
     	
     	<url>
@@ -108,7 +108,7 @@
 	        <adPlugins name="FREEWHEEL"/>
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="14a1b2eb21104617948405aeac11271b"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
     	</url>
 
 		<url>
@@ -133,7 +133,7 @@
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="14a1b2eb21104617948405aeac11271b"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
 
 		<url>
@@ -222,7 +222,7 @@
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="f4264a0cd4fb4384878e085c30171a14"/>
-	        <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
 
 		<url>
@@ -271,7 +271,7 @@
 	        <adPlugins name="VAST"/>
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
-	        <playerParameter></playerParameter>
+	        <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
     	</url>
     	
     	<url>
@@ -324,7 +324,7 @@
 			<platformsSupported name="mac,windows"/>
 		</url>
 
-		<url>
+		<!-- <url>
 			<description name="VPAID:AdobeTVSDK IMA VPAID2.0 Discovery Postroll"/>
 			<priority name="P2"></priority>
 			<embed_code name="wzMXBxYTE6iQyrip2FSgtwNdBLoFIazT"/>
@@ -336,7 +336,7 @@
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
 			<platformsSupported name="mac,windows"/>
-		</url>
+		</url> -->
 
         <url>
             <description name="VPAID:OSMF IMA VPAID1.0 Discovery Postroll"/>

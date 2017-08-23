@@ -22,6 +22,15 @@ public class UrlObject {
 	private String additionalPlugins;
 	private String supportedMuxFormat;
 	private String playerId;
+	private boolean ignoreClickThrough;
+	
+	public void setIgnoreClickThrough(boolean ignoreClickThrough){
+		this.ignoreClickThrough = ignoreClickThrough;
+	}
+	
+	public boolean getIgnoreClickThrough() {
+		return ignoreClickThrough;
+	}
 	
 	public void setPlayerId(String playerId) {
 		this.playerId = playerId;

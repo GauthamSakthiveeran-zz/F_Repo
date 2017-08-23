@@ -66,8 +66,6 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		// if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction())
-		// return false;
 
 		if (!clickOnIndependentElement("PLAY_BUTTON")) {
 			extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
@@ -78,9 +76,8 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 			extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
 			return false;
 		}
-		
-		
-		if(!getBrowser().toLowerCase().contains("explorer"))
+
+		if (!getBrowser().toLowerCase().contains("explorer"))
 			if (!waitOnElement("PLAYING_SCREEN", 4000)) {
 				if (getBrowser().contains("safari")) {
 					Thread.sleep(30000);
@@ -99,11 +96,8 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		}
 		
 		if (!isElementPresent("LIVE")) {
-			
-			if(!validatePlayStartTimeFromBeginningofVideo()) {
-				return false;
-			}
-			
+			playVideoForSometime(0.01);
+			validatePlayStartTimeFromBeginningofVideo();
 		}
 
 		if (isVideoPluginPresent("ANALYTICS")) {
