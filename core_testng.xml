@@ -42,6 +42,20 @@
             <class name="com.ooyala.playback.core.HTML5FirstPlaybackTests"/>
         </classes>
     </test>
+
+    <test name="Adhoc Test Regression">
+        <classes>
+            <parameter name="testData" value="adhoc/Adhoc.xml" />
+            <parameter name="jsFile" value="alice/alice.js,common.js,amf/amf.js" />
+            <class name="com.ooyala.playback.adhoc.BitrateOptionsBeforeAndAfterMidrollTests"/>
+            <class name="com.ooyala.playback.adhoc.SeekBackFromEndAndCheckPlayback"/>
+            <class name="com.ooyala.playback.adhoc.SeekTillEndTests"/>
+            <class name="com.ooyala.playback.adhoc.CheckPlaybackAfterWaitOnEndScreenAndReplayTests"/>
+            <class name="com.ooyala.playback.adhoc.PageLevelOverrideForShareScreenTests"/>
+            <class name="com.ooyala.playback.adhoc.PlaybackZoomInZoomOutTests"/>
+            <class name="com.ooyala.playback.adhoc.ReplayAfterSeekBackTests"/>
+        </classes>
+    </test>
     
 </suite>
 

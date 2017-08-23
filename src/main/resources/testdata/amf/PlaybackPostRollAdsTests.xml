@@ -21,7 +21,7 @@
             <embed_code name="93anI4MjE6qgS_sr2KepPHDWNfJb9au2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="MAIN,BITMOVIN"/>
-            <adPlugins name="VAST"/>
+            <adPlugins name="VAST" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter>
@@ -34,7 +34,7 @@
             <embed_code name="93anI4MjE6qgS_sr2KepPHDWNfJb9au2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="ADOBETVSDK"/>
-            <adPlugins name="VAST"/>
+            <adPlugins name="VAST" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter>
@@ -47,7 +47,7 @@
             <embed_code name="M0NngxYjE6oPnwud4hdLF4hMTrSdZgp2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="MAIN,BITMOVIN"/>
-            <adPlugins name="IMA"/>
+            <adPlugins name="IMA" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter></playerParameter>
@@ -60,7 +60,7 @@
             <embed_code name="M0NngxYjE6oPnwud4hdLF4hMTrSdZgp2"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="ADOBETVSDK"/>
-            <adPlugins name="IMA"/>
+            <adPlugins name="IMA" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter></playerParameter>
@@ -127,7 +127,7 @@
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
-            <adPlugins name="IMA"/>
+            <adPlugins name="IMA" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
             <playerParameter>
@@ -140,7 +140,7 @@
             <embed_code name="tmbmxiMjE6M_3i7Eg6sVc8-6zp4vXQgw"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
-            <adPlugins name="VAST"/>
+            <adPlugins name="VAST" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter>
@@ -218,7 +218,7 @@
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
             <adPlugins name="FREEWHEEL"/>
-            <additionalPlugins name="DISCOVERY"/>
+            <additionalPlugins name=""/>
             <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
             <playerParameter>
                 <![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NmcGg4bzqbeqXO_x9Rfj5IX6gwmRRrse","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
@@ -263,7 +263,7 @@
             <platformsSupported name="mac,windows"/>
         </url>
 
-        <url>
+        <!-- <url>
             <description name="VAST:AdobeTVSDK Vast2.0 Postroll"/>
             <priority name="P2"></priority>
             <embed_code name="85bm5kMDE6uYN7kMcTPz72AYcRuJLlgz"/>
@@ -274,7 +274,7 @@
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
-        </url>
+        </url> -->
 
         <url>
             <description name="VAST:Main Vast2.0 Postroll"/>
@@ -383,7 +383,7 @@
             <embed_code name="ViMm9xYTE6bTC12TonUawyghP9jVLnJX"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="OSMF,MAIN"/>
-            <adPlugins name="VAST"/>
+            <adPlugins name="VAST" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter></playerParameter>
@@ -397,7 +397,7 @@
             <embed_code name="VsMm9xYTE6yAvCNBjXJT0Ed4KhNHaBXe"/>
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
             <plugins name="OSMF,MAIN"/>
-            <adPlugins name="IMA"/>
+            <adPlugins name="IMA" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>

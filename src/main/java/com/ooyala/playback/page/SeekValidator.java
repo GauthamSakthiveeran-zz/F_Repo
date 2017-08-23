@@ -34,6 +34,10 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
                 return false;
             }
         }
+        
+        if(getBrowser().equalsIgnoreCase("internet explorer")) {
+        	return true;
+        }
 
 		if (waitOnElement(By.id(element), timeout)) {
 			extentTest.log(LogStatus.PASS, "Seek successful.");

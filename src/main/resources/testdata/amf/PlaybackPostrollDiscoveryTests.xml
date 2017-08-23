@@ -324,7 +324,7 @@
 			<platformsSupported name="mac,windows"/>
 		</url>
 
-		<url>
+		<!-- <url>
 			<description name="VPAID:AdobeTVSDK IMA VPAID2.0 Discovery Postroll"/>
 			<priority name="P2"></priority>
 			<embed_code name="wzMXBxYTE6iQyrip2FSgtwNdBLoFIazT"/>
@@ -336,7 +336,7 @@
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
 			<platformsSupported name="mac,windows"/>
-		</url>
+		</url> -->
 
         <url>
             <description name="VPAID:OSMF IMA VPAID1.0 Discovery Postroll"/>
