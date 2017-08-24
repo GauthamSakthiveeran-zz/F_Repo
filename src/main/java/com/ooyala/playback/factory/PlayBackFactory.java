@@ -84,6 +84,7 @@ public class PlayBackFactory {
 	private EmbedTabValidator embedTabValidator;
 	private StateScreenValidator stateScreenValidator;
 	private PlayerSkinButtonsValidator skinValidator;
+	private PageLevelOverridingValidator pageLevelOverridingValidator;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -625,6 +626,14 @@ public class PlayBackFactory {
             dvrLiveValidator.setExtentTest(extentTest);
         }
         return dvrLiveValidator;
+	}
+
+	public PageLevelOverridingValidator getPageLevelOverridingValidator(){
+		if (pageLevelOverridingValidator == null){
+			pageLevelOverridingValidator = new PageLevelOverridingValidator(driver);
+			pageLevelOverridingValidator.setExtentTest(extentTest);
+		}
+		return pageLevelOverridingValidator;
 	}
 
 	public WebDriver getDriver() {
