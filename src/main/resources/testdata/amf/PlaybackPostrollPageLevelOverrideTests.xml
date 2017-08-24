@@ -3,8 +3,8 @@
     <test name="PlaybackPostrollPageLevelOverrideTests">
 
         <url>
-            <description name="Freewheel:Main 3 Preroll Podded"/>
-            <priority name="P2"></priority>
+            <description name="Vast Ad PLOT:Bitmovin Postroll"/>
+            <priority name="P3"></priority>
             <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
@@ -15,11 +15,11 @@
         </url>
 
         <url>
-            <description name="Freewheel:Main 3 Preroll Podded45"/>
-            <priority name="P2"></priority>
+            <description name="Vast Ad PLOT:Main Postroll"/>
+            <priority name="P3"></priority>
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="BITMOVIN"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
@@ -27,8 +27,8 @@
         </url>
 
         <url>
-            <description name="Freewheel:Main 3 Preroll Podded2"/>
-            <priority name="P2"></priority>
+            <description name="Vast Ad PLOT:OSMF Postroll"/>
+            <priority name="P3"></priority>
             <embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="OSMF,MAIN"/>
