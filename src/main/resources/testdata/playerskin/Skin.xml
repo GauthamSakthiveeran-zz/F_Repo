@@ -173,7 +173,11 @@
 		<url>
 			<description name="SkinConfigbuttonsDisabled:Bitmovin Elemental Delta HLS VOD" />
             <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
-			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name=""/>
+			<skinJson name="BUTTONS"/>
 			<pbid name="8a6765f99f4c4962a1fa71b366aef4aa" />
 			<streamType name="m3u8" />
             <platformsSupported name="mac,windows"/>
@@ -188,6 +192,7 @@
 			<plugins name="BITMOVIN" />
 			<adPlugins name="" />
 			<additionalPlugins name=""/>
+			<skinJson name="MOREOPTIONS"/>
 			<pbid name="8a6765f99f4c4962a1fa71b366aef4aa" />
 			<streamType name="m3u8" />
             <platformsSupported name="mac,windows"/>
@@ -202,6 +207,7 @@
             <plugins name="MAIN"/>
             <adPlugins name=""/>
             <additionalPlugins name="DISCOVERY"/>
+            <skinJson name="MOREOPTIONS"/>
             <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
             <playerParameter></playerParameter>
         </url>
@@ -214,6 +220,7 @@
             <plugins name="BITMOVIN"/>
             <adPlugins name=""/>
             <additionalPlugins name=""/>
+            <skinJson name="MOREOPTIONS"/>
             <pbid name="8abff377aec2400e9337fe9088e65d40"/>
             <playerParameter><![CDATA[]]></playerParameter>
             
