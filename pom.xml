@@ -4,7 +4,7 @@
 
 	<groupId>com.ooyala.facile</groupId>
 	<artifactId>facile</artifactId>
-	<version>2.5.4-SNAPSHOT</version>
+	<version>2.5.6-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>facile</name>
@@ -33,32 +33,32 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
-			<version>2.53.1</version>
+			<version>3.5.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
-			<version>2.53.1</version>
+			<version>3.5.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-ie-driver</artifactId>
-			<version>2.53.1</version>
+			<version>3.5.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-support</artifactId>
-			<version>2.53.1</version>
+			<version>3.5.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-chrome-driver</artifactId>
-			<version>2.53.1</version>
+			<version>3.5.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-safari-driver</artifactId>
-			<version>2.53.1</version>
+			<version>3.5.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -73,7 +73,7 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-api</artifactId>
-			<version>2.53.1</version>
+			<version>3.5.2</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>

@@ -221,7 +221,7 @@ public abstract class WebPage {
 				// // can't cast SafariWebElement to
 				// RenderedWebElement
 				if (identifier.isDisplayed())
-					System.out.print("   Object name Found: " + name);
+					logger.info("   Object name Found: " + name);
 				else {
 					logger.info("   ...looking for object name (" + name + ")");
 //					if (driver instanceof InternetExplorerDriver) {
@@ -2679,7 +2679,7 @@ public abstract class WebPage {
 				// // can't cast SafariWebElement to
 				// RenderedWebElement
 				if (identifier.isDisplayed())
-					System.out.print("   Object name Found: " + by);
+					logger.info("   Object name Found: " + by);
 				else {
 					logger.info("   ...looking for object name (" + by + ")");
 					if (driver instanceof InternetExplorerDriver) {
