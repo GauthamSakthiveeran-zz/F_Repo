@@ -77,6 +77,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link SkinJson }
+     * 
+     */
+    public SkinJson createSkinJson() {
+        return new SkinJson();
+    }
+
+    /**
      * Create an instance of {@link EmbedCode }
      * 
      */

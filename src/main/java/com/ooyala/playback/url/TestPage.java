@@ -36,7 +36,7 @@ public class TestPage {
 	 *         above in @Param
 	 */
 	public String getURL(String sslEnabled, String embedCode, String pCode, String pbid, String plugins,
-			String adPlugin, String additionalPlugin, String playerParameter, String v4Version) {
+			String adPlugin, String additionalPlugin, String playerParameter, String v4Version, String skinJson) {
 
 		String url = "";
 
@@ -71,6 +71,7 @@ public class TestPage {
 			String corePlayer = testpagedata.getCorePlayer();
 			String html5Skin = testpagedata.getHtml5Skin();
 			String skinAsset = testpagedata.getSkinAsset();
+			
 
 			if (plugins.isEmpty()) {
 				String buildId = System.getProperty(CommandLineParameters.valhalla_build_id);
@@ -90,7 +91,7 @@ public class TestPage {
 					+ "&pcode=" + pCode + "&core_player=" + URLEncoder.encode(corePlayer, "UTF8") + "&video_plugins="
 					+ URLEncoder.encode(vplugin, "UTF8") + "&html5_skin=" + URLEncoder.encode(html5Skin, "UTF8")
 					+ "&skin_asset=" + URLEncoder.encode(skinAsset, "UTF8") + "&skin_config="
-					+ URLEncoder.encode(testpagedata.getSkinConfigPlugin(plugins, adPlugin, additionalPlugin), "UTF8")
+					+ URLEncoder.encode(testpagedata.getSkinConfigPlugin(plugins, adPlugin, additionalPlugin,skinJson), "UTF8")
 					+ "&ad_plugin=" + URLEncoder.encode(testpagedata.getPluginForAd(adPlugin), "UTF8")
 					+ "&additional_plugins=" + URLEncoder.encode(additionalPlugins, "UTF8") + "&options="
 					+ URLEncoder.encode(playerParameter, "UTF8").replace("+", "%20");
