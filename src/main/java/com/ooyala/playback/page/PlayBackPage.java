@@ -551,6 +551,8 @@ public abstract class PlayBackPage extends WebPage {
 				return Integer.parseInt(driver.executeScript("return " + command + "").toString());
 			case "double":
 				return Double.parseDouble(driver.executeScript("return " + command + "").toString());
+            case "long":
+                return Long.parseLong(driver.executeScript("return " + command + "").toString());
 		}
 		return null;
 	}
