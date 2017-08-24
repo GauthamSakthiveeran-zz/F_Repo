@@ -47,6 +47,14 @@ public class TestPageData {
     private String adobeTVSDK;
     private PropertyReader properties;
     private InetAddress inetAddress;
+    private String captionsJson;
+    private String localizationJson;
+    private String screenScrubberJson;
+    private String shareJson;
+    private String adJson;
+    private String watermarkJson;
+    private String buttonsJson;
+    private String moreOptionsJson;
 
     /**
      * Initialize all the variable with respective value. Read the data from
@@ -86,6 +94,15 @@ public class TestPageData {
             valhalla_build_id = properties.getProperty("valhalla_build_id");
             adobeTVSDK = properties.getProperty("adobeTVSDK_plugin");
             inetAddress = InetAddress.getLocalHost();
+            captionsJson = properties.getProperty("Captions_json");
+            localizationJson = properties.getProperty("Localization_json");
+            screenScrubberJson = properties.getProperty("Screen_json");
+            shareJson = properties.getProperty("Share_json");
+            adJson = properties.getProperty("ad_json");
+            watermarkJson = properties.getProperty("watermark_json");
+            buttonsJson = properties.getProperty("buttons_json");
+            moreOptionsJson = properties.getProperty("moreOptions_json");
+            
         } catch (Exception e) {
             logger.error("Error while reading data from properties file :" + e.getMessage());
         }
@@ -426,7 +443,7 @@ public class TestPageData {
      *            ,adPlugin,additionalPlugin
      * @return returns skinConfig plugin url as per the Environment
      */
-    public String getSkinConfigPlugin(String plugins, String adPlugin, String additionalPlugin) {
+    public String getSkinConfigPlugin(String plugins, String adPlugin, String additionalPlugin, String skinJson) {
 
         if (plugins.isEmpty())
             return "";
@@ -441,6 +458,24 @@ public class TestPageData {
                 return skinConf + skinConfigForOSMF_IMA;
             }
         }
+        
+
+        if(skinJson.contains("CAPTIONS"))
+        	return skinConf + captionsJson;
+        else if(skinJson.contains("LOCALIZATION"))
+        	return skinConf + localizationJson;
+        else if(skinJson.contains("SCRUBBER"))
+        	return skinConf + screenScrubberJson;
+        else if(skinJson.contains("AD"))
+        	return skinConf + adJson;
+        else if(skinJson.contains("WATERMARK"))
+        	return skinConf + watermarkJson;
+        else if(skinJson.contains("SHARE"))
+        	return skinConf + shareJson;
+        else if(skinJson.contains("BUTTONS"))
+        	return skinConf + buttonsJson;
+        else if(skinJson.contains("MOREOPTIONS"))
+        	return skinConf + moreOptionsJson;
 
 		/*
 		 * if (plugins.contains(",")) { String str[] = plugins.split(","); for
