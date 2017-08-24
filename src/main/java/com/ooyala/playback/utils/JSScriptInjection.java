@@ -37,6 +37,26 @@ public class JSScriptInjection {
 		this.driver = driver;
 	}
 
+	public void injectScript() throws Exception {
+		if (urlObject != null && urlObject.getVideoPlugins().contains("ANALYTICS")) {
+			String hostUrl = getJsUrl("analytics/analytics_events.js");
+			scriptToInjectJS(hostUrl);
+		}
+		if (jsUrl != null && jsUrl.length > 0) {
+			for (String url : jsUrl) {
+				try {
+					logger.info("JS - " + url);
+					injectScript(url);
+                } catch (Exception e) {
+                    // e.printStackTrace();
+                    logger.error(e.getMessage());
+                    logger.info("Retrying...");
+                    injectScript(url);
+                }
+            }
+            extentTest.log(LogStatus.PASS, "Javascript injection is successful");
+        }
+    }
 
     private void injectScript(String scriptURL) throws Exception {
         JavascriptExecutor js = (JavascriptExecutor) driver;
