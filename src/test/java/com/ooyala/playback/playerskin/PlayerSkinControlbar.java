@@ -1,4 +1,4 @@
-package com.ooyala.playback.playerskin;
+package com.ooyala.playback.playerSkin;
 
 import java.util.Properties;
 
