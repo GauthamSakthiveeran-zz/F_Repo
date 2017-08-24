@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <test name="PlaybackMidrollPageLevelOverrideTests">
+
+        <url>
+            <description name="Freewheel:Main 3 Preroll Podded1"/>
+            <priority name="P2"></priority>
+            <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"vast":{"all_ads":[{"position":"5000","position_type":"t","tag_url":"//player.ooyala.com/static/v4/testAssets/vast3/BasicMidroll.xml"}]},"platform":"html5"}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Freewheel:Main 3 Preroll Podded"/>
+            <priority name="P2"></priority>
+            <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"vast":{"all_ads":[{"position":"5000","position_type":"t","tag_url":"//player.ooyala.com/static/v4/testAssets/vast3/BasicMidroll.xml"}]},"platform":"html5"}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Freewheel:Main 3 Preroll Podded2"/>
+            <priority name="P2"></priority>
+            <embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="OSMF,MAIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"vast":{"all_ads":[{"position":"5000","position_type":"t","tag_url":"//player.ooyala.com/static/v4/testAssets/vast3/BasicMidroll.xml"}]},"platform":"html5"}]]></playerParameter>
+        </url>
+
+    </test>
+</testdata>
