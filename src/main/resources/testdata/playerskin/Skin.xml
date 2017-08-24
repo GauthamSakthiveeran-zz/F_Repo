@@ -169,5 +169,55 @@
 	</test>
 	
 	
-
+<test name="PlayerSkinControlbar">
+		<url>
+			<description name="SkinConfigbuttonsDisabled:Bitmovin Elemental Delta HLS VOD" />
+            <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<pbid name="8a6765f99f4c4962a1fa71b366aef4aa" />
+			<streamType name="m3u8" />
+            <platformsSupported name="mac,windows"/>
+			<playerParameter></playerParameter>
+		</url>
+	</test>
+	<test name="PlayerSkinMoreOptions">
+		<url>
+			<description name="skinMoreOptions:Bitmovin Elemental Delta HLS VOD" />
+			<embed_code name="RmZW4zcDo6KqkTIhn1LnowEZyUYn5Tb2" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name=""/>
+			<pbid name="8a6765f99f4c4962a1fa71b366aef4aa" />
+			<streamType name="m3u8" />
+            <platformsSupported name="mac,windows"/>
+			<playerParameter></playerParameter>
+		</url>
+	</test>
+		<test name="PlayerSkinDiscoveryTest">
+        <url>
+            <description name="SkinDiscoveryTest:Discovery upnext Main"/>
+            <embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name="DISCOVERY"/>
+            <pbid name="421363178a5d493c9d4e74aadc1c2df9"/>
+            <playerParameter></playerParameter>
+        </url>
+	</test>
+	<test name="PlayerSkinLiveTest">
+	<url>
+            <description name="PlayerskinLiveFlagTest:Elemental Delta HLS Bitmovin Channel"/>
+            <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT"/>
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8abff377aec2400e9337fe9088e65d40"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+            
+        </url>
+	</test>
+	
 </testdata>
