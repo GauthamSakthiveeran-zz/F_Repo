@@ -87,7 +87,7 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	@Override
-	protected boolean clickOnIndependentElement(String elementKey) {
+	public boolean clickOnIndependentElement(String elementKey) {
 		try {
 			boolean flag = super.clickOnIndependentElement(elementKey);
 			if (!flag) {

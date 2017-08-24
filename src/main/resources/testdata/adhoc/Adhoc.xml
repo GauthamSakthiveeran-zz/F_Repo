@@ -73,6 +73,18 @@
             <playerParameter><![CDATA[]]></playerParameter>
             <platformsSupported name="mac,windows"/>
         </url>
+        <url>
+            <description name="Adhoc:Seekback From End and playback ios"/>
+            <priority name="P3"></priority>
+            <embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl"/>
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="378512f55dd44fc287d0fa609353c268"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+            <platformsSupported name="ios"/>
+        </url>
     </test>
 
     <test name="PageLevelOverrideForShareScreenTests">
@@ -152,6 +164,21 @@
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
+        </url>
+    </test>
+
+    <test name="SeekTillEndTests">
+        <url>
+            <description name="Adhoc:Seek Till End"/>
+            <priority name="P3"></priority>
+            <embed_code name="RqMHB4czooi67kYGJ9IhuLoC1Cb7VCN6"/>
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
+            <plugins name="MAIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="378512f55dd44fc287d0fa609353c268"/>
+            <platformsSupported name="ios"></platformsSupported>
+            <playerParameter><![CDATA[]]></playerParameter>
         </url>
     </test>
 </testdata>

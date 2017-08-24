@@ -432,8 +432,12 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         for (int i = 0; i < totalPlaylistVideo; i++) {
             try {
                 if (isElementPresent("SCROLL_DOWN")) {
-                    getWebElement("SCROLL_DOWN").click();
-                    logger.info("Scrolled down");
+                    if (getBrowser().equalsIgnoreCase("safari")) {
+                        clickOnHiddenElement("SCROLL_DOWN");
+                    } else {
+                        getWebElement("SCROLL_DOWN").click();
+                        logger.info("Scrolled down");
+                    }
                 } else {
                     extentTest.log(LogStatus.FAIL, "SCROLL_DOWN should be present.");
                     logger.error("SCROLL_DOWN should be present.");
@@ -453,8 +457,12 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
         for (int i = 0; i < totalPlaylistVideo; i++) {
             try {
                 if (isElementPresent("PREVIOUS_ARROW")) {
-                    getWebElement("PREVIOUS_ARROW").click();
-                    logger.info("scrolled up");
+                    if (getBrowser().equalsIgnoreCase("safari")) {
+                        clickOnHiddenElement("PREVIOUS_ARROW");
+                    } else {
+                        getWebElement("PREVIOUS_ARROW").click();
+                        logger.info("scrolled up");
+                    }
                 }
             } catch (Exception e) {
                 logger.info("No more previous button present");
@@ -497,8 +505,8 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
             if (!(flag && durationList.get(i).getText().contains(":"))) {
                 return false;
             }
-			/*
-			 * Only two values are displaying on asset. Issue id PLAYER-457.
+            /*
+             * Only two values are displaying on asset. Issue id PLAYER-457.
 			 * flag = flag && titleList.get(i).getText().contains("tb_");
 			 */
         }
