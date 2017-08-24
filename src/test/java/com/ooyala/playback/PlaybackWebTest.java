@@ -5,13 +5,13 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
-import java.net.URLEncoder;
-import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
@@ -36,6 +36,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
+
 import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
 import com.ooyala.facile.test.FacileTest;
@@ -51,9 +52,9 @@ import com.ooyala.playback.url.UrlObject;
 import com.ooyala.playback.utils.CommandLineParameters;
 import com.ooyala.playback.utils.JSScriptInjection;
 import com.ooyala.qe.common.exception.OoyalaException;
-import com.ooyala.qe.common.util.PropertyReader;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+
 import net.sf.uadetector.ReadableUserAgent;
 import net.sf.uadetector.UserAgentStringParser;
 import net.sf.uadetector.service.UADetectorServiceFactory;
@@ -464,8 +465,6 @@ public abstract class PlaybackWebTest extends FacileTest {
                         "http%3A%2F%2Fplayer.ooyala.com%2Fstatic%2Fv4%2Fcandidate%2Flatest%2Fskin-plugin%2Fhtml5-skin.min.js",
                         "");
     }
-    
-    
 
     protected Object executeScript(String script) {
         return ((JavascriptExecutor) webDriverFacile.get()).executeScript(script);

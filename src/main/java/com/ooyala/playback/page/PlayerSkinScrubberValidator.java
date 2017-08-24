@@ -9,9 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 import com.ooyala.qe.common.util.PropertyReader;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class PlayerSkinScrubberValidator extends PlayBackPage{
+public class PlayerSkinScrubberValidator extends PlayBackPage {
 
-	private static Logger logger = Logger.getLogger(PlayValidator.class);
+	private static Logger logger = Logger.getLogger(PlayerSkinScrubberValidator.class);
 
 	public PlayerSkinScrubberValidator(WebDriver webDriver) {
 		super(webDriver);
@@ -30,93 +30,73 @@ public class PlayerSkinScrubberValidator extends PlayBackPage{
 		addElementToPageElements("fullscreen");
 		addElementToPageElements("replay");
 		addElementToPageElements("fcc");
-		
 
 	}
 
-
-	//Function to Verify the CSS Property
-	public boolean verifyWebElementCSSColor(String element, String cssStyleProperty , String color)
-	{
+	// Function to Verify the CSS Property
+	public boolean verifyWebElementCSSColor(String element, String cssStyleProperty, String color) {
 		PropertyReader properties = null;
-		try
-		{
+		try {
 			properties = PropertyReader.getInstance("cssProperty.properties");
-			if((getWebElement(element).getCssValue(cssStyleProperty)).equalsIgnoreCase(properties.getProperty(color)))
-				{
+			if ((getWebElement(element).getCssValue(cssStyleProperty))
+					.equalsIgnoreCase(properties.getProperty(color))) {
 				logger.info("css Property Check Passed");
 				extentTest.log(LogStatus.INFO, "Color of Element matched." + element + "-" + color);
 				return true;
-				}
-			else
-			{
+			} else {
 				logger.info("css Property Check Failed");
 				extentTest.log(LogStatus.INFO, "Color of Element not matched." + element + "-" + color);
 				return false;
-				
+
 			}
-				
-			
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
+
+		} catch (Exception e) {
+			extentTest.log(LogStatus.FAIL, e);
 			return false;
 		}
-		
 
 	}
-	//Function to Mouseover and verify the CSS Properties
-	public boolean moveToWebElementCSSColor(String element, String cssStyleProperty , String color)
-	{
-	
+
+	// Function to Mouseover and verify the CSS Properties
+	public boolean moveToWebElementCSSColor(String element, String cssStyleProperty, String color) {
+
 		Boolean result = false;
-		
+
 		moveElement(getWebElement(element));
-		
-		result = verifyWebElementCSSColor( element,  cssStyleProperty ,  color);
-		
+
+		result = verifyWebElementCSSColor(element, cssStyleProperty, color);
+
 		return result;
-		
 
 	}
-
 
 	public boolean isCountdownNotPresent() {
-		if(waitOnElement("AD_COUNTDOWN", 10000) ) {
-			if(getWebElement("AD_COUNTDOWN").getText().contains("00:"))
-			{
-			logger.info("AdCountDown is found ");
-			extentTest.log(LogStatus.FAIL, "AdCountDown is found ");
-			return false;
-			}
-			else
-			{	
+		if (waitOnElement("AD_COUNTDOWN", 10000)) {
+			if (getWebElement("AD_COUNTDOWN").getText().contains("00:")) {
+				logger.info("AdCountDown is found ");
+				extentTest.log(LogStatus.FAIL, "AdCountDown is found ");
+				return false;
+			} else {
 				logger.info("AdCountDown not  found ");
 				extentTest.log(LogStatus.PASS, "AdCountDown is found ");
 				return true;
 			}
-		}
-		else
+		} else
 			return true;
 	}
-	
+
 	public boolean isElementNotPresentinAdScreen() {
-		if(waitOnElement("AD_MARQUEE", 3000) ) {
+		if (waitOnElement("AD_MARQUEE", 3000)) {
 
 			logger.info("AdMarque found ");
 			extentTest.log(LogStatus.FAIL, "AdMArque found ");
 			return false;
-			}
-			else
-			{	
-				logger.info("AdMarque not  found ");
-				extentTest.log(LogStatus.PASS, "AdMArque found ");
-				return true;
-			}
-
+		} else {
+			logger.info("AdMarque not  found ");
+			extentTest.log(LogStatus.PASS, "AdMArque found ");
+			return true;
 		}
-	
-	
-	
+
+	}
+
 }

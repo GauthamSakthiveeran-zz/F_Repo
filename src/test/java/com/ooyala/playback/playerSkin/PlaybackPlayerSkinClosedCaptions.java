@@ -21,50 +21,48 @@ public class PlaybackPlayerSkinClosedCaptions extends PlaybackWebTest {
 	private PlayerSkinCaptionsValidator skinCCValidator;
 	private EventValidator eventValidator;
 	private PauseValidator pause;
-    private static Logger logger = Logger
-            .getLogger(PlaybackPlayerSkinClosedCaptions.class);
+	private static Logger logger = Logger.getLogger(PlaybackPlayerSkinClosedCaptions.class);
 
+	public PlaybackPlayerSkinClosedCaptions() throws OoyalaException {
+		super();
+	}
 
-    public PlaybackPlayerSkinClosedCaptions() throws OoyalaException {
-        super();
-    }
+	@Test(groups = "PlayerSkin", dataProvider = "testUrls")
+	public void testFCCClosedcaption(String testName, UrlObject url) throws OoyalaException {
 
-    @Test(groups = "PlayerSkin", dataProvider = "testUrls")
-    public void testFCCClosedcaption(String testName, UrlObject url) throws OoyalaException {
+		boolean result = true;
+		try {
 
-        boolean result = true;
-        try {
-        	
-        	String urlLink = url.getUrl();
+			String urlLink = url.getUrl();
 
-            driver.get(urlLink);
+			driver.get(urlLink);
 
-            result = result && play.waitForPage();
-            
-            injectScript();
-            
-            result = result && play.validate("playing_1", 60000);
-            
-            result = result && eventValidator.playVideoForSometime(15);
-            
-            result = result && pause.validate("paused_1", 60000);
-            
-            result = result && skinCCValidator.verifyWebElementCSSProperty("CC_PREVIEW_TEXT_BG","background-color","red");
-            
-            result = result && skinCCValidator.verifyWebElementCSSProperty("CC_PREVIEW_TEXT","color","yellow");
-            
-            //result = result && skinValidator.verifyWebElementCSSColor("CC_PREVIEW_TEXT","font-size","Large");
-            
-            //result = result && skinValidator.verifyWebElementCSSColor("CC_PREVIEW_TEXT","text-shadow","Depressed");
+			result = result && play.waitForPage();
 
-            
-            
-            
-        } catch (Exception e) {
-            logger.error(e);
-            extentTest.log(LogStatus.FAIL, e.getMessage());
-            result = false;
-        }
-        Assert.assertTrue(result, "PlayerSkin CC tests failed :"+testName);
-    }
+			injectScript();
+
+			result = result && play.validate("playing_1", 60000);
+
+			result = result && eventValidator.playVideoForSometime(15);
+
+			result = result && pause.validate("paused_1", 60000);
+
+			result = result
+					&& skinCCValidator.verifyWebElementCSSProperty("CC_PREVIEW_TEXT_BG", "background-color", "red");
+
+			result = result && skinCCValidator.verifyWebElementCSSProperty("CC_PREVIEW_TEXT", "color", "yellow");
+
+			// result = result &&
+			// skinValidator.verifyWebElementCSSColor("CC_PREVIEW_TEXT","font-size","Large");
+
+			// result = result &&
+			// skinValidator.verifyWebElementCSSColor("CC_PREVIEW_TEXT","text-shadow","Depressed");
+
+		} catch (Exception e) {
+			logger.error(e);
+			extentTest.log(LogStatus.FAIL, e.getMessage());
+			result = false;
+		}
+		Assert.assertTrue(result, "PlayerSkin CC tests failed :" + testName);
+	}
 }
