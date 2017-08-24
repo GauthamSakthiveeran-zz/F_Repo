@@ -42,6 +42,15 @@ import javax.xml.bind.annotation.XmlType;
  *             &lt;/simpleContent>
  *           &lt;/complexType>
  *         &lt;/element>
+ *         &lt;element name="skinJson">
+ *           &lt;complexType>
+ *             &lt;simpleContent>
+ *               &lt;extension base="&lt;http://www.w3.org/2001/XMLSchema>string">
+ *                 &lt;attribute name="name" type="{http://www.w3.org/2001/XMLSchema}string" />
+ *               &lt;/extension>
+ *             &lt;/simpleContent>
+ *           &lt;/complexType>
+ *         &lt;/element>
  *         &lt;element name="embed_code">
  *           &lt;complexType>
  *             &lt;simpleContent>
@@ -204,6 +213,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "description",
     "priority",
+    "skinJson",
     "embedCode",
     "pcode",
     "plugins",
@@ -227,6 +237,8 @@ public class Url {
     protected Description description;
     @XmlElement(required = true)
     protected Priority priority;
+    @XmlElement(required = true)
+    protected SkinJson skinJson;
     @XmlElement(name = "embed_code", required = true)
     protected EmbedCode embedCode;
     @XmlElement(required = true)
@@ -297,6 +309,30 @@ public class Url {
      */
     public void setPriority(Priority value) {
         this.priority = value;
+    }
+
+    /**
+     * Gets the value of the skinJson property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link SkinJson }
+     *     
+     */
+    public SkinJson getSkinJson() {
+        return skinJson;
+    }
+
+    /**
+     * Sets the value of the skinJson property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link SkinJson }
+     *     
+     */
+    public void setSkinJson(SkinJson value) {
+        this.skinJson = value;
     }
 
     /**
