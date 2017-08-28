@@ -53,6 +53,8 @@ public class TestPageData {
     private String shareJson;
     private String adJson;
     private String watermarkJson;
+    private String buttonsJson;
+    private String moreOptionsJson;
 
     /**
      * Initialize all the variable with respective value. Read the data from
@@ -98,6 +100,8 @@ public class TestPageData {
             shareJson = properties.getProperty("Share_json");
             adJson = properties.getProperty("ad_json");
             watermarkJson = properties.getProperty("watermark_json");
+            buttonsJson = properties.getProperty("buttons_json");
+            moreOptionsJson = properties.getProperty("moreOptions_json");
             
         } catch (Exception e) {
             logger.error("Error while reading data from properties file :" + e.getMessage());
@@ -468,6 +472,10 @@ public class TestPageData {
         	return skinConf + watermarkJson;
         else if(skinJson.contains("SHARE"))
         	return skinConf + shareJson;
+        else if(skinJson.contains("BUTTONS"))
+        	return skinConf + buttonsJson;
+        else if(skinJson.contains("MOREOPTIONS"))
+        	return skinConf + moreOptionsJson;
 
 		/*
 		 * if (plugins.contains(",")) { String str[] = plugins.split(","); for
