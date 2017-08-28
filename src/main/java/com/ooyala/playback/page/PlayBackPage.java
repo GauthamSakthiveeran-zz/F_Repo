@@ -531,24 +531,18 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	public boolean validateVideoStartTime(double timeToBeVerifiedAgainst) {
-		
-		if(driver.getCurrentUrl().contains("adobe_html5")){
+
+		if (driver.getCurrentUrl().contains("adobe_html5")) {
 			extentTest.log(LogStatus.INFO, "pp.getPlayAheadTime behaves wierdly for adobe_html5");
 			return true;
 		}
-		
+
 		Double playHeadTime = getPlayAheadTime();
 		extentTest.log(LogStatus.INFO, "Playhead time is :" + playHeadTime);
 		logger.info("Playhead time is :" + playHeadTime);
-		if (playHeadTime > timeToBeVerifiedAgainst) {
-			if (timeToBeVerifiedAgainst == 1.0) {
-				extentTest.log(LogStatus.FAIL, "Video does not start from the beginning");
-				logger.error("Video does not start from begining");
-			} else {
-				extentTest.log(LogStatus.FAIL, "Video does not start from the " + timeToBeVerifiedAgainst);
-				logger.error("Video does not start from " + timeToBeVerifiedAgainst);
-			}
-
+		if (playHeadTime > timeToBeVerifiedAgainst || playHeadTime < (timeToBeVerifiedAgainst - 1)) {
+			extentTest.log(LogStatus.FAIL, "Video does not start from the " + (timeToBeVerifiedAgainst-1));
+			logger.error("Video does not start from " + (timeToBeVerifiedAgainst-1));
 			return false;
 		}
 		extentTest.log(LogStatus.PASS, "Video starts from the correct point.");

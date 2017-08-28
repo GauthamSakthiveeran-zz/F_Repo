@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 
 /**
@@ -42,12 +41,13 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 		// for discovery
 		if (!waitOnElement("CONTENT_SCREEN",2000)){
 			if (!waitOnElement("PAUSE_SCREEN", 2000)){
-				if (getBrowser().contains("safari")) {
+				/*if (getBrowser().contains("safari")) {
 					clickOnHiddenElement("PAUSE_BUTTON");
 				} else {
 					extentTest.log(LogStatus.FAIL, "Wait on PAUSE_SCREEN failed");
 					return false;
-				}
+				}*/
+				extentTest.log(LogStatus.FAIL, "Wait on PAUSE_SCREEN failed");
 			}
 		}
 

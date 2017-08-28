@@ -10,6 +10,7 @@ import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.ReplayValidator;
 import com.ooyala.playback.page.StreamValidator;
+import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -25,6 +26,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
     private SeekAction seekAction;
     private StreamValidator streamTypeValidator;
     private ReplayValidator replayValidator;
+    private PlayAction playAction;
 
     public BasicPlaybackTests() throws OoyalaException {
         super();
@@ -51,8 +53,10 @@ public class BasicPlaybackTests extends PlaybackWebTest {
             result = result && pause.validate("paused_1", 60000);
 
             result = result && streamTypeValidator.setStreamType(url.getStreamType()).validate("", 1000);
-
-            result = result && play.validate("playing_2", 60000);
+            
+            result = result && playAction.startAction();
+            
+            result = result && eventValidator.validate("playing_2", 60000);
             
             boolean isLive = testName.contains("Main Akamai HLS Remote Asset") || testName.contains("Bitmovin Akamai HLS Remote Asset");
 
