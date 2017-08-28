@@ -2,7 +2,7 @@ package com.ooyala.playback.amf.vast.pageleveloverride;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.PageLevelOverridingValidator;
+import com.ooyala.playback.page.VastPageLevelOverridingValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.action.PlayAction;
@@ -21,7 +21,7 @@ public class PlaybackPreMidPostPoddedPageLevelOverrideTests extends PlaybackWebT
         super();
     }
     private PlayValidator playValidator;
-    private PageLevelOverridingValidator pageOverride;
+    private VastPageLevelOverridingValidator pageOverride;
     private PlayAction playAction;
     private EventValidator event;
     private PoddedAdValidator poddedAdValidator;
