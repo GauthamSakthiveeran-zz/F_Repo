@@ -8,17 +8,18 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
 
-public class PageLevelOverridingValidator extends PlayBackPage implements PlaybackValidator {
+public class VastPageLevelOverridingValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger log = Logger.getLogger(PageLevelOverridingValidator.class);
+	public static Logger log = Logger.getLogger(VastPageLevelOverridingValidator.class);
 
-	public PageLevelOverridingValidator(WebDriver webDriver) {
+	public VastPageLevelOverridingValidator(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(driver, this);
+        addElementToPageElements("time");
 	}
 
     public String adType;
-	public PageLevelOverridingValidator setAdType(String adType){
+	public VastPageLevelOverridingValidator setAdType(String adType){
 		this.adType = adType;
 		return this;
 	}
@@ -80,8 +81,8 @@ public class PageLevelOverridingValidator extends PlayBackPage implements Playba
 
             if (adPositionType.equalsIgnoreCase("p")){
                 extentTest.log(LogStatus.INFO,"Ad Position type is p");
-                String totalVideoTimeInString = driver.findElement(By.xpath(".//span[@class='oo-total-time']")).getText();
-                int totalVideoTime = (60 * Integer.parseInt(totalVideoTimeInString.split(":")[0])) + Integer.parseInt(totalVideoTimeInString.split(":")[1]);
+                String playheadTime = getWebElement("PLAYHEAD_TIME").getText();
+                int totalVideoTime = (60 * Integer.parseInt(playheadTime.split(":")[0])) + Integer.parseInt(playheadTime.split(":")[1]);
                 adPosition = (adPosition*totalVideoTime)/100;
                 switch (adType) {
                     case "preroll":
@@ -129,8 +130,8 @@ public class PageLevelOverridingValidator extends PlayBackPage implements Playba
                 }
             }else {
                 if (adType.equalsIgnoreCase("postroll")){
-                    String totalVideoTimeInString = driver.findElement(By.xpath(".//a[@class='oo-time-duration oo-control-bar-duration']/span[1]")).getText();
-                    int videoEndTime = (60 * Integer.parseInt(totalVideoTimeInString.split(":")[0])) + Integer.parseInt(totalVideoTimeInString.split(":")[1]);
+                    String totalVideoduration = getWebElement("TOTAL_VIDEO_DURATION").getText();
+                    int videoEndTime = (60 * Integer.parseInt(totalVideoduration.split(":")[0])) + Integer.parseInt(totalVideoduration.split(":")[1]);
                     extentTest.log(LogStatus.INFO,"videoEndTime after ad's Playback is :"+videoEndTime);
                     if (videoEndTime != adPosition){
                         extentTest.log(LogStatus.FAIL,"VIDEO end Time is not matching Actual Tme : "+videoEndTime+" and expected Time : "+adPosition);
