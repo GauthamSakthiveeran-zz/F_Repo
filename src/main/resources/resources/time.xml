@@ -1,0 +1,6 @@
+<elements area="time">
+    <element key="PLAYHEAD_TIME" findBy="xPath"
+             xPath="//span[@class='oo-total-time']"/>
+    <element key="TOTAL_VIDEO_DURATION" findBy="xPath"
+             xPath="//a[@class='oo-time-duration oo-control-bar-duration']/span[1]"/>
+</elements>
