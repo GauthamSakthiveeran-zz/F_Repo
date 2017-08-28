@@ -4,7 +4,7 @@
 
 	<groupId>com.ooyala.playbackweb</groupId>
 	<artifactId>playbackweb</artifactId>
-	<version>1.3-SNAPSHOT</version>
+	<version>1.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>playbackweb</name>
@@ -45,7 +45,7 @@
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>21.0</version>
+			<version>22.0</version>
 		</dependency>
 
 		<dependency>
