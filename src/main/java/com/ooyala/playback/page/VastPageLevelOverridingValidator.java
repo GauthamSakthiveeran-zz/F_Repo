@@ -10,12 +10,13 @@ import java.util.concurrent.TimeUnit;
 
 public class VastPageLevelOverridingValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger log = Logger.getLogger(VastPageLevelOverridingValidator.class);
+	public static Logger LOG = Logger.getLogger(VastPageLevelOverridingValidator.class);
 
 	public VastPageLevelOverridingValidator(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(driver, this);
         addElementToPageElements("time");
+        addElementToPageElements("pause");
 	}
 
     public String adType;
@@ -23,6 +24,12 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
 		this.adType = adType;
 		return this;
 	}
+
+	boolean isMoreAds=false;
+    public VastPageLevelOverridingValidator isMoreThanOneAd(boolean isMoreAds){
+	    this.isMoreAds = isMoreAds;
+	    return this;
+    }
 
     /**
      *  Validating adPosition type and ad position and based on it checking if that particular ad starts from given ad position....
@@ -33,14 +40,29 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
      * @throws Exception
      */
 	public boolean validate(String element, int timeout) throws Exception {
-		String adPositionType;
-		long adPosition;
+		String adPositionType="";
+		long adPosition=0L;
 		adType = adType.toLowerCase();
 		long videoDuration = (long)executeJsScript("pp.getDuration().toFixed()","long");
 		extentTest.log(LogStatus.INFO,"Video duration is :"+videoDuration);
 
-        adPositionType = (String) executeJsScript("pp.parameters.vast.all_ads[0].position_type","string");
-        adPosition = (Long) executeJsScript("pp.parameters.vast.all_ads[0].position","long");
+		if (isMoreAds){
+            if (adType.equalsIgnoreCase("preroll")){
+                adPositionType = (String) executeJsScript("pp.parameters.vast.all_ads[2].position_type", "string");
+                adPosition = (Long) executeJsScript("pp.parameters.vast.all_ads[2].position", "long");
+            }
+            if (adType.equalsIgnoreCase("midroll")){
+                adPositionType = (String) executeJsScript("pp.parameters.vast.all_ads[1].position_type", "string");
+                adPosition = (Long) executeJsScript("pp.parameters.vast.all_ads[1].position", "long");
+            }
+            if (adType.equalsIgnoreCase("postroll")){
+                adPositionType = (String) executeJsScript("pp.parameters.vast.all_ads[0].position_type", "string");
+                adPosition = (Long) executeJsScript("pp.parameters.vast.all_ads[0].position", "long");
+            }
+        }else {
+            adPositionType = (String) executeJsScript("pp.parameters.vast.all_ads[0].position_type", "string");
+            adPosition = (Long) executeJsScript("pp.parameters.vast.all_ads[0].position", "long");
+        }
 
 		if (adType.equalsIgnoreCase("Preroll") ||
 				adType.equalsIgnoreCase("Midroll") ||
@@ -84,6 +106,25 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
                 String playheadTime = getWebElement("PLAYHEAD_TIME").getText();
                 int totalVideoTime = (60 * Integer.parseInt(playheadTime.split(":")[0])) + Integer.parseInt(playheadTime.split(":")[1]);
                 adPosition = (adPosition*totalVideoTime)/100;
+                try {
+                    for (int i=0 ; i<=5 ; i++){
+                        moveElement(getWebElement("HIDDEN_CONTROL_BAR"));
+                        playheadTime = driver.findElement(By.xpath(".//span[@class='oo-total-time']")).getText();
+                        if (!playheadTime.equalsIgnoreCase("")){
+                            break;
+                        }
+                        Thread.sleep(1000);
+                    }
+                    totalVideoTime = (60 * Integer.parseInt(playheadTime.split(":")[0])) + Integer.parseInt(playheadTime.split(":")[1]);
+                    extentTest.log(LogStatus.INFO,"Total Duration : "+totalVideoTime);
+                } catch (Exception nulp){
+                    nulp.getStackTrace();
+                    extentTest.log(LogStatus.FAIL,"Playhead time is not showing on control bar ...\n"+nulp.getMessage());
+                    return false;
+                }
+                videoDuration = (long)executeJsScript("pp.getDuration().toFixed()","long");
+                adPosition = (adPosition*videoDuration)/100;
+                extentTest.log(LogStatus.INFO,"Ad Postion : "+adPosition);
                 switch (adType) {
                     case "preroll":
                         extentTest.log(LogStatus.INFO,"Checking Ad Position type for preroll");
@@ -95,7 +136,7 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
                         break;
                     case "midroll":
                         extentTest.log(LogStatus.INFO,"Checking Ad Position type for midroll");
-                        if (!(adPosition > 0 && adPosition < totalVideoTime)) {
+                        if (!(adPosition > 0 && adPosition < 100)) {
                             extentTest.log(LogStatus.FAIL, "adPosition must be between 0 and 100 but getting " + adPosition + "%");
                             return false;
                         }
@@ -125,7 +166,7 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
                 extentTest.log(LogStatus.INFO,"videoStartTime after ad's Playback is :"+videoStartTime);
 
                 if(!(videoStartTime <= (adPosition+2))){
-                    extentTest.log(LogStatus.FAIL,"VIDEO is not starting from 0 sec instead it starts from "+videoStartTime);
+                    extentTest.log(LogStatus.FAIL,"VIDEO is not starting from "+adPosition+" sec instead it starts from "+videoStartTime);
                     return false;
                 }
             }else {
