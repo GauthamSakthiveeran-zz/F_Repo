@@ -103,13 +103,12 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
 
             if (adPositionType.equalsIgnoreCase("p")){
                 extentTest.log(LogStatus.INFO,"Ad Position type is p");
-                String playheadTime = getWebElement("PLAYHEAD_TIME").getText();
-                int totalVideoTime = (60 * Integer.parseInt(playheadTime.split(":")[0])) + Integer.parseInt(playheadTime.split(":")[1]);
-                adPosition = (adPosition*totalVideoTime)/100;
+                String playheadTime="";
+                int totalVideoTime = 0;
                 try {
                     for (int i=0 ; i<=5 ; i++){
                         moveElement(getWebElement("HIDDEN_CONTROL_BAR"));
-                        playheadTime = driver.findElement(By.xpath(".//span[@class='oo-total-time']")).getText();
+                        playheadTime = getWebElement("PLAYHEAD_TIME").getText();
                         if (!playheadTime.equalsIgnoreCase("")){
                             break;
                         }
@@ -165,7 +164,7 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
                 int videoStartTime = (int) executeJsScript("pp.getPlayheadTime().toFixed()","int");
                 extentTest.log(LogStatus.INFO,"videoStartTime after ad's Playback is :"+videoStartTime);
 
-                if(!(videoStartTime <= (adPosition+2))){
+                if(!(videoStartTime <= (adPosition+3))){
                     extentTest.log(LogStatus.FAIL,"VIDEO is not starting from "+adPosition+" sec instead it starts from "+videoStartTime);
                     return false;
                 }
