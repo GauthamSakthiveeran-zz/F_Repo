@@ -44,12 +44,19 @@ public class APIUtils {
 		try {
 			neoRequest = new NeoRequest();
 			properties = PropertyReader.getInstance("api.properties");
-			backlot_api_endPoint = properties.getProperty("backlot_api_endPoint");
+			String sasStaging = System.getProperty(CommandLineParameters.runSASStaging);
+
+			backlot_api_endPoint = sasStaging == null || sasStaging.isEmpty() || sasStaging.equalsIgnoreCase("false")
+					? properties.getProperty("backlot_api_endPoint")
+					: properties.getProperty("backlot_api_endPoint_staging");
+
 			version = properties.getProperty("version");
 			assets = properties.getProperty("assets");
 			publishing_rules = properties.getProperty("publishing_rules");
 			publishing_rule = properties.getProperty("publishing_rule");
-			rl_api_endpoint = properties.getProperty("rl_api_endpoint");
+
+			rl_api_endpoint = sasStaging == null || sasStaging.isEmpty() || sasStaging.equalsIgnoreCase("false")
+					? properties.getProperty("rl_api_endpoint") : properties.getProperty("rl_api_endpoint_staging");
 			entitlements = properties.getProperty("entitlements");
 			providers = properties.getProperty("providers");
 			accounts = properties.getProperty("accounts");

@@ -49,9 +49,9 @@ public class ErrorDescriptionValidator extends PlayBackPage implements PlaybackV
 		return true;
 	}
 	
-	int count =3;
-
 	private boolean errorDescription() {
+		
+		int count =5;
 
 		logger.info("Checking error description");
 
