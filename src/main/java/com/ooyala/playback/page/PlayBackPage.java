@@ -375,17 +375,6 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	public boolean isPageLoaded() {
-		/*
-		 * WebDriverWait wait = new WebDriverWait(driver, 30); wait.until(new
-		 * Predicate<WebDriver>() { public boolean apply(WebDriver webDriver) {
-		 * return
-		 * driver.executeScript("return typeof pp").toString().equals("object");
-		 * } }); if
-		 * (!driver.executeScript("return typeof pp").toString().equals("object"
-		 * )) { logger.error("pp object is not loaded");
-		 * extentTest.log(LogStatus.FAIL, "pp object is not loaded"); return
-		 * false; } return true;
-		 */
 		int count = 120;
 		while (count >= 0) {
 			if (driver.executeScript("return typeof pp").toString().equals("object")) {
