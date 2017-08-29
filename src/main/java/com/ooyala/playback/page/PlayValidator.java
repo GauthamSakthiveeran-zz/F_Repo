@@ -95,7 +95,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		if (isVideoPluginPresent("ANALYTICS")) {
 			if (!(isAnalyticsElementPreset("analytics_video_" + element)
 					&& isAnalyticsElementPreset("analytics_video_requested_" + element))) {
-				return false;
+				extentTest.log(LogStatus.FAIL, "Issue with Analytics elements.");
 			}
 		}
 

@@ -52,7 +52,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
 
             result = result && pause.validate("paused_1", 60000);
 
-            result = result && streamTypeValidator.setStreamType(url.getStreamType()).validate("", 1000);
+            streamTypeValidator.setStreamType(url.getStreamType()).validate("", 1000);
             
             result = result && playAction.startAction();
             
@@ -65,6 +65,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
             	result = result && eventValidator.validate("playing_3", 10000);
                 result = result && eventValidator.validate("played_1", 120000);
                 result = result && replayValidator.validate("replay_1", 30000);
+                result = result && eventValidator.playVideoForSometime(3);
                 result = result && seekAction.seekToMid().startAction();
                 result = result && eventValidator.validate("playing_5", 10000);
                 result = result && seekAction.setTime(2).startAction();
