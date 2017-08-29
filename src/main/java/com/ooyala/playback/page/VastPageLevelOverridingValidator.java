@@ -43,6 +43,9 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
 		String adPositionType="";
 		long adPosition=0L;
 		adType = adType.toLowerCase();
+		if (!adType.equalsIgnoreCase("postroll")) {
+            driver.executeScript("pp.pause()");
+        }
 		long videoDuration = (long)executeJsScript("pp.getDuration().toFixed()","long");
 		extentTest.log(LogStatus.INFO,"Video duration is :"+videoDuration);
 
@@ -103,25 +106,7 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
 
             if (adPositionType.equalsIgnoreCase("p")){
                 extentTest.log(LogStatus.INFO,"Ad Position type is p");
-                String playheadTime="";
                 int totalVideoTime = 0;
-                try {
-                    for (int i=0 ; i<=5 ; i++){
-                        moveElement(getWebElement("HIDDEN_CONTROL_BAR"));
-                        playheadTime = getWebElement("PLAYHEAD_TIME").getText();
-                        if (!playheadTime.equalsIgnoreCase("")){
-                            break;
-                        }
-                        Thread.sleep(1000);
-                    }
-                    totalVideoTime = (60 * Integer.parseInt(playheadTime.split(":")[0])) + Integer.parseInt(playheadTime.split(":")[1]);
-                    extentTest.log(LogStatus.INFO,"Total Duration : "+totalVideoTime);
-                } catch (Exception nulp){
-                    nulp.getStackTrace();
-                    extentTest.log(LogStatus.FAIL,"Playhead time is not showing on control bar ...\n"+nulp.getMessage());
-                    return false;
-                }
-                videoDuration = (long)executeJsScript("pp.getDuration().toFixed()","long");
                 adPosition = (adPosition*videoDuration)/100;
                 extentTest.log(LogStatus.INFO,"Ad Postion : "+adPosition);
                 switch (adType) {
@@ -153,13 +138,13 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
             }
 
             if (!adType.equalsIgnoreCase("postroll")) {
-                while (!(boolean) executeJsScript("pp.isPlaying()", "boolean")) {
+                /*while (!(boolean) executeJsScript("pp.isPlaying()", "boolean")) {
                     Thread.sleep(2000);
                     if (!loadingSpinner()) {
                         extentTest.log(LogStatus.ERROR, "loading spinner appears for long time after ad gets played");
                         return false;
                     }
-                }
+                }*/
 
                 int videoStartTime = (int) executeJsScript("pp.getPlayheadTime().toFixed()","int");
                 extentTest.log(LogStatus.INFO,"videoStartTime after ad's Playback is :"+videoStartTime);
@@ -180,6 +165,9 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
                 }
             }
 		}
+        if (!adType.equalsIgnoreCase("postroll")) {
+            driver.executeScript("pp.play()");
+        }
 		return true;
 	}
 }
