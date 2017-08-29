@@ -84,15 +84,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 		if (!getBrowser().toLowerCase().contains("explorer"))
 			if (!waitOnElement("PLAYING_SCREEN", 4000)) {
-				if (getBrowser().contains("safari")) { // only for automation 
-					Thread.sleep(30000);
-					if (!clickOnIndependentElement("PLAY_BUTTON")) {
-						extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
-						return false;
-					}
-				} else {
-					extentTest.log(LogStatus.FAIL, "PLAYING_SCREEN not found.");
-				}
+				extentTest.log(LogStatus.FAIL, "PLAYING_SCREEN not found.");
 			}
 
 		if (!getBrowser().equalsIgnoreCase("internet explorer")) {
