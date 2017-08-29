@@ -306,8 +306,8 @@ public class UrlGenerator {
 						urlsGenerated.put(desc, urlObject);
 					}
 				} else {
-					logger.error("test name from xml file : " + data.getName() + " and Actal test name: " + testName
-							+ "are not matching");
+					/*logger.error("test name from xml file : " + data.getName() + " and Actal test name: " + testName
+							+ "are not matching");*/
 				}
 			}
 		} catch (Exception ex) {
