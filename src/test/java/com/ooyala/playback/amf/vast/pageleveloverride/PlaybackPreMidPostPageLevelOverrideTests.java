@@ -5,6 +5,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.VastPageLevelOverridingValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -22,6 +23,7 @@ public class PlaybackPreMidPostPageLevelOverrideTests extends PlaybackWebTest {
     private VastPageLevelOverridingValidator pageOverride;
     private PlayAction playAction;
     private EventValidator event;
+    private SeekAction seekAction;
     private static Logger logger = Logger.getLogger(PlaybackPreMidPostPageLevelOverrideTests.class);
 
     @Test(dataProvider = "testUrls",groups = "pageLevelOverriding")
@@ -31,15 +33,20 @@ public class PlaybackPreMidPostPageLevelOverrideTests extends PlaybackWebTest {
             driver.get(url.getUrl());
             result = result && playValidator.waitForPage();
             injectScript();
+            pageOverride.getTotalDuration();
             result = result && playAction.startAction();
             result = result && event.validate("PreRoll_willPlaySingleAd_1", 60000);
-            result = result && event.validate("singleAdPlayed_1", 120000);
+            result = result && event.validate("adsPlayed_1", 120000);
             result = result && event.validate("playing_1",10000);
-            result = result && pageOverride.setAdType("Preroll").validate("",10000);
+            result = result && pageOverride.isMoreThanOneAd(true).setAdType("Preroll").validate("",10000);
             result = result && event.validate("playing_2",10000);
-            result = result && pageOverride.setAdType("midroll").validate("",300000);
+            result = result && event.validate("adsPlayed_2",30000);
+            result = result && pageOverride.setAdType("midroll").validate("",10000);
             result = result && event.validate("playing_3",10000);
-            result = result && pageOverride.setAdType("postroll").validate("",300000);
+            result = result && seekAction.seek(10,true);
+            result = result && event.validate("seeked_1",10000);
+            result = result && event.validate("adsPlayed_3",20000);
+            result = result && pageOverride.isMoreThanOneAd(true).setAdType("postroll").validate("",10000);
             result = result && event.validate("played_1",10000);
         }catch (Exception e){
             extentTest.log(LogStatus.FAIL,e.getMessage());

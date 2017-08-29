@@ -31,6 +31,12 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
 	    return this;
     }
 
+    long videoDuration;
+    public void getTotalDuration(){
+        videoDuration = Integer.parseInt(driver.executeScript("return pp.getDuration()").toString());
+        videoDuration = TimeUnit.MILLISECONDS.toSeconds(videoDuration);
+    }
+
     /**
      *  Validating adPosition type and ad position and based on it checking if that particular ad starts from given ad position....
      *  ad postion type would be either "t" or "p" where t=time which varies from 0 to 100 and
@@ -46,7 +52,6 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
 		if (!adType.equalsIgnoreCase("postroll")) {
             driver.executeScript("pp.pause()");
         }
-		long videoDuration = (long)executeJsScript("pp.getDuration().toFixed()","long");
 		extentTest.log(LogStatus.INFO,"Video duration is :"+videoDuration);
 
 		if (isMoreAds){
@@ -86,14 +91,14 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
                     case "midroll":
                         extentTest.log(LogStatus.INFO,"Checking Ad Position type for midroll");
                         if (!(adPosition > 0 && adPosition < videoDuration)) {
-                            extentTest.log(LogStatus.FAIL, "adPosition must be 0ms but getting " + adPosition + " milliseconds");
+                            extentTest.log(LogStatus.FAIL, "adPosition must be between 0ms and total duration of video but getting " + adPosition + " milliseconds");
                             return false;
                         }
                         extentTest.log(LogStatus.INFO,"Checked Ad Position type for midroll");
                         break;
                     case "postroll":
                         extentTest.log(LogStatus.INFO,"Checking Ad Position type for postroll");
-                        String totalVideoTimeInString = driver.findElement(By.xpath(".//span[@class='oo-total-time']")).getText();
+                        String totalVideoTimeInString = getWebElement("PLAYHEAD_TIME").getText();
                         int totalVideoTime = (60 * Integer.parseInt(totalVideoTimeInString.split(":")[0])) + Integer.parseInt(totalVideoTimeInString.split(":")[1]);
                         if (adPosition != totalVideoTime) {
                             extentTest.log(LogStatus.FAIL, "adPosition must be "+adPosition+" but getting " + videoDuration + " milliseconds");
@@ -106,7 +111,6 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
 
             if (adPositionType.equalsIgnoreCase("p")){
                 extentTest.log(LogStatus.INFO,"Ad Position type is p");
-                int totalVideoTime = 0;
                 adPosition = (adPosition*videoDuration)/100;
                 extentTest.log(LogStatus.INFO,"Ad Postion : "+adPosition);
                 switch (adType) {
@@ -128,7 +132,7 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
                         break;
                     case "postroll":
                         extentTest.log(LogStatus.INFO,"Checking Ad Position type for postroll");
-                        if (adPosition != totalVideoTime) {
+                        if (adPosition != videoDuration) {
                             extentTest.log(LogStatus.FAIL, "adPosition must be "+adPosition+" but getting " + videoDuration + " milliseconds");
                             return false;
                         }
