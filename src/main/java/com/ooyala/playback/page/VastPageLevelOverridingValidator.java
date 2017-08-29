@@ -72,9 +72,9 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
             adPosition = (Long) executeJsScript("pp.parameters.vast.all_ads[0].position", "long");
         }
 
-		if (adType.equalsIgnoreCase("Preroll") ||
+		/*if (adType.equalsIgnoreCase("Preroll") ||
 				adType.equalsIgnoreCase("Midroll") ||
-				adType.equalsIgnoreCase("Postroll")) {
+				adType.equalsIgnoreCase("Postroll")) {*/
 
 			if (adPositionType.equalsIgnoreCase("t")) {
                 adPosition = TimeUnit.MILLISECONDS.toSeconds(adPosition);
@@ -105,6 +105,15 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
                             return false;
                         }
                         extentTest.log(LogStatus.INFO,"Checked Ad Position type for postroll");
+                        break;
+
+                    case "overlay":
+                        extentTest.log(LogStatus.INFO,"Checking Ad Position type for preroll overlay");
+                        if (adPosition != 0) {
+                            extentTest.log(LogStatus.FAIL, "adPosition must be 0ms but getting " + adPosition + " milliseconds");
+                            return false;
+                        }
+                        extentTest.log(LogStatus.INFO,"Checked Ad Position type for preroll overlay");
                         break;
                 }
             }
@@ -138,6 +147,15 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
                         }
                         extentTest.log(LogStatus.INFO,"Checked Ad Position type for postroll");
                         break;
+
+                    case "overlay":
+                        extentTest.log(LogStatus.INFO,"Checking Ad Position type for preroll overlay");
+                        if (adPosition != 0) {
+                            extentTest.log(LogStatus.FAIL, "adPosition must be 0ms but getting " + adPosition + " milliseconds");
+                            return false;
+                        }
+                        extentTest.log(LogStatus.INFO,"Checked Ad Position type for preroll overlay");
+                        break;
                 }
             }
 
@@ -168,7 +186,7 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
                     }
                 }
             }
-		}
+		//}
         if (!adType.equalsIgnoreCase("postroll")) {
             driver.executeScript("pp.play()");
         }
