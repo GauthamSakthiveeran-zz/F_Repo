@@ -3,7 +3,6 @@ package com.ooyala.playback.url;
 import java.net.InetAddress;
 
 import org.apache.log4j.Logger;
-import org.mortbay.log.Log;
 
 import com.ooyala.playback.enums.PlayerPropertyValue;
 import com.ooyala.playback.httpserver.SimpleHttpServer;
