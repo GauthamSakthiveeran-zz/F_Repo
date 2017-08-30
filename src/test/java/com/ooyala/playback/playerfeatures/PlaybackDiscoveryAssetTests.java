@@ -51,7 +51,7 @@ public class PlaybackDiscoveryAssetTests extends PlaybackWebTest {
 
             result = result && seekAction.setTime(20).fromLast().startAction();
 
-            result = result && eventValidator.validate("played_1", 60000);
+            result = result && eventValidator.skipScrubberValidation().validate("played_1", 60000);
 
         } catch (Exception e) {
             logger.error(e.getMessage());

@@ -34,7 +34,7 @@
 			<embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN" />
-			<adPlugins name="IMA" />
+			<adPlugins name="IMA" clickthrough="false"/>
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter>
@@ -202,7 +202,7 @@
 			<embed_code name="BtOGxiMjE6V7y0GBfHGzwJHoXDplM9Gf" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" clickthrough="false" />
 			<additionalPlugins name="" />
 			<pbid name="421363178a5d493c9d4e74aadc1c2df9" />
 			<playerParameter>
@@ -215,7 +215,7 @@
 			<embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="IMA" />
+			<adPlugins name="IMA" clickthrough="false" />
 			<additionalPlugins name="" />
 			<pbid name="615dc8e909e941c280e12155df838355" />
 			<playerParameter>
@@ -229,7 +229,7 @@
 			<embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
 			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
 			<plugins name="MAIN" />
-			<adPlugins name="IMA" />
+			<adPlugins name="IMA" clickthrough="false"/>
 			<additionalPlugins name="" />
 			<pbid name="615dc8e909e941c280e12155df838355" />
 			<playerParameter>
@@ -269,7 +269,7 @@
 			<embed_code name="14dXI4MjE6AIfNrq5pmjv3TdOlA1XNnN" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="MAIN,BITMOVIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" clickthrough="false"/>
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter>
