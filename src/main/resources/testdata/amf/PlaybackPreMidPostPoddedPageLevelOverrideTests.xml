@@ -3,7 +3,7 @@
     <test name="PlaybackPreMidPostPoddedPageLevelOverrideTests">
 
         <url>
-            <description name="Vast Ad PLOT:Bitmovin Preroll "/>
+            <description name="Vast Ad PLOT:Bitmovin PreMidPost Podded"/>
             <priority name="P3"></priority>
             <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -14,16 +14,28 @@
             <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"vast":{"all_ads":[{"position":"100","position_type":"p","tag_url":"//player.ooyala.com/static/v4/testAssets/vast3/2-PoddedAd.xml"},{"position":"50","position_type":"p","tag_url":"//player.ooyala.com/static/v4/testAssets/vast3/2-PoddedAd.xml"},{"position":"0","position_type":"p","tag_url":"//player.ooyala.com/static/v4/testAssets/vast3/2-PoddedAd.xml"}]},"platform":"html5"}]]></playerParameter>
         </url>
 
-        <!--<url>
-            <description name="Vast Ad PLOT:Bitmovin Preroll "/>
+        <url>
+            <description name="Vast Ad PLOT:Main PreMidPost Podded"/>
             <priority name="P3"></priority>
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
-            <plugins name="BITMOVIN"/>
+            <plugins name="MAIN"/>
             <adPlugins name="VAST"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"vast":{"all_ads":[{"position":"100","position_type":"p","tag_url":"//player.ooyala.com/static/v4/testAssets/vast3/2-PoddedAd.xml"},{"position":"50","position_type":"p","tag_url":"//player.ooyala.com/static/v4/testAssets/vast3/2-PoddedAd.xml"},{"position":"0","position_type":"p","tag_url":"//player.ooyala.com/static/v4/testAssets/vast3/2-PoddedAd.xml"}]},"platform":"html5"}]]></playerParameter>
-        </url>-->
+        </url>
+
+        <url>
+            <description name="Vast Ad PLOT:OSMF PreMidPost Podded"/>
+            <priority name="P3"></priority>
+            <embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="OSMF"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"vast":{"all_ads":[{"position":"0","position_type":"t","tag_url":"//player.ooyala.com/static/v4/testAssets/vast3/2-PoddedAd.xml"},{"position":"10000","position_type":"t","tag_url":"//player.ooyala.com/static/v4/testAssets/vast3/2-PoddedAd.xml"},{"position":"100","position_type":"p","tag_url":"//player.ooyala.com/static/v4/testAssets/vast3/2-PoddedAd.xml"}]},"platform":"html5"}]]></playerParameter>
+        </url>
     </test>
 </testdata>
