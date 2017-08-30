@@ -33,7 +33,7 @@ public class AspectRatioValidator extends PlayBackPage implements
 
     public boolean validate(String element, int timeout) throws Exception {
     	
-    	if(driver.getCurrentUrl().contains("osmf_flash")) {
+    	if(driver.getCurrentUrl().contains("osmf_flash") || driver.getCurrentUrl().contains("adobe_html5")) {
     		extentTest.log(LogStatus.INFO, element + " element not present for OSMF.");
     		return true;
     	}

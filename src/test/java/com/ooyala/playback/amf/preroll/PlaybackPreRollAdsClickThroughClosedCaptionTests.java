@@ -29,6 +29,8 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 	@Test(groups = { "amf", "preroll", "cc", "sequential", "clickThrough" }, dataProvider = "testUrls")
 	public void verifyPreroll(String testName, UrlObject url) throws Exception {
 		boolean result = true;
+		
+		if(!testName.contains("Pulse:AdobeTVSDK Preroll")) return;
 
 		try {
 			boolean cc = testName.contains("CC");
