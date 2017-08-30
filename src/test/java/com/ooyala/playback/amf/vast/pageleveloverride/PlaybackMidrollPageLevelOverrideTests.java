@@ -30,6 +30,7 @@ public class PlaybackMidrollPageLevelOverrideTests extends PlaybackWebTest{
             driver.get(url.getUrl());
             result = result && playValidator.waitForPage();
             injectScript();
+            pageOverride.getTotalDuration();
             result = result && playAction.startAction();
             result = result && event.validate("playing_1", 60000);
             result = result && event.validate("MidRoll_willPlaySingleAd_1", 150000);

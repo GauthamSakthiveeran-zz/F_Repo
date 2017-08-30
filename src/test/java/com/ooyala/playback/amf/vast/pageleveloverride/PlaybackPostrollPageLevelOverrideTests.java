@@ -32,6 +32,7 @@ public class PlaybackPostrollPageLevelOverrideTests extends PlaybackWebTest{
             driver.get(url.getUrl());
             result = result && playValidator.waitForPage();
             injectScript();
+            pageOverride.getTotalDuration();
             result = result && playAction.startAction();
             result = result && event.validate("playing_1", 60000);
             result = result && event.playVideoForSometime(3);

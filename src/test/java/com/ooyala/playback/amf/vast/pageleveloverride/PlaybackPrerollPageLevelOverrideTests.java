@@ -33,6 +33,7 @@ public class PlaybackPrerollPageLevelOverrideTests extends PlaybackWebTest{
             driver.get(url.getUrl());
             result = result && playValidator.waitForPage();
             injectScript();
+            pageOverride.getTotalDuration();
             result = result && playAction.startAction();
             result = result && event.validate("PreRoll_willPlaySingleAd_1", 60000);
             result = result && event.validate("singleAdPlayed_1", 120000);
