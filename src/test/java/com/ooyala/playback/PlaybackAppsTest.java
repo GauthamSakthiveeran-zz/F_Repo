@@ -1,5 +1,7 @@
 package com.ooyala.playback;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -9,8 +11,10 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
 
 import com.ooyala.facile.test.FacileTest;
+import com.ooyala.playback.apps.PlaybackApps;
 import com.ooyala.playback.apps.utils.CommandLineParameters;
 import com.ooyala.playback.factory.PlayBackFactory;
 
@@ -21,6 +25,7 @@ import io.appium.java_client.ios.IOSDriver;
 public class PlaybackAppsTest extends FacileTest {
 
 	AppiumDriver driver;
+	protected PlayBackFactory pageFactory;
 
 	@BeforeClass(alwaysRun = true)
 	public void beforeClass() throws Exception {
@@ -74,4 +79,29 @@ public class PlaybackAppsTest extends FacileTest {
     	Assert.assertTrue(new PlayBackFactory(driver).getQAModeSwitchAction().startAction(""), "QA Mode is not enabled. Hence failing test");
     }
 	
+	  @BeforeMethod(alwaysRun = true)
+	    public void handleTestMethodName(Method method, Object[] testData) {
+	        try {
+	            Field[] fs = this.getClass().getDeclaredFields();
+	            fs[0].setAccessible(true);
+	            for (Field property : fs) {
+	                if (property.getType().getSuperclass()
+	                        .isAssignableFrom(PlaybackApps.class)) {
+	                    property.setAccessible(true);
+	                    property.set(this,
+	                            pageFactory.getObject(property.getType()));
+	                    Method[] allMethods = property.get(this).getClass()
+	                            .getMethods();
+	                    for (Method function : allMethods) {
+	                        if (function.getName()
+	                                .equalsIgnoreCase("setExtentTest"))
+	                            function.invoke(property.get(this));
+	                    }
+	                }
+	            }
+	        } catch (Exception e) {
+	            logger.error(e.getMessage());
+	        }
+	    }
+
 }
