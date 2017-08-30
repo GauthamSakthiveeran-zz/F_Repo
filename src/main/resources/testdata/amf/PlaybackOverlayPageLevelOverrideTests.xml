@@ -3,7 +3,7 @@
     <test name="PlaybackOverlayPageLevelOverrideTests">
 
         <url>
-            <description name="Vast Ad PLOT:Bitmovin PreMidPost + Preroll Overlay"/>
+            <description name="Vast Ad PLOT:Bitmovin PreMidPost and Preroll Overlay"/>
             <priority name="P3"></priority>
             <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -16,7 +16,7 @@
         </url>
 
         <url>
-            <description name="Vast Ad PLOT:Bitmovin PreMidPost + Midroll Overlay"/>
+            <description name="Vast Ad PLOT:Bitmovin PreMidPost and Midroll Overlay"/>
             <priority name="P3"></priority>
             <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
@@ -29,7 +29,7 @@
         </url>
 
         <url>
-            <description name="Vast Ad PLOT:Main PreMidPost + Preroll Overlay"/>
+            <description name="Vast Ad PLOT:Main PreMidPost and Preroll Overlay"/>
             <priority name="P3"></priority>
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -42,7 +42,7 @@
         </url>
 
         <url>
-            <description name="Vast Ad PLOT:Main PreMidPost + Midroll Overlay"/>
+            <description name="Vast Ad PLOT:Main PreMidPost and Midroll Overlay"/>
             <priority name="P3"></priority>
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -55,7 +55,7 @@
         </url>
 
         <url>
-            <description name="Vast Ad PLOT:OSMF PreMidPostPodded + Preroll Overlay"/>
+            <description name="Vast Ad PLOT:OSMF PreMidPostPodded and Preroll Overlay"/>
             <priority name="P3"></priority>
             <embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
@@ -68,7 +68,7 @@
         </url>
 
         <url>
-            <description name="Vast Ad PLOT:OSMF PreMidPostPodded + Midroll Overlay"/>
+            <description name="Vast Ad PLOT:OSMF PreMidPostPodded and Midroll Overlay"/>
             <priority name="P3"></priority>
             <embed_code name="5kbm5kMDE6KCwMB0l08jmsHXkqXUd-hB"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
