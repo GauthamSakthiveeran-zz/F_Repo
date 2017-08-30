@@ -61,7 +61,7 @@ public class JSScriptInjection {
     private void injectScript(String scriptURL) throws Exception {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         scriptToInjectJS(scriptURL);    	
-        Thread.sleep(1000); // to avoid js failures
+        Thread.sleep(5000); // to avoid js failures
         if (scriptURL.contains("common"))
             js.executeScript("subscribeToCommonEvents();");
         else

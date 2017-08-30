@@ -3,6 +3,7 @@ package com.ooyala.playback.url;
 import java.net.InetAddress;
 
 import org.apache.log4j.Logger;
+import org.mortbay.log.Log;
 
 import com.ooyala.playback.enums.PlayerPropertyValue;
 import com.ooyala.playback.httpserver.SimpleHttpServer;
@@ -449,6 +450,9 @@ public class TestPageData {
             return "";
 
         if (additionalPlugin.contains("DISCOVERY")) {
+        	    if(skinJson.contains("MOREOPTIONS")) {
+        	    	 return skinConf + moreOptionsJson;
+        	    }
             return skinConf + skinConfigForDiscovery;
         } else if (adPlugin.equals("IMA")) {
             if (plugins.equals("MAIN")) {
@@ -459,7 +463,6 @@ public class TestPageData {
             }
         }
         
-
         if(skinJson.contains("CAPTIONS"))
         	return skinConf + captionsJson;
         else if(skinJson.contains("LOCALIZATION"))
@@ -472,10 +475,11 @@ public class TestPageData {
         	return skinConf + watermarkJson;
         else if(skinJson.contains("SHARE"))
         	return skinConf + shareJson;
-        else if(skinJson.contains("BUTTONS"))
-        	return skinConf + buttonsJson;
         else if(skinJson.contains("MOREOPTIONS"))
         	return skinConf + moreOptionsJson;
+        else if(skinJson.contains("BUTTONS"))
+        	return skinConf + buttonsJson;
+        
 
 		/*
 		 * if (plugins.contains(",")) { String str[] = plugins.split(","); for

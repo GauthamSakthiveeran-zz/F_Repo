@@ -168,7 +168,6 @@
 	
 	</test>
 	
-	
 <test name="PlayerSkinControlbar">
 		<url>
 			<description name="SkinConfigbuttonsDisabled:Bitmovin Elemental Delta HLS VOD" />
