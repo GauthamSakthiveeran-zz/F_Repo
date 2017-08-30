@@ -47,13 +47,11 @@ public abstract class PlayBackPage extends WebPage {
 
 	@Override
 	protected String getLocalizedPageElementString(String arg0) {
-		// TODO Auto:generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean waitForPage() {
-		// TODO Auto:generated method stub
 		return false;
 	}
 
@@ -376,12 +374,18 @@ public abstract class PlayBackPage extends WebPage {
 
 	public boolean isPageLoaded() {
 		int count = 120;
-		while (count >= 0) {
-			if (driver.executeScript("return typeof pp").toString().equals("object")) {
-				return true;
+		try {
+			while (count >= 0) {
+				if (driver.executeScript("return typeof pp").toString().equals("object")) {
+					return true;
+				}
+				Thread.sleep(1000);
+				count--;
 			}
-			count--;
+		} catch(Exception ex) {
+			ex.printStackTrace();
 		}
+		
 		return false;
 	}
 
