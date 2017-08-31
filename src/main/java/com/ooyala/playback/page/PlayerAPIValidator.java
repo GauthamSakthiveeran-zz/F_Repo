@@ -1132,4 +1132,63 @@ public class PlayerAPIValidator extends PlayBackPage implements PlaybackValidato
     private void playByApi() {
         driver.executeScript("pp.play()");
     }
+    
+    public Boolean isPlayerState(String PlayerState)
+    {
+    	int time = 0;
+    	String playerState = driver.executeScript("return pp.getState()").toString();
+    	logger.info("Player State is : " + playerState);
+    	
+    	
+    	while (playerState.equals(("buffering"))) {
+
+			if (time <= 120) {
+				try {
+					Thread.sleep(1000);
+					time++;
+					logger.info("Video Buffering...");
+					playerState = driver.executeScript("return pp.getState()").toString();
+				} catch (Exception e) {
+					return false;
+				}
+			} else {
+				logger.info("Video has been buffering for a really long time i.e it occured more that 2 minutes");
+				return false;
+			}
+		}
+    	
+    	if(playerState.equals(PlayerState))
+    	{
+    		extentTest.log(LogStatus.PASS, "Player State is Correct");
+    		logger.info("Player State is : " + playerState);
+    		return true;
+    	}
+    	else
+    	{
+    		extentTest.log(LogStatus.FAIL, "Player State :" + playerState);
+    		logger.info("Player State did not match");
+    		return false;
+    	}
+    }
+    
+    public Boolean isPlayerVolume(String Volume)
+    {
+    	String playingVolume = driver.executeScript("return pp.getVolume()").toString();
+    	logger.info("Player Volume is : " + playingVolume);
+    	if(playingVolume.equals(Volume))
+    	{
+    		extentTest.log(LogStatus.PASS, "Volume is Correct");
+    		logger.info("Volume is Correct");
+    		return true;
+    	}
+    	else
+    	{
+    		extentTest.log(LogStatus.FAIL, "Volume did not match");
+    		logger.info("Volume did not match");
+    		return false;
+    	}
+    }
+    
+    
+    
 }
