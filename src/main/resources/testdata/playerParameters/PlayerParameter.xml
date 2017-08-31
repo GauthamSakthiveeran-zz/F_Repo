@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+
+	<test name="PlayerParametersAutoPlayClosedCaptionTests">
+     
+		<url>
+			<description
+				name="Core:PlayerParameter-ClosedCaptions:Main" />
+			<priority name="P1"></priority>
+			<embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"autoplay":true}]]></playerParameter>
+		</url>
+	  	
+		<url>
+			<description
+				name="Core:PlayerParameter-ClosedCaptions:BitMovin" />
+			<priority name="P1"></priority>
+			<embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"autoplay":true}]]></playerParameter>
+		</url> 
+ 		
+ 
+		<url>
+			<description
+				name="Core:PlayerParameter-ClosedCaptions:OSMF" />
+			<priority name="P1"></priority>
+			<embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2,"autoplay":true}]]></playerParameter>
+		</url>
+
+	</test>
+	
+		<test name="PlayerParametersAutoPlayVolumeClosedCaptionTests">
+
+		<url>
+			<description
+				name="Core:PlayerParameter-ClosedCaptions-InitialVolume:Main" />
+			<priority name="P1"></priority>
+			<embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+			<playerParameter><![CDATA[{"autoplay":true,"initialVolume":0.5}]]></playerParameter>
+		</url>
+		
+		<url>
+			<description
+				name="Core:PlayerParameter-ClosedCaptions-InitialVolume:BitMovin" />
+			<priority name="P1"></priority>
+			<embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x" />
+			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+			<playerParameter><![CDATA[{"autoplay":true,"initialVolume":0.5}]]></playerParameter>
+		</url>
+		
+		<url>
+			<description
+				name="Core:PlayerParameter-ClosedCaptions-InitialVolume:OSMF" />
+			<priority name="P1"></priority>
+			<embed_code name="9ibm5kMDE6NEUWmVGd-56xQbtt-Z8ZjS" />
+			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+			<plugins name="OSMF" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
+			<playerParameter><![CDATA[{"autoplay":true,"initialVolume":0.5}]]></playerParameter>
+		</url>
+
+	</test>
+	
+		<test name="PlayerParametersAutoPlayDiscovery">
+		
+		<url>
+			<description
+				name="Core:PlayerParameter-Discovery:Main" />
+			<priority name="P1"></priority>
+			<embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="DISCOVERY" />
+			<pbid name="354f13b5b4d45a08bb0f3317c51e0ef" />
+			<playerParameter><![CDATA[{"autoplay":true}]]></playerParameter>
+		</url>
+		
+		</test>
+		
+	<test name="PlayerParametersDiscoveryUpnextDisabled">
+		
+		<url>
+			<description
+				name="Core:PlayerParameter-Discovery-UpNext-False:Main" />
+			<priority name="P1"></priority>
+			<embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="DISCOVERY" />
+			<pbid name="354f13b5b4d45a08bb0f3317c51e0ef" />
+			<playerParameter><![CDATA[{"autoPlayUpNextVideosOnly":false}]]></playerParameter>
+		</url>
+		
+	</test>
+	
+		<test name="PlayerParametersDiscoveryUpnextEnabled">
+		
+		<url>
+			<description
+				name="Core:PlayerParameter-Discovery-UpNext-False:Main" />
+			<priority name="P1"></priority>
+			<embed_code name="hvcmtjczp3a7VwEChjGwwiFAx9_0XaDw" />
+			<pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="DISCOVERY" />
+			<pbid name="354f13b5b4d45a08bb0f3317c51e0ef" />
+			<playerParameter><![CDATA[{"autoPlayUpNextVideosOnly":true}]]></playerParameter>
+		</url>
+		
+	</test>
+	
+	
+	
+</testdata>

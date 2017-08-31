@@ -44,6 +44,7 @@ import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.httpserver.SimpleHttpServer;
 import com.ooyala.playback.live.LiveChannel;
 import com.ooyala.playback.page.PlayBackPage;
+import com.ooyala.playback.page.action.ChromeFlashUpdateAction;
 import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.updateSpreadSheet.TestCaseSheet;
 import com.ooyala.playback.url.Testdata;
@@ -72,6 +73,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected RemoteWebDriver driver;
     protected static String v4Version;
     protected static String osNameAndOsVersion;
+    private ChromeFlashUpdateAction chromeValidator;
     private static Map<String, ITestResult> testDetails = new HashMap<String, ITestResult>();
     public SoftAssert s_assert;
 
@@ -89,6 +91,11 @@ public abstract class PlaybackWebTest extends FacileTest {
                 UrlObject url = (UrlObject) testData[1];
                 logger.info("*** URL " + url.getUrl() + " *********");
                 extentTest.log(LogStatus.INFO, "URL : " + url.getUrl());
+                if (testData[0].toString().contains("OSMF") && getBrowser().contains("chrome")) {
+    				driver.get("chrome://components/");
+    				chromeValidator = new ChromeFlashUpdateAction(driver);
+    				chromeValidator.isFlashPluginUpdated();
+                }
             } else {
                 logger.info("*** Test " + getClass().getSimpleName() + " started *********");
                 extentTest = ExtentManager.startTest(getClass().getSimpleName());
@@ -243,6 +250,7 @@ public abstract class PlaybackWebTest extends FacileTest {
             parseXmlFileData(xmlFile, xmlFilePkg);
             initializeWebdriver();
             getJSFile(jsFile);
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
