@@ -35,7 +35,7 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	public void verifyPreMidPostcontrols(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
-
+		
 		try {
 
 			driver.get(url.getUrl());
@@ -69,7 +69,7 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 
 			result = result && seek.validate("seeked_3", 30000);
 
-			result = result && eventValidator.validate("played_1", 60000);
+			result = result && eventValidator.skipScrubberValidation().validate("played_1", 60000);
 
 			result = result && eventValidator.validate("adsPlayed_3", 60000);
 

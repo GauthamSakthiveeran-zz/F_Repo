@@ -25,7 +25,7 @@ public class PlaybackVastPreIMAMidlAdsTests extends PlaybackWebTest {
 	private SeekValidator seek;
 	private AdPluginValidator adPlugin;
 
-	@Test(groups = { "amf", "preroll", "midroll" }, dataProvider = "testUrls")
+	@Test(groups = { "amf", "preroll", "midroll" }, dataProvider = "testUrls", enabled=false)
 	public void verifyVastPreIMAMidlAds(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;

@@ -33,7 +33,7 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 			result = result && playValidator.waitForPage();
 			injectScript();
 			result = result && playValidator.validate("playing_1", 60000);
-			result = result && seekValidator.skipScrubberValidation().validate("seeked_1", 60000);
+			result = result && seekValidator.validate("seeked_1", 60000);
 			result = result && event.validate("willPlayPostrollAd_1", 25000);
 			if (result && clickthrough) {
 				s_assert.assertTrue(clickthroughValidator.validateClickThroughForPoddedAds("postroll"),

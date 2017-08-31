@@ -18,12 +18,12 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 		addElementToPageElements("play");
 	}
 
-	private boolean skipScrubberValidation = false;
+	/*private boolean skipScrubberValidation = false;
 
 	public SeekValidator skipScrubberValidation() {
 		skipScrubberValidation = true;
 		return this;
-	}
+	}*/
 
 	public boolean validate(String element, int timeout) throws Exception {
 
@@ -54,8 +54,8 @@ public class SeekValidator extends PlayBackPage implements PlaybackValidator {
 				extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
 				return false;
 			}
-			if(!skipScrubberValidation)
-				return (new PlayBackFactory(driver, extentTest)).getScrubberValidator().validate("", timeout);
+			/*if(!skipScrubberValidation)
+				return (new PlayBackFactory(driver, extentTest)).getScrubberValidator().validate("", timeout);*/
 			return true;
 		}
 
