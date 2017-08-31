@@ -15,9 +15,9 @@ import org.testng.annotations.Test;
 /**
  * Created by Gautham
  */
-public class PlayerParametersVolumeClosedCaptionTests extends PlaybackWebTest {
+public class PlayerParametersAutoPlayClosedCaptionTests extends PlaybackWebTest {
 	private static Logger logger = Logger
-			.getLogger(PlayerParametersVolumeClosedCaptionTests.class);
+			.getLogger(PlayerParametersAutoPlayClosedCaptionTests.class);
 
 	private PlayValidator play;
 	private PauseValidator pause;
@@ -28,7 +28,7 @@ public class PlayerParametersVolumeClosedCaptionTests extends PlaybackWebTest {
 	private PlayerAPIValidator apiValidator;
 	private ChromeFlashUpdateAction chromeValidator;
 
-	public PlayerParametersVolumeClosedCaptionTests() throws OoyalaException {
+	public PlayerParametersAutoPlayClosedCaptionTests() throws OoyalaException {
 		super();
 	}
 
@@ -41,28 +41,17 @@ public class PlayerParametersVolumeClosedCaptionTests extends PlaybackWebTest {
 		try {
 			
 			
-			if (testName.contains("OSMF") && getBrowser().contains("chrome")) {
-
-				driver.get("chrome://components/");
-
-				result = result &&	chromeValidator.isFlashPluginUpdated();
-
-			}
-			
-			
 			driver.get(url.getUrl());
 
 			result = result && eventValidator.isPageLoaded();
+			String playerState = driver.executeScript("return pp.getState()").toString();
+	    	logger.info("Player State is : ========> " + playerState);
 
 			injectScript();
 			
 			result = result && eventValidator.loadingSpinner();
-			
-			Thread.sleep(2000);
 
 			result = result && (apiValidator.isPlayerState("playing"));
-			
-			result = result && (apiValidator.isPlayerVolume("0.5"));
 			
 			result = result && ccValidator.validate("cclanguage", 60000);
 

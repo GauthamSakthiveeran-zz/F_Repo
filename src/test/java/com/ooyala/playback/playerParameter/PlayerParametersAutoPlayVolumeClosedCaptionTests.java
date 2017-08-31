@@ -15,9 +15,9 @@ import org.testng.annotations.Test;
 /**
  * Created by Gautham
  */
-public class PlayerParametersClosedCaptionTests extends PlaybackWebTest {
+public class PlayerParametersAutoPlayVolumeClosedCaptionTests extends PlaybackWebTest {
 	private static Logger logger = Logger
-			.getLogger(PlayerParametersClosedCaptionTests.class);
+			.getLogger(PlayerParametersAutoPlayVolumeClosedCaptionTests.class);
 
 	private PlayValidator play;
 	private PauseValidator pause;
@@ -28,7 +28,7 @@ public class PlayerParametersClosedCaptionTests extends PlaybackWebTest {
 	private PlayerAPIValidator apiValidator;
 	private ChromeFlashUpdateAction chromeValidator;
 
-	public PlayerParametersClosedCaptionTests() throws OoyalaException {
+	public PlayerParametersAutoPlayVolumeClosedCaptionTests() throws OoyalaException {
 		super();
 	}
 
@@ -40,16 +40,6 @@ public class PlayerParametersClosedCaptionTests extends PlaybackWebTest {
 
 		try {
 			
-			
-			if (testName.contains("OSMF") && getBrowser().contains("chrome")) {
-
-				driver.get("chrome://components/");
-
-				result = result &&	chromeValidator.isFlashPluginUpdated();
-
-			}
-			
-			
 			driver.get(url.getUrl());
 
 			result = result && eventValidator.isPageLoaded();
@@ -57,8 +47,12 @@ public class PlayerParametersClosedCaptionTests extends PlaybackWebTest {
 			injectScript();
 			
 			result = result && eventValidator.loadingSpinner();
+			
+			Thread.sleep(2000);
 
 			result = result && (apiValidator.isPlayerState("playing"));
+			
+			result = result && (apiValidator.isPlayerVolume("0.5"));
 			
 			result = result && ccValidator.validate("cclanguage", 60000);
 

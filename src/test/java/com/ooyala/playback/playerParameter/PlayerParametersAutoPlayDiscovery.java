@@ -17,9 +17,9 @@ import org.testng.annotations.Test;
 /**
  * Created by Gautham
  */
-public class PlayerParametersDiscovery extends PlaybackWebTest {
+public class PlayerParametersAutoPlayDiscovery extends PlaybackWebTest {
 	private static Logger logger = Logger
-			.getLogger(PlayerParametersDiscovery.class);
+			.getLogger(PlayerParametersAutoPlayDiscovery.class);
 
 	private PlayValidator play;
 	private PauseValidator pause;
@@ -33,7 +33,7 @@ public class PlayerParametersDiscovery extends PlaybackWebTest {
 	private ClickDiscoveryButtonAction clickDiscoveryButtonAction;
 	private DiscoveryValidator discoveryValidator;
 
-	public PlayerParametersDiscovery() throws OoyalaException {
+	public PlayerParametersAutoPlayDiscovery() throws OoyalaException {
 		super();
 	}
 
@@ -44,15 +44,6 @@ public class PlayerParametersDiscovery extends PlaybackWebTest {
 		boolean result = true;
 
 		try {
-			
-			
-			if (testName.contains("OSMF") && getBrowser().contains("chrome")) {
-
-				driver.get("chrome://components/");
-
-				result = result &&	chromeValidator.isFlashPluginUpdated();
-
-			}
 			
 			
 			driver.get(url.getUrl());

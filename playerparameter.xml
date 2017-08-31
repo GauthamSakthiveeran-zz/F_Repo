@@ -9,12 +9,12 @@
 		<classes>
 			<parameter name="testData" value="playerParameters/PlayerParameter.xml" />
 			<parameter name="jsFile" value="alice/alice.js" />
-			<class name="com.ooyala.playback.playerParameter.PlayerParametersClosedCaptionTests" />
-			<class name="com.ooyala.playback.playerParameter.PlayerParametersVolumeClosedCaptionTests" /> 
-			<class name="com.ooyala.playback.playerParameter.PlayerParametersDiscovery" />
+			<class name="com.ooyala.playback.playerParameter.PlayerParametersAutoPlayClosedCaptionTests" />
+			<class name="com.ooyala.playback.playerParameter.PlayerParametersAutoPlayVolumeClosedCaptionTests" /> 
+			<class name="com.ooyala.playback.playerParameter.PlayerParametersAutoPlayDiscovery" />
 			<class name="com.ooyala.playback.playerParameter.PlayerParametersDiscoveryUpnextDisabled" />
 			<class name="com.ooyala.playback.playerParameter.PlayerParametersDiscoveryUpnextEnabled" />
-			<class name="com.ooyala.playback.playerParameter.PlayerParametersDiscoveryUpnextDisabledAutoPlay" />
+			<class name="com.ooyala.playback.playerParameter.PlayerParametersDiscoveryUpnextDisabledAutoPlay" />  
 		</classes>
 	</test>
 

@@ -1139,8 +1139,10 @@ public class PlayerAPIValidator extends PlayBackPage implements PlaybackValidato
     	String playerState = driver.executeScript("return pp.getState()").toString();
     	logger.info("Player State is : " + playerState);
     	
+    	try
+    	{
     	
-    	while (playerState.equals(("buffering"))) {
+    	while (playerState.equals(("buffering")) || playerState.equals(("loading")) ) {
 
 			if (time <= 120) {
 				try {
@@ -1157,6 +1159,15 @@ public class PlayerAPIValidator extends PlayBackPage implements PlaybackValidato
 			}
 		}
     	
+    	if(playerState.equals("ready") && !PlayerState.equals("ready"))
+    	{
+    		
+    		logger.info("Waiting for autoplay...");
+    		Thread.sleep(3000);
+    		playerState = driver.executeScript("return pp.getState()").toString();
+    		
+    	}
+    	
     	if(playerState.equals(PlayerState))
     	{
     		extentTest.log(LogStatus.PASS, "Player State is Correct");
@@ -1168,6 +1179,14 @@ public class PlayerAPIValidator extends PlayBackPage implements PlaybackValidato
     		extentTest.log(LogStatus.FAIL, "Player State :" + playerState);
     		logger.info("Player State did not match");
     		return false;
+    	}
+    	}
+    	catch(Exception e)
+    	{
+    		
+    		extentTest.log(LogStatus.FAIL, "Exception whle verifying Player State");
+    		return false;
+    		
     	}
     }
     

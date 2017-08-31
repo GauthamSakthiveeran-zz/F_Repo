@@ -48,14 +48,6 @@ public class PlayerParametersDiscoveryUpnextDisabledAutoPlay extends PlaybackWeb
 		try {
 			
 			
-			if (testName.contains("OSMF") && getBrowser().contains("chrome")) {
-
-				driver.get("chrome://components/");
-
-				result = result &&	chromeValidator.isFlashPluginUpdated();
-
-			}
-			
 			driver.get(url.getUrl());
 
 			result = result && eventValidator.isPageLoaded();

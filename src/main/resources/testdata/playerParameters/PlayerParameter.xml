@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 
-	<test name="PlayerParametersClosedCaptionTests">
- 
+	<test name="PlayerParametersAutoPlayClosedCaptionTests">
+     
 		<url>
 			<description
 				name="Core:PlayerParameter-ClosedCaptions:Main" />
@@ -27,9 +27,9 @@
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"autoplay":true}]]></playerParameter>
-		</url>
+		</url> 
  		
-		 
+ 
 		<url>
 			<description
 				name="Core:PlayerParameter-ClosedCaptions:OSMF" />
@@ -40,12 +40,12 @@
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"autoplay":true}]]></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":2,"autoplay":true}]]></playerParameter>
 		</url>
 
 	</test>
 	
-		<test name="PlayerParametersVolumeClosedCaptionTests">
+		<test name="PlayerParametersAutoPlayVolumeClosedCaptionTests">
 
 		<url>
 			<description
@@ -88,7 +88,7 @@
 
 	</test>
 	
-		<test name="PlayerParametersDiscovery">
+		<test name="PlayerParametersAutoPlayDiscovery">
 		
 		<url>
 			<description
