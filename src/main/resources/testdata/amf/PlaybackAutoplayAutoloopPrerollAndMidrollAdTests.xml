@@ -3,6 +3,7 @@
     <test name="PlaybackAutoplayAutoloopPrerollAndMidrollAdTests">
         <url>
             <description name="VTC:Verify AutoPlay and AutoLoop properties for Preroll IMA+ Video" />
+            <priority name="P3"></priority>
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -13,6 +14,7 @@
         </url>
         <url>
             <description name="VTC:Verify AutoPlay and AutoLoop properties for Preroll Vast + Video" />
+            <priority name="P3"></priority>
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -23,6 +25,7 @@
         </url>
         <url>
             <description name="VTC:Verify AutoPlay and AutoLoop properties for Preroll Freewheel + Video" />
+            <priority name="P3"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -33,6 +36,7 @@
         </url>
         <url>
             <description name="VTC:Verify AutoPlay and AutoLoop properties for Midroll Freewheel + Video" />
+            <priority name="P3"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -43,6 +47,7 @@
         </url>
         <url>
             <description name="VTC:Verify AutoPlay and AutoLoop properties for Midroll Vast + Video" />
+            <priority name="P3"></priority>
             <embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -53,6 +58,7 @@
         </url>
         <url>
             <description name="VTC:Verify AutoPlay and AutoLoop properties for Midroll IMA+ Video" />
+            <priority name="P3"></priority>
             <embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
