@@ -29,8 +29,7 @@ public class PlaybackPreMidPostInitialVolumeTests extends PlaybackWebTest {
 	}
 
 	@Test(groups = "Playback", dataProvider = "testUrls")
-	public void testInitialVolumeVTC(String testName, UrlObject url) throws OoyalaException { //TODO refactor this code.
-
+	public void testInitialVolumeVTC(String testName, UrlObject url) throws OoyalaException {
 		boolean result = true;
 		try {
 			driver.get(url.getUrl());
@@ -92,7 +91,7 @@ public class PlaybackPreMidPostInitialVolumeTests extends PlaybackWebTest {
 				}
 			}
 
-			result = result && eventValidator.validate("played_1", 60000);
+			result = result && eventValidator.skipScrubberValidation().validate("played_1", 60000);
 
 		} catch (Exception e) {
 			logger.error("Exception while checking  initial Volume tests " + e.getMessage());

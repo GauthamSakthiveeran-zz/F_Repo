@@ -73,7 +73,7 @@
             <embed_code name="liNThoMTE6sIORN8TVQ0b0Z-xzMDlCQT"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="ADOBETVSDK"/>
-            <adPlugins name="VAST" adPlayTime="10"/>
+            <adPlugins name="VAST" adPlayTime="10" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter>
@@ -154,7 +154,7 @@
             <embed_code name="g4OGxjczqVk87w_P2z291ahvIR4RYrHT"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
-            <adPlugins name="IMA" adPlayTime="10"/>
+            <adPlugins name="IMA" adPlayTime="10" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>

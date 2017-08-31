@@ -9,6 +9,7 @@
             <adPlugins name="VAST" />
             <additionalPlugins name="" />
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <priority name="P3"></priority>
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0,"autoPlay":true,"loop":true}]]></playerParameter>
         </url>
 
@@ -20,6 +21,7 @@
             <adPlugins name="IMA" />
             <additionalPlugins name="" />
             <pbid name="615dc8e909e941c280e12155df838355" />
+            <priority name="P3"></priority>
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialVolume":0,"autoPlay":true,"loop":true}]]></playerParameter>
         </url>
 
@@ -31,6 +33,7 @@
             <adPlugins name="FREEWHEEL" />
             <additionalPlugins name="" />
             <pbid name="7324f0fcd4f45edacc5646d7a6ae394" />
+            <priority name="P3"></priority>
             <playerParameter><![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"NqcGg4bzoOmMiV35ZttQDtBX1oNQBnT-","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","showInAdControlBar":true},"initialVolume":0,"autoPlay":true,"loop":true}]]></playerParameter>
         </url>
     </test>
