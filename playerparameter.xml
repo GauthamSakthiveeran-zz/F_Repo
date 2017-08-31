@@ -5,7 +5,7 @@
 
   
 	<test name=" Core - Player Parameter " parallel="classes"
-		thread-count="1">
+		thread-count="3">
 		<classes>
 			<parameter name="testData" value="playerParameters/PlayerParameter.xml" />
 			<parameter name="jsFile" value="alice/alice.js" />
