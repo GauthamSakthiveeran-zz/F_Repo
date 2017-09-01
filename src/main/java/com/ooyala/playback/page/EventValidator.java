@@ -32,6 +32,13 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
         addElementToPageElements("adPodEnd");
         addElementToPageElements("startscreen");
     }
+    
+    private boolean skipScrubberValidation = false;
+    
+    public EventValidator skipScrubberValidation() {
+    	skipScrubberValidation = true;
+    	return this;
+    }
 
     public boolean validate(String element, int timeout) throws Exception {
 
@@ -109,15 +116,17 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
             ScrubberValidator scrubberValidator = new PlayBackFactory(driver, extentTest).getScrubberValidator();
             logger.info("element found : " + element);
             extentTest.log(LogStatus.PASS, "Wait on element : " + element);
-            if (element.startsWith("played")) {
+            if (element.startsWith("played") && !skipScrubberValidation) {
                 return scrubberValidator.validate("", 1000);
             }
-            if (element.startsWith("seeked")) {
+            /*if (element.startsWith("seeked") && !skipScrubberValidation) {
+            	if(getBrowser().equalsIgnoreCase("internet explorer"))
+            		return true;
                 ((JavascriptExecutor) driver).executeScript("return pp.pause();");
                 boolean flag = scrubberValidator.validate("", 1000);
                 ((JavascriptExecutor) driver).executeScript("return pp.play();");
                 return flag;
-            }
+            }*/
             return true;
         }
         logger.error("Wait on element : " + element + " failed after " + timeout + " ms");
@@ -148,33 +157,6 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
             return true;
         }
         return false;
-    }
-
-    public boolean playVideoForSometime(int secs) {
-        int count = 0;
-        double playTime = Double
-                .parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
-        while (playTime <= secs) {
-            playTime = Double.parseDouble(
-                    ((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
-            if (count == 120) {
-                logger.error("Looks like the video did not play after waiting for 2 mins.");
-                extentTest.log(LogStatus.FAIL, "Looks like the video did not play after waiting for 2 mins.");
-                return false;
-            }
-            if (!loadingSpinner()) {
-                logger.error("Loading spinner seems to be there for a really long time.");
-                extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
-                return false;
-            }
-            count++;
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                logger.error(e.getMessage());
-            }
-        }
-        return true;
     }
 
     public boolean isVideoPluginPresent(String videoPlugin) throws Exception {

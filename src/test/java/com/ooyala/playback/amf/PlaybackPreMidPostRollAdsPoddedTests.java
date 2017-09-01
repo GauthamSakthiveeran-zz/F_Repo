@@ -32,6 +32,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 	public void verifyPreMidPostrollPodded(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
+		boolean clickThrough = !clickthrough.ignoreClickThrough(url);
 
 		try {
 
@@ -45,7 +46,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 
 			result = result && event.validate("PreRoll_willPlayAds", 60000);
 
-			if (result) {
+			if (result && clickThrough) {
 				s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("preroll"), "PreMidPost Podded");
 			}
 
@@ -54,19 +55,14 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 			result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 60000);
 
 			result = result && event.validate("playing_1", 90000);
-
-			if (adStartTimeValidator.isAdPlayTimePresent(url)) {
-				result = result && adStartTimeValidator.setTime(url.getAdStartTime())
-						.validateAdStartTime("MidRoll_willPlayAds");
-				if (result) {
-					s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("midroll"), "PreMidPost Podded");
-				}
-			} else {
-				result = result && event.validate("MidRoll_willPlayAds", 200000);
-				if (result) {
-					s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("midroll"), "PreMidPost Podded");
-				}
+			
+			result = result && adStartTimeValidator.setTime(url.getAdStartTime())
+					.validateAdStartTime("MidRoll_willPlayAds");
+			
+			if (result && clickThrough) {
+				s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("midroll"), "PreMidPost Podded");
 			}
+
 			result = result && event.validate("adsPlayed_2", 600000);
 
 			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 600000);
@@ -75,7 +71,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 
 			result = result && event.validate("PostRoll_willPlayAds", 200000);
 
-			if (result) {
+			if (result && clickThrough) {
 				s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("postroll"), "PreMidPost Podded");
 			}
 
@@ -83,7 +79,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 
 			result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds_3", 600000);
 
-			result = result && event.validate("played_1", 180000);
+			result = result && event.skipScrubberValidation().validate("played_1", 180000);
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -94,4 +90,5 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 		s_assert.assertTrue(result, "Test failed");
 		s_assert.assertAll();
 	}
+	
 }

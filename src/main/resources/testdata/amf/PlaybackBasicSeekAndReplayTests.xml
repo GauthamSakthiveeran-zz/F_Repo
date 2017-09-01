@@ -3,6 +3,7 @@
     <test name="PlaybackBasicSeekAndReplayTests">
         <url>
             <description name="MidRoll:Vast Ad with Video Plugin" />
+            <priority name="P2"></priority>
             <embed_code name="RoaDVrczqj6NYVuTzKKOkf9nFhQ6nnHB" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -13,6 +14,7 @@
         </url>
         <url>
             <description name="MidRoll:FW Ad with Video Plugin" />
+            <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -23,6 +25,7 @@
         </url>
         <url>
             <description name="MidRoll:IMA Ad with Video Plugin" />
+            <priority name="P2"></priority>
             <embed_code name="RibHlycTp1SRNGAfqhgxA1z4M6mzpnqo" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -33,6 +36,7 @@
         </url>
         <url>
             <description name="MidRoll:Podded FW Ad with Video Plugin" />
+            <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -44,6 +48,7 @@
 
         <url>
             <description name="MidRoll:Podded Vast Ad with Video Plugin" />
+            <priority name="P2"></priority>
             <embed_code name="FxdGt4dDrcaCt-N4OClEi_8GjljVsyXj" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -54,6 +59,7 @@
         </url>
         <url>
             <description name="MidRoll:Podded IMA Ad with Video Plugin" />
+            <priority name="P2"></priority>
             <embed_code name="ZxYWxjczp6im8Ktx1LsoSjw6feA9AQFG" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
             <plugins name="MAIN" />
@@ -65,6 +71,7 @@
 
         <url>
             <description name="PreRoll:FW"/>
+            <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -75,6 +82,7 @@
         </url>
         <url>
             <description name="PreRoll:IMA"/>
+            <priority name="P2"></priority>
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -85,6 +93,7 @@
         </url>
         <url>
             <description name="PreRoll:Vast"/>
+            <priority name="P2"></priority>
             <embed_code name="htcmtjczpHnIEJLJUrZ8YUs0CW0pyi2R"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -96,6 +105,7 @@
 
         <url>
             <description name="PreRoll:Podded_FW"/>
+            <priority name="P2"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -107,6 +117,7 @@
 
         <url>
             <description name="PreRoll:Podded_IMA"/>
+            <priority name="P2"></priority>
             <embed_code name="htYWxjczousVmIKvp56u7Cb9btEnyJK9"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
@@ -118,6 +129,7 @@
 
         <url>
             <description name="PreRoll:Podded_Vast"/>
+            <priority name="P2"></priority>
             <embed_code name="xxbDB4dDovMCDiqvo2DSqON3lIGSM5N5"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>

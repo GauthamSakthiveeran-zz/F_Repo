@@ -12,41 +12,41 @@ import java.net.UnknownHostException;
 
 public class JSScriptInjection {
 
-    private Logger logger = Logger.getLogger(JSScriptInjection.class);
+	private Logger logger = Logger.getLogger(JSScriptInjection.class);
 
-    String[] jsUrl;
-    ExtentTest extentTest;
-    WebDriver driver;
-    UrlObject urlObject;
+	String[] jsUrl;
+	ExtentTest extentTest;
+	WebDriver driver;
+	UrlObject urlObject;
 
-    public JSScriptInjection(String[] jsUrl, ExtentTest extentTest, WebDriver driver, UrlObject urlObject) {
-        this.jsUrl = jsUrl;
-        this.extentTest = extentTest;
-        this.driver = driver;
-        this.urlObject = urlObject;
-    }
-    
-    public JSScriptInjection(String[] jsUrl, ExtentTest extentTest, WebDriver driver) {
-        this.jsUrl = jsUrl;
-        this.extentTest = extentTest;
-        this.driver = driver;
-        urlObject = null;
-    }
+	public JSScriptInjection(String[] jsUrl, ExtentTest extentTest, WebDriver driver, UrlObject urlObject) {
+		this.jsUrl = jsUrl;
+		this.extentTest = extentTest;
+		this.driver = driver;
+		this.urlObject = urlObject;
+	}
 
-    public JSScriptInjection(WebDriver driver){
-        this.driver = driver;
-    }
+	public JSScriptInjection(String[] jsUrl, ExtentTest extentTest, WebDriver driver) {
+		this.jsUrl = jsUrl;
+		this.extentTest = extentTest;
+		this.driver = driver;
+		urlObject = null;
+	}
 
-    public void injectScript() throws Exception {
-        if (urlObject!=null && urlObject.getVideoPlugins().contains("ANALYTICS")){
-            String hostUrl = getJsUrl("analytics/analytics_events.js");
-            scriptToInjectJS(hostUrl);
-        }
-        if (jsUrl != null && jsUrl.length > 0) {
-            for (String url : jsUrl) {
-                try {
-                    logger.info("JS - " + url);
-                    injectScript(url);
+	public JSScriptInjection(WebDriver driver) {
+		this.driver = driver;
+	}
+
+	public void injectScript() throws Exception {
+		if (urlObject != null && urlObject.getVideoPlugins().contains("ANALYTICS")) {
+			String hostUrl = getJsUrl("analytics/analytics_events.js");
+			scriptToInjectJS(hostUrl);
+		}
+		if (jsUrl != null && jsUrl.length > 0) {
+			for (String url : jsUrl) {
+				try {
+					logger.info("JS - " + url);
+					injectScript(url);
                 } catch (Exception e) {
                     // e.printStackTrace();
                     logger.error(e.getMessage());
@@ -60,27 +60,30 @@ public class JSScriptInjection {
 
     private void injectScript(String scriptURL) throws Exception {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        scriptToInjectJS(scriptURL);
-        Thread.sleep(1000); // to avoid js failures
+        scriptToInjectJS(scriptURL);    	
+        Thread.sleep(5000); // to avoid js failures
         if (scriptURL.contains("common"))
             js.executeScript("subscribeToCommonEvents();");
         else
             js.executeScript("subscribeToEvents();");
     }
 
-    public void scriptToInjectJS(String scriptURL){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("function injectScript(url) {\n"
-                + "   var script = document.createElement ('script');\n" + "   script.src = url;\n"
-                + "   var head = document.getElementsByTagName( 'head')[0];\n" + "   head.appendChild(script);\n"
-                + "}\n" + "\n" + "var scriptURL = arguments[0];\n" + "injectScript(scriptURL);", scriptURL);
-    }
 
-    public String getJsUrl(String jsName) throws UnknownHostException {
-        InetAddress inetAdd = InetAddress.getLocalHost();
-        String hostUrl = "http://" + inetAdd.getHostAddress() + ":"
-                + SimpleHttpServer.portNumber + "/js?fileName="+jsName+"";
-        logger.info("JS - " + hostUrl);
-        return hostUrl;
-    }
+	public void scriptToInjectJS(String scriptURL) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("function injectScript(url) {\n" + "   var script = document.createElement ('script');\n"
+				+ "   script.src = url;\n" + "   var head = document.getElementsByTagName( 'head')[0];\n"
+				+ "   head.appendChild(script);\n" + "}\n" + "\n" + "var scriptURL = arguments[0];\n"
+				+ "injectScript(scriptURL);", scriptURL);
+	}
+
+
+
+	public String getJsUrl(String jsName) throws UnknownHostException {
+		InetAddress inetAdd = InetAddress.getLocalHost();
+		String hostUrl = "http://" + inetAdd.getHostAddress() + ":" + SimpleHttpServer.portNumber + "/js?fileName="
+				+ jsName + "";
+		logger.info("JS - " + hostUrl);
+		return hostUrl;
+	}
 }

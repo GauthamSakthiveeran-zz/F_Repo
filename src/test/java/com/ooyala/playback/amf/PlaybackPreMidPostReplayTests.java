@@ -1,15 +1,20 @@
 package com.ooyala.playback.amf;
 
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.url.UrlObject;
-import com.relevantcodes.extentreports.LogStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.IsAdPlayingValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.PoddedAdValidator;
+import com.ooyala.playback.page.ReplayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 
@@ -23,7 +28,6 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	private IsAdPlayingValidator isAdPlaying;
 	private PoddedAdValidator poddedAdValidator;
 	private SeekAction seekAction;
-	private PauseValidator pause;
 	private PlayAction playAction;
 	private SeekValidator seek;
 
@@ -31,31 +35,30 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	public void verifyPreMidPostcontrols(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
-
+		
 		try {
 
 			driver.get(url.getUrl());
 
 			result = result && playValidator.waitForPage();
 			injectScript();
+			
+			result = result && playAction.startAction();
 
-			result = result && playValidator.validate("playing_1", 120000);
-
-			result = result && seekAction.seek(10,true);
 
 			result = result && eventValidator.validate("adsPlayed_1", 60000);
 			result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 20000);
+			
+			result = result && eventValidator.validate("playing_1", 120000);
+			
+			result = result && seekAction.seek(10,true);
 
 			result = result && eventValidator.validate("adsPlayed_2", 60000);
 			result = result && poddedAdValidator.setPosition("MidRoll").validate("countPoddedAds_2", 20000);
 
-			result = result && pause.validate("paused_1", 30000);
-
 			result = result && eventValidator.validate("seeked_1", 30000);
 
 			result = result && seekAction.seek("10");
-
-			result = result && playAction.startAction();
 
 			result = result && eventValidator.validate("seeked_2", 30000);
 
@@ -66,7 +69,7 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 
 			result = result && seek.validate("seeked_3", 30000);
 
-			result = result && eventValidator.validate("played_1", 60000);
+			result = result && eventValidator.skipScrubberValidation().validate("played_1", 60000);
 
 			result = result && eventValidator.validate("adsPlayed_3", 60000);
 

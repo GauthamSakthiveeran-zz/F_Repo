@@ -23,8 +23,7 @@
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8abff377aec2400e9337fe9088e65d40"/>
-            <playerParameter>
-                <![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=xXQzowbfxoEs9K4pQMget0qj++SrNYmsux+aZxTuVec&override_syndication_group=override_all_synd_groups","encodingPriority":["dash","hls","mp4"]}]]></playerParameter>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=3069693466&account_id=dulari_qa&&&signature=dRoBMtbZ95xQwKCMRLzZkxb7AH3cnHz/6uMhTLF8Q2E","encodingPriority":["dash","hls","mp4"]}]]></playerParameter>
             <live>
                 <channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
                 <provider>elemental</provider>
@@ -40,8 +39,7 @@
             <adPlugins name=""/>
             <additionalPlugins name=""/>
             <pbid name="8abff377aec2400e9337fe9088e65d40"/>
-            <playerParameter>
-                <![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=4393292143&account_id=dulari_qa&&&signature=GPKWY58Ofu7eOCWr9KZgjJaZexq19LGzVD+Dcq6Qr/w"}]]></playerParameter>
+            <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=3069693466&account_id=dulari_qa&&&signature=dRoBMtbZ95xQwKCMRLzZkxb7AH3cnHz/6uMhTLF8Q2E"}]]></playerParameter>
             <live>
                 <channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
                 <provider>elemental</provider>
@@ -226,6 +224,145 @@
              <browserSupportedVersion name="safari,9"/>
              <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"],"platform":"flash"}]]></playerParameter>
          </url>-->
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):AdoveTvSdk Elemental Delta HLS Bitmovin No Channel"/>
+            <priority name="P1"></priority>
+            <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv"/>
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="378512f55dd44fc287d0fa609353c268"/>
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):AdoveTvSdk Live Bitmovin Dash"/>
+            <priority name="P1"></priority>
+            <embed_code name="tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE"/>
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8abff377aec2400e9337fe9088e65d40"/>
+            <playerParameter>
+                <![CDATA[{"embedToken":"http://player.ooyala.com/sas/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&country=ALL&expires=1496286630&signature=xXQzowbfxoEs9K4pQMget0qj++SrNYmsux+aZxTuVec&override_syndication_group=override_all_synd_groups","encodingPriority":["dash","hls","mp4"]}]]></playerParameter>
+            <live>
+                <channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):AdoveTvSdk Elemental Delta HLS Bitmovin Channel"/>
+            <priority name="P1"></priority>
+            <embed_code name="tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE"/>
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8abff377aec2400e9337fe9088e65d40"/>
+            <playerParameter>
+                <![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=4393292143&account_id=dulari_qa&&&signature=GPKWY58Ofu7eOCWr9KZgjJaZexq19LGzVD+Dcq6Qr/w"}]]></playerParameter>
+            <live>
+                <channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):AdoveTvSdk Elemental Delta Live OSMF HDS"/>
+            <priority name="P3"></priority>
+            <embed_code name="tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE"/>
+            <pcode name="BrZWgyOimSicqxlE8uTWS5IaNyNx"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8abff377aec2400e9337fe9088e65d40"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["hds","hls","mp4"],"embedToken":"http://player.ooyala.com/embed_token/BrZWgyOimSicqxlE8uTWS5IaNyNx/tzcHc3YTE6_5bpvGtxZhNxhzOscgX_eE?api_key=BrZWgyOimSicqxlE8uTWS5IaNyNx.z3KCO&expires=4393292143&account_id=dulari_qa&&&signature=GPKWY58Ofu7eOCWr9KZgjJaZexq19LGzVD+Dcq6Qr/w"}]]></playerParameter>
+            <live>
+                <channelId>5f18d37d9f5a4fc0a34bd5f4e1cb4e5a</channelId>
+                <provider>elemental</provider>
+            </live>
+        </url>
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):AdoveTvSdk Elemental Delta Live DVR HLS Bitmovin"/>
+            <priority name="P1"></priority>
+            <embed_code name="Bob2V0MjE6S3P5Zs-5GbDs7J9lzBFxVc"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter>
+                <![CDATA[{"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):AdoveTvSdk Akamai HD Live HDS"/>
+            <priority name="P3"></priority>
+            <embed_code name="ZzYjl0MTE6q67pMzfDHLjHsh5ZPR7rMO"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
+            <browsersSupported name="safari"/>
+        </url>
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):AdoveTvSdk Akamai Live HLS Bitmovin"/>
+            <priority name="P2"></priority>
+            <embed_code name="czNXJ2ZzpQnD1lc0ADgesT2XUXh86OkT"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):AdoveTvSdk Live DVR Main"/>
+            <priority name="P1"></priority>
+            <embed_code name="BsZjdieDrJdl9YjLBm1LVyl3FF0KdWtd"/>
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="378512f55dd44fc287d0fa609353c268"/>
+            <browsersSupported name="safari"/>
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Live Stream Testing(Without DRM):AdoveTvSdk Elemental Delta Live HLS Main"/>
+            <priority name="P1"></priority>
+            <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv"/>
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="378512f55dd44fc287d0fa609353c268"/>
+            <browsersSupported name="safari"/>
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Live Stream Testing(Without DRM):AdoveTvSdk Akamai Live HLS Main"/>
+            <priority name="P2"></priority>
+            <embed_code name="lnczNodjp1v0yF7B7R8HYoQSJlE2AISv"/>
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
+            <plugins name="ADOBETVSDK"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="378512f55dd44fc287d0fa609353c268"/>
+            <browsersSupported name="safari"/>
+            <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>
+        </url>
 
     </test>
 </testdata>

@@ -21,6 +21,11 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
 		
+		if(driver.getCurrentUrl().contains("adobe_html5")){
+			extentTest.log(LogStatus.INFO, "Unable to validate scrubber for adobe_html5");
+			return true;
+		}
+		
 		DiscoveryValidator discovery = new PlayBackFactory(driver, extentTest).getDiscoveryValidator();
 		if(discovery.isDiscoveryToasterPresent()) {
 			Thread.sleep(1000);

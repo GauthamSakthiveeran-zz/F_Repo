@@ -2,7 +2,7 @@
     <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
-    <test name="Player Features" parallel="classes" thread-count="5">
+    <test name="Player Features" parallel="classes" thread-count="10">
         <classes>
             <parameter name="testData" value="alice/Alice.xml" />
             <parameter name="jsFile" value="alice/alice.js" />
@@ -30,7 +30,6 @@
             <class name="com.ooyala.playback.playerfeatures.PlayerDimensionTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryAssetTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackUIControlOptionsTests"/>
-            <class name="com.ooyala.playback.playerfeatures.PlaybackClosedCaptionPilingUpTests"/>
             <class name="com.ooyala.playback.playerfeatures.PlaybackEmbedTabTests"/>
         </classes>
     </test>
@@ -40,6 +39,20 @@
             <parameter name="testData" value="alice/HTML5FirstPlaybackTests.xml" />
             <parameter name="jsFile" value="alice/alice.js" />
             <class name="com.ooyala.playback.core.HTML5FirstPlaybackTests"/>
+        </classes>
+    </test>
+
+    <test name="Adhoc Test Regression" parallel="classes" thread-count="5">
+        <classes>
+            <parameter name="testData" value="adhoc/Adhoc.xml" />
+            <parameter name="jsFile" value="alice/alice.js,common.js,amf/amf.js" />
+            <class name="com.ooyala.playback.adhoc.BitrateOptionsBeforeAndAfterMidrollTests"/>
+            <class name="com.ooyala.playback.adhoc.SeekBackFromEndAndCheckPlayback"/>
+            <class name="com.ooyala.playback.adhoc.SeekTillEndTests"/>
+            <class name="com.ooyala.playback.adhoc.CheckPlaybackAfterWaitOnEndScreenAndReplayTests"/>
+            <class name="com.ooyala.playback.adhoc.PageLevelOverrideForShareScreenTests"/>
+            <class name="com.ooyala.playback.adhoc.PlaybackZoomInZoomOutTests"/>
+            <class name="com.ooyala.playback.adhoc.ReplayAfterSeekBackTests"/>
         </classes>
     </test>
     

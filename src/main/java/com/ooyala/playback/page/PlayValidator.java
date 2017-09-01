@@ -66,31 +66,25 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		// if(!PlayBackFactory.getInstance(driver).getPlayAction().startAction())
-		// return false;
 
 		if (!clickOnIndependentElement("PLAY_BUTTON")) {
 			extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
 			return false;
 		}
-
+		
 		if (!loadingSpinner()) {
 			extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
 			return false;
 		}
 		
-		
-		if(!getBrowser().toLowerCase().contains("explorer"))
+		if (!isElementPresent("LIVE")) {
+			if(!driver.getCurrentUrl().contains("initialTime"))
+				validatePlayStartTimeFromBeginningofVideo();
+		}
+
+		if (!getBrowser().toLowerCase().contains("explorer"))
 			if (!waitOnElement("PLAYING_SCREEN", 4000)) {
-				if (getBrowser().contains("safari")) {
-					Thread.sleep(30000);
-					if (!clickOnIndependentElement("PLAY_BUTTON")) {
-						extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
-						return false;
-					}
-				} else {
-					extentTest.log(LogStatus.FAIL, "PLAYING_SCREEN not found.");
-				}
+				extentTest.log(LogStatus.FAIL, "PLAYING_SCREEN not found.");
 			}
 
 		if (!getBrowser().equalsIgnoreCase("internet explorer")) {
@@ -98,18 +92,10 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 				return false;
 		}
 		
-		if (!isElementPresent("LIVE")) {
-			
-			if(!validatePlayStartTimeFromBeginningofVideo()) {
-				return false;
-			}
-			
-		}
-
 		if (isVideoPluginPresent("ANALYTICS")) {
 			if (!(isAnalyticsElementPreset("analytics_video_" + element)
 					&& isAnalyticsElementPreset("analytics_video_requested_" + element))) {
-				return false;
+				extentTest.log(LogStatus.FAIL, "Issue with Analytics elements.");
 			}
 		}
 

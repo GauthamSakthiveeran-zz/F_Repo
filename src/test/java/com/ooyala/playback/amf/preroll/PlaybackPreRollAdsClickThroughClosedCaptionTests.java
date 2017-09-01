@@ -29,6 +29,8 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 	@Test(groups = { "amf", "preroll", "cc", "sequential", "clickThrough" }, dataProvider = "testUrls")
 	public void verifyPreroll(String testName, UrlObject url) throws Exception {
 		boolean result = true;
+		
+		if(!testName.contains("Pulse:AdobeTVSDK Preroll")) return;
 
 		try {
 			boolean cc = testName.contains("CC");
@@ -45,11 +47,13 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 				result = result && event.validate("singleAdPlayed_2", 120000);
 			else
 				result = result && event.validate("singleAdPlayed_1", 120000);
+			
+			result = result && event.loadingSpinner();
+			
+			event.validatePlayStartTimeFromBeginningofVideo();
 
 			result = result && event.validate("playing_1", 35000);
-			if (result)
-				event.validatePlayStartTimeFromBeginningofVideo();
-			result = result && event.loadingSpinner();
+			
 			if (result && cc) {
 				s_assert.assertTrue(ccValidator.validate("cclanguage", 60000), "CC");
 			}

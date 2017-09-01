@@ -37,7 +37,7 @@ public class PlaybackAspectRatioTests extends PlaybackWebTest {
 	public void testAspectRation(String testName, UrlObject url)
 			throws OoyalaException {
 		boolean result = true;
-
+		
 		try {
 			driver.get(url.getUrl());
 

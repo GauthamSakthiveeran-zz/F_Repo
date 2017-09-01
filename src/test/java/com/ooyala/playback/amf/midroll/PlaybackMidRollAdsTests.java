@@ -37,8 +37,7 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 			result = result && playValidator.validate("playing_1", 60000);
 			result = result && midrollAdValidator.validateMidrollAd(url);
 			result = result && event.validate("playing_2", 160000);
-			result = result && midrollAdValidator.validateMainVideoPlaybackStartTimeAfterMidrollAd(url.getAdStartTime());
-			Thread.sleep(3000);
+			event.validateVideoStartTime(Double.parseDouble(url.getAdStartTime())+1);
 			result = result && seekValidator.validate("seeked_1", 160000);
 			result = result && event.validate("played_1", 160000);
 

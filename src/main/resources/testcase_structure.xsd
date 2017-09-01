@@ -31,6 +31,15 @@
 									</xs:simpleContent>
 								</xs:complexType>
 							</xs:element>
+							<xs:element name="skinJson">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute type="xs:string" name="name" use="optional" />
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
 							<xs:element name="embed_code">
 								<xs:complexType>
 									<xs:simpleContent>
@@ -69,8 +78,10 @@
 												use="optional" />
 											<xs:attribute type="xs:string" name="adPlayTime"
 												use="optional" />
-                                            <xs:attribute type="xs:string" name="overlayPlayTime"
-                                                          use="optional" />
+											<xs:attribute type="xs:string" name="overlayPlayTime"
+												use="optional" />
+											<xs:attribute type="xs:string" name="clickthrough"
+												use="optional" />
 										</xs:extension>
 									</xs:simpleContent>
 								</xs:complexType>
@@ -136,7 +147,8 @@
 									<xs:simpleContent>
 										<xs:extension base="xs:string">
 											<xs:attribute type="xs:string" name="name" use="optional" />
-											<xs:attribute type="xs:string" name="browser" use="optional" />
+											<xs:attribute type="xs:string" name="browser"
+												use="optional" />
 										</xs:extension>
 									</xs:simpleContent>
 								</xs:complexType>
@@ -159,7 +171,8 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="platformsSupported" minOccurs="0" maxOccurs="1" >
+							<xs:element name="platformsSupported" minOccurs="0"
+								maxOccurs="1">
 								<xs:complexType>
 									<xs:simpleContent>
 										<xs:extension base="xs:string">
@@ -174,7 +187,8 @@
 									<xs:simpleContent>
 										<xs:extension base="xs:string">
 											<xs:attribute type="xs:string" name="name" use="optional" />
-                                            <xs:attribute type="xs:string" name="supportedMuxFormat" use="optional" />
+											<xs:attribute type="xs:string" name="supportedMuxFormat"
+												use="optional" />
 										</xs:extension>
 									</xs:simpleContent>
 								</xs:complexType>

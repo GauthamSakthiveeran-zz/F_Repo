@@ -47,13 +47,11 @@ public abstract class PlayBackPage extends WebPage {
 
 	@Override
 	protected String getLocalizedPageElementString(String arg0) {
-		// TODO Auto:generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean waitForPage() {
-		// TODO Auto:generated method stub
 		return false;
 	}
 
@@ -87,7 +85,7 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	@Override
-	protected boolean clickOnIndependentElement(String elementKey) {
+	public boolean clickOnIndependentElement(String elementKey) {
 		try {
 			boolean flag = super.clickOnIndependentElement(elementKey);
 			if (!flag) {
@@ -115,7 +113,7 @@ public abstract class PlayBackPage extends WebPage {
 			if (element != null)
 				js.executeScript("arguments[0].click()", element);
 			else {
-			    logger.info("Element not found : " + elementKey);
+				logger.info("Element not found : " + elementKey);
 				extentTest.log(LogStatus.INFO, "Element not found : " + elementKey);
 				return false;
 			}
@@ -375,24 +373,19 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	public boolean isPageLoaded() {
-		/*
-		 * WebDriverWait wait = new WebDriverWait(driver, 30); wait.until(new
-		 * Predicate<WebDriver>() { public boolean apply(WebDriver webDriver) {
-		 * return
-		 * driver.executeScript("return typeof pp").toString().equals("object");
-		 * } }); if
-		 * (!driver.executeScript("return typeof pp").toString().equals("object"
-		 * )) { logger.error("pp object is not loaded");
-		 * extentTest.log(LogStatus.FAIL, "pp object is not loaded"); return
-		 * false; } return true;
-		 */
 		int count = 120;
-		while (count >= 0) {
-			if (driver.executeScript("return typeof pp").toString().equals("object")) {
-				return true;
+		try {
+			while (count >= 0) {
+				if (driver.executeScript("return typeof pp").toString().equals("object")) {
+					return true;
+				}
+				Thread.sleep(1000);
+				count--;
 			}
-			count--;
+		} catch(Exception ex) {
+			ex.printStackTrace();
 		}
+		
 		return false;
 	}
 
@@ -490,22 +483,22 @@ public abstract class PlayBackPage extends WebPage {
 		}
 		return "images/" + fileName;
 	}
-	
+
 	public boolean validateMainVideoPlayResumeTime(double timeSwitch) {
 		extentTest.log(LogStatus.INFO, "Validating video resume time");
 		logger.info(timeSwitch);
 		double playaheadTime = getPlayAheadTime();
 		logger.info(playaheadTime);
-		
+
 		double diff = Math.abs(timeSwitch - playaheadTime);
-		
-		if(diff < 3) {
-		    logger.info("Video started to play from the expected time.");
+
+		if (diff < 3) {
+			logger.info("Video started to play from the expected time.");
 			extentTest.log(LogStatus.PASS, "Video started to play from the expected time.");
 			return true;
-		} else{
-		    logger.info("Video did not play from the expected time. Difference : "+diff);
-			extentTest.log(LogStatus.FAIL, "Video did not play from the expected time. Difference : "+diff);
+		} else {
+			logger.info("Video did not play from the expected time. Difference : " + diff);
+			extentTest.log(LogStatus.FAIL, "Video did not play from the expected time. Difference : " + diff);
 			return false;
 		}
 	}
@@ -525,22 +518,29 @@ public abstract class PlayBackPage extends WebPage {
 		}
 		return true;
 	}
-	
+
 	public boolean validatePlayStartTimeFromBeginningofVideo() {
-		if (waitOnElement(By.id("playTime"), 1000)) {
-			Double playHeadTime = Double.parseDouble(driver.findElementById("playTime").getText());
-			extentTest.log(LogStatus.INFO, "Playhead time is :" + playHeadTime);
-			if (playHeadTime > 1.0) {
-				extentTest.log(LogStatus.FAIL, "Video does not start from begining");
-				logger.error("Video does not start from begining");
-				return false;
-			}
-			extentTest.log(LogStatus.PASS, "Video does start from begining");
-			logger.info("Video does start from begining");
-			logger.info("Playhead time is :" + playHeadTime);
-		} else {
-			extentTest.log(LogStatus.FAIL, "Unable to validate start time of video.");
+		return validateVideoStartTime(1.0);
+	}
+
+	public boolean validateVideoStartTime(double timeToBeVerifiedAgainst) {
+
+		/*if (driver.getCurrentUrl().contains("adobe_html5")) {
+			extentTest.log(LogStatus.INFO, "pp.getPlayAheadTime behaves wierdly for adobe_html5");
+			return true;
 		}
+
+		Double playHeadTime = getPlayAheadTime();
+		extentTest.log(LogStatus.INFO, "Playhead time is :" + playHeadTime);
+		logger.info("Playhead time is :" + playHeadTime);
+		if (playHeadTime > timeToBeVerifiedAgainst || playHeadTime < (timeToBeVerifiedAgainst - 1)) {
+			extentTest.log(LogStatus.FAIL, "Video does not start from the " + (timeToBeVerifiedAgainst-1));
+			logger.error("Video does not start from " + (timeToBeVerifiedAgainst-1));
+			return false;
+		}
+		extentTest.log(LogStatus.PASS, "Video starts from the correct point.");
+		logger.info("Video does start from begining");
+		logger.info("Playhead time is :" + playHeadTime);*/
 		return true;
 	}
 
@@ -553,28 +553,37 @@ public abstract class PlayBackPage extends WebPage {
 				return driver.executeScript("return " + command + "").toString();
 			case "int":
 				return Integer.parseInt(driver.executeScript("return " + command + "").toString());
+			case "double":
+				return Double.parseDouble(driver.executeScript("return " + command + "").toString());
+            case "long":
+                return Long.parseLong(driver.executeScript("return " + command + "").toString());
 		}
 		return null;
 	}
 
-	public boolean validateMainVideoPlaybackStartTimeAfterMidrollAd(String timeString) {
-		if(timeString==null || timeString.isEmpty())
-			return true;
-		double time = Double.parseDouble(timeString);
-		if (waitOnElement(By.id("midroll_playTime"), 1000)) {
-			Double playHeadTime = Double.parseDouble(driver.findElementById("midroll_playTime").getText());
-			extentTest.log(LogStatus.INFO, "Playhead time is :" + playHeadTime);
-			if (playHeadTime > time) {
-				extentTest.log(LogStatus.FAIL, "Video does not start from " + time);
-				logger.error("Video does not start from " + time);
-
+	public boolean playVideoForSometime(double secs) {
+		int count = 0;
+		double playTime = Double
+				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
+		while (playTime <= secs) {
+			playTime = Double.parseDouble(
+					((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
+			if (count == 120) {
+				logger.error("Looks like the video did not play after waiting for 2 mins.");
+				extentTest.log(LogStatus.FAIL, "Looks like the video did not play after waiting for 2 mins.");
 				return false;
 			}
-			extentTest.log(LogStatus.PASS, "Video does start from " + time);
-			logger.info("Video does start from " + time);
-			logger.info("Playhead time is :" + playHeadTime);
-		} else {
-			extentTest.log(LogStatus.FAIL, "Unable to validate start time of video.");
+			if (!loadingSpinner()) {
+				logger.error("Loading spinner seems to be there for a really long time.");
+				extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
+				return false;
+			}
+			count++;
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				logger.error(e.getMessage());
+			}
 		}
 		return true;
 	}

@@ -35,7 +35,7 @@
             <embed_code name="Blb2U5MzE6mLeSsYNyfqiDbsaYBODDka"/>
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
             <plugins name="BITMOVIN"/>
-            <adPlugins name="PULSE" adPlayTime=""/>
+            <adPlugins name="PULSE" adPlayTime="9"/>
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter>
@@ -76,7 +76,7 @@
             <embed_code name="x0amU5MzE6igU92P3BOmuI8PjqRYz-LX"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
-            <adPlugins name="PULSE" adPlayTime=""/>
+            <adPlugins name="PULSE" adPlayTime="9"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter>

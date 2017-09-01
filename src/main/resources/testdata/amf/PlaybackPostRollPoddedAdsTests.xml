@@ -8,7 +8,7 @@
             <embed_code name="94ajI4MjE67rcugQEGwylcOLG9Ggbads"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
-            <adPlugins name="VAST"/>
+            <adPlugins name="VAST" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter>
@@ -21,7 +21,7 @@
             <embed_code name="94ajI4MjE67rcugQEGwylcOLG9Ggbads"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="ADOBETVSDK"/>
-            <adPlugins name="VAST"/>
+            <adPlugins name="VAST" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter>
@@ -135,7 +135,7 @@
             <embed_code name="Rna2x4dDrdRWdZnUS4lxeLR6sZWhdpZD"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="ADOBETVSDK"/>
-            <adPlugins name="VAST"/>
+            <adPlugins name="VAST" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter><![CDATA[{"showInAdControlBar":true}]]></playerParameter>

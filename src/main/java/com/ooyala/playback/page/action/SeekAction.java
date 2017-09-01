@@ -41,7 +41,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 		seekTillEnd = true;
 		return this;
 	}
-	
+
 	public SeekAction seekToMid() {
 		seekToMid = true;
 		return this;
@@ -71,7 +71,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 	public boolean startAction() throws Exception {
 
 		if (time == 0 && !seekTillEnd) {
-			if(!seekToMid)
+			if (!seekToMid)
 				throw new Exception("Time to seek needs to be set! or seekTillEnd should be set to true");
 		}
 
@@ -89,7 +89,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 			return seekPlayback();
 
 		} else {
-			if (fromLast) {
+			if (fromLast || seekToMid) {
 				return seek(time, fromLast);
 			} else {
 				return seek(time + "");
@@ -103,13 +103,13 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 
 	public boolean seek(int time, boolean fromLast) throws Exception {
 		String seekduration;
-		
-		if(seekToMid) {
+
+		if (seekToMid) {
 			seekToMid = false;
 			factor = 1;
 			return seek("pp.getDuration()/2");
 		}
-		
+
 		if (fromLast) {
 			seekduration = getDurationString();
 			this.fromLast = false;

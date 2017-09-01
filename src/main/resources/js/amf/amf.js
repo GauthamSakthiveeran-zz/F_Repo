@@ -33,6 +33,7 @@ function subscribeToEvents() {
         var prerollAdPlayed = 1;
         var midrollAdPlayed = 1;
         var postrollAdPlayed = 1;
+        var nonLinearAdDisplayed = 1;
         
         var logger = '';
 		
@@ -84,7 +85,7 @@ function subscribeToEvents() {
 			if (event.match(/playing/)) {
 				
 				if(replayEventOrder == 2){
-					OO.$('#ooplayer').append('<p id=playing_'+playing[1]+'>playing '+playing[1]+'</p>');c
+					OO.$('#ooplayer').append('<p id=playing_'+playing[1]+'>playing '+playing[1]+'</p>');
 				}else{
 					OO.$('#ooplayer').append('<p id=playing_'+playingEventOrder+'>playing '+playingEventOrder+'</p>'); 
 					playingEventOrder++;
@@ -218,15 +219,6 @@ function subscribeToEvents() {
 			if (event.match(/setClosedCaptionsLanguage/)) {
 				OO.$('#ooplayer').append('<p id=cclanguage_'+ arguments[1]+'>cclanguage_'+ arguments[1]+'</p>');
 				OO.$('#ooplayer').append('<p id=ccmode_'+ arguments[2].mode+'>ccmode_'+ arguments[2].mode+'</p>');
-				if(playingEventOrder==2) {
-					var time = pp.getPlayheadTime();
-					OO.$('#ooplayer').append('<p id=playTime>'+time+'</p>');
-				}
-				
-				if(playingEventOrder==3) {
-					var time = pp.getPlayheadTime();
-					OO.$('#ooplayer').append('<p id=midroll_playTime>'+time+'</p>');
-				}
 			}
 			
 			
@@ -290,7 +282,12 @@ function subscribeToEvents() {
                     '<p id=multimidrollAdStartTime>'+time+'</p>');
                 videoPausedEventOrder++;
             }
-            
+
+            if (event.match(/nonlinearAdDisplayed/)) {
+                OO.$('#ooplayer').append('<p id=nonLinearAdDisplayed_'+nonLinearAdDisplayed+'>nonLinearAdDisplayed '+nonLinearAdDisplayed+'</p>');
+                nonLinearAdDisplayed++;
+            }
+
             OO.log(logger);
 			
 		};

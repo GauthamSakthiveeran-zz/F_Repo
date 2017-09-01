@@ -8,8 +8,10 @@ import java.net.InetAddress;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Capabilities;
@@ -34,6 +36,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
+
 import com.ooyala.facile.listners.IMethodListener;
 import com.ooyala.facile.proxy.browsermob.BrowserMobProxyHelper;
 import com.ooyala.facile.test.FacileTest;
@@ -41,6 +44,7 @@ import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.httpserver.SimpleHttpServer;
 import com.ooyala.playback.live.LiveChannel;
 import com.ooyala.playback.page.PlayBackPage;
+import com.ooyala.playback.page.action.ChromeFlashUpdateAction;
 import com.ooyala.playback.report.ExtentManager;
 import com.ooyala.playback.updateSpreadSheet.TestCaseSheet;
 import com.ooyala.playback.url.Testdata;
@@ -51,6 +55,7 @@ import com.ooyala.playback.utils.JSScriptInjection;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+
 import net.sf.uadetector.ReadableUserAgent;
 import net.sf.uadetector.UserAgentStringParser;
 import net.sf.uadetector.service.UADetectorServiceFactory;
@@ -68,6 +73,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected RemoteWebDriver driver;
     protected static String v4Version;
     protected static String osNameAndOsVersion;
+    private ChromeFlashUpdateAction chromeValidator;
     private static Map<String, ITestResult> testDetails = new HashMap<String, ITestResult>();
     public SoftAssert s_assert;
 
@@ -85,6 +91,11 @@ public abstract class PlaybackWebTest extends FacileTest {
                 UrlObject url = (UrlObject) testData[1];
                 logger.info("*** URL " + url.getUrl() + " *********");
                 extentTest.log(LogStatus.INFO, "URL : " + url.getUrl());
+                if (testData[0].toString().contains("OSMF") && getBrowser().contains("chrome")) {
+    				driver.get("chrome://components/");
+    				chromeValidator = new ChromeFlashUpdateAction(driver);
+    				chromeValidator.isFlashPluginUpdated();
+                }
             } else {
                 logger.info("*** Test " + getClass().getSimpleName() + " started *********");
                 extentTest = ExtentManager.startTest(getClass().getSimpleName());
@@ -212,8 +223,8 @@ public abstract class PlaybackWebTest extends FacileTest {
             if (browser == null || browser.equals(""))
                 browser = "firefox";
             logger.info("browser is " + browser);
-            if (browser.equalsIgnoreCase("safari") || browser.toLowerCase().contains("edge") || browser.toLowerCase().contains("internet") || browser.equalsIgnoreCase("ie")
-                    || System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("android")) {
+            if (/*browser.equalsIgnoreCase("safari") || browser.toLowerCase().contains("edge") || browser.toLowerCase().contains("internet") || browser.equalsIgnoreCase("ie")
+                    || */System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("android")) {
                 // safari driver does not allow parallel execution of tests
                 // ie because the browser hangs - this is a temp soln.
                 context.getCurrentXmlTest().setParallel("false");
@@ -239,6 +250,7 @@ public abstract class PlaybackWebTest extends FacileTest {
             parseXmlFileData(xmlFile, xmlFilePkg);
             initializeWebdriver();
             getJSFile(jsFile);
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -276,7 +288,7 @@ public abstract class PlaybackWebTest extends FacileTest {
                 driverNotNullFlag = true;
             }
 
-            if (result.getStatus() == ITestResult.FAILURE || extentTest.getRunStatus()==LogStatus.FAIL) {
+            if (result.getStatus() == ITestResult.FAILURE) {
                 if (driverNotNullFlag) {
                     String fileName = takeScreenshot(extentTest.getTest().getName());
                     extentTest.log(LogStatus.INFO,

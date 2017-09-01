@@ -149,6 +149,7 @@
             <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
             <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
+            <browsersSupported name="safari" />
         </url>
 
         <url>
@@ -161,7 +162,7 @@
             <additionalPlugins name="" />
             <pbid name="378512f55dd44fc287d0fa609353c268" />
             <streamType name="hls" />
-            <browsersSupported name="safari,MicrosoftEdge" />
+            <browsersSupported name="safari" />
             <platformsSupported name="mac,windows"/>
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
@@ -233,8 +234,8 @@
             <pbid name="c0adf6d2044f437080e005a69cba4880" />
             <streamType name="hls" />
             <playerParameter><![CDATA[{"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
-            <sslEnabled name="https" browser="chrome"/>
             <platformsSupported name="mac,windows"/>
+            <browsersSupported name="safari" />
         </url>
     </test>
 
