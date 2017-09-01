@@ -29,8 +29,6 @@ public class PlaybackAutoplayAutoloopPreMidPostAdTests extends PlaybackWebTest {
 
 		boolean result = true;
 		
-		if(!testName.contains("VTC:Verify AutoPlay and AutoLoop properties for PreMidPost IMA+ Video")) return;
-
 		try {
 
 			driver.get(url.getUrl());
