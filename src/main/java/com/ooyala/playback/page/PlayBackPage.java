@@ -375,7 +375,7 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	public boolean isPageLoaded() {
-		int count = 120;
+		int count = 2000;
 		while (count >= 0) {
 			if (driver.executeScript("return typeof pp").toString().equals("object")) {
 				return true;
@@ -435,6 +435,10 @@ public abstract class PlayBackPage extends WebPage {
 				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
 	}
 
+	public String getPlayerState() {
+		return driver.executeScript("return pp.getState()").toString();
+	}
+	
 	public double getDuration() {
 		return Double.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getDuration();").toString());
 	}
