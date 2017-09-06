@@ -1,12 +1,16 @@
 package com.ooyala.playback.playerfeatures;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.CCValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 /**
  * Created by suraj on 7/12/17.
@@ -17,7 +21,6 @@ public class PlaybackClosedCaptionPilingUpTests extends PlaybackWebTest {
     }
 
     private PlayValidator play;
-    private PauseValidator pause;
     private SeekValidator seek;
     private EventValidator eventValidator;
     private CCValidator ccValidator;

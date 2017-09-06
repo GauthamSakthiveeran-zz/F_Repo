@@ -32,6 +32,13 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
         addElementToPageElements("adPodEnd");
         addElementToPageElements("startscreen");
     }
+    
+    private boolean skipScrubberValidation = false;
+    
+    public EventValidator skipScrubberValidation() {
+    	skipScrubberValidation = true;
+    	return this;
+    }
 
     public boolean validate(String element, int timeout) throws Exception {
 
@@ -109,17 +116,17 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
             ScrubberValidator scrubberValidator = new PlayBackFactory(driver, extentTest).getScrubberValidator();
             logger.info("element found : " + element);
             extentTest.log(LogStatus.PASS, "Wait on element : " + element);
-            if (element.startsWith("played")) {
+            if (element.startsWith("played") && !skipScrubberValidation) {
                 return scrubberValidator.validate("", 1000);
             }
-            if (element.startsWith("seeked")) {
+            /*if (element.startsWith("seeked") && !skipScrubberValidation) {
             	if(getBrowser().equalsIgnoreCase("internet explorer"))
             		return true;
                 ((JavascriptExecutor) driver).executeScript("return pp.pause();");
                 boolean flag = scrubberValidator.validate("", 1000);
                 ((JavascriptExecutor) driver).executeScript("return pp.play();");
                 return flag;
-            }
+            }*/
             return true;
         }
         logger.error("Wait on element : " + element + " failed after " + timeout + " ms");

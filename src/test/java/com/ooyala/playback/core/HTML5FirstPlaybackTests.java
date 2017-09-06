@@ -82,7 +82,7 @@ public class HTML5FirstPlaybackTests extends PlaybackWebTest {
 
                     result = result && seek.validate("seeked_1", 60000);
 
-                    result = result && eventValidator.validate("played_1", 120000);
+                    result = result && eventValidator.skipScrubberValidation().validate("played_1", 120000);
                 }
             }
 

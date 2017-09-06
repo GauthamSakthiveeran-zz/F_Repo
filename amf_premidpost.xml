@@ -3,15 +3,15 @@
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
 
-	<test name="AMF" parallel="classes" thread-count="5">
+	<test name="AMF" parallel="classes" thread-count="10">
 		<parameter name="jsFile" value="common.js,amf/amf.js" />
 		<parameter name="xmlFilePkg" value="amf" />
 		<classes>
-			<!-- <class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPreMidPostAdTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPreMidPostAdTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPreMidPostPoddedAdTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackAutoplayAutoloopPrerollAndMidrollAdTests"></class> 
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostInitialVolumeTests"></class>
-			<class name="com.ooyala.playback.amf.PlaybackBasicSeekAndReplayTests"></class>-->
+			<class name="com.ooyala.playback.amf.PlaybackBasicSeekAndReplayTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackIMAPreVastMidAdsTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostReplayTests"></class>
 			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsPoddedTests"></class>

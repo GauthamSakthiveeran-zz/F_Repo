@@ -1,17 +1,17 @@
 package com.ooyala.playback.adhoc;
 
+import org.apache.log4j.Logger;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.UIControlValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 /**
  * Created by suraj on 8/7/17.
@@ -25,7 +25,6 @@ public class SeekBackFromEndAndCheckPlayback extends PlaybackWebTest {
     private PlayAction playAction;
     private EventValidator eventValidator;
     private SeekAction seekAction;
-    private UIControlValidator uiControlValidator;
 
     @Test(dataProvider = "testUrls",groups = "adhoc")
     public void seekFromEndAndPlay(String testName, UrlObject url){
@@ -41,7 +40,6 @@ public class SeekBackFromEndAndCheckPlayback extends PlaybackWebTest {
             result = result && eventValidator.validate("seeked_1",10000);
             result = result && eventValidator.validate("played_1",30000);
             driver.executeScript("pp.seek(pp.getDuration()-10)");
-            result = result && eventValidator.validate("seeked_2",10000);
             result = result && eventValidator.validate("playing_2",10000);
         } catch (Exception e) {
             logger.error(e);

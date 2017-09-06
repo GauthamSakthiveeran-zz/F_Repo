@@ -231,13 +231,6 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 				return false;
 			}
 
-			// wait for ad to play completely
-			/*
-			 * if (!waitOnElement(By.id("singleAdPlayed_" + counter + ""),
-			 * 50000)) { extentTest.log(FAIL,"singleAdPlayed_" + counter +
-			 * "element not found"); return false; }
-			 */
-
 			if (adType.equalsIgnoreCase("preroll")) {
 				if (!waitOnElement(By.id("prerollAdPlayed_" + counter + ""), 10000)) {
 					extentTest.log(FAIL, "prerollAdPlayed_" + counter + " element not found");
@@ -256,6 +249,7 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 			}
 
 			if (!loadingSpinner()) {
+				extentTest.log(LogStatus.FAIL, "Video has been buffering for a really long time i.e it occured more that 2 minutes");
 				return false;
 			}
 

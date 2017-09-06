@@ -1,17 +1,17 @@
 package com.ooyala.playback.playerfeatures;
 
-import com.ooyala.playback.page.*;
-import com.relevantcodes.extentreports.LogStatus;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.ReplayValidator;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
-/**
- * Created by soundarya on 11/17/16.
- */
 public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
     private PlayValidator play;
@@ -46,7 +46,9 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 
 			result = result && replayValidator.validate("replay_1", 30000);
 			
-			result = result && eventValidator.validate("playing_4", 60000);
+			result = result && eventValidator.validate("playing_3", 60000);
+			
+			result = result && eventValidator.waitOnElement("PLAYING_SCREEN", 60000);
 			
             result = result && replayValidator.validatePlayHeadTime();
 

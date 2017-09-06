@@ -88,7 +88,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 			} else
 				result = result && event.validate("adsPlayed_3", 60000);
 
-			result = result && event.validate("played_1", 200000);
+			result = result && event.skipScrubberValidation().validate("played_1", 200000);
 
 		} catch (Exception e) {
 			logger.error(e.getMessage());
