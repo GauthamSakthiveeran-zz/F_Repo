@@ -34,6 +34,7 @@ public class PlaybackPreMidPostPoddedPageLevelOverrideTests extends PlaybackWebT
             driver.get(url.getUrl());
             result = result && playValidator.waitForPage();
             injectScript();
+            pageOverride.getTotalDuration();
             result = result && playAction.startAction();
             result = result && event.validate("PreRoll_willPlayAds", 60000);
             result = result && event.validate("adsPlayed_1", 600000);

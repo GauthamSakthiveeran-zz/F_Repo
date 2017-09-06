@@ -2,9 +2,10 @@ package com.ooyala.playback.amf.vast.pageleveloverride;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.VastPageLevelOverridingValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.VastPageLevelOverridingValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -13,21 +14,22 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
- * Created by Jitendra on 8/23/17.
+ * Created by suraj on 8/30/17.
  */
+public class PlaybackBacklotPrePageLevelOverrideWithMidAndPost extends PlaybackWebTest {
 
-public class PlaybackPrerollPageLevelOverrideTests extends PlaybackWebTest{
-    public PlaybackPrerollPageLevelOverrideTests() throws OoyalaException {
-        super();
+    public PlaybackBacklotPrePageLevelOverrideWithMidAndPost() throws OoyalaException {
     }
+
     private PlayValidator playValidator;
     private VastPageLevelOverridingValidator pageOverride;
     private PlayAction playAction;
     private EventValidator event;
-    private static Logger logger = Logger.getLogger(PlaybackPrerollPageLevelOverrideTests.class);
+    private SeekAction seekAction;
+    private static Logger logger = Logger.getLogger(PlaybackBacklotPrePageLevelOverrideWithMidAndPost.class);
 
     @Test(dataProvider = "testUrls",groups = "pageLevelOverriding")
-    public void prerollPageLevelOverride(String testName, UrlObject url){
+    public void backlotPrePageLevelOverrideWithMidAndPost(String testName, UrlObject url){
         boolean result= true;
         try {
             driver.get(url.getUrl());
@@ -35,16 +37,20 @@ public class PlaybackPrerollPageLevelOverrideTests extends PlaybackWebTest{
             injectScript();
             pageOverride.getTotalDuration();
             result = result && playAction.startAction();
-            result = result && event.validate("PreRoll_willPlaySingleAd_1", 60000);
-            result = result && event.validate("singleAdPlayed_1", 120000);
             result = result && event.validate("playing_1",10000);
-            result = result && pageOverride.setAdType("Preroll").validate("nonLinearAdDisplayed_1",1000);
-
+            result = result && event.validate("adsPlayed_1",30000);
+            result = result && pageOverride.setAdType("midroll").validate("",10000);
+            result = result && event.validate("playing_2",10000);
+            result = result && seekAction.seek(10,true);
+            result = result && event.validate("seeked_1",10000);
+            result = result && event.validate("adsPlayed_2",20000);
+            result = result && pageOverride.isMoreThanOneAd(true).setAdType("postroll").validate("",10000);
+            result = result && event.validate("played_1",10000);
         }catch (Exception e){
             extentTest.log(LogStatus.FAIL,e.getMessage());
+            logger.error(e.getMessage());
             result = false;
         }
-
         Assert.assertTrue(result, "Preroll Page Level Overriding tests failed");
     }
 }
