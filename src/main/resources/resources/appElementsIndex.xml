@@ -34,4 +34,5 @@
     <entry key="scrubber">resources/scrubber.xml</entry>
     <entry key="chromeComponents">resources/chromeComponents.xml</entry>
     <entry key="embedtab">resources/embedtab.xml</entry>
+    <entry key="time">resources/time.xml</entry>
 </properties>
