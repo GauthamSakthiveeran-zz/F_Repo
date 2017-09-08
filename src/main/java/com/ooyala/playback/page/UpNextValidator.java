@@ -1,6 +1,7 @@
 package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -52,5 +53,24 @@ public class UpNextValidator extends PlayBackPage implements PlaybackValidator {
 			return false;
 		}
 
+	}
+	
+	public boolean autoPlayUpNextVideo() {
+		int waitTime = 0;
+		try {
+		String playerState = (String) ((JavascriptExecutor) driver).executeScript("return pp.getState();");
+      	while((playerState.equalsIgnoreCase("loading") || playerState.equalsIgnoreCase("paused")) && waitTime <10) {
+      		Thread.sleep(1000);
+      		waitTime++;
+      	}
+      	return (Boolean) ((JavascriptExecutor) driver).executeScript("return pp.isPlaying();");
+		}
+		catch (Exception e) {
+            extentTest.log(LogStatus.FAIL, e.getMessage());
+            logger.error(e.getMessage());
+            e.printStackTrace();
+            return false;
+		}
+		
 	}
 }

@@ -54,7 +54,7 @@ public class DiscoveryAutoPlayUpNextTrue extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("played_1", 60000);
 			
-			result = result && discoveryUpNext.getPlayerState().equalsIgnoreCase("paused");
+			result = result && discoveryUpNext.autoPlayUpNextVideo();
 			
 
 		} catch (Exception e) {
