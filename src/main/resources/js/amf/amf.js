@@ -33,6 +33,7 @@ function subscribeToEvents() {
         var prerollAdPlayed = 1;
         var midrollAdPlayed = 1;
         var postrollAdPlayed = 1;
+        var nonLinearAdDisplayed = 1;
         
         var logger = '';
 		
@@ -281,7 +282,12 @@ function subscribeToEvents() {
                     '<p id=multimidrollAdStartTime>'+time+'</p>');
                 videoPausedEventOrder++;
             }
-            
+
+            if (event.match(/nonlinearAdDisplayed/)) {
+                OO.$('#ooplayer').append('<p id=nonLinearAdDisplayed_'+nonLinearAdDisplayed+'>nonLinearAdDisplayed '+nonLinearAdDisplayed+'</p>');
+                nonLinearAdDisplayed++;
+            }
+
             OO.log(logger);
 			
 		};

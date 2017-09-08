@@ -30,6 +30,7 @@ public class PlayerSkinScrubberValidator extends PlayBackPage {
 		addElementToPageElements("fullscreen");
 		addElementToPageElements("replay");
 		addElementToPageElements("fcc");
+		addElementToPageElements("discovery");
 
 	}
 

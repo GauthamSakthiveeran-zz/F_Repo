@@ -1,0 +1,18 @@
+<suite name="Playback Web Regression Suite for Vast Ad Page Level Override Tests" >
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    <test name="vast APLOT" parallel="classes" thread-count="5">
+        <parameter name="jsFile" value="common.js,amf/amf.js" />
+        <parameter name="xmlFilePkg" value="amf"/>
+        <classes>
+            <class name="com.ooyala.playback.amf.vast.pageleveloverride.PlaybackPrerollPageLevelOverrideTests"/>
+            <class name="com.ooyala.playback.amf.vast.pageleveloverride.PlaybackMidrollPageLevelOverrideTests"/>
+            <class name="com.ooyala.playback.amf.vast.pageleveloverride.PlaybackPostrollPageLevelOverrideTests"/>
+            <class name="com.ooyala.playback.amf.vast.pageleveloverride.PlaybackPreMidPostPageLevelOverrideTests"/>
+            <class name="com.ooyala.playback.amf.vast.pageleveloverride.PlaybackPreMidPostPoddedPageLevelOverrideTests"/>
+            <class name="com.ooyala.playback.amf.vast.pageleveloverride.PlaybackOverlayPageLevelOverrideTests"/>
+            <class name="com.ooyala.playback.amf.vast.pageleveloverride.PlaybackBacklotPrePageLevelOverrideWithMidAndPost"/>
+        </classes>
+    </test>
+</suite>

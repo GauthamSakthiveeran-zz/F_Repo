@@ -547,14 +547,16 @@ public abstract class PlayBackPage extends WebPage {
 	public Object executeJsScript(String command, String returnType) {
 
 		switch (returnType) {
-		case "boolean":
-			return Boolean.parseBoolean(driver.executeScript("return " + command + "").toString());
-		case "string":
-			return driver.executeScript("return " + command + "").toString();
-		case "int":
-			return Integer.parseInt(driver.executeScript("return " + command + "").toString());
-		case "double":
-			return Double.parseDouble(driver.executeScript("return " + command + "").toString());
+			case "boolean":
+				return Boolean.parseBoolean(driver.executeScript("return " + command + "").toString());
+			case "string":
+				return driver.executeScript("return " + command + "").toString();
+			case "int":
+				return Integer.parseInt(driver.executeScript("return " + command + "").toString());
+			case "double":
+				return Double.parseDouble(driver.executeScript("return " + command + "").toString());
+            case "long":
+                return Long.parseLong(driver.executeScript("return " + command + "").toString());
 		}
 		return null;
 	}

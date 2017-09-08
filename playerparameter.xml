@@ -1,0 +1,22 @@
+<suite name="Playback Platform Parameter" verbose="1">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+
+  
+	<test name=" Core - Player Parameter " parallel="classes"
+		thread-count="3">
+		<classes>
+			<parameter name="testData" value="playerParameters/PlayerParameter.xml" />
+			<parameter name="jsFile" value="alice/alice.js" />
+			<class name="com.ooyala.playback.playerParameter.PlayerParametersAutoPlayClosedCaptionTests" />
+			<class name="com.ooyala.playback.playerParameter.PlayerParametersAutoPlayVolumeClosedCaptionTests" /> 
+			<class name="com.ooyala.playback.playerParameter.PlayerParametersAutoPlayDiscovery" />
+			<class name="com.ooyala.playback.playerParameter.PlayerParametersDiscoveryUpnextDisabled" />
+			<class name="com.ooyala.playback.playerParameter.PlayerParametersDiscoveryUpnextEnabled" />
+			<class name="com.ooyala.playback.playerParameter.PlayerParametersDiscoveryUpnextDisabledAutoPlay" />  
+		</classes>
+	</test>
+
+</suite>
+

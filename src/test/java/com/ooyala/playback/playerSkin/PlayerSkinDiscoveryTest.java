@@ -11,6 +11,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.PlayerSkinButtonsValidator;
+import com.ooyala.playback.page.PlayerSkinScrubberValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.StreamValidator;
 import com.ooyala.playback.page.action.SeekAction;
@@ -30,6 +31,7 @@ public class PlayerSkinDiscoveryTest extends PlaybackWebTest {
     private StreamValidator streamTypeValidator;
     private SeekAction seekAction;
     private PlayerSkinButtonsValidator skinValidator;
+    private PlayerSkinScrubberValidator colorValidator;
 
     public PlayerSkinDiscoveryTest() throws OoyalaException {
         super();
@@ -51,7 +53,8 @@ public class PlayerSkinDiscoveryTest extends PlaybackWebTest {
            	s_assert.assertTrue(skinValidator.clickButtonInMoreOptions("DISCOVERY_BTN"),"Discovery button"
            			+ " is not visible in more options screen");
            	
-           //call function to verify the color of discovery button
+           s_assert.assertTrue(colorValidator.verifyWebElementCSSColor("DISCOVERY_BTN","color","red"), "Discovery "
+           		+ "button color is not matching with coor in json file");
             s_assert.assertAll();
             
             

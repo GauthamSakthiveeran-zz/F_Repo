@@ -4,7 +4,7 @@
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
  
-   <test name="PlaybackPlayerSkinScreen">
+     <test name="PlaybackPlayerSkinScreen">
 		<classes>
 			<parameter name="testData" value="playerskin/Skin.xml" />
 			<parameter name="jsFile" value="alice/alice.js" />
@@ -80,7 +80,7 @@
 	</test> 
 
 
-    <test name="Player skin tests for controlbar buttons" parallel="classes" thread-count="1">
+    <test name="PlayerSkinControlbar" parallel="classes" thread-count="1">
         <classes>
             <parameter name="testData" value="playerskin/Skin.xml" />
             <parameter name="jsFile" value="alice/alice.js"/>
@@ -88,15 +88,15 @@
         </classes> 
     </test> 
     
-     <test name="Player skin tests for buttons in more options" parallel="classes" thread-count="1">
+     <test name="PlayerSkinMoreOptions" parallel="classes" thread-count="1">
         <classes>
             <parameter name="testData" value="playerskin/Skin.xml" />
             <parameter name="jsFile" value="alice/alice.js"/>
             <class name="com.ooyala.playback.playerSkin.PlayerSkinMoreOptions" />
         </classes>
-    </test>   
+    </test>
     
-     <test name="Player skin tests for discovery button" parallel="classes" thread-count="1">
+     <test name="PlayerSkinDiscoveryTest" parallel="classes" thread-count="1">
         <classes>
             <parameter name="testData" value="playerskin/Skin.xml" />
             <parameter name="jsFile" value="alice/alice.js"/>
