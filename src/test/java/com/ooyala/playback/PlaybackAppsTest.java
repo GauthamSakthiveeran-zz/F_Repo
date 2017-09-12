@@ -40,12 +40,6 @@ public class PlaybackAppsTest extends FacileTest {
 	protected AppiumDriver driver;
 	protected PlayBackFactory pageFactory;
 	protected Testdata testData;
-
-//	@BeforeClass(alwaysRun = true)
-//	public void beforeClass() throws Exception {
-//		initializeDriver();
-//
-//	}
 	
     @BeforeClass(alwaysRun = true)
     @Parameters({ "testData", "xmlFile"})
@@ -57,31 +51,26 @@ public class PlaybackAppsTest extends FacileTest {
     }
 
 	private AppiumDriver initializeDriver() throws MalformedURLException {
-
-		//if (System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("ios")) {
-		if (System.getProperty("platform").equalsIgnoreCase("ios")) {
+		
+		String app = testData.getApp().getName();
+		if (System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("ios")) {
 			String ip = System.getProperty("appiumServer") != null ? System.getProperty("appiumServer") : "127.0.0.1";
 			String port = System.getProperty("appiumPort") != null ? System.getProperty("appiumPort") : "4723";
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setCapability("platformVersion", System.getProperty(CommandLineParameters.platformVersion));
 			capabilities.setCapability("deviceName", System.getProperty(CommandLineParameters.deviceName));
-			//capabilities.setCapability("app", System.getProperty(CommandLineParameters.app));
-			capabilities.setCapability("app", "/Users/skumar/ios-sample-apps/"+testData.getApp().getName()+".app");
-			
-			//capabilities.setCapability("udid", System.getProperty(CommandLineParameters.udid));
+			capabilities.setCapability("app", System.getProperty(CommandLineParameters.appPackage)+app+".app");			
+			capabilities.setCapability("udid", System.getProperty(CommandLineParameters.udid));
 			capabilities.setCapability("platform", System.getProperty(CommandLineParameters.platform));
 			capabilities.setCapability("showIOSLog", System.getProperty(CommandLineParameters.showIOSLog));
-			//capabilities.setCapability("automationName", System.getProperty(CommandLineParameters.automationName));
-			capabilities.setCapability("automationName", "XCUITest");
+			capabilities.setCapability("automationName", System.getProperty(CommandLineParameters.automationName));
 			capabilities.setCapability("newCommandTimeout",
 					System.getProperty(CommandLineParameters.newCommandTimeout));
-	        capabilities.setCapability("deviceName", "iPhone 6");
-	        capabilities.setCapability("xcodeOrgId", "49VH3Q5Q7H");
-	        capabilities.setCapability("xcodeSigningId", "iPhone Developer");
-	        capabilities.setCapability("udid", "ca53c9a29fe429ff296207fb19aed1f736ef6119");
+	        capabilities.setCapability("deviceName", System.getProperty(CommandLineParameters.deviceName));
+	        capabilities.setCapability("xcodeOrgId", System.getProperty(CommandLineParameters.xcodeOrgId));
+	        capabilities.setCapability("xcodeSigningId", System.getProperty(CommandLineParameters.xcodeSigningId));
 
 			driver = new IOSDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
-			//return driver;
 
 		} else {
 			String ip = System.getProperty("appiumServer") != null ? System.getProperty("appiumServer") : "127.0.0.1";
@@ -93,8 +82,7 @@ public class PlaybackAppsTest extends FacileTest {
 			capabilities.setCapability(CapabilityType.VERSION,
 					System.getProperty(CommandLineParameters.platformVersion));
 			capabilities.setCapability("deviceName", System.getProperty(CommandLineParameters.deviceName));
-			//capabilities.setCapability("app", System.getProperty(CommandLineParameters.app));
-			capabilities.setCapability("app", testData.getApp());
+			capabilities.setCapability("app", System.getProperty(CommandLineParameters.app));
 			capabilities.setCapability("appPackage", System.getProperty(CommandLineParameters.appPackage));
 			capabilities.setCapability("appActivity", System.getProperty(CommandLineParameters.appActivity));
 			capabilities.setCapability("newCommandTimeout",
@@ -103,9 +91,7 @@ public class PlaybackAppsTest extends FacileTest {
 			// driver.manage().timeouts().implicitlyWait(3000,TimeUnit.SECONDS);
 			//return driver;
 		}
-		
-		//webDriverFacile.set(driver);
-		return (AppiumDriver) driver;
+		return driver;
 
 	}
 	
@@ -187,7 +173,6 @@ public class PlaybackAppsTest extends FacileTest {
 	    }
 
 		private Map<String, TestParameters> parseXmlDataProvider(String simpleName, Testdata testData) {
-			// TODO Auto-generated method stub
 			
 			TestParameters testParam = new TestParameters();
 			for (Test data : testData.getTest()) {

@@ -22,11 +22,11 @@ public class PlaybackAppsBasicTest extends PlaybackAppsTest {
 		boolean result = true;
 		
 		try {
-			result = result && selectVideo.startAction(test.getAsset())
-					&& elementValidator.validate("NOTIFICATION_AREA", 1000)
-					&& elementValidator.handleLoadingSpinner()
-					&& notificationEventValidator.validate("AD_STARTED", 25000)
-					;
+			result = result && selectVideo.startAction(test.getAsset());
+			result = result && elementValidator.validate("NOTIFICATION_AREA", 1000);
+			result = result && elementValidator.handleLoadingSpinner();
+			result = result && notificationEventValidator.validate("AD_STARTED", 25000);
+
 		} catch(Exception ex) {
 			result = false;
 		}
