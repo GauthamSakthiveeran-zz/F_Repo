@@ -4,6 +4,16 @@ import java.lang.reflect.Field;
 import com.ooyala.playback.page.*;
 import com.ooyala.playback.page.action.*;
 import org.openqa.selenium.WebDriver;
+import com.ooyala.playback.page.action.AutoplayAction;
+import com.ooyala.playback.page.action.ChromeFlashUpdateAction;
+import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
+import com.ooyala.playback.page.action.FullScreenAction;
+import com.ooyala.playback.page.action.LiveAction;
+import com.ooyala.playback.page.action.PauseAction;
+import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.PlayPauseAction;
+import com.ooyala.playback.page.action.SeekAction;
+import com.ooyala.playback.page.action.StateScreenAction;
 import com.relevantcodes.extentreports.ExtentTest;
 
 public class PlayBackFactory {
