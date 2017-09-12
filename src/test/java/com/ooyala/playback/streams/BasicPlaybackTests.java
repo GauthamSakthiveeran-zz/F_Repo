@@ -72,7 +72,7 @@ public class BasicPlaybackTests extends PlaybackWebTest {
                 result = result && eventValidator.validate("playing_6", 10000);
                 result = result && eventValidator.playVideoForSometime(5);
                 result = result && seekAction.seekTillEnd().startAction();
-                result = result && eventValidator.validate("played_3", 120000);
+                result = result && eventValidator.validate("played_3", 150000);
             }
 
         } catch (Exception e) {

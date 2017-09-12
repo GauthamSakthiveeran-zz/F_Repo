@@ -149,7 +149,6 @@
             <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
             <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
-            <browsersSupported name="safari" />
         </url>
 
         <url>
@@ -235,7 +234,6 @@
             <streamType name="hls" />
             <playerParameter><![CDATA[{"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
-            <browsersSupported name="safari" />
         </url>
     </test>
 
