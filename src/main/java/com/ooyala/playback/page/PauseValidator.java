@@ -17,9 +17,6 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
 	public PauseValidator(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(webDriver, this);
-		/**
-		 * Here we will tell Facile to add the page elements of our Login Page
-		 */
 		addElementToPageElements("pause");
 		addElementToPageElements("discovery");
 	}
@@ -61,7 +58,6 @@ public class PauseValidator extends PlayBackPage implements PlaybackValidator {
                     && isAnalyticsElementPreset("analytics_video_requested_"+element))){
             	logger.error("analytics_video_requested_"+element +" not found");
             	extentTest.log(LogStatus.FAIL,"analytics_video_requested_"+element +" not found");
-                return false;
             }
         }
 

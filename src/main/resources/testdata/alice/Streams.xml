@@ -106,7 +106,7 @@
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter></playerParameter>
-			<sslEnabled name="https" />
+			<sslEnabled name="https" browser="chrome"/>
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
 			<streamType name="mpd" />
 		</url>

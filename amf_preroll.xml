@@ -7,10 +7,10 @@
         <parameter name="jsFile" value="common.js,amf/amf.js"/>
         <parameter name="xmlFilePkg" value="amf"/>
         <classes>
-            <!-- <class name="com.ooyala.playback.amf.preroll.PlaybackAutoplayAutoloopPrerollPoddedAdTests"></class> -->
-            <!-- <class name="com.ooyala.playback.amf.preroll.PlaybackPreRollAdsSetEmbedCodeTests"></class> -->
-            <!-- <class name="com.ooyala.playback.amf.preroll.PlaybackPrerollInitialVolumeTests"></class> -->
-            <!-- <class name="com.ooyala.playback.amf.PlaybackEncodingPriorityTests"></class> -->
+            <class name="com.ooyala.playback.amf.preroll.PlaybackAutoplayAutoloopPrerollPoddedAdTests"></class>
+            <class name="com.ooyala.playback.amf.preroll.PlaybackPreRollAdsSetEmbedCodeTests"></class>
+            <class name="com.ooyala.playback.amf.preroll.PlaybackPrerollInitialVolumeTests"></class>
+            <class name="com.ooyala.playback.amf.PlaybackEncodingPriorityTests"></class>
 			<class name="com.ooyala.playback.amf.preroll.PlayBackLowBandWidthTests"></class>
             <class name="com.ooyala.playback.amf.preroll.PlaybackPreRollAdsClickThroughClosedCaptionTests"></class>
             <class name="com.ooyala.playback.amf.preroll.PlaybackPrerollOverlayAdsTests"></class>
