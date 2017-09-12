@@ -18,7 +18,7 @@ public class QAModeSwitchAction extends PlaybackApps implements Actions {
 	@Override
 	public boolean startAction(String element) throws Exception {
 		if (!isQAModeEnabled())
-    		return clickOnIndependentElement("QA_MODE_SWITCH");
+    		return clickOnIndependentElement(element);
 		return true;
 	}
 	

@@ -13,15 +13,16 @@ public class PlaybackAppsBasicTest extends PlaybackAppsTest {
 	private SelectVideoAction selectVideo;
 	private ElementValidator elementValidator;
 	private NotificationEventValidator notificationEventValidator;
+	
 
-	@Test
-    public  void testPluginPlayer() throws Exception {
+	@Test(groups = "basicplaybacksampleapp", dataProvider = "testData")
+    public  void testPluginPlayer(String testName, TestParameters test) throws Exception {
 		
 		
 		boolean result = true;
 		
 		try {
-			result = result && selectVideo.startAction("PLUGIN_PLAYER")
+			result = result && selectVideo.startAction(test.getAsset())
 					&& elementValidator.validate("NOTIFICATION_AREA", 1000)
 					&& elementValidator.handleLoadingSpinner()
 					&& notificationEventValidator.validate("AD_STARTED", 25000)
