@@ -27,6 +27,7 @@ public class PlaybackAppsBasicTest extends PlaybackAppsTest {
 					&& notificationEventValidator.validate("AD_STARTED", 25000)
 					;
 		} catch(Exception ex) {
+			logger.error("Here is an exception"+ex);
 			result = false;
 		}
 		

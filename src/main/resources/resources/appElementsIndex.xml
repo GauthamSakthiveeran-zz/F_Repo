@@ -9,4 +9,5 @@
     <entry key="selectvideo">resources/selectvideo.xml</entry>
     <entry key="event">resources/event.xml</entry>
     <entry key="playpause">resources/playpause.xml</entry>
+    <entry key="seekbar">resources/seekbar.xml</entry>
 </properties>

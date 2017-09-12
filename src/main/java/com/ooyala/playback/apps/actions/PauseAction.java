@@ -32,7 +32,6 @@ public class PauseAction extends PlaybackApps implements Actions {
 				return false;
 			}
 		}
-		
 		return true;
 	}
 

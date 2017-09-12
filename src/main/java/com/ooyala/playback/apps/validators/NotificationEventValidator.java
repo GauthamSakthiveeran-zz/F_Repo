@@ -18,7 +18,7 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 		addElementToPageElements("event");
 	}
 	
-	int eventVerificationCount= 0 ;
+	int eventVerificationCount ;
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
@@ -31,7 +31,7 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 		String notifiationEvents = getWebElement("NOTIFICATION_AREA").getText();
 		
 		
-		int returncount = 0;
+		int returncount;
         boolean status = false;
         long startTime = System.currentTimeMillis();
         
@@ -62,7 +62,7 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 	private String getNotificationEvents() {
     	int counter = 0;
     	int timeout = 10;
-    	String notifications = null;
+    	String notifications;
     	while (counter < timeout) {
     		notifications = getWebElement("NOTIFICATION_AREA").getText();
     		if (notifications != null)
@@ -94,7 +94,6 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 
         } catch (Exception e) {
             logger.error("Exception while parsing notification events " + e);
-            e.printStackTrace();
         }
 
         return -1;
@@ -105,8 +104,7 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
     	return lines;
     	
     }
-    
-    
+
     private int getLatestCount(String line){
         int count;
         String[] tokens = line.split(":");

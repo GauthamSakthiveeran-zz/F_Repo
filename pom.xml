@@ -224,5 +224,11 @@
 		<outputDirectory>${basedir}/site</outputDirectory>
 	</reporting>
 
+	<repositories>
+		<repository>
+			<id>ooyala-nexus</id>
+			<url>http://nexus.ooyala.com/nexus/content/repositories/snapshots/</url>
+		</repository>
+	</repositories>
 </project>
 

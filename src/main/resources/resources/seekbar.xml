@@ -1,0 +1,4 @@
+<elements area="seekbar">
+    <element key="SEEK_BAR" findBy="xPath" xPath="//XCUIElementTypeToolbar[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[3]" />
+    <element key="SLIDER" findBy="xpath" xPath="//XCUIElementTypeToolbar[1]/XCUIElementTypeOther[1]/XCUIElementTypeImage[1]"/>
+</elements>

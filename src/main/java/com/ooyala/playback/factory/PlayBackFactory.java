@@ -2,6 +2,7 @@ package com.ooyala.playback.factory;
 
 import java.lang.reflect.Field;
 
+import com.ooyala.playback.apps.actions.SeekAction;
 import org.openqa.selenium.WebElement;
 
 import com.ooyala.playback.apps.actions.PauseAction;
@@ -18,11 +19,12 @@ public class PlayBackFactory {
 	private SelectVideoAction selectVideoAction;
 	private NotificationEventValidator NotificationEventValidator;
 	private QAModeSwitchAction qaModeSwitchAction;
+	private SeekAction seekAction;
 
 	public PlayBackFactory(AppiumDriver driver) {
 		this.driver = driver;
 	}
-	
+
 	public QAModeSwitchAction getQAModeSwitchAction() {
 		if (qaModeSwitchAction == null) {
 			qaModeSwitchAction = new QAModeSwitchAction(driver);
@@ -44,6 +46,13 @@ public class PlayBackFactory {
 		return selectVideoAction;
 	}
 
+	public SeekAction getSeekAction() {
+		if(null == seekAction) {
+			seekAction = new SeekAction(driver);
+		}
+		return seekAction;
+	}
+
 	public NotificationEventValidator getNotificationEventValidator() {
 		if (NotificationEventValidator == null) {
 			NotificationEventValidator = new NotificationEventValidator(driver);
@@ -51,9 +60,6 @@ public class PlayBackFactory {
 		return NotificationEventValidator;
 	}
 	
-	public AppiumDriver getDriver() {
-		return driver;
-	}
 
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> validator) throws Exception {
