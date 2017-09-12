@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+
+    <test name="BasicVr360Tests">
+
+        <url>
+            <description name="View monoscopic video 360 in browser" />
+            <priority name="P2"></priority>
+            <embed_code name="ZwdTE5YzE69c3U3cXy2CCzfnCkzMMqUP" />
+            <pcode name="95920" />
+            <plugins name="BITMOVIN,MAIN"/>
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="570d91bf920b42cbae587bb1447e6fd8" />
+            <playerParameter><![CDATA[{"bit-wrapper":{"source":{"vr":{"stereo":false}}}}]]></playerParameter>
+            <browsersSupported name="chrome" />
+        </url>
+
+    </test>
+</testdata>

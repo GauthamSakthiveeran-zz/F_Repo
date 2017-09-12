@@ -2,17 +2,8 @@ package com.ooyala.playback.factory;
 
 import java.lang.reflect.Field;
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.*;
 import org.openqa.selenium.WebDriver;
-import com.ooyala.playback.page.action.AutoplayAction;
-import com.ooyala.playback.page.action.ChromeFlashUpdateAction;
-import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
-import com.ooyala.playback.page.action.FullScreenAction;
-import com.ooyala.playback.page.action.LiveAction;
-import com.ooyala.playback.page.action.PauseAction;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.PlayPauseAction;
-import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.page.action.StateScreenAction;
 import com.relevantcodes.extentreports.ExtentTest;
 
 public class PlayBackFactory {
@@ -85,6 +76,7 @@ public class PlayBackFactory {
 	private StateScreenValidator stateScreenValidator;
 	private PlayerSkinButtonsValidator skinValidator;
 	private VastPageLevelOverridingValidator pageLevelOverridingValidator;
+	private VirtualRealityAction virtualRealityAction;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -634,6 +626,14 @@ public class PlayBackFactory {
 			pageLevelOverridingValidator.setExtentTest(extentTest);
 		}
 		return pageLevelOverridingValidator;
+	}
+
+	public VirtualRealityAction getVirtualRealityAction() {
+		if (virtualRealityAction == null) {
+			virtualRealityAction = new VirtualRealityAction(driver);
+			virtualRealityAction.setExtentTest(extentTest);
+		}
+		return virtualRealityAction;
 	}
 
 	public WebDriver getDriver() {
