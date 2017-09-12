@@ -2,7 +2,7 @@
     <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
-    <test name="ContentProtection Regression" parallel="classes" thread-count="1">
+    <test name="ContentProtection Regression" parallel="classes" thread-count="5">
         <classes>
             <parameter name="testData" value="alice/ContentProtection.xml" />
             <parameter name="jsFile" value="alice/alice.js" />
