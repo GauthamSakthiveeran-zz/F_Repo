@@ -3,10 +3,8 @@
     <app name="BasicPlaybackSampleApp" />
 	<test name="HLS">
 		<description name="HLS Video Test" />
-		<Asset name="HLS" />
 	</test>
 	<test name="MP4">
-		<description name="MP4 Test" />
-		<Asset name="MP4" />
+		<description name="MP4 Video Test" />
 	</test>
 </testdata>
