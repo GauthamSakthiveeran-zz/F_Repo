@@ -15,6 +15,7 @@ import javax.xml.bind.Unmarshaller;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -37,7 +38,6 @@ import io.appium.java_client.ios.IOSDriver;
 
 public class PlaybackAppsTest extends FacileTest {
 
-	protected AppiumDriver driver;
 	protected PlayBackFactory pageFactory;
 	protected Testdata testData;
 	
@@ -47,10 +47,10 @@ public class PlaybackAppsTest extends FacileTest {
         logger.info("************Inside setup*************");
         parseXmlFileData(xmlFile,xmlFilePkg);
         initializeDriver();
-        pageFactory = new PlayBackFactory(driver);
+        pageFactory = new PlayBackFactory((AppiumDriver) driver);
     }
 
-	private AppiumDriver initializeDriver() throws MalformedURLException {
+	private RemoteWebDriver initializeDriver() throws MalformedURLException {
 		
 		String app = testData.getApp().getName();
 		if (System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("ios")) {
@@ -89,7 +89,6 @@ public class PlaybackAppsTest extends FacileTest {
 					System.getProperty(CommandLineParameters.newCommandTimeout));
 			driver = new AndroidDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 			// driver.manage().timeouts().implicitlyWait(3000,TimeUnit.SECONDS);
-			//return driver;
 		}
 		return driver;
 
