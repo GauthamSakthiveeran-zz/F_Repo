@@ -13,19 +13,20 @@ public class PlaybackAppsBasicTest extends PlaybackAppsTest {
 	private SelectVideoAction selectVideo;
 	private ElementValidator elementValidator;
 	private NotificationEventValidator notificationEventValidator;
+	
 
-	@Test
-    public  void testPluginPlayer() throws Exception {
+	@Test(groups = "basicplaybacksampleapp", dataProvider = "testData")
+    public  void testPluginPlayer(String testName, TestParameters test) throws Exception {
 		
 		
 		boolean result = true;
 		
 		try {
-			result = result && selectVideo.startAction("PLUGIN_PLAYER")
-					&& elementValidator.validate("NOTIFICATION_AREA", 1000)
-					&& elementValidator.handleLoadingSpinner()
-					&& notificationEventValidator.validate("AD_STARTED", 25000)
-					;
+			result = result && selectVideo.startAction(test.getAsset());
+			result = result && elementValidator.validate("NOTIFICATION_AREA", 1000);
+			result = result && elementValidator.handleLoadingSpinner();
+			result = result && notificationEventValidator.validate("AD_STARTED", 25000);
+
 		} catch(Exception ex) {
 			logger.error("Here is an exception"+ex);
 			result = false;

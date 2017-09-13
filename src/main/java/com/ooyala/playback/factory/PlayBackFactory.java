@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.QAModeSwitchAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
+import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 
 import io.appium.java_client.AppiumDriver;
@@ -16,10 +17,12 @@ public class PlayBackFactory {
 
 	private AppiumDriver driver;
 	private PauseAction pauseAction;
-	private SelectVideoAction selectVideoAction;
-	private NotificationEventValidator NotificationEventValidator;
+	private SelectVideoAction selectVideo;
+	private NotificationEventValidator notificationEventValidator;
 	private QAModeSwitchAction qaModeSwitchAction;
 	private SeekAction seekAction;
+	private ElementValidator elementValidator;
+
 
 	public PlayBackFactory(AppiumDriver driver) {
 		this.driver = driver;
@@ -40,10 +43,10 @@ public class PlayBackFactory {
 	}
 
 	public SelectVideoAction getSelectVideoAction() {
-		if (selectVideoAction == null) {
-			selectVideoAction = new SelectVideoAction(driver);
+		if (selectVideo == null) {
+			selectVideo = new SelectVideoAction(driver);
 		}
-		return selectVideoAction;
+		return selectVideo;
 	}
 
 	public SeekAction getSeekAction() {
@@ -54,10 +57,17 @@ public class PlayBackFactory {
 	}
 
 	public NotificationEventValidator getNotificationEventValidator() {
-		if (NotificationEventValidator == null) {
-			NotificationEventValidator = new NotificationEventValidator(driver);
+		if (notificationEventValidator == null) {
+			notificationEventValidator = new NotificationEventValidator(driver);
 		}
-		return NotificationEventValidator;
+		return notificationEventValidator;
+	}
+	
+	public ElementValidator getEventValidator() {
+		if (elementValidator == null) {
+			elementValidator = new ElementValidator(driver);
+		}
+		return elementValidator;
 	}
 	
 

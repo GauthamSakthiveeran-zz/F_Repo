@@ -13,4 +13,6 @@ public class CommandLineParameters {
 	public static final String ipaddress = "ipaddress";
 	public static final String appPackage = "appPackage";
 	public static final String appActivity = "appActivity";
+	public static final String xcodeOrgId = "xcodeOrgId";
+	public static final String xcodeSigningId = "xcodeSigningId";
 }
