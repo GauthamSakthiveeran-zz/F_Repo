@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="BasicPlaybackSampleApp" />
+	<test name="HLS">
+		<description name="HLS Video Test" />
+		<Asset name="HLS" />
+	</test>
+	<test name="MP4">
+		<description name="MP4 Test" />
+		<Asset name="MP4" />
+	</test>
+</testdata>
