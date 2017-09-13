@@ -375,7 +375,7 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	public boolean isPageLoaded() {
-		int count = 2000;
+		int count = 120;
 		while (count >= 0) {
 			if (driver.executeScript("return typeof pp").toString().equals("object")) {
 				return true;
