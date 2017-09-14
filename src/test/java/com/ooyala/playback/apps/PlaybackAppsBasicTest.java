@@ -1,6 +1,7 @@
 package com.ooyala.playback.apps;
 
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackAppsTest;
@@ -17,8 +18,7 @@ public class PlaybackAppsBasicTest extends PlaybackAppsTest {
 
 	@Test(groups = "basicplaybacksampleapp", dataProvider = "testData")
     public  void testPluginPlayer(String testName, TestParameters test) throws Exception {
-		
-		
+		Reporter.log("Executing:"+test.getApp()+"->Asset:"+test.getAsset());
 		boolean result = true;
 		
 		try {
@@ -31,9 +31,8 @@ public class PlaybackAppsBasicTest extends PlaybackAppsTest {
 			logger.error("Here is an exception"+ex);
 			result = false;
 		}
-		
-		Assert.assertEquals(result, "Basic Tests failed");
-    	
-    	
+
+		Assert.assertTrue(result, "APP:"+test.getApp()+"->Asset:"+test.getAsset());
+	
     }
 }
