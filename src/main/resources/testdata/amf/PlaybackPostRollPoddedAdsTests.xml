@@ -84,7 +84,7 @@
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
-            <adPlugins name="FREEWHEEL"/>
+            <adPlugins name="FREEWHEEL" clickthrough="false"/>
             <additionalPlugins name=""/>
             <pbid name="7324f0fcd4f45edacc5646d7a6ae394"/>
             <playerParameter>
