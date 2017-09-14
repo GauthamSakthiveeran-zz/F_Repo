@@ -42,7 +42,7 @@ public class PlaybackPreRollPoddedAdsTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 			
 			result = result && event.validate("PreRoll_willPlayAds", 5000);
-			if (result) {
+			if (result && !clickthrough.ignoreClickThrough(url)) {
                 s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("preroll"),"Preroll Podded");
             }
 			result = result && event.validate("adsPlayed_1", 180000);

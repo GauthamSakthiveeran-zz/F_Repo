@@ -375,7 +375,7 @@
 			<embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="BITMOVIN,MAIN" />
-			<adPlugins name="FREEWHEEL" />
+			<adPlugins name="FREEWHEEL" clickthrough="false"/>
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter>
@@ -403,7 +403,7 @@
 			<embed_code name="01Mm9xYTE6IOQ7ZTt5a0gyKrwrK1fFDw" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
 			<plugins name="OSMF,MAIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" clickthrough="false"/>
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter></playerParameter>
@@ -518,7 +518,7 @@
 			<embed_code name="B0Ym1hMjE6nNwoIODvGNrLBrVAXJtDh0" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
 			<plugins name="MAIN,BITMOVIN" />
-			<adPlugins name="VAST" />
+			<adPlugins name="VAST" clickthrough="false"/>
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"vast":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.56cae9d690c054.28077205;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
