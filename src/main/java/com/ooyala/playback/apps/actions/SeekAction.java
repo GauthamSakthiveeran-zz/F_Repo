@@ -3,6 +3,7 @@ package com.ooyala.playback.apps.actions;
 import com.ooyala.playback.apps.PlaybackApps;
 import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 public class SeekAction extends PlaybackApps implements Actions {
@@ -37,17 +38,18 @@ public class SeekAction extends PlaybackApps implements Actions {
         return true;
     }
 
-    public boolean startAction_iOS_V3_Forward() throws Exception {
+    public boolean startAction_iOS_V3_Forward(String ele1, String ele2) throws Exception {
         try {
-            if (!seekVideoForward("" , "" )) {
-                logger.error("Unable to click on play pause.");
+            if (!seekVideoForward(ele1 , ele2 )) {
+                logger.error("Unable to seek forward video.");
                 return false;
             }
         } catch (Exception e) {
             logger.info("seekbar not found. Tapping screen and retrying..");
+            Thread.sleep(5000);
             tapScreenIfRequired();
-            if(!seekVideoBack("" , "")) {
-                logger.error("Unable to click on play pause.");
+            if(!seekVideoForward(ele1 , ele2 )) {
+                logger.error("Unable to seek forward video");
                 return false;
             }
         }

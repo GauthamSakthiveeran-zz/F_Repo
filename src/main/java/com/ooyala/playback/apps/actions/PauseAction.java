@@ -20,14 +20,14 @@ public class PauseAction extends PlaybackApps implements Actions {
 	@Override
 	public boolean startAction(String element) throws Exception {
 		try {
-			if(!clickOnIndependentElement("PLAY_PAUSE_BUTTON")) {
+			if(!clickOnIndependentElement(element)) {
 				logger.error("Unable to click on play pause.");
 				return false;
 			}
 		} catch (Exception e) {
 			logger.info("Play button not found. Tapping screen and retrying..");
 			tapScreenIfRequired();
-			if(!clickOnIndependentElement("PLAY_PAUSE_BUTTON")) {
+			if(!clickOnIndependentElement(element)) {
 				logger.error("Unable to click on play pause.");
 				return false;
 			}

@@ -1,5 +1,6 @@
 package com.ooyala.playback.apps;
 
+import com.ooyala.facile.page.FacileWebElement;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 
@@ -134,10 +135,26 @@ public abstract class PlaybackApps extends WebPage {
     }
 
     public int getSliderPosition(String slider) throws InterruptedException {
-        tapScreen();
-        int sliderXPosition = driver.findElement(By.xpath("slider")).getLocation().getX();
+        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(slider));
+        WebElement slide = this.getWebElementFromFacileWebElement(anElement);
+        int sliderXPosition = slide.getLocation().getX();
         logger.info("Slider X Position >> : " + sliderXPosition);
         return sliderXPosition;
+    }
+
+    public Element getSeekBarPosition(String Seekbar) throws InterruptedException {
+        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(Seekbar));
+        WebElement SEEK = this.getWebElementFromFacileWebElement(anElement);
+        Point seekbarElementPos = SEEK.getLocation();
+        Element seekbar = new Element();
+        seekbar.setStartXPosition(seekbarElementPos.getX());
+        seekbar.setYposition(seekbarElementPos.getY());
+        seekbar.setWidth(SEEK.getSize().getWidth());
+        seekbar.setEndXPosition(seekbar.getWidth() + seekbar.getStartXPosition());
+        logger.info("SeekBarPosition : StartXPosition > " + seekbar.getStartXPosition() + ", "
+                + " EndXPosition > " + seekbar.getEndXPosition() + ", Width > " + seekbar.getWidth() + " Yposition > " + seekbar.getYposition());
+        return seekbar;
+
     }
 
 
@@ -149,20 +166,7 @@ public abstract class PlaybackApps extends WebPage {
         return true;
     }
 
-    public Element getSeekBarPosition(String Seekbar) throws InterruptedException {
 
-        Point seekbarElementPos = driver.findElement(By.xpath("Seekbar")).getLocation();
-        Element seekbar = new Element();
-        seekbar.setStartXPosition(seekbarElementPos.getX());
-        seekbar.setYposition(seekbarElementPos.getY());
-        tapScreen();
-        seekbar.setWidth(driver.findElement(By.xpath("Seekbar")).getSize().getWidth());
-        seekbar.setEndXPosition(seekbar.getWidth() + seekbar.getStartXPosition());
-        logger.info("SeekBarPosition : StartXPosition > " + seekbar.getStartXPosition() + ", "
-                + " EndXPosition > " + seekbar.getEndXPosition() + ", Width > " + seekbar.getWidth() + " Yposition > " + seekbar.getYposition());
-        return seekbar;
-
-    }
 
     public boolean handleLoadingSpinner() {
         int i = 0;
