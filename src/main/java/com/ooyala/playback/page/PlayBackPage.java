@@ -439,6 +439,10 @@ public abstract class PlayBackPage extends WebPage {
 				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
 	}
 
+	public String getPlayerState() {
+		return driver.executeScript("return pp.getState()").toString();
+	}
+	
 	public double getDuration() {
 		return Double.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getDuration();").toString());
 	}
