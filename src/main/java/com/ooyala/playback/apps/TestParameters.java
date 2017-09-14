@@ -4,6 +4,7 @@ public class TestParameters {
 	
 	private String description;
 	private String asset;
+	private String app;
 	
 	public String getDescription() {
 		return description;
@@ -16,6 +17,12 @@ public class TestParameters {
 	}
 	public void setAsset(String asset) {
 		this.asset = asset;
+	}
+	public String getApp() {
+		return app;
+	}
+	public void setApp(String app) {
+		this.app = app;
 	}
 	
 	

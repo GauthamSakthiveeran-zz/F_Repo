@@ -15,6 +15,7 @@ import javax.xml.bind.Unmarshaller;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -37,7 +38,6 @@ import io.appium.java_client.ios.IOSDriver;
 
 public class PlaybackAppsTest extends FacileTest {
 
-	protected AppiumDriver driver;
 	protected PlayBackFactory pageFactory;
 	protected Testdata testData;
 	
@@ -47,10 +47,10 @@ public class PlaybackAppsTest extends FacileTest {
         logger.info("************Inside setup*************");
         parseXmlFileData(xmlFile,xmlFilePkg);
         initializeDriver();
-        pageFactory = new PlayBackFactory(driver);
+        pageFactory = new PlayBackFactory((AppiumDriver) driver);
     }
 
-	private AppiumDriver initializeDriver() throws MalformedURLException {
+	private RemoteWebDriver initializeDriver() throws MalformedURLException {
 		
 		String app = testData.getApp().getName();
 		if (System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("ios")) {
@@ -89,7 +89,6 @@ public class PlaybackAppsTest extends FacileTest {
 					System.getProperty(CommandLineParameters.newCommandTimeout));
 			driver = new AndroidDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 			// driver.manage().timeouts().implicitlyWait(3000,TimeUnit.SECONDS);
-			//return driver;
 		}
 		return driver;
 
@@ -106,7 +105,6 @@ public class PlaybackAppsTest extends FacileTest {
 			Field[] fs = this.getClass().getDeclaredFields();
 			fs[0].setAccessible(true);
 			for (Field property : fs) {
-				System.out.println("Property:"+property.getName());
 				if (property.getType().getSuperclass().isAssignableFrom(PlaybackApps.class)) {
 					property.setAccessible(true);
 					property.set(this, pageFactory.getObject(property.getType()));
@@ -122,7 +120,7 @@ public class PlaybackAppsTest extends FacileTest {
 		}
 	}
 	  
-	    public void parseXmlFileData(String xmlFile, String xmlFilePkg) {
+	    private void parseXmlFileData(String xmlFile, String xmlFilePkg) {
 	        try {
 	            if (xmlFile == null || xmlFile.isEmpty()) {
 	                xmlFile = getClass().getSimpleName();
@@ -157,32 +155,30 @@ public class PlaybackAppsTest extends FacileTest {
 	    public Object[][] getTestData() {
 
 	        Map<String, TestParameters> tests =parseXmlDataProvider(testData.getApp().getName(), testData);
-	        String testName = testData.getApp().getName();
 	        Object[][] output = new Object[tests.size()][2];
 			Iterator<Map.Entry<String, TestParameters>> entries = tests.entrySet().iterator();
 	        int i = 0;
 	        while (entries.hasNext()) {
 	            Map.Entry<String, TestParameters> entry = entries.next();
-	            if(i==1)
-	            	continue;
-	            output[i][0] = testName + " - " + entry.getKey();
+	            output[i][0] = entry.getKey();
 	            output[i][1] = entry.getValue();
 	            i++;
 	        }
+	        
 	        return output;
 	    }
 
 		private Map<String, TestParameters> parseXmlDataProvider(String simpleName, Testdata testData) {
 			
-			TestParameters testParam = new TestParameters();
+			Map<String, TestParameters> testsGenerated = new HashMap<String, TestParameters>();
+			
 			for (Test data : testData.getTest()) {
+				TestParameters testParam = new TestParameters();
 				testParam.setDescription(data.getDescription().getName());
 				testParam.setAsset(data.getName());
-				
+				testParam.setApp(simpleName);
+				testsGenerated.put(simpleName+"-"+data.getName(), testParam);			
 			}
-			Map<String, TestParameters> testsGenerated = new HashMap<String, TestParameters>();
-			testsGenerated.put(simpleName, testParam);
-			
 			return testsGenerated;
 		}
 
