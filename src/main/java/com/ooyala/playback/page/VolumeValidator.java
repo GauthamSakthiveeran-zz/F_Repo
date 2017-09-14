@@ -115,10 +115,12 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 	public boolean validateInitialVolume(double volume) throws Exception {
 		if(volume == getVolume()) {
 			logger.info("initial volume is  set correctly in player");
+			extentTest.log(LogStatus.PASS, "initial volume is set correctly in player");
 			return true;
 			
 		}
 		logger.info("initial volume is not set as per the player params");
+		extentTest.log(LogStatus.INFO, "initial volume is not set as per playerparams");
 		return false;
 	}
 
