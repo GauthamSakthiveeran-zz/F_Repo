@@ -66,6 +66,10 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
+		
+		if (getBrowser().contains("safari")) { // only for automation 
+			Thread.sleep(30000);
+		}
 
 		if (!clickOnIndependentElement("PLAY_BUTTON")) {
 			extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
