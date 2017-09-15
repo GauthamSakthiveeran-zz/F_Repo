@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <test name="PlaybackEnablePreloadingForPrerollTests">
+        <url>
+            <description name="VTC:IMA Main Ad Rule Midroll SetEmbedCode" />
+            <priority name="P2"></priority>
+            <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="VAST" adPlayTime=""/>
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"preload":true}]]></playerParameter>
+        </url>
+    </test>
+</testdata>
