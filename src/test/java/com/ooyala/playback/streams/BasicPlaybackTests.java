@@ -56,7 +56,6 @@ public class BasicPlaybackTests extends PlaybackWebTest {
             
             result = result && playAction.startAction();
             
-            result = result && eventValidator.validate("playing_2", 60000);
             
             boolean isLive = testName.contains("Main Akamai HLS Remote Asset") || testName.contains("Bitmovin Akamai HLS Remote Asset");
 
