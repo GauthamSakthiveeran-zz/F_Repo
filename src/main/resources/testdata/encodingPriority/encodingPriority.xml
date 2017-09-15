@@ -302,5 +302,6 @@
             <streamType supportedMuxFormat="dash,hls,hds,mp4"></streamType>
             <playerParameter><![CDATA[{"encodingPriority":["mp4"]}]]></playerParameter>
         </url>
+        
     </test>
 </testdata>

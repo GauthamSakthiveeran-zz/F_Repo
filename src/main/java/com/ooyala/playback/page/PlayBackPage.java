@@ -435,16 +435,15 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	public double getPlayAheadTime() {
-		return Double
-				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
+		return (double) executeJsScript("pp.getPlayheadTime()", "double");
 	}
 
 	public String getPlayerState() {
-		return driver.executeScript("return pp.getState()").toString();
+		return (String) executeJsScript("pp.getState()", "string");
 	}
 	
 	public double getDuration() {
-		return Double.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getDuration();").toString());
+		return (double) executeJsScript("pp.getDuration()", "double");
 	}
 
 	public boolean isAnalyticsElementPreset(String element) {
@@ -561,6 +560,8 @@ public abstract class PlayBackPage extends WebPage {
 				return Double.parseDouble(driver.executeScript("return " + command + "").toString());
             case "long":
                 return Long.parseLong(driver.executeScript("return " + command + "").toString());
+            case "na":
+            	driver.executeScript(command);
 		}
 		return null;
 	}

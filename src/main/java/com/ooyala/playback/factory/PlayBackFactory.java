@@ -11,6 +11,7 @@ import com.ooyala.playback.page.action.LiveAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.PlayPauseAction;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.page.action.StateScreenAction;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -85,6 +86,7 @@ public class PlayBackFactory {
 	private StateScreenValidator stateScreenValidator;
 	private PlayerSkinButtonsValidator skinValidator;
 	private VastPageLevelOverridingValidator pageLevelOverridingValidator;
+	private PlayerAPIAction playerAPIAction;
 
 	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -93,6 +95,14 @@ public class PlayBackFactory {
 
 	public ExtentTest getExtentTest() {
 		return extentTest;
+	}
+	
+	public PlayerAPIAction getPlayerAPIAction() {
+		if(playerAPIAction == null) {
+			playerAPIAction = new PlayerAPIAction(driver);
+			playerAPIAction.setExtentTest(extentTest);
+		}
+		return playerAPIAction;
 	}
 	
 	public StateScreenValidator getStateScreenValidator() {
