@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.relevantcodes.extentreports.LogStatus;
 import java.util.Map;
 import static java.lang.Integer.parseInt;
@@ -186,7 +187,7 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
     public boolean validateAutoPlay() {
         boolean autoplay = false;
 
-        autoplay = Boolean.parseBoolean(driver.executeScript("return pp.parameters.autoPlay").toString());
+        autoplay = new PlayBackFactory(driver, extentTest).getPlayerAPIAction().isAutoPlay();
 
         if (!autoplay) {
             logger.info("Autoplay not set for this video");
@@ -196,11 +197,12 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
     }
 
     public boolean checkIsAdPlaying() {
-        IsAdPlayingValidator adPlaying = new PlayBackFactory(driver, extentTest).isAdPlaying();
+        PlayerAPIAction playerAPI = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
         boolean isAdPlaying=false;
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             try {
-                isAdPlaying = adPlaying.validate("", 1000);
+                isAdPlaying = playerAPI.isAdPlaying();
+                Thread.sleep(500);
             }catch (Exception ex){
                 ex.printStackTrace();
             }

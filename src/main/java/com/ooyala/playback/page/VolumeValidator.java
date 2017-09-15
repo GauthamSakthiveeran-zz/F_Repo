@@ -1,11 +1,12 @@
 package com.ooyala.playback.page;
 
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
-import org.mortbay.log.Log;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+
+import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PlayerAPIAction;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by soundarya on 11/8/16.
@@ -30,9 +31,10 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		double expectedMaxVol = 1.0;
 		double getMuteVol;
 
-		((JavascriptExecutor) driver).executeScript("pp.pause()");
+		PlayerAPIAction playerAPI = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
+		playerAPI.pause();
 
-		Long currentVolume = (Long) (((JavascriptExecutor) driver).executeScript("return pp.getVolume()"));
+		Long currentVolume = Long.parseLong(playerAPI.getVolume());
 		logger.info("Current volume: " + currentVolume);
 
 		try {
@@ -53,7 +55,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
                     }
                 }
 
-				getMuteVol = getVolume();
+				getMuteVol = Double.parseDouble(playerAPI.getVolume());
 				if (getMuteVol != expectedMuteVol) {
 					extentTest.log(LogStatus.FAIL, "Mute volume is't matching");
 					logger.error("Mute volume is't matching");
@@ -71,7 +73,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 
 			if (clickOnIndependentElement("VOLUME_MUTE")) {
 
-				double getMaxVol = getVolume();
+				double getMaxVol = Double.parseDouble(playerAPI.getVolume());
 				if (getMaxVol != expectedMaxVol) {
 					extentTest.log(LogStatus.FAIL, "Max volume is not the same");
 					logger.error("Max volume is not the same");
@@ -93,14 +95,15 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			return false;
 		}
 
-		driver.executeScript("pp.play()");
+		playerAPI.play();
 		return true;
 	}
 
 	public boolean checkInitialVolume(String asset) throws Exception{
 		double initialVolume = 0.5;
 		logger.info("Initial Volume is set to "+initialVolume);
-        boolean isInitialTimeMatches = initialVolume == getVolume();
+		double getVolume = Double.parseDouble(new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getVolume());
+        boolean isInitialTimeMatches = initialVolume == getVolume;
         if (isInitialTimeMatches) {
 			logger.info("initial time matched for " + asset);
 			extentTest.log(LogStatus.PASS, "initial time matched for " + asset);
@@ -113,7 +116,7 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 	}
 	
 	public boolean validateInitialVolume(double volume) throws Exception {
-		if(volume == getVolume()) {
+		if(volume == Double.parseDouble(new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getVolume())) {
 			logger.info("initial volume is  set correctly in player");
 			return true;
 			
@@ -122,12 +125,4 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		return false;
 	}
 
-	protected double getVolume() throws Exception {
-		double volume = Double
-				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getVolume()").toString());
-		extentTest.log(LogStatus.INFO, "volume set to " + volume);
-		logger.info("volume set to " + volume);
-		return volume;
-
-	}
 }

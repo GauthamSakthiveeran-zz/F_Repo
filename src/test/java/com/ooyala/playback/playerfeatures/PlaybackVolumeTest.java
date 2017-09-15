@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.IsAdPlayingValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.VolumeValidator;
@@ -14,7 +13,6 @@ import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
-
 public class PlaybackVolumeTest extends PlaybackWebTest {
 
 	private PlayValidator play;
@@ -22,7 +20,6 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 	private PlayAction playAction;
 	private EventValidator eventValidator;
 	private VolumeValidator volumeValidator;
-	private IsAdPlayingValidator isAdPlayingValidator;
 
 	public PlaybackVolumeTest() throws OoyalaException {
 		super();
@@ -44,16 +41,13 @@ public class PlaybackVolumeTest extends PlaybackWebTest {
 
 			result = result && eventValidator.loadingSpinner();
 
-			Boolean isAdplaying = isAdPlayingValidator.validate("",60);
-			if (isAdplaying) {
+			if (eventValidator.checkIsAdPlaying()) {
 				result = result && volumeValidator.validate("", 60000);
-
 				result = result && eventValidator.validate("adPodEnded_1", 20000);
 			}
+			result = result && eventValidator.validate("playing_1", 60000);
 
-            result = result && eventValidator.validate("playing_1", 60000);
-
-            result = result && eventValidator.playVideoForSometime(3);
+			result = result && eventValidator.playVideoForSometime(3);
 
 			result = result && volumeValidator.validate("", 60000);
 

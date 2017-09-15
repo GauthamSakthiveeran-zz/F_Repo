@@ -2,6 +2,8 @@ package com.ooyala.playback.playlist;
 
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.StreamValidator;
+import com.ooyala.playback.page.action.PlayerAPIAction;
+
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -22,6 +24,7 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
     private PlayValidator play;
     private StreamValidator streamTypeValidator;
     private EventValidator eventValidator;
+    private PlayerAPIAction playerAPI;
     private static final Logger logger = Logger.getLogger(PlaybackPlaylistTests.class);
 
     public PlaybackPlaylistTests() throws OoyalaException {
@@ -69,7 +72,7 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
                 }
             }
 
-            if (driver.executeScript("return pp.getErrorCode()") != null) {
+            if (playerAPI.getErrorCode() != null) {
                 extentTest.log(LogStatus.SKIP, "Skipping test as video is in error state");
                 return;
             }

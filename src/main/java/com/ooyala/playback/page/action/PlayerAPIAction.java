@@ -48,7 +48,7 @@ public class PlayerAPIAction extends PlayBackPage implements PlayerAction {
 	public double getDuration() {
 		return (double) executeJsScript("pp.getDuration()", "double");
 	}
-	
+
 	public int getDurationFixed() {
 		return (int) executeJsScript("pp.getDuration().toFixed()", "int");
 	}
@@ -68,7 +68,7 @@ public class PlayerAPIAction extends PlayBackPage implements PlayerAction {
 	public void setVolume(int volume) {
 		driver.executeScript("pp.setVolume(" + volume + ")");
 	}
-	
+
 	public void setVolume(float volume) {
 		driver.executeScript("pp.setVolume(" + volume + ")");
 	}
@@ -86,6 +86,10 @@ public class PlayerAPIAction extends PlayBackPage implements PlayerAction {
 	public ArrayList<String> getCurrentItemClosedCaptionsLanguages() {
 		return ((ArrayList<String>) driver
 				.executeScript("return pp.getCurrentItemClosedCaptionsLanguages().languages;"));
+	}
+
+	public String getErrorCode() {
+		return (String) executeJsScript("pp.getErrorCode()", "string");
 	}
 
 	public String getItemTitle() {
@@ -117,20 +121,59 @@ public class PlayerAPIAction extends PlayBackPage implements PlayerAction {
 		driver.executeScript("pp.seek(" + seekTime + ")");
 	}
 	
+	public void seek(String seekTime) {
+		driver.executeScript("pp.seek(" + seekTime + ")");
+	}
+
 	public void destroy() {
 		driver.executeScript("pp.destroy()");
 	}
-	
+
 	public boolean isFullscreen() {
 		return Boolean.parseBoolean(driver.executeScript("return pp.isFullscreen()").toString());
 	}
-	
-	public void play() {
-        driver.executeScript("pp.play()");
-    }
-	
-	public void pause() {
-        driver.executeScript("pp.pause()");
-    }
 
+	public void play() {
+		driver.executeScript("pp.play()");
+	}
+
+	public void pause() {
+		driver.executeScript("pp.pause()");
+	}
+
+	public String getTextContent(String element) {
+		return driver.executeScript("return " + element + ".textContent").toString();
+	}
+
+	public String getConsoleOutput(int index) {
+		return (String) executeJsScript("OO.DEBUG.consoleOutput[" + index + "].toString()", "string");
+	}
+
+	public String getCurrentBitrate() {
+		return driver.executeScript("return pp.getCurrentBitrate()[\"bitrate\"]").toString();
+	}
+
+	public void setTargetBitrate(String id) {
+		driver.executeScript("return pp.setTargetBitrate('" + id + "')");
+	}
+
+	public String getBitratesAvailable(int i, String attr) {
+		return driver.executeScript("return pp.getBitratesAvailable()[" + i + "]['" + attr + "']").toString();
+	}
+
+	public int getBitratesAvailableLength() {
+		return (int) executeJsScript("pp.getBitratesAvailable().length", "int");
+	}
+
+	public String getEncodingPriority(int i) {
+		return driver.executeScript("return pp.parameters.encodingPriority[" + i + "]").toString();
+	}
+	
+	public Object getEncodingPriority() {
+		return driver.executeScript("return pp.parameters.encodingPriority").toString();
+	}
+	
+	public void setEmbedCode(String embedCode) {
+		driver.executeScript("pp.setEmbedCode('"+embedCode+"')");
+	}
 }

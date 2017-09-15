@@ -6,11 +6,11 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.IsAdPlayingValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -25,7 +25,7 @@ public class PlaybackPostrollInitialVolumeTests extends PlaybackWebTest {
 	private VolumeValidator volumeValidator;
 	private PlayAction playAction;
 	private SeekValidator seekValidator;
-	private IsAdPlayingValidator isAdPlayingValidator;
+	private PlayerAPIAction playerAPI;
 
 	PlaybackPostrollInitialVolumeTests() throws OoyalaException {
 		super();
@@ -56,11 +56,10 @@ public class PlaybackPostrollInitialVolumeTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("adPodStarted_2", 10000);
 
-			int noOfAds = Integer.parseInt(driver.executeScript("return adPodStarted_2.textContent").toString());
+			int noOfAds = Integer.parseInt(playerAPI.getTextContent("adPodStarted_2"));
 
 			for (int i = 1; i <= noOfAds; i++) {
-				Boolean isPreRollAdplaying = isAdPlayingValidator.validate("", 20000);
-				if (isPreRollAdplaying) {
+				if (eventValidator.checkIsAdPlaying()) {
 					result = result && eventValidator.validate("willPlaySingleAd_" + i + "", 50000);
 					result = result && volumeValidator.checkInitialVolume("ad");
 				}

@@ -1,8 +1,64 @@
 package com.ooyala.playback.factory;
 
 import java.lang.reflect.Field;
-import com.ooyala.playback.page.*;
+
 import org.openqa.selenium.WebDriver;
+
+import com.ooyala.playback.page.AdClickThroughValidator;
+import com.ooyala.playback.page.AdFrequencyValidator;
+import com.ooyala.playback.page.AdPluginValidator;
+import com.ooyala.playback.page.AdSkipButtonValidator;
+import com.ooyala.playback.page.AnalyticsValidator;
+import com.ooyala.playback.page.AspectRatioValidator;
+import com.ooyala.playback.page.BitmovinTechnologyValidator;
+import com.ooyala.playback.page.Bitratevalidator;
+import com.ooyala.playback.page.CCValidator;
+import com.ooyala.playback.page.ConcurrentStreamValidator;
+import com.ooyala.playback.page.ControlBarValidator;
+import com.ooyala.playback.page.DRMValidator;
+import com.ooyala.playback.page.DVRLiveValidator;
+import com.ooyala.playback.page.DifferentElementValidator;
+import com.ooyala.playback.page.DiscoveryValidator;
+import com.ooyala.playback.page.EmbedTabValidator;
+import com.ooyala.playback.page.EncodingValidator;
+import com.ooyala.playback.page.EndScreenValidator;
+import com.ooyala.playback.page.ErrorDescriptionValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.FullScreenValidator;
+import com.ooyala.playback.page.GeoValidator;
+import com.ooyala.playback.page.InitalTimeValidator;
+import com.ooyala.playback.page.LiveValidator;
+import com.ooyala.playback.page.MidrollAdValidator;
+import com.ooyala.playback.page.MultiplePlayerValidator;
+import com.ooyala.playback.page.OverlayValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.PlayerAPIValidator;
+import com.ooyala.playback.page.PlayerSkinButtonsValidator;
+import com.ooyala.playback.page.PlayerSkinCaptionsValidator;
+import com.ooyala.playback.page.PlayerSkinLocalizationValidator;
+import com.ooyala.playback.page.PlayerSkinScrubberValidator;
+import com.ooyala.playback.page.PlayerSkinShareValidator;
+import com.ooyala.playback.page.PlaylistValidator;
+import com.ooyala.playback.page.PoddedAdValidator;
+import com.ooyala.playback.page.ReplayValidator;
+import com.ooyala.playback.page.ScrubberValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.SetEmbedCodeValidator;
+import com.ooyala.playback.page.ShareTabValidator;
+import com.ooyala.playback.page.SocialScreenValidator;
+import com.ooyala.playback.page.StartScreenValidator;
+import com.ooyala.playback.page.StateScreenValidator;
+import com.ooyala.playback.page.StreamValidator;
+import com.ooyala.playback.page.ThumbnailCarouselValidator;
+import com.ooyala.playback.page.ThumbnailValidator;
+import com.ooyala.playback.page.UIControlValidator;
+import com.ooyala.playback.page.UpNextValidator;
+import com.ooyala.playback.page.VastPageLevelOverridingValidator;
+import com.ooyala.playback.page.VideoPluginValidator;
+import com.ooyala.playback.page.VideoValidator;
+import com.ooyala.playback.page.VolumeValidator;
+import com.ooyala.playback.page.WaterMarkValidator;
 import com.ooyala.playback.page.action.AutoplayAction;
 import com.ooyala.playback.page.action.ChromeFlashUpdateAction;
 import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
@@ -50,7 +106,6 @@ public class PlayBackFactory {
 	private OverlayValidator overlayValidator;
 	private AdSkipButtonValidator adSkipButtonValidator;
 	private DifferentElementValidator differentElement;
-	private IsAdPlayingValidator isAdPlaying;
 	private EncodingValidator encodingValidator;
 	private MultiplePlayerValidator multiplePlayerValidator;
 	private AdClickThroughValidator adClickThroughValidator;
@@ -526,14 +581,6 @@ public class PlayBackFactory {
 			differentElement.setExtentTest(extentTest);
 		}
 		return differentElement;
-	}
-
-	public IsAdPlayingValidator isAdPlaying() {
-		if (isAdPlaying == null) {
-			isAdPlaying = new IsAdPlayingValidator(driver);
-			isAdPlaying.setExtentTest(extentTest);
-		}
-		return isAdPlaying;
 	}
 
 	public SetEmbedCodeValidator getSetEmbedCodeValidator() {

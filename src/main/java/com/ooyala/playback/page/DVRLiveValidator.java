@@ -46,7 +46,7 @@ public class DVRLiveValidator extends PlayBackPage implements PlaybackValidator 
             extentTest.log(LogStatus.FAIL, "Live button not shown in control bar.");
         }
 
-        String livePlayHeadTime = driver.executeScript("return pp.getPlayheadTime()").toString();
+        String livePlayHeadTime = new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getPlayAheadTime()+"";
 
         if (!livePlayHeadTime.equals("1740")){
             extentTest.log(LogStatus.FAIL,"Scrubber pointer is not at right side \n Actual :"+livePlayHeadTime+" " +

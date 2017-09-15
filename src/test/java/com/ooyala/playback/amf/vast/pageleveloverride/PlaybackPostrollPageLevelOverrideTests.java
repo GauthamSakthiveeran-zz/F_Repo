@@ -1,15 +1,16 @@
 package com.ooyala.playback.amf.vast.pageleveloverride;
 
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.VastPageLevelOverridingValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.VastPageLevelOverridingValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-import org.testng.annotations.Test;
 
 /**
  * Created by Jitendra on 8/23/17.
@@ -23,7 +24,7 @@ public class PlaybackPostrollPageLevelOverrideTests extends PlaybackWebTest{
     private VastPageLevelOverridingValidator pageOverride;
     private PlayAction playAction;
     private EventValidator event;
-    private SeekValidator seek;
+    private PlayerAPIAction playerAPI;
 
     @Test(dataProvider = "testUrls",groups = "pageLevelOverriding")
     public void postrollPageLevelOverride(String testName, UrlObject url){
@@ -36,7 +37,7 @@ public class PlaybackPostrollPageLevelOverrideTests extends PlaybackWebTest{
             result = result && playAction.startAction();
             result = result && event.validate("playing_1", 60000);
             result = result && event.playVideoForSometime(3);
-            driver.executeScript("pp.seek(pp.getDuration()-10)");
+            playerAPI.seek(playerAPI.getDurationFixed()-10);
             result = result && event.validate("PostRoll_willPlaySingleAd_1", 60000);
             result = result && event.validate("singleAdPlayed_1", 120000);
             result = result && event.validate("played_1", 10000);

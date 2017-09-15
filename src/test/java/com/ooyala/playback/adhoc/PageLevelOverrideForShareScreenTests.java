@@ -6,6 +6,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.ShareTabValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -25,6 +26,7 @@ public class PageLevelOverrideForShareScreenTests extends PlaybackWebTest {
     private EventValidator eventValidator;
     private ShareTabValidator share;
     private EncodingValidator encodingValidator;
+    private PlayerAPIAction playerAPI;
 
 
     @Test(dataProvider = "testUrls",groups = "adhoc")
@@ -39,7 +41,7 @@ public class PageLevelOverrideForShareScreenTests extends PlaybackWebTest {
             injectScript();
             result = result && playAction.startAction();
             result = result && eventValidator.validate("playing_1",10000);
-            driver.executeScript("pp.pause()");
+            playerAPI.pause();
             result = result && share.clickOnShareButton();
             result = result && share.validateBothShareTabAndEmbedTab();
             encodingValidator.getNewUrl(paramShareTab,browser);
@@ -49,7 +51,7 @@ public class PageLevelOverrideForShareScreenTests extends PlaybackWebTest {
             injectScript();
             result = result && playAction.startAction();
             result = result && eventValidator.validate("playing_1",10000);
-            driver.executeScript("pp.pause()");
+            playerAPI.pause();
             result = result && share.clickOnShareButton();
             if(result) {
                 s_assert.assertTrue(share.validateOnlySocialShareTab(), "Social");
@@ -61,7 +63,7 @@ public class PageLevelOverrideForShareScreenTests extends PlaybackWebTest {
             injectScript();
             result = result && playAction.startAction();
             result = result && eventValidator.validate("playing_1",10000);
-            driver.executeScript("pp.pause()");
+            playerAPI.pause();
             result = result && share.clickOnShareButton();
             if (result) {
                 s_assert.assertTrue(share.validateOnlyEmbedOption(), "Embed");

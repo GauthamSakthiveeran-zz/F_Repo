@@ -1,16 +1,17 @@
 package com.ooyala.playback.playerfeatures;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.UpNextValidator;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 /**
  * Created by suraj on 6/21/17.
@@ -24,6 +25,7 @@ public class PlaybackDiscoveryAssetTests extends PlaybackWebTest {
     private DiscoveryValidator discoveryValidator;
     private SeekAction seekAction;
     private EventValidator eventValidator;
+    private PlayerAPIAction playerAPI;
 
     @Test(groups = "playerFeatures", dataProvider = "testUrls")
     public void testPlaybackOfDiscoveryAssets(String testName, UrlObject url)
@@ -39,7 +41,7 @@ public class PlaybackDiscoveryAssetTests extends PlaybackWebTest {
 
             result = result && play.validate("playing_1", 60000);
 
-            String embedCode = driver.executeScript("return pp.getEmbedCode();").toString();
+            String embedCode = playerAPI.getEmbedCode();
 
             result = result && discoveryValidator.clickOnDiscoveryButton();
 

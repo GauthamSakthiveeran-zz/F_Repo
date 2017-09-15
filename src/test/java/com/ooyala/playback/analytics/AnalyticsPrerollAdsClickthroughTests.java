@@ -1,15 +1,19 @@
 package com.ooyala.playback.analytics;
 
+import org.apache.log4j.Logger;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.AdClickThroughValidator;
+import com.ooyala.playback.page.AnalyticsValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
-import org.testng.annotations.Test;
 
 /**
  * Created by suraj on 6/29/17.
@@ -25,9 +29,9 @@ public class AnalyticsPrerollAdsClickthroughTests extends PlaybackWebTest {
     private PlayAction playAction;
     private PlayValidator playValidator;
     private SeekAction seekAction;
-    private CCValidator ccValidator;
     private AdClickThroughValidator clickThrough;
     private AnalyticsValidator analyticsValidator;
+    private PlayerAPIAction playerAPI;
 
     @Test(groups = { "amf", "preroll", "sequential", "clickThrough" }, dataProvider = "testUrls")
     public void verifyPreroll(String testName, UrlObject url) throws Exception {
@@ -42,9 +46,9 @@ public class AnalyticsPrerollAdsClickthroughTests extends PlaybackWebTest {
             result = result && event.validate("PreRoll_willPlaySingleAd_1", 60000);
 
             if (result && click) {
-                ((JavascriptExecutor) driver).executeScript("pp.pause()");
+            	playerAPI.pause();
                 s_assert.assertTrue(clickThrough.validate("", 120000), "Clickthrough");
-                ((JavascriptExecutor) driver).executeScript("pp.play()");
+                playerAPI.play();
             }
 
             if (event.isAdPluginPresent("pulse"))
