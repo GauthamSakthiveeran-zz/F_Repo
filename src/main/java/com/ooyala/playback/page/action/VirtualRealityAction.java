@@ -113,6 +113,31 @@ public class VirtualRealityAction extends PlayBackPage implements PlayerAction {
         }
     }
 
+    public boolean startActionByMouse(){
+        try {
+            Actions actions = new Actions(driver);
+            WebElement screen = getWebElement("STATE_SCREEN_SELECTABLE");
+            actions.click(screen);
+            actions.build().perform();
+            return true;
+
+        } catch (Exception ex) {
+            logger.error(ex.getMessage());
+            return false;
+        }
+    }
+
+    public boolean validateElement(String element, int timeout) throws Exception {
+        if (driver.findElementsById(element).size()!=0) {
+            logger.info("Wait on element Success : " + element);
+            extentTest.log(LogStatus.PASS, "Wait on element : " + element);
+            return true;
+        }
+        logger.error("Wait on element failed : " + element);
+        extentTest.log(LogStatus.FAIL, "Wait on element : " + element);
+        return false;
+    }
+
 }
 
 

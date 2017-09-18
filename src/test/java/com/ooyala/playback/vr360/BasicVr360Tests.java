@@ -44,7 +44,9 @@ public class BasicVr360Tests extends PlaybackWebTest {
             result = result && eventValidator.validate("playing_1", 3000);
             //mouse actions
             result = result && virtualRealityAction.onScreen().startAction();
-            result = result && eventValidator.validate("direction_changed_1", 3000);
+            //for each mouse action we have 2 direction events - one with start coordinates and one with end coordinates
+            //that's why I use only even direction_changed events
+            result = result && eventValidator.validate("direction_changed_2", 3000);
             //controller actions
             result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_RIGHT");
             result = result && eventValidator.validate("moveToDirection_1", 3000);
@@ -55,26 +57,20 @@ public class BasicVr360Tests extends PlaybackWebTest {
             result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_DOWN");
             result = result && eventValidator.validate("moveToDirection_4", 3000);
 
-            //defect https://jira.corp.ooyala.com/browse/PLAYER-1628
             //verify navigation in pause mode
-//            result = result && pauseValidator.validate("paused_1", 60000);
-//            result = result && virtualRealityAction.onScreen().startAction();
-//            result = result && eventValidator.validate("direction_changed_2", 3000);
-//            result = result && eventValidator.validate("playing_2", 3000);
-//            result = result && virtualRealityAction.onScreen().startAction();
-//            result = result && eventValidator.validate("direction_changed_3", 3000);
+            result = result && pauseValidator.validate("paused_1", 60000);
+            result = result && virtualRealityAction.onScreen().startAction();
+            result = result && eventValidator.validate("direction_changed_4", 3000);
 
-            //defect https://jira.corp.ooyala.com/browse/PLAYER-1638
             //verify controls navigation in pause mode
-//            result = result && pauseValidator.validate("paused_2", 60000);
-//            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_RIGHT");
-//            result = result && eventValidator.validate("moveToDirection_5", 3000);
-//            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_LEFT");
-//            result = result && eventValidator.validate("moveToDirection_6", 3000);
-//            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_UP");
-//            result = result && eventValidator.validate("moveToDirection_7", 3000);
-//            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_DOWN");
-//            result = result && eventValidator.validate("moveToDirection_8", 3000);
+            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_RIGHT");
+            result = result && eventValidator.validate("moveToDirection_5", 3000);
+            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_LEFT");
+            result = result && eventValidator.validate("moveToDirection_6", 3000);
+            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_UP");
+            result = result && eventValidator.validate("moveToDirection_7", 3000);
+            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_DOWN");
+            result = result && eventValidator.validate("moveToDirection_8", 3000);
 
         } catch (Exception e) {
             logger.error("Exception while checking basic vr 360 playback " + e.getMessage());
@@ -103,7 +99,7 @@ public class BasicVr360Tests extends PlaybackWebTest {
 
             //verify key on keyboard
             result = result && virtualRealityAction.startActionUsingKeys("a");
-            result = result && eventValidator.validate("moveToDirection_1", 3000);
+            result = result && virtualRealityAction.validateElement("moveToDirection_1", 3000);
             result = result && virtualRealityAction.startActionUsingKeys("w");
             result = result && eventValidator.validate("moveToDirection_2", 3000);
             result = result && virtualRealityAction.startActionUsingKeys("d");
@@ -153,7 +149,7 @@ public class BasicVr360Tests extends PlaybackWebTest {
 
             //mouse actions
             result = result && virtualRealityAction.startActionOnScreen();
-            result = result && eventValidator.validate("direction_changed_1", 3000);
+            result = result && eventValidator.validate("direction_changed_2", 3000);
             //controller actions
             result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_UP");
             result = result && eventValidator.validate("moveToDirection_1", 3000);
@@ -164,26 +160,20 @@ public class BasicVr360Tests extends PlaybackWebTest {
             result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_LEFT");
             result = result && eventValidator.validate("moveToDirection_4", 3000);
 
-            //defect https://jira.corp.ooyala.com/browse/PLAYER-1628
             //verify navigation in pause mode
-//            result = result && pauseValidator.validate("paused_1", 60000);
-//            result = result && virtualRealityAction.onScreen().startAction();
-//            result = result && eventValidator.validate("direction_changed_2", 3000);
-//            result = result && eventValidator.validate("playing_2", 3000);
-//            result = result && virtualRealityAction.onScreen().startAction();
-//            result = result && eventValidator.validate("direction_changed_3", 3000);
+            result = result && pauseValidator.validate("paused", 60000);
+            result = result && virtualRealityAction.onScreen().startAction();
+            result = result && virtualRealityAction.validateElement("direction_changed_4", 5000);
 
-            //defect https://jira.corp.ooyala.com/browse/PLAYER-1638
             //verify controls navigation in pause mode
-//            result = result && pauseValidator.validate("paused_2", 60000);
-//            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_RIGHT");
-//            result = result && eventValidator.validate("moveToDirection_5", 3000);
-//            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_LEFT");
-//            result = result && eventValidator.validate("moveToDirection_6", 3000);
-//            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_UP");
-//            result = result && eventValidator.validate("moveToDirection_7", 3000);
-//            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_DOWN");
-//            result = result && eventValidator.validate("moveToDirection_8", 3000);
+            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_RIGHT");
+            result = result && virtualRealityAction.validateElement("moveToDirection_5", 3000);
+            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_LEFT");
+            result = result && virtualRealityAction.validateElement("moveToDirection_6", 3000);
+            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_UP");
+            result = result && virtualRealityAction.validateElement("moveToDirection_7", 3000);
+            result = result && virtualRealityAction.startActionOnScreenUsingControls("VR_ICON_MOVE_DOWN");
+            result = result && virtualRealityAction.validateElement("moveToDirection_8", 3000);
 
         } catch (Exception e) {
             logger.error("Exception while checking basic vr 360 playback in full screen " + e.getMessage());
@@ -215,7 +205,7 @@ public class BasicVr360Tests extends PlaybackWebTest {
 
             //verify key on keyboard
             result = result && virtualRealityAction.startActionUsingKeys("w");
-            result = result && eventValidator.validate("moveToDirection_1", 3000);
+            result = result && virtualRealityAction.validateElement("moveToDirection_1", 3000);
             result = result && virtualRealityAction.startActionUsingKeys("s");
             result = result && eventValidator.validate("moveToDirection_2", 3000);
             result = result && virtualRealityAction.startActionUsingKeys("a");
@@ -223,17 +213,61 @@ public class BasicVr360Tests extends PlaybackWebTest {
             result = result && virtualRealityAction.startActionUsingKeys("d");
             result = result && eventValidator.validate("moveToDirection_4", 3000);
 
-//failed to find moveToDirection_5 element, but it exists
             //verify keys navigation in pause mode
-//            result = result && pauseValidator.validate("paused_1", 60000);
-//            result = result && virtualRealityAction.startActionUsingKeys("d");
-//            result = result && eventValidator.validate("moveToDirection_5", 3000);
-//            result = result && virtualRealityAction.startActionUsingKeys("s");
-//            result = result && eventValidator.validate("moveToDirection_6", 3000);
-//            result = result && virtualRealityAction.startActionUsingKeys("w");
-//            result = result && eventValidator.validate("moveToDirection_7", 3000);
-//            result = result && virtualRealityAction.startActionUsingKeys("a");
-//            result = result && eventValidator.validate("moveToDirection_8", 3000);
+            result = result && pauseValidator.validate("paused_1", 60000);
+            result = result && virtualRealityAction.startActionUsingKeys("d");
+            result = result && virtualRealityAction.validateElement("moveToDirection_5", 3000);
+            result = result && virtualRealityAction.startActionUsingKeys("s");
+            result = result && virtualRealityAction.validateElement("moveToDirection_6", 3000);
+            result = result && virtualRealityAction.startActionUsingKeys("w");
+            result = result && virtualRealityAction.validateElement("moveToDirection_7", 3000);
+            result = result && virtualRealityAction.startActionUsingKeys("a");
+            result = result && virtualRealityAction.validateElement("moveToDirection_8", 3000);
+
+        } catch (Exception e) {
+            logger.error("Exception while checking basic vr 360 playback in full screen " + e.getMessage());
+            extentTest.log(LogStatus.FAIL, e);
+            result = false;
+        }
+        Assert.assertTrue(result, "Vr 360 tests in full mode using navigation by keys on keyboard failed " + testName);
+    }
+
+    @Test(groups = "vr360", dataProvider = "testUrls")
+    public void verifyPlayerVr360PauseByMouseClick(String testName, UrlObject url) throws OoyalaException {
+
+        boolean result = true;
+
+        try {
+            driver.get(url.getUrl());
+
+            result = result && playValidator.waitForPage();
+
+            injectScript();
+
+            result = result && playAction.onScreen().startAction();
+            result = result && eventValidator.validate("play_1", 3000);
+
+            //mouse click on screen - pause action
+            result = result && virtualRealityAction.startActionByMouse();
+            result = result && eventValidator.validate("paused_1", 3000);
+
+            //mouse click on screen - play action
+            result = result && virtualRealityAction.startActionByMouse();
+            result = result && eventValidator.validate("play_2", 3000);
+
+            //go to full screen mode
+            result = result && fullScreenAction.switchToControlBar();
+            result = result && eventValidator.eventAction("FULLSCREEN_BTN");
+            result = result && virtualRealityAction.validateElement("fullscreenChanged_true", 3000);
+
+            //mouse click on full screen - pause action
+            result = result && virtualRealityAction.startActionByMouse();
+            result = result && virtualRealityAction.validateElement("paused_2", 3000);
+
+            //defect - https://jira.corp.ooyala.com/browse/PLAYER-1762
+            //mouse click on full screen - play action
+//            result = result && virtualRealityAction.startActionByMouse();
+//            result = result && eventValidator.validate("play_3", 3000);
 
         } catch (Exception e) {
             logger.error("Exception while checking basic vr 360 playback in full screen " + e.getMessage());

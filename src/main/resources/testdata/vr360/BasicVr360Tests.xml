@@ -6,12 +6,12 @@
         <url>
             <description name="View monoscopic video 360 in browser" />
             <priority name="P2"></priority>
-            <embed_code name="ZwdTE5YzE69c3U3cXy2CCzfnCkzMMqUP" />
+            <embed_code name="85bWxoYzE6n7r0k_BilxYGV6K_lHKveV" />
             <pcode name="95920" />
             <plugins name="BITMOVIN,MAIN"/>
             <adPlugins name="" />
             <additionalPlugins name="" />
-            <pbid name="570d91bf920b42cbae587bb1447e6fd8" />
+            <pbid name="395961e491ad4bd3bb38e0485f6804b0" />
             <playerParameter><![CDATA[{"bit-wrapper":{"source":{"vr":{"stereo":false}}}}]]></playerParameter>
             <browsersSupported name="chrome" />
         </url>
