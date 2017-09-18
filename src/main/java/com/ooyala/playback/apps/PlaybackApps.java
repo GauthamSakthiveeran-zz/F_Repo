@@ -143,6 +143,7 @@ public abstract class PlaybackApps extends WebPage {
     }
 
     public Element getSeekBarPosition(String Seekbar) throws InterruptedException {
+        waitAndTap();
         FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(Seekbar));
         WebElement SEEK = this.getWebElementFromFacileWebElement(anElement);
         Point seekbarElementPos = SEEK.getLocation();
@@ -209,6 +210,11 @@ public abstract class PlaybackApps extends WebPage {
     }
 
     public boolean tapScreen() {
+        return clickOnIndependentElement(By.xpath("//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther"));
+    }
+
+    public boolean waitAndTap() throws InterruptedException {
+        Thread.sleep(5000);
         return clickOnIndependentElement(By.xpath("//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther"));
     }
 

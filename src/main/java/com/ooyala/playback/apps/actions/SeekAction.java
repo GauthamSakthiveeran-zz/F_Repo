@@ -46,7 +46,6 @@ public class SeekAction extends PlaybackApps implements Actions {
             }
         } catch (Exception e) {
             logger.info("seekbar not found. Tapping screen and retrying..");
-            Thread.sleep(5000);
             tapScreenIfRequired();
             if(!seekVideoForward(ele1 , ele2 )) {
                 logger.error("Unable to seek forward video");

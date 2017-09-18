@@ -2,12 +2,9 @@ package com.ooyala.playback.factory;
 
 import java.lang.reflect.Field;
 
-import com.ooyala.playback.apps.actions.SeekAction;
+import com.ooyala.playback.apps.actions.*;
 import org.openqa.selenium.WebElement;
 
-import com.ooyala.playback.apps.actions.PauseAction;
-import com.ooyala.playback.apps.actions.QAModeSwitchAction;
-import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 
@@ -22,10 +19,19 @@ public class PlayBackFactory {
 	private QAModeSwitchAction qaModeSwitchAction;
 	private SeekAction seekAction;
 	private ElementValidator elementValidator;
+	private LaunchAction launchAction;
+
 
 
 	public PlayBackFactory(AppiumDriver driver) {
 		this.driver = driver;
+	}
+
+	public LaunchAction getLaunchAction() {
+		if (launchAction == null) {
+			launchAction = new LaunchAction(driver);
+		}
+		return launchAction;
 	}
 
 	public QAModeSwitchAction getQAModeSwitchAction() {
@@ -55,6 +61,7 @@ public class PlayBackFactory {
 		}
 		return seekAction;
 	}
+
 
 	public NotificationEventValidator getNotificationEventValidator() {
 		if (notificationEventValidator == null) {
