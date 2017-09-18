@@ -96,7 +96,8 @@ public class PlaybackAppsTest extends FacileTest {
 	
 	@BeforeMethod(alwaysRun=true)
     public void beforeMethod() throws Exception {
-    	Assert.assertTrue(new PlayBackFactory((AppiumDriver) driver).getQAModeSwitchAction().startAction("QA_MODE_SWITCH"), "QA Mode is not enabled. Hence failing test");
+		pageFactory.getLaunchAction().startAction();
+		Assert.assertTrue(new PlayBackFactory((AppiumDriver) driver).getQAModeSwitchAction().startAction("QA_MODE_SWITCH"), "QA Mode is not enabled. Hence failing test");
     }
 	
 	@BeforeMethod(alwaysRun = true)

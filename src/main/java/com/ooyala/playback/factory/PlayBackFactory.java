@@ -3,7 +3,11 @@ package com.ooyala.playback.factory;
 import java.lang.reflect.Field;
 
 import com.ooyala.playback.apps.actions.*;
-import org.openqa.selenium.WebElement;
+
+import com.ooyala.playback.apps.actions.CCAction;
+import com.ooyala.playback.apps.actions.PauseAction;
+import com.ooyala.playback.apps.actions.QAModeSwitchAction;
+import com.ooyala.playback.apps.actions.SelectVideoAction;
 
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
@@ -20,6 +24,7 @@ public class PlayBackFactory {
 	private SeekAction seekAction;
 	private ElementValidator elementValidator;
 	private LaunchAction launchAction;
+	private CCAction ccAction;
 
 
 
@@ -77,6 +82,12 @@ public class PlayBackFactory {
 		return elementValidator;
 	}
 	
+	public CCAction getCcAction() {
+		if (ccAction == null) {
+			ccAction = new CCAction(driver);
+		}
+		return ccAction;
+	}
 
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> validator) throws Exception {
