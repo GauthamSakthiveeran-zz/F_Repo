@@ -44,9 +44,11 @@ public class FacileWebElement {
 	// Preferred way of finding an element.
 	/** The find by. */
 	private String findBy = null;
+	
+	private String elementAccessibilityId = null;
 
 	/** The xml template. */
-	private String XML_TEMPLATE = "<element key=\"%s\" findBy=\"%s\" id=\"%s\" tag=\"%s\" name=\"%s\" text=\"%s\" class=\"%s\" xPath=\"%s\" ieXPath=\"%s\"  cssSelector=\"%s\"/>"
+	private String XML_TEMPLATE = "<element key=\"%s\" findBy=\"%s\" id=\"%s\" tag=\"%s\" name=\"%s\" text=\"%s\" class=\"%s\" xPath=\"%s\" ieXPath=\"%s\" accessibilityId=\"%s\" cssSelector=\"%s\"/>"
 			.toLowerCase();
 
 	/**
@@ -76,7 +78,7 @@ public class FacileWebElement {
 	public FacileWebElement(String elementKey, String elementID,
 			String elementName, String elementClass, String elementText,
 			String elementXPath, String findBy, String elementTag,
-			String elementIExPath, String elementCssSelector) {
+			String elementIExPath, String elementCssSelector, String elementAccessibilityId) {
 
 		this.elementKey = elementKey;
 		this.elementID = elementID;
@@ -88,7 +90,7 @@ public class FacileWebElement {
 		this.elementTag = elementTag;
 		this.elementIExPath = elementIExPath;
 		this.elementCssSelector = elementCssSelector;
-
+		this.elementAccessibilityId = elementAccessibilityId;
 	}
 
 	/**
@@ -108,6 +110,7 @@ public class FacileWebElement {
 		this.elementTag = aFacileWebElement.elementTag;
 		this.elementIExPath = aFacileWebElement.elementIExPath;
 		this.elementCssSelector = aFacileWebElement.elementCssSelector;
+		this.elementAccessibilityId = aFacileWebElement.elementAccessibilityId;
 	}
 
 	/*
@@ -123,6 +126,7 @@ public class FacileWebElement {
 				+ ", elementTag=" + elementTag + ", elementText=" + elementText
 				+ ", elementXPath=" + elementXPath + ", elementIEXPath="
 				+ elementIExPath + ", elementCssSelector=" + elementCssSelector
+				+ ", elementAccessibilityId" + elementAccessibilityId
 				+ "]";
 	}
 
@@ -305,6 +309,25 @@ public class FacileWebElement {
 	public void setElementCssSelector(String elementCssSelector) {
 		this.elementCssSelector = elementCssSelector;
 	}
+	
+	/**
+	 * Gets the element accessibility Id for mobile elements
+	 * 
+	 * @return the element css selector
+	 */
+	public String getElementAccessibilityId() {
+		return elementAccessibilityId;
+	}
+
+	/**
+	 * Sets the element accessibility id for mobile elements
+	 * 
+	 * @param elementCssSelector
+	 *            the new element css selector
+	 */
+	public void setElementAccessibilityId(String elementAccessibilityId) {
+		this.elementAccessibilityId = elementAccessibilityId;
+	}
 
 	/**
 	 * To xml.
@@ -314,7 +337,7 @@ public class FacileWebElement {
 	public String toXML() {
 		return String.format(XML_TEMPLATE, elementKey, findBy, elementID,
 				elementTag, elementName, elementText, elementClass,
-				elementXPath, elementIExPath, elementCssSelector);
+				elementXPath, elementIExPath, elementCssSelector,elementAccessibilityId);
 	}
 
 }

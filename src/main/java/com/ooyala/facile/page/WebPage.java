@@ -48,6 +48,8 @@ import com.ooyala.facile.exception.JsAlertPresentException;
 import com.ooyala.facile.listners.IWebPageListener;
 import com.ooyala.facile.util.ReadPropertyFile;
 
+import io.appium.java_client.MobileBy;
+
 // TODO: Auto-generated Javadoc
 /**
  * This class represents a general web page in the WebDriver world. It also
@@ -769,7 +771,6 @@ public abstract class WebPage {
 	 * @param destinationDir
 	 *            the destination dir
 	 */
-	@SuppressWarnings("deprecation")
 	public void takeBrowserScreenshot(String fileName, String destinationDir) {
 		if (!(new File(destinationDir).exists())) {
 			throw new RuntimeException("Directory does not exist: "
@@ -940,6 +941,7 @@ public abstract class WebPage {
 			String xPath = "";
 			String ieXPath = "";
 			String cssSelector = "";
+			String accessibilityId = "";
 
 			/* Getting values out of Tags */
 			if (currentNode.hasChildNodes()) {
@@ -993,6 +995,9 @@ public abstract class WebPage {
 						logger.info("\n Not a valid NODE in the XML File : "
 								+ nodeName + " : " + nodeValue);
 					}
+					else if(nodeName.equalsIgnoreCase("accessibilityId")) {
+						accessibilityId = nodeValue;
+					}
 				}
 
 				elementDataPopulated = true;
@@ -1041,6 +1046,10 @@ public abstract class WebPage {
 					cssSelector = elementAttributesMap.getNamedItem(
 							"cssSelector").getNodeValue();
 				}
+				
+				if (elementAttributesMap.getNamedItem("accessibilityId") != null) {
+					accessibilityId = elementAttributesMap.getNamedItem("accessibilityId").getNodeValue();
+				}
 
 				elementDataPopulated = true;
 			}
@@ -1050,13 +1059,11 @@ public abstract class WebPage {
 			if (elementDataPopulated) {
 				// We have all the data values to feed to FacileWebElemnt while
 				// creating it
-				FacileWebElement facileWebElement = new FacileWebElement(key,
-						id, name, classValue, text, xPath, findBy, tag,
-						ieXPath, cssSelector);
+				FacileWebElement facileWebElement = new FacileWebElement(key, id, name, classValue, text, xPath, findBy,
+						tag, ieXPath, cssSelector, accessibilityId);
 				elementDataPopulated = false;
 				// Put the FacileWebElement Object in the hashmap.
-				elementHashMap.put(facileWebElement.getElementKey(),
-						facileWebElement);
+				elementHashMap.put(facileWebElement.getElementKey(), facileWebElement);
 			}
 		}
 
@@ -1900,6 +1907,10 @@ public abstract class WebPage {
 				elementOfInterest = driver
 						.findElement(By.cssSelector(aFacileWebElement
 								.getElementCssSelector()));
+			} else if (aFacileWebElement.getFindBy().equalsIgnoreCase("accessibilityId")) {
+				logger.info("Trying to find element by accessibilityId");
+				elementOfInterest = driver
+						.findElement(MobileBy.AccessibilityId(aFacileWebElement.getElementAccessibilityId()));
 			}
 		} catch (Exception ex) {
 			// Package up the causing exception into a NoSuchElementException.

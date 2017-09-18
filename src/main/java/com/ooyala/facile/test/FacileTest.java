@@ -461,12 +461,13 @@ public class FacileTest implements IHookable {
 
 			if (platform.equalsIgnoreCase("ios")) {
 				dr = new DesiredCapabilities();
-				dr.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");
+				dr.setCapability(MobileCapabilityType.PLATFORM_NAME, "IOS");
 				dr.setCapability(MobileCapabilityType.DEVICE_NAME, System.getProperty("deviceName"));
 				dr.setCapability(MobileCapabilityType.PLATFORM_VERSION, System.getProperty("deviceVersion"));
-				dr.setCapability(MobileCapabilityType.BROWSER_NAME, "Safari");
+				dr.setCapability(MobileCapabilityType.BROWSER_NAME, "safari");
 				dr.setCapability(MobileCapabilityType.UDID, System.getProperty("udid"));
-				dr.setCapability(MobileCapabilityType.AUTOMATION_NAME, System.getProperty("automationName"));
+				if(System.getProperty("automationName")!=null && !System.getProperty("automationName").isEmpty())
+					dr.setCapability(MobileCapabilityType.AUTOMATION_NAME, System.getProperty("automationName"));
 			} else {
 				dr = DesiredCapabilities.safari();
 				dr.setBrowserName("safari");
