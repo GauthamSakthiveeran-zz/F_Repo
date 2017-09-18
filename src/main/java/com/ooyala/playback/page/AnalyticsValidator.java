@@ -29,4 +29,37 @@ public class AnalyticsValidator extends PlayBackPage implements PlaybackValidato
         logger.error("Event verified :" + element);
         return true;
     }
+
+    public boolean injectNetworkLogRecorder(){
+        try{
+            driver.executeScript("var urls = Array.prototype.map.call(\n" +
+                    "    document.querySelectorAll(\"link,script\"), // Elements which request external resources\n" +
+                    "    function(e) { // Loop over and return their href/src\n" +
+                    "        return e.href || e.src; \n" +
+                    "    }\n" +
+                    ");\n" +
+                    "\tOO.$(\"#ooplayer\").append(\"<p id=netwoklogs>\"+urls+\"</p>\");");
+            return true;
+        } catch (Exception ex){
+            ex.getStackTrace();
+            return false;
+        }
+    }
+
+    public boolean validateAnalyticsNetworkLogs(){
+        String logs = driver.findElement(By.id("netwoklogs")).getText();
+        String[] a = logs.split(",");
+        boolean flag = false;
+        for(String b : a){
+            if (!b.contains("http://analytics.ooyala.com/static/v3/analytics.js")){
+                flag = false;
+            } else
+                flag = true;
+        }
+
+        if (!flag){
+            return false;
+        }
+        return true;
+    }
 }
