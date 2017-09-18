@@ -10,147 +10,128 @@ import io.appium.java_client.AppiumDriver;
 
 public class NotificationEventValidator extends PlaybackApps implements Validators {
 
-    private static Logger logger = Logger.getLogger(NotificationEventValidator.class);
+	private static Logger logger = Logger.getLogger(NotificationEventValidator.class);
+	private String notificationEvents;
 
-    public NotificationEventValidator(AppiumDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-        addElementToPageElements("event");
-    }
+	public NotificationEventValidator(AppiumDriver driver) {
+		super(driver);
+		PageFactory.initElements(driver, this);
+		addElementToPageElements("event");
+	}
 
-    int eventVerificationCount= 0 ;
+	int eventVerificationCount = 0;
 
-    @Override
-    public boolean validate(String element, int timeout) throws Exception {
+	@Override
+	public boolean validate(String eventToBeVerified, int timeout) throws Exception {
 
-        if(!waitOnElement("NOTIFICATION_AREA", 10)) {
-            logger.error("NOTIFICATION_AREA not found");
-            return false;
-        }
+		if (!waitOnElement("NOTIFICATION_AREA", 10)) {
+			logger.error("NOTIFICATION_AREA not found");
+			return false;
+		}
 
-        String notifiationEvents = getWebElement("NOTIFICATION_AREA").getText();
+		int returncount = 0;
+		boolean status = false;
+		long startTime = System.currentTimeMillis();
 
+		do {
+			logger.info("Waiting for notification >>>> : " + eventToBeVerified);
+			if (notificationEvents == null)
+				notificationEvents = getNotificationEvents();
 
-        int returncount = 0;
-        boolean status = false;
-        long startTime = System.currentTimeMillis();
+			returncount = verifyNotificationEventPresence(notificationEvents, eventToBeVerified,
+					eventVerificationCount);
 
+			if (returncount != -1) {
+				status = true;
+				eventVerificationCount = returncount;
+			} else {
+				notificationEvents = getNotificationEvents();
+				returncount = verifyNotificationEventPresence(notificationEvents, eventToBeVerified,
+						eventVerificationCount);
+				if (returncount != -1) {
+					status = true;
+					eventVerificationCount = returncount;
+				} else {
+					status = false;
 
-        while((System.currentTimeMillis() - startTime) < timeout) {
-            logger.info("Waiting for notification >>>> : " + element);
-            returncount = verifyNotificationEventPresence(notifiationEvents, element, eventVerificationCount);
+				}
+			}
+			if (status == true) {
+				return status;
+			}
+		} while ((System.currentTimeMillis() - startTime) < timeout);
 
-            if (returncount == -1)
-                status = false;
+		if (!status) {
+			logger.error("ACTUAL notification : " + getNotificationEvents());
+			return false;
+		}
+		return false;
+	}
 
-            else {
-                status = true;
-                eventVerificationCount = returncount;
-            }
+	private String getNotificationEvents() {
+		int counter = 0;
+		int timeout = 10;
+		String notifications = null;
+		while (counter < timeout) {
+			notifications = getWebElement("NOTIFICATION_AREA").getText();
+			if (notifications != null)
+				return notifications;
+			counter++;
+		}
+		throw new NullPointerException("Notification events is NULL !!!");
+	}
 
-            if (status == true) {
-                return true;
-            }
-        }
-        if(!status) {
-            logger.error("ACTUAL notification : "  + getNotificationEvents());
-            return false;
-        }
-        return false;
-    }
+	private int verifyNotificationEventPresence(String notificationEvents, String eventToBeVerified, int count) {
+		try {
 
-    private String getNotificationEvents() {
-        int counter = 0;
-        int timeout = 10;
-        String notifications = null;
-        while (counter < timeout) {
-            notifications = getWebElement("NOTIFICATION_AREA").getText();
-            if (notifications != null)
-                return notifications;
-            counter ++;
-        }
-        throw new NullPointerException("Notification events is NULL !!!");
-    }
+			String lines[] = parseNotificationEvents(notificationEvents);
+			for (String line : lines) {
 
-    private int verifyNotificationEventPresence(String notificationEvents, String eventToBeVerified, int count) {
-        try {
+				if (line.contains("state: ERROR")) {
+					logger.error("APP CRASHED !!!!! ");
+					Assert.fail("App is crashed during playback");
 
-            String lines[] = parseNotificationEvents(notificationEvents);
-            for (String line : lines){
+				}
+				if (line.contains(eventToBeVerified)) {
+					if (getLatestCount(line) > count) {
+						logger.info("Event Recieved From SDK AND Sample App :- " + line);
+						count = getLatestCount(line);
+						return count;
+					}
+				}
+			}
 
-                if(line.contains("state: ERROR")) {
-                    logger.error("APP CRASHED !!!!! ");
-                    Assert.fail("App is crashed during playback");
+		} catch (Exception e) {
+			logger.error("Exception while parsing notification events " + e);
+			e.printStackTrace();
+		}
 
-                }
-                if(line.contains(eventToBeVerified)) {
-                    if (getLatestCount(line) > count) {
-                        logger.info("Event Recieved From SDK AND Sample App :- " + line);
-                        count = getLatestCount(line);
-                        return count;
-                    }
-                }
-            }
+		return -1;
+	}
 
-        } catch (Exception e) {
-            logger.error("Exception while parsing notification events " + e);
-            e.printStackTrace();
-        }
+	private String[] parseNotificationEvents(String notificationEvents) {
+		String[] lines = notificationEvents.split("::::::::::");
+		return lines;
 
-        return -1;
-    }
+	}
 
-    private String[] parseNotificationEvents(String notificationEvents) {
-        String[] lines = notificationEvents.split("::::::::::");
-        return lines;
+	private int getLatestCount(String line) {
+		int count;
+		String[] tokens = line.split(":");
+		String trimToken = tokens[4].trim();
+		count = Integer.parseInt(trimToken);
+		return count;
+	}
 
-    }
-
-    private int getLatestCount(String line){
-        int count;
-        String[] tokens = line.split(":");
-        String trimToken = tokens[4].trim();
-        count = Integer.parseInt(trimToken);
-        return count;
-    }
-
-
-    public boolean verifyEvent(Events event, String consoleMessage, int timeout) {
-        verifyEvent(event.getEvent(), consoleMessage, timeout);
-        return true;
-    }
-
-    public void verifyEvent(String eventToBeVerified, String consoleMessage, int timeout){
-
-        int returncount = 0;
-        boolean status = false;
-        long startTime = System.currentTimeMillis();
-
-
-        while((System.currentTimeMillis() - startTime) < timeout) {
-            logger.info("Waiting for notification >>>> : " + eventToBeVerified);
-            String notifiationEvents = getNotificationEvents();
-            returncount = verifyNotificationEventPresence(notifiationEvents, eventToBeVerified, eventVerificationCount);
-
-            if (returncount == -1)
-                status = false;
-
-            else {
-                status = true;
-                eventVerificationCount = returncount;
-            }
-
-            if (status == true) {
-                logger.info(consoleMessage);
-                return;
-            }
-        }
-        if(!status) {
-            logger.error("ACTUAL notification : "  + getNotificationEvents());
-            Assert.fail("Event not found !!!. Expected Event : " + eventToBeVerified);
-        }
-    }
-
-
+	public boolean verifyEvent(Events event, String consoleMessage, int timeout) {
+		try {
+			validate(event.getEvent(), timeout);
+			logger.info(consoleMessage);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
 
 }

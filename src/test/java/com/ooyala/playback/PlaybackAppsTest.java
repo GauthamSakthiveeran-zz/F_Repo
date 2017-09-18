@@ -29,6 +29,7 @@ import com.ooyala.playback.apps.PlaybackApps;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.Testdata;
 import com.ooyala.playback.apps.Testdata.Test;
+import com.ooyala.playback.apps.utils.CommandLine;
 import com.ooyala.playback.apps.utils.CommandLineParameters;
 import com.ooyala.playback.factory.PlayBackFactory;
 
@@ -94,11 +95,26 @@ public class PlaybackAppsTest extends FacileTest {
 
 	}
 	
-	@BeforeMethod(alwaysRun=true)
-    public void beforeMethod() throws Exception {
-		pageFactory.getLaunchAction().startAction();
-		Assert.assertTrue(new PlayBackFactory((AppiumDriver) driver).getQAModeSwitchAction().startAction("QA_MODE_SWITCH"), "QA Mode is not enabled. Hence failing test");
-    }
+	@BeforeMethod(alwaysRun = true)
+	public void beforeMethod() throws Exception {
+		try {
+			pageFactory.getLaunchAction().startAction();
+		} catch (Exception e) {
+			pageFactory = new PlayBackFactory((AppiumDriver) driver);
+			pageFactory.getLaunchAction().startAction();
+		}
+		if (System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("ios")) {
+			Assert.assertTrue(
+					new PlayBackFactory((AppiumDriver) driver).getQAModeSwitchAction().startAction("QA_MODE_SWITCH"),
+					"QA Mode is not enabled. Hence failing test");
+		} else {
+			// For Android- Events will be written in the log file.
+			String command = "adb push log.file /sdcard/";
+			String[] final_command = CommandLine.command(command);
+			Runtime run = Runtime.getRuntime();
+			run.exec(final_command);
+		}
+	}
 	
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
