@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import com.ooyala.playback.apps.actions.SeekAction;
 import org.openqa.selenium.WebElement;
 
+import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.QAModeSwitchAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
@@ -22,6 +23,7 @@ public class PlayBackFactory {
 	private QAModeSwitchAction qaModeSwitchAction;
 	private SeekAction seekAction;
 	private ElementValidator elementValidator;
+	private CCAction ccAction;
 
 
 	public PlayBackFactory(AppiumDriver driver) {
@@ -70,6 +72,12 @@ public class PlayBackFactory {
 		return elementValidator;
 	}
 	
+	public CCAction getCcAction() {
+		if (ccAction == null) {
+			ccAction = new CCAction(driver);
+		}
+		return ccAction;
+	}
 
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> validator) throws Exception {

@@ -12,5 +12,6 @@
     <entry key="seekbar">resources/seekbar.xml</entry>
     <entry key="qamodeswitch">resources/qamodeswitch.xml</entry>
     <entry key="elements">resources/elements.xml</entry>
+    <entry key="cc">resources/cc.xml</entry>
 
 </properties>

@@ -19,18 +19,10 @@ public class CCAction extends PlaybackApps implements Actions {
 
 	public boolean tapCC(String element) {
 
-		try {
-			if (!clickOnIndependentElement(element)) {
-				logger.error("Unable to click on CC" + element);
-				return false;
-			}
-		} catch (Exception e) {
-			logger.info("CC button not found. Tapping screen and retrying..");
-			tapScreenIfRequired();
-			if (!clickOnIndependentElement(element)) {
-				logger.error("Unable to click on CC" + element);
-				return false;
-			}
+		tapScreenIfRequired();
+		if (!clickOnIndependentElement(element)) {
+			logger.error("Unable to click on CC" + element);
+			return false;
 		}
 		return true;
 	}
