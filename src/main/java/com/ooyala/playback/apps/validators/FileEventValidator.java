@@ -25,7 +25,6 @@ public class FileEventValidator  extends PlaybackApps {
         int returncount;         
 
         // Paused  Verification
-        System.out.println("inside function vrifyEvent");
         boolean status=false;
         long startTime = System.currentTimeMillis(); //fetch starting time
         while(!status && (System.currentTimeMillis()-startTime)<timeout) {
