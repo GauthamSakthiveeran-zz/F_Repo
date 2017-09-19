@@ -17,6 +17,7 @@ public class AnalyticsValidator extends PlayBackPage implements PlaybackValidato
     public AnalyticsValidator(WebDriver webDriver) {
         super(webDriver);
         PageFactory.initElements(webDriver, this);
+        addElementToPageElements("adclicks");
     }
 
     public boolean validate(String element, int timeout) throws Exception {
@@ -60,6 +61,42 @@ public class AnalyticsValidator extends PlayBackPage implements PlaybackValidato
         if (!flag){
             return false;
         }
+        return true;
+    }
+
+    public boolean injectIQAnalyticsLogRecorder(){
+        try {
+            driver.executeScript("(function(){var oldf = console.log;\n" +
+                    "console.log = function() {\n" +
+                    "\toldf.apply(console, arguments);\n" +
+                    "\tif(arguments[0].includes(\"IQ: Reported: reportCustomEvent() for event: ad_ended with args\")){\n" +
+                    "\t\tOO.$(\"#ooplayer\").append(\"<p id=afterAdIQ>\" + arguments[0] + \"</p>\");\n" +
+                    "\t}\n" +
+                    "\n" +
+                    "\tif(arguments[0].includes(\"IQ: Reported: reportCustomEvent() for event: adRequest with args\")){\n" +
+                    "\t\tOO.$(\"#ooplayer\").append(\"<p id=beforeAdIQ>\" + arguments[0] + \"</p>\");\n" +
+                    "\t}\n" +
+                    "\n" +
+                    "}\n" +
+                    "})();");
+            return true;
+        } catch (Exception ex){
+            ex.getStackTrace();
+            return false;
+        }
+    }
+
+    public boolean validateIQAnalyticsLogs(){
+        if (!driver.findElement(By.id("beforeAdIQ")).isDisplayed()){
+            extentTest.log(LogStatus.FAIL,"IQ: Reported: reportCustomEvent() is not triggering before playing ad..");
+            return false;
+        }
+
+        if (!driver.findElement(By.id("afterAdIQ")).isDisplayed()){
+            extentTest.log(LogStatus.FAIL,"IQ: Reported: reportCustomEvent() is not triggering after playing ad..");
+            return false;
+        }
+
         return true;
     }
 }

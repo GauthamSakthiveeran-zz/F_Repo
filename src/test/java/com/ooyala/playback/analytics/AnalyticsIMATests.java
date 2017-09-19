@@ -32,14 +32,14 @@ public class AnalyticsIMATests extends PlaybackWebTest {
             driver.get(url.getUrl());
             result = result && play.waitForPage();
             injectScript();
+            result = result && analytics.injectIQAnalyticsLogRecorder();
             result = result && playAction.startAction();
             result = result && event.validate("PreRoll_willPlaySingleAd_1", 30000);
             result = result && event.validate("singleAdPlayed_1", 120000);
             result = result && event.validate("playing_1",10000);
+            result = result && analytics.validateIQAnalyticsLogs();
             result = result && analytics.injectNetworkLogRecorder();
             result = result && analytics.validateAnalyticsNetworkLogs();
-
-
         } catch (Exception e) {
             logger.error(e.getMessage());
             extentTest.log(LogStatus.FAIL, e.getMessage());
