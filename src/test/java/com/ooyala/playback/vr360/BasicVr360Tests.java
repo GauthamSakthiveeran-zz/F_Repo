@@ -277,4 +277,29 @@ public class BasicVr360Tests extends PlaybackWebTest {
         Assert.assertTrue(result, "Vr 360 tests in full mode using navigation by keys on keyboard failed " + testName);
     }
 
+    @Test(groups = "vr360", dataProvider = "testUrls")
+    public void verifyPlayerVr360CardboardIcon(String testName, UrlObject url) throws OoyalaException {
+        boolean result = true;
+
+        try {
+            driver.get(url.getUrl());
+
+            result = result && playValidator.waitForPage();
+
+            injectScript();
+
+            result = result && playAction.onScreen().startAction();
+            result = result && eventValidator.validate("play_1", 3000);
+
+            result = result && virtualRealityAction.verifyCardboardIcon();
+
+
+        } catch (Exception e) {
+            logger.error("Exception while checking cardboard icon " + e.getMessage());
+            extentTest.log(LogStatus.FAIL, e);
+            result = false;
+        }
+        Assert.assertTrue(result, "Vr 360 tests while checking cardboard icon failed " + testName);
+    }
+
 }

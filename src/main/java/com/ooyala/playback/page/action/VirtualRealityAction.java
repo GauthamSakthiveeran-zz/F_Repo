@@ -138,6 +138,18 @@ public class VirtualRealityAction extends PlayBackPage implements PlayerAction {
         return false;
     }
 
+    public boolean verifyCardboardIcon() {
+        logger.info("Platform is " + driver.getCapabilities().getPlatform().name());
+        if(driver.getCapabilities().getPlatform().name() == "ANDROID" | driver.getCapabilities().getPlatform().name() == "IOS") {
+            logger.info("For web platform cardboard icon should not be visible");
+            return driver.findElementById("CARDBOARD_ICON").getAttribute("data-focus-id").equalsIgnoreCase("stereo");
+        }
+        else {
+            logger.info("For mobile platform cardboard icon should be visible");
+            return driver.findElementsById("CARDBOARD_ICON").size() < 1;
+        }
+    }
+
 }
 
 
