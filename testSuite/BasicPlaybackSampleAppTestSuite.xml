@@ -5,7 +5,7 @@
     <test name="BasicPlayback Regression" parallel="false" thread-count="1">
         <classes>
             <parameter name="testData" value="BasicPlaybackTests.xml" />
-            <class name="com.ooyala.playback.apps.PlaybackAppsBasicTest" />
+            <class name="com.ooyala.playback.apps.PlaybackAppBasicTestAndroid" />
         </classes>
     </test>
 

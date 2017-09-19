@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 import com.ooyala.playback.apps.actions.*;
 
 import com.ooyala.playback.apps.actions.CCAction;
-import com.ooyala.playback.apps.actions.PauseAction;
+import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.QAModeSwitchAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 
@@ -17,6 +17,7 @@ import io.appium.java_client.AppiumDriver;
 public class PlayBackFactory {
 
 	private AppiumDriver driver;
+	private PlayAction playAction;
 	private PauseAction pauseAction;
 	private SelectVideoAction selectVideo;
 	private NotificationEventValidator notificationEventValidator;
@@ -25,7 +26,7 @@ public class PlayBackFactory {
 	private ElementValidator elementValidator;
 	private LaunchAction launchAction;
 	private CCAction ccAction;
-
+	private AllowAction allowAction;
 
 
 	public PlayBackFactory(AppiumDriver driver) {
@@ -45,6 +46,20 @@ public class PlayBackFactory {
 		}
 		return qaModeSwitchAction;
 	}
+
+	public PlayAction getPlayAction() {
+		if (playAction == null) {
+			playAction = new PlayAction(driver);
+		}
+		return playAction;
+	}
+
+    public AllowAction getAllow() {
+        if (allowAction == null) {
+            allowAction = new AllowAction(driver);
+        }
+        return allowAction;
+    }
 
 	public PauseAction getPauseAction() {
 		if (pauseAction == null) {

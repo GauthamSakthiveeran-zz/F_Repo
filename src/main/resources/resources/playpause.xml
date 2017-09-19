@@ -1,3 +1,4 @@
 <elements area="playpause">
-	<element key="PLAY_PAUSE_BUTTON" findBy="xPath" xPath="//XCUIElementTypeToolbar[1]/XCUIElementTypeButton[1]" />
+	<element key="PLAY_PAUSE_ANDROID" findBy="xPath" xPath="//android.widget.ImageButton[@index='0']"/>
+    <element key="PLAY_PAUSE_BUTTON" findBy="xPath" xPath="//XCUIElementTypeToolbar[1]/XCUIElementTypeButton[1]" />
 </elements>

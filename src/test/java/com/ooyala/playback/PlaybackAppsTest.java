@@ -98,10 +98,10 @@ public class PlaybackAppsTest extends FacileTest {
 	@BeforeMethod(alwaysRun = true)
 	public void beforeMethod() throws Exception {
 		try {
-			pageFactory.getLaunchAction().startAction();
+			pageFactory.getLaunchAction().LaunchApp();
 		} catch (Exception e) {
 			pageFactory = new PlayBackFactory((AppiumDriver) driver);
-			pageFactory.getLaunchAction().startAction();
+			pageFactory.getLaunchAction().LaunchApp();
 		}
 		if (System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("ios")) {
 			Assert.assertTrue(
@@ -113,7 +113,9 @@ public class PlaybackAppsTest extends FacileTest {
 			String[] final_command = CommandLine.command(command);
 			Runtime run = Runtime.getRuntime();
 			run.exec(final_command);
-		}
+            System.out.println("We have executed the command log file has been pushed");
+            Thread.sleep(5000);
+        }
 	}
 	
 	@BeforeMethod(alwaysRun = true)

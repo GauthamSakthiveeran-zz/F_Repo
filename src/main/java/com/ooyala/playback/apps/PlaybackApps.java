@@ -15,7 +15,7 @@ public abstract class PlaybackApps extends WebPage {
 
 
     protected AppiumDriver driver;
-
+    final static  int[] playCoordinates = new int[2];
 
     final static Logger logger = Logger.getLogger(PlaybackApps.class);
 
@@ -123,7 +123,6 @@ public abstract class PlaybackApps extends WebPage {
         return true;
     }
 
-
     public boolean seekVideoForward(String Slider, String Seekbar) throws InterruptedException {
         int startx = getSliderPosition(Slider);
         Element seekbar =  getSeekBarPosition(Seekbar);
@@ -158,16 +157,53 @@ public abstract class PlaybackApps extends WebPage {
 
     }
 
+    public boolean getPlayPause(String play_pause){
+        int[] play = new int[2];
+        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(play_pause));
+        WebElement button = this.getWebElementFromFacileWebElement(anElement);
+        play[0] = button.getLocation().getX();
+        play[1] = button.getLocation().getY();
+        playCoordinates[0] = play[0] + button.getSize().getWidth() / 2;
+        playCoordinates[1] = play[1] + button.getSize().getHeight() / 2;
+        //System.out.println("Play button x cordinate"+playCoordinates[0]);
+        //System.out.println("Play button x cordinate"+playCoordinates[1]);
+        driver.tap (1,  playCoordinates[0],  playCoordinates[1], 2);
+        return true;
+    }
 
-    public boolean seekVideo(String element) {
-        WebElement seekBarField = driver.findElement(By.xpath(element));
-        int seekBarFieldWidth = seekBarField.getLocation().getX();
-        int seekBarFieldHeigth = seekBarField.getLocation().getY();
-        driver.swipe(seekBarFieldWidth + 20, seekBarFieldHeigth, seekBarFieldWidth + 100, seekBarFieldHeigth, 3);
+    public boolean getPause() {
+        driver.tap (1,  playCoordinates[0],  playCoordinates[1], 2);
+        return true;
+    }
+
+    public void tapOnScreen() throws InterruptedException {
+        driver.tap (1,  playCoordinates[0],  playCoordinates[1], 2);
+        System.out.println("We have tapped successfully");
+        //Thread.sleep(2000);
+    }
+
+    public boolean isAllowed(String element) {
+        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(element));
+        WebElement allowButton = this.getWebElementFromFacileWebElement(anElement);
+        if(allowButton.isDisplayed()) {
+            logger.info("Pop-up box is displaying need to give permission");
+        }
+        else {
+            logger.info("PermissionAlready Given..");
+            return true;
+        }
         return true;
     }
 
 
+    public boolean seekVideo(String element) {
+        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(element));
+        WebElement seekbar = this.getWebElementFromFacileWebElement(anElement);
+        int seekBarFieldWidth = seekbar.getLocation().getX();
+        int seekBarFieldHeigth = seekbar.getLocation().getY();
+        driver.swipe(seekBarFieldWidth + 20, seekBarFieldHeigth, seekBarFieldWidth + 100, seekBarFieldHeigth, 3);
+        return true;
+    }
 
     public boolean handleLoadingSpinner() {
         int i = 0;
