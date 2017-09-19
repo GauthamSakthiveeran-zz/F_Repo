@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.apps.PlaybackApps;
+import com.ooyala.playback.apps.validators.Events;
+import com.ooyala.playback.apps.validators.NotificationEventValidator;
 
 import io.appium.java_client.AppiumDriver;
 
@@ -21,8 +23,11 @@ public class CCAction extends PlaybackApps implements Actions {
 
 		tapScreenIfRequired();
 		if (!clickOnIndependentElement(element)) {
-			logger.error("Unable to click on CC" + element);
-			return false;
+			tapScreenIfRequired();
+			if (!clickOnIndependentElement(element)) {
+				logger.error("Unable to click on CC" + element);
+				return false;
+			}
 		}
 		return true;
 	}
@@ -55,24 +60,23 @@ public class CCAction extends PlaybackApps implements Actions {
 		return true;
 
 	}
-	
-	public boolean selectEnglishLanguage(){
+
+	public boolean selectEnglishLanguage() {
 		return selectLanguage("ENGLISH_LANGUAGE");
 	}
-	
-	public boolean enableCC(String ccElement, String page,String languageKey){
-		if(!tapCC(ccElement))
+
+	public boolean enableCC(String ccElement, String page, String languageKey) {
+		if (!tapCC(ccElement))
 			return false;
-		if(!verifyLanguagePage(page))
+		if (!verifyLanguagePage(page))
 			return false;
-		if(!selectLanguage(languageKey))
+		if (!selectLanguage(languageKey))
 			return false;
 		return true;
 	}
-	
-	public boolean enableCC(){
-		return enableCC("CC", "Language","ENGLISH_LANGUAGE");
-		
+
+	public boolean enableCC() {
+		return enableCC("CC", "Language", "ENGLISH_LANGUAGE");
 	}
 
 	@Override
