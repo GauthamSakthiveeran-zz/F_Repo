@@ -6,6 +6,7 @@ import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.apps.validators.Events;
 
 import org.apache.log4j.Logger;
+
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.*;
@@ -39,19 +40,20 @@ public class PlaybackAppsBasicTest extends PlaybackAppsTest {
             result = result && pauseAction.startAction("PLAY_PAUSE_BUTTON");
             result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, "Playback has been paused", 35000);
             if(test.getAsset().contains("CC")){
-            	result = result && ccAction.enableCC(); //Default English
-            	result = result && notificationEventValidator.verifyEvent(Events.CC_ENABLED,"Language has been changed", 15000);
+            		result = result && ccAction.enableCC(); //Default English
+            		result = result && notificationEventValidator.verifyEvent(Events.CC_ENABLED,"Language has been changed", 15000);
             }
-            result = result && seekAction.startAction_iOS_V3_Forward("SLIDER", "SEEK_BAR");
-            result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, "Video seek has been started", 40000);
-            result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, "Video seek has been Completed", 40000);
-            result = result && pauseAction.startAction("PLAY_PAUSE_BUTTON");
-            result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, "Video playback has been completed", 50000);
+        		result = result && seekAction.startAction_iOS_V3_Forward("SLIDER", "SEEK_BAR");
+        		result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, "Video seek has been started", 40000);
+        		result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, "Video seek has been Completed", 40000);
+        		result = result && pauseAction.startAction("PLAY_PAUSE_BUTTON");
+        		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, "Video playback has been completed", 50000);
         } catch(Exception ex) {
             logger.error("Here is an exception"+ex);
             result = false;
         }
         Assert.assertTrue(result, "APP:"+test.getApp()+"->Asset:"+test.getAsset());
+
 
     }
 

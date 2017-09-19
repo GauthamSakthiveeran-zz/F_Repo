@@ -4,7 +4,7 @@
 	<test name="HLS">
 		<description name="HLS Video Test" />
 	</test>
-	<test name="MP4">
+	<!--  <test name="MP4">
 		<description name="MP4 Video Test" />
-	</test>
+	</test>-->
 </testdata>
