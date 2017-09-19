@@ -293,6 +293,12 @@ public class BasicVr360Tests extends PlaybackWebTest {
 
             result = result && virtualRealityAction.verifyCardboardIcon();
 
+            //go to full screen mode
+            result = result && fullScreenAction.switchToControlBar();
+            result = result && eventValidator.eventAction("FULLSCREEN_BTN");
+            result = result && virtualRealityAction.validateElement("fullscreenChanged_true", 3000);
+
+            result = result && virtualRealityAction.verifyCardboardIcon();
 
         } catch (Exception e) {
             logger.error("Exception while checking cardboard icon " + e.getMessage());
