@@ -2563,6 +2563,9 @@ public abstract class WebPage {
 		} else if (element.getFindBy().equalsIgnoreCase("CLASS")) {
 			return waitOnClass(element.getElementClass(), timeout, null,
 					ignoreRendering);
+		} else if (element.getFindBy().equalsIgnoreCase("ACCESSIBILITYID")) {
+			return waitOnAccessibilityId(element.getElementAccessibilityId(), timeout, null,
+					ignoreRendering);
 		}
 
 		return false;
@@ -2711,6 +2714,56 @@ public abstract class WebPage {
 			wait(WAIT_INCR);
 		}
 		logger.info("Waiting for object name: " + by + " timed out after "
+				+ maxMilliseconds / 1000 + " sec");
+		return false;
+	}
+	
+	public boolean waitOnAccessibilityId(String accessibilityId, int maxMilliseconds, String frame,
+			boolean ignoreRendering) {
+
+		WebElement identifier = null;
+		int secondsPassed = 0;
+
+		while (secondsPassed < maxMilliseconds) {
+			logger.info("Trying to find a web element with the specified AccessibilityId: "
+					+ accessibilityId);
+			try {
+				if (frame == null)
+					identifier = driver.findElement(MobileBy.AccessibilityId(accessibilityId));
+				else {
+					driver.switchTo().defaultContent();
+					identifier = driver.switchTo().frame(frame).findElement(MobileBy.AccessibilityId(accessibilityId));
+				}
+			} catch (Exception e) {
+				logger.error("Caught exception" + e);
+				identifier = null;
+			}
+
+			if (identifier != null) { // && !(driver instanceof SafariDriver)) {
+				// // can't cast SafariWebElement to
+				// RenderedWebElement
+				if (identifier.isDisplayed())
+					logger.info("   Object name Found: " + accessibilityId);
+				else {
+					logger.info("   ...looking for object name (" + accessibilityId + ")");
+					if (driver instanceof InternetExplorerDriver) {
+						//wait(500); // prevent too much checking if IE (it seems
+						// to crash on these alot)
+					}
+				}
+			}
+			logger.info("identifier currently:" + identifier + " and driver: "
+					+ driver);
+			if (identifier != null
+					&& (/* driver instanceof SafariDriver || */ignoreRendering || (identifier
+							.isDisplayed()))) {
+				logger.info("Found name in: " + secondsPassed / 1000 + " sec");
+				return true;
+			}
+			secondsPassed += WAIT_INCR;
+			wait(WAIT_INCR);
+		}
+		logger.info("Waiting for object name: " + accessibilityId + " timed out after "
 				+ maxMilliseconds / 1000 + " sec");
 		return false;
 	}
@@ -3151,7 +3204,6 @@ public abstract class WebPage {
 		}
 		for (Map.Entry<String, FacileWebElement> entry : pageElements
 				.entrySet()) {
-			String extractedKey = "";
 			if (entry.getValue().getElementID().contains(BEGIN_MARKER)) {
 				entry.getValue().setElementID(
 						replaceFromBundle(entry.getValue().getElementID()));
@@ -3169,6 +3221,9 @@ public abstract class WebPage {
 					.contains(BEGIN_MARKER)) {
 				entry.getValue().setElementXPath(
 						replaceFromBundle(entry.getValue().getElementXPath()));
+			} else if (entry.getValue().getElementAccessibilityId().contains(BEGIN_MARKER)) {
+				entry.getValue()
+						.setElementAccessibilityId(replaceFromBundle(entry.getValue().getElementAccessibilityId()));
 			}
 		}
 	}
@@ -3304,9 +3359,13 @@ public abstract class WebPage {
 				elementOfInterest = driver.findElements(By
 						.partialLinkText(aFacileWebElement.getElementText()));
 			} else if (aFacileWebElement.getFindBy().equalsIgnoreCase("class")) {
-				logger.info("Trying to find web elements by text");
+				logger.info("Trying to find web elements by class");
 				elementOfInterest = driver.findElements(By
 						.className(aFacileWebElement.getElementClass()));
+			} else if (aFacileWebElement.getFindBy().equalsIgnoreCase("accessibilityId")) {
+				logger.info("Trying to find web elements by accessibilityId");
+				elementOfInterest = driver
+						.findElements(MobileBy.AccessibilityId(aFacileWebElement.getElementAccessibilityId()));
 			}
 
 		} catch (Exception ex) {
@@ -3375,6 +3434,10 @@ public abstract class WebPage {
 			else if (searchObj.getFindBy().equalsIgnoreCase("class"))
 				elementOfInterest = webObj.findElements(By.className(searchObj
 						.getElementClass()));
+			
+			else if (searchObj.getFindBy().equalsIgnoreCase("accessibilityId"))
+				elementOfInterest = webObj
+						.findElements(MobileBy.AccessibilityId(searchObj.getElementAccessibilityId()));
 
 		} catch (Exception ex) {
 			// Package up the causing exception into a NoSuchElementException.
