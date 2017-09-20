@@ -16,8 +16,10 @@ public class PauseValidator extends PlaybackApps implements Validators {
 	public boolean validate(String element, int timeout) throws Exception {
 
 		if (new PlayBackFactory(driver, extentTest).getPlayAction().startAction(element)) {
-			return new PlayBackFactory(driver, extentTest).getNotificationEventValidator()
-					.verifyEvent(Events.PLAYBACK_PAUSED, timeout);
+			if(getPlatform().equalsIgnoreCase("ios")) {
+				return new PlayBackFactory(driver, extentTest).getNotificationEventValidator()
+						.verifyEvent(Events.PLAYBACK_PAUSED, timeout);
+			}
 		}
 		extentTest.log(LogStatus.FAIL, "click on PLAY_PAUSE_BUTTON failed.");
 		return false;

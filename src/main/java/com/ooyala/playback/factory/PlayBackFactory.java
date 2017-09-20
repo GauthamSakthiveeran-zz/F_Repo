@@ -16,6 +16,7 @@ import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.FileEventValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.ooyala.playback.apps.validators.OverlayValidator;
+import com.ooyala.playback.apps.validators.PauseValidator;
 import com.ooyala.playback.apps.validators.SeekValidator;
 import com.relevantcodes.extentreports.ExtentTest;
 
@@ -37,7 +38,8 @@ public class PlayBackFactory {
 	private AdEventValidator adEventValidator;
 	private SeekValidator seekValidator;
 	private ClickAction clickAction;
-	
+	private PauseValidator pauseValidator;
+
 	private ExtentTest extentTest;
 
 	private OverlayValidator overlayValidator;
@@ -47,25 +49,33 @@ public class PlayBackFactory {
 		this.driver = driver;
 		this.extentTest = extentTest;
 	}
-	
+
+	public PauseValidator getPauseValidator() {
+		if (pauseValidator == null) {
+			pauseValidator = new PauseValidator(driver);
+			pauseValidator.setExtentTest(extentTest);
+		}
+		return pauseValidator;
+	}
+
 	public ClickAction getClickAction() {
-		if(clickAction == null) {
+		if (clickAction == null) {
 			clickAction = new ClickAction(driver);
 			clickAction.setExtentTest(extentTest);
 		}
 		return clickAction;
 	}
-	
+
 	public SeekValidator getSeekValidator() {
-		if(seekValidator == null) {
+		if (seekValidator == null) {
 			seekValidator = new SeekValidator(driver);
 			seekValidator.setExtentTest(extentTest);
 		}
 		return seekValidator;
 	}
-	
+
 	public AdEventValidator getAdEventValidator() {
-		if(adEventValidator == null) {
+		if (adEventValidator == null) {
 			adEventValidator = new AdEventValidator(driver);
 			adEventValidator.setExtentTest(extentTest);
 		}
@@ -96,13 +106,13 @@ public class PlayBackFactory {
 		return playAction;
 	}
 
-    public AllowAction getAllow() {
-        if (allowAction == null) {
-            allowAction = new AllowAction(driver);
-            allowAction.setExtentTest(extentTest);
-        }
-        return allowAction;
-    }
+	public AllowAction getAllow() {
+		if (allowAction == null) {
+			allowAction = new AllowAction(driver);
+			allowAction.setExtentTest(extentTest);
+		}
+		return allowAction;
+	}
 
 	public PauseAction getPauseAction() {
 		if (pauseAction == null) {
@@ -121,13 +131,12 @@ public class PlayBackFactory {
 	}
 
 	public SeekAction getSeekAction() {
-		if(null == seekAction) {
+		if (null == seekAction) {
 			seekAction = new SeekAction(driver);
 			seekAction.setExtentTest(extentTest);
 		}
 		return seekAction;
 	}
-
 
 	public NotificationEventValidator getNotificationEventValidator() {
 		if (notificationEventValidator == null) {
@@ -136,7 +145,7 @@ public class PlayBackFactory {
 		}
 		return notificationEventValidator;
 	}
-	
+
 	public ElementValidator getEventValidator() {
 		if (elementValidator == null) {
 			elementValidator = new ElementValidator(driver);
@@ -144,6 +153,7 @@ public class PlayBackFactory {
 		}
 		return elementValidator;
 	}
+
 	public CCAction getCcAction() {
 		if (ccAction == null) {
 			ccAction = new CCAction(driver);
@@ -151,22 +161,22 @@ public class PlayBackFactory {
 		}
 		return ccAction;
 	}
+
 	public OverlayValidator getOverlayValidator() {
-		
-		if(overlayValidator == null) {
+
+		if (overlayValidator == null) {
 			overlayValidator = new OverlayValidator(driver);
 		}
 		return overlayValidator;
 	}
-	
+
 	public FileEventValidator getFileEventValidator() {
-		
-		if(fileEventValidator == null) {
+
+		if (fileEventValidator == null) {
 			fileEventValidator = new FileEventValidator(driver);
 		}
 		return fileEventValidator;
 	}
-	
 
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> validator) throws Exception {
