@@ -23,16 +23,14 @@ public class ParseEventsFile {
 
         try{
             String[] final_command = CommandLine.command("adb shell cat /sdcard/log.file");
-            Runtime run = Runtime.getRuntime();
-            Process pr = run.exec(final_command);
-
+            ProcessBuilder processBuilder = new ProcessBuilder(final_command);
+            processBuilder.redirectErrorStream(true);
+            Process p = processBuilder.start();
+            p.waitFor();
             String line = "";
-            BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-
+            BufferedReader buf = new BufferedReader(new InputStreamReader(p.getInputStream()));
             line = buf.readLine();
-
             while(line != null){
-                //System.out.println(line);
                 if(line.contains("state: ERROR"))
                 {
                     logger.fatal("App crashed");
