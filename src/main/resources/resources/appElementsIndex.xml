@@ -14,5 +14,8 @@
     <entry key="elements">resources/elements.xml</entry>
     <entry key="cc">resources/cc.xml</entry>
     <entry key="permission">resources/permission.xml</entry>
+    <entry key="discovery">resources/discovery.xml</entry>
+    <entry key="upnext">resources/upnext.xml</entry>
+    <entry key="appassets">resources/appassets.xml</entry>
 
 </properties>

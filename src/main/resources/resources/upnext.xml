@@ -1,0 +1,5 @@
+<elements area="discovery">
+	<element key="UPNEXT_CLOSEBUTTON_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='dismiss']" />
+	<element key="UPNEXT_VIDEONAME_ANDROID" findBy="xPath" xPath="//android.widget.TextView[@text='Up next: VOD with Closed Captions']" />
+	<element key="UPNEXT_PLAY_ANDROID" findBy="class" class="android.widget.ImageView" />
+</elements>
