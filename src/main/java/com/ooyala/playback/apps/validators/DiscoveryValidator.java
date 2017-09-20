@@ -14,6 +14,7 @@ import org.testng.Assert;
 
 import com.google.common.base.Function;
 import com.ooyala.playback.apps.PlaybackApps;
+import com.ooyala.playback.apps.utils.CommandLineParameters;
 import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
@@ -36,7 +37,8 @@ public class DiscoveryValidator extends PlaybackApps implements Validators {
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
 		Boolean result = true;
-
+	    if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        {
 		try {
 		    result = result && !isElementFoundinDiscoveryScreen("DISCOVERY_ERROR_SCREEN_ANDROID");
 			result = result && isElementFoundinDiscoveryScreen("DISCOVERTEXT_ANDROID");
@@ -51,6 +53,12 @@ public class DiscoveryValidator extends PlaybackApps implements Validators {
 			logger.info("Exception while validating discovery)");
 			return false;
 		}
+        }
+	    else
+	    {
+	        //Code for IOS
+	        return result;
+	    }
 
 	}
 
@@ -58,6 +66,8 @@ public class DiscoveryValidator extends PlaybackApps implements Validators {
 
 	public Boolean selectVideoFromDiscoveryScreen() {
 		Boolean result = true;
+		if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+	    {
 		try
 
 		{
@@ -84,6 +94,13 @@ public class DiscoveryValidator extends PlaybackApps implements Validators {
 		}
 
 		return result;
+	    }
+		else
+		{
+		    //Code for IOS
+		    return result;
+		    
+		}
 	}
 
 	// Function to swipe the screen bottom to top and select a video from
@@ -91,7 +108,8 @@ public class DiscoveryValidator extends PlaybackApps implements Validators {
 
 	public Boolean swipeAndselectVideoFromDiscoveryScreen() {
 		Boolean result = true;
-
+		if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        {
 		result = result && waitForElement("DISCOVERYSCROLLSCREEN_ANDROID");
 
 		try
@@ -133,6 +151,12 @@ public class DiscoveryValidator extends PlaybackApps implements Validators {
 		}
 
 		return result;
+        }
+		else
+		{
+		    //Code for IOS
+		    return result;
+		}
 	}
 
 	// Function to check if an element is present in discovery screen

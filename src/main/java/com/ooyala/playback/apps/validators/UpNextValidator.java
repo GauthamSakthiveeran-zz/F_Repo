@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.apps.PlaybackApps;
+import com.ooyala.playback.apps.utils.CommandLineParameters;
 import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
@@ -27,12 +28,12 @@ public class UpNextValidator extends PlaybackApps implements Validators {
 		addElementToPageElements("upnext");
 	}
 
-	public boolean isUpNextElementDisplayedandPlayUpNextVideo(String element) {
+	public boolean isUpNextElementDisplayedandPlayUpNextVideo() {
 	    doubletapPlayerScreen();
-
+	    if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        {
 		if (waitOnElement("UPNEXT_CLOSEBUTTON_ANDROID", 50000)) {
 			extentTest.log(LogStatus.INFO, "UpNextVideo is displayed");
-			logger.info(element + " is not Displayed");
 			List<WebElement> imageViews = getWebElementsList("UPNEXT_PLAY_ANDROID");
 			for (WebElement elementToClick : imageViews) {
 				if (elementToClick.getLocation().x == 0)
@@ -42,9 +43,14 @@ public class UpNextValidator extends PlaybackApps implements Validators {
 			return true;
 		} else {
 			extentTest.log(LogStatus.FAIL, "UpNextVideo is not displayed");
-			logger.info(element + " is not Displayed");
 			return false;
 		}
+        }
+	    else
+	    {
+	        //Code for IOS
+	        return true;
+	    }
 	}
 
 	@Override
@@ -52,7 +58,7 @@ public class UpNextValidator extends PlaybackApps implements Validators {
 
 		Boolean result = true;
 
-		result = result && isUpNextElementDisplayedandPlayUpNextVideo(element);
+		result = result && isUpNextElementDisplayedandPlayUpNextVideo();
 
 		return false;
 	}

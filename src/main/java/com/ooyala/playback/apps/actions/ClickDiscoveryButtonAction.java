@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.apps.PlaybackApps;
+import com.ooyala.playback.apps.utils.CommandLineParameters;
 import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
@@ -31,14 +32,15 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
     public boolean startAction(String element) throws Exception {
         // TODO Auto-generated method stub
         Boolean result = true;
-
+        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        {
         try {
             if (((AndroidDriver) driver).currentActivity()
                     .equals("com.ooyala.sample.players.OoyalaSkinPlayerActivity")) {
 
                 result = result && tapAndwaitForElementAndClick("MOREOPTIONS_BUTTON_ANDROID");
 
-                result = result && waitForElementAndClick("DISCOVERYBUTTON_ANDROID");
+                result = result && waitForElementAndClick("element");
 
                 return result;
             } else {
@@ -54,6 +56,12 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
             return false;
 
         }
+        }
+        else
+        {
+            //Code for IOS
+            return true;
+        }
 
     }
 
@@ -62,10 +70,12 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
 
         Boolean result = true;
 
+        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        {
         try
 
         {
-            result = result && waitForElementAndClick("DISCOVERYSCREEN_CLOSEBUTTON_ANDROID");
+            result = result && waitForElementAndClick(element);
 
             result = result && waitForElementAndClick("MOREOPTIONSSCREEN_CLOSEBUTTON_ANDROID");
 
@@ -77,6 +87,12 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
             logger.info("Exception While Closing Discovery Screen");
             return false;
 
+        }
+        }
+        else
+        {
+            //Code for IOS
+            return true;
         }
 
     }

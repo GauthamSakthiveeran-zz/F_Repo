@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.apps.PlaybackApps;
+import com.ooyala.playback.apps.utils.CommandLineParameters;
 import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
@@ -31,8 +32,11 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
     @Override
     public boolean startAction(String element) throws Exception {
         // TODO Auto-generated method stub
-        Boolean result = false;
-
+        Boolean result = true;
+        
+        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        {
+        
         try {
             if (((AndroidDriver) driver).currentActivity().contains("ListActivity")) {
 
@@ -54,12 +58,20 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
             return false;
 
         }
+        }
+        else
+        {
+            //Code for IOS
+            return true;
+        }
 
     }
 
     public Boolean clickAppAsset(String element) {
         Boolean foundVideoToClick = false;
-
+        
+        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        {
         try {
             List<WebElement> appVideos = getWebElementsList("APP_ASSETS_ANDROID");
 
@@ -93,6 +105,12 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
         }
 
         return foundVideoToClick;
+        }
+        else
+        {
+            //Code for IOS
+            return foundVideoToClick;
+        }
     }
 
     // To Swipe based on WebElements - UpDown (OR) RightLeft
@@ -118,6 +136,8 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
 
     // Function to click on app Asset using video name Web Element
     public Boolean clickAsset(String element) {
+        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        {
         try {
             if (waitForElement("APP_ASSETS_SCREEN_ANDROID")) {
                 getWebElement(element).click();
@@ -136,13 +156,20 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
             logger.info("Failed to click App Asset");
             return false;
         }
+        }
+        else
+        {
+            //Code for IOS
+            return true;
+        }
     }
 
     // Function to Swipe and click on app Asset using video name Web Element
     public Boolean swipeAndClickAsset(String element) {
 
         Boolean foundVideoToClick = false;
-
+        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        {
         try {
             if (waitForElement("APP_ASSETS_ANDROID")) {
 
@@ -164,6 +191,13 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
             foundVideoToClick = false;
         }
         return foundVideoToClick;
+        }
+        else
+        {
+            //Code for IOS
+            return foundVideoToClick;
+        }
+       
     }
 
     public Boolean waitForElement(String element) {
