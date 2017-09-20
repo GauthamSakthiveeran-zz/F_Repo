@@ -2,8 +2,9 @@ package com.ooyala.playback.apps.validators;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
+
 import com.ooyala.playback.apps.PlaybackApps;
-import com.ooyala.playback.apps.utils.CommandLineParameters;
+import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
 
@@ -57,8 +58,23 @@ public class OverlayValidator extends PlaybackApps implements Validators {
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		if(!waitOnElement(element, timeout)) {
+			extentTest.log(LogStatus.FAIL, "Overlay not present");
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean waitForOverlayToDisapper(String element, int timeout) {
+		logger.info("Waiting for Overlay to disappear....");
+		waitOnElement(element, timeout);
+		if(isElementPresent(element)) {
+			extentTest.log(LogStatus.FAIL, "Overlay is still present");
+			return false;
+		} else {
+			extentTest.log(LogStatus.PASS, "Overlay has disappeared.");
+			return true;
+		}
 	}
 	
 	
