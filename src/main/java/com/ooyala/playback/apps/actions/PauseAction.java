@@ -11,13 +11,32 @@ public class PauseAction extends PlaybackApps implements Actions {
 
     private static Logger logger = Logger.getLogger(PauseAction.class);
 
+	@Override
+	public boolean startAction(String element) throws Exception {
+		try {
+			tapScreenIfRequired();
+			if(!clickOnIndependentElement(element)) {
+				logger.error("Unable to click on play pause.");
+				return false;
+			}
+		} catch (Exception e) {
+			logger.info("Play button not found. Tapping screen and retrying..");
+			tapScreenIfRequired();
+			if(!clickOnIndependentElement(element)) {
+				logger.error("Unable to click on play pause.");
+				return false;
+			}
+		}
+		return true;
+	}
+
     public PauseAction(AppiumDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
         addElementToPageElements("playpause");
     }
 
-    @Override
+    /*@Override
     public boolean startAction(String element) throws Exception {
         try {
             if(!getPlayPause(element)) {
@@ -35,5 +54,5 @@ public class PauseAction extends PlaybackApps implements Actions {
             }
         }
         return true;
-    }
+    }*/
 }

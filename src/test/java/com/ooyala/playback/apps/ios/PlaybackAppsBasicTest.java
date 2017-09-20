@@ -42,7 +42,7 @@ public class PlaybackAppsBasicTest extends PlaybackAppsTest {
             	result = result && ccAction.enableCC(); //Default English
             	result = result && notificationEventValidator.verifyEvent(Events.CC_ENABLED,"Language has been changed", 15000);
             }
-            result = result && seekAction.seekForward("SLIDER", "SEEK_BAR");
+            result = result && seekAction.seekforward().setSlider("SLIDER").startAction("SEEK_BAR");
             result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, "Video seek has been started", 40000);
             result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, "Video seek has been Completed", 40000);
             result = result && playAction.startAction("PLAY_PAUSE_BUTTON");
