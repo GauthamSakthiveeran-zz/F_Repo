@@ -3,10 +3,9 @@ package com.ooyala.playback.apps.validators;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 
 import com.ooyala.playback.apps.PlaybackApps;
+import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
 
@@ -115,11 +114,17 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 
 	public boolean verifyEvent(Events event, String consoleMessage, int timeout) {
 		try {
-			validate(event.getEvent(), timeout);
-			logger.info(consoleMessage);
+			if (validate(event.getEvent(), timeout)) {
+				extentTest.log(LogStatus.PASS, consoleMessage);
+				logger.info(consoleMessage);
+			} else {
+				extentTest.log(LogStatus.FAIL, consoleMessage);
+			}
+
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			extentTest.log(LogStatus.FAIL, consoleMessage, e);
+			return false;
 		}
 		return true;
 	}
