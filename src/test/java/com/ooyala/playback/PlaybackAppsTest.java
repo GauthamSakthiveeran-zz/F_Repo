@@ -99,8 +99,9 @@ public class PlaybackAppsTest extends FacileTest {
 
 	}
 	
-	@BeforeMethod(alwaysRun = true)
+	/*@BeforeMethod(alwaysRun = true)
 	public void beforeMethod() throws Exception {
+		
 		try {
 			pageFactory.getLaunchAction().LaunchApp();
 		} catch (Exception e) {
@@ -120,13 +121,34 @@ public class PlaybackAppsTest extends FacileTest {
 			logger.info("We have executed the command log file has been pushed");
 			Thread.sleep(5000);
 		}
-	}
+	}*/
 	
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
 		try {
 			
 			extentTest = ExtentManager.startTest(testData[0].toString());
+			
+			
+			try {
+				pageFactory.getLaunchAction().LaunchApp();
+			} catch (Exception e) {
+				pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
+				pageFactory.getLaunchAction().LaunchApp();
+			}
+			if (System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("ios")) {
+				Assert.assertTrue(
+						new PlayBackFactory((AppiumDriver) driver, extentTest).getQAModeSwitchAction().startAction("QA_MODE_SWITCH"),
+						"QA Mode is not enabled. Hence failing test");
+			} else {
+				// For Android- Events will be written in the log file.
+				String command = "adb push log.file /sdcard/";
+				String[] final_command = CommandLine.command(command);
+				Runtime run = Runtime.getRuntime();
+				run.exec(final_command);
+				logger.info("We have executed the command log file has been pushed");
+				Thread.sleep(5000);
+			}
 			
 			Field[] fs = this.getClass().getDeclaredFields();
 			fs[0].setAccessible(true);
