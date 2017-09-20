@@ -2,17 +2,20 @@ package com.ooyala.playback.factory;
 
 import java.lang.reflect.Field;
 
-import com.ooyala.playback.apps.actions.*;
-
+import com.ooyala.playback.apps.actions.AllowAction;
 import com.ooyala.playback.apps.actions.CCAction;
+import com.ooyala.playback.apps.actions.LaunchAction;
+import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.QAModeSwitchAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.actions.android.SeekAction;
+import com.ooyala.playback.apps.validators.AdEventValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.FileEventValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.ooyala.playback.apps.validators.OverlayValidator;
+import com.ooyala.playback.apps.validators.SeekValidator;
 import com.relevantcodes.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
@@ -30,6 +33,8 @@ public class PlayBackFactory {
 	private LaunchAction launchAction;
 	private CCAction ccAction;
 	private AllowAction allowAction;
+	private AdEventValidator adEventValidator;
+	private SeekValidator seekValidator;
 	
 	private ExtentTest extentTest;
 
@@ -39,6 +44,22 @@ public class PlayBackFactory {
 	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
 		this.extentTest = extentTest;
+	}
+	
+	public SeekValidator getSeekValidator() {
+		if(seekValidator == null) {
+			seekValidator = new SeekValidator(driver);
+			seekValidator.setExtentTest(extentTest);
+		}
+		return seekValidator;
+	}
+	
+	public AdEventValidator getAdEventValidator() {
+		if(adEventValidator == null) {
+			adEventValidator = new AdEventValidator(driver);
+			adEventValidator.setExtentTest(extentTest);
+		}
+		return adEventValidator;
 	}
 
 	public LaunchAction getLaunchAction() {
