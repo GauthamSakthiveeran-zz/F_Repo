@@ -26,7 +26,13 @@
 		<dependency>
 			<groupId>com.ooyala.facile</groupId>
 			<artifactId>facile</artifactId>
-			<version>2.5.4-SNAPSHOT</version>
+			<version>2.5.6-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.relevantcodes</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>2.41.1</version>
 		</dependency>
 		
 		<dependency>
@@ -224,5 +230,11 @@
 		<outputDirectory>${basedir}/site</outputDirectory>
 	</reporting>
 
+	<repositories>
+		<repository>
+			<id>ooyala-nexus</id>
+			<url>http://nexus.ooyala.com/nexus/content/repositories/snapshots/</url>
+		</repository>
+	</repositories>
 </project>
 

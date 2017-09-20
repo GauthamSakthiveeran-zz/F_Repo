@@ -1,0 +1,113 @@
+package com.ooyala.playback.apps.actions.ios;
+
+import com.ooyala.playback.apps.PlaybackApps;
+import com.ooyala.playback.apps.actions.Actions;
+
+import io.appium.java_client.AppiumDriver;
+import org.apache.log4j.Logger;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
+public class SeekAction extends PlaybackApps implements Actions {
+
+    private static Logger logger = Logger.getLogger(SeekAction.class);
+
+    public SeekAction(AppiumDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+        addElementToPageElements("seekbar");
+    }
+    
+    private String slider;
+    boolean seekFrwd;
+    
+    public SeekAction setSlider(String slider) {
+    	this.slider = slider;
+    	return this;
+    }
+    
+    public SeekAction seekforward() {
+    	seekFrwd= true;
+    	return this;
+    }
+
+	@Override
+	public boolean startAction(String seek) throws Exception {
+		if (seekFrwd) {
+			seekFrwd = false;
+			tapScreenIfRequired();
+			if (!seekVideoForward(slider, seek)) {
+				logger.error("Unable to seek forward video.");
+				tapScreenIfRequired();
+				if (!seekVideoForward(slider, seek)) {
+					logger.error("Unable to seek forward video");
+					return false;
+				}
+			}
+		} else {
+			tapScreenIfRequired();
+			if (!seekVideoBack(slider, seek)) {
+				logger.error("Unable to seek forward video.");
+				tapScreenIfRequired();
+				if (!seekVideoBack(slider, seek)) {
+					logger.error("Unable to seek forward video");
+					return false;
+				}
+			}
+		}
+		return true;
+
+	}
+
+    public boolean seekVideoBack() throws Exception {
+        try {
+            if (!seekVideoBack("" , "" )) {
+                logger.error("Unable to click on play pause.");
+                return false;
+            }
+        } catch (Exception e) {
+            logger.info("seekbar not found. Tapping screen and retrying..");
+            tapScreenIfRequired();
+            if(!seekVideoBack("" , "")) {
+                logger.error("Unable to click on play pause.");
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    /*public boolean startAction_iOS_V3_Back() throws Exception {
+        try {
+            if (!seekVideoBack("" , "" )) {
+                logger.error("Unable to click on play pause.");
+                return false;
+            }
+        } catch (Exception e) {
+            logger.info("seekbar not found. Tapping screen and retrying..");
+            tapScreenIfRequired();
+            if(!seekVideoBack("" , "")) {
+                logger.error("Unable to click on play pause.");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean startAction_iOS_V3_Forward(String ele1, String ele2) throws Exception {
+        try {
+            if (!seekVideoForward(ele1 , ele2 )) {
+                logger.error("Unable to seek forward video.");
+                return false;
+            }
+        } catch (Exception e) {
+            logger.info("seekbar not found. Tapping screen and retrying..");
+            tapScreenIfRequired();
+            if(!seekVideoForward(ele1 , ele2 )) {
+                logger.error("Unable to seek forward video");
+                return false;
+            }
+        }
+        return true;
+    }*/
+
+}

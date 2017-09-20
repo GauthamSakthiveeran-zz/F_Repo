@@ -2,39 +2,77 @@ package com.ooyala.playback.factory;
 
 import java.lang.reflect.Field;
 
-import org.openqa.selenium.WebElement;
+import com.ooyala.playback.apps.actions.*;
 
-import com.ooyala.playback.apps.actions.PauseAction;
+import com.ooyala.playback.apps.actions.CCAction;
+import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.QAModeSwitchAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
+import com.ooyala.playback.apps.actions.android.SeekAction;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
+import com.relevantcodes.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
 
 public class PlayBackFactory {
 
 	private AppiumDriver driver;
+	private PlayAction playAction;
 	private PauseAction pauseAction;
 	private SelectVideoAction selectVideo;
 	private NotificationEventValidator notificationEventValidator;
 	private QAModeSwitchAction qaModeSwitchAction;
+	private SeekAction seekAction;
 	private ElementValidator elementValidator;
-
-	public PlayBackFactory(AppiumDriver driver) {
-		this.driver = driver;
-	}
+	private LaunchAction launchAction;
+	private CCAction ccAction;
+	private AllowAction allowAction;
 	
+	private ExtentTest extentTest;
+
+
+	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
+		this.driver = driver;
+		this.extentTest = extentTest;
+	}
+
+	public LaunchAction getLaunchAction() {
+		if (launchAction == null) {
+			launchAction = new LaunchAction(driver);
+			launchAction.setExtentTest(extentTest);
+		}
+		return launchAction;
+	}
+
 	public QAModeSwitchAction getQAModeSwitchAction() {
 		if (qaModeSwitchAction == null) {
 			qaModeSwitchAction = new QAModeSwitchAction(driver);
+			qaModeSwitchAction.setExtentTest(extentTest);
 		}
 		return qaModeSwitchAction;
 	}
 
+	public PlayAction getPlayAction() {
+		if (playAction == null) {
+			playAction = new PlayAction(driver);
+			playAction.setExtentTest(extentTest);
+		}
+		return playAction;
+	}
+
+    public AllowAction getAllow() {
+        if (allowAction == null) {
+            allowAction = new AllowAction(driver);
+            allowAction.setExtentTest(extentTest);
+        }
+        return allowAction;
+    }
+
 	public PauseAction getPauseAction() {
 		if (pauseAction == null) {
 			pauseAction = new PauseAction(driver);
+			pauseAction.setExtentTest(extentTest);
 		}
 		return pauseAction;
 	}
@@ -42,13 +80,24 @@ public class PlayBackFactory {
 	public SelectVideoAction getSelectVideoAction() {
 		if (selectVideo == null) {
 			selectVideo = new SelectVideoAction(driver);
+			selectVideo.setExtentTest(extentTest);
 		}
 		return selectVideo;
 	}
 
+	public SeekAction getSeekAction() {
+		if(null == seekAction) {
+			seekAction = new SeekAction(driver);
+			seekAction.setExtentTest(extentTest);
+		}
+		return seekAction;
+	}
+
+
 	public NotificationEventValidator getNotificationEventValidator() {
 		if (notificationEventValidator == null) {
 			notificationEventValidator = new NotificationEventValidator(driver);
+			notificationEventValidator.setExtentTest(extentTest);
 		}
 		return notificationEventValidator;
 	}
@@ -56,12 +105,17 @@ public class PlayBackFactory {
 	public ElementValidator getEventValidator() {
 		if (elementValidator == null) {
 			elementValidator = new ElementValidator(driver);
+			elementValidator.setExtentTest(extentTest);
 		}
 		return elementValidator;
 	}
 	
-	public AppiumDriver getDriver() {
-		return driver;
+	public CCAction getCcAction() {
+		if (ccAction == null) {
+			ccAction = new CCAction(driver);
+			ccAction.setExtentTest(extentTest);
+		}
+		return ccAction;
 	}
 
 	@SuppressWarnings("unchecked")

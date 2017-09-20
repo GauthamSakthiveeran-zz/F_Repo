@@ -1,9 +1,10 @@
 <elements area="selectvideo">
-	<element key="HLS" findBy="name" name="HLS Video" />
-	<element key="MP4" findBy="name" name="MP4 Video" />
+	<element key="HLS" findBy="xPath" xPath="//android.widget.TextView[@text='HLS Video']" />
+	<element key="MP4" findBy="xPath" xPath="//android.widget.TextView[@text='MP4 Video']" />
 	<element key="VOD_WITH_CCS" findBy="name" name="VOD with CCs" />
 	<element key="ASPECT_RATIO" findBy="name" name="4:3 Aspect Ratio" />
-	<element key="VAST_AD_PRE_ROLL" findBy="name" name="VAST_AD_MID_ROLL" />
+	<element key="VAST_AD_PRE_ROLL" findBy="name" name="VAST Ad Pre-roll" />
+	<element key="VAST_AD_MID_ROLL" findBy="name" name="VAST Ad Mid-roll" />
 	<element key="VAST_AD_POST_ROLL" findBy="name" name="VAST Ad Post-roll" />
 	<element key="VAST_AD_WRAPPER" findBy="name" name="VAST Ad Wrapper" />
 	<element key="OOYALA_AD_PRE_ROLL" findBy="name" name="Ooyala Ad Pre-roll" />
