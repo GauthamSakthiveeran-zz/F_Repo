@@ -141,12 +141,19 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
     }
 
     public void doubletapPlayerScreen() {
-
+        try
+        {
         TouchAction touch = new TouchAction((AppiumDriver) driver);
         Dimension size = driver.manage().window().getSize();
         touch.tap((size.getWidth()) / 2, (size.getHeight() / 2)).perform();
+        Thread.sleep(2000);
         touch.tap((size.getWidth()) / 2, (size.getHeight() / 2)).perform();
         extentTest.log(LogStatus.INFO, "Double tap done");
+        }
+        catch(Exception e)
+        {
+        extentTest.log(LogStatus.FAIL, "Double tap failed");   
+        }
 
     }
 }
