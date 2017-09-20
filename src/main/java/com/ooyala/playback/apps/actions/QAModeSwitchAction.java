@@ -1,7 +1,6 @@
 package com.ooyala.playback.apps.actions;
 
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 import com.ooyala.playback.apps.PlaybackApps;
 

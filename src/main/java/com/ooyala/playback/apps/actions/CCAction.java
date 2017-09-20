@@ -45,7 +45,7 @@ public class CCAction extends PlaybackApps implements Actions {
 	}
 
 	public boolean verifyLanguagePage() {
-		return verifyLanguagePage("Language");
+		return verifyLanguagePage("LANGUAGE");
 	}
 
 	public boolean selectLanguage(String elementKey) {
@@ -76,7 +76,7 @@ public class CCAction extends PlaybackApps implements Actions {
 	}
 
 	public boolean enableCC() {
-		return enableCC("CC", "Language", "ENGLISH_LANGUAGE");
+		return enableCC("CC", "LANGUAGE", "ENGLISH_LANGUAGE");
 	}
 
 	@Override

@@ -1,0 +1,3 @@
+<elements area="qamodeswitch">
+    <element key="ALLOW" findBy="id" id="com.android.packageinstaller:id/permission_allow_button" />
+</elements>
