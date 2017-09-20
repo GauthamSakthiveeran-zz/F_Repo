@@ -107,16 +107,16 @@ public class SeekAction extends PlaybackApps implements Actions {
         return true;
     }
 
-    public boolean seekVideoAndroid() throws Exception {
+    public boolean seekVideoAndroid(String element) throws Exception {
         try {
-            if(!seekVideo("")) {
+            if(!seekVideo(element)) {
                 logger.error("Unable to seek Video, Seekbar was not present");
                 return false;
             }
         } catch (Exception e) {
             logger.info("Seekbar is not present , let's tap on screen");
-            tapScreenIfRequired();
-            if(!seekVideo("")) {
+            tapOnScreen();
+            if(!seekVideo(element)) {
                 logger.error("Unable to click on play pause.");
                 return false;
             }
