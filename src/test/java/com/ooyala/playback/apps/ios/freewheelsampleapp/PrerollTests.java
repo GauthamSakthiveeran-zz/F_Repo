@@ -30,34 +30,27 @@ public class PrerollTests extends PlaybackAppsTest {
 			result = result && selectVideo.startAction(test.getAsset());
 			result = result && elementValidator.validate("NOTIFICATION_AREA", 1000);
 			result = result && elementValidator.handleLoadingSpinner();
-			result = result
-					&& notificationEventValidator.verifyEvent(Events.AD_STARTED, "PreRoll Ad has been started", 25000);
-			result = result
-					&& notificationEventValidator.verifyEvent(Events.AD_COMPLETED, "PreRoll Ad has competed", 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
 
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED,
-					"Playback has been started", 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
 
 			result = result && notificationEventValidator.letVideoPlayForSec(3);
 
 			result = result && playAction.startAction("PLAY_PAUSE_BUTTON");
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED,
-					"Playback has been paused", 35000);
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 35000);
 
 			result = result && seekAction.seekVideoBack();
 
-			result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, "Seek video started", 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 25000);
 
-			result = result
-					&& notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, "Seek video completed", 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 25000);
 
 			result = result && playAction.startAction("PLAY_PAUSE_BUTTON");
 
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED,
-					"Video has resumed to playing state from paused state", 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
 
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED,
-					"Video has completed playing", 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
 
 		} catch (Exception ex) {
 			logger.error("Here is an exception" + ex);

@@ -1,5 +1,5 @@
 <elements area="overlay">
 	<element key="OVERLAY_IMAGE_IOS" findBy="class" class="UIAScrollView" />
-	<element key="OVERLAY_IMAGE_AN" findBy="xPath" xPath="//android.webkit.WebView[@content-desc='Web View']" />
+	<element key="OVERLAY_IMAGE_ANDROID" findBy="xPath" xPath="//android.webkit.WebView[@content-desc='Web View']" />
 </elements>
 	

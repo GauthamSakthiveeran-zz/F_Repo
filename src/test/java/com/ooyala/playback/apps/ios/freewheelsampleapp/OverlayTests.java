@@ -15,7 +15,7 @@ import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.ooyala.playback.apps.validators.OverlayValidator;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class PreMidPostOverlayTests extends PlaybackAppsTest {
+public class OverlayTests extends PlaybackAppsTest {
 
 	private static Logger logger = Logger.getLogger(PostRollTests.class);
 	private SelectVideoAction selectVideo;
@@ -33,21 +33,13 @@ public class PreMidPostOverlayTests extends PlaybackAppsTest {
 			result = result && elementValidator.validate("NOTIFICATION_AREA", 1000);
 			result = result && elementValidator.handleLoadingSpinner();
 
-			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
-			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
-
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
-
-			result = result && notificationEventValidator.letVideoPlayForSec(2);
 
 			result = result && overlay.validate("OVERLAY_IMAGE_IOS", 10000);
 
-			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
-			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
+			result = result && notificationEventValidator.letVideoPlayForSec(3);
 
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
-
-			result = result && notificationEventValidator.letVideoPlayForSec(4);
+			result = result && overlay.waitForOverlayToDisapper("OVERLAY_IMAGE_IOS", 30000);
 
 			result = result && playAction.startAction("PLAY_PAUSE_BUTTON");
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 35000);
@@ -62,9 +54,6 @@ public class PreMidPostOverlayTests extends PlaybackAppsTest {
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
 
-			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
-			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
-
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
 
 		} catch (Exception ex) {
@@ -74,5 +63,4 @@ public class PreMidPostOverlayTests extends PlaybackAppsTest {
 		}
 		Assert.assertTrue(result, "APP:" + test.getApp() + "->Asset:" + test.getAsset());
 	}
-
 }
