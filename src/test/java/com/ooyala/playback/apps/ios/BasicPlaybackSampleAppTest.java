@@ -10,7 +10,7 @@ import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
-import com.ooyala.playback.apps.actions.ios.SeekAction;
+import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
