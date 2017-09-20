@@ -270,8 +270,8 @@ public abstract class PlaybackApps extends WebPage {
     }
     
     public String getPlatform() {
-    	if(System.getProperty(CommandLineParameters.platform)!=null && !System.getProperty(CommandLineParameters.platform).isEmpty()) {
-    		return System.getProperty(CommandLineParameters.platform);
+    	if(System.getProperty(CommandLineParameters.PLATFORM)!=null && !System.getProperty(CommandLineParameters.PLATFORM).isEmpty()) {
+    		return System.getProperty(CommandLineParameters.PLATFORM);
     	}
     	return "";
     }
