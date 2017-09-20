@@ -275,5 +275,27 @@ public abstract class PlaybackApps extends WebPage {
     	}
     	return "";
     }
+    
+	public boolean letVideoPlayForSec(int sec) throws InterruptedException {
+		int count = 0;
+		while (count < sec) {
+			if (!waitForSec(1))
+				return false;
+			count++;
+		}
+
+		return true;
+	}
+
+	private boolean waitForSec(int sec) {
+		try {
+			Thread.sleep(sec * 1000);
+			logger.info("Waiting for " + sec + " seconds");
+		} catch (InterruptedException e) {
+			logger.error(e);
+			return false;
+		}
+		return true;
+	}
 
 }
