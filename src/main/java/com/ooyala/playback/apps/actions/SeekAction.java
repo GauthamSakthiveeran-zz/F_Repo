@@ -15,12 +15,64 @@ public class SeekAction extends PlaybackApps implements Actions {
         PageFactory.initElements(driver, this);
         addElementToPageElements("seekbar");
     }
-
-    @Override
-    public boolean startAction(String element) throws Exception {
-        return false;
+    
+    private String slider;
+    boolean seekFrwd;
+    
+    public SeekAction setSlider(String slider) {
+    	this.slider = slider;
+    	return this;
+    }
+    
+    public SeekAction seekfrwd() {
+    	seekFrwd= true;
+    	return this;
     }
 
+	@Override
+	public boolean startAction(String seek) throws Exception {
+		if (seekFrwd) {
+			tapScreenIfRequired();
+			if (!seekVideoForward(slider, seek)) {
+				logger.error("Unable to seek forward video.");
+				tapScreenIfRequired();
+				if (!seekVideoForward(slider, seek)) {
+					logger.error("Unable to seek forward video");
+					return false;
+				}
+			}
+		} else {
+			tapScreenIfRequired();
+			if (!seekVideoBack(slider, seek)) {
+				logger.error("Unable to seek forward video.");
+				tapScreenIfRequired();
+				if (!seekVideoBack(slider, seek)) {
+					logger.error("Unable to seek forward video");
+					return false;
+				}
+			}
+		}
+		return true;
+
+	}
+
+    public boolean seekVideoBack() throws Exception {
+        try {
+            if (!seekVideoBack("" , "" )) {
+                logger.error("Unable to click on play pause.");
+                return false;
+            }
+        } catch (Exception e) {
+            logger.info("seekbar not found. Tapping screen and retrying..");
+            tapScreenIfRequired();
+            if(!seekVideoBack("" , "")) {
+                logger.error("Unable to click on play pause.");
+                return false;
+            }
+        }
+        return true;
+    }
+    
     public boolean startAction_iOS_V3_Back() throws Exception {
         try {
             if (!seekVideoBack("" , "" )) {
