@@ -13,6 +13,7 @@ import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.ooyala.playback.apps.validators.OverlayValidator;
+import com.ooyala.playback.apps.validators.PauseValidator;
 import com.ooyala.playback.apps.validators.SeekValidator;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -26,6 +27,7 @@ public class OverlayTests extends PlaybackAppsTest {
 	private PlayAction playAction;
 	private OverlayValidator overlay;
 	private SeekValidator seekValidator;
+	private PauseValidator pause;
 
 	@Test(groups = "freewheelsampleapp", dataProvider = "testData")
 	public void testBasicPlayer(String testName, TestParameters test) throws Exception {
@@ -43,8 +45,7 @@ public class OverlayTests extends PlaybackAppsTest {
 
 			result = result && overlay.waitForOverlayToDisapper("OVERLAY_IMAGE_IOS", 30000);
 
-			result = result && playAction.startAction("PLAY_PAUSE_BUTTON");
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 35000);
+			result = result && pause.validate("PLAY_PAUSE_BUTTON", 35000);
 
 			result = result && seekAction.setSlider("SLIDER").startAction("SEEK_BAR");
 

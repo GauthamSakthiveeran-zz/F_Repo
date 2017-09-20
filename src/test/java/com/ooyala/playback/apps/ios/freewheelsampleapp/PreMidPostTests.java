@@ -13,20 +13,18 @@ import com.ooyala.playback.apps.validators.AdEventValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
-import com.ooyala.playback.apps.validators.OverlayValidator;
 import com.ooyala.playback.apps.validators.PauseValidator;
 import com.ooyala.playback.apps.validators.SeekValidator;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class PreMidPostOverlayTests extends PlaybackAppsTest {
+public class PreMidPostTests extends PlaybackAppsTest {
 
-	private static Logger logger = Logger.getLogger(PostRollTests.class);
+	private static Logger logger = Logger.getLogger(PrerollTests.class);
 	private SelectVideoAction selectVideo;
 	private ElementValidator elementValidator;
 	private NotificationEventValidator notificationEventValidator;
 	private SeekAction seekAction;
 	private PlayAction playAction;
-	private OverlayValidator overlay;
 	private AdEventValidator adEventValidator;
 	private SeekValidator seekValidator;
 	private PauseValidator pause;
@@ -38,20 +36,12 @@ public class PreMidPostOverlayTests extends PlaybackAppsTest {
 			result = result && selectVideo.startAction(test.getAsset());
 			result = result && elementValidator.validate("NOTIFICATION_AREA", 1000);
 			result = result && elementValidator.handleLoadingSpinner();
-
+			
 			result = result && adEventValidator.validate("", 1000);
-
+			
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
 
 			result = result && notificationEventValidator.letVideoPlayForSec(2);
-
-			result = result && overlay.validate("OVERLAY_IMAGE_IOS", 10000);
-
-			result = result && adEventValidator.validate("", 1000);
-
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
-
-			result = result && notificationEventValidator.letVideoPlayForSec(4);
 
 			result = result && pause.validate("PLAY_PAUSE_BUTTON", 35000);
 
@@ -62,7 +52,11 @@ public class PreMidPostOverlayTests extends PlaybackAppsTest {
 			result = result && playAction.startAction("PLAY_PAUSE_BUTTON");
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
-
+			
+			result = result && adEventValidator.validate("", 1000);
+			
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
+			
 			result = result && adEventValidator.validate("", 1000);
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
@@ -74,5 +68,4 @@ public class PreMidPostOverlayTests extends PlaybackAppsTest {
 		}
 		Assert.assertTrue(result, "APP:" + test.getApp() + "->Asset:" + test.getAsset());
 	}
-
 }
