@@ -58,22 +58,22 @@ public class PlaybackAppsTest extends FacileTest {
 	private RemoteWebDriver initializeDriver() throws MalformedURLException {
 		
 		String app = testData.getApp().getName();
-		if (System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("ios")) {
+		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
 			String ip = System.getProperty("appiumServer") != null ? System.getProperty("appiumServer") : "127.0.0.1";
 			String port = System.getProperty("appiumPort") != null ? System.getProperty("appiumPort") : "4723";
 			DesiredCapabilities capabilities = new DesiredCapabilities();
-			capabilities.setCapability("platformVersion", System.getProperty(CommandLineParameters.platformVersion));
-			capabilities.setCapability("deviceName", System.getProperty(CommandLineParameters.deviceName));
-			capabilities.setCapability("app", System.getProperty(CommandLineParameters.appPackage)+app+".app");			
-			capabilities.setCapability("udid", System.getProperty(CommandLineParameters.udid));
-			capabilities.setCapability("platform", System.getProperty(CommandLineParameters.platform));
-			capabilities.setCapability("showIOSLog", System.getProperty(CommandLineParameters.showIOSLog));
-			capabilities.setCapability("automationName", System.getProperty(CommandLineParameters.automationName));
+			capabilities.setCapability("platformVersion", System.getProperty(CommandLineParameters.PLATFORM_VERSION));
+			capabilities.setCapability("deviceName", System.getProperty(CommandLineParameters.DEVICE_NAME));
+			capabilities.setCapability("app", System.getProperty(CommandLineParameters.APP_PACKAGE)+app+".app");			
+			capabilities.setCapability("udid", System.getProperty(CommandLineParameters.UDID));
+			capabilities.setCapability("platform", System.getProperty(CommandLineParameters.PLATFORM));
+			capabilities.setCapability("showIOSLog", System.getProperty(CommandLineParameters.SHOW_IOS_LOG));
+			capabilities.setCapability("automationName", System.getProperty(CommandLineParameters.AUTOMATION_NAME));
 			capabilities.setCapability("newCommandTimeout",
-					System.getProperty(CommandLineParameters.newCommandTimeout));
-	        capabilities.setCapability("deviceName", System.getProperty(CommandLineParameters.deviceName));
-	        capabilities.setCapability("xcodeOrgId", System.getProperty(CommandLineParameters.xcodeOrgId));
-	        capabilities.setCapability("xcodeSigningId", System.getProperty(CommandLineParameters.xcodeSigningId));
+					System.getProperty(CommandLineParameters.NEW_COMMAND_TIMEOUT));
+	        capabilities.setCapability("deviceName", System.getProperty(CommandLineParameters.DEVICE_NAME));
+	        capabilities.setCapability("xcodeOrgId", System.getProperty(CommandLineParameters.XCODE_ORG_ID));
+	        capabilities.setCapability("xcodeSigningId", System.getProperty(CommandLineParameters.XCODE_SIGNING_ID));
 
 			driver = new IOSDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 
@@ -83,15 +83,15 @@ public class PlaybackAppsTest extends FacileTest {
 
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
-			capabilities.setCapability("platform", System.getProperty(CommandLineParameters.platform));
+			capabilities.setCapability("platform", System.getProperty(CommandLineParameters.PLATFORM));
 			capabilities.setCapability(CapabilityType.VERSION,
-					System.getProperty(CommandLineParameters.platformVersion));
-			capabilities.setCapability("deviceName", System.getProperty(CommandLineParameters.deviceName));
-			capabilities.setCapability("app", System.getProperty(CommandLineParameters.app));
-			capabilities.setCapability("appPackage", System.getProperty(CommandLineParameters.appPackage));
-			capabilities.setCapability("appActivity", System.getProperty(CommandLineParameters.appActivity));
+					System.getProperty(CommandLineParameters.PLATFORM_VERSION));
+			capabilities.setCapability("deviceName", System.getProperty(CommandLineParameters.DEVICE_NAME));
+			capabilities.setCapability("app", System.getProperty(CommandLineParameters.APP));
+			capabilities.setCapability("appPackage", System.getProperty(CommandLineParameters.APP_PACKAGE));
+			capabilities.setCapability("appActivity", System.getProperty(CommandLineParameters.APP_ACTIVITY));
 			capabilities.setCapability("newCommandTimeout",
-					System.getProperty(CommandLineParameters.newCommandTimeout));
+					System.getProperty(CommandLineParameters.NEW_COMMAND_TIMEOUT));
 			driver = new AndroidDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 			// driver.manage().timeouts().implicitlyWait(3000,TimeUnit.SECONDS);
 		}
@@ -108,7 +108,7 @@ public class PlaybackAppsTest extends FacileTest {
 			pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
 			pageFactory.getLaunchAction().LaunchApp();
 		}
-		if (System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("ios")) {
+		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
 			Assert.assertTrue(
 					new PlayBackFactory((AppiumDriver) driver, extentTest).getQAModeSwitchAction().startAction("QA_MODE_SWITCH"),
 					"QA Mode is not enabled. Hence failing test");

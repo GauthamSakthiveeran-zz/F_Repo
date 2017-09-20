@@ -13,6 +13,6 @@
     <entry key="qamodeswitch">resources/qamodeswitch.xml</entry>
     <entry key="elements">resources/elements.xml</entry>
     <entry key="cc">resources/cc.xml</entry>
+    <entry key="overlay">resources/overlay.xml</entry>
     <entry key="permission">resources/permission.xml</entry>
-
 </properties>

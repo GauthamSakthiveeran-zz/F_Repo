@@ -17,7 +17,7 @@ public class ExtentManager {
 		if (extentReports == null) {
 			extentReports = new ExtentReports("./ExtentReport.html", true);
 			extentReports.addSystemInfo("Environment", "QA");
-			extentReports.addSystemInfo("platform", System.getProperty(CommandLineParameters.platform));
+			extentReports.addSystemInfo("platform", System.getProperty(CommandLineParameters.PLATFORM));
 		}
 	}
 
