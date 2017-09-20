@@ -10,7 +10,9 @@ import com.ooyala.playback.apps.actions.QAModeSwitchAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.actions.android.SeekAction;
 import com.ooyala.playback.apps.validators.ElementValidator;
+import com.ooyala.playback.apps.validators.FileEventValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
+import com.ooyala.playback.apps.validators.OverlayValidator;
 import com.relevantcodes.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
@@ -31,6 +33,8 @@ public class PlayBackFactory {
 	
 	private ExtentTest extentTest;
 
+	private OverlayValidator overlayValidator;
+	private FileEventValidator fileEventValidator;
 
 	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -109,7 +113,6 @@ public class PlayBackFactory {
 		}
 		return elementValidator;
 	}
-	
 	public CCAction getCcAction() {
 		if (ccAction == null) {
 			ccAction = new CCAction(driver);
@@ -117,6 +120,22 @@ public class PlayBackFactory {
 		}
 		return ccAction;
 	}
+	public OverlayValidator getOverlayValidator() {
+		
+		if(overlayValidator == null) {
+			overlayValidator = new OverlayValidator(driver);
+		}
+		return overlayValidator;
+	}
+	
+	public FileEventValidator getFileEventValidator() {
+		
+		if(fileEventValidator == null) {
+			fileEventValidator = new FileEventValidator(driver);
+		}
+		return fileEventValidator;
+	}
+	
 
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> validator) throws Exception {
