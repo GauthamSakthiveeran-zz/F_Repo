@@ -15,7 +15,7 @@
     </test>
     <test name="PlaybackEnablePreloadingDashDefaultSettingsTests">
         <url>
-            <description name="Preloading:HLS Default Settings" />
+            <description name="Preloading:Dash Default Settings" />
             <priority name="P2"></priority>
             <embed_code name="AxZWVlOTE69sXjpQ_uZyM7sf6aqBl8N0" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
