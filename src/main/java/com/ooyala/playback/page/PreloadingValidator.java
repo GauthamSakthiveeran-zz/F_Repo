@@ -97,7 +97,7 @@ public class PreloadingValidator extends PlayBackPage implements PlaybackValidat
     }
 
     public boolean verifyFragementsAndm3u8Segments() {
-        String data = driver.findElement(By.id("downloads_3")).getText();
+        String data = driver.findElement(By.id("downloads_2")).getText();
         if (!(data.contains("m3u8") && (data.contains("Fragments")))) {
             logger.error("m3u8 and Fragments not found in segments");
             extentTest.log(LogStatus.FAIL, "m3u8 and Fragments not found in segments");
