@@ -1,18 +1,18 @@
-package com.ooyala.playback.apps;
-
-import com.ooyala.playback.apps.actions.CCAction;
-import com.ooyala.playback.apps.actions.PlayAction;
-import com.ooyala.playback.apps.actions.SeekAction;
-import com.ooyala.playback.apps.validators.Events;
+package com.ooyala.playback.apps.ios;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.Reporter;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackAppsTest;
+import com.ooyala.playback.apps.TestParameters;
+import com.ooyala.playback.apps.actions.CCAction;
+import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
+import com.ooyala.playback.apps.actions.ios.SeekAction;
 import com.ooyala.playback.apps.validators.ElementValidator;
+import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 
 public class PlaybackAppsBasicTest extends PlaybackAppsTest {
@@ -42,7 +42,7 @@ public class PlaybackAppsBasicTest extends PlaybackAppsTest {
             	result = result && ccAction.enableCC(); //Default English
             	result = result && notificationEventValidator.verifyEvent(Events.CC_ENABLED,"Language has been changed", 15000);
             }
-            result = result && seekAction.startAction_iOS_V3_Forward("SLIDER", "SEEK_BAR");
+            result = result && seekAction.seekForward("SLIDER", "SEEK_BAR");
             result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, "Video seek has been started", 40000);
             result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, "Video seek has been Completed", 40000);
             result = result && playAction.startAction("PLAY_PAUSE_BUTTON");

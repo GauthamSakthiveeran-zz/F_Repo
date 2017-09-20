@@ -1,25 +1,27 @@
-package com.ooyala.playback.apps;
+package com.ooyala.playback.apps.android;
 
-import com.ooyala.playback.PlaybackAppsTest;
-import com.ooyala.playback.apps.actions.*;
-import com.ooyala.playback.apps.validators.ElementValidator;
-import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
- public class PlaybackAppBasicTestAndroid extends PlaybackAppsTest {
+import com.ooyala.playback.PlaybackAppsTest;
+import com.ooyala.playback.apps.TestParameters;
+import com.ooyala.playback.apps.actions.PauseAction;
+import com.ooyala.playback.apps.actions.PlayAction;
+import com.ooyala.playback.apps.actions.SelectVideoAction;
+import com.ooyala.playback.apps.actions.android.SeekAction;
+import com.ooyala.playback.apps.ios.PlaybackAppsBasicTest;
+import com.ooyala.playback.apps.validators.ElementValidator;
+
+ public class PlaybackAppBasicTest extends PlaybackAppsTest {
 
     private static Logger logger = Logger.getLogger(PlaybackAppsBasicTest.class);
     private SelectVideoAction selectVideo;
     private ElementValidator elementValidator;
     private PauseAction pauseAction;
-    private NotificationEventValidator notificationEventValidator;
     private PlayAction playAction;
     private SeekAction seekAction;
-    private CCAction ccAction;
-    private AllowAction allowAction;
 
 
     @Test(groups = "basicplaybacksampleapp", dataProvider = "testData")
@@ -32,11 +34,11 @@ import org.testng.annotations.Test;
             result = result && selectVideo.startAction(test.getAsset());
             //result = result && allowAction.startAction("ALLOW");
             result = result && elementValidator.validate("PLAY_PAUSE_ANDROID",30000);
-            result = result && playAction.startAction_Android("PLAY_PAUSE_ANDROID");
+            result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
             Thread.sleep(10000);
             result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
             result = result && elementValidator.validate("PLAY_PAUSE_ANDROID",3000);
-            result = result && seekAction.seekVideoAndroid("SEEK_BAR_Android");
+            result = result && seekAction.startAction("SEEK_BAR_ANDROID");
 
             result = result && elementValidator.validate("PLAY_PAUSE_ANDROID",3000);
             result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");

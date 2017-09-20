@@ -1,20 +1,25 @@
 package com.ooyala.playback.apps;
 
-import com.ooyala.facile.page.FacileWebElement;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-
-import com.ooyala.facile.page.WebPage;
-
-import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
+
+import com.ooyala.facile.page.FacileWebElement;
+import com.ooyala.facile.page.WebPage;
+import com.ooyala.playback.apps.utils.CommandLineParameters;
+import com.relevantcodes.extentreports.ExtentTest;
+
+import io.appium.java_client.AppiumDriver;
 
 
 public abstract class PlaybackApps extends WebPage {
 
 
     protected AppiumDriver driver;
+    protected ExtentTest extentTest;
+    
+    
     final static  int[] playCoordinates = new int[2];
 
     final static Logger logger = Logger.getLogger(PlaybackApps.class);
@@ -23,6 +28,10 @@ public abstract class PlaybackApps extends WebPage {
         super(driver);
         this.driver = driver;
     }
+    
+    public void setExtentTest(ExtentTest extentTest) {
+		this.extentTest = extentTest;
+	}
 
 
     class Element {
@@ -176,11 +185,11 @@ public abstract class PlaybackApps extends WebPage {
         return true;
     }
 
-    public void tapOnScreen() throws InterruptedException {
-        driver.tap (1,  playCoordinates[0],  playCoordinates[1], 2);
-        System.out.println("We have tapped successfully");
-        //Thread.sleep(2000);
-    }
+	public void tapOnScreen() throws InterruptedException {
+		driver.tap(1, playCoordinates[0], playCoordinates[1], 2);
+		logger.info("We have tapped successfully");
+		// Thread.sleep(2000);
+	}
 
     public boolean isAllowed(String element) {
         FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(element));
@@ -252,6 +261,13 @@ public abstract class PlaybackApps extends WebPage {
     public boolean waitAndTap() throws InterruptedException {
         Thread.sleep(5000);
         return clickOnIndependentElement(By.xpath("//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther"));
+    }
+    
+    public String getPlatform() {
+    	if(System.getProperty(CommandLineParameters.platform)!=null && !System.getProperty(CommandLineParameters.platform).isEmpty()) {
+    		return System.getProperty(CommandLineParameters.platform);
+    	}
+    	return "";
     }
 
 }

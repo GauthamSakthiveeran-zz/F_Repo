@@ -8,9 +8,10 @@ import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.QAModeSwitchAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
-
+import com.ooyala.playback.apps.actions.android.SeekAction;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
+import com.relevantcodes.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
 
@@ -27,15 +28,19 @@ public class PlayBackFactory {
 	private LaunchAction launchAction;
 	private CCAction ccAction;
 	private AllowAction allowAction;
+	
+	private ExtentTest extentTest;
 
 
-	public PlayBackFactory(AppiumDriver driver) {
+	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
+		this.extentTest = extentTest;
 	}
 
 	public LaunchAction getLaunchAction() {
 		if (launchAction == null) {
 			launchAction = new LaunchAction(driver);
+			launchAction.setExtentTest(extentTest);
 		}
 		return launchAction;
 	}
@@ -43,6 +48,7 @@ public class PlayBackFactory {
 	public QAModeSwitchAction getQAModeSwitchAction() {
 		if (qaModeSwitchAction == null) {
 			qaModeSwitchAction = new QAModeSwitchAction(driver);
+			qaModeSwitchAction.setExtentTest(extentTest);
 		}
 		return qaModeSwitchAction;
 	}
@@ -50,6 +56,7 @@ public class PlayBackFactory {
 	public PlayAction getPlayAction() {
 		if (playAction == null) {
 			playAction = new PlayAction(driver);
+			playAction.setExtentTest(extentTest);
 		}
 		return playAction;
 	}
@@ -57,6 +64,7 @@ public class PlayBackFactory {
     public AllowAction getAllow() {
         if (allowAction == null) {
             allowAction = new AllowAction(driver);
+            allowAction.setExtentTest(extentTest);
         }
         return allowAction;
     }
@@ -64,6 +72,7 @@ public class PlayBackFactory {
 	public PauseAction getPauseAction() {
 		if (pauseAction == null) {
 			pauseAction = new PauseAction(driver);
+			pauseAction.setExtentTest(extentTest);
 		}
 		return pauseAction;
 	}
@@ -71,6 +80,7 @@ public class PlayBackFactory {
 	public SelectVideoAction getSelectVideoAction() {
 		if (selectVideo == null) {
 			selectVideo = new SelectVideoAction(driver);
+			selectVideo.setExtentTest(extentTest);
 		}
 		return selectVideo;
 	}
@@ -78,6 +88,7 @@ public class PlayBackFactory {
 	public SeekAction getSeekAction() {
 		if(null == seekAction) {
 			seekAction = new SeekAction(driver);
+			seekAction.setExtentTest(extentTest);
 		}
 		return seekAction;
 	}
@@ -86,6 +97,7 @@ public class PlayBackFactory {
 	public NotificationEventValidator getNotificationEventValidator() {
 		if (notificationEventValidator == null) {
 			notificationEventValidator = new NotificationEventValidator(driver);
+			notificationEventValidator.setExtentTest(extentTest);
 		}
 		return notificationEventValidator;
 	}
@@ -93,6 +105,7 @@ public class PlayBackFactory {
 	public ElementValidator getEventValidator() {
 		if (elementValidator == null) {
 			elementValidator = new ElementValidator(driver);
+			elementValidator.setExtentTest(extentTest);
 		}
 		return elementValidator;
 	}
@@ -100,6 +113,7 @@ public class PlayBackFactory {
 	public CCAction getCcAction() {
 		if (ccAction == null) {
 			ccAction = new CCAction(driver);
+			ccAction.setExtentTest(extentTest);
 		}
 		return ccAction;
 	}
