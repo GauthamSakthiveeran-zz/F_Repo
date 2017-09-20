@@ -4,6 +4,7 @@ import java.lang.reflect.Field;
 
 import com.ooyala.playback.apps.actions.AllowAction;
 import com.ooyala.playback.apps.actions.CCAction;
+import com.ooyala.playback.apps.actions.ClickAction;
 import com.ooyala.playback.apps.actions.LaunchAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
@@ -35,6 +36,7 @@ public class PlayBackFactory {
 	private AllowAction allowAction;
 	private AdEventValidator adEventValidator;
 	private SeekValidator seekValidator;
+	private ClickAction clickAction;
 	
 	private ExtentTest extentTest;
 
@@ -44,6 +46,14 @@ public class PlayBackFactory {
 	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
 		this.extentTest = extentTest;
+	}
+	
+	public ClickAction getClickAction() {
+		if(clickAction == null) {
+			clickAction = new ClickAction(driver);
+			clickAction.setExtentTest(extentTest);
+		}
+		return clickAction;
 	}
 	
 	public SeekValidator getSeekValidator() {

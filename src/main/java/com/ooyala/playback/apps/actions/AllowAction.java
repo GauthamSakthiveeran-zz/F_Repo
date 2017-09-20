@@ -4,8 +4,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
-import com.ooyala.facile.page.FacileWebElement;
 import com.ooyala.playback.apps.PlaybackApps;
+import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
 
@@ -28,13 +28,14 @@ public class AllowAction extends PlaybackApps implements Actions {
     }
     
     private boolean isAllowed(String element) {
-        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(element));
-        WebElement allowButton = this.getWebElementFromFacileWebElement(anElement);
+        WebElement allowButton = getWebElement(element);
         if(allowButton.isDisplayed()) {
             logger.info("Pop-up box is displaying need to give permission");
+            extentTest.log(LogStatus.INFO, "Pop-up box is displaying need to give permission");
         }
         else {
             logger.info("PermissionAlready Given..");
+            extentTest.log(LogStatus.INFO, "PermissionAlready Given..");
             return true;
         }
         return true;
