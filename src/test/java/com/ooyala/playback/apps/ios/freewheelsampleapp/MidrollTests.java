@@ -32,7 +32,9 @@ public class MidrollTests extends PlaybackAppsTest {
 		boolean result = true;
 		try {
 			result = result && selectVideo.startAction(test.getAsset());
+			
 			result = result && elementValidator.validate("NOTIFICATION_AREA", 1000);
+			
 			result = result && elementValidator.handleLoadingSpinner();
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
@@ -40,6 +42,7 @@ public class MidrollTests extends PlaybackAppsTest {
 			result = result && notificationEventValidator.letVideoPlayForSec(3);
 
 			result = result && playAction.startAction("PLAY_PAUSE_BUTTON");
+			
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 35000);
 
 			result = result && seekAction.setSlider("SLIDER").startAction("SEEK_BAR");
