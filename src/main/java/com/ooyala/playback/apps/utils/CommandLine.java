@@ -15,7 +15,7 @@ public class CommandLine{
             new_command = new String[]{"cmd.exe", "/c", command};
         }
         else {
-            new_command = new String[]{"/bin/sh", "-c", command};
+            new_command = new String[]{"/bin/bash", "--login", "-c", command};
         }
             return  new_command;
     }

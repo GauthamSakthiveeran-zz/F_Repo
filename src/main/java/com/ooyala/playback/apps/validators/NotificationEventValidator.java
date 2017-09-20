@@ -112,21 +112,21 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 		return count;
 	}
 
-	public boolean verifyEvent(Events event, String consoleMessage, int timeout) {
+	public boolean verifyEvent(Events event, int timeout) {
 		try {
 			if (validate(event.getEvent(), timeout)) {
-				extentTest.log(LogStatus.PASS, consoleMessage);
-				logger.info(consoleMessage);
+				extentTest.log(LogStatus.PASS, event.getEvent());
+				return true;
 			} else {
-				extentTest.log(LogStatus.FAIL, consoleMessage);
+				extentTest.log(LogStatus.FAIL, event.getFailureMessage());
+				return false;
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			extentTest.log(LogStatus.FAIL, consoleMessage, e);
+			extentTest.log(LogStatus.FAIL, event.getEvent(), e);
 			return false;
 		}
-		return true;
 	}
 
 }

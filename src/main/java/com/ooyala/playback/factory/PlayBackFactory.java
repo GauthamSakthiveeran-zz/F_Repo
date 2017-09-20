@@ -2,15 +2,26 @@ package com.ooyala.playback.factory;
 
 import java.lang.reflect.Field;
 
-import com.ooyala.playback.apps.actions.*;
-
+import com.ooyala.playback.apps.actions.AllowAction;
 import com.ooyala.playback.apps.actions.CCAction;
+import com.ooyala.playback.apps.actions.ClickAction;
+import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
+import com.ooyala.playback.apps.actions.LaunchAction;
+import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.QAModeSwitchAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
+import com.ooyala.playback.apps.actions.SwipeUpDownAppAssetsAction;
 import com.ooyala.playback.apps.actions.android.SeekAction;
+import com.ooyala.playback.apps.validators.AdEventValidator;
+import com.ooyala.playback.apps.validators.DiscoveryValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
+import com.ooyala.playback.apps.validators.FileEventValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
+import com.ooyala.playback.apps.validators.OverlayValidator;
+import com.ooyala.playback.apps.validators.PauseValidator;
+import com.ooyala.playback.apps.validators.SeekValidator;
+import com.ooyala.playback.apps.validators.UpNextValidator;
 import com.relevantcodes.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
@@ -28,13 +39,55 @@ public class PlayBackFactory {
 	private LaunchAction launchAction;
 	private CCAction ccAction;
 	private AllowAction allowAction;
-	
+	private AdEventValidator adEventValidator;
+	private SeekValidator seekValidator;
+	private ClickAction clickAction;
+	private PauseValidator pauseValidator;
+
 	private ExtentTest extentTest;
 
+	private OverlayValidator overlayValidator;
+	private FileEventValidator fileEventValidator;
+	private ClickDiscoveryButtonAction clickDiscioveryAction;
+	private SwipeUpDownAppAssetsAction swipeAppAssetAction;
+	private DiscoveryValidator discoveryValidator;
+	private UpNextValidator upNextValidator;
 
 	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
 		this.extentTest = extentTest;
+	}
+
+	public PauseValidator getPauseValidator() {
+		if (pauseValidator == null) {
+			pauseValidator = new PauseValidator(driver);
+			pauseValidator.setExtentTest(extentTest);
+		}
+		return pauseValidator;
+	}
+
+	public ClickAction getClickAction() {
+		if (clickAction == null) {
+			clickAction = new ClickAction(driver);
+			clickAction.setExtentTest(extentTest);
+		}
+		return clickAction;
+	}
+
+	public SeekValidator getSeekValidator() {
+		if (seekValidator == null) {
+			seekValidator = new SeekValidator(driver);
+			seekValidator.setExtentTest(extentTest);
+		}
+		return seekValidator;
+	}
+
+	public AdEventValidator getAdEventValidator() {
+		if (adEventValidator == null) {
+			adEventValidator = new AdEventValidator(driver);
+			adEventValidator.setExtentTest(extentTest);
+		}
+		return adEventValidator;
 	}
 
 	public LaunchAction getLaunchAction() {
@@ -61,13 +114,13 @@ public class PlayBackFactory {
 		return playAction;
 	}
 
-    public AllowAction getAllow() {
-        if (allowAction == null) {
-            allowAction = new AllowAction(driver);
-            allowAction.setExtentTest(extentTest);
-        }
-        return allowAction;
-    }
+	public AllowAction getAllow() {
+		if (allowAction == null) {
+			allowAction = new AllowAction(driver);
+			allowAction.setExtentTest(extentTest);
+		}
+		return allowAction;
+	}
 
 	public PauseAction getPauseAction() {
 		if (pauseAction == null) {
@@ -86,13 +139,12 @@ public class PlayBackFactory {
 	}
 
 	public SeekAction getSeekAction() {
-		if(null == seekAction) {
+		if (null == seekAction) {
 			seekAction = new SeekAction(driver);
 			seekAction.setExtentTest(extentTest);
 		}
 		return seekAction;
 	}
-
 
 	public NotificationEventValidator getNotificationEventValidator() {
 		if (notificationEventValidator == null) {
@@ -101,7 +153,7 @@ public class PlayBackFactory {
 		}
 		return notificationEventValidator;
 	}
-	
+
 	public ElementValidator getEventValidator() {
 		if (elementValidator == null) {
 			elementValidator = new ElementValidator(driver);
@@ -109,7 +161,7 @@ public class PlayBackFactory {
 		}
 		return elementValidator;
 	}
-	
+
 	public CCAction getCcAction() {
 		if (ccAction == null) {
 			ccAction = new CCAction(driver);
@@ -117,6 +169,54 @@ public class PlayBackFactory {
 		}
 		return ccAction;
 	}
+
+	public OverlayValidator getOverlayValidator() {
+
+		if (overlayValidator == null) {
+			overlayValidator = new OverlayValidator(driver);
+		}
+		return overlayValidator;
+	}
+
+	public FileEventValidator getFileEventValidator() {
+
+		if (fileEventValidator == null) {
+			fileEventValidator = new FileEventValidator(driver);
+		}
+		return fileEventValidator;
+	}
+	
+	public ClickDiscoveryButtonAction getClickDiscoveryButtonAction() {
+
+	    if (clickDiscioveryAction == null) {
+	        clickDiscioveryAction = new ClickDiscoveryButtonAction(driver);
+	    }
+	    return clickDiscioveryAction;
+	  }
+
+	  public SwipeUpDownAppAssetsAction getSwipeUpDownAppAssetsAction() {
+
+	          if (swipeAppAssetAction == null) {
+	              swipeAppAssetAction = new SwipeUpDownAppAssetsAction(driver);
+	          }
+	          return swipeAppAssetAction;
+	      }
+	  public DiscoveryValidator getDiscoveryValidator() {
+
+	        if (discoveryValidator == null) {
+	            discoveryValidator = new DiscoveryValidator(driver);
+	        }
+	        return discoveryValidator;
+	      }
+
+	      public UpNextValidator getUpNextValidator() {
+
+	              if (upNextValidator == null) {
+	                  upNextValidator = new UpNextValidator(driver);
+	              }
+	              return upNextValidator;
+	          } 
+	  
 
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> validator) throws Exception {
