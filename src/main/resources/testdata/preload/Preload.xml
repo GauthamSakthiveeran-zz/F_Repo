@@ -2,7 +2,7 @@
 <testdata>
     <test name="PlaybackEnablePreloadingForPrerollTests">
         <url>
-            <description name="VTC:IMA Main Ad Rule Midroll SetEmbedCode" />
+            <description name="Preloading:Preroll Settings" />
             <priority name="P2"></priority>
             <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -15,7 +15,7 @@
     </test>
     <test name="PlaybackEnablePreloadingDashDefaultSettingsTests">
         <url>
-            <description name="VTC:IMA Main Ad Rule Midroll SetEmbedCode" />
+            <description name="Preloading:HLS Default Settings" />
             <priority name="P2"></priority>
             <embed_code name="AxZWVlOTE69sXjpQ_uZyM7sf6aqBl8N0" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -28,7 +28,7 @@
     </test>
     <test name="PlaybackEnablePreloadingAzureDefaultSettingsTests">
         <url>
-            <description name="VTC:IMA Main Ad Rule Midroll SetEmbedCode" />
+            <description name="Preloading:Azure Default Settings" />
             <priority name="P2"></priority>
             <embed_code name="RndDhvYTE6dmNoGfQcV4vTWIgiAA7NnS" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
@@ -41,7 +41,7 @@
     </test>
     <test name="PlaybackEnablePreloadingHLSDefaultSettingsTests">
         <url>
-            <description name="VTC:IMA Main Ad Rule Midroll SetEmbedCode" />
+            <description name="Preloading:HLS Default Settings" />
             <priority name="P2"></priority>
             <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP" />
             <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
