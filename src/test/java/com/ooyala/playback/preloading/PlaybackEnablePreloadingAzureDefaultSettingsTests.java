@@ -31,8 +31,8 @@ public class PlaybackEnablePreloadingAzureDefaultSettingsTests extends PlaybackW
             injectScript();
             preloadingValidator.getConsoleLogs();
             result = result && playAction.startAction();
-            result = result && preloadingValidator.validate("segments_1", 2000);
-            result = result && preloadingValidator.validate("downloads_3",3000);
+            result = result && preloadingValidator.validate("segments_1", 5000);
+            result = result && preloadingValidator.validate("downloads_2",15000);
             result = result && eventValidator.validate("playing_1",5000);
             result = result && preloadingValidator.verifyFragementsAndm3u8Segments();
         } catch (Exception ex) {
