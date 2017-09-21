@@ -1,4 +1,4 @@
-<elements area="discovery">
+<elements area="appassets">
 	<element key="APP_ASSETS_ANDROID" findBy="xPath" xPath="//android.widget.ListView/android.widget.TextView" />
 	<element key="APP_ASSETS_SCREEN_ANDROID" findBy="class" class="android.widget.ListView" />
 	<element key="APP_ASSETS_HLS_ANDROID" findBy="xPath" xPath="//android.widget.TextView[@text='HLS Video']" />
