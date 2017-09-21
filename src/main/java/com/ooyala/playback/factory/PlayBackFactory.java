@@ -6,18 +6,19 @@ import com.ooyala.playback.apps.actions.AllowAction;
 import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.ClickAction;
 import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
+import com.ooyala.playback.apps.actions.FullScreenAction;
 import com.ooyala.playback.apps.actions.LaunchAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.QAModeSwitchAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.actions.SwipeUpDownAppAssetsAction;
-import com.ooyala.playback.apps.actions.android.SeekAction;
 import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.apps.validators.AdEventValidator;
 import com.ooyala.playback.apps.validators.DiscoveryValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.FileEventValidator;
+import com.ooyala.playback.apps.validators.FullScreenOrientationValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.ooyala.playback.apps.validators.OverlayValidator;
 import com.ooyala.playback.apps.validators.PauseValidator;
@@ -53,6 +54,8 @@ public class PlayBackFactory {
 	private SwipeUpDownAppAssetsAction swipeAppAssetAction;
 	private DiscoveryValidator discoveryValidator;
 	private UpNextValidator upNextValidator;
+	private FullScreenAction fullScreenAction;
+	private FullScreenOrientationValidator fullScreenOrientationValidator;
 
 	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -217,6 +220,22 @@ public class PlayBackFactory {
 	              }
 	              return upNextValidator;
 	          } 
+	      
+	       public FullScreenAction getFullScreenAction() {
+
+               if (fullScreenAction == null) {
+                   fullScreenAction = new FullScreenAction(driver);
+               }
+               return fullScreenAction;
+           } 
+	       
+	          public FullScreenOrientationValidator getFullScreenOrientationValidator() {
+
+                  if (fullScreenOrientationValidator == null) {
+                      fullScreenOrientationValidator = new FullScreenOrientationValidator(driver);
+                  }
+                  return fullScreenOrientationValidator;
+              } 
 	  
 
 	@SuppressWarnings("unchecked")

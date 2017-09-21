@@ -18,5 +18,7 @@
     <entry key="discovery">resources/discovery.xml</entry>
     <entry key="upnext">resources/upnext.xml</entry>
     <entry key="appassets">resources/appassets.xml</entry>
+    <entry key="fullscreen">resources/fullscreen.xml</entry>
+    
 
 </properties>
