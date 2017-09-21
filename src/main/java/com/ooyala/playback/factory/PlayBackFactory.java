@@ -13,7 +13,6 @@ import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.QAModeSwitchAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.actions.SwipeUpDownAppAssetsAction;
-import com.ooyala.playback.apps.actions.android.SeekAction;
 import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.apps.validators.AdEventValidator;
 import com.ooyala.playback.apps.validators.DiscoveryValidator;
