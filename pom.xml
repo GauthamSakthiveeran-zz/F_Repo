@@ -16,7 +16,7 @@
 		<selenium.version>3.0.1</selenium.version>
 		<surefire.version>2.19.1</surefire.version>
 		<maven.compiler.version>3.6.1</maven.compiler.version>
-		<java-client>4.1.2</java-client>
+		<java-client>5.0.3</java-client>
 		<aspectj.version>1.8.5</aspectj.version>
 		<allure.version>2.5</allure.version>
 
