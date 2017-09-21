@@ -5,19 +5,24 @@ import java.lang.reflect.Field;
 import com.ooyala.playback.apps.actions.AllowAction;
 import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.ClickAction;
+import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
 import com.ooyala.playback.apps.actions.LaunchAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.QAModeSwitchAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
+import com.ooyala.playback.apps.actions.SwipeUpDownAppAssetsAction;
+import com.ooyala.playback.apps.actions.android.SeekAction;
 import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.apps.validators.AdEventValidator;
+import com.ooyala.playback.apps.validators.DiscoveryValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.FileEventValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.ooyala.playback.apps.validators.OverlayValidator;
 import com.ooyala.playback.apps.validators.PauseValidator;
 import com.ooyala.playback.apps.validators.SeekValidator;
+import com.ooyala.playback.apps.validators.UpNextValidator;
 import com.relevantcodes.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
@@ -44,6 +49,10 @@ public class PlayBackFactory {
 
 	private OverlayValidator overlayValidator;
 	private FileEventValidator fileEventValidator;
+	private ClickDiscoveryButtonAction clickDiscioveryAction;
+	private SwipeUpDownAppAssetsAction swipeAppAssetAction;
+	private DiscoveryValidator discoveryValidator;
+	private UpNextValidator upNextValidator;
 
 	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -177,6 +186,38 @@ public class PlayBackFactory {
 		}
 		return fileEventValidator;
 	}
+	
+	public ClickDiscoveryButtonAction getClickDiscoveryButtonAction() {
+
+	    if (clickDiscioveryAction == null) {
+	        clickDiscioveryAction = new ClickDiscoveryButtonAction(driver);
+	    }
+	    return clickDiscioveryAction;
+	  }
+
+	  public SwipeUpDownAppAssetsAction getSwipeUpDownAppAssetsAction() {
+
+	          if (swipeAppAssetAction == null) {
+	              swipeAppAssetAction = new SwipeUpDownAppAssetsAction(driver);
+	          }
+	          return swipeAppAssetAction;
+	      }
+	  public DiscoveryValidator getDiscoveryValidator() {
+
+	        if (discoveryValidator == null) {
+	            discoveryValidator = new DiscoveryValidator(driver);
+	        }
+	        return discoveryValidator;
+	      }
+
+	      public UpNextValidator getUpNextValidator() {
+
+	              if (upNextValidator == null) {
+	                  upNextValidator = new UpNextValidator(driver);
+	              }
+	              return upNextValidator;
+	          } 
+	  
 
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> validator) throws Exception {
