@@ -1,0 +1,12 @@
+<elements area="discovery">
+	<element key="MOREOPTIONS_BUTTON_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='moreOptions']" />
+	<element key="MOREOPTIONSSCREEN_CLOSEBUTTON_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='dismiss']" />
+	<element key="DISCOVERYBUTTON_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='discovery']" />
+	<element key="DISCOVERYSCREEN_CLOSEBUTTON_ANDROID" findBy="accessibilityId" accessibilityId="dismiss" />
+	<element key="PLAYERSCREEN_ANDROID" findBy="class" class="android.view.View" />
+	<element key="DISCOVERTEXT_ANDROID" findBy="xPath" xPath="//android.widget.TextView[@text='Discover']" />
+	<element key="DISCOVERYICON_ANDROID" findBy="xPath" xPath="//android.widget.TextView[@text='l']" />
+	<element key="DISCOVERYSCROLLSCREEN_ANDROID" findBy="class" class="android.widget.ScrollView" />
+	<element key="DISCOVERYSCREENVIDEOS_ANDROID" findBy="xPath" xPath="//android.widget.ScrollView/android.view.ViewGroup/android.view.ViewGroup" />
+	<element key="DISCOVERY_ERROR_SCREEN_ANDROID" findBy="xPath" xPath="//android.widget.TextView[@text='SOMETHING NOT RIGHT! THERE SHOULD BE VIDEOS HERE.']" />
+</elements>
