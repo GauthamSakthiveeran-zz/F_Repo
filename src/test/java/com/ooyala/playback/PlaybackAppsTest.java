@@ -136,7 +136,7 @@ public class PlaybackAppsTest extends FacileTest {
 				pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
 				pageFactory.getLaunchAction().LaunchApp();
 			}
-			if (System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("ios")) {
+			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
 				Assert.assertTrue(
 						new PlayBackFactory((AppiumDriver) driver, extentTest).getQAModeSwitchAction().startAction("QA_MODE_SWITCH"),
 						"QA Mode is not enabled. Hence failing test");
