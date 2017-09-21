@@ -2,6 +2,17 @@
 <testdata>
     <test name="PlaybackFCCBasicTests">
         <url>
+            <description name="FCC:Bitmovin Playlist"/>
+            <priority name="P3"/>
+            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST"/>
+            <pbid name="9957eb7c70a64730ad8fc15004d28da8"/>
+            <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"Orientation":"vertical"}}]]></playerParameter>
+        </url>
+        <url>
             <description name="FCC:Preroll IMA Main" />
             <priority name="P2"></priority>
             <embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />

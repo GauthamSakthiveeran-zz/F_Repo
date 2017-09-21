@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <test name="PlaybackEnablePreloadingForPrerollTests">
+        <url>
+            <description name="Preloading:Preroll Settings" />
+            <priority name="P2"></priority>
+            <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="VAST" adPlayTime=""/>
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"preload":true}]]></playerParameter>
+        </url>
+    </test>
+    <test name="PlaybackEnablePreloadingDashDefaultSettingsTests">
+        <url>
+            <description name="Preloading:Dash Default Settings" />
+            <priority name="P2"></priority>
+            <embed_code name="AxZWVlOTE69sXjpQ_uZyM7sf6aqBl8N0" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" adPlayTime=""/>
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"platform":"html5","preload":true}]]></playerParameter>
+        </url>
+    </test>
+    <test name="PlaybackEnablePreloadingAzureDefaultSettingsTests">
+        <url>
+            <description name="Preloading:Azure Default Settings" />
+            <priority name="P2"></priority>
+            <embed_code name="RndDhvYTE6dmNoGfQcV4vTWIgiAA7NnS" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" adPlayTime=""/>
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"platform":"html5","preload":true}]]></playerParameter>
+        </url>
+    </test>
+    <test name="PlaybackEnablePreloadingHLSDefaultSettingsTests">
+        <url>
+            <description name="Preloading:HLS Default Settings" />
+            <priority name="P2"></priority>
+            <embed_code name="BrZ3ZnMTE6hdUtWJv-0hIr0X5FBDMBYP" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" adPlayTime=""/>
+            <additionalPlugins name="" />
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
+            <playerParameter><![CDATA[{"preload":true}]]></playerParameter>
+        </url>
+    </test>
+</testdata>

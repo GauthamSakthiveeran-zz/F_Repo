@@ -1,0 +1,15 @@
+<suite name="Playback Web Regression Suite for enable preloading Tests" >
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    <test name="Preloading" parallel="classes" thread-count="4">
+        <parameter name="jsFile" value="alice/alice.js" />
+        <parameter name="testData" value="preload/preload.xml" />
+        <classes>
+            <class name="com.ooyala.playback.preloading.PlaybackEnablePreloadingAzureDefaultSettingsTests"/>
+            <class name="com.ooyala.playback.preloading.PlaybackEnablePreloadingDashDefaultSettingsTests"/>
+            <class name="com.ooyala.playback.preloading.PlaybackEnablePreloadingHLSDefaultSettingsTests"/>
+            <class name="com.ooyala.playback.preloading.PlaybackEnablePreloadingForPrerollTests"/>
+        </classes>
+    </test>
+</suite>
