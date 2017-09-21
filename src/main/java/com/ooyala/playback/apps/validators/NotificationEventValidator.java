@@ -5,6 +5,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import com.ooyala.playback.apps.PlaybackApps;
+import com.ooyala.playback.apps.utils.CommandLineParameters;
 import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
@@ -13,28 +14,29 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 
 	private static Logger logger = Logger.getLogger(NotificationEventValidator.class);
 	int eventVerificationCount=0;
+	private int count;
 
 	public NotificationEventValidator(AppiumDriver driver) {
 		super(driver);
+		count = 0;
 		PageFactory.initElements(driver, this);
 		addElementToPageElements("event");		
 	}
 
-	@Override
-	public boolean validate(String eventToBeVerified, int timeout) throws Exception {
 
-		int returncount = 0;
-		boolean status = false;
-		long startTime = System.currentTimeMillis();
+	public boolean validateEvent(Events event, int timeout) throws Exception {
+		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
+			int returncount = 0;
+			boolean status = false;
+			long startTime = System.currentTimeMillis();
 
-		while ((System.currentTimeMillis() - startTime) < timeout) {
-			logger.info("Waiting for notification >>>> : " + eventToBeVerified);
-			String notifiationEvents = getNotificationEvents();
-			returncount = verifyNotificationEventPresence(notifiationEvents, eventToBeVerified, eventVerificationCount);
+			while ((System.currentTimeMillis() - startTime) < timeout) {
+				logger.info("Waiting for notification >>>> : " + event.getEvent());
+				String notifiationEvents = getNotificationEvents();
+				returncount = verifyNotificationEventPresence(notifiationEvents, event.getEvent(), eventVerificationCount);
 
 			if (returncount == -1)
 				status = false;
-
 			else {
 				status = true;
 				eventVerificationCount = returncount;
@@ -45,11 +47,43 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 			}
 		}
 		if (!status) {
-			logger.error("Event not found !!!. Expected Event : " + eventToBeVerified);
+			logger.error("Event not found !!!. Expected Event : " + event.getEvent());
 			logger.error("ACTUAL notification : " + getNotificationEvents());
 			return false;
 		}
 		return status;
+		} else {
+		      int returncount;         
+
+		        // Paused  Verification
+		        boolean status=false;
+		        long startTime = System.currentTimeMillis(); //fetch starting time
+		        while(!status && (System.currentTimeMillis()-startTime)<timeout) {
+
+
+		            returncount = ParseEventsFile.parseeventfile(event,count);
+
+
+		            if (returncount== -1){
+		            		extentTest.log(LogStatus.INFO, "Event not found in log file");
+		                status=false;
+		            }
+		            else{
+		                status=true;
+		                count=returncount;
+		            }            
+
+		            if (status == true) {
+		                //extentTest.log(LogStatus.PASS, consoleMessage);
+		                //logger.info(consoleMessage);
+		            }
+		        }
+		        if(!status){
+		            Assert.assertTrue(status);
+		        }
+		        return status;
+		    
+		}
 	}
 
 	private String getNotificationEvents() {
@@ -127,6 +161,13 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 			extentTest.log(LogStatus.FAIL, event.getEvent(), e);
 			return false;
 		}
+	}
+
+
+	@Override
+	public boolean validate(String element, int timeout) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

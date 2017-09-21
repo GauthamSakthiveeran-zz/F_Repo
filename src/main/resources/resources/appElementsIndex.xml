@@ -15,4 +15,6 @@
     <entry key="cc">resources/cc.xml</entry>
     <entry key="overlay">resources/overlay.xml</entry>
     <entry key="permission">resources/permission.xml</entry>
+    <entry key="replay">resources/replay.xml</entry>
+    
 </properties>

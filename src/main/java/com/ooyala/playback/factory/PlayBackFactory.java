@@ -18,6 +18,7 @@ import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.ooyala.playback.apps.validators.OverlayValidator;
 import com.ooyala.playback.apps.validators.PauseValidator;
 import com.ooyala.playback.apps.validators.SeekValidator;
+import com.ooyala.playback.apps.validators.ReplayValidator;
 import com.relevantcodes.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
@@ -39,7 +40,7 @@ public class PlayBackFactory {
 	private SeekValidator seekValidator;
 	private ClickAction clickAction;
 	private PauseValidator pauseValidator;
-
+	private ReplayValidator replayValidator;
 	private ExtentTest extentTest;
 
 	private OverlayValidator overlayValidator;
@@ -178,6 +179,13 @@ public class PlayBackFactory {
 		return fileEventValidator;
 	}
 
+	public ReplayValidator getReplayValidator() {
+		if(replayValidator == null) {
+			replayValidator = new ReplayValidator(driver);
+		}
+		return replayValidator;
+		
+	}
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> validator) throws Exception {
 

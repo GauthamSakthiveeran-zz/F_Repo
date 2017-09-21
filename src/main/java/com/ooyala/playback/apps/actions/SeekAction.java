@@ -34,7 +34,7 @@ public class SeekAction extends PlaybackApps implements Actions {
 
 	@Override
 	public boolean startAction(String seek) throws Exception {
-		if (System.getProperty(CommandLineParameters.platform).equalsIgnoreCase("ios")) {
+		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
 			if (seekFrwd) {
 				// seekFrwd = false;
 				tapScreenIfRequired();

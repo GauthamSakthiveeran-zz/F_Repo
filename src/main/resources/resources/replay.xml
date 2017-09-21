@@ -1,0 +1,4 @@
+<elements area="replay">
+	<element key="REPLAY_AN" findBy="xPath" xPath="//android.widget.TextView[@text='c']" />
+</elements>
+	
