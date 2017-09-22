@@ -7,24 +7,26 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.PlayAction;
+import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
-import com.ooyala.playback.apps.actions.ios.SeekAction;
 import com.ooyala.playback.apps.validators.AdValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
+import com.ooyala.playback.apps.validators.OverlayValidator;
 import com.ooyala.playback.apps.validators.PauseValidator;
 import com.ooyala.playback.apps.validators.SeekValidator;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class MultiMidrollTests extends PlaybackAppsTest {
+public class FreewheelSampleAppsPreMidPostOverlayTests extends PlaybackAppsTest {
 
-	private static Logger logger = Logger.getLogger(PostRollTests.class);
+	private static Logger logger = Logger.getLogger(FreewheelSampleAppsPreMidPostOverlayTests.class);
 	private SelectVideoAction selectVideo;
 	private ElementValidator elementValidator;
 	private NotificationEventValidator notificationEventValidator;
 	private SeekAction seekAction;
 	private PlayAction playAction;
+	private OverlayValidator overlay;
 	private AdValidator adEventValidator;
 	private SeekValidator seekValidator;
 	private PauseValidator pause;
@@ -37,11 +39,19 @@ public class MultiMidrollTests extends PlaybackAppsTest {
 			result = result && elementValidator.validate("NOTIFICATION_AREA", 1000);
 			result = result && elementValidator.handleLoadingSpinner();
 
+			result = result && adEventValidator.validate("", 1000);
+
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
+
+			result = result && notificationEventValidator.letVideoPlayForSec(2);
+
+			result = result && overlay.validate("OVERLAY_IMAGE_IOS", 10000);
 
 			result = result && adEventValidator.validate("", 1000);
 
-			result = result && notificationEventValidator.letVideoPlayForSec(3);
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
+
+			result = result && notificationEventValidator.letVideoPlayForSec(4);
 
 			result = result && pause.validate("PLAY_PAUSE_BUTTON", 35000);
 
@@ -64,4 +74,5 @@ public class MultiMidrollTests extends PlaybackAppsTest {
 		}
 		Assert.assertTrue(result, "APP:" + test.getApp() + "->Asset:" + test.getAsset());
 	}
+
 }

@@ -7,25 +7,25 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.PlayAction;
+import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
-import com.ooyala.playback.apps.actions.ios.SeekAction;
-import com.ooyala.playback.apps.validators.AdValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
+import com.ooyala.playback.apps.validators.OverlayValidator;
 import com.ooyala.playback.apps.validators.PauseValidator;
 import com.ooyala.playback.apps.validators.SeekValidator;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class MidrollTests extends PlaybackAppsTest {
+public class FreewheelSampleAppsOverlayTests extends PlaybackAppsTest {
 
-	private static Logger logger = Logger.getLogger(MidrollTests.class);
+	private static Logger logger = Logger.getLogger(FreewheelSampleAppsOverlayTests.class);
 	private SelectVideoAction selectVideo;
 	private ElementValidator elementValidator;
 	private NotificationEventValidator notificationEventValidator;
 	private SeekAction seekAction;
 	private PlayAction playAction;
-	private AdValidator adEventValidator;
+	private OverlayValidator overlay;
 	private SeekValidator seekValidator;
 	private PauseValidator pause;
 
@@ -34,22 +34,22 @@ public class MidrollTests extends PlaybackAppsTest {
 		boolean result = true;
 		try {
 			result = result && selectVideo.startAction(test.getAsset());
-			
 			result = result && elementValidator.validate("NOTIFICATION_AREA", 1000);
-			
 			result = result && elementValidator.handleLoadingSpinner();
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
 
+			result = result && overlay.validate("OVERLAY_IMAGE_IOS", 10000);
+
 			result = result && notificationEventValidator.letVideoPlayForSec(3);
-			
+
+			result = result && overlay.waitForOverlayToDisapper("OVERLAY_IMAGE_IOS", 30000);
+
 			result = result && pause.validate("PLAY_PAUSE_BUTTON", 35000);
 
 			result = result && seekAction.setSlider("SLIDER").startAction("SEEK_BAR");
 
 			result = result && seekValidator.validate("", 1000);
-
-			result = result && adEventValidator.validate("", 1000);
 
 			result = result && playAction.startAction("PLAY_PAUSE_BUTTON");
 

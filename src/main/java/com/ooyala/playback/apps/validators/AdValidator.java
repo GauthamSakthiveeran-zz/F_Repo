@@ -3,7 +3,7 @@ package com.ooyala.playback.apps.validators;
 import com.ooyala.playback.apps.PlaybackApps;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.PauseAction;
-import com.ooyala.playback.apps.actions.ios.SeekAction;
+import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.factory.PlayBackFactory;
 
 import io.appium.java_client.AppiumDriver;
@@ -35,7 +35,7 @@ public class AdValidator extends PlaybackApps implements Validators {
 				result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
 				result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
 			}
-
+			
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
 
 			if (test.getAsset().contains("MID") || test.getAsset().contains("MULTI")) {

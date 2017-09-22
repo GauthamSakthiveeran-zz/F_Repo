@@ -1,13 +1,12 @@
 package com.ooyala.playback.apps.actions;
 
+import org.apache.log4j.Logger;
+import org.openqa.selenium.support.PageFactory;
+
 import com.ooyala.playback.apps.PlaybackApps;
-import com.ooyala.playback.apps.actions.Actions;
 import com.ooyala.playback.apps.utils.CommandLineParameters;
 
 import io.appium.java_client.AppiumDriver;
-import org.apache.log4j.Logger;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
 public class SeekAction extends PlaybackApps implements Actions {
 
