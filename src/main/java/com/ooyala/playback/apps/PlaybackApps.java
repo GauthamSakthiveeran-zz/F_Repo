@@ -1,5 +1,6 @@
 package com.ooyala.playback.apps;
 
+import io.appium.java_client.TouchAction;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
@@ -18,8 +19,8 @@ public abstract class PlaybackApps extends WebPage {
 
     protected AppiumDriver driver;
     protected ExtentTest extentTest;
-    
-    
+
+
     final static  int[] playCoordinates = new int[2];
 
     final static Logger logger = Logger.getLogger(PlaybackApps.class);
@@ -28,10 +29,10 @@ public abstract class PlaybackApps extends WebPage {
         super(driver);
         this.driver = driver;
     }
-    
+
     public void setExtentTest(ExtentTest extentTest) {
-		this.extentTest = extentTest;
-	}
+        this.extentTest = extentTest;
+    }
 
 
     class Element {
@@ -128,7 +129,8 @@ public abstract class PlaybackApps extends WebPage {
         logger.info("Seeking Back------------");
         tapScreenIfRequired();
         int seekBackLength = ((startx + 1) - seekbarElement.getStartXPosition()) / 2;
-        driver.swipe((startx + 1), seekbarElement.getYposition(), ((startx + 1) - seekBackLength), seekbarElement.getYposition() + seekbarElement.getYposition(), 3);
+        TouchAction touch = new TouchAction(driver);
+        touch.longPress((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) - seekBackLength), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
         return true;
     }
 
@@ -137,8 +139,9 @@ public abstract class PlaybackApps extends WebPage {
         Element seekbarElement =  getSeekBarPosition(seekbar);
         logger.info("Seeking forward -------------------------  ");
         tapScreenIfRequired();
-        int seekForwardLength = (seekbarElement.getEndXPosition() - (startx + 1)) - 30; //This will seek just before end of the the video
-        driver.swipe((startx + 1), seekbarElement.getYposition(), ((startx + 1) + (seekForwardLength)), seekbarElement.getYposition() + seekbarElement.getYposition(), 3);
+        int seekForwardLength = (seekbarElement.getEndXPosition() - (startx + 1)) - 30;
+        TouchAction touch = new TouchAction(driver);
+        touch.longPress((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) + (seekForwardLength)), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
         return true;
     }
 
@@ -176,27 +179,45 @@ public abstract class PlaybackApps extends WebPage {
         playCoordinates[1] = play[1] + button.getSize().getHeight() / 2;
         //System.out.println("Play button x cordinate"+playCoordinates[0]);
         //System.out.println("Play button x cordinate"+playCoordinates[1]);
-        driver.tap (1,  playCoordinates[0],  playCoordinates[1], 2);
+        TouchAction touch = new TouchAction(driver);
+        touch.tap(playCoordinates[0],  playCoordinates[1]).release().perform();
         return true;
     }
 
     public boolean getPause() {
-        driver.tap (1,  playCoordinates[0],  playCoordinates[1], 2);
+        TouchAction touch = new TouchAction(driver);
+        touch.tap(playCoordinates[0],  playCoordinates[1]).release().perform();
         return true;
     }
 
-	public void tapOnScreen() throws InterruptedException {
-		driver.tap(1, playCoordinates[0], playCoordinates[1], 2);
-		logger.info("We have tapped successfully");
-		// Thread.sleep(2000);
-	}
+    public void tapOnScreen() throws InterruptedException {
+        TouchAction touch = new TouchAction(driver);
+        touch.tap(playCoordinates[0],  playCoordinates[1]).release().perform();
+        logger.info("We have tapped successfully");
+        // Thread.sleep(2000);
+    }
+
+    public boolean isAllowed(String element) {
+        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(element));
+        WebElement allowButton = this.getWebElementFromFacileWebElement(anElement);
+        if(allowButton.isDisplayed()) {
+            logger.info("Pop-up box is displaying need to give permission");
+        }
+        else {
+            logger.info("PermissionAlready Given..");
+            return true;
+        }
+        return true;
+    }
+
 
     public boolean seekVideo(String element) {
         FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(element));
         WebElement seekbar = this.getWebElementFromFacileWebElement(anElement);
         int seekBarFieldWidth = seekbar.getLocation().getX();
         int seekBarFieldHeigth = seekbar.getLocation().getY();
-        driver.swipe(seekBarFieldWidth + 20, seekBarFieldHeigth, seekBarFieldWidth + 100, seekBarFieldHeigth, 3);
+        TouchAction touch = new TouchAction(driver);
+        touch.longPress(seekBarFieldWidth + 20, seekBarFieldHeigth).moveTo(seekBarFieldWidth + 100, seekBarFieldHeigth).release().perform();
         return true;
     }
 
@@ -210,12 +231,12 @@ public abstract class PlaybackApps extends WebPage {
 
                 if (i <= timeOut) {
                     try {
-						if (ios) {
-							flag = driver.findElement(By.xpath("//XCUIElementTypeActivityIndicator[1]")).isDisplayed();
-						} else {
-							// TODO
-						}
-                    		
+                        if (ios) {
+                            flag = driver.findElement(By.xpath("//XCUIElementTypeActivityIndicator[1]")).isDisplayed();
+                        } else {
+                            // TODO
+                        }
+
                         if (!flag) {
                             flag = true;
                             break;
@@ -254,34 +275,12 @@ public abstract class PlaybackApps extends WebPage {
         Thread.sleep(5000);
         return clickOnIndependentElement(By.xpath("//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther"));
     }
-    
+
     public String getPlatform() {
-    	if(System.getProperty(CommandLineParameters.PLATFORM)!=null && !System.getProperty(CommandLineParameters.PLATFORM).isEmpty()) {
-    		return System.getProperty(CommandLineParameters.PLATFORM);
-    	}
-    	return "";
+        if(System.getProperty(CommandLineParameters.PLATFORM)!=null && !System.getProperty(CommandLineParameters.PLATFORM).isEmpty()) {
+            return System.getProperty(CommandLineParameters.PLATFORM);
+        }
+        return "";
     }
-    
-	public boolean letVideoPlayForSec(int sec) throws InterruptedException {
-		int count = 0;
-		while (count < sec) {
-			if (!waitForSec(1))
-				return false;
-			count++;
-		}
-
-		return true;
-	}
-
-	private boolean waitForSec(int sec) {
-		try {
-			Thread.sleep(sec * 1000);
-			logger.info("Waiting for " + sec + " seconds");
-		} catch (InterruptedException e) {
-			logger.error(e);
-			return false;
-		}
-		return true;
-	}
 
 }
