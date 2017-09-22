@@ -14,7 +14,7 @@ import com.ooyala.playback.apps.actions.QAModeSwitchAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.actions.SwipeUpDownAppAssetsAction;
 import com.ooyala.playback.apps.actions.SeekAction;
-import com.ooyala.playback.apps.validators.AdEventValidator;
+import com.ooyala.playback.apps.validators.AdValidator;
 import com.ooyala.playback.apps.validators.DiscoveryValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.FileEventValidator;
@@ -41,7 +41,7 @@ public class PlayBackFactory {
 	private LaunchAction launchAction;
 	private CCAction ccAction;
 	private AllowAction allowAction;
-	private AdEventValidator adEventValidator;
+	private AdValidator adEventValidator;
 	private SeekValidator seekValidator;
 	private ClickAction clickAction;
 	private PauseValidator pauseValidator;
@@ -86,9 +86,9 @@ public class PlayBackFactory {
 		return seekValidator;
 	}
 
-	public AdEventValidator getAdEventValidator() {
+	public AdValidator getAdEventValidator() {
 		if (adEventValidator == null) {
-			adEventValidator = new AdEventValidator(driver);
+			adEventValidator = new AdValidator(driver);
 			adEventValidator.setExtentTest(extentTest);
 		}
 		return adEventValidator;

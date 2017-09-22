@@ -9,7 +9,7 @@ import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.actions.ios.SeekAction;
-import com.ooyala.playback.apps.validators.AdEventValidator;
+import com.ooyala.playback.apps.validators.AdValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
@@ -25,7 +25,7 @@ public class PreMidPostTests extends PlaybackAppsTest {
 	private NotificationEventValidator notificationEventValidator;
 	private SeekAction seekAction;
 	private PlayAction playAction;
-	private AdEventValidator adEventValidator;
+	private AdValidator adEventValidator;
 	private SeekValidator seekValidator;
 	private PauseValidator pause;
 

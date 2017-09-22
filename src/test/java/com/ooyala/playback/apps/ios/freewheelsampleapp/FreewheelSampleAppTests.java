@@ -17,7 +17,7 @@ import com.ooyala.playback.apps.validators.PauseValidator;
 import com.ooyala.playback.apps.validators.SeekValidator;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class MidrollTests extends PlaybackAppsTest {
+public class FreewheelSampleAppTests extends PlaybackAppsTest {
 
 	private static Logger logger = Logger.getLogger(MidrollTests.class);
 	private SelectVideoAction selectVideo;
