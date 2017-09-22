@@ -179,6 +179,7 @@ public class PlayBackFactory {
 
 		if (overlayValidator == null) {
 			overlayValidator = new OverlayValidator(driver);
+			overlayValidator.setExtentTest(extentTest);
 		}
 		return overlayValidator;
 	}
@@ -187,6 +188,7 @@ public class PlayBackFactory {
 
 		if (fileEventValidator == null) {
 			fileEventValidator = new FileEventValidator(driver);
+			fileEventValidator.setExtentTest(extentTest);
 		}
 		return fileEventValidator;
 	}
@@ -195,6 +197,7 @@ public class PlayBackFactory {
 
 	    if (clickDiscioveryAction == null) {
 	        clickDiscioveryAction = new ClickDiscoveryButtonAction(driver);
+	        clickDiscioveryAction.setExtentTest(extentTest);
 	    }
 	    return clickDiscioveryAction;
 	  }
@@ -203,6 +206,7 @@ public class PlayBackFactory {
 
 	          if (swipeAppAssetAction == null) {
 	              swipeAppAssetAction = new SwipeUpDownAppAssetsAction(driver);
+	              swipeAppAssetAction.setExtentTest(extentTest);
 	          }
 	          return swipeAppAssetAction;
 	      }
@@ -210,6 +214,7 @@ public class PlayBackFactory {
 
 	        if (discoveryValidator == null) {
 	            discoveryValidator = new DiscoveryValidator(driver);
+	            discoveryValidator.setExtentTest(extentTest);
 	        }
 	        return discoveryValidator;
 	      }
@@ -218,6 +223,7 @@ public class PlayBackFactory {
 
 	              if (upNextValidator == null) {
 	                  upNextValidator = new UpNextValidator(driver);
+	                  upNextValidator.setExtentTest(extentTest);
 	              }
 	              return upNextValidator;
 	          } 
@@ -226,6 +232,7 @@ public class PlayBackFactory {
 
                if (fullScreenAction == null) {
                    fullScreenAction = new FullScreenAction(driver);
+                   fullScreenAction.setExtentTest(extentTest);
                }
                return fullScreenAction;
            } 
@@ -234,6 +241,7 @@ public class PlayBackFactory {
 
                   if (fullScreenOrientationValidator == null) {
                       fullScreenOrientationValidator = new FullScreenOrientationValidator(driver);
+                      fullScreenOrientationValidator.setExtentTest(extentTest);
                   }
                   return fullScreenOrientationValidator;
               } 
@@ -242,6 +250,7 @@ public class PlayBackFactory {
 	public ReplayValidator getReplayValidator() {
 		if(replayValidator == null) {
 			replayValidator = new ReplayValidator(driver);
+			replayValidator.setExtentTest(extentTest);
 		}
 		return replayValidator;
 		

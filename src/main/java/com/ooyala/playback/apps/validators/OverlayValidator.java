@@ -26,7 +26,7 @@ public class OverlayValidator extends PlaybackApps implements Validators {
 	 * @return
 	 * @throws Exception
 	 */
-	public boolean validateOverlay(String element,int timeout, long seconds) throws Exception {
+	public boolean validateOverlay(String element,int timeout, int seconds) throws Exception {
 		long startTime = System.currentTimeMillis();
 		while(System.currentTimeMillis()-startTime <=  1000*seconds) {				
 			if(waitOnElement(element, timeout)) {
