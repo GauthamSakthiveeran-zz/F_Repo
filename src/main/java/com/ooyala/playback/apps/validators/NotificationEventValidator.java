@@ -1,10 +1,14 @@
 package com.ooyala.playback.apps.validators;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import com.ooyala.playback.apps.PlaybackApps;
+import com.ooyala.playback.apps.utils.CommandLine;
 import com.ooyala.playback.apps.utils.CommandLineParameters;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -59,13 +63,9 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 		        boolean status=false;
 		        long startTime = System.currentTimeMillis(); //fetch starting time
 		        while(!status && (System.currentTimeMillis()-startTime)<timeout) {
-
-
-		            returncount = ParseEventsFile.parseeventfile(event,count);
-
-
+		            returncount = parseeventfile(event,count);
 		            if (returncount== -1){
-		            		extentTest.log(LogStatus.INFO, "Event not found in log file");
+		            		extentTest.log(LogStatus.INFO, event.getFailureMessage());
 		                status=false;
 		            }
 		            else{
@@ -74,8 +74,8 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 		            }            
 
 		            if (status == true) {
-		                //extentTest.log(LogStatus.PASS, consoleMessage);
-		                //logger.info(consoleMessage);
+		                extentTest.log(LogStatus.PASS, event.getEvent());
+		                logger.info(event.getEvent());
 		            }
 		        }
 		        if(!status){
@@ -169,5 +169,52 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 		// TODO Auto-generated method stub
 		return false;
 	}
+	private  int latestCount(String line){
+        int count1;
+        String[] tokens = line.split(":");
+        String trimToken = tokens[3].trim();
+        count1=Integer.parseInt(trimToken);
+        return count1;
+    }
+
+    private int parseeventfile(Events event, int count ){
+
+        try{
+            String[] final_command = CommandLine.command("adb shell cat /sdcard/log.file");
+            ProcessBuilder processBuilder = new ProcessBuilder(final_command);
+            processBuilder.redirectErrorStream(true);
+            Process p = processBuilder.start();
+            p.waitFor();
+            String line = "";
+            BufferedReader buf = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            line = buf.readLine();
+            while(line != null){
+                if(line.contains("state: ERROR"))
+                {
+                    logger.fatal("App crashed");
+                    extentTest.log(LogStatus.FATAL, "App has crashed during playback");
+                    Assert.fail("App is crashed during playback");
+                }
+                if(line.contains(event.getEvent()))
+                {
+                  if (latestCount(line)>count) {
+
+                        logger.info("Event Recieved From SDK AND Sample App :- " + line);
+                        extentTest.log(LogStatus.INFO, "Event received from SDK");
+                        count=latestCount(line);
+                        return count;
+                    }
+                    
+                }
+                line = buf.readLine();
+            }
+        }
+        catch (Exception e)
+        {
+            logger.error("Exception " + e);
+            e.printStackTrace();
+        }
+        return -1;
+    }
 
 }
