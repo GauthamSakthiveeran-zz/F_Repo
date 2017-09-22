@@ -31,8 +31,10 @@ public class OverlayValidator extends PlaybackApps implements Validators {
 		while(System.currentTimeMillis()-startTime <=  1000*seconds) {				
 			if(waitOnElement(element, timeout)) {
 				logger.info("overlay ad seen");
+				extentTest.log(LogStatus.INFO, "overlay ad seen");
 				return true;			
 			} else {
+				extentTest.log(LogStatus.INFO, "ovrelay ad not seen");
 				logger.error("Overlay ad not seen");
 				return false;
 			}
@@ -41,13 +43,16 @@ public class OverlayValidator extends PlaybackApps implements Validators {
 		
 		if(waitOnElement(element,timeout) && seconds == 0) {
 			logger.info("overlay ad seen");
+			extentTest.log(LogStatus.INFO, "overlay ad seen");
 			return true;	
 		} else if(seconds !=0 && waitOnElement(element,2000)) {
 			logger.error("overlay still seen even after "+seconds+" seconds");
+			extentTest.log(LogStatus.INFO, "overlay ad seen even after "+seconds+" seconds");
 			return false;
 		}
 		else {
 			logger.error("overlay ad not seen");
+			extentTest.log(LogStatus.INFO, "overlay ad not seen");
 			return false;
 		}
 	}
