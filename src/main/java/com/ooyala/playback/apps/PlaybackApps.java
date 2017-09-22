@@ -1,9 +1,7 @@
 package com.ooyala.playback.apps;
 
-import io.appium.java_client.TouchAction;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 
 import com.ooyala.facile.page.FacileWebElement;
@@ -12,6 +10,7 @@ import com.ooyala.playback.apps.utils.CommandLineParameters;
 import com.relevantcodes.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 
 
 public abstract class PlaybackApps extends WebPage {
@@ -35,7 +34,7 @@ public abstract class PlaybackApps extends WebPage {
     }
 
 
-    class Element {
+    public class Element {
         private int startXPosition;
         private int endXPosition;
         private int yPosition;
@@ -121,52 +120,6 @@ public abstract class PlaybackApps extends WebPage {
             logger.error("Exception occured while clicking on element " + elementKey);
             return false;
         }
-    }
-
-    public boolean seekVideoBack(String slider, String seekbar) throws InterruptedException {
-        int startx = getSliderPosition(slider);
-        Element seekbarElement = getSeekBarPosition(seekbar);
-        logger.info("Seeking Back------------");
-        tapScreenIfRequired();
-        int seekBackLength = ((startx + 1) - seekbarElement.getStartXPosition()) / 2;
-        TouchAction touch = new TouchAction(driver);
-        touch.longPress((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) - seekBackLength), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
-        return true;
-    }
-
-    public boolean seekVideoForward(String slider, String seekbar) throws InterruptedException {
-        int startx = getSliderPosition(slider);
-        Element seekbarElement =  getSeekBarPosition(seekbar);
-        logger.info("Seeking forward -------------------------  ");
-        tapScreenIfRequired();
-        int seekForwardLength = (seekbarElement.getEndXPosition() - (startx + 1)) - 30;
-        TouchAction touch = new TouchAction(driver);
-        touch.longPress((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) + (seekForwardLength)), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
-        return true;
-    }
-
-    public int getSliderPosition(String slider) throws InterruptedException {
-        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(slider));
-        WebElement slide = this.getWebElementFromFacileWebElement(anElement);
-        int sliderXPosition = slide.getLocation().getX();
-        logger.info("Slider X Position >> : " + sliderXPosition);
-        return sliderXPosition;
-    }
-
-    public Element getSeekBarPosition(String seekbar) throws InterruptedException {
-        waitAndTap();
-        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(seekbar));
-        WebElement SEEK = this.getWebElementFromFacileWebElement(anElement);
-        Point seekbarElementPos = SEEK.getLocation();
-        Element seekbarElement = new Element();
-        seekbarElement.setStartXPosition(seekbarElementPos.getX());
-        seekbarElement.setYposition(seekbarElementPos.getY());
-        seekbarElement.setWidth(SEEK.getSize().getWidth());
-        seekbarElement.setEndXPosition(seekbarElement.getWidth() + seekbarElement.getStartXPosition());
-        logger.info("SeekBarPosition : StartXPosition > " + seekbarElement.getStartXPosition() + ", "
-                + " EndXPosition > " + seekbarElement.getEndXPosition() + ", Width > " + seekbarElement.getWidth() + " Yposition > " + seekbarElement.getYposition());
-        return seekbarElement;
-
     }
 
     public boolean getPlayPause(String playpause){
