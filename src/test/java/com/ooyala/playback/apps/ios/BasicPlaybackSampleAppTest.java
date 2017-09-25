@@ -11,6 +11,7 @@ import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.actions.SeekAction;
+import com.ooyala.playback.apps.validators.AdValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
@@ -24,6 +25,7 @@ public class BasicPlaybackSampleAppTest extends PlaybackAppsTest {
 	private PauseAction pauseAction;
 	private SeekAction seekAction;
 	private CCAction ccAction;
+	private AdValidator adValidator;
 
 	@Test(groups = "basicplaybacksampleapp", dataProvider = "testData")
 	public void testBasicPlayer(String testName, TestParameters test) throws Exception {
@@ -64,35 +66,13 @@ public class BasicPlaybackSampleAppTest extends PlaybackAppsTest {
 		logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
 		boolean result = true;
 		try {
+			
 			result = result && selectVideo.startAction(test.getAsset());
 			result = result && elementValidator.validate("NOTIFICATION_AREA", 1000);
 			result = result && elementValidator.handleLoadingSpinner();
-
-			if (test.getAsset().contains("PRE") || test.getAsset().contains("MULTI")) {
-				result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
-				result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
-			}
-
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
-
-			if (test.getAsset().contains("MID") || test.getAsset().contains("MULTI")) {
-				result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
-				result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
-				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
-				result = result && pauseAction.startAction("PLAY_PAUSE_BUTTON");
-				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
-				result = result && seekAction.setSlider("SLIDER").startAction("SEEK_BAR"); // SeekBack
-				result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
-				result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
-				result = result && pauseAction.startAction("PLAY_PAUSE_BUTTON");
-				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
-			}
-
-			if (test.getAsset().contains("POST")) {
-				result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
-				result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
-			}
+			result = result && adValidator.validate("", 1000);
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 90000);
+			
 		} catch (Exception ex) {
 			logger.error("Here is an exception" + ex);
 			result = false;

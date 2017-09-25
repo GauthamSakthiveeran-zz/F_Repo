@@ -7,9 +7,9 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.PlayAction;
+import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
-import com.ooyala.playback.apps.actions.ios.SeekAction;
-import com.ooyala.playback.apps.validators.AdEventValidator;
+import com.ooyala.playback.apps.validators.AdValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
@@ -18,16 +18,16 @@ import com.ooyala.playback.apps.validators.PauseValidator;
 import com.ooyala.playback.apps.validators.SeekValidator;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class PreMidPostOverlayTests extends PlaybackAppsTest {
+public class FreewheelSampleAppsPreMidPostOverlayTests extends PlaybackAppsTest {
 
-	private static Logger logger = Logger.getLogger(PostRollTests.class);
+	private static Logger logger = Logger.getLogger(FreewheelSampleAppsPreMidPostOverlayTests.class);
 	private SelectVideoAction selectVideo;
 	private ElementValidator elementValidator;
 	private NotificationEventValidator notificationEventValidator;
 	private SeekAction seekAction;
 	private PlayAction playAction;
 	private OverlayValidator overlay;
-	private AdEventValidator adEventValidator;
+	private AdValidator adEventValidator;
 	private SeekValidator seekValidator;
 	private PauseValidator pause;
 
