@@ -38,18 +38,13 @@ public class AnalyticsPrerollAdsClickthroughTests extends PlaybackWebTest {
         boolean result = true;
 
         try {
-            boolean click = testName.contains("Clickthrough");
             driver.get(url.getUrl());
             result = result && playValidator.waitForPage();
             injectScript();
             result = result && playAction.startAction();
             result = result && event.validate("PreRoll_willPlaySingleAd_1", 60000);
 
-            if (result && click) {
-            	playerAPI.pause();
-                s_assert.assertTrue(clickThrough.validate("", 120000), "Clickthrough");
-                playerAPI.play();
-            }
+            s_assert.assertTrue(clickThrough.setUrlObject(url).validate("", 120000), "Clickthrough");
 
             if (event.isAdPluginPresent("pulse"))
                 result = result && event.validate("singleAdPlayed_2", 120000);

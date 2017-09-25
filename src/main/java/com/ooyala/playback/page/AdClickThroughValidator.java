@@ -29,14 +29,16 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 	}
 
 	boolean overlay = false;
+	UrlObject urlObject;
 
 	public AdClickThroughValidator overlay() {
 		overlay = true;
 		return this;
 	}
 
-	public boolean ignoreClickThrough(UrlObject url) {
-		return url.getIgnoreClickThrough();
+	public AdClickThroughValidator setUrlObject(UrlObject urlObject) {
+		this.urlObject = urlObject;
+		return this;
 	}
 
 	private boolean validateOverlayClickThrough() {
@@ -59,8 +61,10 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 
 	public boolean validate(String element, int timeout) throws Exception {
 
-		/*if (getBrowser().equalsIgnoreCase("safari"))
-			return true;*/
+		if(urlObject!=null && urlObject.getIgnoreClickThrough()==true) {
+			extentTest.log(LogStatus.INFO, "Ads clickthrough ignored for this asset.");
+			return true;
+		}
 
 		if (!loadingSpinner()) {
 			extentTest.log(LogStatus.FAIL, "In Loading spinner for a really long time.");

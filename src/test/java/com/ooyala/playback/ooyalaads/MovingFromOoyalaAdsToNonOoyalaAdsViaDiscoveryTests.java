@@ -52,8 +52,7 @@ public class MovingFromOoyalaAdsToNonOoyalaAdsViaDiscoveryTests extends Playback
             result = result && discoveryValidator.selectAssetFormDiscoveryTray("Non Ooyala Ad asset with discovery.mp4");
 
             //Ooyala Ad should not play
-            if (eventValidator.checkIsAdPlaying())
-                result = false;
+            result = result && !eventValidator.checkIsAdPlaying();
 
             result = result && eventValidator.validate("playing_2",10000);
 

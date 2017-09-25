@@ -9,7 +9,6 @@ import com.ooyala.playback.page.BitmovinTechnologyValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.StreamValidator;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
@@ -25,7 +24,6 @@ public class PlatformParameterTest extends PlaybackWebTest {
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private PauseValidator pause;
-	private SeekValidator seek;
 	private StreamValidator streamTypeValidator;
 	private SeekAction seekAction;
 	private BitmovinTechnologyValidator bitmovinvalidator;
@@ -53,14 +51,9 @@ public class PlatformParameterTest extends PlaybackWebTest {
 
 			result = result && pause.validate("paused_1", 60000);
 
-			if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
-				result = result && eventValidator.validate("videoPlayingurl", 40000);
-				result = result
-						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
-			} else {
-				result = false;
-
-			}
+			result = result && eventValidator.validate("videoPlayingurl", 40000);
+			result = result
+					&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 
 			result = result && bitmovinvalidator.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
 

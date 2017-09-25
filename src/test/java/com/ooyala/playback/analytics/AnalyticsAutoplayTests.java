@@ -1,14 +1,19 @@
 package com.ooyala.playback.analytics;
 
+import org.apache.log4j.Logger;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.AutoplayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 /**
  * Created by suraj on 6/27/17.
@@ -22,11 +27,7 @@ public class AnalyticsAutoplayTests extends PlaybackWebTest {
     private SeekValidator seek;
     private EventValidator eventValidator;
     private PauseValidator pause;
-    private EndScreenValidator endScreenValidator;
-    private StartScreenValidator startScreenValidator;
-    private AnalyticsValidator analyticsValidator;
     private VolumeValidator volumeValidator;
-    private FullScreenValidator fullScreenValidator;
     private AutoplayAction autoplayAction;
 
     @Test(groups = "analytics", dataProvider = "testUrls")

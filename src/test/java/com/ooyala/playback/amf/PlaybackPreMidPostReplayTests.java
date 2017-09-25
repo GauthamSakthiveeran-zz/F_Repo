@@ -59,11 +59,8 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 			result = result && seekAction.seek("10");
 
 			result = result && eventValidator.validate("seeked_2", 30000);
-
-			if(eventValidator.checkIsAdPlaying()){
-				result = false;
-				extentTest.log(LogStatus.FAIL, "Ad is played after doing backward seek.");
-			}
+			
+			result = result && !eventValidator.checkIsAdPlaying();
 
 			result = result && seek.validate("seeked_3", 30000);
 

@@ -54,14 +54,13 @@ public class PlaybackMidRollPoddedAdsTests extends PlaybackWebTest {
 							.validateAdStartTime("MidRoll_willPlayAds");
 				} else {
 					result = result && event.validate("willPlayMidrollAd_1", 60000);
-					if(!clickthrough.ignoreClickThrough(url))
-					s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("midroll"), "Midroll Podded");
+					s_assert.assertTrue(clickthrough.setUrlObject(url).validateClickThroughForPoddedAds("midroll"),
+							"Midroll Podded");
 				}
 			} else {
 				result = result && event.validate("willPlayMidrollAd_1", 60000);
-				if (result && !clickthrough.ignoreClickThrough(url)) {
-					s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("midroll"), "Midroll Podded");
-				}
+				s_assert.assertTrue(clickthrough.setUrlObject(url).validateClickThroughForPoddedAds("midroll"),
+						"Midroll Podded");
 			}
 
 			result = result && seek.fromLast().setTime(20).startAction();

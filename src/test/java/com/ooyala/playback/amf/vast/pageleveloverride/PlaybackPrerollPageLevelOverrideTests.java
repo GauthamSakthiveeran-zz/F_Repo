@@ -1,16 +1,16 @@
 package com.ooyala.playback.amf.vast.pageleveloverride;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.VastPageLevelOverridingValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.VastPageLevelOverridingValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 /**
  * Created by Jitendra on 8/23/17.
@@ -24,7 +24,6 @@ public class PlaybackPrerollPageLevelOverrideTests extends PlaybackWebTest{
     private VastPageLevelOverridingValidator pageOverride;
     private PlayAction playAction;
     private EventValidator event;
-    private static Logger logger = Logger.getLogger(PlaybackPrerollPageLevelOverrideTests.class);
 
     @Test(dataProvider = "testUrls",groups = "pageLevelOverriding")
     public void prerollPageLevelOverride(String testName, UrlObject url){

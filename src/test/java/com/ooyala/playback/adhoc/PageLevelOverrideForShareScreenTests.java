@@ -17,63 +17,61 @@ import org.testng.annotations.Test;
  * Created by suraj on 8/8/17.
  */
 public class PageLevelOverrideForShareScreenTests extends PlaybackWebTest {
-    public PageLevelOverrideForShareScreenTests() throws OoyalaException {
-        super();
-    }
-    private static Logger logger = Logger.getLogger(PageLevelOverrideForShareScreenTests.class);
-    private PlayValidator playValidator;
-    private PlayAction playAction;
-    private EventValidator eventValidator;
-    private ShareTabValidator share;
-    private EncodingValidator encodingValidator;
-    private PlayerAPIAction playerAPI;
+	public PageLevelOverrideForShareScreenTests() throws OoyalaException {
+		super();
+	}
 
+	private static Logger logger = Logger.getLogger(PageLevelOverrideForShareScreenTests.class);
+	private PlayValidator playValidator;
+	private PlayAction playAction;
+	private EventValidator eventValidator;
+	private ShareTabValidator share;
+	private EncodingValidator encodingValidator;
+	private PlayerAPIAction playerAPI;
 
-    @Test(dataProvider = "testUrls",groups = "adhoc")
-    public void pageLevelOverrideForShareScreenTest(String testName, UrlObject url){
-        boolean result = true;
-        String paramShareTab = "{\"shareScreen\":{\"shareContent\":[\"social\"],\"socialContent\":[\"twitter\",\"facebook\",\"google+\",\"email\"]}}";
-        String paramEmbedTab = "{\"shareScreen\":{\"shareContent\": [\"embed\"],\"embed\": {\"source\": \"<iframe width='640' height='480' frameborder='0' allowfullscreen src='//player.ooyala.com/static/v4/candidate/latest/skin-plugin/iframe.html?ec=<ASSET_ID>&pbid=<PLAYER_ID>&pcode=<PUBLISHER_ID>'></iframe>\"}}}";
-        try {
-            driver.get(url.getUrl());
-            result = result && playValidator.clearCache();
-            result = result && playValidator.waitForPage();
-            injectScript();
-            result = result && playAction.startAction();
-            result = result && eventValidator.validate("playing_1",10000);
-            playerAPI.pause();
-            result = result && share.clickOnShareButton();
-            result = result && share.validateBothShareTabAndEmbedTab();
-            encodingValidator.getNewUrl(paramShareTab,browser);
-            injectScript();
-            result = result && playValidator.clearCache();
-            result = result && playValidator.waitForPage();
-            injectScript();
-            result = result && playAction.startAction();
-            result = result && eventValidator.validate("playing_1",10000);
-            playerAPI.pause();
-            result = result && share.clickOnShareButton();
-            if(result) {
-                s_assert.assertTrue(share.validateOnlySocialShareTab(), "Social");
-            }
-            encodingValidator.getNewUrl(paramEmbedTab,browser);
-            injectScript();
-            result = result && playValidator.clearCache();
-            result = result && playValidator.waitForPage();
-            injectScript();
-            result = result && playAction.startAction();
-            result = result && eventValidator.validate("playing_1",10000);
-            playerAPI.pause();
-            result = result && share.clickOnShareButton();
-            if (result) {
-                s_assert.assertTrue(share.validateOnlyEmbedOption(), "Embed");
-            }
-        } catch (Exception e) {
-            logger.error(e);
-            extentTest.log(LogStatus.FAIL, e.getMessage());
-            result = false;
-        }
-        s_assert.assertTrue(result, "PageLevel Override For Share Screen Tests :"+testName);
-        s_assert.assertAll();
-    }
+	@Test(dataProvider = "testUrls", groups = "adhoc")
+	public void pageLevelOverrideForShareScreenTest(String testName, UrlObject url) {
+		boolean result = true;
+		String paramShareTab = "{\"shareScreen\":{\"shareContent\":[\"social\"],\"socialContent\":[\"twitter\",\"facebook\",\"google+\",\"email\"]}}";
+		String paramEmbedTab = "{\"shareScreen\":{\"shareContent\": [\"embed\"],\"embed\": {\"source\": \"<iframe width='640' height='480' frameborder='0' allowfullscreen src='//player.ooyala.com/static/v4/candidate/latest/skin-plugin/iframe.html?ec=<ASSET_ID>&pbid=<PLAYER_ID>&pcode=<PUBLISHER_ID>'></iframe>\"}}}";
+		try {
+			driver.get(url.getUrl());
+			result = result && playValidator.clearCache();
+			result = result && playValidator.waitForPage();
+			injectScript();
+			result = result && playAction.startAction();
+			result = result && eventValidator.validate("playing_1", 10000);
+			playerAPI.pause();
+			result = result && share.clickOnShareButton();
+			result = result && share.validateBothShareTabAndEmbedTab();
+			encodingValidator.getNewUrl(paramShareTab, browser);
+			injectScript();
+			result = result && playValidator.clearCache();
+			result = result && playValidator.waitForPage();
+			injectScript();
+			result = result && playAction.startAction();
+			result = result && eventValidator.validate("playing_1", 10000);
+			playerAPI.pause();
+			result = result && share.clickOnShareButton();
+			if (result)
+				s_assert.assertTrue(share.validateOnlySocialShareTab(), "Social");
+			encodingValidator.getNewUrl(paramEmbedTab, browser);
+			injectScript();
+			result = result && playValidator.clearCache();
+			result = result && playValidator.waitForPage();
+			injectScript();
+			result = result && playAction.startAction();
+			result = result && eventValidator.validate("playing_1", 10000);
+			playerAPI.pause();
+			result = result && share.clickOnShareButton();
+			if (result)
+				s_assert.assertTrue(share.validateOnlyEmbedOption(), "Embed");
+		} catch (Exception e) {
+			logger.error(e);
+			extentTest.log(LogStatus.FAIL, e.getMessage());
+			result = false;
+		}
+		s_assert.assertTrue(result, "PageLevel Override For Share Screen Tests :" + testName);
+		s_assert.assertAll();
+	}
 }
