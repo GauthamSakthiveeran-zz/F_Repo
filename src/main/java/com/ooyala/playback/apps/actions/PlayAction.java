@@ -60,12 +60,26 @@ public class PlayAction extends PlaybackApps implements Actions {
 			}
 		} catch (Exception e) {
 			logger.info("Play button not found. Tapping screen and retrying..");
+			tapOnScreen();
 			extentTest.log(LogStatus.INFO, "Play button not found. Tapping screen and retrying..");
 			if (!getPlayPause(element)) {
 				extentTest.log(LogStatus.FAIL, "Unable to get the element");
 				logger.error("Unable to click on play pause.");
 				return false;
 			}
+		}
+		return true;
+	}
+	
+	public boolean createVideo(String element,int timeout) {
+		if(waitOnElement(element, timeout)) {
+			clickOnIndependentElement("CREATE_VIDEO");
+			logger.info("clicked on create video button");
+			extentTest.log(LogStatus.INFO, "clicked on create video button");
+			
+		} else {
+			logger.error("create video button is not visible");
+			extentTest.log(LogStatus.INFO, "create video button is not visible\"");
 		}
 		return true;
 	}
