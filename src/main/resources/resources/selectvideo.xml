@@ -22,6 +22,16 @@
 	<element key="FREEWHEEL_PREMIDPOST_OVERLAY" findBy="name" name="Freewheel PreMidPost Overlay" />
 	<element key="FREEWHEEL_MULTI_MIDROLL" findBy="name" name="Freewheel Multi Midroll" />
 	
-	
+<!-- 	IMASampleApps ios -->
+	<element key="CLIENTSIDE_CONFIGURED_IMA_ADS" findBy="name" name="Client-side configured IMA Ads" />
+	<element key="PRE_MID_AND_POST_SKIPPABLE" findBy="name" name="Pre, Mid and Post Skippable" />
+	<element key="SKIPPABLE" findBy="name" name="Skippable" />
+	<element key="PODDED_PRE_MID_POST" findBy="name" name="Podded Pre-Mid-Post" />
+	<element key="PODDED_POSTROLL" findBy="name" name="Podded Postroll" />
+	<element key="PODDED_MIDROLL" findBy="name" name="Podded Midroll" />
+	<element key="PODDED_PREROLL" findBy="name" name="Podded Preroll" />
+	<element key="AD_RULES_POSTROLL" findBy="name" name="Ad-Rules Postroll" />
+	<element key="AD_RULES_MIDROLL" findBy="name" name="Ad-Rules Midroll" />
+	<element key="AD_RULES_PREROLL" findBy="name" name="Ad-Rules Preroll" />
 	
 </elements>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<app name="IMASampleApp" />
+ 	<test name="AD_RULES_POSTROLL">
+		<description name="Ad rules postroll" />
+	</test>
+	<test name="AD_RULES_MIDROLL">
+		<description name="Ad rules midroll" />
+	</test>
+	<test name="AD_RULES_PREROLL">
+		<description name="Ad rules Preroll" />
+	</test>
+	<test name="CLIENTSIDE_CONFIGURED_IMA_ADS">
+		<description name="Client-side configured IMA Ads" />
+	</test>
+	
+	<test name="PRE_MID_AND_POST_SKIPPABLE">
+		<description name="Pre, Mid and Post Skippable" />
+	</test>
+	
+	<test name="SKIPPABLE">
+		<description name="Skippable" />
+	</test>
+	
+</testdata>
