@@ -1,4 +1,4 @@
-<elements area="selectvideo">
+<elements area="selectvideo_android">
 	<element key="HLS" findBy="xPath" xPath="//android.widget.TextView[@text='HLS Video']"/>
 	<element key="MP4" findBy="xPath" xPath="//android.widget.TextView[@text='MP4 Video']" />
 	<element key="VOD_WITH_CCS" findBy="xPath" xPath="//android.widget.TextView[@text='VOD with CCs']" />
@@ -12,4 +12,6 @@
 	<element key="OOYALA_AD_POST_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Post-roll']" />
 	<!--<element key="VERTICAL" findBy="name" name="Vertical 16:9" />-->
 	<element key="MULTI_AD_COMBINATION" findBy="xPath" xPath="//android.widget.TextView[@text='Multi Ad combination']" />
+	<element key="FREEWHEEL_INTEGRATION" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Integration']" />
+	
 </elements>

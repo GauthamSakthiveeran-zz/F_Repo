@@ -1,4 +1,4 @@
-<elements area="selectvideo">
+<elements area="selectvideo_ios">
 	<element key="HLS" findBy="name" name="HLS Video" />
 	<element key="MP4" findBy="name" name="MP4 Video" />
 	<element key="VOD_WITH_CCS" findBy="name" name="VOD with CCs" />
@@ -12,4 +12,6 @@
 	<element key="OOYALA_AD_POST_ROLL" findBy="name" name="Ooyala Ad Post-roll" />
 	<element key="VERTICAL" findBy="name" name="Vertical 16:9" />
 	<element key="MULTI_AD_COMBINATION" findBy="name" name="Multi Ad combination" />
+	<element key="MULTI_AD_COMBINATION" findBy="name" name="Multi Ad combination" />
+	<element key="FreewheelIntegration" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Integration']"/>
 </elements>
