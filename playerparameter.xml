@@ -1,10 +1,9 @@
-<suite name="Playback Platform Parameter" verbose="1">
-	<listeners>
-		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
-	</listeners>
 
-  
-	<test name=" Core - Player Parameter " parallel="classes"
+<suite name="Playback Web Regression Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    	<test name=" Core - Player Parameter " parallel="classes"
 		thread-count="3">
 		<classes>
 			<parameter name="testData" value="playerParameters/PlayerParameter.xml" />
@@ -17,6 +16,32 @@
 			<class name="com.ooyala.playback.playerParameter.PlayerParametersDiscoveryUpnextDisabledAutoPlay" />  
 		</classes>
 	</test>
-
+    <test name="AutoPlay tests for playlist and discovery" parallel="classes" thread-count="10">
+        <classes>
+            <parameter name="testData" value="playerParameters/PlayerParameter.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />  
+             <class name="com.ooyala.playback.playerParameter.DiscoveryAutoPlayUpNextFalse" /> 
+             <class name="com.ooyala.playback.playerParameter.DiscoveryAutoPlayUpNextTrue" />
+             <class name="com.ooyala.playback.playerParameter.DiscoveryAutoPlayWithInitialTime" />
+             <class name="com.ooyala.playback.playerParameter.DiscoveryPostRollAutoPlayInitialTime" />-->
+             <class name="com.ooyala.playback.playerParameter.DiscoveryPostRollAutoPlayInitialVolume" />
+             <class name="com.ooyala.playback.playerParameter.DiscoveryMidRollInitialVolume" />
+             <class name="com.ooyala.playback.playerParameter.PlaylistAutoPlayInitialVolume" />
+             <class name="com.ooyala.playback.playerParameter.PlaylistAutoPlayWithLoop" />
+             <class name="com.ooyala.playback.playerParameter.PlaylistAutoPlayFalseWithLoop" />
+             <class name="com.ooyala.playback.playerParameter.PlaylistAutoPlayFalseLoopFalse" />
+            
+        </classes>
+    </test>
+        <test name="AutoPlay tests for VAST pre,post and overlay ads" parallel="classes" thread-count="10">
+        <classes>
+            <parameter name="testData" value="playerParameters/PlayerParameter.xml" />
+            <parameter name="jsFile" value="common.js,amf/amf.js"/>
+            <class name="com.ooyala.playback.playerParameter.PlaybackOverlayAdsWithInitialTime" />
+            <class name="com.ooyala.playback.playerParameter.DiscoveryAutoplayPreroll" />
+            <class name="com.ooyala.playback.playerParameter.DiscoveryAutoplayPostroll" />-->
+            <class name="com.ooyala.playback.playerParameter.AutoplayAdFrequencyTest" />
+        </classes>
+    </test>
 </suite>
 

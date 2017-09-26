@@ -67,6 +67,8 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
                 return getPodType(value);
             case "Thumbnailsize":
                 return getThumbnailSize(value);
+            case "Loop":
+            	    return verifyLoop(value);
             case "ThumbnailSpace":
                 return scrollToEitherSide() && getThumbnailSpacing(value);
             case "useFirstVideoFromPlaylist":
@@ -392,8 +394,15 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 
     public boolean isAutoplay(String isAutoPlay) {
         try {
+        	int waitTime =0;
+        	String playerState = (String) ((JavascriptExecutor) driver).executeScript("return pp.getState();");
+        	while(playerState.equalsIgnoreCase("loading") && waitTime <5) {
+        		Thread.sleep(1000);
+        		waitTime++;
+        	}
+        	 boolean isVideoPlaying = (Boolean) ((JavascriptExecutor) driver).executeScript("return pp.isPlaying();");
             if (isAutoPlay.equalsIgnoreCase("true")) {
-                if (!new PlayBackFactory(driver, extentTest).getEventValidator().validate("playing_1", 20000)) {
+                if (!isVideoPlaying) {
                     logger.error("Auto play is not working");
                     extentTest.log(LogStatus.FAIL, "Auto play is not working");
                     return false;
@@ -402,7 +411,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 
             if (isAutoPlay.equalsIgnoreCase("false")) {
                 loadingSpinner();
-                boolean isVideoPlaying = (Boolean) ((JavascriptExecutor) driver).executeScript("return pp.isPlaying();");
+               
                 if (isVideoPlaying) {
                     logger.info("Video is playing even if Auto play is set to false..");
                     extentTest.log(LogStatus.FAIL, "Video is playing even if Auto play is set to false..");
@@ -519,6 +528,35 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 
     public boolean selectAndClickonAssetFromPlaylist(String assetName) {
         return clickOnIndependentElement("SELECT_ASSET", assetName);
+    }
+    
+    public boolean verifyLoop(String expected) {
+    		List<WebElement> videoList = getWebElementsList("PLAYLIST_VIDEOS");
+    		String emebedCodeOfLastAsset = videoList.get(videoList.size()-1).getAttribute("id");
+        logger.info("embed code of last asset is "+emebedCodeOfLastAsset);
+        try { 
+        		while(true) {
+        			Thread.sleep(1000);
+        			if (driver.findElement(By.id(emebedCodeOfLastAsset)).isDisplayed()) {
+        				clickOnIndependentElement(By.id(emebedCodeOfLastAsset));
+        				logger.info("clicked on last video in playlist");
+        				break;
+        			} else {
+        				getWebElement("NEXT_ARROW").click();   			    		
+        			}	 
+        		}
+        		PlayBackFactory factory = new PlayBackFactory(driver, extentTest);
+            //wait for the video to load
+        		Thread.sleep(5000);
+        		factory.getSeekAction().fromLast().setTime(5).startAction();
+        		if (factory.getEventValidator().validate("played_1", 20000)) {
+        			Boolean actual = !factory.getPlayerSkinValidator().replayButtonVisibleOnEndScreen();
+        			return  expected.equalsIgnoreCase(actual.toString());
+        		}
+        } catch (Exception e) {
+        		e.printStackTrace();
+        }     
+        return false; 
     }
 }
 

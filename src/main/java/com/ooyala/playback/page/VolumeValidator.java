@@ -2,6 +2,7 @@ package com.ooyala.playback.page;
 
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
+import org.mortbay.log.Log;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -109,6 +110,18 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			extentTest.log(LogStatus.FAIL,"initial time not matching for " + asset);
 		}
 		return isInitialTimeMatches;
+	}
+	
+	public boolean validateInitialVolume(double volume) throws Exception {
+		if(volume == getVolume()) {
+			logger.info("initial volume is  set correctly in player");
+			extentTest.log(LogStatus.PASS, "initial volume is set correctly in player");
+			return true;
+			
+		}
+		logger.info("initial volume is not set as per the player params");
+		extentTest.log(LogStatus.INFO, "initial volume is not set as per playerparams");
+		return false;
 	}
 
 	protected double getVolume() throws Exception {

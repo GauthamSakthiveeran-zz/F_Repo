@@ -439,6 +439,10 @@ public abstract class PlayBackPage extends WebPage {
 				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
 	}
 
+	public String getPlayerState() {
+		return driver.executeScript("return pp.getState()").toString();
+	}
+	
 	public double getDuration() {
 		return Double.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getDuration();").toString());
 	}
@@ -562,6 +566,15 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	public boolean playVideoForSometime(double secs) {
+		if(driver.getCurrentUrl().contains("adobe_html5")) {
+			try {
+				Thread.sleep((long) (secs*1000));
+				return true;
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
 		int count = 0;
 		double playTime = Double
 				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());

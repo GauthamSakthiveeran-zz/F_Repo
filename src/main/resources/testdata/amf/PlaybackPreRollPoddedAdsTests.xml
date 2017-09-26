@@ -102,7 +102,7 @@
             <embed_code name="B1ZmgzMTE6qeXMfeqJTw3IoqZXvKGrDw"/>
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
             <plugins name="MAIN"/>
-            <adPlugins name="VAST"/>
+            <adPlugins name="VAST" clickthrough="false" />
             <additionalPlugins name=""/>
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter>
