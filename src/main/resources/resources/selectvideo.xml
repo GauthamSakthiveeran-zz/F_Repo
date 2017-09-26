@@ -13,7 +13,7 @@
 	<element key="VERTICAL" findBy="name" name="Vertical 16:9" />
 	<element key="MULTI_AD_COMBINATION" findBy="name" name="Multi Ad combination" />
 	
-<!-- 	FreewheelSampleApp ios -->
+<!-- 	FreewheelSampleApp  -->
 	<element key="FREEWHEEL_PREROLL" findBy="name" name="Freewheel Preroll" />
 	<element key="FREEWHEEL_MIDROLL" findBy="name" name="Freewheel Midroll" />
 	<element key="FREEWHEEL_POSTROLL" findBy="name" name="Freewheel Postroll" />
@@ -21,7 +21,9 @@
 	<element key="FREEWHEEL_OVERLAY" findBy="name" name="Freewheel Overlay" />
 	<element key="FREEWHEEL_PREMIDPOST_OVERLAY" findBy="name" name="Freewheel PreMidPost Overlay" />
 	<element key="FREEWHEEL_MULTI_MIDROLL" findBy="name" name="Freewheel Multi Midroll" />
-	
+	<element key="FREEWHEEL_APPLICATION_CONFIGURED" findBy="name" name="Freewheel Application-Configured" />
+	<element key="FREEWHEEL_CUEPOINTS_AND_ADCONTROLS_OPTIONS" findBy="name" name="CuePoints and AdsControl Options" />
+ 	
 <!-- 	IMASampleApps ios -->
 	<element key="CLIENTSIDE_CONFIGURED_IMA_ADS" findBy="name" name="Client-side configured IMA Ads" />
 	<element key="PRE_MID_AND_POST_SKIPPABLE" findBy="name" name="Pre, Mid and Post Skippable" />
