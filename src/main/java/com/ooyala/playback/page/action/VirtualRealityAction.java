@@ -102,7 +102,7 @@ public class VirtualRealityAction extends PlayBackPage implements PlayerAction {
 
             Actions actions = new Actions(driver);
             WebElement screen = getWebElement("STATE_SCREEN_SELECTABLE");
-            actions.moveToElement(screen);
+            actions.moveToElement(screen).perform();
             actions.sendKeys(keyButton);
             actions.build().perform();
 

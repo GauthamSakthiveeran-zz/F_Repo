@@ -264,10 +264,9 @@ public class BasicVr360Tests extends PlaybackWebTest {
             result = result && virtualRealityAction.startActionByMouse();
             result = result && virtualRealityAction.validateElement("paused_2", 3000);
 
-            //defect - https://jira.corp.ooyala.com/browse/PLAYER-1762
             //mouse click on full screen - play action
-//            result = result && virtualRealityAction.startActionByMouse();
-//            result = result && eventValidator.validate("play_3", 3000);
+            result = result && virtualRealityAction.startActionByMouse();
+            result = result && virtualRealityAction.validateElement("play_3", 3000);
 
         } catch (Exception e) {
             logger.error("Exception while checking basic vr 360 playback in full screen " + e.getMessage());
