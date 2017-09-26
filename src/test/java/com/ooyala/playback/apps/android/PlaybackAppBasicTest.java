@@ -9,8 +9,8 @@ import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
+import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
-import com.ooyala.playback.apps.actions.android.SeekAction;
 import com.ooyala.playback.apps.ios.PlaybackAppsBasicTest;
 import com.ooyala.playback.apps.validators.ElementValidator;
 

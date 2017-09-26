@@ -13,7 +13,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<testng.version>6.9.10</testng.version>
-		<selenium.version>3.0.1</selenium.version>
 		<surefire.version>2.19.1</surefire.version>
 		<maven.compiler.version>3.6.1</maven.compiler.version>
 		<java-client>5.0.3</java-client>
@@ -26,7 +25,7 @@
 		<dependency>
 			<groupId>com.ooyala.facile</groupId>
 			<artifactId>facile</artifactId>
-			<version>2.5.6-SNAPSHOT</version>
+			<version>2.5.7-SNAPSHOT</version>
 		</dependency>
 		
 		<dependency>
@@ -34,30 +33,20 @@
 			<artifactId>extentreports</artifactId>
 			<version>2.41.1</version>
 		</dependency>
-		
+		<dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>22.0</version>
+        </dependency>
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>${testng.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>${selenium.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-api</artifactId>
-			<version>${selenium.version}</version>
-			<scope>compile</scope>
-		</dependency>
+		
 
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-remote-driver</artifactId>
-			<version>${selenium.version}</version>
-		</dependency>
+		
 		<dependency>
 			<groupId>io.appium</groupId>
 			<artifactId>java-client</artifactId>

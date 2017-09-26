@@ -14,7 +14,7 @@ import com.ooyala.playback.apps.actions.QAModeSwitchAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.actions.SwipeUpDownAppAssetsAction;
 import com.ooyala.playback.apps.actions.SeekAction;
-import com.ooyala.playback.apps.validators.AdEventValidator;
+import com.ooyala.playback.apps.validators.AdValidator;
 import com.ooyala.playback.apps.validators.DiscoveryValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.FileEventValidator;
@@ -22,8 +22,9 @@ import com.ooyala.playback.apps.validators.FullScreenOrientationValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.ooyala.playback.apps.validators.OverlayValidator;
 import com.ooyala.playback.apps.validators.PauseValidator;
-import com.ooyala.playback.apps.validators.SeekValidator;
 import com.ooyala.playback.apps.validators.ReplayValidator;
+import com.ooyala.playback.apps.validators.SeekValidator;
+
 import com.ooyala.playback.apps.validators.UpNextValidator;
 import com.relevantcodes.extentreports.ExtentTest;
 
@@ -42,7 +43,7 @@ public class PlayBackFactory {
 	private LaunchAction launchAction;
 	private CCAction ccAction;
 	private AllowAction allowAction;
-	private AdEventValidator adEventValidator;
+	private AdValidator adEventValidator;
 	private SeekValidator seekValidator;
 	private ClickAction clickAction;
 	private PauseValidator pauseValidator;
@@ -87,9 +88,9 @@ public class PlayBackFactory {
 		return seekValidator;
 	}
 
-	public AdEventValidator getAdEventValidator() {
+	public AdValidator getAdEventValidator() {
 		if (adEventValidator == null) {
-			adEventValidator = new AdEventValidator(driver);
+			adEventValidator = new AdValidator(driver);
 			adEventValidator.setExtentTest(extentTest);
 		}
 		return adEventValidator;
