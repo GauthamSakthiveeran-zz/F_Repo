@@ -22,6 +22,7 @@ import com.ooyala.playback.apps.validators.FullScreenOrientationValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.ooyala.playback.apps.validators.OverlayValidator;
 import com.ooyala.playback.apps.validators.PauseValidator;
+import com.ooyala.playback.apps.validators.PoddedAdValidator;
 import com.ooyala.playback.apps.validators.SeekValidator;
 import com.ooyala.playback.apps.validators.UpNextValidator;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -56,10 +57,19 @@ public class PlayBackFactory {
 	private UpNextValidator upNextValidator;
 	private FullScreenAction fullScreenAction;
 	private FullScreenOrientationValidator fullScreenOrientationValidator;
+	private PoddedAdValidator poddedAdValidator;
 
 	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
 		this.extentTest = extentTest;
+	}
+	
+	public PoddedAdValidator getPoddedAdValidator() {
+		if(poddedAdValidator == null) {
+			poddedAdValidator = new PoddedAdValidator(driver);
+			poddedAdValidator.setExtentTest(extentTest);
+		}
+		return poddedAdValidator;
 	}
 
 	public PauseValidator getPauseValidator() {
