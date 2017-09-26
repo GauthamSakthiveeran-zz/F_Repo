@@ -197,20 +197,6 @@ public abstract class PlaybackApps extends WebPage {
         // Thread.sleep(2000);
     }
 
-    public boolean isAllowed(String element) {
-        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(element));
-        WebElement allowButton = this.getWebElementFromFacileWebElement(anElement);
-        if(allowButton.isDisplayed()) {
-            logger.info("Pop-up box is displaying need to give permission");
-        }
-        else {
-            logger.info("PermissionAlready Given..");
-            return true;
-        }
-        return true;
-    }
-
-
     public boolean seekVideo(String element) {
         FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(element));
         WebElement seekbar = this.getWebElementFromFacileWebElement(anElement);
@@ -282,5 +268,27 @@ public abstract class PlaybackApps extends WebPage {
         }
         return "";
     }
+    
+	public boolean letVideoPlayForSec(int sec) throws InterruptedException {
+		int count = 0;
+		while (count < sec) {
+			if (!waitForSec(1))
+				return false;
+			count++;
+		}
+
+		return true;
+	}
+
+	private boolean waitForSec(int sec) {
+		try {
+			Thread.sleep(sec * 1000);
+			logger.info("Waiting for " + sec + " seconds");
+		} catch (InterruptedException e) {
+			logger.error(e);
+			return false;
+		}
+		return true;
+	}
 
 }

@@ -1,11 +1,11 @@
 package com.ooyala.playback.apps.actions;
 
-import com.ooyala.playback.apps.PlaybackApps;
-import com.relevantcodes.extentreports.LogStatus;
-
-import io.appium.java_client.AppiumDriver;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
+
+import com.ooyala.playback.apps.PlaybackApps;
+
+import io.appium.java_client.AppiumDriver;
 
 public class LaunchAction extends PlaybackApps implements Actions {
 
@@ -22,10 +22,10 @@ public class LaunchAction extends PlaybackApps implements Actions {
         return false;
     }
 
-    public boolean LaunchApp() throws Exception {
+    public boolean launchApp() throws Exception {
         driver.launchApp();
         logger.info("Application has been launched successfully");
-        extentTest.log(LogStatus.INFO, "Application has been launched successfully");
+//        extentTest.log(LogStatus.INFO, "Application has been launched successfully");
         return true;
     }
 
