@@ -1,0 +1,15 @@
+<elements area="selectvideo">
+	<element key="HLS" findBy="xPath" xPath="//android.widget.TextView[@text='HLS Video']"/>
+	<element key="MP4" findBy="xPath" xPath="//android.widget.TextView[@text='MP4 Video']" />
+	<element key="VOD_WITH_CCS" findBy="xPath" xPath="//android.widget.TextView[@text='VOD with CCs']" />
+	<element key="ASPECT_RATIO" findBy="xPath" name="//android.widget.TextView[@text='4:3 Aspect Ratio']" />
+	<element key="VAST_AD_PRE_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST Ad Pre-roll']" />
+	<element key="VAST_AD_MID_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST Ad Mid-roll']" />
+	<element key="VAST_AD_POST_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST Ad Post-roll']" />
+	<element key="VAST_AD_WRAPPER" findBy="xPath" xPath="//android.widget.TextView[@text='VAST Ad Wrapper']" />
+	<element key="OOYALA_AD_PRE_ROLL" findBy="xPath" xPath="Ooyala Ad Pre-roll" />
+	<element key="OOYALA_AD_MID_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Mid-roll']" />
+	<element key="OOYALA_AD_POST_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Post-roll']" />
+	<!--<element key="VERTICAL" findBy="name" name="Vertical 16:9" />-->
+	<element key="MULTI_AD_COMBINATION" findBy="xPath" xPath="//android.widget.TextView[@text='Multi Ad combination']" />
+</elements>

@@ -14,7 +14,7 @@ public class SelectVideoAction extends PlaybackApps implements Actions {
 	public SelectVideoAction(AppiumDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
-        addElementToPageElements("selectvideo");
+        addElementToPageElements("selectvideo_"+getPlatform());
     }
 
 	@Override
