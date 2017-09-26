@@ -4,17 +4,17 @@
 	</listeners>
 	<test name="IMA Podded Tests" parallel="false" thread-count="1">
 		<classes>
-			<parameter name="testData" value="ios/IMASampleAppsPoddedTests.xml" />
+			<parameter name="testData" value="android/IMASampleAppsPoddedTests.xml" />
 			<class
-				name="com.ooyala.playback.apps.ios.imasampleapp.IMASampleAppsPoddedTests">
+				name="com.ooyala.playback.apps.android.imasampleapp.IMASampleAppsPoddedTests">
 			</class>
 		</classes>
 	</test>
 	<test name="IMA Tests" parallel="false" thread-count="1">
 		<classes>
-			<parameter name="testData" value="ios/IMASampleAppTests.xml" />
+			<parameter name="testData" value="android/IMASampleAppTests.xml" />
 			<class
-				name="com.ooyala.playback.apps.ios.imasampleapp.IMASampleAppTests">
+				name="com.ooyala.playback.apps.android.imasampleapp.IMASampleAppTests">
 			</class>
 		</classes>
 	</test>

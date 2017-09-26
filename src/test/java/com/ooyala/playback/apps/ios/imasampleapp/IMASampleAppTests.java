@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
-import com.ooyala.playback.apps.ios.freewheelsampleapp.FreewheelSampleAppTests;
 import com.ooyala.playback.apps.validators.AdValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
@@ -16,7 +15,7 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class IMASampleAppTests extends PlaybackAppsTest {
 
-	private static Logger logger = Logger.getLogger(FreewheelSampleAppTests.class);
+	private static Logger logger = Logger.getLogger(IMASampleAppTests.class);
 	private SelectVideoAction selectVideo;
 	private ElementValidator elementValidator;
 	private NotificationEventValidator notificationEventValidator;

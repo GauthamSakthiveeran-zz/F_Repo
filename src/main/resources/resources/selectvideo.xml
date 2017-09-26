@@ -21,7 +21,8 @@
 	<element key="FREEWHEEL_OVERLAY" findBy="name" name="Freewheel Overlay" />
 	<element key="FREEWHEEL_PREMIDPOST_OVERLAY" findBy="name" name="Freewheel PreMidPost Overlay" />
 	<element key="FREEWHEEL_MULTI_MIDROLL" findBy="name" name="Freewheel Multi Midroll" />
-	<element key="FREEWHEEL_APPLICATION_CONFIGURED" findBy="name" name="Freewheel Application-Configured" />
+<!-- 	only android -->
+	<element key="FREEWHEEL_APPLICATION_CONFIGURED" findBy="name" name="Freewheel Application-Configured" /> 
 	<element key="FREEWHEEL_CUEPOINTS_AND_ADCONTROLS_OPTIONS" findBy="name" name="CuePoints and AdsControl Options" />
  	
 <!-- 	IMASampleApps ios -->
@@ -35,5 +36,17 @@
 	<element key="AD_RULES_POSTROLL" findBy="name" name="Ad-Rules Postroll" />
 	<element key="AD_RULES_MIDROLL" findBy="name" name="Ad-Rules Midroll" />
 	<element key="AD_RULES_PREROLL" findBy="name" name="Ad-Rules Preroll" />
+	
+<!-- 	IMASampleApp android -->
+	<element key="IMA_AD_RULES_PREROLL" findBy="name" name="IMA Ad-Rules Preroll" />
+	<element key="IMA_AD_RULES_MIDROLL" findBy="name" name="IMA Ad-Rules Midroll" />
+	<element key="IMA_AD_RULES_POSTROLL" findBy="name" name="IMA Ad-Rules Postroll" />
+	<element key="IMA_PODDED_PREROLL" findBy="name" name="IMA Podded Preroll" />
+	<element key="IMA_PODDED_MIDROLL" findBy="name" name="IMA Podded Midroll" />
+	<element key="IMA_PODDED_POSTROLL" findBy="name" name="IMA Podded Postroll" />
+	<element key="IMA_PODDED_PREMIDPOST" findBy="name" name="IMA Podded Pre-Mid-Post" />
+	<element key="IMA_SKIPPABLE" findBy="name" name="IMA Skippable" />
+	<element key="IMA_PRE_MID_AND_POST_SKIPPABLE" findBy="name" name="IMA Pre, Mid and Post Skippable" />
+	<element key="IMA_APPLICATION_CONFIGURED" findBy="name" name="IMA Application-Configured" />
 	
 </elements>
