@@ -76,12 +76,17 @@ public class PlayAction extends PlaybackApps implements Actions {
 			clickOnIndependentElement("CREATE_VIDEO");
 			logger.info("clicked on create video button");
 			extentTest.log(LogStatus.INFO, "clicked on create video button");
+			if(waitOnElement("PLAY_PAUSE_ANDROID", 150000)) {
+				logger.info("play button is visible..");
+				extentTest.log(LogStatus.INFO, "play button is visible");
+				return true;
+			}
 			
 		} else {
 			logger.error("create video button is not visible");
-			extentTest.log(LogStatus.INFO, "create video button is not visible\"");
+			extentTest.log(LogStatus.INFO, "create video button is not visible");
 		}
-		return true;
+		return false;
 	}
 
 }
