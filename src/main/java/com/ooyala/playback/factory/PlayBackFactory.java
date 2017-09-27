@@ -23,7 +23,9 @@ import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.ooyala.playback.apps.validators.OverlayValidator;
 import com.ooyala.playback.apps.validators.PauseValidator;
 import com.ooyala.playback.apps.validators.PoddedAdValidator;
+import com.ooyala.playback.apps.validators.ReplayValidator;
 import com.ooyala.playback.apps.validators.SeekValidator;
+
 import com.ooyala.playback.apps.validators.UpNextValidator;
 import com.relevantcodes.extentreports.ExtentTest;
 
@@ -46,7 +48,7 @@ public class PlayBackFactory {
 	private SeekValidator seekValidator;
 	private ClickAction clickAction;
 	private PauseValidator pauseValidator;
-
+	private ReplayValidator replayValidator;
 	private ExtentTest extentTest;
 
 	private OverlayValidator overlayValidator;
@@ -63,9 +65,9 @@ public class PlayBackFactory {
 		this.driver = driver;
 		this.extentTest = extentTest;
 	}
-	
+
 	public PoddedAdValidator getPoddedAdValidator() {
-		if(poddedAdValidator == null) {
+		if (poddedAdValidator == null) {
 			poddedAdValidator = new PoddedAdValidator(driver);
 			poddedAdValidator.setExtentTest(extentTest);
 		}
@@ -188,6 +190,7 @@ public class PlayBackFactory {
 
 		if (overlayValidator == null) {
 			overlayValidator = new OverlayValidator(driver);
+			overlayValidator.setExtentTest(extentTest);
 		}
 		return overlayValidator;
 	}
@@ -196,57 +199,73 @@ public class PlayBackFactory {
 
 		if (fileEventValidator == null) {
 			fileEventValidator = new FileEventValidator(driver);
+			fileEventValidator.setExtentTest(extentTest);
 		}
 		return fileEventValidator;
 	}
-	
+
 	public ClickDiscoveryButtonAction getClickDiscoveryButtonAction() {
 
-	    if (clickDiscioveryAction == null) {
-	        clickDiscioveryAction = new ClickDiscoveryButtonAction(driver);
-	    }
-	    return clickDiscioveryAction;
-	  }
+		if (clickDiscioveryAction == null) {
+			clickDiscioveryAction = new ClickDiscoveryButtonAction(driver);
+			clickDiscioveryAction.setExtentTest(extentTest);
+		}
+		return clickDiscioveryAction;
+	}
 
-	  public SwipeUpDownAppAssetsAction getSwipeUpDownAppAssetsAction() {
+	public SwipeUpDownAppAssetsAction getSwipeUpDownAppAssetsAction() {
 
-	          if (swipeAppAssetAction == null) {
-	              swipeAppAssetAction = new SwipeUpDownAppAssetsAction(driver);
-	          }
-	          return swipeAppAssetAction;
-	      }
-	  public DiscoveryValidator getDiscoveryValidator() {
+		if (swipeAppAssetAction == null) {
+			swipeAppAssetAction = new SwipeUpDownAppAssetsAction(driver);
+			swipeAppAssetAction.setExtentTest(extentTest);
+		}
+		return swipeAppAssetAction;
+	}
 
-	        if (discoveryValidator == null) {
-	            discoveryValidator = new DiscoveryValidator(driver);
-	        }
-	        return discoveryValidator;
-	      }
+	public DiscoveryValidator getDiscoveryValidator() {
 
-	      public UpNextValidator getUpNextValidator() {
+		if (discoveryValidator == null) {
+			discoveryValidator = new DiscoveryValidator(driver);
+			discoveryValidator.setExtentTest(extentTest);
+		}
+		return discoveryValidator;
+	}
 
-	              if (upNextValidator == null) {
-	                  upNextValidator = new UpNextValidator(driver);
-	              }
-	              return upNextValidator;
-	          } 
-	      
-	       public FullScreenAction getFullScreenAction() {
+	public UpNextValidator getUpNextValidator() {
 
-               if (fullScreenAction == null) {
-                   fullScreenAction = new FullScreenAction(driver);
-               }
-               return fullScreenAction;
-           } 
-	       
-	          public FullScreenOrientationValidator getFullScreenOrientationValidator() {
+		if (upNextValidator == null) {
+			upNextValidator = new UpNextValidator(driver);
+			upNextValidator.setExtentTest(extentTest);
+		}
+		return upNextValidator;
+	}
 
-                  if (fullScreenOrientationValidator == null) {
-                      fullScreenOrientationValidator = new FullScreenOrientationValidator(driver);
-                  }
-                  return fullScreenOrientationValidator;
-              } 
-	  
+	public FullScreenAction getFullScreenAction() {
+
+		if (fullScreenAction == null) {
+			fullScreenAction = new FullScreenAction(driver);
+			fullScreenAction.setExtentTest(extentTest);
+		}
+		return fullScreenAction;
+	}
+
+	public FullScreenOrientationValidator getFullScreenOrientationValidator() {
+
+		if (fullScreenOrientationValidator == null) {
+			fullScreenOrientationValidator = new FullScreenOrientationValidator(driver);
+			fullScreenOrientationValidator.setExtentTest(extentTest);
+		}
+		return fullScreenOrientationValidator;
+	}
+
+	public ReplayValidator getReplayValidator() {
+		if (replayValidator == null) {
+			replayValidator = new ReplayValidator(driver);
+			replayValidator.setExtentTest(extentTest);
+		}
+		return replayValidator;
+
+	}
 
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> validator) throws Exception {

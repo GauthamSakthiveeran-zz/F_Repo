@@ -1,38 +1,13 @@
 <suite name="BasicPlayback SampleAPPTests Regression Suite" verbose="1">
-<!--     <listeners>
+    <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
-    </listeners> -->
-<<<<<<< HEAD
-<!-- 	<test name="iOS BasicPlayback 1" parallel="false"
-		thread-count="1">
-		<classes>
-			<parameter name="testData" value="BasicPlaybackTests.xml" />
-			<class name="com.ooyala.playback.apps.ios.BasicPlaybackSampleAppTest">
-				<methods>
-					<include name="testBasicPlayer"/>
-				</methods>
-			</class>
-		</classes>
-	</test> -->
-		<test name="iOS BasicPlayback 2" parallel="false"
-		thread-count="1">
-		<classes>
-			<parameter name="testData" value="BasicPlaybackTestData2.xml" />
-			<class name="com.ooyala.playback.apps.ios.BasicPlaybackSampleAppTest">
-				<methods>
-					<include name="testAdPlayer"/>
-				</methods>
-			</class>
-		</classes>
-	</test>
-=======
+    </listeners>
     <test name="BasicPlayback Regression" parallel="false" thread-count="1">
         <classes>
             <parameter name="testData" value="BasicPlaybackTests.xml" />
-            <class name="com.ooyala.playback.apps.PlaybackAppBasicTestAndroid" />
+            <class name="com.ooyala.playback.apps.android.PlaybackAppBasicTest" />
         </classes>
     </test>
->>>>>>> 2c04fcf78c4573675370db8e25e10f13475c54f0
 
 </suite>
 
