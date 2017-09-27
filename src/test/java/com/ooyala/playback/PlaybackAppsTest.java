@@ -17,6 +17,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -104,17 +105,7 @@ public class PlaybackAppsTest extends FacileTest {
 			
 			extentTest = ExtentManager.startTest(testData[0].toString());
 			pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
-			
-			try {
-				if( (CommandLineParameters.PLATFORM).equalsIgnoreCase("android") && !((AndroidDriver)driver).currentActivity().contains("Player"))
-				pageFactory.getLaunchAction().launchApp();
-				else if((CommandLineParameters.PLATFORM).equalsIgnoreCase("ios"))	
-				pageFactory.getLaunchAction().launchApp();	
-			} catch (Exception e) {
-				e.printStackTrace();
-				pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
-				pageFactory.getLaunchAction().launchApp();
-			} 
+
 			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
 				Assert.assertTrue(
 						new PlayBackFactory((AppiumDriver) driver, extentTest).getQAModeSwitchAction().startAction("QA_MODE_SWITCH"),
@@ -149,6 +140,13 @@ public class PlaybackAppsTest extends FacileTest {
 	
 	@AfterMethod(alwaysRun = true)
 	protected void afterMethod(ITestResult result) throws Exception {
+		try {
+			pageFactory.getLaunchAction().launchApp();	
+		} catch (Exception e) {
+			e.printStackTrace();
+			pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
+			pageFactory.getLaunchAction().launchApp();
+		} 
 		try {
 			if (result.getStatus() == ITestResult.FAILURE) {
 
@@ -224,6 +222,22 @@ public class PlaybackAppsTest extends FacileTest {
 			testsGenerated.put(simpleName + "-" + data.getName(), testParam);
 		}
 		return testsGenerated;
+	}
+	
+	@AfterClass(alwaysRun = true)
+	public void afterClass()
+	{
+		try
+		{
+			((AndroidDriver)driver).closeApp();
+			logger.info("Closing App");
+			extentTest.log(LogStatus.PASS, "Closed App");
+		}
+		catch(Exception e)
+		{
+			logger.info("Error While Closing App");
+			extentTest.log(LogStatus.FAIL, "Exception Closed App");
+		}
 	}
 
 }
