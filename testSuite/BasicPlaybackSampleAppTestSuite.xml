@@ -30,6 +30,5 @@
 			<class name="com.ooyala.playback.apps.PlaybackAppBasicTestAndroid" />
 		</classes>
 	</test>
-
 </suite>
 
