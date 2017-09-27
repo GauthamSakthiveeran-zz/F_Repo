@@ -1,5 +1,7 @@
 package com.ooyala.playback.apps;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -123,29 +125,28 @@ public abstract class PlaybackApps extends WebPage {
     }
 
     public boolean getPlayPause(String playpause){
-        int[] play = new int[2];
-        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(playpause));
-        WebElement button = this.getWebElementFromFacileWebElement(anElement);
-        play[0] = button.getLocation().getX();
-        play[1] = button.getLocation().getY();
-        playCoordinates[0] = play[0] + button.getSize().getWidth() / 2;
-        playCoordinates[1] = play[1] + button.getSize().getHeight() / 2;
-        //System.out.println("Play button x cordinate"+playCoordinates[0]);
-        //System.out.println("Play button x cordinate"+playCoordinates[1]);
         TouchAction touch = new TouchAction(driver);
-        touch.tap(playCoordinates[0],  playCoordinates[1]).release().perform();
+        List<WebElement> e = getWebElementsList(playpause);
+        WebElement button = e.get(0);
+        playCoordinates[0] = button.getLocation().getX();
+        playCoordinates[1] = button.getLocation().getY();
+       // playCoordinates[0] = play[0] + button.getSize().getWidth() / 2;
+        //playCoordinates[1] = play[1] + button.getSize().getHeight() / 2;
+        touch.tap(playCoordinates[0],playCoordinates[1]).perform();
         return true;
     }
 
-    public boolean getPause() {
+    public boolean getPause(String playpause) throws Exception {
+    	    int[] play = new int[2];
         TouchAction touch = new TouchAction(driver);
-        touch.tap(playCoordinates[0],  playCoordinates[1]).release().perform();
+        //using the play button coordinates to pause the video
+        touch.tap(playCoordinates[0],playCoordinates[1]).perform();
         return true;
     }
 
     public void tapOnScreen() throws InterruptedException {
         TouchAction touch = new TouchAction(driver);
-        touch.tap(playCoordinates[0],  playCoordinates[1]).release().perform();
+        touch.tap(playCoordinates[0],  playCoordinates[1]).perform();
         logger.info("We have tapped successfully");
         // Thread.sleep(2000);
     }

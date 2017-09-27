@@ -32,12 +32,13 @@ public class AllowAction extends PlaybackApps implements Actions {
         if(allowButton.isDisplayed()) {
             logger.info("Pop-up box is displaying need to give permission");
             extentTest.log(LogStatus.INFO, "Pop-up box is displaying need to give permission");
+            return false;
         }
         else {
             logger.info("PermissionAlready Given..");
             extentTest.log(LogStatus.INFO, "PermissionAlready Given..");
             return true;
         }
-        return true;
+        
     }
 }

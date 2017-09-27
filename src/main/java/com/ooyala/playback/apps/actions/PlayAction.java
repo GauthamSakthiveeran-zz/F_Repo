@@ -60,6 +60,7 @@ public class PlayAction extends PlaybackApps implements Actions {
 			}
 		} catch (Exception e) {
 			logger.info("Play button not found. Tapping screen and retrying..");
+			tapOnScreen();
 			extentTest.log(LogStatus.INFO, "Play button not found. Tapping screen and retrying..");
 			if (!getPlayPause(element)) {
 				extentTest.log(LogStatus.FAIL, "Unable to get the element");
@@ -68,6 +69,24 @@ public class PlayAction extends PlaybackApps implements Actions {
 			}
 		}
 		return true;
+	}
+	
+	public boolean createVideo(String element,int timeout) {
+		if(waitOnElement(element, timeout)) {
+			clickOnIndependentElement("CREATE_VIDEO");
+			logger.info("clicked on create video button");
+			extentTest.log(LogStatus.INFO, "clicked on create video button");
+			if(waitOnElement("PLAY_PAUSE_ANDROID", 150000)) {
+				logger.info("play button is visible..");
+				extentTest.log(LogStatus.INFO, "play button is visible");
+				return true;
+			}
+			
+		} else {
+			logger.error("create video button is not visible");
+			extentTest.log(LogStatus.INFO, "create video button is not visible");
+		}
+		return false;
 	}
 
 }
