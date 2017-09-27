@@ -229,7 +229,7 @@ public class PlaybackAppsTest extends FacileTest {
 	{
 		try
 		{
-			driver.quit();
+			((AndroidDriver)driver).closeApp();
 			logger.info("Closing App");
 			extentTest.log(LogStatus.PASS, "Closed App");
 		}
