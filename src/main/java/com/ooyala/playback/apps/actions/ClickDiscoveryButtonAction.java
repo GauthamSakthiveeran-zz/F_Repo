@@ -1,5 +1,7 @@
 package com.ooyala.playback.apps.actions;
 
+import java.time.Duration;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
@@ -11,7 +13,9 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
 
 /**
  * Created by Gautham
@@ -19,6 +23,7 @@ import io.appium.java_client.android.AndroidDriver;
 public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions {
 
     private Logger logger = Logger.getLogger(ClickDiscoveryButtonAction.class);
+    public final static int[] p = new int[2];
 
     public ClickDiscoveryButtonAction(AppiumDriver driver) {
         super(driver);
@@ -40,7 +45,7 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
 
                 result = result && tapAndwaitForElementAndClick("MOREOPTIONS_BUTTON_ANDROID");
 
-                result = result && waitForElementAndClick("element");
+                result = result && waitForElementAndClick(element);
 
                 return result;
             } else {
@@ -124,14 +129,17 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
     public boolean tapAndwaitForElementAndClick(String element) {
         try {
 
-            doubletapPlayerScreen();
-
-            if (waitOnElement(element, 3000)) {
+    		clickPauseButton();
+        	
+            if (waitOnElement(element, 5000)) {
                 WebElement elementToFind = getWebElement(element);
                 elementToFind.click();
                 extentTest.log(LogStatus.INFO, "Clicked Element");
                 return true;
             } else {
+            	tapinMoiddleOfPlayerScreen();
+            	WebElement elementToFind = getWebElement(element);
+                elementToFind.click();
                 extentTest.log(LogStatus.FAIL, "Element not found");
                 return true;
 
@@ -147,7 +155,7 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
         }
     }
 
-    public void tapPlayerScreen() {
+    public void tapinMoiddleOfPlayerScreen() {
 
         TouchAction touch = new TouchAction((AppiumDriver) driver);
         Dimension size = driver.manage().window().getSize();
@@ -156,7 +164,7 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
 
     }
 
-    public void doubletapPlayerScreen() {
+    public void doubletapinMiddleofPlayerScreen() {
         try
         {
         TouchAction touch = new TouchAction((AppiumDriver) driver);
@@ -171,5 +179,47 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
         extentTest.log(LogStatus.FAIL, "Double tap failed");   
         }
 
+    }
+    
+    public boolean clickPlayButton()
+    {
+    	try
+    	{
+ 
+    	Thread.sleep(2000);
+		WebElement Play = getWebElement("PLAY_PAUSE_BUTTON_ANDROID");
+		p[0] = Play.getLocation().getX() + Play.getSize().getWidth()/2;
+		p[1] = Play.getLocation().getY() + Play.getSize().getHeight()/2;
+        TouchAction touch = new TouchAction((AppiumDriver) driver);
+        Dimension size = driver.manage().window().getSize();
+        touch.tap(p[0],p[1]).perform();
+        logger.info("clicked play button");
+        return true;
+    	}
+    	catch (Exception e)
+    	{
+    	logger.info("failed play button");
+    	return false;
+    	}
+		
+    }
+    public boolean clickPauseButton()
+    {
+    	try
+    	{
+    	Thread.sleep(2000);
+        TouchAction touch = new TouchAction((AppiumDriver) driver);
+        touch.tap(p[0],p[1]).perform();
+        Thread.sleep(2000);
+        touch.tap(p[0],p[1]).perform();
+        logger.info("clicked pause button");
+        return true;
+    	}
+        catch(Exception e){
+        	logger.info("failed pause button");
+        	return false;
+    		
+    	}
+		
     }
 }

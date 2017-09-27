@@ -13,6 +13,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
 
 /**
  * Created by Gautham
@@ -38,6 +39,8 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
         {
         
         try {
+        	Thread.sleep(3000);
+        	logger.info("Current Activity : " + ((AndroidDriver) driver).currentActivity() );
             if (((AndroidDriver) driver).currentActivity().contains("ListActivity")) {
 
                 result = result && waitForElement("APP_ASSETS_SCREEN_ANDROID");
@@ -231,6 +234,57 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
 
         }
         return result;
+    }
+    
+    public boolean handleAccessMedia()
+    {
+    	try
+    	{
+    		Thread.sleep(2000);
+    		if(((AndroidDriver)driver).currentActivity().equals("com.android.packageinstaller.permission.ui.GrantPermissionsActivity"))
+    		{
+    			getWebElement("MEDIA_ALLOW_ANDROID").click();
+    			logger.info("Allow Media Access button clicked");
+    			return true;
+    		}
+    		else if(((AndroidDriver)driver).currentActivity().equals("com.ooyala.sample.players.OoyalaSkinPlayerActivity"))  
+    		{
+    			logger.info("Player screen displayed");
+    			return true;
+    		}
+    		else
+    		{
+    			return false;
+    		}
+    	}
+    	catch(Exception e)
+    	{
+
+            e.printStackTrace();
+            extentTest.log(LogStatus.FAIL, "Exception While clicking allow button");
+            logger.info("Exception While clicking allow button");
+            return false;
+
+        }
+    }
+    
+    public boolean bringElementtoFocus(String element)
+    {
+    	boolean result = true;
+    	
+    	try
+    	{
+    	((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
+    	
+    	result = result && clickAppAsset(element);
+    	
+    	return result;
+    	}
+    	catch(Exception e)
+    	{
+    		
+    	return false;
+    	}
     }
 
 }

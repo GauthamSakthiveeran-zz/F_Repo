@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="OoyalaSkinSampleApp" />
+ 	<test name="SKIN_PLAYBACK">
+		<description name="Skin Playback" />
+	</test>
+</testdata>

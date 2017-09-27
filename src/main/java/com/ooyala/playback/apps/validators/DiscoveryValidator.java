@@ -80,9 +80,9 @@ public class DiscoveryValidator extends PlaybackApps implements Validators {
 			} else {
 				assets.get(0).click();
 
-				Thread.sleep(3000);
+				Thread.sleep(2000);
 
-				result = result && !isElementFoundinDiscoveryScreen("DISCOVERYSCREEN_CLOSEBUTTON_ANDROID");
+
 
 			}
 		}
@@ -130,9 +130,9 @@ public class DiscoveryValidator extends PlaybackApps implements Validators {
 				} else {
 					assets.get(0).click();
 
-					Thread.sleep(3000);
+					Thread.sleep(2000);
 
-					result = result && !isElementFoundinDiscoveryScreen("DISCOVERYSCREEN_CLOSEBUTTON_ANDROID");
+
 
 				}
 

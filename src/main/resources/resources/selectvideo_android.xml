@@ -13,5 +13,6 @@
 	<!--<element key="VERTICAL" findBy="name" name="Vertical 16:9" />-->
 	<element key="MULTI_AD_COMBINATION" findBy="xPath" xPath="//android.widget.TextView[@text='Multi Ad combination']" />
 	<element key="FREEWHEEL_INTEGRATION" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Integration']" />
+	<element key="SKIN_PLAYBACK" findBy="xPath" xPath="//android.widget.TextView[@text='Skin Playback']" />
 	
 </elements>
