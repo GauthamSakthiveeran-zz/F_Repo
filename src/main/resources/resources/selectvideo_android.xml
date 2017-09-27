@@ -1,0 +1,39 @@
+<elements area="selectvideo">
+	<element key="HLS" findBy="xPath" xPath="//android.widget.TextView[@text='HLS Video']"/>
+	<element key="MP4" findBy="xPath" xPath="//android.widget.TextView[@text='MP4 Video']" />
+	<element key="VOD_WITH_CCS" findBy="xPath" xPath="//android.widget.TextView[@text='VOD with CCs']" />
+	<element key="ASPECT_RATIO" findBy="xPath" name="//android.widget.TextView[@text='4:3 Aspect Ratio']" />
+	<element key="VAST_AD_PRE_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST Ad Pre-roll']" />
+	<element key="VAST_AD_MID_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST Ad Mid-roll']" />
+	<element key="VAST_AD_POST_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST Ad Post-roll']" />
+	<element key="VAST_AD_WRAPPER" findBy="xPath" xPath="//android.widget.TextView[@text='VAST Ad Wrapper']" />
+	<element key="OOYALA_AD_PRE_ROLL" findBy="xPath" xPath="Ooyala Ad Pre-roll" />
+	<element key="OOYALA_AD_MID_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Mid-roll']" />
+	<element key="OOYALA_AD_POST_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Post-roll']" />
+	<!--<element key="VERTICAL" findBy="name" name="Vertical 16:9" />-->
+	<element key="MULTI_AD_COMBINATION" findBy="xPath" xPath="//android.widget.TextView[@text='Multi Ad combination']" />
+	
+	<!-- 	FreewheelSampleApp  -->
+	<element key="FREEWHEEL_PREROLL" findBy="name" name="Freewheel Preroll" />
+	<element key="FREEWHEEL_MIDROLL" findBy="name" name="Freewheel Midroll" />
+	<element key="FREEWHEEL_POSTROLL" findBy="name" name="Freewheel Postroll" />
+	<element key="FREEWHEEL_PREMIDPOST" findBy="name" name="Freewheel PreMidPost" />
+	<element key="FREEWHEEL_OVERLAY" findBy="name" name="Freewheel Overlay" />
+	<element key="FREEWHEEL_PREMIDPOST_OVERLAY" findBy="name" name="Freewheel PreMidPost Overlay" />
+	<element key="FREEWHEEL_MULTI_MIDROLL" findBy="name" name="Freewheel Multi Midroll" />
+	<element key="FREEWHEEL_APPLICATION_CONFIGURED" findBy="name" name="Freewheel Application-Configured" /> 
+	<element key="FREEWHEEL_CUEPOINTS_AND_ADCONTROLS_OPTIONS" findBy="name" name="CuePoints and AdsControl Options" />
+	
+	<!-- 	IMASampleApp -->
+	<element key="IMA_AD_RULES_PREROLL" findBy="name" name="IMA Ad-Rules Preroll" />
+	<element key="IMA_AD_RULES_MIDROLL" findBy="name" name="IMA Ad-Rules Midroll" />
+	<element key="IMA_AD_RULES_POSTROLL" findBy="name" name="IMA Ad-Rules Postroll" />
+	<element key="IMA_PODDED_PREROLL" findBy="name" name="IMA Podded Preroll" />
+	<element key="IMA_PODDED_MIDROLL" findBy="name" name="IMA Podded Midroll" />
+	<element key="IMA_PODDED_POSTROLL" findBy="name" name="IMA Podded Postroll" />
+	<element key="IMA_PODDED_PREMIDPOST" findBy="name" name="IMA Podded Pre-Mid-Post" />
+	<element key="IMA_SKIPPABLE" findBy="name" name="IMA Skippable" />
+	<element key="IMA_PRE_MID_AND_POST_SKIPPABLE" findBy="name" name="IMA Pre, Mid and Post Skippable" />
+	<element key="IMA_APPLICATION_CONFIGURED" findBy="name" name="IMA Application-Configured" />
+	
+</elements>

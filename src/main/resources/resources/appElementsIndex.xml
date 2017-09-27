@@ -6,7 +6,7 @@
 	the associated entry would be: <entry key="invoices">/com/intuit/qbo/qboareas/invoices/invoiceElements.xml</entry> -->
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-    <entry key="selectvideo">resources/selectvideo.xml</entry>
+    <entry key="selectvideo_ios">resources/selectvideo_ios.xml</entry>
     <entry key="event">resources/event.xml</entry>
     <entry key="playpause">resources/playpause.xml</entry>
     <entry key="seekbar">resources/seekbar.xml</entry>
@@ -19,6 +19,6 @@
     <entry key="upnext">resources/upnext.xml</entry>
     <entry key="appassets">resources/appassets.xml</entry>
     <entry key="fullscreen">resources/fullscreen.xml</entry>
-    
+    <entry key="selectvideo_android">resources/selectvideo_android.xml</entry>
 
 </properties>
