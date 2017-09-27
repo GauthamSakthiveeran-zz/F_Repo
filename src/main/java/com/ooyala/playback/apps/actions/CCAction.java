@@ -13,10 +13,13 @@ public class CCAction extends PlaybackApps implements Actions {
 
 	private static Logger logger = Logger.getLogger(CCAction.class);
 
+	private String platform;
+	
 	public CCAction(AppiumDriver driver) {
 		super(driver);
 		PageFactory.initElements(driver, this);
 		addElementToPageElements("cc");
+		platform = getPlatform();
 	}
 
 	public boolean tapCC(String element) {
@@ -33,7 +36,9 @@ public class CCAction extends PlaybackApps implements Actions {
 	}
 
 	public boolean tapCC() {
-		return tapCC("CC");
+		if(platform.equalsIgnoreCase("ios"))
+			return tapCC("CC");
+		return tapCC("CC_ANDROID");
 	}
 
 	public boolean verifyLanguagePage(String elementKey) {
@@ -45,7 +50,9 @@ public class CCAction extends PlaybackApps implements Actions {
 	}
 
 	public boolean verifyLanguagePage() {
-		return verifyLanguagePage("LANGUAGE");
+		if(platform.equalsIgnoreCase("ios"))
+			return verifyLanguagePage("LANGUAGE");
+		return verifyLanguagePage("LANGUAGE_ANDROID");
 	}
 
 	public boolean selectLanguage(String elementKey) {
@@ -62,7 +69,9 @@ public class CCAction extends PlaybackApps implements Actions {
 	}
 
 	public boolean selectEnglishLanguage() {
-		return selectLanguage("ENGLISH_LANGUAGE");
+		if(platform.equalsIgnoreCase("ios"))
+			return selectLanguage("ENGLISH_LANGUAGE");
+		return selectLanguage("ENGLISH_LANGUAGE_ANDROID");
 	}
 
 	public boolean enableCC(String ccElement, String page, String languageKey) {
