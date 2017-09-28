@@ -42,4 +42,12 @@
 	<element key="SKIN_MP4_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='MP4 Video']" />
 	<element key="SKIN_ASPECT_RATIO_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='4:3 Aspect Ratio']" />
 	<element key="CUEPOINTS" findBy="xPath" xPath="//android.widget.TextView[@text='CuePoints and AdsControl Options']" />
+    <element key="PRELOAD_PROMOIMAGE" findBy="xPath" xPath="//android.widget.TextView[@text='Preload and PromoImage Options']" />
+    <element key="PRELOAD_INITIALTIME" findBy="xPath" xPath="//android.widget.TextView[@text='Preload and Promo Options with Initial Time']" />
+	<element key="SERVERSIDE_TVRATINGS" findBy="xPath" xPath="//android.widget.TextView[@text='Server-Side TV Ratings']" />
+	<element key="TVRATINGS_CONFIG" findBy="xPath" xPath="//android.widget.TextView[@text='TV Ratings Configuration']" />
+	<element key="PREVENTVIDEOSHARING" findBy="xPath" xPath="//android.widget.TextView[@text='Prevent Video View Sharing Option']" />
+	<element key="TIMEOUT_OPTIONS" findBy="xPath" xPath="//android.widget.TextView[@text='Timeout Options']" />
+	<element key="IQ_CONFIG" findBy="xPath" xPath="//android.widget.TextView[@text='IQ Configuration']" />
 </elements>
+

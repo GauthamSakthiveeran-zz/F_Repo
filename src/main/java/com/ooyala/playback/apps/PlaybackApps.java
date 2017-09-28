@@ -125,13 +125,14 @@ public abstract class PlaybackApps extends WebPage {
     }
 
     public boolean getPlayPause(String playpause){
+    	int[] play = new int[2];
         TouchAction touch = new TouchAction(driver);
         List<WebElement> e = getWebElementsList(playpause);
-        WebElement button = e.get(0);
-        playCoordinates[0] = button.getLocation().getX();
-        playCoordinates[1] = button.getLocation().getY();
-       // playCoordinates[0] = play[0] + button.getSize().getWidth() / 2;
-        //playCoordinates[1] = play[1] + button.getSize().getHeight() / 2;
+        WebElement button =e.get(0);
+        play[0] = button.getLocation().getX();
+        play[1] = button.getLocation().getY();
+       playCoordinates[0] = play[0] + button.getSize().getWidth() / 2;
+        playCoordinates[1] = play[1] + button.getSize().getHeight() / 2;
         touch.tap(playCoordinates[0],playCoordinates[1]).perform();
         return true;
     }
@@ -139,6 +140,7 @@ public abstract class PlaybackApps extends WebPage {
     public boolean getPause(String playpause) throws Exception {
     	    int[] play = new int[2];
         TouchAction touch = new TouchAction(driver);
+        Thread.sleep(1000);
         //using the play button coordinates to pause the video
         touch.tap(playCoordinates[0],playCoordinates[1]).perform();
         return true;
