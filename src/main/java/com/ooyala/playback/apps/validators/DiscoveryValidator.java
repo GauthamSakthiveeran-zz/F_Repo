@@ -19,7 +19,9 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
-
+/**
+ * Created by Gautham
+ */
 public class DiscoveryValidator extends PlaybackApps implements Validators {
 
 	private static Logger logger = Logger.getLogger(DiscoveryValidator.class);
@@ -80,9 +82,9 @@ public class DiscoveryValidator extends PlaybackApps implements Validators {
 			} else {
 				assets.get(0).click();
 
-				Thread.sleep(3000);
+				Thread.sleep(2000);
 
-				result = result && !isElementFoundinDiscoveryScreen("DISCOVERYSCREEN_CLOSEBUTTON_ANDROID");
+
 
 			}
 		}
@@ -130,9 +132,9 @@ public class DiscoveryValidator extends PlaybackApps implements Validators {
 				} else {
 					assets.get(0).click();
 
-					Thread.sleep(3000);
+					Thread.sleep(2000);
 
-					result = result && !isElementFoundinDiscoveryScreen("DISCOVERYSCREEN_CLOSEBUTTON_ANDROID");
+
 
 				}
 

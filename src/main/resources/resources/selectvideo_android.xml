@@ -37,5 +37,9 @@
 	<element key="IMA_APPLICATION_CONFIGURED" findBy="name" name="IMA Application-Configured" />
 
 	<element key="FREEWHEEL_INTEGRATION" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Integration']" />
-
+	<element key="SKIN_PLAYBACK" findBy="xPath" xPath="//android.widget.TextView[@text='Skin Playback']" />
+	<element key="SKIN_HLS_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='HLS Video']" />
+	<element key="SKIN_MP4_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='MP4 Video']" />
+	<element key="SKIN_ASPECT_RATIO_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='4:3 Aspect Ratio']" />
+	<element key="CUEPOINTS" findBy="xPath" xPath="//android.widget.TextView[@text='CuePoints and AdsControl Options']" />
 </elements>
