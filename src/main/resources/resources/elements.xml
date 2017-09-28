@@ -2,4 +2,11 @@
 	<element key="NOTIFICATION_AREA" findBy="xPath" xPath="//XCUIElementTypeTextView[1]" />
 	<element key="HLS" findBy="xpath" xPath="//android.widget.TextView[@text='HLS Video']"/>
 	<element key="PLAY_PAUSE_ANDROID" findBy="xPath" xPath="//android.widget.ImageButton[@index='0']"/>
+	<element key="IOS_TAP" findBy="xPath" xPath="//XCUIElementTypeTextView[1]" /> 
+	<element key="PLAY_VIDEO_1" findBy="accessibilityId" accessibilityId="Play Video 1" />
+	<element key="PLAY_VIDEO_2" findBy="accessibilityId" accessibilityId="Play Video 2" />
+	<element key="INSERT_VAST_AD" findBy="accessibilityId" accessibilityId="INSERT VAST AD" />
+	<element key="INSERT_OOYALA_AD" findBy="accessibilityId" accessibilityId="INSERT OOYALA AD" />
+	<element key="CUSTOM_PLAY_PAUSE_BUTTON" findBy="xPath" xPath="//XCUIElementTypeToolbar[1]/XCUIElementTypeButton[1]" />
+	<element key="OVERLAY" findBy="name" name="This is an overlay" />
 </elements>

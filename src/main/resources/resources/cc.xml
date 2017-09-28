@@ -3,4 +3,8 @@
 	<element key="ENGLISH_LANGUAGE" findBy="name" name="English" />
 	<element key="DONE" findBy="name" name="Done" />
 	<element key="LANGUAGE" findBy="name" name="Languages" />
+	<element key="CC_ANDROID" findBy="xPath" xPath="//XCUIElementTypeApplication[1]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeToolbar[1]/XCUIElementTypeButton[2]" />
+	<element key="ENGLISH_LANGUAGE_ANDROID" findBy="name" name="English" />
+	<element key="DONE_ANDROID" findBy="name" name="Done" />
+	<element key="LANGUAGE_ANDROID" findBy="name" name="Languages" />
 </elements>

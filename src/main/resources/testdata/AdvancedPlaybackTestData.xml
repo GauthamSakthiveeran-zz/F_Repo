@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<app name="AdvancedPlaybackSampleApp" />
+ 	<test name="PLUGIN_PLAYER">
+		<description name="Plugin Player" />
+	</test>
+	<test name="CHANGE_VIDEO_PROGRAMMATICALLY">
+		<description name="Change Video Programmatically" />
+	</test>
+  	<test name="INSERT_AD_AT_RUNTIME">
+		<description name="Insert Ad at Runtime" />
+	</test>
+	<test name="PLAY_WITH_INITIALTIME">
+		<description name="Play With InitialTime" />
+	</test>
+	<test name="CUSTOM_CONTROLS">
+		<description name="Custom Controls" />
+	</test>
+	<test name="CUSTOM_OVERLAY">
+		<description name="Custom Overlay" />
+	</test>
+	<test name="PERFORMANCE_PROFILING_MID_ROLL">
+		<description name="Performance Profiling (mid-roll)" />
+	</test>
+	<test name="ADDITIONAL_LOCALIZATION_LANGUAGES">
+		<description name="Additional localization languages" />
+	</test>
+	<test name="UNBUNDLED_HLS">
+		<description name="Unbundled HLS" />
+	</test>
+	<test name="NOTIFICATION_SAMPLE">
+		<description name="Notification Sample" />
+	</test>
+	<test name="PROGRAMMATIC_VOLUME">
+		<description name="Programmatic Volume" />
+	</test>
+</testdata>
