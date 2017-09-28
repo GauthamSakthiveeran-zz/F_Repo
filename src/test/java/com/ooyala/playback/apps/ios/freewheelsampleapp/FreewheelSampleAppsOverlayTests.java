@@ -31,7 +31,7 @@ public class FreewheelSampleAppsOverlayTests extends PlaybackAppsTest {
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
 
-			result = result && overlay.validate("OVERLAY_IMAGE_IOS", 10000);
+			result = result && overlay.setTestParameters(test).validate("OVERLAY_IMAGE_IOS", 10000);
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
 

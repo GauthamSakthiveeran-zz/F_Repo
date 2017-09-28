@@ -17,16 +17,15 @@ import io.appium.java_client.AppiumDriver;
 public class NotificationEventValidator extends PlaybackApps implements Validators {
 
 	private static Logger logger = Logger.getLogger(NotificationEventValidator.class);
-	int eventVerificationCount=0;
+	int eventVerificationCount = 0;
 	private int count;
 
 	public NotificationEventValidator(AppiumDriver driver) {
 		super(driver);
 		count = 0;
 		PageFactory.initElements(driver, this);
-		addElementToPageElements("event");		
+		addElementToPageElements("event");
 	}
-
 
 	public boolean validateEvent(Events event, int timeout) throws Exception {
 		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
@@ -37,52 +36,52 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 			while ((System.currentTimeMillis() - startTime) < timeout) {
 				logger.info("Waiting for notification >>>> : " + event.getEvent());
 				String notifiationEvents = getNotificationEvents();
-				returncount = verifyNotificationEventPresence(notifiationEvents, event.getEvent(), eventVerificationCount);
+				returncount = verifyNotificationEventPresence(notifiationEvents, event.getEvent(),
+						eventVerificationCount);
 
-			if (returncount == -1)
-				status = false;
-			else {
-				status = true;
-				eventVerificationCount = returncount;
-			}
+				if (returncount == -1)
+					status = false;
+				else {
+					status = true;
+					eventVerificationCount = returncount;
+				}
 
-			if (status == true) {
-				return true;
+				if (status == true) {
+					return true;
+				}
 			}
-		}
-		if (!status) {
-			logger.error("Event not found !!!. Expected Event : " + event.getEvent());
-			logger.error("ACTUAL notification : " + getNotificationEvents());
-			return false;
-		}
-		return status;
+			if (!status) {
+				logger.error("Event not found !!!. Expected Event : " + event.getEvent());
+				logger.error("ACTUAL notification : " + getNotificationEvents());
+				return false;
+			}
+			return status;
 		} else {
-		      int returncount;         
+			int returncount;
 
-		        // Paused  Verification
-		        boolean status=false;
-		        long startTime = System.currentTimeMillis(); //fetch starting time
-		        while(!status && (System.currentTimeMillis()-startTime)<timeout) {
-		            returncount = parseeventfile(event,count);
-		            if (returncount== -1){
-		            		extentTest.log(LogStatus.INFO, event.getFailureMessage());
-		                status=false;
-		            }
-		            else{
-		                status=true;
-		                count=returncount;
-		            }            
+			// Paused Verification
+			boolean status = false;
+			long startTime = System.currentTimeMillis(); // fetch starting time
+			while (!status && (System.currentTimeMillis() - startTime) < timeout) {
+				returncount = parseeventfile(event, count);
+				if (returncount == -1) {
+					extentTest.log(LogStatus.INFO, event.getFailureMessage());
+					status = false;
+				} else {
+					status = true;
+					count = returncount;
+				}
 
-		            if (status == true) {
-		                extentTest.log(LogStatus.PASS, event.getEvent());
-		                logger.info(event.getEvent());
-		            }
-		        }
-		        if(!status){
-		            Assert.assertTrue(status);
-		        }
-		        return status;
-		    
+				if (status == true) {
+					extentTest.log(LogStatus.PASS, event.getEvent());
+					logger.info(event.getEvent());
+				}
+			}
+			if (!status) {
+				Assert.assertTrue(status);
+			}
+			return status;
+
 		}
 	}
 
@@ -91,7 +90,7 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 		int timeout = 10;
 		String notifications = null;
 		while (counter < timeout) {
-			if(waitOnElement("NOTIFICATION_AREA"))
+			if (waitOnElement("NOTIFICATION_AREA"))
 				notifications = getWebElement("NOTIFICATION_AREA").getText();
 			if (notifications != null)
 				return notifications;
@@ -104,9 +103,9 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 		try {
 
 			String lines[] = parseNotificationEvents(notificationEvents);
-			if(lines.length<count){
-				count=0;
-				eventVerificationCount=0;
+			if (lines.length < count) {
+				count = 0;
+				eventVerificationCount = 0;
 			}
 			for (String line : lines) {
 
@@ -148,7 +147,7 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 
 	public boolean verifyEvent(Events event, int timeout) {
 		try {
-			if (validate(event.getEvent(), timeout)) {
+			if (validateEvent(event, timeout)) {
 				extentTest.log(LogStatus.PASS, event.getEvent());
 				return true;
 			} else {
@@ -163,58 +162,54 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 		}
 	}
 
-
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	private  int latestCount(String line){
-        int count1;
-        String[] tokens = line.split(":");
-        String trimToken = tokens[3].trim();
-        count1=Integer.parseInt(trimToken);
-        return count1;
-    }
 
-    private int parseeventfile(Events event, int count ){
+	private int latestCount(String line) {
+		int count1;
+		String[] tokens = line.split(":");
+		String trimToken = tokens[3].trim();
+		count1 = Integer.parseInt(trimToken);
+		return count1;
+	}
 
-        try{
-            String[] final_command = CommandLine.command("adb shell cat /sdcard/log.file");
-            ProcessBuilder processBuilder = new ProcessBuilder(final_command);
-            processBuilder.redirectErrorStream(true);
-            Process p = processBuilder.start();
-            p.waitFor();
-            String line = "";
-            BufferedReader buf = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            line = buf.readLine();
-            while(line != null){
-                if(line.contains("state: ERROR"))
-                {
-                    logger.fatal("App crashed");
-                    extentTest.log(LogStatus.FATAL, "App has crashed during playback");
-                    Assert.fail("App is crashed during playback");
-                }
-                if(line.contains(event.getEvent()))
-                {
-                  if (latestCount(line)>count) {
+	private int parseeventfile(Events event, int count) {
 
-                        logger.info("Event Recieved From SDK AND Sample App :- " + line);
-                        extentTest.log(LogStatus.INFO, "Event received from SDK");
-                        count=latestCount(line);
-                        return count;
-                    }
-                    
-                }
-                line = buf.readLine();
-            }
-        }
-        catch (Exception e)
-        {
-            logger.error("Exception " + e);
-            e.printStackTrace();
-        }
-        return -1;
-    }
+		try {
+			String[] final_command = CommandLine.command("adb shell cat /sdcard/log.file");
+			ProcessBuilder processBuilder = new ProcessBuilder(final_command);
+			processBuilder.redirectErrorStream(true);
+			Process p = processBuilder.start();
+			p.waitFor();
+			String line = "";
+			BufferedReader buf = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			line = buf.readLine();
+			while (line != null) {
+				if (line.contains("state: ERROR")) {
+					logger.fatal("App crashed");
+					extentTest.log(LogStatus.FATAL, "App has crashed during playback");
+					Assert.fail("App is crashed during playback");
+				}
+				if (line.contains(event.getEvent())) {
+					if (latestCount(line) > count) {
+
+						logger.info("Event Recieved From SDK AND Sample App :- " + line);
+						extentTest.log(LogStatus.INFO, "Event received from SDK");
+						count = latestCount(line);
+						return count;
+					}
+
+				}
+				line = buf.readLine();
+			}
+		} catch (Exception e) {
+			logger.error("Exception " + e);
+			e.printStackTrace();
+		}
+		return -1;
+	}
 
 }

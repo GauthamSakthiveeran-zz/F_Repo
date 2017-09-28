@@ -31,11 +31,12 @@ public class FreewheelSampleAppTests extends PlaybackAppsTest {
 			
 			result = result && elementValidator.handleLoadingSpinner();
 
-			result = result && adValidator.validate("", 1000);
+			result = result && adValidator.setTestParameters(test).validate("", 1000);
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
 
 		} catch (Exception ex) {
+			ex.printStackTrace();
 			logger.error("Here is an exception" + ex);
 			extentTest.log(LogStatus.FAIL, ex);
 			result = false;

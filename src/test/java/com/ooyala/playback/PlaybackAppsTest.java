@@ -39,6 +39,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.MobilePlatform;
 
 public class PlaybackAppsTest extends FacileTest {
 
@@ -66,13 +67,14 @@ public class PlaybackAppsTest extends FacileTest {
 			capabilities.setCapability("app", System.getProperty(CommandLineParameters.APP_PACKAGE)+app+".app");			
 			capabilities.setCapability("udid", System.getProperty(CommandLineParameters.UDID));
 			capabilities.setCapability("platform", System.getProperty(CommandLineParameters.PLATFORM));
+			capabilities.setCapability("platformName", MobilePlatform.IOS);
 			capabilities.setCapability("showIOSLog", System.getProperty(CommandLineParameters.SHOW_IOS_LOG));
 			capabilities.setCapability("automationName", System.getProperty(CommandLineParameters.AUTOMATION_NAME));
 			capabilities.setCapability("newCommandTimeout",
 					System.getProperty(CommandLineParameters.NEW_COMMAND_TIMEOUT));
-	        capabilities.setCapability("deviceName", System.getProperty(CommandLineParameters.DEVICE_NAME));
 	        capabilities.setCapability("xcodeOrgId", System.getProperty(CommandLineParameters.XCODE_ORG_ID));
 	        capabilities.setCapability("xcodeSigningId", System.getProperty(CommandLineParameters.XCODE_SIGNING_ID));
+	        capabilities.setCapability("updatedWDABundleId", "com.ooyala.WebDriverAgentRunner");
 
 			driver = new IOSDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 

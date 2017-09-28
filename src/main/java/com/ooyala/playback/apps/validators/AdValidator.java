@@ -31,6 +31,9 @@ public class AdValidator extends PlaybackApps implements Validators {
 		SeekAction seekAction = playBackFactory.getSeekAction();
 
 		boolean iOS = getPlatform().equalsIgnoreCase("ios");
+		
+		/*result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
+				: pauseAction.startAction("PLAY_PAUSE_ANDROID");*/
 
 		if (test.getAsset().contains("PRE") || test.getAsset().contains("MULTI")) {
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
@@ -40,7 +43,7 @@ public class AdValidator extends PlaybackApps implements Validators {
 		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
 
 		if (test.getAsset().contains("MID") || test.getAsset().contains("MULTI")) {
-			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 55000);
 			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
 			result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
