@@ -478,6 +478,8 @@ public class TestPageData {
         	return skinConf + moreOptionsJson;
         else if(skinJson.contains("BUTTONS"))
         	return skinConf + buttonsJson;
+        else if(skinJson.contains("VR"))
+        	return "";
         
 
 		/*

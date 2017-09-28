@@ -9,8 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
 import java.awt.*;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
+import java.util.List;
 
 public class VirtualRealityAction extends PlayBackPage implements PlayerAction {
 
@@ -19,9 +18,7 @@ public class VirtualRealityAction extends PlayBackPage implements PlayerAction {
     public VirtualRealityAction(WebDriver webDriver) {
         super(webDriver);
         PageFactory.initElements(webDriver, this);
-        /**
-         * Here we will tell Facile to add the page elements of our Login Page
-         */
+        // Here we will tell Facile to add the page elements of our Login Page
         addElementToPageElements("play");
         addElementToPageElements("pause");
         addElementToPageElements("controlbar");
@@ -139,10 +136,12 @@ public class VirtualRealityAction extends PlayBackPage implements PlayerAction {
     }
 
     public boolean verifyCardboardIcon() {
-        logger.info("Platform is " + driver.getCapabilities().getPlatform().name());
-        if(driver.getCapabilities().getPlatform().name() == "ANDROID" | driver.getCapabilities().getPlatform().name() == "IOS") {
+        String platformNameActual = driver.getCapabilities().getPlatform().name();
+        logger.info("Platform is " + platformNameActual);
+        if(platformNameActual.equalsIgnoreCase("ANDROID") | platformNameActual.equalsIgnoreCase("IOS")) {
+            WebElement cardboardIcon = driver.findElementById("CARDBOARD_ICON");
             logger.info("For web platform cardboard icon should not be visible");
-            return driver.findElementById("CARDBOARD_ICON").getAttribute("data-focus-id").equalsIgnoreCase("stereo");
+            return cardboardIcon.getAttribute("data-focus-id").equalsIgnoreCase("stereo");
         }
         else {
             logger.info("For mobile platform cardboard icon should be visible");
