@@ -3,12 +3,46 @@
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
 
-        <test name="OptionsSampleApp" parallel="false" thread-count="1">
+    <test name="OptionsSampleApp" parallel="false" thread-count="1">
         <classes>
             <parameter name="testData" value="OptionsSampleApp.xml" />
-            <class name="com.ooyala.playback.apps.android.optionssampleapp.CuePointsAndAdControls" />
+            <class name="com.ooyala.playback.apps.android.optionssampleapp.OptionsSampleApp">
+       		  <methods>
+					<include name="testCuePointsAndAdControls" />
+				</methods>
+			</class>
         </classes>
     </test>
-
+    <test name="OptionsSampleApp1" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="OptionsSampleApp1.xml" />
+			<class name="com.ooyala.playback.apps.android.optionssampleapp.OptionsSampleApp">
+				<methods>
+					<include name="preloadWithInitialTime" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+ 	<test name="OptionsSampleApp2" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="OptionsSampleApp2.xml" />
+			<class name="com.ooyala.playback.apps.android.optionssampleapp.OptionsSampleApp">
+				<methods>
+					<include name="serverSideTvRatings" />
+				</methods>
+			</class>
+		</classes>
+	</test> 
+ 	<test name="OptionsSampleApp3" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="OptionsSampleApp3.xml" />
+			<class name="com.ooyala.playback.apps.android.optionssampleapp.OptionsSampleApp">
+				<methods>
+					<include name="tvratingsConfig" />
+				</methods>
+			</class>
+		</classes>
+	</test> 
+ 
 </suite>
 

@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -33,6 +34,7 @@ import com.ooyala.playback.apps.Testdata.Test;
 import com.ooyala.playback.apps.report.ExtentManager;
 import com.ooyala.playback.apps.utils.CommandLine;
 import com.ooyala.playback.apps.utils.CommandLineParameters;
+import com.ooyala.playback.apps.utils.RemoveEventsLogFile;
 import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -42,7 +44,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 
 public class PlaybackAppsTest extends FacileTest {
-
+	protected Logger logger = Logger.getLogger(PlaybackAppsTest.class);
 	protected PlayBackFactory pageFactory;
 	protected Testdata testData;
 	protected ExtentTest extentTest;
@@ -139,7 +141,6 @@ public class PlaybackAppsTest extends FacileTest {
 	
 	@AfterMethod(alwaysRun = true)
 	protected void afterMethod(ITestResult result) throws Exception {
-
 		try {
 			pageFactory.getLaunchAction().launchApp();
 	
@@ -149,14 +150,10 @@ public class PlaybackAppsTest extends FacileTest {
 			pageFactory.getLaunchAction().launchApp();
 		} 
 		
-		try {
-			pageFactory.getLaunchAction().launchApp();	
-		} catch (Exception e) {
-			e.printStackTrace();
-			pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
-			pageFactory.getLaunchAction().launchApp();
-		} 
-		try {
+		try {			
+			//delete log file for android
+			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+			  RemoveEventsLogFile.removeEventsFileLog();
 			if (result.getStatus() == ITestResult.FAILURE) {
 
 				extentTest.log(LogStatus.FAIL, result.getThrowable().getMessage());
