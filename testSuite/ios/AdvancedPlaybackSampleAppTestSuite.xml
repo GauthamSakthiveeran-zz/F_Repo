@@ -1,0 +1,16 @@
+<suite name="Advanced PLayback SampleAPP Tests Suite" verbose="1">
+     <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+	<test name="iOS AdvancedPlayback" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="AdvancedPlaybackTestData.xml" />
+			<class name="com.ooyala.playback.apps.ios.advancedplaybacksampleapp.AdvancedPlaybackSampleAppTest">
+				<methods>
+					<include name="testPlayer" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
+
