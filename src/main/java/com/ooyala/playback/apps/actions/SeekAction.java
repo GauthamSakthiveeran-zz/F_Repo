@@ -118,8 +118,7 @@ public class SeekAction extends PlaybackApps implements Actions {
     }
 	
 	private int getSliderPosition(String slider) throws InterruptedException {
-        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(slider));
-        WebElement slide = this.getWebElementFromFacileWebElement(anElement);
+        WebElement slide = getWebElement(slider);
         int sliderXPosition = slide.getLocation().getX();
         logger.info("Slider X Position >> : " + sliderXPosition);
         return sliderXPosition;

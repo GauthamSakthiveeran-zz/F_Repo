@@ -32,8 +32,8 @@ public class AdValidator extends PlaybackApps implements Validators {
 
 		boolean iOS = getPlatform().equalsIgnoreCase("ios");
 		
-		/*result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
-				: pauseAction.startAction("PLAY_PAUSE_ANDROID");*/
+		result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
+				: pauseAction.startAction("PLAY_PAUSE_ANDROID");
 
 		if (test.getAsset().contains("PRE") || test.getAsset().contains("MULTI")) {
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
