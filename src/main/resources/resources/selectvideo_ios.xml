@@ -49,5 +49,7 @@
 	
 	<element key="MULTI_AD_COMBINATION" findBy="name" name="Multi Ad combination" />
 	<element key="FreewheelIntegration" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Integration']"/>
+	
+	<element key="NO_ADS" findBy="name" name="No Ads" />
 
 </elements>
