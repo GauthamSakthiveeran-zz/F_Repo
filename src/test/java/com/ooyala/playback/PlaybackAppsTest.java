@@ -233,35 +233,21 @@ public class PlaybackAppsTest extends FacileTest {
 		return testsGenerated;
 	}
 	
-	@AfterClass(alwaysRun = true)
-	public void afterClass()
-	{
-		try
-		{
-			((AndroidDriver)driver).closeApp();
-			logger.info("Closing App");
-			extentTest.log(LogStatus.PASS, "Closed App");
-		}
-		catch(Exception e)
-		{
-			logger.info("Error While Closing App");
-			extentTest.log(LogStatus.FAIL, "Exception Closed App");
-		}
-	}
+
 
 	@AfterClass(alwaysRun = true)
 	public void afterClass()
 	{
 		try
 		{
+			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android")) {
 			((AndroidDriver)driver).closeApp();
 			logger.info("Closing App");
-			extentTest.log(LogStatus.PASS, "Closed App");
+			}
 		}
 		catch(Exception e)
 		{
 			logger.info("Error While Closing App");
-			extentTest.log(LogStatus.FAIL, "Exception Closed App");
 		}
 	}
 }
