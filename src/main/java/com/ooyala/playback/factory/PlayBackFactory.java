@@ -3,6 +3,7 @@ package com.ooyala.playback.factory;
 import java.lang.reflect.Field;
 
 import com.ooyala.playback.apps.actions.AllowAction;
+import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
 import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.ClickAction;
 import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
@@ -58,6 +59,7 @@ public class PlayBackFactory {
 	private UpNextValidator upNextValidator;
 	private FullScreenAction fullScreenAction;
 	private FullScreenOrientationValidator fullScreenOrientationValidator;
+	private AndroidKeyCodeAction androidKeycodeAction;
 
 	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -256,6 +258,17 @@ public class PlayBackFactory {
 		return replayValidator;
 		
 	}
+	
+	public AndroidKeyCodeAction getAndroidKeyCodeAction() {
+		if(androidKeycodeAction == null) {
+			androidKeycodeAction = new AndroidKeyCodeAction(driver);
+			androidKeycodeAction.setExtentTest(extentTest);
+		}
+		return androidKeycodeAction;
+		
+	}
+	
+
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> validator) throws Exception {
 

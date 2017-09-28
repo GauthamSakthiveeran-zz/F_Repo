@@ -105,7 +105,6 @@ public class PlaybackAppsTest extends FacileTest {
 			
 			extentTest = ExtentManager.startTest(testData[0].toString());
 			pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
-
 			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
 				Assert.assertTrue(
 						new PlayBackFactory((AppiumDriver) driver, extentTest).getQAModeSwitchAction().startAction("QA_MODE_SWITCH"),
@@ -140,6 +139,16 @@ public class PlaybackAppsTest extends FacileTest {
 	
 	@AfterMethod(alwaysRun = true)
 	protected void afterMethod(ITestResult result) throws Exception {
+
+		try {
+			pageFactory.getLaunchAction().launchApp();
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+			pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
+			pageFactory.getLaunchAction().launchApp();
+		} 
+		
 		try {
 			pageFactory.getLaunchAction().launchApp();	
 		} catch (Exception e) {
@@ -224,20 +233,21 @@ public class PlaybackAppsTest extends FacileTest {
 		return testsGenerated;
 	}
 	
+
+
 	@AfterClass(alwaysRun = true)
 	public void afterClass()
 	{
 		try
 		{
+			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android")) {
 			((AndroidDriver)driver).closeApp();
 			logger.info("Closing App");
-			extentTest.log(LogStatus.PASS, "Closed App");
+			}
 		}
 		catch(Exception e)
 		{
 			logger.info("Error While Closing App");
-			extentTest.log(LogStatus.FAIL, "Exception Closed App");
 		}
 	}
-
 }
