@@ -148,7 +148,7 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 
 	public boolean verifyEvent(Events event, int timeout) {
 		try {
-			if (validate(event.getEvent(), timeout)) {
+			if (validateEvent(event, timeout)) {
 				extentTest.log(LogStatus.PASS, event.getEvent());
 				return true;
 			} else {

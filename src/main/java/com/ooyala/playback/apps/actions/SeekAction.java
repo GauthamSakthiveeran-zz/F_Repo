@@ -86,7 +86,10 @@ public class SeekAction extends PlaybackApps implements Actions {
         tapScreenIfRequired();
         int seekForwardLength = (seekbarElement.getEndXPosition() - (startx + 1)) - 30;
         TouchAction touch = new TouchAction(driver);
-        touch.longPress((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) + (seekForwardLength)), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
+        if(getPlatform().equalsIgnoreCase("ios"))
+        	touch.press((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) + (seekForwardLength)), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
+        else
+        	touch.longPress((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) + (seekForwardLength)), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
         return true;
     }
 	
@@ -113,7 +116,10 @@ public class SeekAction extends PlaybackApps implements Actions {
         tapScreenIfRequired();
         int seekBackLength = ((startx + 1) - seekbarElement.getStartXPosition()) / 2;
         TouchAction touch = new TouchAction(driver);
-        touch.longPress((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) - seekBackLength), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
+        if(getPlatform().equalsIgnoreCase("ios"))
+        	touch.press((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) - seekBackLength), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
+        else
+        	touch.longPress((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) - seekBackLength), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
         return true;
     }
 	

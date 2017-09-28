@@ -1,4 +1,4 @@
-package com.ooyala.playback.apps.ios;
+package com.ooyala.playback.apps.ios.advancedplaybacksampleapp;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -17,11 +17,12 @@ import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 
-public class AdvancedPlaybackSampleAppTest extends PlaybackAppsTest {
+public class AdvancedSampleAppUtils extends PlaybackAppsTest {
 
-	private static Logger logger = Logger.getLogger(AdvancedPlaybackSampleAppTest.class);
+	private static Logger logger = Logger.getLogger(AdvancedSampleAppUtils.class);
 	private SelectVideoAction selectVideo;
 	private ElementValidator elementValidator;
 	private NotificationEventValidator notificationEventValidator;
@@ -29,12 +30,18 @@ public class AdvancedPlaybackSampleAppTest extends PlaybackAppsTest {
 	private SeekAction seekAction;
 	private CCAction ccAction;
 	private ClickAction clickAction;
+	//pageFactory = new pageFactory((AppiumDriver) driver, extentTest);
 
-	@Test(groups = "advancedplaybacksampleapp", dataProvider = "testData")
-	public void testPlayer(String testName, TestParameters test) throws Exception {
-		Reporter.log("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
-		logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
+	public boolean performAssetSpecificTest(TestParameters test) throws Exception {
 		boolean result = true;
+		notificationEventValidator = pageFactory.getNotificationEventValidator();
+		pauseAction = pageFactory.getPauseAction();
+		seekAction = pageFactory.getSeekAction();
+		ccAction = pageFactory.getCcAction();
+		elementValidator = pageFactory.getEventValidator();
+		selectVideo = pageFactory.getSelectVideoAction();
+		clickAction = pageFactory.getClickAction();
+
 		try {
 			result = result && selectVideo.startAction(test.getAsset());
 			if (test.getAsset().contains("CUSTOM_OVERLAY"))
@@ -70,11 +77,12 @@ public class AdvancedPlaybackSampleAppTest extends PlaybackAppsTest {
 					result = adEventValidator();
 				}
 			}
+			
 			if (test.getAsset().contains("LANGUAGES")) {
 				result = result && ccAction.enableCC(); // Default English
 				result = result && notificationEventValidator.verifyEvent(Events.CC_ENABLED, 15000);
 			}
-			
+
 			if (!test.getAsset().contains("CUSTOM_CONTROLS")) {
 				result = result && pauseAction.startAction("PLAY_PAUSE_BUTTON");
 				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
@@ -84,16 +92,16 @@ public class AdvancedPlaybackSampleAppTest extends PlaybackAppsTest {
 					result = result && seekActionEventValidator(false);
 				result = result && pauseAction.startAction("PLAY_PAUSE_BUTTON");
 			}
-			
+
 			if (test.getAsset().contains("CUSTOM_CONTROLS")) {
 				result = result && selectVideo.letVideoPlayForSec(2);
 				result = result && clickAction.startAction("CUSTOM_PLAY_PAUSE_BUTTON");
 				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
 				result = result && clickAction.startAction("CUSTOM_PLAY_PAUSE_BUTTON");
 			}
-			
+
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
-			
+
 			if (test.getAsset().contains("PLUGIN"))
 				result = adEventValidator();
 
@@ -103,30 +111,29 @@ public class AdvancedPlaybackSampleAppTest extends PlaybackAppsTest {
 			logger.error("Here is an exception" + ex);
 			result = false;
 		}
-		Assert.assertTrue(result, "APP:" + test.getApp() + "->Asset:" + test.getAsset());
-
+		return result;
 	}
-	
-	private boolean adEventValidator(){
+
+	private boolean adEventValidator() {
 		boolean result = true;
 		result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
 		result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
 		return result;
 	}
-	
-	private boolean seekActionEventValidator(boolean isSeekForward){
+
+	private boolean seekActionEventValidator(boolean isSeekForward) {
 		boolean result = true;
 		try {
-			if(isSeekForward)
-				result = result && seekAction.setSlider("SLIDER").seekforward().startAction("SEEK_BAR"); //SeekForward
+			if (isSeekForward)
+				result = result && seekAction.setSlider("SLIDER").seekforward().startAction("SEEK_BAR"); // SeekForward
 			else
-				result = result && seekAction.setSlider("SLIDER").startAction("SEEK_BAR"); //SeekBack
+				result = result && seekAction.setSlider("SLIDER").startAction("SEEK_BAR"); // SeekBack
 			result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
 			result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
 		} catch (Exception e) {
 			logger.error("Here is an exception" + e);
 			result = false;
-		} 
+		}
 		return result;
 
 	}
