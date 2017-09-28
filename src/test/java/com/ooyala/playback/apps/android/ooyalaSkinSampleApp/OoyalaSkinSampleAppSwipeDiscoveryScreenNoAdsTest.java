@@ -5,24 +5,19 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
+import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
 import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.actions.SwipeUpDownAppAssetsAction;
 import com.ooyala.playback.apps.actions.SeekAction;
-import com.ooyala.playback.apps.ios.PlaybackAppsBasicTest;
 import com.ooyala.playback.apps.validators.DiscoveryValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
@@ -45,6 +40,7 @@ import io.appium.java_client.android.AndroidKeyCode;
     private SwipeUpDownAppAssetsAction appAssetsSelection;
     private DiscoveryValidator discoveryValidator;
     private NotificationEventValidator notificationEventValidator;
+    private AndroidKeyCodeAction androidKeyCode;
     
 
 
@@ -55,13 +51,19 @@ import io.appium.java_client.android.AndroidKeyCode;
         boolean result = true;
         try {
         	
+        	result = result && appAssetsSelection.startAction("Skin Playback");
+        	
+        	Thread.sleep(3000);
+        	
         	result = result && selectVideo.startAction(test.getAsset());
         	
-        	result = result && appAssetsSelection.startAction("MP4 Video");
+        	Thread.sleep(3000);
         	
         	result = result && appAssetsSelection.handleAccessMedia();
-        
-        	result = result && appAssetsSelection.bringElementtoFocus("MP4 Video");
+        	
+        	result = result && androidKeyCode.startAction("BACK");
+        	
+        	result = result && selectVideo.startAction(test.getAsset());
         	
         	result = result && clickDiscoveryAction.clickPlayButton();
         	

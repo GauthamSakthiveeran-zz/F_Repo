@@ -19,7 +19,9 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
-
+/**
+ * Created by Gautham
+ */
 public class DiscoveryValidator extends PlaybackApps implements Validators {
 
 	private static Logger logger = Logger.getLogger(DiscoveryValidator.class);

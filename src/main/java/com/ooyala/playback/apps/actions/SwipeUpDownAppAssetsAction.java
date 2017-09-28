@@ -41,14 +41,16 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
         try {
         	Thread.sleep(3000);
         	logger.info("Current Activity : " + ((AndroidDriver) driver).currentActivity() );
-            if (((AndroidDriver) driver).currentActivity().contains("ListActivity")) {
+            if (((AndroidDriver) driver).currentActivity().contains("ListActivity")|| ((AndroidDriver) driver).currentActivity().contains("MainActivity"))  {
 
                 result = result && waitForElement("APP_ASSETS_SCREEN_ANDROID");
 
                 result = result && clickAppAsset(element);
 
                 return result;
-            } else {
+            } 
+
+            else {
                 extentTest.log(LogStatus.FAIL, "Current Activity is Not in Assets List Activity");
                 logger.info("Current Activity is Not in Assets List Activity");
                 return false;

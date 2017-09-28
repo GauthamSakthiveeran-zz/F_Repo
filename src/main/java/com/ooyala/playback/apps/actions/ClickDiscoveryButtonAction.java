@@ -108,9 +108,11 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
             if (waitOnElement(element, 5000)) {
                 WebElement elementToFind = getWebElement(element);
                 elementToFind.click();
+                logger.info("Clicked Element");
                 extentTest.log(LogStatus.INFO, "Clicked Element");
                 return true;
             } else {
+            	logger.info("Failed to Click Element");
                 extentTest.log(LogStatus.FAIL, "Element not found");
                 return true;
 
@@ -129,19 +131,29 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
     public boolean tapAndwaitForElementAndClick(String element) {
         try {
 
-    		clickPauseButton();
+    		if(!clickPauseButton())
+    				return false;
         	
-            if (waitOnElement(element, 5000)) {
+    		if (waitOnElement(element, 5000)) {
                 WebElement elementToFind = getWebElement(element);
                 elementToFind.click();
-                extentTest.log(LogStatus.INFO, "Clicked Element");
+    			//if(clickOnIndependentElement(element)){
+                logger.info("Clicked Element");
+                extentTest.log(LogStatus.PASS, "Clicked Element");
                 return true;
             } else {
-            	tapinMoiddleOfPlayerScreen();
-            	WebElement elementToFind = getWebElement(element);
-                elementToFind.click();
-                extentTest.log(LogStatus.FAIL, "Element not found");
+            	tapinMiddleOfPlayerScreen();
+            	if(clickOnIndependentElement(element)){
+                logger.info("Clicked Element");
+                extentTest.log(LogStatus.PASS, "Clicked Element");
                 return true;
+                }
+                else
+                {
+                 logger.info("Failed to Click Element");
+                 extentTest.log(LogStatus.FAIL, "Failed to Click Element");
+                 return true;	
+                }
 
             }
 
@@ -155,16 +167,17 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
         }
     }
 
-    public void tapinMoiddleOfPlayerScreen() {
+    private void tapinMiddleOfPlayerScreen() {
 
         TouchAction touch = new TouchAction((AppiumDriver) driver);
         Dimension size = driver.manage().window().getSize();
         touch.tap((size.getWidth()) / 2, (size.getHeight() / 2)).perform();
-        extentTest.log(LogStatus.INFO, "Single tap done");
+        logger.info("Failed to Click Element");
+        extentTest.log(LogStatus.INFO, "Clicked Element");
 
     }
 
-    public void doubletapinMiddleofPlayerScreen() {
+    private void doubletapinMiddleofPlayerScreen() {
         try
         {
         TouchAction touch = new TouchAction((AppiumDriver) driver);
@@ -172,11 +185,13 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
         touch.tap((size.getWidth()) / 2, (size.getHeight() / 2)).perform();
         Thread.sleep(2000);
         touch.tap((size.getWidth()) / 2, (size.getHeight() / 2)).perform();
-        extentTest.log(LogStatus.INFO, "Double tap done");
+        logger.info("Double Tap Done");
+        extentTest.log(LogStatus.INFO, "Double Tap Done");
         }
         catch(Exception e)
         {
-        extentTest.log(LogStatus.FAIL, "Double tap failed");   
+            logger.info("Failed to Click Double Tap ");
+            extentTest.log(LogStatus.FAIL, "Failed to Click Double Tap");  
         }
 
     }
@@ -186,19 +201,21 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
     	try
     	{
  
-    	Thread.sleep(2000);
-		WebElement Play = getWebElement("PLAY_PAUSE_BUTTON_ANDROID");
-		p[0] = Play.getLocation().getX() + Play.getSize().getWidth()/2;
-		p[1] = Play.getLocation().getY() + Play.getSize().getHeight()/2;
+    	Thread.sleep(3000);
+		WebElement playPauseButton = getWebElement("PLAY_PAUSE_BUTTON_ANDROID");
+		p[0] = playPauseButton.getLocation().getX() + playPauseButton.getSize().getWidth()/2;
+		p[1] = playPauseButton.getLocation().getY() + playPauseButton.getSize().getHeight()/2;
         TouchAction touch = new TouchAction((AppiumDriver) driver);
         Dimension size = driver.manage().window().getSize();
         touch.tap(p[0],p[1]).perform();
-        logger.info("clicked play button");
+        logger.info("Clicked Play Button");
+        extentTest.log(LogStatus.INFO, "Clicked Play Button");
         return true;
     	}
     	catch (Exception e)
     	{
-    	logger.info("failed play button");
+            logger.info("Failed to Click Play Button");
+            extentTest.log(LogStatus.FAIL, "Failed to Click Play Button");
     	return false;
     	}
 		
@@ -207,16 +224,18 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
     {
     	try
     	{
-    	Thread.sleep(2000);
+    	Thread.sleep(3000);
         TouchAction touch = new TouchAction((AppiumDriver) driver);
         touch.tap(p[0],p[1]).perform();
         Thread.sleep(2000);
         touch.tap(p[0],p[1]).perform();
-        logger.info("clicked pause button");
+        logger.info("Clicked Pause Button");
+        extentTest.log(LogStatus.INFO, "Clicked Pause Button");
         return true;
     	}
         catch(Exception e){
-        	logger.info("failed pause button");
+            logger.info("Failed to Clicked Pause Button");
+            extentTest.log(LogStatus.FAIL, "Failed to Clicked Pause Button");
         	return false;
     		
     	}
