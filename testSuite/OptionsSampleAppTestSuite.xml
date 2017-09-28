@@ -3,46 +3,46 @@
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
 
-    <test name="OptionsSampleApp" parallel="false" thread-count="1">
+    <test name="OptionsSampleAppCuePoints" parallel="false" thread-count="1">
         <classes>
-            <parameter name="testData" value="OptionsSampleApp.xml" />
-            <class name="com.ooyala.playback.apps.android.optionssampleapp.OptionsSampleApp">
+            <parameter name="testData" value="OptionsSampleAppCuePoints.xml" />
+            <class name="com.ooyala.playback.apps.android.optionssampleapp.OptionsSampleAppTests">
        		  <methods>
 					<include name="testCuePointsAndAdControls" />
 				</methods>
 			</class>
         </classes>
     </test>
-    <test name="OptionsSampleApp1" parallel="false" thread-count="1">
+    <!-- <test name="OptionsSampleAppPreloadWithInitialTIme" parallel="false" thread-count="1">
 		<classes>
-			<parameter name="testData" value="OptionsSampleApp1.xml" />
-			<class name="com.ooyala.playback.apps.android.optionssampleapp.OptionsSampleApp">
+			<parameter name="testData" value="OptionsSampleAppInitialTime.xml" />
+			<class name="com.ooyala.playback.apps.android.optionssampleapp.OptionsSampleAppTests">
 				<methods>
 					<include name="preloadWithInitialTime" />
 				</methods>
 			</class>
 		</classes>
 	</test>
- 	<test name="OptionsSampleApp2" parallel="false" thread-count="1">
+ 	<test name="OptionsSampleAppServerSideRatings" parallel="false" thread-count="1">
 		<classes>
-			<parameter name="testData" value="OptionsSampleApp2.xml" />
-			<class name="com.ooyala.playback.apps.android.optionssampleapp.OptionsSampleApp">
+			<parameter name="testData" value="OptionsSampleAppServerSideRatings.xml" />
+			<class name="com.ooyala.playback.apps.android.optionssampleapp.OptionsSampleAppTests">
 				<methods>
 					<include name="serverSideTvRatings" />
 				</methods>
 			</class>
 		</classes>
 	</test> 
- 	<test name="OptionsSampleApp3" parallel="false" thread-count="1">
+ 	<test name="OptionsSampleAppTvRatingsConfig" parallel="false" thread-count="1">
 		<classes>
-			<parameter name="testData" value="OptionsSampleApp3.xml" />
-			<class name="com.ooyala.playback.apps.android.optionssampleapp.OptionsSampleApp">
+			<parameter name="testData" value="OptionsSampleAppTvRatings.xml" />
+			<class name="com.ooyala.playback.apps.android.optionssampleapp.OptionsSampleAppTests">
 				<methods>
 					<include name="tvratingsConfig" />
 				</methods>
 			</class>
 		</classes>
-	</test> 
+	</test>  -->
  
 </suite>
 

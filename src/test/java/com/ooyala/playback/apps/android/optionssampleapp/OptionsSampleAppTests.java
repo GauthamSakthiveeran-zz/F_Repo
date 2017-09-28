@@ -26,9 +26,9 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
- public class OptionsSampleApp extends PlaybackAppsTest {
+ public class OptionsSampleAppTests extends PlaybackAppsTest {
 
-    private static Logger logger = Logger.getLogger(OptionsSampleApp.class);
+    private static Logger logger = Logger.getLogger(OptionsSampleAppTests.class);
     private SelectVideoAction selectVideo;
     private ElementValidator elementValidator;
     private NotificationEventValidator notificationEventValidator;

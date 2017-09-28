@@ -8,7 +8,7 @@
 		<description name="IQ Configuration" />
 	</test>
 	<test name="PREVENTVIDEOSHARING">
-		<description name="TV Ratings Configuration" />
+		<description name="Prevent Video View Sharing Option" />
 	</test>
 
 </testdata>
