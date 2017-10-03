@@ -24,6 +24,7 @@
             <class name="com.ooyala.playback.analytics.AnalyticsMidrollAdsTests"/>
             <class name="com.ooyala.playback.analytics.AnalyticsPostrollAdsTests"/>
             <class name="com.ooyala.playback.analytics.AnalyticsPreMidPostRollAdsTests"/>
+            <class name="com.ooyala.playback.analytics.AnalyticsIMATests"/>
         </classes>
     </test>
 
