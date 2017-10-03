@@ -1,13 +1,13 @@
 package com.ooyala.playback.api;
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.PlayerAPIValidator;
-import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.url.UrlObject;
-import com.ooyala.qe.common.exception.OoyalaException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.PlayerAPIValidator;
+import com.ooyala.playback.url.UrlObject;
+import com.ooyala.qe.common.exception.OoyalaException;
 
 /**
  * Created by jitendra on 7/7/17.
@@ -15,7 +15,6 @@ import org.testng.annotations.Test;
 public class ValidateAPIForPreMidPostrollPoddedAdTests extends PlaybackWebTest {
 
     private PlayValidator play;
-    private PlayAction playAction;
     private PlayerAPIValidator api;
 
     public ValidateAPIForPreMidPostrollPoddedAdTests() throws OoyalaException {

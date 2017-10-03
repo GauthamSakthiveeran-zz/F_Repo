@@ -26,7 +26,6 @@ public class PlaybackMidrollAdsClickThroughTests extends PlaybackWebTest {
 	@Test(groups = { "amf", "midroll", "sequential", "clickThrough" }, dataProvider = "testUrls")
 	public void verifyMidrollClickthrough(String testName, UrlObject url) throws Exception {
 		boolean result = true;
-		boolean adClick = !clickThrough.ignoreClickThrough(url);
 
 		try {
 			driver.get(url.getUrl());
@@ -35,14 +34,11 @@ public class PlaybackMidrollAdsClickThroughTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 			result = result && event.validate("MidRoll_willPlaySingleAd_1", 60000);
 			result = result && event.validate("videoPlayingAd_1", 60000);
-			
-			if(adClick)
-				result = result && clickThrough.validate("videoPausedAds_1", 120000);
 
-			if (event.isAdPluginPresent("pulse"))
-				result = result && event.validate("singleAdPlayed_2", 120000);
-			else
-				result = result && event.validate("singleAdPlayed_1", 120000);
+			result = result && clickThrough.setUrlObject(url).validate("videoPausedAds_1", 120000);
+
+			result = result && event.isAdPluginPresent("pulse") ? event.validate("singleAdPlayed_2", 120000)
+					: event.validate("singleAdPlayed_1", 120000);
 
 			result = result && event.validate("playing_1", 35000);
 		} catch (Exception e) {

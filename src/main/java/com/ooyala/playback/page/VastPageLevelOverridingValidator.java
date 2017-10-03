@@ -1,6 +1,7 @@
 package com.ooyala.playback.page;
 
 import com.ooyala.facile.page.WebPage;
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -36,7 +37,7 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
     private long videoDuration;
 
     public void getTotalDuration() {
-        videoDuration = Integer.parseInt(driver.executeScript("return pp.getDuration()").toString());
+        videoDuration = new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getDurationFixed();
         videoDuration = TimeUnit.MILLISECONDS.toSeconds(videoDuration);
     }
 
@@ -54,7 +55,7 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
         long adPosition = 0L;
         adType = adType.toLowerCase();
         if (!adType.equalsIgnoreCase("postroll")) {
-            driver.executeScript("pp.pause()");
+        	new PlayBackFactory(driver, extentTest).getPlayerAPIAction().pause();
         }
         extentTest.log(LogStatus.INFO, "Video duration is :" + videoDuration);
         logger.info("Video duration is :" + videoDuration);
@@ -237,7 +238,7 @@ public class VastPageLevelOverridingValidator extends PlayBackPage implements Pl
         }
 
         if (!adType.equalsIgnoreCase("postroll")) {
-            driver.executeScript("pp.play()");
+        	new PlayBackFactory(driver, extentTest).getPlayerAPIAction().play();
         }
         return true;
     }

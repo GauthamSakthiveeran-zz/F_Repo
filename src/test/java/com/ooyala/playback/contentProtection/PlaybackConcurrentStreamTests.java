@@ -4,11 +4,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackConcurrentStreamTests extends PlaybackWebTest {
 
+	private PlayerAPIAction playerAPI;
 
 	public PlaybackConcurrentStreamTests() throws OoyalaException {
 		super();
@@ -22,13 +24,11 @@ public class PlaybackConcurrentStreamTests extends PlaybackWebTest {
 			driver.get(url.getUrl());
 			Thread.sleep(10000);
 			injectScript();
-			result = !driver.executeScript("return pp.getErrorCode()").toString()
-					.equalsIgnoreCase("concurrent_streams");
+			result = !playerAPI.getErrorCode().equalsIgnoreCase("concurrent_streams");
 			getWebdriver(browser).get(url.getUrl());
 			Thread.sleep(10000);
 			injectScript();
-			result = !driver.executeScript("return pp.getErrorCode()").toString()
-					.equalsIgnoreCase("concurrent_streams");
+			result = !playerAPI.getErrorCode().equalsIgnoreCase("concurrent_streams");
 			getWebdriver(browser).close();
 
 		} catch (Exception e) {

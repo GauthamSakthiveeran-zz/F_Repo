@@ -4,6 +4,7 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -22,6 +23,7 @@ public class SeekTillEndTests extends PlaybackWebTest {
     private PlayValidator playValidator;
     private PlayAction playAction;
     private EventValidator eventValidator;
+    private PlayerAPIAction playerAPI;
 
     @Test(dataProvider = "testUrls",groups = "adhoc")
     public void seekTillEnd(String testName, UrlObject url){
@@ -33,7 +35,7 @@ public class SeekTillEndTests extends PlaybackWebTest {
             injectScript();
             result = result && playAction.startAction();
             result = result && eventValidator.validate("playing_1",10000);
-            driver.executeScript("pp.seek(pp.getDuration())");
+            playerAPI.seek(playerAPI.getDurationFixed());
             result = result && eventValidator.validate("seeked_1",20000);
         } catch (Exception e) {
             logger.error(e);

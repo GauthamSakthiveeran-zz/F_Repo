@@ -44,7 +44,7 @@ public class AnalyticsMidrollAdsTests extends PlaybackWebTest {
             result = result && event.validate("played_1", 160000);
 
             if (result && (!url.getAdPlugins().equalsIgnoreCase("pulse"))) {
-                extentTest.log(LogStatus.INFO, "Validating if ad plays when video is seeked post ad play time.");
+            	extentTest.log(LogStatus.INFO, "Validating if ad plays when video is seeked post ad play time.");
                 driver.navigate().refresh();
                 result = result && playValidator.waitForPage();
                 injectScript();

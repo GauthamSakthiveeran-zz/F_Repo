@@ -1,46 +1,103 @@
 package com.ooyala.playback.factory;
 
 import java.lang.reflect.Field;
-import com.ooyala.playback.page.*;
+
 import com.ooyala.playback.page.action.*;
 import org.openqa.selenium.WebDriver;
+
+import com.ooyala.playback.page.AdClickThroughValidator;
+import com.ooyala.playback.page.AdFrequencyValidator;
+import com.ooyala.playback.page.AdPluginValidator;
+import com.ooyala.playback.page.AdSkipButtonValidator;
+import com.ooyala.playback.page.AnalyticsValidator;
+import com.ooyala.playback.page.AspectRatioValidator;
+import com.ooyala.playback.page.BitmovinTechnologyValidator;
+import com.ooyala.playback.page.Bitratevalidator;
+import com.ooyala.playback.page.CCValidator;
+import com.ooyala.playback.page.ConcurrentStreamValidator;
+import com.ooyala.playback.page.ControlBarValidator;
+import com.ooyala.playback.page.DRMValidator;
+import com.ooyala.playback.page.DVRLiveValidator;
+import com.ooyala.playback.page.DifferentElementValidator;
+import com.ooyala.playback.page.DiscoveryValidator;
+import com.ooyala.playback.page.EmbedTabValidator;
+import com.ooyala.playback.page.EncodingValidator;
+import com.ooyala.playback.page.EndScreenValidator;
+import com.ooyala.playback.page.ErrorDescriptionValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.FullScreenValidator;
+import com.ooyala.playback.page.GeoValidator;
+import com.ooyala.playback.page.InitalTimeValidator;
+import com.ooyala.playback.page.LiveValidator;
+import com.ooyala.playback.page.MidrollAdValidator;
+import com.ooyala.playback.page.MultiplePlayerValidator;
+import com.ooyala.playback.page.OverlayValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.PlayerAPIValidator;
+import com.ooyala.playback.page.PlayerSkinButtonsValidator;
+import com.ooyala.playback.page.PlayerSkinCaptionsValidator;
+import com.ooyala.playback.page.PlayerSkinLocalizationValidator;
+import com.ooyala.playback.page.PlayerSkinScrubberValidator;
+import com.ooyala.playback.page.PlayerSkinShareValidator;
+import com.ooyala.playback.page.PlaylistValidator;
+import com.ooyala.playback.page.PoddedAdValidator;
+import com.ooyala.playback.page.PreloadingValidator;
+import com.ooyala.playback.page.ReplayValidator;
+import com.ooyala.playback.page.ScrubberValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.SetEmbedCodeValidator;
+import com.ooyala.playback.page.ShareTabValidator;
+import com.ooyala.playback.page.SocialScreenValidator;
+import com.ooyala.playback.page.StartScreenValidator;
+import com.ooyala.playback.page.StateScreenValidator;
+import com.ooyala.playback.page.StreamValidator;
+import com.ooyala.playback.page.ThumbnailCarouselValidator;
+import com.ooyala.playback.page.ThumbnailValidator;
+import com.ooyala.playback.page.UIControlValidator;
+import com.ooyala.playback.page.UpNextValidator;
+import com.ooyala.playback.page.VastPageLevelOverridingValidator;
+import com.ooyala.playback.page.VideoPluginValidator;
+import com.ooyala.playback.page.VideoValidator;
+import com.ooyala.playback.page.VolumeValidator;
+import com.ooyala.playback.page.WaterMarkValidator;
 import com.relevantcodes.extentreports.ExtentTest;
 
 public class PlayBackFactory {
 
-    private WebDriver driver;
-    private CCValidator ccValidator;
-    private DiscoveryValidator discoveryValidator;
-    private FullScreenValidator fullScreenValidator;
-    private PauseValidator pauseValidator;
-    private PlayValidator playValidator;
-    private SeekValidator seekValidator;
-    private UpNextValidator upNextValidator;
-    private PauseAction pauseAction;
-    private PlayAction playAction;
-    private AutoplayAction autoplay;
-    private EventValidator eventValidator;
-    private AspectRatioValidator aspectRatioValidator;
-    private LiveAction liveAction;
-    private ShareTabValidator shareTabValidator;
-    private WaterMarkValidator waterMarkValidator;
-    private VolumeValidator volumeValidator;
-    private PlayPauseAction playPauseAction;
-    private ControlBarValidator controlBarValidator;
-    private StartScreenValidator startScreenValidator;
-    private EndScreenValidator endScreenValidator;
-    private ReplayValidator replayValidator;
-    private ClickDiscoveryButtonAction clickDiscoveryButtonAction;
-    private Bitratevalidator bitratevalidator;
-    private SocialScreenValidator socailScreenValidator;
-    private ThumbnailValidator thumbnailValidator;
-    private FullScreenAction fullScreenAction;
-    private SeekAction seekAction;
-    private StateScreenAction stateScreenAction;
-    private OverlayValidator overlayValidator;
-    private AdSkipButtonValidator adSkipButtonValidator;
+	private WebDriver driver;
+	private CCValidator ccValidator;
+	private DiscoveryValidator discoveryValidator;
+	private FullScreenValidator fullScreenValidator;
+	private PauseValidator pauseValidator;
+	private PlayValidator playValidator;
+	private SeekValidator seekValidator;
+	private UpNextValidator upNextValidator;
+	private PauseAction pauseAction;
+	private PlayAction playAction;
+	private AutoplayAction autoplay;
+	private EventValidator eventValidator;
+	private AspectRatioValidator aspectRatioValidator;
+	private LiveAction liveAction;
+	private ShareTabValidator shareTabValidator;
+	private WaterMarkValidator waterMarkValidator;
+	private VolumeValidator volumeValidator;
+	private PlayPauseAction playPauseAction;
+	private ControlBarValidator controlBarValidator;
+	private StartScreenValidator startScreenValidator;
+	private EndScreenValidator endScreenValidator;
+	private ReplayValidator replayValidator;
+	private ClickDiscoveryButtonAction clickDiscoveryButtonAction;
+	private Bitratevalidator bitratevalidator;
+	private SocialScreenValidator socailScreenValidator;
+	private ThumbnailValidator thumbnailValidator;
+	private FullScreenAction fullScreenAction;
+	private SeekAction seekAction;
+	private StateScreenAction stateScreenAction;
+	private OverlayValidator overlayValidator;
+	private AdSkipButtonValidator adSkipButtonValidator;
+	private PlayerAPIAction playerAPIAction;
     private DifferentElementValidator differentElement;
-    private IsAdPlayingValidator isAdPlaying;
     private EncodingValidator encodingValidator;
     private MultiplePlayerValidator multiplePlayerValidator;
     private AdClickThroughValidator adClickThroughValidator;
@@ -84,9 +141,18 @@ public class PlayBackFactory {
         this.extentTest = extentTest;
     }
 
-    public ExtentTest getExtentTest() {
-        return extentTest;
-    }
+	public ExtentTest getExtentTest() {
+		return extentTest;
+	}
+
+	public PlayerAPIAction getPlayerAPIAction() {
+		if(playerAPIAction == null) {
+			playerAPIAction = new PlayerAPIAction(driver);
+			playerAPIAction.setExtentTest(extentTest);
+		}
+		return playerAPIAction;
+	}
+
 
     public StateScreenValidator getStateScreenValidator() {
         if (stateScreenValidator == null) {
@@ -503,22 +569,6 @@ public class PlayBackFactory {
         return liveAction;
     }
 
-    public DifferentElementValidator getDifferentElements() {
-        if (differentElement == null) {
-            differentElement = new DifferentElementValidator(driver);
-            differentElement.setExtentTest(extentTest);
-        }
-        return differentElement;
-    }
-
-    public IsAdPlayingValidator isAdPlaying() {
-        if (isAdPlaying == null) {
-            isAdPlaying = new IsAdPlayingValidator(driver);
-            isAdPlaying.setExtentTest(extentTest);
-        }
-        return isAdPlaying;
-    }
-
     public SetEmbedCodeValidator getSetEmbedCodeValidator() {
         if (setEmbedCodeValidator == null) {
             setEmbedCodeValidator = new SetEmbedCodeValidator(driver);
@@ -542,6 +592,14 @@ public class PlayBackFactory {
         }
         return liveValidator;
     }
+
+	public DifferentElementValidator getDifferentElements() {
+		if (differentElement == null) {
+			differentElement = new DifferentElementValidator(driver);
+			differentElement.setExtentTest(extentTest);
+		}
+		return differentElement;
+	}
 
     public MidrollAdValidator getAdStartTimeValidator() {
         if (adStartTimeValidator == null) {

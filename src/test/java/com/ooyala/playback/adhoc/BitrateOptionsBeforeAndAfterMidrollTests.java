@@ -2,6 +2,7 @@ package com.ooyala.playback.adhoc;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -21,6 +22,7 @@ public class BitrateOptionsBeforeAndAfterMidrollTests extends PlaybackWebTest{
     private PlayValidator playValidator;
     private EventValidator eventValidator;
     private Bitratevalidator bitrate;
+    private PlayerAPIAction playerAPI;
 
     @Test(dataProvider = "testUrls",groups = "adhoc")
     public void BitrateOptions(String testName, UrlObject url){
@@ -31,15 +33,15 @@ public class BitrateOptionsBeforeAndAfterMidrollTests extends PlaybackWebTest{
             injectScript();
             result = result && playValidator.validate("playing_1",10000);
             result = result && eventValidator.playVideoForSometime(2);
-            driver.executeScript("pp.pause()");
+            playerAPI.pause();
             result = result && bitrate.totalBitrateCountBeforeAdPlayback();
-            driver.executeScript("pp.play()");
+            playerAPI.play();
             result = result && eventValidator.validate("MidRoll_willPlaySingleAd_1",30000);
-            driver.executeScript("pp.skipAd()");
+            playerAPI.skipAd();
             result = result && eventValidator.validate("midrollAdPlayed_1",100000);
-            driver.executeScript("pp.pause()");
+            playerAPI.pause();
             result = result && bitrate.totalBitrateCountAfterAdPlayback();
-            driver.executeScript("pp.play()");
+            playerAPI.play();
             result = result && bitrate.isBirateOptionsVarying();
 
         } catch (Exception e) {

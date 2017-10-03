@@ -32,7 +32,6 @@ public class PlaybackDeviceRegistrationTests extends PlaybackWebTest {
 	private BitmovinTechnologyValidator tech;
 	private PauseValidator pause;
 	private PlayAction playAction;
-//	private ErrorDescriptionValidator error;
 	
 	public PlaybackDeviceRegistrationTests() throws OoyalaException {
 		super();

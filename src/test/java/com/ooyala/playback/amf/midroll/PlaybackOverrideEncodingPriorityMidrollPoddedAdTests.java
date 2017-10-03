@@ -54,11 +54,8 @@ public class PlaybackOverrideEncodingPriorityMidrollPoddedAdTests extends Playba
 					: event.validate("adsPlayed_1", 200000));
 
 			result = result && event.validate("videoPlayed_1", 60000);
-
-			if (result && isDRM){
-				result = result && encode.validateDRM();
-			}else
-				result = result && encode.getStreamType(url).verifyEncodingPriority(url);
+			
+			result = result && isDRM?encode.validateDRM():encode.getStreamType(url).verifyEncodingPriority(url);
 
 			param = event.isAdPluginPresent("freewheel")
 					? "{\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"],\"freewheel-ads-manager\":{\"fw_video_asset_id\":\"Fsa2tmcjpvD21CN9WthbTbE4MIpWJoaK\",\"html5_ad_server\":\"http://g1.v.fwmrm.net\",\"html5_player_profile\":\"90750:ooyala_html5\",\"showInAdControlBar\":true},\"initialTime\":0,\"autoplay\":false}"
@@ -79,10 +76,7 @@ public class PlaybackOverrideEncodingPriorityMidrollPoddedAdTests extends Playba
 
 			result = result && event.validate("videoPlayed_1", 60000);
 
-			if (result && isDRM){
-				result = result && encode.validateDRM();
-			}else
-				result = result && encode.getStreamType(url).verifyEncodingPriority(url);
+			result = result && isDRM?encode.validateDRM():encode.getStreamType(url).verifyEncodingPriority(url);
 
 		} catch (Exception e) {
 			logger.error("Exception while checking OverrideEncoding Priority test  " + e.getMessage());

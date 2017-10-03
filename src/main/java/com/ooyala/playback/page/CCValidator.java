@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 
 /**
@@ -163,7 +164,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
         }
         logger.info("Closed Caption Available Languages: " + langlist);
         for (int i = 0; i < langlist.size(); i++) {
-            ((JavascriptExecutor) driver).executeScript("pp.setClosedCaptionsLanguage(\"" + langlist.get(i) + "\")");
+        	new PlayBackFactory(driver, extentTest).getPlayerAPIAction().setClosedCaptionLanguage(langlist.get(i));
 
             flag = flag && waitOnElement(By.id("cclanguage_" + langlist.get(i)), 10000);
 

@@ -54,10 +54,8 @@ public class PlaybackVerifyVideoElementCreatedAllMidrollAdsTests extends Playbac
 
 			result = result && differentElementValidator.validateMainVideoElementId("VIDEO_ELEMENT", 20000);
 
-			if (!eventValidator.isAdPluginPresent("ima")) {
-				result = result && differentElementValidator.validateAdElementId("AD_ELEMENT", 5000);
-			}
-
+			result = result && differentElementValidator.validateAdElementId("AD_ELEMENT", 5000);
+			
 		} catch (Exception e) {
 			logger.error("Exception while checking Video Element tests  " + e.getMessage());
 			extentTest.log(LogStatus.FAIL, e.getMessage());
