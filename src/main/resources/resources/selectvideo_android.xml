@@ -25,5 +25,15 @@
 	<element key="PREVENTVIDEOSHARING" findBy="xPath" xPath="//android.widget.TextView[@text='Prevent Video View Sharing Option']" />
 	<element key="TIMEOUT_OPTIONS" findBy="xPath" xPath="//android.widget.TextView[@text='Timeout Options']" />
 	<element key="IQ_CONFIG" findBy="xPath" xPath="//android.widget.TextView[@text='IQ Configuration']" />
+<!-- 	<element key="ANDROID_ADV_INITIALTIME" findBy="xPath" xPath="//android.widget.TextView[@index='0']" /> -->
+	<element key="ANDROID_ADV_MULTIPLE" findBy="xPath" xPath="//android.widget.TextView[@index='1']" /> 
+	<element key="PLAY_WITH_INITIALTIME" findBy="xPath" xPath="//android.widget.TextView[@index='0']" />
+	<element key="INSERT_AD_AT_RUNTIME_ANDRD" findBy="xPath" xPath="//android.widget.TextView[@text='Insert Ad at Runtime']" />
+	<element key="CHANGE_VIDEO_PROGRAMMATICALLY_ANDRD" findBy="xPath" xPath="//android.widget.TextView[@text='Change Video Programatically']" />
+	<element key="CUSTOM_PLUGIN_SAMPLE" findBy="xPath" xPath="//android.widget.TextView[@text='Custom Plugin Sample']" />  
+	<element key="CUSTOM_CONTROLS" findBy="xPath" xPath="//android.widget.TextView[@text='Custom Controls']" />   
+	<element key="CUSTOM_OVERLAY" findBy="xPath" xPath="//android.widget.TextView[@text='Custom Overlay']" />   
+	<element key="CUSTOM_VIDEO_PLAYER_SAMPLE" findBy="xPath" xPath="//android.widget.TextView[@text='Custom Video Player Sample']" />
+	<element key="NOTIFICATION_SAMPLE" findBy="xPath" xPath="//android.widget.TextView[@text='Notifications Demonstration']" />                                                              
 </elements>
 
