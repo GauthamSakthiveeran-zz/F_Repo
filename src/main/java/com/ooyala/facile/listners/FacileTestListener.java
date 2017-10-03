@@ -265,9 +265,9 @@ public class FacileTestListener extends TestListenerAdapter implements
 	private int getHashCode(ITestResult result){
 		String name = result.getTestName() + result.getMethod().getMethodName();
 		for(Object obj : result.getParameters()){
-			if(obj.getClass()!=null && obj instanceof String)
+			if(obj!=null && obj.getClass()!=null && obj instanceof String)
 				name = name + obj.toString();
-			else if(obj.getClass()==null)
+			else if(obj != null && obj.getClass()==null)
 				name = name + obj.toString();
 		}
 		return name.hashCode();
