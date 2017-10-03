@@ -35,30 +35,20 @@ public class DiscoveryAutoplayPreroll extends PlaybackWebTest {
 
 	@Test(groups = { "autoplay" }, dataProvider = "testUrls")
 	public void verifyPrerollDiscovery(String testName, UrlObject url) throws OoyalaException {
-        String[] parts = testName.split(":")[1].trim().split(",");
-        String[] tcName = null;
-        String[] autoplayValidator = null;
-        String[] upNxtValidator = null;
-        for(int i=0;i<parts.length-1;i++) {
-    	      tcName=parts[i].split("-");
-    	      if(tcName[i].contains("Auto") || tcName[i].contains("auto")) {
-    	    	    autoplayValidator=tcName;
-    	      } else {
-    	      	upNxtValidator=tcName;
-    	      }
-       }
 		boolean result = true;
 
 		try {
 
 			driver.get(url.getUrl());
+			String autoPlay = getAutoPlayFlag();
+            String upNextFlag = getAutoplayUpNextDiscoveryVideosFlag();
 
 			result = result && playValidator.waitForPage();
 
 			injectScript();
 			
 			result = result && event.loadingSpinner();
-			if(autoplayValidator[1].equalsIgnoreCase("true"))
+			if(autoPlay.equalsIgnoreCase("true"))
 		    result = result && autoplayAction.startAction();
 			else
 		    result = result && playValidator.clickOnIndependentElement("PLAY_BUTTON");
@@ -70,7 +60,7 @@ public class DiscoveryAutoplayPreroll extends PlaybackWebTest {
 			result = result && seekAction.seek(10, true);
 			result = result && event.waitOnElement(By.id("played_1"), 30000);
 			
-			if(upNxtValidator[1].equalsIgnoreCase("true"))
+			if(upNextFlag.equalsIgnoreCase("true"))
 				result = result && upNextValidator.autoPlayUpNextVideo();
 			else
 				result = result && !upNextValidator.autoPlayUpNextVideo();

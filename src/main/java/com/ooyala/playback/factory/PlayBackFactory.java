@@ -41,6 +41,7 @@ import com.ooyala.playback.page.PlayerSkinScrubberValidator;
 import com.ooyala.playback.page.PlayerSkinShareValidator;
 import com.ooyala.playback.page.PlaylistValidator;
 import com.ooyala.playback.page.PoddedAdValidator;
+import com.ooyala.playback.page.PreloadingValidator;
 import com.ooyala.playback.page.ReplayValidator;
 import com.ooyala.playback.page.ScrubberValidator;
 import com.ooyala.playback.page.SeekValidator;
@@ -105,48 +106,49 @@ public class PlayBackFactory {
 	private StateScreenAction stateScreenAction;
 	private OverlayValidator overlayValidator;
 	private AdSkipButtonValidator adSkipButtonValidator;
-	private DifferentElementValidator differentElement;
-	private EncodingValidator encodingValidator;
-	private MultiplePlayerValidator multiplePlayerValidator;
-	private AdClickThroughValidator adClickThroughValidator;
-	private PoddedAdValidator poddedAdValidator;
-	private PlayerAPIValidator playerAPIValidator;
-	private PlaylistValidator playlistValidator;
-	private AdFrequencyValidator adFrequencyValidator;
-	private ThumbnailCarouselValidator thumbnailCarouselValidator;
-	private InitalTimeValidator initalTimeValidator;
-	private ExtentTest extentTest;
-	private SetEmbedCodeValidator setEmbedCodeValidator;
-	private ConcurrentStreamValidator concurrentStreamValidator;
-	private DRMValidator drmValidator;
-	private GeoValidator geoValidator;
-	private StreamValidator streamTypeValidator;
-	private ErrorDescriptionValidator errorDescriptionValidator;
-	private BitmovinTechnologyValidator bitmovinTechnologyValidator;
-	private LiveValidator liveValidator;
-	private MidrollAdValidator adStartTimeValidator;
-	private VideoPluginValidator videoPluginValidator;
-	private AdPluginValidator adPluginValidator;
-	private VideoValidator videoValidator;
-	private ScrubberValidator scrubberValidator;
-	private AnalyticsValidator analyticsValidator;
-	private ChromeFlashUpdateAction chromeValidator;
-	private UIControlValidator uiControlValidator;
-	private PlayerSkinLocalizationValidator localizationValidator;
-	private PlayerSkinScrubberValidator skinScrubberValidator;
-	private PlayerSkinCaptionsValidator skinCaptionsValidator;
-	private PlayerSkinShareValidator skinShareValidator;
-	private DVRLiveValidator dvrLiveValidator;
-	private EmbedTabValidator embedTabValidator;
-	private StateScreenValidator stateScreenValidator;
-	private PlayerSkinButtonsValidator skinValidator;
-	private VastPageLevelOverridingValidator pageLevelOverridingValidator;
 	private PlayerAPIAction playerAPIAction;
+    private DifferentElementValidator differentElement;
+    private EncodingValidator encodingValidator;
+    private MultiplePlayerValidator multiplePlayerValidator;
+    private AdClickThroughValidator adClickThroughValidator;
+    private PoddedAdValidator poddedAdValidator;
+    private PlayerAPIValidator playerAPIValidator;
+    private PlaylistValidator playlistValidator;
+    private AdFrequencyValidator adFrequencyValidator;
+    private ThumbnailCarouselValidator thumbnailCarouselValidator;
+    private InitalTimeValidator initalTimeValidator;
+    private ExtentTest extentTest;
+    private SetEmbedCodeValidator setEmbedCodeValidator;
+    private ConcurrentStreamValidator concurrentStreamValidator;
+    private DRMValidator drmValidator;
+    private GeoValidator geoValidator;
+    private StreamValidator streamTypeValidator;
+    private ErrorDescriptionValidator errorDescriptionValidator;
+    private BitmovinTechnologyValidator bitmovinTechnologyValidator;
+    private LiveValidator liveValidator;
+    private MidrollAdValidator adStartTimeValidator;
+    private VideoPluginValidator videoPluginValidator;
+    private AdPluginValidator adPluginValidator;
+    private VideoValidator videoValidator;
+    private ScrubberValidator scrubberValidator;
+    private AnalyticsValidator analyticsValidator;
+    private ChromeFlashUpdateAction chromeValidator;
+    private UIControlValidator uiControlValidator;
+    private PlayerSkinLocalizationValidator localizationValidator;
+    private PlayerSkinScrubberValidator skinScrubberValidator;
+    private PlayerSkinCaptionsValidator skinCaptionsValidator;
+    private PlayerSkinShareValidator skinShareValidator;
+    private DVRLiveValidator dvrLiveValidator;
+    private EmbedTabValidator embedTabValidator;
+    private StateScreenValidator stateScreenValidator;
+    private PlayerSkinButtonsValidator skinValidator;
+    private VastPageLevelOverridingValidator pageLevelOverridingValidator;
+    private PreloadingValidator preloadingValidator;
 
-	public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
-		this.driver = driver;
-		this.extentTest = extentTest;
-	}
+    public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
+        this.driver = driver;
+        this.extentTest = extentTest;
+    }
 
 	public ExtentTest getExtentTest() {
 		return extentTest;
@@ -160,420 +162,445 @@ public class PlayBackFactory {
 		return playerAPIAction;
 	}
 	
-	public StateScreenValidator getStateScreenValidator() {
-		if(stateScreenValidator == null) {
-			stateScreenValidator = new StateScreenValidator(driver);
-			stateScreenValidator.setExtentTest(extentTest);
-		}
-		return stateScreenValidator;
-	}
-	
-	public EmbedTabValidator getEmbedTabValidator() {
-		if(embedTabValidator == null) {
-			embedTabValidator =  new EmbedTabValidator(driver);
-			embedTabValidator.setExtentTest(extentTest);
-		}
-		return embedTabValidator;
-	}
 
-	public ScrubberValidator getScrubberValidator() {
-		if (scrubberValidator == null) {
-			scrubberValidator = new ScrubberValidator(driver);
-			scrubberValidator.setExtentTest(extentTest);
-		}
-		return scrubberValidator;
-	}
+    public StateScreenValidator getStateScreenValidator() {
+        if (stateScreenValidator == null) {
+            stateScreenValidator = new StateScreenValidator(driver);
+            stateScreenValidator.setExtentTest(extentTest);
+        }
+        return stateScreenValidator;
+    }
 
-	public VideoValidator getVideoValidator() {
-		if (videoValidator == null) {
-			videoValidator = new VideoValidator(driver);
-			videoValidator.setExtentTest(extentTest);
-		}
-		return videoValidator;
-	}
-	
-	public PlayerSkinButtonsValidator getPlayerSkinValidator() {
-		if (skinValidator == null) {
-			skinValidator = new PlayerSkinButtonsValidator(driver);
-			skinValidator.setExtentTest(extentTest);
-		}
-		return skinValidator;
-	}
+    public EmbedTabValidator getEmbedTabValidator() {
+        if (embedTabValidator == null) {
+            embedTabValidator = new EmbedTabValidator(driver);
+            embedTabValidator.setExtentTest(extentTest);
+        }
+        return embedTabValidator;
+    }
 
-	public AdPluginValidator getAdPluginValidator() {
-		if (adPluginValidator == null) {
-			adPluginValidator = new AdPluginValidator(driver);
-			adPluginValidator.setExtentTest(extentTest);
-		}
-		return adPluginValidator;
-	}
+    public ScrubberValidator getScrubberValidator() {
+        if (scrubberValidator == null) {
+            scrubberValidator = new ScrubberValidator(driver);
+            scrubberValidator.setExtentTest(extentTest);
+        }
+        return scrubberValidator;
+    }
 
-	public VideoPluginValidator getVideoPluginValidator() {
-		if (videoPluginValidator == null) {
-			videoPluginValidator = new VideoPluginValidator(driver);
-			videoPluginValidator.setExtentTest(extentTest);
-		}
-		return videoPluginValidator;
-	}
+    public VideoValidator getVideoValidator() {
+        if (videoValidator == null) {
+            videoValidator = new VideoValidator(driver);
+            videoValidator.setExtentTest(extentTest);
+        }
+        return videoValidator;
+    }
 
-	public ConcurrentStreamValidator getConcurrentStreamValidator() {
-		if (concurrentStreamValidator == null) {
-			concurrentStreamValidator = new ConcurrentStreamValidator(driver);
-			concurrentStreamValidator.setExtentTest(extentTest);
-		}
-		return concurrentStreamValidator;
-	}
+    public PlayerSkinButtonsValidator getPlayerSkinValidator() {
+        if (skinValidator == null) {
+            skinValidator = new PlayerSkinButtonsValidator(driver);
+            skinValidator.setExtentTest(extentTest);
+        }
+        return skinValidator;
+    }
 
-	public BitmovinTechnologyValidator getBitmovinTechnologyValidator() {
-		if (bitmovinTechnologyValidator == null) {
-			bitmovinTechnologyValidator = new BitmovinTechnologyValidator(driver);
-			bitmovinTechnologyValidator.setExtentTest(extentTest);
-		}
-		return bitmovinTechnologyValidator;
-	}
+    public AdPluginValidator getAdPluginValidator() {
+        if (adPluginValidator == null) {
+            adPluginValidator = new AdPluginValidator(driver);
+            adPluginValidator.setExtentTest(extentTest);
+        }
+        return adPluginValidator;
+    }
 
-	public ErrorDescriptionValidator getErrorDescriptionValidator() {
-		if (errorDescriptionValidator == null) {
-			errorDescriptionValidator = new ErrorDescriptionValidator(driver);
-			errorDescriptionValidator.setExtentTest(extentTest);
-		}
-		return errorDescriptionValidator;
-	}
+    public VideoPluginValidator getVideoPluginValidator() {
+        if (videoPluginValidator == null) {
+            videoPluginValidator = new VideoPluginValidator(driver);
+            videoPluginValidator.setExtentTest(extentTest);
+        }
+        return videoPluginValidator;
+    }
 
-	public InitalTimeValidator getInitalTimeValidator() {
-		if (initalTimeValidator == null) {
-			initalTimeValidator = new InitalTimeValidator(driver);
-			initalTimeValidator.setExtentTest(extentTest);
-		}
-		return initalTimeValidator;
-	}
+    public ConcurrentStreamValidator getConcurrentStreamValidator() {
+        if (concurrentStreamValidator == null) {
+            concurrentStreamValidator = new ConcurrentStreamValidator(driver);
+            concurrentStreamValidator.setExtentTest(extentTest);
+        }
+        return concurrentStreamValidator;
+    }
 
-	public StreamValidator getStreamTypeValidator() {
-		if (streamTypeValidator == null) {
-			streamTypeValidator = new StreamValidator(driver);
-			streamTypeValidator.setExtentTest(extentTest);
-		}
-		return streamTypeValidator;
-	}
+    public BitmovinTechnologyValidator getBitmovinTechnologyValidator() {
+        if (bitmovinTechnologyValidator == null) {
+            bitmovinTechnologyValidator = new BitmovinTechnologyValidator(driver);
+            bitmovinTechnologyValidator.setExtentTest(extentTest);
+        }
+        return bitmovinTechnologyValidator;
+    }
 
-	public GeoValidator getGeoValidator() {
-		if (geoValidator == null) {
-			geoValidator = new GeoValidator(driver);
-			geoValidator.setExtentTest(extentTest);
-		}
-		return geoValidator;
-	}
+    public ErrorDescriptionValidator getErrorDescriptionValidator() {
+        if (errorDescriptionValidator == null) {
+            errorDescriptionValidator = new ErrorDescriptionValidator(driver);
+            errorDescriptionValidator.setExtentTest(extentTest);
+        }
+        return errorDescriptionValidator;
+    }
 
-	public DRMValidator getDRMValidator() {
-		if (drmValidator == null) {
-			drmValidator = new DRMValidator(driver);
-			drmValidator.setExtentTest(extentTest);
-		}
-		return drmValidator;
-	}
+    public InitalTimeValidator getInitalTimeValidator() {
+        if (initalTimeValidator == null) {
+            initalTimeValidator = new InitalTimeValidator(driver);
+            initalTimeValidator.setExtentTest(extentTest);
+        }
+        return initalTimeValidator;
+    }
 
-	public AdFrequencyValidator getAdFrequencyValidator() {
-		if (adFrequencyValidator == null) {
-			adFrequencyValidator = new AdFrequencyValidator(driver);
-			adFrequencyValidator.setExtentTest(extentTest);
-		}
-		return adFrequencyValidator;
-	}
+    public StreamValidator getStreamTypeValidator() {
+        if (streamTypeValidator == null) {
+            streamTypeValidator = new StreamValidator(driver);
+            streamTypeValidator.setExtentTest(extentTest);
+        }
+        return streamTypeValidator;
+    }
 
-	public PlayerAPIValidator getPlayerAPIValidator() {
-		if (playerAPIValidator == null) {
-			playerAPIValidator = new PlayerAPIValidator(driver);
-			playerAPIValidator.setExtentTest(extentTest);
-		}
-		return playerAPIValidator;
-	}
+    public GeoValidator getGeoValidator() {
+        if (geoValidator == null) {
+            geoValidator = new GeoValidator(driver);
+            geoValidator.setExtentTest(extentTest);
+        }
+        return geoValidator;
+    }
 
-	public ThumbnailCarouselValidator getThumbnailCarouselValidator() {
-		if (thumbnailCarouselValidator == null) {
-			thumbnailCarouselValidator = new ThumbnailCarouselValidator(driver);
-			thumbnailCarouselValidator.setExtentTest(extentTest);
-		}
-		return thumbnailCarouselValidator;
+    public DRMValidator getDRMValidator() {
+        if (drmValidator == null) {
+            drmValidator = new DRMValidator(driver);
+            drmValidator.setExtentTest(extentTest);
+        }
+        return drmValidator;
+    }
 
-	}
+    public AdFrequencyValidator getAdFrequencyValidator() {
+        if (adFrequencyValidator == null) {
+            adFrequencyValidator = new AdFrequencyValidator(driver);
+            adFrequencyValidator.setExtentTest(extentTest);
+        }
+        return adFrequencyValidator;
+    }
 
-	public MultiplePlayerValidator getMultiplePlayerValidator() {
-		if (multiplePlayerValidator == null) {
-			multiplePlayerValidator = new MultiplePlayerValidator(driver);
-			multiplePlayerValidator.setExtentTest(extentTest);
-		}
-		return multiplePlayerValidator;
+    public PlayerAPIValidator getPlayerAPIValidator() {
+        if (playerAPIValidator == null) {
+            playerAPIValidator = new PlayerAPIValidator(driver);
+            playerAPIValidator.setExtentTest(extentTest);
+        }
+        return playerAPIValidator;
+    }
 
-	}
+    public ThumbnailCarouselValidator getThumbnailCarouselValidator() {
+        if (thumbnailCarouselValidator == null) {
+            thumbnailCarouselValidator = new ThumbnailCarouselValidator(driver);
+            thumbnailCarouselValidator.setExtentTest(extentTest);
+        }
+        return thumbnailCarouselValidator;
 
-	public SeekAction getSeekAction() {
-		if (seekAction == null) {
-			seekAction = new SeekAction(driver);
-			seekAction.setExtentTest(extentTest);
-		}
-		return seekAction;
+    }
 
-	}
+    public MultiplePlayerValidator getMultiplePlayerValidator() {
+        if (multiplePlayerValidator == null) {
+            multiplePlayerValidator = new MultiplePlayerValidator(driver);
+            multiplePlayerValidator.setExtentTest(extentTest);
+        }
+        return multiplePlayerValidator;
 
-	public PoddedAdValidator getPoddedAdValidator() {
-		if (poddedAdValidator == null) {
-			poddedAdValidator = new PoddedAdValidator(driver);
-			poddedAdValidator.setExtentTest(extentTest);
-		}
-		return poddedAdValidator;
-	}
+    }
 
-	public AdClickThroughValidator getAdClickThroughValidator() {
-		if (adClickThroughValidator == null) {
-			adClickThroughValidator = new AdClickThroughValidator(driver);
-			adClickThroughValidator.setExtentTest(extentTest);
-		}
-		return adClickThroughValidator;
+    public SeekAction getSeekAction() {
+        if (seekAction == null) {
+            seekAction = new SeekAction(driver);
+            seekAction.setExtentTest(extentTest);
+        }
+        return seekAction;
 
-	}
+    }
 
-	public EncodingValidator getEncodingValidator() {
-		if (encodingValidator == null) {
-			encodingValidator = new EncodingValidator(driver);
-			encodingValidator.setExtentTest(extentTest);
-		}
-		return encodingValidator;
+    public PoddedAdValidator getPoddedAdValidator() {
+        if (poddedAdValidator == null) {
+            poddedAdValidator = new PoddedAdValidator(driver);
+            poddedAdValidator.setExtentTest(extentTest);
+        }
+        return poddedAdValidator;
+    }
 
-	}
+    public AdClickThroughValidator getAdClickThroughValidator() {
+        if (adClickThroughValidator == null) {
+            adClickThroughValidator = new AdClickThroughValidator(driver);
+            adClickThroughValidator.setExtentTest(extentTest);
+        }
+        return adClickThroughValidator;
 
-	public AdSkipButtonValidator getAdSkipButtonValidator() {
-		if (adSkipButtonValidator == null) {
-			adSkipButtonValidator = new AdSkipButtonValidator(driver);
-			adSkipButtonValidator.setExtentTest(extentTest);
-		}
-		return adSkipButtonValidator;
+    }
 
-	}
+    public EncodingValidator getEncodingValidator() {
+        if (encodingValidator == null) {
+            encodingValidator = new EncodingValidator(driver);
+            encodingValidator.setExtentTest(extentTest);
+        }
+        return encodingValidator;
 
-	public OverlayValidator getOverlayValidator() {
-		if (overlayValidator == null) {
-			overlayValidator = new OverlayValidator(driver);
-			overlayValidator.setExtentTest(extentTest);
-		}
-		return overlayValidator;
+    }
 
-	}
+    public AdSkipButtonValidator getAdSkipButtonValidator() {
+        if (adSkipButtonValidator == null) {
+            adSkipButtonValidator = new AdSkipButtonValidator(driver);
+            adSkipButtonValidator.setExtentTest(extentTest);
+        }
+        return adSkipButtonValidator;
 
-	public StateScreenAction getStateScreenAction() {
-		if (stateScreenAction == null) {
-			stateScreenAction = new StateScreenAction(driver);
-			stateScreenAction.setExtentTest(extentTest);
-		}
-		return stateScreenAction;
-	}
+    }
 
-	public FullScreenAction getFullScreenAction() {
-		if (fullScreenAction == null) {
-			fullScreenAction = new FullScreenAction(driver);
-			fullScreenAction.setExtentTest(extentTest);
-		}
-		return fullScreenAction;
-	}
+    public OverlayValidator getOverlayValidator() {
+        if (overlayValidator == null) {
+            overlayValidator = new OverlayValidator(driver);
+            overlayValidator.setExtentTest(extentTest);
+        }
+        return overlayValidator;
 
-	public PauseAction getPauseAction() {
-		if (pauseAction == null) {
-			pauseAction = new PauseAction(driver);
-			pauseAction.setExtentTest(extentTest);
-		}
-		return pauseAction;
-	}
+    }
 
-	public PlayAction getPlayAction() {
-		if (playAction == null) {
-			playAction = new PlayAction(driver);
-			playAction.setExtentTest(extentTest);
-		}
-		return playAction;
-	}
+    public StateScreenAction getStateScreenAction() {
+        if (stateScreenAction == null) {
+            stateScreenAction = new StateScreenAction(driver);
+            stateScreenAction.setExtentTest(extentTest);
+        }
+        return stateScreenAction;
+    }
 
-	public CCValidator getCCValidator() {
-		if (ccValidator == null) {
-			ccValidator = new CCValidator(driver);
-			ccValidator.setExtentTest(extentTest);
-		}
-		return ccValidator;
-	}
+    public FullScreenAction getFullScreenAction() {
+        if (fullScreenAction == null) {
+            fullScreenAction = new FullScreenAction(driver);
+            fullScreenAction.setExtentTest(extentTest);
+        }
+        return fullScreenAction;
+    }
 
-	public UpNextValidator getUpNextValidator() {
-		if (upNextValidator == null) {
-			upNextValidator = new UpNextValidator(driver);
-			upNextValidator.setExtentTest(extentTest);
-		}
-		return upNextValidator;
-	}
+    public PauseAction getPauseAction() {
+        if (pauseAction == null) {
+            pauseAction = new PauseAction(driver);
+            pauseAction.setExtentTest(extentTest);
+        }
+        return pauseAction;
+    }
 
-	public SeekValidator getSeekValidator() {
-		if (seekValidator == null) {
-			seekValidator = new SeekValidator(driver);
-			seekValidator.setExtentTest(extentTest);
-		}
-		return seekValidator;
-	}
+    public PlayAction getPlayAction() {
+        if (playAction == null) {
+            playAction = new PlayAction(driver);
+            playAction.setExtentTest(extentTest);
+        }
+        return playAction;
+    }
 
-	public PlayValidator getPlayValidator() {
-		if (playValidator == null) {
-			playValidator = new PlayValidator(driver);
-			playValidator.setExtentTest(extentTest);
-		}
-		return playValidator;
-	}
+    public CCValidator getCCValidator() {
+        if (ccValidator == null) {
+            ccValidator = new CCValidator(driver);
+            ccValidator.setExtentTest(extentTest);
+        }
+        return ccValidator;
+    }
 
-	public PauseValidator getPauseValidator() {
-		if (pauseValidator == null) {
-			pauseValidator = new PauseValidator(driver);
-			pauseValidator.setExtentTest(extentTest);
-		}
-		return pauseValidator;
-	}
+    public UpNextValidator getUpNextValidator() {
+        if (upNextValidator == null) {
+            upNextValidator = new UpNextValidator(driver);
+            upNextValidator.setExtentTest(extentTest);
+        }
+        return upNextValidator;
+    }
 
-	public FullScreenValidator getFullScreenValidator() {
-		if (fullScreenValidator == null) {
-			fullScreenValidator = new FullScreenValidator(driver);
-			fullScreenValidator.setExtentTest(extentTest);
-		}
-		return fullScreenValidator;
-	}
+    public SeekValidator getSeekValidator() {
+        if (seekValidator == null) {
+            seekValidator = new SeekValidator(driver);
+            seekValidator.setExtentTest(extentTest);
+        }
+        return seekValidator;
+    }
 
-	public DiscoveryValidator getDiscoveryValidator() {
-		if (discoveryValidator == null) {
-			discoveryValidator = new DiscoveryValidator(driver);
-			discoveryValidator.setExtentTest(extentTest);
-		}
-		return discoveryValidator;
-	}
+    public PlayValidator getPlayValidator() {
+        if (playValidator == null) {
+            playValidator = new PlayValidator(driver);
+            playValidator.setExtentTest(extentTest);
+        }
+        return playValidator;
+    }
 
-	public EventValidator getEventValidator() {
-		if (eventValidator == null) {
-			eventValidator = new EventValidator(driver);
-			eventValidator.setExtentTest(extentTest);
-		}
-		return eventValidator;
-	}
+    public PauseValidator getPauseValidator() {
+        if (pauseValidator == null) {
+            pauseValidator = new PauseValidator(driver);
+            pauseValidator.setExtentTest(extentTest);
+        }
+        return pauseValidator;
+    }
 
-	public AspectRatioValidator getAspectRatioValidator() {
-		if (aspectRatioValidator == null) {
-			aspectRatioValidator = new AspectRatioValidator(driver);
-			aspectRatioValidator.setExtentTest(extentTest);
-		}
-		return aspectRatioValidator;
-	}
+    public FullScreenValidator getFullScreenValidator() {
+        if (fullScreenValidator == null) {
+            fullScreenValidator = new FullScreenValidator(driver);
+            fullScreenValidator.setExtentTest(extentTest);
+        }
+        return fullScreenValidator;
+    }
 
-	public ShareTabValidator getShareTabValidator() {
-		if (shareTabValidator == null) {
-			shareTabValidator = new ShareTabValidator(driver);
-			shareTabValidator.setExtentTest(extentTest);
-		}
-		return shareTabValidator;
-	}
+    public DiscoveryValidator getDiscoveryValidator() {
+        if (discoveryValidator == null) {
+            discoveryValidator = new DiscoveryValidator(driver);
+            discoveryValidator.setExtentTest(extentTest);
+        }
+        return discoveryValidator;
+    }
 
-	public VolumeValidator getVolumeValidator() {
-		if (volumeValidator == null) {
-			volumeValidator = new VolumeValidator(driver);
-			volumeValidator.setExtentTest(extentTest);
-		}
-		return volumeValidator;
-	}
+    public EventValidator getEventValidator() {
+        if (eventValidator == null) {
+            eventValidator = new EventValidator(driver);
+            eventValidator.setExtentTest(extentTest);
+        }
+        return eventValidator;
+    }
 
-	public WaterMarkValidator getWaterMarkValidator() {
-		if (waterMarkValidator == null) {
-			waterMarkValidator = new WaterMarkValidator(driver);
-			waterMarkValidator.setExtentTest(extentTest);
-		}
-		return waterMarkValidator;
-	}
+    public AspectRatioValidator getAspectRatioValidator() {
+        if (aspectRatioValidator == null) {
+            aspectRatioValidator = new AspectRatioValidator(driver);
+            aspectRatioValidator.setExtentTest(extentTest);
+        }
+        return aspectRatioValidator;
+    }
 
-	public ControlBarValidator getControlBarValidator() {
-		if (controlBarValidator == null) {
-			controlBarValidator = new ControlBarValidator(driver);
-			controlBarValidator.setExtentTest(extentTest);
-		}
-		return controlBarValidator;
-	}
+    public ShareTabValidator getShareTabValidator() {
+        if (shareTabValidator == null) {
+            shareTabValidator = new ShareTabValidator(driver);
+            shareTabValidator.setExtentTest(extentTest);
+        }
+        return shareTabValidator;
+    }
 
-	public StartScreenValidator getStartScreenValidator() {
-		if (startScreenValidator == null) {
-			startScreenValidator = new StartScreenValidator(driver);
-			startScreenValidator.setExtentTest(extentTest);
-		}
-		return startScreenValidator;
-	}
+    public VolumeValidator getVolumeValidator() {
+        if (volumeValidator == null) {
+            volumeValidator = new VolumeValidator(driver);
+            volumeValidator.setExtentTest(extentTest);
+        }
+        return volumeValidator;
+    }
 
-	public ClickDiscoveryButtonAction getClickDiscoveryButtonAction() {
-		if (clickDiscoveryButtonAction == null) {
-			clickDiscoveryButtonAction = new ClickDiscoveryButtonAction(driver);
-			clickDiscoveryButtonAction.setExtentTest(extentTest);
-		}
-		return clickDiscoveryButtonAction;
-	}
+    public WaterMarkValidator getWaterMarkValidator() {
+        if (waterMarkValidator == null) {
+            waterMarkValidator = new WaterMarkValidator(driver);
+            waterMarkValidator.setExtentTest(extentTest);
+        }
+        return waterMarkValidator;
+    }
 
-	public EndScreenValidator getEndScreenValidator() {
-		if (endScreenValidator == null) {
-			endScreenValidator = new EndScreenValidator(driver);
-			endScreenValidator.setExtentTest(extentTest);
-		}
-		return endScreenValidator;
-	}
+    public ControlBarValidator getControlBarValidator() {
+        if (controlBarValidator == null) {
+            controlBarValidator = new ControlBarValidator(driver);
+            controlBarValidator.setExtentTest(extentTest);
+        }
+        return controlBarValidator;
+    }
 
-	public ReplayValidator getReplayValidator() {
-		if (replayValidator == null) {
-			replayValidator = new ReplayValidator(driver);
-			replayValidator.setExtentTest(extentTest);
-		}
-		return replayValidator;
-	}
+    public StartScreenValidator getStartScreenValidator() {
+        if (startScreenValidator == null) {
+            startScreenValidator = new StartScreenValidator(driver);
+            startScreenValidator.setExtentTest(extentTest);
+        }
+        return startScreenValidator;
+    }
 
-	public Bitratevalidator getBitratevalidator() {
-		if (bitratevalidator == null) {
-			bitratevalidator = new Bitratevalidator(driver);
-			bitratevalidator.setExtentTest(extentTest);
-		}
-		return bitratevalidator;
-	}
+    public ClickDiscoveryButtonAction getClickDiscoveryButtonAction() {
+        if (clickDiscoveryButtonAction == null) {
+            clickDiscoveryButtonAction = new ClickDiscoveryButtonAction(driver);
+            clickDiscoveryButtonAction.setExtentTest(extentTest);
+        }
+        return clickDiscoveryButtonAction;
+    }
 
-	public ThumbnailValidator getThumbnailValidator() {
-		if (thumbnailValidator == null) {
-			thumbnailValidator = new ThumbnailValidator(driver);
-			thumbnailValidator.setExtentTest(extentTest);
-		}
-		return thumbnailValidator;
-	}
+    public EndScreenValidator getEndScreenValidator() {
+        if (endScreenValidator == null) {
+            endScreenValidator = new EndScreenValidator(driver);
+            endScreenValidator.setExtentTest(extentTest);
+        }
+        return endScreenValidator;
+    }
 
-	public SocialScreenValidator getSocailScreenValidator() {
-		if (socailScreenValidator == null) {
-			socailScreenValidator = new SocialScreenValidator(driver);
-			socailScreenValidator.setExtentTest(extentTest);
-		}
-		return socailScreenValidator;
-	}
+    public ReplayValidator getReplayValidator() {
+        if (replayValidator == null) {
+            replayValidator = new ReplayValidator(driver);
+            replayValidator.setExtentTest(extentTest);
+        }
+        return replayValidator;
+    }
 
-	public PlayPauseAction getPlayPauseAction() {
-		if (playPauseAction == null) {
-			playPauseAction = new PlayPauseAction(driver);
-			playPauseAction.setExtentTest(extentTest);
-		}
-		return playPauseAction;
-	}
+    public Bitratevalidator getBitratevalidator() {
+        if (bitratevalidator == null) {
+            bitratevalidator = new Bitratevalidator(driver);
+            bitratevalidator.setExtentTest(extentTest);
+        }
+        return bitratevalidator;
+    }
 
-	public AutoplayAction getAutoplay() {
-		if (autoplay == null) {
-			autoplay = new AutoplayAction(driver);
-			autoplay.setExtentTest(extentTest);
-		}
-		return autoplay;
-	}
+    public ThumbnailValidator getThumbnailValidator() {
+        if (thumbnailValidator == null) {
+            thumbnailValidator = new ThumbnailValidator(driver);
+            thumbnailValidator.setExtentTest(extentTest);
+        }
+        return thumbnailValidator;
+    }
 
-	public LiveAction getLiveAction() {
-		if (liveAction == null) {
-			liveAction = new LiveAction(driver);
-			liveAction.setExtentTest(extentTest);
-		}
-		return liveAction;
-	}
+    public SocialScreenValidator getSocailScreenValidator() {
+        if (socailScreenValidator == null) {
+            socailScreenValidator = new SocialScreenValidator(driver);
+            socailScreenValidator.setExtentTest(extentTest);
+        }
+        return socailScreenValidator;
+    }
+
+    public PlayPauseAction getPlayPauseAction() {
+        if (playPauseAction == null) {
+            playPauseAction = new PlayPauseAction(driver);
+            playPauseAction.setExtentTest(extentTest);
+        }
+        return playPauseAction;
+    }
+
+    public AutoplayAction getAutoplay() {
+        if (autoplay == null) {
+            autoplay = new AutoplayAction(driver);
+            autoplay.setExtentTest(extentTest);
+        }
+        return autoplay;
+    }
+
+    public LiveAction getLiveAction() {
+        if (liveAction == null) {
+            liveAction = new LiveAction(driver);
+            liveAction.setExtentTest(extentTest);
+        }
+        return liveAction;
+    }
+
+    public SetEmbedCodeValidator getSetEmbedCodeValidator() {
+        if (setEmbedCodeValidator == null) {
+            setEmbedCodeValidator = new SetEmbedCodeValidator(driver);
+            setEmbedCodeValidator.setExtentTest(extentTest);
+        }
+        return setEmbedCodeValidator;
+    }
+
+    public PlaylistValidator PlaylistValidator() {
+        if (playlistValidator == null) {
+            playlistValidator = new PlaylistValidator(driver);
+            playlistValidator.setExtentTest(extentTest);
+        }
+        return playlistValidator;
+    }
+
+    public LiveValidator getLiveValidator() {
+        if (liveValidator == null) {
+            liveValidator = new LiveValidator(driver);
+            liveValidator.setExtentTest(extentTest);
+        }
+        return liveValidator;
+    }
 
 	public DifferentElementValidator getDifferentElements() {
 		if (differentElement == null) {
@@ -582,135 +609,118 @@ public class PlayBackFactory {
 		}
 		return differentElement;
 	}
-
-	public SetEmbedCodeValidator getSetEmbedCodeValidator() {
-		if (setEmbedCodeValidator == null) {
-			setEmbedCodeValidator = new SetEmbedCodeValidator(driver);
-			setEmbedCodeValidator.setExtentTest(extentTest);
-		}
-		return setEmbedCodeValidator;
-	}
-
-	public PlaylistValidator PlaylistValidator() {
-		if (playlistValidator == null) {
-			playlistValidator = new PlaylistValidator(driver);
-			playlistValidator.setExtentTest(extentTest);
-		}
-		return playlistValidator;
-	}
-
-	public LiveValidator getLiveValidator() {
-		if (liveValidator == null) {
-			liveValidator = new LiveValidator(driver);
-			liveValidator.setExtentTest(extentTest);
-		}
-		return liveValidator;
-	}
-
-	public MidrollAdValidator getAdStartTimeValidator() {
-		if (adStartTimeValidator == null) {
-			adStartTimeValidator = new MidrollAdValidator(driver);
-			adStartTimeValidator.setExtentTest(extentTest);
-		}
-		return adStartTimeValidator;
-	}
-
-	public AnalyticsValidator getAnalyticsValidator() {
-		if (analyticsValidator == null) {
-			analyticsValidator = new AnalyticsValidator(driver);
-			analyticsValidator.setExtentTest(extentTest);
-		}
-		return analyticsValidator;
-	}
-
-	public ChromeFlashUpdateAction getChromeComponentValidator() {
-		if (chromeValidator == null) {
-			chromeValidator = new ChromeFlashUpdateAction(driver);
-			chromeValidator.setExtentTest(extentTest);
-		}
-		return chromeValidator;
-	}
-
-	public UIControlValidator getUiControlValidator() {
-		if (uiControlValidator == null) {
-			uiControlValidator = new UIControlValidator(driver);
-			uiControlValidator.setExtentTest(extentTest);
-		}
-		return uiControlValidator;
-	}
-
-	public PlayerSkinShareValidator getPlayerSkinShareValidator() {
-		if (skinShareValidator == null) {
-			skinShareValidator = new PlayerSkinShareValidator(driver);
-			skinShareValidator.setExtentTest(extentTest);
-		}
-		return skinShareValidator;
-	}
 	
-	public PlayerSkinLocalizationValidator getPlayerSkinLocalizationValidator() {
-		if (localizationValidator == null) {
-			localizationValidator = new PlayerSkinLocalizationValidator(driver);
-			localizationValidator.setExtentTest(extentTest);
-		}
-		return localizationValidator;
-	}
-	
-	public PlayerSkinScrubberValidator getPlayerSkinScrubberValidator() {
-		if (skinScrubberValidator == null) {
-			skinScrubberValidator = new PlayerSkinScrubberValidator(driver);
-			skinScrubberValidator.setExtentTest(extentTest);
-		}
-		return skinScrubberValidator;
-	}
-	
-	public PlayerSkinCaptionsValidator getPlayerSkinCaptionsValidator() {
-		if (skinCaptionsValidator == null) {
-			skinCaptionsValidator = new PlayerSkinCaptionsValidator(driver);
-			skinCaptionsValidator.setExtentTest(extentTest);
-		}
-		return skinCaptionsValidator;
-	}
-	
-	
-	
-	public void setAnalyticsValidator(AnalyticsValidator analyticsValidator) {
-		this.analyticsValidator = analyticsValidator;
-	}
+    public MidrollAdValidator getAdStartTimeValidator() {
+        if (adStartTimeValidator == null) {
+            adStartTimeValidator = new MidrollAdValidator(driver);
+            adStartTimeValidator.setExtentTest(extentTest);
+        }
+        return adStartTimeValidator;
+    }
 
-	public DVRLiveValidator getDvrLiveValidator() {
-        if (dvrLiveValidator == null){
+    public AnalyticsValidator getAnalyticsValidator() {
+        if (analyticsValidator == null) {
+            analyticsValidator = new AnalyticsValidator(driver);
+            analyticsValidator.setExtentTest(extentTest);
+        }
+        return analyticsValidator;
+    }
+
+    public ChromeFlashUpdateAction getChromeComponentValidator() {
+        if (chromeValidator == null) {
+            chromeValidator = new ChromeFlashUpdateAction(driver);
+            chromeValidator.setExtentTest(extentTest);
+        }
+        return chromeValidator;
+    }
+
+    public UIControlValidator getUiControlValidator() {
+        if (uiControlValidator == null) {
+            uiControlValidator = new UIControlValidator(driver);
+            uiControlValidator.setExtentTest(extentTest);
+        }
+        return uiControlValidator;
+    }
+
+    public PlayerSkinShareValidator getPlayerSkinShareValidator() {
+        if (skinShareValidator == null) {
+            skinShareValidator = new PlayerSkinShareValidator(driver);
+            skinShareValidator.setExtentTest(extentTest);
+        }
+        return skinShareValidator;
+    }
+
+    public PlayerSkinLocalizationValidator getPlayerSkinLocalizationValidator() {
+        if (localizationValidator == null) {
+            localizationValidator = new PlayerSkinLocalizationValidator(driver);
+            localizationValidator.setExtentTest(extentTest);
+        }
+        return localizationValidator;
+    }
+
+    public PlayerSkinScrubberValidator getPlayerSkinScrubberValidator() {
+        if (skinScrubberValidator == null) {
+            skinScrubberValidator = new PlayerSkinScrubberValidator(driver);
+            skinScrubberValidator.setExtentTest(extentTest);
+        }
+        return skinScrubberValidator;
+    }
+
+    public PlayerSkinCaptionsValidator getPlayerSkinCaptionsValidator() {
+        if (skinCaptionsValidator == null) {
+            skinCaptionsValidator = new PlayerSkinCaptionsValidator(driver);
+            skinCaptionsValidator.setExtentTest(extentTest);
+        }
+        return skinCaptionsValidator;
+    }
+
+
+    public void setAnalyticsValidator(AnalyticsValidator analyticsValidator) {
+        this.analyticsValidator = analyticsValidator;
+    }
+
+    public DVRLiveValidator getDvrLiveValidator() {
+        if (dvrLiveValidator == null) {
             dvrLiveValidator = new DVRLiveValidator(driver);
             dvrLiveValidator.setExtentTest(extentTest);
         }
         return dvrLiveValidator;
-	}
+    }
 
-	public VastPageLevelOverridingValidator getPageLevelOverridingValidator(){
-		if (pageLevelOverridingValidator == null){
-			pageLevelOverridingValidator = new VastPageLevelOverridingValidator(driver);
-			pageLevelOverridingValidator.setExtentTest(extentTest);
-		}
-		return pageLevelOverridingValidator;
-	}
+    public VastPageLevelOverridingValidator getPageLevelOverridingValidator() {
+        if (pageLevelOverridingValidator == null) {
+            pageLevelOverridingValidator = new VastPageLevelOverridingValidator(driver);
+            pageLevelOverridingValidator.setExtentTest(extentTest);
+        }
+        return pageLevelOverridingValidator;
+    }
 
-	public WebDriver getDriver() {
-		return driver;
-	}
+    public PreloadingValidator getPreloadingValidator() {
+        if(preloadingValidator == null) {
+            preloadingValidator = new PreloadingValidator(driver);
+            preloadingValidator.setExtentTest(extentTest);
+        }
+        return preloadingValidator;
+    }
 
-	@SuppressWarnings("unchecked")
-	public <T> T getObject(Class<T> validator) throws Exception {
+    public WebDriver getDriver() {
+        return driver;
+    }
 
-		Field[] fs = this.getClass().getDeclaredFields();
-		fs[0].setAccessible(true);
-		for (Field property : fs) {
-			if (property.getType().isAssignableFrom(validator)) {
-				if (property.get(this) == null)
-					property.set(this, validator.getConstructor(WebDriver.class).newInstance(driver));
-				return (T) property.get(this);
-			}
+    @SuppressWarnings("unchecked")
+    public <T> T getObject(Class<T> validator) throws Exception {
 
-		}
-		return null;
-	}
+        Field[] fs = this.getClass().getDeclaredFields();
+        fs[0].setAccessible(true);
+        for (Field property : fs) {
+            if (property.getType().isAssignableFrom(validator)) {
+                if (property.get(this) == null)
+                    property.set(this, validator.getConstructor(WebDriver.class).newInstance(driver));
+                return (T) property.get(this);
+            }
+
+        }
+        return null;
+    }
 
 }
