@@ -7,6 +7,7 @@ import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
 import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.ClickAction;
 import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
+import com.ooyala.playback.apps.actions.ClickShareButtonAction;
 import com.ooyala.playback.apps.actions.FullScreenAction;
 import com.ooyala.playback.apps.actions.LaunchAction;
 import com.ooyala.playback.apps.actions.PauseAction;
@@ -25,7 +26,7 @@ import com.ooyala.playback.apps.validators.OverlayValidator;
 import com.ooyala.playback.apps.validators.PauseValidator;
 import com.ooyala.playback.apps.validators.ReplayValidator;
 import com.ooyala.playback.apps.validators.SeekValidator;
-
+import com.ooyala.playback.apps.validators.ShareValidator;
 import com.ooyala.playback.apps.validators.UpNextValidator;
 import com.relevantcodes.extentreports.ExtentTest;
 
@@ -60,6 +61,8 @@ public class PlayBackFactory {
 	private FullScreenAction fullScreenAction;
 	private FullScreenOrientationValidator fullScreenOrientationValidator;
 	private AndroidKeyCodeAction androidKeycodeAction;
+	private ClickShareButtonAction clickShareButtonAction;
+	private ShareValidator shareValidator;
 
 	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -267,7 +270,23 @@ public class PlayBackFactory {
 		return androidKeycodeAction;
 		
 	}
-	
+	public ClickShareButtonAction getClickShareButtonAction() {
+		if(clickShareButtonAction == null) {
+			clickShareButtonAction = new ClickShareButtonAction(driver);
+			clickShareButtonAction.setExtentTest(extentTest);
+		}
+		return clickShareButtonAction;
+		
+	}
+	public ShareValidator getShareValidator() {
+		if(shareValidator == null) {
+			shareValidator = new ShareValidator(driver);
+			shareValidator.setExtentTest(extentTest);
+		}
+		return shareValidator;
+		
+	}
+
 
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> validator) throws Exception {
