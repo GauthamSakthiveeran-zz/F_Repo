@@ -25,5 +25,11 @@
 	<element key="PREVENTVIDEOSHARING" findBy="xPath" xPath="//android.widget.TextView[@text='Prevent Video View Sharing Option']" />
 	<element key="TIMEOUT_OPTIONS" findBy="xPath" xPath="//android.widget.TextView[@text='Timeout Options']" />
 	<element key="IQ_CONFIG" findBy="xPath" xPath="//android.widget.TextView[@text='IQ Configuration']" />
+	<element key="FW_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Preroll']" />
+	<element key="FW_MIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Midroll']" />
+	<element key="FW_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Postroll']" />
+	<element key="FW_PREMIDPOST" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel PreMidPost']" />
+	<element key="FW_MULTIMID" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Multi Midroll']" />
+	
 </elements>
 

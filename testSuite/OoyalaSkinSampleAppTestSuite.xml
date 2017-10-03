@@ -10,7 +10,13 @@
             <class name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppSwipeDiscoveryScreenNoAdsTest" /> 
         </classes>
     </test>
-
+    
+    <test name="Freewheel Tests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="OoyalaSkinSampleFW.xml" />
+            <class name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppFreewheelTests" /> 
+        </classes>
+    </test>
 
 </suite>
 
