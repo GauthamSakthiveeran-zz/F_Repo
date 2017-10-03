@@ -47,24 +47,14 @@ public class PlaybackAutoplayAutoloopPostrollPoddedAdTests extends PlaybackWebTe
 
 			result = result && seekValidator.validate("seeked_1", 60000);
 			
-			
-			if(eventValidator.isAdPluginPresent("freewheel")){
-				result = result && podded.setPosition("PostRoll").validate("countPoddedAds_2", 60000);
-			} else{
-				result = result && podded.setPosition("PostRoll").validate("countPoddedAds_1", 60000);
-			}
+			result = result && eventValidator.isAdPluginPresent("freewheel")?podded.setPosition("PostRoll").validate("countPoddedAds_2", 60000):podded.setPosition("PostRoll").validate("countPoddedAds_1", 60000);
 			
 			result = result && eventValidator.validate("replay_1", 60000);
 
 			result = result && seekAction.seekTillEnd().startAction();
 			
-			if(eventValidator.isAdPluginPresent("freewheel")){
-				result = result && eventValidator.validate("countPoddedAds_4", 60000);
-//				result = result && podded.setPosition("PostRoll").validate("countPoddedAds_4", 60000); TODO - willplayads is not working
-			} else{
-				result = result && podded.setPosition("PostRoll").validate("countPoddedAds_2", 60000);
-			}
-
+			result = result && eventValidator.isAdPluginPresent("freewheel")?eventValidator.validate("countPoddedAds_4", 60000):podded.setPosition("PostRoll").validate("countPoddedAds_2", 60000);
+			
 		} catch (Exception e) {
 			logger.error(e);
 			result = false;

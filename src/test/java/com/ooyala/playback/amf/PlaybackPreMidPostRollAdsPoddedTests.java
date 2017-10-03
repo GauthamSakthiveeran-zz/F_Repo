@@ -32,7 +32,6 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 	public void verifyPreMidPostrollPodded(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
-		boolean clickThrough = !clickthrough.ignoreClickThrough(url);
 
 		try {
 
@@ -46,22 +45,20 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 
 			result = result && event.validate("PreRoll_willPlayAds", 60000);
 
-			if (result && clickThrough) {
-				s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("preroll"), "PreMidPost Podded");
-			}
+			s_assert.assertTrue(clickthrough.setUrlObject(url).validateClickThroughForPoddedAds("preroll"),
+					"PreMidPost Podded");
 
 			result = result && event.validate("adsPlayed_1", 600000);
 
 			result = result && poddedAdValidator.setPosition("PreRoll").validate("countPoddedAds_1", 60000);
 
 			result = result && event.validate("playing_1", 90000);
-			
-			result = result && adStartTimeValidator.setTime(url.getAdStartTime())
-					.validateAdStartTime("MidRoll_willPlayAds");
-			
-			if (result && clickThrough) {
-				s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("midroll"), "PreMidPost Podded");
-			}
+
+			result = result
+					&& adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlayAds");
+
+			s_assert.assertTrue(clickthrough.setUrlObject(url).validateClickThroughForPoddedAds("midroll"),
+					"PreMidPost Podded");
 
 			result = result && event.validate("adsPlayed_2", 600000);
 
@@ -71,9 +68,7 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 
 			result = result && event.validate("PostRoll_willPlayAds", 200000);
 
-			if (result && clickThrough) {
-				s_assert.assertTrue(clickthrough.validateClickThroughForPoddedAds("postroll"), "PreMidPost Podded");
-			}
+			s_assert.assertTrue(clickthrough.setUrlObject(url).validateClickThroughForPoddedAds("postroll"), "PreMidPost Podded");
 
 			result = result && event.validate("adsPlayed_3", 600000);
 
@@ -90,5 +85,5 @@ public class PlaybackPreMidPostRollAdsPoddedTests extends PlaybackWebTest {
 		s_assert.assertTrue(result, "Test failed");
 		s_assert.assertAll();
 	}
-	
+
 }

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 
 /**
@@ -133,7 +134,7 @@ public class UIControlValidator extends PlayBackPage implements PlaybackValidato
 	}
 
 	private boolean validateVolume(int expectedVolume) {
-		String volume = driver.executeScript("return pp.getVolume();").toString();
+		String volume = new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getVolume();
 		int volumeLevel = Integer.parseInt(volume);
 		if (volumeLevel != expectedVolume) {
 			logger.error("Actual Volume :" + volumeLevel + " and Expected Volume :" + expectedVolume + " do not match");

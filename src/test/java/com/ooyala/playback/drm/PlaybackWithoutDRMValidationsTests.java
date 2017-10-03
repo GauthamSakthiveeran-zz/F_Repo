@@ -45,9 +45,7 @@ public class PlaybackWithoutDRMValidationsTests extends PlaybackWebTest {
 
             result = result && pause.validate("paused_1", 60000);
 
-            if (url.getStreamType()!=null && !url.getStreamType().isEmpty()){
-                result = result && stream.verifyStreamType(url.getStreamType());
-            }
+            result = result && stream.verifyStreamType(url.getStreamType());
 
             result = result && play.validate("playing_2", 60000);
 

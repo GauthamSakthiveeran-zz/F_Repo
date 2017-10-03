@@ -52,8 +52,7 @@ public class MovingFromOoyalaAdsToNonOoyalaAdsPlaylistTests extends PlaybackWebT
             result = result && playlist.selectAndClickonAssetFromPlaylist("Baby");
 
             //Ooyala Ad should not play
-            if (eventValidator.checkIsAdPlaying())
-                result = false;
+            result = result && !eventValidator.checkIsAdPlaying();
 
             result = result && eventValidator.validate("playing_2", 10000);
 

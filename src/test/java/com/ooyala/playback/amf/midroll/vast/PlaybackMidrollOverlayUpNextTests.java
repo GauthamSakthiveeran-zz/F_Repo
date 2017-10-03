@@ -36,16 +36,11 @@ public class PlaybackMidrollOverlayUpNextTests extends PlaybackWebTest {
 
 			result = result && playValidator.validate("playing_1", 60000);
 
-            if (adStartTimeValidator.isAdPlayTimePresent(url)) {
-                result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlaySingleAd_1");
-            } else
-                result = result && event.validate("MidRoll_willPlaySingleAd_1",200000);
+			result = result && adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlaySingleAd_1");
 
 			result = result && event.validate("singleAdPlayed_1", 30000);
 
-            if (adStartTimeValidator.isOverlayPlayTimePresent(url)) {
-                result = result && adStartTimeValidator.setTime(url.getOverlayPlayTime()).validateAdStartTime("showNonlinearAd_1");
-            }
+			result = result && adStartTimeValidator.setTime(url.getOverlayPlayTime()).validateAdStartTime("showNonlinearAd_1");
 
 			result = result && overlayValidator.validateOverlayRenderingEvent(6000);
 

@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class DiscoveryValidator extends PlayBackPage implements PlaybackValidator {
@@ -146,7 +148,7 @@ public class DiscoveryValidator extends PlayBackPage implements PlaybackValidato
 	}
 
 	public boolean verifyPlayingAssetEmbedCode(String embedCode){
-		String currentEmbedCode = driver.executeScript("return pp.getEmbedCode();").toString();
+		String currentEmbedCode = new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getEmbedCode();
 		if(embedCode.equals(currentEmbedCode)){
 			logger.info("Current Embed code :" +currentEmbedCode +" is matching with previous embed code :"+embedCode);
 			extentTest.log(LogStatus.FAIL,"Current Embed code :" +currentEmbedCode +" is matching with previous embed code :"+embedCode);

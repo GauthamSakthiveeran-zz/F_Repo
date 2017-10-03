@@ -60,11 +60,8 @@ public class PlaybackOverrideEncodingPriorityPreMidPostPoddedAdTests extends Pla
 			result = result && event.validate("adsPlayed_3", 60000);
 
 			result = result && event.validateElement("played_1", 20000);
-
-			if (result && isDRM) {
-				result = result && encode.validateDRM();
-			} else
-				result = result && encode.getStreamType(url).verifyEncodingPriority(url);
+			
+			result = result && isDRM? encode.validateDRM() : encode.getStreamType(url).verifyEncodingPriority(url);
 
 			param = event.isAdPluginPresent("freewheel")
 					? "{\"freewheel-ads-manager\":{\"fw_video_asset_id\":\"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR\",\"html5_ad_server\":\"http://g1.v.fwmrm.net\",\"html5_player_profile\":\"90750:ooyala_html5\",\"showInAdControlBar\":true},\"initialTime\":0,\"autoplay\":false,\"encodingPriority\":[\"hls\",\"webm\",\"mp4\",\"dash\"]}"
@@ -89,11 +86,8 @@ public class PlaybackOverrideEncodingPriorityPreMidPostPoddedAdTests extends Pla
 			result = result && event.validate("adsPlayed_3", 60000);
 
 			result = result && event.validateElement("played_1", 20000);
-
-			if (result && isDRM) {
-				result = result && encode.validateDRM();
-			} else
-				result = result && encode.getStreamType(url).verifyEncodingPriority(url);
+			
+			result = result && isDRM? encode.validateDRM() : encode.getStreamType(url).verifyEncodingPriority(url);
 
 		} catch (Exception e) {
 			logger.error("Exception while checking OverrideEncoding Priority test  " + e.getMessage());

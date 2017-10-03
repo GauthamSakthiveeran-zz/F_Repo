@@ -1,6 +1,5 @@
 package com.ooyala.playback.ooyalaads;
 
-import com.ooyala.playback.report.ExtentManager;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;

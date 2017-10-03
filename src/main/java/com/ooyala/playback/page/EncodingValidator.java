@@ -13,6 +13,8 @@ import org.json.simple.JSONObject;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PlayerAPIAction;
+
 import java.util.*;
 
 /**
@@ -71,7 +73,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
         if (obj.containsKey("encodingPriority")) {
             Object actualEncodings = obj.get("encodingPriority");
             logger.info("\nActual encodingPriority :\n" + actualEncodings);
-            expectedEncodings = ((JavascriptExecutor) driver).executeScript("return pp.parameters.encodingPriority");
+            expectedEncodings = new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getEncodingPriority();
             logger.info("\nExpected encodingPriority :\n" + expectedEncodings);
             assertEquals(actualEncodings, expectedEncodings, "Encoding Priorities are as expected");
             if (!actualEncodings.equals(expectedEncodings))
@@ -164,8 +166,10 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
         if (videoPlugin.contains(",")){
             videoPlugins = videoPlugin.split(",");
         }
+        
+        PlayerAPIAction playerAPIAction = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
 
-        isEncodingPriorityNotSet = driver.executeScript("return typeof pp.parameters.encodingPriority").toString().equals("undefined");
+        isEncodingPriorityNotSet = playerAPIAction.getEncodingPriority().toString().equals("undefined");
 
         /**
          * Verify default encoding priority when priority is not passed from playerParameter
@@ -177,7 +181,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
         }
 
         if (!isEncodingPriorityNotSet){
-            String encodingPrioritySet = driver.executeScript("return pp.parameters.encodingPriority[0]").toString();
+            String encodingPrioritySet = playerAPIAction.getEncodingPriority(0);
 
              //verify default encoding priority when priority is passed from playerParameter
             if (supportedMuxFormats == null){
@@ -330,7 +334,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
              */
             if (encodingPrioritySet.equals("hds")){
                 logger.info("checking encoding priority for video ");
-                String secondEncoPriority = driver.executeScript("return pp.parameters.encodingPriority[1]").toString();
+                String secondEncoPriority = new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getEncodingPriority(1);
                 if (!streamElement.getText().contains("f4m")){
                     if (secondEncoPriority.equals("dash")){
                         if (!verifyDASH()){
@@ -396,7 +400,7 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
 
             if (encodingPrioritySet.equals("dash")){
                 if (getBrowser().equalsIgnoreCase("safari")){
-                    String secondEncoPriority = driver.executeScript("return pp.parameters.encodingPriority[1]").toString();
+                    String secondEncoPriority = new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getEncodingPriority(1);
                     if (secondEncoPriority.equals("mp4")){
                         if (!verifyMP4()){
                             return false;
@@ -437,12 +441,14 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
                 return false;
             }
         }
+        
+        PlayerAPIAction playerAPI = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
 
         if (url.getVideoPlugins().toLowerCase().equals("main")) {
             if (encodingPrioritySet.equals("dash") || encodingPrioritySet.equals("hds")) {
-                String secondEncoPriority = driver.executeScript("return pp.parameters.encodingPriority[1]").toString();
+                String secondEncoPriority = playerAPI.getEncodingPriority(1);
                 if (secondEncoPriority.equals("dash") || secondEncoPriority.equals("hds")){
-                    String thirdEncoPriority = driver.executeScript("return pp.parameters.encodingPriority[2]").toString();
+                    String thirdEncoPriority = playerAPI.getEncodingPriority(2);
                     if (!hlsMp4Priority(thirdEncoPriority)){
                         return false;
                     }

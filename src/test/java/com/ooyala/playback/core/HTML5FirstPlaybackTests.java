@@ -1,15 +1,19 @@
 package com.ooyala.playback.core;
 
-import com.ooyala.playback.page.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.PlatformParameter;
+import com.ooyala.playback.page.BitmovinTechnologyValidator;
+import com.ooyala.playback.page.EncodingValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class HTML5FirstPlaybackTests extends PlaybackWebTest {
+public class HTML5FirstPlaybackTests extends PlatformParameter {
 
 	public HTML5FirstPlaybackTests() throws OoyalaException {
 		super();
@@ -19,16 +23,14 @@ public class HTML5FirstPlaybackTests extends PlaybackWebTest {
 	private BitmovinTechnologyValidator tech;
 	private SeekValidator seek;
 	private EventValidator eventValidator;
-    private EncodingValidator encodingValidator;
+	private EncodingValidator encodingValidator;
 
 	@Test(groups = "html5", dataProvider = "testUrls")
 	public void testHTML5FirstPlayback(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
-        String [] parameters = {"{\"platform\":\"html5\"}","{\"platform\":\"flash\"}"};
-        String playerParameters = url.getPlayerParameter();
 
-        try {
+		try {
 			driver.get(url.getUrl());
 
 			result = result && play.waitForPage();
@@ -45,46 +47,7 @@ public class HTML5FirstPlaybackTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("played_1", 120000);
 
-
-
-            if(testName.contains("Playlist")){
-                if (url.getPlayerParameter().contains("html5")){
-                    logger.info("verifying platform flash");
-                    playerParameters = playerParameters.replace("html5","flash");
-                    driver.get(encodingValidator.getNewUrl(playerParameters, browser));
-                    result = result && play.waitForPage();
-
-                    injectScript();
-
-                    tech.getConsoleLogs();
-
-                    result = result && play.validate("playing_1", 60000);
-
-                    result = result && tech.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
-                }
-
-            }
-            else {
-                //verifying html5 and flash platform
-                for (int i = 0; i < parameters.length; i++) {
-
-                    driver.get(encodingValidator.getNewUrl(parameters[i], browser));
-
-                    result = result && play.waitForPage();
-
-                    injectScript();
-
-                    tech.getConsoleLogs();
-
-                    result = result && play.validate("playing_1", 60000);
-
-                    result = result && tech.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
-
-                    result = result && seek.validate("seeked_1", 60000);
-
-                    result = result && eventValidator.skipScrubberValidation().validate("played_1", 120000);
-                }
-            }
+			result = result && validate(testName, result, url, encodingValidator, tech, play, seek, eventValidator);
 
 		} catch (Exception e) {
 			logger.error("Exception while checking basic playback " + e.getMessage());

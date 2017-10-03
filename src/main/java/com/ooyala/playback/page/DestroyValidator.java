@@ -1,9 +1,10 @@
 package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+
+import com.ooyala.playback.factory.PlayBackFactory;
 
 public class DestroyValidator extends PlayBackPage implements PlaybackValidator {
 
@@ -16,7 +17,7 @@ public class DestroyValidator extends PlayBackPage implements PlaybackValidator 
 	}
 
 	public boolean validate(String element, int timeout) throws Exception {
-		((JavascriptExecutor) driver).executeScript("pp.destroy()");
+		new PlayBackFactory(driver, extentTest).getPlayerAPIAction().destroy();
 
 		return waitOnElement(element, timeout)
 				&& isElementPresent("STATE_SCREEN_SELECTABLE"); // destroy_1

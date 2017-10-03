@@ -7,7 +7,6 @@ import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.BitmovinTechnologyValidator;
 import com.ooyala.playback.page.DRMValidator;
 import com.ooyala.playback.page.ErrorDescriptionValidator;
-import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.LiveValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
@@ -16,7 +15,6 @@ import com.ooyala.qe.common.exception.OoyalaException;
 
 public class PlaybackWithDRMLiveTests extends PlaybackWebTest {
 
-	private EventValidator eventValidator;
 	private PlayValidator play;
 	private PauseValidator pause;
 	private DRMValidator drm;

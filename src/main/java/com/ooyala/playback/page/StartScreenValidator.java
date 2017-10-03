@@ -1,10 +1,11 @@
 package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.playback.utils.APIUtils;
 import com.relevantcodes.extentreports.LogStatus;
@@ -31,6 +32,8 @@ public class StartScreenValidator extends PlayBackPage implements
 	}
 
     public boolean validateMetadata(UrlObject url){
+    	
+    	PlayerAPIAction playerAPI = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
 
         if (!waitOnElement("STATE_SCREEN_POSTER", 60000)) {
             return false;
@@ -66,12 +69,10 @@ public class StartScreenValidator extends PlayBackPage implements
             // get Discription of video
             String description = getWebElement("STATE_SCREEN_DEC").getText();
 
-            String title = ((JavascriptExecutor) driver).executeScript(
-                    "var title=pp.getTitle();" + "{return title;}").toString();
+            String title = playerAPI.getTitle();
 
-            String desc = ((JavascriptExecutor) driver).executeScript(
-                    "var description=pp.getDescription();"
-                            + "{return description;}").toString();
+            String desc = playerAPI.getDescription();
+            
             if (!startScreenTitle.equalsIgnoreCase(title)) {
                 extentTest.log(LogStatus.FAIL,
                         "Title is not matching on start screen");

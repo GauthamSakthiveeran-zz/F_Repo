@@ -1,27 +1,28 @@
 package com.ooyala.playback.VTC;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 /**
  * Created by jitendra on 24/11/16.
  */
 public class PlaybackVolumeTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackVolumeTests.class);
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private VolumeValidator volumeValidator;
 	private PlayAction playAction;
 	private SeekValidator seekValidator;
-	private IsAdPlayingValidator isAdPlayingValidator;
 
 	PlaybackVolumeTests() throws OoyalaException {
 		super();
@@ -42,13 +43,9 @@ public class PlaybackVolumeTests extends PlaybackWebTest {
 
 			result = result && eventValidator.loadingSpinner();
 
-			Boolean isAdplaying = isAdPlayingValidator.validate("", 2000);
-
-			if (isAdplaying) {
-				logger.info("Checking volume for Ad");
+			if (eventValidator.checkIsAdPlaying()) {
 				result = result && volumeValidator.validate("VOLUME_MAX", 20000);
 				result = result && eventValidator.validate("adPodEnded_1", 20000);
-				logger.info("Ad played");
 			}
 
 			result = result && eventValidator.validate("playing_1", 60000);

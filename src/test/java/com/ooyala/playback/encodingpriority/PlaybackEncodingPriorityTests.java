@@ -1,16 +1,16 @@
 package com.ooyala.playback.encodingpriority;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EncodingValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 public class PlaybackEncodingPriorityTests extends PlaybackWebTest {
 
@@ -20,7 +20,6 @@ public class PlaybackEncodingPriorityTests extends PlaybackWebTest {
 
 	private EncodingValidator encode;
 	private PlayValidator playValidator;
-	private SeekValidator seek;
 	private EventValidator event;
 	private PlayAction playAction;
 
@@ -35,10 +34,7 @@ public class PlaybackEncodingPriorityTests extends PlaybackWebTest {
             injectScript();
             result = result && playAction.startAction();
             result = result && event.loadingSpinner();
-            if (result && isDRM){
-				result = result && encode.validateDRM();
-			}else
-                result = result && encode.getStreamType(url).verifyEncodingPriority(url);
+            result = result && isDRM? encode.validateDRM() : encode.getStreamType(url).verifyEncodingPriority(url);
 
 		} catch (Exception e) {
 			e.printStackTrace();

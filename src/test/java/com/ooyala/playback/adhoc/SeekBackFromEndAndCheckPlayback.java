@@ -39,7 +39,7 @@ public class SeekBackFromEndAndCheckPlayback extends PlaybackWebTest {
             result = result && seekAction.seek(10,true);
             result = result && eventValidator.validate("seeked_1",10000);
             result = result && eventValidator.validate("played_1",30000);
-            driver.executeScript("pp.seek(pp.getDuration()-10)");
+            result = result && seekAction.fromLast().setTime(10).startAction();
             result = result && eventValidator.validate("playing_2",10000);
         } catch (Exception e) {
             logger.error(e);

@@ -1,15 +1,14 @@
 package com.ooyala.playback.platformParameter;
 
-import com.ooyala.playback.page.*;
-
-import static java.net.URLDecoder.decode;
-
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.BitmovinTechnologyValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.StreamValidator;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -22,10 +21,8 @@ public class PlatformParameterMidAdTest extends PlaybackWebTest {
 	}
 
 	private EventValidator event;
-	private PlayAction playAction;
 	private PlayValidator play;
 	private PauseValidator pause;
-	private PlayValidator playValidator;
 	private SeekAction seekAction;
 	private StreamValidator streamTypeValidator;
 	private BitmovinTechnologyValidator bitmovinvalidator;
@@ -49,11 +46,9 @@ public class PlatformParameterMidAdTest extends PlaybackWebTest {
 
 			result = result && pause.validate("paused", 60000);
 
-			if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
-				result = result && event.validate("videoPlayingurl", 40000);
-				result = result
-						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
-			}
+			result = result && event.validate("videoPlayingurl", 40000);
+			result = result
+					&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 
 			result = result && bitmovinvalidator.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
 

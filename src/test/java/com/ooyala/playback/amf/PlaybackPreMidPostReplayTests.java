@@ -5,7 +5,6 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.IsAdPlayingValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.ReplayValidator;
@@ -25,7 +24,6 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 	private EventValidator eventValidator;
 	private PlayValidator playValidator;
 	private ReplayValidator replayValidator;
-	private IsAdPlayingValidator isAdPlaying;
 	private PoddedAdValidator poddedAdValidator;
 	private SeekAction seekAction;
 	private PlayAction playAction;
@@ -61,11 +59,8 @@ public class PlaybackPreMidPostReplayTests extends PlaybackWebTest {
 			result = result && seekAction.seek("10");
 
 			result = result && eventValidator.validate("seeked_2", 30000);
-
-			if(isAdPlaying.validate("",1000)){
-				result = false;
-				extentTest.log(LogStatus.FAIL, "Ad is played after doing backward seek.");
-			}
+			
+			result = result && !eventValidator.checkIsAdPlaying();
 
 			result = result && seek.validate("seeked_3", 30000);
 

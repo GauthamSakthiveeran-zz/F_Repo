@@ -207,7 +207,7 @@
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
-
+        
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS Remote Asset" />
             <priority name="P2"></priority>
@@ -235,6 +235,50 @@
             <playerParameter><![CDATA[{"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
         </url>
+        
+        <url>
+            <description name="Encoding Priority:Bitmovin Azure eHLS with encoding priority" />
+            <priority name="P1"></priority>
+            <embed_code name="R5dGFvYTE6LtPk9PvuatOLk_Y7gfC5dk" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <streamType name="hls" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls","dash","hds","mp4"],"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
+        </url>
+        
+        <url>
+            <description name="Encoding Priority:Main Azure eHLS with encoding priority" />
+            <priority name="P1"></priority>
+            <embed_code name="R5dGFvYTE6LtPk9PvuatOLk_Y7gfC5dk" />
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="c0adf6d2044f437080e005a69cba4880" />
+            <streamType name="hls" />
+            <browsersSupported name="safari" />
+            <playerParameter><![CDATA[{"encodingPriority":["hls","dash","hds","mp4"],"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
+        </url>
+        
+        <url>
+            <description name="Encoding Priority:Bitmovin Elemental Delta eHLS VOD with encoding priority" />
+            <priority name="P1"></priority>
+            <embed_code name="VybDU1YjE63OuPiuyjT25aOXGzBBg69O" />
+            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+            <plugins name="BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="378512f55dd44fc287d0fa609353c268" />
+            <streamType name="hls" />
+            <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hls","dash","hds","mp4"],"platform":"html5"}]]></playerParameter>
+            <platformsSupported name="mac,windows"/>
+        </url>
+        
     </test>
 
     <test name="PlaybackWithDRMLiveTests">
