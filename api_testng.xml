@@ -2,7 +2,7 @@
     <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
-    <test name="api" parallel="classes" thread-count="1">
+    <test name="api" parallel="classes" thread-count="10">
         <classes>
             <parameter name="xmlFilePkg" value="api"/>
             <parameter name="jsFile" value="common.js,amf/amf.js"/>

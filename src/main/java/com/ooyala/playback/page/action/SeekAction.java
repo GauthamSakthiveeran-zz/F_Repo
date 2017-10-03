@@ -3,10 +3,10 @@ package com.ooyala.playback.page.action;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.page.PlayBackPage;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -123,7 +123,7 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 
 	public boolean seek(String time) {
 		try {
-			((JavascriptExecutor) driver).executeScript("return pp.seek(" + time + ")" + "");
+			new PlayBackFactory(driver, extentTest).getPlayerAPIAction().seek(time);
 			this.time = 0;
 		} catch (Exception ex) {
 			ex.printStackTrace();

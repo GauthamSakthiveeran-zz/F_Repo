@@ -94,6 +94,11 @@ public class UrlGenerator {
 							continue;
 						else
 							browserExisted = true;
+						
+						if(browserName.equalsIgnoreCase("firefox") && url.getPlugins().getName().contains("osmf_flash")) {
+							// TODO there is an issue with flash plugin in FF with the current version
+							continue;
+						}
 
 						// Not returning the data if the testdata contains the
 						// driver browser version that is not matching

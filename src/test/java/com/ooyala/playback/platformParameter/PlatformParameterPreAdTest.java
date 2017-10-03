@@ -1,17 +1,14 @@
 package com.ooyala.playback.platformParameter;
 
-import com.ooyala.playback.page.*;
-
-import static java.net.URLDecoder.decode;
-
-import org.mortbay.log.Log;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.BitmovinTechnologyValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PauseValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.StreamValidator;
 import com.ooyala.playback.page.action.ChromeFlashUpdateAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
@@ -69,11 +66,9 @@ public class PlatformParameterPreAdTest extends PlaybackWebTest {
 
 			result = result && bitmovinvalidator.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
 
-			if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
-				result = result && event.validate("videoPlayingurl", 40000);
-				result = result
-						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
-			}
+			result = result && event.validate("videoPlayingurl", 40000);
+			result = result
+					&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 
 			result = result && play.validate("playing_2", 60000);
 

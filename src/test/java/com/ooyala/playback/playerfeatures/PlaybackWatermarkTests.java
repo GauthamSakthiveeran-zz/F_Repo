@@ -9,6 +9,7 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.WaterMarkValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -20,6 +21,7 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private EventValidator eventValidator;
 	private WaterMarkValidator waterMarkValidator;
+	private PlayerAPIAction playerAPI;
 
 	public PlaybackWatermarkTests() throws OoyalaException {
 		super();
@@ -38,7 +40,7 @@ public class PlaybackWatermarkTests extends PlaybackWebTest {
 
 			result = result && play.validate("playing_1", 60000);
 
-			driver.executeScript("pp.pause();");
+			playerAPI.pause();
 
 			result = result && waterMarkValidator.validate("", 60000);
 

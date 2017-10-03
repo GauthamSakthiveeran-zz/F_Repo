@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.IsAdPlayingValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.ReplayValidator;
@@ -27,7 +26,6 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
     private SeekValidator seek;
     private SeekAction seekAction;
     private ReplayValidator replayValidator;
-    private IsAdPlayingValidator isAdPlaying;
     private PoddedAdValidator poddedAdValidator;
 
     public PlaybackBasicSeekAndReplayTests() throws OoyalaException {
@@ -68,11 +66,8 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
             result = result && seekAction.seek("10");
 
             result = result && eventValidator.validate("seeked_2", 30000);
-
-            if(isAdPlaying.validate("",1000)){
-                result = false;
-                extentTest.log(LogStatus.FAIL, "Ad is played after doing backward seek.");
-            }
+            
+            result = result && !eventValidator.checkIsAdPlaying();
 
             result = result && seek.validate("seeked_3", 30000);
 
@@ -94,4 +89,5 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
         Assert.assertTrue(result, "Basic Playback Midroll test failed");
 
     }
+	
 }

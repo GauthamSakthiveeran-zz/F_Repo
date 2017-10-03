@@ -47,6 +47,9 @@ public class LiveChannel {
 	}
 
 	public boolean startChannel(String channelId, String provider) {
+		if(channelId==null || channelId.isEmpty()) {
+			return true;
+		}
 		boolean flag = false;
 		if (channelId != null && !channelIds.contains(channelId) && provider != null) {
 			logger.info("Starting live channel " + channelId);

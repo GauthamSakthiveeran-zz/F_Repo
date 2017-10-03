@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class Bitratevalidator extends PlayBackPage implements PlaybackValidator {
@@ -49,34 +51,22 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 		if (!findAndClickOnBitrateIcon())
 			return false;
 
-		/*try {
-			if (isElementPresent("BITRATE_CLOSE_BTN")) {
-				if (!clickOnIndependentElement("BITRATE_CLOSE_BTN")) {
-					extentTest.log(LogStatus.INFO, "Unable to click on bitrate close button");
-				}
-			} else {
-				extentTest.log(LogStatus.INFO, "Bitrate close button is not present");
-			}
-		} catch (Exception e) {
-			extentTest.log(LogStatus.INFO, "Bitrate close button is not present");
-		}*/
+		PlayerAPIAction playerAPIAction = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
 
-		int length = Integer.parseInt(driver.executeScript("return pp.getBitratesAvailable().length").toString());
+		int length = playerAPIAction.getBitratesAvailableLength();
 		if (length > 1) {
 			boolean flag = true;
 			for (int i = 0; i < length; i++) {
-				String bitrate = driver.executeScript("return pp.getBitratesAvailable()[" + i + "]['bitrate']")
-						.toString();
-
-				String id = driver.executeScript("return pp.getBitratesAvailable()[" + i + "]['id']").toString();
+				String bitrate = playerAPIAction.getBitratesAvailable(i, "bitrate");
+				String id = playerAPIAction.getBitratesAvailable(i, "id");
 
 				logger.info("value of bitrate id is : " + id);
 
-				driver.executeScript("return pp.setTargetBitrate('" + id + "')");
+				playerAPIAction.setTargetBitrate(id);
 
-				driver.executeScript("pp.seek(10)");
+				playerAPIAction.seek(10);
 
-				driver.executeScript("pp.play();");
+				playerAPIAction.play();
 				if (!("0".equals(bitrate))) {
 
 					if (!waitOnElement(By.id("bitrateChanged_" + (bitrate)), 50000)) {
@@ -84,8 +74,7 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 						flag = false;
 					}
 				} else {
-					String currentBitrate = driver.executeScript("return pp.getCurrentBitrate()[\"bitrate\"]")
-							.toString();
+					String currentBitrate = playerAPIAction.getCurrentBitrate();
 					if (currentBitrate == null) {
 						extentTest.log(LogStatus.FAIL, "pp.getCurrentBitrate()[\"bitrate\"] returns null.");
 						return false;
@@ -99,8 +88,8 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
 			}
 
 		} else {
-			String currentBitrate = driver.executeScript("return pp.getCurrentBitrate()[\"bitrate\"]").toString();
-			driver.executeScript("return pp.play()");
+			String currentBitrate = playerAPIAction.getCurrentBitrate();
+			playerAPIAction.play();
 			if (currentBitrate == null) {
 				extentTest.log(LogStatus.FAIL, "return pp.getCurrentBitrate()[\"bitrate\"] returns null.");
 				return false;

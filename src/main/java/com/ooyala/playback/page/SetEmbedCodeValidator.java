@@ -1,14 +1,16 @@
 package com.ooyala.playback.page;
 
-import com.ooyala.qe.common.util.PropertyReader;
-import com.relevantcodes.extentreports.LogStatus;
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.Map;
+import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PlayerAPIAction;
+import com.ooyala.qe.common.util.PropertyReader;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by snehal on 07/03/17.
@@ -29,8 +31,10 @@ public class SetEmbedCodeValidator extends PlayBackPage implements
     public boolean validate(String element, int timeout) throws Exception {
         PropertyReader properties = PropertyReader.getInstance("urlData.properties");
         embedCode = properties.getProperty("setEmbedmbedCode");
+        
+        PlayerAPIAction playerAPI = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
 
-        ((JavascriptExecutor) driver).executeScript("pp.setEmbedCode('"+embedCode+"')");
+        playerAPI.setEmbedCode(embedCode);
 
         if(!waitOnElement(By.id("setEmbedCode_1"), 50000)) return false;
 
@@ -38,8 +42,7 @@ public class SetEmbedCodeValidator extends PlayBackPage implements
 
         //Adding sleep so that javascript executor has enough time to get embed code
         Thread.sleep(3000);
-        String newAssetEmbedCode = ((JavascriptExecutor) driver)
-                .executeScript("return pp.getEmbedCode()").toString();
+        String newAssetEmbedCode = playerAPI.getEmbedCode();
 
         if(embedCode.equals(newAssetEmbedCode)){
             logger.info("New aseet is loadded properly");

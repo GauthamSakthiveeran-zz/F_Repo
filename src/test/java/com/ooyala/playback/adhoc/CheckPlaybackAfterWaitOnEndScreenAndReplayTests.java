@@ -31,8 +31,6 @@ public class CheckPlaybackAfterWaitOnEndScreenAndReplayTests extends PlaybackWeb
     public void testOverrideEncodingPriorities(String testName, UrlObject url) {
 
         boolean result = true;
-        String param = "";
-        boolean isDRM = testName.toLowerCase().contains("drm");
 
         try {
 

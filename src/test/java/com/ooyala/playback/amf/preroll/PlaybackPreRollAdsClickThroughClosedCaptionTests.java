@@ -29,11 +29,9 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 	@Test(groups = { "amf", "preroll", "cc", "sequential", "clickThrough" }, dataProvider = "testUrls")
 	public void verifyPreroll(String testName, UrlObject url) throws Exception {
 		boolean result = true;
-		
+
 		try {
 			boolean cc = testName.contains("CC");
-			
-			boolean adclick = !clickThrough.ignoreClickThrough(url);
 
 			driver.get(url.getUrl());
 			result = result && playValidator.waitForPage();
@@ -41,20 +39,17 @@ public class PlaybackPreRollAdsClickThroughClosedCaptionTests extends PlaybackWe
 			result = result && playAction.startAction();
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 60000);
 
-			if(adclick)
-				result = result &&  clickThrough.validate("videoPausedAds_1", 120000);
-			
-			if (event.isAdPluginPresent("pulse"))
-				result = result && event.validate("singleAdPlayed_2", 120000);
-			else
-				result = result && event.validate("singleAdPlayed_1", 120000);
-			
+			result = result && clickThrough.setUrlObject(url).validate("videoPausedAds_1", 120000);
+
+			result = result && event.isAdPluginPresent("pulse") ? event.validate("singleAdPlayed_2", 120000)
+					: event.validate("singleAdPlayed_1", 120000);
+
 			result = result && event.loadingSpinner();
-			
+
 			event.validatePlayStartTimeFromBeginningofVideo();
 
 			result = result && event.validate("playing_1", 35000);
-			
+
 			if (result && cc) {
 				s_assert.assertTrue(ccValidator.validate("cclanguage", 60000), "CC");
 			}

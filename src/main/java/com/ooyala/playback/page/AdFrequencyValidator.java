@@ -150,7 +150,7 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 		try {
 			logger.info("Inside validateMetadataFetchedEvent method");
 			Thread.sleep(timeout);
-			String consoleOutput = driver.executeScript("return OO.DEBUG.consoleOutput[0].toString()").toString();
+			String consoleOutput = new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getConsoleOutput(0);
 			logger.info(consoleOutput);
 			if (consoleOutput.contains("metadataFetched")) {
 				logger.info("metadataFetched event found in consoleOutput");
@@ -175,7 +175,7 @@ public class AdFrequencyValidator extends PlayBackPage implements PlaybackValida
 		try {
 			logger.info("Inside validateContentTreeFetchedEvent method");
 			Thread.sleep(timeout);
-			String consoleOutput = driver.executeScript("return OO.DEBUG.consoleOutput[0].toString()").toString();
+			String consoleOutput = new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getConsoleOutput(0);
 			logger.info(consoleOutput);
 			if (consoleOutput.contains("contentTreeFetched")) {
 				logger.info("contentTreeFetched event found in consoleOutput");

@@ -25,7 +25,6 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
     public void verifyPostroll(String testName, UrlObject url) {
 
         boolean result = true;
-        boolean clickthrough = !clickThroughValidator.ignoreClickThrough(url);
 
         try {
 
@@ -43,9 +42,7 @@ public class PlaybackPostRollAdsTests extends PlaybackWebTest {
 
             result = result && event.validate("PostRoll_willPlaySingleAd_1", 60000);
 
-            if (result && clickthrough){
-                s_assert.assertTrue(clickThroughValidator.validate("videoPausedAds_1", 120000), "Postroll");
-            }
+            s_assert.assertTrue(clickThroughValidator.setUrlObject(url).validate("videoPausedAds_1", 120000), "Postroll");
 
             result = result && event.validate("singleAdPlayed_1", 190000);
 

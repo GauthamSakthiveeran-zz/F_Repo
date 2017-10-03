@@ -1,17 +1,17 @@
 package com.ooyala.playback.analytics;
 
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.AnalyticsValidator;
 import com.ooyala.playback.page.EventValidator;
-import com.ooyala.playback.page.MidrollAdValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 /**
  * Created by suraj on 6/30/17.
@@ -25,7 +25,6 @@ public class AnalyticsPreMidPostRollAdsTests extends PlaybackWebTest {
     private PlayAction playAction;
     private PlayValidator playValidator;
     private SeekAction seekAction;
-    private MidrollAdValidator midrollAdValidator;
     private AnalyticsValidator analyticsValidator;
 
     @Test(groups = {"amf", "preroll", "midroll", "postroll"}, dataProvider = "testUrls")

@@ -30,7 +30,6 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 	public void verifyPreMidPostroll(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
-		boolean clickThrough = !adClickThroughValidator.ignoreClickThrough(url);
 
 		try {
 
@@ -45,27 +44,25 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 			result = result && playAction.startAction();
 
 			result = result && event.validate("PreRoll_willPlaySingleAd_1", 30000);
-			
+
 			result = result && event.validate("videoPlayingAd_1", 60000);
 
-			if (result && clickThrough) {
-				s_assert.assertTrue(adClickThroughValidator.validate("videoPausedAds_1", 20000), "PreMidPost failed");
-			}
+			s_assert.assertTrue(adClickThroughValidator.setUrlObject(url).validate("videoPausedAds_1", 20000),
+					"PreMidPost failed");
 
 			executeScript("pp.skipAd()");
 
 			result = result && event.validate("adsPlayed_1", 200000);
 
 			result = result && event.validate("playing_1", 150000);
-			
-			result = result && adStartTimeValidator.setTime(url.getAdStartTime())
-					.validateAdStartTime("MidRoll_willPlayAds");
-			
+
+			result = result
+					&& adStartTimeValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlayAds");
+
 			result = result && event.validate("videoPlayingAd_2", 60000);
-			
-			if (result && clickThrough) {
-				s_assert.assertTrue(adClickThroughValidator.validate("videoPausedAds_2", 20000), "PreMidPost");
-			}
+
+			s_assert.assertTrue(adClickThroughValidator.setUrlObject(url).validate("videoPausedAds_2", 20000),
+					"PreMidPost");
 
 			executeScript("pp.skipAd()");
 
@@ -74,19 +71,16 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 			result = result && seekAction.seekTillEnd().startAction();
 
 			result = result && event.validate("willPlayPostrollAd_1", 900000);
-			
+
 			result = result && event.validate("videoPlayingAd_3", 60000);
-			if (result && clickThrough) {
-				s_assert.assertTrue(adClickThroughValidator.validate("videoPausedAds_3", 20000), "PreMidPost");
-			}
+
+			s_assert.assertTrue(adClickThroughValidator.setUrlObject(url).validate("videoPausedAds_3", 20000),
+					"PreMidPost");
 
 			executeScript("pp.skipAd()");
 
-			if (isPulse) {
-				result = result && event.validate("singleAdPlayed_6", 60000);
-				result = result && event.validate("seeked_1", 60000);
-			} else
-				result = result && event.validate("adsPlayed_3", 60000);
+			result = result && isPulse ? event.validate("singleAdPlayed_6", 60000) && event.validate("seeked_1", 60000)
+					: event.validate("adsPlayed_3", 60000);
 
 			result = result && event.skipScrubberValidation().validate("played_1", 200000);
 

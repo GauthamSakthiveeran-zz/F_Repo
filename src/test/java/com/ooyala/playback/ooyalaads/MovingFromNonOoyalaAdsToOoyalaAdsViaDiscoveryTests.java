@@ -43,8 +43,7 @@ public class MovingFromNonOoyalaAdsToOoyalaAdsViaDiscoveryTests extends Playback
             result = result && playAction.startAction();
 
             //Ooyala ad should not play
-            if (eventValidator.checkIsAdPlaying())
-                result = false;
+            result = result && !eventValidator.checkIsAdPlaying();
 
             result = result && eventValidator.validate("playing_1",10000);
 
@@ -65,8 +64,7 @@ public class MovingFromNonOoyalaAdsToOoyalaAdsViaDiscoveryTests extends Playback
             result = result && discoveryValidator.selectAssetFormDiscoveryTray("Non Ooyala Ad asset with discovery.mp4");
 
             //Ooyala ad should not play
-            if (eventValidator.checkIsAdPlaying())
-                result = false;
+            result = result && !eventValidator.checkIsAdPlaying();
 
             result = result && eventValidator.validate("playing_3",10000);
         } catch (Exception e) {

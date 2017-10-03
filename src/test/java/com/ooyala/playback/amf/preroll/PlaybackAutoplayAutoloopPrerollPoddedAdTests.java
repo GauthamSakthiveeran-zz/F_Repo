@@ -1,12 +1,12 @@
 package com.ooyala.playback.amf.preroll;
 
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.SeekValidator;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -16,9 +16,9 @@ import com.relevantcodes.extentreports.LogStatus;
  */
 public class PlaybackAutoplayAutoloopPrerollPoddedAdTests extends PlaybackWebTest {
 
-	private static Logger logger = Logger.getLogger(PlaybackAutoplayAutoloopPrerollPoddedAdTests.class);
 	private EventValidator eventValidator;
 	private SeekValidator seekValidator;
+	private PlayerAPIAction playerAPI;
 
 	public PlaybackAutoplayAutoloopPrerollPoddedAdTests() throws OoyalaException {
 		super();
@@ -34,7 +34,7 @@ public class PlaybackAutoplayAutoloopPrerollPoddedAdTests extends PlaybackWebTes
 			driver.get(url.getUrl());
 
 			result = result && eventValidator.waitTillAdPlays();
-			
+
 			injectScript();
 
 			result = result && eventValidator.validateAutoPlay();
@@ -42,9 +42,9 @@ public class PlaybackAutoplayAutoloopPrerollPoddedAdTests extends PlaybackWebTes
 			result = result && eventValidator.validate("adsPlayed_1", 180000);
 
 			result = result && eventValidator.validate("countPoddedAds_1", 1000);
-			
-			int noOfAds = Integer.parseInt(driver.executeScript("return countPoddedAds_1.textContent").toString());
-			
+
+			int noOfAds = Integer.parseInt(playerAPI.getTextContent("countPoddedAds_1"));
+
 			for (int i = 1; i <= noOfAds; i++) {
 				result = result && eventValidator.validate("singleAdPlayed_" + i + "", 1000);
 			}
@@ -57,16 +57,14 @@ public class PlaybackAutoplayAutoloopPrerollPoddedAdTests extends PlaybackWebTes
 			result = result && eventValidator.validate("adsPlayed_2", 180000);
 
 			result = result && eventValidator.validate("countPoddedAds_2", 60000);
-			
-			int noOfAdsOnReplay = Integer
-					.parseInt(driver.executeScript("return countPoddedAds_2.textContent").toString());
-			
+
+			int noOfAdsOnReplay = Integer.parseInt(playerAPI.getTextContent("countPoddedAds_2"));
+
 			for (int i = noOfAds + 1; i <= noOfAdsOnReplay; i++) {
 				result = result && eventValidator.validate("singleAdPlayed_" + i + "", 1000);
 			}
-			
+
 		} catch (Exception e) {
-			logger.error(e);
 			result = false;
 			extentTest.log(LogStatus.FAIL, "Playback Autoplay Autoloop test failed for " + testName + "", e);
 		}

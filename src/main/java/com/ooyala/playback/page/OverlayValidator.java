@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class OverlayValidator extends PlayBackPage implements PlaybackValidator {
@@ -149,7 +150,7 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
             logger.error(e.getMessage());
         }
         if (waitOnElement(By.id(element), 10000))
-            driver.executeScript("pp.play();");
+            new PlayBackFactory(driver, extentTest).getPlayerAPIAction().play();
         result = true;
         return result;
     }
