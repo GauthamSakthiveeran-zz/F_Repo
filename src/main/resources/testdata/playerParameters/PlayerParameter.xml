@@ -267,7 +267,7 @@
 			<additionalPlugins name="PLAYLIST" />
 			<pbid name="9957eb7c70a64730ad8fc15004d28da8" />
 			<playerParameter>
-                <![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"]},"autoPlay":"true","initialVolume":0.5}]]></playerParameter>
+                <![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"]},"autoplay":"true","initialVolume":0.5}]]></playerParameter>
 		</url>
 		
 	    <url>
@@ -308,7 +308,7 @@
 			<additionalPlugins name="PLAYLIST" />
 			<pbid name="9957eb7c70a64730ad8fc15004d28da8" />
 			<playerParameter>
-                <![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"]},"autoPlay":"true","loop":true}]]></playerParameter>
+                <![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"]},"autoplay":"true","loop":true}]]></playerParameter>
 		</url>
 		
 	    <url>
@@ -349,7 +349,7 @@
 			<additionalPlugins name="PLAYLIST" />
 			<pbid name="9957eb7c70a64730ad8fc15004d28da8" />
 			<playerParameter>
-                <![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"]},"autoPlay":"false","loop":true}]]></playerParameter>
+                <![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"]},"autoplay":"false","loop":true}]]></playerParameter>
 		</url>
 		
 	    <url>
@@ -390,7 +390,7 @@
 			<additionalPlugins name="PLAYLIST" />
 			<pbid name="9957eb7c70a64730ad8fc15004d28da8" />
 			<playerParameter>
-                <![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"]},"autoPlay":"false","loop":false,"initialVolume":0.5}]]></playerParameter>
+                <![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"]},"autoplay":"false","loop":false,"initialVolume":0.5}]]></playerParameter>
 		</url>
 		
 	    <url>

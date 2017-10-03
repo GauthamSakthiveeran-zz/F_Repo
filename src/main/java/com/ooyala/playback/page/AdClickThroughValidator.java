@@ -7,33 +7,38 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.url.UrlObject;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class AdClickThroughValidator extends PlayBackPage implements PlaybackValidator {
 
-	public static Logger log = Logger.getLogger(AdClickThroughValidator.class);
+	private static Logger log = Logger.getLogger(AdClickThroughValidator.class);
+	private PlayerAPIAction playerAPI;
 
 	public AdClickThroughValidator(WebDriver webDriver) {
 		super(webDriver);
 		PageFactory.initElements(driver, this);
 		addElementToPageElements("adclicks");
 		addElementToPageElements("adoverlay");
+		playerAPI = new PlayBackFactory(webDriver, extentTest).getPlayerAPIAction();
 	}
 
 	boolean overlay = false;
+	UrlObject urlObject;
 
 	public AdClickThroughValidator overlay() {
 		overlay = true;
 		return this;
 	}
 
-	public boolean ignoreClickThrough(UrlObject url) {
-		return url.getIgnoreClickThrough();
+	public AdClickThroughValidator setUrlObject(UrlObject urlObject) {
+		this.urlObject = urlObject;
+		return this;
 	}
 
 	private boolean validateOverlayClickThrough() {
@@ -56,8 +61,10 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 
 	public boolean validate(String element, int timeout) throws Exception {
 
-		/*if (getBrowser().equalsIgnoreCase("safari"))
-			return true;*/
+		if(urlObject!=null && urlObject.getIgnoreClickThrough()==true) {
+			extentTest.log(LogStatus.INFO, "Ads clickthrough ignored for this asset.");
+			return true;
+		}
 
 		if (!loadingSpinner()) {
 			extentTest.log(LogStatus.FAIL, "In Loading spinner for a really long time.");
@@ -69,7 +76,7 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 		if (overlay) {
 			validateOverlayClickThrough();
 			closeOtherWindows(baseWindowHdl);
-			((JavascriptExecutor) driver).executeScript("pp.play()");
+			playerAPI.play();
 			return true;
 		}
 
@@ -92,11 +99,6 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 		}
 	}
 
-	public boolean isAdPlaying() {
-		Boolean isAdplaying = (Boolean) (((JavascriptExecutor) driver).executeScript("return pp.isAdPlaying()"));
-		return isAdplaying;
-	}
-
 	private boolean clickThroughOnAd(int counter) throws Exception {
 		String baseWindowHdl = driver.getWindowHandle();
 		Map<String, String> data = parseURL();
@@ -107,7 +109,7 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 
 		String value = data.get("ad_plugin");
 		String video_plugin = data.get("video_plugins");
-		boolean isAdPlaying = isAdPlaying();
+		boolean isAdPlaying = playerAPI.isAdPlaying();
 		if (isAdPlaying) {
 
 			// check ad clickthrough
@@ -194,7 +196,7 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 
 			closeOtherWindows(baseWindowHdl);
 
-			((JavascriptExecutor) driver).executeScript("pp.play()");
+			playerAPI.play();
 			return true;
 		} else {
 			extentTest.log(FAIL, "Ad is not playing");
@@ -205,7 +207,7 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 	public boolean validateClickThroughForPoddedAds(String adType) throws Exception {
 		int counter = 1;
 
-		while (isAdPlaying()) {
+		while (playerAPI.isAdPlaying()) {
 
 			// verify if ad is playing or not based on ad type
 			if (adType.equalsIgnoreCase("preroll")) {
@@ -254,7 +256,7 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 			}
 
 			// Increase counter by 1 if next ad is playing
-			if (isAdPlaying()) {
+			if (playerAPI.isAdPlaying()) {
 				counter++;
 			}
 		}

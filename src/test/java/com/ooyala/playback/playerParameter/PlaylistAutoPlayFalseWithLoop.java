@@ -30,38 +30,23 @@ public class PlaylistAutoPlayFalseWithLoop extends PlaybackWebTest {
 
     @Test(groups = "autoplay", dataProvider = "testUrls")
     public void testPlaylistTests(String description, UrlObject url) throws OoyalaException {
-        //seperating the tab name from the test description
-        String[] parts = description.split(":")[1].trim().split(",");
-        String[] tcName = null;
-        String[] autoplayValidator = null;
-        String[] loopValidator = null;
-        for(int i=0;i<parts.length-1;i++) {
-    	      tcName=parts[i].split("-");
-    	      if(tcName[i].contains("Auto") || tcName[i].contains("auto")) {
-    	    	    autoplayValidator=tcName;
-    	      } else {
-    	      	loopValidator=tcName;
-    	      }
-       }
-
-       String videoPluginName = parts[parts.length - 1].trim();
        
-       driver.get(url.getUrl());
        boolean result = true;
         try {
         	driver.get(url.getUrl());
-            if (!(description.contains("Autoplay-true"))) {
-                result = result && play.waitForPage();
-                injectScript();
-            } else {
-                result = result && playlist.isPageLoaded();
-                injectScript();
-            }
-           result = result && playlist.playlistValidator(autoplayValidator[0], autoplayValidator[1], videoPluginName);
-           result = result && play.validate("playing_1", 20000);
-           result = result && playlist.playlistValidator(loopValidator[0], loopValidator[1], videoPluginName);
-
-       
+     	String autoPlay = getAutoPlayFlag();
+        String loop = getLoopFlag();
+        String videoPluginName = getVideoPlugins()[0];
+        if (autoPlay.equalsIgnoreCase("true")) {
+            result = result && play.waitForPage();
+            injectScript();
+        } else {
+            result = result && playlist.isPageLoaded();
+            injectScript();
+        }
+       result = result && playlist.playlistValidator("Autoplay", autoPlay, videoPluginName);
+       result = result && play.validate("playing_1", 20000);
+       result = result && playlist.playlistValidator("Loop", loop, videoPluginName);       
 
         } catch (Exception e) {
             extentTest.log(LogStatus.FAIL, e.getMessage());

@@ -1,7 +1,10 @@
 package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import com.relevantcodes.extentreports.LogStatus;
 
 public class VideoValidator extends PlayBackPage implements PlaybackValidator {
 
@@ -19,8 +22,7 @@ public class VideoValidator extends PlayBackPage implements PlaybackValidator {
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
-//TODO
-		/*if (!isVideoPluginPresent("bit_wrapper")) {
+		if (!isVideoPluginPresent("bit_wrapper")) {
 			return true;
 		}
 
@@ -33,7 +35,7 @@ public class VideoValidator extends PlayBackPage implements PlaybackValidator {
 		if (!waitOnElement(By.id("video_mp4"), 20000)) {
 			extentTest.log(LogStatus.FAIL, "Black Screen");
 			return false;
-		}*/
+		}
 		return true;
 	}
 

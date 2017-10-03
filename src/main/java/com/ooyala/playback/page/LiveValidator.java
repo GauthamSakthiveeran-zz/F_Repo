@@ -3,6 +3,7 @@ package com.ooyala.playback.page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.url.UrlObject;
 
 public class LiveValidator extends PlayBackPage implements PlaybackValidator {
@@ -30,7 +31,7 @@ public class LiveValidator extends PlayBackPage implements PlaybackValidator {
 	}
 
     public boolean isGettingError(){
-        if (driver.executeScript("return pp.getErrorCode()").toString()==null){
+        if (new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getErrorCode()==null){
             return true;
         }
         return false;

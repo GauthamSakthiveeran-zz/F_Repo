@@ -27,6 +27,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.ooyala.facile.page.WebPage;
 import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -250,7 +251,7 @@ public abstract class PlayBackPage extends WebPage {
 			}
 			return query_pairs;
 		}
-
+		
 		return null;
 	}
 
@@ -316,17 +317,17 @@ public abstract class PlayBackPage extends WebPage {
 		int time = 0;
 		boolean flag;
 
-		IsAdPlayingValidator adPlaying = new PlayBackFactory(driver, extentTest).isAdPlaying();
+		PlayerAPIAction playerAPI = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
 
 		if (checkOnce) {
 			Thread.sleep(1000);
-			return adPlaying.validate("", 1000);
+			return playerAPI.isAdPlaying();
 		}
 
 		while (true) {
 			if (time <= 150) {
 				try {
-					flag = adPlaying.validate("", 1000);
+					flag = playerAPI.isAdPlaying();
 					if (!flag) {
 						flag = true;
 						break;
@@ -349,13 +350,13 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	public boolean waitTillAdPlays() {
-		IsAdPlayingValidator adPlaying = new PlayBackFactory(driver, extentTest).isAdPlaying();
+		PlayerAPIAction playerAPI = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
 		boolean flag = false;
 		int time = 0;
 		while (true) {
 			if (time <= 120) {
 				try {
-					flag = adPlaying.validate("", 1000);
+					flag = playerAPI.isAdPlaying();
 					Thread.sleep(1000);
 					time++;
 				} catch (Exception e) {
@@ -382,10 +383,10 @@ public abstract class PlayBackPage extends WebPage {
 				Thread.sleep(1000);
 				count--;
 			}
-		} catch(Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		
+
 		return false;
 	}
 
@@ -435,16 +436,15 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	public double getPlayAheadTime() {
-		return Double
-				.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getPlayheadTime();").toString());
+		return (double) executeJsScript("pp.getPlayheadTime()", "double");
 	}
 
 	public String getPlayerState() {
-		return driver.executeScript("return pp.getState()").toString();
+		return (String) executeJsScript("pp.getState()", "string");
 	}
-	
+
 	public double getDuration() {
-		return Double.parseDouble(((JavascriptExecutor) driver).executeScript("return pp.getDuration();").toString());
+		return (double) executeJsScript("pp.getDuration()", "double");
 	}
 
 	public boolean isAnalyticsElementPreset(String element) {
@@ -529,46 +529,51 @@ public abstract class PlayBackPage extends WebPage {
 
 	public boolean validateVideoStartTime(double timeToBeVerifiedAgainst) {
 
-		/*if (driver.getCurrentUrl().contains("adobe_html5")) {
-			extentTest.log(LogStatus.INFO, "pp.getPlayAheadTime behaves wierdly for adobe_html5");
-			return true;
-		}
-
-		Double playHeadTime = getPlayAheadTime();
-		extentTest.log(LogStatus.INFO, "Playhead time is :" + playHeadTime);
-		logger.info("Playhead time is :" + playHeadTime);
-		if (playHeadTime > timeToBeVerifiedAgainst || playHeadTime < (timeToBeVerifiedAgainst - 1)) {
-			extentTest.log(LogStatus.FAIL, "Video does not start from the " + (timeToBeVerifiedAgainst-1));
-			logger.error("Video does not start from " + (timeToBeVerifiedAgainst-1));
-			return false;
-		}
-		extentTest.log(LogStatus.PASS, "Video starts from the correct point.");
-		logger.info("Video does start from begining");
-		logger.info("Playhead time is :" + playHeadTime);*/
+		/*
+		 * if (driver.getCurrentUrl().contains("adobe_html5")) {
+		 * extentTest.log(LogStatus.INFO,
+		 * "pp.getPlayAheadTime behaves wierdly for adobe_html5"); return true;
+		 * }
+		 * 
+		 * Double playHeadTime = getPlayAheadTime();
+		 * extentTest.log(LogStatus.INFO, "Playhead time is :" + playHeadTime);
+		 * logger.info("Playhead time is :" + playHeadTime); if (playHeadTime >
+		 * timeToBeVerifiedAgainst || playHeadTime < (timeToBeVerifiedAgainst -
+		 * 1)) { extentTest.log(LogStatus.FAIL, "Video does not start from the "
+		 * + (timeToBeVerifiedAgainst-1));
+		 * logger.error("Video does not start from " +
+		 * (timeToBeVerifiedAgainst-1)); return false; }
+		 * extentTest.log(LogStatus.PASS,
+		 * "Video starts from the correct point.");
+		 * logger.info("Video does start from begining");
+		 * logger.info("Playhead time is :" + playHeadTime);
+		 */
 		return true;
 	}
 
 	public Object executeJsScript(String command, String returnType) {
 
 		switch (returnType) {
-			case "boolean":
-				return Boolean.parseBoolean(driver.executeScript("return " + command + "").toString());
-			case "string":
-				return driver.executeScript("return " + command + "").toString();
-			case "int":
-				return Integer.parseInt(driver.executeScript("return " + command + "").toString());
-			case "double":
-				return Double.parseDouble(driver.executeScript("return " + command + "").toString());
-            case "long":
-                return Long.parseLong(driver.executeScript("return " + command + "").toString());
+		case "boolean":
+			return Boolean.parseBoolean(driver.executeScript("return " + command + "").toString());
+		case "string":
+			return driver.executeScript("return " + command + "").toString();
+		case "int":
+			return Integer.parseInt(driver.executeScript("return " + command + "").toString());
+		case "double":
+			return Double.parseDouble(driver.executeScript("return " + command + "").toString());
+		case "long":
+			return Long.parseLong(driver.executeScript("return " + command + "").toString());
+		case "na":
+			driver.executeScript(command);
 		}
 		return null;
 	}
 
 	public boolean playVideoForSometime(double secs) {
-		if(driver.getCurrentUrl().contains("adobe_html5")) {
+		if (driver.getCurrentUrl().contains("adobe_html5")) {
 			try {
-				Thread.sleep((long) (secs*1000));
+				Thread.sleep((long) (secs * 1000));
 				return true;
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -599,5 +604,14 @@ public abstract class PlayBackPage extends WebPage {
 			}
 		}
 		return true;
+	}
+
+	public void dragdrop(WebElement LocatorFrom, WebElement LocatorTo) {
+		String xto = Integer.toString(LocatorTo.getLocation().x);
+		String yto = Integer.toString(LocatorTo.getLocation().y);
+		driver.executeScript(
+				"function simulate(f,c,d,e){var b,a=null;for(b in eventMatchers)if(eventMatchers[b].test(c)){a=b;break}if(!a)return!1;document.createEvent?(b=document.createEvent(a),a==\"HTMLEvents\"?b.initEvent(c,!0,!0):b.initMouseEvent(c,!0,!0,document.defaultView,0,d,e,d,e,!1,!1,!1,!1,0,null),f.dispatchEvent(b)):(a=document.createEventObject(),a.detail=0,a.screenX=d,a.screenY=e,a.clientX=d,a.clientY=e,a.ctrlKey=!1,a.altKey=!1,a.shiftKey=!1,a.metaKey=!1,a.button=1,f.fireEvent(\"on\"+c,a));return!0} var eventMatchers={HTMLEvents:/^(?:load|unload|abort|error|select|change|submit|reset|focus|blur|resize|scroll)$/,MouseEvents:/^(?:click|dblclick|mouse(?:down|up|over|move|out))$/}; "
+						+ "simulate(arguments[0],\"mousedown\",0,0); simulate(arguments[0],\"mousemove\",arguments[1],arguments[2]);",
+				LocatorFrom, xto, yto);
 	}
 }

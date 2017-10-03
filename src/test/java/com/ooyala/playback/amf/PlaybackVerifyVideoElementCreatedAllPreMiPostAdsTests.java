@@ -47,45 +47,27 @@ public class PlaybackVerifyVideoElementCreatedAllPreMiPostAdsTests extends Playb
 
             result = result && eventValidator.validate("adsPlayed_1", 300000);
 
-            // for IMA ad videoControllerVideoElementCreated event is not triggering
-            if (!eventValidator.isAdPluginPresent("ima")) {
-                result = result && eventValidator.validateVideoElementOccuredCount(40000);
-            }
+            result = result && eventValidator.validateVideoElementOccuredCount(40000);
 
             result = result && eventValidator.validate("playing_1", 90000);
 
-
-            if (!eventValidator.validate("MidRoll_willPlayAds", 10000)) {
-                result = result && seekAction.setFactor(2).fromLast().setTime(10).startAction();
-            }
-
+            result = result && !eventValidator.validate("MidRoll_willPlayAds", 10000)?seekAction.setFactor(2).fromLast().setTime(10).startAction():true;
+            
             result = result && eventValidator.validate("MidRoll_willPlayAds", 200000);
 
             result = result && eventValidator.validate("adsPlayed_2", 600000);
 
-            // for IMA ad videoControllerVideoElementCreated event is not triggering
-            if (!eventValidator.isAdPluginPresent("ima")) {
-                result = result && eventValidator.validateVideoElementOccuredCount(40000);
-            }
-
-            /*if (!eventValidator.validate("played_1", 4000)) {
-                result = result && seekAction.seekTillEnd().startAction();
-            }*/
-
+            result = result && eventValidator.validateVideoElementOccuredCount(40000);
+            
             result = result && eventValidator.validate("PostRoll_willPlayAds", 200000);
             result = result && eventValidator.validate("adsPlayed_3", 600000);
 
-            // for IMA ad videoControllerVideoElementCreated event is not triggering
-            if (!eventValidator.isAdPluginPresent("ima")) {
-                result = result && eventValidator.validateVideoElementOccuredCount(40000);
-            }
+            result = result && eventValidator.validateVideoElementOccuredCount(40000);
 
             result = result && eventValidator.validate("played_1", 180000);
             result = result && differentElementValidator.validateMainVideoElementId("VIDEO_ELEMENT",20000);
 
-            if (!eventValidator.isAdPluginPresent("ima") ){
-                result = result && differentElementValidator.validateAdElementId("AD_ELEMENT",5000);
-            }
+            result = result && differentElementValidator.validateAdElementId("AD_ELEMENT",5000);
 
         } catch (Exception e) {
             logger.error("Exception while checking Video Element tests  "+e.getMessage());

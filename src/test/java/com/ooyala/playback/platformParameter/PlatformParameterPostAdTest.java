@@ -2,13 +2,13 @@ package com.ooyala.playback.platformParameter;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.BitmovinTechnologyValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.SeekValidator;
-import com.ooyala.playback.page.SetEmbedCodeValidator;
 import com.ooyala.playback.page.StreamValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -48,11 +48,9 @@ public class PlatformParameterPostAdTest extends PlaybackWebTest {
 
 			result = result && pause.validate("paused", 60000);
 
-			if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
-				result = result && event.validate("videoPlayingurl", 40000);
-				result = result
-						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
-			}
+			result = result && event.validate("videoPlayingurl", 40000);
+			result = result
+					&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 
 			result = result && play.validate("playing_2", 60000);
 

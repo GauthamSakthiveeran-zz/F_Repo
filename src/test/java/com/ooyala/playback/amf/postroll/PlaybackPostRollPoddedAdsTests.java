@@ -27,7 +27,6 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 	@Test(groups = { "amf", "postroll", "podded" }, dataProvider = "testUrls")
 	public void verifyPostrollPodded(String testName, UrlObject url) throws OoyalaException {
 		boolean result = true;
-		boolean clickthrough = !clickthroughValidator.ignoreClickThrough(url);
 		try {
 			driver.get(url.getUrl());
 			result = result && playValidator.waitForPage();
@@ -35,10 +34,8 @@ public class PlaybackPostRollPoddedAdsTests extends PlaybackWebTest {
 			result = result && playValidator.validate("playing_1", 60000);
 			result = result && seekValidator.validate("seeked_1", 60000);
 			result = result && event.validate("willPlayPostrollAd_1", 25000);
-			if (result && clickthrough) {
-				s_assert.assertTrue(clickthroughValidator.validateClickThroughForPoddedAds("postroll"),
-						"Postroll Podded");
-			}
+			s_assert.assertTrue(clickthroughValidator.setUrlObject(url).validateClickThroughForPoddedAds("postroll"),
+					"Postroll Podded");
 			result = result && seekValidator.validate("videoPlayed_1", 60000);
 			result = result && poddedAdValidator.setPosition("PostRoll").validate("countPoddedAds", 120000);
 			result = result && event.validate("played_1", 60000);

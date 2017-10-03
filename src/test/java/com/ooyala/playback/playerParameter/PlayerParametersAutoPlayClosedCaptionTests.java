@@ -1,16 +1,18 @@
 package com.ooyala.playback.playerParameter;
 
 
-import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
-import com.ooyala.playback.page.action.AutoplayAction;
-import com.ooyala.playback.page.action.ChromeFlashUpdateAction;
-import com.ooyala.playback.url.UrlObject;
-import com.ooyala.qe.common.exception.OoyalaException;
-import com.relevantcodes.extentreports.LogStatus;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.ooyala.playback.PlaybackWebTest;
+import com.ooyala.playback.page.CCValidator;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PlayerAPIValidator;
+import com.ooyala.playback.page.action.PlayerAPIAction;
+import com.ooyala.playback.url.UrlObject;
+import com.ooyala.qe.common.exception.OoyalaException;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by Gautham
@@ -19,14 +21,10 @@ public class PlayerParametersAutoPlayClosedCaptionTests extends PlaybackWebTest 
 	private static Logger logger = Logger
 			.getLogger(PlayerParametersAutoPlayClosedCaptionTests.class);
 
-	private PlayValidator play;
-	private PauseValidator pause;
-	private SeekValidator seek;
 	private EventValidator eventValidator;
 	private CCValidator ccValidator;
-	private AutoplayAction autoplayAction;
 	private PlayerAPIValidator apiValidator;
-	private ChromeFlashUpdateAction chromeValidator;
+	private PlayerAPIAction playerAPI;
 
 	public PlayerParametersAutoPlayClosedCaptionTests() throws OoyalaException {
 		super();
@@ -44,7 +42,7 @@ public class PlayerParametersAutoPlayClosedCaptionTests extends PlaybackWebTest 
 			driver.get(url.getUrl());
 
 			result = result && eventValidator.isPageLoaded();
-			String playerState = driver.executeScript("return pp.getState()").toString();
+			String playerState = playerAPI.getState();
 	    	logger.info("Player State is : ========> " + playerState);
 
 			injectScript();

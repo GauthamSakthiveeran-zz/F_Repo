@@ -3,6 +3,8 @@ package com.ooyala.playback.page;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
+import com.ooyala.playback.factory.PlayBackFactory;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class ErrorDescriptionValidator extends PlayBackPage implements PlaybackValidator{
@@ -35,11 +37,14 @@ public class ErrorDescriptionValidator extends PlayBackPage implements PlaybackV
 		if (!errorDescription()) {
 			return false;
 		}
-		if(driver.executeScript("return pp.getErrorCode()")==null){
+		
+		PlayerAPIAction playerAPI = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
+		
+		if(playerAPI.getErrorCode()==null){
 			extentTest.log(LogStatus.FAIL, "Failed to get error code.");
 			return false;
 		}
-		String errorCode = driver.executeScript("return pp.getErrorCode()").toString();
+		String errorCode = playerAPI.getErrorCode();
 		logger.info("Error code :" + errorCode);
 		if (!errorCode.equalsIgnoreCase(expectedErrorCode)) {
 			logger.error("Failed to get error code.");

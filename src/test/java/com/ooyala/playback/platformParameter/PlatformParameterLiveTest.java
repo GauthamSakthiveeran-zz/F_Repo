@@ -1,13 +1,11 @@
 package com.ooyala.playback.platformParameter;
 
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.BitmovinTechnologyValidator;
 import com.ooyala.playback.page.ControlBarValidator;
-import com.ooyala.playback.page.ErrorDescriptionValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.FullScreenValidator;
 import com.ooyala.playback.page.LiveValidator;
@@ -16,7 +14,6 @@ import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.StreamValidator;
 import com.ooyala.playback.page.action.LiveAction;
 import com.ooyala.playback.page.action.PauseAction;
-import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -32,9 +29,7 @@ public class PlatformParameterLiveTest extends PlaybackWebTest {
 	private FullScreenValidator fullScreenValidator;
 	private LiveAction liveAction;
 	private PauseAction pauseAction;
-	private PlayAction playAction;
 	private LiveValidator live;
-	private ErrorDescriptionValidator error;
 	private StreamValidator streamTypeValidator;
 	private BitmovinTechnologyValidator bitmovinvalidator;
 	private EventValidator event;
@@ -69,11 +64,9 @@ public class PlatformParameterLiveTest extends PlaybackWebTest {
 
 			result = result && bitmovinvalidator.setStream(url.getStreamType()).validate("bitmovin_technology", 6000);
 
-			if (url.getStreamType() != null && !url.getStreamType().isEmpty()) {
-				result = result && event.validate("videoPlayingurl", 40000);
-				result = result
-						&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
-			}
+			result = result && event.validate("videoPlayingurl", 40000);
+			result = result
+					&& streamTypeValidator.setStreamType(url.getStreamType()).validate("videoPlayingurl", 1000);
 
 			result = result && controlBarValidator.validate("", 60000);
 			// to-do add ooyala logo to the test page

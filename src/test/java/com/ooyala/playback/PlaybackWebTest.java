@@ -1,5 +1,7 @@
 package com.ooyala.playback;
 
+import static java.net.URLDecoder.decode;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -14,6 +16,9 @@ import javax.xml.bind.Unmarshaller;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -68,6 +73,7 @@ public abstract class PlaybackWebTest extends FacileTest {
     protected PlayBackFactory pageFactory;
     protected ExtentTest extentTest;
     protected Testdata testData;
+    protected UrlObject url;
     protected String[] jsUrl;
     protected LiveChannel liveChannel;
     protected RemoteWebDriver driver;
@@ -88,7 +94,7 @@ public abstract class PlaybackWebTest extends FacileTest {
             if (testData != null && testData.length >= 1) {
                 logger.info("*** Test " + testData[0].toString() + " started *********");
                 extentTest = ExtentManager.startTest(testData[0].toString());
-                UrlObject url = (UrlObject) testData[1];
+                url = (UrlObject) testData[1];
                 logger.info("*** URL " + url.getUrl() + " *********");
                 extentTest.log(LogStatus.INFO, "URL : " + url.getUrl());
                 if (testData[0].toString().contains("OSMF") && getBrowser().contains("chrome")) {
@@ -505,5 +511,53 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     protected String getUserAgent() {
         return (String) ((JavascriptExecutor) driver).executeScript("return navigator.userAgent;");
+    }
+    
+    protected String  getAutoPlayFlag() throws Exception {
+
+          JSONParser parser = new JSONParser();
+          JSONObject obj = (JSONObject) parser.parse(url.getPlayerParameter());
+          if(obj.containsKey("autoplay")) {
+        	  	return obj.get("autoplay").toString();
+          }
+          logger.info("autoplay is not mentioned in player params");
+          extentTest.log(LogStatus.INFO, "autoplay is not mentioned in player params");
+          return "false";
+    }
+    
+    protected String  getAutoplayUpNextDiscoveryVideosFlag() throws Exception {
+
+        JSONParser parser = new JSONParser();
+        JSONObject obj = (JSONObject) parser.parse(url.getPlayerParameter());
+        if(obj.containsKey("autoPlayUpNextVideosOnly")) {
+      	  return obj.get("autoPlayUpNextVideosOnly").toString();
+        }
+        logger.info("upnextdiscovery flag is not mentioned in player params");
+    	    extentTest.log(LogStatus.INFO, "upnextdiscovery flag is not mentioned in player params");
+        return "false";
+    }
+    
+    protected String  getLoopFlag() throws Exception {
+
+        JSONParser parser = new JSONParser();
+        JSONObject obj = (JSONObject) parser.parse(url.getPlayerParameter());
+        if(obj.containsKey("loop")) {
+      	  return obj.get("loop").toString();
+        }
+        logger.info("loop is not mentioned in player params");
+        extentTest.log(LogStatus.INFO, "loop is not mentioned in player params");
+        return "false";
+    }
+    
+    protected String[] getVideoPlugins() {
+     String videoPlugins = url.getVideoPlugins();
+    	if(videoPlugins == null) {
+    		logger.error("video plugin is not set");
+    		extentTest.log(LogStatus.FATAL, "video plugin is not set");
+    		return null;
+    	}
+    		
+    	 return videoPlugins.split(",");
+    	
     }
 }

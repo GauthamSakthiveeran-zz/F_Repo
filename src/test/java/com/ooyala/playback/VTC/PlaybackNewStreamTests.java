@@ -9,6 +9,7 @@ import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -23,14 +24,14 @@ public class PlaybackNewStreamTests extends PlaybackWebTest {
 	private DiscoveryValidator discoveryValidator;
 	private EventValidator eventValidator;
 	private PlayAction playAction;
+	private PlayerAPIAction playerAPI;
 
 	public PlaybackNewStreamTests() throws OoyalaException {
 		super();
 	}
 
 	@Test(groups = "Playback", dataProvider = "testUrls")
-	public void testLoadingNewStream(String testName, UrlObject url)
-			throws OoyalaException {
+	public void testLoadingNewStream(String testName, UrlObject url) throws OoyalaException {
 		boolean result = true;
 		try {
 			driver.get(url.getUrl());
@@ -43,20 +44,18 @@ public class PlaybackNewStreamTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("playing_1", 60000);
 
-			driver.executeScript("pp.setEmbedCode('Vmd2VmeDq6-92C-kPkkZGoOkTCeSZq4e')");
+			playerAPI.setEmbedCode("kPkkZGoOkTCeSZq4e");
 
 			result = result && eventValidator.validate("setEmbedCode_1", 15000);
 
-			driver.executeScript("pp.play()");
+			playerAPI.play();
 
 			result = result && eventValidator.validate("playing_2", 60000);
 
-			result = result
-					&& discoveryValidator.validate("reportDiscoveryClick_1",
-							6000);
+			result = result && discoveryValidator.validate("reportDiscoveryClick_1", 6000);
 
 		} catch (Exception e) {
-			logger.error("Exception while checking stream tests  "+e.getMessage());
+			logger.error("Exception while checking stream tests  " + e.getMessage());
 			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
