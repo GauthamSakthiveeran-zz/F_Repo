@@ -35,4 +35,5 @@
     <entry key="chromeComponents">resources/chromeComponents.xml</entry>
     <entry key="embedtab">resources/embedtab.xml</entry>
     <entry key="time">resources/time.xml</entry>
+    <entry key="vr_controls">resources/vr_controls.xml</entry>
 </properties>

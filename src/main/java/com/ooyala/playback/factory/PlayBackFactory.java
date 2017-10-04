@@ -2,6 +2,7 @@ package com.ooyala.playback.factory;
 
 import java.lang.reflect.Field;
 
+import com.ooyala.playback.page.action.*;
 import org.openqa.selenium.WebDriver;
 
 import com.ooyala.playback.page.AdClickThroughValidator;
@@ -60,17 +61,6 @@ import com.ooyala.playback.page.VideoPluginValidator;
 import com.ooyala.playback.page.VideoValidator;
 import com.ooyala.playback.page.VolumeValidator;
 import com.ooyala.playback.page.WaterMarkValidator;
-import com.ooyala.playback.page.action.AutoplayAction;
-import com.ooyala.playback.page.action.ChromeFlashUpdateAction;
-import com.ooyala.playback.page.action.ClickDiscoveryButtonAction;
-import com.ooyala.playback.page.action.FullScreenAction;
-import com.ooyala.playback.page.action.LiveAction;
-import com.ooyala.playback.page.action.PauseAction;
-import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.PlayPauseAction;
-import com.ooyala.playback.page.action.PlayerAPIAction;
-import com.ooyala.playback.page.action.SeekAction;
-import com.ooyala.playback.page.action.StateScreenAction;
 import com.relevantcodes.extentreports.ExtentTest;
 
 public class PlayBackFactory {
@@ -144,6 +134,7 @@ public class PlayBackFactory {
     private PlayerSkinButtonsValidator skinValidator;
     private VastPageLevelOverridingValidator pageLevelOverridingValidator;
     private PreloadingValidator preloadingValidator;
+    private VirtualRealityAction virtualRealityAction;
 
     public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
         this.driver = driver;
@@ -153,7 +144,7 @@ public class PlayBackFactory {
 	public ExtentTest getExtentTest() {
 		return extentTest;
 	}
-	
+
 	public PlayerAPIAction getPlayerAPIAction() {
 		if(playerAPIAction == null) {
 			playerAPIAction = new PlayerAPIAction(driver);
@@ -161,7 +152,7 @@ public class PlayBackFactory {
 		}
 		return playerAPIAction;
 	}
-	
+
 
     public StateScreenValidator getStateScreenValidator() {
         if (stateScreenValidator == null) {
@@ -609,7 +600,7 @@ public class PlayBackFactory {
 		}
 		return differentElement;
 	}
-	
+
     public MidrollAdValidator getAdStartTimeValidator() {
         if (adStartTimeValidator == null) {
             adStartTimeValidator = new MidrollAdValidator(driver);
@@ -701,6 +692,14 @@ public class PlayBackFactory {
             preloadingValidator.setExtentTest(extentTest);
         }
         return preloadingValidator;
+    }
+
+    public VirtualRealityAction getVirtualRealityAction() {
+        if (virtualRealityAction == null) {
+            virtualRealityAction = new VirtualRealityAction(driver);
+            virtualRealityAction.setExtentTest(extentTest);
+        }
+        return virtualRealityAction;
     }
 
     public WebDriver getDriver() {

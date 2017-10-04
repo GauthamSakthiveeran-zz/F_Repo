@@ -1,0 +1,14 @@
+<suite name="Playback VR 360 feature" parallel="classes" thread-count="10">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener"/>
+    </listeners>
+
+    <test name="BasicVr360Tests">
+        <parameter name="jsFile" value="common.js,amf/amf.js,vr/vr.js"/>
+        <parameter name="testData" value="vr360/BasicVr360Tests.xml"/>
+        <classes>
+            <class name="com.ooyala.playback.vr360.BasicVr360Tests"></class>
+        </classes>
+    </test>
+
+</suite>
