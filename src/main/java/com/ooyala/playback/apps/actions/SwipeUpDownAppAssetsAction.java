@@ -288,5 +288,40 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
     	return false;
     	}
     }
+    
+    // Function to Swipe and click on app Asset using video name Web Element
+    public Boolean swipeAsset(String element) {
+
+
+        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        {
+        try {
+            if (waitForElement("APP_ASSETS_ANDROID")) {
+
+                List<WebElement> appVideos = getWebElementsList("APP_ASSETS_ANDROID");
+                swipeBasedOnWebElements(appVideos.get(appVideos.size() - 1), appVideos.get(1));
+                Thread.sleep(2000);
+                return true;
+
+            } else {
+                logger.info("App Assets Screen not displayed");
+               return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.info("Failed to click App Asset");
+           return false;
+        }
+       
+        }
+        else
+        {
+            //Code for IOS
+            return true;
+        }
+       
+    }
+    
 
 }

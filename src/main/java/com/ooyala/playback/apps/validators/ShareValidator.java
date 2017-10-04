@@ -32,7 +32,7 @@ public class ShareValidator extends PlaybackApps implements Validators {
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
 		Boolean result = true;
-		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android")) {
+		if (getPlatform().equalsIgnoreCase("android")) {
 			try {
 
 				result = result && isElementFoundinShareScreen("SHARETEXT_ANDROID");
@@ -75,7 +75,6 @@ public class ShareValidator extends PlaybackApps implements Validators {
 				logger.info("Facebook Login Screen Displayed Properly");
 				extentTest.log(LogStatus.PASS, "Facebook Login Screen Displayed Properly");
 
-				result = result && true;
 
 			}
 
@@ -161,7 +160,6 @@ public class ShareValidator extends PlaybackApps implements Validators {
 				logger.info("Twitter Login Screen Displayed Properly");
 				extentTest.log(LogStatus.PASS, "Twitter Login Screen Displayed Properly");
 
-				result = result && true;
 
 			}
 

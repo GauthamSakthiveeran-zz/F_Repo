@@ -20,12 +20,12 @@ import io.appium.java_client.android.AndroidKeyCode;
 /**
  * Created by Gautham
  */
-public class ClickShareButtonAction extends PlaybackApps implements Actions {
+public class ShareAction extends PlaybackApps implements Actions {
 
-    private Logger logger = Logger.getLogger(ClickShareButtonAction.class);
+    private Logger logger = Logger.getLogger(ShareAction.class);
     public final static int[] p = new int[2];
 
-    public ClickShareButtonAction(AppiumDriver driver) {
+    public ShareAction(AppiumDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
         addElementToPageElements("share");
@@ -75,7 +75,7 @@ public class ClickShareButtonAction extends PlaybackApps implements Actions {
 
         Boolean result = true;
 
-        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        if(getPlatform().equalsIgnoreCase("android"))
         {
         try
 
@@ -104,17 +104,16 @@ public class ClickShareButtonAction extends PlaybackApps implements Actions {
 
     public boolean closeMoreOptionsScreen(String element) throws Exception {
 
-        Boolean result = true;
 
-        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        if(getPlatform().equalsIgnoreCase("android"))
         {
         try
 
         {
 
-            result = result && waitForElementAndClick("MOREOPTIONSSCREEN_CLOSEBUTTON_ANDROID");
+            return waitForElementAndClick("MOREOPTIONSSCREEN_CLOSEBUTTON_ANDROID");
 
-            return result;
+            
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -145,7 +144,7 @@ public class ClickShareButtonAction extends PlaybackApps implements Actions {
             } else {
             	logger.info("Failed to Click Element");
                 extentTest.log(LogStatus.FAIL, "Element not found");
-                return true;
+                return false;
 
             }
 
@@ -183,7 +182,7 @@ public class ClickShareButtonAction extends PlaybackApps implements Actions {
                 {
                  logger.info("Failed to Click Element");
                  extentTest.log(LogStatus.FAIL, "Failed to Click Element");
-                 return true;	
+                 return false;	
                 }
 
             }

@@ -1,15 +1,32 @@
-<suite name="BasicPlayback SampleAPPTests Regression Suite" verbose="1">
- <listeners>
-        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
-    </listeners> 
+<suite name="BasicPlayback SampleAPPTests Regression Suite"
+	verbose="1">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
 
-    <test name="BasicPlayback Regression" parallel="false" thread-count="1">
-        <classes>
-            <parameter name="testData" value="OoyalaSkinSampleTests.xml" />
-            <class name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppDiscoveryNoAdsTest" />
-            <class name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppSwipeDiscoveryScreenNoAdsTest" /> 
-        </classes>
-    </test>
+	<test name="BasicPlayback Regression" parallel="false"
+		thread-count="1">
+		<!-- <classes> <parameter name="testData" value="OoyalaSkinSampleTests.xml" 
+			/> <class name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppDiscoveryNoAdsTest" 
+			/> <class name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppSwipeDiscoveryScreenNoAdsTest" 
+			/> </classes> -->
+		<!-- <classes> <parameter name="testData" value="OoyalaSkinSampleTests.xml" 
+			/> <class name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleSkinPlayBackApp" 
+			/> </classes> -->
+
+	<!-- 	<classes>
+			<parameter name="testData" value="OoyalaSkinSampleVASTTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleSkinPlayBackVASTAdsTest" />
+		</classes> -->
+
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleOoyalaAdTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleSkinPlayBackOoyalaAdsTest" />
+		</classes>
+
+	</test>
 
 
 </suite>

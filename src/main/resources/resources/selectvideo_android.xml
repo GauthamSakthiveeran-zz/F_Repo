@@ -25,5 +25,17 @@
 	<element key="PREVENTVIDEOSHARING" findBy="xPath" xPath="//android.widget.TextView[@text='Prevent Video View Sharing Option']" />
 	<element key="TIMEOUT_OPTIONS" findBy="xPath" xPath="//android.widget.TextView[@text='Timeout Options']" />
 	<element key="IQ_CONFIG" findBy="xPath" xPath="//android.widget.TextView[@text='IQ Configuration']" />
+	<element key="SKIN_OOYALA_EHLS_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Encrypted HLS']" />
+	<element key="SKIN_CLEAR_HLS_HIGH_PROFILE_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Clear HLS High Profile']" />
+	<element key="SKIN_CLEAR_HLS_MAIN_PROFILE_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Clear HLS Main Profile']" />
+	<element key="SKIN_CLEAR_HLS_BASELINE_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Clear HLS Baseline']" />
+	<element key="VAST2_PREROLL_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='VAST2 Ad Pre-roll']" />
+	<element key="VAST2_MIDROLL_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='VAST2 Ad Mid-roll']" />
+	<element key="VAST2_POSTROLL_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='VAST2 Ad Post-roll']" />
+	<element key="VAST2_ADWRAPPER_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='VAST2 Ad Wrapper']" />
+	<element key="OOYALA_AD_PREROLL_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Pre-roll']" />
+	<element key="OOYALA_AD_MIDROLL_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Mid-roll']" />
+	<element key="OOYALA_AD_POSTROLL_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Post-roll']" />
+	
 </elements>
 

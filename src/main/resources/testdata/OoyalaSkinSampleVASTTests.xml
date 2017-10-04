@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<app name="OoyalaSkinSampleApp" />
+	<test name="VAST2_PREROLL_VIDEO">
+		<description name="VAST2 Ad Pre-roll" />
+	</test>
+
+	<test name="VAST2_MIDROLL_VIDEO">
+		<description name="VAST2 Ad Mid-roll" />
+	</test>
+
+	<test name="VAST2_POSTROLL_VIDEO">
+		<description name="VAST2 Ad Post-roll" />
+	</test>
+
+
+	<test name="VAST2_ADWRAPPER_VIDEO">
+		<description name="VAST2 Ad Wrapper" />
+	</test>
+
+</testdata>

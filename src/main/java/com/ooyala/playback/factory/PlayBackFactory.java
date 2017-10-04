@@ -7,7 +7,7 @@ import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
 import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.ClickAction;
 import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
-import com.ooyala.playback.apps.actions.ClickShareButtonAction;
+import com.ooyala.playback.apps.actions.ShareAction;
 import com.ooyala.playback.apps.actions.FullScreenAction;
 import com.ooyala.playback.apps.actions.LaunchAction;
 import com.ooyala.playback.apps.actions.PauseAction;
@@ -61,7 +61,7 @@ public class PlayBackFactory {
 	private FullScreenAction fullScreenAction;
 	private FullScreenOrientationValidator fullScreenOrientationValidator;
 	private AndroidKeyCodeAction androidKeycodeAction;
-	private ClickShareButtonAction clickShareButtonAction;
+	private ShareAction clickShareButtonAction;
 	private ShareValidator shareValidator;
 
 	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
@@ -270,9 +270,9 @@ public class PlayBackFactory {
 		return androidKeycodeAction;
 		
 	}
-	public ClickShareButtonAction getClickShareButtonAction() {
+	public ShareAction getClickShareButtonAction() {
 		if(clickShareButtonAction == null) {
-			clickShareButtonAction = new ClickShareButtonAction(driver);
+			clickShareButtonAction = new ShareAction(driver);
 			clickShareButtonAction.setExtentTest(extentTest);
 		}
 		return clickShareButtonAction;

@@ -176,7 +176,7 @@ public abstract class PlaybackApps extends WebPage {
                         if (ios) {
                             flag = driver.findElement(By.xpath("//XCUIElementTypeActivityIndicator[1]")).isDisplayed();
                         } else {
-                            // TODO
+                        	 flag = driver.findElement(By.className("android.widget.ProgressBar")).isDisplayed();
                         }
 
                         if (!flag) {
