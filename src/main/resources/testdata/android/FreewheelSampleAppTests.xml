@@ -16,10 +16,10 @@
 	<test name="FREEWHEEL_MULTI_MIDROLL">
 		<description name="Freewheel MultiMidroll" />
 	</test>
-	<test name="FREEWHEEL_APPLICATION_CONFIGURED">
-		<description name="Freewheel Application-Configured" />
+	<test name="FREEWHEEL_PREROLL_APPLICATION_CONFIGURED">
+		<description name="Freewheel preroll Application-Configured" />
 	</test>
-	<test name="FREEWHEEL_CUEPOINTS_AND_ADCONTROLS_OPTIONS" >
-		<description name="CuePoints and AdsControl Options" />
+	<test name="FREEWHEEL_PREROLL_CUEPOINTS_AND_ADCONTROLS_OPTIONS" >
+		<description name="CuePoints and AdsControl Options preroll ad" />
 	</test>
 </testdata>

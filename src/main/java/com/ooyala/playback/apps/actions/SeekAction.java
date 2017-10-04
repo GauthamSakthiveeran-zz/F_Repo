@@ -129,5 +129,14 @@ public class SeekAction extends PlaybackApps implements Actions {
         logger.info("Slider X Position >> : " + sliderXPosition);
         return sliderXPosition;
     }
+	
+	private boolean seekVideo(String element) {
+        WebElement seekbar = getWebElement(element);
+        int seekBarFieldWidth = seekbar.getLocation().getX();
+        int seekBarFieldHeigth = seekbar.getLocation().getY();
+        TouchAction touch = new TouchAction(driver);
+        touch.longPress(seekBarFieldWidth + 20, seekBarFieldHeigth).moveTo(seekBarFieldWidth + 100, seekBarFieldHeigth).release().perform();
+        return true;
+    }
 
 }

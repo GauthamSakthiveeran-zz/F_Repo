@@ -14,4 +14,8 @@
 		<description name="Podded Preroll" />
 	</test>
 	
+	<test name="IMA_AD_RULES_QUAD_MIDROLL">
+		<description name="IMA Non Ad-Rules Quad Midroll" />
+	</test>
+	
 </testdata>

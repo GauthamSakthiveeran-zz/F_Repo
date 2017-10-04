@@ -18,5 +18,13 @@
 			</class>
 		</classes>
 	</test>
+	<test name="IMA No Ads Tests" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="android/IMASampleAppNoAdsTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.imasampleapp.IMASampleAppNoAdsTests">
+			</class>
+		</classes>
+	</test>
 </suite>
 

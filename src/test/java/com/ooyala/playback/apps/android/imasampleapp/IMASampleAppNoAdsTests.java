@@ -6,7 +6,9 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
+import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
+import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.validators.AdValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
@@ -14,14 +16,15 @@ import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class IMASampleAppTests extends PlaybackAppsTest {
+public class IMASampleAppNoAdsTests extends PlaybackAppsTest {
 	
-	private static Logger logger = Logger.getLogger(IMASampleAppTests.class);
+	private static Logger logger = Logger.getLogger(IMASampleAppNoAdsTests.class);
 
 	private SelectVideoAction selectVideo;
 	private ElementValidator elementValidator;
 	private PlayAction playAction;
-	private AdValidator adValidator;
+	private PauseAction pauseAction;
+	private SeekAction seekAction;
 	private NotificationEventValidator notificationEventValidator;
 
 	@Test(groups = "imasampleapp", dataProvider = "testData")
@@ -35,7 +38,17 @@ public class IMASampleAppTests extends PlaybackAppsTest {
 			result = result && elementValidator.validate("PLAY_PAUSE_ANDROID", 30000);
 			result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 
-			result = result && adValidator.setTestParameters(test).validate("", 1000);
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
+			
+			result = result && notificationEventValidator.letVideoPlayForSec(4);
+			
+			result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
+			result = result && seekAction.startAction("SEEK_BAR_ANDROID");
+			result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
+			result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
+			result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
 

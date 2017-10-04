@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
+import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.validators.AdValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
@@ -20,6 +21,7 @@ public class IMASampleAppTests extends PlaybackAppsTest {
 	private ElementValidator elementValidator;
 	private NotificationEventValidator notificationEventValidator;
 	private AdValidator adValidator;
+	private PlayAction playAction;
 
 	@Test(groups = "imasampleapp", dataProvider = "testData")
 	public void testBasicPlayer(String testName, TestParameters test) throws Exception {
@@ -30,7 +32,9 @@ public class IMASampleAppTests extends PlaybackAppsTest {
 			result = result && elementValidator.validate("NOTIFICATION_AREA", 1000);
 			
 			result = result && elementValidator.handleLoadingSpinner();
-
+			
+			result = result && playAction.startAction("PLAY_PAUSE_BUTTON");
+			
 			result = result && adValidator.validate("", 1000);
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);

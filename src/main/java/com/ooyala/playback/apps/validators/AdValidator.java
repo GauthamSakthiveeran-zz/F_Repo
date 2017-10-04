@@ -14,13 +14,13 @@ public class AdValidator extends PlaybackApps implements Validators {
 		super(driver);
 	}
 
-	TestParameters test;
+	private TestParameters test;
 
 	public AdValidator setTestParameters(TestParameters test) {
 		this.test = test;
 		return this;
 	}
-
+	
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
 
@@ -32,9 +32,6 @@ public class AdValidator extends PlaybackApps implements Validators {
 
 		boolean iOS = getPlatform().equalsIgnoreCase("ios");
 		
-		result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
-				: pauseAction.startAction("PLAY_PAUSE_ANDROID");
-
 		if (test.getAsset().contains("PRE") || test.getAsset().contains("MULTI")) {
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
 			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
@@ -46,17 +43,21 @@ public class AdValidator extends PlaybackApps implements Validators {
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 55000);
 			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
-			result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
-					: pauseAction.startAction("PLAY_PAUSE_ANDROID");
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
-			result = result && iOS ? seekAction.setSlider("SLIDER").startAction("SEEK_BAR")
-					: seekAction.startAction("SEEK_BAR_ANDROID");
-			result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
-			result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
-			result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
-					: pauseAction.startAction("PLAY_PAUSE_ANDROID");
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
+			
 		}
+		
+		result = result && notificationEventValidator.letVideoPlayForSec(4);
+		
+		result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
+				: pauseAction.startAction("PLAY_PAUSE_ANDROID");
+		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
+		result = result && iOS ? seekAction.setSlider("SLIDER").startAction("SEEK_BAR")
+				: seekAction.startAction("SEEK_BAR_ANDROID");
+		result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
+		result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
+		result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
+				: pauseAction.startAction("PLAY_PAUSE_ANDROID");
+		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
 
 		if (test.getAsset().contains("POST")) {
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
@@ -65,5 +66,5 @@ public class AdValidator extends PlaybackApps implements Validators {
 
 		return true;
 	}
-
+	
 }

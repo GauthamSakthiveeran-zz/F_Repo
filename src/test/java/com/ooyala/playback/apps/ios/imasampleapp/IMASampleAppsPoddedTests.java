@@ -31,7 +31,7 @@ public class IMASampleAppsPoddedTests extends PlaybackAppsTest {
 			
 			result = result && elementValidator.handleLoadingSpinner();
 
-			result = result && adValidator.validate("", 1000);
+			result = result && adValidator.setNoOfAds(3).validate("", 1000);
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
 
