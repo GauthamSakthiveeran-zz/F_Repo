@@ -4,12 +4,10 @@ import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.AdClickThroughValidator;
 import com.ooyala.playback.page.AnalyticsValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
-import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -29,9 +27,7 @@ public class AnalyticsPrerollAdsClickthroughTests extends PlaybackWebTest {
     private PlayAction playAction;
     private PlayValidator playValidator;
     private SeekAction seekAction;
-    private AdClickThroughValidator clickThrough;
     private AnalyticsValidator analyticsValidator;
-    private PlayerAPIAction playerAPI;
 
     @Test(groups = { "amf", "preroll", "sequential", "clickThrough" }, dataProvider = "testUrls")
     public void verifyPreroll(String testName, UrlObject url) throws Exception {
@@ -44,12 +40,7 @@ public class AnalyticsPrerollAdsClickthroughTests extends PlaybackWebTest {
             result = result && playAction.startAction();
             result = result && event.validate("PreRoll_willPlaySingleAd_1", 60000);
 
-            s_assert.assertTrue(clickThrough.setUrlObject(url).validate("", 120000), "Clickthrough");
-
-            if (event.isAdPluginPresent("pulse"))
-                result = result && event.validate("singleAdPlayed_2", 120000);
-            else
-                result = result && event.validate("singleAdPlayed_1", 120000);
+            result = result && event.validateSingleAdPlayedEvent(1);
 
             result = result && analyticsValidator.validate("analytics_video_requested_paused_1",10000);
 
@@ -63,7 +54,5 @@ public class AnalyticsPrerollAdsClickthroughTests extends PlaybackWebTest {
             extentTest.log(LogStatus.FAIL, e);
             result = false;
         }
-        s_assert.assertTrue(result, "PreRoll AdsClickthrough tests");
-        s_assert.assertAll();
     }
 }

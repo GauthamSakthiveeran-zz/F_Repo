@@ -37,14 +37,9 @@ public class AnalyticsPrerollAdsTests extends PlaybackWebTest {
             result = result && playAction.startAction();
             result = result && event.validate("PreRoll_willPlaySingleAd_1", 30000);
 
-            if (event.isAdPluginPresent("pulse"))
-                result = result && event.validate("singleAdPlayed_2", 120000);
-            else
-                result = result && event.validate("singleAdPlayed_1", 120000);
+            result = result && event.validateSingleAdPlayedEvent(1);
 
             result = result && event.validate("playing_1", 35000);
-            result = result && event.loadingSpinner();
-
             result = result && seek.validate("seeked_1", 60000);
 
             result = result && event.validate("seeked_1",10000);

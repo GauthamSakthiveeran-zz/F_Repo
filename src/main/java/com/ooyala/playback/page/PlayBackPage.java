@@ -614,4 +614,18 @@ public abstract class PlayBackPage extends WebPage {
 						+ "simulate(arguments[0],\"mousedown\",0,0); simulate(arguments[0],\"mousemove\",arguments[1],arguments[2]);",
 				LocatorFrom, xto, yto);
 	}
+	
+	public boolean isAdPlaying() {
+		PlayerAPIAction playerAPI = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
+		boolean isAdPlaying = false;
+		for (int i = 0; i < 6; i++) {
+			try {
+				isAdPlaying = playerAPI.isAdPlaying();
+				Thread.sleep(500);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+		return isAdPlaying;
+	}
 }

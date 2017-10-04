@@ -43,21 +43,6 @@ public class AnalyticsMidrollAdsTests extends PlaybackWebTest {
             result = result && seekValidator.validate("seeked_1", 160000);
             result = result && event.validate("played_1", 160000);
 
-            if (result && (!url.getAdPlugins().equalsIgnoreCase("pulse"))) {
-            	extentTest.log(LogStatus.INFO, "Validating if ad plays when video is seeked post ad play time.");
-                driver.navigate().refresh();
-                result = result && playValidator.waitForPage();
-                injectScript();
-                result = result && playValidator.validate("playing_1", 60000);
-                result = result && seekAction.seek(15, true);
-                url.setAdStartTime(null);
-                result = result && midrollAdValidator.validateMidrollAd(url);
-                result = result && analyticsValidator.validate("analytics_ad_started_1",10000);
-                result = result && analyticsValidator.validate("analytics_ad_ended_1",10000);
-                result = result && event.validate("playing_3", 160000);
-                result = result && event.validate("seeked_1", 20000);
-                result = result && event.validate("played_1", 160000);
-            }
         } catch (Exception e) {
             logger.error(e.getMessage());
             extentTest.log(LogStatus.FAIL, e);

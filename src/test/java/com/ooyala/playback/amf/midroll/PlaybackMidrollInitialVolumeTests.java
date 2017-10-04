@@ -48,7 +48,7 @@ public class PlaybackMidrollInitialVolumeTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("playing_1", 60000);
 
-			result = result && volumeValidator.checkInitialVolume("video");
+			result = result && volumeValidator.validateInitialVolume("video");
 
 			result = result && seekAction.seek(20, true);
 
@@ -57,13 +57,8 @@ public class PlaybackMidrollInitialVolumeTests extends PlaybackWebTest {
 			result = result && eventValidator.validate("adPodStarted_2", 10000);
 
 			int noOfAds = Integer.parseInt(playerAPI.getTextContent("adPodStarted_2"));
-
-			for (int i = 1; i <= noOfAds; i++) {
-				if (eventValidator.checkIsAdPlaying()) {
-					result = result && eventValidator.validate("willPlaySingleAd_" + i + "", 50000);
-					result = result && volumeValidator.checkInitialVolume("ad");
-				}
-			}
+			
+			result = result && volumeValidator.validateInitailVolumeForPoddedAds(0, noOfAds);
 
 			result = result && seekValidator.validate("seeked_1", 60000);
 

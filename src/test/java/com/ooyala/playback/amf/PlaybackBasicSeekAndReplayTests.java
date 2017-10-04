@@ -67,7 +67,7 @@ public class PlaybackBasicSeekAndReplayTests extends PlaybackWebTest {
 
             result = result && eventValidator.validate("seeked_2", 30000);
             
-            result = result && !eventValidator.checkIsAdPlaying();
+            result = result && !eventValidator.isAdPlaying();
 
             result = result && seek.validate("seeked_3", 30000);
 

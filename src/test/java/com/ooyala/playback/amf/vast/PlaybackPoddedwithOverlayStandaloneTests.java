@@ -33,9 +33,6 @@ public class PlaybackPoddedwithOverlayStandaloneTests extends PlaybackWebTest {
 		try {
 
 			driver.get(url.getUrl());
-			if (!getPlatform().equalsIgnoreCase("android")) {
-				driver.manage().window().maximize();
-			}
 
 			result = result && playValidator.waitForPage();
 

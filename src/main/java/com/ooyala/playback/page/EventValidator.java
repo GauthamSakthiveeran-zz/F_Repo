@@ -1,15 +1,17 @@
 package com.ooyala.playback.page;
 
+import static java.lang.Integer.parseInt;
+
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+
 import com.ooyala.playback.factory.PlayBackFactory;
-import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.relevantcodes.extentreports.LogStatus;
-import java.util.Map;
-import static java.lang.Integer.parseInt;
 
 /**
  * Created by soundarya on 11/14/16.
@@ -203,23 +205,9 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 		return autoplay;
 	}
 
-	public boolean checkIsAdPlaying() {
-		PlayerAPIAction playerAPI = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
-		boolean isAdPlaying = false;
-		for (int i = 0; i < 6; i++) {
-			try {
-				isAdPlaying = playerAPI.isAdPlaying();
-				Thread.sleep(500);
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-		}
-		return isAdPlaying;
-	}
-
 	public boolean validateVideoElementOccuredCount(int timeout) {
 
-		 // for IMA ad videoControllerVideoElementCreated event is not triggering
+		// for IMA ad videoControllerVideoElementCreated event is not triggering
 		if (driver.getCurrentUrl().contains("google_ima"))
 			return true;
 
@@ -236,5 +224,11 @@ public class EventValidator extends PlayBackPage implements PlaybackValidator {
 			ex.printStackTrace();
 		}
 		return result;
+	}
+
+	public boolean validateSingleAdPlayedEvent(int count) throws Exception {
+		boolean result = validate("singleAdPlayed_"+count, 150000);
+		count *=2;
+		return isAdPluginPresent("pulse") ? result && validate("singleAdPlayed_"+count, 120000) : result;
 	}
 }

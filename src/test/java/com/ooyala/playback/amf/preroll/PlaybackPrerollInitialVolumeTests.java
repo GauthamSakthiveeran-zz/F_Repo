@@ -49,10 +49,10 @@ public class PlaybackPrerollInitialVolumeTests extends PlaybackWebTest {
 			int noOfAds = Integer.parseInt(playerAPI.getTextContent("adPodStarted_2"));
 
 			for (int i = 1; i <= noOfAds; i++) {
-				if (eventValidator.checkIsAdPlaying()) {
+				if (eventValidator.isAdPlaying()) {
 					logger.info("Checking initial volume for PrerollPodded Ad");
 					result = result && eventValidator.validate("willPlaySingleAd_" + i + "", 50000);
-					result = result && volumeValidator.checkInitialVolume("ad");
+					result = result && volumeValidator.validateInitialVolume("ad");
 				} else {
 					extentTest.log(LogStatus.FAIL, "Preroll Ads are not playing.");
 				}
@@ -60,7 +60,7 @@ public class PlaybackPrerollInitialVolumeTests extends PlaybackWebTest {
 
 			result = result && eventValidator.validate("playing_1", 60000);
 
-			result = result && volumeValidator.checkInitialVolume("video");
+			result = result && volumeValidator.validateInitialVolume("video");
 
 			result = result && seekValidator.validate("seeked_1", 60000);
 

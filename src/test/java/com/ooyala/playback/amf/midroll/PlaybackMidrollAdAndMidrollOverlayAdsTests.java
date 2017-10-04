@@ -29,7 +29,7 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 	public void verifyMidrollAdAndMidrollOverlayAdsTests(String testName, UrlObject url) throws OoyalaException {
 
 		boolean result = true;
-		
+
 		try {
 			driver.get(url.getUrl());
 
@@ -41,19 +41,13 @@ public class PlaybackMidrollAdAndMidrollOverlayAdsTests extends PlaybackWebTest 
 
 			result = result && event.validate("videoPlaying_1", 90000);
 
-			if (midrollAdValidator.isAdPlayTimePresent(url)) {
-				result = result && midrollAdValidator.setTime(url.getAdStartTime())
-						.validateAdStartTime("MidRoll_willPlayAds_1");
-			} else
-				result = result && event.validate("MidRoll_willPlayAds_1", 1000);
+			result = result
+					&& midrollAdValidator.setTime(url.getAdStartTime()).validateAdStartTime("MidRoll_willPlayAds_1");
 
 			result = result && event.validate("adsPlayed_1", 60000);
 
-			if (midrollAdValidator.isOverlayPlayTimePresent(url)) {
-				result = result && midrollAdValidator.setTime(url.getOverlayPlayTime())
-						.validateAdStartTime("showNonlinearAd_1");
-			} else
-				result = result && event.validate("showNonlinearAd_1", 1000);
+			result = result
+					&& midrollAdValidator.setTime(url.getOverlayPlayTime()).validateAdStartTime("showNonlinearAd_1");
 
 			result = result && seekValidator.validate("seeked_1", 160000);
 

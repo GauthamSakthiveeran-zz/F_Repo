@@ -43,7 +43,7 @@ public class PlaybackVolumeTests extends PlaybackWebTest {
 
 			result = result && eventValidator.loadingSpinner();
 
-			if (eventValidator.checkIsAdPlaying()) {
+			if (eventValidator.isAdPlaying()) {
 				result = result && volumeValidator.validate("VOLUME_MAX", 20000);
 				result = result && eventValidator.validate("adPodEnded_1", 20000);
 			}
