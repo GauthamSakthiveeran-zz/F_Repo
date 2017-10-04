@@ -1,24 +1,17 @@
 package com.ooyala.playback.apps.ios.advancedplaybacksampleapp;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.testng.Assert;
-import org.testng.Reporter;
-import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.ClickAction;
 import com.ooyala.playback.apps.actions.PauseAction;
-import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.actions.SeekAction;
+import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
-
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileBy;
 
 public class AdvancedSampleAppUtils extends PlaybackAppsTest {
 
@@ -30,7 +23,6 @@ public class AdvancedSampleAppUtils extends PlaybackAppsTest {
 	private SeekAction seekAction;
 	private CCAction ccAction;
 	private ClickAction clickAction;
-	//pageFactory = new pageFactory((AppiumDriver) driver, extentTest);
 
 	public boolean performAssetSpecificTest(TestParameters test) throws Exception {
 		boolean result = true;

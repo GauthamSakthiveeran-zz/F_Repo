@@ -90,7 +90,7 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 		int timeout = 10;
 		String notifications = null;
 		while (counter < timeout) {
-			if (waitOnElement("NOTIFICATION_AREA"))
+			if (waitOnElement("NOTIFICATION_AREA", 10000)) // 10sec
 				notifications = getWebElement("NOTIFICATION_AREA").getText();
 			if (notifications != null)
 				return notifications;

@@ -49,6 +49,7 @@ public class PlaybackAppsTest extends FacileTest {
 	protected PlayBackFactory pageFactory;
 	protected Testdata testData;
 	protected ExtentTest extentTest;
+	static boolean isAppClosed = false;
 	
     @BeforeClass(alwaysRun = true)
     @Parameters({ "testData", "xmlFile"})
@@ -56,6 +57,7 @@ public class PlaybackAppsTest extends FacileTest {
         logger.info("************Inside setup*************");
         parseXmlFileData(xmlFile,xmlFilePkg);
         initializeDriver();
+        isAppClosed = false;
     }
 
 	private RemoteWebDriver initializeDriver() throws MalformedURLException {
@@ -109,6 +111,18 @@ public class PlaybackAppsTest extends FacileTest {
 			
 			extentTest = ExtentManager.startTest(testData[0].toString());
 			pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
+			
+			if (isAppClosed) {
+				try {
+					pageFactory.getLaunchAction().launchApp();
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
+					pageFactory.getLaunchAction().launchApp();
+				}
+			}
+			
 			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
 				Assert.assertTrue(
 						new PlayBackFactory((AppiumDriver) driver, extentTest).getQAModeSwitchAction().startAction("QA_MODE_SWITCH"),
@@ -143,19 +157,14 @@ public class PlaybackAppsTest extends FacileTest {
 	
 	@AfterMethod(alwaysRun = true)
 	protected void afterMethod(ITestResult result) throws Exception {
-		try {
-			pageFactory.getLaunchAction().launchApp();
-	
-		} catch (Exception e) {
-			e.printStackTrace();
-			pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
-			pageFactory.getLaunchAction().launchApp();
-		} 
-		
+
+		isAppClosed = pageFactory.getLaunchAction().closeApp();
+
 		try {			
 			//delete log file for android
 			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
-			  RemoveEventsLogFile.removeEventsFileLog();
+				RemoveEventsLogFile.removeEventsFileLog();
+			
 			if (result.getStatus() == ITestResult.FAILURE) {
 
 				extentTest.log(LogStatus.FAIL, result.getThrowable().getMessage());

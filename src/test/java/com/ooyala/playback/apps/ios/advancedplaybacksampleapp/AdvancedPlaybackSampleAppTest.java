@@ -17,13 +17,6 @@ import com.ooyala.playback.apps.validators.NotificationEventValidator;
 public class AdvancedPlaybackSampleAppTest extends AdvancedSampleAppUtils {
 
 	private static Logger logger = Logger.getLogger(AdvancedPlaybackSampleAppTest.class);
-	private SelectVideoAction selectVideo;
-	private ElementValidator elementValidator;
-	private NotificationEventValidator notificationEventValidator;
-	private PauseAction pauseAction;
-	private SeekAction seekAction;
-	private CCAction ccAction;
-	private ClickAction clickAction;
 
 	@Test(groups = "advancedplaybacksampleapp", dataProvider = "testData")
 	public void testPlayer(String testName, TestParameters test) throws Exception {
@@ -33,7 +26,6 @@ public class AdvancedPlaybackSampleAppTest extends AdvancedSampleAppUtils {
 		try {
 			result = result && performAssetSpecificTest(test);;		
 		} catch (Exception ex) {
-			ex.printStackTrace();
 			logger.error("Here is an exception" + ex);
 			result = false;
 		}
