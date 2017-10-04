@@ -18,9 +18,8 @@ public enum Events {
     CC_ENABLED("Notification Received: languageChanged", "Notification Not Received: languageChanged"),
 	
     //added by @rmanchi
-	PLAYBACK_2_STARTED("Notification Received: playStarted - state: READY", "Notification Not Received: playStarted - state: READY"),
-	AD_POD_STARTED("Notification Received: adPodStarted", "Notification Not Received: adStarted"),
-    AD_POD_COMPLETED("Notification Received: adPodCompleted", "Notification Not Received: adCompleted");
+	AD_POD_STARTED("Notification Received: adPodStarted", "Notification Not Received: adPodStarted"),
+    AD_POD_COMPLETED("Notification Received: adPodCompleted", "Notification Not Received: adPodCompleted");
 	
 	
     //TODO All other events
