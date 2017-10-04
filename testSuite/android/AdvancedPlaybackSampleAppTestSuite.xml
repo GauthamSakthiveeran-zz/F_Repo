@@ -1,0 +1,13 @@
+<suite name="AdvancedPlayback SampleAPPTests Regression Suite" verbose="1">
+<!--     <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners> -->
+
+    <test name="AdvancedPlayback Regression" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="AdvancedPlaybackTests.xml" />
+            <class name="com.ooyala.playback.apps.android.advancedplaybacksampleapp.AdvancedPlaybackSampleAppTest" />
+        </classes>
+    </test>
+ 
+</suite>

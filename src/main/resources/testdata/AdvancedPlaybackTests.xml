@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<app name="AdvancedPlaybackSampleApp" />
+	<test name="CHANGE_VIDEO_PROGRAMMATICALLY_ANDRD">
+		<description name="Change Video Programmatically" />
+	</test>
+	<test name="CUSTOM_PLUGIN_SAMPLE">
+		<description name="Custom PlugIn Sample" />
+	</test>
+		<test name="CUSTOM_VIDEO_PLAYER_SAMPLE">
+		<description name="Custom Video Player Sample" />
+	</test>
+  	<test name="INSERT_AD_AT_RUNTIME_ANDRD">
+		<description name="Insert Ad at Runtime" />
+	</test>
+	<test name="PLAY_WITH_INITIALTIME">
+		<description name="Play With InitialTime" />
+	</test>
+		<test name="ANDROID_ADV_MULTIPLE">
+		<description name="Play With Multiple Videos" />
+	</test>
+	<test name="CUSTOM_CONTROLS">
+		<description name="Custom Controls" />
+	</test>
+	<test name="CUSTOM_OVERLAY">
+		<description name="Custom Overlay" />
+	</test>
+		<test name="NOTIFICATION_SAMPLE">
+		<description name="Notification Sample" />
+	</test>
+
+</testdata>
