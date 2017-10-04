@@ -55,6 +55,8 @@ public class TestPageData {
     private String watermarkJson;
     private String buttonsJson;
     private String moreOptionsJson;
+    private String analyticsPlugin;
+    private String videoAnalyticsPlugin;
 
     /**
      * Initialize all the variable with respective value. Read the data from
@@ -102,6 +104,8 @@ public class TestPageData {
             watermarkJson = properties.getProperty("watermark_json");
             buttonsJson = properties.getProperty("buttons_json");
             moreOptionsJson = properties.getProperty("moreOptions_json");
+            analyticsPlugin = properties.getProperty("analytics_plugin");
+            videoAnalyticsPlugin = properties.getProperty("video_analytics_Plugin");
             
         } catch (Exception e) {
             logger.error("Error while reading data from properties file :" + e.getMessage());
@@ -365,6 +369,7 @@ public class TestPageData {
                 break;
         }
         
+
         pluginURL = envURL + "/video-plugin/";
         corePlayer = envURL + corePlayer;
         html5Skin = envURL + html5Skin;
@@ -394,6 +399,8 @@ public class TestPageData {
             case "ANALYTICS":
                 return "http://" + inetAddress.getHostAddress() + ":"
                         + SimpleHttpServer.portNumber + "/js?fileName=analytics/AnalyticsQEPlugin.js";
+            case "IQANALYTICS":
+                return envURL + videoAnalyticsPlugin + analyticsPlugin;
         }
         return "";
     }
@@ -478,6 +485,8 @@ public class TestPageData {
         	return skinConf + moreOptionsJson;
         else if(skinJson.contains("BUTTONS"))
         	return skinConf + buttonsJson;
+        else if(skinJson.contains("VR"))
+        	return "";
         
 
 		/*

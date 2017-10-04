@@ -1,0 +1,16 @@
+<elements area="vr_controls">
+    <element key="VR_CONTROLS_HIDDEN" findBy="class"
+             class="oo-vr-icon-container--hidden" />
+    <element key="VR_CONTROLS" findBy="class"
+             class="oo-vr-icon-container" />
+    <element key="VR_ICON_MOVE_RIGHT" findBy="class"
+             class="oo-vr-icon--move--right" />
+    <element key="VR_ICON_MOVE_LEFT" findBy="class"
+             class="oo-vr-icon--move--left" />
+    <element key="VR_ICON_MOVE_UP" findBy="class"
+             class="oo-vr-icon--move--up" />
+    <element key="VR_ICON_MOVE_DOWN" findBy="class"
+             class="oo-vr-icon--move--down" />
+    <element key="CARDBOARD_ICON" findBy="class"
+             class="oo-vr-stereo-button" />
+</elements>
