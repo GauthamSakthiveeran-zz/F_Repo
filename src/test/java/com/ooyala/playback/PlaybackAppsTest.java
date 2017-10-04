@@ -62,10 +62,14 @@ public class PlaybackAppsTest extends FacileTest {
 
 	private RemoteWebDriver initializeDriver() throws MalformedURLException {
 		
+		
 		String app = testData.getApp().getName();
+		
+		String ip = System.getProperty(CommandLineParameters.APPIUM_SERVER) != null ? System.getProperty(CommandLineParameters.APPIUM_SERVER) : "127.0.0.1";
+		String port = System.getProperty(CommandLineParameters.APPIUM_PORT) != null ? System.getProperty(CommandLineParameters.APPIUM_PORT) : "4723";
+		
 		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
-			String ip = System.getProperty("appiumServer") != null ? System.getProperty("appiumServer") : "127.0.0.1";
-			String port = System.getProperty("appiumPort") != null ? System.getProperty("appiumPort") : "4723";
+			
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setCapability("platformVersion", System.getProperty(CommandLineParameters.PLATFORM_VERSION));
 			capabilities.setCapability("deviceName", System.getProperty(CommandLineParameters.DEVICE_NAME));
@@ -79,13 +83,10 @@ public class PlaybackAppsTest extends FacileTest {
 					System.getProperty(CommandLineParameters.NEW_COMMAND_TIMEOUT));
 	        capabilities.setCapability("xcodeOrgId", System.getProperty(CommandLineParameters.XCODE_ORG_ID));
 	        capabilities.setCapability("xcodeSigningId", System.getProperty(CommandLineParameters.XCODE_SIGNING_ID));
-	        capabilities.setCapability("updatedWDABundleId", "com.ooyala.WebDriverAgentRunner");
 
 			driver = new IOSDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 
 		} else {
-			String ip = System.getProperty("appiumServer") != null ? System.getProperty("appiumServer") : "127.0.0.1";
-			String port = System.getProperty("appiumPort") != null ? System.getProperty("appiumPort") : "4723";
 
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setCapability(CapabilityType.BROWSER_NAME, "");

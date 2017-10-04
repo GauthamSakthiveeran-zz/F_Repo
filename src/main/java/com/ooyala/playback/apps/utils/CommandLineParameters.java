@@ -16,4 +16,6 @@ public class CommandLineParameters {
 	public static final String APP_ACTIVITY = "appActivity";
 	public static final String XCODE_ORG_ID = "xcodeOrgId";
 	public static final String XCODE_SIGNING_ID = "xcodeSigningId";
+	public static final String APPIUM_SERVER = "appiumServer";
+	public static final String APPIUM_PORT = "appiumPort";
 }
