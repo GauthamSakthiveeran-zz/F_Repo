@@ -30,6 +30,19 @@
 	<element key="FW_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Postroll']" />
 	<element key="FW_PREMIDPOST" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel PreMidPost']" />
 	<element key="FW_MULTIMID" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Multi Midroll']" />
+	<element key="IMA_MIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Ad-Rules Midroll']" />
+	<element key="IMA_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Ad-Rules Postroll']" />
+	<element key="IMA_PODDED_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Podded Preroll']" />
+	<element key="IMA_PODDED_MIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Podded Midroll']" />
+	<element key="IMA_PODDED_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Podded Postroll']" />
+	<element key="IMA_PODDED_PREMIDPOST" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Podded Pre-Mid-Post']" />
+	<element key="IMA_SKIPPABLE_PREMIDPOST" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Pre, Mid and Post Skippable']" />
+	<element key="IMA_SKIPPABLE" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Skippable']" />
+	<element key="IMA_NONAD_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Preroll']" />
+	<element key="IMA_NONAD_MIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Midroll']" />
+	<element key="IMA_NONAD_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Postroll']" />
+	<element key="IMA_NONAD_PREMIDMIDPOST" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Pre-Mid-Mid-Post']" />
+	<element key="IMA_NONAD_QUADMIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Quad Midroll']" />
 	
 </elements>
 

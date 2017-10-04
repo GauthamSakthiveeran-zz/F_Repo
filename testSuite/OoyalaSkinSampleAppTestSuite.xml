@@ -1,22 +1,77 @@
-<suite name="BasicPlayback SampleAPPTests Regression Suite" verbose="1">
- <listeners>
-        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
-    </listeners> 
+<suite name="BasicPlayback SampleAPPTests Regression Suite"
+	verbose="1">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
 
-    <test name="BasicPlayback Regression" parallel="false" thread-count="1">
-        <classes>
-            <parameter name="testData" value="OoyalaSkinSampleTests.xml" />
-            <class name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppDiscoveryNoAdsTest" />
-            <class name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppSwipeDiscoveryScreenNoAdsTest" /> 
-        </classes>
-    </test>
-    
-    <test name="Freewheel Tests" parallel="false" thread-count="1">
-        <classes>
-            <parameter name="testData" value="OoyalaSkinSampleFW.xml" />
-            <class name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppFreewheelTests" /> 
-        </classes>
-    </test>
+	<test name="BasicPlayback Regression" parallel="false"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppDiscoveryNoAdsTest" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppSwipeDiscoveryScreenNoAdsTest" />
+		</classes>
+	</test>
+
+	<test name="Freewheel Tests" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleFW.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppFreewheelTests" />
+		</classes>
+	</test>
+
+	<test name="Google IMA Podded" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleIMAPodded.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppIMATests">
+				<methods>
+					<include name="testPoddedAds" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Google IMA Ad Rules" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleIMAAdRules.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppIMATests">
+				<methods>
+					<include name="testAdRules" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Google IMA Skippable Ads" parallel="false"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleIMASkippableAds.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppIMATests">
+				<methods>
+					<include name="testSkippableAds" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Google IMA Non-Ad rules" parallel="false"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleIMANonAdRules.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleAppIMATests">
+				<methods>
+					<include name="testNonAdRules" />
+				</methods>
+			</class>
+		</classes>
+	</test>
 
 </suite>
 

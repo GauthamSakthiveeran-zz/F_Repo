@@ -9,4 +9,5 @@
 	<element key="INSERT_OOYALA_AD" findBy="accessibilityId" accessibilityId="INSERT OOYALA AD" />
 	<element key="CUSTOM_PLAY_PAUSE_BUTTON" findBy="xPath" xPath="//XCUIElementTypeToolbar[1]/XCUIElementTypeButton[1]" />
 	<element key="OVERLAY" findBy="name" name="This is an overlay" />
+	<element key="SKIPAD_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='Skip Ad']" />
 </elements>

@@ -263,7 +263,7 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
 			int temp[] = new int[2];
 			temp[0] = seekBar.getLocation().getX();
 			temp[1] = seekBar.getLocation().getY();
-            touch.longPress(temp[0], temp[1]).moveTo(temp[0]+40, temp[1]).release().perform();		
+            touch.longPress(temp[0], temp[1]).moveTo(temp[0]+100, temp[1]).release().perform();		
 		    } else {
 		    	logger.error("seekbar is not visible");
 		    	extentTest.log(LogStatus.INFO, "seekbar is not visible");
