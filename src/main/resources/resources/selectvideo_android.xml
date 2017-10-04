@@ -36,6 +36,6 @@
 	<element key="OOYALA_AD_PREROLL_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Pre-roll']" />
 	<element key="OOYALA_AD_MIDROLL_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Mid-roll']" />
 	<element key="OOYALA_AD_POSTROLL_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Post-roll']" />
-	
+	<element key="MULTI_AD_PREROLL_MIDROLL_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Multi Ad combination']" />
 </elements>
 

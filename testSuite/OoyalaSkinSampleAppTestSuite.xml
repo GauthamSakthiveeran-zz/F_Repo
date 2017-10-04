@@ -29,6 +29,12 @@
 			<parameter name="testData" value="OoyalaSkinSampleOoyalaAdTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleSkinPlayBackOoyalaAdsTest" />
+		</classes> 
+		
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleMultiAdTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest" />
 		</classes>
 
 	</test>
