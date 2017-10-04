@@ -70,7 +70,7 @@ public class ShareValidator extends PlaybackApps implements Validators {
 			if (((AndroidDriver) driver).currentActivity()
 					.equals("com.facebook.katana.dbl.activity.FacebookLoginActivity")) {
 
-				((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
+				gotoBackScreenAndroid();
 
 				logger.info("Facebook Login Screen Displayed Properly");
 				extentTest.log(LogStatus.PASS, "Facebook Login Screen Displayed Properly");
@@ -82,7 +82,7 @@ public class ShareValidator extends PlaybackApps implements Validators {
 					.equals("com.facebook.platform.composer.composer.PlatformComposerActivity"))
 
 			{
-				((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
+				gotoBackScreenAndroid();
 
 				result = result && waitForElementAndClick("FACEBOOKPOST_DISCARD_ANDROID");
 
@@ -155,7 +155,7 @@ public class ShareValidator extends PlaybackApps implements Validators {
 			if (((AndroidDriver) driver).currentActivity()
 					.equals("com.twitter.app.onboarding.signup.SignUpSplashActivity")) {
 
-				((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
+				gotoBackScreenAndroid();
 
 				logger.info("Twitter Login Screen Displayed Properly");
 				extentTest.log(LogStatus.PASS, "Twitter Login Screen Displayed Properly");
@@ -241,7 +241,7 @@ public class ShareValidator extends PlaybackApps implements Validators {
 
 			{
 
-				((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.BACK);
+				gotoBackScreenAndroid();
 
 				logger.info("Google+ Share Post Screen Displayed Properly");
 				extentTest.log(LogStatus.PASS, "Google+ Share Post Screen Displayed Properly");

@@ -23,7 +23,7 @@ import io.appium.java_client.android.AndroidKeyCode;
 public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions {
 
     private Logger logger = Logger.getLogger(ClickDiscoveryButtonAction.class);
-    public final static int[] p = new int[2];
+    public int[] p = new int[2];
 
     public ClickDiscoveryButtonAction(AppiumDriver driver) {
         super(driver);

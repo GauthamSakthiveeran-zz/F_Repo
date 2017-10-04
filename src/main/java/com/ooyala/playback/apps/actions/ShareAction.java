@@ -23,7 +23,7 @@ import io.appium.java_client.android.AndroidKeyCode;
 public class ShareAction extends PlaybackApps implements Actions {
 
     private Logger logger = Logger.getLogger(ShareAction.class);
-    public final static int[] p = new int[2];
+    public int[] p = new int[2];
 
     public ShareAction(AppiumDriver driver) {
         super(driver);
@@ -80,7 +80,7 @@ public class ShareAction extends PlaybackApps implements Actions {
         try
 
         {
-        	((AndroidDriver)driver).pressKeyCode(AndroidKeyCode.BACK);
+        	gotoBackScreenAndroid();
 
             result = result && waitForElementAndClick("MOREOPTIONSSCREEN_CLOSEBUTTON_ANDROID");
 

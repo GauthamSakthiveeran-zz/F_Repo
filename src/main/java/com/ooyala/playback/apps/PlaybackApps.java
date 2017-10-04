@@ -13,6 +13,8 @@ import com.relevantcodes.extentreports.ExtentTest;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
 
 
 public abstract class PlaybackApps extends WebPage {
@@ -247,4 +249,8 @@ public abstract class PlaybackApps extends WebPage {
 		return true;
 	}
 
+	public void gotoBackScreenAndroid()
+	{
+		((AndroidDriver)driver).pressKeyCode(AndroidKeyCode.BACK);
+	}
 }
