@@ -15,9 +15,13 @@ public enum Events {
     SEEK_STARTED("Notification Received: seekStarted", "Notification Not Received: seekStarted"),
     SEEK_COMPLETED("Notification Received: seekCompleted", "Notification Not Received: seekCompleted"),
 
-    CC_ENABLED("Notification Received: languageChanged", "Notification Not Received: languageChanged");
-
-
+    CC_ENABLED("Notification Received: languageChanged", "Notification Not Received: languageChanged"),
+	
+    //added by @rmanchi
+	AD_POD_STARTED("Notification Received: adPodStarted", "Notification Not Received: adPodStarted"),
+    AD_POD_COMPLETED("Notification Received: adPodCompleted", "Notification Not Received: adPodCompleted");
+	
+	
     //TODO All other events
 
     String event;
