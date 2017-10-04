@@ -8,7 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import com.ooyala.facile.page.WebPage;
-import com.ooyala.playback.apps.utils.CommandLine;
 import com.ooyala.playback.apps.utils.CommandLineParameters;
 import com.relevantcodes.extentreports.ExtentTest;
 
@@ -240,27 +239,36 @@ public abstract class PlaybackApps extends WebPage {
 		return true;
 	}
 	
-	public boolean getBackFromRecentApp(AndroidDriver driver) {
+	public boolean getBackFromRecentApp() {
 		try{
-			driver.pressKeyCode(187);
-			Thread.sleep(5000);
-			logger.info("showing recent app screen");
-			driver.findElement(By.xpath("//android.view.View[@index= '0']")).click();
-			logger.info("back to ooyala app");
-			return true;
+			if(getPlatform().equalsIgnoreCase("android")) {
+				((AndroidDriver) driver).pressKeyCode(187);
+				Thread.sleep(5000);
+				logger.info("showing recent app screen");
+				driver.findElement(By.xpath("//android.view.View[@index= '0']")).click();
+				logger.info("back to ooyala app");
+			} else {
+				// TODO
+			}
+			
 		} catch(Exception ex) {
 			ex.printStackTrace();
 			return false;
 		}
-		
+		return true;
 	}
 	
-	public boolean lockAndUnlockDevice(AndroidDriver driver) {
+	public boolean lockAndUnlockDevice() {
 		try {
-			driver.lockDevice();
-			Thread.sleep(5000);
-			driver.unlockDevice();
-			Thread.sleep(5000);
+			if(getPlatform().equalsIgnoreCase("android")) {
+				((AndroidDriver) driver).lockDevice();
+				Thread.sleep(5000);
+				((AndroidDriver) driver).unlockDevice();
+				Thread.sleep(5000);
+			} else {
+				((IOSDriver) driver).lockDevice(Duration.ofSeconds(5));
+				Thread.sleep(5000);
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;
@@ -268,15 +276,5 @@ public abstract class PlaybackApps extends WebPage {
 		return true;
 	}
 	
-	public boolean lockAndUnlockDevice(IOSDriver driver) {
-		try {
-			driver.lockDevice(Duration.ofSeconds(5));
-			Thread.sleep(5000);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return false;
-		}
-		return true;
-	}
 
 }
