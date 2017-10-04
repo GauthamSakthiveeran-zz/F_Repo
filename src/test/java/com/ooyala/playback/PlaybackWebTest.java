@@ -381,7 +381,7 @@ public abstract class PlaybackWebTest extends FacileTest {
 
     public void injectScript() throws Exception {
         try {
-            new JSScriptInjection(jsUrl, extentTest, webDriverFacile.get()).injectScript();
+            new JSScriptInjection(jsUrl, extentTest, webDriverFacile.get(),url).injectScript();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

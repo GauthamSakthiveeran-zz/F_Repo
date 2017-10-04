@@ -7,7 +7,7 @@
 			<priority name="P1"></priority>
 			<embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
 			<pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-			<plugins name="MAIN,ANALYTICS" />
+			<plugins name="MAIN" />
 			<adPlugins name="" />
 			<additionalPlugins name="PLAYLIST" />
 			<pbid name="896a567555d451d94dcf2849f075a4c" />
@@ -312,7 +312,7 @@
 			<priority name="P1"></priority>
 			<embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
 			<pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-			<plugins name="BITMOVIN,ANALYTICS" />
+			<plugins name="BITMOVIN" />
 			<adPlugins name="" />
 			<additionalPlugins name="PLAYLIST" />
 			<pbid name="9957eb7c70a64730ad8fc15004d28da8" />
@@ -562,7 +562,7 @@
 			<priority name="P3"></priority>
 			<embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
 			<pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
-			<plugins name="OSMF,BITMOVIN,ANALYTICS" />
+			<plugins name="OSMF,BITMOVIN" />
 			<adPlugins name="" />
 			<additionalPlugins name="PLAYLIST" />
 			<pbid name="bb0061a6593d41df924403ef7c72bf23" />
@@ -852,7 +852,7 @@
 			<priority name="P2"></priority>
 			<embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
 			<pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
-			<plugins name="ADOBETVSDK,ANALYTICS" />
+			<plugins name="ADOBETVSDK" />
 			<adPlugins name="" />
 			<additionalPlugins name="PLAYLIST" />
 			<pbid name="896a567555d451d94dcf2849f075a4c" />

@@ -2,6 +2,57 @@
 <testdata>
     <test name="AnalyticsBasicTests">
         <url>
+            <description name="Playlist:Default themebuilder parameters MAIN" />
+            <priority name="P1"></priority>
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="MAIN,ANALYTICS" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter>
+                <![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"]},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+        <url>
+            <description name="Playlist:Default themebuilder parameters BITMOVIN" />
+            <priority name="P1"></priority>
+            <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ" />
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
+            <plugins name="BITMOVIN,ANALYTICS" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="9957eb7c70a64730ad8fc15004d28da8" />
+            <playerParameter>
+                <![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"]}}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Playlist:Default themebuilder parameters OSMF" />
+            <priority name="P3"></priority>
+            <embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
+            <plugins name="OSMF,BITMOVIN,ANALYTICS" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="bb0061a6593d41df924403ef7c72bf23" />
+            <playerParameter>
+                <![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"]}}]]></playerParameter>
+            <platformsSupported name="mac,windows" />
+        </url>
+        <url>
+            <description name="Playlist:Default themebuilder parameters AdobeTVSDK" />
+            <priority name="P2"></priority>
+            <embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
+            <pcode name="1sb2cxOr-DiMvOnEvUWmmSggx6rJ" />
+            <plugins name="ADOBETVSDK,ANALYTICS" />
+            <adPlugins name="" />
+            <additionalPlugins name="PLAYLIST" />
+            <pbid name="896a567555d451d94dcf2849f075a4c" />
+            <playerParameter>
+                <![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"]},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
+            <streamType name="mp4" />
+        </url>
+        <url>
             <description name="Analytics:Load Play Pause Seek Played for VOD"/>
             <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7"/>
             <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL"/>
