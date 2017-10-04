@@ -1,4 +1,5 @@
 <elements area="elements">
+	<element key="ANDROID_INSERT_OOYALA_AD" findBy="id" id="com.ooyala.sample.AdvancedPlaybackSampleApp:id/doubleRightButton" />
 	<element key="NOTIFICATION_AREA" findBy="xPath" xPath="//XCUIElementTypeTextView[1]" />
 	<element key="HLS" findBy="xpath" xPath="//android.widget.TextView[@text='HLS Video']"/>
 	<element key="PLAY_PAUSE_ANDROID" findBy="xPath" xPath="//android.widget.ImageButton[@index='0']"/>
@@ -10,4 +11,9 @@
 	<element key="CUSTOM_PLAY_PAUSE_BUTTON" findBy="xPath" xPath="//XCUIElementTypeToolbar[1]/XCUIElementTypeButton[1]" />
 	<element key="OVERLAY" findBy="name" name="This is an overlay" />
 	<element key="SKIPAD_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='Skip Ad']" />
+	<element key="ANDROID_ADV_INITIALTIME" findBy="xPath" xPath="//android.widget.TextView[@index='0']" />
+	<element key="ANDROID_ADV_MULTIPLE" findBy="xPath" xPath="//android.widget.TextView[@index='1']" />
+	<element key="ANDROID_PLAY_VIDEO_1" findBy="id" id="com.ooyala.sample.AdvancedPlaybackSampleApp:id/doubleLeftButton" />
+	<element key="ANDROID_PLAY_VIDEO_2" findBy="id" id="com.ooyala.sample.AdvancedPlaybackSampleApp:id/doubleRightButton" />
+	<element key="CUSTOM_PLAY_PAUSE_BUTTON_ANDROID" findBy="xPath" xPath="//android.widget.ImageButton[@index='0']" />
 </elements>

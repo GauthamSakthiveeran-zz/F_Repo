@@ -28,6 +28,13 @@ public class LaunchAction extends PlaybackApps implements Actions {
 //        extentTest.log(LogStatus.INFO, "Application has been launched successfully");
         return true;
     }
+    
+    public boolean closeApp() throws Exception {
+        driver.closeApp();
+        logger.info("Application has been Closed successfully");
+//        extentTest.log(LogStatus.INFO, "Application has been launched successfully");
+        return true;
+    }
 
 
 }
