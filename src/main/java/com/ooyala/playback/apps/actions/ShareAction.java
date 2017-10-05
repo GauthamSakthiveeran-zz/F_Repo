@@ -37,7 +37,7 @@ public class ShareAction extends PlaybackApps implements Actions {
     public boolean startAction(String element) throws Exception {
         // TODO Auto-generated method stub
         Boolean result = true;
-        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        if(getPlatform().equalsIgnoreCase("android"))
         {
         try {
             if (((AndroidDriver) driver).currentActivity()
@@ -80,7 +80,7 @@ public class ShareAction extends PlaybackApps implements Actions {
         try
 
         {
-        	gotoBackScreenAndroid();
+        	gotoBack();
 
             result = result && waitForElementAndClick("MOREOPTIONSSCREEN_CLOSEBUTTON_ANDROID");
 
@@ -102,7 +102,7 @@ public class ShareAction extends PlaybackApps implements Actions {
 
     }
 
-    public boolean closeMoreOptionsScreen(String element) throws Exception {
+    public boolean closeMoreOptionsScreen() throws Exception {
 
 
         if(getPlatform().equalsIgnoreCase("android"))
@@ -271,4 +271,6 @@ public class ShareAction extends PlaybackApps implements Actions {
     	}
 		
     }
+    
+	
 }

@@ -167,13 +167,13 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
         }
     }
 
-    private void tapinMiddleOfPlayerScreen() {
+    public void tapinMiddleOfPlayerScreen() {
 
         TouchAction touch = new TouchAction((AppiumDriver) driver);
         Dimension size = driver.manage().window().getSize();
         touch.tap((size.getWidth()) / 2, (size.getHeight() / 2)).perform();
-        logger.info("Failed to Click Element");
-        extentTest.log(LogStatus.INFO, "Clicked Element");
+        logger.info("Tapped in middle of Screen");
+        extentTest.log(LogStatus.INFO, "Tapped in middle of Screen");
 
     }
 

@@ -1,4 +1,4 @@
-<elements area="discovery">
+<elements area="share">
 	<element key="MOREOPTIONS_BUTTON_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='moreOptions']" />
 	<element key="MOREOPTIONSSCREEN_CLOSEBUTTON_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='dismiss']" />
 	<element key="SHAREBUTTON_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='share']" />
@@ -11,4 +11,6 @@
 	<element key="TWITTERPOST_CLOSEBUTTON_ANDROID" findBy="xPath" xPath="//android.widget.ImageView[@content-desc='Navigate up']" />
 	<element key="TWITTERPOST_DISCARD_ANDROID" findBy="xPath" xPath="//android.widget.Button[@text='DELETE']" />
 	<element key="TWIITERTWEET_BUTTON_ANDROID" findBy="xPath" xPath="//android.widget.TextView[@text='Tweet']" />
+	<element key="PLAY_PAUSE_BUTTON_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='play']" />
+	<element key="SEEKBAR_ANDROID" findBy="xPath" xPath="//android.view.ViewGroup[@content-desc='video scrubber']" />
 </elements>

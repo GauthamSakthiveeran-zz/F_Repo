@@ -270,7 +270,7 @@ public class PlayBackFactory {
 		return androidKeycodeAction;
 		
 	}
-	public ShareAction getClickShareButtonAction() {
+	public ShareAction getShareAction() {
 		if(clickShareButtonAction == null) {
 			clickShareButtonAction = new ShareAction(driver);
 			clickShareButtonAction.setExtentTest(extentTest);

@@ -34,12 +34,10 @@ public class ShareValidator extends PlaybackApps implements Validators {
 		Boolean result = true;
 		if (getPlatform().equalsIgnoreCase("android")) {
 			try {
-
-				result = result && isElementFoundinShareScreen("SHARETEXT_ANDROID");
 				if (((AndroidDriver) driver).currentActivity().equals("com.android.internal.app.ChooserActivity")) {
 					result = result && validateSocialMediaFaceBook("FACEBOOK_BUTTON_ANDROID");
 					result = result && validateSocialMediaTwitter("TWITTER_BUTTON_ANDROID");
-					result = result && validateSocialMediaGooglePlus("GOOGLEPLUS_BUTTON_ANDROID");
+				//	result = result && validateSocialMediaGooglePlus("GOOGLEPLUS_BUTTON_ANDROID");
 					return result;
 				} else {
 					logger.info("Not in Share Screen");
@@ -62,15 +60,19 @@ public class ShareValidator extends PlaybackApps implements Validators {
 	public boolean validateSocialMediaFaceBook(String element) {
 		Boolean result = true;
 		try {
+			
+			Thread.sleep(3000);
 
 			result = result && waitForElementAndClick(element);
 
-			Thread.sleep(2000);
-
+			
+			
+			
 			if (((AndroidDriver) driver).currentActivity()
-					.equals("com.facebook.katana.dbl.activity.FacebookLoginActivity")) {
+					.equals("com.facebook.katana.app.FacebookSplashScreenActivity")  || ((AndroidDriver) driver).currentActivity()
+					.contains("activity.FacebookLoginActivity") ) {
 
-				gotoBackScreenAndroid();
+				gotoBack();
 
 				logger.info("Facebook Login Screen Displayed Properly");
 				extentTest.log(LogStatus.PASS, "Facebook Login Screen Displayed Properly");
@@ -82,7 +84,11 @@ public class ShareValidator extends PlaybackApps implements Validators {
 					.equals("com.facebook.platform.composer.composer.PlatformComposerActivity"))
 
 			{
-				gotoBackScreenAndroid();
+				//((AndroidDriver)driver).hideKeyboard(); is not working properly, so We need to go back twice to discard that post in fb.
+				
+				gotoBack();
+				
+				gotoBack();
 
 				result = result && waitForElementAndClick("FACEBOOKPOST_DISCARD_ANDROID");
 
@@ -143,10 +149,10 @@ public class ShareValidator extends PlaybackApps implements Validators {
 	public boolean validateSocialMediaTwitter(String element) {
 		Boolean result = true;
 		try {
+			
+			Thread.sleep(3000);
 
 			result = result && waitForElementAndClick("SHAREBUTTON_ANDROID");
-
-			Thread.sleep(2000);
 
 			result = result && waitForElementAndClick(element);
 
@@ -155,7 +161,7 @@ public class ShareValidator extends PlaybackApps implements Validators {
 			if (((AndroidDriver) driver).currentActivity()
 					.equals("com.twitter.app.onboarding.signup.SignUpSplashActivity")) {
 
-				gotoBackScreenAndroid();
+				gotoBack();
 
 				logger.info("Twitter Login Screen Displayed Properly");
 				extentTest.log(LogStatus.PASS, "Twitter Login Screen Displayed Properly");
@@ -235,13 +241,15 @@ public class ShareValidator extends PlaybackApps implements Validators {
 			result = result && waitForElementAndClick(element);
 
 			Thread.sleep(2000);
-
+			System.out.println(((AndroidDriver) driver).currentActivity());
+			
 			if (((AndroidDriver) driver).currentActivity()
-					.equals("com.google.android.gms.plus.oob.UpgradeAccountActivity"))
+					.equals("com.google.android.gms.plus.oob.UpgradeAccountActivity") || ((AndroidDriver) driver).currentActivity()
+					.contains("plus.oob.UpgradeAccountActivity"))
 
 			{
 
-				gotoBackScreenAndroid();
+				gotoBack();
 
 				logger.info("Google+ Share Post Screen Displayed Properly");
 				extentTest.log(LogStatus.PASS, "Google+ Share Post Screen Displayed Properly");
@@ -262,39 +270,6 @@ public class ShareValidator extends PlaybackApps implements Validators {
 		return result;
 	}
 
-	// Function to check if an element is present in share screen
-
-	public Boolean isElementFoundinShareScreen(String element) {
-		try {
-
-			if (waitOnElement(element, 5000)) {
-				WebElement elementToFind = getWebElement(element);
-				if (elementToFind.isEnabled()) {
-					extentTest.log(LogStatus.PASS, element + " is present in Share Screen");
-					logger.info(element + " is present in Share Screen");
-					return true;
-				} else {
-					extentTest.log(LogStatus.FAIL, element + " not present Share Screen");
-					logger.info("Not in share Screen");
-					return false;
-
-				}
-			} else {
-				extentTest.log(LogStatus.FAIL, element + " not present Share Screen");
-				logger.info("Not in share Screen");
-				return false;
-
-			}
-
-		} catch (Exception e) {
-
-			e.printStackTrace();
-			logger.info("Failed to locate Element");
-			extentTest.log(LogStatus.FAIL, element + " Failed to locate Element");
-			return false;
-
-		}
-	}
 
 	public Boolean waitForElement(String element) {
 		Boolean result = false;

@@ -36,8 +36,41 @@
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest" />
 		</classes>
+		
+		<classes>
+			<parameter name="testData" value="OoyalaSkinVast3AdPoddedTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleSkinPlayBackVAST3AdsTest" />
+				<methods>
+					<include name="testVast3Podded" />
+				</methods>
+		</classes>
+	 	
+		<classes>
+ 			<parameter name="testData" value="OoyalaSkinVast3AdWithIconTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleSkinPlayBackVAST3AdsTest" />
+				<methods>
+					<include name="testVast3AdWithIcon" />
+				</methods>
+		</classes>
+		
+		<classes>
+			<parameter name="testData" value="OoyalaSkinVast3AdAllNewEventsTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleSkinPlayBackVAST3AdsTest" />
+				<methods>
+					<include name="testVast3AdAllNewEvents" />
+				</methods>
+		</classes>
+		
 
-	</test>
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaSkinSampleApp.OoyalaSkinSampleSkinPlayBackShareAdsTest" />
+		</classes>
+	</test> 
 
 
 </suite>

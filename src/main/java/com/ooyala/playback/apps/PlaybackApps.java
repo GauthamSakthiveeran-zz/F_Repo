@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 
 import com.ooyala.facile.page.FacileWebElement;
 import com.ooyala.facile.page.WebPage;
 import com.ooyala.playback.apps.utils.CommandLineParameters;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
@@ -249,8 +251,9 @@ public abstract class PlaybackApps extends WebPage {
 		return true;
 	}
 
-	public void gotoBackScreenAndroid()
+	public void gotoBack()
 	{
 		((AndroidDriver)driver).pressKeyCode(AndroidKeyCode.BACK);
 	}
+
 }
