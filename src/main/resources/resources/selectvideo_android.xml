@@ -2,7 +2,7 @@
 	<element key="HLS" findBy="xPath" xPath="//android.widget.TextView[@text='HLS Video']"/>
 	<element key="MP4" findBy="xPath" xPath="//android.widget.TextView[@text='MP4 Video']" />
 	<element key="VOD_WITH_CCS" findBy="xPath" xPath="//android.widget.TextView[@text='VOD with CCs']" />
-	<element key="ASPECT_RATIO" findBy="xPath" name="//android.widget.TextView[@text='4:3 Aspect Ratio']" />
+	<element key="ASPECT_RATIO" findBy="xPath" xPath="//android.widget.TextView[@text='4:3 Aspect Ratio']" />
 	<element key="VAST_AD_PRE_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST Ad Pre-roll']" />
 	<element key="VAST_AD_MID_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST Ad Mid-roll']" />
 	<element key="VAST_AD_POST_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST Ad Post-roll']" />
@@ -10,8 +10,42 @@
 	<element key="OOYALA_AD_PRE_ROLL" findBy="xPath" xPath="Ooyala Ad Pre-roll" />
 	<element key="OOYALA_AD_MID_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Mid-roll']" />
 	<element key="OOYALA_AD_POST_ROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Post-roll']" />
-	<!--<element key="VERTICAL" findBy="name" name="Vertical 16:9" />-->
 	<element key="MULTI_AD_COMBINATION" findBy="xPath" xPath="//android.widget.TextView[@text='Multi Ad combination']" />
+	
+	<!-- 	FreewheelSampleApp  -->
+	<element key="FREEWHEEL_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Preroll']" />
+	<element key="FREEWHEEL_MIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Midroll']" />
+	<element key="FREEWHEEL_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Postroll']" />
+	<element key="FREEWHEEL_PREMIDPOST" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel PreMidPost']" />
+	<element key="FREEWHEEL_OVERLAY" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Overlay']" />
+	<element key="FREEWHEEL_PREMIDPOST_OVERLAY" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel PreMidPost Overlay']" />
+	<element key="FREEWHEEL_MULTI_MIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Multi Midroll']" />
+	<element key="FREEWHEEL_PREROLL_APPLICATION_CONFIGURED" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Application-Configured']" /> 
+	<element key="FREEWHEEL_PREROLL_CUEPOINTS_AND_ADCONTROLS_OPTIONS" findBy="xPath" xPath="//android.widget.TextView[@text='CuePoints and AdsControl Options']" />
+	
+	<!-- 	End of FreewheelSampleApp-->
+	
+	<!-- 	IMASampleApp -->
+	<element key="IMA_AD_RULES_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Ad-Rules Preroll']" />
+	<element key="IMA_AD_RULES_MIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Ad-Rules Midroll']" />
+	<element key="IMA_AD_RULES_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Ad-Rules Postroll']" />
+	<element key="IMA_PODDED_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Podded Preroll']" />
+	<element key="IMA_PODDED_MIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Podded Midroll']" />
+	<element key="IMA_PODDED_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Podded Postroll']" />
+	<element key="IMA_PODDED_PREMIDPOST" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Podded Pre-Mid-Post']" />
+	<element key="IMA_PREROLL_SKIPPABLE" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Skippable']" />
+	<element key="IMA_PRE_MID_AND_POST_SKIPPABLE" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Pre, Mid and Post Skippable']" />
+	<element key="IMA_NON_ADRULES_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Preroll']" />
+	<element key="IMA_NON_ADRULES_MIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Midroll']" />
+	<element key="IMA_NON_ADRULES_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Postroll']" />
+	<element key="IMA_AD_RULES_QUAD_MIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Quad Midroll']" />
+	<element key="IMA_NON_ADRULES_PRE_MID_POST" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Pre-Mid-Mid-Post']" />
+	
+	<element key="IMA_APPLICATION_CONFIGURED" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Application-Configured']" />
+	<element key="IMA_NO_ADS" findBy="xPath" xPath="//android.widget.TextView[@text='No Ads']" />
+	
+	<!-- 	End  of IMASampleApp-->
+
 	<element key="FREEWHEEL_INTEGRATION" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Integration']" />
 	<element key="SKIN_PLAYBACK" findBy="xPath" xPath="//android.widget.TextView[@text='Skin Playback']" />
 	<element key="SKIN_HLS_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='HLS Video']" />
@@ -37,6 +71,21 @@
 	<element key="OOYALA_AD_MIDROLL_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Mid-roll']" />
 	<element key="OOYALA_AD_POSTROLL_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Ad Post-roll']" />
 	<element key="MULTI_AD_PREROLL_MIDROLL_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Multi Ad combination']" />
+	
+<!-- 	Pulse sample app -->
+	<element key="PULSE_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Preroll demo']" />
+	<element key="PULSE_MIDROLL_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Midroll demo']" />
+	<element key="PULSE_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Postroll demo']" />
+	<element key="PULSE_PRE_MID_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Pre-/mid-/postroll demo']" />
+	<element key="PULSE_PRE_MID_POSTROLL_SKIPPABLE" findBy="xPath" xPath="//android.widget.TextView[@text='Pre-/mid-/postroll skippable']" />
+	<element key="PULSE_PRE_POSTROLL_FREQUENCY_CAPPING_DEMO" findBy="xPath" xPath="//android.widget.TextView[@text='Frequency capping demo']" />
+	
+	<element key="PULSE_PREROLL_AD_INVALID" findBy="xPath" xPath="//android.widget.TextView[@text='Preroll demo - Ad media file invalid']" />
+	<element key="PULSE_PREROLL_AD_TIMEOUT" findBy="xPath" xPath="//android.widget.TextView[@text='Preroll demo - Ad media file timeout']" />
+	<element key="PULSE_PREROLL_AD_404" findBy="xPath" xPath="//android.widget.TextView[@text='Preroll demo - Ad media file 404']" />
+	
+	<!-- 	End  of Pulse Sample app-->
+	
 <!-- 	<element key="ANDROID_ADV_INITIALTIME" findBy="xPath" xPath="//android.widget.TextView[@index='0']" /> -->
 	<element key="ANDROID_ADV_MULTIPLE" findBy="xPath" xPath="//android.widget.TextView[@index='1']" /> 
 	<element key="PLAY_WITH_INITIALTIME" findBy="xPath" xPath="//android.widget.TextView[@index='0']" />

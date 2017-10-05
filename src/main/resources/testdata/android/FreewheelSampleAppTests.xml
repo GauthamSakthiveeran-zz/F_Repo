@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<app name="FreewheelSampleApp" />
+ 	<test name="FREEWHEEL_PREROLL">
+		<description name="Freewheel Preroll" />
+	</test>
+	<test name="FREEWHEEL_MIDROLL">
+		<description name="Freewheel Midroll" />
+	</test>
+	<test name="FREEWHEEL_POSTROLL">
+		<description name="Freewheel Postroll" />
+	</test>
+	<test name="FREEWHEEL_PREMIDPOST">
+		<description name="Freewheel PreMidPost" />
+	</test>
+	<test name="FREEWHEEL_MULTI_MIDROLL">
+		<description name="Freewheel MultiMidroll" />
+	</test>
+	<test name="FREEWHEEL_PREROLL_APPLICATION_CONFIGURED">
+		<description name="Freewheel preroll Application-Configured" />
+	</test>
+	<test name="FREEWHEEL_PREROLL_CUEPOINTS_AND_ADCONTROLS_OPTIONS" >
+		<description name="CuePoints and AdsControl Options preroll ad" />
+	</test>
+</testdata>
