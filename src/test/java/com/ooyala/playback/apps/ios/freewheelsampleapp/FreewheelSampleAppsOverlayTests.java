@@ -6,15 +6,11 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
-import com.ooyala.playback.apps.actions.PlayAction;
-import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.ooyala.playback.apps.validators.OverlayValidator;
-import com.ooyala.playback.apps.validators.PauseValidator;
-import com.ooyala.playback.apps.validators.SeekValidator;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class FreewheelSampleAppsOverlayTests extends PlaybackAppsTest {
@@ -23,11 +19,7 @@ public class FreewheelSampleAppsOverlayTests extends PlaybackAppsTest {
 	private SelectVideoAction selectVideo;
 	private ElementValidator elementValidator;
 	private NotificationEventValidator notificationEventValidator;
-	private SeekAction seekAction;
-	private PlayAction playAction;
 	private OverlayValidator overlay;
-	private SeekValidator seekValidator;
-	private PauseValidator pause;
 
 	@Test(groups = "freewheelsampleapp", dataProvider = "testData")
 	public void testBasicPlayer(String testName, TestParameters test) throws Exception {
@@ -39,21 +31,7 @@ public class FreewheelSampleAppsOverlayTests extends PlaybackAppsTest {
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
 
-			result = result && overlay.validate("OVERLAY_IMAGE_IOS", 10000);
-
-			result = result && notificationEventValidator.letVideoPlayForSec(3);
-
-			result = result && overlay.waitForOverlayToDisapper("OVERLAY_IMAGE_IOS", 30000);
-
-			result = result && pause.validate("PLAY_PAUSE_BUTTON", 35000);
-
-			result = result && seekAction.setSlider("SLIDER").startAction("SEEK_BAR");
-
-			result = result && seekValidator.validate("", 1000);
-
-			result = result && playAction.startAction("PLAY_PAUSE_BUTTON");
-
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
+			result = result && overlay.setTestParameters(test).validate("OVERLAY_IMAGE_IOS", 10000);
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
 

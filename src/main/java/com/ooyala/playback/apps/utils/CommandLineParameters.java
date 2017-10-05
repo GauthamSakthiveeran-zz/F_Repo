@@ -7,6 +7,7 @@ public class CommandLineParameters {
 	public static final String APP = "app";
 	public static final String UDID = "udid";
 	public static final String PLATFORM = "platform";
+	public static final String PLATFORM_NAME = "platformName";
 	public static final String SHOW_IOS_LOG = "showIOSLog";
 	public static final String AUTOMATION_NAME = "automationName";
 	public static final String NEW_COMMAND_TIMEOUT = "newCommandTimeout";
@@ -15,4 +16,6 @@ public class CommandLineParameters {
 	public static final String APP_ACTIVITY = "appActivity";
 	public static final String XCODE_ORG_ID = "xcodeOrgId";
 	public static final String XCODE_SIGNING_ID = "xcodeSigningId";
+	public static final String APPIUM_SERVER = "appiumServer";
+	public static final String APPIUM_PORT = "appiumPort";
 }

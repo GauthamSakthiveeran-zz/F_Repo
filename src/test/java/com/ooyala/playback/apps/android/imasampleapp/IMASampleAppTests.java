@@ -1,4 +1,4 @@
-package com.ooyala.playback.apps.ios.freewheelsampleapp;
+package com.ooyala.playback.apps.android.imasampleapp;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -14,37 +14,38 @@ import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class FreewheelSampleAppTests extends PlaybackAppsTest {
+public class IMASampleAppTests extends PlaybackAppsTest {
+	
+	private static Logger logger = Logger.getLogger(IMASampleAppTests.class);
 
-	private static Logger logger = Logger.getLogger(FreewheelSampleAppTests.class);
 	private SelectVideoAction selectVideo;
 	private ElementValidator elementValidator;
-	private NotificationEventValidator notificationEventValidator;
-	private AdValidator adValidator;
 	private PlayAction playAction;
+	private AdValidator adValidator;
+	private NotificationEventValidator notificationEventValidator;
 
-	@Test(groups = "freewheelsampleapp", dataProvider = "testData")
+	@Test(groups = "imasampleapp", dataProvider = "testData")
 	public void testBasicPlayer(String testName, TestParameters test) throws Exception {
+
 		boolean result = true;
+
 		try {
 			result = result && selectVideo.startAction(test.getAsset());
-			
-			result = result && elementValidator.validate("NOTIFICATION_AREA", 1000);
-			
-			result = result && elementValidator.handleLoadingSpinner();
-			
-			result = result && playAction.startAction("PLAY_PAUSE_BUTTON");
+
+			result = result && elementValidator.validate("PLAY_PAUSE_ANDROID", 30000);
+			result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 
 			result = result && adValidator.setTestParameters(test).validate("", 1000);
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
 
 		} catch (Exception ex) {
-			ex.printStackTrace();
 			logger.error("Here is an exception" + ex);
 			extentTest.log(LogStatus.FAIL, ex);
 			result = false;
 		}
 		Assert.assertTrue(result, "APP:" + test.getApp() + "->Asset:" + test.getAsset());
+
 	}
+
 }
