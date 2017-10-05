@@ -22,7 +22,7 @@ public class PlaybackInitialTimeTests extends PlaybackWebTest{
     private PlayAction playAction;
     private PauseAction pauseAction;
     private SeekValidator seekValidator;
-    private InitalTimeValidator initalTimeValidator;
+    private InitialTimeValidator initalTimeValidator;
 
     PlaybackInitialTimeTests() throws OoyalaException {
         super();
