@@ -51,4 +51,5 @@
              class="oo-thumbnail-carousel-center-image" />
     <element key="QUE_POINT" findBy="class"
              class="oo-playhead-padding"/>
+    <element key="PLAYHEAD_TIME" findBy="xPath" xPath=".//a[@class='oo-time-duration oo-control-bar-duration']/span"/>
 </elements>

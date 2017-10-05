@@ -678,6 +678,32 @@
             <playerParameter><![CDATA[{"showInAdControlBar":true,"initialTime":10}]]></playerParameter>
         </url>
     </test>
+
+    <test name = "PlaybackInitialTimeForLongAssetTests">
+        <url>
+            <description name="Playback_Initial_Time:initialTime_2700" />
+            <priority name="P2"></priority>
+            <embed_code name="FiOHJkOTE6QYKRNpQoN4_ZAv7l_MFp-6" />
+            <pcode name="c1dDkyOjXU2lEs1AVmY3UveF-65F" />
+            <plugins name="MAIN,BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="3f5e6572ef554694afe1d6c21659122b" />
+            <playerParameter><![CDATA[{"embedToken":"//player.ooyala.com/sas/embed_token/c1dDkyOjXU2lEs1AVmY3UveF-65F/FiOHJkOTE6QYKRNpQoN4_ZAv7l_MFp-6?api_key=c1dDkyOjXU2lEs1AVmY3UveF-65F.N-dXl&expires=1502890396&signature=MLQqWXJSU+WZ2H85vqOcTlUlayL1MMqpcQaRc9wuhl0&override_syndication_group=override_synd_groups_in_backlot","autoplay":true,"initialTime":2700}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Playback_Initial_Time:initialTime_10" />
+            <priority name="P2"></priority>
+            <embed_code name="FiOHJkOTE6QYKRNpQoN4_ZAv7l_MFp-6" />
+            <pcode name="c1dDkyOjXU2lEs1AVmY3UveF-65F" />
+            <plugins name="MAIN,BITMOVIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="3f5e6572ef554694afe1d6c21659122b" />
+            <playerParameter><![CDATA[{"embedToken":"//player.ooyala.com/sas/embed_token/c1dDkyOjXU2lEs1AVmY3UveF-65F/FiOHJkOTE6QYKRNpQoN4_ZAv7l_MFp-6?api_key=c1dDkyOjXU2lEs1AVmY3UveF-65F.N-dXl&expires=1502890396&signature=MLQqWXJSU+WZ2H85vqOcTlUlayL1MMqpcQaRc9wuhl0&override_syndication_group=override_synd_groups_in_backlot","autoplay":true,"initialTime":10}]]></playerParameter>
+        </url>
+    </test>
     <test name ="PlaybackOverrideEncodingPriorityMidrollAdTests" >
         <url>
             <description name="VTC:Override encodingPriority's for MidrollVast + Video"/>
