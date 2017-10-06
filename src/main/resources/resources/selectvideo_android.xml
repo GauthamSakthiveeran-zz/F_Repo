@@ -91,6 +91,7 @@
 	<element key="PULSE_PREROLL_AD_404" findBy="xPath" xPath="//android.widget.TextView[@text='Preroll demo - Ad media file 404']" />
 	
 	<!-- 	End  of Pulse Sample app-->
+	
 <!-- 	<element key="ANDROID_ADV_INITIALTIME" findBy="xPath" xPath="//android.widget.TextView[@index='0']" /> -->
 	<element key="ANDROID_ADV_MULTIPLE" findBy="xPath" xPath="//android.widget.TextView[@index='1']" /> 
 	<element key="PLAY_WITH_INITIALTIME" findBy="xPath" xPath="//android.widget.TextView[@index='0']" />
