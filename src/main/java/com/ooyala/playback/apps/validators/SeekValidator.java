@@ -13,13 +13,9 @@ public class SeekValidator extends PlaybackApps implements Validators {
 
 	@Override
 	public boolean validate(String element, int timeout) throws Exception {
-		if(getPlatform().equalsIgnoreCase("ios")) {
-			NotificationEventValidator notificationEventValidator = new PlayBackFactory(driver, extentTest).getNotificationEventValidator();
-			return notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 25000)
-					&& notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 25000);
-		}
-		// TODO android
-		return true;
+		NotificationEventValidator notificationEventValidator = new PlayBackFactory(driver, extentTest).getNotificationEventValidator();
+		return notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 25000)
+				&& notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 25000);
 	}
 
 }

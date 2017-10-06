@@ -1,0 +1,22 @@
+<suite name="Freewheel SampleAPPTests Regression Suite for Android" verbose="1">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+	<test name="Freewheel Tests" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="android/FreewheelSampleAppTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.freewheelsampleapp.FreewheelSampleAppTests">
+			</class>
+		</classes>
+	</test>
+	<test name="Freewheel Overlay Tests" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="android/FreewheelSampleAppsOverlayTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.freewheelsampleapp.FreewheelSampleAppsOverlayTests">
+			</class>
+		</classes>
+	</test>
+</suite>
+

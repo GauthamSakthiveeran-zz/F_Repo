@@ -1,0 +1,14 @@
+<suite name="Pulse SampleAPPTests Regression Suite" verbose="1">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+	<test name="Pulse Tests" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="ios/PulseSampleAppTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.ios.pulseadsampleapp.PulseSampleAppTests">
+			</class>
+		</classes>
+	</test>
+</suite>
+

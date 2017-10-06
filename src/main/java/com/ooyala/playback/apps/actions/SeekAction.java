@@ -124,11 +124,19 @@ public class SeekAction extends PlaybackApps implements Actions {
     }
 	
 	private int getSliderPosition(String slider) throws InterruptedException {
-        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(slider));
-        WebElement slide = this.getWebElementFromFacileWebElement(anElement);
+        WebElement slide = getWebElement(slider);
         int sliderXPosition = slide.getLocation().getX();
         logger.info("Slider X Position >> : " + sliderXPosition);
         return sliderXPosition;
+    }
+	
+	private boolean seekVideo(String element) {
+        WebElement seekbar = getWebElement(element);
+        int seekBarFieldWidth = seekbar.getLocation().getX();
+        int seekBarFieldHeigth = seekbar.getLocation().getY();
+        TouchAction touch = new TouchAction(driver);
+        touch.longPress(seekBarFieldWidth + 20, seekBarFieldHeigth).moveTo(seekBarFieldWidth + 100, seekBarFieldHeigth).release().perform();
+        return true;
     }
 
 }

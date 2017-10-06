@@ -1,4 +1,4 @@
-package com.ooyala.playback.apps.ios.freewheelsampleapp;
+package com.ooyala.playback.apps.ios.imasampleapp;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
@@ -14,16 +14,16 @@ import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class FreewheelSampleAppTests extends PlaybackAppsTest {
+public class IMASampleAppTests extends PlaybackAppsTest {
 
-	private static Logger logger = Logger.getLogger(FreewheelSampleAppTests.class);
+	private static Logger logger = Logger.getLogger(IMASampleAppTests.class);
 	private SelectVideoAction selectVideo;
 	private ElementValidator elementValidator;
 	private NotificationEventValidator notificationEventValidator;
 	private AdValidator adValidator;
 	private PlayAction playAction;
 
-	@Test(groups = "freewheelsampleapp", dataProvider = "testData")
+	@Test(groups = "imasampleapp", dataProvider = "testData")
 	public void testBasicPlayer(String testName, TestParameters test) throws Exception {
 		boolean result = true;
 		try {
@@ -34,13 +34,12 @@ public class FreewheelSampleAppTests extends PlaybackAppsTest {
 			result = result && elementValidator.handleLoadingSpinner();
 			
 			result = result && playAction.startAction("PLAY_PAUSE_BUTTON");
-
-			result = result && adValidator.setTestParameters(test).validate("", 1000);
+			
+			result = result && adValidator.validate("", 1000);
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
 
 		} catch (Exception ex) {
-			ex.printStackTrace();
 			logger.error("Here is an exception" + ex);
 			extentTest.log(LogStatus.FAIL, ex);
 			result = false;

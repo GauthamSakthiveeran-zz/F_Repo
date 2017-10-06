@@ -1,18 +1,19 @@
 <elements area="selectvideo_ios">
-    <element key="HLS" findBy="name" name="HLS Video" />
-    <element key="MP4" findBy="name" name="MP4 Video" />
-    <element key="VOD_WITH_CCS" findBy="name" name="VOD with CCs" />
-    <element key="ASPECT_RATIO" findBy="name" name="4:3 Aspect Ratio" />
-    <element key="VAST_AD_PRE_ROLL" findBy="name" name="VAST Ad Pre-roll" />
-    <element key="VAST_AD_MID_ROLL" findBy="name" name="VAST Ad Mid-roll" />
-    <element key="VAST_AD_POST_ROLL" findBy="name" name="VAST Ad Post-roll" />
-    <element key="VAST_AD_WRAPPER" findBy="name" name="VAST Ad Wrapper" />
-    <element key="OOYALA_AD_PRE_ROLL" findBy="name" name="Ooyala Ad Pre-roll" />
-    <element key="OOYALA_AD_MID_ROLL" findBy="name" name="Ooyala Ad Mid-roll" />
-    <element key="OOYALA_AD_POST_ROLL" findBy="name" name="Ooyala Ad Post-roll" />
-    <element key="VERTICAL" findBy="name" name="Vertical 16:9" />
-    <element key="MULTI_AD_COMBINATION" findBy="name" name="Multi Ad combination" />
-    <element key="PLUGIN_PLAYER" findBy="name" name="Plugin Player" />
+
+	<element key="HLS" findBy="name" name="HLS Video" />
+	<element key="MP4" findBy="name" name="MP4 Video" />
+	<element key="VOD_WITH_CCS" findBy="name" name="VOD with CCs" />
+	<element key="ASPECT_RATIO" findBy="name" name="4:3 Aspect Ratio" />
+	<element key="VAST_AD_PRE_ROLL" findBy="name" name="VAST Ad Pre-roll" />
+	<element key="VAST_AD_MID_ROLL" findBy="name" name="VAST Ad Mid-roll" />
+	<element key="VAST_AD_POST_ROLL" findBy="name" name="VAST Ad Post-roll" />
+	<element key="VAST_AD_WRAPPER" findBy="name" name="VAST Ad Wrapper" />
+	<element key="OOYALA_AD_PRE_ROLL" findBy="name" name="Ooyala Ad Pre-roll" />
+	<element key="OOYALA_AD_MID_ROLL" findBy="name" name="Ooyala Ad Mid-roll" />
+	<element key="OOYALA_AD_POST_ROLL" findBy="name" name="Ooyala Ad Post-roll" />
+	<element key="VERTICAL" findBy="name" name="Vertical 16:9" />
+	<element key="MULTI_AD_COMBINATION" findBy="name" name="Multi Ad combination" />
+	<element key="PLUGIN_PLAYER" findBy="name" name="Plugin Player" />
     <element key="CHANGE_VIDEO_PROGRAMMATICALLY" findBy="name" name="Change Video Programmatically" />
     <element key="INSERT_AD_AT_RUNTIME" findBy="name" name="Insert Ad at Runtime" />
     <element key="PLAY_WITH_INITIALTIME" findBy="name" name="Play With InitialTime" />
@@ -23,4 +24,32 @@
     <element key="UNBUNDLED_HLS" findBy="name" name="Unbundled HLS" />
     <element key="NOTIFICATION_SAMPLE" findBy="name" name="Notification Sample" />
     <element key="PROGRAMMATIC_VOLUME" findBy="name" name="Programmatic Volume" />
+	
+	<!-- 	FreewheelSampleApp  -->
+	<element key="FREEWHEEL_PREROLL" findBy="name" name="Freewheel Preroll" />
+	<element key="FREEWHEEL_MIDROLL" findBy="name" name="Freewheel Midroll" />
+	<element key="FREEWHEEL_POSTROLL" findBy="name" name="Freewheel Postroll" />
+	<element key="FREEWHEEL_PREMIDPOST" findBy="name" name="Freewheel PreMidPost" />
+	<element key="FREEWHEEL_OVERLAY" findBy="name" name="Freewheel Overlay" />
+	<element key="FREEWHEEL_PREMIDPOST_OVERLAY" findBy="name" name="Freewheel PreMidPost Overlay" />
+	<element key="FREEWHEEL_MULTI_MIDROLL" findBy="name" name="Freewheel Multi Midroll" />
+	
+	<!-- 	IMASampleApps -->
+	
+	<element key="CLIENTSIDE_CONFIGURED_IMA_ADS" findBy="name" name="Client-side configured IMA Ads" />
+	<element key="PRE_MID_AND_POST_SKIPPABLE" findBy="name" name="Pre, Mid and Post Skippable" />
+	<element key="SKIPPABLE" findBy="name" name="Skippable" />
+	<element key="PODDED_PRE_MID_POST" findBy="name" name="Podded Pre-Mid-Post" />
+	<element key="PODDED_POSTROLL" findBy="name" name="Podded Postroll" />
+	<element key="PODDED_MIDROLL" findBy="name" name="Podded Midroll" />
+	<element key="PODDED_PREROLL" findBy="name" name="Podded Preroll" />
+	<element key="AD_RULES_POSTROLL" findBy="name" name="Ad-Rules Postroll" />
+	<element key="AD_RULES_MIDROLL" findBy="name" name="Ad-Rules Midroll" />
+	<element key="AD_RULES_PREROLL" findBy="name" name="Ad-Rules Preroll" />
+	
+	<element key="MULTI_AD_COMBINATION" findBy="name" name="Multi Ad combination" />
+	<element key="FreewheelIntegration" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Integration']"/>
+	
+	<element key="NO_ADS" findBy="name" name="No Ads" />
+
 </elements>
