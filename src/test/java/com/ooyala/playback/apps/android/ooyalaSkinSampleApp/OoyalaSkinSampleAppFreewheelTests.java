@@ -35,7 +35,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
- public class OoyalaSkinSampleAppFreewheelTests extends PlaybackAppsTest {
+ public class OoyalaSkinSampleAppFreewheelTests extends OoyalaSkinSampleAppUtils {
 
     private static Logger logger = Logger.getLogger(OoyalaSkinSampleAppFreewheelTests.class);
     private SelectVideoAction selectVideo;
@@ -53,40 +53,13 @@ import io.appium.java_client.android.AndroidKeyCode;
 
 
     @Test(groups = "OoyalaSkinSampleApp", dataProvider = "testData")
-    public void testPluginPlayer(String testName, TestParameters test) throws Exception {
+    public void testFreewheelCases(String testName, TestParameters test) throws Exception {
         Reporter.log("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
         logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
         boolean result = true;
         try {      	
-        		result = result && appAssetsSelection.startAction("Freewheel Integration");
-        		Thread.sleep(3000);
-        		result = result && selectVideo.startAction(test.getAsset());
-        		Thread.sleep(3000);
-        		result = result && allowAction.startAction("ALLOW");       	
-	        	result = result && androidKeyCode.startAction("BACK");        	
-	        	result = result && selectVideo.startAction(test.getAsset());
-	        	Thread.sleep(5000);
-	        	result = result && clickDiscoveryAction.clickPlayButton();
-	        	if(test.getAsset().contains("PREROLL") || test.getAsset().contains("PREMIDPOST")) {
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-	        	}
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-            if(test.getAsset().contains("MULTIMID")) {
-        			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-        			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-        		}
-            result = result && clickDiscoveryAction.clickPauseButton();
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-            result = result && clickDiscoveryAction.seekForward("SEEKBAR_ANDROID");
-            result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-            result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);       
-            result = result && clickDiscoveryAction.clickPlayButton();
-            if(test.getAsset().contains("MIDROLL") || test.getAsset().contains("POSTROLL") || test.getAsset().contains("PREMIDPOST") || test.getAsset().contains("MULTIMID")) {
-        			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-        			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-            }
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
+        		result = result && freeWheelTests(test);
+        		
         }
         catch(Exception ex) {
         		ex.printStackTrace();

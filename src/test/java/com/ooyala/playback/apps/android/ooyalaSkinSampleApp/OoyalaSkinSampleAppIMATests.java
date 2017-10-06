@@ -35,7 +35,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
- public class OoyalaSkinSampleAppIMATests extends PlaybackAppsTest {
+ public class OoyalaSkinSampleAppIMATests extends OoyalaSkinSampleAppUtils {
 
     private static Logger logger = Logger.getLogger(OoyalaSkinSampleAppIMATests.class);
     private SelectVideoAction selectVideo;
@@ -58,31 +58,7 @@ import io.appium.java_client.android.AndroidKeyCode;
         logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
         boolean result = true;
         try {      	
-        		result = result && appAssetsSelection.startAction("Google IMA Integration");
-        		Thread.sleep(3000);
-        		result = result && selectVideo.startAction(test.getAsset());
-        		Thread.sleep(3000);
-        		result = result && allowAction.startAction("ALLOW");       	
-	        	result = result && androidKeyCode.startAction("BACK");        	
-	        	result = result && selectVideo.startAction(test.getAsset());
-	        	Thread.sleep(5000);
-	        	result = result && clickDiscoveryAction.clickPlayButton();
-	        	if(test.getAsset().contains("PREROLL")) {
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-	        	}
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-            result = result && clickDiscoveryAction.clickPauseButton();
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-            result = result && clickDiscoveryAction.seekForward("SEEKBAR_ANDROID");
-            result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-            result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);       
-            result = result && clickDiscoveryAction.clickPlayButton();
-            if(test.getAsset().contains("MIDROLL") || test.getAsset().contains("POSTROLL")) {
-        			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-        			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-            }
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
+        		result = result && testIMAAdRules(test);
         }
         catch(Exception ex) {
         		ex.printStackTrace();
@@ -99,42 +75,7 @@ import io.appium.java_client.android.AndroidKeyCode;
         logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
         boolean result = true;
         try {      	
-        		result = result && appAssetsSelection.startAction("Google IMA Integration");
-        		Thread.sleep(3000);
-        		result = result && selectVideo.startAction(test.getAsset());
-        		Thread.sleep(3000);
-        		result = result && allowAction.startAction("ALLOW");       	
-	        	result = result && androidKeyCode.startAction("BACK");        	
-	        	result = result && selectVideo.startAction(test.getAsset());
-	        	Thread.sleep(5000);
-	        	result = result && clickDiscoveryAction.clickPlayButton();
-	        	if(test.getAsset().contains("PREROLL") || test.getAsset().contains("PREMIDPOST")) {
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-	        	}
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-            result = result && clickDiscoveryAction.clickPauseButton();
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-            result = result && clickDiscoveryAction.seekForward("SEEKBAR_ANDROID");
-            result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-            result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);       
-            result = result && clickDiscoveryAction.clickPlayButton();
-            if(test.getAsset().contains("PREMIDPOST")) {
-    				result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-    				result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-    				result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-            }
-            if(test.getAsset().contains("MIDROLL") || test.getAsset().contains("POSTROLL") || test.getAsset().contains("PREMIDPOST")) {
-        			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-        			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-        			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-        			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-            }
-            
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
+        		result = result && testIMAPoddedAds(test);
         }
         catch(Exception ex) {
         		ex.printStackTrace();
@@ -151,37 +92,7 @@ import io.appium.java_client.android.AndroidKeyCode;
         logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
         boolean result = true;
         try {      	
-        		result = result && appAssetsSelection.startAction("Google IMA Integration");
-        		Thread.sleep(3000);
-        		result = result && selectVideo.startAction(test.getAsset());
-        		Thread.sleep(3000);
-        		result = result && allowAction.startAction("ALLOW");       	
-	        	result = result && androidKeyCode.startAction("BACK");        	
-	        	result = result && selectVideo.startAction(test.getAsset());
-	        	Thread.sleep(5000);
-	        	result = result && clickDiscoveryAction.clickPlayButton();
-	        	result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        result = result && elementValidator.validate("SKIPAD_ANDROID", 10000);
-	        result = result && elementValidator.clickOnElement("SKIPAD_ANDROID");
-	        	result = result && notificationEventValidator.validateEvent(Events.AD_SKIPPPED,20000);	        
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-            result = result && clickDiscoveryAction.clickPauseButton();
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-            result = result && clickDiscoveryAction.seekForward("SEEKBAR_ANDROID");
-            result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-            result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);       
-            result = result && clickDiscoveryAction.clickPlayButton();
-            if(test.getAsset().contains("PREMIDPOST")) {
-	            	result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	    	        result = result && elementValidator.validate("SKIPAD_ANDROID", 20000);
-	    	        result = result && elementValidator.clickOnElement("SKIPAD_ANDROID");
-	    	        	result = result && notificationEventValidator.validateEvent(Events.AD_SKIPPPED,20000);
-            }            
-           	result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	        result = result && elementValidator.validate("SKIPAD_ANDROID", 10000);
-	        result = result && elementValidator.clickOnElement("SKIPAD_ANDROID");
-	        	result = result && notificationEventValidator.validateEvent(Events.AD_SKIPPPED,20000);  
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
+        		result = result && testIMASkippableAds(test);
         }
         catch(Exception ex) {
         		ex.printStackTrace();
@@ -198,49 +109,7 @@ import io.appium.java_client.android.AndroidKeyCode;
         logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
         boolean result = true;
         try {      	
-        		result = result && appAssetsSelection.startAction("Google IMA Integration");
-        		Thread.sleep(3000);
-        		result = result && selectVideo.startAction(test.getAsset());
-        		Thread.sleep(3000);
-        		result = result && allowAction.startAction("ALLOW");       	
-	        	result = result && androidKeyCode.startAction("BACK");        	
-	        	result = result && selectVideo.startAction(test.getAsset());
-	        	Thread.sleep(5000);
-	        	result = result && clickDiscoveryAction.clickPlayButton();
-	        	if(test.getAsset().contains("PREROLL")) {
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-	        	}
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-            result = result && clickDiscoveryAction.clickPauseButton();
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-            result = result && clickDiscoveryAction.seekForward("SEEKBAR_ANDROID");
-            result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-            result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);       
-            result = result && clickDiscoveryAction.clickPlayButton();
-            if(test.getAsset().contains("QUADMID")) {
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-            }
-            if(test.getAsset().contains("MIDROLL") || test.getAsset().contains("PREMIDMIDPOST")) {
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-            }
-            if(test.getAsset().contains("PREMIDMIDPOST")) {
-    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-            }
-            if(test.getAsset().contains("PREMIDMIDPOST") || test.getAsset().contains("POSTROLL")) {
-        			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-        			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-            }
-            result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
+        		result = result && testIMANonAdRules(test);
         }
         catch(Exception ex) {
         		ex.printStackTrace();
