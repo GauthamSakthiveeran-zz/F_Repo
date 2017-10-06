@@ -2,16 +2,16 @@
 <testdata>
 	<app name="IMASampleApp" />
  	<test name="PODDED_PRE_MID_POST">
-		<description name="Podded Pre mid post" />
+		<description name="3 Podded Pre mid post" />
 	</test>
 	<test name="PODDED_POSTROLL">
-		<description name="Podded Postroll" />
+		<description name="2 Podded Postroll" />
 	</test>
 	<test name="PODDED_MIDROLL">
-		<description name="Podded Midroll" />
+		<description name="2 Podded Midroll" />
 	</test>
 	<test name="PODDED_PREROLL">
-		<description name="Podded Preroll" />
+		<description name="2 Podded Preroll" />
 	</test>
 	
 </testdata>

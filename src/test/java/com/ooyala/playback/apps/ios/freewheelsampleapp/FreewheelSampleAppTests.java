@@ -42,7 +42,7 @@ public class FreewheelSampleAppTests extends PlaybackAppsTest {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			logger.error("Here is an exception" + ex);
-			extentTest.log(LogStatus.FAIL, ex);
+			extentTest.log(LogStatus.FAIL, ex.getMessage());
 			result = false;
 		}
 		Assert.assertTrue(result, "APP:" + test.getApp() + "->Asset:" + test.getAsset());

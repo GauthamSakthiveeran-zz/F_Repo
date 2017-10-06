@@ -35,7 +35,7 @@ public class PulseSampleAppTests extends PlaybackAppsTest {
 			result = result && elementValidator.validate("PLAY_PAUSE_ANDROID", 30000);
 			result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 
-			result = result && adValidator.setNoOfAds(2).validate("", 1000);
+			result = result && adValidator.setNoOfAds("2").validate("", 1000);
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
 
