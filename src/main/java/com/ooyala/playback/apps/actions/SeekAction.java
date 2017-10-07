@@ -1,13 +1,13 @@
 package com.ooyala.playback.apps.actions;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.facile.page.FacileWebElement;
 import com.ooyala.playback.apps.PlaybackApps;
-import com.ooyala.playback.apps.utils.CommandLineParameters;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
@@ -37,7 +37,7 @@ public class SeekAction extends PlaybackApps implements Actions {
 
 	@Override
 	public boolean startAction(String seek) throws Exception {
-		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
+		if (getPlatform().equalsIgnoreCase("ios")) {
 			if (seekFrwd) {
 				// seekFrwd = false;
 				tapScreenIfRequired();
@@ -52,7 +52,7 @@ public class SeekAction extends PlaybackApps implements Actions {
 			} else {
 				tapScreenIfRequired();
 				if (!seekVideoBack(slider, seek)) {
-					logger.error("Unable to seek forward video.");
+					logger.error("Unable to seek video.");
 					tapScreenIfRequired();
 					if (!seekVideoBack(slider, seek)) {
 						logger.error("Unable to seek forward video");
@@ -80,7 +80,13 @@ public class SeekAction extends PlaybackApps implements Actions {
 	}
 	
 	private boolean seekVideoForward(String slider, String seekbar) throws InterruptedException {
+		if(!waitOnElement(seekbar,1000) || !waitOnElement(slider,1000)) {
+        	tapScreen();
+        }
         int startx = getSliderPosition(slider);
+        if(!waitOnElement(seekbar,1000) || !waitOnElement(slider,1000)) {
+        	tapScreen();
+        }
         Element seekbarElement =  getSeekBarPosition(seekbar);
         logger.info("Seeking forward -------------------------  ");
         tapScreenIfRequired();
@@ -110,7 +116,17 @@ public class SeekAction extends PlaybackApps implements Actions {
     }
 	
 	private boolean seekVideoBack(String slider, String seekbar) throws InterruptedException {
-        int startx = getSliderPosition(slider);
+        
+		if(!waitOnElement(seekbar,1000) || !waitOnElement(slider,1000)) {
+        	tapScreen();
+        }
+		
+		int startx = getSliderPosition(slider);
+		
+		if(!waitOnElement(seekbar,1000) || !waitOnElement(slider,1000)) {
+        	tapScreen();
+        }
+        
         Element seekbarElement = getSeekBarPosition(seekbar);
         logger.info("Seeking Back------------");
         tapScreenIfRequired();
@@ -124,6 +140,12 @@ public class SeekAction extends PlaybackApps implements Actions {
     }
 	
 	private int getSliderPosition(String slider) throws InterruptedException {
+        try {
+        	WebElement slide = getWebElement(slider);
+        } catch(Exception ex) {
+        	logger.info("Retry tapping.");
+        	tapScreen();
+        }
         WebElement slide = getWebElement(slider);
         int sliderXPosition = slide.getLocation().getX();
         logger.info("Slider X Position >> : " + sliderXPosition);

@@ -85,31 +85,25 @@ public class OverlayValidator extends PlaybackApps implements Validators {
 
 		boolean iOS = getPlatform().equalsIgnoreCase("ios");
 
-		if (!waitOnElement(element, timeout)) {
-			extentTest.log(LogStatus.FAIL, "Overlay not present");
-			return false;
-		}
 
 		if (test.getAsset().contains("PRE")) {
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
 			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
 		}
-
+		
 		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
+		
+		if (!waitOnElement(element, timeout)) {
+			extentTest.log(LogStatus.FAIL, "Overlay not present");
+			return false;
+		}
+		extentTest.log(LogStatus.PASS, "Overlay has been validated.");
 
-		result = result && notificationEventValidator.letVideoPlayForSec(3);
-
-		if (test.getAsset().contains("PRE"))
-			result = result && waitForOverlayToDisapper(element, 30000);
+		result = result && waitForOverlayToDisapper(element, 30000);
 
 		if (test.getAsset().contains("MID")) {
-			if (!waitOnElement(element, timeout)) {
-				extentTest.log(LogStatus.FAIL, "Overlay not present");
-				return false;
-			}
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
 			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
-			result = result && waitForOverlayToDisapper(element, 30000);
 		}
 
 		result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
@@ -124,10 +118,6 @@ public class OverlayValidator extends PlaybackApps implements Validators {
 		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
 
 		if (test.getAsset().contains("POST")) {
-			if (!waitOnElement(element, timeout)) {
-				extentTest.log(LogStatus.FAIL, "Overlay not present");
-				return false;
-			}
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
 			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
 		}
@@ -136,16 +126,23 @@ public class OverlayValidator extends PlaybackApps implements Validators {
 
 	}
 
-	private boolean waitForOverlayToDisapper(String element, int timeout) {
-		logger.info("Waiting for Overlay to disappear....");
-		waitOnElement(element, timeout);
-		if (isElementPresent(element)) {
-			extentTest.log(LogStatus.FAIL, "Overlay is still present");
-			return false;
-		} else {
-			extentTest.log(LogStatus.PASS, "Overlay has disappeared.");
-			return true;
+	private boolean waitForOverlayToDisapper(String element, int timeout) throws InterruptedException {
+
+		int count = timeout / 1000;
+		while (count > 0) {
+			
+			if (!isElementPresent(element)) {
+				extentTest.log(LogStatus.PASS, "Overlay disappeared.");
+				return true;
+			} else {
+				Thread.sleep(1000);
+				count--;
+				logger.info("Waiting for Overlay to disappear....");
+			}
+			
 		}
+		extentTest.log(LogStatus.FAIL, "Overlay did not disappear after " + timeout + " ms");
+		return false;
 	}
 
 }

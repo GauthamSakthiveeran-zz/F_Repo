@@ -46,8 +46,6 @@ public class AdValidator extends PlaybackApps implements Validators {
 			
 		}
 		
-		result = result && notificationEventValidator.letVideoPlayForSec(4);
-		
 		result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
 				: pauseAction.startAction("PLAY_PAUSE_ANDROID");
 		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);

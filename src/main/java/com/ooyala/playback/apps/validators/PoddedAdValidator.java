@@ -23,8 +23,8 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 		return this;
 	}
 
-	public PoddedAdValidator setNoOfAds(int noOfAds) {
-		this.noOfAds = noOfAds;
+	public PoddedAdValidator setNoOfAds(String noOfAds) {
+		this.noOfAds = Integer.parseInt(noOfAds);
 		return this;
 	}
 
@@ -42,14 +42,13 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 		PauseAction pauseAction = playBackFactory.getPauseAction();
 		SeekAction seekAction = playBackFactory.getSeekAction();
 
-		boolean premidpost = test.getAsset().contains("PREMIDPOST");
 		boolean iOS = getPlatform().equalsIgnoreCase("ios");
 		
 		if(test.getAsset().contains("QUAD")) {
 			noOfAds = 4;
 		}
 
-		if (test.getAsset().contains("PREROLL") || premidpost) {
+		if (test.getAsset().contains("PRE")) {
 			for (int i = 0; i < noOfAds; i++) {
 				result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
 				result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
@@ -57,7 +56,7 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 		}
 		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
 
-		if (test.getAsset().contains("MIDROLL") || premidpost) {
+		if (test.getAsset().contains("MID")) {
 			for (int i = 0; i < noOfAds; i++) {
 				result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
 				result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
@@ -67,11 +66,10 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 
 		}
 
-		result = result && notificationEventValidator.letVideoPlayForSec(4);
 		result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
 				: pauseAction.startAction("PLAY_PAUSE_ANDROID");
 		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
-		result = result && iOS ? seekAction.setSlider("SLIDER").startAction("SEEK_BAR")
+		result = result && iOS ? seekAction.seekforward().setSlider("SLIDER").startAction("SEEK_BAR")
 				: seekAction.startAction("SEEK_BAR_ANDROID");
 		result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
 		result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
@@ -79,14 +77,14 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 				: pauseAction.startAction("PLAY_PAUSE_ANDROID");
 		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
 
-		if (test.getAsset().contains("POSTROLL") || premidpost) {
+		if (test.getAsset().contains("POST")) {
 			for (int i = 0; i < noOfAds; i++) {
-				result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
+				result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 30000);
 				result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
 			}
 		}
 
-		return false;
+		return result;
 	}
 
 }
