@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="NPAW SampleAPPTests Regression Suite" verbose="1">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+	
+	<test name="NPAW Tests" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="ios/NPAWSampleAppTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.ios.npawsampleapp.NPAWSampleAppTests">
+			</class>
+		</classes>
+	</test>
+</suite>
+

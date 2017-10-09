@@ -1,5 +1,5 @@
 <elements area="seekbar">
-    <element key="SEEK_BAR" findBy="xPath" xPath="//XCUIElementTypeToolbar[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther[3]" />
-    <element key="SLIDER" findBy="xpath" xPath="//XCUIElementTypeToolbar[1]/XCUIElementTypeOther[1]/XCUIElementTypeImage[1]" />
+    <element key="SEEK_BAR" findBy="xPath" xPath="//XCUIElementTypeToolbar/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]" />
+    <element key="SLIDER" findBy="xpath" xPath="//XCUIElementTypeToolbar/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage" />
     <element key="SEEK_BAR_ANDROID" findBy="xpath" xPath="//android.widget.SeekBar"/>
 </elements>
