@@ -1,6 +1,7 @@
 package com.ooyala.playback;
 
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
@@ -12,7 +13,10 @@ import java.util.Map;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -125,9 +129,10 @@ public class PlaybackAppsTest extends FacileTest {
 			}
 			
 			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
-				Assert.assertTrue(
-						new PlayBackFactory((AppiumDriver) driver, extentTest).getQAModeSwitchAction().startAction("QA_MODE_SWITCH"),
-						"QA Mode is not enabled. Hence failing test");
+				if (!this.testData.getApp().getName().equals("OoyalaSkinSampleApp")) {
+					Assert.assertTrue(new PlayBackFactory((AppiumDriver) driver, extentTest).getQAModeSwitchAction()
+					        .startAction("QA_MODE_SWITCH"), "QA Mode is not enabled. Hence failing test");
+				}
 			} else {
 				// For Android- Events will be written in the log file.
 				String command = "adb push log.file /sdcard/";
@@ -159,17 +164,18 @@ public class PlaybackAppsTest extends FacileTest {
 	@AfterMethod(alwaysRun = true)
 	protected void afterMethod(ITestResult result) throws Exception {
 
-		isAppClosed = pageFactory.getLaunchAction().closeApp();
-
-		try {			
-			//delete log file for android
+		try {
+			// delete log file for android
 			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
 				RemoveEventsLogFile.removeEventsFileLog();
-			
+
 			if (result.getStatus() == ITestResult.FAILURE) {
 
 				extentTest.log(LogStatus.FAIL, result.getThrowable().getMessage());
 				logger.error("**** Test " + extentTest.getTest().getName() + " failed ******");
+				String fileName = takeScreenshot(extentTest.getTest().getName());
+				extentTest.log(LogStatus.INFO, "Snapshot is " + extentTest.addScreenCapture(fileName));
+
 			} else if (result.getStatus() == ITestResult.SKIP) {
 				extentTest.log(LogStatus.SKIP,
 						extentTest.getTest().getName() + " Test skipped " + result.getThrowable());
@@ -181,6 +187,7 @@ public class PlaybackAppsTest extends FacileTest {
 				extentTest.log(LogStatus.FAIL, result.getThrowable());
 				logger.error("**** Test " + extentTest.getTest().getName() + " failed ******");
 			}
+			isAppClosed = pageFactory.getLaunchAction().closeApp();
 		} catch (Exception ex) {
 			extentTest.log(LogStatus.INFO, ex.getMessage());
 			logger.warn(ex.getMessage());
@@ -206,6 +213,7 @@ public class PlaybackAppsTest extends FacileTest {
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			testData = (Testdata) jaxbUnmarshaller.unmarshal(file);
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(e.getMessage());
 			logger.info(e.getMessage());
 		}
@@ -242,20 +250,33 @@ public class PlaybackAppsTest extends FacileTest {
 		return testsGenerated;
 	}
 	
-
-
+	public String takeScreenshot(String fileName) {
+        try {
+            logger.info("Taking Screenshot");
+            File destDir = new File("images/");
+            if (!destDir.exists())
+                destDir.mkdir();
+            File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            try {
+                FileUtils.copyFile(scrFile, new File("images/" + fileName));
+            } catch (IOException e) {
+                e.printStackTrace();
+                logger.error("Not able to take the screenshot");
+            }
+        } catch (Exception ex) {
+            logger.info(ex.getMessage());
+        }
+        return "images/" + fileName;
+    }
+	
 	@AfterClass(alwaysRun = true)
-	public void afterClass()
-	{
-		try
-		{
+	public void afterClass() {
+		try {
 			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android")) {
-			((AndroidDriver)driver).closeApp();
-			logger.info("Closing App");
+				((AndroidDriver) driver).closeApp();
+				logger.info("Closing App");
 			}
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			logger.info("Error While Closing App");
 		}
 	}

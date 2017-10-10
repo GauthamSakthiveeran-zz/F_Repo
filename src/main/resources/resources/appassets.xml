@@ -3,5 +3,7 @@
 	<element key="APP_ASSETS_SCREEN_ANDROID" findBy="class" class="android.widget.ListView" />
 	<element key="APP_ASSETS_HLS_ANDROID" findBy="xPath" xPath="//android.widget.TextView[@text='HLS Video']" />
 	<element key="MEDIA_ALLOW_ANDROID" findBy="xPath" xPath="//android.widget.Button[@text='ALLOW']" />
-	
+	<element key="VAST_3_PODDED_PREROLL" findBy="name" name="VAST 3.0 - Podded" />
+	<element key="HLS" findBy="name" name="HLS Video" />
+	<element key="VAST_3_ICON_BOTTOM_LEFT_PRE" findBy="name" name="VAST 3.0 - Icon Bottom Left" />
 </elements>

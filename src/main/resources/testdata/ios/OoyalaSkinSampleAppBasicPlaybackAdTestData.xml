@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="OoyalaSkinSampleApp" />
+  	<test name="VAST_AD_PRE_ROLL">
+		<description name="VAST Ad Pre-roll (Asset length is small)" />
+	</test>
+ 	<test name="VAST_AD_MID_ROLL">
+		<description name="VAST Ad Mid-roll (Asset length is small)" />
+	</test>
+ 	<test name="VAST_AD_POST_ROLL">
+		<description name="VAST Ad Post-roll (Asset length is small)" />
+	</test>
+ 	<test name="VAST_AD_WRAPPER">
+		<description name="VAST Ad Wrapper" />
+	</test>
+  	<test name="OOYALA_AD_PRE_ROLL">
+		<description name="Ooyala Ad Pre-roll (Asset length is small)" />
+	</test>
+ 	<test name="OOYALA_AD_MID_ROLL">
+		<description name="Ooyala Ad Mid-roll (Asset length is small)" />
+	</test>
+ 	<test name="OOYALA_AD_POST_ROLL">
+		<description name="Ooyala Ad Post-roll (Asset length is small)" />
+	</test>
+ 	<test name="MULTI_AD_COMBINATION">
+		<description name="Multi Ad combination (Asset length is small)" />
+	</test>
+</testdata>

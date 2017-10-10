@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="OoyalaSkinSampleApp" />
+	<test name="IMA_NONAD_PREROLL">
+		<description name="IMA Non Ad-Rules Preroll" />
+	</test> 
+	<test name="IMA_NONAD_MIDROLL">
+		<description name="IMA Non Ad-Rules Midroll" />
+	</test>
+	<test name="IMA_NONAD_POSTROLL">
+		<description name="IMA Non Ad-Rules Postroll" />
+	</test>
+	<test name="IMA_NONAD_PREMIDMIDPOST">
+		<description name="IMA Non Ad-Rules Pre-Mid-Post" />
+	</test> 
+	<test name="IMA_NONAD_QUADMIDROLL">
+		<description name="IMA Non Ad-Rules Pre-Mid-Post" />
+	</test> 
+</testdata>

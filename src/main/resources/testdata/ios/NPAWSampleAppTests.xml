@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<app name="NPAWSampleApp" />
+ 	<test name="BASIC_NPAW_YOUBURA_INTEGRATION">
+		<description name="Basic NPAW Youbura Integration" />
+	</test>
+	<test name="NPAW_WITH_OPTIONAL_METADATA">
+		<description name="NPAW with Optional Metadata" />
+	</test>
+</testdata>

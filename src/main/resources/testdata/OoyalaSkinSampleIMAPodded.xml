@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<app name="OoyalaSkinSampleApp" />
+	<test name="IMA_PODDED_PREROLL">
+		<description name="IMA Podded Preroll" />
+	</test>
+	<test name="IMA_PODDED_MIDROLL">
+		<description name="IMA Podded Midroll" />
+	</test>
+	<test name="IMA_PODDED_POSTROLL">
+		<description name="IMA Podded Postroll" />
+	</test>
+	<test name="IMA_PODDED_PREMIDPOST">
+		<description name="IMA Podded Pre-Mid-Post" />
+	</test>
+</testdata>

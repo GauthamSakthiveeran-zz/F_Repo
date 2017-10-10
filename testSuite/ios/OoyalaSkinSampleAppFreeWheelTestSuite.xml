@@ -1,0 +1,13 @@
+<suite name="OoyalaSkin Freewheel Regression Suite" verbose="1">
+     <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+	<test name="iOS OoyalaSkin Freewheel" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="ios/OoyalaSkinSampleAppFreeWheelTestData.xml" />
+			<class name="com.ooyala.playback.apps.ios.ooyalaskinsampleapp.OoyalaSkinFreewheelTest">
+			</class>
+		</classes>
+	</test>
+</suite>
+

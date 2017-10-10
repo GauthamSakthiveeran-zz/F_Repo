@@ -9,7 +9,9 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 
 import com.ooyala.facile.page.WebPage;
+import com.ooyala.playback.apps.actions.ClickAction;
 import com.ooyala.playback.apps.utils.CommandLineParameters;
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -25,9 +27,10 @@ public abstract class PlaybackApps extends WebPage {
 
     protected AppiumDriver driver;
     protected ExtentTest extentTest;
+    public static boolean isV4 = false;
 
 
-    final static  int[] playCoordinates = new int[2];
+    protected final static Integer[] playCoordinates = new Integer[2];
 
     final static Logger logger = Logger.getLogger(PlaybackApps.class);
 
@@ -119,7 +122,7 @@ public abstract class PlaybackApps extends WebPage {
     }
 
     @Override
-    protected boolean clickOnIndependentElement(String elementKey) {
+	public boolean clickOnIndependentElement(String elementKey) {
         try {
             return super.clickOnIndependentElement(elementKey);
         } catch (Exception ex) {
@@ -196,7 +199,7 @@ public abstract class PlaybackApps extends WebPage {
         }
         return flag;
     }
-
+    
     public boolean tapScreenIfRequired() {
         if (!isElementPresent(By.xpath("//XCUIElementTypeToolbar[1]"))) {
             return tapScreen();
@@ -279,6 +282,14 @@ public abstract class PlaybackApps extends WebPage {
 		return true;
 	}
 	
+	public boolean isAppV4(String app) {
+		String V4apps = "OoyalaSkinSampleApp DownloadToOwnSampleApp PulseSampleApp";
+		if (V4apps.contains(app)) {
+			isV4 = true;
+			return true;
+		}
+		return false;
+	}
 
 	public void gotoBack()
 	{

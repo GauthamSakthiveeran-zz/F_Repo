@@ -1,0 +1,13 @@
+<suite name="OoyalaSkin Google IMA Regression Suite" verbose="1">
+     <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+	<test name="iOS OoyalaSkin Google IMA" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="ios/OoyalaSkinSampleAppGoogleIMATestData.xml" />
+			<class name="com.ooyala.playback.apps.ios.ooyalaskinsampleapp.OoyalaSkinGoogleIMATest">
+			</class>
+		</classes>
+	</test>
+</suite>
+
