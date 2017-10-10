@@ -1,4 +1,4 @@
-package com.ooyala.playback.apps.android.ooyalaSkinSampleApp;
+package com.ooyala.playback.apps.android.ooyalaskinsamplespp;
 
 import java.time.Duration;
 import java.util.List;
@@ -35,9 +35,9 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
-public class OoyalaSkinSampleSkinPlayBackOoyalaAdsTest extends OoyalaSkinSampleAppUtils {
+public class OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest extends OoyalaSkinSampleAppUtils {
 
-	private static Logger logger = Logger.getLogger(OoyalaSkinSampleSkinPlayBackOoyalaAdsTest.class);
+	private static Logger logger = Logger.getLogger(OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest.class);
 	private SelectVideoAction selectVideo;
 	private ElementValidator elementValidator;
 	private PauseAction pauseAction;
@@ -51,13 +51,14 @@ public class OoyalaSkinSampleSkinPlayBackOoyalaAdsTest extends OoyalaSkinSampleA
 	private AllowAction allowAction;
 
 	@Test(groups = "OoyalaSkinSampleApp", dataProvider = "testData")
-	public void testOoyalaAdsTest(String testName, TestParameters test) throws Exception {
+	public void testMultiAds(String testName, TestParameters test) throws Exception {
 		Reporter.log("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
 		logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
 		boolean result = true;
 		try {
 			result = result && SwipeAndselectAsset(test);
-			result = result && ooyalaAdsTest(test);
+			result = result && multiAdsTest(test);
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			logger.error("Here is an exception" + ex);

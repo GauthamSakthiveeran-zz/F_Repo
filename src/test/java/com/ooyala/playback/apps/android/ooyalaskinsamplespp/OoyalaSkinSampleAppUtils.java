@@ -1,4 +1,4 @@
-package com.ooyala.playback.apps.android.ooyalaSkinSampleApp;
+package com.ooyala.playback.apps.android.ooyalaskinsamplespp;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;

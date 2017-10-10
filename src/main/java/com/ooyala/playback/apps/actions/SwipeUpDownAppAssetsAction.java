@@ -277,19 +277,20 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
     	try
     	{
     		Thread.sleep(2000);
-    		if(((AndroidDriver)driver).currentActivity().equals("com.android.packageinstaller.permission.ui.GrantPermissionsActivity"))
+    		if(((AndroidDriver)driver).currentActivity().contains("permission.ui.GrantPermissionsActivity"))
     		{
     			getWebElement("MEDIA_ALLOW_ANDROID").click();
     			logger.info("Allow Media Access button clicked");
     			return true;
     		}
-    		else if(((AndroidDriver)driver).currentActivity().equals("com.ooyala.sample.players.OoyalaSkinPlayerActivity"))  
+    		else if(((AndroidDriver)driver).currentActivity().contains("PlayerActivity"))  
     		{
     			logger.info("Player screen displayed");
     			return true;
     		}
     		else
     		{
+    			logger.info("Permission Screen or Player Activity Screen Not displayed");
     			return false;
     		}
     	}

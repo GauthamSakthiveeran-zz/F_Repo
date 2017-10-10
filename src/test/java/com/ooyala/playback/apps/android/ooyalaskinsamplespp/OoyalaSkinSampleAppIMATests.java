@@ -1,4 +1,4 @@
-package com.ooyala.playback.apps.android.ooyalaSkinSampleApp;
+package com.ooyala.playback.apps.android.ooyalaskinsamplespp;
 
 import java.time.Duration;
 import java.util.List;
