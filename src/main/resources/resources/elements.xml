@@ -10,6 +10,7 @@
 	<element key="INSERT_OOYALA_AD" findBy="accessibilityId" accessibilityId="INSERT OOYALA AD" />
 	<element key="CUSTOM_PLAY_PAUSE_BUTTON" findBy="xPath" xPath="//XCUIElementTypeToolbar[1]/XCUIElementTypeButton[1]" />
 	<element key="OVERLAY" findBy="name" name="This is an overlay" />
+	<element key="SKIPAD_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='Skip Ad']" />
 	<element key="ANDROID_ADV_INITIALTIME" findBy="xPath" xPath="//android.widget.TextView[@index='0']" />
 	<element key="ANDROID_ADV_MULTIPLE" findBy="xPath" xPath="//android.widget.TextView[@index='1']" />
 	<element key="ANDROID_PLAY_VIDEO_1" findBy="id" id="com.ooyala.sample.AdvancedPlaybackSampleApp:id/doubleLeftButton" />
