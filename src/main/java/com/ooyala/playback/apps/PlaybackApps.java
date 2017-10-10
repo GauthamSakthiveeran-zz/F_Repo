@@ -1,18 +1,23 @@
 package com.ooyala.playback.apps;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import com.ooyala.facile.page.FacileWebElement;
 import com.ooyala.facile.page.WebPage;
+import com.ooyala.playback.apps.actions.ClickAction;
 import com.ooyala.playback.apps.utils.CommandLineParameters;
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 
 
 public abstract class PlaybackApps extends WebPage {
@@ -20,9 +25,10 @@ public abstract class PlaybackApps extends WebPage {
 
     protected AppiumDriver driver;
     protected ExtentTest extentTest;
+    public static boolean isV4 = false;
 
 
-    final static  int[] playCoordinates = new int[2];
+    protected final static Integer[] playCoordinates = new Integer[2];
 
     final static Logger logger = Logger.getLogger(PlaybackApps.class);
 
@@ -114,7 +120,7 @@ public abstract class PlaybackApps extends WebPage {
     }
 
     @Override
-    protected boolean clickOnIndependentElement(String elementKey) {
+	public boolean clickOnIndependentElement(String elementKey) {
         try {
             return super.clickOnIndependentElement(elementKey);
         } catch (Exception ex) {
@@ -124,18 +130,18 @@ public abstract class PlaybackApps extends WebPage {
         }
     }
 
-    public boolean getPlayPause(String playpause){
-    	int[] play = new int[2];
-        TouchAction touch = new TouchAction(driver);
-        List<WebElement> e = getWebElementsList(playpause);
-        WebElement button =e.get(0);
-        play[0] = button.getLocation().getX();
-        play[1] = button.getLocation().getY();
-       playCoordinates[0] = play[0] + button.getSize().getWidth() / 2;
-        playCoordinates[1] = play[1] + button.getSize().getHeight() / 2;
-        touch.tap(playCoordinates[0],playCoordinates[1]).perform();
-        return true;
-    }
+	public boolean getPlayPause(String playpause) {
+		int[] play = new int[2];
+		TouchAction touch = new TouchAction(driver);
+		List<WebElement> e = getWebElementsList(playpause);
+		WebElement button = e.get(0);
+		play[0] = button.getLocation().getX();
+		play[1] = button.getLocation().getY();
+		playCoordinates[0] = play[0] + button.getSize().getWidth() / 2;
+		playCoordinates[1] = play[1] + button.getSize().getHeight() / 2;
+		touch.tap(playCoordinates[0], playCoordinates[1]).perform();
+		return true;
+	}
 
     public boolean getPause(String playpause) throws Exception {
     	    int[] play = new int[2];
@@ -151,16 +157,6 @@ public abstract class PlaybackApps extends WebPage {
         touch.tap(playCoordinates[0],  playCoordinates[1]).perform();
         logger.info("We have tapped successfully");
         // Thread.sleep(2000);
-    }
-
-    public boolean seekVideo(String element) {
-        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(element));
-        WebElement seekbar = this.getWebElementFromFacileWebElement(anElement);
-        int seekBarFieldWidth = seekbar.getLocation().getX();
-        int seekBarFieldHeigth = seekbar.getLocation().getY();
-        TouchAction touch = new TouchAction(driver);
-        touch.longPress(seekBarFieldWidth + 20, seekBarFieldHeigth).moveTo(seekBarFieldWidth + 100, seekBarFieldHeigth).release().perform();
-        return true;
     }
 
     public boolean handleLoadingSpinner() {
@@ -201,7 +197,7 @@ public abstract class PlaybackApps extends WebPage {
         }
         return flag;
     }
-
+    
     public boolean tapScreenIfRequired() {
         if (!isElementPresent(By.xpath("//XCUIElementTypeToolbar[1]"))) {
             return tapScreen();
@@ -245,6 +241,52 @@ public abstract class PlaybackApps extends WebPage {
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean getBackFromRecentApp() {
+		try{
+			if(getPlatform().equalsIgnoreCase("android")) {
+				((AndroidDriver) driver).pressKeyCode(187);
+				Thread.sleep(5000);
+				logger.info("showing recent app screen");
+				driver.findElement(By.xpath("//android.view.View[@index= '0']")).click();
+				logger.info("back to ooyala app");
+			} else {
+				// TODO
+			}
+			
+		} catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean lockAndUnlockDevice() {
+		try {
+			if(getPlatform().equalsIgnoreCase("android")) {
+				((AndroidDriver) driver).lockDevice();
+				Thread.sleep(5000);
+				((AndroidDriver) driver).unlockDevice();
+				Thread.sleep(5000);
+			} else {
+				((IOSDriver) driver).lockDevice(Duration.ofSeconds(5));
+				Thread.sleep(5000);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean isAppV4(String app) {
+		String V4apps = "OoyalaSkinSampleApp DownloadToOwnSampleApp PulseSampleApp";
+		if (V4apps.contains(app)) {
+			isV4 = true;
+			return true;
+		}
+		return false;
 	}
 
 }

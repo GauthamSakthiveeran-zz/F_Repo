@@ -1,18 +1,21 @@
 <elements area="selectvideo_ios">
-    <element key="HLS" findBy="name" name="HLS Video" />
-    <element key="MP4" findBy="name" name="MP4 Video" />
-    <element key="VOD_WITH_CCS" findBy="name" name="VOD with CCs" />
-    <element key="ASPECT_RATIO" findBy="name" name="4:3 Aspect Ratio" />
-    <element key="VAST_AD_PRE_ROLL" findBy="name" name="VAST Ad Pre-roll" />
-    <element key="VAST_AD_MID_ROLL" findBy="name" name="VAST Ad Mid-roll" />
-    <element key="VAST_AD_POST_ROLL" findBy="name" name="VAST Ad Post-roll" />
-    <element key="VAST_AD_WRAPPER" findBy="name" name="VAST Ad Wrapper" />
-    <element key="OOYALA_AD_PRE_ROLL" findBy="name" name="Ooyala Ad Pre-roll" />
-    <element key="OOYALA_AD_MID_ROLL" findBy="name" name="Ooyala Ad Mid-roll" />
-    <element key="OOYALA_AD_POST_ROLL" findBy="name" name="Ooyala Ad Post-roll" />
-    <element key="VERTICAL" findBy="name" name="Vertical 16:9" />
-    <element key="MULTI_AD_COMBINATION" findBy="name" name="Multi Ad combination" />
-    <element key="PLUGIN_PLAYER" findBy="name" name="Plugin Player" />
+
+    <element key="APP_ASSETS_IOS" findBy="xPath" xPath="//XCUIElementTypeTable" />
+    
+	<element key="HLS" findBy="name" name="HLS Video" />
+	<element key="MP4" findBy="name" name="MP4 Video" />
+	<element key="VOD_WITH_CCS" findBy="name" name="VOD with CCs" />
+	<element key="ASPECT_RATIO" findBy="name" name="4:3 Aspect Ratio" />
+	<element key="VAST_AD_PRE_ROLL" findBy="name" name="VAST Ad Pre-roll" />
+	<element key="VAST_AD_MID_ROLL" findBy="name" name="VAST Ad Mid-roll" />
+	<element key="VAST_AD_POST_ROLL" findBy="name" name="VAST Ad Post-roll" />
+	<element key="VAST_AD_WRAPPER" findBy="name" name="VAST Ad Wrapper" />
+	<element key="OOYALA_AD_PRE_ROLL" findBy="name" name="Ooyala Ad Pre-roll" />
+	<element key="OOYALA_AD_MID_ROLL" findBy="name" name="Ooyala Ad Mid-roll" />
+	<element key="OOYALA_AD_POST_ROLL" findBy="name" name="Ooyala Ad Post-roll" />
+	<element key="VERTICAL" findBy="name" name="Vertical 16:9" />
+	<element key="MULTI_AD_COMBINATION" findBy="name" name="Multi Ad combination" />
+	<element key="PLUGIN_PLAYER" findBy="name" name="Plugin Player" />
     <element key="CHANGE_VIDEO_PROGRAMMATICALLY" findBy="name" name="Change Video Programmatically" />
     <element key="INSERT_AD_AT_RUNTIME" findBy="name" name="Insert Ad at Runtime" />
     <element key="PLAY_WITH_INITIALTIME" findBy="name" name="Play With InitialTime" />
@@ -23,4 +26,60 @@
     <element key="UNBUNDLED_HLS" findBy="name" name="Unbundled HLS" />
     <element key="NOTIFICATION_SAMPLE" findBy="name" name="Notification Sample" />
     <element key="PROGRAMMATIC_VOLUME" findBy="name" name="Programmatic Volume" />
+	
+	<!-- 	FreewheelSampleApp  -->
+	<element key="FREEWHEEL_PREROLL" findBy="name" name="Freewheel Preroll" />
+	<element key="FREEWHEEL_MIDROLL" findBy="name" name="Freewheel Midroll" />
+	<element key="FREEWHEEL_POSTROLL" findBy="name" name="Freewheel Postroll" />
+	<element key="FREEWHEEL_PREMIDPOST" findBy="name" name="Freewheel PreMidPost" />
+	<element key="FREEWHEEL_OVERLAY" findBy="name" name="Freewheel Overlay" />
+	<element key="FREEWHEEL_PREMIDPOST_OVERLAY" findBy="name" name="Freewheel PreMidPost Overlay" />
+	<element key="FREEWHEEL_MULTI_MIDROLL" findBy="name" name="Freewheel Multi Midroll" />
+	
+	<!-- 	IMASampleApps -->
+	
+	<element key="MIDROLL_CLIENTSIDE_CONFIGURED_IMA_ADS" findBy="name" name="Client-side configured IMA Ads" />
+	<element key="PRE_MID_AND_POST_SKIPPABLE" findBy="name" name="Pre, Mid and Post Skippable" />
+	<element key="PREROLL_SKIPPABLE" findBy="name" name="Skippable" />
+	<element key="PODDED_PRE_MID_POST" findBy="name" name="Podded Pre-Mid-Post" />
+	<element key="PODDED_POSTROLL" findBy="name" name="Podded Postroll" />
+	<element key="PODDED_MIDROLL" findBy="name" name="Podded Midroll" />
+	<element key="PODDED_PREROLL" findBy="name" name="Podded Preroll" />
+	<element key="AD_RULES_POSTROLL" findBy="name" name="Ad-Rules Postroll" />
+	<element key="AD_RULES_MIDROLL" findBy="name" name="Ad-Rules Midroll" />
+	<element key="AD_RULES_PREROLL" findBy="name" name="Ad-Rules Preroll" />
+	
+	<element key="MULTI_AD_COMBINATION" findBy="name" name="Multi Ad combination" />
+	<element key="FreewheelIntegration" findBy="xPath" xPath="//android.widget.TextView[@text='Freewheel Integration']"/>
+	
+	<element key="NO_ADS" findBy="name" name="No Ads" />
+	
+<!-- 	NPAW Sample apps -->
+	<element key="BASIC_NPAW_YOUBURA_INTEGRATION" findBy="name" name="Basic NPAW Youbura Integration" />
+	<element key="NPAW_WITH_OPTIONAL_METADATA" findBy="name" name="NPAW with Optional Metadata" />
+	
+	<!-- OoyalaSkinSampleApp BasicPlayback -->
+	<element key="BASIC_PLAYBACK" findBy="name" name="Basic Playback" />
+	<element key="HLS_VIDEO_2_AND_5_1" findBy="name" name="2.0 and 5.1 HLS Video" />
+	<element key="VAST_3_PODDED_PREROLL" findBy="name" name="VAST 3.0 - Podded" />
+	<element key="VAST_3_SKIPPABLE_MIDROLL" findBy="name" name="VAST 3.0 - Skippable Midroll" />
+	<element key="VAST_3_SKIPPABLE_PREROLL" findBy="name" name="VAST 3.0 - Skippable Preroll" />
+	<element key="VAST_3_AD_WRAPPER" findBy="name" name="VAST 3.0 - Ad Wrapper" />
+	<element key="VAST_3_ICON_GENERAL_PRE" findBy="name" name="VAST 3.0 - Icon General" />
+	<element key="VAST_3_ICON_TOP_RIGHT_PRE" findBy="name" name="VAST 3.0 - Skippable Midroll" />
+	<element key="VAST_3_ICON_BOTTOM_LEFT_PRE" findBy="name" name="VAST 3.0 - Icon Bottom Left" />
+	<element key="VAST_3_ERROR_CASE_GENERAL_LINEAR_ERROR" findBy="name" name="VAST 3.0 Error Case - General Linear Error" />
+	<element key="VAST_3_ERROR_CASE_NO_ADS_ERROR" findBy="name" name="VAST 3.0 Error Case - No Ads Error" />
+	<element key="VAST_3_ERROR_CASE_UNSUPPORTED_VERSION_ERROR" findBy="name" name="VAST 3.0 Error Case - Unsupported Version Error" />
+	<element key="VAST_3_VMAP_PREMIDPOST_USING_ADTAGURI" findBy="name" name="VAST 3.0 - VMAP PreMidPost using AdTagURI" />
+	<element key="VAST_3_VMAP_PREMID_USING_VASTADDATA" findBy="name" name="VAST 3.0 - VMAP PreMid using VASTAdData" />
+	<element key="VAST_3_OVERLAY_AD" findBy="name" name="VAST 3.0 - Overlay Ad" />
+	<element key="VAST_3_OVERLAY_WITH_PREMID" findBy="name" name="VAST 3.0 - Overlay with PreMid" />
+	
+	<!-- OoyalaSkinSampleApp FREEWHEEL -->
+	<element key="FREEWHEEL" findBy="name" name="Freewheel" />
+	
+		<!-- OoyalaSkinSampleApp GOOGLE IMA -->
+	<element key="GOOGLE_IMA" findBy="name" name="Google IMA" />
+
 </elements>

@@ -3,7 +3,7 @@
 	<element key="NOTIFICATION_AREA" findBy="xPath" xPath="//XCUIElementTypeTextView[1]" />
 	<element key="HLS" findBy="xpath" xPath="//android.widget.TextView[@text='HLS Video']"/>
 	<element key="PLAY_PAUSE_ANDROID" findBy="xPath" xPath="//android.widget.ImageButton[@index='0']"/>
-	<element key="IOS_TAP" findBy="xPath" xPath="//XCUIElementTypeTextView[1]" /> 
+	<element key="IOS_TAP_V3" findBy="xPath" xPath="//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther" /> 
 	<element key="PLAY_VIDEO_1" findBy="accessibilityId" accessibilityId="Play Video 1" />
 	<element key="PLAY_VIDEO_2" findBy="accessibilityId" accessibilityId="Play Video 2" />
 	<element key="INSERT_VAST_AD" findBy="accessibilityId" accessibilityId="INSERT VAST AD" />
@@ -15,4 +15,12 @@
 	<element key="ANDROID_PLAY_VIDEO_1" findBy="id" id="com.ooyala.sample.AdvancedPlaybackSampleApp:id/doubleLeftButton" />
 	<element key="ANDROID_PLAY_VIDEO_2" findBy="id" id="com.ooyala.sample.AdvancedPlaybackSampleApp:id/doubleRightButton" />
 	<element key="CUSTOM_PLAY_PAUSE_BUTTON_ANDROID" findBy="xPath" xPath="//android.widget.ImageButton[@index='0']" />
+	<element key="PLAY_PAUSE_BUTTON_V4_IOS" findBy="name" name="Video player. Tap twice to play or pause" />
+	<element key="IOS_TOOLBAR_V3" findBy="xPath" xPath="//XCUIElementTypeToolbar[1]" /> 
+	<element key="MORE_OPTIONS_V4_IOS" findBy="name" name="moreOptions" />
+	<element key="AD_OVERLAY" findBy="accessibilityId" accessibilityId="Advertisement" />
+	<element key="SKIP_AD" findBy="accessibilityId" accessibilityId="Skip Ad" />
+	<element key="VAST_ICON" findBy="xPath" xPath="//XCUIElementTypeStaticText/parent::XCUIElementTypeOther[1]/following-sibling::XCUIElementTypeOther[1]/XCUIElementTypeOther[1]"/>
+	<!-- <element key="VAST_SKIP_AD" findBy="xPath" xPath="//XCUIElementTypeOther[contains(@name,'Skip Ad')]/XCUIElementTypeStaticText[1]/preceding-sibling::XCUIElementTypeOther[1]"/> -->
+	<element key="VAST_OVERLAY" findBy="xPath" xPath="//XCUIElementTypeOther[@label='Video player. Tap twice to play or pause']/../XCUIElementTypeOther[last()]/XCUIElementTypeOther[1]" />"/>
 </elements>

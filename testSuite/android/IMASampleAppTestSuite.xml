@@ -1,0 +1,30 @@
+<suite name="IMA SampleAPPTests Regression Suite" verbose="1">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+	<test name="IMA Podded Tests" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="android/IMASampleAppsPoddedTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.imasampleapp.IMASampleAppsPoddedTests">
+			</class>
+		</classes>
+	</test>
+	<test name="IMA Tests" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="android/IMASampleAppTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.imasampleapp.IMASampleAppTests">
+			</class>
+		</classes>
+	</test>
+	<test name="IMA No Ads Tests" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="android/IMASampleAppNoAdsTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.imasampleapp.IMASampleAppNoAdsTests">
+			</class>
+		</classes>
+	</test>
+</suite>
+

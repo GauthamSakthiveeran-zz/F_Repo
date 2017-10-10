@@ -3,6 +3,7 @@ package com.ooyala.playback.apps.actions;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -113,8 +114,41 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
         }
         else
         {
-            //Code for IOS
-            return foundVideoToClick;
+        	 {
+        	        try {
+        	            List<WebElement> appVideos = getWebElementsList("APP_ASSETS_ANDROID");
+
+        	            for (WebElement appVideo : appVideos) {
+        	                if (appVideo.getText().equals(element)) {
+        	                    appVideo.click();
+        	                    foundVideoToClick = true;
+        	                    break;
+        	                }
+
+        	            }
+
+        	            if (!foundVideoToClick) {
+        	                swipeBasedOnWebElements(appVideos.get(appVideos.size() - 1), appVideos.get(1));
+        	                Thread.sleep(2000);
+        	                appVideos = getWebElementsList("APP_ASSETS_ANDROID");
+        	                for (WebElement appVideo : appVideos) {
+        	                    if (appVideo.getText().equals(element)) {
+        	                        appVideo.click();
+        	                        foundVideoToClick = true;
+        	                        break;
+        	                    }
+
+        	                }
+        	            }
+        	        } catch (Exception e) {
+        	            e.printStackTrace();
+        	            extentTest.log(LogStatus.FAIL, "Exception While Selecting App Asset");
+        	            logger.info("Exception While Selecting App Asset");
+        	            return false;
+        	        }
+
+        	        return foundVideoToClick;
+        	 }
         }
     }
 
@@ -287,6 +321,18 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
     		
     	return false;
     	}
+    }
+    
+    public boolean swipeAssetListIos(String swipeFromElement, String swipeToElement){
+		WebElement el_From = getWebElement(swipeFromElement);
+		WebElement el_To = getWebElement(swipeToElement);
+		TouchAction a2 = new TouchAction((AppiumDriver) driver);
+		a2.press(el_From.getRect().getX(), el_From.getRect().getY())
+		        .moveTo(el_To.getRect().getX(), el_To.getRect().getY()).release().perform();
+		extentTest.log(LogStatus.INFO, "Swipe done on screen");
+		return true;
+    	
+    	
     }
 
 }

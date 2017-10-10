@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="OoyalaSkinSampleApp" />
+  	<test name="HLS">
+		<description name="HLS Video" />
+	</test>
+ 	<test name="MP4">
+		<description name="MP4 Video" />
+	</test>
+ 	<test name="VOD_WITH_CCS">
+		<description name="VOD with CCs" />
+	</test>
+ 	<test name="ASPECT_RATIO">
+		<description name="4:3 Aspect Ratio" />
+	</test>
+	<test name="HLS_VIDEO_2_AND_5_1">
+		<description name="2.0 and 5.1 HLS Video" />
+	</test>
+</testdata>

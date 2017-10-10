@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="OoyalaSkinSampleApp" />
+   	<test name="VAST_3_PODDED_PREROLL">
+		<description name="3 VAST 3.0 - Podded (Asset length is large))" />
+	</test>
+ 	<test name="VAST_3_SKIPPABLE_MIDROLL">
+		<description name="VAST 3.0 - Skippable Midroll (Asset length is large)" />
+	</test>
+ 	<test name="VAST_3_SKIPPABLE_PREROLL">
+		<description name="VAST 3.0 - Skippable Preroll" />
+	</test>
+ 	<test name="VAST_3_AD_WRAPPER">
+		<description name="VAST 3.0 - Ad Wrapper (Asset length is large)" />
+	</test>
+  	<test name="VAST_3_ICON_GENERAL_PRE">
+		<description name="VAST 3.0 - Icon General (Asset length is large)" />
+	</test>
+ 	<test name="VAST_3_ICON_TOP_RIGHT_PRE">
+		<description name="VAST 3.0 - Icon Top Right (Asset length is large)" />
+	</test>
+ 	<test name="VAST_3_ICON_BOTTOM_LEFT_PRE">
+		<description name="OVAST 3.0 - Icon Bottom Left" />
+	</test>
+ 	<test name="VAST_3_ERROR_CASE_GENERAL_LINEAR_ERROR">
+		<description name="VAST 3.0 Error Case - General Linear Error (Asset length is large)" />
+	</test>
+  	<test name="VAST_3_ERROR_CASE_NO_ADS_ERROR">
+		<description name="VAST 3.0 Error Case - No Ads Error (Asset length is large))" />
+	</test>
+ 	<test name="VAST_3_ERROR_CASE_UNSUPPORTED_VERSION_ERROR">
+		<description name="VAST 3.0 Error Case - Unsupported Version Error (Asset length is large)" />
+	</test>
+ 	<test name="VAST_3_VMAP_PREMIDPOST_USING_ADTAGURI">
+		<description name="VAST 3.0 - VMAP PreMidPost using AdTagURI" />
+	</test>
+  	<test name="VAST_3_VMAP_PREMID_USING_VASTADDATA">
+		<description name="VAST 3.0 - VMAP PreMid using VASTAdData" />
+	</test>
+ 	<test name="VAST_3_OVERLAY_AD">
+		<description name="VAST 3.0 - Overlay Ad" />
+	</test>
+ 	<test name="VAST_3_OVERLAY_WITH_PREMID">
+		<description name="VAST 3.0 - Overlay with PreMid" />
+	</test>
+</testdata>

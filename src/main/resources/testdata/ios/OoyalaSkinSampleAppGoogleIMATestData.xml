@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="OoyalaSkinSampleApp" />
+   	<test name="PRE_MID_AND_POST_SKIPPABLE">
+		<description name="Pre, Mid and Post Skippable" />
+	</test>
+ 	<test name="PREROLL_SKIPPABLE">
+		<description name="Skippable" />
+	</test>
+ 	<test name="AD_RULES_POSTROLL">
+		<description name="Ad-Rules Postroll" />
+	</test>
+	 <test name="AD_RULES_MIDROLL">
+		<description name="Ad-Rules Midroll" />
+	</test>
+<!-- 	 <test name="AD_RULES_PREROLL">
+		<description name="Ad-Rules Preroll" />
+	</test>	 -->
+	<test name="PODDED_PRE_MID_POST">
+		<description name="3 Podded Pre mid post" />
+	</test>
+	<test name="PODDED_POSTROLL">
+		<description name="2 Podded Postroll" />
+	</test>
+	<test name="PODDED_MIDROLL">
+		<description name="2 Podded Midroll" />
+	</test>
+	<test name="PODDED_PREROLL">
+		<description name="2 Podded Preroll" />
+	</test>
+</testdata>

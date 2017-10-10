@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<app name="IMASampleApp" />
+ 	<test name="PODDED_PRE_MID_POST">
+		<description name="3 Podded Pre mid post" />
+	</test>
+	<test name="PODDED_POSTROLL">
+		<description name="2 Podded Postroll" />
+	</test>
+	<test name="PODDED_MIDROLL">
+		<description name="2 Podded Midroll" />
+	</test>
+	<test name="PODDED_PREROLL">
+		<description name="2 Podded Preroll" />
+	</test>
+	
+</testdata>
