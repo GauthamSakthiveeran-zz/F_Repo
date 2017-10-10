@@ -25,6 +25,10 @@ public class ElementValidator extends PlaybackApps implements Validators {
 	public boolean validate(String element, int timeout) throws Exception {
 		return waitOnElement(element, timeout);
 	}
+	
+	public boolean clickOnElement(String element) throws Exception {
+		return clickOnIndependentElement(element);
+	}
 
 	public boolean validateElementDisappeared(String element, int timeoutSec) throws Exception {
 	    int count =0;

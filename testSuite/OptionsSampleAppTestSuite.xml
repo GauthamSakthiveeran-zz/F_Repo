@@ -13,7 +13,7 @@
 			</class>
         </classes>
     </test>
-    <!-- <test name="OptionsSampleAppPreloadWithInitialTIme" parallel="false" thread-count="1">
+    <test name="OptionsSampleAppPreloadWithInitialTIme" parallel="false" thread-count="1">
 		<classes>
 			<parameter name="testData" value="OptionsSampleAppInitialTime.xml" />
 			<class name="com.ooyala.playback.apps.android.optionssampleapp.OptionsSampleAppTests">
@@ -42,7 +42,7 @@
 				</methods>
 			</class>
 		</classes>
-	</test>  -->
+	</test>  
  
 </suite>
 
