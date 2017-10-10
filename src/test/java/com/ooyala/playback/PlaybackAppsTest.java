@@ -129,9 +129,10 @@ public class PlaybackAppsTest extends FacileTest {
 			}
 			
 			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
-				Assert.assertTrue(
-						new PlayBackFactory((AppiumDriver) driver, extentTest).getQAModeSwitchAction().startAction("QA_MODE_SWITCH"),
-						"QA Mode is not enabled. Hence failing test");
+				if (!this.testData.getApp().getName().equals("OoyalaSkinSampleApp")) {
+					Assert.assertTrue(new PlayBackFactory((AppiumDriver) driver, extentTest).getQAModeSwitchAction()
+					        .startAction("QA_MODE_SWITCH"), "QA Mode is not enabled. Hence failing test");
+				}
 			} else {
 				// For Android- Events will be written in the log file.
 				String command = "adb push log.file /sdcard/";

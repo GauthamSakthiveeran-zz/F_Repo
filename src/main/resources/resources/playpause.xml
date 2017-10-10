@@ -1,8 +1,12 @@
 <elements area="playpause">
 	<element key="PLAY_PAUSE_ANDROID" findBy="class" class="android.widget.ImageButton"/>
-    <element key="PLAY_PAUSE_BUTTON" findBy="xPath" xPath="//XCUIElementTypeToolbar/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeButton[1]" />
+<!--     <element key="PLAY_PAUSE_BUTTON" findBy="xPath" xPath="//XCUIElementTypeToolbar/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeButton[1]" /> -->
+    <element key="PLAY_PAUSE_BUTTON" findBy="xPath" xPath="//XCUIElementTypeToolbar/XCUIElementTypeButton[1]" />
     <element key="CREATE_VIDEO" findBy="xPath" xPath="//android.widget.Button" />
-    
-   
+    <element key="PLAY_BUTTON_V4_IOS" findBy="name" name="Video player. Tap twice to play" />
+    <element key="PLAY_PAUSE_BUTTON_V4_IOS" findBy="name" name="Video player. Tap twice to play or pause" />
+    <element key="MORE_OPTIONS_V4_IOS" findBy="name" name="moreOptions" />
+    <element key="IOS_TAP_V3" findBy="xPath" xPath="//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther" />
+	<element key="IOS_TOOLBAR_V3" findBy="xPath" xPath="//XCUIElementTypeToolbar[1]" /> 
 </elements>
 

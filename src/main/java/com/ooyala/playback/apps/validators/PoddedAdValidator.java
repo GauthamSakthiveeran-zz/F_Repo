@@ -1,5 +1,7 @@
 package com.ooyala.playback.apps.validators;
 
+import org.apache.log4j.Logger;
+
 import com.ooyala.playback.apps.PlaybackApps;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.PauseAction;
@@ -17,6 +19,7 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 
 	private TestParameters test;
 	private int noOfAds = 0;
+	final static Logger logger = Logger.getLogger(PoddedAdValidator.class);	
 
 	public PoddedAdValidator setTestParameters(TestParameters test) {
 		this.test = test;
@@ -43,6 +46,19 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 		SeekAction seekAction = playBackFactory.getSeekAction();
 
 		boolean iOS = getPlatform().equalsIgnoreCase("ios");
+
+		logger.info("is platform iOS:"+iOS);
+		logger.info("is Player skin V4:"+isV4);
+		
+		String iosPlayPause="PLAY_PAUSE_BUTTON";
+		String iosSlider="SLIDER";
+		String iosSeekBar="SEEK_BAR";
+		
+		if(isV4){
+			iosPlayPause="PLAY_PAUSE_BUTTON_V4_IOS";
+			iosSlider="SLIDER_V4";
+			iosSeekBar="SEEK_BAR_V4";
+		}
 		
 		if(test.getAsset().contains("QUAD")) {
 			noOfAds = 4;
@@ -66,14 +82,14 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 
 		}
 
-		result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
+		result = result && iOS ? pauseAction.startAction(iosPlayPause)
 				: pauseAction.startAction("PLAY_PAUSE_ANDROID");
 		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
-		result = result && iOS ? seekAction.seekforward().setSlider("SLIDER").startAction("SEEK_BAR")
+		result = result && iOS ? seekAction.seekforward().setSlider(iosSlider).startAction(iosSeekBar)
 				: seekAction.startAction("SEEK_BAR_ANDROID");
 		result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
 		result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
-		result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
+		result = result && iOS ? pauseAction.startAction(iosPlayPause)
 				: pauseAction.startAction("PLAY_PAUSE_ANDROID");
 		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
 

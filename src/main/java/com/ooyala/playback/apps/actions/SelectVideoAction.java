@@ -15,10 +15,15 @@ public class SelectVideoAction extends PlaybackApps implements Actions {
         super(driver);
         PageFactory.initElements(driver, this);
         addElementToPageElements("selectvideo_"+getPlatform());
+        System.out.println("platform:"+getPlatform());
     }
 
 	@Override
 	public boolean startAction(String element) throws Exception {
+		if(!waitOnElement(element,1000)){
+			logger.info("Element Not Found");
+			return false;
+		}
 		return clickOnIndependentElement(element);
 	}
 

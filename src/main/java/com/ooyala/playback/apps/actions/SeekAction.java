@@ -1,13 +1,13 @@
 package com.ooyala.playback.apps.actions;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.facile.page.FacileWebElement;
 import com.ooyala.playback.apps.PlaybackApps;
+import com.ooyala.playback.factory.PlayBackFactory;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
@@ -15,11 +15,13 @@ import io.appium.java_client.TouchAction;
 public class SeekAction extends PlaybackApps implements Actions {
 
     private static Logger logger = Logger.getLogger(SeekAction.class);
+    private PauseAction tapAction;
 
     public SeekAction(AppiumDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
         addElementToPageElements("seekbar");
+        tapAction = new PlayBackFactory(driver, extentTest).getPauseAction();
     }
     
     private String slider;
@@ -40,20 +42,20 @@ public class SeekAction extends PlaybackApps implements Actions {
 		if (getPlatform().equalsIgnoreCase("ios")) {
 			if (seekFrwd) {
 				// seekFrwd = false;
-				tapScreenIfRequired();
+				tapAction.tapScreenIfRequired();
 				if (!seekVideoForward(slider, seek)) {
 					logger.error("Unable to seek forward video.");
-					tapScreenIfRequired();
+					tapAction.tapScreenIfRequired();
 					if (!seekVideoForward(slider, seek)) {
 						logger.error("Unable to seek forward video");
 						return false;
 					}
 				}
 			} else {
-				tapScreenIfRequired();
+				tapAction.tapScreenIfRequired();
 				if (!seekVideoBack(slider, seek)) {
 					logger.error("Unable to seek video.");
-					tapScreenIfRequired();
+					tapAction.tapScreenIfRequired();
 					if (!seekVideoBack(slider, seek)) {
 						logger.error("Unable to seek forward video");
 						return false;
@@ -81,15 +83,15 @@ public class SeekAction extends PlaybackApps implements Actions {
 	
 	private boolean seekVideoForward(String slider, String seekbar) throws InterruptedException {
 		if(!waitOnElement(seekbar,1000) || !waitOnElement(slider,1000)) {
-        	tapScreen();
+			tapAction.tapScreen();
         }
         int startx = getSliderPosition(slider);
         if(!waitOnElement(seekbar,1000) || !waitOnElement(slider,1000)) {
-        	tapScreen();
+        	tapAction.tapScreen();
         }
         Element seekbarElement =  getSeekBarPosition(seekbar);
         logger.info("Seeking forward -------------------------  ");
-        tapScreenIfRequired();
+        tapAction.tapScreenIfRequired();
         int seekForwardLength = (seekbarElement.getEndXPosition() - (startx + 1)) - 30;
         TouchAction touch = new TouchAction(driver);
         if(getPlatform().equalsIgnoreCase("ios"))
@@ -100,7 +102,7 @@ public class SeekAction extends PlaybackApps implements Actions {
     }
 	
 	private Element getSeekBarPosition(String seekbar) throws InterruptedException {
-        waitAndTap();
+        tapAction.waitAndTap();
         FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(seekbar));
         WebElement SEEK = this.getWebElementFromFacileWebElement(anElement);
         Point seekbarElementPos = SEEK.getLocation();
@@ -118,18 +120,18 @@ public class SeekAction extends PlaybackApps implements Actions {
 	private boolean seekVideoBack(String slider, String seekbar) throws InterruptedException {
         
 		if(!waitOnElement(seekbar,1000) || !waitOnElement(slider,1000)) {
-        	tapScreen();
+        	tapAction.tapScreen();
         }
 		
 		int startx = getSliderPosition(slider);
 		
 		if(!waitOnElement(seekbar,1000) || !waitOnElement(slider,1000)) {
-        	tapScreen();
+        	tapAction.tapScreen();
         }
         
         Element seekbarElement = getSeekBarPosition(seekbar);
         logger.info("Seeking Back------------");
-        tapScreenIfRequired();
+        tapAction.tapScreenIfRequired();
         int seekBackLength = ((startx + 1) - seekbarElement.getStartXPosition()) / 2;
         TouchAction touch = new TouchAction(driver);
         if(getPlatform().equalsIgnoreCase("ios"))
@@ -144,7 +146,7 @@ public class SeekAction extends PlaybackApps implements Actions {
         	WebElement slide = getWebElement(slider);
         } catch(Exception ex) {
         	logger.info("Retry tapping.");
-        	tapScreen();
+        	tapAction.tapScreen();
         }
         WebElement slide = getWebElement(slider);
         int sliderXPosition = slide.getLocation().getX();
