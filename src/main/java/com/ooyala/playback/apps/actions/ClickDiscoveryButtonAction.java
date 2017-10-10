@@ -276,7 +276,7 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
 			
 			return true;
 		}
-	}
+	
 
     
 	public boolean  seekForward(String element) {
