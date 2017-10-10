@@ -35,20 +35,10 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
-public class OoyalaSkinSampleSkinPlayBackVAST3AdsTest extends PlaybackAppsTest {
+public class OoyalaSkinSampleSkinPlayBackVAST3AdsTest extends OoyalaSkinSampleAppUtils {
 
 	private static Logger logger = Logger.getLogger(OoyalaSkinSampleSkinPlayBackVAST3AdsTest.class);
-	private SelectVideoAction selectVideo;
-	private ElementValidator elementValidator;
-	private PauseAction pauseAction;
-	private PlayAction playAction;
-	private SeekAction seekAction;
-	private ClickDiscoveryButtonAction clickDiscoveryAction;
-	private SwipeUpDownAppAssetsAction appAssetsSelection;
-	private DiscoveryValidator discoveryValidator;
-	private NotificationEventValidator notificationEventValidator;
-	private AndroidKeyCodeAction androidKeyCode;
-	private AllowAction allowAction;
+
 
 	@Test(groups = "OoyalaSkinSampleApp", dataProvider = "testData")
 	public void testVast3Podded(String testName, TestParameters test) throws Exception {
@@ -56,30 +46,8 @@ public class OoyalaSkinSampleSkinPlayBackVAST3AdsTest extends PlaybackAppsTest {
 		logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
 		boolean result = true;
 		try {
-			result = result && appAssetsSelection.startAction("Skin Playback");
-			Thread.sleep(3000);
-			result = result && appAssetsSelection.swipeAsset("APP_ASSETS_ANDROID");
-			result = result && selectVideo.startAction(test.getAsset());
-			Thread.sleep(3000);
-			result = result && appAssetsSelection.handleAccessMedia();
-			result = result && androidKeyCode.startAction("BACK");
-			result = result && selectVideo.startAction(test.getAsset());
-			Thread.sleep(3000);
-			result = result && clickDiscoveryAction.clickPlayButton();
-			result = result && elementValidator.handleLoadingSpinner();
-			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED, 20000);
-			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED, 20000);
-			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED, 20000);
-			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED, 20000);
-			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-			result = result && clickDiscoveryAction.clickPauseButton();
-			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-			result = result && clickDiscoveryAction.seekToEnd("SEEKBAR_ANDROID");
-			result = result && elementValidator.handleLoadingSpinner();
-			result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-			result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);
-			result = result && clickDiscoveryAction.clickPlayButton();
-			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED, 70000);
+			result = result && SwipeAndselectAsset(test);
+			result = result && vast3AdsPoddedTest(test);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			logger.error("Here is an exception" + ex);
@@ -95,28 +63,8 @@ public class OoyalaSkinSampleSkinPlayBackVAST3AdsTest extends PlaybackAppsTest {
 		logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
 		boolean result = true;
 		try {
-			result = result && appAssetsSelection.startAction("Skin Playback");
-			Thread.sleep(3000);
-			result = result && appAssetsSelection.swipeAsset("APP_ASSETS_ANDROID");
-			result = result && selectVideo.startAction(test.getAsset());
-			Thread.sleep(3000);
-			result = result && appAssetsSelection.handleAccessMedia();
-			result = result && androidKeyCode.startAction("BACK");
-			result = result && selectVideo.startAction(test.getAsset());
-			Thread.sleep(3000);
-			result = result && clickDiscoveryAction.clickPlayButton();
-			result = result && elementValidator.handleLoadingSpinner();
-			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED, 30000);
-			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED, 30000);
-			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-			result = result && clickDiscoveryAction.clickPauseButton();
-			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-			result = result && clickDiscoveryAction.seekToEnd("SEEKBAR_ANDROID");
-			result = result && elementValidator.handleLoadingSpinner();
-			result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-			result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);
-			result = result && clickDiscoveryAction.clickPlayButton();
-			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED, 70000);
+			result = result && SwipeAndselectAsset(test);
+			result = result && vast3AdsTest(test);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			logger.error("Here is an exception" + ex);
@@ -132,28 +80,25 @@ public class OoyalaSkinSampleSkinPlayBackVAST3AdsTest extends PlaybackAppsTest {
 		logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
 		boolean result = true;
 		try {
-			result = result && appAssetsSelection.startAction("Skin Playback");
-			Thread.sleep(3000);
-			result = result && appAssetsSelection.swipeAsset("APP_ASSETS_ANDROID");
-			result = result && selectVideo.startAction(test.getAsset());
-			Thread.sleep(3000);
-			result = result && appAssetsSelection.handleAccessMedia();
-			result = result && androidKeyCode.startAction("BACK");
-			result = result && selectVideo.startAction(test.getAsset());
-			Thread.sleep(3000);
-			result = result && clickDiscoveryAction.clickPlayButton();
-			result = result && elementValidator.handleLoadingSpinner();
-			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED, 35000);
-			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED, 35000);
-			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-			result = result && clickDiscoveryAction.clickPauseButton();
-			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-			result = result && clickDiscoveryAction.seekToEnd("SEEKBAR_ANDROID");
-			result = result && elementValidator.handleLoadingSpinner();
-			result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-			result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);
-			result = result && clickDiscoveryAction.clickPlayButton();
-			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED, 70000);
+			result = result && SwipeAndselectAsset(test);
+			result = result && vast3AdsTest(test);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			logger.error("Here is an exception" + ex);
+			result = false;
+		}
+		Assert.assertTrue(result, "APP:" + test.getApp() + "->Asset:" + test.getAsset());
+
+	}
+	
+	@Test(groups = "OoyalaSkinSampleApp", dataProvider = "testData")
+	public void testVast3AdWrapper(String testName, TestParameters test) throws Exception {
+		Reporter.log("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
+		logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
+		boolean result = true;
+		try {
+			result = result && SwipeAndselectAsset(test);
+			result = result && vast3AdsTest(test);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			logger.error("Here is an exception" + ex);

@@ -51,7 +51,7 @@ public class OoyalaSkinSampleSkinPlayBackApp extends PlaybackAppsTest {
 	private AllowAction allowAction;
 
 	@Test(groups = "OoyalaSkinSampleApp", dataProvider = "testData")
-	public void testPluginPlayer(String testName, TestParameters test) throws Exception {
+	public void testOoyalaSkinPlaybackApp(String testName, TestParameters test) throws Exception {
 		Reporter.log("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
 		logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
 		boolean result = true;

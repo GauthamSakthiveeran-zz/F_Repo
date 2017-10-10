@@ -35,7 +35,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
-public class OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest extends PlaybackAppsTest {
+public class OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest extends OoyalaSkinSampleAppUtils {
 
 	private static Logger logger = Logger.getLogger(OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest.class);
 	private SelectVideoAction selectVideo;
@@ -51,39 +51,14 @@ public class OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest extends Play
 	private AllowAction allowAction;
 
 	@Test(groups = "OoyalaSkinSampleApp", dataProvider = "testData")
-	public void testPluginPlayer(String testName, TestParameters test) throws Exception {
+	public void testMultiAds(String testName, TestParameters test) throws Exception {
 		Reporter.log("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
 		logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
 		boolean result = true;
 		try {
-			result = result && appAssetsSelection.startAction("Skin Playback");
-			Thread.sleep(3000);
-			result = result && appAssetsSelection.swipeAsset("APP_ASSETS_ANDROID");
-			result = result && selectVideo.startAction(test.getAsset());
-			Thread.sleep(3000);
-			result = result && appAssetsSelection.handleAccessMedia();
-			result = result && androidKeyCode.startAction("BACK");
-			result = result && selectVideo.startAction(test.getAsset());
-			Thread.sleep(3000);
-			result = result && clickDiscoveryAction.clickPlayButton();
-			result = result && elementValidator.handleLoadingSpinner();
-			if (test.getAsset().contains("PREROLL")) {
-				result = result && notificationEventValidator.validateEvent(Events.AD_STARTED, 20000);
-				result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED, 20000);
-			}
-			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-			if (test.getAsset().contains("MIDROLL")) {
-				result = result && notificationEventValidator.validateEvent(Events.AD_STARTED, 30000);
-				result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED, 30000);
-			}
-			result = result && clickDiscoveryAction.clickPauseButton();
-			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-			result = result && clickDiscoveryAction.seekToEnd("SEEKBAR_ANDROID");
-			result = result && elementValidator.handleLoadingSpinner();
-			result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-			result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);
-			result = result && clickDiscoveryAction.clickPlayButton();
-			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED, 70000);
+			result = result && SwipeAndselectAsset(test);
+			result = result && multiAdsTest(test);
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			logger.error("Here is an exception" + ex);

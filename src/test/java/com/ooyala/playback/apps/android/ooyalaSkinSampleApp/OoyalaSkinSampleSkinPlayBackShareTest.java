@@ -36,9 +36,9 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
- public class OoyalaSkinSampleSkinPlayBackShareAdsTest extends PlaybackAppsTest {
+ public class OoyalaSkinSampleSkinPlayBackShareTest extends PlaybackAppsTest {
 
-    private static Logger logger = Logger.getLogger(OoyalaSkinSampleSkinPlayBackShareAdsTest.class);
+    private static Logger logger = Logger.getLogger(OoyalaSkinSampleSkinPlayBackShareTest.class);
     private SelectVideoAction selectVideo;
     private ElementValidator elementValidator;
     private PauseAction pauseAction;
