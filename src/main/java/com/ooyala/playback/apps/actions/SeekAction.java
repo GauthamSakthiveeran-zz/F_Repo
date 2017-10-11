@@ -14,32 +14,36 @@ import io.appium.java_client.TouchAction;
 
 public class SeekAction extends PlaybackApps implements Actions {
 
-    private static Logger logger = Logger.getLogger(SeekAction.class);
-    private PauseAction tapAction;
+	private static Logger logger = Logger.getLogger(SeekAction.class);
+	private PauseAction tapAction;
 
-    public SeekAction(AppiumDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-        addElementToPageElements("seekbar");
-        tapAction = new PlayBackFactory(driver, extentTest).getPauseAction();
-    }
-    
-    private String slider;
-    boolean seekFrwd;
-    
-    public SeekAction setSlider(String slider) {
-    	this.slider = slider;
-    	return this;
-    }
-    
-    public SeekAction seekforward() {
-    	seekFrwd= true;
-    	return this;
-    }
+	public SeekAction(AppiumDriver driver) {
+		super(driver);
+		PageFactory.initElements(driver, this);
+		addElementToPageElements("seekbar");
+		tapAction = new PlayBackFactory(driver, extentTest).getPauseAction();
+	}
+
+	private String slider;
+	boolean seekFrwd;
+
+	public SeekAction setSlider(String slider) {
+		this.slider = slider;
+		return this;
+	}
+
+	public SeekAction seekforward() {
+		seekFrwd = true;
+		return this;
+	}
 
 	@Override
 	public boolean startAction(String seek) throws Exception {
 		if (getPlatform().equalsIgnoreCase("ios")) {
+			if (getPlatformVersion().startsWith("11")) {
+				seek += "_IOS11";
+				slider += "_IOS11";
+			}
 			if (seekFrwd) {
 				// seekFrwd = false;
 				tapAction.tapScreenIfRequired();
@@ -80,87 +84,93 @@ public class SeekAction extends PlaybackApps implements Actions {
 		return true;
 
 	}
-	
-	private boolean seekVideoForward(String slider, String seekbar) throws InterruptedException {
-		if(!waitOnElement(seekbar,1000) || !waitOnElement(slider,1000)) {
-			tapAction.tapScreen();
-        }
-        int startx = getSliderPosition(slider);
-        if(!waitOnElement(seekbar,1000) || !waitOnElement(slider,1000)) {
-        	tapAction.tapScreen();
-        }
-        Element seekbarElement =  getSeekBarPosition(seekbar);
-        logger.info("Seeking forward -------------------------  ");
-        tapAction.tapScreenIfRequired();
-        int seekForwardLength = (seekbarElement.getEndXPosition() - (startx + 1)) - 30;
-        TouchAction touch = new TouchAction(driver);
-        if(getPlatform().equalsIgnoreCase("ios"))
-        	touch.press((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) + (seekForwardLength)), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
-        else
-        	touch.longPress((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) + (seekForwardLength)), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
-        return true;
-    }
-	
-	private Element getSeekBarPosition(String seekbar) throws InterruptedException {
-        tapAction.waitAndTap();
-        FacileWebElement anElement = new FacileWebElement((FacileWebElement)this.pageElements.get(seekbar));
-        WebElement SEEK = this.getWebElementFromFacileWebElement(anElement);
-        Point seekbarElementPos = SEEK.getLocation();
-        Element seekbarElement = new Element();
-        seekbarElement.setStartXPosition(seekbarElementPos.getX());
-        seekbarElement.setYposition(seekbarElementPos.getY());
-        seekbarElement.setWidth(SEEK.getSize().getWidth());
-        seekbarElement.setEndXPosition(seekbarElement.getWidth() + seekbarElement.getStartXPosition());
-        logger.info("SeekBarPosition : StartXPosition > " + seekbarElement.getStartXPosition() + ", "
-                + " EndXPosition > " + seekbarElement.getEndXPosition() + ", Width > " + seekbarElement.getWidth() + " Yposition > " + seekbarElement.getYposition());
-        return seekbarElement;
 
-    }
-	
-	private boolean seekVideoBack(String slider, String seekbar) throws InterruptedException {
-        
-		if(!waitOnElement(seekbar,1000) || !waitOnElement(slider,1000)) {
-        	tapAction.tapScreen();
-        }
-		
+	private boolean seekVideoForward(String slider, String seekbar) throws InterruptedException {
+		if (!waitOnElement(seekbar, 1000) || !waitOnElement(slider, 1000)) {
+			tapAction.tapScreen();
+		}
 		int startx = getSliderPosition(slider);
-		
-		if(!waitOnElement(seekbar,1000) || !waitOnElement(slider,1000)) {
-        	tapAction.tapScreen();
-        }
-        
-        Element seekbarElement = getSeekBarPosition(seekbar);
-        logger.info("Seeking Back------------");
-        tapAction.tapScreenIfRequired();
-        int seekBackLength = ((startx + 1) - seekbarElement.getStartXPosition()) / 2;
-        TouchAction touch = new TouchAction(driver);
-        if(getPlatform().equalsIgnoreCase("ios"))
-        	touch.press((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) - seekBackLength), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
-        else
-        	touch.longPress((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) - seekBackLength), seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
-        return true;
-    }
-	
+		if (!waitOnElement(seekbar, 1000) || !waitOnElement(slider, 1000)) {
+			tapAction.tapScreen();
+		}
+		Element seekbarElement = getSeekBarPosition(seekbar);
+		logger.info("Seeking forward -------------------------  ");
+		tapAction.tapScreenIfRequired();
+		int seekForwardLength = (seekbarElement.getEndXPosition() - (startx + 1)) - 30;
+		TouchAction touch = new TouchAction(driver);
+		if (getPlatform().equalsIgnoreCase("ios"))
+			touch.press((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) + (seekForwardLength)),
+					seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
+		else
+			touch.longPress((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) + (seekForwardLength)),
+					seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
+		return true;
+	}
+
+	private Element getSeekBarPosition(String seekbar) throws InterruptedException {
+		tapAction.waitAndTap();
+		FacileWebElement anElement = new FacileWebElement((FacileWebElement) this.pageElements.get(seekbar));
+		WebElement SEEK = this.getWebElementFromFacileWebElement(anElement);
+		Point seekbarElementPos = SEEK.getLocation();
+		Element seekbarElement = new Element();
+		seekbarElement.setStartXPosition(seekbarElementPos.getX());
+		seekbarElement.setYposition(seekbarElementPos.getY());
+		seekbarElement.setWidth(SEEK.getSize().getWidth());
+		seekbarElement.setEndXPosition(seekbarElement.getWidth() + seekbarElement.getStartXPosition());
+		logger.info("SeekBarPosition : StartXPosition > " + seekbarElement.getStartXPosition() + ", "
+				+ " EndXPosition > " + seekbarElement.getEndXPosition() + ", Width > " + seekbarElement.getWidth()
+				+ " Yposition > " + seekbarElement.getYposition());
+		return seekbarElement;
+
+	}
+
+	private boolean seekVideoBack(String slider, String seekbar) throws InterruptedException {
+
+		if (!waitOnElement(seekbar, 1000) || !waitOnElement(slider, 1000)) {
+			tapAction.tapScreen();
+		}
+
+		int startx = getSliderPosition(slider);
+
+		if (!waitOnElement(seekbar, 1000) || !waitOnElement(slider, 1000)) {
+			tapAction.tapScreen();
+		}
+
+		Element seekbarElement = getSeekBarPosition(seekbar);
+		logger.info("Seeking Back------------");
+		tapAction.tapScreenIfRequired();
+		int seekBackLength = ((startx + 1) - seekbarElement.getStartXPosition()) / 2;
+		TouchAction touch = new TouchAction(driver);
+		if (getPlatform().equalsIgnoreCase("ios"))
+			touch.press((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) - seekBackLength),
+					seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
+		else
+			touch.longPress((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) - seekBackLength),
+					seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
+		return true;
+	}
+
 	private int getSliderPosition(String slider) throws InterruptedException {
-        try {
-        	WebElement slide = getWebElement(slider);
-        } catch(Exception ex) {
-        	logger.info("Retry tapping.");
-        	tapAction.tapScreen();
-        }
-        WebElement slide = getWebElement(slider);
-        int sliderXPosition = slide.getLocation().getX();
-        logger.info("Slider X Position >> : " + sliderXPosition);
-        return sliderXPosition;
-    }
-	
+		try {
+			WebElement slide = getWebElement(slider);
+		} catch (Exception ex) {
+			logger.info("Retry tapping.");
+			tapAction.tapScreen();
+		}
+		WebElement slide = getWebElement(slider);
+		int sliderXPosition = slide.getLocation().getX();
+		logger.info("Slider X Position >> : " + sliderXPosition);
+		return sliderXPosition;
+	}
+
 	private boolean seekVideo(String element) {
-        WebElement seekbar = getWebElement(element);
-        int seekBarFieldWidth = seekbar.getLocation().getX();
-        int seekBarFieldHeigth = seekbar.getLocation().getY();
-        TouchAction touch = new TouchAction(driver);
-        touch.longPress(seekBarFieldWidth + 20, seekBarFieldHeigth).moveTo(seekBarFieldWidth + 100, seekBarFieldHeigth).release().perform();
-        return true;
-    }
+		WebElement seekbar = getWebElement(element);
+		int seekBarFieldWidth = seekbar.getLocation().getX();
+		int seekBarFieldHeigth = seekbar.getLocation().getY();
+		TouchAction touch = new TouchAction(driver);
+		touch.longPress(seekBarFieldWidth + 20, seekBarFieldHeigth).moveTo(seekBarFieldWidth + 100, seekBarFieldHeigth)
+				.release().perform();
+		return true;
+	}
 
 }
