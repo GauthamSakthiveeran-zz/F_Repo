@@ -179,8 +179,8 @@ public class DiscoveryValidator extends PlaybackApps implements Validators {
 
 				}
 			} else {
-				extentTest.log(LogStatus.FAIL, element + " not present Discovery Screen");
-				logger.info("Asset List not  Found");
+				extentTest.log(LogStatus.INFO, element + " not present Discovery Screen");
+				logger.info("Element not found in discovery screen");
 				return false;
 
 			}
