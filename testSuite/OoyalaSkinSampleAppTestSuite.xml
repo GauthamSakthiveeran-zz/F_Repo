@@ -24,7 +24,8 @@
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVASTAdsTest" />
 		</classes> 
-
+		</test>
+<!-- 
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleOoyalaAdTests.xml" />
 			<class
@@ -82,7 +83,7 @@
 	</test>  
 
 
-<!-- 	<test name="Freewheel Tests" parallel="false" thread-count="1">
+	<test name="Freewheel Tests" parallel="false" thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleFW.xml" />
 			<class
