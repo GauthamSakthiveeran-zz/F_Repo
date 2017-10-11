@@ -85,8 +85,8 @@ public class PlaybackAppsTest extends FacileTest {
 			capabilities.setCapability("automationName", System.getProperty(CommandLineParameters.AUTOMATION_NAME));
 			capabilities.setCapability("newCommandTimeout",
 					System.getProperty(CommandLineParameters.NEW_COMMAND_TIMEOUT));
-	        capabilities.setCapability("xcodeOrgId", System.getProperty(CommandLineParameters.XCODE_ORG_ID));
-	        capabilities.setCapability("xcodeSigningId", System.getProperty(CommandLineParameters.XCODE_SIGNING_ID));
+	        capabilities.setCapability("xcodeOrgId", "49VH3Q5Q7H");
+	        capabilities.setCapability("xcodeSigningId", "iPhone Developer");
 
 			driver = new IOSDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 
