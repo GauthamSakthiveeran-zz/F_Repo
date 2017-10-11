@@ -221,6 +221,13 @@ public abstract class PlaybackApps extends WebPage {
         return "";
     }
     
+    public String getPlatformVersion() {
+        if(System.getProperty(CommandLineParameters.PLATFORM_VERSION)!=null && !System.getProperty(CommandLineParameters.PLATFORM_VERSION).isEmpty()) {
+            return System.getProperty(CommandLineParameters.PLATFORM_VERSION);
+        }
+        return "";
+    }
+    
 	public boolean letVideoPlayForSec(int sec) throws InterruptedException {
 		int count = 0;
 		while (count < sec) {

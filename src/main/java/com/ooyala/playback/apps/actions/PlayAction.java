@@ -44,6 +44,9 @@ public class PlayAction extends PlaybackApps implements Actions {
 			}
 		} else {
 			try {
+				if(getPlatformVersion().startsWith("11")) {
+					element = element + "_IOS11";
+				}
 				if (!tapActions.tapScreenIfRequired()) {
 					extentTest.log(LogStatus.FAIL, "tapActions.tapScreenIfRequired failed.");
 					return false;
