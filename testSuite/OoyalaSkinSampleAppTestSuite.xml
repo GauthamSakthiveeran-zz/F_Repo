@@ -19,20 +19,20 @@
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackApp" />
 		</classes>
 
-		<classes>
+<!-- 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleVASTTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVASTAdsTest" />
-		</classes> 
-		</test>
-<!-- 
+		</classes>  -->
+		
+ 
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleOoyalaAdTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackOoyalaAdsTest" />
 		</classes>
-		
-		<classes>
+		</test>
+<!-- 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleMultiAdTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest" />
@@ -80,9 +80,9 @@
 					<include name="testVast3AdWrapper" />
 				</methods>
 		</classes>
-	</test>  
+	</test>   -->
 
-
+<!-- 
 	<test name="Freewheel Tests" parallel="false" thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleFW.xml" />
@@ -139,7 +139,7 @@
 				</methods>
 			</class>
 		</classes> 
-	</test>
--->
+	</test> -->
+
 </suite>
 
