@@ -13,7 +13,7 @@
 		<description name="MP4 Video" />
 	</test>
 
-
+<!-- 
 	<test name="SKIN_OOYALA_EHLS_VIDEO">
 		<description name="Ooyala Encrypted HLS" />
 	</test>
@@ -29,5 +29,5 @@
 
 	<test name="SKIN_CLEAR_HLS_BASELINE_VIDEO">
 		<description name="Clear HLS Baseline" />
-	</test>
+	</test> -->
 </testdata>
