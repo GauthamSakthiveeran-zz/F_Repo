@@ -157,6 +157,7 @@ public class PlaybackAppsTest extends FacileTest {
 				}
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error(e.getMessage());
 		}
 	}
