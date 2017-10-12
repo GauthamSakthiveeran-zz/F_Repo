@@ -2,7 +2,7 @@
 <testdata>
     <test name="PlaybackSingleDynamicFilterTests">
         <url>
-            <description name="FilterA Test"/>
+            <description name="Filter A Test"/>
             <priority name="P3"></priority>
             <embed_code name="91bTlvYTE6OOI_wKMsLdn4_suUEvZjJ4"/>
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
@@ -15,7 +15,7 @@
             <playerParameter><![CDATA[{"dynamicFilters":"filterA"}]]></playerParameter>
         </url>
         <url>
-            <description name="Filter C"/>
+            <description name="Filter C Test"/>
             <priority name="P3"></priority>
             <embed_code name="91bTlvYTE6OOI_wKMsLdn4_suUEvZjJ4"/>
             <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
@@ -26,6 +26,19 @@
             <dynamicFilter name="1164259"/>
             <sslEnabled name="https"/>
             <playerParameter><![CDATA[{"dynamicFilters":"filterC"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Filter E Test"/>
+            <priority name="P3"></priority>
+            <embed_code name="91bTlvYTE6OOI_wKMsLdn4_suUEvZjJ4"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="c0adf6d2044f437080e005a69cba4880"/>
+            <dynamicFilter name="1164259,4347094"/>
+            <sslEnabled name="https"/>
+            <playerParameter><![CDATA[{"dynamicFilters":"filterE"}]]></playerParameter>
         </url>
     </test>
 </testdata>
