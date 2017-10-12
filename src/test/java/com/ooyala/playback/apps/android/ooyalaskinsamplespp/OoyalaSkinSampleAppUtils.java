@@ -326,6 +326,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 		playAction = pageFactory.getPlayAction();
 		androidKeyCode = pageFactory.getAndroidKeyCodeAction();
 		appAssetsSelection = pageFactory.getSwipeUpDownAppAssetsAction();
+		allowAction = pageFactory.getAllow();
 
 		try {
 			result = result && appAssetsSelection.startAction("Skin Playback");
@@ -359,6 +360,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 		playAction = pageFactory.getPlayAction();
 		androidKeyCode = pageFactory.getAndroidKeyCodeAction();
 		appAssetsSelection = pageFactory.getSwipeUpDownAppAssetsAction();
+		allowAction = pageFactory.getAllow();
 
 		try {
 			result = result && appAssetsSelection.startAction("Skin Playback");
