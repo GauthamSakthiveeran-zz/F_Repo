@@ -333,7 +333,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 			result = result && appAssetsSelection.swipeAsset("APP_ASSETS_ANDROID");
 			result = result && selectVideo.startAction(test.getAsset());
 			Thread.sleep(3000);
-			result = result && appAssetsSelection.handleAccessMedia();
+			result = result && allowAction.startAction("ALLOW");
 			result = result && androidKeyCode.startAction("BACK");
 			result = result && selectVideo.startAction(test.getAsset());
 			Thread.sleep(3000);
@@ -365,7 +365,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 			Thread.sleep(3000);
 			result = result && selectVideo.startAction(test.getAsset());
 			Thread.sleep(3000);
-			result = result && appAssetsSelection.handleAccessMedia();
+			result = result && allowAction.startAction("ALLOW");
 			result = result && androidKeyCode.startAction("BACK");
 			result = result && selectVideo.startAction(test.getAsset());
 			Thread.sleep(3000);
