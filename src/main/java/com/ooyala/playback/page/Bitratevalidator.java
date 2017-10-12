@@ -9,6 +9,9 @@ import com.ooyala.playback.factory.PlayBackFactory;
 import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.relevantcodes.extentreports.LogStatus;
 
+import java.util.List;
+import java.util.Map;
+
 public class Bitratevalidator extends PlayBackPage implements PlaybackValidator {
 
     public static Logger logger = Logger.getLogger(Bitratevalidator.class);
@@ -146,14 +149,39 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
     }
 
     public boolean validateSingleDynamicFilter(String biterateFilter) {
-        String currentBitrate = driver.executeScript("return pp.getCurrentBitrate().bitrate").toString();
-        if(!biterateFilter.equals(currentBitrate)){
-            logger.error("Bitrate Filter Value :"+biterateFilter+ " and Current Bitrate Value :"+currentBitrate+" do not match");
-            extentTest.log(LogStatus.FAIL,"Bitrate Filter Value :"+biterateFilter+ " and Current Bitrate Value :"+currentBitrate+" do not match");
-            return false;
+
+        logger.info("Bitrate Filter Value :"+biterateFilter);
+        String minBitrate="";
+        String maxBitrate="";
+        //Check if the Bitrate filter value is range or not
+        //if its range then split the values as minBitrate and maxBitrate
+        if(biterateFilter.contains(",")){
+            minBitrate = biterateFilter.split(",")[0];
+            maxBitrate = biterateFilter.split(",")[1];
         }
-        logger.info("Bitrate Filter Value :"+biterateFilter+ " and Current Bitrate Value :"+currentBitrate+" do match");
-        extentTest.log(LogStatus.PASS,"Bitrate Filter Value :"+biterateFilter+ " and Current Bitrate Value :"+currentBitrate+" do match");
+        //get the available bitrates through api and store it in a List of Map of key as integer and value as string
+        List<Map<Integer,String>> availableBitrate = (List<Map<Integer, String>>) driver.executeScript("return pp.getBitratesAvailable()");
+        logger.info(availableBitrate);
+        //check if the available bitrates are more than 2
+        //By default the first bitrate value is 0, so we are not considering it.
+        if(availableBitrate.size()>2){
+            String minAvailableBitrate = availableBitrate.get(1).values().toArray()[1].toString();
+            String maxAvailableBitrate = availableBitrate.get(availableBitrate.size()-1).values().toArray()[1].toString();
+            //Check if the minBitrate values and maxBitrate values are matching or not
+            if((!minAvailableBitrate.equals(minBitrate))&&(!maxAvailableBitrate.equals(maxBitrate))){
+                logger.error("Bitrate Filter Value :"+biterateFilter+ " and Current Bitrate Value :"+availableBitrate+" do not match");
+                extentTest.log(LogStatus.FAIL,"Bitrate Filter Value :"+biterateFilter+ " and Current Bitrate Value :"+availableBitrate+" do not match");
+                return false;
+            }
+        }else {
+            if(!biterateFilter.equals(availableBitrate.get(1).values().toArray()[1].toString())){
+                logger.error("Bitrate Filter Value :"+biterateFilter+ " and Current Bitrate Value :"+availableBitrate+" do not match");
+                extentTest.log(LogStatus.FAIL,"Bitrate Filter Value :"+biterateFilter+ " and Current Bitrate Value :"+availableBitrate+" do not match");
+                return false;
+            }
+        }
+        logger.info("Bitrate Filter Value :"+biterateFilter+ " and Current Bitrate Value :"+availableBitrate+" do match");
+        extentTest.log(LogStatus.PASS,"Bitrate Filter Value :"+biterateFilter+ " and Current Bitrate Value :"+availableBitrate+" do match");
         return true;
     }
 }
