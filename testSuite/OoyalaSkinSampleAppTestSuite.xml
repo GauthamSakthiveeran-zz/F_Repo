@@ -3,7 +3,7 @@
 	<listeners>
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
-
+ 
 	<test name="BasicPlayback Regression" parallel="false"
 		thread-count="1">
 		<classes>
@@ -12,7 +12,7 @@
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppDiscoveryNoAdsTest" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppSwipeDiscoveryScreenNoAdsTest" />
-		</classes>
+		</classes> 
 <!-- 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
 			<class
@@ -30,8 +30,8 @@
 			<parameter name="testData" value="OoyalaSkinSampleOoyalaAdTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackOoyalaAdsTest" />
-		</classes> -->
-		</test>
+		</classes> 
+		</test> -->
 <!-- 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleMultiAdTests.xml" />
 			<class
@@ -140,6 +140,16 @@
 			</class>
 		</classes> 
 	</test> -->
+<!-- 		<test name="IOS" parallel="false"
+		thread-count="1">
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppIOS">
+			</class>
+		</classes>  -->
+	</test>
+	
 
 </suite>
 

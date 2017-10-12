@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
+import com.ooyala.playback.apps.actions.AllowAction;
 import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
 import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
 import com.ooyala.playback.apps.actions.PauseAction;
@@ -41,6 +42,7 @@ import io.appium.java_client.android.AndroidKeyCode;
     private DiscoveryValidator discoveryValidator;
     private NotificationEventValidator notificationEventValidator;
     private AndroidKeyCodeAction androidKeyCode;
+    private AllowAction allowAction;
     
 
 
@@ -59,7 +61,7 @@ import io.appium.java_client.android.AndroidKeyCode;
         	
         	Thread.sleep(3000);
         	
-        	result = result && appAssetsSelection.handleAccessMedia();
+        	result = result && allowAction.startAction("ALLOW");
         	
         	result = result && androidKeyCode.startAction("BACK");
         	
