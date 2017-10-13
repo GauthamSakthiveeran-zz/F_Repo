@@ -1,4 +1,6 @@
 <elements area="fullscreen">
 	<element key="FULLSCREEN_CLOSEBUTTON_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='Fullscreen Close']" />
 	<element key="FULLSCREEN_BUTTON_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='Fullscreen']" />
+	<element key="FULLSCREEN_CLOSEBUTTON_IOS" findBy="xPath" xPath="//XCUIElementTypeOther[@name='Fullscreen Close']" />
+	<element key="FULLSCREEN_BUTTON_IOS" findBy="xPath" xPath="//XCUIElementTypeOther[@name='Fullscreen']" />
 </elements>

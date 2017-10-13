@@ -18,7 +18,7 @@ import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.AllowAction;
 import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
-import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
+import com.ooyala.playback.apps.actions.DiscoveryAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
@@ -35,7 +35,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
-public class OoyalaSkinSampleSkinPlayBackVAST3AdsTest extends OoyalaSkinSampleAppUtils {
+public class OoyalaSkinSampleSkinPlayBackVAST3AdsTest extends OoyalaSkinSampleAppSkinPlaybackUtils {
 
 	private static Logger logger = Logger.getLogger(OoyalaSkinSampleSkinPlayBackVAST3AdsTest.class);
 
@@ -47,6 +47,7 @@ public class OoyalaSkinSampleSkinPlayBackVAST3AdsTest extends OoyalaSkinSampleAp
 		boolean result = true;
 		try {
 			result = result && SwipeAndselectAsset(test);
+			
 			result = result && vast3AdsPoddedTest(test);
 		} catch (Exception ex) {
 			ex.printStackTrace();

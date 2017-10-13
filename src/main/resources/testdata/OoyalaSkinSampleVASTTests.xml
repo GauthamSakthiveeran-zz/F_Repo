@@ -14,7 +14,7 @@
 	</test>
 
 
-	<test name="VAST2_ADWRAPPER_VIDEO">
+	<test name="VAST2_ADWRAPPER_PREROLL_VIDEO">
 		<description name="VAST2 Ad Wrapper" />
 	</test>
 

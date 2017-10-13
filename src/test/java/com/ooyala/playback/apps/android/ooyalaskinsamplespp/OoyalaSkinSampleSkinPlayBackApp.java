@@ -18,7 +18,7 @@ import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.AllowAction;
 import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
-import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
+import com.ooyala.playback.apps.actions.DiscoveryAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
@@ -43,7 +43,7 @@ public class OoyalaSkinSampleSkinPlayBackApp extends PlaybackAppsTest {
 	private PauseAction pauseAction;
 	private PlayAction playAction;
 	private SeekAction seekAction;
-	private ClickDiscoveryButtonAction clickDiscoveryAction;
+	private DiscoveryAction clickDiscoveryAction;
 	private SwipeUpDownAppAssetsAction appAssetsSelection;
 	private DiscoveryValidator discoveryValidator;
 	private NotificationEventValidator notificationEventValidator;

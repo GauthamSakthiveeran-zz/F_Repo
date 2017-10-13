@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 	<app name="OoyalaSkinSampleApp" />
-	<test name="VAST3_WRAPPER_VIDEO">
+	<test name="VAST3_WRAPPER_VIDEO_PREROLL">
 		<description name="VAST 3.0 Ad Wrapper" />
 	</test>
 

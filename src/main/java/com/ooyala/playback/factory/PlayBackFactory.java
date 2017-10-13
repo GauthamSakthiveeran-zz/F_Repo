@@ -6,7 +6,7 @@ import com.ooyala.playback.apps.actions.AllowAction;
 import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
 import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.ClickAction;
-import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
+import com.ooyala.playback.apps.actions.DiscoveryAction;
 import com.ooyala.playback.apps.actions.ShareAction;
 import com.ooyala.playback.apps.actions.FullScreenAction;
 import com.ooyala.playback.apps.actions.LaunchAction;
@@ -55,7 +55,7 @@ public class PlayBackFactory {
 
 	private OverlayValidator overlayValidator;
 	private FileEventValidator fileEventValidator;
-	private ClickDiscoveryButtonAction clickDiscioveryAction;
+	private DiscoveryAction clickDiscioveryAction;
 	private SwipeUpDownAppAssetsAction swipeAppAssetAction;
 	private DiscoveryValidator discoveryValidator;
 	private UpNextValidator upNextValidator;
@@ -209,10 +209,10 @@ public class PlayBackFactory {
 		return fileEventValidator;
 	}
 
-	public ClickDiscoveryButtonAction getClickDiscoveryButtonAction() {
+	public DiscoveryAction getClickDiscoveryButtonAction() {
 
 		if (clickDiscioveryAction == null) {
-			clickDiscioveryAction = new ClickDiscoveryButtonAction(driver);
+			clickDiscioveryAction = new DiscoveryAction(driver);
 			clickDiscioveryAction.setExtentTest(extentTest);
 		}
 		return clickDiscioveryAction;

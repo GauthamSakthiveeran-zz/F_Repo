@@ -10,7 +10,7 @@ import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.ClickAction;
-import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
+import com.ooyala.playback.apps.actions.DiscoveryAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
@@ -32,7 +32,7 @@ public class AdvancedSampleAppUtils extends PlaybackAppsTest {
 	private SeekAction seekAction;
 	private CCAction ccAction;
 	private ClickAction clickAction;
-	private ClickDiscoveryButtonAction clickDiscoveryAction;
+	private DiscoveryAction clickDiscoveryAction;
 	private PlayAction playAction;
 	//pageFactory = new pageFactory((AppiumDriver) driver, extentTest);
 

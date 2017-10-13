@@ -26,7 +26,7 @@ public class FullScreenOrientationValidator extends PlaybackApps implements Vali
     public FullScreenOrientationValidator(AppiumDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
-        addElementToPageElements("upnext");
+        addElementToPageElements("fullscreen");
     }
 
     @Override
@@ -39,7 +39,7 @@ public class FullScreenOrientationValidator extends PlaybackApps implements Vali
         result = result && changeOrientation("LANDSCAPE");
         result = result && isOrientationCorrect("LANDSCAPE");
 
-        return false;
+        return result;
     }
 
     public boolean changeOrientation(String orientation) {
@@ -47,11 +47,13 @@ public class FullScreenOrientationValidator extends PlaybackApps implements Vali
         try {
             if (orientation.equals("LANDSCAPE")){
                 ((AppiumDriver) driver).rotate(ScreenOrientation.LANDSCAPE);
+                logger.info("Orientation Changed");
                 extentTest.log(LogStatus.INFO, "Orientation Changed");
                 return true;
             }
             else{
                 ((AppiumDriver) driver).rotate(ScreenOrientation.PORTRAIT);
+                logger.info("Orientation Changed");
                 extentTest.log(LogStatus.INFO, "Orientation Changed");
                 return true;
             }
@@ -63,12 +65,12 @@ public class FullScreenOrientationValidator extends PlaybackApps implements Vali
     }
 
     public boolean isOrientationCorrect(String orientation) {
-
         if (((AppiumDriver) driver).getOrientation().toString().equals(orientation)) {
+        	logger.info("Orientation is correct");
             extentTest.log(LogStatus.PASS, "Orientation is correct" + orientation);
             return true;
         } else {
-            extentTest.log(LogStatus.PASS, "Orientation is not coerrct");
+            extentTest.log(LogStatus.PASS, "Orientation is not correct");
             return false;
         }
 

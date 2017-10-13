@@ -20,12 +20,12 @@ import io.appium.java_client.android.AndroidKeyCode;
 /**
  * Created by Gautham
  */
-public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions {
+public class DiscoveryAction extends PlaybackApps implements Actions {
 
-    private Logger logger = Logger.getLogger(ClickDiscoveryButtonAction.class);
+    private Logger logger = Logger.getLogger(DiscoveryAction.class);
     public int[] p = new int[2];
 
-    public ClickDiscoveryButtonAction(AppiumDriver driver) {
+    public DiscoveryAction(AppiumDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
         addElementToPageElements("discovery");
@@ -37,7 +37,7 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
     public boolean startAction(String element) throws Exception {
         // TODO Auto-generated method stub
         Boolean result = true;
-        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        if(getPlatform().equalsIgnoreCase("android"))
         {
         try {
             if (((AndroidDriver) driver).currentActivity()
@@ -282,33 +282,23 @@ public class ClickDiscoveryButtonAction extends PlaybackApps implements Actions 
 	public boolean  seekForward(String element) {
 		TouchAction touch = new TouchAction(driver);
 		try {
-			if(waitOnElement(element)) {				
+			if(!waitOnElement(element)) 
+				  touch.tap(p[0],p[1]).perform();			
 			WebElement seekBar =getWebElement(element);
 			int temp[] = new int[2];
 			temp[0] = seekBar.getLocation().getX();
 			temp[1] = seekBar.getLocation().getY();
             touch.longPress(temp[0], temp[1]).moveTo(temp[0]+40, temp[1]).release().perform();	
            
-		    } 
+		  
 		}
 		catch(Exception e) {
-			logger.info("seekbar is not visible..tap on screen and try again");
-			extentTest.log(LogStatus.INFO, "seekbar is not visible..tap on screen and try again");
-			touch.tap(p[0],p[1]).perform();
-			if(waitOnElement(element)) {				
-			WebElement seekBar =getWebElement(element);
-			int temp[] = new int[2];
-			temp[0] = seekBar.getLocation().getX();
-			temp[1] = seekBar.getLocation().getY();
-            touch.longPress(temp[0], temp[1]).moveTo(temp[0]+100, temp[1]).release().perform();		
-		    } else {
-		    	logger.error("seekbar is not visible");
+				logger.error("seekbar is not visible");
 		    	extentTest.log(LogStatus.INFO, "seekbar is not visible");
 		    	return false;
 		    }
 			
-		}
-		
+
 		return true;
 	}
 }

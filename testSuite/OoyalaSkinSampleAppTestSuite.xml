@@ -6,14 +6,14 @@
  
 	<test name="BasicPlayback Regression" parallel="false"
 		thread-count="1">
-<!--		<classes>
+		<classes>
  			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppDiscoveryNoAdsTest" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppSwipeDiscoveryScreenNoAdsTest" />
-		</classes>  -->
-<!-- 		<classes>
+		</classes> 
+		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackApp" />
@@ -24,15 +24,15 @@
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVASTAdsTest" />
 		</classes> 
-		 -->
+		
  
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleOoyalaAdTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackOoyalaAdsTest" />
 		</classes> 
-		</test>
-<!-- 		<classes>
+		
+		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleMultiAdTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest" />
@@ -79,10 +79,10 @@
 				<methods>
 					<include name="testVast3AdWrapper" />
 				</methods>
-		</classes>
-	</test>   -->
+		</classes> 
+	</test> 
 
-<!-- 
+
 	<test name="Freewheel Tests" parallel="false" thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleFW.xml" />
@@ -139,16 +139,8 @@
 				</methods>
 			</class>
 		</classes> 
-	</test> -->
-<!-- 		<test name="IOS" parallel="false"
-		thread-count="1">
-		<classes>
-			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
-			<class
-				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppIOS">
-			</class>
-		</classes>  
-	</test>-->
+	</test>
+
 	
 
 </suite>

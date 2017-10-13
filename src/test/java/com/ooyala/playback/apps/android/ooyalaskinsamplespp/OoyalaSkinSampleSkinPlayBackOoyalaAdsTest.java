@@ -18,7 +18,7 @@ import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.AllowAction;
 import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
-import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
+import com.ooyala.playback.apps.actions.DiscoveryAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
@@ -35,7 +35,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
-public class OoyalaSkinSampleSkinPlayBackOoyalaAdsTest extends OoyalaSkinSampleAppUtils {
+public class OoyalaSkinSampleSkinPlayBackOoyalaAdsTest extends OoyalaSkinSampleAppSkinPlaybackUtils {
 
 	private static Logger logger = Logger.getLogger(OoyalaSkinSampleSkinPlayBackOoyalaAdsTest.class);
 	private SelectVideoAction selectVideo;
@@ -43,7 +43,7 @@ public class OoyalaSkinSampleSkinPlayBackOoyalaAdsTest extends OoyalaSkinSampleA
 	private PauseAction pauseAction;
 	private PlayAction playAction;
 	private SeekAction seekAction;
-	private ClickDiscoveryButtonAction clickDiscoveryAction;
+	private DiscoveryAction clickDiscoveryAction;
 	private SwipeUpDownAppAssetsAction appAssetsSelection;
 	private DiscoveryValidator discoveryValidator;
 	private NotificationEventValidator notificationEventValidator;

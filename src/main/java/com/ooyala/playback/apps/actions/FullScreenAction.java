@@ -32,7 +32,7 @@ public class FullScreenAction extends PlaybackApps implements Actions {
     public boolean startAction(String element) throws Exception {
         // TODO Auto-generated method stub
         Boolean result = true;
-        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        if(getPlatform().contains("android"))
         {
         try {
             if (((AndroidDriver) driver).currentActivity()
@@ -60,7 +60,29 @@ public class FullScreenAction extends PlaybackApps implements Actions {
         else
         {
             //Code for IOS
-            return true;
+        	try
+        	{
+        		result = result && waitForElementAndClick(element);
+        		
+        		return result;
+        	}
+        	catch(Exception e)
+        	{
+        		
+        		if(singletapPlayerScreen () && waitOnElement(element, 2000))
+        		{
+        			return waitForElementAndClick(element);
+        			
+        		}
+        		else
+        		{
+                extentTest.log(LogStatus.FAIL, "Exception While Clicking FullScreen");
+                logger.info("Exception While Clicking FullScreen");
+                return false;
+        		}
+
+        	}
+            
         }
 
     }
@@ -70,7 +92,7 @@ public class FullScreenAction extends PlaybackApps implements Actions {
 
         Boolean result = true;
 
-        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        if(getPlatform().equalsIgnoreCase("android"))
         {
         try
 
@@ -90,7 +112,20 @@ public class FullScreenAction extends PlaybackApps implements Actions {
         else
         {
             //Code for IOS
-            return true;
+        	try
+        	{
+            result = result && waitForElementAndClick(element);
+
+            return result;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            extentTest.log(LogStatus.FAIL, "Exception While Clicking Close FullScreen");
+            logger.info("Exception While Clicking Close FullScreen");
+            return false;
+
+        }
+            
         }
 
     }
@@ -117,6 +152,24 @@ public class FullScreenAction extends PlaybackApps implements Actions {
             return false;
 
         }
+    }
+    
+    public boolean singletapPlayerScreen() {
+        try
+        {
+        TouchAction touch = new TouchAction((AppiumDriver) driver);
+        Dimension size = driver.manage().window().getSize();
+        touch.tap((size.getWidth()) / 2, (size.getHeight() / 2)).perform();
+        Thread.sleep(1000);
+        extentTest.log(LogStatus.INFO, "Single tap done");
+        return true;
+        }
+        catch(Exception e)
+        {
+        extentTest.log(LogStatus.FAIL, "Single tap failed");   
+        return false;
+        }
+
     }
 
 
