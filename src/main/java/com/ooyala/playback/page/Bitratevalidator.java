@@ -184,4 +184,30 @@ public class Bitratevalidator extends PlayBackPage implements PlaybackValidator 
         extentTest.log(LogStatus.PASS,"Bitrate Filter Value :"+biterateFilter+ " and Current Bitrate Value :"+availableBitrate+" do match");
         return true;
     }
+
+    public boolean validateExistingInvalidFilter(String filter){
+        logger.info(filter);
+        String errorCode = driver.executeScript("return pp.getErrorCode()").toString().toLowerCase();
+        if(!("stream".equals(errorCode))){
+            logger.error("error code is not matching expected error code : stream but getting error code as :"+errorCode);
+            extentTest.log(LogStatus.FAIL,"error code is not matching expected error code : stream but getting error code as :"+errorCode);
+            return false;
+        }
+        logger.info("error code is matching");
+        extentTest.log(LogStatus.PASS,"error code is matching");
+        return true;
+    }
+
+    public boolean validateNonExistingInvalidFilter(String filter){
+        logger.info(filter);
+        boolean isPlaying = (boolean) driver.executeScript("return pp.isPlaying()");
+        if(isPlaying){
+            logger.info("Playback is fine");
+            extentTest.log(LogStatus.PASS,"Playback is fine");
+            return true;
+        }
+        logger.error("Something went wrong, check filter");
+        extentTest.log(LogStatus.FAIL,"Something went wrong, check filter");
+        return false;
+    }
 }
