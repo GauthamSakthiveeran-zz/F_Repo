@@ -18,7 +18,7 @@ public class PlaybackSingleDynamicFilterTests extends PlaybackWebTest {
     public PlaybackSingleDynamicFilterTests() throws OoyalaException {
     }
 
-    private static Logger logger = Logger.getLogger(PlaybackSingleDynamicFilterTests.class);
+    private final static Logger logger = Logger.getLogger(PlaybackSingleDynamicFilterTests.class);
     private PlayValidator play;
     private PauseValidator pause;
     private SeekValidator seek;
