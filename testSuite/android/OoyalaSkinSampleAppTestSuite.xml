@@ -82,7 +82,7 @@
 		</classes> 
 	</test> 
 
-
+<!-- 
 	<test name="Freewheel Tests" parallel="false" thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleFW.xml" />
@@ -140,7 +140,7 @@
 			</class>
 		</classes>
 	</test> 
- 
+  -->
 	
 
 </suite>
