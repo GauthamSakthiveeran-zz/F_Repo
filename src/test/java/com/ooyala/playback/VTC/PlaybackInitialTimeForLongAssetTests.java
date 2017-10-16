@@ -1,7 +1,10 @@
 package com.ooyala.playback.VTC;
 
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.*;
+import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.InitialTimeValidator;
+import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
@@ -12,47 +15,43 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
- * Created by jitendra on 1/3/17.
+ * Created by jitendra on 10/4/17.
  */
-public class PlaybackInitialTimeTests extends PlaybackWebTest{
+public class PlaybackInitialTimeForLongAssetTests extends PlaybackWebTest{
 
-    private static Logger logger = Logger.getLogger(PlaybackInitialTimeTests.class);
+    private static Logger logger = Logger.getLogger(PlaybackInitialTimeForLongAssetTests.class);
     private EventValidator eventValidator;
     private PlayValidator play;
     private PlayAction playAction;
     private PauseAction pauseAction;
     private SeekValidator seekValidator;
-    private InitialTimeValidator initalTimeValidator;
+    private InitialTimeValidator initialTimeValidator;
 
-    PlaybackInitialTimeTests() throws OoyalaException {
+    PlaybackInitialTimeForLongAssetTests() throws OoyalaException {
         super();
     }
 
     @Test(groups = "Playback", dataProvider = "testUrls")
-    public void testInitialTime(String testName, UrlObject url)
+    public void testInitialTimeForLongAsset(String testName, UrlObject url)
             throws OoyalaException {
-        String[] parts= testName.split("-")[1].trim().split(":");
-        String tcValue = parts[1].trim();
 
         boolean result = true;
         try {
             driver.get(url.getUrl());
 
-            result = result && play.waitForPage();
+            result = result && play.isPageLoaded();
 
             injectScript();
 
-            result = result && playAction.startAction();
-
-            result = result && eventValidator.validate("willPlaySingleAd_1",20000);
-
-            result = result && eventValidator.validate("playing_1",20000);
-
-            result = result && initalTimeValidator.validate(tcValue,30000);
+            result = result && initialTimeValidator.validatePlayHeadTime();
 
             result = result && pauseAction.startAction();
 
             result = result && eventValidator.validate("paused_1",20000);
+
+            result = result && playAction.startAction();
+
+            result = result && eventValidator.validate("playing_2",20000);
 
             result = result && seekValidator.validate("seeked_1",20000);
 
