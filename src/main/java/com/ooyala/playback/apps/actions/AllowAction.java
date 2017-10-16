@@ -48,6 +48,11 @@ public class AllowAction extends PlaybackApps implements Actions {
     		 extentTest.log(LogStatus.INFO, "Test is running in Android 5.... Allow button is not expected");
     		 return true;
     	}
+    	catch(Exception e)
+    	{
+    		 extentTest.log(LogStatus.FAIL, "Exception Occured While Clicking Allow Media Access");
+    		 return false;
+    	}
         
     }
 }
