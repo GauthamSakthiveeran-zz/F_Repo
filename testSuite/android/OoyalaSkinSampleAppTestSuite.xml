@@ -6,7 +6,7 @@
  
 	<test name="BasicPlayback Regression" parallel="false"
 		thread-count="1">
-		<classes>
+		<!-- <classes>
  			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppDiscoveryNoAdsTest" />
@@ -25,7 +25,7 @@
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVASTAdsTest" />
 		</classes> 
 		
- 
+  -->
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleOoyalaAdTests.xml" />
 			<class
@@ -38,7 +38,7 @@
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest" />
 		</classes> 
 		
-		<classes>
+<!-- 		<classes>
 			<parameter name="testData" value="OoyalaSkinVast3AdPoddedTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVAST3AdsTest" />
@@ -138,9 +138,9 @@
 					<include name="testNonAdRules" />
 				</methods>
 			</class>
-		</classes> 
+		</classes> -->
 	</test>
-
+ 
 	
 
 </suite>
