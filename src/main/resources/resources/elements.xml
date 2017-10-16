@@ -16,6 +16,7 @@
 	<element key="ANDROID_PLAY_VIDEO_1" findBy="id" id="com.ooyala.sample.AdvancedPlaybackSampleApp:id/doubleLeftButton" />
 	<element key="ANDROID_PLAY_VIDEO_2" findBy="id" id="com.ooyala.sample.AdvancedPlaybackSampleApp:id/doubleRightButton" />
 	<element key="CUSTOM_PLAY_PAUSE_BUTTON_ANDROID" findBy="xPath" xPath="//android.widget.ImageButton[@index='0']" />
+
 	<element key="PLAY_PAUSE_BUTTON_V4_IOS" findBy="name" name="Video player. Tap twice to play or pause" />
 	<element key="IOS_TOOLBAR_V3" findBy="xPath" xPath="//XCUIElementTypeToolbar[1]" /> 
 	<element key="MORE_OPTIONS_V4_IOS" findBy="name" name="moreOptions" />
