@@ -7,4 +7,9 @@
 	<element key="ENGLISH_LANGUAGE_ANDROID" findBy="name" name="English" />
 	<element key="DONE_ANDROID" findBy="name" name="Done" />
 	<element key="LANGUAGE_ANDROID" findBy="name" name="Languages" />
+	<element key="CC_V4" findBy="name" name="closedCaption" />
+	<element key="DONE_V4" findBy="name" name="dismiss" />
+	<element key="CC_SWITCH" findBy="xPath" xPath="//XCUIElementTypeSwitch" />
+	<element key="MORE_OPTIONS_V4_IOS" findBy="name" name="moreOptions" />
+	<element key="ENGLISH_LANGUAGE_V4" findBy="xPath" xPath="//XCUIElementTypeOther[@label='English']" />
 </elements>

@@ -1,0 +1,49 @@
+<suite name="OoyalaSkin SampleAPPTests Regression Suite" verbose="1">
+     <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+   	<test name="iOS OoyalaSkin BasicPlayer" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="ios/OoyalaSkinSampleAppBasicPlaybackTestData.xml" />
+			<class name="com.ooyala.playback.apps.ios.ooyalaskinsampleapp.OoyalaSkinBasicPlaybackTest">
+				<methods>
+					<include name="testBasicPlayer" />
+				</methods>
+			</class>
+		</classes>
+	</test> 
+ 	<test name="iOS OoyalaSkin AdPlayer" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="ios/OoyalaSkinSampleAppBasicPlaybackAdTestData.xml" />
+			<class name="com.ooyala.playback.apps.ios.ooyalaskinsampleapp.OoyalaSkinBasicPlaybackTest">
+				<methods>
+					<include name="testAdPlayer" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="iOS OoyalaSkin AdPlayer Addnl" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="ios/OoyalaSkinSampleAppBasicPlaybackAddnlAdTestData.xml" />
+			<class name="com.ooyala.playback.apps.ios.ooyalaskinsampleapp.OoyalaSkinBasicPlaybackAddnlAdTest">
+			</class>
+		</classes>
+	</test>
+	
+  	<test name="iOS OoyalaSkin Google IMA" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="ios/OoyalaSkinSampleAppGoogleIMATestData.xml" />
+			<class name="com.ooyala.playback.apps.ios.ooyalaskinsampleapp.OoyalaSkinGoogleIMATest">
+			</class>
+		</classes>
+	</test>
+	
+	<test name="iOS OoyalaSkin Freewheel" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="ios/OoyalaSkinSampleAppFreeWheelTestData.xml" />
+			<class name="com.ooyala.playback.apps.ios.ooyalaskinsampleapp.OoyalaSkinFreewheelTest">
+			</class>
+		</classes>
+	</test> 
+</suite>
+

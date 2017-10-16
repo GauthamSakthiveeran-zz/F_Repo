@@ -5,15 +5,20 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 
 import com.ooyala.facile.page.WebPage;
+import com.ooyala.playback.apps.actions.ClickAction;
 import com.ooyala.playback.apps.utils.CommandLineParameters;
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidKeyCode;
 import io.appium.java_client.ios.IOSDriver;
 
 
@@ -22,9 +27,10 @@ public abstract class PlaybackApps extends WebPage {
 
     protected AppiumDriver driver;
     protected ExtentTest extentTest;
+    public static boolean isV4 = false;
 
 
-    final static  int[] playCoordinates = new int[2];
+    protected final static Integer[] playCoordinates = new Integer[2];
 
     final static Logger logger = Logger.getLogger(PlaybackApps.class);
 
@@ -116,7 +122,7 @@ public abstract class PlaybackApps extends WebPage {
     }
 
     @Override
-    protected boolean clickOnIndependentElement(String elementKey) {
+	public boolean clickOnIndependentElement(String elementKey) {
         try {
             return super.clickOnIndependentElement(elementKey);
         } catch (Exception ex) {
@@ -168,7 +174,7 @@ public abstract class PlaybackApps extends WebPage {
                         if (ios) {
                             flag = driver.findElement(By.xpath("//XCUIElementTypeActivityIndicator[1]")).isDisplayed();
                         } else {
-                        	flag = driver.findElement(By.className("android.widget.ProgressBar")).isDisplayed();
+                        	 flag = driver.findElement(By.className("android.widget.ProgressBar")).isDisplayed();
                         }
 
                         if (!flag) {
@@ -193,7 +199,7 @@ public abstract class PlaybackApps extends WebPage {
         }
         return flag;
     }
-
+    
     public boolean tapScreenIfRequired() {
         if (!isElementPresent(By.xpath("//XCUIElementTypeToolbar[1]"))) {
             return tapScreen();
@@ -213,6 +219,13 @@ public abstract class PlaybackApps extends WebPage {
     public String getPlatform() {
         if(System.getProperty(CommandLineParameters.PLATFORM)!=null && !System.getProperty(CommandLineParameters.PLATFORM).isEmpty()) {
             return System.getProperty(CommandLineParameters.PLATFORM);
+        }
+        return "";
+    }
+    
+    public String getPlatformVersion() {
+        if(System.getProperty(CommandLineParameters.PLATFORM_VERSION)!=null && !System.getProperty(CommandLineParameters.PLATFORM_VERSION).isEmpty()) {
+            return System.getProperty(CommandLineParameters.PLATFORM_VERSION);
         }
         return "";
     }
@@ -276,5 +289,18 @@ public abstract class PlaybackApps extends WebPage {
 		return true;
 	}
 	
+	public boolean isAppV4(String app) {
+		String V4apps = "OoyalaSkinSampleApp DownloadToOwnSampleApp PulseSampleApp";
+		if (V4apps.contains(app)) {
+			isV4 = true;
+			return true;
+		}
+		return false;
+	}
+
+	public void gotoBack()
+	{
+		((AndroidDriver)driver).pressKeyCode(AndroidKeyCode.BACK);
+	}
 
 }

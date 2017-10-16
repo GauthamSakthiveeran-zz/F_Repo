@@ -6,7 +6,8 @@ import com.ooyala.playback.apps.actions.AllowAction;
 import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
 import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.ClickAction;
-import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
+import com.ooyala.playback.apps.actions.DiscoveryAction;
+import com.ooyala.playback.apps.actions.ShareAction;
 import com.ooyala.playback.apps.actions.FullScreenAction;
 import com.ooyala.playback.apps.actions.LaunchAction;
 import com.ooyala.playback.apps.actions.PauseAction;
@@ -26,7 +27,7 @@ import com.ooyala.playback.apps.validators.PauseValidator;
 import com.ooyala.playback.apps.validators.PoddedAdValidator;
 import com.ooyala.playback.apps.validators.ReplayValidator;
 import com.ooyala.playback.apps.validators.SeekValidator;
-
+import com.ooyala.playback.apps.validators.ShareValidator;
 import com.ooyala.playback.apps.validators.UpNextValidator;
 import com.relevantcodes.extentreports.ExtentTest;
 
@@ -54,7 +55,7 @@ public class PlayBackFactory {
 
 	private OverlayValidator overlayValidator;
 	private FileEventValidator fileEventValidator;
-	private ClickDiscoveryButtonAction clickDiscioveryAction;
+	private DiscoveryAction clickDiscioveryAction;
 	private SwipeUpDownAppAssetsAction swipeAppAssetAction;
 	private DiscoveryValidator discoveryValidator;
 	private UpNextValidator upNextValidator;
@@ -62,6 +63,8 @@ public class PlayBackFactory {
 	private FullScreenOrientationValidator fullScreenOrientationValidator;
 	private PoddedAdValidator poddedAdValidator;
 	private AndroidKeyCodeAction androidKeycodeAction;
+	private ShareAction clickShareButtonAction;
+	private ShareValidator shareValidator;
 
 	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -206,10 +209,10 @@ public class PlayBackFactory {
 		return fileEventValidator;
 	}
 
-	public ClickDiscoveryButtonAction getClickDiscoveryButtonAction() {
+	public DiscoveryAction getClickDiscoveryButtonAction() {
 
 		if (clickDiscioveryAction == null) {
-			clickDiscioveryAction = new ClickDiscoveryButtonAction(driver);
+			clickDiscioveryAction = new DiscoveryAction(driver);
 			clickDiscioveryAction.setExtentTest(extentTest);
 		}
 		return clickDiscioveryAction;
@@ -276,7 +279,23 @@ public class PlayBackFactory {
 		return androidKeycodeAction;
 		
 	}
-	
+	public ShareAction getShareAction() {
+		if(clickShareButtonAction == null) {
+			clickShareButtonAction = new ShareAction(driver);
+			clickShareButtonAction.setExtentTest(extentTest);
+		}
+		return clickShareButtonAction;
+		
+	}
+	public ShareValidator getShareValidator() {
+		if(shareValidator == null) {
+			shareValidator = new ShareValidator(driver);
+			shareValidator.setExtentTest(extentTest);
+		}
+		return shareValidator;
+		
+	}
+
 
 	@SuppressWarnings("unchecked")
 	public <T> T getObject(Class<T> validator) throws Exception {

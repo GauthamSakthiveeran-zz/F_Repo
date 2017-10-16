@@ -1,6 +1,7 @@
 package com.ooyala.playback.apps.actions;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -28,6 +29,8 @@ public class AllowAction extends PlaybackApps implements Actions {
     }
     
     private boolean isAllowed(String element) {
+    	try
+    	{
         WebElement allowButton = getWebElement(element);
         if(allowButton.isDisplayed()) {
             logger.info("Pop-up box is displaying need to give permission");
@@ -39,6 +42,17 @@ public class AllowAction extends PlaybackApps implements Actions {
             extentTest.log(LogStatus.INFO, "PermissionAlready Given..");
             return true;
         }
+    	}
+    	catch(NoSuchElementException e)
+    	{
+    		 extentTest.log(LogStatus.INFO, "Test is running in Android 5.... Allow button is not expected");
+    		 return true;
+    	}
+    	catch(Exception e)
+    	{
+    		 extentTest.log(LogStatus.FAIL, "Exception Occured While Clicking Allow Media Access");
+    		 return false;
+    	}
         
     }
 }

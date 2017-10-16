@@ -1,21 +1,26 @@
 package com.ooyala.playback.apps.actions;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import com.ooyala.playback.apps.PlaybackApps;
+import com.ooyala.playback.factory.PlayBackFactory;
 import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 
 public class PlayAction extends PlaybackApps implements Actions {
 
 	private static Logger logger = Logger.getLogger(PlayAction.class);
+	private PauseAction tapActions;
 
 	public PlayAction(AppiumDriver driver) {
 		super(driver);
 		PageFactory.initElements(driver, this);
 		addElementToPageElements("playpause");
+		tapActions = new PlayBackFactory(driver, extentTest).getPauseAction();
 	}
 
 	@Override
@@ -26,26 +31,42 @@ public class PlayAction extends PlaybackApps implements Actions {
 	}
 
 	private boolean ios(String element) throws Exception {
-		try {
-			if (!tapScreenIfRequired()) {
-				extentTest.log(LogStatus.FAIL, "tapScreenIfRequired failed.");
+		if (isV4) {
+			if (!waitOnElement(element, 5000)) {
+				logger.error("Unable to get Play Element");
+				extentTest.log(LogStatus.FAIL, "Unable to get the Play element");
 				return false;
 			}
-			if (!clickOnIndependentElement(element)) {
-				logger.error("Unable to click on play pause.");
-				extentTest.log(LogStatus.FAIL, "Unable to click on play pause.");
+			if (!getPlayPause(element)) {
+				logger.error("Unable to get the element");
+				extentTest.log(LogStatus.FAIL, "Unable to get the element");
 				return false;
 			}
-		} catch (Exception e) {
-			logger.info("Play button not found. Tapping screen and retrying..");
-			if (!tapScreenIfRequired()) {
-				extentTest.log(LogStatus.FAIL, "tapScreenIfRequired failed.");
-				return false;
-			}
-			if (!clickOnIndependentElement(element)) {
-				extentTest.log(LogStatus.FAIL, "Unable to click on play pause.");
-				logger.error("Unable to click on play pause.");
-				return false;
+		} else {
+			try {
+				if(getPlatformVersion().startsWith("11")) {
+					element = element + "_IOS11";
+				}
+				if (!tapActions.tapScreenIfRequired()) {
+					extentTest.log(LogStatus.FAIL, "tapActions.tapScreenIfRequired failed.");
+					return false;
+				}
+				if (!clickOnIndependentElement(element)) {
+					logger.error("Unable to click on play pause.");
+					extentTest.log(LogStatus.FAIL, "Unable to click on play pause.");
+					return false;
+				}
+			} catch (Exception e) {
+				logger.info("Play button not found. Tapping screen and retrying..");
+				if (!tapActions.tapScreenIfRequired()) {
+					extentTest.log(LogStatus.FAIL, "tapActions.tapScreenIfRequired failed.");
+					return false;
+				}
+				if (!clickOnIndependentElement(element)) {
+					extentTest.log(LogStatus.FAIL, "Unable to click on play pause.");
+					logger.error("Unable to click on play pause.");
+					return false;
+				}
 			}
 		}
 		return true;

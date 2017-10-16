@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="OoyalaSkinSampleApp" />
+  	<test name="FREEWHEEL_MULTI_MIDROLL">
+		<description name="Freewheel Multi Midroll" />
+	</test>
+ 	<test name="FREEWHEEL_PREMIDPOST_OVERLAY">
+		<description name="Freewheel PreMidPost Overlay" />
+	</test>
+ 	<test name="FREEWHEEL_OVERLAY">
+		<description name="Freewheel Overlay" />
+	</test>
+ 	<test name="FREEWHEEL_PREMIDPOST">
+		<description name="Freewheel PreMidPost" />
+	</test>
+	 <test name="FREEWHEEL_POSTROLL">
+		<description name="Freewheel Postroll" />
+	</test>
+ 	<test name="FREEWHEEL_MIDROLL">
+		<description name="Freewheel Midroll" />
+	</test>
+	 <test name="FREEWHEEL_PREROLL">
+		<description name="Freewheel Preroll" />
+	</test>
+</testdata>
