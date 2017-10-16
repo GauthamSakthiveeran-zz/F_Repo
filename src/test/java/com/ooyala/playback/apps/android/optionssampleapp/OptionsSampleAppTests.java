@@ -109,7 +109,6 @@ import io.appium.java_client.android.AndroidKeyCode;
 	        	result = result && allowAction.startAction("ALLOW");
 	        	result = result && androidAction.startAction("BACK");
 	        	result = result && selectVideo.startAction(test.getAsset());
-	        	Thread.sleep(5000);
 			result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
 			result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
