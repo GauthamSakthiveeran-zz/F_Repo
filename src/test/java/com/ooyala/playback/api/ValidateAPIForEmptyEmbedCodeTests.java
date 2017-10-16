@@ -6,6 +6,7 @@ import com.ooyala.playback.page.PlayerAPIValidator;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
@@ -35,8 +36,7 @@ public class ValidateAPIForEmptyEmbedCodeTests extends APIValidationsTest {
 			extentTest.log(LogStatus.FAIL, e.getMessage());
 			result = false;
 		}
-		s_assert.assertTrue(result, "API");
-		s_assert.assertAll();
 
+		Assert.assertTrue(result);
 	}
 }
