@@ -1,0 +1,85 @@
+<suite name="BasicPlayback SampleAPPTests Regression Suite"
+	verbose="1">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+ 
+	<test name="BasicPlayback Regression" parallel="false"
+		thread-count="1">
+ 		 <classes>
+ 			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppDiscoveryNoAdsTest" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppSwipeDiscoveryScreenNoAdsTest" />
+		</classes> 
+		<classes> 
+			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackApp" />
+		</classes>
+
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleVASTTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVASTAdsTest" />
+		</classes> 
+		
+ 
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleOoyalaAdTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackOoyalaAdsTest" />
+		</classes> 
+		
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleMultiAdTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest" />
+		</classes> 
+		
+		<classes>
+			<parameter name="testData" value="OoyalaSkinVast3AdPoddedTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVAST3AdsTest" />
+				<methods>
+					<include name="testVast3Podded" />
+				</methods>
+		</classes>
+	 	
+		<classes>
+ 			<parameter name="testData" value="OoyalaSkinVast3AdWithIconTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVAST3AdsTest" />
+				<methods>
+					<include name="testVast3AdWithIcon" />
+				</methods>
+		</classes>
+		
+		<classes>
+			<parameter name="testData" value="OoyalaSkinVast3AdAllNewEventsTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVAST3AdsTest" />
+				<methods>
+					<include name="testVast3AdAllNewEvents" />
+				</methods>
+		</classes>
+
+		<classes>
+			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackShareTest" />
+		</classes>
+		
+		<classes>
+			<parameter name="testData" value="OoyalaSkinVast3AdWrapperTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVAST3AdsTest" />
+				<methods>
+					<include name="testVast3AdWrapper" />
+				</methods>
+		</classes> 
+	</test> 
+
+</suite>
+
