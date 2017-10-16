@@ -62,7 +62,7 @@
 		</methods>
 	</classes>
 	</test>
-	<test name="All events" parallel=" false " thread-count="1">
+<!-- 	<test name="All events" parallel=" false " thread-count="1">
 	<classes>
 		<parameter name="testData" value="OoyalaSkinVast3AdAllNewEventsTests.xml" />
 		<class
@@ -89,6 +89,6 @@
 		</methods>
 	</classes>
 </test>
-
+ -->
 </suite>
 
