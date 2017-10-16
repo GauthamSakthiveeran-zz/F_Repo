@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 
 import com.ooyala.playback.apps.PlaybackApps;
 import com.ooyala.playback.apps.TestParameters;
+import com.ooyala.playback.apps.actions.DiscoveryAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.factory.PlayBackFactory;
@@ -19,6 +20,7 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 
 	private TestParameters test;
 	private int noOfAds = 0;
+	private boolean isOoyalaSkinSampleApp = false;
 	final static Logger logger = Logger.getLogger(PoddedAdValidator.class);	
 
 	public PoddedAdValidator setTestParameters(TestParameters test) {
@@ -28,6 +30,11 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 
 	public PoddedAdValidator setNoOfAds(String noOfAds) {
 		this.noOfAds = Integer.parseInt(noOfAds);
+		return this;
+	}
+	
+	public PoddedAdValidator isOoyalaSkinSampleAsset(boolean isSkinSampleApp) {
+		this.isOoyalaSkinSampleApp = isSkinSampleApp;
 		return this;
 	}
 
@@ -44,6 +51,8 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 		NotificationEventValidator notificationEventValidator = playBackFactory.getNotificationEventValidator();
 		PauseAction pauseAction = playBackFactory.getPauseAction();
 		SeekAction seekAction = playBackFactory.getSeekAction();
+		DiscoveryAction clickDiscoveryAction = playBackFactory.getClickDiscoveryButtonAction();
+		ElementValidator elementValidator = playBackFactory.getEventValidator();
 
 		boolean iOS = getPlatform().equalsIgnoreCase("ios");
 
@@ -81,7 +90,18 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
 
 		}
-
+		if(isOoyalaSkinSampleApp)
+		{
+			result = result && clickDiscoveryAction.clickPauseButton();
+			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED_ANDRD, 70000);
+			result = result && clickDiscoveryAction.seekToEnd("SEEKBAR_ANDROID");
+			result = result && elementValidator.handleLoadingSpinner();
+			result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
+			result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);
+			result = result && clickDiscoveryAction.clickPlayButton();
+		}
+		else
+		{
 		result = result && iOS ? pauseAction.startAction(iosPlayPause)
 				: pauseAction.startAction("PLAY_PAUSE_ANDROID");
 		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
@@ -92,7 +112,7 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 		result = result && iOS ? pauseAction.startAction(iosPlayPause)
 				: pauseAction.startAction("PLAY_PAUSE_ANDROID");
 		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
-
+		}
 		if (test.getAsset().contains("POST")) {
 			for (int i = 0; i < noOfAds; i++) {
 				result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 30000);

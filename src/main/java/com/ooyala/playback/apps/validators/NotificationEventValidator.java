@@ -184,7 +184,7 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 	private int parseeventfile(Events event, int count) {
 
 		try {
-			String[] final_command = CommandLine.command("adb shell cat /sdcard/log.file");
+			String[] final_command = CommandLine.command("adb -s " + System.getProperty(CommandLineParameters.UDID) + " shell cat /sdcard/log.file");
 			ProcessBuilder processBuilder = new ProcessBuilder(final_command);
 			processBuilder.redirectErrorStream(true);
 			Process p = processBuilder.start();

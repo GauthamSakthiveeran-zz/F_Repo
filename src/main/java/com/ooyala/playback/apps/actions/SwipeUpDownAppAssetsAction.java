@@ -277,19 +277,20 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
     	try
     	{
     		Thread.sleep(2000);
-    		if(((AndroidDriver)driver).currentActivity().equals("com.android.packageinstaller.permission.ui.GrantPermissionsActivity"))
+    		if(((AndroidDriver)driver).currentActivity().contains("permission.ui.GrantPermissionsActivity"))
     		{
     			getWebElement("MEDIA_ALLOW_ANDROID").click();
     			logger.info("Allow Media Access button clicked");
     			return true;
     		}
-    		else if(((AndroidDriver)driver).currentActivity().equals("com.ooyala.sample.players.OoyalaSkinPlayerActivity"))  
+    		else if(((AndroidDriver)driver).currentActivity().contains("PlayerActivity"))  
     		{
     			logger.info("Player screen displayed");
     			return true;
     		}
     		else
     		{
+    			logger.info("Permission Screen or Player Activity Screen Not displayed");
     			return false;
     		}
     	}
@@ -321,6 +322,40 @@ public class SwipeUpDownAppAssetsAction extends PlaybackApps implements Actions 
     		
     	return false;
     	}
+    }
+    
+    // Function to Swipe and click on app Asset using video name Web Element
+    public Boolean swipeAsset(String element) {
+
+
+        if(System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android"))
+        {
+        try {
+            if (waitForElement("APP_ASSETS_ANDROID")) {
+
+                List<WebElement> appVideos = getWebElementsList("APP_ASSETS_ANDROID");
+                swipeBasedOnWebElements(appVideos.get(appVideos.size() - 1), appVideos.get(1));
+                Thread.sleep(2000);
+                return true;
+
+            } else {
+                logger.info("App Assets Screen not displayed");
+               return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.info("Failed to click App Asset");
+           return false;
+        }
+       
+        }
+        else
+        {
+            //Code for IOS
+            return true;
+        }
+       
     }
     
     public boolean swipeAssetListIos(String swipeFromElement, String swipeToElement){

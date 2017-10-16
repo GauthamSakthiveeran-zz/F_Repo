@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 
 import com.ooyala.playback.apps.PlaybackApps;
 import com.ooyala.playback.apps.TestParameters;
+import com.ooyala.playback.apps.actions.DiscoveryAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.factory.PlayBackFactory;
@@ -17,10 +18,16 @@ public class AdValidator extends PlaybackApps implements Validators {
 	}
 
 	private TestParameters test;
+	private boolean isOoyalaSkinSampleApp = false;
 	final static Logger logger = Logger.getLogger(AdValidator.class);	
 
 	public AdValidator setTestParameters(TestParameters test) {
 		this.test = test;
+		return this;
+	}
+	
+	public AdValidator isOoyalaSkinSampleAsset(boolean isSkinSampleApp) {
+		this.isOoyalaSkinSampleApp = isSkinSampleApp;
 		return this;
 	}
 	
@@ -33,7 +40,9 @@ public class AdValidator extends PlaybackApps implements Validators {
 		PauseAction pauseAction = playBackFactory.getPauseAction();
 		SeekAction seekAction = playBackFactory.getSeekAction();
 		ElementValidator elValidator = playBackFactory.getEventValidator();
-
+		DiscoveryAction clickDiscoveryAction = playBackFactory.getClickDiscoveryButtonAction();
+		ElementValidator elementValidator = playBackFactory.getEventValidator();
+		
 		boolean iOS = getPlatform().equalsIgnoreCase("ios");
 		logger.info("is platform iOS:"+iOS);
 		logger.info("is Player skin is V4:"+isV4);
@@ -70,15 +79,18 @@ public class AdValidator extends PlaybackApps implements Validators {
 		}
 		
 		if (test.getAsset().contains("MID") || test.getAsset().contains("MULTI")) {
-			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 55000);
+			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 70000);
 			if (test.getAsset().contains("SKIPPABLE"))
 				result = result && elValidator.validate("SKIP_AD", 10000);
-			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 70000);
+			if(iOS)
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 70000);
+			else
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED_ANDRD, 70000);	
 
 		}
 		
-		if (!isSmallAsset) {
+		if (!isSmallAsset && !isOoyalaSkinSampleApp) {
 			result = result
 			        && (iOS ? pauseAction.startAction(iosPlayPause) : pauseAction.startAction("PLAY_PAUSE_ANDROID"));
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
@@ -93,12 +105,22 @@ public class AdValidator extends PlaybackApps implements Validators {
 			        && (iOS ? pauseAction.startAction(iosPlayPause) : pauseAction.startAction("PLAY_PAUSE_ANDROID"));
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
 		}
+		else
+		{
+			result = result && clickDiscoveryAction.clickPauseButton();
+			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED_ANDRD, 70000);
+			result = result && clickDiscoveryAction.seekToEnd("SEEKBAR_ANDROID");
+			result = result && elementValidator.handleLoadingSpinner();
+			result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
+			result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);
+			result = result && clickDiscoveryAction.clickPlayButton();
+		}
 		
 		if (test.getAsset().contains("POST")) {
-			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 70000);
 			if (test.getAsset().contains("SKIPPABLE"))
 				result = result && elValidator.validate("SKIP_AD", 10000);
-			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 70000);
 		}
 
 		return true;
