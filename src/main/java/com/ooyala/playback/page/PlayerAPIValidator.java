@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -1220,6 +1221,19 @@ public class PlayerAPIValidator extends PlayBackPage implements PlaybackValidato
 			logger.info("Volume did not match");
 			return false;
 		}
+	}
+
+	public boolean validateSetEmptyEmbedCode(){
+		try {
+			driver.executeScript("pp.getEmbedCode('')");
+			extentTest.log(LogStatus.PASS,"setEmbedCode API does not return exception when pass embed code field as an empty parameter");
+			logger.info("setEmbedCode API does not return exception when pass embed code field as an empty parameter");
+		} catch (JavascriptException e) {
+			extentTest.log(LogStatus.FAIL,"setEmbedCode API does return exception when pass embed code field as an empty parameter");
+			logger.error("setEmbedCode API does return exception when pass embed code field as an empty parameter");
+			return false;
+		}
+		return true;
 	}
 
 }
