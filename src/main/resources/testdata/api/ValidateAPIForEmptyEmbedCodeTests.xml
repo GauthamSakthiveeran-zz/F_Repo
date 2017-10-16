@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <test name="ValidateAPIForEmptyEmbedCodeTests">
+        <url>
+            <description name="Player API:set Empty embed code"/>
+            <priority name="P1"></priority>
+            <embed_code name="VxeDZ2NDE6uGDjinwWLHfBpSKjXjZtyn"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <browsersSupported name="firefox,chrome,internet explorer,microsoft edge"/>
+            <playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+        </url>
+    </test>
+</testdata>
