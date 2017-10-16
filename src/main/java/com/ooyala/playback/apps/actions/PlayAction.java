@@ -47,10 +47,7 @@ public class PlayAction extends PlaybackApps implements Actions {
 				if(getPlatformVersion().startsWith("11")) {
 					element = element + "_IOS11";
 				}
-				if (!tapActions.tapScreenIfRequired()) {
-					extentTest.log(LogStatus.FAIL, "tapActions.tapScreenIfRequired failed.");
-					return false;
-				}
+				tapActions.tapScreen();
 				if (!clickOnIndependentElement(element)) {
 					logger.error("Unable to click on play pause.");
 					extentTest.log(LogStatus.FAIL, "Unable to click on play pause.");

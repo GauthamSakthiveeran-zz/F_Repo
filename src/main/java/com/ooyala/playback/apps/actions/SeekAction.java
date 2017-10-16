@@ -109,8 +109,7 @@ public class SeekAction extends PlaybackApps implements Actions {
 
 	private Element getSeekBarPosition(String seekbar) throws InterruptedException {
 		tapAction.waitAndTap();
-		FacileWebElement anElement = new FacileWebElement((FacileWebElement) this.pageElements.get(seekbar));
-		WebElement SEEK = this.getWebElementFromFacileWebElement(anElement);
+		WebElement SEEK = this.getWebElement(seekbar);
 		Point seekbarElementPos = SEEK.getLocation();
 		Element seekbarElement = new Element();
 		seekbarElement.setStartXPosition(seekbarElementPos.getX());
@@ -155,8 +154,9 @@ public class SeekAction extends PlaybackApps implements Actions {
 			WebElement slide = getWebElement(slider);
 		} catch (Exception ex) {
 			logger.info("Retry tapping.");
-			tapAction.tapScreen();
+			tapScreen();
 		}
+		tapScreen();
 		WebElement slide = getWebElement(slider);
 		int sliderXPosition = slide.getLocation().getX();
 		logger.info("Slider X Position >> : " + sliderXPosition);
