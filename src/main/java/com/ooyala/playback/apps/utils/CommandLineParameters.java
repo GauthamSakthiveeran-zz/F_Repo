@@ -18,4 +18,5 @@ public class CommandLineParameters {
 	public static final String XCODE_SIGNING_ID = "xcodeSigningId";
 	public static final String APPIUM_SERVER = "appiumServer";
 	public static final String APPIUM_PORT = "appiumPort";
+	public static final String USE_NEW_WDA = "useNewWDA";
 }
