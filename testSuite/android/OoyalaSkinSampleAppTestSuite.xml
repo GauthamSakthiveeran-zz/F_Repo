@@ -10,10 +10,10 @@
  			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppDiscoveryNoAdsTest" />
-			<!-- <class
-				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppSwipeDiscoveryScreenNoAdsTest" /> -->
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppSwipeDiscoveryScreenNoAdsTest" />
 		</classes> 
-	<!-- 	<classes> 
+		<classes> 
 			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackApp" />
@@ -23,7 +23,7 @@
 			<parameter name="testData" value="OoyalaSkinSampleVASTTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVASTAdsTest" />
-		</classes>  -->
+		</classes> 
 		
  
 		<classes>
@@ -32,7 +32,7 @@
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackOoyalaAdsTest" />
 		</classes> 
 		
-<!-- 		<classes>
+		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleMultiAdTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest" />
@@ -138,7 +138,7 @@
 					<include name="testNonAdRules" />
 				</methods>
 			</class>
-		</classes> -->
+		</classes>
 	</test> 
  
 	
