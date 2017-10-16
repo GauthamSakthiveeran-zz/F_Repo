@@ -40,7 +40,7 @@ public class SeekAction extends PlaybackApps implements Actions {
 	@Override
 	public boolean startAction(String seek) throws Exception {
 		if (getPlatform().equalsIgnoreCase("ios")) {
-			if (getPlatformVersion().startsWith("11")) {
+			if (getPlatformVersion().startsWith("11") && !isV4) {
 				seek += "_IOS11";
 				slider += "_IOS11";
 			}
@@ -56,7 +56,7 @@ public class SeekAction extends PlaybackApps implements Actions {
 					}
 				}
 			} else {
-				tapAction.tapScreenIfRequired();
+				tapAction.tapScreen();
 				if (!seekVideoBack(slider, seek)) {
 					logger.error("Unable to seek video.");
 					tapAction.tapScreenIfRequired();
@@ -154,9 +154,8 @@ public class SeekAction extends PlaybackApps implements Actions {
 			WebElement slide = getWebElement(slider);
 		} catch (Exception ex) {
 			logger.info("Retry tapping.");
-			tapScreen();
+			tapAction.tapScreen();
 		}
-		tapScreen();
 		WebElement slide = getWebElement(slider);
 		int sliderXPosition = slide.getLocation().getX();
 		logger.info("Slider X Position >> : " + sliderXPosition);
