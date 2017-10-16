@@ -67,7 +67,7 @@ public class OoyalaSkinSampleSkinPlayBackApp extends PlaybackAppsTest {
 			result = result && clickDiscoveryAction.clickPlayButton();
 			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
 			result = result && clickDiscoveryAction.clickPauseButton();
-			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
+			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED_ANDRD, 70000);
 			result = result && clickDiscoveryAction.seekToEnd("SEEKBAR_ANDROID");
 			result = result && elementValidator.handleLoadingSpinner();
 			result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
