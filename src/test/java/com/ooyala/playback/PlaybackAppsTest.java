@@ -87,7 +87,7 @@ public class PlaybackAppsTest extends FacileTest {
 					System.getProperty(CommandLineParameters.NEW_COMMAND_TIMEOUT));
 	        capabilities.setCapability("xcodeOrgId", System.getProperty(CommandLineParameters.XCODE_ORG_ID));
 	        capabilities.setCapability("xcodeSigningId", System.getProperty(CommandLineParameters.XCODE_SIGNING_ID));
-//	        capabilities.setCapability("useNewWDA", true);
+	        capabilities.setCapability("useNewWDA", true);
 
 			driver = new IOSDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 
