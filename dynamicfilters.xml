@@ -1,0 +1,15 @@
+<suite name="Playback Web Regression Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    <test name="DynamicFilters" parallel="classes" thread-count="1">
+        <classes>
+            <parameter name="testData" value="dynamicFilters/dynamicfilters.xml"/>
+            <parameter name="jsFile" value="alice/alice.js"/>
+            <class name ="com.ooyala.playback.dynamicfilters.PlaybackSingleDynamicFilterTests"/>
+            <class name ="com.ooyala.playback.dynamicfilters.PlaybackNonExistingInvalidFilterTest"/>
+            <class name="com.ooyala.playback.dynamicfilters.PlaybackExistingInvalidFilterTests"/>
+        </classes>
+    </test>
+</suite>
+
