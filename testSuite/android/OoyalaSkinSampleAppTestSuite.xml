@@ -6,14 +6,14 @@
  
 	<test name="BasicPlayback Regression" parallel="false"
 		thread-count="1">
-<!-- 		 <classes>
+ 		 <classes>
  			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppDiscoveryNoAdsTest" />
-			<class
-				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppSwipeDiscoveryScreenNoAdsTest" />
+			<!-- <class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppSwipeDiscoveryScreenNoAdsTest" /> -->
 		</classes> 
-	 	<classes> 
+	<!-- 	<classes> 
 			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackApp" />
