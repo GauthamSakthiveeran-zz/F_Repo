@@ -10,13 +10,13 @@
 			</class>
 		</classes>
 	</test>
-	<test name="Freewheel Overlay Tests" parallel="false" thread-count="1">
+	<!-- <test name="Freewheel Overlay Tests" parallel="false" thread-count="1">
 		<classes>
 			<parameter name="testData" value="ios/FreewheelSampleAppsOverlayTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.ios.freewheelsampleapp.FreewheelSampleAppsOverlayTests">
 			</class>
 		</classes>
-	</test>
+	</test> -->
 </suite>
 

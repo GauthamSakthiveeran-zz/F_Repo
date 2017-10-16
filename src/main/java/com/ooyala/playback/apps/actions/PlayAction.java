@@ -55,8 +55,8 @@ public class PlayAction extends PlaybackApps implements Actions {
 				}
 			} catch (Exception e) {
 				logger.info("Play button not found. Tapping screen and retrying..");
-				if (!tapActions.tapScreenIfRequired()) {
-					extentTest.log(LogStatus.FAIL, "tapActions.tapScreenIfRequired failed.");
+				if (!tapActions.tapScreen()) {
+					extentTest.log(LogStatus.FAIL, "tapActions.tapScreen failed.");
 					return false;
 				}
 				if (!clickOnIndependentElement(element)) {
