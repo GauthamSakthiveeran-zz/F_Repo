@@ -5,13 +5,13 @@
 		<description name="Ooyala Ad Pre-roll" />
 	</test>
 
-<!-- 	<test name="OOYALA_AD_MIDROLL_VIDEO">
+	<test name="OOYALA_AD_MIDROLL_VIDEO">
 		<description name="Ooyala Ad Mid-roll" />
 	</test>
 
 	<test name="OOYALA_AD_POSTROLL_VIDEO">
 		<description name="Ooyala Ad Post-roll" />
-	</test> -->
+	</test>
 
 
 
