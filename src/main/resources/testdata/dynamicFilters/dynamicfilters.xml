@@ -139,7 +139,7 @@
             <pbid name="c0adf6d2044f437080e005a69cba4880"/>
             <dynamicFilter name="Invalid"/>
             <sslEnabled name="https"/>
-            <playerParameter><![CDATA[{"dynamicFilters":"filterF"}]]></playerParameter>
+            <playerParameter><![CDATA[{"dynamicFilters":"filterG"}]]></playerParameter>
         </url>
         <!--Dash clear Assets-->
         <url>
