@@ -1,4 +1,4 @@
-package com.ooyala.playback.apps.android.ooyalaSkinSampleApp;
+package com.ooyala.playback.apps.android.ooyalaskinsamplespp;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -12,7 +12,7 @@ import com.ooyala.playback.apps.actions.AllowAction;
 import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
 import com.ooyala.playback.apps.actions.CCAction;
 import com.ooyala.playback.apps.actions.ClickAction;
-import com.ooyala.playback.apps.actions.ClickDiscoveryButtonAction;
+import com.ooyala.playback.apps.actions.DiscoveryAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
@@ -33,7 +33,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 	private NotificationEventValidator notificationEventValidator;
 	private PauseAction pauseAction;
 	private SeekAction seekAction;
-	private ClickDiscoveryButtonAction clickDiscoveryAction;
+	private DiscoveryAction clickDiscoveryAction;
 	private PlayAction playAction;
 	private AndroidKeyCodeAction androidKeyCode;
     private AllowAction  allowAction;

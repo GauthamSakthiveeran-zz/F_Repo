@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-    <app name="OoyalaSkinSampleApp" />
- 	<test name="SKIN_HLS_VIDEO">
+	<app name="OoyalaSkinSampleApp" />
+	<test name="SKIN_HLS_VIDEO">
 		<description name="HLS Video" />
 	</test>
-	
+
 	<test name="SKIN_ASPECT_RATIO_VIDEO">
 		<description name="4:3 Aspect Ratio" />
 	</test>
+
+	<test name="SKIN_MP4_VIDEO">
+		<description name="MP4 Video" />
+	</test> 
+
+
+	<test name="SKIN_OOYALA_EHLS_VIDEO">
+		<description name="Ooyala Encrypted HLS" />
+	</test>
+
+
+	<test name="SKIN_CLEAR_HLS_HIGH_PROFILE_VIDEO">
+		<description name="Clear HLS High Profile" />
+	</test>
+
+	<test name="SKIN_CLEAR_HLS_MAIN_PROFILE_VIDEO">
+		<description name="Clear HLS Main Profile" />
+	</test>
+
+	<test name="SKIN_CLEAR_HLS_BASELINE_VIDEO">
+		<description name="Clear HLS Baseline" />
+	</test> 
 </testdata>
