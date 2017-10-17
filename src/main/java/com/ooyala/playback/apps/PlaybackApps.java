@@ -159,12 +159,12 @@ public abstract class PlaybackApps extends WebPage {
 	    	return true;
 	    }
 	    catch(Exception e) {
-	    	System.out.println("caught exception");
+	    	logger.info("caught exception");
 	    	tapOnScreen();
 	    	}
     
 	    touch.tap(playCoordinates[0],playCoordinates[1]).perform();
-	    System.out.println("tapped on pause");
+	    logger.info("tapped on pause");
 	    return true;
 }
 
