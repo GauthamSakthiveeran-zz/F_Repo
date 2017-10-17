@@ -213,10 +213,18 @@ public class DiscoveryAction extends PlaybackApps implements Actions {
         return true;
     	}
     	catch (Exception e)
-    	{
+    	{   tapinMiddleOfPlayerScreen();
+    		if(waitForElementAndClick("PLAY_PAUSE_BUTTON_ANDROID"))
+    		{
+    			logger.info("Clicked Play Button");
+    			return true;
+    		}
+    		else
+    		{
             logger.info("Failed to Click Play Button");
             extentTest.log(LogStatus.FAIL, "Failed to Click Play Button");
-    	return false;
+            return false;
+    		}
     	}
 		
     }
