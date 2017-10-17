@@ -74,6 +74,7 @@ public class PlaybackAppsTest extends FacileTest {
 		String port = System.getProperty(CommandLineParameters.APPIUM_PORT) != null ? System.getProperty(CommandLineParameters.APPIUM_PORT) : "4723";
 		
 		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
+			
 			boolean useNewWDA = System.getProperty(CommandLineParameters.USE_NEW_WDA) != null
 					? new Boolean(System.getProperty(CommandLineParameters.USE_NEW_WDA)) : false;
 
@@ -121,6 +122,7 @@ public class PlaybackAppsTest extends FacileTest {
 			
 			if (driver == null || driver.getSessionId() == null) {
 				initializeDriver();
+				isAppClosed = false;
 			}
 			
 			extentTest = ExtentManager.startTest(testData[0].toString());
