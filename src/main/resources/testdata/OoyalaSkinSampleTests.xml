@@ -8,7 +8,7 @@
 	<test name="SKIN_ASPECT_RATIO_VIDEO">
 		<description name="4:3 Aspect Ratio" />
 	</test>
-
+<!-- 
 	<test name="SKIN_MP4_VIDEO">
 		<description name="MP4 Video" />
 	</test> 
@@ -29,5 +29,5 @@
 
 	<test name="SKIN_CLEAR_HLS_BASELINE_VIDEO">
 		<description name="Clear HLS Baseline" />
-	</test> 
+	</test>  -->
 </testdata>
