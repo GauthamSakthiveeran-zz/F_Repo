@@ -12,7 +12,7 @@
             <additionalPlugins name=""/>
             <pbid name="c0adf6d2044f437080e005a69cba4880"/>
             <dynamicFilter name="393537"/>
-            <sslEnabled name="https"/>
+            <sslEnabled name="https" browser="chrome"/>
             <playerParameter><![CDATA[{"dynamicFilters":"filterA"}]]></playerParameter>
         </url>
         <url>
@@ -25,7 +25,7 @@
             <additionalPlugins name=""/>
             <pbid name="c0adf6d2044f437080e005a69cba4880"/>
             <dynamicFilter name="1164259"/>
-            <sslEnabled name="https"/>
+            <sslEnabled name="https" browser="chrome"/>
             <playerParameter><![CDATA[{"dynamicFilters":"filterC"}]]></playerParameter>
         </url>
         <url>
@@ -38,7 +38,7 @@
             <additionalPlugins name=""/>
             <pbid name="c0adf6d2044f437080e005a69cba4880"/>
             <dynamicFilter name="1164259,4347094"/>
-            <sslEnabled name="https"/>
+            <sslEnabled name="https" browser="chrome"/>
             <playerParameter><![CDATA[{"dynamicFilters":"filterE"}]]></playerParameter>
         </url>
         <!--HLS clear Assets-->
@@ -52,7 +52,7 @@
             <additionalPlugins name=""/>
             <pbid name="c0adf6d2044f437080e005a69cba4880"/>
             <dynamicFilter name="614439"/>
-            <sslEnabled name="https"/>
+            <sslEnabled name="https" browser="chrome"/>
             <playerParameter><![CDATA[{"dynamicFilters":"filterF"}]]></playerParameter>
         </url>
         <!--Dash clear Assets-->
@@ -81,7 +81,7 @@
             <additionalPlugins name=""/>
             <pbid name="c0adf6d2044f437080e005a69cba4880"/>
             <dynamicFilter name="Invalid"/>
-            <sslEnabled name="https"/>
+            <sslEnabled name="https" browser="chrome"/>
             <playerParameter><![CDATA[{"dynamicFilters":"filterInvalid"}]]></playerParameter>
         </url>
         <!--Dash DRM Assets-->
@@ -95,7 +95,7 @@
             <additionalPlugins name=""/>
             <pbid name="c0adf6d2044f437080e005a69cba4880"/>
             <dynamicFilter name="Invalid"/>
-            <sslEnabled name="https"/>
+            <sslEnabled name="https" browser="chrome"/>
             <playerParameter><![CDATA[{"dynamicFilters":"filterInvalid"}]]></playerParameter>
         </url>
         <!--Dash clear Assets-->
@@ -124,7 +124,7 @@
             <additionalPlugins name=""/>
             <pbid name="c0adf6d2044f437080e005a69cba4880"/>
             <dynamicFilter name="Invalid"/>
-            <sslEnabled name="https"/>
+            <sslEnabled name="https" browser="chrome"/>
             <playerParameter><![CDATA[{"dynamicFilters":"filterC"}]]></playerParameter>
         </url>
         <!--Dash DRM Assets-->
@@ -138,7 +138,7 @@
             <additionalPlugins name=""/>
             <pbid name="c0adf6d2044f437080e005a69cba4880"/>
             <dynamicFilter name="Invalid"/>
-            <sslEnabled name="https"/>
+            <sslEnabled name="https" browser="chrome"/>
             <playerParameter><![CDATA[{"dynamicFilters":"filterG"}]]></playerParameter>
         </url>
         <!--Dash clear Assets-->
