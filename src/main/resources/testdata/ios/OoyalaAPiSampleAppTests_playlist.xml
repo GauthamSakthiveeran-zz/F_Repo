@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<app name="OoyalaAPISampleApp" />
+ 	<!-- <test name="OOYALA_EVERYWHERE">
+		<description name="Ooyala Everywhere" />
+	</test>
+	<test name="OOYALA_SOCIAL">
+		<description name="Ooyala Social" />
+	</test>
+	<test name="RETHINK_VIDEO">
+		<description name="Rethink Video" />
+	</test>
+	<test name="TELEGRAPH_MEDIA">
+		<description name="Telegraph Media Group" />
+	</test> -->
+	<test name="ASPECT_RATIO">
+		<description name="4:3 Aspect Ratio" />
+	</test>
+	<test name="MP4_VIDEO">
+		<description name="MP4 Video" />
+	</test>
+	<test name="HLS_VIDEO">
+		<description name="HLS Video" />
+	</test>
+	
+	  <!-- <test name="MOMENTUM_MP4">
+		<description name="MP4 Video" />
+	</test>
+	<test name="MOMENTUM_HLS_LONG">
+		<description name="HLS Video" />
+	</test> 
+		  <test name="MOMENTUM_MP4">
+		<description name="MP4 Video" />
+	</test>
+	<test name="MOMENTUM_HLS_LONG">
+		<description name="HLS Video" />
+	</test> 
+    <test name="MOMENTUM_MP4">
+		<description name="MP4 Video" />
+	</test>
+	<test name="MOMENTUM_HLS_LONG">
+		<description name="HLS Video" />
+	</test>  -->
+</testdata>
