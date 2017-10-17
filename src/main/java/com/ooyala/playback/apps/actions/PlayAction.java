@@ -44,22 +44,24 @@ public class PlayAction extends PlaybackApps implements Actions {
 			}
 		} else {
 			try {
-				if(getPlatformVersion().startsWith("11")) {
+				if (getPlatformVersion().startsWith("11")) {
 					element = element + "_IOS11";
 				}
-				if (!tapActions.tapScreenIfRequired()) {
-					extentTest.log(LogStatus.FAIL, "tapActions.tapScreenIfRequired failed.");
-					return false;
-				}
+				if(!waitOnElement(element, 1000))
+					tapActions.tapScreen();
 				if (!clickOnIndependentElement(element)) {
-					logger.error("Unable to click on play pause.");
-					extentTest.log(LogStatus.FAIL, "Unable to click on play pause.");
-					return false;
+					if(!waitOnElement(element, 1000))
+						tapActions.tapScreen();
+					if (!clickOnIndependentElement(element)) {
+						logger.error("Unable to click on play pause.");
+						extentTest.log(LogStatus.FAIL, "Unable to click on play pause.");
+						return false;
+					}
 				}
 			} catch (Exception e) {
 				logger.info("Play button not found. Tapping screen and retrying..");
-				if (!tapActions.tapScreenIfRequired()) {
-					extentTest.log(LogStatus.FAIL, "tapActions.tapScreenIfRequired failed.");
+				if (!tapActions.tapScreen()) {
+					extentTest.log(LogStatus.FAIL, "tapActions.tapScreen failed.");
 					return false;
 				}
 				if (!clickOnIndependentElement(element)) {

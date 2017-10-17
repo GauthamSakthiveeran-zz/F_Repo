@@ -40,7 +40,7 @@ public class SeekAction extends PlaybackApps implements Actions {
 	@Override
 	public boolean startAction(String seek) throws Exception {
 		if (getPlatform().equalsIgnoreCase("ios")) {
-			if (getPlatformVersion().startsWith("11")) {
+			if (getPlatformVersion().startsWith("11") && !isV4) {
 				seek += "_IOS11";
 				slider += "_IOS11";
 			}
@@ -56,7 +56,7 @@ public class SeekAction extends PlaybackApps implements Actions {
 					}
 				}
 			} else {
-				tapAction.tapScreenIfRequired();
+				tapAction.tapScreen();
 				if (!seekVideoBack(slider, seek)) {
 					logger.error("Unable to seek video.");
 					tapAction.tapScreenIfRequired();
@@ -109,8 +109,7 @@ public class SeekAction extends PlaybackApps implements Actions {
 
 	private Element getSeekBarPosition(String seekbar) throws InterruptedException {
 		tapAction.waitAndTap();
-		FacileWebElement anElement = new FacileWebElement((FacileWebElement) this.pageElements.get(seekbar));
-		WebElement SEEK = this.getWebElementFromFacileWebElement(anElement);
+		WebElement SEEK = this.getWebElement(seekbar);
 		Point seekbarElementPos = SEEK.getLocation();
 		Element seekbarElement = new Element();
 		seekbarElement.setStartXPosition(seekbarElementPos.getX());
