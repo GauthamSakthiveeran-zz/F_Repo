@@ -46,6 +46,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.IOSMobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 
 public class PlaybackAppsTest extends FacileTest {
@@ -88,6 +89,7 @@ public class PlaybackAppsTest extends FacileTest {
 	        capabilities.setCapability("xcodeOrgId", System.getProperty(CommandLineParameters.XCODE_ORG_ID));
 	        capabilities.setCapability("xcodeSigningId", System.getProperty(CommandLineParameters.XCODE_SIGNING_ID));
 	        capabilities.setCapability("useNewWDA", true);
+	        capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, Boolean.TRUE);
 
 			driver = new IOSDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 
