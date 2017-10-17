@@ -75,14 +75,12 @@ public abstract class PlayBackPage extends WebPage {
                 extentTest.log(LogStatus.INFO, "Wait on element : " + elementKey + ", failed after " + timeout + " ms");
                 return false;
             }
-
         } catch (Exception ex) {
             extentTest.log(LogStatus.ERROR,
                     "wait on element " + elementKey + "  failed with exception " + ex.getMessage());
             logger.error(ex.getMessage());
         }
         return false;
-
     }
 
     @Override
@@ -403,7 +401,7 @@ public abstract class PlayBackPage extends WebPage {
             return true;
         } catch (Exception e) {
             logger.error("Not able to record logs....");
-            extentTest.log(LogStatus.ERROR,"Not able to record logs....");
+            extentTest.log(LogStatus.ERROR, "Not able to record logs....");
             return false;
         }
     }
@@ -431,6 +429,21 @@ public abstract class PlayBackPage extends WebPage {
             return true;
         }
         return false;
+    }
+
+    public String getAdditionalPlugin() {
+        Map<String, String> map;
+        String additionalPlugin = "";
+        try {
+            map = parseURL();
+            if (map != null && map.get("additional_plugins") != null)
+                additionalPlugin = map.get("additional_plugins");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            logger.error("unable to get Addition Plugins");
+            extentTest.log(LogStatus.ERROR, "unable to get Addition Plugins");
+        }
+        return additionalPlugin;
     }
 
     public double getPlayAheadTime() {
@@ -484,7 +497,7 @@ public abstract class PlayBackPage extends WebPage {
         } catch (IOException e) {
             e.printStackTrace();
             logger.error("Not able to take the screenshot");
-            extentTest.log(LogStatus.ERROR,"Not able to take the screenshot");
+            extentTest.log(LogStatus.ERROR, "Not able to take the screenshot");
         }
         return "images/" + fileName;
     }
@@ -580,7 +593,7 @@ public abstract class PlayBackPage extends WebPage {
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 logger.error(e.getMessage());
-                extentTest.log(LogStatus.ERROR,e.getMessage());
+                extentTest.log(LogStatus.ERROR, e.getMessage());
                 return false;
             }
         }
