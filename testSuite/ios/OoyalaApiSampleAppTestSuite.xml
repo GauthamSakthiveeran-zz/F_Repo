@@ -4,7 +4,7 @@
 	</listeners>
 	<test name="OoyalaAPISampleApp Tests" parallel="false" thread-count="1">
 		<classes>
-			<parameter name="testData" value="ios/OoyalaApiSampleAppTests_playlist.xml" />
+			<parameter name="testData" value="ios/OoyalaApiSampleAppPlaylistTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.ios.ooyalaapisampleapp.OoyalaApiSampleAppTests">
 			</class>
