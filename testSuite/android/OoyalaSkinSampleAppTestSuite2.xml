@@ -21,13 +21,13 @@
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackApp" />
 		</classes>
 	</test>
-	<test name="Vast Test " parallel="false" thread-count="1">
+<!-- 	<test name="Vast Test " parallel="false" thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleVASTTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVASTAdsTest" />
 		</classes>
-	</test>
+	</test> -->
 	<test name="ooyala Ads" parallel="false" thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleOoyalaAdTests.xml" />
