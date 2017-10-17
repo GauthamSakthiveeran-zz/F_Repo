@@ -125,21 +125,22 @@ public class SeekAction extends PlaybackApps implements Actions {
 
 	private boolean seekVideoBack(String slider, String seekbar) throws InterruptedException {
 
-		if (!waitOnElement(seekbar, 1000) || !waitOnElement(slider, 1000)) {
+		if (!waitOnElement(slider, 1000)) {
 			tapAction.tapScreen();
 		}
 
 		int startx = getSliderPosition(slider);
 
-		if (!waitOnElement(seekbar, 1000) || !waitOnElement(slider, 1000)) {
+		if (!waitOnElement(seekbar, 1000)) {
 			tapAction.tapScreen();
 		}
 
 		Element seekbarElement = getSeekBarPosition(seekbar);
 		logger.info("Seeking Back------------");
-		tapAction.tapScreenIfRequired();
+		
 		int seekBackLength = ((startx + 1) - seekbarElement.getStartXPosition()) / 2;
 		TouchAction touch = new TouchAction(driver);
+		tapAction.waitAndTap();
 		if (getPlatform().equalsIgnoreCase("ios"))
 			touch.press((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) - seekBackLength),
 					seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
@@ -150,13 +151,15 @@ public class SeekAction extends PlaybackApps implements Actions {
 	}
 
 	private int getSliderPosition(String slider) throws InterruptedException {
+		WebElement slide;
 		try {
-			WebElement slide = getWebElement(slider);
+			slide = getWebElement(slider);
 		} catch (Exception ex) {
 			logger.info("Retry tapping.");
 			tapAction.tapScreen();
+			slide = getWebElement(slider);
 		}
-		WebElement slide = getWebElement(slider);
+		
 		int sliderXPosition = slide.getLocation().getX();
 		logger.info("Slider X Position >> : " + sliderXPosition);
 		return sliderXPosition;

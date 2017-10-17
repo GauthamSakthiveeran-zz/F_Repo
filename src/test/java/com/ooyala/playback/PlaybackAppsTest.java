@@ -74,7 +74,8 @@ public class PlaybackAppsTest extends FacileTest {
 		String port = System.getProperty(CommandLineParameters.APPIUM_PORT) != null ? System.getProperty(CommandLineParameters.APPIUM_PORT) : "4723";
 		
 		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
-			
+			boolean useNewWDA = System.getProperty(CommandLineParameters.USE_NEW_WDA) != null? new Boolean(System.getProperty(CommandLineParameters.USE_NEW_WDA)):false;
+
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setCapability("platformVersion", System.getProperty(CommandLineParameters.PLATFORM_VERSION));
 			capabilities.setCapability("deviceName", System.getProperty(CommandLineParameters.DEVICE_NAME));
@@ -88,8 +89,8 @@ public class PlaybackAppsTest extends FacileTest {
 					System.getProperty(CommandLineParameters.NEW_COMMAND_TIMEOUT));
 	        capabilities.setCapability("xcodeOrgId", System.getProperty(CommandLineParameters.XCODE_ORG_ID));
 	        capabilities.setCapability("xcodeSigningId", System.getProperty(CommandLineParameters.XCODE_SIGNING_ID));
-	        capabilities.setCapability("useNewWDA", true);
 	        capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, Boolean.TRUE);
+	        capabilities.setCapability("useNewWDA", useNewWDA);
 
 			driver = new IOSDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 
