@@ -58,7 +58,7 @@ public class AdValidator extends PlaybackApps implements Validators {
 			iosSeekBar="SEEK_BAR_V4";
 		}
 		
-		if (test.getAsset().contains("PRE") || (test.getAsset().contains("MULTI") && !test.getAsset().contains("MIDROLL"))) {
+		if (test.getAsset().contains("PRE") || (test.getAsset().contains("MULTI") && !test.getAsset().contains("MIDROLL") && !test.getAsset().contains("FW_MULTIMID"))) {
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
 			if (test.getAsset().contains("SKIPPABLE"))
 				result = result && elValidator.validate("SKIP_AD", 10000);
@@ -77,7 +77,14 @@ public class AdValidator extends PlaybackApps implements Validators {
 			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);			
 		}
-		
+		 if(test.getAsset().contains("QUADMID")) {
+ 			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
+ 			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
+ 			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
+ 			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
+ 			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
+ 			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
+		}
 		if (test.getAsset().contains("MID") || test.getAsset().contains("MULTI")) {
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 70000);
 			if (test.getAsset().contains("SKIPPABLE"))

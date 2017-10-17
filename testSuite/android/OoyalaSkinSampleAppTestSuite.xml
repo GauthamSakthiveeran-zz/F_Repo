@@ -91,7 +91,7 @@
 		</classes>
 	</test>
 
-	<test name="Google IMA Podded" parallel="false" thread-count="1">
+	 <test name="Google IMA Podded" parallel="false" thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleIMAPodded.xml" />
 			<class

@@ -18,9 +18,11 @@ import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.actions.SwipeUpDownAppAssetsAction;
 import com.ooyala.playback.apps.actions.SeekAction;
+import com.ooyala.playback.apps.validators.AdValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
+import com.ooyala.playback.apps.validators.PoddedAdValidator;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
@@ -39,12 +41,12 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
     private AllowAction  allowAction;
     private SwipeUpDownAppAssetsAction appAssetsSelection;
 	//pageFactory = new pageFactory((AppiumDriver) driver, extentTest);
+    private AdValidator adValidator;
+    private PoddedAdValidator poddedAdValidator;
 
 	public boolean freeWheelTests(TestParameters test) throws Exception {
 		boolean result = true;
 		notificationEventValidator = pageFactory.getNotificationEventValidator();
-		pauseAction = pageFactory.getPauseAction();
-		seekAction = pageFactory.getSeekAction();
 		elementValidator = pageFactory.getEventValidator();
 		selectVideo = pageFactory.getSelectVideoAction();
 		clickDiscoveryAction = pageFactory.getClickDiscoveryButtonAction();
@@ -52,7 +54,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 		androidKeyCode = pageFactory.getAndroidKeyCodeAction();
 		allowAction = pageFactory.getAllow();
 		appAssetsSelection = pageFactory.getSwipeUpDownAppAssetsAction();
-
+        adValidator = pageFactory.getAdEventValidator();
 		try {
 			result = result && appAssetsSelection.startAction("Freewheel Integration");
 	    		Thread.sleep(3000);
@@ -63,25 +65,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 	        	result = result && selectVideo.startAction(test.getAsset());
 	        	Thread.sleep(5000);
 	        	result = result && clickDiscoveryAction.clickPlayButton();
-	        	if(test.getAsset().contains("PREROLL") || test.getAsset().contains("PREMIDPOST")) {
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-	        	}
-	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-	        if(test.getAsset().contains("MULTIMID")) {
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-	    		}
-	        result = result && clickDiscoveryAction.clickPauseButton();
-	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-	        result = result && clickDiscoveryAction.seekForward("SEEKBAR_ANDROID");
-	        result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-	        result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);       
-	        result = result && clickDiscoveryAction.clickPlayButton();
-	        if(test.getAsset().contains("MIDROLL") || test.getAsset().contains("POSTROLL") || test.getAsset().contains("PREMIDPOST") || test.getAsset().contains("MULTIMID")) {
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	        }
+	        result = result && adValidator.isOoyalaSkinSampleAsset(true).setTestParameters(test).validate("", 2000);
 	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -103,7 +87,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 		androidKeyCode = pageFactory.getAndroidKeyCodeAction();
 		allowAction = pageFactory.getAllow();
 		appAssetsSelection = pageFactory.getSwipeUpDownAppAssetsAction();
-
+		adValidator = pageFactory.getAdEventValidator();
 		try {
 			result = result && appAssetsSelection.startAction("Google IMA Integration");
 	    		Thread.sleep(3000);
@@ -114,21 +98,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 	        	result = result && selectVideo.startAction(test.getAsset());
 	        	Thread.sleep(5000);
 	        	result = result && clickDiscoveryAction.clickPlayButton();
-	        	if(test.getAsset().contains("PREROLL")) {
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-	        	}
-	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-	        result = result && clickDiscoveryAction.clickPauseButton();
-	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-	        result = result && clickDiscoveryAction.seekForward("SEEKBAR_ANDROID");
-	        result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-	        result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);       
-	        result = result && clickDiscoveryAction.clickPlayButton();
-	        if(test.getAsset().contains("MIDROLL") || test.getAsset().contains("POSTROLL")) {
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	        }
+	        	result = result && adValidator.isOoyalaSkinSampleAsset(true).setTestParameters(test).validate("", 2000);
 	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -144,12 +114,13 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 		pauseAction = pageFactory.getPauseAction();
 		seekAction = pageFactory.getSeekAction();
 		elementValidator = pageFactory.getEventValidator();
+		selectVideo = pageFactory.getSelectVideoAction();
 		clickDiscoveryAction = pageFactory.getClickDiscoveryButtonAction();
 		playAction = pageFactory.getPlayAction();
 		androidKeyCode = pageFactory.getAndroidKeyCodeAction();
 		allowAction = pageFactory.getAllow();
 		appAssetsSelection = pageFactory.getSwipeUpDownAppAssetsAction();
-
+		poddedAdValidator = pageFactory.getPoddedAdValidator();
 		try {
 			result = result && appAssetsSelection.startAction("Google IMA Integration");
 	    		Thread.sleep(3000);
@@ -160,32 +131,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 	        	result = result && selectVideo.startAction(test.getAsset());
 	        	Thread.sleep(5000);
 	        	result = result && clickDiscoveryAction.clickPlayButton();
-	        	if(test.getAsset().contains("PREROLL") || test.getAsset().contains("PREMIDPOST")) {
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-	        	}
-	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-	        result = result && clickDiscoveryAction.clickPauseButton();
-	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-	        result = result && clickDiscoveryAction.seekForward("SEEKBAR_ANDROID");
-	        result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-	        result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);       
-	        result = result && clickDiscoveryAction.clickPlayButton();
-	        if(test.getAsset().contains("PREMIDPOST")) {
-					result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-					result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-					result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-	        }
-	        if(test.getAsset().contains("MIDROLL") || test.getAsset().contains("POSTROLL") || test.getAsset().contains("PREMIDPOST")) {
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	        }
-	        
+	        	result = result && poddedAdValidator.isOoyalaSkinSampleAsset(true).setNoOfAds("2").setTestParameters(test).validate("", 2000);   
 	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -207,7 +153,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 		androidKeyCode = pageFactory.getAndroidKeyCodeAction();
 		allowAction = pageFactory.getAllow();
 		appAssetsSelection = pageFactory.getSwipeUpDownAppAssetsAction();
-
+		adValidator = pageFactory.getAdEventValidator();
 		try {
 			result = result && appAssetsSelection.startAction("Google IMA Integration");
 	    		Thread.sleep(3000);
@@ -218,27 +164,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 	        	result = result && selectVideo.startAction(test.getAsset());
 	        	Thread.sleep(5000);
 	        	result = result && clickDiscoveryAction.clickPlayButton();
-	        	result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        result = result && elementValidator.validate("SKIPAD_ANDROID", 10000);
-	        result = result && elementValidator.clickOnElement("SKIPAD_ANDROID");
-	        	result = result && notificationEventValidator.validateEvent(Events.AD_SKIPPPED,20000);	        
-	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-	        result = result && clickDiscoveryAction.clickPauseButton();
-	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-	        result = result && clickDiscoveryAction.seekForward("SEEKBAR_ANDROID");
-	        result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-	        result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);       
-	        result = result && clickDiscoveryAction.clickPlayButton();
-	        if(test.getAsset().contains("PREMIDPOST")) {
-	            	result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	    	        result = result && elementValidator.validate("SKIPAD_ANDROID", 20000);
-	    	        result = result && elementValidator.clickOnElement("SKIPAD_ANDROID");
-	    	        	result = result && notificationEventValidator.validateEvent(Events.AD_SKIPPPED,20000);
-	        }            
-	       	result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	        result = result && elementValidator.validate("SKIPAD_ANDROID", 10000);
-	        result = result && elementValidator.clickOnElement("SKIPAD_ANDROID");
-	        	result = result && notificationEventValidator.validateEvent(Events.AD_SKIPPPED,20000);  
+	        	result = result &&  adValidator.isOoyalaSkinSampleAsset(true).setTestParameters(test).validate("", 2000);
 	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -260,7 +186,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 		androidKeyCode = pageFactory.getAndroidKeyCodeAction();
 		allowAction = pageFactory.getAllow();
 		appAssetsSelection = pageFactory.getSwipeUpDownAppAssetsAction();
-
+		adValidator = pageFactory.getAdEventValidator();
 		try {
 			result = result && appAssetsSelection.startAction("Google IMA Integration");
 	    		Thread.sleep(3000);
@@ -271,39 +197,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 	        	result = result && selectVideo.startAction(test.getAsset());
 	        	Thread.sleep(5000);
 	        	result = result && clickDiscoveryAction.clickPlayButton();
-	        	if(test.getAsset().contains("PREROLL")) {
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
-	        		result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
-	        	}
-	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
-	        result = result && clickDiscoveryAction.clickPauseButton();
-	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED, 70000);
-	        result = result && clickDiscoveryAction.seekForward("SEEKBAR_ANDROID");
-	        result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-	        result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);       
-	        result = result && clickDiscoveryAction.clickPlayButton();
-	        if(test.getAsset().contains("QUADMID")) {
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	        }
-	        if(test.getAsset().contains("MIDROLL") || test.getAsset().contains("PREMIDMIDPOST")) {
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	        }
-	        if(test.getAsset().contains("PREMIDMIDPOST")) {
-				result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-				result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	        }
-	        if(test.getAsset().contains("PREMIDMIDPOST") || test.getAsset().contains("POSTROLL")) {
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
-	    			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
-	        }
+	     	result = result && adValidator.isOoyalaSkinSampleAsset(true).setTestParameters(test).validate("", 2000);
 	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
 		} catch (Exception ex) {
 			ex.printStackTrace();
