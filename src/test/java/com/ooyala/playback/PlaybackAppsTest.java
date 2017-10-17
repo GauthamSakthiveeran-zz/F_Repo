@@ -74,7 +74,8 @@ public class PlaybackAppsTest extends FacileTest {
 		String port = System.getProperty(CommandLineParameters.APPIUM_PORT) != null ? System.getProperty(CommandLineParameters.APPIUM_PORT) : "4723";
 		
 		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
-			boolean useNewWDA = System.getProperty(CommandLineParameters.USE_NEW_WDA) != null? new Boolean(System.getProperty(CommandLineParameters.USE_NEW_WDA)):false;
+			boolean useNewWDA = System.getProperty(CommandLineParameters.USE_NEW_WDA) != null
+					? new Boolean(System.getProperty(CommandLineParameters.USE_NEW_WDA)) : false;
 
 			DesiredCapabilities capabilities = new DesiredCapabilities();
 			capabilities.setCapability("platformVersion", System.getProperty(CommandLineParameters.PLATFORM_VERSION));
@@ -117,6 +118,10 @@ public class PlaybackAppsTest extends FacileTest {
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
 		try {
+			
+			if (driver == null || driver.getSessionId() == null) {
+				initializeDriver();
+			}
 			
 			extentTest = ExtentManager.startTest(testData[0].toString());
 			pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
