@@ -4,7 +4,7 @@
  	<test name="FREEWHEEL_PREROLL">
 		<description name="Freewheel Preroll" />
 	</test>
-	<!-- <test name="FREEWHEEL_MIDROLL">
+	<test name="FREEWHEEL_MIDROLL">
 		<description name="Freewheel Midroll" />
 	</test>
 	<test name="FREEWHEEL_POSTROLL">
@@ -15,5 +15,5 @@
 	</test>
 	<test name="FREEWHEEL_MULTI_MIDROLL">
 		<description name="Freewheel MultiMidroll" />
-	</test> --> 
+	</test> 
 </testdata>
