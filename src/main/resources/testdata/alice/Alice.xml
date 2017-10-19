@@ -223,6 +223,18 @@
         </url>
 
         <url>
+            <description name="Core:Discovery with Ad in discovery tray"/>
+            <priority name="P1"></priority>
+            <embed_code name="JtajdoMTE6UWt0G0Gct5dyIabTclDsDy"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name="DISCOVERY"/>
+            <pbid name="14a1b2eb21104617948405aeac11271b"/>
+            <playerParameter><![CDATA[{"encodingPriority":["hls","dash","mp4"],"showNonLinearCloseButton":true,"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
             <description name="Core:Discovery from specific label Bitmovin"/>
             <priority name="P1"></priority>
             <embed_code name="RmbHlycTpp3D2ARo5QGzrQa5cMtGSc2m"/>

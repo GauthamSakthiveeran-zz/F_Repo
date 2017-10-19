@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <test name="PlaybackSingleDynamicFilterTests">
+        <!--Dash DRM Assets-->
+        <url>
+            <description name="Dash_DRM Filter A Test"/>
+            <priority name="P3"></priority>
+            <embed_code name="91bTlvYTE6OOI_wKMsLdn4_suUEvZjJ4"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="c0adf6d2044f437080e005a69cba4880"/>
+            <dynamicFilter name="393537"/>
+            <sslEnabled name="https" browser="chrome"/>
+            <playerParameter><![CDATA[{"dynamicFilters":"filterA"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Dash_DRM Filter C Test"/>
+            <priority name="P3"></priority>
+            <embed_code name="91bTlvYTE6OOI_wKMsLdn4_suUEvZjJ4"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="c0adf6d2044f437080e005a69cba4880"/>
+            <dynamicFilter name="1164259"/>
+            <sslEnabled name="https" browser="chrome"/>
+            <playerParameter><![CDATA[{"dynamicFilters":"filterC"}]]></playerParameter>
+        </url>
+        <url>
+            <description name="Dash_DRM Filter E Test"/>
+            <priority name="P3"></priority>
+            <embed_code name="91bTlvYTE6OOI_wKMsLdn4_suUEvZjJ4"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="c0adf6d2044f437080e005a69cba4880"/>
+            <dynamicFilter name="1164259,4347094"/>
+            <sslEnabled name="https" browser="chrome"/>
+            <playerParameter><![CDATA[{"dynamicFilters":"filterE"}]]></playerParameter>
+        </url>
+        <!--HLS clear Assets-->
+        <url>
+            <description name="HLS_Clear Filter F Test"/>
+            <priority name="P3"></priority>
+            <embed_code name="RndDhvYTE6dmNoGfQcV4vTWIgiAA7NnS"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="c0adf6d2044f437080e005a69cba4880"/>
+            <dynamicFilter name="614439"/>
+            <sslEnabled name="https" browser="chrome"/>
+            <playerParameter><![CDATA[{"dynamicFilters":"filterF"}]]></playerParameter>
+        </url>
+        <!--Dash clear Assets-->
+        <url>
+            <description name="Dash_Clear Filter A Test"/>
+            <priority name="P3"></priority>
+            <embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <dynamicFilter name="398279"/>
+            <playerParameter><![CDATA[{"encodingPriority":["dash"],"dynamicFilters":"filterA"}]]></playerParameter>
+        </url>
+    </test>
+    <test name="PlaybackNonExistingInvalidFilterTest">
+        <url>
+            <!--HLS DRM Assets-->
+            <description name="HLS_Clear Non Existing Invalid Filter Test"/>
+            <priority name="P3"></priority>
+            <embed_code name="RndDhvYTE6dmNoGfQcV4vTWIgiAA7NnS"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="c0adf6d2044f437080e005a69cba4880"/>
+            <dynamicFilter name="Invalid"/>
+            <sslEnabled name="https" browser="chrome"/>
+            <playerParameter><![CDATA[{"dynamicFilters":"filterInvalid"}]]></playerParameter>
+        </url>
+        <!--Dash DRM Assets-->
+        <url>
+            <description name="Dash_DRM Non Existing Filter A Test"/>
+            <priority name="P3"></priority>
+            <embed_code name="91bTlvYTE6OOI_wKMsLdn4_suUEvZjJ4"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="c0adf6d2044f437080e005a69cba4880"/>
+            <dynamicFilter name="Invalid"/>
+            <sslEnabled name="https" browser="chrome"/>
+            <playerParameter><![CDATA[{"dynamicFilters":"filterInvalid"}]]></playerParameter>
+        </url>
+        <!--Dash clear Assets-->
+        <url>
+            <description name="Dash_Clear Non Existing Filter A Test"/>
+            <priority name="P3"></priority>
+            <embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <dynamicFilter name="Invalid"/>
+            <playerParameter><![CDATA[{"encodingPriority":["dash"],"dynamicFilters":"filterInvalid"}]]></playerParameter>
+        </url>
+    </test>
+    <test name="PlaybackExistingInvalidFilterTests">
+        <url>
+            <!--HLS DRM Assets-->
+            <description name="HLS_Clear Existing Invalid Filter Test"/>
+            <priority name="P3"></priority>
+            <embed_code name="RndDhvYTE6dmNoGfQcV4vTWIgiAA7NnS"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="c0adf6d2044f437080e005a69cba4880"/>
+            <dynamicFilter name="Invalid"/>
+            <sslEnabled name="https" browser="chrome"/>
+            <playerParameter><![CDATA[{"dynamicFilters":"filterC"}]]></playerParameter>
+        </url>
+        <!--Dash DRM Assets-->
+        <url>
+            <description name="Dash_DRM Existing Filter A Test"/>
+            <priority name="P3"></priority>
+            <embed_code name="91bTlvYTE6OOI_wKMsLdn4_suUEvZjJ4"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="c0adf6d2044f437080e005a69cba4880"/>
+            <dynamicFilter name="Invalid"/>
+            <sslEnabled name="https" browser="chrome"/>
+            <playerParameter><![CDATA[{"dynamicFilters":"filterG"}]]></playerParameter>
+        </url>
+        <!--Dash clear Assets-->
+        <url>
+            <description name="Dash_Clear Existing Filter A Test"/>
+            <priority name="P3"></priority>
+            <embed_code name="g3aDUzODE6EWDhHR_FDxuCSPRTBCE1Gq"/>
+            <pcode name="hjZ2gyOn8Y0z7pvLjDdvaibqJ-dR"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="5c824a4f3b7145a998d07aea17e8f22c"/>
+            <dynamicFilter name="Invalid"/>
+            <playerParameter><![CDATA[{"encodingPriority":["dash"],"dynamicFilters":"filterC"}]]></playerParameter>
+        </url>
+    </test>
+</testdata>
