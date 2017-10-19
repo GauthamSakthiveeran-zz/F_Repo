@@ -384,6 +384,8 @@ public abstract class PlaybackWebTest extends FacileTest {
             new JSScriptInjection(jsUrl, extentTest, webDriverFacile.get(),url).injectScript();
         } catch (Exception ex) {
             ex.printStackTrace();
+            logger.error("inject sript error");
+            extentTest.log(LogStatus.ERROR,"inject sript error");
         }
     }
 

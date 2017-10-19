@@ -56,6 +56,7 @@ public class JSScriptInjection {
                 }
             }
             extentTest.log(LogStatus.PASS, "Javascript injection is successful");
+            logger.info("Javascript injection is successful");
         }
     }
 
