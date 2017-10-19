@@ -146,13 +146,27 @@ public abstract class PlaybackApps extends WebPage {
 	}
 
     public boolean getPause(String playpause) throws Exception {
-    	    int[] play = new int[2];
-        TouchAction touch = new TouchAction(driver);
-        Thread.sleep(1000);
-        //using the play button coordinates to pause the video
-        touch.tap(playCoordinates[0],playCoordinates[1]).perform();
-        return true;
-    }
+	    int[] play = new int[2];
+	    TouchAction touch = new TouchAction(driver);
+	    Thread.sleep(1000);
+	    //using the play button coordinates to pause the video
+	    touch.tap(playCoordinates[0],playCoordinates[1]).perform();
+	    //verify if the video is paused
+	    Thread.sleep(5000);
+	    try {
+	    	List<WebElement> e = getWebElementsList(playpause);
+	    	//pause  successful
+	    	return true;
+	    }
+	    catch(Exception e) {
+	    	logger.info("caught exception");
+	    	tapOnScreen();
+	    	}
+    
+	    touch.tap(playCoordinates[0],playCoordinates[1]).perform();
+	    logger.info("tapped on pause");
+	    return true;
+}
 
     public void tapOnScreen() throws InterruptedException {
         TouchAction touch = new TouchAction(driver);

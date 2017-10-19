@@ -86,9 +86,10 @@ public class PoddedAdValidator extends PlaybackApps implements Validators {
 				result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
 				result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
 			}
-
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
-
+            if(iOS)
+            		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
+            else
+            		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED_ANDRD, 25000);
 		}
 		if(isOoyalaSkinSampleApp)
 		{
