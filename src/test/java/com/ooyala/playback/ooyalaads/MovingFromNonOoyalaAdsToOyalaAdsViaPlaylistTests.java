@@ -1,7 +1,10 @@
 package com.ooyala.playback.ooyalaads;
 
+import org.apache.log4j.Logger;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
-import com.ooyala.playback.page.DiscoveryValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.PlaylistValidator;
@@ -9,9 +12,6 @@ import com.ooyala.playback.page.action.PlayAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
-import org.apache.log4j.Logger;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 /**
  * Created by suraj on 7/4/17.
@@ -42,7 +42,7 @@ public class MovingFromNonOoyalaAdsToOyalaAdsViaPlaylistTests extends PlaybackWe
             result = result && playAction.startAction();
 
             //Ooyala Ad should not play
-            result = result && !eventValidator.checkIsAdPlaying();
+            result = result && !eventValidator.isAdPlaying();
 
             result = result && eventValidator.validate("playing_1",10000);
 
@@ -61,7 +61,7 @@ public class MovingFromNonOoyalaAdsToOyalaAdsViaPlaylistTests extends PlaybackWe
             result = result && playlist.selectAndClickonAssetFromPlaylist("Baby");
 
             //Ooyala Ad should not play
-            result = result && !eventValidator.checkIsAdPlaying();
+            result = result && !eventValidator.isAdPlaying();
 
             result = result && eventValidator.validate("playing_3",10000);
         } catch (Exception e) {

@@ -97,9 +97,9 @@ public abstract class PlayBackPage extends WebPage {
         } catch (Exception ex) {
             logger.error(ex.getMessage());
             logger.error("Exception occured while clicking on element " + elementKey);
-            extentTest.log(LogStatus.ERROR, "Exception occured while clicking on element " + elementKey);
+            extentTest.log(LogStatus.INFO, "Exception occured while clicking on element " + elementKey);
             logger.info("Calling clickOnHiddenElement function on the element " + elementKey);
-            extentTest.log(LogStatus.ERROR, "Calling clickOnHiddenElement function on the element " + elementKey);
+            extentTest.log(LogStatus.INFO, "Calling clickOnHiddenElement function on the element " + elementKey);
             return clickOnHiddenElement(elementKey);
         }
     }
@@ -622,8 +622,22 @@ public abstract class PlayBackPage extends WebPage {
         }
         return true;
     }
+	
+	public boolean isAdPlaying() {
+		PlayerAPIAction playerAPI = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
+		boolean isAdPlaying = false;
+		for (int i = 0; i < 6; i++) {
+			try {
+				isAdPlaying = playerAPI.isAdPlaying();
+				Thread.sleep(500);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+		return isAdPlaying;
+	}
 
-    public void dragdrop(WebElement LocatorFrom, WebElement LocatorTo) {
+	public void dragdrop(WebElement LocatorFrom, WebElement LocatorTo) {
         String xto = Integer.toString(LocatorTo.getLocation().x);
         String yto = Integer.toString(LocatorTo.getLocation().y);
         driver.executeScript(

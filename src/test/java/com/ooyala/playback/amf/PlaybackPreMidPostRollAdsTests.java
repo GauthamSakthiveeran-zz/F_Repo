@@ -8,6 +8,7 @@ import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.MidrollAdValidator;
 import com.ooyala.playback.page.PlayValidator;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
@@ -25,6 +26,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 	private SeekAction seekAction;
 	private MidrollAdValidator adStartTimeValidator;
 	private AdClickThroughValidator adClickThroughValidator;
+	private PlayerAPIAction playerAPI;
 
 	@Test(groups = { "amf", "preroll", "midroll", "postroll" }, dataProvider = "testUrls")
 	public void verifyPreMidPostroll(String testName, UrlObject url) throws OoyalaException {
@@ -49,8 +51,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 
 			s_assert.assertTrue(adClickThroughValidator.setUrlObject(url).validate("videoPausedAds_1", 20000),
 					"PreMidPost failed");
-
-			executeScript("pp.skipAd()");
+			playerAPI.skipAd();
 
 			result = result && event.validate("adsPlayed_1", 200000);
 
@@ -64,7 +65,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 			s_assert.assertTrue(adClickThroughValidator.setUrlObject(url).validate("videoPausedAds_2", 20000),
 					"PreMidPost");
 
-			executeScript("pp.skipAd()");
+			playerAPI.skipAd();
 
 			result = result && event.validate("adsPlayed_2", 150000);
 
@@ -77,7 +78,7 @@ public class PlaybackPreMidPostRollAdsTests extends PlaybackWebTest {
 			s_assert.assertTrue(adClickThroughValidator.setUrlObject(url).validate("videoPausedAds_3", 20000),
 					"PreMidPost");
 
-			executeScript("pp.skipAd()");
+			playerAPI.skipAd();
 
 			result = result && isPulse ? event.validate("singleAdPlayed_6", 60000) && event.validate("seeked_1", 60000)
 					: event.validate("adsPlayed_3", 60000);

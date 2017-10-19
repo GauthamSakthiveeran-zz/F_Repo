@@ -39,18 +39,12 @@ public class AnalyticsPreMidPostRollAdsTests extends PlaybackWebTest {
             //validate preroll
             result = result && event.validate("PreRoll_willPlaySingleAd_1", 30000);
 
-            if (isPulse)
-                result = result && event.validate("singleAdPlayed_2", 120000);
-            else
-                result = result && event.validate("singleAdPlayed_1", 120000);
+            result = result && event.validateSingleAdPlayedEvent(1);
 
             result = result && event.validate("playing_1", 150000);
 
             //validate midroll
-            if (isPulse)
-                result = result && event.validate("singleAdPlayed_4", 120000);
-            else
-                result = result && event.validate("singleAdPlayed_2", 120000);
+            result = result && event.validateSingleAdPlayedEvent(2);
 
             executeScript("pp.skipAd()");
 

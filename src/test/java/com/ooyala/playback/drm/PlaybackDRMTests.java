@@ -9,7 +9,6 @@ import com.ooyala.playback.page.DRMValidator;
 import com.ooyala.playback.page.EventValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
-import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.StreamValidator;
 import com.ooyala.playback.page.action.SeekAction;
 import com.ooyala.playback.url.UrlObject;
@@ -20,7 +19,6 @@ public class PlaybackDRMTests extends PlaybackWebTest {
 	private EventValidator eventValidator;
 	private PlayValidator play;
 	private PauseValidator pause;
-	private SeekValidator seek;
 	private SeekAction seekAction;
 	private DRMValidator drm;
 	private BitmovinTechnologyValidator tech;

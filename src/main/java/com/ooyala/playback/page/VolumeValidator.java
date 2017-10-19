@@ -42,18 +42,18 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			if (!(isElementPresent("CONTROL_BAR"))) {
 				moveElement(getWebElement("CONTROL_BAR"));
 			}
-			
-			if(!isElementPresent("VOLUME_MAX")){
+
+			if (!isElementPresent("VOLUME_MAX")) {
 				extentTest.log(LogStatus.FAIL, "Volume icon not found.");
 				return false;
 			}
 
 			if (clickOnIndependentElement("VOLUME_MAX")) {
-			    if (getPlatform().equalsIgnoreCase("android")) {
-                    if (!clickOnIndependentElement("VOLUME_MAX")) {
-                        return false;
-                    }
-                }
+				if (getPlatform().equalsIgnoreCase("android")) {
+					if (!clickOnIndependentElement("VOLUME_MAX")) {
+						return false;
+					}
+				}
 
 				getMuteVol = Double.parseDouble(playerAPI.getVolume());
 				if (getMuteVol != expectedMuteVol) {
@@ -99,32 +99,42 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 		return true;
 	}
 
-	public boolean checkInitialVolume(String asset) throws Exception{
+	public boolean validateInitialVolume(String asset) throws Exception {
 		double initialVolume = 0.5;
-		logger.info("Initial Volume is set to "+initialVolume);
+		logger.info("Initial Volume is set to " + initialVolume);
 		double getVolume = Double.parseDouble(new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getVolume());
-        boolean isInitialTimeMatches = initialVolume == getVolume;
-        if (isInitialTimeMatches) {
+		boolean isInitialTimeMatches = initialVolume == getVolume;
+		if (isInitialTimeMatches) {
 			logger.info("initial time matched for " + asset);
 			extentTest.log(LogStatus.PASS, "initial time matched for " + asset);
-		}
-        else {
+		} else {
 			logger.error("initial time not matching for " + asset);
-			extentTest.log(LogStatus.FAIL,"initial time not matching for " + asset);
+			extentTest.log(LogStatus.FAIL, "initial time not matching for " + asset);
 		}
 		return isInitialTimeMatches;
 	}
-	
+
 	public boolean validateInitialVolume(double volume) throws Exception {
-		if(volume == Double.parseDouble(new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getVolume())) {
+		if (volume == Double.parseDouble(new PlayBackFactory(driver, extentTest).getPlayerAPIAction().getVolume())) {
 			logger.info("initial volume is  set correctly in player");
 			extentTest.log(LogStatus.PASS, "initial volume is set correctly in player");
 			return true;
-			
+
 		}
 		logger.info("initial volume is not set as per the player params");
 		extentTest.log(LogStatus.INFO, "initial volume is not set as per playerparams");
 		return false;
+	}
+
+	public boolean validateInitailVolumeForPoddedAds(int adsPlayed, int adsToPlay) throws Exception {
+		boolean result = true;
+		for (int i = 1 + adsPlayed; i <= adsToPlay; i++) {
+			if (isAdPlaying()) {
+				result = result && waitOnElement("willPlaySingleAd_" + i + "", 50000);
+				result = result && validateInitialVolume("ad");
+			}
+		}
+		return result;
 	}
 
 }

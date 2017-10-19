@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.EventValidator;
+import com.ooyala.playback.page.PoddedAdValidator;
 import com.ooyala.playback.page.SeekValidator;
 import com.ooyala.playback.page.action.PlayerAPIAction;
 import com.ooyala.playback.url.UrlObject;
@@ -19,6 +20,7 @@ public class PlaybackAutoplayAutoloopPrerollPoddedAdTests extends PlaybackWebTes
 	private EventValidator eventValidator;
 	private SeekValidator seekValidator;
 	private PlayerAPIAction playerAPI;
+	private PoddedAdValidator poddedAds;
 
 	public PlaybackAutoplayAutoloopPrerollPoddedAdTests() throws OoyalaException {
 		super();
@@ -44,10 +46,8 @@ public class PlaybackAutoplayAutoloopPrerollPoddedAdTests extends PlaybackWebTes
 			result = result && eventValidator.validate("countPoddedAds_1", 1000);
 
 			int noOfAds = Integer.parseInt(playerAPI.getTextContent("countPoddedAds_1"));
-
-			for (int i = 1; i <= noOfAds; i++) {
-				result = result && eventValidator.validate("singleAdPlayed_" + i + "", 1000);
-			}
+			
+			result = result && poddedAds.validatePoddedAds(0, noOfAds);
 
 			result = result && eventValidator.validate("playing_1", 10000);
 
@@ -59,10 +59,8 @@ public class PlaybackAutoplayAutoloopPrerollPoddedAdTests extends PlaybackWebTes
 			result = result && eventValidator.validate("countPoddedAds_2", 60000);
 
 			int noOfAdsOnReplay = Integer.parseInt(playerAPI.getTextContent("countPoddedAds_2"));
-
-			for (int i = noOfAds + 1; i <= noOfAdsOnReplay; i++) {
-				result = result && eventValidator.validate("singleAdPlayed_" + i + "", 1000);
-			}
+			
+			result = result && poddedAds.validatePoddedAds(noOfAds, noOfAdsOnReplay);
 
 		} catch (Exception e) {
 			result = false;

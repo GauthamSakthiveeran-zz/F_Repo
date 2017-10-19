@@ -48,7 +48,7 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 
 			result = result && playAction.startAction();
 
-			if (eventValidator.checkIsAdPlaying()) {
+			if (eventValidator.isAdPlaying()) {
 				result = result && eventValidator.validate("singleAdPlayed_1", 100000);
 			}
 

@@ -1,8 +1,8 @@
 package com.ooyala.playback.amf.adfrequency;
 
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.AdFrequencyValidator;
 import com.ooyala.playback.page.PlayValidator;
@@ -12,7 +12,6 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class PlaybackAdFrequencyTests extends PlaybackWebTest {
 
-	public static Logger logger = Logger.getLogger(PlaybackAdFrequencyTests.class);
 	private PlayValidator playValidator;
 	private AdFrequencyValidator adFrequencyValidator;
 
@@ -25,20 +24,18 @@ public class PlaybackAdFrequencyTests extends PlaybackWebTest {
 		boolean result = true;
 		try {
 			driver.get(url.getUrl());
-			logger.info("Navigated to : "+url.getUrl());
+			result = result && playValidator.clearCache();
 
-			Assert.assertEquals(playValidator.clearCache(),true,"Failed to clear cache");
-
-			Assert.assertEquals(playValidator.waitForPage(),true,"Failed to wait for page");
+			result = result && playValidator.waitForPage();
 
 			injectScript();
 
-			Assert.assertEquals(adFrequencyValidator.split(url).validate("", 1000),true,"Failed to validate ad Frequency");
+			result = result && adFrequencyValidator.split(url).validate("", 1000);
 
-			Assert.assertEquals(adFrequencyValidator.validateAdCapFrequency(testDescription,url.getAdFirstPlay(),url.getAdFrequency(),2000),true,"Failed to validate ad Cap Frequency");
+			result = result && adFrequencyValidator.validateAdCapFrequency(testDescription, url.getAdFirstPlay(),
+					url.getAdFrequency(), 2000);
 
 		} catch (Exception e) {
-			logger.error(e.getMessage());
 			result = false;
 			extentTest.log(LogStatus.FAIL, e);
 		}

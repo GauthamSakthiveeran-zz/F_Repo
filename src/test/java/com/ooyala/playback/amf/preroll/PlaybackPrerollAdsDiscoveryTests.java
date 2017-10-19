@@ -61,9 +61,6 @@ public class PlaybackPrerollAdsDiscoveryTests extends PlaybackWebTest {
 
 			result = result && event.waitOnElement(By.id("played_1"), 10000);
 
-			if (result)
-				extentTest.log(LogStatus.INFO, "Validating discovery at the end of the video.");
-
 			result = result && discoveryValidator.validateDiscoveryToaster();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
