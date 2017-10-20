@@ -18,12 +18,7 @@
 		<dependency>
 			<groupId>com.ooyala.facile</groupId>
 			<artifactId>facile</artifactId>
-			<version>2.5.6-SNAPSHOT</version>
-			<!-- <exclusions> <exclusion> <groupId>org.seleniumhq.selenium</groupId>
-				<artifactId>selenium-safari-driver</artifactId> </exclusion> <exclusion> 
-				<groupId>com.google.guava</groupId> <artifactId>guava</artifactId> </exclusion> 
-				<exclusion> <groupId>org.eclipse.jetty</groupId> <artifactId>jetty-util</artifactId> 
-				</exclusion> </exclusions> -->
+			<version>2.5.8-SNAPSHOT</version>
 			<exclusions>
 				<exclusion>
 					<groupId>commons-io</groupId>
