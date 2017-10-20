@@ -4,7 +4,7 @@
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
  
-<!-- 	<test name="Ooyala Skin App Discovery No Ads Test" parallel="false"
+	<test name="Ooyala Skin App Discovery No Ads Test" parallel="false"
 		thread-count="1">
  		 <classes>
  			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
@@ -163,7 +163,7 @@
 				</methods>
 			</class>
 		</classes>
-	</test>  -->
+	</test> 
  	<test name="Ooyala Skin App VAMP Test" parallel="false"
 		thread-count="1">
  		 <classes>
