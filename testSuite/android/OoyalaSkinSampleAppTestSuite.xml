@@ -4,7 +4,7 @@
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
  
-	<test name="Ooyala Skin App Discovery No Ads Test" parallel="false"
+<!-- 	<test name="Ooyala Skin App Discovery No Ads Test" parallel="false"
 		thread-count="1">
  		 <classes>
  			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
@@ -163,8 +163,27 @@
 				</methods>
 			</class>
 		</classes>
-	</test> 
- 
+	</test>  -->
+ 	<test name="Ooyala Skin App VAMP Test" parallel="false"
+		thread-count="1">
+ 		 <classes>
+ 			<parameter name="testData" value="OoyalaSkinSampleVAMPTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVAMPTest" />
+		</classes> 
+		</test>
+	
+		 	<test name="Ooyala Skin App Vast3 Skippable Ads Tests" parallel="false"
+		thread-count="1">
+		<classes>
+ 			<parameter name="testData" value="OoyalaSkinVast3SkippableAdTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVAST3AdsTest" />
+				<methods>
+					<include name="testVast3AdSkippable" />
+				</methods>
+		</classes>
+		</test>
 	
 
 </suite>

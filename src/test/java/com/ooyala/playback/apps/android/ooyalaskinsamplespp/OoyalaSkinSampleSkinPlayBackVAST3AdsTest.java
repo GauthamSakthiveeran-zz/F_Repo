@@ -109,5 +109,22 @@ public class OoyalaSkinSampleSkinPlayBackVAST3AdsTest extends OoyalaSkinSampleAp
 
 	}
 	
+	@Test(groups = "OoyalaSkinSampleApp", dataProvider = "testData")
+	public void testVast3AdSkippable(String testName, TestParameters test) throws Exception {
+		Reporter.log("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
+		logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
+		boolean result = true;
+		try {
+			result = result && SwipeAndselectAsset(test);
+			result = result && vast3AdsTest(test);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			logger.error("Here is an exception" + ex);
+			result = false;
+		}
+		Assert.assertTrue(result, "APP:" + test.getApp() + "->Asset:" + test.getAsset());
+
+	}
+	
 
 }
