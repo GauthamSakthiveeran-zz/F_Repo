@@ -33,6 +33,12 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 			boolean status = false;
 			long startTime = System.currentTimeMillis();
 
+			if (!waitOnElement("NOTIFICATION_AREA", 10000)){
+				logger.error("NOTIFICATION_AREA element not found");
+				extentTest.log(LogStatus.FAIL, "NOTIFICATION_AREA element not found");
+				return false;
+			}
+			
 			while ((System.currentTimeMillis() - startTime) < timeout) {
 				logger.info("Waiting for notification >>>> : " + event.getEvent());
 				String notifiationEvents = getNotificationEvents();
@@ -90,8 +96,7 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 		int timeout = 10;
 		String notifications = null;
 		while (counter < timeout) {
-			if (waitOnElement("NOTIFICATION_AREA", 10000)) // 10sec
-				notifications = getWebElement("NOTIFICATION_AREA").getText();
+			notifications = getWebElement("NOTIFICATION_AREA").getText();
 			if (notifications != null)
 				return notifications;
 			counter++;

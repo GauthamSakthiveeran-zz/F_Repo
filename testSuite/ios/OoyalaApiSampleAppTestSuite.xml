@@ -1,0 +1,14 @@
+<suite name="API Sample App Regression Suite" verbose="1">
+	<listeners>
+		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+	</listeners>
+	<test name="OoyalaAPISampleApp Tests" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="ios/OoyalaApiSampleAppPlaylistTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.ios.ooyalaapisampleapp.OoyalaApiSampleAppTests">
+			</class>
+		</classes>
+	</test>
+</suite>
+

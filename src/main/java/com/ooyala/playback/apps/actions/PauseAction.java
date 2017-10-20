@@ -68,6 +68,8 @@ public class PauseAction extends PlaybackApps implements Actions {
 	
 	private boolean performPlayPauseV3iOS(String element) {
 		try {
+			if(getPlatformVersion().startsWith("11"))
+				element += "_IOS11";
 			if(!waitOnElement(element, 1000))
 				tapScreen();
 			if (!clickOnIndependentElement(element)) {
