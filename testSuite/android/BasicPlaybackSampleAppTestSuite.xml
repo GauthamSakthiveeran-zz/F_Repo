@@ -1,0 +1,27 @@
+<suite name="IMA SampleAPPTests Regression Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    <test name="BasicPlaybacknonAdsTests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="android/BasicPlaybacknonAdsTests.xml" />
+            <class
+                    name="com.ooyala.playback.apps.android.basicplaybacksampleapp.BasicPlaybackSampleAppTests">
+                <methods>
+                    <include name ="testPluginPlayer"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="BasicPlaybackAdsTests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="android/BasicPlaybackAdsTests.xml" />
+            <class
+                    name="com.ooyala.playback.apps.android.basicplaybacksampleapp.BasicPlaybackAdsTests">
+                <methods>
+                    <include name ="testPluginPlayer"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

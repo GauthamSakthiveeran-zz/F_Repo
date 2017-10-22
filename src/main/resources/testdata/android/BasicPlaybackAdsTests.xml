@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="BasicPlaybackSampleApp" />
+    <test name="VAST_AD_PRE_ROLL">
+        <description name="VAST Ad Pre-roll" />
+    </test>
+    <test name="VAST_AD_MID_ROLL">
+        <description name="VAST Ad Mid-roll" />
+    </test>
+    <test name="VAST_AD_POST_ROLL">
+        <description name="VAST Ad Post-roll" />
+    </test>
+    <test name="OOYALA_AD_PRE_ROLL">
+        <description name="Ooyala Ad Pre-roll" />
+    </test>
+    <test name="OOYALA_AD_MID_ROLL">
+        <description name="Ooyala Ad Mid-roll" />
+    </test>
+    <test name="OOYALA_AD_POST_ROLL">
+        <description name="Ooyala Ad Post-roll" />
+    </test>
+</testdata>
