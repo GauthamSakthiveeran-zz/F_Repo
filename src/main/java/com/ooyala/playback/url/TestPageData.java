@@ -351,7 +351,7 @@ public class TestPageData {
 
         switch (envType) {
 
-            case STAGING:
+            case CANDIDATE:
                 envURL = sslEnabled + properties.getProperty("staging_env_url") + v4Version;
                 break;
             case PRODUCTION:
