@@ -39,20 +39,20 @@ public class UrlGenerator {
 			String adPlugin, String additionalPlugin, String playerConfigParameter,String skinJson) {
 
 		String environment = System.getProperty(CommandLineParameters.environment);
-		String v4Version = "latest";
+		logger.info(environment);
 		if (environment == null || environment.isEmpty()) {
-			playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.STAGING);
+			playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.CANDIDATE);
 		} else if (environment.equalsIgnoreCase("PRODUCTION")) {
 			playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.PRODUCTION);
-		} else if (environment.equalsIgnoreCase("STAGING")) {
-			playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.STAGING);
+		} else if (environment.equalsIgnoreCase("STAGING") || environment.equalsIgnoreCase("CANDIDATE")) {
+			playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.CANDIDATE);
 		} else if (environment.equalsIgnoreCase("STABLE")) {
 			playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.STABLE);
 		} else if (environment.equalsIgnoreCase("SANDBOX")) {
 			playerProperties.put(PlayerPropertyKey.ENVIRONMENT, PlayerPropertyValue.SANDBOX);
 		}
 
-		v4Version = System.getProperty(CommandLineParameters.v4Version);
+		String v4Version = System.getProperty(CommandLineParameters.v4Version);
 		if (v4Version == null || v4Version.equals("")) {
 			v4Version = "latest";
 		}
