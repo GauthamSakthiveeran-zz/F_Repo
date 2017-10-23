@@ -1,0 +1,27 @@
+<suite name="IMA SampleAPPTests Regression Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    <test name="OoyalaAPIContentTreeTests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="android/OoyalaAPIContentTreeTests.xml" />
+            <class
+                    name="com.ooyala.playback.apps.android.ooyalapisampleapp.ContentTreeForChannel">
+                <methods>
+                    <include name ="testPluginPlayer"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="OoyalaAPIPlaylistTests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="android/OoyalaAPIPlaylistTests.xml" />
+            <class
+                    name="com.ooyala.playback.apps.android.ooyalapisampleapp.PlaylistAPI">
+                <methods>
+                    <include name ="testPluginPlayer"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="OoyalaAPISampleApp" />
+
+    <test name ="OOYALA_EVERYWHERE">
+        <description name = "Ooyala EveryWhere"/>
+    </test>
+
+    <test name ="OOYALA_SOCIAL">
+        <description name = "Ooyala Social"/>
+    </test>
+
+    <test name ="RETHINK_VIDEO">
+        <description name = "Rethink Video"/>
+    </test>
+
+    <test name ="TELEGRAPH_MEDIA_GROUP">
+        <description name = "Telegraph Media Group"/>
+    </test>
+
+</testdata>

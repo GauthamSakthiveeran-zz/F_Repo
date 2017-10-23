@@ -118,6 +118,23 @@
 	<element key="VAST3_ALL_NEW_EVENTS_VIDEO_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST 3.0 Ad With All Of The New Events']" />
 	<element key="VAST3_AD_WITH_ICON_VIDEO_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST 3.0 Ad With Icon']" /> 
 	<element key="VAST3_SKIPPABLE_AD_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='VAST 3.0 Skippable Ad Long']" />
-	<element key="VAST3_WRAPPER_VIDEO_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST 3.0 Ad Wrapper']" />                                                          
+	<element key="VAST3_WRAPPER_VIDEO_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST 3.0 Ad Wrapper']" />
+
+
+	<!-- 	OoyalaAPI sample app -->
+
+
+	<element key="OOYALA_API" findBy="xPath" xPath="//android.widget.TextView[@index='6']"/>
+	<element key="CONTENT_TREE_FOR_CHANNEL" findBy="xPath" xPath="//android.widget.TextView[@index='0']"/>
+	<element key="OOYALA_EVERYWHERE" findBy="xPath" xPath="//android.widget.TextView[@index='0']"/>
+	<element key="OOYALA_SOCIAL" findBy="xPath" xPath="//android.widget.TextView[@index='1']"/>
+	<element key="RETHINK_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@index='2']"/>
+	<element key="TELEGRAPH_MEDIA_GROUP" findBy="xPath" xPath="//android.widget.TextView[@index='3']"/>
+	<element key="VOD_WITH_COLSEDCAPTION" findBy="xPath" xPath="//android.widget.TextView[@text='VOD with Closed Captions']" />
+	<element key="PLAYLIST_API" findBy="xPath" xPath="//android.widget.TextView[@index='1']"/>
+
+	<!-- 	End  of OoyalaAPI Sample app-->
+
+
 </elements>
 
