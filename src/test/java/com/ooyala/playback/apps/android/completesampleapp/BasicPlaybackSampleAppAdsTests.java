@@ -1,8 +1,9 @@
-package com.ooyala.playback.apps.android.ooyalapisampleapp;
+package com.ooyala.playback.apps.android.completesampleapp;
 
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.*;
+
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
@@ -12,9 +13,8 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-public class ContentTreeForChannel extends PlaybackAppsTest {
-
-    private static Logger logger = Logger.getLogger(ContentTreeForChannel.class);
+public class BasicPlaybackSampleAppAdsTests extends PlaybackAppsTest {
+    private static Logger logger = Logger.getLogger(BasicPlaybackSampleAppAdsTests.class);
     private SelectVideoAction selectVideo;
     private ElementValidator elementValidator;
     private PlayAction playAction;
@@ -23,20 +23,25 @@ public class ContentTreeForChannel extends PlaybackAppsTest {
     private CCAction ccAction;
     private NotificationEventValidator notificationEventValidator;
 
-    @Test(groups = "ooyalaapisampleapp", dataProvider = "testData")
+
+    @Test(groups = "completesampleapp", dataProvider = "testData")
     public void testPluginPlayer(String testName, TestParameters test) throws Exception {
         Reporter.log("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
         logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
         boolean result = true;
         try {
-            result = result && selectVideo.startAction("CONTENT_TREE_FOR_CHANNEL");
+            result = result && selectVideo.startAction("BASICPLAYBACK");
             result = result && selectVideo.startAction(test.getAsset());
 
             result = result && elementValidator.validate("PLAY_PAUSE_ANDROID", 30000);
             result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 
             result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
-
+            if (test.getAsset().contains("VAST_AD_PRE_ROLL") ||
+                    test.getAsset().contains("OOYALA_AD_PRE_ROLL")) {
+                result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
+                result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
+            }
             result = result && notificationEventValidator.letVideoPlayForSec(4);
 
             result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
@@ -44,9 +49,16 @@ public class ContentTreeForChannel extends PlaybackAppsTest {
             result = result && seekAction.startAction("SEEK_BAR_ANDROID");
             result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
             result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
+
             result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
             result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
-
+            if (test.getAsset().contains("VAST_AD_MID_ROLL") ||
+                    test.getAsset().contains("VAST_AD_POST_ROLL") ||
+                    test.getAsset().contains("OOYALA_AD_MID_ROLL") ||
+                    test.getAsset().contains("OOYALA_AD_POST_ROLL")) {
+                result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
+                result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
+            }
             result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
 
         } catch (Exception ex) {

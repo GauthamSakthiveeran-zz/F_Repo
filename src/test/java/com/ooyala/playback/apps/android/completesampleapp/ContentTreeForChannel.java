@@ -1,8 +1,9 @@
-package com.ooyala.playback.apps.android.ooyalapisampleapp;
+package com.ooyala.playback.apps.android.completesampleapp;
 
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
 import com.ooyala.playback.apps.actions.*;
+import com.ooyala.playback.apps.android.ooyalapisampleapp.PlaylistAPI;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
@@ -23,12 +24,13 @@ public class ContentTreeForChannel extends PlaybackAppsTest {
     private CCAction ccAction;
     private NotificationEventValidator notificationEventValidator;
 
-    @Test(groups = "ooyalaapisampleapp", dataProvider = "testData")
+    @Test(groups = "completesampleapp", dataProvider = "testData")
     public void testPluginPlayer(String testName, TestParameters test) throws Exception {
         Reporter.log("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
         logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
         boolean result = true;
         try {
+            result = result && selectVideo.startAction("OOYALA_API_SAMPLE");
             result = result && selectVideo.startAction("CONTENT_TREE_FOR_CHANNEL");
             result = result && selectVideo.startAction(test.getAsset());
 

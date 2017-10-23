@@ -1,4 +1,4 @@
-package com.ooyala.playback.apps.android.ooyalapisampleapp;
+package com.ooyala.playback.apps.android.completesampleapp;
 
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
@@ -12,9 +12,9 @@ import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-public class ContentTreeForChannel extends PlaybackAppsTest {
+public class PlaylistAPI extends PlaybackAppsTest {
 
-    private static Logger logger = Logger.getLogger(ContentTreeForChannel.class);
+    private static Logger logger = Logger.getLogger(PlaylistAPI.class);
     private SelectVideoAction selectVideo;
     private ElementValidator elementValidator;
     private PlayAction playAction;
@@ -23,13 +23,14 @@ public class ContentTreeForChannel extends PlaybackAppsTest {
     private CCAction ccAction;
     private NotificationEventValidator notificationEventValidator;
 
-    @Test(groups = "ooyalaapisampleapp", dataProvider = "testData")
+    @Test(groups = "completesampleapp", dataProvider = "testData")
     public void testPluginPlayer(String testName, TestParameters test) throws Exception {
         Reporter.log("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
         logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
         boolean result = true;
         try {
-            result = result && selectVideo.startAction("CONTENT_TREE_FOR_CHANNEL");
+            result = result && selectVideo.startAction("OOYALA_API_SAMPLE");
+            result = result && selectVideo.startAction("PLAYLIST_API");
             result = result && selectVideo.startAction(test.getAsset());
 
             result = result && elementValidator.validate("PLAY_PAUSE_ANDROID", 30000);
@@ -44,6 +45,10 @@ public class ContentTreeForChannel extends PlaybackAppsTest {
             result = result && seekAction.startAction("SEEK_BAR_ANDROID");
             result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
             result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
+            if(test.getAsset().contains("VOD_WITH_COLSEDCAPTION")) {
+                result = result && ccAction.enableCC(); // Default English
+                result = result && notificationEventValidator.verifyEvent(Events.CC_ENABLED, 15000);
+            }
             result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
             result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
 
@@ -57,3 +62,4 @@ public class ContentTreeForChannel extends PlaybackAppsTest {
         Assert.assertTrue(result, "APP:" + test.getApp() + "->Asset:" + test.getAsset());
     }
 }
+
