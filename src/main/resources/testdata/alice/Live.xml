@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
     <test name="PlaybackLiveTests">
+    
+    	<url>
+			<description name="Streams:Main Akamai HLS Remote Asset" />
+			<priority name="P3"></priority>
+			<embed_code name="44ZTlxNTE6qlSijlH3j2_dDZbXgPcEXv" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="MAIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<browsersSupported name="safari" />
+			<playerParameter><![CDATA[{"encodingPriority":["hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+			<streamType name="m3u8"></streamType>
+		</url>
+
+		<url>
+			<description name="Streams:Bitmovin Akamai HLS Remote Asset" />
+			<priority name="P3"></priority>
+			<embed_code name="44ZTlxNTE6qlSijlH3j2_dDZbXgPcEXv" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="IMA" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<playerParameter><![CDATA[{"encodingPriority":["hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+			<streamType name="m3u8"></streamType>
+            <platformsSupported name="mac,windows"/>
+		</url>
 
         <url>
             <description name="Live Stream Testing(Without DRM):Elemental Delta HLS Bitmovin No Channel"/>

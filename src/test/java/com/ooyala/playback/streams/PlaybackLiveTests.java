@@ -10,9 +10,11 @@ import com.ooyala.playback.page.FullScreenValidator;
 import com.ooyala.playback.page.LiveValidator;
 import com.ooyala.playback.page.PauseValidator;
 import com.ooyala.playback.page.PlayValidator;
+import com.ooyala.playback.page.StreamValidator;
 import com.ooyala.playback.page.action.LiveAction;
 import com.ooyala.playback.page.action.PauseAction;
 import com.ooyala.playback.page.action.PlayAction;
+import com.ooyala.playback.url.StreamType;
 import com.ooyala.playback.url.UrlObject;
 import com.ooyala.qe.common.exception.OoyalaException;
 import com.relevantcodes.extentreports.LogStatus;
@@ -31,6 +33,7 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 	private PlayAction playAction;
 	private LiveValidator live;
 	private ErrorDescriptionValidator error;
+	private StreamValidator streamTypeValidator;
 
 	public PlaybackLiveTests() throws OoyalaException {
 		super();
@@ -60,7 +63,9 @@ public class PlaybackLiveTests extends PlaybackWebTest {
 			result = result && pause.validate("paused_1", 60000);
 
 			result = result && controlBarValidator.validate("", 60000);
-			// to-do add ooyala logo to the test page
+			
+			if(url.getStreamType() != null) 
+				streamTypeValidator.setStreamType(url.getStreamType()).validate("", 1000);
 
 			result = result && fullScreenValidator.validate("FULLSCREEN_BTN_1", 60000);
 

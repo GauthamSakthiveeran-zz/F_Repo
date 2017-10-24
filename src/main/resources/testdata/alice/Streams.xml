@@ -127,7 +127,7 @@
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 			<platformsSupported name="mac,windows"/>
 		</url>
-		<url>
+		<!-- <url>
 			<description name="Streams:Akamai HD Flash HD2 VOD" />
 			<priority name="P3"></priority>
 			<embed_code name="82eWJ2NDE6UWX__B6oTjtU1COh-gF3pP" />
@@ -142,7 +142,7 @@
 			<browserSupportedVersion name="safari,9" />
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
-		</url>
+		</url> -->
 		<url>
 			<description name="Streams:OSMF FFMPEG HDS VOD" />
 			<priority name="P3"></priority>
@@ -196,34 +196,6 @@
 			<browsersSupported name="safari" />
 			<playerParameter></playerParameter>
 			<streamType name="m3u8"></streamType>
-		</url>
-
-		<url>
-			<description name="Streams:Main Akamai HLS Remote Asset" />
-			<priority name="P3"></priority>
-			<embed_code name="44ZTlxNTE6qlSijlH3j2_dDZbXgPcEXv" />
-			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-			<plugins name="MAIN" />
-			<adPlugins name="IMA" />
-			<additionalPlugins name="" />
-			<pbid name="378512f55dd44fc287d0fa609353c268" />
-			<browsersSupported name="safari" />
-			<playerParameter><![CDATA[{"encodingPriority":["hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-			<streamType name="m3u8"></streamType>
-		</url>
-
-		<url>
-			<description name="Streams:Bitmovin Akamai HLS Remote Asset" />
-			<priority name="P3"></priority>
-			<embed_code name="44ZTlxNTE6qlSijlH3j2_dDZbXgPcEXv" />
-			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-			<plugins name="BITMOVIN" />
-			<adPlugins name="IMA" />
-			<additionalPlugins name="" />
-			<pbid name="378512f55dd44fc287d0fa609353c268" />
-			<playerParameter><![CDATA[{"encodingPriority":["hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-			<streamType name="m3u8"></streamType>
-            <platformsSupported name="mac,windows"/>
 		</url>
 
 		<url>

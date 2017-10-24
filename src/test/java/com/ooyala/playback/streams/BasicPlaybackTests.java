@@ -36,43 +36,30 @@ public class BasicPlaybackTests extends PlaybackWebTest {
     public void testBasicPlaybackStreams(String testName, UrlObject url) throws OoyalaException {
 
         boolean result = true;
-
+        
         try {
             driver.get(url.getUrl());
-            
             streamTypeValidator.loadScriptForAdobe();
-
             result = result && play.waitForPage();
-
             injectScript();
-
             result = result && play.validate("playing_1", 60000);
-
             result = result && eventValidator.playVideoForSometime(3);
-
             result = result && pause.validate("paused_1", 60000);
-
             streamTypeValidator.setStreamType(url.getStreamType()).validate("", 1000);
-            
             result = result && playAction.startAction();
-            
-            
-            boolean isLive = testName.contains("Main Akamai HLS Remote Asset") || testName.contains("Bitmovin Akamai HLS Remote Asset");
-
-            if (!isLive) {
-            	result = result && seekAction.seekTillEnd().startAction();
-            	result = result && eventValidator.validate("playing_3", 10000);
-                result = result && eventValidator.validate("played_1", 120000);
-                result = result && replayValidator.validate("replay_1", 30000);
-                result = result && eventValidator.playVideoForSometime(3);
-                result = result && seekAction.seekToMid().startAction();
-                result = result && eventValidator.validate("playing_5", 10000);
-                result = result && seekAction.setTime(2).startAction();
-                result = result && eventValidator.validate("playing_6", 10000);
-                result = result && eventValidator.playVideoForSometime(5);
-                result = result && seekAction.seekTillEnd().startAction();
-                result = result && eventValidator.validate("played_3", 150000);
-            }
+            result = result && seekAction.seekTillEnd().startAction();
+        	result = result && eventValidator.validate("playing_3", 10000);
+            result = result && eventValidator.validate("played_1", 120000);
+            result = result && replayValidator.validate("replay_1", 30000);
+            eventValidator.validatePlayStartTimeFromBeginningofVideo();
+            result = result && eventValidator.playVideoForSometime(3);
+            result = result && seekAction.seekToMid().startAction();
+            result = result && eventValidator.validate("playing_5", 10000);
+            result = result && seekAction.setTime(2).startAction();
+            result = result && eventValidator.validate("playing_6", 10000);
+            result = result && eventValidator.playVideoForSometime(5);
+            result = result && seekAction.seekTillEnd().startAction();
+            result = result && eventValidator.validate("played_3", 150000);
 
         } catch (Exception e) {
         	e.printStackTrace();

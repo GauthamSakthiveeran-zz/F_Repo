@@ -27,15 +27,13 @@ public class VideoValidator extends PlayBackPage implements PlaybackValidator {
 		}
 
 		if (!getPlatform().equalsIgnoreCase("android")) {
-			if (!waitOnElement(By.id("video_mp4"), 20000)) {
+			if (!waitOnElement(By.id("video_mp4"), 10000)) {
+				logger.error("Black Screen");
 				extentTest.log(LogStatus.FAIL, "Black Screen");
 				return false;
 			}
 		}
-		if (!waitOnElement(By.id("video_mp4"), 20000)) {
-			extentTest.log(LogStatus.FAIL, "Black Screen");
-			return false;
-		}
+		
 		return true;
 	}
 
