@@ -309,8 +309,10 @@
 			<streamType name="mpd"></streamType>
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
 		</url>
+		
+<!-- 		Commenting out ADOBETVSDK tests -->
 
-        <url>
+        <!-- <url>
             <description name="Streams:AdobeTVSDK Elemental Delta HLS VOD" />
             <priority name="P2"></priority>
             <embed_code name="A0NW1vYTE6hCIME00w2On3_iHKOCE6Z7" />
@@ -468,6 +470,6 @@
             <pbid name="615dc8e909e941c280e12155df838355" />
             <playerParameter></playerParameter>
             <streamType name="mp4" />
-        </url>
+        </url> -->
 	</test>
 </testdata>

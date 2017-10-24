@@ -124,14 +124,9 @@ public class UrlGenerator {
 							}
 						}
 
-						if (System.getProperty(CommandLineParameters.adobeTVSDK) != null
-								&& !System.getProperty(CommandLineParameters.adobeTVSDK).isEmpty()
-								&& System.getProperty(CommandLineParameters.adobeTVSDK).toLowerCase()
-										.contains("false")) {
-							if (url.getPlugins().getName() != null && !url.getPlugins().getName().isEmpty()
-									&& url.getPlugins().getName().toUpperCase().contains("ADOBETVSDK")) {
-								continue;
-							}
+						if (url.getPlugins().getName() != null && !url.getPlugins().getName().isEmpty()
+								&& url.getPlugins().getName().toUpperCase().contains("ADOBETVSDK")) {
+							continue;
 						}
 
 						if (url.getPlatformsSupported() != null && url.getPlatformsSupported().getName() != null
