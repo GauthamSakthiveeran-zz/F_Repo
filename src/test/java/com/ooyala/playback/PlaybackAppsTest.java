@@ -122,8 +122,7 @@ public class PlaybackAppsTest extends FacileTest {
 			
 			if (driver == null || driver.getSessionId() == null) {
 				logger.info("driver value is "+driver);
-				logger.info(driver.getSessionId());
-				logger.info("after get session");
+				
 				if(driver != null)
 				logger.info(driver.getSessionId());
 				initializeDriver();
@@ -289,8 +288,15 @@ public class PlaybackAppsTest extends FacileTest {
 	public void afterClass() {
 		try {
 			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android")) {
+				
 				((AndroidDriver) driver).closeApp();
 				logger.info("Closing App");
+				
+				   if(driver != null)
+					   driver.quit();
+					   
+				   if(driver != null)
+					   driver.close();
 			}
 		} catch (Exception e) {
 			logger.info("Error While Closing App");
