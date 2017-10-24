@@ -65,7 +65,7 @@ public class PlaybackAppsTest extends FacileTest {
         isAppClosed = false;
     }
 
-	private RemoteWebDriver initializeDriver() throws MalformedURLException {
+	private RemoteWebDriver initializeDriver() throws MalformedURLException, InterruptedException {
 		
 		
 		String app = testData.getApp().getName();
@@ -109,9 +109,11 @@ public class PlaybackAppsTest extends FacileTest {
 			capabilities.setCapability("appActivity", System.getProperty(CommandLineParameters.APP_ACTIVITY));
 			capabilities.setCapability("newCommandTimeout",
 					System.getProperty(CommandLineParameters.NEW_COMMAND_TIMEOUT));
+			Thread.sleep(15000);
 			driver = new AndroidDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 			// driver.manage().timeouts().implicitlyWait(3000,TimeUnit.SECONDS);
 		}
+		
 		return driver;
 
 	}
