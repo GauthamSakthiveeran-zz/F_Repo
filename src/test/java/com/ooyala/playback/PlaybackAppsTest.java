@@ -121,6 +121,9 @@ public class PlaybackAppsTest extends FacileTest {
 		try {
 			
 			if (driver == null || driver.getSessionId() == null) {
+				logger.info(driver);
+				if(driver != null)
+				logger.info(driver.getSessionId());
 				initializeDriver();
 				isAppClosed = false;
 			}
