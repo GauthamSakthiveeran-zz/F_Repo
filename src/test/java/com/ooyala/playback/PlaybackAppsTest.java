@@ -121,7 +121,9 @@ public class PlaybackAppsTest extends FacileTest {
 		try {
 			
 			if (driver == null || driver.getSessionId() == null) {
-				logger.info(driver);
+				logger.info("driver value is "+driver);
+				logger.info(driver.getSessionId());
+				logger.info("after get session");
 				if(driver != null)
 				logger.info(driver.getSessionId());
 				initializeDriver();
