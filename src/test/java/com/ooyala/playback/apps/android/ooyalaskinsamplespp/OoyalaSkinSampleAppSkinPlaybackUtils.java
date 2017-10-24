@@ -182,4 +182,19 @@ public class OoyalaSkinSampleAppSkinPlaybackUtils extends PlaybackAppsTest {
 		}
 		return result;
 	}
+	
+	public boolean vampAdsTest(TestParameters test) throws Exception {
+		boolean result = true;
+		notificationEventValidator = pageFactory.getNotificationEventValidator();
+		adValidator	 = pageFactory.getAdEventValidator();
+		try {
+			result = result && adValidator.isOoyalaSkinSampleAsset(true).setTestParameters(test).validate("", 2000);
+			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED, 70000);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			logger.error("Here is an exception" + ex);
+			result = false;
+		}
+		return result;
+	}
 }
