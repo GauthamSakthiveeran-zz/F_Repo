@@ -4,40 +4,53 @@
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
  
-	<test name="BasicPlayback Regression" parallel="false"
+	<test name="Ooyala Skin App Discovery No Ads Test" parallel="false"
 		thread-count="1">
-		 <classes>
+ 		 <classes>
  			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppDiscoveryNoAdsTest" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleAppSwipeDiscoveryScreenNoAdsTest" />
 		</classes> 
-	 	<classes> 
+		</test>
+		<test name="Ooyala Skin App Basic Playback Test" parallel="false"
+		thread-count="1">
+		<classes> 
 			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackApp" />
 		</classes>
-
+		</test>
+		<test name="Ooyala Skin App Vast2 Tests" parallel="false"
+		thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleVASTTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVASTAdsTest" />
 		</classes> 
-		
+		</test>
  
+ 		<test name="Ooyala Skin App OoyalaAds Tests" parallel="false"
+		thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleOoyalaAdTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackOoyalaAdsTest" />
 		</classes> 
+		</test>
 		
+		<test name="Ooyala Skin App Multi Ads Tests" parallel="false"
+		thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleMultiAdTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackPreRollMidRollMultiAdsTest" />
 		</classes> 
+		</test>
 		
+		<test name="Ooyala Skin App Vast3 Ads Tests" parallel="false"
+		thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinVast3AdPoddedTests.xml" />
 			<class
@@ -46,7 +59,10 @@
 					<include name="testVast3Podded" />
 				</methods>
 		</classes>
+	 	</test>
 	 	
+	 	<test name="Ooyala Skin App Vast3 Ads Tests Icons Test" parallel="false"
+		thread-count="1">
 		<classes>
  			<parameter name="testData" value="OoyalaSkinVast3AdWithIconTests.xml" />
 			<class
@@ -55,7 +71,10 @@
 					<include name="testVast3AdWithIcon" />
 				</methods>
 		</classes>
+		</test>
 		
+		<test name="Ooyala Skin App Vast3 Ads AllEvents Test" parallel="false"
+		thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinVast3AdAllNewEventsTests.xml" />
 			<class
@@ -64,14 +83,19 @@
 					<include name="testVast3AdAllNewEvents" />
 				</methods>
 		</classes>
-		
+		</test>
 
+		<test name="Ooyala Skin App Share Test" parallel="false"
+		thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackShareTest" />
 		</classes>
+		</test>
 		
+		<test name="Ooyala Skin App Vast3Ads Wrapper Test" parallel="false"
+		thread-count="1">
 		<classes>
 			<parameter name="testData" value="OoyalaSkinVast3AdWrapperTests.xml" />
 			<class
@@ -138,9 +162,28 @@
 					<include name="testNonAdRules" />
 				</methods>
 			</class>
+		</classes>
+	</test> 
+ 	<test name="Ooyala Skin App VAMP Test" parallel="false"
+		thread-count="1">
+ 		 <classes>
+ 			<parameter name="testData" value="OoyalaSkinSampleVAMPTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVAMPTest" />
 		</classes> 
-	</test>
- 
+		</test>
+	
+		 	<test name="Ooyala Skin App Vast3 Skippable Ads Tests" parallel="false"
+		thread-count="1">
+		<classes>
+ 			<parameter name="testData" value="OoyalaSkinVast3SkippableAdTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackVAST3AdsTest" />
+				<methods>
+					<include name="testVast3AdSkippable" />
+				</methods>
+		</classes>
+		</test>
 	
 
 </suite>

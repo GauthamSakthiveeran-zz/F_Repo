@@ -4,7 +4,7 @@
 	<test name="SKIN_HLS_VIDEO">
 		<description name="HLS Video" />
 	</test>
-
+ 
 	<test name="SKIN_ASPECT_RATIO_VIDEO">
 		<description name="4:3 Aspect Ratio" />
 	</test>
