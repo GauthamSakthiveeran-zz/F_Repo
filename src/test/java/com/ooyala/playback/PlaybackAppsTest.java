@@ -292,6 +292,8 @@ public class PlaybackAppsTest extends FacileTest {
 		try {
 			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android")) {
 				
+				((AndroidDriver) driver).closeApp();
+				logger.info("Closing App");
 				
 			}
 		} catch (Exception e) {
