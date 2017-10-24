@@ -86,21 +86,33 @@ public class SeekAction extends PlaybackApps implements Actions {
 	}
 
 	private boolean seekVideoForward(String slider, String seekbar) throws InterruptedException {
-		if (!waitOnElement(seekbar, 1000) || !waitOnElement(slider, 1000)) {
-			tapAction.tapScreen();
+		int startx=0;
+		if (!isV4) {
+			if (!waitOnElement(slider, 1000)) {
+				tapAction.tapScreen();
+			}
+			startx = getSliderPosition(slider);
 		}
-		int startx = getSliderPosition(slider);
-		if (!waitOnElement(seekbar, 1000) || !waitOnElement(slider, 1000)) {
+		if (!waitOnElement(seekbar, 1000)) {
 			tapAction.tapScreen();
 		}
 		Element seekbarElement = getSeekBarPosition(seekbar);
+		if(isV4)
+			startx = seekbarElement.getStartXPosition();
+		
 		logger.info("Seeking forward -------------------------  ");
-		tapAction.tapScreenIfRequired();
-		int seekForwardLength = (seekbarElement.getEndXPosition() - (startx + 1)) - 30;
+		tapAction.waitAndTap();
+		int seekForwardLength = (seekbarElement.getEndXPosition() - (startx+1)) - 30;
 		TouchAction touch = new TouchAction(driver);
-		if (getPlatform().equalsIgnoreCase("ios"))
-			touch.press((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) + (seekForwardLength)),
-					seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
+		if (getPlatform().equalsIgnoreCase("ios")){
+			logger.info("Startx:" + (startx + 1) + " StartY:" + seekbarElement.getYposition() + " EndX:"
+			        + ((startx) + (seekForwardLength) + (seekForwardLength)) + " EndY:"
+			        + (seekbarElement.getYposition() + seekbarElement.getYposition()));
+			touch.press((startx+1), seekbarElement.getYposition())
+			        .moveTo(((startx+1) + (seekForwardLength) + (seekForwardLength)),
+			                seekbarElement.getYposition() + seekbarElement.getYposition())
+			        .release().perform();
+		}
 		else
 			touch.longPress((startx + 1), seekbarElement.getYposition()).moveTo(((startx + 1) + (seekForwardLength)),
 					seekbarElement.getYposition() + seekbarElement.getYposition()).release().perform();
@@ -108,8 +120,8 @@ public class SeekAction extends PlaybackApps implements Actions {
 	}
 
 	private Element getSeekBarPosition(String seekbar) throws InterruptedException {
-		tapAction.waitAndTap();
-		WebElement SEEK = this.getWebElement(seekbar);
+		//tapAction.waitAndTap();
+		WebElement SEEK = getWebElement(seekbar);
 		Point seekbarElementPos = SEEK.getLocation();
 		Element seekbarElement = new Element();
 		seekbarElement.setStartXPosition(seekbarElementPos.getX());

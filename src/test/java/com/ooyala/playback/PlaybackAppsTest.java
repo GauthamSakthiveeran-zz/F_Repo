@@ -29,6 +29,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import org.testng.asserts.SoftAssert;
 
 import com.ooyala.facile.test.FacileTest;
 import com.ooyala.playback.apps.PlaybackApps;
@@ -93,6 +94,12 @@ public class PlaybackAppsTest extends FacileTest {
 	        capabilities.setCapability("xcodeSigningId", System.getProperty(CommandLineParameters.XCODE_SIGNING_ID));
 	        capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, Boolean.TRUE);
 	        capabilities.setCapability("useNewWDA", useNewWDA);
+	        capabilities.setCapability("usePrebuiltWDA", true);
+	        capabilities.setCapability("wdaLaunchTimeout", "30000");
+	        capabilities.setCapability("wdaConnectionTimeout", "10000");
+	        capabilities.setCapability("wdaStartupRetries", "4");
+	        capabilities.setCapability("wdaStartupRetryInterval", "10000");
+
 
 			driver = new IOSDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 
