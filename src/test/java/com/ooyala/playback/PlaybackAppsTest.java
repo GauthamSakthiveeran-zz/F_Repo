@@ -121,6 +121,7 @@ public class PlaybackAppsTest extends FacileTest {
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
 		try {
+			Thread.sleep(15000);
 			
 			if (driver == null || driver.getSessionId() == null) {
 				logger.info("driver value is "+driver);
