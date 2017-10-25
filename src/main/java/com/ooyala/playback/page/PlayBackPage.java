@@ -540,11 +540,19 @@ public abstract class PlayBackPage extends WebPage {
 	}
 
 	public boolean validatePlayStartTimeFromBeginningofVideo() {
-		WebElement element = driver.findElementByClassName("oo-time-duration");
-		return element.getText().startsWith("00:00") && validateVideoStartTime(1.0);
+		if(getBrowser().equalsIgnoreCase("chrome") || getBrowser().equalsIgnoreCase("firefox")) {
+			switchToControlBar();
+			WebElement element = driver.findElementByClassName("oo-time-duration");
+			return element.getText().startsWith("00:00") && validateVideoStartTime(1.0);
+		}
+		return true;
 	}
 
 	public boolean validateVideoStartTime(double timeToBeVerifiedAgainst) {
+		
+		if(!getBrowser().equalsIgnoreCase("chrome") && !getBrowser().equalsIgnoreCase("firefox")) {
+			return true;
+		}
 
 		if (driver.getCurrentUrl().contains("adobe_html5")) {
 			extentTest.log(LogStatus.INFO, "pp.getPlayAheadTime behaves wierdly for adobe_html5");
