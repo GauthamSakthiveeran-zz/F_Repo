@@ -65,14 +65,14 @@ public class PlaybackAppsTest extends FacileTest {
         isAppClosed = false;
     }
 
-	private RemoteWebDriver initializeDriver() throws MalformedURLException, InterruptedException {
+	private RemoteWebDriver initializeDriver() {
 		
 		
 		String app = testData.getApp().getName();
 		
 		String ip = System.getProperty(CommandLineParameters.APPIUM_SERVER) != null ? System.getProperty(CommandLineParameters.APPIUM_SERVER) : "127.0.0.1";
 		String port = System.getProperty(CommandLineParameters.APPIUM_PORT) != null ? System.getProperty(CommandLineParameters.APPIUM_PORT) : "4723";
-		
+		try {
 		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
 			
 			boolean useNewWDA = System.getProperty(CommandLineParameters.USE_NEW_WDA) != null
@@ -112,6 +112,10 @@ public class PlaybackAppsTest extends FacileTest {
 			Thread.sleep(15000);
 			driver = new AndroidDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 			// driver.manage().timeouts().implicitlyWait(3000,TimeUnit.SECONDS);
+		}
+		}
+		catch(Exception e) {
+			logger.info(e.getMessage());
 		}
 		
 		return driver;
