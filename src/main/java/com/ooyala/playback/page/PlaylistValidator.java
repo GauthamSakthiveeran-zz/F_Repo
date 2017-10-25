@@ -111,6 +111,7 @@ public class PlaylistValidator extends PlayBackPage implements PlaybackValidator
 					}
 				}*/
                 if (driver.findElement(By.id(asset)).isDisplayed()) {
+                	driver.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.id(asset)));
                     result = result && clickOnIndependentElement(By.id(asset));
                     result = result && checkPlayback(count);
                     if (!result) {
