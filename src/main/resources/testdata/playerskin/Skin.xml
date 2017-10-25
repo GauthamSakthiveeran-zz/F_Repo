@@ -47,7 +47,7 @@
 			<pbid name="62d1c4c6b33346c99bced5ff817122a9" />
 			<streamType name="m3u8" />
             <platformsSupported name="mac,windows"/>
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 			
 		</url>
 		
@@ -180,7 +180,7 @@
 			<pbid name="8a6765f99f4c4962a1fa71b366aef4aa" />
 			<streamType name="m3u8" />
             <platformsSupported name="mac,windows"/>
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 	</test>
 	<test name="PlayerSkinMoreOptions">
@@ -195,7 +195,7 @@
 			<pbid name="8a6765f99f4c4962a1fa71b366aef4aa" />
 			<streamType name="m3u8" />
             <platformsSupported name="mac,windows"/>
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 	</test>
 		<test name="PlayerSkinDiscoveryTest">

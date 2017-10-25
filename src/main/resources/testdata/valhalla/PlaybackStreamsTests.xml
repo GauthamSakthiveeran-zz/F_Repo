@@ -10,7 +10,7 @@
 			<additionalPlugins name="" />
 			<pbid name="82ab589479404e4ab1dd87b49aaa0354" />
 			<streamType name="m3u8" />
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 		<url>

@@ -33,7 +33,7 @@ public class ChromeFlashUpdateAction extends PlayBackPage implements PlaybackVal
 	public Boolean isFlashPluginUpdated()
 
 	{
-		
+
 		boolean isadobeFlashVersion = isElementPresent("FLASH_VERSION");
 
 		boolean isadobeFlashButton = isElementPresent("FLASH_BUTTON");
@@ -78,30 +78,28 @@ public class ChromeFlashUpdateAction extends PlayBackPage implements PlaybackVal
 				} catch (Exception e) {
 					logger.info(
 							"Error occured while checking if the AdobeFlash component is loaded in chrome://components");
-					
+
 					return false;
 
 				}
 
 			}
 
-			else
-			{
+			else {
 
 				logger.info("The AdobeFlash Component is correctly updated in chrome://components");
-				
+
 				return true;
-				
+
 			}
 
 		}
 
 		else {
 			logger.info("Failed to check if AdobeFlashPlayer is updated in chrome://components");
-			
+
 			return false;
 		}
-		
 
 	}
 
@@ -109,6 +107,12 @@ public class ChromeFlashUpdateAction extends PlayBackPage implements PlaybackVal
 	public boolean validate(String element, int timeout) throws Exception {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public void enableFlash() {
+		driver.findElementsByTagName("paper-button").get(1).click();
+		driver.findElementById("input").sendKeys("debug.ooyala.com");
+		driver.findElementById("add").click();
 	}
 
 }
