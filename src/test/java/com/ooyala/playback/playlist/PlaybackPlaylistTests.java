@@ -78,7 +78,7 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
             }
 
         } catch (Exception e) {
-            extentTest.log(LogStatus.FAIL, e.getMessage());
+            extentTest.log(LogStatus.FAIL, e);
             logger.error(e.getMessage());
             result = false;
         }
