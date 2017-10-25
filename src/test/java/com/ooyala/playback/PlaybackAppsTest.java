@@ -74,6 +74,7 @@ public class PlaybackAppsTest extends FacileTest {
 		String ip = System.getProperty(CommandLineParameters.APPIUM_SERVER) != null ? System.getProperty(CommandLineParameters.APPIUM_SERVER) : "127.0.0.1";
 		String port = System.getProperty(CommandLineParameters.APPIUM_PORT) != null ? System.getProperty(CommandLineParameters.APPIUM_PORT) : "4723";
 		
+		try{
 		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
 			
 			boolean useNewWDA = System.getProperty(CommandLineParameters.USE_NEW_WDA) != null
@@ -95,6 +96,7 @@ public class PlaybackAppsTest extends FacileTest {
 	        capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, Boolean.TRUE);
 	        capabilities.setCapability("useNewWDA", useNewWDA);
 	        capabilities.setCapability("usePrebuiltWDA", true);
+	        capabilities.setCapability("launchTimeout", "30000");
 	        capabilities.setCapability("wdaLaunchTimeout", "30000");
 	        capabilities.setCapability("wdaConnectionTimeout", "10000");
 	        capabilities.setCapability("wdaStartupRetries", "4");
@@ -118,6 +120,8 @@ public class PlaybackAppsTest extends FacileTest {
 					System.getProperty(CommandLineParameters.NEW_COMMAND_TIMEOUT));
 			driver = new AndroidDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 			// driver.manage().timeouts().implicitlyWait(3000,TimeUnit.SECONDS);
+		}}catch (Exception e) {
+			e.printStackTrace();
 		}
 		return driver;
 
@@ -127,10 +131,22 @@ public class PlaybackAppsTest extends FacileTest {
 	public void handleTestMethodName(Method method, Object[] testData) {
 		try {
 			
-			if (driver == null || driver.getSessionId() == null) {
+/*			if (driver == null || driver.getSessionId() == null) {
 				initializeDriver();
 				isAppClosed = false;
-			}
+			}*/
+			
+			int attempts = 0;
+            while(driver == null || driver.getSessionId() == null ) {
+                if(attempts<10) {
+                    Thread.sleep(15000);
+                initializeDriver();
+                }
+                else {
+                    break;
+                }
+                attempts++;
+            }
 			
 			extentTest = ExtentManager.startTest(testData[0].toString());
 			pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
