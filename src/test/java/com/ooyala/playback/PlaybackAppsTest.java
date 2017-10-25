@@ -109,7 +109,6 @@ public class PlaybackAppsTest extends FacileTest {
 			capabilities.setCapability("appActivity", System.getProperty(CommandLineParameters.APP_ACTIVITY));
 			capabilities.setCapability("newCommandTimeout",
 					System.getProperty(CommandLineParameters.NEW_COMMAND_TIMEOUT));
-			Thread.sleep(15000);
 			driver = new AndroidDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 			// driver.manage().timeouts().implicitlyWait(3000,TimeUnit.SECONDS);
 		}
@@ -125,15 +124,23 @@ public class PlaybackAppsTest extends FacileTest {
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
 		try {
-			Thread.sleep(15000);
-			
-			if (driver == null || driver.getSessionId() == null) {
-				logger.info("driver value is "+driver);
-				
-				if(driver != null)
-				logger.info(driver.getSessionId());
+//			Thread.sleep(15000);
+//			
+//			if (driver == null || driver.getSessionId() == null) {
+//				logger.info("driver value is "+driver);
+//				
+//				if(driver != null)
+//				logger.info(driver.getSessionId());
+//				initializeDriver();
+//				isAppClosed = false;
+//			}
+			int attempts = 0;
+			while(driver == null || driver.getSessionId() == null ) {
+				if(attempts<10) {
+					Thread.sleep(15000);
 				initializeDriver();
-				isAppClosed = false;
+				}
+				attempts++;
 			}
 			
 			extentTest = ExtentManager.startTest(testData[0].toString());
