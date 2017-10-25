@@ -140,6 +140,9 @@ public class PlaybackAppsTest extends FacileTest {
 					Thread.sleep(15000);
 				initializeDriver();
 				}
+				else {
+					break;
+				}
 				attempts++;
 			}
 			
