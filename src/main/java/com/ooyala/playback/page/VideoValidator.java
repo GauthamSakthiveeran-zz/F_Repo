@@ -25,6 +25,9 @@ public class VideoValidator extends PlayBackPage implements PlaybackValidator {
 		if (!isVideoPluginPresent("bit_wrapper")) {
 			return true;
 		}
+		if(driver.getCurrentUrl().contains("playlist")) {
+			return true;
+		}
 
 		if (!getPlatform().equalsIgnoreCase("android")) {
 			if (!waitOnElement(By.id("video_mp4"), 10000)) {
