@@ -581,6 +581,9 @@ public abstract class PlayBackPage extends WebPage {
 		case "boolean":
 			return Boolean.parseBoolean(driver.executeScript("return " + command + "").toString());
 		case "string":
+			if(driver.executeScript("return " + command + "")==null) {
+				return null;
+			}
 			return driver.executeScript("return " + command + "").toString();
 		case "int":
 			return Integer.parseInt(driver.executeScript("return " + command + "").toString());
