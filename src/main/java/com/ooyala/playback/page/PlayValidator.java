@@ -44,8 +44,11 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 			}
 
 			if (!waitOnElement("PLAY_BUTTON", 90000)) {
-				errorDescription();
-				return false;
+				driver.navigate().refresh();
+				if (!waitOnElement("PLAY_BUTTON", 60000))  {
+					errorDescription();
+					return false;
+				}
 			}
 			return true;
 		} catch (Exception e) {
