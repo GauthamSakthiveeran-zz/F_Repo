@@ -165,12 +165,13 @@ public class SeekAction extends PlayBackPage implements PlayerAction {
 					extentTest.log(LogStatus.FAIL, "In loading spinner for a really long time while seeking");
 					return false;
 				}
-				if (count <= 0)
-					return false;
+				if (count <= 0){
+					break;
+				}
 				count--;
 			}
 		} catch (Exception ex) {
-			logger.error(ex.getMessage());
+			logger.info(ex.getMessage());
 			return false;
 		}
 		return true;

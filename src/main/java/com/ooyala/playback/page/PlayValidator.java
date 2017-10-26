@@ -70,6 +70,8 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		if (getBrowser().contains("safari")) { // only for automation 
 			Thread.sleep(30000);
 		}
+		
+		VideoValidator videoValidator = new PlayBackFactory(driver, extentTest).getVideoValidator().getConsoleLogs();
 
 		if (!clickOnIndependentElement("PLAY_BUTTON")) {
 			extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
@@ -81,11 +83,6 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 			return false;
 		}
 		
-		if (!isElementPresent("LIVE")) {
-			if(!driver.getCurrentUrl().contains("initialTime"))
-				validatePlayStartTimeFromBeginningofVideo();
-		}
-
 		if (!getBrowser().toLowerCase().contains("explorer"))
 			if (!waitOnElement("PLAYING_SCREEN", 4000)) {
 				if (getBrowser().contains("safari")) { // only for automation 
@@ -98,10 +95,15 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 					extentTest.log(LogStatus.FAIL, "PLAYING_SCREEN not found.");
 				}
 			}
-
+		
 		if (!getBrowser().equalsIgnoreCase("internet explorer")) {
 			if (!waitOnElement(By.id(element), timeout))
 				return false;
+		}
+		
+		if (!isElementPresent("LIVE")) {
+			if(!driver.getCurrentUrl().contains("initialTime"))
+				validatePlayStartTimeFromBeginningofVideo();
 		}
 		
 		if (isVideoPluginPresent("ANALYTICS")) {
@@ -113,7 +115,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 		extentTest.log(LogStatus.PASS, "Video Playing and validation of element " + element + " is successful");
 
-		if (!new PlayBackFactory(driver, extentTest).getVideoValidator().getConsoleLogs().validate("", timeout)) {
+		if (!videoValidator.validate("", timeout)) {
 			return false;
 		}
 

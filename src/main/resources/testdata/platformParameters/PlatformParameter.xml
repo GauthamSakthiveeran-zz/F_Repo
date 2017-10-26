@@ -14,7 +14,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"html5"}]]></playerParameter>
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"html5","encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 		<url>
@@ -28,7 +28,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+			<playerParameter><![CDATA[{"platform":"html5","encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 
@@ -60,7 +60,7 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="mpd" />
 			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
 			<sslEnabled name="https" />
 		</url>
 
@@ -76,7 +76,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter><![CDATA[{"platform":"html5"}]]></playerParameter>
+			<playerParameter><![CDATA[{"platform":"html5","encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 
@@ -125,7 +125,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"flash"}]]></playerParameter>
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"flash","encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 
@@ -140,7 +140,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
+			<playerParameter><![CDATA[{"platform":"flash","encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 
@@ -188,7 +188,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
+			<playerParameter><![CDATA[{"platform":"flash","encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 		<url>
@@ -235,7 +235,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 		<url>
@@ -248,7 +248,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 
@@ -276,7 +276,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 
@@ -418,7 +418,7 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="mpd" />
 			<playerParameter>
-                <![CDATA[{"encodingPriority":["dash","hls","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+                <![CDATA[{"freewheel-ads-manager":{"fw_video_asset_id":"Q5MXg2bzq0UAXXMjLIFWio_6U0Jcfk6v","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"initialTime":0,"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
 
 			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
 		</url>
@@ -445,7 +445,7 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="mpd" />
 			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
 		</url>
 
 
@@ -462,7 +462,7 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="mpd" />
 			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
 		</url>
 
 		<url>
@@ -476,7 +476,7 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="mpd" />
 			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 		</url>
 
 	</test>
@@ -496,7 +496,7 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="mpd" />
 			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
 		</url>
 
 		<url>
@@ -511,7 +511,7 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="mpd" />
 			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"flash"}]]></playerParameter>
 		</url>
 
 		<url>
@@ -526,7 +526,7 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="mpd" />
 			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 		</url>
 	</test>
 
@@ -545,7 +545,7 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<streamType name="mpd" />
 			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"platform":"html5"}]]></playerParameter>
 		</url>
 
 		<url>
@@ -639,7 +639,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"html5"}]]></playerParameter>
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"html5","encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 
@@ -788,7 +788,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"flash"}]]></playerParameter>
+			<playerParameter><![CDATA[{"showInAdControlBar":true,"platform":"flash","encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 		<url>
@@ -801,7 +801,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 		<url>

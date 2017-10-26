@@ -847,7 +847,7 @@
 
 
 		<!-- AdobeTVSDK Plugin -->
-		<url>
+		<!-- <url>
 			<description name="Playlist:Default themebuilder parameters AdobeTVSDK" />
 			<priority name="P2"></priority>
 			<embed_code name="FpOXNyYzrz6spmgDLHZkuwebqBcKa_Gm" />
@@ -1149,6 +1149,6 @@
 			<playerParameter>
                 <![CDATA[{"playlistsPlugin":{"data":["9210c00e5a834d67a058bdb84b8ce72e"],"Caption":["description","duration"],"ThumbnailsSpacing":"30"},"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"VC: For video 'main'"}}]]></playerParameter>
 			<streamType name="mp4" />
-		</url>
+		</url> -->
 	</test>
 </testdata>

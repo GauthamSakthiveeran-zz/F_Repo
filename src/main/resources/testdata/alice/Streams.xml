@@ -13,7 +13,7 @@
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
             <platformsSupported name="mac,windows"/>
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 		<url>
@@ -27,7 +27,7 @@
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
             <platformsSupported name="mac,windows"/>
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
 		<url>
@@ -40,7 +40,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<streamType name="m3u8" />
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 			<browsersSupported name="safari" />
 		</url>
 
@@ -127,7 +127,7 @@
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 			<platformsSupported name="mac,windows"/>
 		</url>
-		<url>
+		<!-- <url>
 			<description name="Streams:Akamai HD Flash HD2 VOD" />
 			<priority name="P3"></priority>
 			<embed_code name="82eWJ2NDE6UWX__B6oTjtU1COh-gF3pP" />
@@ -142,7 +142,7 @@
 			<browserSupportedVersion name="safari,9" />
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
-		</url>
+		</url> -->
 		<url>
 			<description name="Streams:OSMF FFMPEG HDS VOD" />
 			<priority name="P3"></priority>
@@ -168,7 +168,7 @@
 			<additionalPlugins name="" />
 			<pbid name="5c824a4f3b7145a998d07aea17e8f22c" />
 			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-			<playerParameter><![CDATA[{"encodingPriority":["dash"]}]]></playerParameter>
+			<playerParameter></playerParameter>
 			<streamType name="mpd" />
 		</url>
 		<url>
@@ -181,7 +181,7 @@
 			<additionalPlugins name="" />
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
-			<playerParameter><![CDATA[{"encodingPriority":["dash","hls"]}]]></playerParameter>
+			<playerParameter></playerParameter>
 			<streamType name="mpd" />
 		</url>
 		<url>
@@ -199,34 +199,6 @@
 		</url>
 
 		<url>
-			<description name="Streams:Main Akamai HLS Remote Asset" />
-			<priority name="P3"></priority>
-			<embed_code name="44ZTlxNTE6qlSijlH3j2_dDZbXgPcEXv" />
-			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-			<plugins name="MAIN" />
-			<adPlugins name="IMA" />
-			<additionalPlugins name="" />
-			<pbid name="378512f55dd44fc287d0fa609353c268" />
-			<browsersSupported name="safari" />
-			<playerParameter><![CDATA[{"encodingPriority":["hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-			<streamType name="m3u8"></streamType>
-		</url>
-
-		<url>
-			<description name="Streams:Bitmovin Akamai HLS Remote Asset" />
-			<priority name="P3"></priority>
-			<embed_code name="44ZTlxNTE6qlSijlH3j2_dDZbXgPcEXv" />
-			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-			<plugins name="BITMOVIN" />
-			<adPlugins name="IMA" />
-			<additionalPlugins name="" />
-			<pbid name="378512f55dd44fc287d0fa609353c268" />
-			<playerParameter><![CDATA[{"encodingPriority":["hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-			<streamType name="m3u8"></streamType>
-            <platformsSupported name="mac,windows"/>
-		</url>
-
-		<url>
 			<description name="Streams:Bitmovin FFMPEG HLS VOD" />
 			<priority name="P1"></priority>
 			<embed_code name="lpMWdlOTE6dNxa4hDAIosKY4taT-Bofx" />
@@ -236,7 +208,7 @@
 			<additionalPlugins name="" />
 			<pbid name="378512f55dd44fc287d0fa609353c268" />
 			<sslEnabled name="https" />
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 			<streamType name="m3u8"></streamType>
             <platformsSupported name="mac,windows"/>
 		</url>
@@ -250,7 +222,7 @@
 			<adPlugins name="" />
 			<additionalPlugins name="" />
 			<pbid name="c0adf6d2044f437080e005a69cba4880" />
-			<playerParameter></playerParameter>
+			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 			<streamType name="m3u8"></streamType>
             <platformsSupported name="mac,windows"/>
 		</url>
