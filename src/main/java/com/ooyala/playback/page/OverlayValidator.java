@@ -102,6 +102,7 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
                 result = true;
             } else {
                 logger.error("overlayRendering event not found in consoleOutput");
+                extentTest.log(LogStatus.FAIL, "overlayRendering event not found in consoleOutput");
             }
 
         } catch (InterruptedException e) {
@@ -116,7 +117,6 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
     	if(getBrowser().equalsIgnoreCase("safari")) return true;
     	
         String baseWindowHdl = driver.getWindowHandle();
-        boolean result;
         //switch to frame
         if (waitOnElement(frameLocator, 5000)) {
             driver.switchTo().frame(getWebElement(frameLocator));
@@ -133,7 +133,7 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
         //Click on Ovarlay
         if (!clickOnIndependentElement(overlayLocator)) {
             logger.info("Failed to click on overlay");
-            extentTest.log(LogStatus.PASS, "Failed to click on overlay");
+            extentTest.log(LogStatus.FAIL, "Failed to click on overlay");
             return false;
         }
         if (getWindowHandleCount() <= 1) {
@@ -151,8 +151,7 @@ public class OverlayValidator extends PlayBackPage implements PlaybackValidator 
         }
         if (waitOnElement(By.id(element), 10000))
             new PlayBackFactory(driver, extentTest).getPlayerAPIAction().play();
-        result = true;
-        return result;
+        return true;
     }
 
 }
