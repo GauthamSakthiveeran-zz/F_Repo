@@ -557,7 +557,7 @@
 		<!-- OSMF Plugin -->
 		<!--OSMF Plugin: Adding plugin BITMOVIN in video plugins due to issue PLAYER-794, 
 			if we play the video without BITMOVIN plugin, playlist wont appear -->
-		<url>
+		<!-- <url>
 			<description name="Playlist:Default themebuilder parameters OSMF" />
 			<priority name="P3"></priority>
 			<embed_code name="BlYXlpMDE6N2HQ18uZ2RFqZhhYntrNnQ" />
@@ -843,7 +843,7 @@
 			<playerParameter>
                 <![CDATA[{"playlistsPlugin":{"data":["a4cf3abadb0c4d60b39c965ff103b236","d1496f2b8c82403c90900716ae9751b9"],"position":"bottom","PodType":"paging"}}]]></playerParameter>
 			<platformsSupported name="mac,windows" />
-		</url>
+		</url> -->
 
 
 		<!-- AdobeTVSDK Plugin -->

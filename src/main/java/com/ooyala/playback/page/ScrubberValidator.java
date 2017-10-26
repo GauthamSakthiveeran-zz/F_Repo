@@ -26,6 +26,10 @@ public class ScrubberValidator extends PlayBackPage implements PlaybackValidator
 			return true;
 		}
 		
+		if(driver.getCurrentUrl().contains("playlist")) {
+			return true;
+		}
+		
 		DiscoveryValidator discovery = new PlayBackFactory(driver, extentTest).getDiscoveryValidator();
 		if(discovery.isDiscoveryToasterPresent()) {
 			Thread.sleep(1000);

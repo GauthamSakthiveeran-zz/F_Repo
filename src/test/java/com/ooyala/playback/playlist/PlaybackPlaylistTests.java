@@ -73,11 +73,12 @@ public class PlaybackPlaylistTests extends PlaybackWebTest {
             }
 
             if (playerAPI.getErrorCode() != null) {
-                extentTest.log(LogStatus.SKIP, "Skipping test as video is in error state");
+//                extentTest.log(LogStatus.SKIP, "Skipping test as video is in error state");
                 return;
             }
 
         } catch (Exception e) {
+        	e.printStackTrace();
             extentTest.log(LogStatus.FAIL, e);
             logger.error(e.getMessage());
             result = false;
