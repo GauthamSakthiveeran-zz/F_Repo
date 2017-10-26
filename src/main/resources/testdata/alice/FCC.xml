@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
     <test name="PlaybackFCCBasicTests">
-        <url>
+        <!-- <url>
             <description name="FCC:Bitmovin Playlist"/>
             <priority name="P3"/>
             <embed_code name="BodGZ3NTE6hp8SCJceyTslrsa-qvIKBJ"/>
@@ -11,7 +11,7 @@
             <additionalPlugins name="PLAYLIST"/>
             <pbid name="9957eb7c70a64730ad8fc15004d28da8"/>
             <playerParameter><![CDATA[{"playlistsPlugin":{"data":["c7edff07d9894c7180ee2e99a940652d"],"Orientation":"vertical"}}]]></playerParameter>
-        </url>
+        </url> -->
         <url>
             <description name="FCC:Preroll IMA Main" />
             <priority name="P2"></priority>
@@ -76,7 +76,7 @@
             <priority name="P2"></priority>
             <embed_code name="RkcWtjczpquVSz7j2br3lSq1nU0mMzKg" />
             <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
-            <plugins name="MAIN" />
+            <plugins name="BITMOVIN" />
             <adPlugins name="VAST" />
             <additionalPlugins name="" />
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />

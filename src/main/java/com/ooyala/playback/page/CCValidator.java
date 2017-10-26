@@ -87,10 +87,10 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                 return false;
             }
 
-            if (!waitOnElement(By.id("savePlayerSettings_off_1"), 20000)) {
-                logger.error("savePlayerSettings event after making CC button off is not triggering");
-                extentTest.log(LogStatus.FAIL, "savePlayerSettings event after making CC button off is not triggering");
-            }
+//            if (!waitOnElement(By.id("savePlayerSettings_off_1"), 20000)) {
+//                logger.error("savePlayerSettings event after making CC button off is not triggering");
+//                extentTest.log(LogStatus.FAIL, "savePlayerSettings event after making CC button off is not triggering");
+//            }
 
             if (!(clickOnIndependentElement("CC_SWITCH_CONTAINER") && isElementPresent("CC_ON"))) {
                 logger.error("CC_ON is not present");
@@ -98,10 +98,10 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                 return false;
             }
 
-            if (!waitOnElement(By.id("savePlayerSettings_on_1"), 20000)) {
-                logger.error("savePlayerSettings event after making CC button on is not triggering");
-                extentTest.log(LogStatus.FAIL, "savePlayerSettings event after making CC button on is not triggering");
-            }
+//            if (!waitOnElement(By.id("savePlayerSettings_on_1"), 20000)) {
+//                logger.error("savePlayerSettings event after making CC button on is not triggering");
+//                extentTest.log(LogStatus.FAIL, "savePlayerSettings event after making CC button on is not triggering");
+//            }
 
         } else {
             logger.error("click on CC_SWITCH_CONTAINER failed");
@@ -279,6 +279,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                 }
             } else {
                 for (int i = 0; i < lang.size(); i++) {
+                	driver.executeScript("arguments[0].scrollIntoView(true);", lang.get(i));
                     lang.get(i).click();
 
                     if (!getWebElement("oo-responsive").getAttribute("className")
@@ -339,6 +340,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
             logger.info("\n*---------Verify Text Color Selection Panel---------*\n");
 
             for (int i = 0; i < textColor.size(); i++) {
+            	driver.executeScript("arguments[0].scrollIntoView(true);", textColor.get(i));
                 textColor.get(i).click();
                 String ccTextColor = getWebElement("CC_TEXT_COLOR").getText();
                 // e.g. Text color:White
@@ -386,6 +388,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
                     bgColor.get(i).click();
                 } else {
+                	driver.executeScript("arguments[0].scrollIntoView(true);",bgColor.get(i));
                     bgColor.get(i).click();
                 }
 
@@ -444,6 +447,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
                     ccWinColor.get(i).click();
                 } else {
+                	driver.executeScript("arguments[0].scrollIntoView(true);", ccWinColor.get(i));
                     ccWinColor.get(i).click();
                 }
                 String ccWindowColor = getWebElement("CC_WINDOW_COLOR").getText();
@@ -598,6 +602,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
             while (isElementPresent("RIGHT_ARROW")) {
                 List<WebElement> ccFontType1 = getWebElementsList("CC_FONT_TYPE");
                 for (int i = 0; i < ccFontType1.size(); i++) {
+                	driver.executeScript("arguments[0].scrollIntoView(true);", ccFontType1.get(i));
                     ccFontType1.get(i).click();
                     String ccFontTypeSelected = ccFontType1.get(i).getText();
                     logger.info("\n Language Selected - " + ccFontTypeSelected);
@@ -645,6 +650,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
                     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
                     ccFontSize.get(i).click();
                 } else {
+                	driver.executeScript("arguments[0].scrollIntoView(true);", ccFontSize.get(i));
                     ccFontSize.get(i).click();
                 }
                 String ccTextFontSize = getWebElement("CC_FONT_SIZE_SELECTED").getText();
@@ -784,6 +790,7 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
     public boolean validate(String element, int timeout) throws Exception {
 
         if (fcc) {
+        	driver.executeScript("arguments[0].scrollIntoView(true);", getWebElement("STATE_SCREEN"));
             return switchToControlBar() && closedCaptionMicroPanel() && checkArrows() && verifyCCPanelElements()
                     && verifyClosedCaptionLanguages() && verifyCCColorSelectionPanel("") && verifyCCOpacityPanel("")
                     && verifyCCFonttypePanel() && verifyCCFontSizePanel() && verifyCCTextEnhancementPanel()
