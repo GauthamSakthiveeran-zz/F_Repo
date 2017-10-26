@@ -36,7 +36,7 @@ public class PlaybackPrerollOverlayAdsTests extends PlaybackWebTest {
 			injectScript();
 			result = result && playAction.startAction();
 			result = result && event.validate("willPlayNonlinearAd_1", 10000);
-			result = result && overlayValidator.validateClickThrough("paused_1", 7000, url.getAdPlugins());
+			overlayValidator.validateClickThrough("paused_1", 7000, url.getAdPlugins());
 			
 			if (!url.getAdPlugins().toLowerCase().contains("ima"))
 				result = result && overlayValidator.validateOverlayRenderingEvent(6000);
