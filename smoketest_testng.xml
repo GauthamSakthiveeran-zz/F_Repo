@@ -1,0 +1,137 @@
+<suite name="Playback Web Regression Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    <test name="Streams Regression" parallel="classes" thread-count="1">
+        <classes>
+            <parameter name="testData" value="alice/Streams.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.streams.BasicPlaybackTests" />
+        </classes>
+    </test>
+    
+    <test name="DRMRegression" parallel="classes" thread-count="2">
+        <classes>
+            <parameter name="testData" value="alice/DRM.xml"/>
+            <parameter name="jsFile" value="alice/alice.js"/>
+            <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
+            <class name="com.ooyala.playback.drm.PlaybackWithoutDRMValidationsTests"/>
+        </classes>
+    </test>
+    
+    <test name="AMF">
+        <parameter name="jsFile" value="common.js,amf/amf.js"/>
+        <parameter name="xmlFilePkg" value="amf"/>
+        <packages>
+        	<package name="com.ooyala.playback.amf"></package>
+        </packages>
+    </test>
+    
+    <test name="ContentProtection Regression" parallel="classes" thread-count="5">
+        <classes>
+            <parameter name="testData" value="alice/ContentProtection.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.contentProtection.PlaybackGeoRestrictionTests"/>
+            <class name="com.ooyala.playback.contentProtection.PlaybackOptEntitlementTests" />
+            <class name="com.ooyala.playback.contentProtection.PlaybackDeviceRegistrationTests"/>
+            <class name="com.ooyala.playback.contentProtection.PlaybackFlightTimeTests"/>
+        </classes>
+    </test>
+    
+    <test name="Player Features" parallel="classes" thread-count="10">
+        <classes>
+            <parameter name="testData" value="alice/Alice.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.playerfeatures.PlayerMetadataStatesTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackVolumeTest" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackReplayVideoTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackFullScreenTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackLocalizationTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackClosedCaptionTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackAspectRatioTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackVerticalVideoTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackThumbnailCarouselTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackSocialMediaTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackAutoplayTests" />
+            <class name="com.ooyala.playback.playerfeatures.OoyalaAPITests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackBitrateTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackPlayerControlsTests" />
+            <class name="com.ooyala.playback.playerfeatures.DiscoveryUpNextTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryCustomizationTests" />
+            <class name="com.ooyala.playback.playerlifecycle.PlaybackPlayerDestroyTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlaybackWatermarkTests"/>
+            <class name="com.ooyala.playback.playerfeatures.PlaybackNewProcessingProfileTests" />
+            <class name="com.ooyala.playback.playerfeatures.PlayerDimensionTests"/>
+            <class name="com.ooyala.playback.playerfeatures.PlaybackDiscoveryAssetTests"/>
+            <class name="com.ooyala.playback.playerfeatures.PlaybackUIControlOptionsTests"/>
+            <class name="com.ooyala.playback.playerfeatures.PlaybackEmbedTabTests"/>
+        </classes>
+    </test>
+
+    <test name="HTML5 Playback first Regression" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="alice/HTML5FirstPlaybackTests.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.core.HTML5FirstPlaybackTests"/>
+        </classes>
+    </test>
+    
+    <test name="EncodingPriority" parallel="classes" thread-count="1">
+        <classes>
+            <parameter name="testData" value="encodingPriority/encodingPriority.xml"/>
+            <parameter name="jsFile" value="common.js,alice/alice.js"/>
+            <class name ="com.ooyala.playback.encodingpriority.PlaybackEncodingPriorityTests"/>
+        </classes>
+    </test>
+    
+    <test name="Playlist Regression" parallel="classes" thread-count="1">
+        <classes>
+            <parameter name="testData" value="alice/Playlist.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.playlist.PlaybackPlaylistTests" />
+        </classes>
+    </test>
+    
+    <test name="Ooyala ads" parallel="classes" thread-count="5">
+		<parameter name="jsFile" value="common.js,amf/amf.js" />
+		<parameter name="xmlFilePkg" value="ooyalaads" />
+		<classes>
+			<class name="com.ooyala.playback.ooyalaads.PlaybackOoyalaAdsTests"></class>
+			<class name="com.ooyala.playback.ooyalaads.PlaybackInitialTimeForOoyalaAdsTests"></class>
+			<class name="com.ooyala.playback.ooyalaads.PlaybackPlaylistDiscoveryTests"></class>
+			<class name="com.ooyala.playback.ooyalaads.PlaybackSkipOoyalaAdsTests"></class>
+			<class name="com.ooyala.playback.ooyalaads.MovingFromNonOoyalaAdsToOoyalaAdsViaDiscoveryTests"/>
+			<class name="com.ooyala.playback.ooyalaads.MovingFromOoyalaAdsToNonOoyalaAdsViaDiscoveryTests"/>
+			<class name="com.ooyala.playback.ooyalaads.MovingFromNonOoyalaAdsToOyalaAdsViaPlaylistTests"/>
+			<class name="com.ooyala.playback.ooyalaads.MovingFromOoyalaAdsToNonOoyalaAdsPlaylistTests"/>
+		</classes>
+	</test>
+	
+	<test name="Live Regression" parallel="classes" thread-count="1">
+        <groups>
+            <define name="live">
+                <include name="streams" />
+            </define>
+            <run>
+                <include name="live" />
+            </run>
+        </groups>
+        <classes>
+            <parameter name="testData" value="alice/Live.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.streams.PlaybackLiveTests" />
+        </classes>
+    </test>
+    
+    <test name="DRM Live Regression" parallel="classes" thread-count="1">
+        <classes>
+            <parameter name="testData" value="alice/DRM.xml"/>
+            <parameter name="jsFile" value="alice/alice.js"/>
+            <class name="com.ooyala.playback.drm.PlaybackWithDRMLiveTests"/>
+        </classes>
+    </test>
+
+</suite>
+
