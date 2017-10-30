@@ -63,7 +63,7 @@
             <embed_code name="o3dXF5YTE6bLKdGNXy-dVEqkNt9Hrh3c" />
             <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U" />
             <plugins name="OSMF" />
-            <adPlugins name="PULSE" />
+            <adPlugins name="PULSE" adPlayTime="9"/>
             <additionalPlugins name="" />
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
             <playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>

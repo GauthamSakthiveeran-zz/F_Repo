@@ -206,6 +206,10 @@ public class AdClickThroughValidator extends PlayBackPage implements PlaybackVal
 
 	public boolean validateClickThroughForPoddedAds(String adType) throws Exception {
 		int counter = 1;
+		
+		if(urlObject.getIgnoreClickThrough()) {
+			return true;
+		}
 
 		while (playerAPI.isAdPlaying()) {
 
