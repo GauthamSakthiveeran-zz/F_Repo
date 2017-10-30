@@ -22,9 +22,41 @@
     <test name="AMF" parallel="classes" thread-count="10">
         <parameter name="jsFile" value="common.js,amf/amf.js"/>
         <parameter name="xmlFilePkg" value="amf"/>
-        <packages>
-        	<package name="com.ooyala.playback.amf"></package>
-        </packages>
+        <classes>
+			<class name="com.ooyala.playback.amf.preroll.PlayBackLowBandWidthTests"></class>
+            <class name="com.ooyala.playback.amf.preroll.PlaybackPreRollAdsClickThroughClosedCaptionTests"></class>
+            <class name="com.ooyala.playback.amf.preroll.PlaybackPrerollOverlayAdsTests"></class>
+            <class name="com.ooyala.playback.amf.preroll.PlaybackPreRollPoddedAdsTests"></class>
+            <class name="com.ooyala.playback.amf.preroll.PlaybackSkipAdsTests"></class>
+            <class name="com.ooyala.playback.amf.preroll.freewheel.PlaybackBumperPrerollAdTests"></class>
+            <class name="com.ooyala.playback.amf.adfrequency.PlaybackAdFrequencyTests"></class>
+            <class name="com.ooyala.playback.amf.ima.PlaybackCustomInteractionTests"></class>
+            <class name="com.ooyala.playback.amf.ima.PlaybackHLSLiveStreamTests"></class>
+            <class name="com.ooyala.playback.amf.ima.PlaybackOnlyMp4Tests"></class>
+            <class name="com.ooyala.playback.amf.preroll.PlaybackPrerollAdsDiscoveryTests"></class>
+            <class name="com.ooyala.playback.amf.PlaybackPlayerWithoutSkinTests"></class>
+            <class name="com.ooyala.playback.amf.PlaybackMp4PlayerSwitchingSupportTests"></class>
+            <class name="com.ooyala.playback.amf.vast.PlaybackPoddedSkippbableInsideTests"></class>
+            <class name="com.ooyala.playback.amf.vast.PlaybackPoddedwithOverlayStandaloneTests"></class>
+            <class name="com.ooyala.playback.amf.midroll.PlaybackMidRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollOverlayTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackMidRollPoddedAdsTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackMultipleMidRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.vast.PlaybackMidrollOverlayUpNextTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackCCenableMidRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollAdAndMidrollOverlayAdsTests"></class>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackPostRollPoddedAdsTests"></class>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackPostRollAdsTests"></class>
+			<class name="com.ooyala.playback.amf.postroll.PlaybackPostrollDiscoveryTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackIMAPreVastMidAdsTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackPreMidPostReplayTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsPoddedTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackPreMidPostRollAdsTests"></class> 
+			<class name="com.ooyala.playback.amf.PlaybackVastPreIMAMidlAdsTests"></class>
+			<class name="com.ooyala.playback.amf.ima.PlaybackPreRollOverlayPostRollAdTests"></class>
+			<class name="com.ooyala.playback.amf.midroll.PlaybackMidrollAdsClickThroughTests"></class>
+			<class name="com.ooyala.playback.amf.PlaybackPrePostRollAdsPoddedTests"></class>
+        </classes>
     </test>
     
     <test name="ContentProtection Regression" parallel="classes" thread-count="5">
