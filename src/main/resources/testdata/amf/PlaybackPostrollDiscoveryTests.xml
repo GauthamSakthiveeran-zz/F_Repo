@@ -286,7 +286,7 @@
 	        <playerParameter></playerParameter>
     	</url>
     	
-    	<url>
+    	<!-- <url>
 	    	<description name="VPAID:Bitmovin IMA VPAID1.0 Discovery Postroll"/>
 	    	<priority name="P2"></priority>
 	        <embed_code name="Y4aXgxYjE6MvPpALdDDX8bHOxwiJx1G8"/>
@@ -296,7 +296,7 @@
 	        <additionalPlugins name="DISCOVERY"/>
 	        <pbid name="2aeafa81a1e84ca28f6bda7617a50a0d"/>
 	        <playerParameter></playerParameter>
-    	</url>
+    	</url> -->
     	
     	<url>
 	    	<description name="VPAID:OSMF Vast VPAID2.0 Discovery Postroll"/>
@@ -338,7 +338,7 @@
 			<platformsSupported name="mac,windows"/>
 		</url> -->
 
-        <url>
+        <!-- <url>
             <description name="VPAID:OSMF IMA VPAID1.0 Discovery Postroll"/>
             <priority name="P3"></priority>
             <embed_code name="B1MnBxYTE6szONEyOSuE5i9kDvYAiUkB"/>
@@ -349,9 +349,9 @@
             <pbid name="178e642662fe4f60b6f973a985eb09ca"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 			<platformsSupported name="mac,windows"/>
-        </url>
+        </url> -->
 
-        <url>
+        <!-- <url>
             <description name="VPAID:Main IMA VPAID1.0 Discovery Postroll"/>
             <priority name="P2"></priority>
             <embed_code name="Jpd25xYTE6WBX2x2DY6-AQrC0Sj12L6y"/>
@@ -361,9 +361,9 @@
             <additionalPlugins name="DISCOVERY"/>
             <pbid name="294b0bd173974ddb8128a86db1029bd7"/>
             <playerParameter></playerParameter>
-        </url>
+        </url> -->
 
-		<url>
+		<!-- <url>
 			<description name="VPAID:AdobeTVSDK IMA VPAID1.0 Discovery Postroll"/>
 			<priority name="P2"></priority>
 			<embed_code name="Jpd25xYTE6WBX2x2DY6-AQrC0Sj12L6y"/>
@@ -373,7 +373,7 @@
 			<additionalPlugins name="DISCOVERY"/>
 			<pbid name="294b0bd173974ddb8128a86db1029bd7"/>
 			<playerParameter></playerParameter>
-		</url>
+		</url> -->
 		
     </test>
 </testdata>
