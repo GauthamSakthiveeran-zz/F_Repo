@@ -69,7 +69,8 @@ public class PlaybackFCCBasicTests extends PlaybackWebTest {
 				result = result && fullscreen.getNormalScreen();
 			}
 
-			result = result && play.validate("playing_2", 30000);
+			result = result && playAction.startAction();
+			result = result && eventValidator.validate("playing_2", 30000);
 
 			result = result && seek.validate("seeked_1", 40000);
 

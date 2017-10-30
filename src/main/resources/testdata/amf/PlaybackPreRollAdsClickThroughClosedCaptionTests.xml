@@ -209,7 +209,7 @@
                 <![CDATA[{"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
 		</url>
 
-		<url>
+		<!-- <url>
 			<description name="VPAID:Main IMA VPAID1.0 Preroll" />
 			<priority name="P2"></priority>
 			<embed_code name="5ubHlycTpDMOFl3UAvmDvwwJqm87zjuk" />
@@ -220,7 +220,7 @@
 			<pbid name="615dc8e909e941c280e12155df838355" />
 			<playerParameter>
                 <![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"}]},"skin":{"inline":{"adScreen":{"showAdMarquee":false}}}}]]></playerParameter>
-		</url>
+		</url> -->
 
 
 		<url>
@@ -236,7 +236,7 @@
                 <![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.5473937f771169.76902805;cb=[timestamp]"}]}}]]></playerParameter>
 		</url>
 
-		<url>
+		<!-- <url>
 			<description name="VPAID:Bitmovin IMA VPAID1.0 Preroll" />
 			<priority name="P1"></priority>
 			<embed_code name="VjNngxYjE6xYQ35M48WsDm-QGlYpw4-M" />
@@ -247,7 +247,7 @@
 			<pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
 			<playerParameter><![CDATA[{"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-		</url>
+		</url> -->
 
 		<url>
 			<description name="VPAID:OSMF IMA VPAID2.0 Preroll" />
@@ -411,7 +411,7 @@
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
 		</url>
 
-		<url>
+		<!-- <url>
 			<description name="VPAID:OSMF IMA VPAID1.0 Preroll" />
 			<priority name="P3"></priority>
 			<embed_code name="ZlMnBxYTE6PyTgHGusf8ncigkwrArjif" />
@@ -423,7 +423,7 @@
 			<playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 			<platformsSupported name="mac,windows" />
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
-		</url>
+		</url> -->
 
 		<url>
 			<description name="Freewheel:AdobeTVSDK Preroll" />

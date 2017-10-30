@@ -353,7 +353,7 @@
                 <![CDATA[{"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
         </url>
 
-        <url>
+        <!-- <url>
             <description name="VPAID:Bitmovin IMA VPAID1.0 Postroll"/>
             <priority name="P1"></priority>
             <embed_code name="VnNngxYjE6lZso1lkPh8X_gTK1IC3wKA"/>
@@ -363,9 +363,9 @@
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter></playerParameter>
-        </url>
+        </url> -->
 
-        <url>
+        <!-- <url>
             <description name="VPAID:AdobeTVSDK IMA VPAID1.0 Postroll"/>
             <priority name="P2"></priority>
             <embed_code name="VnNngxYjE6lZso1lkPh8X_gTK1IC3wKA"/>
@@ -375,7 +375,7 @@
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter></playerParameter>
-        </url>
+        </url> -->
 
         <url>
             <description name="VPAID:OSMF Vast VPAID2.0 Postroll"/>
@@ -404,7 +404,7 @@
             <platformsSupported name="mac,windows"/>
         </url>
 
-        <url>
+        <!-- <url>
             <description name="VPAID:OSMF IMA VPAID1.0 Postroll"/>
             <priority name="P3"></priority>
             <embed_code name="ZrMnBxYTE6kCtZRWQzDlAzJwa1uk4Fl9"/>
@@ -415,9 +415,9 @@
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
 			<platformsSupported name="mac,windows"/>
-        </url>
+        </url> -->
 
-        <url>
+        <!-- <url>
             <description name="VPAID:Main IMA VPAID1.0 Postroll"/>
             <priority name="P2"></priority>
             <embed_code name="41dm5xYTE6HaWYfZZTrjVSGhLjCiewjE"/>
@@ -427,7 +427,7 @@
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
             <playerParameter></playerParameter>
-        </url>
+        </url> -->
 
     </test>
 </testdata>

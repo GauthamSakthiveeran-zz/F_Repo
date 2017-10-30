@@ -228,7 +228,7 @@
         </url>
 
 
-        <url>
+        <!-- <url>
             <description name="VPAID:OSMF IMA VPAID1.0 Midroll Clickthrough"/>
             <priority name="P3"></priority>
             <embed_code name="QxaXF5YTE6uF6wAkOtQSsMtjs8EWuRY0"/>
@@ -239,9 +239,9 @@
             <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
             <playerParameter><![CDATA[{"encodingPriority":["hds","hls","webm","mp4","dash"]}]]></playerParameter>
             <platformsSupported name="mac,windows"/>
-        </url>
+        </url> -->
 
-        <url>
+        <!-- <url>
             <description name="VPAID:Main IMA VPAID1.0 Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="4zdm5xYTE6kinDj0VQ5a3Qlq6PAaRguK"/>
@@ -251,7 +251,7 @@
             <additionalPlugins name=""/>
             <pbid name="615dc8e909e941c280e12155df838355"/>
             <playerParameter></playerParameter>
-        </url>
+        </url> -->
         
         <url>
             <description name="Freewheel:AdobeTVSDK Midroll Clickthrough"/>
@@ -318,7 +318,7 @@
 			<priority name="P2"></priority>
         </url>
         
-        <url>
+        <!-- <url>
             <description name="VPAID:Bitmovin IMA VPAID1.0 Midroll Clickthrough"/>
             <priority name="P2"></priority>
             <embed_code name="VlNngxYjE6Fxun-P1nj_6S1fZynIqXEp"/>
@@ -328,7 +328,7 @@
             <additionalPlugins name=""/>
             <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
             <playerParameter></playerParameter>
-        </url>
+        </url> -->
         
          <!-- <url>
             <description name="VPAID:OSMF Vast VPAID2.0 Midroll Clickthrough"/>
