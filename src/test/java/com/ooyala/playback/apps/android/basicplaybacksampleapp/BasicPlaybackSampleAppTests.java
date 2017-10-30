@@ -38,21 +38,21 @@ import com.ooyala.playback.apps.validators.ElementValidator;
 
              result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
 
-             result = result && notificationEventValidator.letVideoPlayForSec(4);
+             result = result && notificationEventValidator.letVideoPlayForSec(2);
 
              result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
-             result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
+             result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED_ANDRD, 25000);
              result = result && seekAction.startAction("SEEK_BAR_ANDROID");
              result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
              result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
-             if(test.getAsset().contains("VOD_WITH_CCS")) {
+             if(test.getAsset().contains("VOD with CCs")) {
                  result = result && ccAction.enableCC(); // Default English
                  result = result && notificationEventValidator.verifyEvent(Events.CC_ENABLED, 15000);
              }
              result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
-             result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
+             result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED_ANDRD, 30000);
 
-             result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
+             result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 75000);
 
          } catch (Exception ex) {
              logger.error("Here is an exception" + ex);
