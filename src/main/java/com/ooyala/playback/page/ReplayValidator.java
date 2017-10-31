@@ -33,6 +33,15 @@ public class ReplayValidator extends PlayBackPage implements PlaybackValidator {
 					return false;
 				}
 			}
+			
+			if (getBrowser().toLowerCase().contains("explorer") || getBrowser().toLowerCase().contains("edge")) {
+				if(isElementPresent("REPLAY")) {
+					if(!clickOnIndependentElement("REPLAY")) {
+						extentTest.log(LogStatus.FAIL, "Could not click on replay button");
+						return false;
+					}
+				}
+			}
 
             if (!waitOnElement(By.id(element), timeout)) {
                 extentTest.log(LogStatus.FAIL, element + " not found hence replay failed");
