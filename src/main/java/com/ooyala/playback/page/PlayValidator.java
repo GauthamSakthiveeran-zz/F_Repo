@@ -74,18 +74,14 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 			Thread.sleep(30000);
 		}
 		
-		VideoValidator videoValidator = new PlayBackFactory(driver, extentTest).getVideoValidator().getConsoleLogs();
+		VideoValidator videoValidator = new PlayBackFactory(driver, extentTest).getVideoValidator();
+		
+		if (!getBrowser().toLowerCase().contains("explorer") && !getBrowser().toLowerCase().contains("edge"))
+			videoValidator.getConsoleLogs();
 
 		if (!clickOnIndependentElement("PLAY_BUTTON")) {
 			extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
 			return false;
-		}
-		
-		if (getBrowser().toLowerCase().contains("explorer") && isElementPresent("PLAY_BUTTON")) {
-			if (!clickOnIndependentElement("PLAY_BUTTON")) {
-				extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
-				return false;
-			}
 		}
 		
 		if (!loadingSpinner()) {
@@ -125,6 +121,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 		extentTest.log(LogStatus.PASS, "Video Playing and validation of element " + element + " is successful");
 
+		if (!getBrowser().toLowerCase().contains("explorer") && !getBrowser().toLowerCase().contains("edge"))
 		if (!videoValidator.validate("", timeout)) {
 			return false;
 		}

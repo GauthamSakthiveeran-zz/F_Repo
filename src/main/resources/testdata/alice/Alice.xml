@@ -144,6 +144,17 @@
             <playerParameter><![CDATA[{"showLinearAdSkipButton":true}]]></playerParameter>
         </url>
         <url>
+            <description name="Core:Closed Caption Bitmovin CC in separate lines"/>
+            <priority name="P2"></priority>
+            <embed_code name="I2NzQ4ZDE6HA25py-ZPokeChFBVXhISf"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name=""/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter></playerParameter>
+        </url>
+        <url>
             <description name="Core:Closed Caption Bitmovin"/>
             <priority name="P2"></priority>
             <embed_code name="1jNjhsMTE6VZV3TgSi8AjiD4AHpwGH5x"/>
