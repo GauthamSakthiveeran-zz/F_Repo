@@ -76,19 +76,17 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 		
 		VideoValidator videoValidator = new PlayBackFactory(driver, extentTest).getVideoValidator().getConsoleLogs();
 
-		if(getBrowser().toLowerCase().contains("explorer")) {
-			if (!clickOnHiddenElement("PLAY_BUTTON")) {
-				extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
-				return false;
-			}
-		} else {
+		if (!clickOnIndependentElement("PLAY_BUTTON")) {
+			extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
+			return false;
+		}
+		
+		if (getBrowser().toLowerCase().contains("explorer") && isElementPresent("PLAY_BUTTON")) {
 			if (!clickOnIndependentElement("PLAY_BUTTON")) {
 				extentTest.log(LogStatus.FAIL, "FAILED to click on PLAY_BUTTON.");
 				return false;
 			}
 		}
-		
-		
 		
 		if (!loadingSpinner()) {
 			extentTest.log(LogStatus.FAIL, "Loading spinner seems to be there for a really long time.");
