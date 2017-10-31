@@ -190,12 +190,12 @@
             <description name="VTC:Playback_NewStream" />
             <priority name="P2"></priority>
             <embed_code name="piMXdiczqydplt6ojmhNzdfAERdgVvaj" />
-            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <pcode name="N1aWw6aHnsVDr5vDoQnY2gBMOnEV" />
             <plugins name="MAIN" />
             <adPlugins name="" />
             <additionalPlugins name="DISCOVERY" />
             <pbid name="421363178a5d493c9d4e74aadc1c2df9" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
         </url>
     </test>
     <test name="PlaybackClosedCaptionTests">

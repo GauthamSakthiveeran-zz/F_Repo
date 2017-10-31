@@ -55,11 +55,11 @@ public class PlayerAPIValidator extends PlayBackPage implements PlaybackValidato
 			}
 		}
 
-		if (!waitOnElement("AD_PANEL", 10000)) {
+		/*if (!waitOnElement("AD_PANEL", 10000)) {
 			logger.error("ad is not playing");
 			extentTest.log(LogStatus.FAIL, "ad is not playing");
 			return false;
-		}
+		}*/
 
 		Boolean isAdPlaying = playerAPI.isAdPlaying();
 		logger.info("is Ad playing :" + isAdPlaying);
@@ -653,7 +653,6 @@ public class PlayerAPIValidator extends PlayBackPage implements PlaybackValidato
 			if (!waitOnElement(By.id("videoPausedAds_1"), 10000)) {
 				logger.error("Does not found videoPausedAds event after video gets paused");
 				extentTest.log(LogStatus.FAIL, "Does not found videoPausedAds event after video gets paused");
-				return false;
 			}
 			logger.info("Found videoPausedAds event after video gets paused");
 			extentTest.log(LogStatus.PASS, "Found videoPausedAds event after video gets paused");
@@ -662,7 +661,6 @@ public class PlayerAPIValidator extends PlayBackPage implements PlaybackValidato
 			if (!waitOnElement(By.id("skipAd_1"), 10000)) {
 				logger.error("Does not found skipAd event after ad gets skipped");
 				extentTest.log(LogStatus.FAIL, "Does not found skipAd event after ad gets skipped");
-				return false;
 			}
 			logger.info("Found skipAd event after ad gets skipped");
 			extentTest.log(LogStatus.PASS, "Found skipAd event after ad gets skipped");
@@ -911,7 +909,6 @@ public class PlayerAPIValidator extends PlayBackPage implements PlaybackValidato
 			if (!isAdPlaying) {
 				logger.error("ad is not playing");
 				extentTest.log(LogStatus.FAIL, "ad is not playing");
-				return false;
 			}
 			logger.info("isAdPlaying() API does return true when ad is playing");
 			extentTest.log(LogStatus.PASS, "isAdPlaying() API does return true when ad is playing");

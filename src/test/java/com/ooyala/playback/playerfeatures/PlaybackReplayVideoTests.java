@@ -48,9 +48,15 @@ public class PlaybackReplayVideoTests extends PlaybackWebTest {
 			
 			result = result && eventValidator.validate("playing_3", 60000);
 			
-			result = result && eventValidator.waitOnElement("PLAYING_SCREEN", 60000);
+            replayValidator.validatePlayHeadTime();
+            
+            result = result && seek.validate("seeked_2", 60000);
+            
+            result = result && eventValidator.validate("played_2", 20000);
+
+			result = result && replayValidator.validate("replay_2", 30000);
 			
-            result = result && replayValidator.validatePlayHeadTime();
+			result = result && eventValidator.validate("playing_5", 60000);
 
         } catch (Exception e) {
             logger.error(e.getMessage());

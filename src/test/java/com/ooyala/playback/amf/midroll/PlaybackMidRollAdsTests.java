@@ -66,4 +66,6 @@ public class PlaybackMidRollAdsTests extends PlaybackWebTest {
 		}
 		Assert.assertTrue(result, "Verified");
 	}
+
+
 }
