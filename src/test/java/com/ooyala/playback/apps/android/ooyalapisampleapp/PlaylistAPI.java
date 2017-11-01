@@ -23,6 +23,8 @@ public class PlaylistAPI extends PlaybackAppsTest {
     private SeekAction seekAction;
     private CCAction ccAction;
     private NotificationEventValidator notificationEventValidator;
+    private AllowAction allowAction;
+    private AndroidKeyCodeAction androidAction;
 
     @Test(groups = "ooyalaapisampleapp", dataProvider = "testData")
     public void testPluginPlayer(String testName, TestParameters test) throws Exception {
@@ -32,27 +34,29 @@ public class PlaylistAPI extends PlaybackAppsTest {
         try {
             result = result && selectVideo.startAction("PLAYLIST_API");
             result = result && selectVideo.startAction(test.getAsset());
-
+            result = result && allowAction.startAction("ALLOW");
+            result = result && androidAction.startAction("BACK");
+            result = result && selectVideo.startAction(test.getAsset());
             result = result && elementValidator.validate("PLAY_PAUSE_ANDROID", 30000);
             result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 
             result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
 
-            result = result && notificationEventValidator.letVideoPlayForSec(4);
+            result = result && notificationEventValidator.letVideoPlayForSec(2);
 
             result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
-            result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
+            result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED_ANDRD, 25000);
             result = result && seekAction.startAction("SEEK_BAR_ANDROID");
             result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
             result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
-            if(test.getAsset().contains("VOD_WITH_COLSEDCAPTION")) {
+/*            if(test.getAsset().contains("VOD_WITH_COLSEDCAPTION")) {
                 result = result && ccAction.enableCC(); // Default English
                 result = result && notificationEventValidator.verifyEvent(Events.CC_ENABLED, 15000);
-            }
+            }*/
             result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
-            result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
+            result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED_ANDRD, 30000);
 
-            result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
+            result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 250000);
 
         } catch (Exception ex) {
             logger.error("Here is an exception" + ex);

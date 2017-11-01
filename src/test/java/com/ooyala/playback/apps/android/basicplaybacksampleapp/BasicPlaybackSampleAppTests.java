@@ -45,10 +45,10 @@ import com.ooyala.playback.apps.validators.ElementValidator;
              result = result && seekAction.startAction("SEEK_BAR_ANDROID");
              result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
              result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
-             if(test.getAsset().contains("VOD with CCs")) {
+/*             if(test.getAsset().contains("VOD with CCs")) {
                  result = result && ccAction.enableCC(); // Default English
                  result = result && notificationEventValidator.verifyEvent(Events.CC_ENABLED, 15000);
-             }
+             }*/
              result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
              result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED_ANDRD, 30000);
 

@@ -130,14 +130,16 @@
 
 	<!-- 	OoyalaAPI sample app -->
 	<element key="OOYALA_API" findBy="xPath" xPath="//android.widget.TextView[@index='6']"/>
-	<element key="CONTENT_TREE_FOR_CHANNEL" findBy="xPath" xPath="//android.widget.TextView[@index='0']"/>
-	<element key="OOYALA_EVERYWHERE" findBy="xPath" xPath="//android.widget.TextView[@index='0']"/>
-	<element key="OOYALA_SOCIAL" findBy="xPath" xPath="//android.widget.TextView[@index='1']"/>
-	<element key="RETHINK_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@index='2']"/>
-	<element key="TELEGRAPH_MEDIA_GROUP" findBy="xPath" xPath="//android.widget.TextView[@index='3']"/>
+	<element key="CONTENT_TREE_FOR_CHANNEL" findBy="xPath" xPath="//android.widget.TextView[@text='ContentTree for Channel']"/>
+	<element key="OOYALA_EVERYWHERE" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Everywhere']"/>
+	<element key="OOYALA_SOCIAL" findBy="xPath" xPath="//android.widget.TextView[@text='Ooyala Social']"/>
+	<element key="RETHINK_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='Rethink Video']"/>
+	<element key="TELEGRAPH_MEDIA_GROUP" findBy="xPath" xPath="//android.widget.TextView[@text='Telegraph Media Group']"/>
+	<element key="PLAYLIST_API" findBy="xPath" xPath="//android.widget.TextView[@text='Playlist API']"/>
 	<element key="VOD_WITH_COLSEDCAPTION" findBy="xPath" xPath="//android.widget.TextView[@text='VOD with Closed Captions']" />
-	<element key="PLAYLIST_API" findBy="xPath" xPath="//android.widget.TextView[@index='1']"/>
-
+	<element key="HLS" findBy="xPath" xPath="//android.widget.TextView[@text='HLS Video']" />
+	<element key="MP4" findBy="xPath" xPath="//android.widget.TextView[@text='MP4 Video']" />
+	<element key="ASPECT_RATIO" findBy="xPath" xPath="//android.widget.TextView[@text='4:3 Aspect Ratio']" />
 	<!-- 	End  of OoyalaAPI Sample app-->
 
 	<!-- Complete Sample App  -->
