@@ -40,7 +40,7 @@ public class PlaybackAutoplayTests extends PlaybackWebTest {
 
 			result = result && autoplayAction.startAction();
 
-			result = result && eventValidator.validate("singleAdPlayed_1", 5000);
+//			result = result && eventValidator.validate("singleAdPlayed_1", 5000);
 
 			result = result && eventValidator.validate("playing_1", 60000);
 
