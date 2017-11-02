@@ -113,7 +113,7 @@
             <additionalPlugins name="" />
             <streamType name="hds"/>
             <pbid name="abafee0167b14ca48d8738b994f5d2d4" />
-            <playerParameter><![CDATA[]]></playerParameter>
+            <playerParameter></playerParameter>
             <browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge"/>
             <platformsSupported name="mac,windows"/>
         </url>
@@ -180,7 +180,7 @@
        </url> -->
 
 
-        <url>
+        <!-- <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS Remote Asset" />
             <priority name="P1"></priority>
             <embed_code name="s3dXNvYTE6q4vFYHG0EifD84pkDkrdwr" />
@@ -192,7 +192,7 @@
             <streamType name="hls" />
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
-        </url>
+        </url> -->
 
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Main Azure eHLS" />
@@ -208,7 +208,7 @@
             <playerParameter><![CDATA[{"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
         </url>
         
-        <url>
+        <!-- <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Main Elemental Delta eHLS Remote Asset" />
             <priority name="P2"></priority>
             <embed_code name="p3NjJyYTE69VPfb3X7fMDXBDa2Gq2sKO" />
@@ -220,7 +220,7 @@
             <streamType name="hls" />
             <browsersSupported name="safari" />
             <playerParameter><![CDATA[{"platform":"html5","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
-        </url>
+        </url> -->
 
         <url>
             <description name="DRM Testing(Live,VOD and Remote assets):Bitmovin Azure eHLS" />

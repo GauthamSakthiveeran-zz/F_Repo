@@ -16,7 +16,7 @@
 			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
-		<url>
+		<!-- <url>
 			<description name="Streams:Bitmovin Elemental Delta HLS Remote Asset" />
 			<priority name="P3"></priority>
 			<embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
@@ -42,7 +42,7 @@
 			<streamType name="m3u8" />
 			<playerParameter><![CDATA[{"encodingPriority":["hls"]}]]></playerParameter>
 			<browsersSupported name="safari" />
-		</url>
+		</url> -->
 
 		<url>
 			<description name="Streams:Bitmovin Elemental Delta DASH VOD (Clear Dash)" />
@@ -96,7 +96,7 @@
 			<streamType name="mp4" />
 		</url>
 
-		<url>
+		<!-- <url>
 			<description name="Streams:Bitmovin Elemental Delta DASH Remote Asset" />
 			<priority name="P3"></priority>
 			<embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
@@ -109,7 +109,7 @@
 			<sslEnabled name="https" browser="chrome"/>
 			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
 			<streamType name="mpd" />
-		</url>
+		</url> -->
 
 		<url>
 			<description name="Streams:OSMF Elemental Delta HDS VOD" />
@@ -324,32 +324,8 @@
             <streamType name="m3u8"></streamType>
             <platformsSupported name="mac,windows"/>
         </url>
-        <url>
-            <description name="Streams:AdobeTVSDK Elemental Delta HLS Remote Asset" />
-            <priority name="P3"></priority>
-            <embed_code name="8xYm5vYTE6egi6KUDINbdg7DXCh8lGsl" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="ADOBETVSDK" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <streamType name="m3u8" />
-            <platformsSupported name="mac,windows"/>
-            <playerParameter></playerParameter>
-        </url>
-        <url>
-            <description name="Streams:AdobeTVSDK Akamai HLS Remote Asset" />
-            <priority name="P3"></priority>
-            <embed_code name="44ZTlxNTE6qlSijlH3j2_dDZbXgPcEXv" />
-            <pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
-            <plugins name="ADOBETVSDK" />
-            <adPlugins name="IMA" />
-            <additionalPlugins name="" />
-            <pbid name="378512f55dd44fc287d0fa609353c268" />
-            <browsersSupported name="safari" />
-            <playerParameter><![CDATA[{"encodingPriority":["hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
-            <streamType name="m3u8"></streamType>
-        </url>
+       
+        
         <url>
             <description name="Streams:AdobeTVSDK H.264 4K HLS" />
             <priority name="P3"></priority>
@@ -390,20 +366,7 @@
             <playerParameter><![CDATA[{"encodingPriority":["dash"]}]]></playerParameter>
             <streamType name="mpd"></streamType>
         </url>
-        <url>
-            <description name="Streams:AdobeTVSDK Elemental Delta DASH Remote Asset" />
-            <priority name="P3"></priority>
-            <embed_code name="RjbmxhMjE6JyHihyS3f-G5cxnPJCuba6" />
-            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l" />
-            <plugins name="ADOBETVSDK" />
-            <adPlugins name="" />
-            <additionalPlugins name="" />
-            <pbid name="8287c6992b2d40e6ab182fb2c5014c17" />
-            <playerParameter></playerParameter>
-            <sslEnabled name="https" />
-			<browsersSupported name="chrome,firefox,internet explorer,MicrosoftEdge" />
-			<streamType name="mpd"></streamType>
-        </url>
+        
         <url>
             <description name="Streams:AdobeTVSDK H.264 4K Dash" />
             <priority name="P3"></priority>
