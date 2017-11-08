@@ -1,0 +1,13 @@
+<suite name="Playback Web Regression" parallel="classes" thread-count="5">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener"/>
+    </listeners>
+
+    <test name="Performance">
+    	<parameter name="jsFile" value="common.js,amf/amf.js"/>
+        <parameter name="xmlFilePkg" value="amf"/>
+        <classes>
+            <class name="com.ooyala.playback.performance.PerformanceTest"></class>
+        </classes>
+    </test>
+</suite>

@@ -54,14 +54,14 @@ public class ErrorDescriptionValidator extends PlayBackPage implements PlaybackV
 		return true;
 	}
 	
+	int count =5;
+	
 	private boolean errorDescription() {
-		
-		int count =5;
 
 		logger.info("Checking error description");
 
-		if (!waitOnElement("ERROR_SCREEN", 10000)) {
-			if(count>=0) {
+		if (!waitOnElement("ERROR_SCREEN", 5000)) {
+			if (count >= 0) {
 				driver.navigate().refresh();
 				isPageLoaded();
 				count--;
@@ -71,18 +71,18 @@ public class ErrorDescriptionValidator extends PlayBackPage implements PlaybackV
 			extentTest.log(LogStatus.FAIL, "Error screen is not showing");
 			return false;
 		}
-		
+
 		if (!waitOnElement("ERROR_DESCRIPTION", 60000)) {
-			if(expectedErrorDesc.isEmpty())
+			if (expectedErrorDesc.isEmpty())
 				return true;
 			logger.error("ERROR_DESCRIPTION is not showing");
 			extentTest.log(LogStatus.FAIL, "ERROR_DESCRIPTION is not showing");
 			return false;
 		}
-		
+
 		String text = getWebElement("ERROR_DESCRIPTION").getText();
-		
-		if(!text.equals(expectedErrorDesc)) {
+
+		if (!text.equals(expectedErrorDesc)) {
 			extentTest.log(LogStatus.FAIL, "Error message is wrong");
 			return false;
 		}

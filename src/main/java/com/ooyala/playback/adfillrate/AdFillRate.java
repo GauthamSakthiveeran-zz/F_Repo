@@ -1,3 +1,4 @@
+package com.ooyala.playback.adfillrate;
 import org.json.JSONObject;
 
 import com.mashape.unirest.http.HttpResponse;

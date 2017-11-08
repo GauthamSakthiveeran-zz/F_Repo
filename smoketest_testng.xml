@@ -59,7 +59,7 @@
         </classes>
     </test>
     
-    <!-- <test name="ContentProtection Regression" parallel="classes" thread-count="5">
+    <test name="ContentProtection Regression" parallel="classes" thread-count="5">
         <classes>
             <parameter name="testData" value="alice/ContentProtection.xml" />
             <parameter name="jsFile" value="alice/alice.js" />
@@ -68,7 +68,7 @@
             <class name="com.ooyala.playback.contentProtection.PlaybackDeviceRegistrationTests"/>
             <class name="com.ooyala.playback.contentProtection.PlaybackFlightTimeTests"/>
         </classes>
-    </test> -->
+    </test>
     
     <test name="Player Features" parallel="classes" thread-count="10">
         <classes>
