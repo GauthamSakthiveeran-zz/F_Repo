@@ -81,6 +81,7 @@ public class PlayBackFactory {
     private VastPageLevelOverridingValidator pageLevelOverridingValidator;
     private PreloadingValidator preloadingValidator;
     private VirtualRealityAction virtualRealityAction;
+    private PerformanceValidator performanceValidator;
 
     public PlayBackFactory(WebDriver driver, ExtentTest extentTest) {
         this.driver = driver;
@@ -89,6 +90,14 @@ public class PlayBackFactory {
 
 	public ExtentTest getExtentTest() {
 		return extentTest;
+	}
+	
+	public PerformanceValidator getPerformanceValidator() {
+		if(performanceValidator == null ){
+			performanceValidator = new PerformanceValidator(driver);
+			performanceValidator.setExtentTest(extentTest);
+		}
+		return performanceValidator;
 	}
 
 	public PlayerAPIAction getPlayerAPIAction() {

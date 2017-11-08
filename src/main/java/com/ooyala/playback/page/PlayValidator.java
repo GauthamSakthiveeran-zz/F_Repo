@@ -2,6 +2,7 @@ package com.ooyala.playback.page;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -50,6 +51,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 					return false;
 				}
 			}
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", getWebElement("PLAY_BUTTON"));
 			return true;
 		} catch (Exception e) {
 			logger.error(e.getMessage());

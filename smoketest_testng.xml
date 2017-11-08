@@ -141,7 +141,7 @@
 		</classes>
 	</test>
 	
-	<test name="Live Regression" parallel="classes" thread-count="1">
+	<!-- <test name="Live Regression" parallel="classes" thread-count="1">
         <groups>
             <define name="live">
                 <include name="streams" />
@@ -163,7 +163,7 @@
             <parameter name="jsFile" value="alice/alice.js"/>
             <class name="com.ooyala.playback.drm.PlaybackWithDRMLiveTests"/>
         </classes>
-    </test>
+    </test> -->
 
 </suite>
 

@@ -191,7 +191,7 @@
 			<playerParameter><![CDATA[{"platform":"flash","encodingPriority":["hls"]}]]></playerParameter>
 		</url>
 
-		<url>
+		<!-- <url>
 			<description
 				name="Platform Parameter:Bitmovin (Platform with Flash) DRM-DASH VOD" />
 			<priority name="P1"></priority>
@@ -204,10 +204,10 @@
 			<streamType name="mpd" />
 			<sslEnabled name="https" />
 			<playerParameter><![CDATA[{"platform":"flash"}]]></playerParameter>
-		</url>
+		</url> -->
 
 
-		<url>
+		<!-- <url>
 			<description
 				name="Platform Parameter:Bitmovin (Platform with Flash) DRM-HLS" />
 			<priority name="P1"></priority>
@@ -220,7 +220,7 @@
 			<streamType name="m3u8" />
 			<browsersSupported name="safari" />
 			<playerParameter><![CDATA[{"encodingPriority":["hls"],"platform":"flash"}]]></playerParameter>
-		</url>
+		</url> -->
 
 
 
