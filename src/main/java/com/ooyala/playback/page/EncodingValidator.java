@@ -169,7 +169,8 @@ public class EncodingValidator extends PlayBackPage implements PlaybackValidator
         
         PlayerAPIAction playerAPIAction = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
 
-        isEncodingPriorityNotSet = playerAPIAction.getEncodingPriority().toString().equals("undefined");
+		isEncodingPriorityNotSet = playerAPIAction.getEncodingPriority() == null ? true
+				: playerAPIAction.getEncodingPriority().toString().equals("undefined");
 
         /**
          * Verify default encoding priority when priority is not passed from playerParameter
