@@ -1,16 +1,20 @@
 package com.ooyala.playback.apps.actions;
 
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.apache.log4j.Logger;
 
 import com.ooyala.playback.apps.PlaybackApps;
+import com.ooyala.playback.apps.utils.CommandLine;
+import com.ooyala.playback.apps.utils.CommandLineParameters;
 import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
+
 
 /**
  * Created by Gautham
@@ -87,7 +91,38 @@ public class AndroidKeyCodeAction extends PlaybackApps implements Actions {
 		((AndroidDriver)driver).currentActivity();
 	}
 		
-		
+	   public boolean screenLockUnlock() throws InterruptedException,IOException {
+
+		   boolean flag = false;
+	       ((AndroidDriver)driver).lockDevice(); 
+	       Thread.sleep(5000);
+	       if( ((AndroidDriver)driver).isLocked() ) {
+	    	    		logger.info("screen locked");
+	       } else {
+	    	   		logger.info("screen lock failed");
+	       }
+	       Thread.sleep(2000);
+            //adb command to unlock device
+	        String[] final_command=CommandLine.command("adb -s " + System.getProperty(CommandLineParameters.UDID) + " shell am start -n io.appium.unlock/.Unlock");
+	        Runtime run = Runtime.getRuntime();
+			run.exec(final_command);
+			int attempts = 0;
+	        while(((AndroidDriver)driver).isLocked() && attempts<10) {
+	        		Thread.sleep(3000);
+	        		attempts++;
+	        }
+	       
+	        if(((AndroidDriver)driver).isLocked()) {
+	        		logger.fatal("screen is not unlocked");
+	        		extentTest.log(LogStatus.FAIL, "screen is not unlocked");
+	        		return false;
+	        } else {  	
+	        		logger.info("screen is unlocked successfully");
+	        		extentTest.log(LogStatus.PASS, "screen is unlocked successfully");
+	        		return true;
+	        }
+	        
+	    }
 	}
 
 

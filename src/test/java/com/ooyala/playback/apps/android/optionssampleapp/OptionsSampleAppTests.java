@@ -59,7 +59,8 @@ import io.appium.java_client.android.AndroidKeyCode;
             result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED_ANDRD, 70000);
             result = result && seekAction.startAction("SEEK_BAR_ANDROID");
             result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
-            result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);       
+            result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000); 
+            result = result && androidAction.screenLockUnlock();
             result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
             result = result && notificationEventValidator.validateEvent(Events.AD_STARTED, 20000);
             result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
@@ -89,6 +90,7 @@ import io.appium.java_client.android.AndroidKeyCode;
 	        	result = result && playAction.createVideo("CREATE_VIDEO",20000);
 	        	result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 	        	result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);
+	        result = result && androidAction.screenLockUnlock();
 	        	result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  80000);
 	    }
         catch(Exception ex) {
@@ -116,6 +118,7 @@ import io.appium.java_client.android.AndroidKeyCode;
 			result = result && seekAction.startAction("SEEK_BAR_ANDROID");
 			result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
 			result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);
+			result = result && androidAction.screenLockUnlock();
 			result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  80000);
         }
@@ -143,9 +146,11 @@ import io.appium.java_client.android.AndroidKeyCode;
 			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
 			result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
 			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED_ANDRD, 70000);
+			
 			result = result && seekAction.startAction("SEEK_BAR_ANDROID");
 			result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
 			result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);
+			result = result && androidAction.screenLockUnlock();
 			result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED, 80000);
         }
@@ -156,6 +161,7 @@ import io.appium.java_client.android.AndroidKeyCode;
         Assert.assertTrue(result, "APP:"+test.getApp()+"->Asset:"+test.getAsset());
 
     }
+    
 
 
 }
