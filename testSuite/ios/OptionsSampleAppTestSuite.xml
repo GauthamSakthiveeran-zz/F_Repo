@@ -1,0 +1,12 @@
+<suite name="Options Sample APP Tests Suite" verbose="1">
+     <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+	<test name="iOS OptionsSampleApp" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="ios/OptionsSampleAppTestData.xml" />
+			<class name="com.ooyala.playback.apps.ios.optionssampleapp.OptionsSampleAppTest"/>
+		</classes>
+	</test>
+</suite>
+

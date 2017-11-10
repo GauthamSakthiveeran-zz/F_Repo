@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<app name="OptionsSampleApp" />
+  	<test name="IQ_CONFIGURATION_SAMPLE">
+		<description name="IQ Configuration Sample" />
+	</test>
+ 	<test name="PRELOAD_PROMO_IMAGE_WITH_PREROLL">
+		<description name="Preload/Promo Image with Preroll (small)" />
+	</test>
+  	<test name="PRELOAD_PROMO_IMAGE_WITH_MIDROLL">
+		<description name="Preload/Promo Image with Midroll (small)" />
+	</test>
+	<test name="PRELOAD_PROMO_IMAGE_WITH_POSTROLL">
+		<description name="Preload/Promo Image with Postroll (small)" />
+	</test>
+	<test name="PRELOAD_PROMO_IMAGE_WITH_HLS_VIDEO">
+		<description name="Preload/Promo Image with HLS Video" />
+	</test>
+	<test name="PRELOAD_PROMO_IMAGE_WITH_INITIALTIME">
+		<description name="Preload/Promo Image with InitialTime" />
+	</test>
+	<test name="HLS_VIDEO_WITH_TIMEOUT">
+		<description name="HLS Video with timeout" />
+	</test>
+	<test name="TV_RATING_CONFIGURATION">
+		<description name="TV Ratings Configuration" />
+	</test> 
+</testdata>
