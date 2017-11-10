@@ -124,6 +124,43 @@
 
 
         <url>
+            <description name="VPAID:Main IMA VPAID2.0 Postroll Podded Ad"/>
+            <priority name="P2"></priority>
+            <embed_code name="ZzcGpiZDE6Omf8IFebFA1JtrneTu-6bv"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="615dc8e909e941c280e12155df838355"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VPAID:Main IMA VPAID2.0 Midroll Podded Ad"/>
+            <priority name="P2"></priority>
+            <embed_code name="FrcWliZDE6jYBg1-V1nZLbvQRBxFn5Gx"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="917cabe49e704be9ba53e173a9b806fb"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="VPAID:Main IMA VPAID2.0 PreMidPost roll Podded Ad"/>
+            <priority name="P2"></priority>
+            <embed_code name="thcmpiZDE6697nH6EyefZj4MJEPYz6ng"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+
+
+        <url>
             <description name="Freewheel:Bitmovin Preroll Podded"/>
             <priority name="P2"></priority>
             <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
