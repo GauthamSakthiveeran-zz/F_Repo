@@ -6,10 +6,13 @@
 	</test>
 	
 	<test name="PRELOAD_PROMOIMAGE">
-		<description name="CuePoints and AdsControl Options with AdControls=OFF" />
+		<description name="PRELOAD:true and PROMOIMAGE:true with AdControls=OFF" />
+	</test>
+	<test name="PRELOAD_PROMOIMAGE">
+		<description name="PRELOAD:false and PROMOIMAGE:true with AdControls=ON" />
 	</test>
 	
-		<test name="TIMEOUT_OPTIONS">
+	<test name="TIMEOUT_OPTIONS">
 		<description name="Timeout Options with AdControls=ON" />
 	</test>
 

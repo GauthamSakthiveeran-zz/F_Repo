@@ -12,6 +12,9 @@
 	<element key="APP_SWITCH" findBy="xPath" xPath="//android.view.View[@index= '0']" />
 	<element key="AD_PLAY" findBy="xPath" xPath="//android.widget.ImageButton[@content-desc='Play']" />
 	<element key="AD_PAUSE" findBy="xPath" xPath="//android.widget.ImageButton[@content-desc='Pause']" />
+	<element key="SHOWPROMOIMAGE" findBy="xPath" xPath="//android.widget.ToggleButton[@index='1']" />
+	<element key="PRELOAD" findBy="xPath" xPath="//android.widget.ToggleButton[@index='0']" />
+	
 	
 </elements>
 

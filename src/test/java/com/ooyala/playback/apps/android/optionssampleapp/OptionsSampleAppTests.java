@@ -50,6 +50,13 @@ import io.appium.java_client.android.AndroidKeyCode;
             result = result && allowAction.startAction("ALLOW");
             result = result && androidAction.startAction("BACK");
             result = result && selectVideo.startAction(test.getAsset());
+            if(test.getDescription().contains("PRELOAD:false") && test.getDescription().contains("PROMOIMAGE:true")) {
+            	 	playAction.toggleButton("PRELOAD", "false");
+            	 	playAction.toggleButton("SHOWPROMOIMAGE", "true");
+            } else if (test.getDescription().contains("PRELOAD:true") && test.getDescription().contains("PROMOIMAGE:true")) {
+            		playAction.toggleButton("PRELOAD", "true");
+            		playAction.toggleButton("SHOWPROMOIMAGE", "true");
+            }
             result = result && playAction.createVideo("CREATE_VIDEO",20000);
             result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
             result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);

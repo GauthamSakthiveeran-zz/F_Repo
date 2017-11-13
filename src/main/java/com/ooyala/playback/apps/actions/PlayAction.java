@@ -122,13 +122,30 @@ public class PlayAction extends PlaybackApps implements Actions {
 		return false;
 	}
 	
+	public boolean toggleButton(String element,String value) {
+		if(waitOnElement(element, 5000)) {
+			if(getWebElement(element).getAttribute("checked").equalsIgnoreCase(value)) {
+				logger.info("toggle button is in desired state");
+				extentTest.log(LogStatus.INFO, "toggle button is in desired state");
+				return true;
+			} else {
+				clickOnElement(element);
+				return getWebElement(element).getAttribute("checked").equalsIgnoreCase(value);
+			}
+		} else {
+			return false;
+		}
+	}
+	
 	public boolean playPauseAd(String element) throws Exception  {
 		Thread.sleep(2000);
 		logger.info("tapping on  ad screen");
 		tapOnScreen();	
 		logger.info("verify if the ad control bar is shown");
+		extentTest.log(LogStatus.INFO, "verify if the ad control bar is shown");
 		if(waitOnElement(element, 5000)) {
 			logger.info("ad control bar is shown");
+			extentTest.log(LogStatus.INFO, "ad control bar is shown");
 			clickOnElement(element);
 			return true;
 		} else {
@@ -136,6 +153,7 @@ public class PlayAction extends PlaybackApps implements Actions {
 			tapOnScreen();
 			if(waitOnElement(element, 5000)) {
 				logger.info("ad control bar is shown");
+				extentTest.log(LogStatus.INFO, "ad control bar is shown");
 				clickOnElement(element);
 				return true;
 			}

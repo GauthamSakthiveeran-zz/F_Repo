@@ -137,6 +137,7 @@ public class AndroidKeyCodeAction extends PlaybackApps implements Actions {
            logger.info("clicked on recent app switch button");
            if(waitOnElement("APP_SWITCH",5000) ) {
         	   		logger.info("App is visible in app switch screen..clicking on the app");
+        	   		extentTest.log(LogStatus.PASS, "App is visible in app switch screen..clicking on the app");
         	   		clickOnElement("APP_SWITCH");
         	   		return true;
            }
