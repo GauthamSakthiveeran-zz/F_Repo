@@ -9,5 +9,6 @@
     <element key="MORE_OPTIONS_V4_IOS" findBy="name" name="moreOptions" />
     <element key="IOS_TAP_V3" findBy="xPath" xPath="//XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther" />
 	<element key="IOS_TOOLBAR_V3" findBy="xPath" xPath="//XCUIElementTypeToolbar[1]" /> 
+	<element key="APP_SWITCH" findBy="xPath" xPath="//android.view.View[@index= '0']" />
 </elements>
 

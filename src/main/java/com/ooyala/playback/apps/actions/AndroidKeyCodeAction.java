@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.Duration;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 
 import com.ooyala.playback.apps.PlaybackApps;
 import com.ooyala.playback.apps.utils.CommandLine;
@@ -26,6 +27,7 @@ public class AndroidKeyCodeAction extends PlaybackApps implements Actions {
 
 	public AndroidKeyCodeAction(AppiumDriver driver) {
 		super(driver);
+		addElementToPageElements("playpause");
 		// TODO Auto-generated constructor stub
 	}
 
@@ -81,8 +83,7 @@ public class AndroidKeyCodeAction extends PlaybackApps implements Actions {
 	//put app in background for some seconds
 	public void runAppinBackground(long milliseconds)
 	{
-		((AppiumDriver) driver).runAppInBackground(Duration.ofMillis(milliseconds));
-	
+		((AppiumDriver) driver).runAppInBackground(Duration.ofMillis(milliseconds));		
 	}
 	
 	//Bring app to focus from background
@@ -123,6 +124,25 @@ public class AndroidKeyCodeAction extends PlaybackApps implements Actions {
 	        }
 	        
 	    }
+	   public boolean openAppFromAppSwitchScreen() throws InterruptedException, IOException {
+		   String command = "adb -s " + System.getProperty(CommandLineParameters.UDID) + " shell input keyevent KEYCODE_HOME";
+           String[] final_command = CommandLine.command(command);
+           Runtime run = Runtime.getRuntime();
+           run.exec(final_command);
+           Thread.sleep(2000);
+           command = "adb -s " + System.getProperty(CommandLineParameters.UDID) + " shell input keyevent KEYCODE_APP_SWITCH";
+           final_command = CommandLine.command(command);
+           run.exec(final_command);
+           Thread.sleep(2000);
+           logger.info("clicked on recent app switch button");
+           if(waitOnElement("APP_SWITCH",5000) ) {
+        	   		logger.info("App is visible in app switch screen..clicking on the app");
+        	   		clickOnElement("APP_SWITCH");
+        	   		return true;
+           }
+           return false;
+	   }
+	   
 	}
 
 

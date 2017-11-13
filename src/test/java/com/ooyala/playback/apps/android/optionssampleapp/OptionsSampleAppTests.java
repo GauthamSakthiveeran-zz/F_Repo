@@ -61,6 +61,7 @@ import io.appium.java_client.android.AndroidKeyCode;
             result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
             result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000); 
             result = result && androidAction.screenLockUnlock();
+            result = result && androidAction.openAppFromAppSwitchScreen();
             result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
             result = result && notificationEventValidator.validateEvent(Events.AD_STARTED, 20000);
             result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
@@ -91,6 +92,7 @@ import io.appium.java_client.android.AndroidKeyCode;
 	        	result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 	        	result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);
 	        result = result && androidAction.screenLockUnlock();
+	        result = result && androidAction.openAppFromAppSwitchScreen();	        
 	        	result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  80000);
 	    }
         catch(Exception ex) {
@@ -119,6 +121,7 @@ import io.appium.java_client.android.AndroidKeyCode;
 			result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
 			result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);
 			result = result && androidAction.screenLockUnlock();
+			result = result && androidAction.openAppFromAppSwitchScreen();
 			result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  80000);
         }
@@ -151,6 +154,7 @@ import io.appium.java_client.android.AndroidKeyCode;
 			result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
 			result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);
 			result = result && androidAction.screenLockUnlock();
+			result = result && androidAction.openAppFromAppSwitchScreen();
 			result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED, 80000);
         }
