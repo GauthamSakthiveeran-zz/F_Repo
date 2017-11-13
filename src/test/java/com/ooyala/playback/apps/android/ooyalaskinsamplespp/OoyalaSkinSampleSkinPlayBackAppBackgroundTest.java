@@ -35,7 +35,7 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
-public class OoyalaSkinSampleSkinPlayBackAppBackgroundTest extends PlaybackAppsTest {
+public class OoyalaSkinSampleSkinPlayBackAppBackgroundTest extends OoyalaSkinSampleAppSkinPlaybackUtils {
 
 	private static Logger logger = Logger.getLogger(OoyalaSkinSampleSkinPlayBackAppBackgroundTest.class);
 	private SelectVideoAction selectVideo;
@@ -56,15 +56,7 @@ public class OoyalaSkinSampleSkinPlayBackAppBackgroundTest extends PlaybackAppsT
 		logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
 		boolean result = true;
 		try {
-			result = result && appAssetsSelection.startAction("Skin Playback");
-			Thread.sleep(3000);
-			result = result && selectVideo.startAction(test.getAsset());
-			Thread.sleep(3000);
-			result = result && appAssetsSelection.handleAccessMedia();
-        	result = result && androidKeyCode.startAction("BACK");
-        	result = result && selectVideo.startAction(test.getAsset());
-			Thread.sleep(3000);
-			result = result && clickDiscoveryAction.clickPlayButton();
+			result = result && selectAsset(test);
 			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);		
 			androidKeyCode.runAppinBackground(4000);
 			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_SUSPENDED, 70000);
