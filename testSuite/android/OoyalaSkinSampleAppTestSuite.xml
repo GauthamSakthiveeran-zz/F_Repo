@@ -4,7 +4,7 @@
 		<listener class-name="com.ooyala.facile.listners.FacileTestListener" />
 	</listeners>
  
-	<test name="Ooyala Skin App Discovery No Ads Test" parallel="false"
+ 	<test name="Ooyala Skin App Discovery No Ads Test" parallel="false"
 		thread-count="1">
  		 <classes>
  			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
@@ -183,9 +183,9 @@
 					<include name="testVast3AdSkippable" />
 				</methods>
 		</classes>
-		</test>
+		</test> 
 		
-		<test name="Ooyala Skin App Basic Playback Test Lock Unlock Test" parallel="false"
+		<test name="Ooyala Skin App Basic Playback Run Background Test" parallel="false"
 		thread-count="1">
 		<classes> 
 			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
@@ -193,6 +193,24 @@
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackAppBackgroundTest" />
 		</classes>
 		</test>
+		
+				<test name="Ooyala Skin App Basic Playback Resizable Player Test" parallel="false"
+		thread-count="1">
+		<classes> 
+			<parameter name="testData" value="OoyalaSkinResizablePlayer.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleResizablePlayerSizeTest" />
+		</classes>
+		</test> 
+		
+		<test name="Ooyala Skin App Basic Playback Resizable Player Test" parallel="false"
+		thread-count="1">
+		<classes> 
+			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackLockUnlockTest" />
+		</classes>
+		</test> 
 	
 
 </suite>

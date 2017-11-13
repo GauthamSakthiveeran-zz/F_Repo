@@ -6,6 +6,8 @@ import java.time.Duration;
 import org.apache.log4j.Logger;
 
 import com.ooyala.playback.apps.PlaybackApps;
+import com.ooyala.playback.apps.utils.CommandLine;
+import com.ooyala.playback.apps.utils.CommandLineParameters;
 import com.relevantcodes.extentreports.LogStatus;
 
 import io.appium.java_client.AppiumDriver;
@@ -58,14 +60,16 @@ public class AndroidKeyCodeAction extends PlaybackApps implements Actions {
 					((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.DEL);
 					return true;
 				}
-			else if(element.contains("LOCK"))
+			else if(element.equals("LOCK"))
 			{
 				((AndroidDriver)driver).lockDevice();
 				return true;
 			}
-			else if(element.contains("UNLOCK"))
+			else if(element.equals("UNLOCK"))
 			{
-				((AndroidDriver)driver).unlockDevice();
+					String[] unLockCommand=CommandLine.command("adb -s " + System.getProperty(CommandLineParameters.UDID) + " shell am start -n io.appium.unlock/.Unlock");
+			        Runtime run = Runtime.getRuntime();
+					run.exec(unLockCommand);
 				return true;
 			}
 			else
@@ -134,6 +138,7 @@ public class AndroidKeyCodeAction extends PlaybackApps implements Actions {
 		try
 		{
 		((AndroidDriver)driver).unlockDevice();
+		Thread.sleep(5000);
 		if(!((AndroidDriver)driver).isLocked())
 		{
 			logger.info("Device UnLocked Properly");

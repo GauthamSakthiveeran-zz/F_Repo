@@ -13,6 +13,7 @@ import com.ooyala.playback.apps.actions.LaunchAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
 import com.ooyala.playback.apps.actions.QAModeSwitchAction;
+import com.ooyala.playback.apps.actions.ResizablePlayerAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.actions.SwipeUpDownAppAssetsAction;
 import com.ooyala.playback.apps.actions.SeekAction;
@@ -65,6 +66,7 @@ public class PlayBackFactory {
 	private AndroidKeyCodeAction androidKeycodeAction;
 	private ShareAction clickShareButtonAction;
 	private ShareValidator shareValidator;
+	private ResizablePlayerAction resizablePlayerAction;
 
 	public PlayBackFactory(AppiumDriver driver, ExtentTest extentTest) {
 		this.driver = driver;
@@ -293,6 +295,15 @@ public class PlayBackFactory {
 			shareValidator.setExtentTest(extentTest);
 		}
 		return shareValidator;
+		
+	}
+	 
+	public ResizablePlayerAction getResizablePlayerAction() {
+		if(resizablePlayerAction == null) {
+			resizablePlayerAction = new ResizablePlayerAction(driver);
+			resizablePlayerAction.setExtentTest(extentTest);
+		}
+		return resizablePlayerAction;
 		
 	}
 

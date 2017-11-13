@@ -22,4 +22,5 @@
     <entry key="fullscreen">resources/fullscreen.xml</entry>
     <entry key="selectvideo_android">resources/selectvideo_android.xml</entry>
     <entry key="share">resources/share.xml</entry>
+    <entry key="resizableplayer">resources/resizableplayer.xml</entry>
 </properties>
