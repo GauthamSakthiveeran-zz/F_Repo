@@ -79,15 +79,6 @@ public class PauseAction extends PlaybackApps implements Actions {
 				extentTest.log(LogStatus.FAIL, "Unable to click on play/pause.");
 				return false;
 			}
-			if(!isElementPresent("IOS_TOOLBAR_V3")) {
-				logger.info("Play/Pause did not happen. So retrying..");
-				tapScreen();
-				if (!clickOnIndependentElement(element)) {
-					logger.error("Unable to click on play/pause.");
-					extentTest.log(LogStatus.FAIL, "Unable to click on play/pause.");
-					return false;
-				}
-			}
 		} catch (Exception e) {
 			logger.info("Play button not found. Tapping screen and retrying..");
 			tapScreenIfRequired();
