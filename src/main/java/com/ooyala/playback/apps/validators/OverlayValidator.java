@@ -108,14 +108,25 @@ public class OverlayValidator extends PlaybackApps implements Validators {
 
 		result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
 				: pauseAction.startAction("PLAY_PAUSE_ANDROID");
-		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
+		if(getPlatform().equalsIgnoreCase("android")) {
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED_ANDRD, 25000);
+		}
+		else {
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
+		}
+
 		result = result && iOS ? seekAction.setSlider("SLIDER").startAction("SEEK_BAR")
 				: seekAction.startAction("SEEK_BAR_ANDROID");
 		result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
 		result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
 		result = result && iOS ? pauseAction.startAction("PLAY_PAUSE_BUTTON")
 				: pauseAction.startAction("PLAY_PAUSE_ANDROID");
-		result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
+		if(getPlatform().equalsIgnoreCase("android")) {
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED_ANDRD, 30000);
+		}
+		else{
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
+		}
 
 		if (test.getAsset().contains("POST")) {
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);

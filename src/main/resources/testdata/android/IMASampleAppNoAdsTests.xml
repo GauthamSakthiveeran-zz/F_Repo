@@ -4,7 +4,7 @@
 	<test name="IMA_APPLICATION_CONFIGURED">
 		<description name="IMA Application-Configured" />
 	</test>
-	<test name="IMA_NO_ADS">
+<!--	<test name="IMA_NO_ADS">
 		<description name="IMA No Ads" />
-	</test>
+	</test>-->
 </testdata>

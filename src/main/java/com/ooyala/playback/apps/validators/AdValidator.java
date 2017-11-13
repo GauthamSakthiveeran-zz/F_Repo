@@ -79,7 +79,7 @@ public class AdValidator extends PlaybackApps implements Validators {
 		if (test.getAsset().contains("MULTI_MIDROLL")) {
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 55000);
 			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);			
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED_ANDRD, 25000);
 		}
 		 if(test.getAsset().contains("QUADMID")) {
  			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
@@ -119,7 +119,12 @@ public class AdValidator extends PlaybackApps implements Validators {
 		if (!isSmallAsset && !isOoyalaSkinSampleApp) {
 			result = result
 			        && (iOS ? pauseAction.startAction(iosPlayPause) : pauseAction.startAction("PLAY_PAUSE_ANDROID"));
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
+			if(getPlatform().equalsIgnoreCase("android")) {
+				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED_ANDRD, 25000);
+			}
+			else {
+				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
+			}
 			result = result && (iOS
 			        ? ((isV4 && test.getAsset().contains("PREROLL"))
 			                ? seekAction.setSlider(iosSlider).seekforward().startAction(iosSeekBar)
@@ -129,7 +134,12 @@ public class AdValidator extends PlaybackApps implements Validators {
 			result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
 			result = result
 			        && (iOS ? pauseAction.startAction(iosPlayPause) : pauseAction.startAction("PLAY_PAUSE_ANDROID"));
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
+			if(getPlatform().equalsIgnoreCase("android")) {
+				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED_ANDRD, 30000);
+			}
+			else {
+				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
+			}
 		}
 		else
 		{

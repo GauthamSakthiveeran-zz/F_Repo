@@ -1,5 +1,7 @@
 package com.ooyala.playback.apps.android.freewheelsampleapp;
 
+import com.ooyala.playback.apps.actions.AllowAction;
+import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -23,6 +25,8 @@ public class FreewheelSampleAppTests extends PlaybackAppsTest {
 	private PlayAction playAction;
 	private AdValidator adValidator;
 	private NotificationEventValidator notificationEventValidator;
+	private AllowAction allowAction;
+	private AndroidKeyCodeAction androidAction;
 
 	@Test(groups = "freewheelsampleapp", dataProvider = "testData")
 	public void testBasicPlayer(String testName, TestParameters test) throws Exception {
@@ -31,13 +35,18 @@ public class FreewheelSampleAppTests extends PlaybackAppsTest {
 
 		try {
 			result = result && selectVideo.startAction(test.getAsset());
-
+			result = result && allowAction.startAction("ALLOW");
+			result = result && androidAction.startAction("BACK");
+			result = result && selectVideo.startAction(test.getAsset());
+			if(test.getAsset().contains("FREEWHEEL_PREROLL_CUEPOINTS_AND_ADCONTROLS_OPTIONS")) {
+				result = result && playAction.createVideo("CREATE_VIDEO",20000);
+			}
 			result = result && elementValidator.validate("PLAY_PAUSE_ANDROID", 30000);
 			result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 
-			result = result && adValidator.validate("", 1000);
+			result = result && adValidator.setTestParameters(test).validate("", 1000);
 
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 95000);
 
 		} catch (Exception ex) {
 			logger.error("Here is an exception" + ex);

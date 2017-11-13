@@ -11,6 +11,6 @@
 	<element key="DISCOVERY_ERROR_SCREEN_ANDROID" findBy="xPath" xPath="//android.widget.TextView[@text='SOMETHING NOT RIGHT! THERE SHOULD BE VIDEOS HERE.']" />
 	<element key="PLAY_PAUSE_BUTTON_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='play']" />
 	<element key="PLAY_PAUSE_BUTTON_ANDROID_LATEST" findBy="xPath" xPath="//android.widget.TextView[@text='h']" />
-	<element key="SEEKBAR_ANDROID" findBy="xPath" xPath="//android.view.ViewGroup[@content-desc='video scrubber']" />
+	<element key="SEEKBAR_ANDROID" findBy="xPath" xPath="//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.view.ViewGroup[1]/android.view.ViewGroup[3]/android.view.ViewGroup[2]" />
 	
 </elements>

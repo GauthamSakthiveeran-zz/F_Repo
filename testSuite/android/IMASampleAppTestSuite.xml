@@ -12,7 +12,7 @@
 	</test>
 	<test name="IMA Tests" parallel="false" thread-count="1">
 		<classes>
-			<parameter name="testData" value="android/IMASampleAppTests.xml" />
+			<parameter name="testData" value="android/IMASampleAppsTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.imasampleapp.IMASampleAppTests">
 			</class>

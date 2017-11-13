@@ -91,6 +91,7 @@
 	<element key="IMA_NONAD_QUADMIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Quad Midroll']" />
 	
 <!-- 	Pulse sample app -->
+	<element key="PULSE_NOADS" findBy="xPath" xPath="//android.widget.TextView[@text='No ads']"/>
 	<element key="PULSE_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Preroll demo']" />
 	<element key="PULSE_MIDROLL_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Midroll demo']" />
 	<element key="PULSE_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Postroll demo']" />
