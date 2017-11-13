@@ -58,10 +58,14 @@ public class AdValidator extends PlaybackApps implements Validators {
 			iosSeekBar="SEEK_BAR_V4";
 		}
 		
-		if (test.getAsset().contains("PRE") || (test.getAsset().contains("MULTI") && !test.getAsset().contains("MIDROLL"))) {
+		if (test.getAsset().contains("PRE") || (test.getAsset().contains("MULTI") && !test.getAsset().contains("MIDROLL") && !test.getAsset().contains("FW_MULTIMID"))) {
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 25000);
 			if (test.getAsset().contains("SKIPPABLE"))
-				result = result && elValidator.validate("SKIP_AD", 10000);
+				if(isOoyalaSkinSampleApp)
+				{
+				result = result && elValidator.validate("SKIP_AD_OOYALASKINAPP", 20000);
+				result = result && elValidator.clickOnElement("SKIP_AD_OOYALASKINAPP");	
+				}
 			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
 		}
 
@@ -77,11 +81,32 @@ public class AdValidator extends PlaybackApps implements Validators {
 			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 25000);
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);			
 		}
-		
+		 if(test.getAsset().contains("QUADMID")) {
+ 			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
+ 			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
+ 			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
+ 			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
+ 			result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,70000);
+ 			result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,70000);
+		}
 		if (test.getAsset().contains("MID") || test.getAsset().contains("MULTI")) {
+			if(test.getAsset().contains("LONG_ASSET") &&  isOoyalaSkinSampleApp)
+			{
+				result = result && clickDiscoveryAction.clickPauseButton();
+				result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED_ANDRD, 70000);
+				result = result && clickDiscoveryAction.seekToMiddle("SEEKBAR_ANDROID");
+				result = result && elementValidator.handleLoadingSpinner();
+				result = result && notificationEventValidator.validateEvent(Events.SEEK_STARTED, 20000);
+				result = result && notificationEventValidator.validateEvent(Events.SEEK_COMPLETED, 20000);
+				result = result && clickDiscoveryAction.clickPlayButton();	
+			}
 			result = result && notificationEventValidator.verifyEvent(Events.AD_STARTED, 70000);
 			if (test.getAsset().contains("SKIPPABLE"))
-				result = result && elValidator.validate("SKIP_AD", 10000);
+			if(isOoyalaSkinSampleApp)
+			{
+			result = result && elValidator.validate("SKIP_AD_OOYALASKINAPP", 20000);
+			result = result && elValidator.clickOnElement("SKIP_AD_OOYALASKINAPP");	
+			}
 			result = result && notificationEventValidator.verifyEvent(Events.AD_COMPLETED, 70000);
 			if(iOS)
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 70000);
@@ -89,6 +114,7 @@ public class AdValidator extends PlaybackApps implements Validators {
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED_ANDRD, 70000);	
 
 		}
+		
 		
 		if (!isSmallAsset && !isOoyalaSkinSampleApp) {
 			result = result

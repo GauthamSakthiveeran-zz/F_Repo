@@ -117,7 +117,9 @@
 	<element key="VAST3_PREROLL_PODDED_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='VAST 3.0 2 Podded Ad']" />
 	<element key="VAST3_ALL_NEW_EVENTS_VIDEO_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST 3.0 Ad With All Of The New Events']" />
 	<element key="VAST3_AD_WITH_ICON_VIDEO_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST 3.0 Ad With Icon']" /> 
-	<element key="VAST3_SKIPPABLE_AD_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='VAST 3.0 Skippable Ad Long']" />
-	<element key="VAST3_WRAPPER_VIDEO_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST 3.0 Ad Wrapper']" />                                                          
+	<element key="VAST3_SKIPPABLE_AD_VIDEO_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST 3.0 Skippable Ad Long']" />
+	<element key="VAST3_WRAPPER_VIDEO_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='VAST 3.0 Ad Wrapper']" />  
+	<element key="VAMP_PREROLL_MIDROLL_POSTROLL_SINGLE_SKIPPABLE" findBy="xPath" xPath="//android.widget.TextView[@text='VMAP PreMidPost Single']" />
+	<element key="VAMP_PREROLL_MIDROLL_VASTAD_SKIPPABLE_LONG_ASSET" findBy="xPath" xPath="//android.widget.TextView[@text='VMAP PreMid VASTAdData']" />                                                          
 </elements>
 

@@ -81,7 +81,7 @@
 	
 		<!-- OoyalaSkinSampleApp GOOGLE IMA -->
 	<element key="GOOGLE_IMA" findBy="name" name="Google IMA" />
-	
+		
 	<!-- 	Options SampleApps -->
 	
 	<element key="IQ_CONFIGURATION_SAMPLE" findBy="name" name="IQ Configuration Sample" />
@@ -94,5 +94,44 @@
 	<element key="TV_RATING_CONFIGURATION" findBy="name" name="TV Ratings Configuration" />
 	<element key="AD_RULES_MIDROLL" findBy="name" name="Ad-Rules Midroll" />
 	<element key="AD_RULES_PREROLL" findBy="name" name="Ad-Rules Preroll" />
+
+	<!-- OoyalaAPiSampleTest -->
+	<element key="OOYALA_EVERYWHERE" findBy="name" name="Ooyala Everywhere" />
+	<element key="OOYALA_SOCIAL" findBy="name" name="Ooyala Social" />
+	<element key="RETHINK_VIDEO" findBy="name" name="Rethink Video" />
+	<element key="TELEGRAPH_MEDIA" findBy="name" name="Telegraph Media Group" />
+	<element key="CONTENT_TREE" findBy="name" name="Content Tree for Channel" />
+	<element key="ASPECT_RATIO" findBy="name" name="4:3 Aspect Ratio" />
+	<element key="MP4_VIDEO" findBy="name" name="MP4 Video" />
+	<element key="HLS_VIDEO" findBy="name" name="HLS Video" />
+	<element key="PLAYLIST_API" findBy="name" name="Playlists API" />
+	<element key="DISCOVERY_RESULTS" findBy="name" name="Discovery Results"/>
+	<element key="MOMENTUM_MP4" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='MP4 Video'][1]" />
+	<element key="MOMENTUM_HLS_LONG" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='HLS Video (Long)'][1]" />
+	<element key="MOMENTUM_VOD_CC" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='VOD with Closed Captions'][1]" />
+	<element key="MOMENTUM_HLS_ENCRYPTED" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='Encrypted HLS'][1]" />
+	<element key="MOMENTUM_HLS" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='HLS Video'][1]" />
+	<element key="MOMENTUM_TEST_BASIC" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='test_basic.mp4'][1]" />
+	<element key="MOMENTUM_RTMP" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='RTMP movie-only'][1]" />
+	<element key="MOMENTUM_THUMBNAIL" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='OoyalaThumbnailsVideo.mp4'][1]" />
+	<element key="MOMENTUM_WVM" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='WVM Video.mp4'][1]" />
+	<element key="MOMENTUM_PBS" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='PBS-394.mov'][1]" />
+	<element key="POPULAR_HLS_LONG" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='HLS Video (Long)'][2]" />
+	<element key="POPULAR_MP4" findBy="xpath" xpath="//XCUIElementTypeStaticText[@name='MP4 Video'][2]" />
+	<element key="POPULAR_VOD_CC" findBy="xpath" xpath="//XCUIElementTypeStaticText[@name='VOD with Closed Captions'][2]" />
+	<element key="POPULAR_HLS_ENCRYPTED" findBy="xpath" xpath="//XCUIElementTypeStaticText[@name='Encrypted HLS'][2]" />
+	<element key="POPULAR_HLS" findBy="xpath" xpath="//XCUIElementTypeStaticText[@name='HLS Video'][2]" />
+	<element key="POPULAR_THUMBNAIL" findBy="xpath" xpath="//XCUIElementTypeStaticText[@name='OoyalaThumbnailsVideo.mp4'][2]" />
+	<element key="POPULAR_WVM" findBy="xpath" xpath="//XCUIElementTypeStaticText[@name='WVM Video.mp4'][2]" />
+	<element key="POPULAR_PBS_394" findBy="xpath" xpath="//XCUIElementTypeStaticText[@name='PBS-394.mov][2]" />
+	<element key="SIMILAR_MP4" findBy="xpath" xpath="//XCUIElementTypeStaticText[@name='MP4 Video'][3]" />
+	<element key="SIMILAR_HLS_ENCRYPTED" findBy="xpath" xpath="//XCUIElementTypeStaticText[@name='Encrypted HLS'][3]" />
+	<element key="SIMILAR_VOD_CC" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='VOD with Closed Captions'][3]" />
+	<element key="SIMILAR_RTMP" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='RTMP movie-only'][2]" />
+	<element key="SIMILAR_TEST_BASIC" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='test_basic.mp4'][2]" />
+	<element key="SIMILAR_THUMBNAIL" findBy="xpath" xpath="//XCUIElementTypeStaticText[@name='OoyalaThumbnailsVideo.mp4'][3]" />
+	<element key="SIMILAR_HLS_LONG" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='HLS Video (Long)'][3]" />
+	<element key="SIMILAR_WVM" findBy="xPath" xPath="//XCUIElementTypeStaticText[@name='WVM Video.mp4'][3]" />
+	<element key="SIMILAR_PBS_394" findBy="xpath" xpath="//XCUIElementTypeStaticText[@name='PBS-394.mov][3]" />
 
 </elements>

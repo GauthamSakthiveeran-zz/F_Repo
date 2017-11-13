@@ -75,6 +75,15 @@ public class PlayAction extends PlaybackApps implements Actions {
 	}
 
 	private boolean android(String element) throws Exception {
+		if(waitOnElement(element, 15000)) {
+			logger.info("play button is visible on player");
+			extentTest.log(LogStatus.PASS, "play button is visible on player");
+			
+		} else {	
+			logger.error("play button is not visibe");
+			extentTest.log(LogStatus.FAIL, "play button is not visible on player");
+			return false;
+		}
 		try {
 			if (!getPlayPause(element)) {
 				extentTest.log(LogStatus.FAIL, "Unable to get the element");

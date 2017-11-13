@@ -20,7 +20,7 @@ public class SelectVideoAction extends PlaybackApps implements Actions {
 
 	@Override
 	public boolean startAction(String element) throws Exception {
-		if(!waitOnElement(element,1000)){
+		if(!waitOnElement(element,10000)){
 			logger.info("Element Not Found");
 			return false;
 		}
