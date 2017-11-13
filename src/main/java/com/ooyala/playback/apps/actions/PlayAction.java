@@ -1,6 +1,7 @@
 package com.ooyala.playback.apps.actions;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -120,5 +121,28 @@ public class PlayAction extends PlaybackApps implements Actions {
 		}
 		return false;
 	}
+	
+	public boolean playPauseAd(String element) throws Exception  {
+		Thread.sleep(2000);
+		logger.info("tapping on  ad screen");
+		tapOnScreen();	
+		logger.info("verify if the ad control bar is shown");
+		if(waitOnElement(element, 5000)) {
+			logger.info("ad control bar is shown");
+			clickOnElement(element);
+			return true;
+		} else {
+			logger.info("ad control bar is not shown..tapping screen and retrying");
+			tapOnScreen();
+			if(waitOnElement(element, 5000)) {
+				logger.info("ad control bar is shown");
+				clickOnElement(element);
+				return true;
+			}
+			return false;
+		}
+
+	}
+	
 
 }

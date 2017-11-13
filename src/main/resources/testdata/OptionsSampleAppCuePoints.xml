@@ -2,15 +2,15 @@
 <testdata>
     <app name="optionsSampleApp" />
  	<test name="CUEPOINTS">
-		<description name="CuePoints and AdsControl Options" />
+		<description name="CuePoints and AdsControl Options with  AdControls=ON" />
 	</test>
 	
 	<test name="PRELOAD_PROMOIMAGE">
-		<description name="CuePoints and AdsControl Options" />
+		<description name="CuePoints and AdsControl Options with AdControls=OFF" />
 	</test>
 	
 		<test name="TIMEOUT_OPTIONS">
-		<description name="Timeout Options" />
+		<description name="Timeout Options with AdControls=ON" />
 	</test>
 
 </testdata>

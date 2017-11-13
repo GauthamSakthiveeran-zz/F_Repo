@@ -53,6 +53,11 @@ import io.appium.java_client.android.AndroidKeyCode;
             result = result && playAction.createVideo("CREATE_VIDEO",20000);
             result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
             result = result && notificationEventValidator.validateEvent(Events.AD_STARTED,20000);
+            if(test.getDescription().contains("AdControls=ON")) {
+            	    result = result && playAction.playPauseAd("AD_PAUSE");
+            	    result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED_ANDRD, 10000);
+            	    result = result && playAction.playPauseAd("AD_PLAY");
+            }      
             result = result && notificationEventValidator.validateEvent(Events.AD_COMPLETED,20000);
             result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_STARTED, 20000);
             result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
