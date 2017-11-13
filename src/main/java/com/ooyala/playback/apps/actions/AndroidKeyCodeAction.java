@@ -58,6 +58,16 @@ public class AndroidKeyCodeAction extends PlaybackApps implements Actions {
 					((AndroidDriver) driver).pressKeyCode(AndroidKeyCode.DEL);
 					return true;
 				}
+			else if(element.contains("LOCK"))
+			{
+				((AndroidDriver)driver).lockDevice();
+				return true;
+			}
+			else if(element.contains("UNLOCK"))
+			{
+				((AndroidDriver)driver).unlockDevice();
+				return true;
+			}
 			else
 				{
 				logger.info("Key code action not added");
@@ -85,6 +95,66 @@ public class AndroidKeyCodeAction extends PlaybackApps implements Actions {
 	public void bringBackgroundAppToFocus()
 	{
 		((AndroidDriver)driver).currentActivity();
+	}
+	
+	//Lock the Device
+	public Boolean lockTheDevice()
+	{
+		try
+		{
+			
+			
+		((AndroidDriver)driver).lockDevice();
+		
+		if(((AndroidDriver)driver).isLocked())
+		{
+			logger.info("Device Locked Properly");
+			extentTest.log(LogStatus.INFO, "Device Locked Properly");
+			return true;
+		}
+		else
+		{
+			logger.info("Device not Locked Properly");
+			extentTest.log(LogStatus.FAIL, "Device not Locked Properly");
+			return false;
+		}
+		}
+		catch(Exception e)
+		{
+			logger.info("Exception while locking device");
+			extentTest.log(LogStatus.FAIL, "Exception while locking device");
+			return false;
+		}
+	
+	}
+	
+	//UnLock the Device
+	public Boolean unlockTheDevice()
+	{
+		try
+		{
+		((AndroidDriver)driver).unlockDevice();
+		if(!((AndroidDriver)driver).isLocked())
+		{
+			logger.info("Device UnLocked Properly");
+			extentTest.log(LogStatus.INFO, "Device UnLocked Properly");
+			return true;
+		}
+		else
+		{
+			logger.info("Device not UnLocked Properly");
+			extentTest.log(LogStatus.FAIL, "Device not UnLocked Properly");
+			return false;
+		}
+		}
+		catch(Exception e)
+		{
+			logger.info("Device not UnLocked Properly");
+			extentTest.log(LogStatus.FAIL, "Exception while Unlocking device");
+			return false;
+		}
+		
+	
 	}
 		
 		

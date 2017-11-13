@@ -9,6 +9,7 @@ public enum Events {
     PLAYBACK_RESUMED("Notification Received: stateChanged. state: playing", "Notification Not Received: stateChanged. state: playing"),
     PLAYBACK_RESUMED_ANDRD("Notification Received: stateChanged - state: PLAYING", "Notification Not Received: stateChanged - state: PLAYING"),
     PLAYBACK_COMPLETED("Notification Received: playCompleted", "Notification Not Received: playCompleted"),
+    PLAYBACK_SUSPENDED("Notification Received: stateChanged - state: SUSPENDED", "Notification Received: stateChanged - state: SUSPENDED"),
 
     AD_STARTED("Notification Received: adStarted", "Notification Not Received: adStarted"),
     AD_COMPLETED("Notification Received: adCompleted", "Notification Not Received: adCompleted"),
