@@ -29,6 +29,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import org.testng.asserts.SoftAssert;
 
 import com.ooyala.facile.test.FacileTest;
 import com.ooyala.playback.apps.PlaybackApps;
@@ -72,7 +73,9 @@ public class PlaybackAppsTest extends FacileTest {
 		
 		String ip = System.getProperty(CommandLineParameters.APPIUM_SERVER) != null ? System.getProperty(CommandLineParameters.APPIUM_SERVER) : "127.0.0.1";
 		String port = System.getProperty(CommandLineParameters.APPIUM_PORT) != null ? System.getProperty(CommandLineParameters.APPIUM_PORT) : "4723";
+
 		try {
+
 		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
 			
 			boolean useNewWDA = System.getProperty(CommandLineParameters.USE_NEW_WDA) != null
@@ -93,6 +96,13 @@ public class PlaybackAppsTest extends FacileTest {
 	        capabilities.setCapability("xcodeSigningId", System.getProperty(CommandLineParameters.XCODE_SIGNING_ID));
 	        capabilities.setCapability(IOSMobileCapabilityType.AUTO_ACCEPT_ALERTS, Boolean.TRUE);
 	        capabilities.setCapability("useNewWDA", useNewWDA);
+	        capabilities.setCapability("usePrebuiltWDA", true);
+	        capabilities.setCapability("launchTimeout", "30000");
+	        capabilities.setCapability("wdaLaunchTimeout", "30000");
+	        capabilities.setCapability("wdaConnectionTimeout", "10000");
+	        capabilities.setCapability("wdaStartupRetries", "4");
+	        capabilities.setCapability("wdaStartupRetryInterval", "10000");
+
 
 			driver = new IOSDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 
@@ -111,8 +121,7 @@ public class PlaybackAppsTest extends FacileTest {
 					System.getProperty(CommandLineParameters.NEW_COMMAND_TIMEOUT));
 			driver = new AndroidDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 			// driver.manage().timeouts().implicitlyWait(3000,TimeUnit.SECONDS);
-		}
-		}
+		}}
 		catch(Exception e) {
 			logger.info(e.getMessage());
 		}
@@ -124,6 +133,7 @@ public class PlaybackAppsTest extends FacileTest {
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
 		try {
+
 //			Thread.sleep(15000);
 //			
 //			if (driver == null || driver.getSessionId() == null) {
@@ -145,6 +155,7 @@ public class PlaybackAppsTest extends FacileTest {
 				}
 				attempts++;
 			}
+
 			
 			extentTest = ExtentManager.startTest(testData[0].toString());
 			pageFactory = new PlayBackFactory((AppiumDriver) driver, extentTest);
@@ -308,7 +319,9 @@ public class PlaybackAppsTest extends FacileTest {
 				
 				((AndroidDriver) driver).closeApp();
 				logger.info("Closing App");
-				
+			}else{
+				driver.quit();
+
 			}
 		} catch (Exception e) {
 			logger.info("Error While Closing App");

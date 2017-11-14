@@ -19,6 +19,7 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 	private static Logger logger = Logger.getLogger(NotificationEventValidator.class);
 	int eventVerificationCount = 0;
 	private int count;
+	private String notificationEvents;
 
 	public NotificationEventValidator(AppiumDriver driver) {
 		super(driver);
@@ -41,15 +42,26 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 			
 			while ((System.currentTimeMillis() - startTime) < timeout) {
 				logger.info("Waiting for notification >>>> : " + event.getEvent());
-				String notifiationEvents = getNotificationEvents();
-				returncount = verifyNotificationEventPresence(notifiationEvents, event.getEvent(),
-						eventVerificationCount);
 
-				if (returncount == -1)
-					status = false;
-				else {
+				if(notificationEvents == null)
+	        		notificationEvents = getNotificationEvents();
+	 
+				returncount = verifyNotificationEventPresence(notificationEvents, event.getEvent(),
+				        eventVerificationCount);
+
+				if (returncount != -1) {
 					status = true;
 					eventVerificationCount = returncount;
+				} else {
+					notificationEvents = getNotificationEvents();
+					returncount = verifyNotificationEventPresence(notificationEvents, event.getEvent(),
+					        eventVerificationCount);
+					if (returncount != -1) {
+						status = true;
+						eventVerificationCount = returncount;
+					} else {
+						status = false;
+					}
 				}
 
 				if (status == true) {

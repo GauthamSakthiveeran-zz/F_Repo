@@ -6,4 +6,6 @@
 	<element key="VAST_3_PODDED_PREROLL" findBy="name" name="VAST 3.0 - Podded" />
 	<element key="HLS" findBy="name" name="HLS Video" />
 	<element key="VAST_3_ICON_BOTTOM_LEFT_PRE" findBy="name" name="VAST 3.0 - Icon Bottom Left" />
+	<element key="VAST_3_VMAP_PREMID_USING_VASTADDATA" findBy="name" name="VAST 3.0 - VMAP PreMid using VASTAdData" />
+	<element key="OOYALA_AD_POST_ROLL" findBy="name" name="Ooyala Ad Post-roll" />
 </elements>

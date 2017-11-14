@@ -81,7 +81,19 @@
 	
 		<!-- OoyalaSkinSampleApp GOOGLE IMA -->
 	<element key="GOOGLE_IMA" findBy="name" name="Google IMA" />
-	
+		
+	<!-- 	Options SampleApps -->
+	<element key="IQ_CONFIGURATION_SAMPLE" findBy="name" name="IQ Configuration Sample" />
+	<element key="PRELOAD_PROMO_IMAGE_WITH_PREROLL" findBy="name" name="Preload/Promo Image with Preroll" />
+	<element key="PRELOAD_PROMO_IMAGE_WITH_MIDROLL" findBy="name" name="Preload/Promo Image with Midroll" />
+	<element key="PRELOAD_PROMO_IMAGE_WITH_POSTROLL" findBy="name" name="Preload/Promo Image with Postroll" />
+	<element key="PRELOAD_PROMO_IMAGE_WITH_HLS_VIDEO" findBy="name" name="Preload/Promo Image with HLS Video" />
+	<element key="PRELOAD_PROMO_IMAGE_WITH_INITIALTIME" findBy="name" name="Preload/Promo Image with InitialTime" />
+	<element key="HLS_VIDEO_WITH_TIMEOUT" findBy="name" name="HLS Video with timeout" />
+	<element key="TV_RATING_CONFIGURATION" findBy="name" name="TV Ratings Configuration" />
+	<element key="AD_RULES_MIDROLL" findBy="name" name="Ad-Rules Midroll" />
+	<element key="AD_RULES_PREROLL" findBy="name" name="Ad-Rules Preroll" />
+
 	
 <!-- 	OoyalAPI Sample apps -->
 	<element key="OOYALA_EVERYWHERE" findBy="name" name="Ooyala Everywhere" />

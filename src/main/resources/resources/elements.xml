@@ -23,7 +23,11 @@
 	<element key="AD_OVERLAY" findBy="accessibilityId" accessibilityId="Advertisement" />
 	<element key="SKIP_AD" findBy="accessibilityId" accessibilityId="Skip Ad" />
 	<element key="VAST_ICON" findBy="xPath" xPath="//XCUIElementTypeStaticText/parent::XCUIElementTypeOther[1]/following-sibling::XCUIElementTypeOther[1]/XCUIElementTypeOther[1]"/>
-	<!-- <element key="VAST_SKIP_AD" findBy="xPath" xPath="//XCUIElementTypeOther[contains(@name,'Skip Ad')]/XCUIElementTypeStaticText[1]/preceding-sibling::XCUIElementTypeOther[1]"/> -->
+	<element key="VAST_SKIP_AD" findBy="xPath" xPath="//XCUIElementTypeOther[contains(@name,'Skip Ad')]/XCUIElementTypeStaticText[1]/preceding-sibling::XCUIElementTypeOther[1]"/>
 	<element key="VAST_OVERLAY" findBy="xPath" xPath="//XCUIElementTypeOther[@label='Video player. Tap twice to play or pause']/../XCUIElementTypeOther[last()]/XCUIElementTypeOther[1]" />"/>
+	
+	<!--  OptionsSampleApp -->
+	<element key="BUTTON" findBy="accessibilityId" accessibilityId="Button" />
+	<element key="SET_EC" findBy="accessibilityId" accessibilityId="Set EC" />
 	<element key="SKIP_AD_OOYALASKINAPP" findBy="xPath" xPath="//android.widget.TextView[@text='Skip Ad']" />
 </elements>
