@@ -15,12 +15,14 @@ import com.ooyala.playback.apps.actions.ClickAction;
 import com.ooyala.playback.apps.actions.DiscoveryAction;
 import com.ooyala.playback.apps.actions.PauseAction;
 import com.ooyala.playback.apps.actions.PlayAction;
+import com.ooyala.playback.apps.actions.ResizablePlayerAction;
 import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.actions.SwipeUpDownAppAssetsAction;
 import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.apps.validators.AdValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
+import com.ooyala.playback.apps.validators.FullScreenOrientationValidator;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
 import com.ooyala.playback.apps.validators.PoddedAdValidator;
 
@@ -42,6 +44,8 @@ public class OoyalaSkinSampleAppSkinPlaybackUtils extends PlaybackAppsTest {
 	private SwipeUpDownAppAssetsAction appAssetsSelection;
 	private PoddedAdValidator poddedAdValidator;
 	private AdValidator adValidator;
+	private ResizablePlayerAction resizablePlayerAction;
+	private FullScreenOrientationValidator orientationValidation;
 	public boolean SwipeAndselectAsset(TestParameters test) throws Exception {
 		boolean result = true;
 
@@ -109,6 +113,61 @@ public class OoyalaSkinSampleAppSkinPlaybackUtils extends PlaybackAppsTest {
 		return result;
 	}
 
+	public boolean selectResizablePlayer() throws Exception {
+		boolean result = true;
+
+		pauseAction = pageFactory.getPauseAction();
+		seekAction = pageFactory.getSeekAction();
+		elementValidator = pageFactory.getEventValidator();
+		selectVideo = pageFactory.getSelectVideoAction();
+		clickDiscoveryAction = pageFactory.getClickDiscoveryButtonAction();
+		playAction = pageFactory.getPlayAction();
+		androidKeyCode = pageFactory.getAndroidKeyCodeAction();
+		appAssetsSelection = pageFactory.getSwipeUpDownAppAssetsAction();
+		allowAction = pageFactory.getAllow();
+		resizablePlayerAction = pageFactory.getResizablePlayerAction();
+		orientationValidation = pageFactory.getFullScreenOrientationValidator();
+
+		try {
+			
+			result = result && appAssetsSelection.startAction("Resizable Skin Player");
+			Thread.sleep(3000);
+			result = result && clickDiscoveryAction.clickPlayButton();
+			result = result && resizablePlayerAction.startAction("RESIZE_TALL");
+			result = result && resizablePlayerAction.validateTallPlayer();
+			result = result && orientationValidation.changeOrientation("LANDSCAPE");
+			result = result && orientationValidation.isOrientationCorrect("LANDSCAPE");
+			result = result && orientationValidation.changeOrientation("PORTRAIT");
+			result = result && orientationValidation.isOrientationCorrect("PORTRAIT");
+			result = result && androidKeyCode.startAction("BACK");
+			result = result && appAssetsSelection.startAction("Resizable Skin Player");
+			Thread.sleep(3000);
+			result = result && clickDiscoveryAction.clickPlayButton();
+			result = result && resizablePlayerAction.startAction("RESIZE_WIDE");
+			result = result && resizablePlayerAction.validateWidePlayer();
+			result = result && orientationValidation.changeOrientation("LANDSCAPE");
+			result = result && orientationValidation.isOrientationCorrect("LANDSCAPE");
+			result = result && orientationValidation.changeOrientation("PORTRAIT");
+			result = result && orientationValidation.isOrientationCorrect("PORTRAIT");
+			result = result && androidKeyCode.startAction("BACK");
+			result = result && appAssetsSelection.startAction("Resizable Skin Player");
+			Thread.sleep(3000);
+			result = result && clickDiscoveryAction.clickPlayButton();
+			result = result && resizablePlayerAction.startAction("RESIZE_FILLSCREEN");
+			result = result && resizablePlayerAction.validateFillScreenPlayer();
+			result = result && orientationValidation.changeOrientation("LANDSCAPE");
+			result = result && orientationValidation.isOrientationCorrect("LANDSCAPE");
+			result = result && orientationValidation.changeOrientation("PORTRAIT");
+			result = result && orientationValidation.isOrientationCorrect("PORTRAIT");
+
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			logger.error("Here is an exception" + ex);
+			result = false;
+		}
+		return result;
+	}
 	public boolean ooyalaAdsTest(TestParameters test) throws Exception {
 		boolean result = true;
 		adValidator	 = pageFactory.getAdEventValidator();
