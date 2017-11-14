@@ -1,5 +1,7 @@
 package com.ooyala.playback.apps.actions;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -70,7 +72,7 @@ public class PauseAction extends PlaybackApps implements Actions {
 		try {
 			if(getPlatformVersion().startsWith("11"))
 				element += "_IOS11";
-			if(!waitOnElement(element, 1000))
+			if(!isElementPresent(element))
 				tapScreen();
 			if (!clickOnIndependentElement(element)) {
 				logger.error("Unable to click on play/pause.");

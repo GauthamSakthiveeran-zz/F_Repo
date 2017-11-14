@@ -9,6 +9,7 @@ public enum Events {
     PLAYBACK_RESUMED("Notification Received: stateChanged. state: playing", "Notification Not Received: stateChanged. state: playing"),
     PLAYBACK_RESUMED_ANDRD("Notification Received: stateChanged - state: PLAYING", "Notification Not Received: stateChanged - state: PLAYING"),
     PLAYBACK_COMPLETED("Notification Received: playCompleted", "Notification Not Received: playCompleted"),
+    PLAYBACK_SUSPENDED("Notification Received: stateChanged - state: SUSPENDED", "Notification Received: stateChanged - state: SUSPENDED"),
 
     AD_STARTED("Notification Received: adStarted", "Notification Not Received: adStarted"),
     AD_COMPLETED("Notification Received: adCompleted", "Notification Not Received: adCompleted"),
@@ -21,8 +22,11 @@ public enum Events {
 	
     //added by @rmanchi
 	AD_POD_STARTED("Notification Received: adPodStarted", "Notification Not Received: adPodStarted"),
-    AD_POD_COMPLETED("Notification Received: adPodCompleted", "Notification Not Received: adPodCompleted");
+    AD_POD_COMPLETED("Notification Received: adPodCompleted", "Notification Not Received: adPodCompleted"),
 	
+	//for OptionssampleApp
+	PROMOIMAGE_TRUE_PRELOAD_TRUE("showPromoImage: true preload: true", "promoimage and preload values does not match"),
+	PROMOIMAGE_TRUE_PRELOAD_FALSE("showPromoImage: true preload: false", "promoimage and preload values does not match");
 	
     //TODO All other events
 

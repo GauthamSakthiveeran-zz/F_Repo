@@ -2,15 +2,18 @@
 <testdata>
     <app name="optionsSampleApp" />
  	<test name="CUEPOINTS">
-		<description name="CuePoints and AdsControl Options" />
+		<description name="CuePoints and AdsControl Options with  AdControls=ON" />
 	</test>
 	
 	<test name="PRELOAD_PROMOIMAGE">
-		<description name="CuePoints and AdsControl Options" />
+		<description name="PRELOAD:true and PROMOIMAGE:true with AdControls=OFF" />
+	</test>
+	<test name="PRELOAD_PROMOIMAGE">
+		<description name="PRELOAD:false and PROMOIMAGE:true with AdControls=ON" />
 	</test>
 	
-		<test name="TIMEOUT_OPTIONS">
-		<description name="Timeout Options" />
+	<test name="TIMEOUT_OPTIONS">
+		<description name="Timeout Options with AdControls=ON" />
 	</test>
 
 </testdata>

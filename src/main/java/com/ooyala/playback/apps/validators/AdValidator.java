@@ -130,9 +130,7 @@ public class AdValidator extends PlaybackApps implements Validators {
 			result = result
 			        && (iOS ? pauseAction.startAction(iosPlayPause) : pauseAction.startAction("PLAY_PAUSE_ANDROID"));
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
-		}
-		else
-		{
+		} else if (!iOS) {
 			result = result && clickDiscoveryAction.clickPauseButton();
 			result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_PAUSED_ANDRD, 70000);
 			result = result && clickDiscoveryAction.seekToEnd("SEEKBAR_ANDROID");
