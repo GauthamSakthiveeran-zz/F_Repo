@@ -65,14 +65,14 @@ public class PlaybackAppsTest extends FacileTest {
         isAppClosed = false;
     }
 
-	private RemoteWebDriver initializeDriver() throws MalformedURLException {
+	private RemoteWebDriver initializeDriver() {
 		
 		
 		String app = testData.getApp().getName();
 		
 		String ip = System.getProperty(CommandLineParameters.APPIUM_SERVER) != null ? System.getProperty(CommandLineParameters.APPIUM_SERVER) : "127.0.0.1";
 		String port = System.getProperty(CommandLineParameters.APPIUM_PORT) != null ? System.getProperty(CommandLineParameters.APPIUM_PORT) : "4723";
-		
+		try {
 		if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("ios")) {
 			
 			boolean useNewWDA = System.getProperty(CommandLineParameters.USE_NEW_WDA) != null
@@ -112,6 +112,11 @@ public class PlaybackAppsTest extends FacileTest {
 			driver = new AndroidDriver(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
 			// driver.manage().timeouts().implicitlyWait(3000,TimeUnit.SECONDS);
 		}
+		}
+		catch(Exception e) {
+			logger.info(e.getMessage());
+		}
+		
 		return driver;
 
 	}
@@ -119,10 +124,26 @@ public class PlaybackAppsTest extends FacileTest {
 	@BeforeMethod(alwaysRun = true)
 	public void handleTestMethodName(Method method, Object[] testData) {
 		try {
-			
-			if (driver == null || driver.getSessionId() == null) {
+//			Thread.sleep(15000);
+//			
+//			if (driver == null || driver.getSessionId() == null) {
+//				logger.info("driver value is "+driver);
+//				
+//				if(driver != null)
+//				logger.info(driver.getSessionId());
+//				initializeDriver();
+//				isAppClosed = false;
+//			}
+			int attempts = 0;
+			while(driver == null || driver.getSessionId() == null ) {
+				if(attempts<10) {
+					Thread.sleep(15000);
 				initializeDriver();
-				isAppClosed = false;
+				}
+				else {
+					break;
+				}
+				attempts++;
 			}
 			
 			extentTest = ExtentManager.startTest(testData[0].toString());
@@ -284,8 +305,10 @@ public class PlaybackAppsTest extends FacileTest {
 	public void afterClass() {
 		try {
 			if (System.getProperty(CommandLineParameters.PLATFORM).equalsIgnoreCase("android")) {
+				
 				((AndroidDriver) driver).closeApp();
 				logger.info("Closing App");
+				
 			}
 		} catch (Exception e) {
 			logger.info("Error While Closing App");

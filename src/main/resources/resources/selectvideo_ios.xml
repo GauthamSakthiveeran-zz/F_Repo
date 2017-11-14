@@ -57,7 +57,7 @@
 <!-- 	NPAW Sample apps -->
 	<element key="BASIC_NPAW_YOUBURA_INTEGRATION" findBy="name" name="Basic NPAW Youbura Integration" />
 	<element key="NPAW_WITH_OPTIONAL_METADATA" findBy="name" name="NPAW with Optional Metadata" />
-	
+
 	<!-- OoyalaSkinSampleApp BasicPlayback -->
 	<element key="BASIC_PLAYBACK" findBy="name" name="Basic Playback" />
 	<element key="HLS_VIDEO_2_AND_5_1" findBy="name" name="2.0 and 5.1 HLS Video" />
@@ -82,7 +82,8 @@
 		<!-- OoyalaSkinSampleApp GOOGLE IMA -->
 	<element key="GOOGLE_IMA" findBy="name" name="Google IMA" />
 	
-	<!-- OoyalaAPiSampleTest -->
+	
+<!-- 	OoyalAPI Sample apps -->
 	<element key="OOYALA_EVERYWHERE" findBy="name" name="Ooyala Everywhere" />
 	<element key="OOYALA_SOCIAL" findBy="name" name="Ooyala Social" />
 	<element key="RETHINK_VIDEO" findBy="name" name="Rethink Video" />

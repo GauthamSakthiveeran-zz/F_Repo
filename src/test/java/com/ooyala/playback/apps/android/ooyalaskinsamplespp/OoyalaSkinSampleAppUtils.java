@@ -65,6 +65,8 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 	        	result = result && selectVideo.startAction(test.getAsset());
 	        	Thread.sleep(5000);
 	        	result = result && clickDiscoveryAction.clickPlayButton();
+	        	result = result && androidKeyCode.screenLockUnlock();
+		    result = result && androidKeyCode.openAppFromAppSwitchScreen();
 	        result = result && adValidator.isOoyalaSkinSampleAsset(true).setTestParameters(test).validate("", 2000);
 	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
 		} catch (Exception ex) {
@@ -98,6 +100,8 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 	        	result = result && selectVideo.startAction(test.getAsset());
 	        	Thread.sleep(5000);
 	        	result = result && clickDiscoveryAction.clickPlayButton();
+	        	result = result && androidKeyCode.screenLockUnlock();
+	        	result = result && androidKeyCode.openAppFromAppSwitchScreen();
 	        	result = result && adValidator.isOoyalaSkinSampleAsset(true).setTestParameters(test).validate("", 2000);
 	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
 		} catch (Exception ex) {
@@ -131,6 +135,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 	        	result = result && selectVideo.startAction(test.getAsset());
 	        	Thread.sleep(5000);
 	        	result = result && clickDiscoveryAction.clickPlayButton();
+	        	result = result && androidKeyCode.screenLockUnlock();
 	        	result = result && poddedAdValidator.isOoyalaSkinSampleAsset(true).setNoOfAds("2").setTestParameters(test).validate("", 2000);   
 	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
 		} catch (Exception ex) {
@@ -164,6 +169,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 	        	result = result && selectVideo.startAction(test.getAsset());
 	        	Thread.sleep(5000);
 	        	result = result && clickDiscoveryAction.clickPlayButton();
+			result = result && androidKeyCode.openAppFromAppSwitchScreen();
 	        	result = result &&  adValidator.isOoyalaSkinSampleAsset(true).setTestParameters(test).validate("", 2000);
 	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
 		} catch (Exception ex) {
@@ -197,6 +203,7 @@ public class OoyalaSkinSampleAppUtils extends PlaybackAppsTest {
 	        	result = result && selectVideo.startAction(test.getAsset());
 	        	Thread.sleep(5000);
 	        	result = result && clickDiscoveryAction.clickPlayButton();
+	        	result = result && androidKeyCode.screenLockUnlock();
 	     	result = result && adValidator.isOoyalaSkinSampleAsset(true).setTestParameters(test).validate("", 2000);
 	        result = result && notificationEventValidator.validateEvent(Events.PLAYBACK_COMPLETED,  70000);
 		} catch (Exception ex) {
