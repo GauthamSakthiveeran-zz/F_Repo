@@ -1,0 +1,10 @@
+<elements area="resizableplayer">
+	<element key="RESIZE_TALL" findBy="xPath" xPath="//android.widget.TextView[@content-desc='Tall']" />
+	<element key="RESIZE_WIDE" findBy="xPath" xPath="//android.widget.TextView[@content-desc='Wide']" />
+	<element key="RESIZE_FILLSCREEN" findBy="xPath" xPath="//android.widget.TextView[@content-desc='Fill screen']" />
+	<element key="SKINLAYOUT_LEFT_TEXT" findBy="xPath" xPath="//android.widget.TextView[@text='Left of Skin Layout']" />
+	<element key="SKINLAYOUT_RIGHT_TEXT" findBy="xPath" xPath="//android.widget.TextView[@text='Right of Skin Layout']" />
+	<element key="SKINLAYOUT_ABOVE_TEXT" findBy="xPath" xPath="//android.widget.TextView[@text='Above Skin Layout']" />
+	<element key="SKINLAYOUT_BELOW_TEXT" findBy="xPath" xPath="//android.widget.TextView[@text='Below Skin Layout']" />
+	
+</elements>
