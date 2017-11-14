@@ -21,8 +21,9 @@ import com.ooyala.playback.apps.validators.ElementValidator;
      private PlayAction playAction;
      private PauseAction pauseAction;
      private SeekAction seekAction;
-     private CCAction ccAction;
      private NotificationEventValidator notificationEventValidator;
+     private AllowAction allowAction;
+     private AndroidKeyCodeAction androidAction;
 
 
      @Test(groups = "basicplaybacksampleapp", dataProvider = "testData")
@@ -31,6 +32,9 @@ import com.ooyala.playback.apps.validators.ElementValidator;
          logger.info("Executing:" + test.getApp() + "->Asset:" + test.getAsset());
          boolean result = true;
          try {
+             result = result && selectVideo.startAction(test.getAsset());
+             result = result && allowAction.startAction("ALLOW");
+             result = result && androidAction.startAction("BACK");
              result = result && selectVideo.startAction(test.getAsset());
 
              result = result && elementValidator.validate("PLAY_PAUSE_ANDROID", 30000);
@@ -45,10 +49,10 @@ import com.ooyala.playback.apps.validators.ElementValidator;
              result = result && seekAction.startAction("SEEK_BAR_ANDROID");
              result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
              result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
-/*             if(test.getAsset().contains("VOD with CCs")) {
-                 result = result && ccAction.enableCC(); // Default English
-                 result = result && notificationEventValidator.verifyEvent(Events.CC_ENABLED, 15000);
-             }*/
+             result = result && androidAction.screenLockUnlock();
+             result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_SUSPENDED,50000);
+             result = result && androidAction.openAppFromAppSwitchScreen();
+             result = result && notificationEventValidator.verifyEvent(Events.PLAYER_READY, 55000);
              result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
              result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED_ANDRD, 30000);
 

@@ -23,7 +23,8 @@ public enum Events {
     //added by @rmanchi
 	AD_POD_STARTED("Notification Received: adPodStarted", "Notification Not Received: adPodStarted"),
     AD_POD_COMPLETED("Notification Received: adPodCompleted", "Notification Not Received: adPodCompleted"),
-	
+
+    PLAYER_READY("Notification Received: stateChanged - state: READY", "Notification Not Received: stateChanged - state: READY"),
 	//for OptionssampleApp
 	PROMOIMAGE_TRUE_PRELOAD_TRUE("showPromoImage: true preload: true", "promoimage and preload values does not match"),
 	PROMOIMAGE_TRUE_PRELOAD_FALSE("showPromoImage: true preload: false", "promoimage and preload values does not match");
