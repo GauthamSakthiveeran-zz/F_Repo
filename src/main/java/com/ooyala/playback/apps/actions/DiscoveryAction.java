@@ -202,7 +202,7 @@ public class DiscoveryAction extends PlaybackApps implements Actions {
     	{
  
     	Thread.sleep(3000);
-		WebElement playPauseButton = getWebElement("PLAY_PAUSE_BUTTON_ANDROID_LATEST");
+		WebElement playPauseButton = getWebElement("PLAY_PAUSE_BUTTON_ANDROID");
 		p[0] = playPauseButton.getLocation().getX() + playPauseButton.getSize().getWidth()/2;
 		p[1] = playPauseButton.getLocation().getY() + playPauseButton.getSize().getHeight()/2;
         TouchAction touch = new TouchAction((AppiumDriver) driver);
