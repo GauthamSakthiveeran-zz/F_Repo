@@ -7,12 +7,12 @@
 	<test name="IMA_AD_RULES_MIDROLL">
 		<description name="IMA Ad rules midroll" />
 	</test>
-	<test name="IMA_AD_RULES_PREROLL">
-		<description name="IMA Ad rules Preroll" />
-	</test>
-	<test name="IMA_APPLICATION_CONFIGURED">
-		<description name="Client-side configured IMA Ads" />
-	</test>
+
+	<!--IMA Preroll has been removed from the sample app-->
+
+	<!--<test name="IMA_AD_RULES_PREROLL">-->
+		<!--<description name="IMA Ad rules Preroll" />-->
+	<!--</test>-->
 
 	<test name="IMA_PRE_MID_AND_POST_SKIPPABLE">
 		<description name="IMA Pre, Mid and Post Skippable" />
@@ -36,5 +36,5 @@
 	<test name="IMA_NON_ADRULES_PRE_MID_POST">
 		<description name="IMA Non Ad-Rules Pre-Mid-Mid-Post" />
 	</test>
-
+cl
 </testdata>

@@ -25,6 +25,7 @@ public class IMASampleAppNoAdsTests extends PlaybackAppsTest {
 	private NotificationEventValidator notificationEventValidator;
 	private AllowAction allowAction;
 	private AndroidKeyCodeAction androidAction;
+	private SwipeUpDownAppAssetsAction appAssetsSelection;
 
 	@Test(groups = "imasampleapp", dataProvider = "testData")
 	public void testBasicPlayer(String testName, TestParameters test) throws Exception {
@@ -32,6 +33,9 @@ public class IMASampleAppNoAdsTests extends PlaybackAppsTest {
 		boolean result = true;
 
 		try {
+			if(test.getAsset().contains("IMA_NO_ADS")) {
+				result = result && appAssetsSelection.swipeAsset("APP_ASSETS_ANDROID");
+			}
 			result = result && selectVideo.startAction(test.getAsset());
 			result = result && allowAction.startAction("ALLOW");
 			result = result && androidAction.startAction("BACK");
