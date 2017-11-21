@@ -507,11 +507,11 @@ public class CCValidator extends PlayBackPage implements PlaybackValidator {
 
     private boolean validateCaptionOpacity(String opacityValue) {
         if (!getBrowser().equalsIgnoreCase("safari")) {
-            if (opacityValue.equals("rgba(0, 0, 0, 0.5)")) {
+            if (opacityValue.equals("rgba(0, 0, 0, 0.8)")) {
                 return true;
             } else {
-                logger.error(opacityValue + "is not matching with rgba(0, 0, 0, 0.5)");
-                extentTest.log(LogStatus.FAIL, opacityValue + "is not matching with rgba(0, 0, 0, 0.5)");
+                logger.error(opacityValue + "is not matching with rgba(0, 0, 0, 0.8)");
+                extentTest.log(LogStatus.FAIL, opacityValue + "is not matching with rgba(0, 0, 0, 0.8)");
                 return false;
             }
         } else {
