@@ -1,15 +1,12 @@
 package com.ooyala.playback.apps.android.imasampleapp;
 
+import com.ooyala.playback.apps.actions.*;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
-import com.ooyala.playback.apps.actions.PauseAction;
-import com.ooyala.playback.apps.actions.PlayAction;
-import com.ooyala.playback.apps.actions.SeekAction;
-import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.validators.AdValidator;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
@@ -26,6 +23,8 @@ public class IMASampleAppNoAdsTests extends PlaybackAppsTest {
 	private PauseAction pauseAction;
 	private SeekAction seekAction;
 	private NotificationEventValidator notificationEventValidator;
+	private AllowAction allowAction;
+	private AndroidKeyCodeAction androidAction;
 
 	@Test(groups = "imasampleapp", dataProvider = "testData")
 	public void testBasicPlayer(String testName, TestParameters test) throws Exception {
@@ -34,23 +33,26 @@ public class IMASampleAppNoAdsTests extends PlaybackAppsTest {
 
 		try {
 			result = result && selectVideo.startAction(test.getAsset());
+			result = result && allowAction.startAction("ALLOW");
+			result = result && androidAction.startAction("BACK");
+			result = result && selectVideo.startAction(test.getAsset());
 
 			result = result && elementValidator.validate("PLAY_PAUSE_ANDROID", 30000);
 			result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
 			
-			result = result && notificationEventValidator.letVideoPlayForSec(4);
+			result = result && notificationEventValidator.letVideoPlayForSec(2);
 			
 			result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED_ANDRD, 25000);
 			result = result && seekAction.startAction("SEEK_BAR_ANDROID");
 			result = result && notificationEventValidator.verifyEvent(Events.SEEK_STARTED, 40000);
 			result = result && notificationEventValidator.verifyEvent(Events.SEEK_COMPLETED, 40000);
 			result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED_ANDRD, 30000);
 
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 95000);
 
 		} catch (Exception ex) {
 			logger.error("Here is an exception" + ex);

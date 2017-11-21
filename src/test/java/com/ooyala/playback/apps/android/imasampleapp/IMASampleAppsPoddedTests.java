@@ -1,5 +1,7 @@
 package com.ooyala.playback.apps.android.imasampleapp;
 
+import com.ooyala.playback.apps.actions.AllowAction;
+import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -22,11 +24,16 @@ public class IMASampleAppsPoddedTests extends PlaybackAppsTest {
 	private NotificationEventValidator notificationEventValidator;
 	private PoddedAdValidator adValidator;
 	private PlayAction playAction;
+	private AllowAction allowAction;
+	private AndroidKeyCodeAction androidAction;
 
 	@Test(groups = "imasampleapp", dataProvider = "testData")
 	public void testBasicPlayer(String testName, TestParameters test) throws Exception {
 		boolean result = true;
 		try {
+			result = result && selectVideo.startAction(test.getAsset());
+			result = result && allowAction.startAction("ALLOW");
+			result = result && androidAction.startAction("BACK");
 			result = result && selectVideo.startAction(test.getAsset());
 
 			result = result && elementValidator.validate("PLAY_PAUSE_ANDROID", 30000);
@@ -34,7 +41,7 @@ public class IMASampleAppsPoddedTests extends PlaybackAppsTest {
 
 			result = result && adValidator.setTestParameters(test).setNoOfAds("3").validate("", 1000);
 
-			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 25000);
+			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 95000);
 
 		} catch (Exception ex) {
 			logger.error("Here is an exception" + ex);

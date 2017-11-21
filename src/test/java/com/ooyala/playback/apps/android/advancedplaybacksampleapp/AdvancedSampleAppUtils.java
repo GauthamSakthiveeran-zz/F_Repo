@@ -1,5 +1,6 @@
 package com.ooyala.playback.apps.android.advancedplaybacksampleapp;
 
+import com.ooyala.playback.apps.actions.*;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -8,13 +9,6 @@ import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
-import com.ooyala.playback.apps.actions.CCAction;
-import com.ooyala.playback.apps.actions.ClickAction;
-import com.ooyala.playback.apps.actions.DiscoveryAction;
-import com.ooyala.playback.apps.actions.PauseAction;
-import com.ooyala.playback.apps.actions.PlayAction;
-import com.ooyala.playback.apps.actions.SelectVideoAction;
-import com.ooyala.playback.apps.actions.SeekAction;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
@@ -32,8 +26,10 @@ public class AdvancedSampleAppUtils extends PlaybackAppsTest {
 	private SeekAction seekAction;
 	private CCAction ccAction;
 	private ClickAction clickAction;
+	private AllowAction allowAction;
 	private DiscoveryAction clickDiscoveryAction;
 	private PlayAction playAction;
+	private AndroidKeyCodeAction androidAction;
 	//pageFactory = new pageFactory((AppiumDriver) driver, extentTest);
 
 	public boolean performAssetSpecificTest(TestParameters test) throws Exception {
@@ -42,13 +38,18 @@ public class AdvancedSampleAppUtils extends PlaybackAppsTest {
 		pauseAction = pageFactory.getPauseAction();
 		seekAction = pageFactory.getSeekAction();
 		ccAction = pageFactory.getCcAction();
+		allowAction = pageFactory.getAllow();
 		elementValidator = pageFactory.getEventValidator();
 		selectVideo = pageFactory.getSelectVideoAction();
 		clickAction = pageFactory.getClickAction();
 		clickDiscoveryAction = pageFactory.getClickDiscoveryButtonAction();
 		playAction = pageFactory.getPlayAction();
+		androidAction = pageFactory.getAndroidKeyCodeAction();
 
 		try {
+			result = result && selectVideo.startAction(test.getAsset());
+			result = result && allowAction.startAction("ALLOW");
+			result = result && androidAction.startAction("BACK");
 			result = result && selectVideo.startAction(test.getAsset());
 			result = result && elementValidator.handleLoadingSpinner();
 			
@@ -76,7 +77,7 @@ public class AdvancedSampleAppUtils extends PlaybackAppsTest {
 				result = result && selectVideo.letVideoPlayForSec(2);
 				clickDiscoveryAction.tapOnScreen();
 				result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
-				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 50000);
+				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED_ANDRD, 50000);
 				result = result && clickAction.startAction("ANDROID_PLAY_VIDEO_1");
 				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_STARTED, 25000);
 				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 90000);
@@ -88,7 +89,7 @@ public class AdvancedSampleAppUtils extends PlaybackAppsTest {
 			if (test.getAsset().contains("INSERT_AD")) {
 				result = result && clickAction.startAction("ANDROID_INSERT_OOYALA_AD");
 				result = adEventValidator();
-				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 25000);
+				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED_ANDRD, 25000);
 				result = result && clickAction.startAction("ANDROID_INSERT_OOYALA_AD");
 				result = adEventValidator();
 			}
@@ -100,7 +101,7 @@ public class AdvancedSampleAppUtils extends PlaybackAppsTest {
 				clickDiscoveryAction.tapOnScreen();	
 				result = result && pauseAction.startAction("PLAY_PAUSE_ANDROID");
 				
-				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
+				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED_ANDRD, 25000);
 				if (test.getAsset().contains("CUSTOM_OVERLAY")
 						|| test.getAsset().contains("NOTIFICATION_SAMPLE"))
 					result = result && seekActionEventValidator(true);
@@ -113,13 +114,13 @@ public class AdvancedSampleAppUtils extends PlaybackAppsTest {
 				result = result && selectVideo.letVideoPlayForSec(2);
 				clickDiscoveryAction.tapOnScreen();	
 				result = result && clickAction.startAction("CUSTOM_PLAY_PAUSE_BUTTON_ANDROID");
-				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED, 25000);
+				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_PAUSED_ANDRD, 25000);
 				result = result && clickAction.startAction("CUSTOM_PLAY_PAUSE_BUTTON_ANDROID");
 			}
 
 			if (!test.getAsset().contains("CHANGE_VIDEO") && !test.getAsset().contains("CUSTOM_PLUGIN_SAMPLE")
 					&& !test.getAsset().contains("INITIALTIME"))
-				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED, 30000);
+				result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_RESUMED_ANDRD, 30000);
 
 
 			if (test.getAsset().contains("CUSTOM_PLUGIN_SAMPLE")) {
