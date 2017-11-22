@@ -1,15 +1,12 @@
 package com.ooyala.playback.apps.android.imasampleapp;
 
-import com.ooyala.playback.apps.actions.AllowAction;
-import com.ooyala.playback.apps.actions.AndroidKeyCodeAction;
+import com.ooyala.playback.apps.actions.*;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.ooyala.playback.PlaybackAppsTest;
 import com.ooyala.playback.apps.TestParameters;
-import com.ooyala.playback.apps.actions.PlayAction;
-import com.ooyala.playback.apps.actions.SelectVideoAction;
 import com.ooyala.playback.apps.validators.ElementValidator;
 import com.ooyala.playback.apps.validators.Events;
 import com.ooyala.playback.apps.validators.NotificationEventValidator;
@@ -26,11 +23,15 @@ public class IMASampleAppsPoddedTests extends PlaybackAppsTest {
 	private PlayAction playAction;
 	private AllowAction allowAction;
 	private AndroidKeyCodeAction androidAction;
+	private SwipeUpDownAppAssetsAction appAssetsSelection;
 
 	@Test(groups = "imasampleapp", dataProvider = "testData")
 	public void testBasicPlayer(String testName, TestParameters test) throws Exception {
 		boolean result = true;
 		try {
+			if(test.getAsset().contains("IMA_AD_RULES_QUAD_MIDROLL")) {
+				result = result && appAssetsSelection.swipeAsset("APP_ASSETS_ANDROID");
+			}
 			result = result && selectVideo.startAction(test.getAsset());
 			result = result && allowAction.startAction("ALLOW");
 			result = result && androidAction.startAction("BACK");
@@ -39,7 +40,7 @@ public class IMASampleAppsPoddedTests extends PlaybackAppsTest {
 			result = result && elementValidator.validate("PLAY_PAUSE_ANDROID", 30000);
 			result = result && playAction.startAction("PLAY_PAUSE_ANDROID");
 
-			result = result && adValidator.setTestParameters(test).setNoOfAds("3").validate("", 1000);
+			result = result && adValidator.setTestParameters(test).setNoOfAds("2").validate("", 1000);
 
 			result = result && notificationEventValidator.verifyEvent(Events.PLAYBACK_COMPLETED, 95000);
 
