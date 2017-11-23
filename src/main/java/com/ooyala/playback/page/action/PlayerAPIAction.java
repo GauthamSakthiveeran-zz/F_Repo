@@ -170,6 +170,8 @@ public class PlayerAPIAction extends PlayBackPage implements PlayerAction {
 	}
 	
 	public Object getEncodingPriority() {
+		if(driver.executeScript("return pp.parameters.encodingPriority")==null)
+			return null;
 		return driver.executeScript("return pp.parameters.encodingPriority").toString();
 	}
 	
