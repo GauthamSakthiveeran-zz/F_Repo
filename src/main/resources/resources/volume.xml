@@ -5,4 +5,5 @@
              class="oo-icon-volume-on-ooyala-default " />
     <element key="VOLUME_MUTE" findBy="class"
              class="oo-icon-volume-mute-ooyala-default " />
+    <element key="VOLUME_MUTE_AUTOPLAY" findBy="class" class="oo-unmute-icon-wrapper" />         
 </elements>
