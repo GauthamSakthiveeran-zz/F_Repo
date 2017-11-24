@@ -1,0 +1,135 @@
+<suite name="Complete SampleAPPTests Regression Suite for Android" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+
+    <test name="Complete_BasicPlaybacknonAdsTests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="android/Complete_BasicPlaybackNonAdsTests.xml" />
+            <class
+                    name="com.ooyala.playback.apps.android.completesampleapp.BasicPlaybackSampleAppNonAdsTests">
+                <methods>
+                    <include name ="testPluginPlayer"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Complete_BasicPlaybackAdsTests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="android/Complete_BasicPlaybackAdsTests.xml" />
+            <class
+                    name="com.ooyala.playback.apps.android.completesampleapp.BasicPlaybackSampleAppAdsTests">
+                <methods>
+                    <include name ="testPluginPlayer"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Complete_Freewheel Tests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="android/Complete_FreewheelAppOverlayTests.xml" />
+            <class
+                    name="com.ooyala.playback.apps.android.completesampleapp.FreewheelSampleAppTests">
+            </class>
+        </classes>
+    </test>
+    <test name="Complete_Freewheel Overlay Tests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="android/Complete_FreewheelSampleAppTests.xml" />
+            <class
+                    name="com.ooyala.playback.apps.android.completesampleapp.FreewheelSampleAppOverlayTests">
+            </class>
+        </classes>
+    </test>
+
+    <test name="Complete_IMA Podded Tests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="android/Complete_IMAPoddedTests.xml" />
+            <class
+                    name="com.ooyala.playback.apps.android.completesampleapp.IMASampleAppPoddedTests">
+            </class>
+        </classes>
+    </test>
+    <test name="Complete_IMA Tests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="android/Complete_IMASampleAppTests.xml" />
+            <class
+                    name="com.ooyala.playback.apps.android.completesampleapp.IMASampleAppTests">
+            </class>
+        </classes>
+    </test>
+    <test name="Complete_IMA No Ads Tests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="android/Complete_IMANoAdsTests.xml" />
+            <class
+                    name="com.ooyala.playback.apps.android.completesampleapp.IMASampleAppsNoAdTests">
+            </class>
+        </classes>
+    </test>
+
+    <test name="Complete_OptionsSampleAppCuePoints" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="Complete_OptionsCuePointsTests.xml" />
+            <class name="com.ooyala.playback.apps.android.completesampleapp.OptionsSampleAppTests">
+                <methods>
+                    <include name="testCuePointsAndAdControls" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Complete_OptionsSampleAppPreloadWithInitialTIme" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="Complete_OptionsIntialTimeTests.xml" />
+            <class name="com.ooyala.playback.apps.android.completesampleapp.OptionsSampleAppTests">
+                <methods>
+                    <include name="preloadWithInitialTime" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Complete_OptionsSampleAppServerSideRatings" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="OptionsSampleAppServerSideRatings.xml" />
+            <class name="com.ooyala.playback.apps.android.completesampleapp.OptionsSampleAppTests">
+                <methods>
+                    <include name="serverSideTvRatings" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Complete_OptionsSampleAppTvRatingsConfig" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="Complete_OptionsSampleAppTvRating.xml" />
+            <class name="com.ooyala.playback.apps.android.completesampleapp.OptionsSampleAppTests">
+                <methods>
+                    <include name="tvratingsConfig" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Complete_OoyalaAPIContentTreeTests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="android/Complete_OoyalaAPIContentTree.xml" />
+            <class
+                    name="com.ooyala.playback.apps.android.completesampleapp.ContentTreeForChannel">
+                <methods>
+                    <include name ="testPluginPlayer"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Complete_OoyalaAPIPlaylistTests" parallel="false" thread-count="1">
+        <classes>
+            <parameter name="testData" value="android/Complete_OoyalaAPIPlaylistTests.xml" />
+            <class
+                    name="com.ooyala.playback.apps.android.completesampleapp.PlaylistAPI">
+                <methods>
+                    <include name ="testPluginPlayer"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
+

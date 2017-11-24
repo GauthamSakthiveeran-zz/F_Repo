@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="BasicPlaybackSampleApp" />
+    <test name="HLS Video">
+        <description name="HLS Video Test" />
+    </test>
+    <test name="MP4 Video">
+        <description name="MP4 Video Test" />
+    </test>
+    <test name="VOD with CCs">
+        <description name="VOD with CCs" />
+    </test>
+    <test name="4:3 Aspect Ratio">
+        <description name="4:3 Aspect Ratio" />
+    </test>
+</testdata>
