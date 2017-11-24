@@ -19,6 +19,8 @@ public enum Events {
     SEEK_COMPLETED("Notification Received: seekCompleted", "Notification Not Received: seekCompleted"),
 
     CC_ENABLED("Notification Received: languageChanged", "Notification Not Received: languageChanged"),
+    CC_ENABLED_ANDROID("Notification Received: closedCaptionsLanguageChanged - state: PAUSED","Notification Received: closedCaptionsLanguageChanged - state: PAUSED"),
+    
 	
     //added by @rmanchi
 	AD_POD_STARTED("Notification Received: adPodStarted", "Notification Not Received: adPodStarted"),

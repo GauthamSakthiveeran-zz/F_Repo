@@ -29,5 +29,14 @@
 			</class>
 		</classes>
 	</test>
+	
+	<test name="iOS OoyalaSkin Discovery Test" parallel="false" thread-count="1">
+		<classes>
+			<parameter name="testData" value="ios/OoyalaSkinSampleAppBasicPlaybackTestData.xml" />
+			<class name="com.ooyala.playback.apps.ios.ooyalaskinsampleapp.OoyalaSkinBasicPlaybackDiscoveryTest">
+			</class>
+		</classes>
+	</test>
+	
 </suite>
 

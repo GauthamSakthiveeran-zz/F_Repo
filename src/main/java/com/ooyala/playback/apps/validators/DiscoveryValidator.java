@@ -56,9 +56,13 @@ public class DiscoveryValidator extends PlaybackApps implements Validators {
 			return false;
 		}
         }
+	    //Code for IOS
 	    else
 	    {
-	        //Code for IOS
+	    	result = result && isElementFoundinDiscoveryScreen("DISCOVERTEXT_IOS");
+			result = result && isElementFoundinDiscoveryScreen("DISCOVERYSCREEN_CLOSEBUTTON_IOS");
+			result = result && selectVideoFromDiscoveryScreen();
+	        
 	        return result;
 	    }
 
@@ -97,9 +101,34 @@ public class DiscoveryValidator extends PlaybackApps implements Validators {
 
 		return result;
 	    }
+		//Code for IOS
 		else
-		{
-		    //Code for IOS
+		{	
+			try
+
+			{
+
+				List<WebElement> assets = getWebElementsList("DISCOVERYASSET_IOS");
+
+				if (assets.size() == 0) {
+					logger.info("No Videos in Discovery Screen");
+					result = false;
+				} else {
+					assets.get(0).click();
+
+					Thread.sleep(2000);
+
+
+
+				}
+			}
+
+			catch (Exception e) {
+				e.printStackTrace();
+				logger.info("Exception while selecting a video from discovery screen");
+				return result;
+			}
+		    
 		    return result;
 		    
 		}
