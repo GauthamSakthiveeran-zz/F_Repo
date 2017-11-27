@@ -225,17 +225,20 @@ function subscribeToEvents() {
 			if (event.match(/willPlayAds/)) {
 				
 				if(videoPlayingEventOrder == 1 ){
-					OO.$('#ooplayer').append('<p id=PreRoll_willPlayAds'+'>PreRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
+					OO.$('#ooplayer').append('<p id=PreRoll_willPlayAds'+'>PreRoll_willPlayAds '+willPlayAdsEventOrder+'</p>');
+					OO.$('#ooplayer').append('<p id=willPlayFirstAd'+'>willPlayFirstAd '+willPlayAdsEventOrder+'</p>');
 					willPlayAdsEventOrder++;
 				}
 				
 				if(videoPlayingEventOrder > 1 && videoPlayedEventOrder == 1){
 					OO.$('#ooplayer').append('<p id=MidRoll_willPlayAds_'+willPlayAdsEventOrder+'>MidRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
-					OO.$('#ooplayer').append('<p id=MidRoll_willPlayAds>MidRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
+					OO.$('#ooplayer').append('<p id=MidRoll_willPlayAds>MidRoll_willPlayAds '+willPlayAdsEventOrder+'</p>');
+					OO.$('#ooplayer').append('<p id=willPlaySecondAd'+'>willPlaySecondAd '+willPlayAdsEventOrder+'</p>');
 					willPlayAdsEventOrder++;
 				}
 				if(videoPlayedEventOrder == 2){
-					OO.$('#ooplayer').append('<p id=PostRoll_willPlayAds'+'>PostRoll_willPlayAds '+willPlayAdsEventOrder+'</p>'); 
+					OO.$('#ooplayer').append('<p id=PostRoll_willPlayAds'+'>PostRoll_willPlayAds '+willPlayAdsEventOrder+'</p>');
+					OO.$('#ooplayer').append('<p id=willPlayThirdAd'+'>willPlayThirdAd '+willPlayAdsEventOrder+'</p>');
 					willPlayAdsEventOrder++;
 				}
 								
