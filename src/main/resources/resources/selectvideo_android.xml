@@ -93,7 +93,7 @@
 <!-- 	Pulse sample app -->
 	<element key="PULSE_NOADS" findBy="xPath" xPath="//android.widget.TextView[@text='No ads']"/>
 	<element key="PULSE_PREROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Preroll demo']" />
-	<element key="PULSE_MIDROLL_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Midroll demo']" />
+	<element key="PULSE_MIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Midroll demo']" />
 	<element key="PULSE_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Postroll demo']" />
 	<element key="PULSE_PRE_MID_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='Pre-/mid-/postroll demo']" />
 	<element key="PULSE_PRE_MID_POSTROLL_SKIPPABLE" findBy="xPath" xPath="//android.widget.TextView[@text='Pre-/mid-/postroll skippable']" />

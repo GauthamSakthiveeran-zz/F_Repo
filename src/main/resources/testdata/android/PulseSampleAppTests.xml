@@ -1,7 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 	<app name="PulseSampleApp" />
- 	<test name="NO_ADS">
+ 	<test name="PULSE_NOADS">
 		<description name="No ads" />
 	</test>
+
+	<test name="PULSE_PREROLL">
+		<description name="Preroll demo" />
+	</test>
+
+	<test name="PULSE_MIDROLL">
+		<description name="Midroll demo" />
+	</test>
+
+	<test name="PULSE_POSTROLL">
+		<description name="Postroll demo" />
+	</test>
+
+	<test name="PULSE_PRE_MID_POSTROLL">
+		<description name="Pre-/mid-/postroll demo" />
+	</test>
+
+	<test name="PULSE_PRE_MID_POSTROLL_SKIPPABLE">
+		<description name="Pre-/mid-/postroll skippable" />
+	</test>
+
+	<!--<test name="PULSE_PRE_POSTROLL_FREQUENCY_CAPPING_DEMO">-->
+	    <!--<description name="Frequency capping demo" />-->
+    <!--</test>-->
+
+	<test name="PULSE_PREROLL_AD_INVALID">
+		<description name="Preroll demo - Ad media file invalid" />
+	</test>
+
+	<!--<test name="PULSE_PREROLL_AD_TIMEOUT">-->
+		<!--<description name="Preroll demo - Ad media file timeout" />-->
+	<!--</test>-->
+
+    <test name="PULSE_PREROLL_AD_404">
+        <description name="Preroll demo - Ad media file 404" />
+    </test>
+
 </testdata>

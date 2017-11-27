@@ -6,9 +6,8 @@
 		<classes>
 			<parameter name="testData" value="android/PulseSampleAppTests.xml" />
 			<class
-				name="com.ooyala.playback.apps.android.pulseadsampleapp.PulseSampleAppTests">
+				name="com.ooyala.playback.apps.android.pulseadsampleapp.PulseSampleAppNoAdsTests">
 			</class>
 		</classes>
 	</test>
 </suite>
-
