@@ -563,7 +563,7 @@ public abstract class PlayBackPage extends WebPage {
 		extentTest.log(LogStatus.INFO, "Playhead time is :" + playHeadTime);
 		logger.info("Playhead time is :" + playHeadTime);
 		if (playHeadTime > timeToBeVerifiedAgainst || playHeadTime < (timeToBeVerifiedAgainst - 1)) {
-			extentTest.log(LogStatus.FAIL, "Video does not start from the " + (timeToBeVerifiedAgainst - 1));
+			extentTest.log(LogStatus.WARNING, "Video does not start from the " + (timeToBeVerifiedAgainst - 1));
 			logger.error("Video does not start from " + (timeToBeVerifiedAgainst - 1));
 			return false;
 		}
