@@ -2,9 +2,9 @@
      <listeners>
         <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
     </listeners>
-	<test name="iOS BasicPlayback BasicPlayer" parallel="false" thread-count="1">
+	<test name="BasicPlaybacknonAdsTests" parallel="false" thread-count="1">
 		<classes>
-			<parameter name="testData" value="BasicPlaybackTests.xml" />
+			<parameter name="testData" value="ios/BasicPlaybacknonAdsTests.xml" />
 			<class name="com.ooyala.playback.apps.ios.BasicPlaybackSampleAppTest">
 				<methods>
 					<include name="testBasicPlayer" />
@@ -12,9 +12,9 @@
 			</class>
 		</classes>
 	</test>
-<!--  	<test name="iOS BasicPlayback AdPlayer" parallel="false" thread-count="1">
+<!--  	<test name="BasicPlaybackAdsTests" parallel="false" thread-count="1">
 		<classes>
-			<parameter name="testData" value="BasicPlaybackTestData2.xml" />
+			<parameter name="testData" value="ios/BasicPlaybackAdsTests.xml" />
 			<class name="com.ooyala.playback.apps.ios.BasicPlaybackSampleAppTest">
 				<methods>
 					<include name="testAdPlayer" />

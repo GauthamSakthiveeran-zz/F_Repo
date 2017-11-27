@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="CompleteSampleApp" />
+    <test name="IMA_PODDED_PREMIDPOST">
+        <description name="Podded Pre mid post" />
+    </test>
+    <test name="IMA_PODDED_POSTROLL">
+        <description name="Podded Postroll" />
+    </test>
+    <test name="IMA_PODDED_MIDROLL">
+        <description name="Podded Midroll" />
+    </test>
+    <test name="IMA_PODDED_PREROLL">
+        <description name="Podded Preroll" />
+    </test>
+
+    <test name="IMA_AD_RULES_QUAD_MIDROLL">
+        <description name="IMA Non Ad-Rules Quad Midroll" />
+    </test>
+
+</testdata>

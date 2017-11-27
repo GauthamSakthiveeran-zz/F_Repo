@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="CompleteSampleApp" />
+    <test name="PRELOAD_INITIALTIME">
+        <description name="Preload and Promo Options with Initial Time" />
+    </test>
+
+</testdata>

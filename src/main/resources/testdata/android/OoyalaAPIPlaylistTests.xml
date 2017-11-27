@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="OoyalaAPISampleApp" />
+
+    <test name="HLS">
+        <description name="HLS Video Test" />
+    </test>
+
+    <test name="MP4">
+        <description name="MP4 Video Test" />
+    </test>
+
+    <test name="VOD_WITH_COLSEDCAPTION">
+        <description name="VOD with Closed Captions" />
+    </test>
+
+    <test name="ASPECT_RATIO">
+        <description name="4:3 Aspect Ratio" />
+    </test>
+
+</testdata>

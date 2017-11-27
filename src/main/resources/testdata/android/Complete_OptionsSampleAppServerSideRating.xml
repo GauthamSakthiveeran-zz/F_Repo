@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <app name="CompleteSampleApp" />
+    <test name="SERVERSIDE_TVRATINGS">
+        <description name="Server-Side TV Ratings" />
+    </test>
+    <test name="IQ_CONFIG">
+        <description name="IQ Configuration" />
+    </test>
+    <test name="PREVENTVIDEOSHARING">
+        <description name="Prevent Video View Sharing Option" />
+    </test>
+
+</testdata>
