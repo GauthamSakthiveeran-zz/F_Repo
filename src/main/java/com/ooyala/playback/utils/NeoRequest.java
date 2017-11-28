@@ -51,7 +51,7 @@ public class NeoRequest {
 	 * @return HttpResponse for processed request
 	 */
 	public Response makeRequest(String hostAddress, String path, String apiKey, String httpMethod, String body,
-			Map<String, String> queryString, String... addReqPath) {
+			Map<String, String> queryString, Map<String, String> headers, String... addReqPath) {
 		HttpTestClient httpTestClient = new HttpTestClient();
 		// Getting signature for current processing request
 
@@ -86,8 +86,8 @@ public class NeoRequest {
 		logger.info("Request url is " + requestUrl);
 		try {
 			if(httpMethod.contains("DELETE") && body!=null && !body.isEmpty())
-				return makeAPIcall(requestUrl, body);
-			return httpTestClient.makeRequest(httpMethod, requestUrl, body, null);
+				return makeAPIcall(requestUrl, body, headers);
+			return httpTestClient.makeRequest(httpMethod, requestUrl, body, headers);
 		} catch (OoyalaException e1) {
 			e1.printStackTrace();
 			return null;
@@ -98,12 +98,16 @@ public class NeoRequest {
 	}
 
 	// TODO need to make changes in qecommon for httpdeletewithbody
-	private Response makeAPIcall(String urlString, String requestBody) throws IOException {
+	private Response makeAPIcall(String urlString, String requestBody, Map<String, String> headers) throws IOException {
 		HttpClient httpClient = HttpClientBuilder.create().build();
 
 		HttpDeleteWithBody httpDelete = new HttpDeleteWithBody(urlString);
 		StringEntity input = new StringEntity(requestBody, ContentType.APPLICATION_JSON);
 		httpDelete.setEntity(input);
+		if (headers != null) {
+			for (String key : headers.keySet())
+				httpDelete.addHeader(key, headers.get(key));
+		}
 		HttpResponse res = httpClient.execute(httpDelete);
 		Response response = getResponse(res);
 		logger.debug("Response code from http is " + response.getResponseCode());

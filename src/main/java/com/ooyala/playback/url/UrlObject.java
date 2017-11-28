@@ -3,6 +3,7 @@ package com.ooyala.playback.url;
 public class UrlObject {
 
     private String url;
+    private String desccription;
     private String videoPlugins;
     private String adFirstPlay;
     private String adFrequency;
@@ -24,6 +25,7 @@ public class UrlObject {
     private String playerId;
     private boolean ignoreClickThrough;
     private String dynamicFilter;
+    private String profile;
 
     public String getDynamicFilter() {
         return dynamicFilter;
@@ -31,6 +33,14 @@ public class UrlObject {
 
     public void setDynamicFilter(String dynamicFilter) {
         this.dynamicFilter = dynamicFilter;
+    }
+    
+    public String getDescription() {
+        return desccription;
+    }
+
+    public void setDescription(String desccription) {
+        this.desccription = desccription;
     }
 
     public void setIgnoreClickThrough(boolean ignoreClickThrough) {
@@ -200,4 +210,11 @@ public class UrlObject {
     public void setSupportedMuxFormat(String supportedMuxFormat) {
         this.supportedMuxFormat = supportedMuxFormat;
     }
+
+	public void setProfile(String profile) {
+		this.profile= profile;
+	}
+	public String getProfile() {
+		return profile;
+	}
 }

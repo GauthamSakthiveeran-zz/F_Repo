@@ -17,5 +17,6 @@ public class CommandLineParameters {
 	public static final String platform = "platform";
 	public static final String adobeTVSDK = "adobeTVSDK";
 	public static final String priority = "priority";
+	public static final String providerId = "providerId";
 
 }
