@@ -33,6 +33,7 @@ public class InitialTimeValidator extends PlayBackPage implements
             return true;
         }
         extentTest.log(LogStatus.FAIL, "video is not starting from "+ element+" sec");
+        logger.error("video is not starting from "+ element+" sec");
         return false;
     }
 
@@ -77,7 +78,26 @@ public class InitialTimeValidator extends PlayBackPage implements
             extentTest.log(LogStatus.FAIL,"Video is started from "+ initTimeAfterPlayback +" sec.");
             return false;
         }
+        return true;
+    }
 
+    public boolean validatePlayHeadTimeAtStart(){
+
+        if (!loadingSpinner()){
+            return false;
+        }
+
+        if(!isAdPlaying() && isVideoPlaying()){
+            String playhead_time = driver.executeScript("return pp.getPlayheadTime().toFixed()").toString();
+            logger.info("playhead time is :"+playhead_time);
+            int playHeadTime = Integer.parseInt(playhead_time);
+            logger.info("playhead time is :"+playHeadTime);
+            if(playHeadTime>6){
+                logger.error("Video does not start from begining");
+                extentTest.log(LogStatus.FAIL,"Video does not start from begining :"+playHeadTime);
+                return false;
+            }
+        }
         return true;
     }
 }

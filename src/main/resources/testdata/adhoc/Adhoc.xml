@@ -181,4 +181,161 @@
             <playerParameter><![CDATA[]]></playerParameter>
         </url>
     </test>
+
+    <test name="InitialTimeSetToXSecondsBeforeMidrollAdPlaysTests">
+        <!--VAST Ads-->
+        <url>
+            <description name="Podded Ads with initial time:Vast PreMidPost with Initial Time as 0 sec"/>
+            <priority name="P3"></priority>
+            <embed_code name="liNThoMTE6sIORN8TVQ0b0Z-xzMDlCQT"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="VAST" adPlayTime="20"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"initialTime":0,"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Podded Ads with initial time:Vast PreMidPost with Initial Time as 5 sec"/>
+            <priority name="P3"></priority>
+            <embed_code name="liNThoMTE6sIORN8TVQ0b0Z-xzMDlCQT"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="VAST" adPlayTime="20"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"initialTime":5,"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <!--VPAID Ads-->
+        <url>
+            <description name="Podded Ads with initial time:VPAID PreMidPost with Initial Time as 0 sec"/>
+            <priority name="P3"></priority>
+            <embed_code name="dzMm5iMjE6rPdV3p7yklZPdz85kWGNSj"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter><![CDATA[{"initialTime":0,"vast":{"vpaidTimeout":{"iframe":20}},"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Podded Ads with initial time:VPAID PreMidPost with Initial Time as 5 sec"/>
+            <priority name="P3"></priority>
+            <embed_code name="dzMm5iMjE6rPdV3p7yklZPdz85kWGNSj"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter><![CDATA[{"initialTime":5,"vast":{"vpaidTimeout":{"iframe":20}},"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <!--IMA Ads-->
+        <url>
+            <description name="Podded Ads with initial time:IMA PreMidPost with Initial Time as 0 sec"/>
+            <priority name="P3"></priority>
+            <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="IMA" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"initialTime":0,"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position_type":"r","tag_url":"http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/7521029/pb_pod_ad_unit&ciu_szs&impl=s&cmsid=949&vid=FjbGRjbzp0DV_5-NtXBVo5Rgp3Sj0R5C&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]"}]}}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Podded Ads with initial time:IMA PreMidPost with Initial Time as 5 sec"/>
+            <priority name="P3"></priority>
+            <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="IMA" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"initialTime":0,"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position_type":"r","tag_url":"http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/7521029/pb_pod_ad_unit&ciu_szs&impl=s&cmsid=949&vid=FjbGRjbzp0DV_5-NtXBVo5Rgp3Sj0R5C&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]"}]}}]]></playerParameter>
+        </url>
+
+        <!--FW Ads-->
+        <url>
+            <description name="Podded Ads with initial time:FW PreMidPost with Initial Time as 0 sec"/>
+            <priority name="P3"></priority>
+            <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,MAIN"/>
+            <adPlugins name="FREEWHEEL" adPlayTime="20"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"initialTime":0,"encodingPriority":["hls","dash","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+        </url>
+
+        <url>
+            <description name="Podded Ads with initial time:FW PreMidPost with Initial Time as 5 sec"/>
+            <priority name="P3"></priority>
+            <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,MAIN"/>
+            <adPlugins name="FREEWHEEL" adPlayTime="20"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"initialTime":5,"encodingPriority":["hls","dash","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+        </url>
+
+    </test>
+    <test name="InitialTimeSetToXSecondsAfterMidrollAdPlays">
+        <!--VAST Ads-->
+        <url>
+            <description name="Podded Ads with initial time:Vast PreMidPost with Initial Time as 25 sec"/>
+            <priority name="P3"></priority>
+            <embed_code name="liNThoMTE6sIORN8TVQ0b0Z-xzMDlCQT"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="VAST"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"initialTime":25,"encodingPriority":["dash","hls","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+        <!--IMA Ads-->
+        <url>
+            <description name="Podded Ads with initial time:IMA PreMidPost with Initial Time as 25 sec"/>
+            <priority name="P3"></priority>
+            <embed_code name="1vbDRnMTE69boWmokeUU4ZNMwJSheZ93"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN"/>
+            <adPlugins name="IMA" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"initialTime":25,"encodingPriority":["hls","dash","mp4"],"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"google-ima-ads-manager":{"all_ads":[{"position_type":"r","tag_url":"http://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/7521029/pb_pod_ad_unit&ciu_szs&impl=s&cmsid=949&vid=FjbGRjbzp0DV_5-NtXBVo5Rgp3Sj0R5C&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]"}]}}]]></playerParameter>
+        </url>
+
+        <!--FW Ads-->
+        <url>
+            <description name="Podded Ads with initial time:FW PreMidPost with Initial Time as 25 sec"/>
+            <priority name="P3"></priority>
+            <embed_code name="AwY2ZjOTE6L0xN-no9AZF6hE6eR77vJK"/>
+            <pcode name="BjcWYyOu1KK2DiKOkF41Z2k0X57l"/>
+            <plugins name="BITMOVIN,MAIN"/>
+            <adPlugins name="FREEWHEEL" adPlayTime="20"/>
+            <additionalPlugins name=""/>
+            <pbid name="8287c6992b2d40e6ab182fb2c5014c17"/>
+            <playerParameter><![CDATA[{"initialTime":25,"encodingPriority":["hls","dash","mp4"],"freewheel-ads-manager":{"fw_video_asset_id":"Fwa2tmcjohJwe-A-plwLw6We8JILCGXR","html5_ad_server":"http://g1.v.fwmrm.net","html5_player_profile":"90750:ooyala_html5","fw_mrm_network_id":"380912","showInAdControlBar":true},"autoplay":false,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1,"skin":{"inline":{"adScreen":{"showControlBar":true}}}}]]></playerParameter>
+        </url>
+
+       <!-- VPAID Ads-->
+        <url>
+            <description name="Podded Ads with initial time:VPAID PreMidPost with Initial Time as 25 sec"/>
+            <priority name="P3"></priority>
+            <embed_code name="dzMm5iMjE6rPdV3p7yklZPdz85kWGNSj"/>
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="VAST" adPlayTime="10"/>
+            <additionalPlugins name=""/>
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
+            <playerParameter><![CDATA[{"initialTime":25,"vast":{"vpaidTimeout":{"iframe":20}},"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
+        </url>
+
+    </test>
 </testdata>
