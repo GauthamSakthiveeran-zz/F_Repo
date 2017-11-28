@@ -89,6 +89,7 @@
 	<element key="IMA_NONAD_POSTROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Postroll']" />
 	<element key="IMA_NONAD_PREMIDMIDPOST" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Pre-Mid-Mid-Post']" />
 	<element key="IMA_NONAD_QUADMIDROLL" findBy="xPath" xPath="//android.widget.TextView[@text='IMA Non Ad-Rules Quad Midroll']" />
+	<element key="SKIN_VOD_CC_VIDEO" findBy="xPath" xPath="//android.widget.TextView[@text='VOD with CCs']" />
 	
 <!-- 	Pulse sample app -->
 	<element key="PULSE_NOADS" findBy="xPath" xPath="//android.widget.TextView[@text='No ads']"/>

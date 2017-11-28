@@ -62,10 +62,33 @@ public class DiscoveryAction extends PlaybackApps implements Actions {
 
         }
         }
+      //Code for IOS
         else
         {
-            //Code for IOS
-            return true;
+        	 try {
+
+        		 	 if(waitOnElement("MOREOPTIONS_BUTTON_IOS", 3000))
+                     result = result && clickOnIndependentElement("MOREOPTIONS_BUTTON_IOS");
+        		 	 else
+        		 	 {
+        		 	 tapOnScreen();
+        		 	 result = result && clickOnIndependentElement("MOREOPTIONS_BUTTON_IOS");
+        		 	 }
+
+                     result = result && waitForElementAndClick(element);
+                     
+                     extentTest.log(LogStatus.INFO, "Discovery Button is Clicked");
+                     logger.info("Discovery Button is Clicked");
+
+                     return result;
+                 } 
+
+              catch (Exception e) {
+                 extentTest.log(LogStatus.FAIL, "Exception While Clicking Discovery Button");
+                 logger.info("Exception While Clicking Discovery Button");
+                 return false;
+
+             }
         }
 
     }
@@ -94,10 +117,27 @@ public class DiscoveryAction extends PlaybackApps implements Actions {
 
         }
         }
+      //Code for IOS
         else
         {
-            //Code for IOS
-            return true;
+            try
+
+            {
+                result = result && waitForElementAndClick(element);
+
+                result = result && waitForElementAndClick("MOREOPTIONSSCREEN_CLOSEBUTTON_IOS");
+
+                return result;
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                extentTest.log(LogStatus.FAIL, "Exception While Closing Discovery Screen");
+                logger.info("Exception While Closing Discovery Screen");
+                return false;
+
+            }
+            
+            
         }
 
     }

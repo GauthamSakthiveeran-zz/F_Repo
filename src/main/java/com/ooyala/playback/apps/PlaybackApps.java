@@ -316,5 +316,14 @@ public abstract class PlaybackApps extends WebPage {
 	{
 		((AndroidDriver)driver).pressKeyCode(AndroidKeyCode.BACK);
 	}
+	
+    public void tapinMiddleOfScreen() {
 
+        TouchAction touch = new TouchAction((AppiumDriver) driver);
+        Dimension size = driver.manage().window().getSize();
+        touch.tap((size.getWidth()) / 2, (size.getHeight() / 2)).perform();
+        logger.info("Tapped in middle of Screen");
+        extentTest.log(LogStatus.INFO, "Tapped in middle of Screen");
+
+    }
 }

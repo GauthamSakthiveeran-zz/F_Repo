@@ -203,12 +203,21 @@
 		</classes>
 		</test> 
 		
-		<test name="Ooyala Skin App Basic Playback Resizable Player Test" parallel="false"
+		<test name="Ooyala Skin App Basic Playback Lock Unlock Test" parallel="false"
 		thread-count="1">
 		<classes> 
 			<parameter name="testData" value="OoyalaSkinSampleTests.xml" />
 			<class
 				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackLockUnlockTest" />
+		</classes>
+		</test>  
+		
+		<test name="Ooyala Skin App Basic Playback CC Test" parallel="false"
+		thread-count="1">
+		<classes> 
+			<parameter name="testData" value="OoyalaSkinSampleCCTests.xml" />
+			<class
+				name="com.ooyala.playback.apps.android.ooyalaskinsamplespp.OoyalaSkinSampleSkinPlayBackCCTest" />
 		</classes>
 		</test> 
 	

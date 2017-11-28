@@ -15,7 +15,7 @@ public class SelectVideoAction extends PlaybackApps implements Actions {
         super(driver);
         PageFactory.initElements(driver, this);
         addElementToPageElements("selectvideo_"+getPlatform());
-        System.out.println("platform:"+getPlatform());
+        logger.info("platform:"+getPlatform());
     }
 
 	@Override

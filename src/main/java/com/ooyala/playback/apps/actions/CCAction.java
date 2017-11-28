@@ -1,5 +1,7 @@
 package com.ooyala.playback.apps.actions;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -11,6 +13,7 @@ import com.ooyala.playback.factory.PlayBackFactory;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
 
 public class CCAction extends PlaybackApps implements Actions {
 
@@ -28,7 +31,52 @@ public class CCAction extends PlaybackApps implements Actions {
 	}
 
 	public boolean tapCC(String element) {
+		
+		if(platform.equalsIgnoreCase("android"))
+		{
+			Boolean result = true;
+			try {
+				if (waitOnElement("MOREOPTIONS_BUTTON_ANDROID", 3000)) {
+					result = result && clickOnIndependentElement("MOREOPTIONS_BUTTON_ANDROID");
+					Thread.sleep(2000);
+				} else {
+					tapinMiddleOfScreen();
+					result = result && clickOnIndependentElement("MOREOPTIONS_BUTTON_ANDROID");
+					Thread.sleep(2000);
+				}
+				result = result && clickOnIndependentElement("CC_ANDROID");
+				
+				if (waitOnElement("ENABLE_CC_ANDROID", 3000)) 
+				{
+				result = result && clickOnIndependentElement("ENABLE_CC_ANDROID");
+				}
+				else
+				{
+					logger.error("Element Not Found -  CC element");
+					return false;
+				}
+				
+				result = result && seletCCLanguageAndroid("en");
+				
+				result = result && clickOnIndependentElement("CCSCREEN_CLOSEBUTTON_ANDROID");
+				
+				Thread.sleep(1000);
+				
+				result = result && clickOnIndependentElement("MOREOPTIONSSCREEN_CLOSEBUTTON_ANDROID");
+				
 
+				return result;
+				
+		
+			}
+			catch(Exception e)
+			{
+				logger.error("Exception while clicking CC element");
+				return false;
+			}
+		}
+		else
+		{
 		if(!tapActions.tapScreenIfRequired()){
 			return false;	
 		}
@@ -61,7 +109,43 @@ public class CCAction extends PlaybackApps implements Actions {
 			}
 		}
 		return true;
+		}
 	}
+
+	public boolean seletCCLanguageAndroid(String selectedLanguage) {
+		TouchAction swipe = new TouchAction((AndroidDriver) driver);
+		boolean islanguageFound = false;
+		List<WebElement> allCaptions;
+		while (!islanguageFound) {
+			allCaptions = getWebElementsList("CC_LANGUAGE_LIST_ANDROID");
+
+			if (allCaptions.size() != 0) {
+				for (WebElement language : allCaptions)
+					if (language.getText().equalsIgnoreCase(selectedLanguage)) {
+						language.click();
+						islanguageFound = true;
+						return islanguageFound;
+					}
+
+				if (!islanguageFound && waitOnElement("CLOSED_CAPTION_PREVIEW_TEXT_ANDROID", 3000)) {
+					logger.info("Language not found");
+					return islanguageFound;
+				} else
+					swipe.longPress(allCaptions.get(allCaptions.size() - 1)).moveTo(allCaptions.get(1)).release()
+							.perform();
+			}
+
+			else {
+				logger.info("Caption Language List is empty");
+				return islanguageFound;
+			}
+		
+		}
+		return islanguageFound;
+		
+
+	}
+
 
 	public boolean tapCC() {
 		if(platform.equalsIgnoreCase("ios"))
@@ -141,8 +225,8 @@ public class CCAction extends PlaybackApps implements Actions {
 
 	@Override
 	public boolean startAction(String element) throws Exception {
-		// TODO Auto-generated method stub
+			
 		return false;
-	}
 
+}
 }
