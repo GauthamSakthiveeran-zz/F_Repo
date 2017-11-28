@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<test name="BasicPlaybackTests">
+		<url>
+			<description name="Create New Asset  - Test dash only asset" />
+			<priority name="P1" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<profile name="dash_clear.json" />
+			<playerParameter></playerParameter>
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+			<streamType name="mpd" />
+		</url>
+
+		<url>
+			<description name="Create New Asset  - Test HLS only asset" />
+			<priority name="P1" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<profile name="hls_only.json" />
+			<playerParameter></playerParameter>
+			<streamType name="m3u8" />
+		</url>
+		
+		<url>
+			<description name="Create New Asset  - Test HLS with all streams" />
+			<priority name="P1" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<profile name="all_streams.json" />
+			<playerParameter><![CDATA[{"encodingPriority":["hls","dash"]}]]></playerParameter>
+			<streamType name="m3u8" />
+		</url>
+		
+		<url>
+			<description name="Create New Asset  - Test HLS only asset with main plugin" />
+			<priority name="P2" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<profile name="hls_only.json" />
+			<playerParameter></playerParameter>
+			<browsersSupported name="safari" />
+			<streamType name="m3u8" />
+		</url>
+
+		<url>
+			<description name="Create New Asset  - Test mp4 asset" />
+			<priority name="P2" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="MAIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<profile name="mp4.json" />
+			<playerParameter></playerParameter>
+			<streamType name="mp4" />
+		</url>
+		
+		<url>
+			<description name="Create New Asset  - Test mp4 asset with btimvon" />
+			<priority name="P2" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<profile name="mp4.json" />
+			<playerParameter></playerParameter>
+			<streamType name="mp4" />
+		</url>
+		
+	</test>
+</testdata>
+		

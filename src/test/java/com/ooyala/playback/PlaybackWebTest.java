@@ -97,11 +97,11 @@ public abstract class PlaybackWebTest extends FacileTest {
                 url = (UrlObject) testData[1];
                 logger.info("*** URL " + url.getUrl() + " *********");
                 extentTest.log(LogStatus.INFO, "URL : " + url.getUrl());
-                if (testData[0].toString().contains("OSMF") && getBrowser().contains("chrome")) {
+                /*if (testData[0].toString().contains("OSMF") && getBrowser().contains("chrome")) {
     				driver.get("chrome://components/");
     				chromeValidator = new ChromeFlashUpdateAction(driver);
     				chromeValidator.isFlashPluginUpdated();
-                }
+                }*/
             } else {
                 logger.info("*** Test " + getClass().getSimpleName() + " started *********");
                 extentTest = ExtentManager.startTest(getClass().getSimpleName());
