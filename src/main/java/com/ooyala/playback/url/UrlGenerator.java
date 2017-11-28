@@ -236,7 +236,7 @@ public class UrlGenerator {
 							urlObject.setDescription(url.getDescription().getName());
 						}
 
-						if (url.getProfile().getName() != null && !url.getProfile().getName().isEmpty()) {
+						if (url.getProfile()!=null && url.getProfile().getName() != null && !url.getProfile().getName().isEmpty()) {
 							urlObject.setProfile(url.getProfile().getName());
 						}
 
