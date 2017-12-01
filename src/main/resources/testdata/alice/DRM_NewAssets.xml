@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<test name="PlaybackDRMTests">
+		<url>
+			<description name="Create New Asset  - DRM widevine" />
+			<priority name="P1" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<profile name="all_drm.json" />
+			<streamType name="dash"/>
+			<playerParameter></playerParameter>
+			<browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge" />
+		</url>
+		
+		<url>
+			<description name="Create New Asset  - DRM Fairplay" />
+			<priority name="P1" />
+			<pcode name="x2aDkyOt2q3WtOCp-krSyDffASzL" />
+			<plugins name="BITMOVIN" />
+			<adPlugins name="" />
+			<additionalPlugins name="" />
+			<pbid name="378512f55dd44fc287d0fa609353c268" />
+			<profile name="all_drm.json" />
+			<playerParameter></playerParameter>
+			<browsersSupported name="safari" />
+			<streamType name="hls"/>
+		</url>
+	</test>
+</testdata>

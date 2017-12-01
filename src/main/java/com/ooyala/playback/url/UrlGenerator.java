@@ -1,15 +1,23 @@
 package com.ooyala.playback.url;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
 import com.ooyala.playback.enums.PlayerPropertyKey;
 import com.ooyala.playback.enums.PlayerPropertyValue;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 
+import com.ooyala.playback.utils.APIUtils;
 import com.ooyala.playback.utils.CommandLineParameters;
 import com.ooyala.qe.common.util.PropertyReader;
+import com.relevantcodes.extentreports.LogStatus;
 
 /**
  * Created by jitendra
@@ -36,7 +44,7 @@ public class UrlGenerator {
 	 * @return returns dynamically created link from above parameters
 	 */
 	public String getURL(String sslEnabled, String embedcode, String pcode, String pbid, String videoPlugin,
-			String adPlugin, String additionalPlugin, String playerConfigParameter,String skinJson) {
+			String adPlugin, String additionalPlugin, String playerConfigParameter, String skinJson) {
 
 		String environment = System.getProperty(CommandLineParameters.environment);
 		logger.info(environment);
@@ -59,7 +67,7 @@ public class UrlGenerator {
 
 		test = new TestPage(playerProperties);
 		url = test.getURL(sslEnabled, embedcode, pcode, pbid, videoPlugin, adPlugin, additionalPlugin,
-                playerConfigParameter, v4Version,skinJson);
+				playerConfigParameter, v4Version, skinJson);
 		logger.info(url);
 		return url;
 	}
@@ -89,16 +97,12 @@ public class UrlGenerator {
 						// Adding browser support here.
 						// The data provider will not even give that data if we
 						// do not support for that browser.
+
 						if (url.getBrowsersSupported() != null && url.getBrowsersSupported().getName() != null
 								&& !url.getBrowsersSupported().getName().contains(browserName))
 							continue;
 						else
 							browserExisted = true;
-						
-						if(browserName.equalsIgnoreCase("firefox") && url.getPlugins().getName().contains("osmf_flash")) {
-							// TODO there is an issue with flash plugin in FF with the current version
-							continue;
-						}
 
 						// Not returning the data if the testdata contains the
 						// driver browser version that is not matching
@@ -172,7 +176,16 @@ public class UrlGenerator {
 							liveChannelProviders.put(url.getDescription().getName(), url.getLive().getProvider());
 						}
 
-						String embedCode = url.getEmbedCode().getName();
+						String embedCode = "";
+
+						if (url.getEmbedCode() == null || url.getEmbedCode().getName() == null
+								|| url.getEmbedCode().getName().isEmpty()) {
+							embedCode = createAsset(url.getProfile().getName(), url.getDescription().getName());
+
+						} else {
+							embedCode = url.getEmbedCode().getName();
+						}
+
 						String pCode = url.getPcode().getName();
 						String videoPlugin = url.getPlugins().getName();
 						String adPlugin = url.getAdPlugins().getName();
@@ -211,13 +224,21 @@ public class UrlGenerator {
 						}
 
 						String urlGenerated = getURL(sslEnabled, embedCode, pCode, pbid, videoPlugin, adPlugin,
-								additionalPlugin, playerParameter,skinJson);
+								additionalPlugin, playerParameter, skinJson);
 
 						UrlObject urlObject = new UrlObject();
 						urlObject.setUrl(urlGenerated);
 						urlObject.setEmbedCode(embedCode);
 						urlObject.setPCode(pCode);
 						urlObject.setPlayerId(pbid);
+
+						if (url.getDescription() != null && !url.getDescription().getName().isEmpty()) {
+							urlObject.setDescription(url.getDescription().getName());
+						}
+
+						if (url.getProfile()!=null && url.getProfile().getName() != null && !url.getProfile().getName().isEmpty()) {
+							urlObject.setProfile(url.getProfile().getName());
+						}
 
 						if (url.getSecret() != null && url.getSecret().getName() != null
 								&& !url.getSecret().getName().isEmpty()) {
@@ -289,7 +310,7 @@ public class UrlGenerator {
 							urlObject.setOverlayPlayTime(url.getAdPlugins().getOverlayPlayTime());
 						}
 
-						if(url.getDynamicFilter()!=null){
+						if (url.getDynamicFilter() != null) {
 							urlObject.setDynamicFilter(url.getDynamicFilter().getName());
 						}
 
@@ -310,8 +331,11 @@ public class UrlGenerator {
 						urlsGenerated.put(desc, urlObject);
 					}
 				} else {
-					/*logger.error("test name from xml file : " + data.getName() + " and Actal test name: " + testName
-							+ "are not matching");*/
+					/*
+					 * logger.error("test name from xml file : " +
+					 * data.getName() + " and Actal test name: " + testName +
+					 * "are not matching");
+					 */
 				}
 			}
 		} catch (Exception ex) {
@@ -359,5 +383,58 @@ public class UrlGenerator {
 
 	public Map<String, String> getStreamTypeDetails() {
 		return streamTypeDetails;
+	}
+
+	private String createAsset(String profileFile, String desc)
+			throws UnirestException, IOException, InterruptedException {
+		boolean flag = true;
+		String providerId = System.getProperty(CommandLineParameters.providerId);
+		APIUtils api = new APIUtils();
+		String profile = FileUtils.readFileToString(new File("src/main/resources/processing_profiles/" + profileFile),
+				Charset.defaultCharset());
+		String profileId = api.createProfile(profile, providerId);
+		String embedCode = "";
+		if (profileId == null) {
+			logger.error("Unable to create profile.");
+			flag = false;
+		} else {
+			embedCode = api.createAsset(desc, providerId);
+			if (embedCode == null) {
+				logger.error("Unable to ingest asset.");
+				flag = false;
+			} else {
+				if (api.transcodeAsset(embedCode, profileId, providerId)) {
+					Thread.sleep(2000);
+					int count = 30;
+					while (count > 0) {
+						if (api.isAssetLive(embedCode, providerId)) {
+							logger.info("Asset created.");
+							flag = true;
+							break;
+						}
+						logger.info("Asset is still not live");
+						Thread.sleep(5000);
+						count--;
+					}
+					if (!api.isAssetLive(embedCode, providerId)) {
+						logger.error("Asset Status is not live");
+						flag = false;
+					}
+				} else {
+					logger.error("Asset transcoding failed. Embed Code: " + embedCode);
+					flag = false;
+				}
+			}
+
+		}
+
+		if (!api.deleteProfile(profileId, providerId)) {
+			logger.error("Unable to delete profile.");
+		}
+
+		if (flag)
+			return embedCode;
+
+		return null;
 	}
 }

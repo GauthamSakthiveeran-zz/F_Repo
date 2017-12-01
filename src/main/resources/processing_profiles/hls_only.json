@@ -1,0 +1,32 @@
+{
+	"name": "hls_only_from_automation",
+	"profile": {
+		"image_interval_sec": 15.0,
+		"custom_image_widths": [96],
+		"mezzanine_multipass_encoding": false,
+		"deinterlace_input": false,
+		"streams": [{
+			"muxing_format": "ts",
+			"keyframe_interval_sec": 2.0,
+			"video_width": 320,
+			"profile": "baseline",
+			"video_bitrate": 400,
+			"audio_bitrate": 192,
+			"audio_sample_rate": 44100,
+			"segment_length_sec": 4.0,
+			"black_video": false,
+			"audio_codec": "aac",
+			"key_rotation_period": "",
+			"video_encryption_level": "",
+			"encrypt": false,
+			"mezzanine_multipass_encoding": false,
+			"use_for_trick_play": false,
+			"video_codec": "H.264",
+			"audio_coding_mode": "2_0"
+		}],
+		"watermarks": {},
+		"multi_language_support": []
+	},
+	"is_private": true,
+	"type": "video"
+}

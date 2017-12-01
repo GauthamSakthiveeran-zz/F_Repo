@@ -61,7 +61,7 @@ public class LiveChannel {
 			if (provider.equalsIgnoreCase("azure"))
 				groundEncoder.startEvent();
 			Response response = neoRequest.makeRequest(HOST_ADDRESS, urlPath, API_KEY, "POST",
-					"{cid: \"" + channelId + "\"}", null,channelId, "start");
+					"{cid: \"" + channelId + "\"}", null,null,channelId, "start");
 			logger.info("Channel start request response is " + response.getResponse());
 			logger.info("Channel start response code is " + response.getResponseCode());
 			if (response.getResponseCode() == 200)
@@ -78,7 +78,7 @@ public class LiveChannel {
 
 	private boolean checkStatus(String channelId, String status) {
 		for (long stop = System.nanoTime() + TimeUnit.MINUTES.toNanos(10); stop > System.nanoTime();) {
-			Response response = neoRequest.makeRequest(HOST_ADDRESS, urlPath, API_KEY, "GET", null, null,channelId);
+			Response response = neoRequest.makeRequest(HOST_ADDRESS, urlPath, API_KEY, "GET", null, null, null,channelId);
 			JSONObject jsonResponse = new JSONObject(response.getResponse());
 			String statuResponse = jsonResponse.getString("status");
 			// logger.info("Logger status of start/stop is : " + statuResponse);
@@ -110,7 +110,7 @@ public class LiveChannel {
 				groundEncoder.resetEvent();
 			}
 
-			Response response = neoRequest.makeRequest(HOST_ADDRESS, urlPath, API_KEY, "POST", null, null, channelId, "stop");
+			Response response = neoRequest.makeRequest(HOST_ADDRESS, urlPath, API_KEY, "POST", null, null, null, channelId, "stop");
 			logger.info("Channel stop request response is " + response.getResponse());
 			logger.info("Channel stop response code is " + response.getResponseCode());
 			if (response.getResponseCode() == 200)

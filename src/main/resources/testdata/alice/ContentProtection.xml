@@ -123,7 +123,7 @@
             <browsersSupported name="firefox,chrome,internet explorer,MicrosoftEdge,safari" />
             <browserSupportedVersion name="firefox,48"/>
             <playerParameter><![CDATA[{"embedToken":"http://player.ooyala.com/embed_token/BjcWYyOu1KK2DiKOkF41Z2k0X57l/x5aDhnMzE6XQrMEzt_g5OeqMeX4tuvln?api_key=BjcWYyOu1KK2DiKOkF41Z2k0X57l.0I-V4&expires=2889048225&account_id=dulari_qa&&&signature=0AsQMaoDq58w9q/L6P7cJzOI85gocxWPyw69dlLoQm0","debug":true,"enableDebugTools":{"startRecordingConsoleOutput":"Message Bus Event: videoControllerCreateVideoElement"}}]]></playerParameter>
-        	<streamType name="m3u8" />
+        	<streamType name="mpd" />
         	<sslEnabled name="https" browser="chrome"/>
         </url>
         <url>

@@ -123,7 +123,7 @@ public class PlayValidator extends PlayBackPage implements PlaybackValidator {
 
 		extentTest.log(LogStatus.PASS, "Video Playing and validation of element " + element + " is successful");
 
-		if (!getBrowser().toLowerCase().contains("explorer") && !getBrowser().toLowerCase().contains("edge"))
+		if (!getBrowser().toLowerCase().contains("explorer") && !getBrowser().toLowerCase().contains("edge") && !getBrowser().toLowerCase().contains("safari"))
 		if (!videoValidator.validate("", timeout)) {
 			return false;
 		}

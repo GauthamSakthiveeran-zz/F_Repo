@@ -563,7 +563,7 @@ public abstract class PlayBackPage extends WebPage {
 		extentTest.log(LogStatus.INFO, "Playhead time is :" + playHeadTime);
 		logger.info("Playhead time is :" + playHeadTime);
 		if (playHeadTime > timeToBeVerifiedAgainst || playHeadTime < (timeToBeVerifiedAgainst - 1)) {
-			extentTest.log(LogStatus.FAIL, "Video does not start from the " + (timeToBeVerifiedAgainst - 1));
+			extentTest.log(LogStatus.WARNING, "Video does not start from the " + (timeToBeVerifiedAgainst - 1));
 			logger.error("Video does not start from " + (timeToBeVerifiedAgainst - 1));
 			return false;
 		}
@@ -647,6 +647,20 @@ public abstract class PlayBackPage extends WebPage {
 			}
 		}
 		return isAdPlaying;
+	}
+
+	public boolean isVideoPlaying() {
+		PlayerAPIAction playerAPI = new PlayBackFactory(driver, extentTest).getPlayerAPIAction();
+		boolean isVideoPlaying = false;
+		for (int i = 0; i < 6; i++) {
+			try {
+				isVideoPlaying = playerAPI.isPlaying();
+				Thread.sleep(500);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+		return isVideoPlaying;
 	}
 
 	public void dragdrop(WebElement LocatorFrom, WebElement LocatorTo) {

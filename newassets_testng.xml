@@ -1,0 +1,21 @@
+<suite name="Playback Web Regression Suite" verbose="1">
+    <listeners>
+        <listener class-name="com.ooyala.facile.listners.FacileTestListener" />
+    </listeners>
+    <test name="Streams Regression" parallel="classes" thread-count="1">
+        <classes>
+            <parameter name="testData" value="alice/Streams_NewAssets.xml" />
+            <parameter name="jsFile" value="alice/alice.js" />
+            <class name="com.ooyala.playback.streams.BasicPlaybackTests" />
+        </classes>
+    </test>
+    
+    <test name="DRMRegression" parallel="classes" thread-count="1">
+        <classes>
+            <parameter name="testData" value="alice/DRM_NewAssets.xml"/>
+            <parameter name="jsFile" value="alice/alice.js"/>
+            <class name ="com.ooyala.playback.drm.PlaybackDRMTests"/>
+        </classes>
+    </test>
+</suite>
+
