@@ -5,5 +5,7 @@
              class="oo-icon-volume-on-ooyala-default " />
     <element key="VOLUME_MUTE" findBy="class"
              class="oo-icon-volume-mute-ooyala-default " />
-    <element key="VOLUME_MUTE_AUTOPLAY" findBy="class" class="oo-unmute-icon-wrapper" />         
+    <element key="VOLUME_MUTE_AUTOPLAY" findBy="class" class="oo-unmute-icon-wrapper" />
+    <element key="VOLUME_BAR_FULL" findBy="xPath"
+             xPath="//a[@class='oo-volume-bar oo-on']"/>
 </elements>
