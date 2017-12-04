@@ -7,9 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -31,6 +30,14 @@ public class ContextAwareFirefoxDriver extends FirefoxDriver implements
 	 */
 	public ContextAwareFirefoxDriver() {
 	}
+	
+	/***
+	 * Instantiates a new context aware firefox driver.
+	 * @param profile
+	 */
+	public ContextAwareFirefoxDriver(FirefoxOptions options) {
+		super(options);
+	}
 
 	/**
 	 * Instantiates a new context aware firefox driver.
@@ -38,9 +45,9 @@ public class ContextAwareFirefoxDriver extends FirefoxDriver implements
 	 * @param profile
 	 *            the profile
 	 */
-	public ContextAwareFirefoxDriver(FirefoxProfile profile) {
-		super(profile);
-	}
+//	public ContextAwareFirefoxDriver(FirefoxProfile profile) {
+//		super(profile);
+//	}
 
 	/**
 	 * Instantiates a new context aware firefox driver.
@@ -60,10 +67,10 @@ public class ContextAwareFirefoxDriver extends FirefoxDriver implements
 	 * @param requiredCapabilities
 	 *            the required capabilities
 	 */
-	public ContextAwareFirefoxDriver(Capabilities desiredCapabilities,
-			Capabilities requiredCapabilities) {
-		super(desiredCapabilities, requiredCapabilities);
-	}
+//	public ContextAwareFirefoxDriver(Capabilities desiredCapabilities,
+//			Capabilities requiredCapabilities) {
+//		super(desiredCapabilities, requiredCapabilities);
+//	}
 
 	/**
 	 * Instantiates a new context aware firefox driver.
@@ -73,10 +80,10 @@ public class ContextAwareFirefoxDriver extends FirefoxDriver implements
 	 * @param profile
 	 *            the profile
 	 */
-	public ContextAwareFirefoxDriver(FirefoxBinary binary,
-			FirefoxProfile profile) {
-		super(binary, profile);
-	}
+//	public ContextAwareFirefoxDriver(FirefoxBinary binary,
+//			FirefoxProfile profile) {
+//		super(binary, profile);
+//	}
 
 	/**
 	 * Instantiates a new context aware firefox driver.
@@ -88,10 +95,10 @@ public class ContextAwareFirefoxDriver extends FirefoxDriver implements
 	 * @param capabilities
 	 *            the capabilities
 	 */
-	public ContextAwareFirefoxDriver(FirefoxBinary binary,
-			FirefoxProfile profile, Capabilities capabilities) {
-		super(binary, profile, capabilities);
-	}
+//	public ContextAwareFirefoxDriver(FirefoxBinary binary,
+//			FirefoxProfile profile, Capabilities capabilities) {
+//		super(binary, profile, capabilities);
+//	}
 
 	/**
 	 * Instantiates a new context aware firefox driver.
@@ -105,11 +112,11 @@ public class ContextAwareFirefoxDriver extends FirefoxDriver implements
 	 * @param requiredCapabilities
 	 *            the required capabilities
 	 */
-	public ContextAwareFirefoxDriver(FirefoxBinary binary,
-			FirefoxProfile profile, Capabilities desiredCapabilities,
-			Capabilities requiredCapabilities) {
-		super(binary, profile, desiredCapabilities, requiredCapabilities);
-	}
+//	public ContextAwareFirefoxDriver(FirefoxBinary binary,
+//			FirefoxProfile profile, Capabilities desiredCapabilities,
+//			Capabilities requiredCapabilities) {
+//		super(binary, profile, desiredCapabilities, requiredCapabilities);
+//	}
 
 	/*
 	 * (non-Javadoc)

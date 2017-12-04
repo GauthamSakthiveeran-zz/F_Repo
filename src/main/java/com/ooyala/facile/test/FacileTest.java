@@ -37,6 +37,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerDriverLogLevel;
@@ -270,6 +271,7 @@ public class FacileTest implements IHookable {
 		profile.setPreference("capability.policy.default.Window.frameElement", "allAccess");
 		profile.setPreference("dom.max_script_run_time", 0);
 		profile.setPreference("dom.max_chrome_script_run_time", 0);
+		
 
 		// Commenting the below changes as this was breaking mint automation.
 		// Will look into this and understand why was this added. Until then
@@ -329,7 +331,8 @@ public class FacileTest implements IHookable {
 
 		}
 
-		return (new ContextAwareFirefoxDriver(profile));
+		FirefoxOptions options = new FirefoxOptions().setProfile(profile);
+		return (new ContextAwareFirefoxDriver(options));
 
 	}
 
@@ -426,6 +429,13 @@ public class FacileTest implements IHookable {
 
 	public ChromeOptions getChromeOptions() {
 		ChromeOptions options = new ChromeOptions();
+		Map<String, Object> prefs = new HashMap<>();
+
+		// Enable Flash
+		prefs.put("profile.default_content_setting_values.plugins", 1);
+		prefs.put("profile.content_settings.plugin_whitelist.adobe-flash-player", 1);
+		prefs.put("profile.content_settings.exceptions.plugins.*,*.per_resource.adobe-flash-player", 1);
+		options.setExperimentalOption("prefs", prefs);
 		List<String> list = new ArrayList<String>();
 		list.add("disable-component-update");
 		options.setExperimentalOption("excludeSwitches", list);
@@ -466,7 +476,7 @@ public class FacileTest implements IHookable {
 				dr.setCapability(MobileCapabilityType.PLATFORM_VERSION, System.getProperty("deviceVersion"));
 				dr.setCapability(MobileCapabilityType.BROWSER_NAME, "safari");
 				dr.setCapability(MobileCapabilityType.UDID, System.getProperty("udid"));
-				if(System.getProperty("automationName")!=null && !System.getProperty("automationName").isEmpty())
+				if (System.getProperty("automationName") != null && !System.getProperty("automationName").isEmpty())
 					dr.setCapability(MobileCapabilityType.AUTOMATION_NAME, System.getProperty("automationName"));
 			} else {
 				dr = DesiredCapabilities.safari();
@@ -794,7 +804,8 @@ public class FacileTest implements IHookable {
 					// FF driver
 				logger.debug("Attempting to load the specified Profile for Firefox...");
 				FirefoxProfile profile = new FirefoxProfile(new File(profileName));
-				ffdriver = new ContextAwareFirefoxDriver(profile);
+				FirefoxOptions options = new FirefoxOptions().setProfile(profile);
+				ffdriver = new ContextAwareFirefoxDriver(options);
 				logger.debug("Successfully created the firefox instance with specified Profile.");
 			} catch (NullPointerException ex) {
 				logger.error("No Firefox profile with name '" + profileName
@@ -835,8 +846,9 @@ public class FacileTest implements IHookable {
 			 * when using webdriver. The problem resolves itself when native
 			 * events are disabled within Firefox.
 			 */
-			profile.setEnableNativeEvents(false);
-			return new FirefoxDriver(profile);
+			// profile.setEnableNativeEvents(false);
+			// return new FirefoxDriver(profile);
+			return new FirefoxDriver();
 		} else {
 			// Other browser dont support non-native events. Return the normal
 			// driver in those instances.
