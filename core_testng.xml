@@ -55,6 +55,7 @@
             <class name="com.ooyala.playback.adhoc.ReplayAfterSeekBackTests"/>
             <class name="com.ooyala.playback.adhoc.InitialTimeSetToXSecondsBeforeMidrollAdPlaysTests"/>
             <class name="com.ooyala.playback.adhoc.InitialTimeSetToXSecondsAfterMidrollAdPlays"/>
+            <class name="com.ooyala.playback.adhoc.PlaybackFutureTimeTests"/>
         </classes>
     </test>
     
