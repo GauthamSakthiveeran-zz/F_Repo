@@ -15,7 +15,7 @@
 	<element key="SEEKBAR_ANDROID" findBy="xPath" xPath="//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.view.ViewGroup[1]/android.view.ViewGroup[3]/android.view.ViewGroup[2]" />
 	<element key="PLAY_PAUSE_BUTTON_ANDROID" findBy="xPath" xPath="//android.widget.Button[@content-desc='play']" />
 	<element key="PLAY_PAUSE_BUTTON_ANDROID_LATEST" findBy="xPath" xPath="//android.widget.TextView[@text='h']" />
-	<element key="SEEKBAR_ANDROID" findBy="xPath" xPath="//android.view.ViewGroup[@content-desc='video scrubber']" />
+	<element key="SEEKBAR_ANDROID" findBy="xPath" xPath="//android.view.ViewGroup[@index='3']/android.view.ViewGroup[@index='1']" />
 	<element key="MOREOPTIONS_BUTTON_IOS" findBy="xPath" xPath="//XCUIElementTypeOther[@name='moreOptions']" />
 	<element key="MOREOPTIONSSCREEN_CLOSEBUTTON_IOS" findBy="xPath" xPath="//XCUIElementTypeOther[@name='dismiss']" />
 	<element key="DISCOVERYBUTTON_IOS" findBy="xPath" xPath="//XCUIElementTypeOther[@name='discovery']" />
