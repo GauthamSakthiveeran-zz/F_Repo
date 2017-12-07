@@ -1,4 +1,4 @@
-package com.ooyala.playback.adhoc;
+package com.ooyala.playback.contentProtection;
 
 import com.ooyala.playback.PlaybackWebTest;
 import com.ooyala.playback.page.ErrorDescriptionValidator;
