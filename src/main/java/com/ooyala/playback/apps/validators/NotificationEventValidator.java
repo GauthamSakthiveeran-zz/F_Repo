@@ -83,7 +83,6 @@ public class NotificationEventValidator extends PlaybackApps implements Validato
 			while (!status && (System.currentTimeMillis() - startTime) < timeout) {
 				returncount = parseeventfile(event, count);
 				if (returncount == -1) {
-					extentTest.log(LogStatus.INFO, event.getFailureMessage());
 					status = false;
 				} else {
 					status = true;
