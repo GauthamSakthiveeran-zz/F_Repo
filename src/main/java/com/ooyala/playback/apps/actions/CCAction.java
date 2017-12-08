@@ -56,7 +56,7 @@ public class CCAction extends PlaybackApps implements Actions {
 					return false;
 				}
 				
-				result = result && seletCCLanguageAndroid("en");
+				result = result && seletCCLanguageAndroid("es");
 				
 				result = result && clickOnIndependentElement("CCSCREEN_CLOSEBUTTON_ANDROID");
 				
