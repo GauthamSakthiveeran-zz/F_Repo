@@ -212,9 +212,9 @@ public abstract class PlaybackWebTest extends FacileTest {
             }
             pageFactory = new PlayBackFactory(webDriverFacile.get(), extentTest);
             logger.info("PLATFORM : " + getPlatform());
-            if (!getPlatform().equalsIgnoreCase("android")) {
+            /*if (!getPlatform().equalsIgnoreCase("android")) {
                 maximizeMe(webDriverFacile.get());
-            }
+            }*/
             if (osNameAndOsVersion == null || osNameAndOsVersion.isEmpty())
                 osNameAndOsVersion = getOsNameAndOsVersion();
         } catch (Exception ex) {
@@ -505,9 +505,9 @@ public abstract class PlaybackWebTest extends FacileTest {
             throw new OoyalaException("Driver is not initialized successfully");
         }
 
-        if (!getPlatform().equalsIgnoreCase("android")) {
+        /*if (!getPlatform().equalsIgnoreCase("android")) {
             maximizeMe(driver);
-        }
+        }*/
         return driver;
     }
 
