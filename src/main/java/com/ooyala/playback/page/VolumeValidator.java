@@ -55,6 +55,11 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 					}
 				}
 
+				if(isElementPresent("VOLUME_BAR_FULL")){
+					extentTest.log(LogStatus.FAIL,"volume bar showing full volume even after mute");
+					return false;
+				}
+
 				getMuteVol = Double.parseDouble(playerAPI.getVolume());
 				if (getMuteVol != expectedMuteVol) {
 					extentTest.log(LogStatus.FAIL, "Mute volume is't matching");
@@ -72,6 +77,11 @@ public class VolumeValidator extends PlayBackPage implements PlaybackValidator {
 			}
 
 			if (clickOnIndependentElement("VOLUME_MUTE")) {
+
+				if(!isElementPresent("VOLUME_BAR_FULL")){
+					extentTest.log(LogStatus.FAIL,"volume bar not showing full volume even after unmute");
+					return false;
+				}
 
 				double getMaxVol = Double.parseDouble(playerAPI.getVolume());
 				if (getMaxVol != expectedMaxVol) {
