@@ -137,6 +137,16 @@ public class FacileTest implements IHookable {
 
 	/** The Constant DEFAULT_MAC_CHROMEDRIVER_PATH. */
 	public static final String DEFAULT_LINUX_CHROMEDRIVER_PATH = "/Users/Shared/chromedriver";
+	
+	
+	/** The Constant DEFAULT_WIN_GECKODRIVER_PATH. */
+	public static final String DEFAULT_WIN_GECKODRIVER_PATH = "c:/temp/geckodriver.exe";
+
+	/** The Constant DEFAULT_MAC_GECKODRIVER_PATH. */
+	public static final String DEFAULT_MAC_GECKODRIVER_PATH = "/Users/Shared/geckodriver";
+
+	/** The Constant DEFAULT_LINUX_GECKODRIVER_PATH. */
+	public static final String DEFAULT_LINUX_GECKODRIVER_PATH = "/Users/Shared/geckodriver";
 
 	/** The Constant DEFAULT_WIN_IEDRIVER_PATH. */
 	public static final String DEFAULT_WIN_IEDRIVER_PATH = "c:/temp/IEDriverServer.exe";
@@ -259,6 +269,8 @@ public class FacileTest implements IHookable {
 	public RemoteWebDriver createFirefoxInstanceLocally() {
 		logger.info("Creating Firefox Instance Locally...");
 		FirefoxProfile profile = new FirefoxProfile();
+		
+		System.setProperty("webdriver.gecko.driver", getLocalGeckodriver());
 
 		// Allows for accessing iFrames that originate in the different
 		// domain. Per request from QBO4A
@@ -272,6 +284,9 @@ public class FacileTest implements IHookable {
 		profile.setPreference("dom.max_script_run_time", 0);
 		profile.setPreference("dom.max_chrome_script_run_time", 0);
 		
+		if (System.getProperty("enableFlash") != null && System.getProperty("enableFlash").equalsIgnoreCase("true")) {
+			profile.setPreference("plugin.state.flash", 1);
+		}
 
 		// Commenting the below changes as this was breaking mint automation.
 		// Will look into this and understand why was this added. Until then
@@ -359,6 +374,50 @@ public class FacileTest implements IHookable {
 		logger.info("Returning isProxyEnabled" + isProxyEnabled);
 		return isProxyEnabled;
 	}
+	
+	
+	private String getLocalGeckodriver() {
+		String osName = System.getProperty("os.name").toLowerCase();
+		logger.debug("OS Name : " + osName);
+
+		String path;
+
+		if (osName.contains("mac")) {
+			logger.debug("OS type : MAC*");
+			path = getDriverPath("geckodriver", "mac");
+			if (path == "") {
+				logger.info(
+						"There is some problem with copying chromedriver to the temp directory so using default path "
+								+ DEFAULT_MAC_GECKODRIVER_PATH);
+				path = DEFAULT_MAC_GECKODRIVER_PATH;
+			}
+
+		} else if (osName.contains("win")) {
+			logger.debug("OS type : Windows");
+			path = getDriverPath("geckodriver.exe", "windows");
+			if (path == "") {
+				logger.info(
+						"There is some problem with copying chromedriver to the temp directory so using default path "
+								+ DEFAULT_WIN_GECKODRIVER_PATH);
+				path = DEFAULT_WIN_GECKODRIVER_PATH;
+			}
+
+		} else if (osName.contains("linux")) {
+			logger.debug("OS type : Linux*");
+			path = getDriverPath("geckodriver", "linux");
+			if (path == "") {
+				logger.info(
+						"There is some problem with copying chromedriver to the temp directory so using default path "
+								+ DEFAULT_LINUX_GECKODRIVER_PATH);
+				path = DEFAULT_LINUX_GECKODRIVER_PATH;
+			}
+		} else {
+			logger.error("Could not create a driver for the OS : " + osName);
+			throw new UnsupportedOperationException("Could not create a driver for the os: " + osName);
+		}
+
+		return path;
+	}
 
 	/**
 	 * Method to Create a Chrome Instance Locally.
@@ -391,7 +450,7 @@ public class FacileTest implements IHookable {
 			if (chromeDriverPath == "") {
 				logger.info(
 						"There is some problem with copying chromedriver to the temp directory so using default path "
-								+ DEFAULT_MAC_CHROMEDRIVER_PATH);
+								+ DEFAULT_WIN_CHROMEDRIVER_PATH);
 				chromeDriverPath = DEFAULT_WIN_CHROMEDRIVER_PATH;
 			}
 
@@ -426,16 +485,21 @@ public class FacileTest implements IHookable {
 
 		return (new RemoteWebDriver(chromeServer.getUrl(), dc));
 	}
+	
+	
 
 	public ChromeOptions getChromeOptions() {
 		ChromeOptions options = new ChromeOptions();
 		Map<String, Object> prefs = new HashMap<>();
 
 		// Enable Flash
-		prefs.put("profile.default_content_setting_values.plugins", 1);
-		prefs.put("profile.content_settings.plugin_whitelist.adobe-flash-player", 1);
-		prefs.put("profile.content_settings.exceptions.plugins.*,*.per_resource.adobe-flash-player", 1);
-		options.setExperimentalOption("prefs", prefs);
+		if(System.getProperty("enableFlash") !=null && System.getProperty("enableFlash").equalsIgnoreCase("true")) {
+			prefs.put("profile.default_content_setting_values.plugins", 1);
+			prefs.put("profile.content_settings.plugin_whitelist.adobe-flash-player", 1);
+			prefs.put("profile.content_settings.exceptions.plugins.*,*.per_resource.adobe-flash-player", 1);
+			options.setExperimentalOption("prefs", prefs);
+		}
+		
 		List<String> list = new ArrayList<String>();
 		list.add("disable-component-update");
 		options.setExperimentalOption("excludeSwitches", list);
@@ -525,10 +589,10 @@ public class FacileTest implements IHookable {
 		}
 
 		if (browser.equalsIgnoreCase("chrome")) {
-
 			ChromeOptions options = getChromeOptions();
 			desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		}
+		
 
 		String serverUrl = getGridIPAddress();
 
