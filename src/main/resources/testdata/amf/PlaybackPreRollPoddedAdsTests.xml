@@ -122,7 +122,6 @@
                 <![CDATA[{"google-ima-ads-manager":{"all_ads":[{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"},{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"},{"position":"0","position_type":"t","tag_url":"http://rtr.innovid.com/r1.547396186ac670.63818266;cb=[timestamp]"}]}}]]></playerParameter>
         </url>
 
-
         <url>
             <description name="Freewheel:Bitmovin Preroll Podded"/>
             <priority name="P2"></priority>

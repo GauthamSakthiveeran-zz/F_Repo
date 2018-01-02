@@ -16,6 +16,18 @@
         </url>
 
         <url>
+            <description name="VPAID:Main IMA VPAID2.0 PreMidPost roll Podded Ad"/>
+            <priority name="P2"></priority>
+            <embed_code name="thcmpiZDE6697nH6EyefZj4MJEPYz6ng"/>
+            <pcode name="d0aDkyOsSlXXy_I6D8zswFKq9-3U"/>
+            <plugins name="MAIN"/>
+            <adPlugins name="IMA"/>
+            <additionalPlugins name=""/>
+            <pbid name="abafee0167b14ca48d8738b994f5d2d4"/>
+            <playerParameter><![CDATA[]]></playerParameter>
+        </url>
+
+        <url>
             <description name="VPAID:AdobeTVSDK Vast VPAID2.0 PreMidPost Podded"/>
             <priority name="P3"></priority>
             <embed_code name="dzMm5iMjE6rPdV3p7yklZPdz85kWGNSj"/>
