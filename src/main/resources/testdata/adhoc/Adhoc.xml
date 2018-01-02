@@ -336,6 +336,5 @@
             <pbid name="242f532f58ad4b2e9192f84fd4ff727d"/>
             <playerParameter><![CDATA[{"initialTime":25,"vast":{"vpaidTimeout":{"iframe":20}},"showInAdControlBar":true,"showLinearAdSkipButton":true,"linearAdSkipButtonStartTime":1}]]></playerParameter>
         </url>
-
     </test>
 </testdata>

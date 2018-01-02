@@ -265,4 +265,32 @@
 			<sslEnabled name="https" browser="chrome"/>
         </url>
     </test>
+    <test name="PlaybackFutureTimeTests">
+        <url>
+            <description name="Adhoc:Future Time Main-en" />
+            <priority name="P1"></priority>
+            <embed_code name="s5cTRrZDE6vifukdYEvstSSrxovmPa8Z" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <browsersSupported name="safari,firefox,chrome,internet explorer,MicrosoftEdge" />
+            <playerParameter><![CDATA[{"skin":{"inline":{"localization":{"defaultLanguage":"en"}}}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
+        </url>
+        <url>
+            <description name="Adhoc:Future Time Main-es" />
+            <priority name="P1"></priority>
+            <embed_code name="s5cTRrZDE6vifukdYEvstSSrxovmPa8Z" />
+            <pcode name="pyaDkyOqdnY0iQC2sTO4JeaXggl9" />
+            <plugins name="MAIN" />
+            <adPlugins name="" />
+            <additionalPlugins name="" />
+            <pbid name="242f532f58ad4b2e9192f84fd4ff727d" />
+            <browsersSupported name="safari,firefox,chrome,internet explorer,MicrosoftEdge" />
+            <playerParameter><![CDATA[{"skin":{"inline":{"localization":{"defaultLanguage":"es"}}}}]]></playerParameter>
+            <sslEnabled name="https" browser="chrome"/>
+        </url>
+    </test>
 </testdata>
